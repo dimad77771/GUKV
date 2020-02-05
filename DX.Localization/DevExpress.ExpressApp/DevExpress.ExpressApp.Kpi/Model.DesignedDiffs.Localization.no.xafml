@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="ShowChart" Caption="Vis diagram" />
+    </Actions>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="DevExpress.ExpressApp.Kpi.IDateRange">
+      <OwnMembers>
+        <Member Name="Caption" Caption="Tittel" />
+        <Member Name="EndPoint" Caption="Slutt punkt" />
+        <Member Name="Name" Caption="navn" />
+        <Member Name="StartPoint" Caption="Start punkt" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Kpi.KpiDefinition" Caption="Definisjon">
+      <OwnMembers>
+        <Member Name="Active" Caption="Aktiv" />
+        <Member Name="Compare" Caption="Sammenligne" />
+        <Member Name="Criteria" Caption="Vilkår" />
+        <Member Name="Current" Caption="Gjeldende" />
+        <Member Name="Direction" Caption="Retning" />
+        <Member Name="EnableCustomizeRepresentation" Caption="Aktiver tilpass representasjon" />
+        <Member Name="Expression" Caption="Uttrykk" />
+        <Member Name="GreenZone" Caption="Grønn sone" />
+        <Member Name="MeasurementFrequency" Caption="Måling frekvens" />
+        <Member Name="Name" Caption="navn" />
+        <Member Name="Objects" Caption="Objekter" />
+        <Member Name="Period" Caption="Periode" />
+        <Member Name="Range" Caption="Rekkevidde" />
+        <Member Name="RangeToCompare" Caption="Område for sammenligning" />
+        <Member Name="RedZone" Caption="Rød sone" />
+        <Member Name="SuppressedSeries" Caption="Dempede serier" />
+        <Member Name="TargetObjectType" Caption="Mål-objekttype" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Kpi.KpiHistoryItem" Caption="KPI loggelement">
+      <OwnMembers>
+        <Member Name="RangeEnd" Caption="Område slutt" />
+        <Member Name="RangeStart" Caption="Område start" />
+        <Member Name="Value" Caption="Verdi" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Kpi.KpiInstance" Caption="KPI-forekomst">
+      <OwnMembers>
+        <Member Name="Change" Caption="Endre" />
+        <Member Name="ChartDataSource" Caption="Diagram-datakilde" />
+        <Member Name="Current" Caption="Gjeldende" />
+        <Member Name="GaugeDataSource" Caption="Måle data kilde" />
+        <Member Name="HistoryItems" Caption="Loggførte elementer" />
+        <Member Name="KpiName" Caption="KPI-navn" />
+        <Member Name="Period" Caption="Periode" />
+        <Member Name="Previous" Caption="Forrige" />
+        <Member Name="Scorecards" Caption="Resultatkort" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Kpi.KpiScorecard" Caption="Resultatkort">
+      <OwnMembers>
+        <Member Name="Indicators" Caption="Indikatorer" />
+        <Member Name="Name" Caption="navn" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <Localization>
+    <LocalizationGroup Name="Enums">
+      <LocalizationGroup Name="DevExpress.ExpressApp.Editors.Trend">
+        <LocalizationItem Name="Better" Value="Bedre" />
+        <LocalizationItem Name="NoChange" Value="Ingen endring" />
+        <LocalizationItem Name="Worse" Value="Verre" />
+      </LocalizationGroup>
+      <LocalizationGroup Name="DevExpress.ExpressApp.Kpi.Direction">
+        <LocalizationItem Name="HighIsBetter" Value="Høy er bedre" />
+        <LocalizationItem Name="LowIsBetter" Value="Lav er bedre" />
+      </LocalizationGroup>
+      <LocalizationGroup Name="DevExpress.ExpressApp.Kpi.TimeIntervalType">
+        <LocalizationItem Name="Day" Value="Dag" />
+        <LocalizationItem Name="Hour" Value="Time" />
+        <LocalizationItem Name="Month" Value="Måned" />
+        <LocalizationItem Name="Week" Value="Uke" />
+        <LocalizationItem Name="Year" Value="År" />
+      </LocalizationGroup>
+    </LocalizationGroup>
+  </Localization>
+  <Views>
+    <DetailView Id="KpiDefinition_DetailView">
+      <Layout>
+        <TabbedGroup Id="Tabs">
+          <LayoutGroup Id="Definition">
+            <LayoutGroup Id="Options">
+              <TabbedGroup Id="OptionsTabs">
+                <LayoutGroup Id="MeasurementOptions" Caption="Måle-opsjoner" />
+                <LayoutGroup Id="Zones" Caption="Soner" />
+              </TabbedGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="Preview" Caption="Forhåndsvisning" />
+        </TabbedGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

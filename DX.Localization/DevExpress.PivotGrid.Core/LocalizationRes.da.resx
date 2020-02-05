@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="ResMimeType">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="Version">
+    <value>1.0.0.0</value>
+  </resheader>
+  <resheader name="Reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.3102.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="Writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.3102.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="PivotGridStringId.RowHeadersCustomization">
+    <value>Træk rækkefelter hertil</value>
+  </data>
+  <data name="PivotGridStringId.ColumnHeadersCustomization">
+    <value>Træk kolonnefelter hertil</value>
+  </data>
+  <data name="PivotGridStringId.FilterHeadersCustomization">
+    <value>Træk felter til filtrering hertil</value>
+  </data>
+  <data name="PivotGridStringId.DataHeadersCustomization">
+    <value>Træk data hertil</value>
+  </data>
+  <data name="PivotGridStringId.RowArea">
+    <value>Rækkeområde</value>
+  </data>
+  <data name="PivotGridStringId.ColumnArea">
+    <value>Kolonneområde</value>
+  </data>
+  <data name="PivotGridStringId.FilterArea">
+    <value>Filterområde</value>
+  </data>
+  <data name="PivotGridStringId.DataArea">
+    <value>Dataområde</value>
+  </data>
+  <data name="PivotGridStringId.FilterShowAll">
+    <value>(Vis alle)</value>
+  </data>
+  <data name="PivotGridStringId.FilterShowBlanks">
+    <value>Vis blanke</value>
+  </data>
+  <data name="PivotGridStringId.CustomizationFormCaption">
+    <value>Pivottabel feltliste</value>
+  </data>
+  <data name="PivotGridStringId.CustomizationFormText">
+    <value>Træk felter til Pivottabel</value>
+  </data>
+  <data name="PivotGridStringId.CustomizationFormAddTo">
+    <value>Tilføj</value>
+  </data>
+  <data name="PivotGridStringId.Total">
+    <value>Total</value>
+  </data>
+  <data name="PivotGridStringId.GrandTotal">
+    <value>Hovedtotal</value>
+  </data>
+  <data name="PivotGridStringId.TotalFormat">
+    <value>{0} total</value>
+  </data>
+  <data name="PivotGridStringId.TotalFormatCount">
+    <value>{0} antal</value>
+  </data>
+  <data name="PivotGridStringId.TotalFormatSum">
+    <value>{0} sum</value>
+  </data>
+  <data name="PivotGridStringId.TotalFormatMin">
+    <value>{0} min</value>
+  </data>
+  <data name="PivotGridStringId.TotalFormatMax">
+    <value>{0} max</value>
+  </data>
+  <data name="PivotGridStringId.TotalFormatAverage">
+    <value>{0} gennemsnit</value>
+  </data>
+  <data name="PivotGridStringId.TotalFormatStdDev">
+    <value>{0} std.-afv</value>
+  </data>
+  <data name="PivotGridStringId.TotalFormatStdDevp">
+    <value>{0} std.-afvp</value>
+  </data>
+  <data name="PivotGridStringId.TotalFormatVar">
+    <value>{0} var</value>
+  </data>
+  <data name="PivotGridStringId.TotalFormatVarp">
+    <value>{0} varp</value>
+  </data>
+  <data name="PivotGridStringId.TotalFormatCustom">
+    <value>{0} Brugerdefineret</value>
+  </data>
+  <data name="PivotGridStringId.PrintDesignerPageOptions">
+    <value>Indstillinger</value>
+  </data>
+  <data name="PivotGridStringId.PrintDesignerPageBehavior">
+    <value>Opførsel</value>
+  </data>
+  <data name="PivotGridStringId.PrintDesignerCategoryDefault">
+    <value>Standard</value>
+  </data>
+  <data name="PivotGridStringId.PrintDesignerCategoryLines">
+    <value>Linjer</value>
+  </data>
+  <data name="PivotGridStringId.PrintDesignerCategoryHeaders">
+    <value>Overskrifter</value>
+  </data>
+  <data name="PivotGridStringId.PrintDesignerHorizontalLines">
+    <value>Vandrette linjer</value>
+  </data>
+  <data name="PivotGridStringId.PrintDesignerVerticalLines">
+    <value>Lodrette linjer</value>
+  </data>
+  <data name="PivotGridStringId.PrintDesignerFilterHeaders">
+    <value>Filteroverskrifter</value>
+  </data>
+  <data name="PivotGridStringId.PrintDesignerDataHeaders">
+    <value>Dataoverskrifter</value>
+  </data>
+  <data name="PivotGridStringId.PrintDesignerColumnHeaders">
+    <value>Kolonneoverskrift</value>
+  </data>
+  <data name="PivotGridStringId.PrintDesignerRowHeaders">
+    <value>Rækkehoveder</value>
+  </data>
+  <data name="PivotGridStringId.PrintDesignerUsePrintAppearance">
+    <value>Brug printerkarakteristik</value>
+  </data>
+  <data name="PivotGridStringId.PopupMenuRefreshData">
+    <value>Opfrisk</value>
+  </data>
+  <data name="PivotGridStringId.PopupMenuHideField">
+    <value>Skjul</value>
+  </data>
+  <data name="PivotGridStringId.PopupMenuShowFieldList">
+    <value>Vis feltliste</value>
+  </data>
+  <data name="PivotGridStringId.PopupMenuHideFieldList">
+    <value>Skjul feltliste</value>
+  </data>
+  <data name="PivotGridStringId.PopupMenuFieldOrder">
+    <value>Rækkefølge</value>
+  </data>
+  <data name="PivotGridStringId.PopupMenuMovetoBeginning">
+    <value>Flyt til start</value>
+  </data>
+  <data name="PivotGridStringId.PopupMenuMovetoLeft">
+    <value>Flyt til venstre</value>
+  </data>
+  <data name="PivotGridStringId.PopupMenuMovetoRight">
+    <value>Flyt til højre</value>
+  </data>
+  <data name="PivotGridStringId.PopupMenuMovetoEnd">
+    <value>Flyt til slutning</value>
+  </data>
+  <data name="PivotGridStringId.PopupMenuCollapse">
+    <value>Fold sammen</value>
+  </data>
+  <data name="PivotGridStringId.PopupMenuCollapseAll">
+    <value>Fold alle sammen</value>
+  </data>
+  <data name="PivotGridStringId.PopupMenuExpand">
+    <value>Fold ud</value>
+  </data>
+  <data name="PivotGridStringId.PopupMenuExpandAll">
+    <value>Fold alle ud</value>
+  </data>
+  <data name="PivotGridStringId.DataFieldCaption">
+    <value>Data</value>
+  </data>
+  <data name="PivotGridStringId.TopValueOthersRow">
+    <value>Andre</value>
+  </data>
+</root>

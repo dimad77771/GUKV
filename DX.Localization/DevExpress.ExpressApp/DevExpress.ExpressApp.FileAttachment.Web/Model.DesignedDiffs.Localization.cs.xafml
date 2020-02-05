@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="Download" Caption="Stahovat" />
+    </Actions>
+  </ActionDesign>
+  <Localization>
+    <LocalizationGroup Name="FileAttachments">
+      <LocalizationItem Name="Editor_Clear" Value="Smazat" />
+      <LocalizationItem Name="Editor_DownLoad" Value="Stahovat obsah souboru" />
+      <LocalizationItem Name="Editor_Edit" Value="Změnit soubor" />
+    </LocalizationGroup>
+  </Localization>
+</Application>

@@ -1,0 +1,2709 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="XtraRichEditStringId.Caption_AlignmentCenter" xml:space="preserve">
+    <value>Centrado</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_AlignmentJustify" xml:space="preserve">
+    <value>Justificado</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_AlignmentLeft" xml:space="preserve">
+    <value>Esquerda</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_AlignmentRight" xml:space="preserve">
+    <value>Direita</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_EvenPageFooter" xml:space="preserve">
+    <value>Só Página Rodapé</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_EvenPageHeader" xml:space="preserve">
+    <value>Só Página Cabeçalho</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_FirstLineIndentHanging" xml:space="preserve">
+    <value>Pendente</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_FirstLineIndentIndented" xml:space="preserve">
+    <value>Primeira Linha</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_FirstLineIndentNone" xml:space="preserve">
+    <value>(nenhum)</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_FirstPageFooter" xml:space="preserve">
+    <value>Primeira Página Rodapé</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_FirstPageHeader" xml:space="preserve">
+    <value>Primeira Página Cabeçalho</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_LineSpacingAtLeast" xml:space="preserve">
+    <value>Pelo menos</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_LineSpacingDouble" xml:space="preserve">
+    <value>Duplo</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_LineSpacingExactly" xml:space="preserve">
+    <value>Exatamente</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_LineSpacingMultiple" xml:space="preserve">
+    <value>Múltiplo</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_LineSpacingSesquialteral" xml:space="preserve">
+    <value>1,5 linhas</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_LineSpacingSingle" xml:space="preserve">
+    <value>Simples</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_NumberingListBoxNone" xml:space="preserve">
+    <value>Nenhum</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_OddPageFooter" xml:space="preserve">
+    <value>Página Rodapé Ímpar</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_OddPageHeader" xml:space="preserve">
+    <value>Página Cabeçalho Ímpar</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_PageFooter" xml:space="preserve">
+    <value>Rodapé</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_PageHeader" xml:space="preserve">
+    <value>Cabeçalho</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_SameAsPrevious" xml:space="preserve">
+    <value>Igual ao anterior</value>
+  </data>
+  <data name="XtraRichEditStringId.ClearFormatting" xml:space="preserve">
+    <value>Limpar Formatação</value>
+  </data>
+  <data name="XtraRichEditStringId.ColorAuto" xml:space="preserve">
+    <value>Automático</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_annotationreference" xml:space="preserve">
+    <value>referência anotação</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_annotationsubject" xml:space="preserve">
+    <value>objecto de anotação</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_annotationtext" xml:space="preserve">
+    <value>texto de anotação</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_BalloonText" xml:space="preserve">
+    <value>Balão de texto</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_BlockText" xml:space="preserve">
+    <value>Bloco de Texto</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_BodyText" xml:space="preserve">
+    <value>Texto do Corpo</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_BodyText2" xml:space="preserve">
+    <value> Texto do Corpo 2</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_BodyText3" xml:space="preserve">
+    <value>Texto do Corpo 3</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_BodyTextFirstIndent" xml:space="preserve">
+    <value>Texto do Corpo Primeiro Avanço</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_BodyTextFirstIndent2" xml:space="preserve">
+    <value>Texto do Corpo Primeiro Avanço 2</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_BodyTextIndent2" xml:space="preserve">
+    <value>Texto do Corpo Avanço 2</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_BodyTextIndent3" xml:space="preserve">
+    <value>Texto do Corpo Avanço 3</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_caption" xml:space="preserve">
+    <value>Título</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_Closing" xml:space="preserve">
+    <value>Fechando</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_Date" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_DefaultParagraphFont" xml:space="preserve">
+    <value>Tipo de Letra Padrão</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_DocumentMap" xml:space="preserve">
+    <value>Mapa do Documento</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_EmailSignature" xml:space="preserve">
+    <value>E-mail Assinatura</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_endnotereference" xml:space="preserve">
+    <value>nota de referência</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_endnotetext" xml:space="preserve">
+    <value>nota de texto</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_envelopeaddress" xml:space="preserve">
+    <value>endereço envelope</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_envelopereturn" xml:space="preserve">
+    <value>envelope de retorno</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_footer" xml:space="preserve">
+    <value>rodapé</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_footnotereference" xml:space="preserve">
+    <value>nota pé de referência</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_footnotetext" xml:space="preserve">
+    <value> texto de rodapé</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_header" xml:space="preserve">
+    <value>cabeçalho</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_heading1" xml:space="preserve">
+    <value>cabeçalho 1</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_heading2" xml:space="preserve">
+    <value>cabeçalho 2</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_heading3" xml:space="preserve">
+    <value>cabeçalho 3</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_heading4" xml:space="preserve">
+    <value>cabeçalho 4</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_heading5" xml:space="preserve">
+    <value>cabeçalho 5</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_heading6" xml:space="preserve">
+    <value>cabeçalho 6</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_heading7" xml:space="preserve">
+    <value>cabeçalho 7</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_heading8" xml:space="preserve">
+    <value>cabeçalho 8</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_heading9" xml:space="preserve">
+    <value>cabeçalho 9</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_HTMLAcronym" xml:space="preserve">
+    <value>HTML Acrônimo</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_HTMLAddress" xml:space="preserve">
+    <value>Endereço HTML</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_HTMLBottomofForm" xml:space="preserve">
+    <value>HTML Fundo de Forma</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_HTMLCite" xml:space="preserve">
+    <value>HTML Citar</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_HTMLCode" xml:space="preserve">
+    <value>HTML Código</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_HTMLDefinition" xml:space="preserve">
+    <value>HTML Definição</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_HTMLKeyboard" xml:space="preserve">
+    <value>HTML Teclado</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_HTMLPreformatted" xml:space="preserve">
+    <value>HTML Preformatado</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_HTMLSample" xml:space="preserve">
+    <value>HTML Amostra</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_HTMLTopofForm" xml:space="preserve">
+    <value>HTML Topo de Forma</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_HTMLTypewriter" xml:space="preserve">
+    <value>HTML Máquina de escrever</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_HTMLVariable" xml:space="preserve">
+    <value>HTML Variável</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_HyperlinkFollowed" xml:space="preserve">
+    <value>HiperlinkSeguido</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_HyperlinkStrongEmphasis" xml:space="preserve">
+    <value>HiperlinkForteÊnfase</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_index1" xml:space="preserve">
+    <value>índice 1</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_index2" xml:space="preserve">
+    <value>índice 2</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_index3" xml:space="preserve">
+    <value>índice 3</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_index4" xml:space="preserve">
+    <value>índice 4</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_index5" xml:space="preserve">
+    <value>índice 5</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_index6" xml:space="preserve">
+    <value>índice 6</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_index7" xml:space="preserve">
+    <value>índice 7</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_index8" xml:space="preserve">
+    <value>índice 8</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_index9" xml:space="preserve">
+    <value>índice 9</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_indexheading" xml:space="preserve">
+    <value>index cabeçalho</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_linenumber" xml:space="preserve">
+    <value>número da linha</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_List" xml:space="preserve">
+    <value>Lista</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_List2" xml:space="preserve">
+    <value>Lista 2</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_List3" xml:space="preserve">
+    <value>Lista 3</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_List4" xml:space="preserve">
+    <value>Lista 4</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_List5" xml:space="preserve">
+    <value>Lista 5</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_ListBullet" xml:space="preserve">
+    <value>Lista Bullet</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_ListBullet2" xml:space="preserve">
+    <value>Lista Bullet 2</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_ListBullet3" xml:space="preserve">
+    <value>Lista Bullet 3</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_ListBullet4" xml:space="preserve">
+    <value>Lista Bullet 4</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_ListBullet5" xml:space="preserve">
+    <value>Lista Bullet 5</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_ListContinue" xml:space="preserve">
+    <value>Lista Continuar</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_ListContinue2" xml:space="preserve">
+    <value>Lista Continuar 2</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_ListContinue3" xml:space="preserve">
+    <value>Lista Continuar 3</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_ListContinue4" xml:space="preserve">
+    <value>Lista Continuar 4</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_ListContinue5" xml:space="preserve">
+    <value>Lista Continuar 5</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_ListNumber" xml:space="preserve">
+    <value>Lista Número</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_ListNumber2" xml:space="preserve">
+    <value>Lista Número 2</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_ListNumber3" xml:space="preserve">
+    <value>Lista Número 3</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_ListNumber4" xml:space="preserve">
+    <value>Lista Número 4</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_ListNumber5" xml:space="preserve">
+    <value>Lista Número 5</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_macrotoaheading" xml:space="preserve">
+    <value>macro para uma rubrica</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_MessageHeader" xml:space="preserve">
+    <value>Mensagem Cabeçalho</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_NoList" xml:space="preserve">
+    <value>Nenhuma lista</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_NormalIndent" xml:space="preserve">
+    <value>Parágrafo Normal</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_NormalTable" xml:space="preserve">
+    <value>Normal Tabela</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_NormalWeb" xml:space="preserve">
+    <value>Normal (Web)</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_NoteHeading" xml:space="preserve">
+    <value>Nota rubrica</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_OutlineList1" xml:space="preserve">
+    <value>Outline Lista 1</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_OutlineList2" xml:space="preserve">
+    <value>Outline Lista 2</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_OutlineList3" xml:space="preserve">
+    <value>Outline Lista 3</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_pagenumber" xml:space="preserve">
+    <value> número página</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_PlainText" xml:space="preserve">
+    <value>Texto Simples</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_Salutation" xml:space="preserve">
+    <value>Saudação</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_Signature" xml:space="preserve">
+    <value>Assinatura</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_Subtitle" xml:space="preserve">
+    <value>Subtitulo</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_Table3Deffects1" xml:space="preserve">
+    <value>Tabela 3D efeitos 1</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_Table3Deffects2" xml:space="preserve">
+    <value>Tabela 3D efeitos 2</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_Table3Deffects3" xml:space="preserve">
+    <value>Tabela 3D efeitos 3</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableClassic1" xml:space="preserve">
+    <value>Tabela Clássico 1</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableClassic2" xml:space="preserve">
+    <value>Tabela Clássico 2</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableClassic3" xml:space="preserve">
+    <value>Tabela Clássico 3</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableClassic4" xml:space="preserve">
+    <value>Tabela Clássico 4</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableColorful1" xml:space="preserve">
+    <value>Tabela colorido 1</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableColorful2" xml:space="preserve">
+    <value>Tabela colorido 2</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableColorful3" xml:space="preserve">
+    <value>Tabela colorido 3</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableColumns1" xml:space="preserve">
+    <value>Tabela Coluna 1</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableColumns2" xml:space="preserve">
+    <value>Tabela Coluna 2</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableColumns3" xml:space="preserve">
+    <value>Tabela Coluna 3</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableColumns4" xml:space="preserve">
+    <value>Tabela Coluna 4</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableColumns5" xml:space="preserve">
+    <value>Tabela Coluna 5</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableContemporary" xml:space="preserve">
+    <value>Tabela Contemporâneo</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableElegant" xml:space="preserve">
+    <value>Tabela Elegante</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableGrid" xml:space="preserve">
+    <value>Tabela Grade</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableGrid1" xml:space="preserve">
+    <value>Tabela Grade 1</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableGrid2" xml:space="preserve">
+    <value>Tabela Grade 2</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableGrid3" xml:space="preserve">
+    <value>Tabela Grade 3</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableGrid4" xml:space="preserve">
+    <value>Tabela Grade 4</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableGrid5" xml:space="preserve">
+    <value>Tabela Grade 5</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableGrid6" xml:space="preserve">
+    <value>Tabela Grade 6</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableGrid7" xml:space="preserve">
+    <value>Tabela Grade 7</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableGrid8" xml:space="preserve">
+    <value>Tabela Grade 8</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableList1" xml:space="preserve">
+    <value>Tabela Lista 1</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableList2" xml:space="preserve">
+    <value>Tabela Lista 2</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableList3" xml:space="preserve">
+    <value>Tabela Lista 3</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableList4" xml:space="preserve">
+    <value>Tabela Lista 4</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableList5" xml:space="preserve">
+    <value>Tabela Lista 5</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableList6" xml:space="preserve">
+    <value>Tabela Lista 6</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableList7" xml:space="preserve">
+    <value>Tabela Lista 7</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableList8" xml:space="preserve">
+    <value>Tabela Lista 8</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_tableofauthorities" xml:space="preserve">
+    <value>tabela das autoridades</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_tableoffigures" xml:space="preserve">
+    <value>tabela de figuras</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableProfessional" xml:space="preserve">
+    <value>TabelaProfissional</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableSimple1" xml:space="preserve">
+    <value>Tabela Simples 1</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableSimple2" xml:space="preserve">
+    <value>Tabela Simples 2</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableSimple3" xml:space="preserve">
+    <value>Tabela Simples 3</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableSubtle1" xml:space="preserve">
+    <value>Tabela Subtle 1</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableSubtle2" xml:space="preserve">
+    <value>Tabela Subtle 2</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableWeb1" xml:space="preserve">
+    <value>Tabela Web 1</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableWeb2" xml:space="preserve">
+    <value>Tabela Web 2</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_TableWeb3" xml:space="preserve">
+    <value>Tabela Web 3</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_Title" xml:space="preserve">
+    <value>Título</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_toc1" xml:space="preserve">
+    <value>toc 1</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_toc2" xml:space="preserve">
+    <value>toc 2</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_toc3" xml:space="preserve">
+    <value>toc 3</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_toc4" xml:space="preserve">
+    <value>toc 4</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_toc5" xml:space="preserve">
+    <value>toc 5</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_toc6" xml:space="preserve">
+    <value>toc 6</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_toc7" xml:space="preserve">
+    <value>toc 7</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_toc8" xml:space="preserve">
+    <value>toc 8</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_toc9" xml:space="preserve">
+    <value>toc 9</value>
+  </data>
+  <data name="XtraRichEditStringId.DialogCaption_InsertSymbol" xml:space="preserve">
+    <value>Inserir Simbolo</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldLastName" xml:space="preserve">
+    <value>Últmo nome</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapAddress1" xml:space="preserve">
+    <value>Endereço 1</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapAddress2" xml:space="preserve">
+    <value>Endereço 2</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapAddress3" xml:space="preserve">
+    <value>Endereço 3</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapBusinessFax" xml:space="preserve">
+    <value>Fax Empresarial</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapBusinessPhone" xml:space="preserve">
+    <value>Tel Empresarial</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapCity" xml:space="preserve">
+    <value>Cidade</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapCompany" xml:space="preserve">
+    <value>Empresa</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapCountry" xml:space="preserve">
+    <value>Pais ou Região</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapDepartment" xml:space="preserve">
+    <value>Seção</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapEMailAddress" xml:space="preserve">
+    <value>E-mail Endereço</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapFirstName" xml:space="preserve">
+    <value>Sobrenome</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapHomeFax" xml:space="preserve">
+    <value>Casa Fax</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapHomePhone" xml:space="preserve">
+    <value>Casa Tel</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapJobTitle" xml:space="preserve">
+    <value>Cargo</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapMiddleName" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapNickName" xml:space="preserve">
+    <value>Apelido</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapPartnerFirstName" xml:space="preserve">
+    <value>Esposo/Parceiro Nome</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapPartnerLastName" xml:space="preserve">
+    <value>Esposo/Parceiro Sobrenome</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapPartnerMiddleName" xml:space="preserve">
+    <value>Esposo/Parceiro Nome</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapPartnerNickName" xml:space="preserve">
+    <value>Esposo/Parceiro Apelido</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapPartnerTitle" xml:space="preserve">
+    <value>Esposo/Parceiro Cortesia título</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapPhoneticGuideFirstName" xml:space="preserve">
+    <value>Guia Fonético para Nome</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapPhoneticGuideLastName" xml:space="preserve">
+    <value>Guia Fonético para Sobreome</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapPostalCode" xml:space="preserve">
+    <value>Código Postal</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapState" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapSuffix" xml:space="preserve">
+    <value>Sufixo</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapTitle" xml:space="preserve">
+    <value>Cortesia título</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapUniqueId" xml:space="preserve">
+    <value>Único Identificador</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapWebPage" xml:space="preserve">
+    <value>Web Página</value>
+  </data>
+  <data name="XtraRichEditStringId.FileFilterDescription_AllFiles" xml:space="preserve">
+    <value>Todos arquivos</value>
+  </data>
+  <data name="XtraRichEditStringId.FileFilterDescription_AllSupportedFiles" xml:space="preserve">
+    <value>Todos arquivos suportados</value>
+  </data>
+  <data name="XtraRichEditStringId.FileFilterDescription_BitmapFiles" xml:space="preserve">
+    <value>Ficheiros BMP</value>
+  </data>
+  <data name="XtraRichEditStringId.FileFilterDescription_EmfFiles" xml:space="preserve">
+    <value>Microsoft Enhanced Metaarquivo</value>
+  </data>
+  <data name="XtraRichEditStringId.FileFilterDescription_GifFiles" xml:space="preserve">
+    <value>Ficheiros GIF</value>
+  </data>
+  <data name="XtraRichEditStringId.FileFilterDescription_HtmlFiles" xml:space="preserve">
+    <value>Ficheiros HTML</value>
+  </data>
+  <data name="XtraRichEditStringId.FileFilterDescription_JPEGFiles" xml:space="preserve">
+    <value>Ficheiros JPEG</value>
+  </data>
+  <data name="XtraRichEditStringId.FileFilterDescription_MhtFiles" xml:space="preserve">
+    <value>Ficheiros MHT</value>
+  </data>
+  <data name="XtraRichEditStringId.FileFilterDescription_OpenDocumentFiles" xml:space="preserve">
+    <value>Ficheiros Abertos</value>
+  </data>
+  <data name="XtraRichEditStringId.FileFilterDescription_OpenXmlFiles" xml:space="preserve">
+    <value>Ficheiros Word XML</value>
+  </data>
+  <data name="XtraRichEditStringId.FileFilterDescription_PNGFiles" xml:space="preserve">
+    <value>Ficheiros PNG</value>
+  </data>
+  <data name="XtraRichEditStringId.FileFilterDescription_RtfFiles" xml:space="preserve">
+    <value>Ficheiros RTF</value>
+  </data>
+  <data name="XtraRichEditStringId.FileFilterDescription_TextFiles" xml:space="preserve">
+    <value>Ficheiros de texto</value>
+  </data>
+  <data name="XtraRichEditStringId.FileFilterDescription_TiffFiles" xml:space="preserve">
+    <value>Ficheiros TIFF</value>
+  </data>
+  <data name="XtraRichEditStringId.FileFilterDescription_WordMLFiles" xml:space="preserve">
+    <value>Ficheiros Word 2007</value>
+  </data>
+  <data name="XtraRichEditStringId.FileFilterDescription_XamlFiles" xml:space="preserve">
+    <value>Ficheiros XAML</value>
+  </data>
+  <data name="XtraRichEditStringId.FindAndReplaceForm_AnyOneCharacterInTheSet" xml:space="preserve">
+    <value>Qualquer caracter no conjunto</value>
+  </data>
+  <data name="XtraRichEditStringId.FindAndReplaceForm_AnyOneCharacterNotInTheSet" xml:space="preserve">
+    <value>Qualquer caracter fora do conjunto</value>
+  </data>
+  <data name="XtraRichEditStringId.FindAndReplaceForm_AnySingleCharacter" xml:space="preserve">
+    <value>Qualquer caracter</value>
+  </data>
+  <data name="XtraRichEditStringId.FindAndReplaceForm_BeginningOfLine" xml:space="preserve">
+    <value>Início do parágrafo</value>
+  </data>
+  <data name="XtraRichEditStringId.FindAndReplaceForm_BeginningOfWord" xml:space="preserve">
+    <value>Início da palavra</value>
+  </data>
+  <data name="XtraRichEditStringId.FindAndReplaceForm_EndOfLine" xml:space="preserve">
+    <value>Final do parágrafo</value>
+  </data>
+  <data name="XtraRichEditStringId.FindAndReplaceForm_EndOfWord" xml:space="preserve">
+    <value>Fim da palavra</value>
+  </data>
+  <data name="XtraRichEditStringId.FindAndReplaceForm_EscapeSpecialCharacter" xml:space="preserve">
+    <value>Caracter especial Escape</value>
+  </data>
+  <data name="XtraRichEditStringId.FindAndReplaceForm_Integer" xml:space="preserve">
+    <value>Número inteiro</value>
+  </data>
+  <data name="XtraRichEditStringId.FindAndReplaceForm_OneOrMore" xml:space="preserve">
+    <value>Um ou mais</value>
+  </data>
+  <data name="XtraRichEditStringId.FindAndReplaceForm_Or" xml:space="preserve">
+    <value>Ou</value>
+  </data>
+  <data name="XtraRichEditStringId.FindAndReplaceForm_SpaceOrTab" xml:space="preserve">
+    <value>Espaço ou tabulação</value>
+  </data>
+  <data name="XtraRichEditStringId.FindAndReplaceForm_TagExpression" xml:space="preserve">
+    <value>Tag expressão</value>
+  </data>
+  <data name="XtraRichEditStringId.FindAndReplaceForm_TaggedExpression" xml:space="preserve">
+    <value>Tagged expressão{0}</value>
+  </data>
+  <data name="XtraRichEditStringId.FindAndReplaceForm_WordCharacter" xml:space="preserve">
+    <value>Caracter da palavra</value>
+  </data>
+  <data name="XtraRichEditStringId.FindAndReplaceForm_ZeroOrMore" xml:space="preserve">
+    <value>Zero ou mais</value>
+  </data>
+  <data name="XtraRichEditStringId.FontStyle_Bold" xml:space="preserve">
+    <value>Negrito</value>
+  </data>
+  <data name="XtraRichEditStringId.FontStyle_BoldItalic" xml:space="preserve">
+    <value>Negrito Itálico</value>
+  </data>
+  <data name="XtraRichEditStringId.FontStyle_Italic" xml:space="preserve">
+    <value>Itálico</value>
+  </data>
+  <data name="XtraRichEditStringId.FontStyle_Regular" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="XtraRichEditStringId.FontStyle_Strikeout" xml:space="preserve">
+    <value>Recuar</value>
+  </data>
+  <data name="XtraRichEditStringId.FontStyle_Underline" xml:space="preserve">
+    <value>Sublinhado</value>
+  </data>
+  <data name="XtraRichEditStringId.HyperlinkForm_EditHyperlinkTitle" xml:space="preserve">
+    <value>Editar hiperlink</value>
+  </data>
+  <data name="XtraRichEditStringId.HyperlinkForm_InsertHyperlinkTitle" xml:space="preserve">
+    <value>Inserir hiperlink</value>
+  </data>
+  <data name="XtraRichEditStringId.HyperlinkForm_SelectedBookmarkNone" xml:space="preserve">
+    <value>&lt;Nenhum&gt;</value>
+  </data>
+  <data name="XtraRichEditStringId.HyperlinkForm_SelectionInDocument" xml:space="preserve">
+    <value>Seleção em documento</value>
+  </data>
+  <data name="XtraRichEditStringId.LinkedCharacterStyleFormatString" xml:space="preserve">
+    <value>{0} Jornal</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_AddSpacingAfterParagraph" xml:space="preserve">
+    <value>Adicionar Espaço &amp;Depois Parágrafo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_AddSpacingBeforeParagraph" xml:space="preserve">
+    <value>Adicionar Espaço &amp;Antes Parágrafo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_AddWordToDictionary" xml:space="preserve">
+    <value>Adicionar para Dicionário</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_AddWordToDictionaryDescription" xml:space="preserve">
+    <value>Adicionar para Dicionário</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_BackSpaceKey" xml:space="preserve">
+    <value>VoltarEspaçoChave</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_BackSpaceKeyDescription" xml:space="preserve">
+    <value>VoltarEspaçoChave</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_Bookmark" xml:space="preserve">
+    <value>Marcador...</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_BookmarkDescription" xml:space="preserve">
+    <value>Marcador...</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_BrowserPrintDescription" xml:space="preserve">
+    <value>Imprimir um documento com capacidades de impressão do browser.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_BrowserPrintPreview" xml:space="preserve">
+    <value>Navegador de Previsão</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_BrowserPrintPreviewDescription" xml:space="preserve">
+    <value>Visualização de páginas no navegador antes de imprimir.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeCharacterStyle" xml:space="preserve">
+    <value>MudarCaractereEstilo </value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeCharacterStyleDescription" xml:space="preserve">
+    <value>MudarCaractereEstilo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeColumnCount" xml:space="preserve">
+    <value>Colunas</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeColumnCountDescription" xml:space="preserve">
+    <value>Colunas</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeColumnSize" xml:space="preserve">
+    <value>MudarColunaTamanho </value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeColumnSizeDescription" xml:space="preserve">
+    <value>MudarColunaDescrição</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeCurrentBorderRepositoryItemColor" xml:space="preserve">
+    <value>Caneta de cor</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeCurrentBorderRepositoryItemColorDescription" xml:space="preserve">
+    <value>Mudar a caneta de cor.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeCurrentBorderRepositoryItemLineStyle" xml:space="preserve">
+    <value>Estilo Linha</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeCurrentBorderRepositoryItemLineStyleDescription" xml:space="preserve">
+    <value>Alterar o estilo da linha usada para desenhar os limites.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeCurrentBorderRepositoryItemLineThickness" xml:space="preserve">
+    <value>Largura Linha</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeCurrentBorderRepositoryItemLineThicknessDescription" xml:space="preserve">
+    <value>Alterar a largura da linha usada para desenhar os limites.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeFontColor" xml:space="preserve">
+    <value>Cor do Tipo de Letra</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeFontColorDescription" xml:space="preserve">
+    <value>Alterar a cor do texto.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeFontName" xml:space="preserve">
+    <value>Tipo de Letra</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeFontNameDescription" xml:space="preserve">
+    <value>Alterar o tipo de letra.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeFontSize" xml:space="preserve">
+    <value>Tamanho Tipo Letra</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeFontSizeDescription" xml:space="preserve">
+    <value>Mudar tamanho do tipo de letra.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeIndent" xml:space="preserve">
+    <value>MudarAvanço</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeIndentDescription" xml:space="preserve">
+    <value>MudarParágrafoDescrição</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeMistakenWord" xml:space="preserve">
+    <value>(sem sugestões de tradução)</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeMistakenWordDescription" xml:space="preserve">
+    <value>(sem sugestões de tradução)</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeParagraphFirstLineIndent" xml:space="preserve">
+    <value>IncrementoNºRecuoPrimeiraLinha</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeParagraphFirstLineIndentDescription" xml:space="preserve">
+    <value>IncrementoDescriçãoRecuoPrimeiraLinha</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeParagraphLeftIndent" xml:space="preserve">
+    <value>AlterarRecuoEsquerda</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeParagraphLeftIndentDescription" xml:space="preserve">
+    <value>AlterarEsquerdaDescriçãoTravessão</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeParagraphLineSpacing" xml:space="preserve">
+    <value>Espaçamento Linha</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeParagraphLineSpacingDescription" xml:space="preserve">
+    <value>Alterar o espaçamento entre linhas de texto.
+
+Você também pode personalizar a quantidade de espaço adicionado antes e depois dos parágrafos.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeParagraphRightIndent" xml:space="preserve">
+    <value>AlterarRecuoDireitaParágrafo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeParagraphRightIndentDescription" xml:space="preserve">
+    <value>AlterarParágrafoDescriçãoRecuoDireita</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeParagraphStyle" xml:space="preserve">
+    <value>MudarParágrafoEstilo </value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeParagraphStyleDescription" xml:space="preserve">
+    <value>MudarParágrafoEstilo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeSectionPageMargins" xml:space="preserve">
+    <value>Margens</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeSectionPageMarginsDescription" xml:space="preserve">
+    <value>Selecione o tamanho da margem para o documento inteiro ou a seção atual.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeSectionPageOrientation" xml:space="preserve">
+    <value>Orientação da página</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeSectionPageOrientationDescription" xml:space="preserve">
+    <value>Alterne as páginas entre retrato e paisagem layouts.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeSectionPagePaperKind" xml:space="preserve">
+    <value>Tamanho</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeSectionPagePaperKindDescription" xml:space="preserve">
+    <value>Escolha um tamanho de papel para a seção atual.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeStyle" xml:space="preserve">
+    <value>Estilos Rápidos</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeStyleDescription" xml:space="preserve">
+    <value>Formato de títulos, citações e outros textos usando esta galeria de estilos.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeTableBorders" xml:space="preserve">
+    <value>Limites</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeTableBordersDescription" xml:space="preserve">
+    <value>Personalize os limites das células selecionadas.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeTableCellsContentAlignment" xml:space="preserve">
+    <value>Alinhar células</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeTableCellsContentAlignmentDescription" xml:space="preserve">
+    <value>Alinhar células</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeTableCellShading" xml:space="preserve">
+    <value>Sombreamento</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeTableCellShadingDescription" xml:space="preserve">
+    <value>A cor de fundo por trás das células selecionadas.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeTextCase" xml:space="preserve">
+    <value>Maiúsculas/Minúsculas</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeTextCaseDescription" xml:space="preserve">
+    <value>Alterar todo o texto selecionado para maiúsculas, minúsculas, ou outras capitalizações comum.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_CheckSpelling" xml:space="preserve">
+    <value>Verificar Tradução</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_CheckSpellingDescription" xml:space="preserve">
+    <value>Verificar Tradução</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ClearFormatting" xml:space="preserve">
+    <value>Limpar Formatação</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ClearFormattingDescription" xml:space="preserve">
+    <value>Limpar toda a formatação da seleção, deixando somente o texto.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ClearUndo" xml:space="preserve">
+    <value>LimparAnular</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ClearUndoDescription" xml:space="preserve">
+    <value>Apagar Memória de Anulação</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ClosePageHeaderFooter" xml:space="preserve">
+    <value>Fechar Cabeçalho e Rodapé</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ClosePageHeaderFooterDescription" xml:space="preserve">
+    <value>Fechar Cabeçalho e Rodapé Ferramentos.
+
+Você também pode clicar duas vezes em que área do documento para retornar à sua edição.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_CopySelection" xml:space="preserve">
+    <value>Copiar</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_CopySelectionDescription" xml:space="preserve">
+    <value>Copie a seleção e colocá-lo na área de transferência.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_CreateBookmark" xml:space="preserve">
+    <value>Criar Marcador</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_CreateBookmarkDescription" xml:space="preserve">
+    <value>Criar Marcador</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_CreateField" xml:space="preserve">
+    <value>Criar Campo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_CreateFieldDescription" xml:space="preserve">
+    <value>Criar Campo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_CreateHyperlink" xml:space="preserve">
+    <value>CriarHiperlink</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_CreateHyperlinkDescription" xml:space="preserve">
+    <value>CriarHiperlinkDescrição</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_CutSelection" xml:space="preserve">
+    <value>Cortar</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_CutSelectionDescription" xml:space="preserve">
+    <value>Recortar a seleção do documento e colocá-lo na área de transferência.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DecreaseFontSize" xml:space="preserve">
+    <value>Diminuir Tipo de Letra</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DecreaseFontSizeDescription" xml:space="preserve">
+    <value>Diminuir o Tamanho do Tipo de Letra.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DecrementFontSize" xml:space="preserve">
+    <value>DiminuirTamanhoTipoLetra</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DecrementFontSizeDescription" xml:space="preserve">
+    <value>DiminuirTamanhoTipoLetra</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DecrementIndent" xml:space="preserve">
+    <value>Diminuir Avanço</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DecrementIndentDescription" xml:space="preserve">
+    <value>Diminuir o nível de avanço do parágrafo.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DecrementNumerationFromParagraph" xml:space="preserve">
+    <value>DiminuirNumeraçãoDoParâgrapo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DecrementNumerationFromParagraphDescription" xml:space="preserve">
+    <value>DiminuirNumeraçãoDoParâgrapo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DecrementParagraphLeftIndent" xml:space="preserve">
+    <value>DiminuirParâgrapoEsquerda</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DecrementParagraphLeftIndentDescription" xml:space="preserve">
+    <value>DiminuirParâgrapoEsquerdaDescrição</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_Delete" xml:space="preserve">
+    <value>Apagar</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteBack" xml:space="preserve">
+    <value>ApagarParaTras</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteBackCore" xml:space="preserve">
+    <value>ApagarParaTrazNúcleo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteBackCoreDescription" xml:space="preserve">
+    <value>ApagarParaTrazCorDescrição</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteBackDescription" xml:space="preserve">
+    <value>ApagarParaTraz</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteBookmark" xml:space="preserve">
+    <value>Apagar Marcador</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteBookmarkDescription" xml:space="preserve">
+    <value>Apagar Marcador</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteCore" xml:space="preserve">
+    <value>ApagarNúcleo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteCoreDescription" xml:space="preserve">
+    <value>ApagarNúcleoDescrição</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteDescription" xml:space="preserve">
+    <value>Apagar</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteNumerationFromParagraph" xml:space="preserve">
+    <value>ApagarNumeraçãoDoParágrapo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteNumerationFromParagraphDescription" xml:space="preserve">
+    <value>ApagarNumeraçãoDoParâgrapo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteRepeatedWord" xml:space="preserve">
+    <value>Excluir palavra repetida</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteRepeatedWordDescription" xml:space="preserve">
+    <value>Excluir palavra repetida</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteTable" xml:space="preserve">
+    <value>Apagar tabela</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteTableCells" xml:space="preserve">
+    <value>Apagar célula</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteTableCellsDescription" xml:space="preserve">
+    <value>Apagar células</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteTableColumns" xml:space="preserve">
+    <value>Apagar coluna</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteTableColumnsDescription" xml:space="preserve">
+    <value>Apagar colunas</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteTableDescription" xml:space="preserve">
+    <value>Apagar tabela inteira</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteTableElements" xml:space="preserve">
+    <value>Apagar</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteTableElementsDescription" xml:space="preserve">
+    <value>Apagar linhas, colunas, células ou a tabela inteira</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteTableRows" xml:space="preserve">
+    <value>Apagar linhas</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteTableRowsDescription" xml:space="preserve">
+    <value>Apagar linhas</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteWord" xml:space="preserve">
+    <value>ApagarWord</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteWordBack" xml:space="preserve">
+    <value>ApagarWordParatraz</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteWordBackCore" xml:space="preserve">
+    <value>ApagarWordParatraz</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteWordBackCoreDescription" xml:space="preserve">
+    <value>ApagarWordParatraz</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteWordBackDescription" xml:space="preserve">
+    <value>ApagarWordParatraz</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteWordCore" xml:space="preserve">
+    <value>ApagarPalavraNúcleo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteWordCoreDescription" xml:space="preserve">
+    <value>ApagarWordNúcleoDescrição</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteWordDescription" xml:space="preserve">
+    <value>ApagarWord</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeselectAll" xml:space="preserve">
+    <value>Desmarcar tudo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeselectAllDescription" xml:space="preserve">
+    <value>Desselecionar tudo.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DraftView" xml:space="preserve">
+    <value>Esquema Rascunho</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DraftViewDescription" xml:space="preserve">
+    <value>Esquema Rascunho</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_EditHyperlink" xml:space="preserve">
+    <value>Editar hiperlink...</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_EditHyperlinkDescription" xml:space="preserve">
+    <value>Edit hiperlink...</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_EditPageFooter" xml:space="preserve">
+    <value>Rodapé</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_EditPageFooterDescription" xml:space="preserve">
+    <value>Edite o rodapé do documento.
+
+O conteúdo no rodapé aparece na parte inferior de cada página impressa.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_EditPageHeader" xml:space="preserve">
+    <value>Cabeçalho</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_EditPageHeaderDescription" xml:space="preserve">
+    <value>Editar o cabeçalho do documento.
+
+O conteúdo do cabeçalho aparecerá no topo de cada página impressa.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_EnsureCaretVisibleHorizontally" xml:space="preserve">
+    <value>AssegurarCaretVisibleHorizontalmente</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_EnsureCaretVisibleHorizontallyDescription" xml:space="preserve">
+    <value>AssegurarCaretVisibleHorizontalmente</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_EnsureCaretVisibleVertically" xml:space="preserve">
+    <value>AssegurarCaretVisibleVerticalmente</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_EnsureCaretVisibleVerticallyDescription" xml:space="preserve">
+    <value>AssegurarCaretVisibleVerticalmente</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_EnterKey" xml:space="preserve">
+    <value>DigiteChave</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_EnterKeyDescription" xml:space="preserve">
+    <value>DigiteChaveDescrição</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_Find" xml:space="preserve">
+    <value>Localizar</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_FindAndSelectBackward" xml:space="preserve">
+    <value>LocalizarESelecionarParaTraz</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_FindAndSelectBackwardDescription" xml:space="preserve">
+    <value>LocalizarESelecionarParaTraz</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_FindAndSelectForward" xml:space="preserve">
+    <value>LocalizarESelecionarParaFrente</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_FindAndSelectForwardDescription" xml:space="preserve">
+    <value>LocalizarESelecionarParaFrente</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_FindDescription" xml:space="preserve">
+    <value>Localizar texto no documento.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_FindNext" xml:space="preserve">
+    <value>Localizar Próximo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_FindNextDescription" xml:space="preserve">
+    <value>Repete a última pesquisa para a frente.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_FindPrev" xml:space="preserve">
+    <value>Encontrar Anterior</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_FindPrevDescription" xml:space="preserve">
+    <value>Repete a última busca para trás.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_FirstDataRecord" xml:space="preserve">
+    <value>Primeiro registro</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_FirstDataRecordDescription" xml:space="preserve">
+    <value>Primeiro Registro</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_FontSubscript" xml:space="preserve">
+    <value>Inferior Linha</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_FontSubscriptDescription" xml:space="preserve">
+    <value>Crie letras pequenas abaixo da linha de base de texto.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_FontSuperscript" xml:space="preserve">
+    <value>Superior Linha</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_FontSuperscriptDescription" xml:space="preserve">
+    <value>Crie letras pequenas acima da linha de texto.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_GoToNextHeaderFooter" xml:space="preserve">
+    <value>Mostrar Próxima</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_GoToNextHeaderFooterDescription" xml:space="preserve">
+    <value>Navegue até a próxima seção do cabeçalho ou rodapé</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_GoToPage" xml:space="preserve">
+    <value>Ir para Página</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_GoToPageDescription" xml:space="preserve">
+    <value>Ir para página</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_GoToPageFooter" xml:space="preserve">
+    <value>Ir para Rodapé</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_GoToPageFooterDescription" xml:space="preserve">
+    <value>Ative o rodapé desta página para que você possa editá-lo.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_GoToPageHeader" xml:space="preserve">
+    <value>Ir para o Cabeçalho</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_GoToPageHeaderDescription" xml:space="preserve">
+    <value>Ative o cabeçalho desta página para que você possa editá-lo.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_GoToPreviousHeaderFooter" xml:space="preserve">
+    <value>Mostrar anterior</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_GoToPreviousHeaderFooterDescription" xml:space="preserve">
+    <value>Navegue até a seção de cabeçalho ou rodapé anterior</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_HighlightText" xml:space="preserve">
+    <value>Cor do Realce do Texto</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_HighlightTextDescription" xml:space="preserve">
+    <value>Faça o texto como ele foi marcado com uma caneta.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_Hyperlink" xml:space="preserve">
+    <value>Hiperligação...</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_HyperlinkDescription" xml:space="preserve">
+    <value>Hiperlink...</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_IgnoreAllMistakenWords" xml:space="preserve">
+    <value>Ignorar tudo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_IgnoreAllMistakenWordsDescription" xml:space="preserve">
+    <value>Ignorar tudo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_IgnoreMistakenWord" xml:space="preserve">
+    <value>Ignorar</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_IgnoreMistakenWordDescription" xml:space="preserve">
+    <value>Ignorar </value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_IncreaseFontSize" xml:space="preserve">
+    <value>Aumentar Tipo de Letra</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_IncreaseFontSizeDescription" xml:space="preserve">
+    <value>Aumente o tamanho do tipo de letra.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_IncrementFontSize" xml:space="preserve">
+    <value>AumentarTamanhoTipoLetra</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_IncrementFontSizeDescription" xml:space="preserve">
+    <value>AumentoTamanhoTipoLetra</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_IncrementIndent" xml:space="preserve">
+    <value>Aumentar Avanço</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_IncrementIndentDescription" xml:space="preserve">
+    <value>Aumentar o nível de avanço do parágrafo.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_IncrementNumerationFromParagraph" xml:space="preserve">
+    <value>IncrementoNumeraçãoDoParágrafo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_IncrementNumerationFromParagraphDescription" xml:space="preserve">
+    <value>IncrementoNumeraçãoDoParágrafo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_IncrementParagraphLeftIndent" xml:space="preserve">
+    <value>AumentarParágrafoEsquerdaTravessão</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_IncrementParagraphLeftIndentDescription" xml:space="preserve">
+    <value>AumentarParágrafoEsquerdaTravessãoDescriçaõ</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertBulletList" xml:space="preserve">
+    <value>Marcas</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertBulletListDescription" xml:space="preserve">
+    <value>Inicia uma lista com marcas.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertClosingDoubleQuotationMark" xml:space="preserve">
+    <value>InserirFecharDuploAspas</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertClosingDoubleQuotationMarkDescription" xml:space="preserve">
+    <value>InserirFecharDuploAspas</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertClosingSingleQuotationMark" xml:space="preserve">
+    <value>InserirFecharSimplesAspas</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertClosingSingleQuotationMarkDescription" xml:space="preserve">
+    <value>InserirFecharSimplesAspas</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertColumnBreak" xml:space="preserve">
+    <value>InserirQuebraColuna </value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertColumnBreakDescription" xml:space="preserve">
+    <value>InserirQuebraColuna</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertCopyrightSymbol" xml:space="preserve">
+    <value>InserirCopyrightSimbolo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertCopyrightSymbolDescription" xml:space="preserve">
+    <value>InserirCopyrightSimbolo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertEllipsis" xml:space="preserve">
+    <value>InserirReticências</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertEllipsisDescription" xml:space="preserve">
+    <value>InserirReticências</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertEmDash" xml:space="preserve">
+    <value>InserirEmColisão</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertEmDashDescription" xml:space="preserve">
+    <value>InserirEmColisão</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertEnDash" xml:space="preserve">
+    <value>InserirEnColisão</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertEnDashDescription" xml:space="preserve">
+    <value>InserirEnColisão</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertField" xml:space="preserve">
+    <value>CampoInserir</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertFieldDescription" xml:space="preserve">
+    <value>CampoInserir</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertHyperlink" xml:space="preserve">
+    <value>InserirHiperlink</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertHyperlinkDescription" xml:space="preserve">
+    <value>InserirHiperlinkDescrição</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertLineBreak" xml:space="preserve">
+    <value>InserirQuebraLinha</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertLineBreakDescription" xml:space="preserve">
+    <value>InserirQuebraLinha</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertMergeField" xml:space="preserve">
+    <value>Inserir Campo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertMergeFieldDescription" xml:space="preserve">
+    <value>Inserir Campo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertMultilevelList" xml:space="preserve">
+    <value>Lista com Múltiplos Níveis</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertMultilevelListDescription" xml:space="preserve">
+    <value>Iniciar uma multilevel lista lista de múltiplo nível.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertNonBreakingSpace" xml:space="preserve">
+    <value>InserirNenhumQuebraEspaço</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertNonBreakingSpaceDescription" xml:space="preserve">
+    <value>InserirNenhumQuebraEspaço</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertOpeningDoubleQuotationMark" xml:space="preserve">
+    <value>InserirFecharDuploAspas</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertOpeningDoubleQuotationMarkDescription" xml:space="preserve">
+    <value>InserirFecharDuploAspas</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertOpeningSingleQuotationMark" xml:space="preserve">
+    <value>InserirFecharSimplesAspas</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertOpeningSingleQuotationMarkDescription" xml:space="preserve">
+    <value>InserirFecharSimplesAspas</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertPageBreak" xml:space="preserve">
+    <value>Quebra Página</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertPageBreakDescription" xml:space="preserve">
+    <value>Inicie a próxima página na posição atual.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertPageCountField" xml:space="preserve">
+    <value>Contador de páginas</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertPageCountFieldDescription" xml:space="preserve">
+    <value>Insira contagem total de páginas no documento.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertPageNumberField" xml:space="preserve">
+    <value>Inserir Número de Página</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertPageNumberFieldDescription" xml:space="preserve">
+    <value>Inserir números de página no documento.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertParagraph" xml:space="preserve">
+    <value>InserirParágrafo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertParagraphDescription" xml:space="preserve">
+    <value>InserirParágrafo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertPicture" xml:space="preserve">
+    <value>Inserir Imagem do Arquivo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertPictureDescription" xml:space="preserve">
+    <value>Inserir uma imagem de um arquivo.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertRegisteredTrademarkSymbol" xml:space="preserve">
+    <value>InserirMarcaRegistrada Simbolo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertRegisteredTrademarkSymbolDescription" xml:space="preserve">
+    <value>InserirMarcaRegistrada Simbolo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertSimpleList" xml:space="preserve">
+    <value>Numeração</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertSimpleListDescription" xml:space="preserve">
+    <value>Iniciar uma lista de numeração.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertSymbol" xml:space="preserve">
+    <value>Inserir Símbolo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertSymbolDescription" xml:space="preserve">
+    <value>Inserir símbolos que não estão no seu teclado, como símbolos de copyright, símbolos de marcas, marcas de parágrafo e caracteres Unicode.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertTab" xml:space="preserve">
+    <value>InserirTab</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertTabDescription" xml:space="preserve">
+    <value>InserirTab</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertTable" xml:space="preserve">
+    <value>Tabela</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertTableCells" xml:space="preserve">
+    <value>Inserir Células</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertTableCellsDescription" xml:space="preserve">
+    <value>Inserir células</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertTableColumnToTheLeft" xml:space="preserve">
+    <value>Inserir Colunas à Esquerda</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertTableColumnToTheLeftDescription" xml:space="preserve">
+    <value>Adicionar uma nova coluna imediatamente à esquerda da coluna selecionada</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertTableColumnToTheRight" xml:space="preserve">
+    <value>Inserir Colunas à Direita</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertTableColumnToTheRightDescription" xml:space="preserve">
+    <value>Adicionar uma nova coluna imediatamente à direita da coluna selecionada</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertTableDescription" xml:space="preserve">
+    <value>Inserir uma tabela no documento.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertTableElement" xml:space="preserve">
+    <value>Inserir</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertTableRowAbove" xml:space="preserve">
+    <value>Inserir Linhas Acima</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertTableRowAboveDescription" xml:space="preserve">
+    <value>Adicionar uma nova linha imediatamente acima da linha selecionada.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertTableRowBelow" xml:space="preserve">
+    <value>Inserir Linhas Abaixo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertTableRowBelowDescription" xml:space="preserve">
+    <value>Adicionar uma nova linha imediatamente abaixo da linha selecionada.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertTabToParagraph" xml:space="preserve">
+    <value>InsiraTabParaParâgrafo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertTabToParagraphDescription" xml:space="preserve">
+    <value>InsiraTabParaParâgrafoDescrição</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertText" xml:space="preserve">
+    <value>InserirTexto</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertTextDescription" xml:space="preserve">
+    <value>InserirTexto</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertTrademarkSymbol" xml:space="preserve">
+    <value>InserirRegistradaSimbolo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertTrademarkSymbolDescription" xml:space="preserve">
+    <value>InserirRegistradaSimbolo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_LastDataRecord" xml:space="preserve">
+    <value>Último Registro</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_LastDataRecordDescription" xml:space="preserve">
+    <value>Último Registro</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_LoadDocument" xml:space="preserve">
+    <value>Abrir</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_LoadDocumentDescription" xml:space="preserve">
+    <value>Abrir</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MailMergeSaveDocumentAsCommand" xml:space="preserve">
+    <value>Impressão em Série</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MailMergeSaveDocumentAsCommandDescription" xml:space="preserve">
+    <value>Impressão em Série</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MakeTextLowerCase" xml:space="preserve">
+    <value>letraminúscula</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MakeTextLowerCaseDescription" xml:space="preserve">
+    <value>Alterar todo o texto selecionado para minúsculas.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MakeTextUpperCase" xml:space="preserve">
+    <value>MAIÚSCULAS</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MakeTextUpperCaseDescription" xml:space="preserve">
+    <value>Alterar todo o texto selecionado para MAIÚSCULAS.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MergeTableCells" xml:space="preserve">
+    <value>Unir Células</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MergeTableCellsDescription" xml:space="preserve">
+    <value>Unir as células selecionadas em uma célula.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ModifyHyperlink" xml:space="preserve">
+    <value>ModificarHyperlink</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ModifyHyperlinkDescription" xml:space="preserve">
+    <value>ModificarHyperlinkDescrição</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveBackward" xml:space="preserve">
+    <value>MoverAtrás</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveBackwardDescription" xml:space="preserve">
+    <value>MoverAtrás</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveForward" xml:space="preserve">
+    <value>MoverFrente</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveForwardDescription" xml:space="preserve">
+    <value>MoverAvante</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveLineDown" xml:space="preserve">
+    <value>MoverLinhaPorBaixo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveLineDownDescription" xml:space="preserve">
+    <value>MoverLinhaPorBaixo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveLineUp" xml:space="preserve">
+    <value>MoverLinhaParaCima </value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveLineUpDescription" xml:space="preserve">
+    <value>MoverLinhaParaCima</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveNextPage" xml:space="preserve">
+    <value>MoverPróximaPágina</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveNextPageDescription" xml:space="preserve">
+    <value>MoverPróximaPágina</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveNextParagraph" xml:space="preserve">
+    <value>MoverPróximoParágrafo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveNextParagraphDescription" xml:space="preserve">
+    <value>MoverPróximoParágrafo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveNextWord" xml:space="preserve">
+    <value>MoverPróximaPalavra</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveNextWordDescription" xml:space="preserve">
+    <value>MoverPróximaPalavra</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MovePreviousPage" xml:space="preserve">
+    <value>MoverPáginaAnterior</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MovePreviousPageDescription" xml:space="preserve">
+    <value>MoverPáginaAnterior</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MovePreviousParagraph" xml:space="preserve">
+    <value>MoverParágrafoAnterior</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MovePreviousParagraphDescription" xml:space="preserve">
+    <value>MoverParágrafoAnterior</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MovePreviousWord" xml:space="preserve">
+    <value>MoverPalavraAnterior</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MovePreviousWordDescription" xml:space="preserve">
+    <value>MoverPalavraAnterior</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveScreenDown" xml:space="preserve">
+    <value>MoverTelaPorBaixo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveScreenDownDescription" xml:space="preserve">
+    <value>MoverTelaPorBaixo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveScreenUp" xml:space="preserve">
+    <value>MoverTelaParaCima</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveScreenUpDescription" xml:space="preserve">
+    <value>MoverTelaParaCima</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveToBeginOfDocument" xml:space="preserve">
+    <value>MoverParaIniciarIniciarDoDocumento</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveToBeginOfDocumentDescription" xml:space="preserve">
+    <value>MoverParaIniciarIniciarDoDocumento</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveToEndOfDocument" xml:space="preserve">
+    <value>MoverParaFimDoDocumento</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveToEndOfDocumentDescription" xml:space="preserve">
+    <value>MoverParaFimDoDocumento</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveToEndOfLine" xml:space="preserve">
+    <value>MoverParaFimDesconectado</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveToEndOfLineDescription" xml:space="preserve">
+    <value>MoverParaFimDesconectado</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveToStartOfLine" xml:space="preserve">
+    <value>MoverParaInicioDesconectado</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_MoveToStartOfLineDescription" xml:space="preserve">
+    <value>MoverParaInicioLinha</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_NewEmptyDocument" xml:space="preserve">
+    <value>Novo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_NewEmptyDocumentDescription" xml:space="preserve">
+    <value>Criar um novo documento.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_NextDataRecord" xml:space="preserve">
+    <value>Próximo registro</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_NextDataRecordDescription" xml:space="preserve">
+    <value>Próximo registro</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_OpenHyperlink" xml:space="preserve">
+    <value>Abrir hiperligação</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_OpenHyperlinkAtCaretPosition" xml:space="preserve">
+    <value>AbrirHyperlinkPosiçãoDoCursor</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_OpenHyperlinkAtCaretPositionDescription" xml:space="preserve">
+    <value>AbrirHyperlinkPosiçãoDoCursorDescrição</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_OpenHyperlinkDescription" xml:space="preserve">
+    <value>Abrir hiperligação</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ParagraphAlignmentCenter" xml:space="preserve">
+    <value>Centrado</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ParagraphAlignmentCenterDescription" xml:space="preserve">
+    <value>Centrar o texto.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ParagraphAlignmentJustify" xml:space="preserve">
+    <value>Justificar</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ParagraphAlignmentJustifyDescription" xml:space="preserve">
+    <value>Alinhar o texto às duas margens esquerda e direita, adicionando espaço extra entre as palavras se necessário.
+
+Isso cria uma aparência limpa ao longo do lado esquerdo e direito da página.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ParagraphAlignmentLeft" xml:space="preserve">
+    <value>Alinhar Texto à Esquerda</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ParagraphAlignmentLeftDescription" xml:space="preserve">
+    <value>Alinhar texto à esquerda.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ParagraphAlignmentRight" xml:space="preserve">
+    <value>Alinhar texto à direita</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ParagraphAlignmentRightDescription" xml:space="preserve">
+    <value>Alinhar texto à direita.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_Paste" xml:space="preserve">
+    <value>Colar</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_PasteDescription" xml:space="preserve">
+    <value>Colar o conteúdo da área de transferência.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_PlaceCaretToPhysicalPoint" xml:space="preserve">
+    <value>ColoqueAcentoCircunflexoPara PontoFísico</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_PlaceCaretToPhysicalPointDescription" xml:space="preserve">
+    <value>ColoqueAcentoCircunflexoPara PontoFísico</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_PreviousDataRecord" xml:space="preserve">
+    <value>Registro anterior</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_PreviousDataRecordDescription" xml:space="preserve">
+    <value>Registro anterior</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_Print" xml:space="preserve">
+    <value>&amp;Imprimir</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_PrintDescription" xml:space="preserve">
+    <value>Selecionar uma impressora, o número de cópias, e outras opções de impressão antes de imprimir.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_PrintPreview" xml:space="preserve">
+    <value>Visuali&amp;zação de Impressão</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_PrintPreviewDescription" xml:space="preserve">
+    <value>Pré-visualizar e fazer alterações em páginas antes de imprimir.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_PrintView" xml:space="preserve">
+    <value>Visualização de Impressão</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_PrintViewDescription" xml:space="preserve">
+    <value>Visualização para impressão</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ProtectDocument" xml:space="preserve">
+    <value>Proteger Documento</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ProtectDocumentDescription" xml:space="preserve">
+    <value>Ajuda as pessoas de restringir a edição do documento especificando uma senha.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_QuickPrint" xml:space="preserve">
+    <value>&amp;Impressão Rápida</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_QuickPrintDescription" xml:space="preserve">
+    <value>Enviar o documento diretamente para a impressora padrão, sem fazer mudanças.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ReadingView" xml:space="preserve">
+    <value>Vista Só de Leitura</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ReadingViewDescription" xml:space="preserve">
+    <value>Vista Só de Leitura</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_Redo" xml:space="preserve">
+    <value>Refazer</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_RedoDescription" xml:space="preserve">
+    <value>Refazer</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_RemoveHyperlink" xml:space="preserve">
+    <value>Remover hiperligação</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_RemoveHyperlinkDescription" xml:space="preserve">
+    <value>Remover hiperligação</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_RemoveSpacingAfterParagraph" xml:space="preserve">
+    <value>Remover Espaço &amp;Antes do Parágrafo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_RemoveSpacingBeforeParagraph" xml:space="preserve">
+    <value>Remove Espaço &amp;Antes Parágrafo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_Replace" xml:space="preserve">
+    <value>Substituir</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ReplaceAllBackward" xml:space="preserve">
+    <value>SubstituirTudoAtrás</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ReplaceAllBackwardDescription" xml:space="preserve">
+    <value>SubstituirTudoAtrásDescrição</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ReplaceAllForward" xml:space="preserve">
+    <value>SubstituirTudoAdiante</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ReplaceAllForwardDescription" xml:space="preserve">
+    <value>SubstituirTudoAdianteDescrição</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ReplaceBackward" xml:space="preserve">
+    <value>SubstituirAtrás</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ReplaceBackwardDescription" xml:space="preserve">
+    <value>SubstituirAtrás</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ReplaceDescription" xml:space="preserve">
+    <value>Substituir texto no documento.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ReplaceForward" xml:space="preserve">
+    <value>SubstituirAdiante</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ReplaceForwardDescription" xml:space="preserve">
+    <value>SubstituirAdiante</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ReplaceText" xml:space="preserve">
+    <value>SubstituirTexto</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ReplaceTextDescription" xml:space="preserve">
+    <value>SubstituirTextoDescrição</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ResetCharacterFormatting" xml:space="preserve">
+    <value>Reset Formatação de caracteres</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ResetCharacterFormattingDescription" xml:space="preserve">
+    <value>Faz a seleção do formato de caracteres padrão do estilo aplicado.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ResetTableCellsBorders" xml:space="preserve">
+    <value>Sem Limite</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ResetTableCellsBordersDescription" xml:space="preserve">
+    <value>Personalize os limites das células selecionadas.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SaveDocument" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SaveDocumentAs" xml:space="preserve">
+    <value>Guardar como</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SaveDocumentAsDescription" xml:space="preserve">
+    <value>Guardar como</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SaveDocumentDescription" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ScrollDown" xml:space="preserve">
+    <value>Rolagem para baixo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ScrollDownDescription" xml:space="preserve">
+    <value>Rolagem para baixo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ScrollToPage" xml:space="preserve">
+    <value>RolarParaPágina</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ScrollToPageDescription" xml:space="preserve">
+    <value>RolarParaPágina</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SelectAll" xml:space="preserve">
+    <value>Selecionar Tudo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SelectAllDescription" xml:space="preserve">
+    <value>Selecionar o conteúdo do documento inteiro.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SelectBookmark" xml:space="preserve">
+    <value>Selecionar Marcador</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SelectBookmarkDescription" xml:space="preserve">
+    <value>Selecionar Marcador</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SelectFieldNextToCaret" xml:space="preserve">
+    <value>SelecioneCampoLadoParaCaret</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SelectFieldNextToCaretDescription" xml:space="preserve">
+    <value>SelecioneCampoLadoParaCaretDescrição</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SelectFieldPrevToCaret" xml:space="preserve">
+    <value>SelecioneCampoAnteriorParaCaret</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SelectFieldPrevToCaretDescription" xml:space="preserve">
+    <value>SelecioneCampoAnteriorParaCaretDescrição</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SelectTable" xml:space="preserve">
+    <value>Selecionar Tabela</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SelectTableCell" xml:space="preserve">
+    <value>Selecionar Célula</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SelectTableCellDescription" xml:space="preserve">
+    <value>Selecionar Célula</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SelectTableColumns" xml:space="preserve">
+    <value>Selecionar Coluna</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SelectTableColumnsDescription" xml:space="preserve">
+    <value>Selecionar Coluna</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SelectTableDescription" xml:space="preserve">
+    <value>Selecionar Tabela</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SelectTableElements" xml:space="preserve">
+    <value>Selecionar</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SelectTableElementsDescription" xml:space="preserve">
+    <value>Selecionar a célula atual, linha, coluna ou tabela inteira</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SelectTableRow" xml:space="preserve">
+    <value>Selecionar Linha</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SelectTableRowDescription" xml:space="preserve">
+    <value>Selecionar Linha</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SetLandscapePageOrientation" xml:space="preserve">
+    <value>Paisagem</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SetModerateSectionPageMargins" xml:space="preserve">
+    <value>Moderado
+Topo:	{1,10}	Fundo:	{3,10}
+Esquerda:{0,10}	Direita:	{2,10}</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SetNarrowSectionPageMargins" xml:space="preserve">
+    <value>Estreito
+Topo:	 {1,10}	Fundo:	{3,10}
+Esquerda:{0,10}	Direita:	{2,10}</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SetPortraitPageOrientation" xml:space="preserve">
+    <value>Retrato</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SetSectionColumns" xml:space="preserve">
+    <value>Colunas</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SetSectionColumnsDescription" xml:space="preserve">
+    <value>Dividir texto em duas ou mais colunas.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SetSectionOneColumn" xml:space="preserve">
+    <value>Um</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SetSectionOneColumnDescription" xml:space="preserve">
+    <value>Uma coluna.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SetSectionThreeColumns" xml:space="preserve">
+    <value>Três</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SetSectionThreeColumnsDescription" xml:space="preserve">
+    <value>Três colunas</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SetSectionTwoColumns" xml:space="preserve">
+    <value>Dois</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SetSectionTwoColumnsDescription" xml:space="preserve">
+    <value>Dois colunas.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SetSingleParagraphSpacing" xml:space="preserve">
+    <value>1,0</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SetSingleParagraphSpacingDescription" xml:space="preserve">
+    <value>DefinirParágrafoÚnicoEspaçamento</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SetWideSectionPageMargins" xml:space="preserve">
+    <value>Amplo
+Topo:	 {1,10}	Fundo:	{3,10}
+Esquerda:{0,10}	Direita:	{2,10}</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShiftTabKey" xml:space="preserve">
+    <value>ShiftTabChave</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShiftTabKeyDescription" xml:space="preserve">
+    <value>ShiftTabChave</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowAllFieldCodes" xml:space="preserve">
+    <value>Mostrar Todos os Campo Códigos</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowAllFieldCodesDescription" xml:space="preserve">
+    <value>Mostrar Todos os Campo Códigos</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowAllFieldResults" xml:space="preserve">
+    <value>Mostrar Todos os Campo Resultados</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowAllFieldResultsDescription" xml:space="preserve">
+    <value>Mostrar Todos os Campo Resultados</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowBookmarkForm" xml:space="preserve">
+    <value>Marcador</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowBookmarkFormDescription" xml:space="preserve">
+    <value>Criar um marcador para atribuir um nome a um ponto específico em um documento
+
+Você pode criar hiperlinks que saltam diretamente para um local marcado.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowBulletedList" xml:space="preserve">
+    <value>Lista de Marcas</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowBulletedListDescription" xml:space="preserve">
+    <value>Mostrar o diálogo da lista com marcas.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowFontForm" xml:space="preserve">
+    <value>Tipo de Letra</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowFontFormDescription" xml:space="preserve">
+    <value>Mostrar a caixa de diálogo Tipo de Letra.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowHyperlinkForm" xml:space="preserve">
+    <value>Inserir Hiperligação</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowHyperlinkFormDescription" xml:space="preserve">
+    <value>Crie um link para uma página Web, uma imagem, um endereço de correio electrónico, ou um programa.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowInsertMergeFieldForm" xml:space="preserve">
+    <value>Inserir campo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowInsertMergeFieldFormDescription" xml:space="preserve">
+    <value>Adicionar um campo de uma lista de destinatários ou de uma tabela de dados ao documento.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowLineSpacingForm" xml:space="preserve">
+    <value>Opções de Espaçamento de Linha...</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowMultiLevelNumberingList" xml:space="preserve">
+    <value>Lista Numérica com Múltiplos Níveis</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowMultiLevelNumberingListDescription" xml:space="preserve">
+    <value>Mostra a Janela da Lista Numérica com Múltiplos Níveis.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowNumberingList" xml:space="preserve">
+    <value>Numeração Lista</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowNumberingListDescription" xml:space="preserve">
+    <value>Mostra a Numeração Lista diálog caixa.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowParagraphForm" xml:space="preserve">
+    <value>Parágrafo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowParagraphFormDescription" xml:space="preserve">
+    <value>Mostrar a caixa de diálogo de parágrafo.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowRangeEditingPermissionsForm" xml:space="preserve">
+    <value>Editar permissões faixa</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowRangeEditingPermissionsFormDescription" xml:space="preserve">
+    <value>Editar permissões faixa</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowSimpleNumberingList" xml:space="preserve">
+    <value>Lista simples numeração</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowSimpleNumberingListDescription" xml:space="preserve">
+    <value>Mostrar o Simple Numeração Lista caixa de diálogo.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowSymbol" xml:space="preserve">
+    <value>Ver Símbolo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowSymbolDescription" xml:space="preserve">
+    <value>Mostrar a caixa de diálogo Símbolo.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowTabsForm" xml:space="preserve">
+    <value>Tabs</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowTabsFormDescription" xml:space="preserve">
+    <value>Tabs</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SimpleView" xml:space="preserve">
+    <value>Esquema Simples</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SimpleViewDescription" xml:space="preserve">
+    <value>Esquema Simples</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SplitTable" xml:space="preserve">
+    <value>Dividir Tabela</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SplitTableCells" xml:space="preserve">
+    <value>Dividir células</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SplitTableCellsDescription" xml:space="preserve">
+    <value>Dividir as células selecionadas em várias células novas</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SplitTableDescription" xml:space="preserve">
+    <value>Dividir a tabela em duas tabelas.
+A linha selecionada será a primeira linha da nova tabela.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SwitchToDraftView" xml:space="preserve">
+    <value>Modelo de Rascunho</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SwitchToDraftViewDescription" xml:space="preserve">
+    <value>Ver o documento como um rascunho para editar rapidamente o texto.
+
+Determinados elementos do documento, como cabeçalhos e rodapés não estará visível nesta exibição.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SwitchToPrintLayoutView" xml:space="preserve">
+    <value>Esquema de Impressão</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SwitchToPrintLayoutViewDescription" xml:space="preserve">
+    <value>Ver o documento como ele aparecerá na página impressa.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SwitchToSimpleView" xml:space="preserve">
+    <value>Esquema Simples</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SwitchToSimpleViewDescription" xml:space="preserve">
+    <value>Ver o documento como uma nota simples.
+
+Essa visão ignora o layout da página para chamar a atenção para edição de texto.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_TabKey" xml:space="preserve">
+    <value>TabChave</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_TabKeyDescription" xml:space="preserve">
+    <value>TabChave</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleDifferentFirstPage" xml:space="preserve">
+    <value>Primeira página diferente</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleDifferentFirstPageDescription" xml:space="preserve">
+    <value>Especifique um único cabeçalho e rodapé para a primeira página do documento.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleDifferentOddAndEvenPages" xml:space="preserve">
+    <value>Páginas Ímpar &amp;&amp; Par Diferentes</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleDifferentOddAndEvenPagesDescription" xml:space="preserve">
+    <value>Especificar que páginas ímpares devem ter um cabeçalho e rodapé diferente nas páginas pares.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleFieldCodes" xml:space="preserve">
+    <value>Alternar códigos de campo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleFieldCodesDescription" xml:space="preserve">
+    <value>Alternar códigos de campo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleFontBold" xml:space="preserve">
+    <value>Negrito</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleFontBoldDescription" xml:space="preserve">
+    <value>Faça o texto selecionado em negrito.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleFontCode" xml:space="preserve">
+    <value>Código</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleFontCodeDescription" xml:space="preserve">
+    <value>Códificar o texto selecionado.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleFontDoubleStrikeout" xml:space="preserve">
+    <value>Rasurado Duplo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleFontDoubleStrikeoutDescription" xml:space="preserve">
+    <value>Rasurado Duplo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleFontDoubleUnderline" xml:space="preserve">
+    <value>Duplo Sublinhado</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleFontDoubleUnderlineDescription" xml:space="preserve">
+    <value>Duplo sublinhado</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleFontItalic" xml:space="preserve">
+    <value>Itálico</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleFontItalicDescription" xml:space="preserve">
+    <value>Colocar o texto selecionado com itálico.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleFontStrikeout" xml:space="preserve">
+    <value>Rasurado</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleFontStrikeoutDescription" xml:space="preserve">
+    <value>Desenhar uma linha no meio do texto selecionado.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleFontUnderline" xml:space="preserve">
+    <value>Sublinhado</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleFontUnderlineDescription" xml:space="preserve">
+    <value>Sublinhar o texto selecionado.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleHeaderFooterLinkToPrevious" xml:space="preserve">
+    <value>Link para a anterior</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleHeaderFooterLinkToPreviousDescription" xml:space="preserve">
+    <value>Link para a seção anterior para que o cabeçalho eo rodapé na secção actual conter o mesmo conteúdo na seção anterior.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleHiddenText" xml:space="preserve">
+    <value>Oculto</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleHiddenTextDescription" xml:space="preserve">
+    <value>Oculto.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleShowHorizontalRuler" xml:space="preserve">
+    <value>Régua Horizontal</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleShowHorizontalRulerDescription" xml:space="preserve">
+    <value>Ver a régua horizontal, usado para medir e alinhar objetos no documento</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleShowTableGridLines" xml:space="preserve">
+    <value>Ver Linhas</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleShowTableGridLinesDescription" xml:space="preserve">
+    <value>Mostrar ou ocultar as linhas de grade dentro da tabela.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleShowVerticalRuler" xml:space="preserve">
+    <value>Vertical Régua</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleShowVerticalRulerDescription" xml:space="preserve">
+    <value>Ver a régua vertical, usado para medir e alinhar objetos no documento</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleSpellCheckAsYouType" xml:space="preserve">
+    <value>Verificar Ortografia ao Escrever</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleSpellCheckAsYouTypeDescription" xml:space="preserve">
+    <value>Verificar ortografia ao escrever</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsAllBorders" xml:space="preserve">
+    <value>Todas os limites</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsAllBordersDescription" xml:space="preserve">
+    <value>Personalize os limites das células selecionadas.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsBottomBorder" xml:space="preserve">
+    <value>Limite Fundo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsBottomBorderDescription" xml:space="preserve">
+    <value>Personalize os limites das células selecionadas.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsBottomCenterAlignment" xml:space="preserve">
+    <value>Centrar Parte Inferior</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsBottomCenterAlignmentDescription" xml:space="preserve">
+    <value>Centralizar o texto e alinhá-lo à parte inferior da célula.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsBottomLeftAlignment" xml:space="preserve">
+    <value>Alinhar parte inferior esquerda</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsBottomLeftAlignmentDescription" xml:space="preserve">
+    <value>Alinhar texto ao canto fundo esquerdo da célula.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsBottomRightAlignment" xml:space="preserve">
+    <value>Alinhar à Direita Fundo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsBottomRightAlignmentDescription" xml:space="preserve">
+    <value>Alinhar o texto para o canto fundo direito da célula.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsInsideBorder" xml:space="preserve">
+    <value>Dentro dos Limites</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsInsideBorderDescription" xml:space="preserve">
+    <value>Personalize os limites das células selecionadas.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsInsideHorizontalBorder" xml:space="preserve">
+    <value>Dentro do Limite Horizontal</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsInsideHorizontalBorderDescription" xml:space="preserve">
+    <value>Personalize os limites das células selecionadas.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsInsideVerticalBorder" xml:space="preserve">
+    <value>Dentro do Limite Vertical</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsInsideVerticalBorderDescription" xml:space="preserve">
+    <value>Personalize os limites das células selecionadas.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsLeftBorder" xml:space="preserve">
+    <value>Limite Esquerdo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsLeftBorderDescription" xml:space="preserve">
+    <value>Personalize os limites das células selecionadas.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsMiddleCenterAlignment" xml:space="preserve">
+    <value>Alinhar ao Centro</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsMiddleCenterAlignmentDescription" xml:space="preserve">
+    <value>Centralizar o texto horizontalmente e verticalmente dentro da célula.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsMiddleLeftAlignment" xml:space="preserve">
+    <value>Alinhar ao centro esquerda</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsMiddleLeftAlignmentDescription" xml:space="preserve">
+    <value>Centralizar o texto verticalmente e alinhá-lo para o lado esquerdo da célula.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsMiddleRightAlignment" xml:space="preserve">
+    <value>Alinhar Parte Superior Direita</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsMiddleRightAlignmentDescription" xml:space="preserve">
+    <value>Centrar o texto na vertical e alinhá-lo ao lado direito da célula.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsOutsideBorder" xml:space="preserve">
+    <value>Limite de fora</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsOutsideBorderDescription" xml:space="preserve">
+    <value>Personalize os limites das células selecionadas.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsRightBorder" xml:space="preserve">
+    <value>Limite Direita</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsRightBorderDescription" xml:space="preserve">
+    <value>Personalize os limites das células selecionadas.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsTopBorder" xml:space="preserve">
+    <value>Limite Topo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsTopBorderDescription" xml:space="preserve">
+    <value>Personalize os limites das células selecionadas.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsTopCenterAlignment" xml:space="preserve">
+    <value>Alinhar Centralizado Topo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsTopCenterAlignmentDescription" xml:space="preserve">
+    <value>Centralizar o texto e alinhá-lo ao topo da célula.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsTopLeftAlignment" xml:space="preserve">
+    <value>Alinhar Parte Superior Esquerda</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsTopLeftAlignmentDescription" xml:space="preserve">
+    <value>Alinhar o texto para o canto superior esquerdo da célula.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsTopRightAlignment" xml:space="preserve">
+    <value>Alinhar à Direita Topo</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleTableCellsTopRightAlignmentDescription" xml:space="preserve">
+    <value>Alinhar o texto para o canto superior direito da célula.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleViewMergedData" xml:space="preserve">
+    <value>Pré-visualizar Resultados</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleViewMergedDataDescription" xml:space="preserve">
+    <value>Substitui os campos de intercalação no documento com dados reais de sua lista de destinatários que você possa ver o que parece.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleWhitespace" xml:space="preserve">
+    <value>Mostrar/Ocultar ¶</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleWhitespaceDescription" xml:space="preserve">
+    <value>Mostrar parâgrafos marcas e outros símbolos de formatação ocultos.</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_Undo" xml:space="preserve">
+    <value>Anular</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_UndoDescription" xml:space="preserve">
+    <value>Anular</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_UnprotectDocument" xml:space="preserve">
+    <value>Documento Desprotegido</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_UnprotectDocumentDescription" xml:space="preserve">
+    <value>Documento Desprotegido</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_UpdateField" xml:space="preserve">
+    <value>Campo Alterado</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_UpdateFieldDescription" xml:space="preserve">
+    <value>Campo Update</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_Zoom" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ZoomDescription" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ZoomIn" xml:space="preserve">
+    <value>Aumentar Zoom</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ZoomInDescription" xml:space="preserve">
+    <value>Aumentar Zoom</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ZoomOut" xml:space="preserve">
+    <value>Diminuir Zoom</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ZoomOutDescription" xml:space="preserve">
+    <value>Diminuir Zoom</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_BookmarkCreationFailing" xml:space="preserve">
+    <value>Marcador com o mesmo nome já existe. Substituir?</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_ClickToFollowHyperlink" xml:space="preserve">
+    <value>Clique para seguir link</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_ContinueSearchFromBeginningQuestion" xml:space="preserve">
+    <value>Você deseja iniciar a pesquisa, desde o início do documento?</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_ContinueSearchFromEndQuestion" xml:space="preserve">
+    <value>Você deseja iniciar a pesquisa a partir do final do documento?</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_ContinueSearchInRemainderQuestion" xml:space="preserve">
+    <value>Você deseja procurar o resto do documento?</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_CreateHyperlinkError" xml:space="preserve">
+    <value>Não é possível criar um hiperlink. O hiperlink no intervalo especificado já existe.</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_DocumentPositionDoesntMatchDocument" xml:space="preserve">
+    <value>Erro: posição documento especificado ou intervalo pertence a outro documento ou subdocumento</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_DocumentProtectionInvalidPassword" xml:space="preserve">
+    <value>A senha está incorreta!</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_DocumentProtectionInvalidPasswordConfirmation" xml:space="preserve">
+    <value>A confirmação da senha não corresponde.</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_DuplicateBookmark" xml:space="preserve">
+    <value>Marcador com esse nome já existe no documento</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_ErrorLinkDeletedStyle" xml:space="preserve">
+    <value>Erro: não pode link excluído estilo</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_IncorrectBookmarkName" xml:space="preserve">
+    <value>Nome do marcador deve começar com uma letra e conter apenas caracteres alfanuméricos e sublinhado.</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_IncorrectNumericFieldFormat" xml:space="preserve">
+    <value>Erro: o número não pode ser representado no formato especificado.</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_IncorrectPattern" xml:space="preserve">
+    <value>Padrão incorreto.</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_InternalError" xml:space="preserve">
+    <value>Ocorreu um erro interno</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_InvalidBeginInit" xml:space="preserve">
+    <value>Erro: chamada para BeginInit dentro beginUpdate</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_InvalidBeginUpdate" xml:space="preserve">
+    <value>Erro: chamada para beginUpdate dentro BeginInit</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_InvalidCopyFromDocumentModel" xml:space="preserve">
+    <value>Erro: tipo de letra e os modelos de documento de destino são diferentes</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_InvalidDivisor" xml:space="preserve">
+    <value>O número deve ser um divisor de {0}.</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_InvalidDocumentModel" xml:space="preserve">
+    <value>Erro: modelos de documentos são diferentes</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_InvalidEndInit" xml:space="preserve">
+    <value>Erro: a chamada à EndInit ou CancelInit sem BeginInit ou dentro beginUpdate</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_InvalidEndUpdate" xml:space="preserve">
+    <value>Erro: chamada para EndUpdate ou CancelUpate sem beginUpdate ou dentro BeginInit</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_InvalidFontSize" xml:space="preserve">
+    <value>O número deve estar entre {0} e {1}.</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_InvalidNavigateUri" xml:space="preserve">
+    <value>ão é possível acessar o URI especificado.</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_InvalidNumber" xml:space="preserve">
+    <value>Este não é um número válido.</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_InvalidNumberingListStartAtValue" xml:space="preserve">
+    <value>'Iniciar em' deve estar entre {0} e {1} para este formato</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_InvalidParagraphContainNumbering" xml:space="preserve">
+    <value>Erro: parâgrapo já contém a numeração</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_InvalidParentStyle" xml:space="preserve">
+    <value>Erro: o estilo de atribuição pai inválido causado referência circular</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_InvalidSetCharacterProperties" xml:space="preserve">
+    <value>Erro: Não é possível definir as propriedades sem BeginInit ou sem adição de objeto de documento</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_InvalidSetParagraphProperties" xml:space="preserve">
+    <value>Erro: Não é possível definir as propriedades sem BeginInit ou sem adição de objeto de documento</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_InvalidStyleName" xml:space="preserve">
+    <value>nválido nome do estilo</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_InvalidTabStop" xml:space="preserve">
+    <value>Esta não é uma parada de tabulação válido.</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_InvalidValueRange" xml:space="preserve">
+    <value>The value must be between {0} e {1}. </value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_IsNotValid" xml:space="preserve">
+    <value>'{0}' não é um valor válido para '{1}'</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_Loading" xml:space="preserve">
+    <value>Abrindo ...</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_MissingOperator" xml:space="preserve">
+    <value>Falta de operador!</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_PrintingUnavailable" xml:space="preserve">
+    <value>A impressão não está disponível. Verifique se os conjuntos a seguir são instalados:
+{0}
+{1}</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_ReplacementsCount" xml:space="preserve">
+    <value>{0} substituições foram feitas.</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_Saving" xml:space="preserve">
+    <value>Guardando...</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_SearchComplete" xml:space="preserve">
+    <value>A pesquisa está completa.</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_SearchInBackwardDirectionComplete" xml:space="preserve">
+    <value>O início do documento foi atingido.</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_SearchInForwardDirectionComplete" xml:space="preserve">
+    <value>O final do documento foi atingido.</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_SearchInSelectionComplete" xml:space="preserve">
+    <value>A busca da seleção foi concluída.</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_SearchItemNotFound" xml:space="preserve">
+    <value>O item da pesquisa não foi encontrado.</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_StyleAlreadyLinked" xml:space="preserve">
+    <value>Erro: o estilo já contém um estilo ligado</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_SyntaxErrorInFieldPattern" xml:space="preserve">
+    <value>Erro de sintaxe, {0}.</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_TableIntegrityError" xml:space="preserve">
+    <value>Erro: integridade tabela quebrada</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_UnexpectedEndOfFormula" xml:space="preserve">
+    <value>! Inesperado fim de fórmula.</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_UnknownSwitchArgument" xml:space="preserve">
+    <value>Erro! Desconhecido argumento.</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_UnmatchedQuotesInFieldPattern" xml:space="preserve">
+    <value>Erro: string padrão contém citações incomparável.</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_UnsupportedFormatException" xml:space="preserve">
+    <value>O formato do arquivo não é suportado</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_UseDeletedBookmarkError" xml:space="preserve">
+    <value>Erro: Marcador usado foi excluído</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_UseDeletedFieldError" xml:space="preserve">
+    <value>Erro: usando parâgrafo campo</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_UseDeletedHyperlinkError" xml:space="preserve">
+    <value>Erro: o link usado foi excluído</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_UseDeletedParagraphError" xml:space="preserve">
+    <value>Erro: usando parâgrafo excluido</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_UseDeletedSectionError" xml:space="preserve">
+    <value>Erro: usando secão excluido</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_UseDeletedStyleError" xml:space="preserve">
+    <value>Erro: usando estilo excluido</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_UsedWrongUnit" xml:space="preserve">
+    <value>A unidade de medição é especificado incorretamente.</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_UseInvalidCharacterProperties" xml:space="preserve">
+    <value>Erro: propriedades de caracteres não são mais válidos</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_UseInvalidDocument" xml:space="preserve">
+    <value>Erro: este documento não é válido</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_UseInvalidParagraphProperties" xml:space="preserve">
+    <value>Erro: número de propriedade não são mais válidos</value>
+  </data>
+  <data name="XtraRichEditStringId.Msg_ZeroDivide" xml:space="preserve">
+    <value>! Divisão por Zero.</value>
+  </data>
+  <data name="XtraRichEditStringId.TabForm_All" xml:space="preserve">
+    <value>Todos</value>
+  </data>
+  <data name="XtraRichEditStringId.TargetFrameDescription_Blank" xml:space="preserve">
+    <value>Novo janela</value>
+  </data>
+  <data name="XtraRichEditStringId.TargetFrameDescription_Parent" xml:space="preserve">
+    <value>Quadro pai</value>
+  </data>
+  <data name="XtraRichEditStringId.TargetFrameDescription_Self" xml:space="preserve">
+    <value>Mesmo quadro</value>
+  </data>
+  <data name="XtraRichEditStringId.TargetFrameDescription_Top" xml:space="preserve">
+    <value>Página inteira</value>
+  </data>
+  <data name="XtraRichEditStringId.UnderlineNone" xml:space="preserve">
+    <value>(nenhum)</value>
+  </data>
+  <data name="XtraRichEditStringId.BorderLineStyleNone" xml:space="preserve">
+    <value>nenhum</value>
+  </data>
+  <data name="XtraRichEditStringId.UnitAbbreviation_Centimeter" xml:space="preserve">
+    <value> cm</value>
+  </data>
+  <data name="XtraRichEditStringId.UnitAbbreviation_Inch" xml:space="preserve">
+    <value>"</value>
+  </data>
+  <data name="XtraRichEditStringId.UnitAbbreviation_Millimeter" xml:space="preserve">
+    <value> mm</value>
+  </data>
+  <data name="XtraRichEditStringId.UnitAbbreviation_Pica" xml:space="preserve">
+    <value> pc</value>
+  </data>
+  <data name="XtraRichEditStringId.UnitAbbreviation_Point" xml:space="preserve">
+    <value> pt</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_ParagraphAlignment_Center" xml:space="preserve">
+    <value>Centrado</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_ParagraphFirstLineIndent_Indented" xml:space="preserve">
+    <value>Avançado no Texto</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_ParagraphAlignment_Left" xml:space="preserve">
+    <value>Esquerda</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertSectionBreakEvenPage" xml:space="preserve">
+    <value>Página Ímpar</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_ParagraphAlignment_Right" xml:space="preserve">
+    <value>Direita</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SetDoubleParagraphSpacing" xml:space="preserve">
+    <value>2,0</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SetSesquialteralParagraphSpacing" xml:space="preserve">
+    <value>1,5</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertSectionBreakOddPage" xml:space="preserve">
+    <value>Página Ímpar</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_InsertBreak" xml:space="preserve">
+    <value>Quebras de Linha</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SetNormalSectionPageMargins" xml:space="preserve">
+    <value>Normal
+Topo:	{1,10}	Fundo:	{3,10}
+Esquerda	{0,10}	Direita:	{2,10}</value>
+  </data>
+</root>

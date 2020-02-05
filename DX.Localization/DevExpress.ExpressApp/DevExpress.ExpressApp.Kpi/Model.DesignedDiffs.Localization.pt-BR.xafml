@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="RefreshKpi" Caption="Atualizar KPI" />
+      <Action Id="ShowChart" Caption="Mostrar Gráfico" />
+    </Actions>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="DevExpress.ExpressApp.Kpi.BaseKpiObject" Caption="Objeto KPI Base" />
+    <Class Name="DevExpress.ExpressApp.Kpi.IDateRange">
+      <OwnMembers>
+        <Member Name="Caption" Caption="Título" />
+        <Member Name="EndPoint" Caption="Ponto final" />
+        <Member Name="Name" Caption="Nome" />
+        <Member Name="StartPoint" Caption="Ponto Inicial" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Kpi.KpiDefinition" Caption="Definição">
+      <OwnMembers>
+        <Member Name="Active" Caption="Ativo" />
+        <Member Name="Compare" Caption="Comparar" />
+        <Member Name="Criteria" Caption="Critério" />
+        <Member Name="Current" Caption="Atual" />
+        <Member Name="Direction" Caption="Direção" />
+        <Member Name="EnableCustomizeRepresentation" Caption="Habilitar Representação Personalizada" />
+        <Member Name="Expression" Caption="Expressão" />
+        <Member Name="GreenZone" Caption="Faixa Verde" />
+        <Member Name="MeasurementFrequency" Caption="Frequencia de Medição" />
+        <Member Name="Name" Caption="Nome" />
+        <Member Name="Objects" Caption="Objetos" />
+        <Member Name="Period" Caption="Período" />
+        <Member Name="Range" Caption="Intervalo" />
+        <Member Name="RangeToCompare" Caption="Intervalo para Comparação" />
+        <Member Name="RedZone" Caption="Faixa Vermelha" />
+        <Member Name="SuppressedSeries" Caption="Séries Suprimidas" />
+        <Member Name="TargetObjectType" Caption="Tipo Objeto Destino" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Kpi.KpiHistoryItem" Caption="Item de Histórico de KPI">
+      <OwnMembers>
+        <Member Name="RangeEnd" Caption="Intervalo Final" />
+        <Member Name="RangeStart" Caption="Intervalo Inicial" />
+        <Member Name="Value" Caption="Valor" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Kpi.KpiInstance" Caption="Instância de KPI">
+      <OwnMembers>
+        <Member Name="Change" Caption="Alterar" />
+        <Member Name="ChartDataSource" Caption="Fonte de Dados do Gráfico" />
+        <Member Name="Current" Caption="Atual" />
+        <Member Name="GaugeDataSource" Caption="Fonte de Dados do Indicador" />
+        <Member Name="HistoryItems" Caption="Item Histórico" />
+        <Member Name="KpiName" Caption="Nome do KPI" />
+        <Member Name="Period" Caption="Período" />
+        <Member Name="Previous" Caption="Anterior" />
+        <Member Name="Sparkline" Caption="Mini gráfico" />
+        <Member Name="Trend" Caption="Tendência" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Kpi.KpiScorecard">
+      <OwnMembers>
+        <Member Name="Indicators" Caption="Indicadores" />
+        <Member Name="Name" Caption="Nome" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <Localization>
+    <LocalizationGroup Name="DateRanges">
+      <LocalizationItem Name="DayMonthAgo" Value="Dia Mês Passado" />
+      <LocalizationItem Name="DayWeekAgo" Value="Dia Semana Passada" />
+      <LocalizationItem Name="DayYearAgo" Value="Dia Ano Passado" />
+      <LocalizationItem Name="LastMonthToDate" Value="Mês Anterior até Hoje" />
+      <LocalizationItem Name="LastTenDays" Value="Últimos Dez Dias" />
+      <LocalizationItem Name="LastThirtyDays" Value="Últimos Trinta Dias" />
+      <LocalizationItem Name="LastThreeDays" Value="Últimos Três Dias" />
+      <LocalizationItem Name="LastWeekToDate" Value="Semana Anterior até Hoje" />
+      <LocalizationItem Name="LastYearToDate" Value="Ano Anterior até Hoje" />
+      <LocalizationItem Name="Now" Value="Agora" />
+      <LocalizationItem Name="ThisMonthToDate" Value="Início do Mês até Hoje" />
+      <LocalizationItem Name="ThisWeekToDate" Value="Início da Semana até Hoje" />
+      <LocalizationItem Name="ThisYearToDate" Value="Início do Ano até Hoje" />
+      <LocalizationItem Name="Today" Value="Hoje" />
+      <LocalizationItem Name="Yesterday" Value="Amanhã" />
+    </LocalizationGroup>
+    <LocalizationGroup Name="Enums">
+      <LocalizationGroup Name="DevExpress.ExpressApp.Editors.Trend" Value="Tendência">
+        <LocalizationItem Name="Better" Value="Melhor" />
+        <LocalizationItem Name="NoChange" Value="Sem alteração" />
+        <LocalizationItem Name="Worse" Value="Pior" />
+      </LocalizationGroup>
+      <LocalizationGroup Name="DevExpress.ExpressApp.Kpi.Direction" Value="Direção">
+        <LocalizationItem Name="HighIsBetter" Value="Quanto maior melhor" />
+        <LocalizationItem Name="LowIsBetter" Value="Quanto menor melhor" />
+      </LocalizationGroup>
+      <LocalizationGroup Name="DevExpress.ExpressApp.Kpi.TimeIntervalType" Value="Tipo de Intervalo de Tempo">
+        <LocalizationItem Name="Day" Value="Dia" />
+        <LocalizationItem Name="Hour" Value="Hora" />
+        <LocalizationItem Name="Month" Value="Mês" />
+        <LocalizationItem Name="Week" Value="Semana" />
+        <LocalizationItem Name="Year" Value="Ano" />
+      </LocalizationGroup>
+    </LocalizationGroup>
+    <LocalizationGroup Name="Texts">
+      <LocalizationItem Name="VersusText" Value="Versus" />
+    </LocalizationGroup>
+  </Localization>
+  <Views>
+    <DetailView Id="KpiDefinition_DetailView">
+      <Layout>
+        <TabbedGroup Id="Tabs">
+          <LayoutGroup Id="Definition" Caption="Definição">
+            <LayoutGroup Id="SimpleEditors">
+              <LayoutGroup Id="SizeableEditors" Caption="Critério" />
+            </LayoutGroup>
+            <LayoutGroup Id="Options">
+              <TabbedGroup Id="OptionsTabs">
+                <LayoutGroup Id="MeasurementOptions" Caption="OpçõesMedição" />
+                <LayoutGroup Id="Zones" Caption="Faixas" />
+              </TabbedGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="Preview" Caption="Visualizar">
+            <LayoutGroup Id="Objects_Group" Caption="Objetos" />
+          </LayoutGroup>
+        </TabbedGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

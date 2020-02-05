@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="StringId.FilterClauseGreater" xml:space="preserve">
+    <value>Е по-голямо от</value>
+  </data>
+  <data name="StringId.PreviewPanelText" xml:space="preserve">
+    <value>Визуализация:</value>
+  </data>
+  <data name="StringId.TextEditMenuDelete" xml:space="preserve">
+    <value>&amp;Изтрий</value>
+  </data>
+  <data name="StringId.PictureEditMenuDelete" xml:space="preserve">
+    <value>Изтрий</value>
+  </data>
+  <data name="StringId.XtraMessageBoxAbortButtonText" xml:space="preserve">
+    <value>&amp;Прекрати</value>
+  </data>
+  <data name="StringId.CaptionError" xml:space="preserve">
+    <value>Грешка</value>
+  </data>
+  <data name="StringId.PictureEditSaveFileTitle" xml:space="preserve">
+    <value>Запиши като</value>
+  </data>
+  <data name="StringId.ColorTabWeb" xml:space="preserve">
+    <value>Уеб</value>
+  </data>
+  <data name="StringId.FilterToolTipNodeAction" xml:space="preserve">
+    <value>Действия</value>
+  </data>
+  <data name="StringId.FilterClauseBeginsWith" xml:space="preserve">
+    <value>Започва с</value>
+  </data>
+  <data name="StringId.DateEditToday" xml:space="preserve">
+    <value>Днес</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeToday" xml:space="preserve">
+    <value>Днес</value>
+  </data>
+  <data name="StringId.XtraMessageBoxCancelButtonText" xml:space="preserve">
+    <value>&amp;Отказ</value>
+  </data>
+  <data name="StringId.Cancel" xml:space="preserve">
+    <value>Отказ</value>
+  </data>
+  <data name="StringId.FilterClauseLessOrEqual" xml:space="preserve">
+    <value>Е по-малко или равно на</value>
+  </data>
+  <data name="StringId.NavigatorRemoveButtonHint" xml:space="preserve">
+    <value>Изтрий</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeYesterday" xml:space="preserve">
+    <value>Вчера</value>
+  </data>
+  <data name="StringId.PictureEditMenuPaste" xml:space="preserve">
+    <value>Постави</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionNone" xml:space="preserve">
+    <value>Няма</value>
+  </data>
+  <data name="StringId.XtraMessageBoxOkButtonText" xml:space="preserve">
+    <value>&amp;OK</value>
+  </data>
+  <data name="StringId.Apply" xml:space="preserve">
+    <value>Приложи</value>
+  </data>
+  <data name="StringId.NavigatorNextButtonHint" xml:space="preserve">
+    <value>Напред</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeTomorrow" xml:space="preserve">
+    <value>Утре</value>
+  </data>
+  <data name="StringId.PictureEditMenuSave" xml:space="preserve">
+    <value>Запиши</value>
+  </data>
+  <data name="StringId.OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="StringId.FilterClauseGreaterOrEqual" xml:space="preserve">
+    <value>Е по-голямо или равно на</value>
+  </data>
+  <data name="StringId.FilterClauseLess" xml:space="preserve">
+    <value>Е по-малко от</value>
+  </data>
+</root>

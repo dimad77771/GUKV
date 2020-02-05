@@ -1,0 +1,58 @@
+﻿<%@ page title="Log In" language="C#" masterpagefile="~/Site.master" autoeventwireup="true" inherits="Account_Login, App_Web_login.aspx.dae9cef9" %>
+
+<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
+
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+</asp:Content>
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+    <h2>
+        Вхід на сайт
+    </h2>
+    <p>
+        Будь ласка введіть ваше ім'я та пароль.
+    </p>
+    <asp:Login ID="LoginUser" runat="server" EnableViewState="false" 
+        RenderOuterTable="false" 
+        FailureText="Ім'я користувача або пароль не є вірним" 
+        DestinationPageUrl="~/Default.aspx"
+        OnLoggedIn="LoginUser_LoggedIn">
+        <LayoutTemplate>
+            <span class="failureNotification">
+                <asp:Literal ID="FailureText" runat="server"></asp:Literal>
+            </span>
+            <asp:ValidationSummary ID="LoginUserValidationSummary" runat="server" CssClass="failureNotification" 
+                 ValidationGroup="LoginUserValidationGroup"/>
+            <div class="accountInfo">
+                <fieldset class="login">
+                    <legend>Вхідна інформація</legend>
+                    <p>
+                        <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Ім'я користувача:</asp:Label>
+                        <asp:TextBox ID="UserName" runat="server" CssClass="textEntry"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" 
+                             CssClass="failureNotification"
+                             ErrorMessage="Для входу на сайт необхідно ввести ім'я користувача."
+                             ToolTip="Для входу на сайт необхідно ввести ім'я користувача." 
+                             ValidationGroup="LoginUserValidationGroup">*</asp:RequiredFieldValidator>
+                    </p>
+                    <p>
+                        <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Пароль:</asp:Label>
+                        <asp:TextBox ID="Password" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" 
+                             CssClass="failureNotification"
+                             ErrorMessage="Для входу на сайт необхідно ввести пароль користувача."
+                             ToolTip="Для входу на сайт необхідно ввести пароль користувача." 
+                             ValidationGroup="LoginUserValidationGroup">*</asp:RequiredFieldValidator>
+                    </p>
+                    <p>
+                        <asp:CheckBox ID="RememberMe" runat="server"/>
+                        <asp:Label ID="RememberMeLabel" runat="server" AssociatedControlID="RememberMe" CssClass="inline">Запам'ятати мене</asp:Label>
+                    </p>
+                </fieldset>
+                <p class="submitButton">
+                    <dx:ASPxButton ID="LoginButton" runat="server" CommandName="Login" Text="Увійти" 
+                        ValidationGroup="LoginUserValidationGroup"></dx:ASPxButton>
+                </p>
+            </div>
+        </LayoutTemplate>
+    </asp:Login>
+</asp:Content>

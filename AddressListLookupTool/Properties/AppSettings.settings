@@ -1,0 +1,182 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="GUKV.DataMigration.Properties" GeneratedClassName="AppSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ObjectPropList" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;street_full_name=Назва Вулиці&lt;/string&gt;
+  &lt;string&gt;addr_nomer=Номер Будинку&lt;/string&gt;
+  &lt;string&gt;district=Район&lt;/string&gt;
+  &lt;string&gt;addr_zip_code=Поштовий Індекс&lt;/string&gt;
+  &lt;string&gt;num_floors=Кількість Поверхів&lt;/string&gt;
+  &lt;string&gt;construct_year=Рік Побудови&lt;/string&gt;
+  &lt;string&gt;history=Історична Цінність&lt;/string&gt;
+  &lt;string&gt;object_kind=Вид Об'єкту&lt;/string&gt;
+  &lt;string&gt;object_type=Тип Об'єкту&lt;/string&gt;
+  &lt;string&gt;sqr_total=Загальна Площа&lt;/string&gt;
+  &lt;string&gt;sqr_habit=Житлова Площа&lt;/string&gt;
+  &lt;string&gt;sqr_non_habit=Нежитлова Площа&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="BalansPropList" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;org_full_name=Повна Назва Балансоутримувача&lt;/string&gt;
+  &lt;string&gt;org_short_name=Коротка Назва Балансоутримувача&lt;/string&gt;
+  &lt;string&gt;org_zkpo_code=Код ЄДРПОУ&lt;/string&gt;
+  &lt;string&gt;org_industry=Галузь&lt;/string&gt;
+  &lt;string&gt;org_occupation=Вид Діяльності&lt;/string&gt;
+  &lt;string&gt;district=Район Будинку&lt;/string&gt;
+  &lt;string&gt;street_full_name=Назва Вулиці&lt;/string&gt;
+  &lt;string&gt;addr_nomer=Номер Будинку&lt;/string&gt;
+  &lt;string&gt;sqr_total=Загальна Площа (кв.м.)&lt;/string&gt;
+  &lt;string&gt;sqr_pidval=Підвальна Площа (кв.м.)&lt;/string&gt;
+  &lt;string&gt;sqr_vlas_potreb=Площа Для Власних Потреб (кв.м.)&lt;/string&gt;
+  &lt;string&gt;sqr_free=Вільна Площа (кв.м.)&lt;/string&gt;
+  &lt;string&gt;sqr_in_rent=Площа Надана В Оренду (кв.м.)&lt;/string&gt;
+  &lt;string&gt;sqr_privatizov=Приватизована Площа (кв.м.)&lt;/string&gt;
+  &lt;string&gt;sqr_not_for_rent=Площа Не Для Оренди (кв.м.)&lt;/string&gt;
+  &lt;string&gt;sqr_gurtoj=Площа Гуртожитку (кв.м.)&lt;/string&gt;
+  &lt;string&gt;sqr_non_habit=Нежитлова Площа (кв.м.)&lt;/string&gt;
+  &lt;string&gt;cost_balans=Балансова Вартість (тис.грн.)&lt;/string&gt;
+  &lt;string&gt;cost_expert_1m=Експертна Вартість За Кв.м. (тис.грн.)&lt;/string&gt;
+  &lt;string&gt;cost_expert_total=Експертна Вартість (тис.грн.)&lt;/string&gt;
+  &lt;string&gt;cost_zalishkova=Залишкова Вартість (тис.грн.)&lt;/string&gt;
+  &lt;string&gt;num_rent_agr=Кількість Договорів Оренди&lt;/string&gt;
+  &lt;string&gt;num_privat_apt=Кількість Приватизованих Приміщень&lt;/string&gt;
+  &lt;string&gt;approval_by=Дозвіл - Джерело&lt;/string&gt;
+  &lt;string&gt;approval_num=Дозвіл - Номер&lt;/string&gt;
+  &lt;string&gt;approval_date=Дозвіл - Дата&lt;/string&gt;
+  &lt;string&gt;bti_condition=Документація БТІ&lt;/string&gt;
+  &lt;string&gt;num_floors=Кількість Поверхів&lt;/string&gt;
+  &lt;string&gt;org_maintainer_full_name=Повна Назва Утримуючої Організації&lt;/string&gt;
+  &lt;string&gt;org_maintainer_short_name=Коротка Назва Утримуючої Організації&lt;/string&gt;
+  &lt;string&gt;org_maintainer_zkpo_code=Код ЄДРПОУ Утримуючої Організації&lt;/string&gt;
+  &lt;string&gt;otdel_gukv=Відділ ДКВ&lt;/string&gt;
+  &lt;string&gt;form_ownership=Форма Власності Об'єкту&lt;/string&gt;
+  &lt;string&gt;ownership_type=Право&lt;/string&gt;
+  &lt;string&gt;object_kind=Вид Об'єкту&lt;/string&gt;
+  &lt;string&gt;object_type=Тип Об'єкту&lt;/string&gt;
+  &lt;string&gt;condition=Стан Об'єкту&lt;/string&gt;
+  &lt;string&gt;purpose_group=Група Призначення&lt;/string&gt;
+  &lt;string&gt;purpose=Призначення&lt;/string&gt;
+  &lt;string&gt;history=Історична Цінність&lt;/string&gt;
+  &lt;string&gt;date_expert=Дата Експертної Оцінки&lt;/string&gt;
+  &lt;string&gt;floors=Поверхи&lt;/string&gt;
+  &lt;string&gt;obj_bti_code=Код БТІ&lt;/string&gt;
+  &lt;string&gt;memo=Додаткова Інформація&lt;/string&gt;
+  &lt;string&gt;note=Примітка&lt;/string&gt;
+  &lt;string&gt;znos=Знос (грн.)&lt;/string&gt;
+  &lt;string&gt;znos_date=Знос станом на&lt;/string&gt;
+  &lt;string&gt;org_vedomstvo=Орган Управління Балансоутримувача&lt;/string&gt;
+  &lt;string&gt;org_ownership=Форма Власності Балансоутримувача&lt;/string&gt;
+  &lt;string&gt;input_date=Дата Актуальності&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="ArendaPropList" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;org_balans_full_name=Назва Балансоутримувача&lt;/string&gt;
+  &lt;string&gt;org_balans_short_name=Коротка Назва Балансоутримувача&lt;/string&gt;
+  &lt;string&gt;org_balans_zkpo=Код ЄДРПОУ Балансоутримувача&lt;/string&gt;
+  &lt;string&gt;org_balans_industry=Галузь Балансоутримувача&lt;/string&gt;
+  &lt;string&gt;org_balans_occupation=Вид Діяльності Балансоутримувача&lt;/string&gt;
+  &lt;string&gt;balans_org_ownership=Форма Власності Балансоутримувача&lt;/string&gt;
+  &lt;string&gt;org_renter_full_name=Назва Орендаря&lt;/string&gt;
+  &lt;string&gt;org_renter_short_name=Коротка Назва Орендаря&lt;/string&gt;
+  &lt;string&gt;org_renter_zkpo=Код ЄДРПОУ Орендаря&lt;/string&gt;
+  &lt;string&gt;org_renter_industry=Галузь Орендаря&lt;/string&gt;
+  &lt;string&gt;org_renter_occupation=Вид Діяльності Орендаря&lt;/string&gt;
+  &lt;string&gt;org_giver_full_name=Назва Орендодавця&lt;/string&gt;
+  &lt;string&gt;org_giver_short_name=Коротка Назва Орендодавця&lt;/string&gt;
+  &lt;string&gt;org_giver_zkpo=Код ЄДРПОУ Орендодавця&lt;/string&gt;
+  &lt;string&gt;org_giver_industry=Галузь Орендодавця&lt;/string&gt;
+  &lt;string&gt;org_giver_occupation=Вид Діяльності Орендодавця&lt;/string&gt;
+  &lt;string&gt;district=Район Будинку&lt;/string&gt;
+  &lt;string&gt;street_full_name=Назва Вулиці&lt;/string&gt;
+  &lt;string&gt;addr_nomer=Номер Будинку&lt;/string&gt;
+  &lt;string&gt;object_name=Використання Приміщення&lt;/string&gt;
+  &lt;string&gt;object_note=Примітка&lt;/string&gt;
+  &lt;string&gt;purpose_group=Група Призначення&lt;/string&gt;
+  &lt;string&gt;purpose=Призначення&lt;/string&gt;
+  &lt;string&gt;is_privat=Приватизовано&lt;/string&gt;
+  &lt;string&gt;agreement_kind=Тип Договору Оренди&lt;/string&gt;
+  &lt;string&gt;agreement_date=Дата Договору Оренди&lt;/string&gt;
+  &lt;string&gt;agreement_date_year=Дата Договору Оренди - Рік&lt;/string&gt;
+  &lt;string&gt;agreement_date_quarter=Дата Договору Оренди - Квартал&lt;/string&gt;
+  &lt;string&gt;agreement_num=Номер Договору Оренди&lt;/string&gt;
+  &lt;string&gt;floor_number=Поверх&lt;/string&gt;
+  &lt;string&gt;cost_agreement=Орендна Плата по Договору (грн.)&lt;/string&gt;
+  &lt;string&gt;cost_expert_1m=Експертна Вартість За Кв.м. (грн.)&lt;/string&gt;
+  &lt;string&gt;cost_expert_total=Експертна Вартість (грн.)&lt;/string&gt;
+  &lt;string&gt;pidstava_display=Підстави Для Оренди&lt;/string&gt;
+  &lt;string&gt;rent_start_date=Початок Оренди&lt;/string&gt;
+  &lt;string&gt;rent_start_year=Початок Оренди - Рік&lt;/string&gt;
+  &lt;string&gt;rent_start_quarter=Початок Оренди - Квартал&lt;/string&gt;
+  &lt;string&gt;rent_finish_date=Закінчення Оренди&lt;/string&gt;
+  &lt;string&gt;rent_finish_year=Закінчення Оренди - Рік&lt;/string&gt;
+  &lt;string&gt;rent_finish_quarter=Закінчення Оренди - Квартал&lt;/string&gt;
+  &lt;string&gt;rent_actual_finish_date=Фактичне Закінчення Оренди&lt;/string&gt;
+  &lt;string&gt;actual_finish_year=Фактичне Закінчення Оренди - Рік&lt;/string&gt;
+  &lt;string&gt;actual_finish_quarter=Фактичне Закінчення Оренди - Квартал&lt;/string&gt;
+  &lt;string&gt;rent_rate_percent=Ставка&lt;/string&gt;
+  &lt;string&gt;rent_rate_uah=Ставка (грн.)&lt;/string&gt;
+  &lt;string&gt;rent_square=Площа (кв.м.)&lt;/string&gt;
+  &lt;string&gt;num_akt=Номер Акту&lt;/string&gt;
+  &lt;string&gt;date_akt=Дата Акту&lt;/string&gt;
+  &lt;string&gt;is_subarenda=Субаренда&lt;/string&gt;
+  &lt;string&gt;payment_type=Вид Розрахунків&lt;/string&gt;
+  &lt;string&gt;org_balans_vedomstvo=Орган Управління Балансоутримувача&lt;/string&gt;
+  &lt;string&gt;org_renter_vedomstvo=Орган Управління Орендаря&lt;/string&gt;
+  &lt;string&gt;org_giver_vedomstvo=Орган Управління Орендодавця&lt;/string&gt;
+  &lt;string&gt;balans_sqr_total=Загальна Площа На Балансі Балансоутримувача (кв.м.)&lt;/string&gt;
+  &lt;string&gt;balans_num_rent_agr=Кількість Договорів Оренди Балансоутримувача&lt;/string&gt;
+  &lt;string&gt;balans_sqr_in_rent=Загальна Площа Балансоутримувача Надана В Оренду (кв.м.)&lt;/string&gt;
+  &lt;string&gt;balans_form_ownership=Форма Власності Об'єкту&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="PrivatPropList" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;org_balans=Балансоутримувач&lt;/string&gt;
+  &lt;string&gt;org_balans_zkpo=Код ЄДРПОУ Балансоутримувача&lt;/string&gt;
+  &lt;string&gt;subord_code=Сфера Управління Об'єкту&lt;/string&gt;
+  &lt;string&gt;subordination=Назва Сфери Управління Об'єкту&lt;/string&gt;
+  &lt;string&gt;district=Район&lt;/string&gt;
+  &lt;string&gt;street_full_name=Назва Вулиці&lt;/string&gt;
+  &lt;string&gt;addr_nomer=Номер Будинку&lt;/string&gt;
+  &lt;string&gt;obj_name=Назва Об'єкту&lt;/string&gt;
+  &lt;string&gt;org_name=Покупець&lt;/string&gt;
+  &lt;string&gt;org_address=Адреса Покупця&lt;/string&gt;
+  &lt;string&gt;director_fio=ПІБ Директора Покупця&lt;/string&gt;
+  &lt;string&gt;director_phone=Тел. Директора Покупця&lt;/string&gt;
+  &lt;string&gt;sqr_total=Загальна Площа Об'єкту (кв.м.)&lt;/string&gt;
+  &lt;string&gt;obj_group=Група Об'єкту&lt;/string&gt;
+  &lt;string&gt;privat_kind=Спосіб Приватизації&lt;/string&gt;
+  &lt;string&gt;privat_state=Стан&lt;/string&gt;
+  &lt;string&gt;purpose_group=Група Призначення Об'єкту&lt;/string&gt;
+  &lt;string&gt;object_kind=Вид Об'єкту&lt;/string&gt;
+  &lt;string&gt;object_type=Тип Об'єкту&lt;/string&gt;
+  &lt;string&gt;obj_floor=Поверх&lt;/string&gt;
+  &lt;string&gt;cost=Вартість (грн.)&lt;/string&gt;
+  &lt;string&gt;cost_expert=Експертна Оцінка&lt;/string&gt;
+  &lt;string&gt;expert_date=Дата Експертної Оцінки&lt;/string&gt;
+  &lt;string&gt;note=Примітка&lt;/string&gt;
+  &lt;string&gt;rishennya_num=Номер Рішення&lt;/string&gt;
+  &lt;string&gt;rishennya_date=Дата Рішення&lt;/string&gt;
+  &lt;string&gt;rishennya_topic=Назва Рішення&lt;/string&gt;
+  &lt;string&gt;rishennya_search_name=Рішення&lt;/string&gt;
+  &lt;string&gt;agreement_num=Номер Договору&lt;/string&gt;
+  &lt;string&gt;agreement_date=Дата Договору&lt;/string&gt;
+  &lt;string&gt;agreement_topic=Назва Договору&lt;/string&gt;
+  &lt;string&gt;agreement_search_name=Договір&lt;/string&gt;
+  &lt;string&gt;akt_num=Номер Акту&lt;/string&gt;
+  &lt;string&gt;akt_date=Дата Акту&lt;/string&gt;
+  &lt;string&gt;akt_topic=Назва Акту&lt;/string&gt;
+  &lt;string&gt;akt_search_name=Акт Приймання-Передачі&lt;/string&gt;
+  &lt;string&gt;object_history=Історична Цінність&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

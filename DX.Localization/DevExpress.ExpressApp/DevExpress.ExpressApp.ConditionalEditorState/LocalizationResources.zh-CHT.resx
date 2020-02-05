@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BrokenRuleContainsBothCriteriaAndMethodInfoParameters" xml:space="preserve">
+    <value>已偵測到 {1} 類別的中斷點 {0}. 條件({2}) 參數是和 MethodInfo({3}) 參數一起設定的. 只有其中一個參數能設定. 在自訂情形下預設 MethodInfo 參數會優先使用.
+要修正這個問題, 請更正在商務邏輯類別內的程式碼, 或者清除 應用程式模型中規則裡的 Criteria 參數.</value>
+  </data>
+  <data name="CannotHideShowEditorLayoutManagerIsNotSupported" xml:space="preserve">
+    <value>無法呼叫 HideShowColumn 方法, 因為其方法不支援目前明細檢視的 LayoutManager, 或者是 {0} 無法自訂.</value>
+  </data>
+  <data name="BrokenRuleEmptyPropertiesParameter" xml:space="preserve">
+    <value>已偵測到 {1} 類別中有中斷點 {0}. 'Properties' 參數未設定, 其必須包含屬性名稱, 並注意分隔符為: {2}
+要修正這個問題, 請修改在應用程式模型中的規則程式碼.</value>
+  </data>
+  <data name="CannotHideShowColumnListEditorIsNotSupported" xml:space="preserve">
+    <value>無法呼叫 HideShowColumn 方法, 因為其方法不支援目前清單檢視的 ListEditor, 或者是 {0} 無法自訂.</value>
+  </data>
+  <data name="BrokenRuleIncorrectPropertiesParameter" xml:space="preserve">
+    <value>{0} 型態不包含 '{1}' 屬性. 請確認 {2} 的 'Properties' 參數包含正確的屬性名稱拼寫, 並注意分隔號為: {3}
+要修正這個問題, 請修改在應用程式模型中的規則程式碼.</value>
+  </data>
+  <data name="CannotFindInfoForProperty" xml:space="preserve">
+    <value>找不到符合 {0} 的屬性: {1}</value>
+  </data>
+</root>

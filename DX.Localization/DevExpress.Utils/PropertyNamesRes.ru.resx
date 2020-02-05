@@ -1,0 +1,564 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="System.Drawing.Drawing2D.DashStyle.Solid" xml:space="preserve">
+    <value>Сплошная</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.DashStyle.Dash" xml:space="preserve">
+    <value>Штриховая</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.DashStyle.Dot" xml:space="preserve">
+    <value>Пунктирная</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.DashStyle.DashDot" xml:space="preserve">
+    <value>Штрих-пунктирная</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.DashStyle.DashDotDot" xml:space="preserve">
+    <value>Штрих-пунктирная с двумя точками</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.DashStyle.Custom" xml:space="preserve">
+    <value>Заданный пользователем</value>
+  </data>
+  <data name="System.Windows.Forms.CheckState.Unchecked" xml:space="preserve">
+    <value>Выключено</value>
+  </data>
+  <data name="System.Windows.Forms.CheckState.Checked" xml:space="preserve">
+    <value>Включено</value>
+  </data>
+  <data name="System.Windows.Forms.CheckState.Indeterminate" xml:space="preserve">
+    <value>Не определено</value>
+  </data>
+  <data name="DevExpress.XtraEditors.Controls.FilterButtonShowMode.Default" xml:space="preserve">
+    <value>По умолчанию</value>
+  </data>
+  <data name="DevExpress.XtraEditors.Controls.FilterButtonShowMode.Button" xml:space="preserve">
+    <value>Кнопка</value>
+  </data>
+  <data name="DevExpress.XtraEditors.Controls.FilterButtonShowMode.SmartTag" xml:space="preserve">
+    <value>Интеллектуальный тэг</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObject.Options" xml:space="preserve">
+    <value>Опции</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObject.BackColor2" xml:space="preserve">
+    <value>Цвет фона 2</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObject.Image" xml:space="preserve">
+    <value>Изображение</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObject.TextOptions" xml:space="preserve">
+    <value>Опции текста</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObject.GradientMode" xml:space="preserve">
+    <value>Режим заливки</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObject.ForeColor" xml:space="preserve">
+    <value>Цвет текста</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObject.BorderColor" xml:space="preserve">
+    <value>Цвет границы</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObject.BackColor" xml:space="preserve">
+    <value>Цвет фона</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObject.Font" xml:space="preserve">
+    <value>Шрифт</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceOptions.UseForeColor" xml:space="preserve">
+    <value>Использовать цвет текста</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceOptions.UseTextOptions" xml:space="preserve">
+    <value>Использовать параметры текста</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceOptions.UseBorderColor" xml:space="preserve">
+    <value>Использовать цвет границы</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceOptions.UseBackColor" xml:space="preserve">
+    <value>Использовать цвет фона</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceOptions.UseImage" xml:space="preserve">
+    <value>Использовать изображение</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceOptions.UseFont" xml:space="preserve">
+    <value>Использовать шрифт</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceOptionsEx.HighPriority" xml:space="preserve">
+    <value>Высший приоритет</value>
+  </data>
+  <data name="DevExpress.Utils.TextOptions.WordWrap" xml:space="preserve">
+    <value>Переносить слова</value>
+  </data>
+  <data name="DevExpress.Utils.TextOptions.HotkeyPrefix" xml:space="preserve">
+    <value>Префикс горячей клавиши</value>
+  </data>
+  <data name="DevExpress.Utils.TextOptions.HAlignment" xml:space="preserve">
+    <value>Выравнивание по горизонтали</value>
+  </data>
+  <data name="DevExpress.Utils.TextOptions.VAlignment" xml:space="preserve">
+    <value>Выравнивание по вертикали</value>
+  </data>
+  <data name="DevExpress.Utils.TextOptions.Trimming" xml:space="preserve">
+    <value>Обрезание</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObjectEx.Options" xml:space="preserve">
+    <value>Опции</value>
+  </data>
+  <data name="DevExpress.XtraEditors.StyleFormatConditionBase.Appearance" xml:space="preserve">
+    <value>Внешний вид</value>
+  </data>
+  <data name="DevExpress.XtraEditors.StyleFormatConditionBase.Condition" xml:space="preserve">
+    <value>Условие</value>
+  </data>
+  <data name="DevExpress.XtraEditors.StyleFormatConditionBase.Expression" xml:space="preserve">
+    <value>Выражение</value>
+  </data>
+  <data name="DevExpress.XtraEditors.StyleFormatConditionBase.Value1" xml:space="preserve">
+    <value>Значение1</value>
+  </data>
+  <data name="DevExpress.XtraEditors.StyleFormatConditionBase.Value2" xml:space="preserve">
+    <value>Значение2</value>
+  </data>
+  <data name="DevExpress.XtraEditors.StyleFormatConditionBase.Tag" xml:space="preserve">
+    <value>Тэг</value>
+  </data>
+  <data name="DevExpress.Utils.WordWrap.Default" xml:space="preserve">
+    <value>По умолчанию</value>
+  </data>
+  <data name="DevExpress.Utils.WordWrap.NoWrap" xml:space="preserve">
+    <value>Не переносить</value>
+  </data>
+  <data name="DevExpress.Utils.WordWrap.Wrap" xml:space="preserve">
+    <value>Переносить</value>
+  </data>
+  <data name="DevExpress.Utils.Trimming.Default" xml:space="preserve">
+    <value>По умолчанию</value>
+  </data>
+  <data name="DevExpress.Utils.Trimming.None" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="DevExpress.Utils.Trimming.Character" xml:space="preserve">
+    <value>Символ</value>
+  </data>
+  <data name="DevExpress.Utils.Trimming.Word" xml:space="preserve">
+    <value>Слово</value>
+  </data>
+  <data name="DevExpress.Utils.Trimming.EllipsisCharacter" xml:space="preserve">
+    <value>Символ многоточие</value>
+  </data>
+  <data name="DevExpress.Utils.Trimming.EllipsisWord" xml:space="preserve">
+    <value>Многоточие (слово)</value>
+  </data>
+  <data name="DevExpress.Utils.Trimming.EllipsisPath" xml:space="preserve">
+    <value>Многоточие (путь)</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.None" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.Equal" xml:space="preserve">
+    <value>Равно</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.NotEqual" xml:space="preserve">
+    <value>Не равно</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.Between" xml:space="preserve">
+    <value>Между</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.NotBetween" xml:space="preserve">
+    <value>Не между</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.Less" xml:space="preserve">
+    <value>Меньше</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.Greater" xml:space="preserve">
+    <value>Больше</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.GreaterOrEqual" xml:space="preserve">
+    <value>Больше или равно</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.Expression" xml:space="preserve">
+    <value>Выражение</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.LessOrEqual" xml:space="preserve">
+    <value>Меньше или равно</value>
+  </data>
+  <data name="DevExpress.Utils.HKeyPrefix.Default" xml:space="preserve">
+    <value>По умолчанию</value>
+  </data>
+  <data name="DevExpress.Utils.HKeyPrefix.None" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="DevExpress.Utils.HKeyPrefix.Show" xml:space="preserve">
+    <value>Показать</value>
+  </data>
+  <data name="DevExpress.Utils.HKeyPrefix.Hide" xml:space="preserve">
+    <value>Скрыть</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions" xml:space="preserve">
+    <value>Экспорт в PDF</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions" xml:space="preserve">
+    <value>Экспорт в XLS</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptions" xml:space="preserve">
+    <value>Экспорт в текст</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.CsvExportOptions" xml:space="preserve">
+    <value>Экспорт в CSV</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions" xml:space="preserve">
+    <value>Экспорт в файл картинки</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptions" xml:space="preserve">
+    <value>Экспорт в HTML</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.MhtExportOptions" xml:space="preserve">
+    <value>Экспорт в MHT</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions" xml:space="preserve">
+    <value>Экспорт в RTF</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.NativeFormatOptions" xml:space="preserve">
+    <value>Экспорт в PRNX</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions" xml:space="preserve">
+    <value>Свойства PDF-документа</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.None" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Left" xml:space="preserve">
+    <value>Левая граница</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Top" xml:space="preserve">
+    <value>Верхняя граница</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Right" xml:space="preserve">
+    <value>Правая граница</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Bottom" xml:space="preserve">
+    <value>Нижняя граница</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.All" xml:space="preserve">
+    <value>Все границы</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportMode.SingleFile" xml:space="preserve">
+    <value>Один файл</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportMode.SingleFilePageByPage" xml:space="preserve">
+    <value>Один файл (постранично)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportMode.SingleFile" xml:space="preserve">
+    <value>Один файл</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportMode.SingleFilePageByPage" xml:space="preserve">
+    <value>Один файл (постранично)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportMode.DifferentFiles" xml:space="preserve">
+    <value>Разные файлы</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportMode.SingleFile" xml:space="preserve">
+    <value>Один файл</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportMode.SingleFilePageByPage" xml:space="preserve">
+    <value>Один файл (постранично)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportMode.DifferentFiles" xml:space="preserve">
+    <value>Разные файлы</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Lowest" xml:space="preserve">
+    <value>Самое низкое</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Low" xml:space="preserve">
+    <value>Низкое</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Medium" xml:space="preserve">
+    <value>Среднее</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.High" xml:space="preserve">
+    <value>Высокое</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Highest" xml:space="preserve">
+    <value>Самое высокое</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopLeft" xml:space="preserve">
+    <value>Вверху слева</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopCenter" xml:space="preserve">
+    <value>Вверху по центру</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopRight" xml:space="preserve">
+    <value>Вверху справа</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleLeft" xml:space="preserve">
+    <value>По середине слева</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleCenter" xml:space="preserve">
+    <value>По середине по центру</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleRight" xml:space="preserve">
+    <value>По середине справа</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomLeft" xml:space="preserve">
+    <value>Снизу слева</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomCenter" xml:space="preserve">
+    <value>Снизу по центру</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomRight" xml:space="preserve">
+    <value>Снизу справа</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopJustify" xml:space="preserve">
+    <value>Вверху растянуть</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleJustify" xml:space="preserve">
+    <value>По середине растянуть</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomJustify" xml:space="preserve">
+    <value>Снизу растянуть</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.Slant" xml:space="preserve">
+    <value>Наклонная</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.BackSlant" xml:space="preserve">
+    <value>Обратный наклон</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.Horizontal" xml:space="preserve">
+    <value>Горизонтальная</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.Vertical" xml:space="preserve">
+    <value>Вертикальная</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.Normal" xml:space="preserve">
+    <value>Использовать исходный размер</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.StretchImage" xml:space="preserve">
+    <value>Растягивать</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.AutoSize" xml:space="preserve">
+    <value>Автоматически изменять размер</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.CenterImage" xml:space="preserve">
+    <value>Центрировать</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.ZoomImage" xml:space="preserve">
+    <value>Пропорционально увеличивать</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.None" xml:space="preserve">
+    <value>Не задано</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.Number" xml:space="preserve">
+    <value>Номер страницы</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.NumberOfTotal" xml:space="preserve">
+    <value>Текущий номер страницы и общее количество</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.RomLowNumber" xml:space="preserve">
+    <value>Номер страницы (римские, строчные)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.RomHiNumber" xml:space="preserve">
+    <value>Номер страницы (римские, прописные)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.DateTime" xml:space="preserve">
+    <value>Текущая дата и время</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.UserName" xml:space="preserve">
+    <value>Имя пользователя</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.VerticalContentSplitting.Exact" xml:space="preserve">
+    <value>Точное</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.VerticalContentSplitting.Smart" xml:space="preserve">
+    <value>Умное</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.NativeFormatOptions.Compressed" xml:space="preserve">
+    <value>Упакованный</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.NativeFormatOptions.ShowOptionsBeforeSave" xml:space="preserve">
+    <value>Показать опции перед сохранением</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.ShowPrintDialogOnOpen" xml:space="preserve">
+    <value>Показать диалог печати при открытии</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.DocumentOptions" xml:space="preserve">
+    <value>Опции документа</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.Compressed" xml:space="preserve">
+    <value>Упакованный</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.NeverEmbeddedFonts" xml:space="preserve">
+    <value>Никогда не встраивыемые шрифты</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.DefaultResourceFile" xml:space="preserve">
+    <value>Ресурсный файл по умолчанию</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.ImageQuality" xml:space="preserve">
+    <value>Качество изображения</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Author" xml:space="preserve">
+    <value>Автор</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Application" xml:space="preserve">
+    <value>Приложение</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Title" xml:space="preserve">
+    <value>Заглавие</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Subject" xml:space="preserve">
+    <value>Субъект</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Keywords" xml:space="preserve">
+    <value>Ключевые слова</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.UseNativeFormat" xml:space="preserve">
+    <value>Используйте собственный формат</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.ShowGridLines" xml:space="preserve">
+    <value>Показать линии сетки</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.SheetName" xml:space="preserve">
+    <value>Имя листа</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.PageBorderColor" xml:space="preserve">
+    <value>Цвет границы страницы</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.PageBorderWidth" xml:space="preserve">
+    <value>Ширина границы страницы</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.ExportMode" xml:space="preserve">
+    <value>Режим экспорта</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.PageRange" xml:space="preserve">
+    <value>Диапазон страниц</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.Format" xml:space="preserve">
+    <value>Формат</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.Resolution" xml:space="preserve">
+    <value>Разрешение</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions.ExportMode" xml:space="preserve">
+    <value>Режим экспорта</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions.ExportWatermarks" xml:space="preserve">
+    <value>Экспорт фона</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions.PageRange" xml:space="preserve">
+    <value>Диапазон страниц</value>
+  </data>
+</root>

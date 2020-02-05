@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="ChooseTheme" Caption="Scegli Tema" />
+      <Action Id="Edit" Caption="Modifica" />
+      <Action Id="InlineEdit" Caption="Modifica Inline" />
+      <Action Id="NavigateTo" Caption="Naviga verso" />
+      <Action Id="QuickCreateAction" Caption="Creazione Rapida" />
+      <Action Id="SwitchToEditMode" Caption="Modifica" />
+    </Actions>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="DevExpress.ExpressApp.Web.LogonAttemptsAmountedToLimit" Caption="Numero Massimo Tentativi Accesso" />
+    <Class Name="DevExpress.ExpressApp.Web.ParameterlessLogonFailedInfo" Caption="Informazioni Accesso Fallito senza Parametri">
+      <OwnMembers>
+        <Member Name="Message" Caption="Messaggio" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <Localization>
+    <LocalizationGroup Name="Messages">
+      <LocalizationItem Name="ThereAreNoRecordsToDisplay" Value="Non ci sono records da visualizzare." />
+    </LocalizationGroup>
+  </Localization>
+  <Views>
+    <DetailView Id="AboutInfo_DetailView">
+      <Items>
+        <StaticText Id="AboutText" Text="{0:ProductName}&lt;br&gt;{0:Version}&lt;br&gt;&lt;br&gt;{0:Copyright}&lt;br&gt;&lt;br&gt;{0:Description}" />
+      </Items>
+    </DetailView>
+    <DetailView Id="LogonAttemptsAmountedToLimit_DetailView" Caption="Accedi">
+      <Items>
+        <StaticText Id="LogonText" Text="Dopo tre tentativi di accesso non riuscito, la volontà l'applicazione verrà chiusa. Si prega di contattare un amministratore per i dettagli di accesso." />
+      </Items>
+    </DetailView>
+    <DetailView Id="ParameterlessLogonFailedInfo_DefaultDetailView" Caption="Accedi">
+      <Items>
+        <StaticText Id="Message" Text="{0}  Si prega di contattare un amministratore per i dettagli di accesso." />
+      </Items>
+    </DetailView>
+  </Views>
+</Application>

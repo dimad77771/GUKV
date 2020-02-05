@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BarString.AddOrRemove" xml:space="preserve">
+    <value>添加或删除按钮(&amp;A)</value>
+  </data>
+  <data name="BarString.ResetBar" xml:space="preserve">
+    <value>确定要对 '{0}' 工具栏所做的改动进行重置吗？</value>
+  </data>
+  <data name="BarString.ResetBarCaption" xml:space="preserve">
+    <value>自定义</value>
+  </data>
+  <data name="BarString.ResetButton" xml:space="preserve">
+    <value>重设工具栏(&amp;R)</value>
+  </data>
+  <data name="BarString.CustomizeButton" xml:space="preserve">
+    <value>自定义...(&amp;C)</value>
+  </data>
+  <data name="BarString.ToolBarMenu" xml:space="preserve">
+    <value>重新设定(&amp;R)$刪除(&amp;D)$!重新命名(&amp;N)$!默认格式(&amp;L)$全文字模式(&amp;T)$文字菜单(&amp;O)$图片及文字(&amp;A)$!启用组(&amp;G)$可见的(&amp;V)$最近使用的(&amp;M)</value>
+  </data>
+  <data name="BarString.NewToolbarName" xml:space="preserve">
+    <value>工具</value>
+  </data>
+  <data name="BarString.NewMenuName" xml:space="preserve">
+    <value>主菜单</value>
+  </data>
+  <data name="BarString.NewStatusBarName" xml:space="preserve">
+    <value>状态栏</value>
+  </data>
+  <data name="BarString.NewToolbarCustomNameFormat" xml:space="preserve">
+    <value>自定义{0}</value>
+  </data>
+  <data name="BarString.NewToolbarCaption" xml:space="preserve">
+    <value>新建工具栏</value>
+  </data>
+  <data name="BarString.RenameToolbarCaption" xml:space="preserve">
+    <value>重命名工具栏</value>
+  </data>
+  <data name="BarString.CustomizeWindowCaption" xml:space="preserve">
+    <value>自定义</value>
+  </data>
+  <data name="BarString.MenuAnimationSystem" xml:space="preserve">
+    <value>(系统默认值)</value>
+  </data>
+  <data name="BarString.MenuAnimationNone" xml:space="preserve">
+    <value>无</value>
+  </data>
+  <data name="BarString.MenuAnimationSlide" xml:space="preserve">
+    <value>片</value>
+  </data>
+  <data name="BarString.MenuAnimationFade" xml:space="preserve">
+    <value>减弱</value>
+  </data>
+  <data name="BarString.MenuAnimationUnfold" xml:space="preserve">
+    <value>展开</value>
+  </data>
+  <data name="BarString.MenuAnimationRandom" xml:space="preserve">
+    <value>随机</value>
+  </data>
+  <data name="BarString.PopupMenuEditor" xml:space="preserve">
+    <value>弹出菜单编辑器</value>
+  </data>
+  <data name="BarString.ToolbarNameCaption" xml:space="preserve">
+    <value>工具栏名称(&amp;T)</value>
+  </data>
+  <data name="BarString.RibbonToolbarBelow" xml:space="preserve">
+    <value>将快速访问工具栏显示在功能区下方(&amp;S)</value>
+  </data>
+  <data name="BarString.RibbonToolbarAbove" xml:space="preserve">
+    <value>将快速访问工具栏显示在功能区上方(&amp;S)</value>
+  </data>
+  <data name="BarString.RibbonToolbarRemove" xml:space="preserve">
+    <value>移除快速访问工具栏(&amp;R)</value>
+  </data>
+  <data name="BarString.RibbonToolbarAdd" xml:space="preserve">
+    <value>添加快速访问工具栏(&amp;A)</value>
+  </data>
+  <data name="BarString.RibbonToolbarMinimizeRibbon" xml:space="preserve">
+    <value>最小化功能区(&amp;N)</value>
+  </data>
+  <data name="BarString.RibbonGalleryFilter" xml:space="preserve">
+    <value>所有组</value>
+  </data>
+  <data name="BarString.RibbonGalleryFilterNone" xml:space="preserve">
+    <value>无</value>
+  </data>
+  <data name="BarString.BarUnassignedItems" xml:space="preserve">
+    <value>(未设定项)</value>
+  </data>
+  <data name="BarString.BarAllItems" xml:space="preserve">
+    <value>(所有项)</value>
+  </data>
+  <data name="BarString.RibbonUnassignedPages" xml:space="preserve">
+    <value>(未设定页)</value>
+  </data>
+  <data name="BarString.RibbonAllPages" xml:space="preserve">
+    <value>(所有页)</value>
+  </data>
+</root>

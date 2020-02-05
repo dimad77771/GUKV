@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ReportStringId.FSForm_Cat_General" xml:space="preserve">
+    <value>Opšte</value>
+  </data>
+  <data name="ReportStringId.Verb_ReportWizard" xml:space="preserve">
+    <value>Dizajniraj u čarobnjaku za izvještaje...</value>
+  </data>
+  <data name="ReportStringId.UD_Msg_MdiReportChanged" xml:space="preserve">
+    <value>"{0}" je promijenjen. Želite li spremiti promjene?</value>
+  </data>
+  <data name="ReportStringId.STag_Name_ColumnWidth" xml:space="preserve">
+    <value>Širina kolona</value>
+  </data>
+  <data name="ReportStringId.Msg_ScriptingPermissionErrorMessage" xml:space="preserve">
+    <value>Nemate dovoljno ovlaštenja za izvršavanje skripte u ovom izvještaju. 
+
+Detalji:
+
+{0}</value>
+  </data>
+  <data name="ReportStringId.Cmd_TableInsertColumnToRight" xml:space="preserve">
+    <value>Kolona u&amp;desno</value>
+  </data>
+  <data name="ReportStringId.FSForm_Msg_BadSymbol" xml:space="preserve">
+    <value>Greška: Ilegalni simbol(i)</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_SaveFile_Description" xml:space="preserve">
+    <value>Spremi trenutni izvještaj.</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_PageGroup_Report" xml:space="preserve">
+    <value>Izvještaj</value>
+  </data>
+  <data name="ReportStringId.UD_Hint_SaveFile" xml:space="preserve">
+    <value>Spremi izvještaj</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_OpenFile_STipContent" xml:space="preserve">
+    <value>Otvori izvještaj.</value>
+  </data>
+  <data name="ReportStringId.Cmd_ReportHeader" xml:space="preserve">
+    <value>ZaglavljeIzvještaja</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_ZoomIn_STipContent" xml:space="preserve">
+    <value>Povećaj radi pobližeg pregleda izvještaja.</value>
+  </data>
+  <data name="ReportStringId.Msg_GroupSortWarning" xml:space="preserve">
+    <value>Grupno zaglavlje ili podnožje koju želite izbrisati nije prazno. Želite li izbrisati ovu traku, zajedno sa svojim kontrolama?</value>
+  </data>
+  <data name="ReportStringId.UD_SaveFileDialog_DialogFilter" xml:space="preserve">
+    <value>Fajlovi izvještaja (*{0})|*{1}|Svi fajlovi (*.*)|*.*</value>
+  </data>
+  <data name="ReportStringId.UD_Hint_Paste" xml:space="preserve">
+    <value>Dodaj kontrolu iz Clipboard-a</value>
+  </data>
+  <data name="ReportStringId.MultiColumnDesignMsg1" xml:space="preserve">
+    <value>Prostor za ponavljajuće kolone.</value>
+  </data>
+  <data name="ReportStringId.UD_Hint_SaveFileAs" xml:space="preserve">
+    <value>Spremi izvještaj s novim imenom</value>
+  </data>
+  <data name="ReportStringId.Cmd_ReportFooter" xml:space="preserve">
+    <value>PodnožjeIzvještaja</value>
+  </data>
+  <data name="ReportStringId.STag_Name_ColumnCount" xml:space="preserve">
+    <value>Broj kolona</value>
+  </data>
+  <data name="ReportStringId.SSForm_Msg_StyleSheetError" xml:space="preserve">
+    <value>StilLista greška</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_Paste_STipContent" xml:space="preserve">
+    <value>Zalijepite sadržaj Clipboard-a.</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_NewReport_STipContent" xml:space="preserve">
+    <value>Napravi novi prazni izvještaj.</value>
+  </data>
+  <data name="ReportStringId.FSForm_Lbl_CustomGeneral" xml:space="preserve">
+    <value>Opšti oblik nema specifičan oblik broja</value>
+  </data>
+  <data name="ReportStringId.UD_Capt_AlignToGrid" xml:space="preserve">
+    <value>prema &amp;Tabeli</value>
+  </data>
+  <data name="ReportStringId.PivotGridFrame_Fields_DescriptionText1" xml:space="preserve">
+    <value>Moguće je dodavati, brisati te mijenjati opcije poljima XRPivotGrid-a. </value>
+  </data>
+  <data name="ReportStringId.Msg_InvalidReportSource" xml:space="preserve">
+    <value>Ne može biti postavljen kao potomak tekućeg izvještaja</value>
+  </data>
+  <data name="ReportStringId.UD_Hint_SaveAll" xml:space="preserve">
+    <value>Spremi sve izvještaje</value>
+  </data>
+  <data name="ReportStringId.UD_Capt_MainMenuName" xml:space="preserve">
+    <value>Glavni meni</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_Close_STipContent" xml:space="preserve">
+    <value>Zatvori trenutni izvještaj.</value>
+  </data>
+  <data name="ReportStringId.Msg_FileCorrupted" xml:space="preserve">
+    <value>Ne mogu učitati izvještaj. Datoteka je možda oštećena ili nedostaje 'assembly' izvještaja.</value>
+  </data>
+  <data name="ReportStringId.STag_Name_DataBinding" xml:space="preserve">
+    <value>Povezivanje sa izvorom podatka</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_ZoomExact_Caption" xml:space="preserve">
+    <value>Tačno:</value>
+  </data>
+  <data name="ReportStringId.Cmd_TableInsertRowBelow" xml:space="preserve">
+    <value>Red i&amp;spod</value>
+  </data>
+  <data name="ReportStringId.UD_Group_TabButtonsList" xml:space="preserve">
+    <value>Tab dugmići</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_SaveFileAs_STipTitle" xml:space="preserve">
+    <value>Spremi izvještaj kao</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_NewReportWizard_Caption" xml:space="preserve">
+    <value>Novi izvještaj preko Čarobnjaka...</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_SaveFileAs_STipContent" xml:space="preserve">
+    <value>Spremi trenutni izvještaj s novim imenom.</value>
+  </data>
+  <data name="ReportStringId.Msg_Caption" xml:space="preserve">
+    <value>Izvještaji</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_NewReport_Description" xml:space="preserve">
+    <value>Napravi novi prazni izvještaj.</value>
+  </data>
+  <data name="ReportStringId.Msg_FillDataError" xml:space="preserve">
+    <value>Greška pri popunjavanju izvora podataka:</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_SaveFileAs_Description" xml:space="preserve">
+    <value>Spremi trenutni izvještaj s novim imenom.</value>
+  </data>
+  <data name="ReportStringId.UD_Hint_NewWizardReport" xml:space="preserve">
+    <value>Napravi novi izvještaj s Čarobnjakom</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_OpenFile_STipTitle" xml:space="preserve">
+    <value>Otvori izvještaj</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_SaveAll_STipTitle" xml:space="preserve">
+    <value>Spremi sve izvještaje</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_NewReport_Caption" xml:space="preserve">
+    <value>Novi izvještaj</value>
+  </data>
+  <data name="ReportStringId.Msg_WrongReportClassName" xml:space="preserve">
+    <value>Došlo je do greške tijekom deserijalizacije - moguće krivo ime klase izvještaja</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_SaveFile_STipContent" xml:space="preserve">
+    <value>Spremi trenutni izvještaj.</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_SaveAll_STipContent" xml:space="preserve">
+    <value>Spremi sve izmjenjene izvještaje.</value>
+  </data>
+  <data name="ReportStringId.STag_Name_PreviewRowCount" xml:space="preserve">
+    <value>Broj redova pregleda</value>
+  </data>
+  <data name="ReportStringId.UD_Title_ErrorList" xml:space="preserve">
+    <value>Greške u skripti</value>
+  </data>
+  <data name="ReportStringId.UD_Capt_TabbedInterface" xml:space="preserve">
+    <value>&amp;Kartični raspored</value>
+  </data>
+  <data name="ReportStringId.RepTabCtl_Preview" xml:space="preserve">
+    <value>Pregled</value>
+  </data>
+  <data name="ReportStringId.Cmd_TableDeleteColumn" xml:space="preserve">
+    <value>&amp;Kolona</value>
+  </data>
+  <data name="ReportStringId.Msg_SerializationErrorTitle" xml:space="preserve">
+    <value>Greška kod serijalizacije</value>
+  </data>
+  <data name="ReportStringId.Cmd_TableDeleteRow" xml:space="preserve">
+    <value>&amp;Red</value>
+  </data>
+  <data name="ReportStringId.Wizard_PageChooseFields_Msg" xml:space="preserve">
+    <value>Prije nastavka morate odabrati polja za izvještaj</value>
+  </data>
+  <data name="ReportStringId.UD_Title_PropertyGrid" xml:space="preserve">
+    <value>Tabela za pregled osobina</value>
+  </data>
+  <data name="ReportStringId.Cmd_DetailReport" xml:space="preserve">
+    <value>DetaljniIzvještaj</value>
+  </data>
+  <data name="ReportStringId.Cmd_TableInsertRowAbove" xml:space="preserve">
+    <value>Red &amp;iznad</value>
+  </data>
+  <data name="ReportStringId.UD_ReportDesigner" xml:space="preserve">
+    <value>Dizajner izvještaja</value>
+  </data>
+  <data name="ReportStringId.PropGrid_TTip_Categorized" xml:space="preserve">
+    <value>Kategorizovano</value>
+  </data>
+  <data name="ReportStringId.UD_FormCaption" xml:space="preserve">
+    <value>Dizajner izvještaja</value>
+  </data>
+  <data name="ReportStringId.SR_Number_Across" xml:space="preserve">
+    <value>Broj u redu</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_Exit_STipContent" xml:space="preserve">
+    <value>Zatvori dizajner za izvještaje</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_SaveFile_STipTitle" xml:space="preserve">
+    <value>Spremi izvještaj</value>
+  </data>
+  <data name="ReportStringId.Cmd_TableInsertColumnToLeft" xml:space="preserve">
+    <value>Kolona u&amp;lijevo</value>
+  </data>
+  <data name="ReportStringId.UD_Hint_NewReport" xml:space="preserve">
+    <value>Napravi novi prazan izvještaj</value>
+  </data>
+  <data name="ReportStringId.UD_Title_GroupAndSort" xml:space="preserve">
+    <value>Grupisanje i sortiranje</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_Windows_STipContent" xml:space="preserve">
+    <value>Pokaži ili sakrij prozore alatnog okvira, istraživača izvještaja, popisa polja i tabele osobina.</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_TableDescription" xml:space="preserve">
+    <value>Povuci-i-ispusti ovu stavku za stvaranje tabele sa svojim stavkama; 
+- Ili -- 
+Povucite ovaj predmet s desnom tipkom miša ili SHIFT 
+kako bi stvorili 'zaglavlje' tabele sa imenima polja; 
+- Ili -- 
+Koristite kontekst meni za dodavanje izračunatih polja ili parametara.</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_NewReportWizard_STipTitle" xml:space="preserve">
+    <value>Novi izvještaj preko Čarobnjaka</value>
+  </data>
+  <data name="ReportStringId.UD_Hint_Close" xml:space="preserve">
+    <value>Zatvori izvještaj</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_ZoomOut_STipContent" xml:space="preserve">
+    <value>Smanji da bi se vidio veći dio izvještaja u manjoj veličini.</value>
+  </data>
+  <data name="ReportStringId.STag_Name_ColumnSpacing" xml:space="preserve">
+    <value>Prored kolona</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_PageText" xml:space="preserve">
+    <value>Dizajner izvještaja</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_NewReport_STipTitle" xml:space="preserve">
+    <value>Novi prazni izvještaj</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_Copy_STipContent" xml:space="preserve">
+    <value>Kopiraj odabrane kontrole i stavi ih u Clipboard.</value>
+  </data>
+  <data name="ReportStringId.UD_Hint_OpenFile" xml:space="preserve">
+    <value>Otvori izvještaj</value>
+  </data>
+  <data name="ReportStringId.ScriptEditor_ErrorColumn" xml:space="preserve">
+    <value>Kolona</value>
+  </data>
+  <data name="ReportStringId.DesignerStatus_Location" xml:space="preserve">
+    <value>Lok</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_ItemDescription" xml:space="preserve">
+    <value>Povuci i ispusti ovu stavku za stvaranje kontrole vezanu na nju;
+ - ili -
+ Povuci ovu stavku s desnom tipkom miša ili tipkom SHIFT
+ za odabir vezane kontrole iz popup menija;
+ - ili -
+ Koristite kontekst meni da biste dodali polja izračuna ili parametar.</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_Cut_STipContent" xml:space="preserve">
+    <value>Izreži odabrane kontrole iz izvještaja i stavi ih u Clipboard.</value>
+  </data>
+  <data name="ReportStringId.Msg_ErrorTitle" xml:space="preserve">
+    <value>Greška</value>
+  </data>
+  <data name="ReportStringId.Msg_FileContentCorrupted" xml:space="preserve">
+    <value>Ne mogu učitati izgled izvještaja. Datoteka je možda oštećena ili sadrži netačne podatke.</value>
+  </data>
+  <data name="ReportStringId.UD_Msg_ReportChanged" xml:space="preserve">
+    <value>Izvještaj je promijenjeo. Želite li spremiti promjene?</value>
+  </data>
+</root>

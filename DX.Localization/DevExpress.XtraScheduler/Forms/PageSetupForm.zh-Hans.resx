@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="xtraTabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="xtraTabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tabFormatControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabFormatControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tabFormatControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>487, 353</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tabFormatControl.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tabFormatControl.Name" xml:space="preserve">
+		<value>tabFormatControl</value>
+	</data>
+  <data name="&gt;&gt;tabFormatControl.Parent" xml:space="preserve">
+		<value>format</value>
+	</data>
+  <data name="&gt;&gt;tabFormatControl.ZOrder" xml:space="preserve">
+		<value>0</value>
+	</data>
+  <data name="format.Size" type="System.Drawing.Size, System.Drawing">
+    <value>487, 353</value>
+  </data>
+  <data name="format.Text" xml:space="preserve">
+		<value> 格式</value>
+	</data>
+  <data name="&gt;&gt;format.Name" xml:space="preserve">
+		<value>format</value>
+	</data>
+  <data name="&gt;&gt;format.Parent" xml:space="preserve">
+		<value>xtraTabControl</value>
+	</data>
+  <data name="&gt;&gt;format.ZOrder" xml:space="preserve">
+		<value>0</value>
+	</data>
+  <data name="xtraTabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>496, 384</value>
+  </data>
+  <data name="xtraTabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabPaperControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabPaperControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tabPaperControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>487, 353</value>
+  </data>
+  <data name="tabPaperControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabPaperControl.Name" xml:space="preserve">
+		<value>tabPaperControl</value>
+	</data>
+  <data name="&gt;&gt;tabPaperControl.Parent" xml:space="preserve">
+		<value>paper</value>
+	</data>
+  <data name="&gt;&gt;tabPaperControl.ZOrder" xml:space="preserve">
+		<value>0</value>
+	</data>
+  <data name="paper.Size" type="System.Drawing.Size, System.Drawing">
+    <value>487, 353</value>
+  </data>
+  <data name="paper.Text" xml:space="preserve">
+		<value> 纸张</value>
+	</data>
+  <data name="&gt;&gt;paper.Name" xml:space="preserve">
+		<value>paper</value>
+	</data>
+  <data name="&gt;&gt;paper.Parent" xml:space="preserve">
+		<value>xtraTabControl</value>
+	</data>
+  <data name="&gt;&gt;paper.ZOrder" xml:space="preserve">
+		<value>1</value>
+	</data>
+  <data name="tabResources.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabResources.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tabResources.Size" type="System.Drawing.Size, System.Drawing">
+    <value>487, 353</value>
+  </data>
+  <data name="tabResources.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabResources.Name" xml:space="preserve">
+		<value>tabResources</value>
+	</data>
+  <data name="&gt;&gt;tabResources.Parent" xml:space="preserve">
+		<value>tabPageResources</value>
+	</data>
+  <data name="&gt;&gt;tabResources.ZOrder" xml:space="preserve">
+		<value>0</value>
+	</data>
+  <data name="tabPageResources.Size" type="System.Drawing.Size, System.Drawing">
+    <value>487, 353</value>
+  </data>
+  <data name="tabPageResources.Text" xml:space="preserve">
+		<value>资源</value>
+	</data>
+  <data name="&gt;&gt;tabPageResources.Name" xml:space="preserve">
+		<value>tabPageResources</value>
+	</data>
+  <data name="&gt;&gt;tabPageResources.Parent" xml:space="preserve">
+		<value>xtraTabControl</value>
+	</data>
+  <data name="&gt;&gt;tabPageResources.ZOrder" xml:space="preserve">
+		<value>2</value>
+	</data>
+  <data name="&gt;&gt;xtraTabControl.Name" xml:space="preserve">
+		<value>xtraTabControl</value>
+	</data>
+  <data name="&gt;&gt;xtraTabControl.Parent" xml:space="preserve">
+		<value>$this</value>
+	</data>
+  <data name="&gt;&gt;xtraTabControl.ZOrder" xml:space="preserve">
+		<value>1</value>
+	</data>
+  <data name="btnOk.Location" type="System.Drawing.Point, System.Drawing">
+    <value>288, 4</value>
+  </data>
+  <data name="btnOk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 23</value>
+  </data>
+  <data name="btnOk.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="btnOk.Text" xml:space="preserve">
+		<value>确定</value>
+	</data>
+  <data name="&gt;&gt;btnOk.Name" xml:space="preserve">
+		<value>btnOk</value>
+	</data>
+  <data name="&gt;&gt;btnOk.Parent" xml:space="preserve">
+		<value>panelControl1</value>
+	</data>
+  <data name="&gt;&gt;btnOk.ZOrder" xml:space="preserve">
+		<value>0</value>
+	</data>
+  <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>392, 4</value>
+  </data>
+  <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 23</value>
+  </data>
+  <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="btnCancel.Text" xml:space="preserve">
+		<value>取消</value>
+	</data>
+  <data name="&gt;&gt;btnCancel.Name" xml:space="preserve">
+		<value>btnCancel</value>
+	</data>
+  <data name="&gt;&gt;btnCancel.Parent" xml:space="preserve">
+		<value>panelControl1</value>
+	</data>
+  <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
+		<value>1</value>
+	</data>
+  <data name="btnPrintPreview.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 4</value>
+  </data>
+  <data name="btnPrintPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 23</value>
+  </data>
+  <data name="btnPrintPreview.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="btnPrintPreview.Text" xml:space="preserve">
+		<value>打印预览(&amp;V)</value>
+	</data>
+  <data name="&gt;&gt;btnPrintPreview.Name" xml:space="preserve">
+		<value>btnPrintPreview</value>
+	</data>
+  <data name="&gt;&gt;btnPrintPreview.Parent" xml:space="preserve">
+		<value>panelControl1</value>
+	</data>
+  <data name="&gt;&gt;btnPrintPreview.ZOrder" xml:space="preserve">
+		<value>2</value>
+	</data>
+  <data name="btnPrint.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 4</value>
+  </data>
+  <data name="btnPrint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 23</value>
+  </data>
+  <data name="btnPrint.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="btnPrint.Text" xml:space="preserve">
+		<value>打印(&amp;P)</value>
+	</data>
+  <data name="&gt;&gt;btnPrint.Name" xml:space="preserve">
+		<value>btnPrint</value>
+	</data>
+  <data name="&gt;&gt;btnPrint.Parent" xml:space="preserve">
+		<value>panelControl1</value>
+	</data>
+  <data name="&gt;&gt;btnPrint.ZOrder" xml:space="preserve">
+		<value>3</value>
+	</data>
+  <data name="panelControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panelControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 384</value>
+  </data>
+  <data name="panelControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>496, 30</value>
+  </data>
+  <data name="panelControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panelControl1.Name" xml:space="preserve">
+		<value>panelControl1</value>
+	</data>
+  <data name="&gt;&gt;panelControl1.Parent" xml:space="preserve">
+		<value>$this</value>
+	</data>
+  <data name="&gt;&gt;panelControl1.ZOrder" xml:space="preserve">
+		<value>0</value>
+	</data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>496, 414</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+		<value>页面设置</value>
+	</data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+		<value>PageSetupForm</value>
+	</data>
+  <data name="btnOk.AccessibleName" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="btnPrintPreview.AccessibleName" xml:space="preserve">
+    <value>Print Preview</value>
+  </data>
+  <data name="btnPrint.AccessibleName" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="btnCancel.AccessibleName" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+</root>

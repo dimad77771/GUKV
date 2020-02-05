@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="ReportViewerDialogController_Back" Caption="Natrag" />
+      <Action Id="ReportViewerDialogController_Close" Caption="Zatvori" />
+      <Action Id="ReportViewerDialogController_Preview" Caption="Pregled" />
+      <Action Id="ShowReportInPreviewWindow" Caption="Pregled" />
+    </Actions>
+  </ActionDesign>
+  <Localization>
+    <LocalizationGroup Name="Captions">
+      <LocalizationItem Name="DownloadReportMessage" Value="Pritisnite 'U redu' za preuzimanje izvještaja" />
+    </LocalizationGroup>
+  </Localization>
+</Application>

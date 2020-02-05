@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="EditSeries" Caption="シーリーズの編集" />
+      <Action Id="EditSeriesDetailView" Caption="シーリーズの編集" />
+      <Action Id="OpenSeries" Caption="シリーズを開く" />
+      <Action Id="RestoreOccurrence" Caption="定期的な予定を復元" />
+    </Actions>
+  </ActionDesign>
+</Application>

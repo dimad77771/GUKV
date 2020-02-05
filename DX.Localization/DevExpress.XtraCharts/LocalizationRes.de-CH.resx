@@ -1,0 +1,1631 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 1.3
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">1.3</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1">this is my long string</data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        [base64 mime encoded serialized .NET Framework object]
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        [base64 mime encoded string representing a byte array form of the .NET Framework object]
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used forserialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ChartStringId.SeriesPrefix">
+    <value>Reihe</value>
+  </data>
+  <data name="ChartStringId.PalettePrefix">
+    <value>Farbpalette</value>
+  </data>
+  <data name="ChartStringId.XYDiagramPanePrefix">
+    <value>Bereich</value>
+  </data>
+  <data name="ChartStringId.ConstantLinePrefix">
+    <value>Konstante Linie</value>
+  </data>
+  <data name="ChartStringId.CustomAxisLabelPrefix">
+    <value>Etikett</value>
+  </data>
+  <data name="ChartStringId.AnnotationPrefix">
+    <value>Anmerkung</value>
+  </data>
+  <data name="ChartStringId.ImageAnnotationPrefix">
+    <value>Bildanmerkungen</value>
+  </data>
+  <data name="ChartStringId.ArgumentMember">
+    <value>Argumente</value>
+  </data>
+  <data name="ChartStringId.ValueMember">
+    <value>Wert</value>
+  </data>
+  <data name="ChartStringId.WeightMember">
+    <value>Gewichtung</value>
+  </data>
+  <data name="ChartStringId.LowValueMember">
+    <value>Tief</value>
+  </data>
+  <data name="ChartStringId.HighValueMember">
+    <value>Hoch</value>
+  </data>
+  <data name="ChartStringId.OpenValueMember">
+    <value>Öffnen</value>
+  </data>
+  <data name="ChartStringId.CloseValueMember">
+    <value>Schliessen</value>
+  </data>
+  <data name="ChartStringId.AutocreatedSeriesName">
+    <value>Erzeuge Reihen</value>
+  </data>
+  <data name="ChartStringId.DefaultDataFilterName">
+    <value>Datenfilter</value>
+  </data>
+  <data name="ChartStringId.DefaultChartTitle">
+    <value>Diagrammtitel</value>
+  </data>
+  <data name="ChartStringId.DefaultAnnotation">
+    <value>Anmerkung</value>
+  </data>
+  <data name="ChartStringId.DefaultSeriesPointFilterName">
+    <value>Filter für Datenpunkte</value>
+  </data>
+  <data name="ChartStringId.MsgEmptyArrayOfValues">
+    <value>Die Aufzählung der Werte ist leer.</value>
+  </data>
+  <data name="ChartStringId.MsgSeriesViewDoesNotExist">
+    <value>Die Ansicht der Reihe {0}  ist nicht vorhanden.</value>
+  </data>
+  <data name="ChartStringId.MsgEquallySpacedItemsNotUsable">
+    <value>Diese Eigenschaft kann nicht verwendet werden, wenn die Richtungseigenschaft {0} ist.</value>
+  </data>
+  <data name="ChartStringId.MsgItemNotInCollection">
+    <value>Die Aufzählung enthält nicht den gewählten Eintrag.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectValue">
+    <value>Falscher Wert "{0}" für das Argument "{1}".</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatiblePointType">
+    <value>Der Typ "{0}" des Punktes ist nicht kompatibel mit der {1} Skala.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleArgumentDataMember">
+    <value>Der Typ der Argumentdaten "{0}" ist nicht kompatibel mit der {1} Skala.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleValueDataMember">
+    <value>Der Typ "{0}" des Wertes ist nicht kompatibel mit der {1} Skala.</value>
+  </data>
+  <data name="ChartStringId.MsgDesignTimeOnlySetting">
+    <value>Diese Eigenschaft kann nicht zur Laufzeit verändert werden.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidDataSource">
+    <value>Ungültiger Datenquellen Typ.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectDataMember">
+    <value>Die Datenquelle beinhaltet kein Mitglied mit dem Namen "{0}".</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidSortingKey">
+    <value>Es ist unmöglich den Sortierungsschlüssel mit dem Wert {0} zu setzten.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidFilterCondition">
+    <value>Die Bedingung {0} kann mit den Daten "{1}" nicht ausgeführt werden .</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectDataAdapter">
+    <value>Das {0} Objekt hat keinen Datenadapter.</value>
+  </data>
+  <data name="ChartStringId.MsgDataSnapshot">
+    <value>
+      Die Schnappschuss-Operation wurde erfolgreich abgeschlossen, die Grafik befindet sich nun im ungebundenen Modus und alle Daten befinden sich in der Grafik.
+Hinweis: Diese Aktion kann mit Strg+Z in VisualStudio rückgängig gemacht werden.</value>
+  </data>
+  <data name="ChartStringId.MsgModifyDefaultPaletteError">
+    <value>Standard Farbpalette. Sie kann nicht geändert werden.</value>
+  </data>
+  <data name="ChartStringId.MsgAddExistingPaletteError">
+    <value>Eine Farbpalette mit dem Namen {0} ist bereits vorhanden.</value>
+  </data>
+  <data name="ChartStringId.MsgInternalPropertyChangeError">
+    <value>Diese Eigenschaft ist nur zum internen Gebrauch. Es ist Ihnen nicht erlaubt den
+Wert zu ändern.</value>
+  </data>
+  <data name="ChartStringId.MsgPaletteNotFound">
+    <value>Das Diagramm enthält keine Farbpalette mit dem Namen: {0}.</value>
+  </data>
+  <data name="ChartStringId.MsgLabelSettingRuntimeError">
+    <value>Die "Label"  Eigenschaft kann nicht zur Laufzeit verändert werden.</value>
+  </data>
+  <data name="ChartStringId.MsgPointOptionsSettingRuntimeError">
+    <value>Die "PointOptions" Eigenschaft kann nicht zur Laufzeit verändert werden.</value>
+  </data>
+  <data name="ChartStringId.MsgLegendPointOptionsSettingRuntimeError">
+    <value>Die "LegendPointOptions" Eigenschaft kann nicht zur Laufzeit verändert werden.</value>
+  </data>
+  <data name="ChartStringId.MsgSynchronizePointOptionsSettingRuntimeError">
+    <value>Die "SyncronizedPointOptions" Eigenschaft kann nicht zur Laufzeit verändert werden.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectNumericPrecision">
+    <value>Die Genauigkeit muss grösser oder gleich 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisThickness">
+    <value>Die Dicke der Achse muss grösser als 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBarWidth">
+    <value>Die Breite des Balkens muss grösser gleich  0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBarDepth">
+    <value>Die Balkentiefe muss grösser gleich  0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLineWidth">
+    <value>Die Breite der Linie muss grösser oder gleich 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAreaWidth">
+    <value>Die Breite des Bereichs muss grösser 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBorderThickness">
+    <value>Die Breite des Randes muss grösser gleich 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectChartTitleIndent">
+    <value>Der Titeleinzug muss grösser gleich 0 und weniger als 1000 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLegendMarkerSize">
+    <value>Die Grösse der Legendenmarkierung muss sich zwischen 0 und 1000 liegen.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLegendSpacingVertical">
+    <value>Der vertikale Abstand der Legenden muss zwischen 0 und 1000 liegen.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLegendSpacingHorizontal">
+    <value>Der horizontale Abstand der Legenden muss zwischen 0 und 1000 liegen.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectMarkerSize">
+    <value>Die Grösse der Markierung muss grösser als 1 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectMarkerStarPointCount">
+    <value>Die Anzahl der Sternpunkte muss zwischen 3 und 101 liegen.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPieSeriesLabelColumnIndent">
+    <value>Die Spalteneinrückung muss grösser oder gleich 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectRangeBarSeriesLabelIndent">
+    <value>Die Einrückung muss grösser oder gleich 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPercentPrecision">
+    <value>Die Genauigkeit der Prozentwerte muss grösser oder gleich 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPercentageAccuracy">
+    <value>Die Genauigkeit der Prozentwerte muss grösser oder gleich 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesLabelLineLength">
+    <value>Die Länge der Linie muss zwischen 0 und 100 angegeben werden.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStripConstructorParameters">
+    <value>Das Minimum und das Maximum kann nicht identisch sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStripLimitAxisValue">
+    <value>Der Achsenwert kann nicht 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStripMinLimit">
+    <value>Das minimale Limit der Leiste muss kleiner sein als das maximale Limit.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStripMaxLimit">
+    <value>Das maximale Limit der Leiste muss grösser sein als das minimale Limit.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLineThickness">
+    <value>Die Dicke der Linie muss grösser als 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectShadowSize">
+    <value>Die Schattengrösse muss grösser oder gleich  0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTickmarkThickness">
+    <value>Die Dicke des Häkchens muss grösser als 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTickmarkLength">
+    <value>Die Länge des Häkchens muss grösser als 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectMinorCount">
+    <value>Der Wert der "Minor" Anzahl muss grösser 0 und kleiner 100 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTickmarkMinorThickness">
+    <value>Die Dicke des kleinen Häkchens muss grösser als 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTickmarkMinorLength">
+    <value>Die Länge des kleinen Häkchens muss grösser als 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPercentValue">
+    <value>Der Prozentwert muss zwischen 0 und 100 liegen.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSimpleDiagramDimension">
+    <value>Die Dimension eines einfachen Diagramm muss zwischen 1 und 100 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStockLevelLineLengthValue">
+    <value>Die Länge der StockLevel Linie muss grösser oder gleich 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectReductionColorValue">
+    <value>Der Verkleinerungsfarbwert darf nicht ohne Inhalt sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLabelAngle">
+    <value>Der Winkel muss zwischen -360 und 360 liegen.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectImageFormat">
+    <value>Unmöglich ein Bild in das angegebene Format zu exportieren.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectImageBounds">
+    <value>Es kann kein Bild in der angegebenen Grösse erstellt werden.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectUseImageUrlProperty">
+    <value>Die ImageURL Eigenschaft kann nur für das WebChartControl genutzt werden. 
+Bitte benutzen Sie die Image Eigenschaft. </value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTaskLinkMinIndent">
+    <value>Die minimale Einrückung muss grösser oder gleich 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectArrowWidth">
+    <value>Die Breite des Pfeils muss ungerade und grösser 0 sein</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectArrowHeight">
+    <value>Die Höhe des Pfeils muss grösser 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgEmptyArgument">
+    <value>Ein Argument darf nicht leer bleiben.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectValueDataMemberCount">
+    <value>Es ist nötig die Daten {0} für die aktuelle Reihenansicht zu bestimmen.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAnnotationHeight">
+    <value>Die Anmerkung Höhe muss grösser als 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAnnotationWidth">
+    <value>Die Anmerkung Breite muss grösser als 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisCoordinateAxisValue">
+    <value>AchsenWert kann für die Achsenkoordinate nicht NULL sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAnnotationZOrder">
+    <value>Die ZOrder sollte grösser oder gleich 0 und kleiner als 100 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisXCoordinateAxis">
+    <value>Kann die AchseXKoordinate der Achse nicht setzen, weil die angegebene Achse nicht primär und nicht in der Diagramm Sammlung von sekundären X-Achsen enthalten ist.
+</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisYCoordinateAxis">
+    <value>Kann die AchseYKoordinate der Achse nicht setzen, weil die angegebene Achse nicht primär und nicht in der Diagramm Sammlung von sekundären Y-Achsen enthalten ist.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAnchorPointSeriesPoint">
+    <value>"Kann den Serienpunkt nicht zeigen, da er zu einer Reihe gehören soll, und die Serie sollte in der Tabelle der Sammlung enthalten sein.</value>
+  </data>
+  <data name="ChartStringId.MsgPaletteDoubleClickToEdit">
+    <value>Zum ändern Doppelt klicken...</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidPaletteName">
+    <value>Es kann keine Farbpalette mit einem leeren Namen eingefügt werden. Bitte tragen Sie
+einen Namen für die Farbpalette ein.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidScaleType">
+    <value>Der bestimmte Wert kann nicht konvertiert werden da er nicht dem aktuellen
+Datentyp entspricht.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTransformationMatrix">
+    <value>Ungültige Umwandlungsmatrix.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPerspectiveAngle">
+    <value>Der Perspektivenwinkel muss zwischen 0 und 180 liegen.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPieDepth">
+    <value>Die Tortentiefe sollte grösser 0 und kleiner gleich 100 sein, da der Wert in Prozent anzugeben ist.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesDistance">
+    <value>Die Entfernung der Serie muss grösser gleich 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesDistanceFixed">
+    <value>Die feste Entfernung der Reihe muss grösser gleich 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesIndentFixed">
+    <value>Die feste Einrückung der Reihe muss grösser gleich 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPlaneDepthFixed">
+    <value>Die feste Tiefe der Ebene muss grösser gleich 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectGridSpacing">
+    <value>Der Tabellenabstand muss grösser gleich 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleArgumentScaleType">
+    <value>Die Skalierung des Arguments {0} ist mit der Ansicht {1} der Reihe nicht kompatibel.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleValueScaleType">
+    <value>Die Skalierung des Wertes {0} ist mit der Ansicht {1} der Reihe nicht kompatibel.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleSummaryFunction">
+    <value>Die  Zusammenfassung '{0}' ist inkompatibel mit der Achse {1} .</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectConstantLineAxisValue">
+    <value>Der Achsenwert muss für ein feste Linie angegeben werden.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectCustomAxisLabelAxisValue">
+    <value>Der Achsenwert muss für ein eigene Achsenbeschriftung angegeben werden.</value>
+  </data>
+  <data name="ChartStringId.Msg3DRotationToolTip">
+    <value>Benutzen die STRG und die linke Maustaste um die Grafik zu drehen.</value>
+  </data>
+  <data name="ChartStringId.Msg3DScrollingToolTip">
+    <value>
+Benutzen sie STRG und die mittlere Maustaste um die Grafik zu verschieben.
+    </value>
+  </data>
+  <data name="ChartStringId.Msg2DScrollingToolTip">
+    <value>Benutzen die STRG und die linke Maustaste um die Grafik zu verschieben.</value>
+  </data>
+  <data name="ChartStringId.Msg2DPieExplodingToolTip">
+    <value>Benutzen die STRG und die linke Maustaste um die Grafik um Werte Explodieren und Implodieren zu lassen.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPadding">
+    <value>Die Abstand-Einstellung sollte grösser oder gleich 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectMargins">
+    <value>Die Rand-Einstellung sollte grösser oder gleich 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidZeroAxisAlignment">
+    <value>Die Ausrichtung kann für die Sekundärachse nicht auf Alignment.Zero gesetzt werden.</value>
+  </data>
+  <data name="ChartStringId.MsgNullSeriesViewAxisX">
+    <value>Die X-Achse der Reihe muss angegeben werden.</value>
+  </data>
+  <data name="ChartStringId.MsgNullSeriesViewAxisY">
+    <value>Die Y-Achse der Reihe muss angegeben werden.</value>
+  </data>
+  <data name="ChartStringId.MsgNullSeriesViewPane">
+    <value>Der Serien-Bereich kann nicht null sein.</value>
+  </data>
+  <data name="ChartStringId.MsgNonExistentSeriesViewAxisX">
+    <value>Die angegebene X-Achse ist nicht im Diagramm vorhanden.</value>
+  </data>
+  <data name="ChartStringId.MsgNonExistentSeriesViewAxisY">
+    <value>Die angegebene Y-Achse ist nicht im Diagramm vorhanden.</value>
+  </data>
+  <data name="ChartStringId.MsgNonExistentSeriesViewPane">
+    <value>Kann den Serienbereich nicht setzen, da der Bereich nicht in der Liste der Bereiche des Diagramms auftaucht.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectParentSeriesPointOwner">
+    <value>Der Eigentümer eines Datenpunktes muss vom gleichen Reihentyp sein.</value>
+  </data>
+  <data name="ChartStringId.MsgSeriesViewNotSupportRelations">
+    <value>Die Serienansicht unterstützt Relationen nicht. </value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectChildSeriesPointOwner">
+    <value>Der Eigentümer eines Datenpunktes muss vom gleichen Reihentyp sein und kann nicht leer sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectChildSeriesPointID">
+    <value>Die Datenpunkt-ID muss grösser oder gleich 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectIndentFromMarker">
+    <value>Der Wert des Einzuges sollte grösser oder gleich 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesOfParentAndChildPoints">
+    <value>Eigentümer und Datenpunkt müssen zu gleichen Reihe gehören.</value>
+  </data>
+  <data name="ChartStringId.MsgSelfRelatedSeriesPoint">
+    <value>Ein Datenpunkt kann nicht auf sich selbst referenzieren.</value>
+  </data>
+  <data name="ChartStringId.MsgSeriesPointRelationAlreadyExists">
+    <value>Diese Relation ist schon in der Reihe vorhanden.</value>
+  </data>
+  <data name="ChartStringId.MsgChildSeriesPointNotExist">
+    <value>Ein Datenpunkt mit der ID {0} existiert nicht.</value>
+  </data>
+  <data name="ChartStringId.MsgRelationChildPointIDNotUnique">
+    <value>Die Datenpunkt-ID muss eindeutig sein.</value>
+  </data>
+  <data name="ChartStringId.MsgSeriesPointIDNotUnique">
+    <value>Die Datenpunkt-ID muss eindeutig sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectFont">
+    <value>Eine Schriftart muss ausgewählt werden</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectScrollBarThickness">
+    <value>Die Breite des Rollbalkens muss zwischen 3 und 25 liegen.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectZoomPercent">
+    <value>Die Vergrösserung muss zwischen 0 und {0} liegen.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectHorizontalScrollPercent">
+    <value>Der horizontale Verschiebungsprozentsatz muss zwischen -{0}  und {0} liegen.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectVerticalScrollPercent">
+    <value>Der vertikale Verschiebungsprozentsatz muss zwischen -{0}  und {0} liegen.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAnchorPoint">
+    <value>Ankerpunkt kann nicht Null sein.</value>
+  </data>
+  <data name="ChartStringId.MsgUnregisterGroupError">
+    <value>Die Gruppe ist nicht mehr registriert.</value>
+  </data>
+  <data name="ChartStringId.MsgUnregisterPageError">
+    <value>Die Seite ist nicht mehr registriert.</value>
+  </data>
+  <data name="ChartStringId.MsgWizardAbsractPageType">
+    <value>{0} ist Abstrakt definiert und kann somit nicht in den Assistenten eingefügt werden.</value>
+  </data>
+  <data name="ChartStringId.MsgWizardIncorrectBasePageType">
+    <value>{0} muss von der Klasse {1} abgeleitet sein.</value>
+  </data>
+  <data name="ChartStringId.MsgWizardNonUniquePageType">
+    <value>Eine Seite vom Typ {0} ist bereits registriert, es kann keine weitere Seite des Typs eingefügt werden.</value>
+  </data>
+  <data name="ChartStringId.MsgWizardNonUniqueGroupName">
+    <value>Eine Gruppe mit dem Namen {0} ist bereits registriert.</value>
+  </data>
+  <data name="ChartStringId.MsgOrderArrayLengthMismatch">
+    <value>Die Länge der Aufzählung stimmt nicht mit der Anzahl der registrierten Elemente überein.</value>
+  </data>
+  <data name="ChartStringId.MsgOrderUnregisteredElementFound">
+    <value>Ein nicht registriertes Element wurde gefunden.</value>
+  </data>
+  <data name="ChartStringId.MsgOrderRepeatedElementFound">
+    <value>Das gleiche Element ist mehrfach in der Sortierung angegeben.</value>
+  </data>
+  <data name="ChartStringId.MsgAddPresentViewType">
+    <value>Die gewählte Sichtart ist bereits vorhanden!</value>
+  </data>
+  <data name="ChartStringId.MsgAddLastViewType">
+    <value>Sie können keine Sicht einfügen, denn es muss mindestens eine Sicht 
+im Assistenten vorhanden sein!</value>
+  </data>
+  <data name="ChartStringId.MsgCalcHitInfoNotSupported">
+    <value>Der Bereichstest ist für 3D Diagramme nicht verfügbar.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAppearanceName">
+    <value>Das Diagramm enthällt kein Aussehen mit dem Namen {0}.</value>
+  </data>
+  <data name="ChartStringId.MsgNotChartControl">
+    <value>Das Objekt ist kein Diagramm</value>
+  </data>
+  <data name="ChartStringId.MsgNotBelongingChart">
+    <value>Das Steuerelement enthält das angegebene Diagramm nicht.</value>
+  </data>
+  <data name="ChartStringId.MsgInitializeChartNotFound">
+    <value>Es wurde kein Diagramm gefunden, oder es befinden sich mehrere Diagramme in diesem Steuerelement. Um dieses Problem ziu lösen, sollten Sie das InitializePage- Ereigniss angeben.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleByViewType">
+    <value>dem Ansichtstyp</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleByArgumentScaleType">
+    <value>Das Argument des Wertetyps.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleByValueScaleType">
+    <value>Der Wertetyp</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidExplodedSeriesPoint">
+    <value>Der angegeben Punkt befindet sich nicht in der Aufzählung der aktuellen Datenpunkte im Tortendiagramm. Deswegen kann er nicht in die Explosionsdarstellung aufgenommen werden.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidExplodedModeAdd">
+    <value>Die aktuelle Anzeige der Tortengrafik wurde mit einem Template erstellt. Deswegen kann der angegebene Datenpunkt nicht in die Explosionsdarstellung aufgenommen werden. Wählen Sie eine andere Explosionsdarstellung aus.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidExplodedModeRemove">
+    <value>Die aktelle Anzeige der Tortengrafik wurde mit einem Template erstellt. Deswegen kann der angegebene Datenpunkt nicht aus der Explosionsdarstellung entfernt werden.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectExplodedDistancePercentage">
+    <value>Der Abstand der Explosionsdarstellung muss grösser als 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPaletteBaseColorNumber">
+    <value>Die Farbnummer der Farbpalette muss grösser als 0 und kleiner als die Anzahl der Farben in der Farbpalette sein.</value>
+  </data>
+  <data name="ChartStringId.MsgDenyChangeSeriesPointCollection">
+    <value>Die Aufzählung der Datenpunkte kann nicht verändert werden, da die Daten aus einer Datenquelle stammen.</value>
+  </data>
+  <data name="ChartStringId.MsgDenyChangeSeriesPointAgument">
+    <value>Argumente können nicht verändert werden, da die Daten aus einer Datenquelle stammen.</value>
+  </data>
+  <data name="ChartStringId.MsgDenyChangeSeriesPointValue">
+    <value>Datenwerte können nicht verändert werden, da die Daten aus einer Datenquelle stammen.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStartAngle">
+    <value>Der Startwinkel muss zwischen -360 und 360 liegen.</value>
+  </data>
+  <data name="ChartStringId.MsgPolarAxisXRangeChanged">
+    <value>Der Bereich einer Polar X-Achse kann nicht verändert werden.</value>
+  </data>
+  <data name="ChartStringId.MsgPolarAxisXGridSpacingChanged">
+    <value>Der Abstand kann bei einer Polar X-Achse nicht angegeben werden.</value>
+  </data>
+  <data name="ChartStringId.MsgPolarAxisXLogarithmic">
+    <value>X-Achse von Polardiagrammen unterstützen keine lograrithmischen Skalen.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPieArgumentScaleType">
+    <value>Der Argumenttyp {0} kann nicht angegeben werden, denn der Filter für die Explosionsdarstellung passt nicht dazu.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectDoughnutHolePercent">
+    <value>Die Einstellung für die Lochbreite im Ring muss zwischen 0 und 100 liegen.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLineTensionPercent">
+    <value>Die Durchsichtigkeit muss grösser oder gleich 0
+und kleiner 100 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgEmptyChart">
+    <value>
+Es befindet sich keine sichtbare Serie im Diagramm. Fügen Sie eine Serie hinzu oder stellen Sie sicher das mindestens eine sichtbar ist.
+    </value>
+  </data>
+  <data name="ChartStringId.MsgNoPanes">
+    <value>Es befinden sich keine sichtbaren Bereiche im Diagram.</value>
+  </data>
+  <data name="ChartStringId.MsgChartLoadingException">
+    <value>Die angegebene XML-Datei kann nicht geöffnet werden, da sie entweder ungültig ist, oder defekt ist.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPaneWeight">
+    <value>Die Gewichtung des Bereichs sollte grösser 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPaneDistance">
+    <value>Der Abstand zwischen den Bereichen sollte grösser oder gleich 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgEmptyPaneTextForVerticalLayout">
+    <value>
+Ordnen sie diesen Bereich einer Serie zu um die Serie in diesem Bereich anzuzeigen
+    </value>
+  </data>
+  <data name="ChartStringId.MsgEmptyPaneTextForHorizontalLayout">
+    <value>
+Ordnen sie diesen Bereich einer Serie zu um die Serie in diesem Bereich anzuzeigen
+    </value>
+  </data>
+  <data name="ChartStringId.MsgInvalidPaneSizeInPixels">
+    <value>Die Bereichsgrösse in Pixeln sollte grösser oder gleich 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTopNCount">
+    <value>Die Anzahl der Top N sollte grösser 0 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTopNThresholdValue">
+    <value>Der Schwellenwert der Top N sollte grösser 0 sein .</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTopNThresholdPercent">
+    <value>Die Prozentangabe des Schwellenwertes sollte grösser als 0 und kleiner als 100 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidPane">
+    <value>Der angegebene Bereich gehört nicht zu einem Diagramm, oder zeigt die aktuelle Achse nicht, deren Sichtbarkeit verändert werden soll.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSummaryFunction">
+    <value>Die angegeben Summenformel hat ein ungültiges Format.</value>
+  </data>
+  <data name="ChartStringId.MsgNullFinancialIndicatorArgument">
+    <value>Das Argument eines Markierungspunktes in Finanzdiagrammen kann nicht leer sein.</value>
+  </data>
+  <data name="ChartStringId.MsgUnsupportedValueLevel">
+    <value>Der Wert {0} wird von {1} nicht unterstützt.</value>
+  </data>
+  <data name="ChartStringId.MsgSummaryFunctionIsNotRegistered">
+    <value>Eine Summenfunktion mit dem Namen '{0}' ist nicht registriert.</value>
+  </data>
+  <data name="ChartStringId.MsgSummaryFunctionParameterIsNotSpecified">
+    <value>Sie müssen alle Parameter der Summenfunktion angeben.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleSummaryFunctionDimension">
+    <value>Die Dimension der Summenfunktion{0} ist nicht mit der Serie {1} komaptibel. ({2} sollte aber {3} sein).</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSummaryFunctionParametersCount">
+    <value>Die Summenfunktion '{0}' hat {1} Parameter statt {2}.</value>
+  </data>
+  <data name="ChartStringId.MsgWebInvalidWidthUnit">
+    <value>Die Diagrammbreite muss in Pixeln angegeben werden</value>
+  </data>
+  <data name="ChartStringId.MsgWebInvalidHeightUnit">
+    <value>Die Diagrammhöhe muss in Pixeln angegeben werden</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBubbleMaxSize">
+    <value>Die Maximalgrösse muss grösser als das Minimum sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBubbleMinSize">
+    <value>Die Minimalgrösse muss grösser als 0 und kleiner als das Maximum sein.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidLogarithmicBase">
+    <value>Die Basis muss grösser 1 sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisRangeMinValue">
+    <value>Der Minimalwert muss für den Achsenbereich angegeben werden.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisRangeMaxValue">
+    <value>Der Maximalwert muss für den Achsenbereich angegeben werden.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisRangeMinValueInternal">
+    <value>Minimales Intervall kann nicht NaN oder unendlich sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisRangeMaxValueInternal">
+    <value>Maximales Intervall kann nicht NaN oder unendlich sein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPropertyValue">
+    <value>Ungültiger Wert "{0}" für eigenschaft "{1}"</value>
+  </data>
+  <data name="ChartStringId.MsgMinMaxDifferentTypes">
+    <value>Die Typen für den Minimalwert und Maximalwert stimmen nicht überein.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisRange">
+    <value>Der Minimalwert der Achse ({0}) sollte kleiner als der Maximalwert ({1}) sein.</value>
+  </data>
+  <data name="ChartStringId.MsgCantSwapSeries">
+    <value>Es ist unmöglich automatisch erstellte und feste Reihe zu tauschen.</value>
+  </data>
+  <data name="ChartStringId.MsgAnnotationMovingToolTip">
+    <value>Verwenden Sie Strg mit der linken Maustaste um den Kommentar zu bewegen.</value>
+  </data>
+  <data name="ChartStringId.MsgAnnotationResizingToolTip">
+    <value>Verwenden Sie Strg mit der linken Maustaste um den Kommentar zu ändern.</value>
+  </data>
+  <data name="ChartStringId.MsgAnnotationRotationToolTip">
+    <value>Verwenden Sie Strg mit der linken Maustaste
+um den Kommentar zu drehen.</value>
+  </data>
+  <data name="ChartStringId.MsgAnchorPointMovingToolTip">
+    <value>Verwenden Sie Strg mit der linken Maustaste um den Ankerpunkt zu bewegen.</value>
+  </data>
+  <data name="ChartStringId.MsgDiagramToPointIncorrectValue">
+    <value>Die angegebenen Parameter {0} Typ entspricht nicht dem geeigneten Massstab Typ {1} für diese Achse.
+</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBarDistanceFixedPropertyUsing">
+    <value>Kann die Eigenschaft BarDistanceFixed nicht setzen, es sei denn die Serie wird der Diagramm Sammlung hinzugefügt.</value>
+  </data>
+  <data name="ChartStringId.MsgFileNotFound">
+    <value>Datei '{0}' nicht gefunden.</value>
+  </data>
+  <data name="ChartStringId.MsgCantImportHolidays">
+    <value>Konnte Ferien aus der {0}' Datei nicht importieren.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBarSeriesLabelIndent">
+    <value>Die Einrückung muss grösser oder gleich 0 sein.</value>
+  </data>
+  <data name="ChartStringId.VerbAbout">
+    <value>Info</value>
+  </data>
+  <data name="ChartStringId.VerbAboutDescription">
+    <value>Informationen über XtraCharts</value>
+  </data>
+  <data name="ChartStringId.VerbPopulate">
+    <value>Füllen</value>
+  </data>
+  <data name="ChartStringId.VerbPopulateDescription">
+    <value>Füllt die Datenquelle des Diagramms mit Daten</value>
+  </data>
+  <data name="ChartStringId.VerbClearDataSource">
+    <value>Datenquelle leeren</value>
+  </data>
+  <data name="ChartStringId.VerbClearDataSourceDescription">
+    <value>Leere die Einträge der Datenquelle.</value>
+  </data>
+  <data name="ChartStringId.VerbDataSnapshot">
+    <value>Daten-Schnappschuss</value>
+  </data>
+  <data name="ChartStringId.VerbDataSnapshotDescription">
+    <value>Kopiert alle Daten der Datenquelle in das Diagramm und entfernt die Bindung zur Datenquelle.</value>
+  </data>
+  <data name="ChartStringId.VerbSeries">
+    <value>Reihen...</value>
+  </data>
+  <data name="ChartStringId.VerbSeriesDescription">
+    <value>Öffnet den Editor für Reihen.</value>
+  </data>
+  <data name="ChartStringId.VerbResetLegendPointOptions">
+    <value>Legende zurücksetzen</value>
+  </data>
+  <data name="ChartStringId.VerbResetLegendPointOptionsDescription">
+    <value>Setzt die Einstellungen der Legende zurück</value>
+  </data>
+  <data name="ChartStringId.VerbEditPalettes">
+    <value>Farbpaletten...</value>
+  </data>
+  <data name="ChartStringId.VerbEditPalettesDescription">
+    <value>Öffnet den Editor für Farbpaletten.</value>
+  </data>
+  <data name="ChartStringId.VerbWizard">
+    <value>Diagrammassistent...</value>
+  </data>
+  <data name="ChartStringId.VerbWizardDescription">
+    <value>Startet den Diagrammassistenten, der es Ihnen erlaubt Einstellungen am Diagramm vorzunehmen.</value>
+  </data>
+  <data name="ChartStringId.VerbSaveLayout">
+    <value>Speichern...</value>
+  </data>
+  <data name="ChartStringId.VerbSaveLayoutDescription">
+    <value>Diagramm als XML-Datei speichern.</value>
+  </data>
+  <data name="ChartStringId.VerbLoadLayout">
+    <value>Öffnen...</value>
+  </data>
+  <data name="ChartStringId.VerbLoadLayoutDescription">
+    <value>Öffnet ein Diagramm aus einer XML-Datei.</value>
+  </data>
+  <data name="ChartStringId.TrnSeriesChanged">
+    <value>Reihe ändern</value>
+  </data>
+  <data name="ChartStringId.TrnDataFiltersChanged">
+    <value>Datenfilter ändern</value>
+  </data>
+  <data name="ChartStringId.TrnChartTitlesChanged">
+    <value>Diagrammtitel ändern</value>
+  </data>
+  <data name="ChartStringId.TrnStripsChanged">
+    <value>Streifen ändern</value>
+  </data>
+  <data name="ChartStringId.TrnPalettesChanged">
+    <value>Farben ändern</value>
+  </data>
+  <data name="ChartStringId.TrnConstantLinesChanged">
+    <value>Feste Linie ändern</value>
+  </data>
+  <data name="ChartStringId.TrnCustomAxisLabelChanged">
+    <value>Beschriftung der Achsen ändern</value>
+  </data>
+  <data name="ChartStringId.TrnSecondaryAxesXChanged">
+    <value>Sekundäre X-Achse geändert</value>
+  </data>
+  <data name="ChartStringId.TrnSecondaryAxesYChanged">
+    <value>Sekundäre Y-Achse geändert</value>
+  </data>
+  <data name="ChartStringId.TrnXYDiagramPanesChanged">
+    <value>Bereich geändert</value>
+  </data>
+  <data name="ChartStringId.TrnChartWizard">
+    <value>Einstellung des Diagrammassistenten verwenden.</value>
+  </data>
+  <data name="ChartStringId.TrnSeriesDeleted">
+    <value>Reihe löschen</value>
+  </data>
+  <data name="ChartStringId.TrnChartTitleDeleted">
+    <value>Diagrammtitel löschen</value>
+  </data>
+  <data name="ChartStringId.TrnConstantLineDeleted">
+    <value>Feste Linie löschen</value>
+  </data>
+  <data name="ChartStringId.TrnPaneDeleted">
+    <value>Bereich löschen</value>
+  </data>
+  <data name="ChartStringId.TrnSecondryAxisXDeleted">
+    <value>Sekundäre X-Achse gelöscht</value>
+  </data>
+  <data name="ChartStringId.TrnSecondryAxisYDeleted">
+    <value>Sekundäre Y-Achse gelöscht</value>
+  </data>
+  <data name="ChartStringId.TrnExplodedPoints">
+    <value>Explosionsdarstellung geändert</value>
+  </data>
+  <data name="ChartStringId.TrnExplodedPointsFilters">
+    <value>Explosionsfilter geändert</value>
+  </data>
+  <data name="ChartStringId.TrnLegendPointOptionsReset">
+    <value>LegendPointOptions zurückgesetzt</value>
+  </data>
+  <data name="ChartStringId.TrnLoadLayout">
+    <value>Das Diagrammlayout wird geladen.</value>
+  </data>
+  <data name="ChartStringId.TrnSeriesTitleChanged">
+    <value>Der Titel der Reihe wurde geändert.</value>
+  </data>
+  <data name="ChartStringId.TrnSeriesTitleDeleted">
+    <value>Der Titel der Reihe wurde gelöscht</value>
+  </data>
+  <data name="ChartStringId.TrnAxisVisibilityChanged">
+    <value>Achsensichtbarkeit geändert</value>
+  </data>
+  <data name="ChartStringId.TrnSummaryFunctionChanged">
+    <value>Summenfunktion geändert</value>
+  </data>
+  <data name="ChartStringId.PieIncorrectValuesText">
+    <value>Diese Serie kann keine negativen Werte darstellen. Alle Werte müssen grösser oder gleich 0 sein.</value>
+  </data>
+  <data name="ChartStringId.AxisXDefaultTitle">
+    <value>Achse der Argumente</value>
+  </data>
+  <data name="ChartStringId.AxisYDefaultTitle">
+    <value>Achse der Werte</value>
+  </data>
+  <data name="ChartStringId.DefaultWizardPageLabel">
+    <value>Assistent</value>
+  </data>
+  <data name="ChartStringId.MenuItemAdd">
+    <value>Hinzufügen</value>
+  </data>
+  <data name="ChartStringId.MenuItemInsert">
+    <value>Einfügen</value>
+  </data>
+  <data name="ChartStringId.MenuItemDelete">
+    <value>Löschen</value>
+  </data>
+  <data name="ChartStringId.MenuItemClear">
+    <value>Entfernen</value>
+  </data>
+  <data name="ChartStringId.MenuItemMoveUp">
+    <value>Nach oben</value>
+  </data>
+  <data name="ChartStringId.MenuItemMoveDown">
+    <value>Nach unten</value>
+  </data>
+  <data name="ChartStringId.WizAutoCreatedSeries">
+    <value>Erzeuge Reihen</value>
+  </data>
+  <data name="ChartStringId.WizSpecifyDataFilters">
+    <value>Drücken Sie den Knopf...</value>
+  </data>
+  <data name="ChartStringId.WizDataFiltersEntered">
+    <value>{0} Datenfilter</value>
+  </data>
+  <data name="ChartStringId.WizDataFiltersDisabled">
+    <value>(keine)</value>
+  </data>
+  <data name="ChartStringId.WizBackImageFileNameFilter">
+    <value>Bild Dateien(*.gif;*.jpg;*.jpeg;*.bmp;*.wmf;*.png)|*.gif;*.jpg;*.jpeg;*.bmp;*.wmf;*.png|All files(*.*)|*.*</value>
+  </data>
+  <data name="ChartStringId.WizNoBackImage">
+    <value>(Keines)</value>
+  </data>
+  <data name="ChartStringId.WizConstructionGroupName">
+    <value>Erstellung</value>
+  </data>
+  <data name="ChartStringId.WizPresentationGroupName">
+    <value>Präsentation</value>
+  </data>
+  <data name="ChartStringId.WizChartTypePageName">
+    <value>Diagrammtyp</value>
+  </data>
+  <data name="ChartStringId.WizAppearancePageName">
+    <value>Aussehen</value>
+  </data>
+  <data name="ChartStringId.WizSeriesPageName">
+    <value>Reihen</value>
+  </data>
+  <data name="ChartStringId.WizDataPageName">
+    <value>Daten</value>
+  </data>
+  <data name="ChartStringId.WizChartPageName">
+    <value>Hintergrund</value>
+  </data>
+  <data name="ChartStringId.WizDiagramPageName">
+    <value>Diagramm</value>
+  </data>
+  <data name="ChartStringId.WizAxesPageName">
+    <value>Achsen</value>
+  </data>
+  <data name="ChartStringId.WizPanesPageName">
+    <value>Bereiche</value>
+  </data>
+  <data name="ChartStringId.WizAxesAlignmentNear">
+    <value>Nah</value>
+  </data>
+  <data name="ChartStringId.WizAxesAlignmentFar">
+    <value>Fern</value>
+  </data>
+  <data name="ChartStringId.WizAxesAlignmentZero">
+    <value>Nullpunkt</value>
+  </data>
+  <data name="ChartStringId.WizSeriesViewPageName">
+    <value>Reihenansicht</value>
+  </data>
+  <data name="ChartStringId.WizSeriesLabelsPageName">
+    <value>Punktbeschriftung</value>
+  </data>
+  <data name="ChartStringId.WizChartTitlesPageName">
+    <value>Diagrammtitel</value>
+  </data>
+  <data name="ChartStringId.WizLegendPageName">
+    <value>Legenden</value>
+  </data>
+  <data name="ChartStringId.WizSeriesPointPageName">
+    <value>Punkte</value>
+  </data>
+  <data name="ChartStringId.WizSeriesDataBindingPageName">
+    <value>Datenanbindung</value>
+  </data>
+  <data name="ChartStringId.WizChartTypePageDescription">
+    <value>Wählen Sie einen Diagrammtyp. Um die Diagrammtypen zu filtern, benutzen Sie bitte das Auswahlfeld.</value>
+  </data>
+  <data name="ChartStringId.WizAppearancePageDescription">
+    <value>Wählen Sie die Farbpalette des Diagramms. Auch der Stil, der auf der Farbpalette basiert, kann ausgewählt werden.</value>
+  </data>
+  <data name="ChartStringId.WizChartPageDescription">
+    <value>Die Diagrammeinstellungen ändern.</value>
+  </data>
+  <data name="ChartStringId.WizDiagramPageDescription">
+    <value>Einstellungen für das gesamte Diagramm</value>
+  </data>
+  <data name="ChartStringId.WizLegendPageDescription">
+    <value>Hier passen Sie das Aussehen und die Position der Legenden an.</value>
+  </data>
+  <data name="ChartStringId.WizFormTitle">
+    <value>Diagrammassistent</value>
+  </data>
+  <data name="ChartStringId.WizHatchMin">
+    <value>Minimum</value>
+  </data>
+  <data name="ChartStringId.WizHatchVertical">
+    <value>Vertikal</value>
+  </data>
+  <data name="ChartStringId.WizHatchForwardDiagonal">
+    <value>Vorwärts Diagonal</value>
+  </data>
+  <data name="ChartStringId.WizHatchBackwardDiagonal">
+    <value>Rückwärts Diagonal</value>
+  </data>
+  <data name="ChartStringId.WizHatchMax">
+    <value>Maximum</value>
+  </data>
+  <data name="ChartStringId.WizHatchCross">
+    <value>Kreuz</value>
+  </data>
+  <data name="ChartStringId.WizHatchLargeGrid">
+    <value>Grosses Gitter</value>
+  </data>
+  <data name="ChartStringId.WizHatchDiagonalCross">
+    <value>Diagonales Kreuz</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent05">
+    <value>5 Prozent</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent10">
+    <value>10 Prozent</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent20">
+    <value>20 Prozent</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent25">
+    <value>25 Prozent</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent30">
+    <value>30 Prozent</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent40">
+    <value>40 Prozent</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent50">
+    <value>50 Prozent</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent60">
+    <value>60 Prozent</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent70">
+    <value>70 Prozent</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent75">
+    <value>75 Prozent</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent80">
+    <value>80 Prozent</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent90">
+    <value>90 Prozent</value>
+  </data>
+  <data name="ChartStringId.WizHatchLightDownwardDiagonal">
+    <value>Hell abwärts Diagonal</value>
+  </data>
+  <data name="ChartStringId.WizHatchLightUpwardDiagonal">
+    <value>Hell aufwärts Diagonal</value>
+  </data>
+  <data name="ChartStringId.WizHatchDarkDownwardDiagonal">
+    <value>Dunkel abwärts Diagonal</value>
+  </data>
+  <data name="ChartStringId.WizHatchDarkUpwardDiagonal">
+    <value>Dunkel aufwärts Diagonal</value>
+  </data>
+  <data name="ChartStringId.WizHatchWideDownwardDiagonal">
+    <value>Breit abwärts Diagonal</value>
+  </data>
+  <data name="ChartStringId.WizHatchWideUpwardDiagonal">
+    <value>Breit aufwärts Diagonal</value>
+  </data>
+  <data name="ChartStringId.WizHatchLightVertical">
+    <value>Hell Vertikal</value>
+  </data>
+  <data name="ChartStringId.WizHatchLightHorizontal">
+    <value>Hell Horizontal</value>
+  </data>
+  <data name="ChartStringId.WizHatchNarrowVertical">
+    <value>Schmal Vertikal</value>
+  </data>
+  <data name="ChartStringId.WizHatchNarrowHorizontal">
+    <value>Schmal Horizontal</value>
+  </data>
+  <data name="ChartStringId.WizHatchDarkVertical">
+    <value>Dunkel Vertikal</value>
+  </data>
+  <data name="ChartStringId.WizHatchDarkHorizontal">
+    <value>Dunkel Horizontal</value>
+  </data>
+  <data name="ChartStringId.WizHatchDashedDownwardDiagonal">
+    <value>Striche absteigend Diagonal</value>
+  </data>
+  <data name="ChartStringId.WizHatchDashedUpwardDiagonal">
+    <value>Striche aufsteigend Diagonal</value>
+  </data>
+  <data name="ChartStringId.WizHatchDashedHorizontal">
+    <value>Striche Horizontal</value>
+  </data>
+  <data name="ChartStringId.WizHatchDashedVertical">
+    <value>Striche Vertikal</value>
+  </data>
+  <data name="ChartStringId.WizHatchSmallConfetti">
+    <value>Kleines Konfetti</value>
+  </data>
+  <data name="ChartStringId.WizHatchLargeConfetti">
+    <value>Grosses Konfetti</value>
+  </data>
+  <data name="ChartStringId.WizHatchZigZag">
+    <value>ZickZack</value>
+  </data>
+  <data name="ChartStringId.WizHatchWave">
+    <value>Welle</value>
+  </data>
+  <data name="ChartStringId.WizHatchDiagonalBrick">
+    <value>Ziegel Diagonal</value>
+  </data>
+  <data name="ChartStringId.WizHatchHorizontalBrick">
+    <value>Ziegel Horizontal</value>
+  </data>
+  <data name="ChartStringId.WizHatchWeave">
+    <value>Gewebe</value>
+  </data>
+  <data name="ChartStringId.WizHatchPlaid">
+    <value>Karriert</value>
+  </data>
+  <data name="ChartStringId.WizHatchDivot">
+    <value>Rasen</value>
+  </data>
+  <data name="ChartStringId.WizHatchDottedGrid">
+    <value>Punktgitter</value>
+  </data>
+  <data name="ChartStringId.WizHatchDottedDiamond">
+    <value>Punktdiamant</value>
+  </data>
+  <data name="ChartStringId.WizHatchShingle">
+    <value>Schindel</value>
+  </data>
+  <data name="ChartStringId.WizHatchTrellis">
+    <value>Gatter</value>
+  </data>
+  <data name="ChartStringId.WizHatchSphere">
+    <value>Kugel</value>
+  </data>
+  <data name="ChartStringId.WizHatchSmallGrid">
+    <value>Kleines Gitter</value>
+  </data>
+  <data name="ChartStringId.WizHatchSmallCheckerBoard">
+    <value>Kleines Schachbrett</value>
+  </data>
+  <data name="ChartStringId.WizHatchLargeCheckerBoard">
+    <value>Grosses Schachbrett</value>
+  </data>
+  <data name="ChartStringId.WizHatchOutlinedDiamond">
+    <value>Offener Diamant</value>
+  </data>
+  <data name="ChartStringId.WizHatchSolidDiamond">
+    <value>Solider Diamant</value>
+  </data>
+  <data name="ChartStringId.WizDataMemberNoneString">
+    <value>(Keines)</value>
+  </data>
+  <data name="ChartStringId.WizPositionLeftColumn">
+    <value>Linke Spalte</value>
+  </data>
+  <data name="ChartStringId.WizPositionLeft">
+    <value>Links</value>
+  </data>
+  <data name="ChartStringId.WizPositionCenter">
+    <value>Zentriert</value>
+  </data>
+  <data name="ChartStringId.WizPositionRight">
+    <value>Rechts</value>
+  </data>
+  <data name="ChartStringId.WizGradientBottomLeftToTopRight">
+    <value>Untenlinks nach Obenrechts</value>
+  </data>
+  <data name="ChartStringId.WizGradientBottomRightToTopLeft">
+    <value>Untenrechts nach Obenlinks</value>
+  </data>
+  <data name="ChartStringId.WizGradientBottomToTop">
+    <value>Unten nach Oben</value>
+  </data>
+  <data name="ChartStringId.WizGradientFromCenter">
+    <value>Vom Mittelpunkt</value>
+  </data>
+  <data name="ChartStringId.WizGradientLeftToRight">
+    <value>Links nach Rechts</value>
+  </data>
+  <data name="ChartStringId.WizGradientRightToLeft">
+    <value>Rechts nach Links</value>
+  </data>
+  <data name="ChartStringId.WizGradientToCenter">
+    <value>Zum Mittelpunkt</value>
+  </data>
+  <data name="ChartStringId.WizGradientTopLeftToBottomRight">
+    <value>Obenlinks nach Untenrechts</value>
+  </data>
+  <data name="ChartStringId.WizGradientTopRightToBottomLeft">
+    <value>Obenrechts nach Untenlinks</value>
+  </data>
+  <data name="ChartStringId.WizGradientTopToBottom">
+    <value>Oben nach Unten</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelValue">
+    <value>Wert</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelValue_1">
+    <value>Wert_1</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelValue_2">
+    <value>Wert_2</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelLow">
+    <value>Tief</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelHigh">
+    <value>Hoch</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelOpen">
+    <value>Öffnen</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelClose">
+    <value>Schliessen</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeMeasureUnitYear">
+    <value>Jahr</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeMeasureUnitQuarter">
+    <value>Quartal</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeMeasureUnitMonth">
+    <value>Monat</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeMeasureUnitWeek">
+    <value>Woche</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeMeasureUnitDay">
+    <value>Tag</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeMeasureUnitHour">
+    <value>Stunde</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeMeasureUnitSecond">
+    <value>Sekunde</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeMeasureUnitMillisecond">
+    <value>Millisekunde</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideBar">
+    <value>Säulen</value>
+  </data>
+  <data name="ChartStringId.WizResolveOvarlappingModeDefault">
+    <value>Standard</value>
+  </data>
+  <data name="ChartStringId.WizErrorMessageTitle">
+    <value>Diagrammassistent</value>
+  </data>
+  <data name="ChartStringId.WizScrollBarAlignmentNear">
+    <value>Nah</value>
+  </data>
+  <data name="ChartStringId.WizScrollBarAlignmentFar">
+    <value>Fern</value>
+  </data>
+  <data name="ChartStringId.WizSeriesLabelTextOrientationTopToBottom">
+    <value>Oben nach Unten</value>
+  </data>
+  <data name="ChartStringId.WizSeriesLabelTextOrientationBottomToTop">
+    <value>Unten nach Oben</value>
+  </data>
+  <data name="ChartStringId.WizBarSeriesLabelPositionTop">
+    <value>Oben</value>
+  </data>
+  <data name="ChartStringId.WizBarSeriesLabelPositionCenter">
+    <value>Zentriert</value>
+  </data>
+  <data name="ChartStringId.WizPieSeriesLabelPositionInside">
+    <value>Innen</value>
+  </data>
+  <data name="ChartStringId.WizPieSeriesLabelPositionOutside">
+    <value>Aussen</value>
+  </data>
+  <data name="ChartStringId.WizPieSeriesLabelPositionTangent">
+    <value>Tangential</value>
+  </data>
+  <data name="ChartStringId.WizPieSeriesLabelPositionTwoColumns">
+    <value>Zweispaltig</value>
+  </data>
+  <data name="ChartStringId.WizBubbleLabelValueToDisplayValue">
+    <value>Wert</value>
+  </data>
+  <data name="ChartStringId.WizBubbleLabelValueToDisplayWeight">
+    <value>Gewichtung</value>
+  </data>
+  <data name="ChartStringId.WizBubbleLabelValueToDisplayValueAndWeight">
+    <value>Wert und Gewichtung</value>
+  </data>
+  <data name="ChartStringId.WizBubbleLabelPositionCenter">
+    <value>Zentriert</value>
+  </data>
+  <data name="ChartStringId.WizBubbleLabelPositionOutside">
+    <value>Aussen</value>
+  </data>
+  <data name="ChartStringId.WizFunnelSeriesLabelPositionCenter">
+    <value>Zentriert</value>
+  </data>
+  <data name="ChartStringId.WizFunnelSeriesLabelPositionLeft">
+    <value>Links</value>
+  </data>
+  <data name="ChartStringId.WizFunnelSeriesLabelPositionLeftColumn">
+    <value>Linke Spalte</value>
+  </data>
+  <data name="ChartStringId.WizFunnelSeriesLabelPositionRight">
+    <value>Rechts</value>
+  </data>
+  <data name="ChartStringId.WizFunnelSeriesLabelPositionRightColumn">
+    <value>Rechte Spalte</value>
+  </data>
+  <data name="ChartStringId.WizAnnotationConnectorStyleLine">
+    <value>Linie</value>
+  </data>
+  <data name="ChartStringId.WizStringAlignmentCenter">
+    <value>Zentriert</value>
+  </data>
+  <data name="ChartStringId.WizStringAlignmentNear">
+    <value>Nah</value>
+  </data>
+  <data name="ChartStringId.WizStringAlignmentFar">
+    <value>Fern</value>
+  </data>
+  <data name="ChartStringId.WizChartImageSizeModeStretch">
+    <value>Strecken</value>
+  </data>
+  <data name="ChartStringId.WizAnchorPointChart">
+    <value>Hintergrund</value>
+  </data>
+  <data name="ChartStringId.WizIndentUndefined">
+    <value>Undefiniert</value>
+  </data>
+  <data name="ChartStringId.WizIndentDefault">
+    <value>Standard</value>
+  </data>
+  <data name="ChartStringId.SvnStackedBar">
+    <value>Gestapelte Säulen</value>
+  </data>
+  <data name="ChartStringId.SvnFullStackedBar">
+    <value>Gestapelte Säulen (100%)</value>
+  </data>
+  <data name="ChartStringId.SvnPie">
+    <value>Torte</value>
+  </data>
+  <data name="ChartStringId.SvnFunnel">
+    <value>Trichter</value>
+  </data>
+  <data name="ChartStringId.SvnDoughnut">
+    <value>Ring</value>
+  </data>
+  <data name="ChartStringId.SvnPoint">
+    <value>Punkte</value>
+  </data>
+  <data name="ChartStringId.SvnLine">
+    <value>Linie</value>
+  </data>
+  <data name="ChartStringId.SvnStepLine">
+    <value>Stufenlinie</value>
+  </data>
+  <data name="ChartStringId.SvnSpline3D">
+    <value>3D-Spline</value>
+  </data>
+  <data name="ChartStringId.SvnArea">
+    <value>Fläche</value>
+  </data>
+  <data name="ChartStringId.SvnSplineArea">
+    <value>Splinefläche</value>
+  </data>
+  <data name="ChartStringId.SvnStackedArea">
+    <value>Gestapelte Fläche</value>
+  </data>
+  <data name="ChartStringId.SvnSplineStackedArea">
+    <value>Gestapelte Splinefläche</value>
+  </data>
+  <data name="ChartStringId.SvnFullStackedArea">
+    <value>Gestapelte Fläche (100%)</value>
+  </data>
+  <data name="ChartStringId.SvnSplineFullStackedArea">
+    <value>Gestapelte Splinefläche (100%)</value>
+  </data>
+  <data name="ChartStringId.SvnArea3D">
+    <value>3D-Fläche</value>
+  </data>
+  <data name="ChartStringId.SvnStackedArea3D">
+    <value>Gestapelte 3D-Fläche</value>
+  </data>
+  <data name="ChartStringId.SvnFullStackedArea3D">
+    <value>Gestapelte 3D-Fläche (100%)</value>
+  </data>
+  <data name="ChartStringId.SvnSpline3DArea">
+    <value>3D-Splinefläche</value>
+  </data>
+  <data name="ChartStringId.SvnSplineAreaStacked3D">
+    <value>Gestapelte 3D-Splinefläche</value>
+  </data>
+  <data name="ChartStringId.SvnSplineAreaFullStacked3D">
+    <value>Gestapelte 3D-Splinefläche (100%)</value>
+  </data>
+  <data name="ChartStringId.SvnStock">
+    <value>Kurs</value>
+  </data>
+  <data name="ChartStringId.SvnCandleStick">
+    <value>Leuchter</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideRangeBar">
+    <value>Bereichsbalken nebeneinander</value>
+  </data>
+  <data name="ChartStringId.SvnOverlappedRangeBar">
+    <value>Bereichsbalken</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideGantt">
+    <value>Gantt nebeneinander</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideBar3D">
+    <value>3D-Säulen</value>
+  </data>
+  <data name="ChartStringId.SvnStackedBar3D">
+    <value>Gestapelte 3D-Säulen</value>
+  </data>
+  <data name="ChartStringId.SvnFullStackedBar3D">
+    <value>Gestapelte 3D-Säulen (100%)</value>
+  </data>
+  <data name="ChartStringId.SvnManhattanBar">
+    <value>Manhattan Säulen</value>
+  </data>
+  <data name="ChartStringId.SvnPie3D">
+    <value>3D-Torte</value>
+  </data>
+  <data name="ChartStringId.SvnDoughnut3D">
+    <value>3D-Ring</value>
+  </data>
+  <data name="ChartStringId.SvnFunnel3D">
+    <value>Trichter 3D</value>
+  </data>
+  <data name="ChartStringId.SvnLine3D">
+    <value>3D-Linie</value>
+  </data>
+  <data name="ChartStringId.SvnStepLine3D">
+    <value>3D-Stufenlinie</value>
+  </data>
+  <data name="ChartStringId.SvnRadarPoint">
+    <value>Radar Punkte</value>
+  </data>
+  <data name="ChartStringId.SvnRadarArea">
+    <value>Radar Fläche</value>
+  </data>
+  <data name="ChartStringId.SvnPolarPoint">
+    <value>Polar Punkte</value>
+  </data>
+  <data name="ChartStringId.SvnPolarArea">
+    <value>Polar Fläche</value>
+  </data>
+  <data name="ChartStringId.IndRegressionLine">
+    <value>Regressionsgeraden</value>
+  </data>
+  <data name="ChartStringId.IndTrendLine">
+    <value>Entwicklungslinie</value>
+  </data>
+  <data name="ChartStringId.IndFibonacciIndicator">
+    <value>Fibonacci Indikator</value>
+  </data>
+  <data name="ChartStringId.IndSimpleMovingAverage">
+    <value>Einfache Durchschnittsbewegungen</value>
+  </data>
+  <data name="ChartStringId.IndExponentialMovingAverage">
+    <value>Exponentielle Durchschnittsbewegungen</value>
+  </data>
+  <data name="ChartStringId.IndWeightedMovingAverage">
+    <value>Gewichtete Durchschnittsbewegungen</value>
+  </data>
+  <data name="ChartStringId.IndTriangularMovingAverage">
+    <value>Dreieck Durchschnittsbewegungen</value>
+  </data>
+  <data name="ChartStringId.AppDefault">
+    <value>Standard</value>
+  </data>
+  <data name="ChartStringId.DefaultMinValue">
+    <value>Minimum</value>
+  </data>
+  <data name="ChartStringId.DefaultMaxValue">
+    <value>Maximum</value>
+  </data>
+  <data name="ChartStringId.IncompatibleSeriesView">
+    <value>(inkompatibel)</value>
+  </data>
+  <data name="ChartStringId.InvisibleSeriesView">
+    <value>(unsichtbar)</value>
+  </data>
+  <data name="ChartStringId.IncompatibleSeriesHeader">
+    <value>Diese Reihe ist inkompatibel. </value>
+  </data>
+  <data name="ChartStringId.IncompatibleSeriesMessage">
+    <value>mit {0} von "{1}"</value>
+  </data>
+  <data name="ChartStringId.IOCaption">
+    <value>Verbotene Operation</value>
+  </data>
+  <data name="ChartStringId.IODeleteDefaultPane">
+    <value>Der Standardbereich kann nicht entfernt werden</value>
+  </data>
+  <data name="ChartStringId.IODeleteAxis">
+    <value>Die erste Achse darf nicht gelöscht werden. Wenn Sie diese ausblenden möchten, dann setzten Sie die Eigenschaft Sichtbar auf Nein.</value>
+  </data>
+  <data name="ChartStringId.PrintSizeModeNone">
+    <value>Keiner (Das Diagramm wird ohne Grössenanpassung gedruckt)</value>
+  </data>
+  <data name="ChartStringId.PrintSizeModeStretch">
+    <value>Strecken (Dat Diagramm wird auf die Seitengrösse gestreckt)</value>
+  </data>
+  <data name="ChartStringId.PrintSizeModeZoom">
+    <value>Anpassen (Das Diagramm wird an die Seitengrösse angepasst)</value>
+  </data>
+  <data name="ChartStringId.StyleAllColors">
+    <value>Alle Farben</value>
+  </data>
+  <data name="ChartStringId.StyleColorNumber">
+    <value>Farbe {0}</value>
+  </data>
+  <data name="ChartStringId.DefaultPaneName">
+    <value>Standardbereich</value>
+  </data>
+  <data name="ChartStringId.OthersArgument">
+    <value>Andere</value>
+  </data>
+  <data name="ChartStringId.ExplodedPointsDialogExplodedColumn">
+    <value>Explodiert</value>
+  </data>
+  <data name="ChartStringId.ScaleTypeQualitative">
+    <value>Qualitativ</value>
+  </data>
+  <data name="ChartStringId.ScaleTypeNumerical">
+    <value>Numerisch</value>
+  </data>
+  <data name="ChartStringId.ScaleTypeDateTime">
+    <value>Datum/Zeit</value>
+  </data>
+  <data name="ChartStringId.FunctionNameMin">
+    <value>Min</value>
+  </data>
+  <data name="ChartStringId.FunctionNameMax">
+    <value>Max</value>
+  </data>
+  <data name="ChartStringId.FunctionNameSum">
+    <value>Summe</value>
+  </data>
+  <data name="ChartStringId.FunctionNameAverage">
+    <value>Durchschnitt</value>
+  </data>
+  <data name="ChartStringId.FunctionNameCount">
+    <value>Anzahl</value>
+  </data>
+  <data name="ChartStringId.FunctionArgumentName">
+    <value>Argumente</value>
+  </data>
+  <data name="ChartStringId.TitleSummaryFunction">
+    <value>Summenfunktion</value>
+  </data>
+  <data name="ChartStringId.PanesVisibilityDialogVisibleColumn">
+    <value>Sichtbar</value>
+  </data>
+  <data name="ChartStringId.PanesVisibilityDialogPanesColumn">
+    <value>Bereiche</value>
+  </data>
+  <data name="ChartStringId.FibonacciArcs">
+    <value>Fibonacci Kreise</value>
+  </data>
+  <data name="ChartStringId.FibonacciFans">
+    <value>Fibonacci Fächer</value>
+  </data>
+  <data name="ChartStringId.FibonacciRetracement">
+    <value>Fibonacci Zurückverfolgung</value>
+  </data>
+  <data name="ChartStringId.AnnotationChartAnchorPoint">
+    <value>Grafik Ankerpunkt</value>
+  </data>
+  <data name="ChartStringId.AnnotationPaneAnchorPoint">
+    <value>Scheiben Ankerpunkt</value>
+  </data>
+  <data name="ChartStringId.AnnotationSeriesPointAnchorPoint">
+    <value>SerienAnkerpunkt Punkt</value>
+  </data>
+  <data name="ChartStringId.AnnotationFreePosition">
+    <value>Freie Position</value>
+  </data>
+  <data name="ChartStringId.IncorrectSeriesCollectionToolTipText">
+    <value>Es gibt keine Reihen in der Diagramm Sammlung mit mindestens einer Reihe Punkte.</value>
+  </data>
+  <data name="ChartStringId.IncorrectDiagramTypeToolTipText">
+    <value>Es gibt keine Fenster, da der Diagramm Typ Scheiben nicht unterstützt.</value>
+  </data>
+  <data name="ChartStringId.ChartControlDockTarget">
+    <value>Diagramm Kontrolle</value>
+  </data>
+  <data name="ChartStringId.Holidays">
+    <value>Feiertage</value>
+  </data>
+  <data name="ChartStringId.ExactWorkdays">
+    <value>Genaue Arbeitstage</value>
+  </data>
+  <data name="ChartStringId.Holiday">
+    <value>Feiertage</value>
+  </data>
+  <data name="ChartStringId.AllHolidays">
+    <value>Alle Feiertage</value>
+  </data>
+</root>

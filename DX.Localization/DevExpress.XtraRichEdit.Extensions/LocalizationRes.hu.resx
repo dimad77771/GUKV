@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="RichEditExtensionsStringId.Caption_GroupMailMerge" xml:space="preserve">
+    <value>Körlevél</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_PageInsert" xml:space="preserve">
+    <value>Beszúrás</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupPages" xml:space="preserve">
+    <value>Lapok</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_Formatting" xml:space="preserve">
+    <value>Formázás</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupIllustrations" xml:space="preserve">
+    <value>Ábrák</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupStyles" xml:space="preserve">
+    <value>Stílusok</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupCommon" xml:space="preserve">
+    <value>Általános</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupSymbols" xml:space="preserve">
+    <value>Szimbólumok</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_PageMailings" xml:space="preserve">
+    <value>Levelezés</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupZoom" xml:space="preserve">
+    <value>Nagyítás</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupFont" xml:space="preserve">
+    <value>Betűtípus</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupLinks" xml:space="preserve">
+    <value>Hiperhivatkozások</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_PageHome" xml:space="preserve">
+    <value>Kezdőlap</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupDocumentViews" xml:space="preserve">
+    <value>Dokumentum nézetek</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_PageView" xml:space="preserve">
+    <value>Nézet</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupParagraph" xml:space="preserve">
+    <value>Bekezdés</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupClipboard" xml:space="preserve">
+    <value>Vágólap</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupEditing" xml:space="preserve">
+    <value>Szerkesztés</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupHeaderFooterToolsDesignOptions" xml:space="preserve">
+    <value>Beállítások</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupPageSetup" xml:space="preserve">
+    <value>Lapbeállítás</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_PageFile" xml:space="preserve">
+    <value>Fájl</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_PageHeaderFooterToolsDesign" xml:space="preserve">
+    <value>Tervezés</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupTables" xml:space="preserve">
+    <value>Táblázatok</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupHeaderFooter" xml:space="preserve">
+    <value>Élőfej &amp;&amp; Élőláb</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_PagePageLayout" xml:space="preserve">
+    <value>Lap elrendezés</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_PageLayout" xml:space="preserve">
+    <value>Elrendezés</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_PageCategoryHeaderFooterTools" xml:space="preserve">
+    <value>Élőfej &amp; Élőláb Eszközök</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupRowsAndColumns" xml:space="preserve">
+    <value>Sorok &amp;&amp; oszlopok</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupHeaderFooterToolsDesignClose" xml:space="preserve">
+    <value>Bezár</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_PageTableDesign" xml:space="preserve">
+    <value>Tervezés</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupDocumentProtection" xml:space="preserve">
+    <value>Védelem</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupTableMerge" xml:space="preserve">
+    <value>Egyesítés</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_PageReview" xml:space="preserve">
+    <value>Áttekintés</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupTableAlignment" xml:space="preserve">
+    <value>Igazítás</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupTableStyles" xml:space="preserve">
+    <value>Táblázat stílusok</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupTableTable" xml:space="preserve">
+    <value>Táblázat</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupTableRowsAndColumns" xml:space="preserve">
+    <value>Sorok &amp;&amp; Oszlopok</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_PageTableLayout" xml:space="preserve">
+    <value>Elrendezés</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupTableDrawBorders" xml:space="preserve">
+    <value>Szegélyek megjelenítése</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupShow" xml:space="preserve">
+    <value>Megjelenít</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_PageCategoryTableTools" xml:space="preserve">
+    <value>Táblázat eszközök</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupHeaderFooterToolsDesignNavigation" xml:space="preserve">
+    <value>Navigáció</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupDocumentProofing" xml:space="preserve">
+    <value>Nyelvhelyességi ellenőrzés</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_PageReferences" xml:space="preserve">
+    <value>Hivatkozások</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupTableCellSize" xml:space="preserve">
+    <value>Cellaméret</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupCaptions" xml:space="preserve">
+    <value>Képaláírások</value>
+  </data>
+  <data name="RichEditExtensionsStringId.Caption_GroupTableOfContents" xml:space="preserve">
+    <value>Tartalomjegyzék</value>
+  </data>
+</root>

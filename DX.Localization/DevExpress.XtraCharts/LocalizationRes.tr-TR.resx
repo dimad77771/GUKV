@@ -1,0 +1,973 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 1.3
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">1.3</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1">this is my long string</data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        [base64 mime encoded serialized .NET Framework object]
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        [base64 mime encoded string representing a byte array form of the .NET Framework object]
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used forserialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ChartStringId.SeriesPrefix">
+    <value>Seri</value>
+  </data>
+  <data name="ChartStringId.PalettePrefix">
+    <value>Palet</value>
+  </data>
+  <data name="ChartStringId.ArgumentMember">
+    <value>Sav</value>
+  </data>
+  <data name="ChartStringId.ValueMember">
+    <value>Değer</value>
+  </data>
+  <data name="ChartStringId.LowValueMember">
+    <value>Düşük</value>
+  </data>
+  <data name="ChartStringId.HighValueMember">
+    <value>Yüksek</value>
+  </data>
+  <data name="ChartStringId.OpenValueMember">
+    <value>Açık</value>
+  </data>
+  <data name="ChartStringId.CloseValueMember">
+    <value>Kapat</value>
+  </data>
+  <data name="ChartStringId.AutocreatedSeriesName">
+    <value>Otomatik Yaratılmış Seri</value>
+  </data>
+  <data name="ChartStringId.DefaultDataFilterName">
+    <value>Veri Süzgeci</value>
+  </data>
+  <data name="ChartStringId.DefaultChartTitle">
+    <value>Çizelge Ünvanı</value>
+  </data>
+  <data name="ChartStringId.DefaultSeriesPointFilterName">
+    <value>Seri Nokta Süzgeci</value>
+  </data>
+  <data name="ChartStringId.MsgEmptyArrayOfValues">
+    <value>Değerlerin sıralanışı boştur!</value>
+  </data>
+  <data name="ChartStringId.MsgSeriesViewDoesNotExist">
+    <value>0 dizi görüntüsü yoktur.</value>
+  </data>
+  <data name="ChartStringId.MsgEquallySpacedItemsNotUsable">
+    <value>Eğer idare özellikleri {0}'a kurulmuşsa bu özellik kullanılmış olamaz!</value>
+  </data>
+  <data name="ChartStringId.MsgItemNotInCollection">
+    <value>Koleksiyon belirlenmiş öğeleri içermez!</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectValue">
+    <value>"{1}" argümanı için "(0)" hatalı değer!</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatiblePointType">
+    <value>{0} noktasının tipi  {1} terazisi ile uyumlu değildir!</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleArgumentDataMember">
+    <value>{0} argüman veri üye tipi {1} terazisiyle uyumlu değildir!</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleValueDataMember">
+    <value>{0} değer veri üye tipi {1} terazisiyle uyumlu değildir!</value>
+  </data>
+  <data name="ChartStringId.MsgDesignTimeOnlySetting">
+    <value>Bu özellik çalışma zamanında kurulmuş olamaz!</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidDataSource">
+    <value>Geçersiz veri kaynağı tipi</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidSortingKey">
+    <value>Sınıflandırma anahtarının değeri 0'a kurulmuş olamaz!</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidFilterCondition">
+    <value>0 kondüsyonu 1 verisine başvuramaz!</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectDataAdapter">
+    <value>{0} objesi, bir veri bağdaştırıcısı değildir.</value>
+  </data>
+  <data name="ChartStringId.MsgDataSnapshot">
+    <value>Veri enstantane operasyonu tamamlandı. Tüm serilerin verisi şimdi grafikte statik olarak devam edecek. Bu da şimdi grafiğin çözülmüş modda olduğu anlamına geliyor. Not: Bunu tekrar yapabilirsin.</value>
+  </data>
+  <data name="ChartStringId.MsgModifyDefaultPaletteError">
+    <value>Palet varsayımdır ve modifiye edilemez!</value>
+  </data>
+  <data name="ChartStringId.MsgInternalPropertyChangeError">
+    <value>Bu özellik sadece iç kullanım için tasarlanmıştır. O değerleri değiştirmeye izinli değilsiniz!</value>
+  </data>
+  <data name="ChartStringId.MsgPaletteNotFound">
+    <value>Grafik {0} isimli bir palet içermemektedir.</value>
+  </data>
+  <data name="ChartStringId.MsgLabelSettingRuntimeError">
+    <value>"Etiket" özelliği işlem esnasında kurulamaz!</value>
+  </data>
+  <data name="ChartStringId.MsgPointOptionsSettingRuntimeError">
+    <value>Nokta opsiyonları özellikleri işlem süresince kurulmuş olamaz!</value>
+  </data>
+  <data name="ChartStringId.MsgLegendPointOptionsSettingRuntimeError">
+    <value>"Efsane Noktası Opsiyonları" özellikleri işlem esnasında kurulamaz!</value>
+  </data>
+  <data name="ChartStringId.MsgSynchronizePointOptionsSettingRuntimeError">
+    <value>Senkronize nokta opsiyonlarının özellikleri işlem sırasında kurulmuş olamaz!</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectNumericPrecision">
+    <value>Hassasiyet 0'a eşit ya da 0'dan büyük olmalıdır</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisThickness">
+    <value>Eksen kalınlığı 0'dan büyük olmalıdır.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBarWidth">
+    <value>Çubuk genişliği 0'dan büyük olmalıdır.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBarDepth">
+    <value>Çubuk derinliği 0'dan büyük olmalıdır.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLineWidth">
+    <value>Hat genişliği 0'dan büyük olmalıdır</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAreaWidth">
+    <value>Alan genişliği 0 'dan daha büyük olmalıdır</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBorderThickness">
+    <value>Sınır genişliği 0'dan büyük olmalıdır.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectChartTitleIndent">
+    <value>Unvan girintisi 0'a eşit ya da 0'dan büyük; 1000'den az olmalıdır.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLegendMarkerSize">
+    <value>Efsane işaretçi ebatı 0'dan büyük, 100'den küçük olmalıdır.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLegendSpacingVertical">
+    <value>Efsane dikey aralığı 0'a eşit ya da 0'dan büyük ve 1000'den küçük olmalıdır</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLegendSpacingHorizontal">
+    <value>Efsane ufuksal aralığı 0'a eşit ya da 0'dan büyük ve 1000'den küçük olmalıdır</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectMarkerSize">
+    <value>İşaretçi ebatı 1'den büyük olmalıdır</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectMarkerStarPointCount">
+    <value>Yıldız noktalarının sayısı 3'ten büyük 101'den küçük olmalıdır</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPieSeriesLabelColumnIndent">
+    <value>Kolon girintisi 0'a büyük-eşit olmalıdır</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectRangeBarSeriesLabelIndent">
+    <value>Girinti 0'a büyük-eşit olamlıdır</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPercentPrecision">
+    <value>Yüzdelik değerin hassasiyeti 0'dan büyük olmalıdır</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesLabelLineLength">
+    <value>Hat uzunluğu 0'a büyük -eşit ve 1000'den az olmalıdır.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStripConstructorParameters">
+    <value>Minimum ve maksimum şerit değerleri aynı olamaz!</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStripLimitAxisValue">
+    <value>Eksen Değer özelliği, şerit limit objesi için o'a kurulu olamaz!</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStripMinLimit">
+    <value>Şeridin minimum limiti maximum limitten küçük olmalıdır</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStripMaxLimit">
+    <value>Şeridin maksimum limiti minimum limitten büyük olmalıdır</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLineThickness">
+    <value>Hat kalınlığı 0'dan büyük olmalıdır</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectShadowSize">
+    <value>Gölge ebatı 0'dan büyük olmalıdır.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTickmarkThickness">
+    <value>İşaretçinin kalınlığı 0'dan büyük olmalıdır</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTickmarkLength">
+    <value>İşaret uzunluğu 0'dan büyük olmalıdır</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectMinorCount">
+    <value>küçük hesap numarası 0'dan büyük 100'den az olmalıdır</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTickmarkMinorThickness">
+    <value>Küçük işaretçinin kalınlığı 0'dan büyük olmalıdır</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTickmarkMinorLength">
+    <value>Küçük işaretçinin uzunluğu 0'dan büyük olmalıdır</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPercentValue">
+    <value>Yüzdelik değer 0'a büyük-eşit ya da 100'e küçük-eşit olmalıdır</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSimpleDiagramDimension">
+    <value>Basit diyagramın boyutu 0'dan büyük; 100'den küçük olmalıdır.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStockLevelLineLengthValue">
+    <value>Stok seviye hattının uzunluk değeri 0'a büyük-eşit olmalıdır.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectReductionColorValue">
+    <value>Azaltma renk değeri boş olamaz!</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLabelAngle">
+    <value>Etiketin açısı -360'a eşit ya da ondan büyük ve/veya 360'a eşit ya da ondan az olmalıdır.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectImageFormat">
+    <value>Bir grafiği özelleştirilmiş görüntü formatına taşımak imkansızdır!</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectImageBounds">
+    <value>Özelleştirilmiş ebatta bir görüntü yaratılamaz!</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectUseImageUrlProperty">
+    <value>GörüntüURL özellikleri sadece WebChartControl için kullanılamaz. Lütfen, Görüntü özelliklerini kullan!</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTaskLinkMinIndent">
+    <value>Konu bağlantısının minimum girintisi 0'a büyük-eşit olmalıdır</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectArrowWidth">
+    <value>Ok genişliği daima 0'dan büyük ve tek sayı olmalıdır.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectArrowHeight">
+    <value>Ok yüksekliği 0'dan daha büyük olmalıdır.</value>
+  </data>
+  <data name="ChartStringId.MsgEmptyArgument">
+    <value>Bir argüman boş olamaz!</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectValueDataMemberCount">
+    <value>Geçerli seri görüntüleri için {0} değer veri üyelerini belirlemek gereklidir</value>
+  </data>
+  <data name="ChartStringId.MsgPaletteDoubleClickToEdit">
+    <value>… Düzenlemek için çift tık yapınız</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidPaletteName">
+    <value>Lütfen Palet için bir isim belirle!</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidScaleType">
+    <value>Belirlenmiş değeri terazinin iç sunumuna döndürmek geçerli terazi tipine uyumlu değildir</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTransformationMatrix">
+    <value>Hatalı taşıma dizeyi!</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPerspectiveAngle">
+    <value>Perspektif açısı 0'a büyük-eşit ya da 180'en az olmalıdır</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPieDepth">
+    <value>Pasta derinliği 0'a büyük -eşit ve 100'den küçük- eşit olmalıdır(değeri yüzdelikte ölçülebilir olduğundan itibaren)</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesDistance">
+    <value>Kaydırma çubuğu kalınlığı 3'büyük - eşit ve 25'ten küçük-eşit olmalıdır.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesDistanceFixed">
+    <value>Dizi uzaklığı 0'a büyük-eşit olmalıdır.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesIndentFixed">
+    <value>Fixlenmiş dizi uzaklığı 0'a büyük - eşit olmalıdır.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPlaneDepthFixed">
+    <value>Fixlenmiş düzey derinliği 1'e büyük-eşit olmalıdır</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectGridSpacing">
+    <value>Izgara boşluğu 0'dan büyük olmalıdır</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleArgumentScaleType">
+    <value>{0} argüman terazi üye tipi {1} seri görünüşü ile uyumsuzdur!</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleValueScaleType">
+    <value>{0} değer terazi üye tipi {1} seri görünüşü ile uyumsuzdur!</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectConstantLineAxisValue">
+    <value>Eksen değeri Sabit Hat objesi için sıfıra kurulmuş olamaz!</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectCustomAxisLabelAxisValue">
+    <value>Eksen değeri Alışveriş eksen etiketi objesi için sıfıra kurulmuş olamaz!</value>
+  </data>
+  <data name="ChartStringId.Msg3DRotationToolTip">
+    <value>Grafiği döndürmak için  farenin sol tuşu ile CTRL tuşunu kullan</value>
+  </data>
+  <data name="ChartStringId.Msg3DScrollingToolTip">
+    <value>Grafiği kaydırmak için farenin merkezindeki tekerleği ile CTRL tuşunu kullan</value>
+  </data>
+  <data name="ChartStringId.Msg2DScrollingToolTip">
+    <value>Bölmeleri daraltmak ya da patlatmak için Farenin sol tuşu ile CTRL'yi kullan
+Grafiği kaydırmak için farenin sol tuşu ile CTRL tuşunu kullan</value>
+  </data>
+  <data name="ChartStringId.Msg2DPieExplodingToolTip">
+    <value>Bölmeleri daraltmak ya da patlatmak için Farenin sol tuşu ile CTRL'yi kullan</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPadding">
+    <value>Dolgu 0'a eşit ya da 0'dan büyük olmalıdır</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidZeroAxisAlignment">
+    <value>Hizalama ikincil eksen için 0 hizalamaya kurulmuş olamaz</value>
+  </data>
+  <data name="ChartStringId.MsgNullSeriesViewAxisX">
+    <value>Dizi görüntüsünün x-Ekseni 0'a kurulu olamaz!</value>
+  </data>
+  <data name="ChartStringId.MsgNullSeriesViewAxisY">
+    <value>Dizi görüntüsünün Y-Ekseni 0'a kurulu olamaz!</value>
+  </data>
+  <data name="ChartStringId.MsgNonExistentSeriesViewAxisX">
+    <value>Dizi görüntüsünü X Eksenine kuramazsınız!</value>
+  </data>
+  <data name="ChartStringId.MsgNonExistentSeriesViewAxisY">
+    <value>Dizi görüntüsünü Y Eksenine kuramazsınız!</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesViewAxisX">
+    <value>Dizi görüntüsünü X Eksenine kuramazsınız!</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesViewAxisY">
+    <value>Dizi görüntüsünü Y Eksenine kuramazsınız!</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectParentSeriesPointOwner">
+    <value>Ebeveyn dizi noktasının sahibi 0 olamaz ve dizi tipinden olmak zorunludur.</value>
+  </data>
+  <data name="ChartStringId.MsgSeriesViewNotSupportRelations">
+    <value>Dizi görüntüsü ilişkileri desteklemez!</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectChildSeriesPointOwner">
+    <value>Çocuk dizi noktasının sahibi sıfır olamaz! Ve bunun yanı sıra seri tipinde olmalıdır!</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectChildSeriesPointID">
+    <value>Çocuk seri noktasının Kimliği ya 0'a eşit ya da pozitif olmalıdır.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesOfParentAndChildPoints">
+    <value>Ebeveyn ve Çocuk noktası aynı diziye ait olmak zorundadır!</value>
+  </data>
+  <data name="ChartStringId.MsgSelfRelatedSeriesPoint">
+    <value>Dizi noktası, kendisi ile bir ilişkiye sahip olamaz!</value>
+  </data>
+  <data name="ChartStringId.MsgSeriesPointRelationAlreadyExists">
+    <value>Dizi noktası ilişkilerinin kolleksiyonu bu ilişkiyi barındırır!</value>
+  </data>
+  <data name="ChartStringId.MsgChildSeriesPointNotExist">
+    <value>{0} a eşit kimlik ile Çocuk Seri noktası yok!</value>
+  </data>
+  <data name="ChartStringId.MsgRelationChildPointIDNotUnique">
+    <value>İlişkinin çocuk noktası kimliği tek olmalıdır.</value>
+  </data>
+  <data name="ChartStringId.MsgSeriesPointIDNotUnique">
+    <value>Dizi noktasının kimliği tek olmalıdır!</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectFont">
+    <value>Yazı büyüklüğü 0 olamaz!</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectZoomPercent">
+    <value>zoom yüzdesi 0'dan büyük 0'a küçük-eşit olmalıdır.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectHorizontalScrollPercent">
+    <value>Ufuksal kaydırma yüzdesi 0'dan büyük ya da eşit; 0'dan küçük ya da eşit olmalı</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectVerticalScrollPercent">
+    <value>Dikey kaydırma yüzdesi 0'a büyük eşit ve 0'dan küçük-eşit olmalıdır.</value>
+  </data>
+  <data name="ChartStringId.MsgUnregisterGroupError">
+    <value>Bu grup hali hazırda kayıtsızdır!</value>
+  </data>
+  <data name="ChartStringId.MsgUnregisterPageError">
+    <value>Bu sayfa hali hazırda kayıtsızdır!</value>
+  </data>
+  <data name="ChartStringId.MsgWizardIncorrectBasePageType">
+    <value>{0}, {1} sınıfından miras kalmış olmalıdır!</value>
+  </data>
+  <data name="ChartStringId.MsgWizardNonUniquePageType">
+    <value>{0} tipinin sayfası hali hazırda kayıtlıdır. Daha fazlasını ekleyemezsin!</value>
+  </data>
+  <data name="ChartStringId.MsgWizardNonUniqueGroupName">
+    <value>{0} isimli grup şu anda kayıtlıdır!</value>
+  </data>
+  <data name="ChartStringId.MsgOrderArrayLengthMismatch">
+    <value>Düzenli dizinin uzunluğu kayıtlı elementlerin toplam sayısına eşit değildir!</value>
+  </data>
+  <data name="ChartStringId.MsgOrderUnregisteredElementFound">
+    <value>Kayıtlı olmayan bir element bulundu!</value>
+  </data>
+  <data name="ChartStringId.MsgOrderRepeatedElementFound">
+    <value>düzenli bir seride aynı element çok kez tekrarlanır.</value>
+  </data>
+  <data name="ChartStringId.MsgAddPresentViewType">
+    <value>Bu kolleksiyonda herhangi bir görüntü tipi ekleyemezsiniz! Çünkü en azından bir görüntü tipi Sihirbazın içinde ulaşılabilir durumda olmalıdır!</value>
+  </data>
+  <data name="ChartStringId.MsgAddLastViewType">
+    <value>Grafiği kaydırmak için farenin merkezindeki tekerleği ile CTRL tuşunu kullan
+Depoda {0} ismi ile hali hazırda bulunan Palet!</value>
+  </data>
+  <data name="ChartStringId.MsgCalcHitInfoNotSupported">
+    <value>3d Grafik tipleri için Vuruş test etmeler desteklenmemiştir. Bu metod sadece 2D grafik tipleri için desteklenir!</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAppearanceName">
+    <value>Grafik, {0} isimli bir görünüş içermemektedir!</value>
+  </data>
+  <data name="ChartStringId.MsgNotChartControl">
+    <value>Belirlenmiş obje, bir ChartControl değildir!</value>
+  </data>
+  <data name="ChartStringId.MsgNotBelongingChart">
+    <value>Bu kontrol belirlenmiş grafikleri barındırmaz!</value>
+  </data>
+  <data name="ChartStringId.MsgInitializeChartNotFound">
+    <value>Grafik kontrolü bulunamadı; ya da bu kontrolde bir çok grafikler var.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleByViewType">
+    <value>Görüntü tipi</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleByArgumentScaleType">
+    <value>Argüman terazi tipi</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleByValueScaleType">
+    <value>Argüman terazi tipi</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectExplodedDistancePercentage">
+    <value>Delikli halka yüzdeliği 0'a büyük-eşit ve 100;'e küçük-eşit olmalıdır.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPaletteBaseColorNumber">
+    <value>Palet esas numarası 0'a büyük-eşit ve palet renklerinin toplam sayısından küçük-eşit olmalıdır.</value>
+  </data>
+  <data name="ChartStringId.MsgDenyChangeSeriesPointCollection">
+    <value>Seri noktasının kolleksiyonunu elle değiştiremezsiniz! Çünkü grafik veriye bağlanmıştır.</value>
+  </data>
+  <data name="ChartStringId.MsgDenyChangeSeriesPointAgument">
+    <value>Seri noktasının argümanını elle değiştiremezsiniz! Çünkü grafik veriye bağlanmıştır.</value>
+  </data>
+  <data name="ChartStringId.MsgDenyChangeSeriesPointValue">
+    <value>Seri noktasının değerini elle değiştiremezsiniz! Çünkü grafik veriye bağlanmıştır.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStartAngle">
+    <value>Başlangıç açı değeri -360'a büyük-eşit ve 360 dereceye küçük-eşit olmalıdır.</value>
+  </data>
+  <data name="ChartStringId.MsgPolarAxisXRangeChanged">
+    <value>X Eksenli bir kutbun aralığı değiştirilemez!</value>
+  </data>
+  <data name="ChartStringId.MsgPolarAxisXGridSpacingChanged">
+    <value>X Eksenli bir kutbun ızgara boşluğu değiştirilemez!</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPieArgumentScaleType">
+    <value>0 argüman terazi tipi belirlenmiş olamaz! Çünkü varolan genişletilmiş nokta süzgeci ona bağdaştırılamaz!</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectDoughnutHolePercent">
+    <value>Veri Kaynağı "{0}" isimli bir veri üyesini içermemektedir.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLineTensionPercent">
+    <value>Hat tansiyon yüzdeliği 0'a büyük - eşit ya da 100'e küçük - eşit olmalıdır</value>
+  </data>
+  <data name="ChartStringId.MsgEmptyChart">
+    <value>Grafikte gösterilecek 'görünür seri' yok! Yeri seri eklemeye çalış; ya da en azından birinin görünür olduğundan emin ol!</value>
+  </data>
+  <data name="ChartStringId.MsgChartLoadingException">
+    <value>Belirlenmiş XML dosyası açılamaz; çünkü ya desteklenmiş bir dosya tipi değildir ya da dosya hasar görmüştür.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisRangeMinValue">
+    <value>Minimum değer, eksen aralığı objesi için sıfıra kurulmuş olamaz!</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisRangeMaxValue">
+    <value>Maximum değer, eksen aralığı objesi için sıfıra kurulmuş olamaz!</value>
+  </data>
+  <data name="ChartStringId.MsgMinMaxDifferentTypes">
+    <value>Minimum ve maksimum değer tipleri eşleşmez!</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisRange">
+    <value>({0}) eksen aralığının minimum değeri onun maximum değerinden ({1}) daha az olmalıdır.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBarSeriesLabelIndent">
+    <value>Girinti 0'a büyük-eşit olamlıdır</value>
+  </data>
+  <data name="ChartStringId.VerbAbout">
+    <value>Hakkında</value>
+  </data>
+  <data name="ChartStringId.VerbAboutDescription">
+    <value>Ekstra Grafiklerdeki basit bilgileri gör!</value>
+  </data>
+  <data name="ChartStringId.VerbPopulate">
+    <value>Yerleş</value>
+  </data>
+  <data name="ChartStringId.VerbPopulateDescription">
+    <value>Veri ile graifiğin veri kaynağını yerleştir</value>
+  </data>
+  <data name="ChartStringId.VerbClearDataSource">
+    <value>Veri Kaynağını Sil</value>
+  </data>
+  <data name="ChartStringId.VerbClearDataSourceDescription">
+    <value>Grafiğin veri kaynağını sil</value>
+  </data>
+  <data name="ChartStringId.VerbDataSnapshot">
+    <value>Veri enstantanesi</value>
+  </data>
+  <data name="ChartStringId.VerbDataSnapshotDescription">
+    <value>Grafiğe sınır veri kaynağından tüm verileri kopyala; sonra da grafiği çöz</value>
+  </data>
+  <data name="ChartStringId.VerbSeries">
+    <value>Dizi</value>
+  </data>
+  <data name="ChartStringId.VerbSeriesDescription">
+    <value>Dizi koleksiyon düzenleyicisini Aç</value>
+  </data>
+  <data name="ChartStringId.VerbResetLegendPointOptions">
+    <value>Efsane Noktası opsiyonlarını sıfırla</value>
+  </data>
+  <data name="ChartStringId.VerbResetLegendPointOptionsDescription">
+    <value>Efsane nokta opsiyonlarını, varsayım değerlerine döndür!</value>
+  </data>
+  <data name="ChartStringId.VerbEditPalettes">
+    <value>Paletler…</value>
+  </data>
+  <data name="ChartStringId.VerbEditPalettesDescription">
+    <value>Paletlerin düzenleyicisini Aç!</value>
+  </data>
+  <data name="ChartStringId.VerbWizard">
+    <value>Sihirbazı Yürüt…</value>
+  </data>
+  <data name="ChartStringId.VerbWizardDescription">
+    <value>Grafik sihirbazını yürüt</value>
+  </data>
+  <data name="ChartStringId.VerbSaveLayout">
+    <value>Kaydet</value>
+  </data>
+  <data name="ChartStringId.VerbSaveLayoutDescription">
+    <value>XML Dosyasına bir grafik kaydet</value>
+  </data>
+  <data name="ChartStringId.VerbLoadLayout">
+    <value>Yükle…</value>
+  </data>
+  <data name="ChartStringId.VerbLoadLayoutDescription">
+    <value>Bir XML dosyasından bir grafik yükle</value>
+  </data>
+  <data name="ChartStringId.TrnSeriesChanged">
+    <value>Dizi değiştirildi</value>
+  </data>
+  <data name="ChartStringId.TrnDataFiltersChanged">
+    <value>Veri süzgeci değiştirildi</value>
+  </data>
+  <data name="ChartStringId.TrnChartTitlesChanged">
+    <value>Grafik unvanları Değiştirildi!</value>
+  </data>
+  <data name="ChartStringId.TrnStripsChanged">
+    <value>Şeritler değiştirildi</value>
+  </data>
+  <data name="ChartStringId.TrnPalettesChanged">
+    <value>Değiştirilmiş paletler</value>
+  </data>
+  <data name="ChartStringId.TrnConstantLinesChanged">
+    <value>Sabit hat değiştirildi</value>
+  </data>
+  <data name="ChartStringId.TrnCustomAxisLabelChanged">
+    <value>Özellşetirilmiş Eksen etiketi değiştirildi</value>
+  </data>
+  <data name="ChartStringId.TrnSecondaryAxesXChanged">
+    <value>İkincil eksen X değiştirildi</value>
+  </data>
+  <data name="ChartStringId.TrnSecondaryAxesYChanged">
+    <value>İkincil eksen Y değiştirildi</value>
+  </data>
+  <data name="ChartStringId.TrnChartWizard">
+    <value>Grafik sihirbaz ayarları uygulandı</value>
+  </data>
+  <data name="ChartStringId.TrnSeriesDeleted">
+    <value>Dizi silindi</value>
+  </data>
+  <data name="ChartStringId.TrnChartTitleDeleted">
+    <value>Grafik unvanı Silindi!</value>
+  </data>
+  <data name="ChartStringId.TrnConstantLineDeleted">
+    <value>Sabit hat silindi</value>
+  </data>
+  <data name="ChartStringId.TrnSecondryAxisXDeleted">
+    <value>İkincil eksen X silindi</value>
+  </data>
+  <data name="ChartStringId.TrnSecondryAxisYDeleted">
+    <value>İkincil eksen Y silindi</value>
+  </data>
+  <data name="ChartStringId.TrnExplodedPoints">
+    <value>Genişletilmiş noktalar değiştirildi</value>
+  </data>
+  <data name="ChartStringId.TrnExplodedPointsFilters">
+    <value>Genişletilmiş noktaların süzgeci değiştirildi</value>
+  </data>
+  <data name="ChartStringId.TrnLegendPointOptionsReset">
+    <value>Efsane Noktası opsiyonlarını sıfırlar</value>
+  </data>
+  <data name="ChartStringId.TrnLoadLayout">
+    <value>Yüklü grafik düzenleme</value>
+  </data>
+  <data name="ChartStringId.TrnSeriesTitleChanged">
+    <value>Dizi unvanı değiştirildi</value>
+  </data>
+  <data name="ChartStringId.TrnSeriesTitleDeleted">
+    <value>Dizi unvanı silindi</value>
+  </data>
+  <data name="ChartStringId.PieIncorrectValuesText">
+    <value>Bu görüntü negatifi tasvir etmez. Tüm değerler 0'a büyük-eşit olmalıdır!</value>
+  </data>
+  <data name="ChartStringId.AxisXDefaultTitle">
+    <value>Argümanların ekseni</value>
+  </data>
+  <data name="ChartStringId.AxisYDefaultTitle">
+    <value>Değerlerin ekseni</value>
+  </data>
+  <data name="ChartStringId.DefaultWizardPageLabel">
+    <value>Sayfa Sihirbazı</value>
+  </data>
+  <data name="ChartStringId.MenuItemAdd">
+    <value>Ekle</value>
+  </data>
+  <data name="ChartStringId.MenuItemInsert">
+    <value>Yerleştir</value>
+  </data>
+  <data name="ChartStringId.MenuItemDelete">
+    <value>Sil</value>
+  </data>
+  <data name="ChartStringId.MenuItemClear">
+    <value>Temizle</value>
+  </data>
+  <data name="ChartStringId.MenuItemMoveUp">
+    <value>Yukarı Taşı</value>
+  </data>
+  <data name="ChartStringId.MenuItemMoveDown">
+    <value>Aşağı Taşı</value>
+  </data>
+  <data name="ChartStringId.WizAutoCreatedSeries">
+    <value>Otomatik Yaratılmış Seri</value>
+  </data>
+  <data name="ChartStringId.WizSpecifyDataFilters">
+    <value>Elips butona bas…
+</value>
+  </data>
+  <data name="ChartStringId.WizDataFiltersEntered">
+    <value>{0} veri süzgeci</value>
+  </data>
+  <data name="ChartStringId.WizDataFiltersDisabled">
+    <value>(Hiçbir şey)</value>
+  </data>
+  <data name="ChartStringId.WizBackImageFileNameFilter">
+    <value>Görüntü dosyaları(*.gif;*.jpg;*.jpeg;*.bmp;*.wmf;*.png)|*.gif;*.jpg;*.jpeg;*.bmp;*.wmf;*.png|All files(*.*)|*.*</value>
+  </data>
+  <data name="ChartStringId.WizConstructionGroupName">
+    <value>Yapı</value>
+  </data>
+  <data name="ChartStringId.WizPresentationGroupName">
+    <value>Sunum</value>
+  </data>
+  <data name="ChartStringId.WizChartTypePageName">
+    <value>Grafik Tipi</value>
+  </data>
+  <data name="ChartStringId.WizAppearancePageName">
+    <value>Görünüş</value>
+  </data>
+  <data name="ChartStringId.WizSeriesPageName">
+    <value>Diziler</value>
+  </data>
+  <data name="ChartStringId.WizDataPageName">
+    <value>Veri</value>
+  </data>
+  <data name="ChartStringId.WizDiagramPageName">
+    <value>Diyagram</value>
+  </data>
+  <data name="ChartStringId.WizAxesPageName">
+    <value>Eksenler</value>
+  </data>
+  <data name="ChartStringId.WizSeriesViewPageName">
+    <value>Dizi görünümleri</value>
+  </data>
+  <data name="ChartStringId.WizSeriesLabelsPageName">
+    <value>Nokta etiketleri</value>
+  </data>
+  <data name="ChartStringId.WizChartTitlesPageName">
+    <value>Grafik unvanları</value>
+  </data>
+  <data name="ChartStringId.WizLegendPageName">
+    <value>Gösterge</value>
+  </data>
+  <data name="ChartStringId.WizSeriesPointPageName">
+    <value>Noktalar</value>
+  </data>
+  <data name="ChartStringId.WizSeriesDataBindingPageName">
+    <value>Dizi Bağlama</value>
+  </data>
+  <data name="ChartStringId.WizChartTypePageDescription">
+    <value>Kullanmak istediğin grafik tipini seç! Grafik tiplerini gruplara göre süzmek için Drop-Down kutusundaki değerleri kullan!</value>
+  </data>
+  <data name="ChartStringId.WizAppearancePageDescription">
+    <value>Renk dizisine ya da veri noktalarına bir palet seç. Bir de geçerli palete bağlı olarak grafiğin görüntüsünü belirleyen stili seç</value>
+  </data>
+  <data name="ChartStringId.WizDiagramPageDescription">
+    <value>Diyagramın özelliklerini uyarla</value>
+  </data>
+  <data name="ChartStringId.WizLegendPageDescription">
+    <value>Göstergenin özelliklerini uyarla</value>
+  </data>
+  <data name="ChartStringId.WizFormTitle">
+    <value>Grafik Sihirbazı</value>
+  </data>
+  <data name="ChartStringId.WizHatchMin">
+    <value>En Az</value>
+  </data>
+  <data name="ChartStringId.WizHatchMax">
+    <value>En çok</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelLow">
+    <value>Düşük</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelHigh">
+    <value>Yüksek</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelOpen">
+    <value>Açık</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelClose">
+    <value>Kapat</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideBar">
+    <value>Çubuk</value>
+  </data>
+  <data name="ChartStringId.WizErrorMessageTitle">
+    <value>Grafik Sihirbazı</value>
+  </data>
+  <data name="ChartStringId.WizAnnotationConnectorStyleLine">
+    <value>Hat</value>
+  </data>
+  <data name="ChartStringId.SvnStackedBar">
+    <value>İstiflenmiş çubuk</value>
+  </data>
+  <data name="ChartStringId.SvnFullStackedBar">
+    <value>100% İstiflenmiş Çubuk</value>
+  </data>
+  <data name="ChartStringId.SvnPie">
+    <value>Pasta</value>
+  </data>
+  <data name="ChartStringId.SvnDoughnut">
+    <value>Delikli Halka</value>
+  </data>
+  <data name="ChartStringId.SvnPoint">
+    <value>Nokta</value>
+  </data>
+  <data name="ChartStringId.SvnLine">
+    <value>Hat</value>
+  </data>
+  <data name="ChartStringId.SvnStepLine">
+    <value>Basamak Hattı</value>
+  </data>
+  <data name="ChartStringId.SvnSpline">
+    <value>Eğri Cetvel</value>
+  </data>
+  <data name="ChartStringId.SvnSpline3D">
+    <value>Eğri Cetvel 3D</value>
+  </data>
+  <data name="ChartStringId.SvnArea">
+    <value>Alan</value>
+  </data>
+  <data name="ChartStringId.SvnSplineArea">
+    <value>Eğri Cetvel Alanı</value>
+  </data>
+  <data name="ChartStringId.SvnStackedArea">
+    <value>İstiflenmiş alan</value>
+  </data>
+  <data name="ChartStringId.SvnSplineStackedArea">
+    <value>İstiflenmiş eğri cetvel alanı</value>
+  </data>
+  <data name="ChartStringId.SvnFullStackedArea">
+    <value>100% İstiflenmiş alan</value>
+  </data>
+  <data name="ChartStringId.SvnSplineFullStackedArea">
+    <value>%100 istiflenmiş eğri cetvel alanı</value>
+  </data>
+  <data name="ChartStringId.SvnArea3D">
+    <value>3D Alanı</value>
+  </data>
+  <data name="ChartStringId.SvnStackedArea3D">
+    <value>İstiflenmiş 3D alan</value>
+  </data>
+  <data name="ChartStringId.SvnFullStackedArea3D">
+    <value>100% İstiflenmiş 3D alanı</value>
+  </data>
+  <data name="ChartStringId.SvnSpline3DArea">
+    <value>Eğri Cetvel Alanı 3D</value>
+  </data>
+  <data name="ChartStringId.SvnSplineAreaStacked3D">
+    <value>İstiflenmiş eğri cetvel alanı 3D</value>
+  </data>
+  <data name="ChartStringId.SvnSplineAreaFullStacked3D">
+    <value>100% istiflenmiş eğri cetvel alanı 3D</value>
+  </data>
+  <data name="ChartStringId.SvnCandleStick">
+    <value>Mum Değneği</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideRangeBar">
+    <value>Yan Yana Aralık Çubuğu</value>
+  </data>
+  <data name="ChartStringId.SvnOverlappedRangeBar">
+    <value>Aralık Çubuğu</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideGantt">
+    <value>YanYana Gantt</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideBar3D">
+    <value>Çubuk 3D</value>
+  </data>
+  <data name="ChartStringId.SvnStackedBar3D">
+    <value>İstiflenmiş 3D çubuk</value>
+  </data>
+  <data name="ChartStringId.SvnFullStackedBar3D">
+    <value>100% İstiflenmiş 3D çubuğu</value>
+  </data>
+  <data name="ChartStringId.SvnManhattanBar">
+    <value>Manhattan Çubuğu</value>
+  </data>
+  <data name="ChartStringId.SvnPie3D">
+    <value>Pasta 3D</value>
+  </data>
+  <data name="ChartStringId.SvnDoughnut3D">
+    <value>Delikli Halka 3D</value>
+  </data>
+  <data name="ChartStringId.SvnLine3D">
+    <value>Hat 3D</value>
+  </data>
+  <data name="ChartStringId.SvnStepLine3D">
+    <value>3D Basamak hattı</value>
+  </data>
+  <data name="ChartStringId.SvnRadarPoint">
+    <value>Radar Noktası</value>
+  </data>
+  <data name="ChartStringId.SvnRadarLine">
+    <value>Radar Hattı</value>
+  </data>
+  <data name="ChartStringId.SvnRadarArea">
+    <value>Radar Alanı</value>
+  </data>
+  <data name="ChartStringId.SvnPolarPoint">
+    <value>Kutup Noktası</value>
+  </data>
+  <data name="ChartStringId.SvnPolarLine">
+    <value>Kutup Hattı</value>
+  </data>
+  <data name="ChartStringId.SvnPolarArea">
+    <value>Kutup Alanı</value>
+  </data>
+  <data name="ChartStringId.DefaultMinValue">
+    <value>En Az</value>
+  </data>
+  <data name="ChartStringId.DefaultMaxValue">
+    <value>En çok</value>
+  </data>
+  <data name="ChartStringId.IncompatibleSeriesView">
+    <value>Uyuşmaz</value>
+  </data>
+  <data name="ChartStringId.InvisibleSeriesView">
+    <value>Görünmez</value>
+  </data>
+  <data name="ChartStringId.IncompatibleSeriesHeader">
+    <value>Bu Seri Uyuşmaz</value>
+  </data>
+  <data name="ChartStringId.IncompatibleSeriesMessage">
+    <value>{0} dan "{1}" e</value>
+  </data>
+  <data name="ChartStringId.PrimaryAxisXName">
+    <value>Öncelikli Xekseni</value>
+  </data>
+  <data name="ChartStringId.PrimaryAxisYName">
+    <value>Öncelikli Yekseni</value>
+  </data>
+  <data name="ChartStringId.IOCaption">
+    <value>Yasadışı İşlem</value>
+  </data>
+  <data name="ChartStringId.IODeleteAxis">
+    <value>Önceki Eksen Silinemez! Eğer onu saklamak istersen, Onun görünmez özelliğini 'Hatalı' durumuna getir.</value>
+  </data>
+  <data name="ChartStringId.PrintSizeModeNone">
+    <value>Hiçbiri</value>
+  </data>
+  <data name="ChartStringId.PrintSizeModeStretch">
+    <value>Gerilmiş</value>
+  </data>
+  <data name="ChartStringId.PrintSizeModeZoom">
+    <value>Büyüt</value>
+  </data>
+  <data name="ChartStringId.StyleAllColors">
+    <value>Tüm Renkler</value>
+  </data>
+  <data name="ChartStringId.StyleColorNumber">
+    <value>Renk {0}</value>
+  </data>
+  <data name="ChartStringId.FunctionArgumentName">
+    <value>Sav</value>
+  </data>
+</root>

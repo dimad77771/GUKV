@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="Download" Caption="Pobierz" ToolTip="Pobierz plik" />
+    </Actions>
+  </ActionDesign>
+  <Localization>
+    <LocalizationGroup Name="FileAttachments">
+      <LocalizationItem Name="Editor_Clear" Value="Wyczyść" />
+      <LocalizationItem Name="Editor_DownLoad" Value="Pobierz zawartość pliku" />
+      <LocalizationItem Name="Editor_Edit" Value="Zmień plik" />
+    </LocalizationGroup>
+  </Localization>
+</Application>

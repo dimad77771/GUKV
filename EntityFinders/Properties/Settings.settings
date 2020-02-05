@@ -1,0 +1,727 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="GUKV.ImportToolUtils.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="OrgNameTOV" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ&lt;/string&gt;
+  &lt;string&gt;АТ З ОБМЕЖ.ВІДПОВ.&lt;/string&gt;
+  &lt;string&gt;АТ З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ ПІДПРИЄМСТВО ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ&lt;/string&gt;
+  &lt;string&gt;СП УКР.-АМЕР.ПІДПРИЄМСТВО У ФОРМІ ТОВ&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-ЛИТОВСЬКЕ СП У ФОРМІ ТОВ&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ ПІДПРИЄМСТВО У ФОРМІ ТОВАРИСТВА З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ УКРАЇНСЬКО-АМЕРИКАНСЬКЕ ПІДПРИЄМСТВО ТОВ&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-РОСІЙСЬКЕ СЕРВІСНО-ВИРОБНИЧЕ І ТОРГІВЕЛЬНЕ ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-ШВЕДСЬКО-РОСІЙСЬКЕ МЕДИЧНЕ СПІЛЬНЕ ПІДПРИЄМСТВО У ФОРМІ ТОВАРИСТВА З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ УКРАЇНСЬКО-СІРІЙСЬКЕ ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-НІМЕЦЬКЕ СПІЛЬНЕ ПІДПРИЄМСТВО У ФОРМІ ТОВАРИСТВА З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-ІТАЛІЙСЬКЕ ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ&lt;/string&gt;
+  &lt;string&gt;УКР.-ІТАЛІЙСЬКЕ ТОВ.&lt;/string&gt;
+  &lt;string&gt;УКР.-НІДЕРЛАНДСЬКЕ ТОВ&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-НІДЕРЛАНДСЬКЕ ТОВ&lt;/string&gt;
+  &lt;string&gt;СП ТОВ&lt;/string&gt;
+  &lt;string&gt;ТОВ &lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="OrgNamePainters" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ЧЛЕН КОНСХУ&lt;/string&gt;
+  &lt;string&gt;ЧЛЕН НАЦІОНАЛЬНОЇ СПІЛКИ ХУДОЖНИКІВ УКРАЇНИ ХУДОЖНИК&lt;/string&gt;
+  &lt;string&gt;ХУДОЖНИК-ДИЗАЙНЕР&lt;/string&gt;
+  &lt;string&gt;ХУДОЖНИК-АРХІТЕКТОР&lt;/string&gt;
+  &lt;string&gt;ХУДОЖНИК-ГРАФІК&lt;/string&gt;
+  &lt;string&gt;ХУДОЖНИК-ЕМАЛЬЄР&lt;/string&gt;
+  &lt;string&gt;ХУДОЖНИК-КЕРАМІСТ&lt;/string&gt;
+  &lt;string&gt;ХУДОЖНИК-МОНУМЕНТАЛІСТ&lt;/string&gt;
+  &lt;string&gt;ХУДОЖНИК-ОФОРМЛЮВАЧ&lt;/string&gt;
+  &lt;string&gt;ХУДОЖНИК-ОФОРМЛ.&lt;/string&gt;
+  &lt;string&gt;ХУДОЖНИК-ПРОЕКТАНТ&lt;/string&gt;
+  &lt;string&gt;ХУДОЖНИК-РЕСТАВРАТОР&lt;/string&gt;
+  &lt;string&gt;ХУДОЖНИК-СКУЛЬПТОР&lt;/string&gt;
+  &lt;string&gt;ЧЛЕН СПІЛКИ ХУДОЖНИКІВ УКРАЇНИ&lt;/string&gt;
+  &lt;string&gt;ЧЛЕН СПІЛКИ КИЇВСЬКОГО МІСЬКОГО ОБ'ЄДНАННЯ ХУДОЖНИКІВ-АМАТОРІВ "ТВОРЧІСТЬ"&lt;/string&gt;
+  &lt;string&gt;ЧЛЕН СПІЛКИ КОНСХУ&lt;/string&gt;
+  &lt;string&gt;ЧЛЕН ТВОРЧОГО СОЮЗУ ХУДОЖНИКІВ ХУДОЖНИК&lt;/string&gt;
+  &lt;string&gt;ЧЛЕН КИЇВСЬКОЇ ОРГАНІЗАЦІЇ НАЦІОНАЛЬНОЇ СПІЛКИ ХУДОЖНИКІВ&lt;/string&gt;
+  &lt;string&gt;ЧЛЕН ХУДОЖНИК&lt;/string&gt;
+  &lt;string&gt;ЧЛЕН НАЦІОНАЛЬНОЇ СПІЛКИ ХУДОЖНИКІВ УКРАЇНИ&lt;/string&gt;
+  &lt;string&gt;ХУДОЖНИК&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="OrgNameSP" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;УКРАЇНСЬКО-АВСТРІЙСЬКЕ СПІЛЬНЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-АВСТРІЙСЬКЕ СП&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ УКРАЇНСЬКО-КАНАДСЬКЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-ІНДІЙСЬКЕ СП&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-АМЕРИКАНСЬКЕ СП&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-АМЕРИКАНСЬКЕ СПІЛЬНЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-БІЛОРУСЬКЕ СПІЛЬНЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-БІЛОРУСЬКЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-БІЛОРУС. СП&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-БІЛОРУС.П-ВО&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-ЛИТОВСЬКЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-ТУРЕЦЬКА ФІРМА&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-СЛОВАЦЬКЕ СП&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-УГОРСЬКЕ СП&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-ЧЕШСЬКЕ СП&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ РАДЯНСЬКО-АМЕРИКАНСЬКЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ УКРАЇНСЬКО-РОСІЙСЬКО-УГОРСЬКО- НІМЕЦЬКЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ УКРАЇНСЬКО-РОСІЙСЬКЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ ПІДПРИЄМСТВО УКРАЇНСЬКО-ТУРЕЦЬКЕ&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ УКРАЇНСЬКО-АМЕРИКАНСЬКЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ УКРАЇНСЬКО-НІМЕЦЬКЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-ПОЛЬСЬКЕ СП&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ ПІДПРИЄМСТВО ФІРМА&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ УКРАЇНСЬКО-НІМЕЦЬКО-АМЕРИКАНСЬКЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ УКРАЇНСЬКО-АМЕРИКАНСЬКЕ ГОТЕЛЬНО-ОФІСНЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ УКРАЇНСЬКО-ШВЕЙЦАРСЬКЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ УКРАЇНСЬКО-МОЛДАВСЬКЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ УКРАЇНСЬКО-ІЗРАЇЛЬСЬКЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ УКРАЇНО-ІСПАНСЬКЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ УКРАЇНСЬКО-БРИТАНСЬКЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ УКРАЇНСЬКО-ПОЛЬСЬКЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-ГЕРМАНСЬКА ФІРМА&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-АМЕРИКАНСЬКЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-ЮГОСЛАВСЬКЕ СП&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-БРИТАНСЬКЕ СП&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-ВЕНГЕРСЬКЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-ІТАЛІЙСЬКЕ СПІЛЬНЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ УКРАЇНСЬКО-БЕЛЬГІЙСЬКЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;СУСПІЛЬНЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ ВИРОБНИЧЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ НАУКОВО-ВИРОБНИЧЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-НІМЕЦЬКЕ СПІЛЬНЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-НІМЕЦЬКЕ КОМЕРЦІЙНЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;УКР.-НІМЕЦЬКЕ КОМЕРЦІЙНЕ П-ВО&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКО-НІМЕЦЬКЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;УКР.-НІМ. СПІЛ. ПІДПР.ТОВ&lt;/string&gt;
+  &lt;string&gt;УКР.-НІМЕЦ. ПІДПР.&lt;/string&gt;
+  &lt;string&gt;УКР.-НІМ.СП&lt;/string&gt;
+  &lt;string&gt;СП &lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="OrgNamePP" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ПРИВАТНО-ВИРОБНИЧЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;ПРИВАТНЕ ВИРОБНИЧЕ ПІДПРИЄМСТВО &lt;/string&gt;
+  &lt;string&gt;ПІДПРИЄМСТВО З ІНОЗЕМНИМ КАПІТАЛОМ&lt;/string&gt;
+  &lt;string&gt;ПІДПРИЄМСТВО З ІНОЗЕМНИМИ ІНВЕСТИЦІЯМИ&lt;/string&gt;
+  &lt;string&gt;ПРИВАТНЕ ВИРОБНИЧО-КОМЕРЦІЙНЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;ПРИВАТНА ВИРОБНИЧО-КОМЕРЦІЙНА ФІРМА&lt;/string&gt;
+  &lt;string&gt;ПРИВАТНЕ БАГАТОПРОФІЛЬНЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;ПРИВАТНЕ БАГАТОПРОФІЛЬНЕ МАЛЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;П-ВО З ІН.ІНВЕСТИЦІЯМИ&lt;/string&gt;
+  &lt;string&gt;П-ВО З ІНОЗ. ІНВЕСТИЦІЯМИ&lt;/string&gt;
+  &lt;string&gt;ПРИВАТНЕ ВТ ПІДПРИЄМСТВО &lt;/string&gt;
+  &lt;string&gt;ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;ПРИВАТНЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;КОМЕРЦІЙНЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;ПРИВАТНА ФІРМА&lt;/string&gt;
+  &lt;string&gt;КОМЕРЦІЙНА ТУРИСТИЧНА ФІРМА&lt;/string&gt;
+  &lt;string&gt;КОМЕРЦІЙНА ФІРМА&lt;/string&gt;
+  &lt;string&gt;КОМПААНІЯ&lt;/string&gt;
+  &lt;string&gt;КОМПАНІЯ&lt;/string&gt;
+  &lt;string&gt;ФІРМА&lt;/string&gt;
+  &lt;string&gt;ПІДПР.&lt;/string&gt;
+  &lt;string&gt;ПІД-ВО&lt;/string&gt;
+  &lt;string&gt;ПВПП &lt;/string&gt;
+  &lt;string&gt;ПВТП &lt;/string&gt;
+  &lt;string&gt;ПВТФ &lt;/string&gt;
+  &lt;string&gt;ПВКФ &lt;/string&gt;
+  &lt;string&gt;ПВКП &lt;/string&gt;
+  &lt;string&gt;ПБМП &lt;/string&gt;
+  &lt;string&gt;ПБПП &lt;/string&gt;
+  &lt;string&gt;ПВП&lt;/string&gt;
+  &lt;string&gt;ПБП  &lt;/string&gt;
+  &lt;string&gt;ПП &lt;/string&gt;
+  &lt;string&gt;ПФ &lt;/string&gt;
+  &lt;string&gt;П &lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="OrgNameFOP" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ФІЗИЧНА ОСОБА ПІДПРИЄМЕЦЬ&lt;/string&gt;
+  &lt;string&gt;ФІЗИЧНА ОСОБА  ПІДПРИЄМЕЦЬ&lt;/string&gt;
+  &lt;string&gt;ФІЗИЧНА ОСОБА- ПІДПРИЄМЕЦЬ&lt;/string&gt;
+  &lt;string&gt;ФІЗИЧНА ОСОБА-ПІДПРИЄМЕЦЬ&lt;/string&gt;
+  &lt;string&gt;ФІЗИЧНА ОСОБА - ПІДПРИЄМЕЦЬ&lt;/string&gt;
+  &lt;string&gt;СУБ'ЄКТ ПІДПРИЄМНИЦЬКОЇ ДІЯЛЬНОСТІ ФІЗИЧНА ОСОБА&lt;/string&gt;
+  &lt;string&gt;СУБ'ЄКТ ПІДПРИЄМНИЦЬКОЇ ДІЯЛЬНОСТІ -ФІЗИЧНА ОСОБА&lt;/string&gt;
+  &lt;string&gt;СУБ"ЄКТ ПІДПРИЄМНИЦЬКОЇ ДІЯЛЬНОСТІ - ФІЗИЧНА ОСОБА&lt;/string&gt;
+  &lt;string&gt;ФІЗИЧНА ОСОБА&lt;/string&gt;
+  &lt;string&gt;ПІДПРИЄМЕЦЬ&lt;/string&gt;
+  &lt;string&gt;ГРОМАДЯНИН&lt;/string&gt;
+  &lt;string&gt;ГРОМАДЯНКА&lt;/string&gt;
+  &lt;string&gt;СПД-ФО&lt;/string&gt;
+  &lt;string&gt;СПД-ФІЗИЧНА ОСОБА&lt;/string&gt;
+  &lt;string&gt;СПДФО&lt;/string&gt;
+  &lt;string&gt;ФО-П&lt;/string&gt;
+  &lt;string&gt;ФОП &lt;/string&gt;
+  &lt;string&gt;ФО &lt;/string&gt;
+  &lt;string&gt;СПД &lt;/string&gt;
+  &lt;string&gt;ГРН &lt;/string&gt;
+  &lt;string&gt;ГР-Н&lt;/string&gt;
+  &lt;string&gt;ГР-КА&lt;/string&gt;
+  &lt;string&gt;ГР.&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="OrgNameAdvBureau" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;АДВОКАТСЬКА КОМПАНІЯ&lt;/string&gt;
+  &lt;string&gt;АДВОКАТСЬКА КОНТОРА&lt;/string&gt;
+  &lt;string&gt;АДВОКАТСЬКА ФІРМА&lt;/string&gt;
+  &lt;string&gt;АДВОКАТСЬКЕ БЮРО&lt;/string&gt;
+  &lt;string&gt;АДВОКАТСЬКЕ ОБ'ЄДНАННЯ&lt;/string&gt;
+  &lt;string&gt;АДВОКАЦЬКЕ ОБ'ЄДНАННЯ&lt;/string&gt;
+  &lt;string&gt;АДВОКАТСЬКЕ ОБ"ЄДНАННЯ&lt;/string&gt;
+  &lt;string&gt;АДВОКАТ.КОМПАНІЯ&lt;/string&gt;
+  &lt;string&gt;ОБ'ЄДНАННЯ АДВОКАТІВ&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="OrgNameComBank" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;АКЦІОНЕРНИЙ ПОШТОВО-ПЕНСІЙНИЙ БАНК&lt;/string&gt;
+  &lt;string&gt;АКЦ. ПОШТОВО-ПЕНСІЙНИЙ БАНК&lt;/string&gt;
+  &lt;string&gt;АКЦІОНЕРНО-КОМЕРЦІЙНИЙ БАНК&lt;/string&gt;
+  &lt;string&gt;АКЦІОНЕРНО - КОМЕРЦІЙНИЙ БАНК&lt;/string&gt;
+  &lt;string&gt;АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ БАНК&lt;/string&gt;
+  &lt;string&gt;АКЦІОНЕРНИЙ КОМЕРЦ. БАНК&lt;/string&gt;
+  &lt;string&gt;АКЦІОНЕРНИЙ БАНК&lt;/string&gt;
+  &lt;string&gt;АК БАНК&lt;/string&gt;
+  &lt;string&gt;АКБ &lt;/string&gt;
+  &lt;string&gt;АБ &lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="OrgNameAdvocate" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ПРИВАТНИЙ АДВОКАТ&lt;/string&gt;
+  &lt;string&gt;АДВОКАТ&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="OrgNameOSBB" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ОБ'ЄДНАННЯ СПІВВЛАСНИКІВ БАГАТОКВАРТИРНИХ БУДИНКІВ&lt;/string&gt;
+  &lt;string&gt;ОБ'ЄДНАННЯ СПІВВЛАСНИКІВ БАГАТОПОВЕРХОВИХ БУДИНКІВ&lt;/string&gt;
+  &lt;string&gt;ОСББ&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="OrgNamePAT" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО&lt;/string&gt;
+  &lt;string&gt;ВІДКРИТЕ АКЦІОНЕРНЕ ТОВАРИСТВО&lt;/string&gt;
+  &lt;string&gt;АКЦІОНЕРНЕ ТОВАРИСТВО ВІДКРИТОГО ТИПУ&lt;/string&gt;
+  &lt;string&gt;ПАТ &lt;/string&gt;
+  &lt;string&gt;ВАТ &lt;/string&gt;
+  &lt;string&gt;АТ ВТ&lt;/string&gt;
+  &lt;string&gt;АТВТ &lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="OrgNameZAT" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ЗАКРИТЕ АКЦІОНЕРНЕ ТОВАРИСТВО&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ ПІДПРИЄМСТВО У ФОРМІ ЗАКРИТОГО АКЦІОНЕРНОГО ТОВАРИСТВА&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ УКРАЇНСЬКО-АМЕРИКАНСЬКЕ ПІДПРИЄМСТВО У ФОРМІ ЗАКРИТОГО АКЦІОНЕРНОГО ТОВАРИСТВО&lt;/string&gt;
+  &lt;string&gt;СПІЛЬНЕ ПІДПРИЄМСТВО ЗАКРИТЕ АКЦІОНЕРНЕ ТОВАРИСТВО&lt;/string&gt;
+  &lt;string&gt;АКЦІОНЕРНЕ ТОВАРИСТВО ЗАКРИТОГО ТИПУ&lt;/string&gt;
+  &lt;string&gt;АКЦІОНЕРНЕ ОБ'ЄДНАННЯ ЗАКРИТЕ ТОВАРИСТВО&lt;/string&gt;
+  &lt;string&gt;СП У ФОРМІ ЗАТ&lt;/string&gt;
+  &lt;string&gt;СП ЗАТ&lt;/string&gt;
+  &lt;string&gt;ЗАТ &lt;/string&gt;
+  &lt;string&gt;АТ ЗТ&lt;/string&gt;
+  &lt;string&gt;АТЗТ &lt;/string&gt;
+  &lt;string&gt;АОЗТ &lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="OrgNameGromad" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ПІДПРИЄМСТВО ГРОМАДСЬКОЇ ОРГАНІЗАЦІЇ&lt;/string&gt;
+  &lt;string&gt;ВСЕУКРАЇНСЬКА ГРОМАДСЬКА ОРГАНІЗАЦІЯ&lt;/string&gt;
+  &lt;string&gt;МІЖНАРОДНА ГРОМАДСЬКА ОРГАНІЗАЦІЯ&lt;/string&gt;
+  &lt;string&gt;ГРОМАДСЬКА ОРГАНІЗАЦІЯ&lt;/string&gt;
+  &lt;string&gt;ПГО &lt;/string&gt;
+  &lt;string&gt;ГО &lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="OrgNameKP" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;КОМУНАЛЬНЕ ПІДПРИЄМСТВО&lt;/string&gt;
+  &lt;string&gt;КП &lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="OrgNameKoop" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ГОЛАНДСЬКИЙ КООПЕРАТИВ ФЕРМЕРІВ&lt;/string&gt;
+  &lt;string&gt;КООПЕРАТИВ&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="OrgNameAT" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;АКЦІОНЕРНА ФІНАНСОВА ІНВЕСТИЦІЙНА КОМПАНІЯ&lt;/string&gt;
+  &lt;string&gt;АКЦІОНЕРНЕ ТОВАРИСТВО-ФІРМА&lt;/string&gt;
+  &lt;string&gt;АКЦІОНЕРНЕ ТОВАИСТВО&lt;/string&gt;
+  &lt;string&gt;АКЦІОНЕРНА КОМПАНІЯ&lt;/string&gt;
+  &lt;string&gt;АКЦІОНЕРНЕ ТОВАРИСТВО&lt;/string&gt;
+  &lt;string&gt;АКЦІОНЕРНЕ ПІДПРИЄМСТВО &lt;/string&gt;
+  &lt;string&gt;АКЦІОНЕРНЕ ОБ'ЄДНАННЯ&lt;/string&gt;
+  &lt;string&gt;АТФ &lt;/string&gt;
+  &lt;string&gt;АК &lt;/string&gt;
+  &lt;string&gt;АТ &lt;/string&gt;
+  &lt;string&gt;АО &lt;/string&gt;
+  &lt;string&gt;АП &lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="OrgNameBlago" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;МІСЬКИЙ БЛАГОДІЙНИЙ ФОНД СОЦІАЛЬНОЇ РЕАБІЛІТАЦІЇ МОЛОДІ&lt;/string&gt;
+  &lt;string&gt;МІЖНАРОДНИЙ ЖІНОЧИЙ БЛАГОДІЙНИЙ ФОНД&lt;/string&gt;
+  &lt;string&gt;МІЖНАРОДНА БЛАГОДІЙНА ОРГАНІЗАЦІЯ&lt;/string&gt;
+  &lt;string&gt;МІЖНАРОДНИЙ БЛАГОДІЙНИЙ ДИТЯЧИЙ ФОНД&lt;/string&gt;
+  &lt;string&gt;МІЖНАРОДНИЙ БЛАГОДІЙНИЙ ФОНД&lt;/string&gt;
+  &lt;string&gt;БЛАГОДІЙНА ОРГАНІЗІЯ&lt;/string&gt;
+  &lt;string&gt;МІСЬКИЙ БЛАГОДІЙНИЙ ФОНД&lt;/string&gt;
+  &lt;string&gt;ВСЕУКРАЇНСЬКИЙ БЛАГОДІЙНИЙ ФОНД&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКИЙ БЛАГОДІЙНИЙ ФОНД&lt;/string&gt;
+  &lt;string&gt;МІСЦЕВИЙ БЛАГОДІЙНИЙ ФОНД&lt;/string&gt;
+  &lt;string&gt;БЛАГОДІЙНЕ ТОВАРИСТВО&lt;/string&gt;
+  &lt;string&gt;БЛАГ.МЕМОРІАЛЬНИЙ ФОНД&lt;/string&gt;
+  &lt;string&gt;БЛАГОДІЙНО-ЕКОЛОГІЧНИЙ ФОНД&lt;/string&gt;
+  &lt;string&gt;БЛАГОД.-ЕКОЛОГ. ФОНД&lt;/string&gt;
+  &lt;string&gt;БЛАГ.ОРГ.&lt;/string&gt;
+  &lt;string&gt;БЛАГОДІЙНА ОРГАНІЗАЦІЯ&lt;/string&gt;
+  &lt;string&gt;БЛАГОДІЙНИЙ ФОНД&lt;/string&gt;
+  &lt;string&gt;БЛАГОД.ОРГАНІЗАЦІЯ&lt;/string&gt;
+  &lt;string&gt;БЛАГ.ОРГАНІЗАЦІЯ&lt;/string&gt;
+  &lt;string&gt;БЛАГ.ОРГ-ЦІЯ&lt;/string&gt;
+  &lt;string&gt;БЛАГОД.ОРГ-ЦІЯ&lt;/string&gt;
+  &lt;string&gt;БЛАГ.ФОНД&lt;/string&gt;
+  &lt;string&gt;БЛАГОД.ТОВ-ВО&lt;/string&gt;
+  &lt;string&gt;БФІВ &lt;/string&gt;
+  &lt;string&gt;БО &lt;/string&gt;
+  &lt;string&gt;БФ &lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="OrgNameAssoc" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;МІЖНАРОДНА БЛАГОДІЙНА АСОЦІАЦІЯ&lt;/string&gt;
+  &lt;string&gt;БЛАГОДІЙНА ГРОМАДСЬКА ОРГАНІЗАЦІЯ АСОЦІАЦІЯ&lt;/string&gt;
+  &lt;string&gt;КИЇВСЬКА АСОЦІАЦІЯ ІНВАЛІДІВ ЦЕРЕБРАЛЬНОГО ПАРАЛІЧУ&lt;/string&gt;
+  &lt;string&gt;АСОЦІАЦ.ІНВАЛІДІВ ЦЕРЕБРАЛЬНОГО ПАРАЛІЧУ&lt;/string&gt;
+  &lt;string&gt;АСОЦІАЦІЯ ДІЛОВОГО СПІВРОБІТНИЦТВА&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКА БАГАТОГАЛУЗЕВА ГОСПОДАРЧА АСОЦІАЦІЯ&lt;/string&gt;
+  &lt;string&gt;ВСЕУКРАЇНСЬКА АСОЦІАЦІЯ&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКА АСОЦІАЦІЯ&lt;/string&gt;
+  &lt;string&gt;ГОСПОДАРСЬКА АСОЦІАЦІЯ&lt;/string&gt;
+  &lt;string&gt;КИЇВСЬКА МІСЬКА АСОЦІАЦІЯ&lt;/string&gt;
+  &lt;string&gt;МЕДИКО-ФАРМАЦЕВТИЧНА АСОЦІАЦІЯ&lt;/string&gt;
+  &lt;string&gt;МІЖГАЛУЗЕВА АСОЦІАЦІЯ&lt;/string&gt;
+  &lt;string&gt;ГРОМАДСЬКА ОРГАНIЗАЦIЯ АСОЦIАЦIЯ&lt;/string&gt;
+  &lt;string&gt;АСАЦІАЦІЯ&lt;/string&gt;
+  &lt;string&gt;АСОЦІАЦІЯ&lt;/string&gt;
+  &lt;string&gt;АСОЦІАЦ.&lt;/string&gt;
+  &lt;string&gt;АСОЦ.&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="OrgNameUpr" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ДЕРЖАВНЕ ПІДПРИЄМСТВО - УКРАЇНСЬКЕ ДЕРЖАВНЕ УПРАВЛІННЯ&lt;/string&gt;
+  &lt;string&gt;АДМІНІСТРАТИВНО-ГОСПОДАРЧЕ УПРАВЛІННЯ&lt;/string&gt;
+  &lt;string&gt;ГОЛОВНЕ ДЕРЖАВНЕ ОПЕРАТИВНЕ УПРАВЛІННЯ&lt;/string&gt;
+  &lt;string&gt;ГОЛОВНЕ УПРАВЛІННЯ ТОРГІВЛІ&lt;/string&gt;
+  &lt;string&gt;ГОЛОВНЕ ДЕРЖАВНЕ УПРАВЛІННЯ&lt;/string&gt;
+  &lt;string&gt;ГОЛОВНЕ УПРАВЛІННЯ&lt;/string&gt;
+  &lt;string&gt;ГОЛ. УПР. ТОРГІВЛІ&lt;/string&gt;
+  &lt;string&gt;ГОЛ.ДЕРЖ.УПР.&lt;/string&gt;
+  &lt;string&gt;ГОЛОВНЕ УПР.&lt;/string&gt;
+  &lt;string&gt;ГОЛОВНЕ УПРАВ.&lt;/string&gt;
+  &lt;string&gt;ГОЛОВНЕ УПРАВЛ.&lt;/string&gt;
+  &lt;string&gt;ГОЛОВ.УПР.&lt;/string&gt;
+  &lt;string&gt;ГОЛ.УПР.&lt;/string&gt;
+  &lt;string&gt;УКРАЇНСЬКЕ ДЕРЖАВНЕ УПРАВЛІННЯ&lt;/string&gt;
+  &lt;string&gt;КИЇВСЬКЕ МІСЬКЕ УПРАВЛІННЯ.&lt;/string&gt;
+  &lt;string&gt;КИЇВСЬКЕ МІСЬКЕ УПРАВЛІННЯ&lt;/string&gt;
+  &lt;string&gt;ДЕРЖАВНЕ УПРАВЛІННЯ&lt;/string&gt;
+  &lt;string&gt;УПРАВЛІННЯ&lt;/string&gt;
+  &lt;string&gt;УПРАВ.&lt;/string&gt;
+  &lt;string&gt;УПР-НЯ&lt;/string&gt;
+  &lt;string&gt;УП-НЯ&lt;/string&gt;
+  &lt;string&gt;УПР.&lt;/string&gt;
+  &lt;string&gt;АГУ &lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="OrgNameZHBK" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ЖИТЛОВО-БУДІВЕЛЬНИЙ КООПЕРАТИВ&lt;/string&gt;
+  &lt;string&gt;ЖБК &lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="OrgNameZHEK" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ЖИТЛОВО ЕКСПЛУАТАЦІЙНА КОНТОРА&lt;/string&gt;
+  &lt;string&gt;ЖЕК-&lt;/string&gt;
+  &lt;string&gt;ЖЕК &lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="OrgNamePobut" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ДЕРЖАВНЕ ПІДПРИЄМСТВО ПОБУТУ&lt;/string&gt;
+  &lt;string&gt;ДЕРЖ. ПІДПРИЄМСТВО ПОБУТУ&lt;/string&gt;
+  &lt;string&gt;ТОВ "БУДИНОК ПОБУТУ&lt;/string&gt;
+  &lt;string&gt;ТОВ БУДИНОК ПОБУТУ&lt;/string&gt;
+  &lt;string&gt;ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ "БУДИНОК ПОБУТУ&lt;/string&gt;
+  &lt;string&gt;ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ БУДИНОК ПОБУТУ&lt;/string&gt;
+  &lt;string&gt;АКЦІОНЕРНЕ ТОВАРИСТВО ВІДКРИТОГО ТИПУ БУДИНОК ПОБУТУ&lt;/string&gt;
+  &lt;string&gt;ОРЕНДНЕ ПІДПРИЄМСТВО БУДИНОК ПОБУТУ&lt;/string&gt;
+  &lt;string&gt;АТ ВТ БУДИНОК ПОБУТУ&lt;/string&gt;
+  &lt;string&gt;ОП БУДИНОК ПОБУТУ&lt;/string&gt;
+  &lt;string&gt;БУДИНОК ПОБУТУ&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Connection1NFServer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">gukv_1nf</Value>
+    </Setting>
+    <Setting Name="Connection1NFDatabase" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">c:\database\1nf\1nf.gdb</Value>
+    </Setting>
+    <Setting Name="Connection1NFUser" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SYSDBA</Value>
+    </Setting>
+    <Setting Name="Connection1NFPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">masterkey</Value>
+    </Setting>
+    <Setting Name="ConnectionBalansServer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">gukv-balans</Value>
+    </Setting>
+    <Setting Name="ConnectionBalansDatabase" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">c:\db\Balans_Polygon.gdb</Value>
+    </Setting>
+    <Setting Name="ConnectionBalansUser" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SYSDBA</Value>
+    </Setting>
+    <Setting Name="ConnectionBalansPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">masterkey</Value>
+    </Setting>
+    <Setting Name="ConnectionNJFServer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">gukv</Value>
+    </Setting>
+    <Setting Name="ConnectionNJFDatabase" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">d:\database\njf\newnjf.gdb</Value>
+    </Setting>
+    <Setting Name="ConnectionNJFUser" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SYSDBA</Value>
+    </Setting>
+    <Setting Name="ConnectionNJFPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">masterkey</Value>
+    </Setting>
+    <Setting Name="ConnectionSQLServerServer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">localhost</Value>
+    </Setting>
+    <Setting Name="ConnectionSQLServerDatabase" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">GUKV</Value>
+    </Setting>
+    <Setting Name="ConnectionSQLServerUser" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">sa</Value>
+    </Setting>
+    <Setting Name="ConnectionSQLServerPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">13579</Value>
+    </Setting>
+    <Setting Name="AddressMiscSuffixes" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;БОЙЛЕРНА&lt;/string&gt;
+  &lt;string&gt;БОЙЛЕР&lt;/string&gt;
+  &lt;string&gt;ФАСАД&lt;/string&gt;
+  &lt;string&gt;САДИБА&lt;/string&gt;
+  &lt;string&gt;КОТЕЛЬНЯ&lt;/string&gt;
+  &lt;string&gt;ПОГРЕБ&lt;/string&gt;
+  &lt;string&gt;ГАРАЖ&lt;/string&gt;
+  &lt;string&gt;ГАРАЖІ&lt;/string&gt;
+  &lt;string&gt;БЮВЕТ&lt;/string&gt;
+  &lt;string&gt;СКВЕРБЮВЕТ&lt;/string&gt;
+  &lt;string&gt;ПРИБУДОВА&lt;/string&gt;
+  &lt;string&gt;ПРИБУД.&lt;/string&gt;
+  &lt;string&gt;ПРИМІЩ.&lt;/string&gt;
+  &lt;string&gt;БЕЗГОСП&lt;/string&gt;
+  &lt;string&gt;ВЕРАНДА&lt;/string&gt;
+  &lt;string&gt;САРАЙ&lt;/string&gt;
+  &lt;string&gt;НАМЕТ&lt;/string&gt;
+  &lt;string&gt;ПАВІЛЬЙОН&lt;/string&gt;
+  &lt;string&gt;ГОСП.СПОРУДА&lt;/string&gt;
+  &lt;string&gt;ГОСП.СПОР.&lt;/string&gt;
+  &lt;string&gt;ВИД&lt;/string&gt;
+  &lt;string&gt;АРЕНА&lt;/string&gt;
+  &lt;string&gt;НЕДОБУДОВА&lt;/string&gt;
+  &lt;string&gt;КІОСК&lt;/string&gt;
+  &lt;string&gt;ТУАЛЕТ&lt;/string&gt;
+  &lt;string&gt;МАЙСТЕРНЯ&lt;/string&gt;
+  &lt;string&gt;БОМБ&lt;/string&gt;
+  &lt;string&gt;БАСЕЙН&lt;/string&gt;
+  &lt;string&gt;МАЙДАНЧИК&lt;/string&gt;
+  &lt;string&gt;ВБИРАЛЬНЯ&lt;/string&gt;
+  &lt;string&gt;ДУШ&lt;/string&gt;
+  &lt;string&gt;НАСОСНА&lt;/string&gt;
+  &lt;string&gt;СКЛАД&lt;/string&gt;
+  &lt;string&gt;ТП ПРИБУДОВА&lt;/string&gt;
+  &lt;string&gt;СВЕРДЛОВИНА&lt;/string&gt;
+  &lt;string&gt;НС&lt;/string&gt;
+  &lt;string&gt;ТП&lt;/string&gt;
+  &lt;string&gt;СМ&lt;/string&gt;
+  &lt;string&gt;БУД&lt;/string&gt;
+  &lt;string&gt;КМ&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="AddrTypeCity" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;М&lt;/string&gt;
+  &lt;string&gt;МІСТО&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="AddrTypeVillage" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;С&lt;/string&gt;
+  &lt;string&gt;С-ЩЕ&lt;/string&gt;
+  &lt;string&gt;СЕЛИЩЕ&lt;/string&gt;
+  &lt;string&gt;СМТ&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="AddrTypeBoulevard" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;БУЛЬВ&lt;/string&gt;
+  &lt;string&gt;БУЛЬВАР&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="AddrTypeLane" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ПРОВ&lt;/string&gt;
+  &lt;string&gt;ПРОВУЛОК&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="AddrTypeAvenue" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ПРОСП&lt;/string&gt;
+  &lt;string&gt;ПРОСПЕКТ&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="AddrTypeSquare" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ПЛ&lt;/string&gt;
+  &lt;string&gt;ПЛОЩА&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="AddrTypePark" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ПАРК&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="AddrKnownVillages" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ТЕТЕРІВ&lt;/string&gt;
+  &lt;string&gt;ВОРЗЕЛЬ&lt;/string&gt;
+  &lt;string&gt;БОРИСПІЛЬ&lt;/string&gt;
+  &lt;string&gt;ГОСТОМЕЛЬ&lt;/string&gt;
+  &lt;string&gt;ЛИМАН ОДЕСЬКА ОБЛ&lt;/string&gt;
+  &lt;string&gt;ХЕРСОНСЬКА ОБЛ&lt;/string&gt;
+  &lt;string&gt;С.ЖУКИН&lt;/string&gt;
+  &lt;string&gt;МАКАРІВ&lt;/string&gt;
+  &lt;string&gt;ШЕВЧЕНКОВО&lt;/string&gt;
+  &lt;string&gt;ВОРОПАЇВ&lt;/string&gt;
+  &lt;string&gt;БРОВАРСЬКЕ ЛІСНИЦТВО&lt;/string&gt;
+  &lt;string&gt;М.ОБУХІВ&lt;/string&gt;
+  &lt;string&gt;ХОТЯНІВКА&lt;/string&gt;
+  &lt;string&gt;ГРЕБЕНІ&lt;/string&gt;
+  &lt;string&gt;М.СЕВАСТОПОЛЬ&lt;/string&gt;
+  &lt;string&gt;ІВАНКІВ&lt;/string&gt;
+  &lt;string&gt;М.ВИШГОРОД&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="StreetNameCorrections" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;40-РІЧЧЯ=СОРОКАРІЧЧЯ ЖОВТНЯ ПРОСП.&lt;/string&gt;
+  &lt;string&gt;ЇЖАКЕВИЧА=ЇЖАКЕВИЧА ІВАНА&lt;/string&gt;
+  &lt;string&gt;БАЛЬЗАКА=БАЛЬЗАКА ОНОРЕ ДЕ&lt;/string&gt;
+  &lt;string&gt;БЕРЕТТІ=БЕРЕТТІ ВІКЕНТІЯ&lt;/string&gt;
+  &lt;string&gt;БОРИСПІЛЬСЬКЕ=БОРИСПІЛЬСКЕ ШОСЕ&lt;/string&gt;
+  &lt;string&gt;ВАСИЛЕВСЬКОЇ=ВАСИЛЕВСЬКОЇ ВАНДИ&lt;/string&gt;
+  &lt;string&gt;ВЕРНАДСЬКОГО=ВЕРНАДСЬКОГО АКАДЕМІКА БУЛЬВ.&lt;/string&gt;
+  &lt;string&gt;ВЕРБИЦЬКОГО=ВЕРБИЦЬКОГО АРХІТЕКТОРА&lt;/string&gt;
+  &lt;string&gt;ГАГАРІНА=ГАГАРІНА ЮРІЯ ПРОСП.&lt;/string&gt;
+  &lt;string&gt;ГАВРО=ГАВРО ЛАЙОША&lt;/string&gt;
+  &lt;string&gt;Б.ГАРІНА=ГАРІНА БОРИСА&lt;/string&gt;
+  &lt;string&gt;Б. ГАРІНА=ГАРІНА БОРИСА&lt;/string&gt;
+  &lt;string&gt;ГАРІНА Б=ГАРІНА БОРИСА&lt;/string&gt;
+  &lt;string&gt;"ГАРІНА"=ГАРІНА БОРИСА&lt;/string&gt;
+  &lt;string&gt;ГЕТЬМАНА=ГЕТЬМАНА ВАДИМА&lt;/string&gt;
+  &lt;string&gt;ГЛУШКОВА=ГЛУШКОВА АКАДЕМІКА&lt;/string&gt;
+  &lt;string&gt;ГОНЧАРА=ГОНЧАРА ОЛЕСЯ&lt;/string&gt;
+  &lt;string&gt;ГОНГАДЗЕ=ГОНГАДЗЕ ГЕОРГІЯ ПРОСП.&lt;/string&gt;
+  &lt;string&gt;ГОРОДЕЦЬКОГО=ГОРОДЕЦЬКОГО АРХІТЕКТОРА&lt;/string&gt;
+  &lt;string&gt;ГРЕКОВА=ГРЕКОВА АКАДЕМІКА&lt;/string&gt;
+  &lt;string&gt;ГРІНЧЕНКА М=ГРІНЧЕНКА МИКОЛИ&lt;/string&gt;
+  &lt;string&gt;ГРІНЧЕНКА Б=ГРІНЧЕНКА БОРИСА&lt;/string&gt;
+  &lt;string&gt;ГРУШЕВСЬКОГО=ГРУШЕВСЬКОГО МИХАЙЛА&lt;/string&gt;
+  &lt;string&gt;НАБ. ДНІПРОВСЬКА=ДНІПРОВСЬКА НАБЕРЕЖНА&lt;/string&gt;
+  &lt;string&gt;ДОБРОХОТОВА=ДОБРОХОТОВА АКАДЕМІКА&lt;/string&gt;
+  &lt;string&gt;ДОВНАР=ДОВНАР-ЗАПОЛЬСЬКОГО&lt;/string&gt;
+  &lt;string&gt;ДРАЙЗЕРА=ДРАЙЗЕРА ТЕОДОРА&lt;/string&gt;
+  &lt;string&gt;ДУБІНІНА=ДУБІНІНА ВОЛОДІ&lt;/string&gt;
+  &lt;string&gt;ЗАБОЛОТНОГО=ЗАБОЛОТНОГО АКАДЕМІКА&lt;/string&gt;
+  &lt;string&gt;ЗАКРЕВСЬКОГО=ЗАКРЕВСЬКОГО МИКОЛИ&lt;/string&gt;
+  &lt;string&gt;КИБАЛЬЧИЧА=КИБАЛЬЧИЧА МИКОЛИ&lt;/string&gt;
+  &lt;string&gt;КОТЕЛЬНИКОВА=КОТЕЛЬНИКОВА МИХАЙЛА&lt;/string&gt;
+  &lt;string&gt;КОЦЮБИНСЬКОГО Ю=КОЦЮБИНСЬКОГО ЮРІЯ&lt;/string&gt;
+  &lt;string&gt;КОЦЮБИНСЬКОГО М=КОЦЮБИНСЬКОГО МИХАЙЛА&lt;/string&gt;
+  &lt;string&gt;М. КОЦЮБИНСЬКОГО=КОЦЮБИНСЬКОГО МИХАЙЛА&lt;/string&gt;
+  &lt;string&gt;КОМАРОВА=КОМАРОВА КОСМОНАВТА ПРОСП.&lt;/string&gt;
+  &lt;string&gt;КОРОЛЬОВА=КОРОЛЬОВА АКАДЕМІКА ПРОСП.&lt;/string&gt;
+  &lt;string&gt;КРАМСЬКОГО=КРАМСЬКОГО ІВАНА&lt;/string&gt;
+  &lt;string&gt;КРАСИКОВА=КРАСИКОВА ПЕТРА&lt;/string&gt;
+  &lt;string&gt;КРАСІКОВА=КРАСИКОВА ПЕТРА&lt;/string&gt;
+  &lt;string&gt;КОЗИЦЬКОГО=КОЗИЦЬКОГО ПИЛИПА&lt;/string&gt;
+  &lt;string&gt;КРАВЧЕНКА=КРАВЧЕНКА МИКОЛИ&lt;/string&gt;
+  &lt;string&gt;КРАСНОВА=КРАСНОВА МИКОЛИ&lt;/string&gt;
+  &lt;string&gt;ВУЛ. М. КРИВОНОСА=КРИВОНОСА МАКСИМА&lt;/string&gt;
+  &lt;string&gt;КУДРІ=КУДРІ ІВАНА&lt;/string&gt;
+  &lt;string&gt;КУРБАСА=КУРБАСА ЛЕСЯ ПРОСП.&lt;/string&gt;
+  &lt;string&gt;КУРЧАТОВА=КУРЧАТОВА АКАДЕМІКА&lt;/string&gt;
+  &lt;string&gt;ЛАЗО=ЛАЗО СЕРГІЯ&lt;/string&gt;
+  &lt;string&gt;ЛЕЙПЦ=ЛЕЙПЦИЗЬКА&lt;/string&gt;
+  &lt;string&gt;ЛЕПСЕ І=ЛЕПСЕ ІВАНА БУЛЬВ.&lt;/string&gt;
+  &lt;string&gt;МАЗЕПИ=МАЗЕПИ ІВАНА&lt;/string&gt;
+  &lt;string&gt;МАТЕЮКА=МАТЕЮКА МИКОЛИ&lt;/string&gt;
+  &lt;string&gt;МАЙБОРОДИ=ПЛАТОНА МАЙБОРОДИ&lt;/string&gt;
+  &lt;string&gt;МАЯКОВСЬКОГО=МАЯКОВСЬКОГО В. ПРОСП.&lt;/string&gt;
+  &lt;string&gt;МИЛЬЧАКОВА=МИЛЬЧАКОВА ОЛЕКСАНДРА&lt;/string&gt;
+  &lt;string&gt;МІЛЬЧАКОВА=МИЛЬЧАКОВА ОЛЕКСАНДРА&lt;/string&gt;
+  &lt;string&gt;МУРАШКА=МУРАШКА МИКОЛИ&lt;/string&gt;
+  &lt;string&gt;НАВОЇ=НАВОЇ АЛІШЕРА ПРОСП.&lt;/string&gt;
+  &lt;string&gt;ОКІПНОЇ=ОКІПНОЇ РАЇСИ&lt;/string&gt;
+  &lt;string&gt;ПЕРВОМАЙСЬКОГО=ПЕРВОМАЙСЬКОГО ЛЕОНІДА&lt;/string&gt;
+  &lt;string&gt;ПЕТЛЮРИ=ПЕТЛЮРИ СИМОНА&lt;/string&gt;
+  &lt;string&gt;ПІДВИСОЦЬКОГО=ПІДВИСОЦЬКОГО ПРОФЕСОРА&lt;/string&gt;
+  &lt;string&gt;ПІКА=ПІКА ВІЛЬГЕЛЬМА&lt;/string&gt;
+  &lt;string&gt;ПИМОНЕНКА=ПИМОНЕНКА МИКОЛИ&lt;/string&gt;
+  &lt;string&gt;ПОЛКОВІЙ=ПОЛКОВА&lt;/string&gt;
+  &lt;string&gt;РАЄВСЬКОГО=РАЄВСЬКОГО МИКОЛИ&lt;/string&gt;
+  &lt;string&gt;РАДЧЕНКА=РАДЧЕНКА ПЕТРА&lt;/string&gt;
+  &lt;string&gt;РИБАЛКА=РИБАЛКА МАРШАЛА&lt;/string&gt;
+  &lt;string&gt;РУДЕНКО=РУДЕНКО ЛАРИСИ&lt;/string&gt;
+  &lt;string&gt;НАБ. РУСАНІВСЬКА=РУСАНІВСЬКА НАБЕРЕЖНА&lt;/string&gt;
+  &lt;string&gt;СЕРГІЄНКА=СЕРГІЄНКА ІВАНА&lt;/string&gt;
+  &lt;string&gt;СТАЛЬСЬКОГО=СТАЛЬСЬКОГО СУЛЕЙМАНА&lt;/string&gt;
+  &lt;string&gt;ТЕЛІГИ=ТЕЛІГИ ОЛЕНИ&lt;/string&gt;
+  &lt;string&gt;ТИМОФІЄВОЇ=ТИМОФЄЄВОЇ ГАЛІ&lt;/string&gt;
+  &lt;string&gt;ТИМОФЄЄВОЇ=ТИМОФЄЄВОЇ ГАЛІ&lt;/string&gt;
+  &lt;string&gt;БЛ. УКРАЇНКИ Л=ЛЕСІ УКРАЇНКИ БУЛЬВ.&lt;/string&gt;
+  &lt;string&gt;УКРАЇНКИ Б=ЛЕСІ УКРАЇНКИ БУЛЬВ.&lt;/string&gt;
+  &lt;string&gt;ВУЛ. ФРАНКА=ФРАНКА ІВАНА&lt;/string&gt;
+  &lt;string&gt;ФЕДОРОВА=ФЕДОРОВА ІВАНА&lt;/string&gt;
+  &lt;string&gt;ХМЕЛЬНИЦЬКОГО Б=ХМЕЛЬНИЦЬКОГО БОГДАНА&lt;/string&gt;
+  &lt;string&gt;ХОХЛОВИХ=ХОХЛОВИХ СІМ'Ї&lt;/string&gt;
+  &lt;string&gt;ШАМРИЛА=ШАМРИЛА ТИМОФІЯ&lt;/string&gt;
+  &lt;string&gt;БЛ. ШЕВЧЕНКА Т=ШЕВЧЕНКА ТАРАСА БУЛЬВ.&lt;/string&gt;
+  &lt;string&gt;ШЕПЕЛЄВА=ШЕПЕЛЄВА МИКОЛИ&lt;/string&gt;
+  &lt;string&gt;ШУМСЬКОГО=ШУМСЬКОГО ЮРІЯ&lt;/string&gt;
+  &lt;string&gt;АЛЕЙХЕМ=ШОЛОМ-АЛЕЙХЕМА&lt;/string&gt;
+  &lt;string&gt;ЮНКЕРОВА=ЮНКЕРОВА МИКОЛИ&lt;/string&gt;
+  &lt;string&gt;ЯРМОЛИ=ЯРМОЛИ ВІКТОРА&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="RentPaymentStreetSuffix" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ПРОСПЕКТ=ПРОСПЕКТ&lt;/string&gt;
+  &lt;string&gt;ПРОСП.=ПРОСПЕКТ&lt;/string&gt;
+  &lt;string&gt;ПР-КТ=ПРОСПЕКТ&lt;/string&gt;
+  &lt;string&gt;ПР-Т=ПРОСПЕКТ&lt;/string&gt;
+  &lt;string&gt;ПР.=ПРОСПЕКТ&lt;/string&gt;
+  &lt;string&gt;ПРОВ=ПРОВУЛОК&lt;/string&gt;
+  &lt;string&gt;ВУЛИЦЯ&lt;/string&gt;
+  &lt;string&gt;ВУЛ&lt;/string&gt;
+  &lt;string&gt;БУЛЬВАР=БУЛЬВАР&lt;/string&gt;
+  &lt;string&gt;БУЛЬВ=БУЛЬВАР&lt;/string&gt;
+  &lt;string&gt;БУЛ.=БУЛЬВАР&lt;/string&gt;
+  &lt;string&gt;ПЛОЩА=ПЛОЩА&lt;/string&gt;
+  &lt;string&gt;УЗВІЗ=УЗВІЗ&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="StreetAvenuePrefixList" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ПР-Т&lt;/string&gt;
+  &lt;string&gt;ПРОСП.&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="StreetBoulevardPrefixList" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;БУЛЬВ.&lt;/string&gt;
+  &lt;string&gt;БЛ.&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="StreetLanePrefixList" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ПРОВУЛ.&lt;/string&gt;
+  &lt;string&gt;ПРОВ.&lt;/string&gt;
+  &lt;string&gt;ПРОВ &lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="StreetSquarePrefixList" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ПЛОЩА&lt;/string&gt;
+  &lt;string&gt;ПЛ.&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="SmtpHost" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">192.168.10.4</Value>
+    </Setting>
+    <Setting Name="SmtpPort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">25</Value>
+    </Setting>
+    <Setting Name="SmtpUser" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">a</Value>
+    </Setting>
+    <Setting Name="SmtpPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SmtpReplyTo" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">support@itgukraine.com</Value>
+    </Setting>
+    <Setting Name="SmtpDomain" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">GUM-KMDA</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="PageSetup" Caption="Thiết lập Trang..." ToolTip="Thiết lập Trang" />
+      <Action Id="Print" Caption="In..." ToolTip="Hội thoại In" />
+      <Action Id="PrintPreview" Caption="Xem trước khi in..." ToolTip="Xem trước khi in" />
+    </Actions>
+  </ActionDesign>
+</Application>

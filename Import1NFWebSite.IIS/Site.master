@@ -1,0 +1,86 @@
+﻿<%@ master language="C#" autoeventwireup="true" inherits="SiteMaster, App_Web_memhpjux" %>
+
+<%@ Register Src="~/UserControls/ThemeSelector.ascx" TagPrefix="dx" TagName="ThemeSelector" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head id="Head1" runat="server">
+    <title>Система Завантаження Звітів 1НФ ДКВ м. Києва</title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/DXTheme.js") %>"></script>
+    <form id="Form1" runat="server">
+    <div class="page">
+        <div class="narrowheader">
+            <div style="float: right; padding-top: 2px;">
+                <dx:ThemeSelector ID="ThemeSelector" runat="server" />
+            </div>
+        </div>
+        <div class="clear hideSkiplink">
+            <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                <tr>
+                    <td>
+                        <div style="float: left; padding-top: 0px; width:inherit; ">
+                            <asp:Panel ID="PanelNavigation" runat="server" Width="100%">
+                                <dx:ASPxMenu ID="MainMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left" >
+                                    <ItemStyle Paddings-PaddingLeft="6px" Paddings-PaddingRight="6px" />
+                                    <Items>
+                                        <dx:MenuItem NavigateUrl="~/Reports1NF/ReportList.aspx" Text="Перелік Наданих Звітів"></dx:MenuItem>
+                                        <dx:MenuItem NavigateUrl="~/SubmitterList/SubmitterList.aspx" Text="Перелік Подавачів Звіту 1НФ"></dx:MenuItem>
+                                    </Items>
+                                </dx:ASPxMenu>
+                            </asp:Panel>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div style="float: right; padding-top: 0px;">
+                            <asp:LoginView ID="LoginView1" runat="server">
+                                <AnonymousTemplate>
+                                    <dx:ASPxMenu ID="LoginMenu1" runat="server" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
+                                        <ItemStyle Paddings-PaddingLeft="6px" Paddings-PaddingRight="6px" />
+                                        <Items>
+                                            <dx:MenuItem NavigateUrl="~/Account/Login.aspx" Text="Увійти"></dx:MenuItem>
+                                        </Items>
+                                    </dx:ASPxMenu>
+                                </AnonymousTemplate>
+                                <LoggedInTemplate>
+                                    <table border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td valign="middle">
+                                                <div class="username">
+                                                    <asp:LoginName id="LoginName1" runat="server" FormatString ="{0}" /> &nbsp;
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <dx:ASPxMenu ID="LoginMenu2" runat="server" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
+                                                    <ItemStyle Paddings-PaddingLeft="6px" Paddings-PaddingRight="6px" />
+                                                    <Items>
+                                                        <dx:MenuItem NavigateUrl="~/Account/Logout.aspx" Text="Вийти"></dx:MenuItem>
+                                                        <dx:MenuItem NavigateUrl="~/Account/ChangePassword.aspx" Text="Пароль"></dx:MenuItem>
+                                                    </Items>
+                                                </dx:ASPxMenu>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </LoggedInTemplate>
+                            </asp:LoginView>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    </form>
+    <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/CommonScript.js") %>"></script>
+    <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jquery-1.8.3.js") %>"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="ReportViewerDialogController_Back" Caption="Voltar" />
+      <Action Id="ReportViewerDialogController_Close" Caption="Fechar" />
+      <Action Id="ReportViewerDialogController_Preview" Caption="Visualizar" />
+      <Action Id="ShowReportInPreviewWindow" Caption="Visualizar" />
+    </Actions>
+  </ActionDesign>
+  <Localization>
+    <LocalizationGroup Name="Captions">
+      <LocalizationItem Name="DownloadReportMessage" Value="Pressione OK para fazer download do relatório" />
+    </LocalizationGroup>
+  </Localization>
+</Application>

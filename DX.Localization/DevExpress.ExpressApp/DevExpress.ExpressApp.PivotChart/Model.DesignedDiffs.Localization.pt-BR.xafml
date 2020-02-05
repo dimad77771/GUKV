@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="BindAnalysisData" Caption="Vincular Dados para Análise" />
+      <Action Id="UnbindAnalysisData" Caption="Desvincular Dados da Análise" />
+    </Actions>
+  </ActionDesign>
+</Application>

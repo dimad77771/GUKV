@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="Activate" Caption="Aktivovat" />
+      <Action Id="CancelWorkflowInstance" Caption="Zrušit" ConfirmationMessage="Chystáte se zrušit tyto vybrané položky. Chcete pokračovat?" />
+      <Action Id="Deactivate" Caption="Deaktivovat" />
+      <Action Id="ResumeWorkflowInstance" Caption="Obnovit" ConfirmationMessage="Chystáte se obnovit vybrané položky. Chcete pokračovat?" />
+      <Action Id="ShowWorkflowInstances" Caption="Zobrazit instance workflow" />
+      <Action Id="SuspendWorkflowInstance" ConfirmationMessage="Chystáte se pozastavit vybrané položky. Chcete pokračovat?" />
+      <Action Id="TerminateWorkflowInstance" Caption="Ukončit" ConfirmationMessage="Chystáte se ukončit vybrané položky. Chcete pokračovat?" />
+    </Actions>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="DevExpress.ExpressApp.Workflow.Versioning.IUserActivityVersion" Caption="Iuživatel verze aktivity">
+      <OwnMembers>
+        <Member Name="Version" Caption="Verze" />
+        <Member Name="WorkflowUniqueId" Caption="Unikátní workflow Id" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Workflow.Versioning.XpoUserActivityVersion" Caption="Xpo uživatel verze aktivity">
+      <OwnMembers>
+        <Member Name="Version" Caption="Verze" />
+        <Member Name="WorkflowUniqueId" Caption="Unikátní workflow Id" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Workflow.Xpo.WFBaseObject" Caption="WFZákladní objekt" />
+    <Class Name="DevExpress.ExpressApp.Workflow.Xpo.XpoRunningWorkflowInstanceInfo" Caption="Informace o běžící instanci workflow">
+      <OwnMembers>
+        <Member Name="ActivityInstanceId" Caption="Instance aktivity Id" />
+        <Member Name="State" Caption="Stav" />
+        <Member Name="TargetObjectHandle" Caption="Zpracovat objekt cíle" />
+        <Member Name="TrackingRecords" Caption="Sledování záznamů" />
+        <Member Name="TrackingRecordVisualizationInfo" Caption="Info o vizualizaci sledování záznamů" />
+        <Member Name="WorkflowName" Caption="Název workflow " />
+        <Member Name="WorkflowUniqueId" Caption="Unikátní workflow Id" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Workflow.Xpo.XpoStartWorkflowRequest">
+      <OwnMembers>
+        <Member Name="TargetObjectKey" Caption="Klíč sćílového objektu" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Workflow.Xpo.XpoWorkflowDefinition" Caption="Definice workflow ">
+      <OwnMembers>
+        <Member Name="AutoStartWhenObjectFitsCriteria" Caption="Spustit start, až bude objekt odpovídat kritériím" />
+        <Member Name="AutoStartWhenObjectIsCreated" Caption="Spustit start, až bude objekt vytvořen" />
+        <Member Name="Criteria" Caption="Kritéria" />
+        <Member Name="IsActive" Caption="Je aktivní" />
+        <Member Name="Name" Caption="Jméno" />
+        <Member Name="TargetObjectType" Caption="Typ cílového objektu" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Workflow.Xpo.XpoWorkflowInstanceControlCommandRequest" Caption="Xpo požadavek na kontrolu instance workflow ">
+      <OwnMembers>
+        <Member Name="Command" Caption="Příkaz" />
+        <Member Name="CreatedOn" Caption="Vytvořen na" />
+        <Member Name="Result" Caption="Výsledek" />
+        <Member Name="TargetActivityInstanceId" Caption="Instance cílové aktivity Id" />
+        <Member Name="TargetWorkflowUniqueId" Caption="Unikátní cílové workflow Id" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Workflow.Xpo.XpoTrackingRecord" Caption="Xpo záznam sledování ">
+      <OwnMembers>
+        <Member Name="ActivityId" Caption="Activita Id" />
+        <Member Name="DateTime" Caption="Datum a čas" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Workflow.Xpo.XpoWorkflowInstance">
+      <OwnMembers>
+        <Member Name="ExpirationDateTime" Caption="Datum a čas vypršení" />
+        <Member Name="Status" Caption="Stav" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <Localization>
+    <LocalizationGroup Name="Enums">
+      <LocalizationGroup Name="DevExpress.ExpressApp.Workflow.WorkflowControlCommand" Value="Ovládací příkaz Workflowu">
+        <LocalizationItem Name="Cancel" Value="Zrušit" />
+        <LocalizationItem Name="Resume" Value="Obnovit" />
+        <LocalizationItem Name="Suspend" Value="Pozastavit" />
+        <LocalizationItem Name="Terminate" Value="Ukončit" />
+      </LocalizationGroup>
+      <LocalizationGroup Name="System.Activities.ActivityInstanceState" Value="Stav aktivity instance">
+        <LocalizationItem Name="Canceled" Value="Zrušeno" />
+        <LocalizationItem Name="Closed" Value="Uzavřeno" />
+        <LocalizationItem Name="Executing" Value="Provedeno" />
+        <LocalizationItem Name="Faulted" Value="Chybně" />
+      </LocalizationGroup>
+    </LocalizationGroup>
+  </Localization>
+  <Views>
+    <DetailView Id="XpoRunningWorkflowInstanceInfo_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="XpoRunningWorkflowInstanceInfo" Caption="Informace o běžící instanci workflow" />
+          </LayoutGroup>
+          <LayoutGroup Id="TrackingRecords_Group" Caption="Sledování záznamů" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="XpoWorkflowDefinition_DetailView">
+      <Items>
+        <PropertyEditor Id="AutoStartWhenObjectFitsCriteria" Caption="Objekt přizpůsoben kritériiím" />
+        <PropertyEditor Id="AutoStartWhenObjectIsCreated" Caption="Objekt je vytvořen" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main_Copy">
+          <LayoutGroup Id="SizeableEditors">
+            <TabbedGroup Id="Item1">
+              <LayoutGroup Id="XpoWorkflowDefinition">
+                <LayoutGroup Id="Item2" Caption="Automaticky spustit když:" />
+              </LayoutGroup>
+              <LayoutGroup Id="Item2" Caption="Návrhář" />
+            </TabbedGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

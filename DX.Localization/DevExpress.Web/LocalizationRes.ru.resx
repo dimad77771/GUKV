@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="ASPxperienceStringId.Loading">
+        <value>Загрузка&amp;hellip;</value>
+    </data>
+    <data name="ASPxperienceStringId.Pager_All">
+        <value>Все</value>
+    </data>
+    <data name="ASPxperienceStringId.Pager_First">
+        <value>Первая</value>
+    </data>
+    <data name="ASPxperienceStringId.Pager_Prev">
+        <value>Предыдущая</value>
+    </data>
+    <data name="ASPxperienceStringId.Pager_Next">
+        <value>Следующая</value>
+    </data>
+    <data name="ASPxperienceStringId.Pager_Last">
+        <value>Последняя</value>
+    </data>
+    <data name="ASPxperienceStringId.Pager_SummaryFormat">
+        <value>Страница {0} из {1} (Всего строк: {2})</value>
+    </data>
+    <data name="ASPxperienceStringId.Pager_SummaryAllPagesFormat">
+        <value>Страницы: {0} - {1} (Всего строк: {2})</value>
+    </data>
+    <data name="ASPxperienceStringId.Pager_PageSize">
+      <value>Записей на странице:</value>
+    </data>
+    <data name="ASPxperienceStringId.Pager_PageSizeAllItem">
+      <value>Все</value>
+    </data>
+    <data name="ASPxperienceStringId.DataView_PagerSummaryFormat">
+        <value>Страница {0} из {1}</value>
+    </data>
+    <data name="ASPxperienceStringId.DataView_PagerSummaryAllPages">
+        <value>Все страницы</value>
+    </data>
+    <data name="ASPxperienceStringId.DataView_PagerPageSize">
+      <value>Записей на странице:</value>
+    </data>
+    <data name="ASPxperienceStringId.DataView_PagerRowPerPage">
+      <value>Строк на странице:</value>
+    </data>
+    <data name="ASPxperienceStringId.DataViewBase_EmptyDataText">
+        <value>Нет данных для отображения</value>
+    </data>
+    <data name="ASPxperienceStringId.NewsControl_BackToTop">
+        <value>На самый верх</value>
+    </data>
+    <data name="ASPxperienceStringId.NewsControl_Page">
+        <value>Страница:</value>
+    </data>
+    <data name="ASPxperienceStringId.PopupControl_CloseButton">
+        <value>[Закрыть]</value>
+    </data>
+    <data name="ASPxperienceStringId.PopupControl_SizeGrip">
+        <value>[Изменить размеры]</value>
+    </data>
+    <data name="ASPxperienceStringId.TitleIndex_FilterCaption">
+        <value>Фильтр:&amp;nbsp;&amp;nbsp;&amp;nbsp;</value>
+    </data>
+    <data name="ASPxperienceStringId.TitleIndex_FilterHint">
+        <value>
+            &lt;b&gt;?&lt;/b&gt; = любой одиночный символ
+            &lt;b&gt;*&lt;/b&gt; = любые символы
+        </value>
+    </data>
+    <data name="ASPxperienceStringId.TitleIndex_BackToTop">
+        <value>[На самый верх]</value>
+    </data>
+    <data name="ASPxperienceStringId.TitleIndex_NoData">
+        <value>Нет данных по условиям фильтра</value>
+    </data>
+    <data name="ASPxperienceStringId.UploadControl_MaxSize">
+        <value>Размер файла превышает макимально допустимый размер в {0} байт</value>
+    </data>
+    <data name="ASPxperienceStringId.UploadControl_AccessDeniedError">
+        <value>Доступ к серверному пути "{0}" запрещён. Причиной может быть отсутствие разрешений на запись файлов в текущий (или родительский) каталог.</value>
+    </data>
+    <data name="ASPxperienceStringId.UploadControl_GeneralError">
+        <value>Ошибка загрузки файла по причине внешней ошибки</value>
+    </data>
+    <data name="ASPxperienceStringId.UploadControl_UnspecifiedError">
+        <value>На сервере возникла внутренняя неизвестная ошибка, которая не позволяет выполнить запрос.</value>
+    </data>
+    <data name="ASPxperienceStringId.UploadControl_UploadWasCanceledError">
+        <value>Загрузка файла была отменена.</value>
+    </data>
+    <data name="ASPxperienceStringId.UploadControl_SilverlightPluginLink">
+        <value>Пожалуйста, установите &lt;a href="{0}"&gt;Microsoft Silverlight v3 или выше&lt;/a&gt; для просмотра этого содержимого и возможности загрузки файлов.</value>
+    </data>
+    <data name="ASPxperienceStringId.UploadControl_EnctypeError">
+        <value>Ошибка при загрузке файла - аттрибут шифрования формы не установлен в 'multipart/form-data'</value>
+    </data>
+    <data name="ASPxperienceStringId.UploadControl_NotAllowedContentTypes">
+        <value>Тип содержимого запрещён</value>
+    </data>
+    <data name="ASPxperienceStringId.UploadControl_NotAllowedFileExtension">
+        <value>Расширение файла запрещено</value>
+    </data>
+    <data name="ASPxperienceStringId.UploadControl_FileDoesNotExistError">
+        <value>Загружаемый файл не существует</value>
+    </data>
+    <data name="ASPxperienceStringId.UploadControl_RemoveButton">
+        <value>Удалить</value>
+    </data>
+    <data name="ASPxperienceStringId.UploadControl_AddButton">
+        <value>Добавить</value>
+    </data>
+    <data name="ASPxperienceStringId.UploadControl_BrowseButton">
+        <value>Обзор...</value>
+    </data>
+    <data name="ASPxperienceStringId.UploadControl_UploadButton">
+        <value>Загрузить</value>
+    </data>
+    <data name="ASPxperienceStringId.UploadControl_CancelButton">
+        <value>Отмена</value>
+    </data>
+    <data name="ASPxperienceStringId.UploadControl_InvalidWindowsPath">
+        <value>Файловый путь "{0}" не является путем Windows.</value>
+    </data>
+    <data name="ASPxperienceStringId.TreeView_AltExpand">
+        <value>Раскрыть</value>
+    </data>
+    <data name="ASPxperienceStringId.TreeView_AltCollapse">
+        <value>Свернуть</value>
+    </data>
+    <data name="ASPxperienceStringId.TreeView_AltLoading">
+        <value>Загрузка</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_FolderLocked">
+        <value>Каталог закрыт для загрузки</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_Folder">
+        <value>Каталог</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_Filter">
+        <value>Фильтровать по:</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_Path">
+        <value>Путь:</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_TbCreate">
+        <value>Создать (F7)</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_TbRename">
+        <value>Переименовать (F2)</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_TbMove">
+        <value>Переместить (F6)</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_TbDelete">
+        <value>Удалить (Del)</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_TbRefresh">
+        <value>Обновить</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_TbDownload">
+        <value>Скачать</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_DeleteConfirm">
+        <value>Вы уверены, что хотите удалить '{0}'?</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_MovePopupHeader">
+        <value>Выберите каталог назначения</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_Ok">
+        <value>Да</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_Cancel">
+        <value>Отмена</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_ErrorRootFolderNotSpecified">
+        <value>Корневой каталог не назначен или не существует</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_ErrorNoAccess">
+        <value>Доступ запрещён. Операция не может быть завершена</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_ErrorIO">
+        <value>Неизвестная ошибка ввода-вывода. Операция не может быть завершена</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_ErrorFileNotFound">
+        <value>Файл не найден</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_ErrorFolderNotFound">
+        <value>Каталог не найден</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_ErrorOther">
+        <value>Неизвестная ошибка</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_ErrorNameCannotBeEmpty">
+        <value>Файл / Каталог не может пустым</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_ErrorInvalidSymbols">
+        <value>Имя содержит некорректные символы. Операция не может быть завершена</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_ErrorWrongExtension">
+        <value>Расширение файла запрещено. Операция не может быть завершена</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_ErrorAlreadyExists">
+        <value>Указанный файл / каталог уже существует</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_ErrorAccessProhibited">
+        <value>Доступ запрещён. Операция не может быть завершена</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_ErrorThumbnail">
+        <value>Отсутствует доступ к папке с миниатюрами изображений</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_ErrorUsedByAnotherProcess">
+        <value>Операция не может быть завершена вследствие того, что файл / каталог используется другим процессом</value>
+    </data>
+    <data name="ASPxperienceStringId.UploadControl_MultiSelection">
+        <value>Внимание! 
+
+Не прошли проверку на допустимый размер файла ({1}) или допустимое расширение файла следующие файлы в количестве {0}. Эти файлы исключены из списка выбранных файлов, и следовательно их загрузка не будет произведена. 
+
+{2}</value>
+    </data>
+    <data name="ASPxperienceStringId.UploadControl_ClearFileSelectionButtonToolTip">
+        <value>Очистить список выбранных файлов</value>
+    </data>
+    <data name="ASPxperienceStringId.UploadControl_SelectedSeveralFiles">
+        <value>Для загрузки выбрано файлов: {0}</value>
+    </data>
+    <data name="ASPxperienceStringId.FileManager_ErrorUploadSeveralFiles">
+        <value>Не загрузилось файлов: {0} из {1}</value>
+    </data>   
+</root>

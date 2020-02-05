@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="PasteHint" xml:space="preserve">
+    <value>Incolla</value>
+  </data>
+  <data name="ItalicHint" xml:space="preserve">
+    <value>Corsivo</value>
+  </data>
+  <data name="StrikeoutHint" xml:space="preserve">
+    <value>Barrato</value>
+  </data>
+  <data name="StylesHint" xml:space="preserve">
+    <value>Stili</value>
+  </data>
+  <data name="IndentHint" xml:space="preserve">
+    <value>Aumenta Rietro</value>
+  </data>
+  <data name="FontSizeHint" xml:space="preserve">
+    <value>Dimensione Carattere</value>
+  </data>
+  <data name="UndoHint" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="JustifyCenterHint" xml:space="preserve">
+    <value>Centra</value>
+  </data>
+  <data name="SubscriptHint" xml:space="preserve">
+    <value>Pedice</value>
+  </data>
+  <data name="FontCaption" xml:space="preserve">
+    <value>Carattere</value>
+  </data>
+  <data name="InsertImageHint" xml:space="preserve">
+    <value>Inserisci Immagine</value>
+  </data>
+  <data name="FontSizeCaption" xml:space="preserve">
+    <value>Dimensione Carattere</value>
+  </data>
+  <data name="ForecolorHint" xml:space="preserve">
+    <value>Colore Carattere</value>
+  </data>
+  <data name="InsertHyperlinkHint" xml:space="preserve">
+    <value>Inserisci Collegamento</value>
+  </data>
+  <data name="CutHint" xml:space="preserve">
+    <value>Taglia</value>
+  </data>
+  <data name="CopyHint" xml:space="preserve">
+    <value>Copia</value>
+  </data>
+  <data name="BackcolorHint" xml:space="preserve">
+    <value>Colore Sfondo</value>
+  </data>
+  <data name="InsertUnorderedListHint" xml:space="preserve">
+    <value>Inserisci Lista Non Ordinata</value>
+  </data>
+  <data name="RemoveFormatingHint" xml:space="preserve">
+    <value>Rimuovi Formattazione</value>
+  </data>
+  <data name="RedoHint" xml:space="preserve">
+    <value>Ripeti</value>
+  </data>
+  <data name="OutdentHint" xml:space="preserve">
+    <value>Riduci Rientro</value>
+  </data>
+  <data name="JustifyRightHint" xml:space="preserve">
+    <value>Allinea a Destra</value>
+  </data>
+  <data name="StylesCaption" xml:space="preserve">
+    <value>Stili</value>
+  </data>
+  <data name="RemoveHyperlinkHint" xml:space="preserve">
+    <value>Rimuovi Collegamento</value>
+  </data>
+  <data name="JustifyFullHint" xml:space="preserve">
+    <value>Giustifica</value>
+  </data>
+  <data name="SuperscriptHint" xml:space="preserve">
+    <value>Apice</value>
+  </data>
+  <data name="JustifyLeftHint" xml:space="preserve">
+    <value>Allinea a Sinistra</value>
+  </data>
+  <data name="FontHint" xml:space="preserve">
+    <value>Carattere</value>
+  </data>
+  <data name="UnderlineHint" xml:space="preserve">
+    <value>Sottolineato</value>
+  </data>
+  <data name="InsertOrderedListHint" xml:space="preserve">
+    <value>Inserisci Lista Ordinata</value>
+  </data>
+  <data name="BoldHint" xml:space="preserve">
+    <value>Grassetto</value>
+  </data>
+  <data name="StyleNormalCaption" xml:space="preserve">
+    <value>Normale</value>
+  </data>
+  <data name="StyleAddressCaption" xml:space="preserve">
+    <value>Indirizzo</value>
+  </data>
+  <data name="StyleHeadingCaption" xml:space="preserve">
+    <value>Intestazione</value>
+  </data>
+</root>

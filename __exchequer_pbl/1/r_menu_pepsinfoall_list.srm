@@ -1,0 +1,82 @@
+$PBExportHeader$r_menu_payment_list.srm
+forward
+global type r_menu_payment_list from m_dw_rmenu
+end type
+type m_m_8b from menu within m_main
+end type
+end forward
+
+global type r_menu_payment_list from m_dw_rmenu
+end type
+global r_menu_payment_list r_menu_payment_list
+
+on r_menu_payment_list.create
+r_menu_payment_list=this
+call super::create
+end on
+
+on r_menu_payment_list.destroy
+call super::destroy
+end on
+
+type m_main from m_dw_rmenu`m_main within r_menu_payment_list
+m_m_8b m_m_8b
+end type
+
+on m_main.create
+call super::create
+this.m_m_8b=create m_m_8b
+this.Item[UpperBound(this.item)+1]=this.m_m_8b
+end on
+
+on m_main.destroy
+call super::destroy
+destroy(this.m_m_8b)
+end on
+
+on m_8.create
+call super::create
+this.ShiftToRight=true
+end on
+
+on m_e1.create
+call super::create
+this.ShiftToRight=true
+end on
+
+on m_e2.create
+call super::create
+this.ShiftToRight=true
+end on
+
+type m_m_8b from menu within m_main
+end type
+
+on m_m_8b.create
+this.Text="—бросить поле"
+this.Visible=false
+end on
+
+event clicked;long row, bbb
+string name
+datawindow dw
+s_dw_rmenu parm
+
+
+
+parm = Message.PowerObjectParm
+dw = parm.dw
+name = parm.name
+row = parm.row
+
+dw.setredraw(false)
+bbb = long(dw.Object.DataWindow.FirstRowOnPage)
+dw.setitem(row, "lorgan_nam", f_null_s())
+dw.setitem(row, "lorgan_id", f_null_n())
+dw.scrolltorow(bbb)
+dw.setrow(row)
+dw.setredraw(true)
+
+
+end event
+

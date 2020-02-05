@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DataObject_ClassInfoArgumentIncorrect" xml:space="preserve">
+    <value>類別資訊的參數值錯誤. XPDataObjectClassInfo 的物件異常</value>
+  </data>
+  <data name="Metadata_DictionaryMixing" xml:space="preserve">
+    <value>類別 '{0}' 資訊屬於不同的資料連接資訊</value>
+  </data>
+  <data name="Metadata_SameTableName" xml:space="preserve">
+    <value>類別 {0} 部署到相同的資料庫表中, 如 {1}</value>
+  </data>
+  <data name="Paging_CurrentPageShouldBeLessThanPageCount" xml:space="preserve">
+    <value>目前頁應該小於總頁數</value>
+  </data>
+  <data name="MetaData_DuplicateKeyProperty" xml:space="preserve">
+    <value>'{0}' 類型發現重覆主鍵</value>
+  </data>
+  <data name="Session_CannotChangePropertyWhenSessionIsConnected" xml:space="preserve">
+    <value>當連接資料連結物件時不能改變{0}</value>
+  </data>
+  <data name="Session_AlreadyConnected" xml:space="preserve">
+    <value>資料連結已經連接</value>
+  </data>
+  <data name="MetaData_PropertyMissing" xml:space="preserve">
+    <value>'{1}' 類型中的屬性 '{0}' 不存在</value>
+  </data>
+  <data name="Session_TranSequenceRollback" xml:space="preserve">
+    <value>資料交易物件已取消交易</value>
+  </data>
+  <data name="Generator_OneOfBinaryOperatorsOperandsIsNull" xml:space="preserve">
+    <value>BinaryOperators 的參數中為 Null 值</value>
+  </data>
+  <data name="MetaData_AssociationElementTypeMissing" xml:space="preserve">
+    <value>'Association' 屬性中的 '{0}' 屬性為指定 'ElementType' 屬性</value>
+  </data>
+  <data name="PersistentAliasExpander_ReferenceOrCollectionExpectedInTheMiddleOfThePath" xml:space="preserve">
+    <value>路徑中的錯誤成員 '{0}'. 一個相關屬性或者集合關連被執行</value>
+  </data>
+  <data name="Session_TypeFieldIsEmpty" xml:space="preserve">
+    <value>'{0}' 欄位為空 (基本類型 '{1}')</value>
+  </data>
+  <data name="MetaData_IncorrectPathMemberNotExists" xml:space="preserve">
+    <value>由於 '{2}.{3}' 成員不存在而導致 '{0}' 類型的屬性 '{1}' 路徑錯誤</value>
+  </data>
+  <data name="Session_SessionMixing" xml:space="preserve">
+    <value>物件'{0}'屬於不同的資料連結</value>
+  </data>
+  <data name="Session_ObjectCannotBePurged" xml:space="preserve">
+    <value>ID = '{1}'的'{0}'物件不能被清除.它是一個物件.</value>
+  </data>
+  <data name="Session_CannotAddObjectToObjectCache" xml:space="preserve">
+    <value>因為物件 '{2}' 使用相同的主鍵值並已存在, 所以物件 '{0}' 不能使用關鍵字為 '{1}' 來加入.</value>
+  </data>
+  <data name="ConnectionProvider_SqlExecutionError" xml:space="preserve">
+    <value>使用參數 '{1}' 和異常 '{2}' 來執行 Sql '{0}'</value>
+  </data>
+  <data name="Metadata_AssociationInvalid_NotFound" xml:space="preserve">
+    <value>存在一個不完整的關聯 '{0}'.  無法找到類別 '{3}' 中的關聯成員 '{1}.{2}'</value>
+  </data>
+  <data name="Generator_UnknownCriteriaOperator" xml:space="preserve">
+    <value>無法識別 '{0}' 篩選條件</value>
+  </data>
+  <data name="ConnectionProvider_UnableToCreateDBObject" xml:space="preserve">
+    <value>無法建立 '{0}' '{1}'. 上階物件: '{2}'. 錯誤: {3}</value>
+  </data>
+  <data name="MetaData_IncorrectPathNonPersistentMember" xml:space="preserve">
+    <value>由於 '{2}.{3}' 成員不是固定成員而導致 '{0}' 類型的屬性 '{1}'路徑錯誤</value>
+  </data>
+  <data name="Metadata_AssociationInvalid_TwoAssociationListsInAssociation" xml:space="preserve">
+    <value>在 '{1}.{2}' 和 '{3}.{4}' 列表之間存在一個不完整的關連 '{0}'. 使用多對多屬性或者 XPCollection 類型的集合, 表示多對多關係</value>
+  </data>
+  <data name="Metadata_AssociationInvalid_UseAssociationNameAsIntermediateTableNameMismatch" xml:space="preserve">
+    <value>使用關連名稱作為資料庫表名稱時應當使關連 '{0}' 的 '{1}.{2}' 和 '{3}.{4}' 兩邊相等</value>
+  </data>
+  <data name="Session_TranSequenceCommit" xml:space="preserve">
+    <value>資料交易物件已關閉</value>
+  </data>
+  <data name="MetaData_CannotResolveClassInfo" xml:space="preserve">
+    <value>無法解析類型 '[{0}]{1}' 的類型資訊</value>
+  </data>
+  <data name="Session_TranSequenceBegin" xml:space="preserve">
+    <value>不能在該資料連結裡啟動更多事務</value>
+  </data>
+  <data name="Session_AssociationCollectionWithDisabledLoading" xml:space="preserve">
+    <value>關連集合的狀態不正確(LoadingEnabled 不為 True)</value>
+  </data>
+  <data name="MetaData_PropertyNameMismatch" xml:space="preserve">
+    <value>'{0}' 屬性名稱不對應</value>
+  </data>
+  <data name="Session_CannotReloadPurgedObject" xml:space="preserve">
+    <value>所要求的物件無法載入, 因為該物件不存在於資料儲存端.這些物件已經被刪除或清除. 如果你再次發現物件中出現這個異常, 請注意資料儲存的參考完整性. 在這種情況下,請聯繫您的系統管理員.({0})</value>
+  </data>
+  <data name="MetaData_XMLLoadErrorCannotResolveClassinfoInstanceType" xml:space="preserve">
+    <value>無法解析類別資訊實體類型</value>
+  </data>
+  <data name="MetaData_RecursiveReferenceFound" xml:space="preserve">
+    <value>發現一個遞迴迴圈</value>
+  </data>
+  <data name="MetaData_XMLLoadErrorModelTagAbsent" xml:space="preserve">
+    <value>錯誤的 XML 格式</value>
+  </data>
+  <data name="XpoDefault_CannotAssignPropertyWhileAnotherIsNotNull" xml:space="preserve">
+    <value>當XpoDefault.{1}不為空則不能分配XpoDefault.{0}</value>
+  </data>
+  <data name="MetaData_PropertyTypeMismatch" xml:space="preserve">
+    <value>類型 '{3}' 與類型 '{4}' 之間的關聯 '{1}' 不正確或無效. 類型 '{3}' 包含屬性 '{2}', 該屬性屬於類型 '{4}'. 類型 '{4}' 包含屬性 '{0}', 該屬性不適合歸屬到類型 '{5}', 而該屬性卻必須歸屬於類型 '{3}'</value>
+  </data>
+  <data name="ConnectionProvider_TypeMappingMissing" xml:space="preserve">
+    <value>由於其無法對應到該類型的資料庫, 資料庫驅動程式無法處理 '{0}' 類型. 請使用其他類型.</value>
+  </data>
+  <data name="Session_IncompatibleIdType" xml:space="preserve">
+    <value>通過的ID類型 '{0}' 與密碼類型 '{1}''{2}''{3}'不相容</value>
+  </data>
+  <data name="ConnectionProvider_UnableToFillRefType" xml:space="preserve">
+    <value>無法確認 '{0}' 類型的 '{1}' 成員的資料庫機碼型態. 錯誤: {2}</value>
+  </data>
+  <data name="PersistentAliasExpander_NonPersistentCriteria" xml:space="preserve">
+    <value>由於其使用了 '{1}' 長效屬性所以不能使用 "{0}" 標準來查詢資料記錄</value>
+  </data>
+  <data name="MetaData_IncorrectPath" xml:space="preserve">
+    <value>'{0}' 類型的屬性 '{1}' 路徑錯誤</value>
+  </data>
+  <data name="ConnectionProvider_ColumnNameTooLong" xml:space="preserve">
+    <value>無法建立資料庫表 '{0}' 的欄位 '{1}'. 欄位名稱過長(超過64個文字)</value>
+  </data>
+  <data name="MetaData_XMLLoadError" xml:space="preserve">
+    <value>XML 載入錯誤: {0}</value>
+  </data>
+  <data name="Paging_EnumeratorPositioning" xml:space="preserve">
+    <value>實際使用物件被加入在集合的起始之前或於結尾之後</value>
+  </data>
+  <data name="Metadata_CustomProperties_PersistentAndNonStorableType" xml:space="preserve">
+    <value>類型 {2}' 的自訂成員 '{0}.{1}' 不能保證持續性</value>
+  </data>
+  <data name="Metadata_AssociationInvalid_MoreThenOneAssociatedMemberFound" xml:space="preserve">
+    <value>關連 '{0}' 不正確, 類別 '{1}' 中的 '{2}' 和 '{3}' 中的成員</value>
+  </data>
+  <data name="MetaData_XMLLoadErrorCannotLoadMember" xml:space="preserve">
+    <value>無法載入成員 [{0}]{1}.{2}</value>
+  </data>
+  <data name="ConnectionProvider_KeysAutogenerationNonSupportedTypeException" xml:space="preserve">
+    <value>私鑰自動產生並僅支持 Int32 和 Guid 資料類型.類別類型: '{0}'</value>
+  </data>
+  <data name="ThreadSafeDataLayer_DictionaryModified" xml:space="preserve">
+    <value>抱歉,當它被安全執行緒資料層使用時, 不能修改資料連接資訊.請引用資料連結.在使用安全執行緒資料層前在您的安裝/管理應用程式中建立物件類型記錄方法</value>
+  </data>
+  <data name="Paging_EnumeratorObjectModifiedOrDeleted" xml:space="preserve">
+    <value>一個或多個資料物件已經被修改或刪除. 您需要更新資料物件列表</value>
+  </data>
+  <data name="Metadata_PersistentAliasCircular" xml:space="preserve">
+    <value>'{0}' 類型的 '{1}' 屬性被持久別名和錯誤的 '{2}' 運算式標記. 因為它關連到了它本身所以就產生了遞迴迴圈</value>
+  </data>
+  <data name="MetaData_ReferenceTooComplex" xml:space="preserve">
+    <value>'{0}.{1}' 過於複雜</value>
+  </data>
+  <data name="ConnectionProvider_TableNameTooLong" xml:space="preserve">
+    <value>無法建立資料庫表 '{0}'. 名稱過長(超過64個文字)</value>
+  </data>
+  <data name="ConnectionProvider_AtLeastOneColumnExpected" xml:space="preserve">
+    <value>至少建立一組資料欄</value>
+  </data>
+  <data name="Session_DifferentObjectsWithSameKey" xml:space="preserve">
+    <value>不同物件擁有了相同的主鍵值</value>
+  </data>
+  <data name="MetaData_NonPersistentReferenceFound" xml:space="preserve">
+    <value>當解析實際物件類型時, 發現一個非長續性的 '{0}' 類型</value>
+  </data>
+  <data name="MetaData_SessionCtorAbsent" xml:space="preserve">
+    <value>{0} 類型尚未建立資料連結的起始程式碼</value>
+  </data>
+  <data name="Metadata_AssociationInvalid_PropertyTypeMismatch" xml:space="preserve">
+    <value>類別 '{1}' 與類別 '{3}' 之間的關聯 '{0}' 無效. 類別 '{1}' 包含屬性 '{2}', 該屬性引用了類別 '{3}'. 類別 '{3}' 包含屬性 '{4}', 該屬性不應引用了類別 '{5}', 而該屬性卻必須關連到類別 '{1}'.</value>
+  </data>
+  <data name="MetaData_RequiredInterfaceMissing" xml:space="preserve">
+    <value>'{0}' 類型不支持 IXPSimpleObject 介面</value>
+  </data>
+  <data name="Metadata_CantPersistGenericType" xml:space="preserve">
+    <value>無法規範一般類型為長效屬性.請刪除 '{0}' 類型中定義的長效屬性並建立一個非普通的變數來替代</value>
+  </data>
+  <data name="Criteria_NotImplementedForFiltering" xml:space="preserve">
+    <value>篩選條件 {0} 未執行</value>
+  </data>
+  <data name="MetaData_IncorrectPathNonReferenceMember" xml:space="preserve">
+    <value>由於 '{2}.{3}' 成員不是所涉及到的成員而導致 '{0}' 類型的屬性 '{1}' 路徑錯誤</value>
+  </data>
+  <data name="MetaData_RequiredAttributeMissing" xml:space="preserve">
+    <value>屬性 '{0}' 未定義 '{1}' 屬性</value>
+  </data>
+  <data name="MetaData_PropertyMissingReferenceType" xml:space="preserve">
+    <value>歸屬於類型 '{0}'</value>
+  </data>
+  <data name="MetaData_XMLLoadErrorUnknownAttribute" xml:space="preserve">
+    <value>未知屬性 '{0}'</value>
+  </data>
+  <data name="View_PropertyNotFetched" xml:space="preserve">
+    <value>未抓取到'{0}'屬性</value>
+  </data>
+  <data name="Metadata_SeveralClassesWithSameName" xml:space="preserve">
+    <value>資料連接資訊已經包含類別資訊 '{1}'. 可能的原因: 集合 '{0}' 已經載入了兩次.</value>
+  </data>
+  <data name="Object_ModifiedInsideCtor" xml:space="preserve">
+    <value>請勿在起始階段中更動物件. 而應該使用 AfterConstruction 方法來設定預設值</value>
+  </data>
+  <data name="MetaData_XMLLoadErrorCannotFindClassinfoType" xml:space="preserve">
+    <value>無法找到類別資訊類型</value>
+  </data>
+  <data name="ConnectionProvider_SchemaCorrectionNeeded" xml:space="preserve">
+    <value>資料庫機碼需要更新. 請聯繫您的系統管理員. Sql 內容: {0}</value>
+  </data>
+  <data name="MetaData_XMLLoadErrorCannotFindConstructor" xml:space="preserve">
+    <value>無法找到起始程式碼</value>
+  </data>
+  <data name="XPWeakReference_SavedObjectExpected" xml:space="preserve">
+    <value>儲存物件被執行</value>
+  </data>
+  <data name="Metadata_CustomProperties_ReferenceOrCollectionInSessionStore" xml:space="preserve">
+    <value>由於 '{0}' 類別沒有建立 '{2}' 介面而無法建立相關類型或集合類型的物件成員 '{1}'</value>
+  </data>
+  <data name="Metadata_AssociationInvalid_AssociationAttributeOnlyForListOrReference" xml:space="preserve">
+    <value>關連屬性不能被 '{1}.{2}' 成員所使用. 一個參照或列表被執行</value>
+  </data>
+  <data name="Session_CannotLoadInvalidType" xml:space="preserve">
+    <value>無法載入無效類型 '{0}'</value>
+  </data>
+  <data name="Collection_CannotAssignProperty" xml:space="preserve">
+    <value>當 XPCollection 集合不在設計或者初始化狀態下不能改變屬性 {0}</value>
+  </data>
+  <data name="Collection_CannotSortReference" xml:space="preserve">
+    <value>資料不能被儲存為 '{0}' 欄位的值,因為它沒有建立 IComparable 介面</value>
+  </data>
+  <data name="Collections_InvalidCastOnAdd" xml:space="preserve">
+    <value>不能在集合中增加物件. 物件 '{0}' 不是類型 '{1}' 的實際使用型態</value>
+  </data>
+  <data name="Metadata_AssociationInvalid_NoAssociationListInAssociation" xml:space="preserve">
+    <value>在 '{1}.{2}' 和 '{3}.{4}' 之間存在一個不完整的關連 '{0}'. 只建立了一方的關連設定</value>
+  </data>
+  <data name="Paging_CurrentPageShouldBeGreaterOrEqualZero" xml:space="preserve">
+    <value>目前頁必須大於等於 0</value>
+  </data>
+  <data name="Paging_PageSizeShouldBeGreaterThanZero" xml:space="preserve">
+    <value>頁面大小必須大於 0</value>
+  </data>
+  <data name="Session_LoadedPropertyAssignmentError" xml:space="preserve">
+    <value>無法分配 '{0}' 類型的屬性 '{1}' 來載入資料.原因:{2}</value>
+  </data>
+  <data name="Session_TypeNotFound" xml:space="preserve">
+    <value>ID = '{0}'的類型無法尋找到</value>
+  </data>
+  <data name="MetaData_KeyPropertyAbsent" xml:space="preserve">
+    <value>缺少 '{0}' 類型的基本屬性</value>
+  </data>
+  <data name="Session_WrongConnectionString" xml:space="preserve">
+    <value>無效的連接字串: '{0}'</value>
+  </data>
+</root>

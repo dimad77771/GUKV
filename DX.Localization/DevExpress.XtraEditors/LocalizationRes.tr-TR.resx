@@ -1,0 +1,487 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="StringId.Apply" xml:space="preserve">
+    <value>Uygula</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalLaterThisYear" xml:space="preserve">
+    <value>Bu Yılın Sonrası</value>
+  </data>
+  <data name="StringId.NavigatorPreviousPageButtonHint" xml:space="preserve">
+    <value>Önceki Sayfa</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalLaterThisWeek" xml:space="preserve">
+    <value>Bu Haftanın Sonrası</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalBeyondThisYear" xml:space="preserve">
+    <value>Bu Yılın Ötesi</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalNextWeek" xml:space="preserve">
+    <value>Gelecek Haftası</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalPriorThisYear" xml:space="preserve">
+    <value>Öncelikle Bu Yılı</value>
+  </data>
+  <data name="StringId.OK" xml:space="preserve">
+    <value>Tamam</value>
+  </data>
+  <data name="StringId.NavigatorCancelEditButtonHint" xml:space="preserve">
+    <value>Düzeltme İptal</value>
+  </data>
+  <data name="StringId.FilterOutlookDateText" xml:space="preserve">
+    <value>Tümünü Göster|Show Empty|Tarihe Göre Filtrele:|Bu Yılın Ötesi|Bu Yıldan Sonra|Bu Aydan Sonra|Gelecek Hafta|Bu Haftadan Sonra|Yarın|Bugün|Dün|Bu Haftadan Önce|Geçen Hafta|Bu Aydan Önce|Bu Yıldan Önce|Öncelikle Bu yıl</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalTomorrow" xml:space="preserve">
+    <value>Yarını</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalYesterday" xml:space="preserve">
+    <value>Dünü</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalToday" xml:space="preserve">
+    <value>Bugünü</value>
+  </data>
+  <data name="StringId.FilterDateTimeOperatorMenuCaption" xml:space="preserve">
+    <value>Tarih,Saat Operatörleri</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalLaterThisMonth" xml:space="preserve">
+    <value>Bu Ayın Sonrası</value>
+  </data>
+  <data name="StringId.NavigatorPreviousButtonHint" xml:space="preserve">
+    <value>Önceki</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalEarlierThisWeek" xml:space="preserve">
+    <value>Bu Haftanın Öncesi</value>
+  </data>
+  <data name="StringId.PreviewPanelText" xml:space="preserve">
+    <value>Önizleme</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalLastWeek" xml:space="preserve">
+    <value>Geçen Haftası</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalEarlierThisMonth" xml:space="preserve">
+    <value>Bu Ayın Öncesi</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalEarlierThisYear" xml:space="preserve">
+    <value>Bu yılın Öncesi</value>
+  </data>
+  <data name="StringId.Cancel" xml:space="preserve">
+    <value>İptal</value>
+  </data>
+  <data name="StringId.CaptionError" xml:space="preserve">
+    <value>Hata</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringUnaryOperatorIsNull" xml:space="preserve">
+    <value>Boş Olan</value>
+  </data>
+  <data name="StringId.XtraMessageBoxYesButtonText" xml:space="preserve">
+    <value>&amp;Evet</value>
+  </data>
+  <data name="StringId.PictureEditOpenFileErrorCaption" xml:space="preserve">
+    <value>Açma hatası</value>
+  </data>
+  <data name="StringId.NavigatorTextStringFormat" xml:space="preserve">
+    <value>Kayıt {0} / {1}</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBetween" xml:space="preserve">
+    <value>Arasında</value>
+  </data>
+  <data name="StringId.FilterToolTipElementAdd" xml:space="preserve">
+    <value>Listeye Yeni Bir Eleman Ekle</value>
+  </data>
+  <data name="StringId.CheckChecked" xml:space="preserve">
+    <value>Seçili</value>
+  </data>
+  <data name="StringId.NavigatorRemoveButtonHint" xml:space="preserve">
+    <value>Sil</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionNone" xml:space="preserve">
+    <value>Hiçbiri</value>
+  </data>
+  <data name="StringId.NavigatorLastButtonHint" xml:space="preserve">
+    <value>Son</value>
+  </data>
+  <data name="StringId.PictureEditMenuDelete" xml:space="preserve">
+    <value>Sil</value>
+  </data>
+  <data name="StringId.TabHeaderButtonPrev" xml:space="preserve">
+    <value>Sola Kaydır</value>
+  </data>
+  <data name="StringId.PictureEditMenuSave" xml:space="preserve">
+    <value>Kaydet</value>
+  </data>
+  <data name="StringId.ImagePopupEmpty" xml:space="preserve">
+    <value>(Boş)</value>
+  </data>
+  <data name="StringId.FilterMenuGroupAdd" xml:space="preserve">
+    <value>Grup Ekle</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionUpper" xml:space="preserve">
+    <value>Büyük Harfe Çevir</value>
+  </data>
+  <data name="StringId.FilterMenuRowRemove" xml:space="preserve">
+    <value>Satır Kaldır</value>
+  </data>
+  <data name="StringId.TextEditMenuCopy" xml:space="preserve">
+    <value>&amp;Kopyala</value>
+  </data>
+  <data name="StringId.FilterGroupOr" xml:space="preserve">
+    <value>veya</value>
+  </data>
+  <data name="StringId.TextEditMenuUndo" xml:space="preserve">
+    <value>&amp;Geri Al</value>
+  </data>
+  <data name="StringId.NavigatorEditButtonHint" xml:space="preserve">
+    <value>Düzenle</value>
+  </data>
+  <data name="StringId.FilterClauseIsNull" xml:space="preserve">
+    <value>Boş Olan</value>
+  </data>
+  <data name="StringId.TransparentBackColorNotSupported" xml:space="preserve">
+    <value>Bu kontrol transparan arka plan desteklememektedir</value>
+  </data>
+  <data name="StringId.TextEditMenuPaste" xml:space="preserve">
+    <value>&amp;Yapıştır</value>
+  </data>
+  <data name="StringId.XtraMessageBoxRetryButtonText" xml:space="preserve">
+    <value>Yeniden &amp;Dene</value>
+  </data>
+  <data name="StringId.FilterShowAll" xml:space="preserve">
+    <value>(Hepsini Göster)</value>
+  </data>
+  <data name="StringId.PictureEditSaveFileTitle" xml:space="preserve">
+    <value>Farklı Kaydet</value>
+  </data>
+  <data name="StringId.TabHeaderButtonNext" xml:space="preserve">
+    <value>Sağa Kaydır</value>
+  </data>
+  <data name="StringId.XtraMessageBoxAbortButtonText" xml:space="preserve">
+    <value>&amp;İptal</value>
+  </data>
+  <data name="StringId.FilterClauseBeginsWith" xml:space="preserve">
+    <value>İle Başlayan</value>
+  </data>
+  <data name="StringId.ColorTabWeb" xml:space="preserve">
+    <value>Internet</value>
+  </data>
+  <data name="StringId.FilterGroupNotAnd" xml:space="preserve">
+    <value>Değil ve</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLen" xml:space="preserve">
+    <value>Uzunluk</value>
+  </data>
+  <data name="StringId.FilterClauseNotLike" xml:space="preserve">
+    <value>Benzemeyen</value>
+  </data>
+  <data name="StringId.FilterToolTipKeysAdd" xml:space="preserve">
+    <value>(Araya yada sona anahtar ekle)</value>
+  </data>
+  <data name="StringId.FilterMenuConditionAdd" xml:space="preserve">
+    <value>Koşul Ekle</value>
+  </data>
+  <data name="StringId.FilterClauseIsNotNull" xml:space="preserve">
+    <value>Boş Olmayan</value>
+  </data>
+  <data name="StringId.XtraMessageBoxOkButtonText" xml:space="preserve">
+    <value>&amp;Tamam</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorLike" xml:space="preserve">
+    <value>Benzeyen</value>
+  </data>
+  <data name="StringId.InvalidValueText" xml:space="preserve">
+    <value>Yanlış Değer</value>
+  </data>
+  <data name="StringId.PictureEditSaveFileFilter" xml:space="preserve">
+    <value>Bitmap Dosyaları (*.bmp)|*.bmp|GIF Dosyaları (*.gif)|*.gif|JPEG Dosyaları (*.jpg)|*.jpg</value>
+  </data>
+  <data name="StringId.FilterMenuClearAll" xml:space="preserve">
+    <value>Hepsini Sil</value>
+  </data>
+  <data name="StringId.FilterClauseEndsWith" xml:space="preserve">
+    <value>İle Biten</value>
+  </data>
+  <data name="StringId.FilterClauseLessOrEqual" xml:space="preserve">
+    <value>Küçük Eşittir</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringNotLike" xml:space="preserve">
+    <value>Benzemeyen</value>
+  </data>
+  <data name="StringId.NavigatorAppendButtonHint" xml:space="preserve">
+    <value>Eklendi</value>
+  </data>
+  <data name="StringId.XtraMessageBoxCancelButtonText" xml:space="preserve">
+    <value>&amp;Vazgeç</value>
+  </data>
+  <data name="StringId.ColorTabSystem" xml:space="preserve">
+    <value>Sistem</value>
+  </data>
+  <data name="StringId.FilterClauseBetween" xml:space="preserve">
+    <value>Arasında</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringIn" xml:space="preserve">
+    <value>İçinde</value>
+  </data>
+  <data name="StringId.PictureEditMenuCopy" xml:space="preserve">
+    <value>Kopyala</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorNotEqual" xml:space="preserve">
+    <value>&lt;&gt; (Eşit Olmayan)</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringGroupOperatorAnd" xml:space="preserve">
+    <value>ve</value>
+  </data>
+  <data name="StringId.DataEmpty" xml:space="preserve">
+    <value>Resim yok</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorMultiply" xml:space="preserve">
+    <value>* (Çarpı)</value>
+  </data>
+  <data name="StringId.XtraMessageBoxNoButtonText" xml:space="preserve">
+    <value>&amp;Hayır</value>
+  </data>
+  <data name="StringId.FilterClauseLess" xml:space="preserve">
+    <value>Küçüktür</value>
+  </data>
+  <data name="StringId.FilterClauseGreaterOrEqual" xml:space="preserve">
+    <value>Büyük Eşittir</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsNull" xml:space="preserve">
+    <value>Boş Olan</value>
+  </data>
+  <data name="StringId.NotValidArrayLength" xml:space="preserve">
+    <value>Yanlış dizi uzunluğu</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionTrim" xml:space="preserve">
+    <value>Boşlukları Al</value>
+  </data>
+  <data name="StringId.FilterClauseAnyOf" xml:space="preserve">
+    <value>Herhangi Biri</value>
+  </data>
+  <data name="StringId.NavigatorEndEditButtonHint" xml:space="preserve">
+    <value>Düzenlemeyi Bitir</value>
+  </data>
+  <data name="StringId.ContainerAccessibleEditName" xml:space="preserve">
+    <value>Düzenleme Kontrolü</value>
+  </data>
+  <data name="StringId.CheckUnchecked" xml:space="preserve">
+    <value>Seçim Yok</value>
+  </data>
+  <data name="StringId.CalcError" xml:space="preserve">
+    <value>Hesaplama Hatası</value>
+  </data>
+  <data name="StringId.XtraMessageBoxIgnoreButtonText" xml:space="preserve">
+    <value>Y&amp;oksay</value>
+  </data>
+  <data name="StringId.FilterClauseGreater" xml:space="preserve">
+    <value>Büyüktür</value>
+  </data>
+  <data name="StringId.CalcButtonBack" xml:space="preserve">
+    <value>Geri</value>
+  </data>
+  <data name="StringId.NavigatorNextPageButtonHint" xml:space="preserve">
+    <value>Sonraki Sayfa</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorDivide" xml:space="preserve">
+    <value>/ (Bölü)</value>
+  </data>
+  <data name="StringId.NavigatorFirstButtonHint" xml:space="preserve">
+    <value>İlk</value>
+  </data>
+  <data name="StringId.CheckIndeterminate" xml:space="preserve">
+    <value>Belirsiz</value>
+  </data>
+  <data name="StringId.FilterToolTipNodeRemove" xml:space="preserve">
+    <value>Bu koşulu kaldır</value>
+  </data>
+  <data name="StringId.TextEditMenuDelete" xml:space="preserve">
+    <value>Si&amp;l</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringGroupOperatorOr" xml:space="preserve">
+    <value>veya</value>
+  </data>
+  <data name="StringId.PictureEditMenuLoad" xml:space="preserve">
+    <value>Aç</value>
+  </data>
+  <data name="StringId.TextEditMenuSelectAll" xml:space="preserve">
+    <value>Tümü&amp;nü Seç</value>
+  </data>
+  <data name="StringId.FilterClauseDoesNotContain" xml:space="preserve">
+    <value>İçermeyen</value>
+  </data>
+  <data name="StringId.MaskBoxValidateError" xml:space="preserve">
+    <value>Girilen değer tamamlanmamış.  Doğrulamak ister misiniz?
+	
+	
+	Evet - Editöre dön ve değeri doğrula.
+	Hayır - Değeri olduğu gibi bırak.
+	Vazgeç - Önceki değere dön.
+	</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionCustom" xml:space="preserve">
+    <value>Özelleştir</value>
+  </data>
+  <data name="StringId.PictureEditOpenFileFilter" xml:space="preserve">
+    <value>Bitmap Dosyaları (*.bmp)|*.bmp|GIF Dosyaları (*.gif)|*.gif|JPEG Dosyaları (*.jpg;*.jpeg)|*.jpg;*.jpeg|İkon Dosyaları (*.ico)|*.ico|Tüm Resim Dosyaları |*.bmp;*.gif;*.jpg;*.jpeg;*.ico;*.png;*.tif|Tüm Dosyalar |*.*</value>
+  </data>
+  <data name="StringId.FilterToolTipValueType" xml:space="preserve">
+    <value>Bir değer ile veya başka bir alanın değeri ile karşılaştır</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLower" xml:space="preserve">
+    <value>Küçük Harfe Çevir</value>
+  </data>
+  <data name="StringId.LookUpEditValueIsNull" xml:space="preserve">
+    <value>[Değer Boş]</value>
+  </data>
+  <data name="StringId.FilterClauseLike" xml:space="preserve">
+    <value>Benzeyen</value>
+  </data>
+  <data name="StringId.PictureEditCopyImageError" xml:space="preserve">
+    <value>Resim kopyalanamıyor</value>
+  </data>
+  <data name="StringId.FilterClauseNoneOf" xml:space="preserve">
+    <value>Hiçbiri Olmayan</value>
+  </data>
+  <data name="StringId.FilterToolTipNodeAdd" xml:space="preserve">
+    <value>Bu gruba yeni bir koşul ekle</value>
+  </data>
+  <data name="StringId.ColorTabCustom" xml:space="preserve">
+    <value>Özel</value>
+  </data>
+  <data name="StringId.FilterEmptyEnter" xml:space="preserve">
+    <value>Veri Giriniz</value>
+  </data>
+  <data name="StringId.ImagePopupPicture" xml:space="preserve">
+    <value>(Resim)</value>
+  </data>
+  <data name="StringId.FilterClauseNotBetween" xml:space="preserve">
+    <value>Arasında Olmayan</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringIsNotNull" xml:space="preserve">
+    <value>Boş Olmayan</value>
+  </data>
+  <data name="StringId.FilterClauseBetweenAnd" xml:space="preserve">
+    <value>Ve</value>
+  </data>
+  <data name="StringId.LookUpInvalidEditValueType" xml:space="preserve">
+    <value>Yanlış LookUpEdit EditValue tipi.</value>
+  </data>
+  <data name="StringId.FilterClauseContains" xml:space="preserve">
+    <value>İçeren</value>
+  </data>
+  <data name="StringId.FilterToolTipKeysRemove" xml:space="preserve">
+    <value>(Kes yada Sil Anahtarı kullan)</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringUnaryOperatorNot" xml:space="preserve">
+    <value>Değil</value>
+  </data>
+  <data name="StringId.FilterClauseDoesNotEqual" xml:space="preserve">
+    <value>Farklıdır</value>
+  </data>
+  <data name="StringId.FilterGroupNotOr" xml:space="preserve">
+    <value>Değil veya</value>
+  </data>
+  <data name="StringId.PictureEditMenuCut" xml:space="preserve">
+    <value>Kes</value>
+  </data>
+  <data name="StringId.FilterEmptyValue" xml:space="preserve">
+    <value>Boş</value>
+  </data>
+  <data name="StringId.PictureEditMenuPaste" xml:space="preserve">
+    <value>Yapıştır</value>
+  </data>
+  <data name="StringId.LookUpColumnDefaultName" xml:space="preserve">
+    <value>İsim</value>
+  </data>
+  <data name="StringId.NavigatorNextButtonHint" xml:space="preserve">
+    <value>İleri</value>
+  </data>
+  <data name="StringId.UnknownPictureFormat" xml:space="preserve">
+    <value>Bilinmeyen resim formatı</value>
+  </data>
+  <data name="StringId.DateEditToday" xml:space="preserve">
+    <value>Bugün</value>
+  </data>
+  <data name="StringId.FilterClauseEquals" xml:space="preserve">
+    <value>Eşittir</value>
+  </data>
+  <data name="StringId.FilterToolTipNodeAction" xml:space="preserve">
+    <value>İşlemler</value>
+  </data>
+  <data name="StringId.TabHeaderButtonClose" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="StringId.TextEditMenuCut" xml:space="preserve">
+    <value>Ke&amp;s</value>
+  </data>
+  <data name="StringId.PictureEditOpenFileError" xml:space="preserve">
+    <value>Yanlış resim formatı</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionSubstring" xml:space="preserve">
+    <value>Parçala</value>
+  </data>
+  <data name="StringId.PictureEditOpenFileTitle" xml:space="preserve">
+    <value>Aç</value>
+  </data>
+  <data name="StringId.FilterGroupAnd" xml:space="preserve">
+    <value>ve</value>
+  </data>
+  <data name="StringId.DateEditClear" xml:space="preserve">
+    <value>Temizle</value>
+  </data>
+</root>

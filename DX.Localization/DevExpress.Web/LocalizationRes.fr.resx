@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxperienceStringId.DataView_PagerSummaryAllPages">
+    <value>Toutes les pages</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerSummaryFormat">
+    <value>Page {0} sur {1}</value>
+  </data>
+  <data name="ASPxperienceStringId.DataViewBase_EmptyDataText">
+    <value>Aucune donnée à afficher</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Cancel">
+    <value>Annuler</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_DeleteConfirm">
+    <value>Etes-vous sûr(e) de vouloir supprimer '{0}'?</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorAccessProhibited">
+    <value>Accès interdit. L'opération ne peut pas être terminée.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorAlreadyExists">
+    <value>Le fichier / dossier spécifié existe déjà.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorFileNotFound">
+    <value>Fichier non trouvé</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorFolderNotFound">
+    <value>Dossier non trouvé</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorInvalidSymbols">
+    <value>Ce nom contient des caractères invalides. L'opération ne peut pas être terminée.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorIO">
+    <value>Erreur d'écriture ou de lecture non spécifiée. L'opération ne peut pas être terminée.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorNameCannotBeEmpty">
+    <value>Le fichier / dossier ne peut pas être vide</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorNoAccess">
+    <value>Accès refusé. L'opération ne peut pas être terminée.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorOther">
+    <value>Erreur non spécifiée</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorRootFolderNotSpecified">
+    <value>Le dossier racine n'est pas spécifié ou n'existe pas.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorThumbnail">
+    <value>Pas d'accès au dossier des vignettes</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorUsedByAnotherProcess">
+    <value>L'opération ne peut pas être terminée car le fichier / dossier est utilisé par un autre processus.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorWrongExtension">
+    <value>Cette extension de fichier n'est pas autorisée. L'opération ne peut pas être terminée.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Filter">
+    <value>Filtrer par :</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Folder">
+    <value>Dossier</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_FolderLocked">
+    <value>Verrouillé par l'upload</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_MovePopupHeader">
+    <value>Sélectionner le répertoire de destination</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Ok">
+    <value>OK</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Path">
+    <value>Chemin :</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbCreate">
+    <value>Créer (F7)</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbDelete">
+    <value>Supprimer (Suppr)</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbDownload">
+    <value>Download</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbMove">
+    <value>Déplacer (F6)</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbRefresh">
+    <value>Actualiser</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbRename">
+    <value>Renommer (F2)</value>
+  </data>
+  <data name="ASPxperienceStringId.Loading">
+    <value>Chargement&amp;hellip;</value>
+  </data>
+  <data name="ASPxperienceStringId.NewsControl_BackToTop">
+    <value>Retour en haut</value>
+  </data>
+  <data name="ASPxperienceStringId.NewsControl_Page">
+    <value>Page :</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_All">
+    <value>Tout</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_First">
+    <value>Début</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Last">
+    <value>Fin</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Next">
+    <value>Suivant</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Prev">
+    <value>Précédent</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_SummaryAllPagesFormat">
+    <value>Pages : {0} - {1} ({2} élément(s))</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_SummaryFormat">
+    <value>Page {0} sur {1} ({2} élément(s))</value>
+  </data>
+  <data name="ASPxperienceStringId.PopupControl_CloseButton">
+    <value>[Fermer]</value>
+  </data>
+  <data name="ASPxperienceStringId.PopupControl_SizeGrip">
+    <value>[Retailler]</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_BackToTop">
+    <value>[Retour en haut]</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_FilterCaption">
+    <value>Filtre :&amp;nbsp;&amp;nbsp;&amp;nbsp;</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_FilterHint">
+    <value>&lt;b&gt;?&lt;/b&gt; = un simple caractère
+&lt;b&gt;*&lt;/b&gt; = tous les caractères</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_NoData">
+    <value>Aucune donnée pour ce critère de filtre</value>
+  </data>
+  <data name="ASPxperienceStringId.TreeView_AltCollapse">
+    <value>Reduire</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_NoData">
+    <value>Pas de données pour les critères de ce filtre</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_RemoveButton">
+    <value>Supprimer</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_AddButton">
+    <value>Ajouter</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_UploadButton">
+    <value>Télécharger</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_CancelButton">
+    <value>Annuler</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_EnctypeError">
+    <value>L'upload de fichier a échoué car l'attribut du formulaire n'est pas défini à 'multipart/form-data'.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_FileDoesNotExistError">
+    <value>Le fichier en cours d'upload n'existe pas.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_GeneralError">
+    <value>L'upload du fichier a échoué en raison d'un problème interne au serveur.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_InvalidWindowsPath">
+    <value>Le chemin de fichier "{0}" n'est pas un chemin Windows valide.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_MaxRequestLengthExceeded">
+    <value>La taille totale des fichiers sélectionnés pour l'upload dépasse la taille maximum autorisée pour la requête ({0} Kb) définie par l'application.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_MaxSize">
+    <value>La taille maximum du fichier dépasse la taille maximum autorisée ( {0} bytes)</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_NotAllowedContentTypes">
+    <value>Ce type de contenu n'est pas autorisé.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_NotAllowedFileExtension">
+    <value>Cette extension de fichier n'est pas autorisée.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_RemoveButton">
+    <value>Supprimer</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_SilverlightPluginLink">
+    <value>Merci d'installer &lt;a href="{0}"&gt;Microsoft Silverlight v3 ou supérieur&lt;/a&gt; afin d'afficher ce contenu et avoir la possibilité d'uploader des fichiers.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_UnspecifiedError">
+    <value>Le serveur a rencontré une erreur interne non spécifiée qui l'a empêché de pleinement satisfaire la requête.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_UploadButton">
+    <value>Upload</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_UploadWasCanceledError">
+    <value>L'upload de fichier a été annulé.</value>
+  </data>
+</root>

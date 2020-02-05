@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DevExpress.XtraCharts.Legend.Visible" xml:space="preserve">
+    <value>Видим</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Legend.Font" xml:space="preserve">
+    <value>Шрифт</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Legend.TextColor" xml:space="preserve">
+    <value>Цвят на текста</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Legend.BackColor" xml:space="preserve">
+    <value>Цвят на фона</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Legend.Border" xml:space="preserve">
+    <value>Границa</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Legend.Shadow" xml:space="preserve">
+    <value>Сянка</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Legend.BackImage" xml:space="preserve">
+    <value>Фоново изображение</value>
+  </data>
+  <data name="DevExpress.XtraCharts.FillOptionsColor2Base.Color2" xml:space="preserve">
+    <value>Цвят 2</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Shadow.Size" xml:space="preserve">
+    <value>Размер</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Shadow.Color" xml:space="preserve">
+    <value>Цвят</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Shadow.Visible" xml:space="preserve">
+    <value>Видим</value>
+  </data>
+  <data name="DevExpress.XtraCharts.RadarDiagram.BackColor" xml:space="preserve">
+    <value>Цвят на фона</value>
+  </data>
+  <data name="DevExpress.XtraCharts.RadarDiagram.BackImage" xml:space="preserve">
+    <value>Фоново изображение</value>
+  </data>
+  <data name="DevExpress.XtraCharts.RadarDiagram.BorderColor" xml:space="preserve">
+    <value>Цвят на граница</value>
+  </data>
+  <data name="DevExpress.XtraCharts.RadarDiagram.Shadow" xml:space="preserve">
+    <value>Сянка</value>
+  </data>
+  <data name="DevExpress.XtraCharts.RadarAxisY.Color" xml:space="preserve">
+    <value>Цвят</value>
+  </data>
+  <data name="DevExpress.XtraCharts.RadarAxisY.Thickness" xml:space="preserve">
+    <value>Дебелина</value>
+  </data>
+  <data name="DevExpress.XtraCharts.RadarAxisY.Visible" xml:space="preserve">
+    <value>Видим</value>
+  </data>
+  <data name="DevExpress.XtraCharts.TickmarksBase.Visible" xml:space="preserve">
+    <value>Видим</value>
+  </data>
+  <data name="DevExpress.XtraCharts.TickmarksBase.Thickness" xml:space="preserve">
+    <value>Дебелина</value>
+  </data>
+  <data name="DevExpress.XtraCharts.TickmarksBase.Length" xml:space="preserve">
+    <value>Дължина</value>
+  </data>
+  <data name="DevExpress.XtraCharts.GridLines.Visible" xml:space="preserve">
+    <value>Видим</value>
+  </data>
+  <data name="DevExpress.XtraCharts.GridLines.Color" xml:space="preserve">
+    <value>Цвят</value>
+  </data>
+  <data name="DevExpress.XtraCharts.LineStyle.Thickness" xml:space="preserve">
+    <value>Дебелина</value>
+  </data>
+  <data name="DevExpress.XtraCharts.ScrollBarOptions.BackColor" xml:space="preserve">
+    <value>Цвят на фона</value>
+  </data>
+  <data name="DevExpress.XtraCharts.ScrollBarOptions.BorderColor" xml:space="preserve">
+    <value>Цвят на граница</value>
+  </data>
+  <data name="DevExpress.XtraCharts.XYDiagram3D.BackColor" xml:space="preserve">
+    <value>Цвят на фона</value>
+  </data>
+  <data name="DevExpress.XtraCharts.XYDiagram3D.BackImage" xml:space="preserve">
+    <value>Фоново изображение</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisLabel3D.Position" xml:space="preserve">
+    <value>Позиция</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisTitle.Alignment" xml:space="preserve">
+    <value>Подравняване</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SeriesBase.View" xml:space="preserve">
+    <value>Изглед</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SeriesBase.Visible" xml:space="preserve">
+    <value>Видим</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SeriesLabelBase.Visible" xml:space="preserve">
+    <value>Видим</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SeriesLabelBase.TextColor" xml:space="preserve">
+    <value>Цвят на текста</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SeriesLabelBase.BackColor" xml:space="preserve">
+    <value>Цвят на фона</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SeriesLabelBase.Font" xml:space="preserve">
+    <value>Шрифт</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SeriesLabelBase.Shadow" xml:space="preserve">
+    <value>Сянка</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SeriesLabelBase.Border" xml:space="preserve">
+    <value>Границa</value>
+  </data>
+  <data name="DevExpress.XtraCharts.PieSeriesLabel.Position" xml:space="preserve">
+    <value>Позиция</value>
+  </data>
+  <data name="DevExpress.XtraCharts.FunnelSeriesLabel.Position" xml:space="preserve">
+    <value>Позиция</value>
+  </data>
+  <data name="DevExpress.XtraCharts.RangeBarSeriesLabel.Position" xml:space="preserve">
+    <value>Позиция</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SeriesViewBase.Color" xml:space="preserve">
+    <value>Цвят</value>
+  </data>
+  <data name="DevExpress.XtraCharts.ReductionStockOptions.Color" xml:space="preserve">
+    <value>Цвят</value>
+  </data>
+  <data name="DevExpress.XtraCharts.ReductionStockOptions.Visible" xml:space="preserve">
+    <value>Видим</value>
+  </data>
+  <data name="DevExpress.XtraCharts.BarSeriesView.Border" xml:space="preserve">
+    <value>Границa</value>
+  </data>
+  <data name="DevExpress.XtraCharts.BarSeriesView.Transparency" xml:space="preserve">
+    <value>Прозрачност</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Marker.Visible" xml:space="preserve">
+    <value>Видим</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Marker.Color" xml:space="preserve">
+    <value>Цвят</value>
+  </data>
+  <data name="DevExpress.XtraCharts.TaskLinkOptions.Thickness" xml:space="preserve">
+    <value>Дебелина</value>
+  </data>
+  <data name="DevExpress.XtraCharts.TaskLinkOptions.Visible" xml:space="preserve">
+    <value>Видим</value>
+  </data>
+  <data name="DevExpress.XtraCharts.TaskLinkOptions.Color" xml:space="preserve">
+    <value>Цвят</value>
+  </data>
+  <data name="DevExpress.XtraCharts.BaseMarker.BorderColor" xml:space="preserve">
+    <value>Цвят на граница</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SimpleMarker.Size" xml:space="preserve">
+    <value>Размер</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AreaSeriesViewBase.Border" xml:space="preserve">
+    <value>Границa</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AreaSeriesViewBase.Transparency" xml:space="preserve">
+    <value>Прозрачност</value>
+  </data>
+  <data name="DevExpress.XtraCharts.XYDiagram3DSeriesViewBase.Transparency" xml:space="preserve">
+    <value>Прозрачност</value>
+  </data>
+  <data name="DevExpress.XtraCharts.PieSeriesView.Color" xml:space="preserve">
+    <value>Цвят</value>
+  </data>
+  <data name="DevExpress.XtraCharts.PieSeriesView.Border" xml:space="preserve">
+    <value>Границa</value>
+  </data>
+  <data name="DevExpress.XtraCharts.FunnelSeriesView.Border" xml:space="preserve">
+    <value>Границa</value>
+  </data>
+  <data name="DevExpress.XtraCharts.FunnelSeriesView.Color" xml:space="preserve">
+    <value>Цвят</value>
+  </data>
+  <data name="DevExpress.XtraCharts.DateTimeFormat.General" xml:space="preserve">
+    <value>Общи</value>
+  </data>
+  <data name="DevExpress.XtraCharts.NumericFormat.General" xml:space="preserve">
+    <value>Общи</value>
+  </data>
+  <data name="DevExpress.XtraCharts.NumericFormat.Percent" xml:space="preserve">
+    <value>Процент</value>
+  </data>
+  <data name="DevExpress.XtraCharts.LayoutDirection.Vertical" xml:space="preserve">
+    <value>Вертикална</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SortingMode.None" xml:space="preserve">
+    <value>Няма</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SortingMode.Ascending" xml:space="preserve">
+    <value>Възходящо</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SortingMode.Descending" xml:space="preserve">
+    <value>Низходящо</value>
+  </data>
+  <data name="DevExpress.XtraCharts.PointView.Values" xml:space="preserve">
+    <value>Стойности</value>
+  </data>
+  <data name="DevExpress.XtraCharts.TimeSpanFormat.Standard" xml:space="preserve">
+    <value>Стандартно</value>
+  </data>
+  <data name="DevExpress.XtraCharts.PieExplodeMode.None" xml:space="preserve">
+    <value>Няма</value>
+  </data>
+  <data name="DevExpress.XtraCharts.TopNOptions.Enabled" xml:space="preserve">
+    <value>Разрешен</value>
+  </data>
+  <data name="DevExpress.XtraCharts.XYDiagramPaneBase.Weight" xml:space="preserve">
+    <value>Тегло</value>
+  </data>
+  <data name="DevExpress.XtraCharts.XYDiagramPaneBase.BorderColor" xml:space="preserve">
+    <value>Цвят на граница</value>
+  </data>
+  <data name="DevExpress.XtraCharts.XYDiagramPaneBase.Shadow" xml:space="preserve">
+    <value>Сянка</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SimpleDiagramSeriesViewBase.Titles" xml:space="preserve">
+    <value>Заглавия</value>
+  </data>
+  <data name="DevExpress.XtraCharts.XYDiagramPaneBase.Visible" xml:space="preserve">
+    <value>Видим</value>
+  </data>
+  <data name="DevExpress.XtraCharts.PaneLayoutDirection.Vertical" xml:space="preserve">
+    <value>Вертикална</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SeriesPointKey.Value_1" xml:space="preserve">
+    <value>Стойност 1</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SeriesPointKey.Value_2" xml:space="preserve">
+    <value>Стойност 2</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SeriesPointKey.Value_3" xml:space="preserve">
+    <value>Стойност 3</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SeriesPointKey.Value_4" xml:space="preserve">
+    <value>Стойност 4</value>
+  </data>
+  <data name="DevExpress.XtraCharts.BubbleSeriesView.Transparency" xml:space="preserve">
+    <value>Прозрачност</value>
+  </data>
+  <data name="DevExpress.XtraCharts.BubbleSeriesLabel.Position" xml:space="preserve">
+    <value>Позиция</value>
+  </data>
+  <data name="DevExpress.XtraCharts.BubbleLabelValueToDisplay.Weight" xml:space="preserve">
+    <value>Тегло</value>
+  </data>
+  <data name="DevExpress.XtraCharts.BubbleLabelValueToDisplay.Value" xml:space="preserve">
+    <value>Стойност</value>
+  </data>
+  <data name="DevExpress.XtraCharts.FillStyleBase.Options" xml:space="preserve">
+    <value>Опции</value>
+  </data>
+  <data name="DevExpress.XtraCharts.BorderBase.Color" xml:space="preserve">
+    <value>Цвят</value>
+  </data>
+  <data name="DevExpress.XtraCharts.BorderBase.Thickness" xml:space="preserve">
+    <value>Дебелина</value>
+  </data>
+  <data name="DevExpress.XtraCharts.BorderBase.Visible" xml:space="preserve">
+    <value>Видим</value>
+  </data>
+  <data name="DevExpress.XtraCharts.TitleBase.Visible" xml:space="preserve">
+    <value>Видим</value>
+  </data>
+  <data name="DevExpress.XtraCharts.TitleBase.Font" xml:space="preserve">
+    <value>Шрифт</value>
+  </data>
+  <data name="DevExpress.XtraCharts.TitleBase.TextColor" xml:space="preserve">
+    <value>Цвят на текста</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Title.Text" xml:space="preserve">
+    <value>Текст</value>
+  </data>
+  <data name="DevExpress.XtraCharts.DateTimeMeasurementUnit.Week" xml:space="preserve">
+    <value>Седмица</value>
+  </data>
+  <data name="DevExpress.XtraCharts.DateTimeMeasurementUnit.Year" xml:space="preserve">
+    <value>Година</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SeriesPoint.Values" xml:space="preserve">
+    <value>Стойности</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SeriesPoint.Length" xml:space="preserve">
+    <value>Дължина</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SeriesPointFilter.Value" xml:space="preserve">
+    <value>Стойност</value>
+  </data>
+  <data name="DevExpress.XtraCharts.DataFilter.Value" xml:space="preserve">
+    <value>Стойност</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Strip.Visible" xml:space="preserve">
+    <value>Видим</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Strip.Color" xml:space="preserve">
+    <value>Цвят</value>
+  </data>
+  <data name="DevExpress.XtraCharts.ConstantLine.Visible" xml:space="preserve">
+    <value>Видим</value>
+  </data>
+  <data name="DevExpress.XtraCharts.ConstantLine.Color" xml:space="preserve">
+    <value>Цвят</value>
+  </data>
+  <data name="DevExpress.XtraCharts.ConstantLine.Title" xml:space="preserve">
+    <value>Заглавие</value>
+  </data>
+  <data name="DevExpress.XtraCharts.CustomAxisLabel.Visible" xml:space="preserve">
+    <value>Видим</value>
+  </data>
+  <data name="DevExpress.XtraCharts.ResolveOverlappingMode.None" xml:space="preserve">
+    <value>Няма</value>
+  </data>
+  <data name="DevExpress.XtraCharts.ScaleBreak.Visible" xml:space="preserve">
+    <value>Видим</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AutoScaleBreaks.Enabled" xml:space="preserve">
+    <value>Разрешен</value>
+  </data>
+  <data name="DevExpress.XtraCharts.ScaleBreakOptions.Style" xml:space="preserve">
+    <value>Стил</value>
+  </data>
+  <data name="DevExpress.XtraCharts.ScaleBreakOptions.Color" xml:space="preserve">
+    <value>Цвят</value>
+  </data>
+  <data name="DevExpress.XtraCharts.TextAnnotation.Text" xml:space="preserve">
+    <value>Текст</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisLabelResolveOverlappingMode.None" xml:space="preserve">
+    <value>Няма</value>
+  </data>
+</root>

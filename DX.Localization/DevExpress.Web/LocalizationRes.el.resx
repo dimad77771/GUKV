@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxperienceStringId.Loading">
+    <value>Ανάγνωση&amp;hellip;</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_All">
+    <value>Όλα</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_First">
+    <value>Πρώτο</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Prev">
+    <value>Προηγούμενο</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Next">
+    <value>Επόμενο</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Last">
+    <value>Τελευταία</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_SummaryFormat">
+    <value>Σελίδα {0} από {1} ({2} αντικείμενα)</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_SummaryAllPagesFormat">
+    <value>Σελίδες: {0} - {1} ({2} αντικείμενα)</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerSummaryFormat">
+    <value>Σελίδα {0} of {1}</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerSummaryAllPages">
+    <value>Όλες οι σελίδες</value>
+  </data>
+  <data name="ASPxperienceStringId.NewsControl_BackToTop">
+    <value>Επιστροφή στην κορυφή</value>
+  </data>
+  <data name="ASPxperienceStringId.NewsControl_Page">
+    <value>Σελίδα:</value>
+  </data>
+  <data name="ASPxperienceStringId.PopupControl_CloseButton">
+    <value>[Κλείσιμο]</value>
+  </data>
+  <data name="ASPxperienceStringId.PopupControl_SizeGrip">
+    <value>[Μορφοποίηση]</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_FilterCaption">
+    <value>Φίλτρο:&amp;nbsp;&amp;nbsp;&amp;nbsp;</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_FilterHint">
+    <value>&lt;b&gt;?&lt;/b&gt; = κάθε μόναδικος χαρακτήρας
+&lt;b&gt;*&lt;/b&gt; = οποιοσδίποτε χαρακτήρας</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_BackToTop">
+    <value>[Επιστρόφη στην κορυφή]</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_NoData">
+    <value>Δεν υπάρχουν στοιχεία για αύτα τα κρητίρια φίλτρου</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_RemoveButton">
+    <value>Αφαίρεση</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_AddButton">
+    <value>Προσθήκη</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_UploadButton">
+    <value>Ενημέρωση</value>
+  </data>
+  <data name="ASPxperienceStringId.DataViewBase_EmptyDataText">
+    <value>Δεν υπάρχουν δεδομένα προς εμφάνιση</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_CancelButton">
+    <value>Ακύρωση</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_InvalidWindowsPath">
+    <value>Η διαδρομή αρχείου "{0}" δεν είναι έγκυρη διαδρομή των Windows.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_MaxRequestLengthExceeded">
+    <value>Το συνολικό μέγεθος των αρχείων που έχουν επιλεχτεί για ανέβασμα υπερβαίνει το επιτρεπόμενο ανώτατο όριο ((0) Kb) που έχει οριστεί.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManagerActionList_AddProgressPanelHttpModule">
+    <value>Ενεργοποίηση γραμμή προόδου για Περιοχή Μεταφόρτωσης (ενημερώνεται το web.config)</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManagerActionList_AddProgressPanelHttpModuleDescription">
+    <value>Τροποποιεί τπ Web.config με HTTP χειριστές που είναι απαραίτητες για να δείτε τις Γραμμές Προόδου στην Περιοχή Μεταφόρτωσης.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManagerActionList_AllowCreate">
+    <value>Επιτρέψτε τη Δημιουργία Αρχείων και Φακέλων</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManagerActionList_AllowDelete">
+    <value>Επιτρέψτε τη Διαγραφή Αρχείων και Φακέλων</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManagerActionList_AllowMove">
+    <value>Επιτρέψτε τη Μετακίνηση Αρχείων και Φακέλων</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManagerActionList_AllowRename">
+    <value>Επιτρέψτε τη Μετονομασία Αρχείων και Φακέλων</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManagerActionList_ShowUploadPanel">
+    <value>Εμφάνιση Περιοχής Μεταφόρτωσης</value>
+  </data>  
+  <data name="ASPxperienceStringId.FileManager_Cancel">
+    <value>Ακύρωση</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_DeleteConfirm">
+    <value>Είστε σίγουροι ότι θέλετε να διαγράψετε το '{0}';</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorAlreadyExists">
+    <value>Το συγκεκριμένο αρχείο/γάκελος ήδη υπάρχει.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorFileNotFound">
+    <value>Το Αρχείο δεν βρέθηκε</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorFolderNotFound">
+    <value>Ο Φάκελος δεν βρέθηκε</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorInvalidSymbols">
+    <value>Το λονομα εμπεριέχει μη επιτρεπτούς χαρακτήρες. Η εργασία δεν μπορεί να ολοκληρωθεί.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorIO">
+    <value>Απροσδιόριστο σφάλμα επεξεργασίας αρχείων.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorNoAccess">
+    <value>Δεν επιτρέπεται η πρόσβαση. Η εργασία δεν μπορεί να ολοκληρωθεί.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorOther">
+    <value>Απροσδιόριστο σφάλμα</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorTypeNewName">
+    <value>Πληκτρολογήστε νέο όνομα</value>
+  </data>  
+  <data name="ASPxperienceStringId.FileManager_ErrorUsedByAnotherProcess">
+    <value>Η εργασία δεν μπορεί να ολοκληρωθεί, επειδή το αρχείο/φάκελος χρησιμοποιείται από άλλη διαδικασία.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorWrongExtension">
+    <value>Αυτή η επέκταση του αρχείου δεν επιτρέπεται. Η εργασία δεν μπορεί να ολοκληρωθεί.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Filter">
+    <value>Φίλτρο:</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Folder">
+    <value>Φάκελος</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_FolderLocked">
+    <value>Κλειδωμένο για μεταφόρτωση</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_MovePopupHeader">
+    <value>Επιλέξτε Φάκελο Προορισμού</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Ok">
+    <value>Εντάξει</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Path">
+    <value>Διαδρομή:</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbCreate">
+    <value>Δημιουργία</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbDelete">
+    <value>Διαγραφή (Del)</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbMove">
+    <value>Μετακίνηση (F6)</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbRefresh">
+    <value>Ανανέωση</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbRename">
+    <value>Μετονομασία (F2)</value>
+  </data>
+  <data name="ASPxperienceStringId.TreeView_AltCollapse">
+    <value>Συρίκνωση</value>
+  </data>
+  <data name="ASPxperienceStringId.TreeView_AltExpand">
+    <value>Επέκταση</value>
+  </data>
+  <data name="ASPxperienceStringId.TreeView_AltLoading">
+    <value>Ανάγνωση</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_EnctypeError">
+    <value>Το 'ανέβασμα' του αρχείου απέτυχε διότι δεν έχει οριστεί ως 'multipart/form-data'</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_FileDoesNotExistError">
+    <value>Το αρχείο προς 'ανέβασμα' δεν υπάρχει.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_GeneralError">
+    <value>Το 'ανέβασμα' του αρχείου απέτυχε λόγω απρόσμενου λάθους.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_MaxSize">
+    <value>Το μέγεθος του αρχείου υπερβαίνει το μέγιστο επιτρεπτό το οποίο είναι {0} bytes.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_NotAllowedContentTypes">
+    <value>Αυτός ο τύπος αρχείου δεν επιτρέπεται.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_NotAllowedFileExtension">
+    <value>Το αρχείο με την συγκεκριμένη κατάληξη δεν επιτρέπεται.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorAccessProhibited">
+    <value>Η πρόσβαση απαγορεύεται. Η πράξη δεν μπορεί να ολοκληρωθεί</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorNameCannotBeEmpty">
+    <value>Το αρχείο/όνομα του φακέλου, δεν μπορεί να είναι κενό</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorRootFolderNotSpecified">
+    <value>Ο κεφαλικός φάκελος δεν έχει οριστεί ή δεν υπάρχει</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorThumbnail">
+    <value>Δεν παρέχεται πρόσβαση στο φάκελο μικρογραφιών</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbDownload">
+    <value>Κατέβασμα Αρχείου</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_BrowseButton">
+    <value>Αναζήτηση...</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_SilverlightPluginLink">
+    <value>Παρακαλώ εγκαταστήσετε το &lt;a href="{0}"&gt; Microsoft Silverlight v3 ή νεότερο &lt;/ a&gt; για να δείτε αυτό το περιεχόμενο και να έχετε την ικανότητα να ανεβάσετε αρχεία.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_UnspecifiedError">
+    <value>Ο διακομιστής αντιμετώπισε ένα εσωτερικό απροσδιόριστο σφάλμα που εμπόδισε την εκπλήρωση του αιτήματος.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_UploadWasCanceledError">
+    <value>Το ανέβασμα αρχείου ακυρώθηκε.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorUploadSeveralFiles">
+    <value>Η μεταφόρτωση απέτυχε για {0} από {1} αρχεία</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_AccessDeniedError">
+    <value>Η πρόσβαση στη διαδρομή του διακομιστή "{0}" δεν είναιν εφικτή. Ο λόγος μπορεί να οφείλεται σε έλλειψη δικαιώματος εγγραφής αρχείων σε αυτό (ή γονέα) φάκελο.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_ClearFileSelectionButtonToolTip">
+    <value>Καθαρισμός επιλογής</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_MultiSelection">
+    <value>Προσοχή!
+
+Τα ακόλουθα {0} αρχεία είναι άκυρα, επειδή υπερβαίνουν το επιτρεπόμενο μέγεθος αρχείου ({1}) ή οι επεκτάσεις τους δεν επιτρέπονται. Αυτά τα αρχεία έχουν αφαιρεθεί από την επιλογή, οπότε δεν θα μεταμορφωθούν.
+
+{2}</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_SelectedSeveralFiles">
+    <value>{0} αρχεία επιλέχτηκαν για μεταφόρτωση</value>
+  </data>
+</root>

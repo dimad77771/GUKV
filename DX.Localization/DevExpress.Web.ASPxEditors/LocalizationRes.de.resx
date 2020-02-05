@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxEditorsStringId.DefaultErrorText">
+    <value>Ungültiger Wert</value>
+  </data>
+  <data name="ASPxEditorsStringId.RegExValidationErrorText">
+    <value>diese Eingabe hat das falsche Format</value>
+  </data>
+  <data name="ASPxEditorsStringId.RequiredFieldErrorText">
+    <value>*</value>
+  </data>
+  <data name="ASPxEditorsStringId.Calendar_Today">
+    <value>Heute</value>
+  </data>
+  <data name="ASPxEditorsStringId.Calendar_Clear">
+    <value>Löschen</value>
+  </data>
+  <data name="ASPxEditorsStringId.Calendar_OK">
+    <value>OK</value>
+  </data>
+  <data name="ASPxEditorsStringId.Calendar_Cancel">
+    <value>Abbrechen</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_OK">
+    <value>OK</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_Cancel">
+    <value>Abbrechen</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_GroupType">
+    <value>Und,Oder,Nicht Und, Nicht Oder</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_ClauseType">
+    <value>Gleich,Ungleich,Größer als,Größer oder gleich wie,Kleiner als,Kleiner oder gleich wie,Zwischen,Nicht zwischen,Enthält,Enthält nicht,Beginnt mit,Endet mit,Ist wie,Ist nicht wie,Ist leer,Ist nicht leer,Ist eins von,Ist keins von</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_BetweenAnd">
+    <value>Und</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_AddConditionHint">
+    <value>Fügt eine neue Bedingung zu dieser Gruppe hinzu</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_RemoveConditionHint">
+    <value>Entfent diese Bedingung</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_AddValueHint">
+    <value>Fügt ein neues Element zur Liste hinzu</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_ClearFilter">
+    <value>Löschen</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_ShowFilterControl">
+    <value>Filter erstellen</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_AddGroup">
+    <value>Gruppe hinzufügen</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_AddCondition">
+    <value>Bedingung hinzufügen</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_Remove">
+    <value>Entfernen</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterConrol_Empty">
+    <value>&amp;lt;leer&amp;gt;</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterConrol_EmptyEnter">
+    <value>&amp;lt;Wert eingeben&amp;gt;</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_PopupHeaderText">
+    <value>Filtergenerator</value>
+  </data>
+  <data name="ASPxEditorsStringId.Captcha_DefaultErrorText">
+    <value>Der übermittelte Code ist nicht korrekt</value>
+  </data>
+  <data name="ASPxEditorsStringId.Captcha_DefaultImageAlternateText">
+    <value>Captcha Bild</value>
+  </data>
+  <data name="ASPxEditorsStringId.Captcha_DefaultTextBoxLabelText">
+    <value>Geben Sie den angezeigten Code ein</value>
+  </data>
+  <data name="ASPxEditorsStringId.Captcha_RefreshText">
+    <value>einen anderen Code generieren</value>
+  </data>
+  <data name="ASPxEditorsStringId.CheckBox_Checked">
+    <value>markiert</value>
+  </data>
+  <data name="ASPxEditorsStringId.CheckBox_Unchecked">
+    <value>nicht markiert</value>
+  </data>
+  <data name="ASPxEditorsStringId.CheckBox_Undefined">
+    <value>nicht definiert</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_Not">
+    <value>Nicht</value>
+  </data>
+  <data name="ASPxEditorsStringId.TrackBar_Increment">
+    <value>Aufsteigend</value>
+  </data>
+  <data name="ASPxEditorsStringId.TrackBar_Decrement">
+    <value>Absteigend</value>
+  </data>
+  <data name="ASPxEditorsStringId.TrackBar_Drag">
+    <value>Ziehen</value>
+  </data>
+</root>

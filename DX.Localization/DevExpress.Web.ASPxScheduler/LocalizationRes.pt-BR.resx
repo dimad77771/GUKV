@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxSchedulerStringId.Caption_RecurrenceType_Daily">
+    <value>Diário</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_RecurrenceType_Weekly">
+    <value>Semanal</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_RecurrenceType_Monthly">
+    <value>Mensal</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_RecurrenceType_Yearly">
+    <value>Anual</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_RecurenceRange_NoEndDate">
+    <value>Sem data de término</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_RecurenceRange_OccurrenceCount">
+    <value>Termina após:</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_RecurenceRange_EndBy">
+    <value>Término em:</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_Days">
+    <value>dia(s)</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_Every">
+    <value>A cada</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_EveryWeekday">
+    <value>Todos os dias da semana</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_RecurEvery">
+    <value>Começa em</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_WeeksOn">
+    <value>semana(s) no(a):</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_Day">
+    <value>Dia</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_The">
+    <value>No(a)</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_OfEvery">
+    <value>de cada</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_Months">
+    <value>mês(es)</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_Of">
+    <value>de</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_Occurrences">
+    <value>ocorrências</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_Recurrence">
+    <value>recorrência</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_GotoDate">
+    <value>Ir para a data</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_DeleteRecurrentApt">
+    <value>Confirma exclusão</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_OpenRecurrentApt">
+    <value>Abrir item recorrente</value>
+  </data>
+  <data name="ASPxSchedulerStringId.TooltipViewNavigator_Backward">
+    <value>Para trás</value>
+  </data>
+  <data name="ASPxSchedulerStringId.TooltipViewNavigator_Forward">
+    <value>Para frente</value>
+  </data>
+  <data name="ASPxSchedulerStringId.CaptionViewNavigator_Today">
+    <value>Hoje</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_ViewVisibleInterval_Format">
+    <value>{0:D} &amp;ndash; {1:D}</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_OperationToolTip">
+    <value>Pressione ESC para cancelar a operação</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_Error">
+    <value>Erro</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_Warning">
+    <value>Alerta</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_Info">
+    <value>Informação</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_DetailInfo">
+    <value>Mostrar detalhes</value>
+  </data>
+  <data name="ASPxSchedulerStringId.Caption_ShowMore">
+    <value>Mostrar mais</value>
+  </data>
+</root>

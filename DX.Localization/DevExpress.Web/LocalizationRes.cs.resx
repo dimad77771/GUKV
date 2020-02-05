@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxperienceStringId.Loading">
+    <value>Načítání</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_All">
+    <value>Vše</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_First">
+    <value>První</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Prev">
+    <value>Předchozí</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Next">
+    <value>Další</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Last">
+    <value>Ostatní</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_SummaryFormat">
+    <value>Strana {0} z {1} ({2} položek)</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_SummaryAllPagesFormat">
+    <value>Strany: {0} - {1} ({2} položek)</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerSummaryFormat">
+    <value>Strana {0} z {1}</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerSummaryAllPages">
+    <value>Všechny strany</value>
+  </data>
+  <data name="ASPxperienceStringId.DataViewBase_EmptyDataText">
+    <value>Vlož text</value>
+  </data>
+  <data name="ASPxperienceStringId.NewsControl_BackToTop">
+    <value>Zpět nahoru</value>
+  </data>
+  <data name="ASPxperienceStringId.NewsControl_Page">
+    <value>Strana:</value>
+  </data>
+  <data name="ASPxperienceStringId.PopupControl_CloseButton">
+    <value>[Zamkni]</value>
+  </data>
+  <data name="ASPxperienceStringId.PopupControl_SizeGrip">
+    <value>[Změň rozměr]</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_FilterCaption">
+    <value>Filtr:&amp;nbsp;&amp;nbsp;&amp;nbsp;</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_FilterHint">
+    <value>Tip k filtru</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_BackToTop">
+    <value>[Zpět nahoru]</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_NoData">
+    <value>Žádná data</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_RemoveButton">
+    <value>Odstraň</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_AddButton">
+    <value>Přidej</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_UploadButton">
+    <value>Upload</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_CancelButton">
+    <value>Storno</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_InvalidWindowsPath">
+    <value>Chyba cesty "{0}" není platná s Windows</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_MaxRequestLengthExceeded">
+    <value>Překročen maximální upload limit</value>
+  </data>
+</root>

@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxperienceStringId.Pager_Next">
+    <value>التالي</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_FilterCaption">
+    <value>تصفية:&amp;nbsp;&amp;nbsp;&amp;nbsp;</value>
+  </data>
+  <data name="ASPxperienceStringId.Loading">
+    <value>تحميل&amp;hellip;</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_CancelButton">
+    <value>إلغاء الأمر</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Last">
+    <value>الأخير</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_All">
+    <value>الكل</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorUploadSeveralFiles">
+    <value>التحميل لم ينجح لـ {0} من {1} الملفات</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorRootFolderNotSpecified">
+    <value>‏‏المجلد الجذر غير محدد أو إير موجود</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbDownload">
+    <value>تنزيل</value>
+  </data>
+  <data name="ASPxperienceStringId.DataViewBase_EmptyDataText">
+    <value>لا توجد أي بيانات ليتم عرضها</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorIO">
+    <value>خطأ في الإدخال/الإخراج غير محدد . ‏‏يتعذر إكمال العملية.	</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorAccessProhibited">
+    <value>الوصول ممنوع. لا يمكن أن تكتمل العملية</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Ok">
+    <value>موافق</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbDelete">
+    <value>حذف (Del)</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbRename">
+    <value>إعادة التسمية (F2)</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_SummaryFormat">
+    <value>صفحة {0} of {1} ({2}عناصر )</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_ClearFileSelectionButtonToolTip">
+    <value>مسح التحديد</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_SummaryAllPagesFormat">
+    <value>الصفحات: {0} - {1} ({2}العناصر)</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_InvalidWindowsPath">
+    <value>مسار الملف "{0}" ليس مسارا Windows صحيح.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_AccessDeniedError">
+    <value> تم رفض الوصول إلى مسار الخادم "{0}" . قد يكون السبب لعدم وجود أذونات كتابة الملفات في هذا المجلد (أو الأصل).</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Cancel">
+    <value>إلغاء الأمر</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_UnspecifiedError">
+    <value>‏‏واجه الخادم خطأ غير متوقع حالت دون تحقيق الطلب	</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerSummaryFormat">
+    <value>صفحة {0}من {1}</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorThumbnail">
+    <value>لايمكن الوصول لمجلد الصور المصغرة </value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_FolderLocked">
+    <value>مؤمّن للتحميل </value>
+  </data>
+  <data name="ASPxperienceStringId.TreeView_AltLoading">
+    <value>تحميل</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorWrongExtension">
+    <value>ملحق اسم الملف غير مسموح به. ‏‏يتعذر إكمال العملية.	</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Path">
+    <value>مسار:</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_BackToTop">
+    <value>[العودة إلى البداية]</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_AddButton">
+    <value>إضافة</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_DeleteConfirm">
+    <value>‏‏هل تريد الحذف بالتأكيد '{0}'?</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_UploadWasCanceledError">
+    <value>تم إلغاء تحميل الملف.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_NotAllowedContentTypes">
+    <value>نوع المحتوى ليس مسموح به</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Folder">
+    <value>مجلد</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorFolderNotFound">
+    <value>تعذر العثور على المجلد</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorInvalidSymbols">
+    <value>هذا الاسم يحتوي على أحرف غير صالحة. لا يمكن أن تكتمل العملية</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_MaxSize">
+    <value>حجم ملف يتجاوز أقصى حجم مسموح , الذي هو {0} بايت</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_FileDoesNotExistError">
+    <value>ملف التحميل غير موجود</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_UploadButton">
+    <value>تحميل</value>
+  </data>
+  <data name="ASPxperienceStringId.NewsControl_BackToTop">
+    <value>العودة إلى البداية</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Prev">
+    <value>السابق</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorOther">
+    <value>خطأ غير محدَّد</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_BrowseButton">
+    <value>استعراض...</value>
+  </data>
+  <data name="ASPxperienceStringId.TreeView_AltCollapse">
+    <value>طي</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_NoData">
+    <value>لا توجد بيانات لمعايير التصفية هذه</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_FilterHint">
+    <value>&lt;b&gt;?&lt;/b&gt; =أي حرف منفرد
+&lt;b&gt;*&lt;/b&gt; = أي أحرف</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbRefresh">
+    <value>تحديث</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_SelectedSeveralFiles">
+    <value>ملفات تم تحديدها للتحميل {0}</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_MultiSelection">
+    <value>انتباه!
+
+ الملفات التالية {0} غير صالحة لأنها تتجاوز حجم الملف المسموح به ({1}) ، أو لا يسمح امتداداتها. تمت إزالة هذه الملفات من الاختيار ، ولذا لن يتم تحميلها.
+
+{2}</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_First">
+    <value>الأول</value>
+  </data>
+  <data name="ASPxperienceStringId.NewsControl_Page">
+    <value>صفحة:</value>
+  </data>
+  <data name="ASPxperienceStringId.PopupControl_SizeGrip">
+    <value>[تغيير الحجم]</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_SilverlightPluginLink">
+    <value>الرجاء تثبيتl &lt;a href="{0}"&gt;Microsoft Silverlight v3 أكبر أو &lt;/a&gt;لتستطيع عرض المحتوى و تحميل الملفات.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbCreate">
+    <value>إنشاء (F7)</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_NotAllowedFileExtension">
+    <value>ملحق اسم الملف غير مسموح به</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorNoAccess">
+    <value>تم رفض الوصول. لا يمكن أن تكتمل العملية</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorFileNotFound">
+    <value>تعذر العثور على الملف</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorNameCannotBeEmpty">
+    <value>أسم المجلد/ملف لا يمكن أن يكون  فارغًا</value>
+  </data>
+  <data name="ASPxperienceStringId.TreeView_AltExpand">
+    <value>توسيع</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Filter">
+    <value>التصفية حسب:</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_GeneralError">
+    <value>فشل تحميل الملف بسبب خطأ خارجي</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorUsedByAnotherProcess">
+    <value>لا يمكن أن تكتمل العملية  لأن الملف/المجلد مستخدَم في عملية أخرى</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbMove">
+    <value>نقل (F6)</value>
+  </data>
+  <data name="ASPxperienceStringId.PopupControl_CloseButton">
+    <value>[إغلاق]</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorAlreadyExists">
+    <value>المجلد/ملف المحدد موجود مسبقا</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_MovePopupHeader">
+    <value>حدد وجهة المجلد </value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerSummaryAllPages">
+    <value>كل الصفحات</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_RemoveButton">
+    <value>إزالة</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_EnctypeError">
+    <value>'multipart/form-data'  لـ  enctype   فشل في تحميل الملفات لان لم يتم تعيين سمة </value>
+  </data>
+</root>

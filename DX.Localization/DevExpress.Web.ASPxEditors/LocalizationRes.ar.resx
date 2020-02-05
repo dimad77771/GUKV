@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxEditorsStringId.Calendar_Clear" xml:space="preserve">
+    <value>مسح</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_OK" xml:space="preserve">
+    <value>موافق</value>
+  </data>
+  <data name="ASPxEditorsStringId.CheckBox_Unchecked" xml:space="preserve">
+    <value> غير محدد</value>
+  </data>
+  <data name="ASPxEditorsStringId.Captcha_DefaultTextBoxLabelText" xml:space="preserve">
+    <value>أكتب الكود الظاهر:</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterConrol_Empty" xml:space="preserve">
+    <value>&amp;lt;فارغ&amp;gt;</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterConrol_EmptyEnter" xml:space="preserve">
+    <value>&amp;lt;إدخال قيمة&amp;gt;</value>
+  </data>
+  <data name="ASPxEditorsStringId.Calendar_OK" xml:space="preserve">
+    <value>موافق</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_ShowFilterControl" xml:space="preserve">
+    <value>إنشاء تصفية</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_Not" xml:space="preserve">
+    <value>ليس</value>
+  </data>
+  <data name="ASPxEditorsStringId.TrackBar_Increment" xml:space="preserve">
+    <value>زيادة</value>
+  </data>
+  <data name="ASPxEditorsStringId.DefaultErrorText" xml:space="preserve">
+    <value>قيمة غير صحيحة</value>
+  </data>
+  <data name="ASPxEditorsStringId.Captcha_DefaultImageAlternateText" xml:space="preserve">
+    <value>Captcha صورةالـ</value>
+  </data>
+  <data name="ASPxEditorsStringId.Calendar_Today" xml:space="preserve">
+    <value>اليوم</value>
+  </data>
+  <data name="ASPxEditorsStringId.TrackBar_Decrement" xml:space="preserve">
+    <value>تقليل</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_AddCondition" xml:space="preserve">
+    <value>إضافة شرط</value>
+  </data>
+  <data name="ASPxEditorsStringId.TrackBar_Drag" xml:space="preserve">
+    <value>سحب</value>
+  </data>
+  <data name="ASPxEditorsStringId.RegExValidationErrorText" xml:space="preserve">
+    <value> فشل التحقق من صحة التعبير الاعتيادي</value>
+  </data>
+  <data name="ASPxEditorsStringId.CheckBox_Checked" xml:space="preserve">
+    <value>محدد</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_AddValueHint" xml:space="preserve">
+    <value>إضافة عنصر جديد إلى القائمة</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_ClearFilter" xml:space="preserve">
+    <value>مسح</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_PopupHeaderText" xml:space="preserve">
+    <value>منشئ  تصفية</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_BetweenAnd" xml:space="preserve">
+    <value>و</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_AddConditionHint" xml:space="preserve">
+    <value>إضافة شرط جديد لهذه المجموعة</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_Remove" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="ASPxEditorsStringId.Captcha_RefreshText" xml:space="preserve">
+    <value>إظهار  كود أخر</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_AddGroup" xml:space="preserve">
+    <value>إضافة مجموعة </value>
+  </data>
+  <data name="ASPxEditorsStringId.Captcha_DefaultErrorText" xml:space="preserve">
+    <value>الكود  المرسل غير صحيح</value>
+  </data>
+  <data name="ASPxEditorsStringId.Calendar_Cancel" xml:space="preserve">
+    <value>إلغاء الأمر</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_Cancel" xml:space="preserve">
+    <value>إلغاء الأمر</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_RemoveConditionHint" xml:space="preserve">
+    <value>إزالة  هذا الشرط</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_ClauseType" xml:space="preserve">
+    <value>يساوي، لا يساوي، أكبر من، أكبر من أو يساوي، أقل من، أقل من أو يساوي بين، أليس بين ، يحتوي، هل لا تحتوي، يبدأ، وينتهي معها ، مثل، ليس مثل، فارغ، غير فارغ، هل أي من، هل من شيء</value>
+  </data>
+</root>

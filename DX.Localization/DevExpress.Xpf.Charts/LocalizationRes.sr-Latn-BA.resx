@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ChartStringId.MsgIncorrectSeriesRemoving" xml:space="preserve">
+    <value>Ne mogu se ukloniti automatski kreirani nizovi podataka.</value>
+  </data>
+  <data name="ChartStringId.MsgSeriesPointIncorrectValue" xml:space="preserve">
+    <value>Vrijednost tačke ne može biti beskonačna.</value>
+  </data>
+  <data name="ChartStringId.DefaultAxisTitleText" xml:space="preserve">
+    <value>Naslov po osi</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPropertyUsage" xml:space="preserve">
+    <value>Osobina '{0}' nije podržana za klasu '{1}'.</value>
+  </data>
+  <data name="ChartStringId.ChartControlAutomationPeerHelpText" xml:space="preserve">
+    <value>Kontrola za crtež</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesReordering" xml:space="preserve">
+    <value>Kada se preuređuju nizovi podataka u okviru kolekcije, automatski kreirani nizovi ne mogu zamijeniti ručno kreirane, i obrnuto.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPointsCreation" xml:space="preserve">
+    <value>Niz podataka za crtež se treba popuniti ili iz nekog izvora podataka ili ručno, ali ne na oba načina u isto vrijeme.</value>
+  </data>
+  <data name="ChartStringId.ChartControlLocalizedControlType" xml:space="preserve">
+    <value>crtež</value>
+  </data>
+  <data name="ChartStringId.DefaultConstantLineTitleText" xml:space="preserve">
+    <value>Linija za konstante</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidLogarithmicBase" xml:space="preserve">
+    <value>Logaritamska osnova treba biti veća od 1.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesReplacement" xml:space="preserve">
+    <value>Automatski kreirani nizovi podataka se ne mogu dodijeliti.</value>
+  </data>
+  <data name="ChartStringId.MsgDiagramToPointIncorrectValue" xml:space="preserve">
+    <value>Navedeni tip parametra {0} ne odgovara tipu razmjere {1} za ovu osu.</value>
+  </data>
+  <data name="ChartStringId.EmptyLegendText" xml:space="preserve">
+    <value>Navedite naziv za prikaz</value>
+  </data>
+</root>

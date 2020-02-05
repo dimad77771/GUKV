@@ -1,0 +1,677 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="StringId.CaptionError" xml:space="preserve">
+    <value>Feil</value>
+  </data>
+  <data name="StringId.InvalidValueText" xml:space="preserve">
+    <value>Ugyldig verdi</value>
+  </data>
+  <data name="StringId.CheckChecked" xml:space="preserve">
+    <value>Valgt</value>
+  </data>
+  <data name="StringId.CheckUnchecked" xml:space="preserve">
+    <value>Ikke valgt</value>
+  </data>
+  <data name="StringId.CheckIndeterminate" xml:space="preserve">
+    <value>Ubestemt</value>
+  </data>
+  <data name="StringId.DateEditToday" xml:space="preserve">
+    <value>I dag</value>
+  </data>
+  <data name="StringId.DateEditClear" xml:space="preserve">
+    <value>Slett</value>
+  </data>
+  <data name="StringId.OK" xml:space="preserve">
+    <value>&amp;OK</value>
+  </data>
+  <data name="StringId.Cancel" xml:space="preserve">
+    <value>&amp;Avbryt</value>
+  </data>
+  <data name="StringId.NavigatorFirstButtonHint" xml:space="preserve">
+    <value>Første</value>
+  </data>
+  <data name="StringId.NavigatorPreviousButtonHint" xml:space="preserve">
+    <value>Forrige</value>
+  </data>
+  <data name="StringId.NavigatorPreviousPageButtonHint" xml:space="preserve">
+    <value>Forrige side</value>
+  </data>
+  <data name="StringId.NavigatorNextButtonHint" xml:space="preserve">
+    <value>Neste</value>
+  </data>
+  <data name="StringId.NavigatorNextPageButtonHint" xml:space="preserve">
+    <value>Neste side</value>
+  </data>
+  <data name="StringId.NavigatorLastButtonHint" xml:space="preserve">
+    <value>Siste</value>
+  </data>
+  <data name="StringId.NavigatorAppendButtonHint" xml:space="preserve">
+    <value>Tilføy</value>
+  </data>
+  <data name="StringId.NavigatorRemoveButtonHint" xml:space="preserve">
+    <value>Slett</value>
+  </data>
+  <data name="StringId.NavigatorEditButtonHint" xml:space="preserve">
+    <value>Rediger</value>
+  </data>
+  <data name="StringId.NavigatorEndEditButtonHint" xml:space="preserve">
+    <value>Avslutt redigering</value>
+  </data>
+  <data name="StringId.NavigatorCancelEditButtonHint" xml:space="preserve">
+    <value>Avbryte endring</value>
+  </data>
+  <data name="StringId.NavigatorTextStringFormat" xml:space="preserve">
+    <value>Linje {0} av {1}</value>
+  </data>
+  <data name="StringId.PictureEditMenuCut" xml:space="preserve">
+    <value>Klipp</value>
+  </data>
+  <data name="StringId.PictureEditMenuCopy" xml:space="preserve">
+    <value>Kopier</value>
+  </data>
+  <data name="StringId.PictureEditMenuPaste" xml:space="preserve">
+    <value>Lim inn</value>
+  </data>
+  <data name="StringId.PictureEditMenuDelete" xml:space="preserve">
+    <value>Slett</value>
+  </data>
+  <data name="StringId.PictureEditMenuLoad" xml:space="preserve">
+    <value>Hent</value>
+  </data>
+  <data name="StringId.PictureEditMenuSave" xml:space="preserve">
+    <value>Lagre</value>
+  </data>
+  <data name="StringId.PictureEditOpenFileTitle" xml:space="preserve">
+    <value>Åpne</value>
+  </data>
+  <data name="StringId.PictureEditSaveFileTitle" xml:space="preserve">
+    <value>Lagre som</value>
+  </data>
+  <data name="StringId.PictureEditOpenFileError" xml:space="preserve">
+    <value>Feil bildeformat</value>
+  </data>
+  <data name="StringId.PictureEditOpenFileErrorCaption" xml:space="preserve">
+    <value>Feil ved åpning</value>
+  </data>
+  <data name="StringId.PictureEditCopyImageError" xml:space="preserve">
+    <value>Kan ikke kopiere bildet</value>
+  </data>
+  <data name="StringId.LookUpEditValueIsNull" xml:space="preserve">
+    <value>[Verdien av redigeringen er null]</value>
+  </data>
+  <data name="StringId.LookUpInvalidEditValueType" xml:space="preserve">
+    <value>Ugyldig verdi for LookUpEdit.</value>
+  </data>
+  <data name="StringId.LookUpColumnDefaultName" xml:space="preserve">
+    <value>Navn</value>
+  </data>
+  <data name="StringId.PictureEditOpenFileFilter" xml:space="preserve">
+    <value>Bitmapfiler (*.bmp)|*.bmp|Graphics Interchange Format (*.gif)|*.gif|JPEG File Interchange Format (*.jpg;*.jpeg)|*.jpg;*.jpeg|Icon Files (*.ico)|*.ico|Alle grafikkfiler |*.bmp;*.gif;*.jpg;*.jpeg;*.ico;*.png;*.tif|Alle filer |*.*</value>
+  </data>
+  <data name="StringId.PictureEditSaveFileFilter" xml:space="preserve">
+    <value>Bitmapfiler (*.bmp)|*.bmp|Graphics Interchange Format (*.gif)|*.gif|JPEG File Interchange Format (*.jpg)|*.jpg</value>
+  </data>
+  <data name="StringId.MaskBoxValidateError" xml:space="preserve">
+    <value>Verdien er ikke ferdigredigert. Fortsett redigering? 
+	
+	Ja - returner til editoren og korriger verdien.
+	Nei - la verdien være som den er.
+	Avbryt - gå tilbake til forrige verdi.
+	</value>
+  </data>
+  <data name="StringId.UnknownPictureFormat" xml:space="preserve">
+    <value>Ukjent grafikkformat</value>
+  </data>
+  <data name="StringId.DataEmpty" xml:space="preserve">
+    <value>Filen er tom</value>
+  </data>
+  <data name="StringId.FilterCriteriaInvalidExpression" xml:space="preserve">
+    <value>Det angitte uttrykket inneholder ugyldige symboler (linje {0}, tegnet {1}).</value>
+  </data>
+  <data name="StringId.FilterCriteriaInvalidExpressionEx" xml:space="preserve">
+    <value>Det angitte uttrykket er ugyldig.</value>
+  </data>
+  <data name="StringId.NotValidArrayLength" xml:space="preserve">
+    <value>Ikke gyldig matriselengde.</value>
+  </data>
+  <data name="StringId.ImagePopupEmpty" xml:space="preserve">
+    <value>(Tom)</value>
+  </data>
+  <data name="StringId.ImagePopupPicture" xml:space="preserve">
+    <value>(Bilde)</value>
+  </data>
+  <data name="StringId.ColorTabCustom" xml:space="preserve">
+    <value>Valg</value>
+  </data>
+  <data name="StringId.ColorTabWeb" xml:space="preserve">
+    <value>Web</value>
+  </data>
+  <data name="StringId.ColorTabSystem" xml:space="preserve">
+    <value>Systemet</value>
+  </data>
+  <data name="StringId.CalcButtonMC" xml:space="preserve">
+    <value>MC</value>
+  </data>
+  <data name="StringId.CalcButtonMR" xml:space="preserve">
+    <value>MR</value>
+  </data>
+  <data name="StringId.CalcButtonMS" xml:space="preserve">
+    <value>MS</value>
+  </data>
+  <data name="StringId.CalcButtonMx" xml:space="preserve">
+    <value>M+</value>
+  </data>
+  <data name="StringId.CalcButtonSqrt" xml:space="preserve">
+    <value>Kvadratroten</value>
+  </data>
+  <data name="StringId.CalcButtonBack" xml:space="preserve">
+    <value>Tilbake</value>
+  </data>
+  <data name="StringId.CalcButtonCE" xml:space="preserve">
+    <value>CE</value>
+  </data>
+  <data name="StringId.CalcButtonC" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="StringId.CalcError" xml:space="preserve">
+    <value>Kalkulasjonsfeil</value>
+  </data>
+  <data name="StringId.TabHeaderButtonPrev" xml:space="preserve">
+    <value>Forrige</value>
+  </data>
+  <data name="StringId.TabHeaderButtonNext" xml:space="preserve">
+    <value>Neste</value>
+  </data>
+  <data name="StringId.TabHeaderButtonClose" xml:space="preserve">
+    <value>Lukk</value>
+  </data>
+  <data name="StringId.XtraMessageBoxOkButtonText" xml:space="preserve">
+    <value>&amp;Ok</value>
+  </data>
+  <data name="StringId.XtraMessageBoxCancelButtonText" xml:space="preserve">
+    <value>&amp;Avbryt</value>
+  </data>
+  <data name="StringId.XtraMessageBoxYesButtonText" xml:space="preserve">
+    <value>&amp;Ja</value>
+  </data>
+  <data name="StringId.XtraMessageBoxNoButtonText" xml:space="preserve">
+    <value>&amp;Nei</value>
+  </data>
+  <data name="StringId.XtraMessageBoxAbortButtonText" xml:space="preserve">
+    <value>A&amp;nnuler</value>
+  </data>
+  <data name="StringId.XtraMessageBoxRetryButtonText" xml:space="preserve">
+    <value>&amp;Prøv igjen</value>
+  </data>
+  <data name="StringId.XtraMessageBoxIgnoreButtonText" xml:space="preserve">
+    <value>&amp;Ignorer</value>
+  </data>
+  <data name="StringId.TextEditMenuUndo" xml:space="preserve">
+    <value>&amp;Angre</value>
+  </data>
+  <data name="StringId.TextEditMenuCut" xml:space="preserve">
+    <value>Kl&amp;ipp</value>
+  </data>
+  <data name="StringId.TextEditMenuCopy" xml:space="preserve">
+    <value>&amp;Kopier</value>
+  </data>
+  <data name="StringId.TextEditMenuPaste" xml:space="preserve">
+    <value>&amp;Lim inn</value>
+  </data>
+  <data name="StringId.TextEditMenuDelete" xml:space="preserve">
+    <value>&amp;Slett</value>
+  </data>
+  <data name="StringId.TextEditMenuSelectAll" xml:space="preserve">
+    <value>Marker &amp;alt</value>
+  </data>
+  <data name="StringId.FilterShowAll" xml:space="preserve">
+    <value>(Velg alle)</value>
+  </data>
+  <data name="StringId.FilterGroupAnd" xml:space="preserve">
+    <value>Og</value>
+  </data>
+  <data name="StringId.FilterGroupNotAnd" xml:space="preserve">
+    <value>Ikke og</value>
+  </data>
+  <data name="StringId.FilterGroupNotOr" xml:space="preserve">
+    <value>Ikke eller</value>
+  </data>
+  <data name="StringId.FilterGroupOr" xml:space="preserve">
+    <value>Eller</value>
+  </data>
+  <data name="StringId.FilterClauseAnyOf" xml:space="preserve">
+    <value>Er noen av</value>
+  </data>
+  <data name="StringId.FilterClauseBeginsWith" xml:space="preserve">
+    <value>Begynner med</value>
+  </data>
+  <data name="StringId.FilterClauseBetween" xml:space="preserve">
+    <value>Er mellom</value>
+  </data>
+  <data name="StringId.FilterClauseBetweenAnd" xml:space="preserve">
+    <value>og</value>
+  </data>
+  <data name="StringId.FilterClauseContains" xml:space="preserve">
+    <value>Inneholder</value>
+  </data>
+  <data name="StringId.FilterClauseEndsWith" xml:space="preserve">
+    <value>Ender med</value>
+  </data>
+  <data name="StringId.FilterClauseEquals" xml:space="preserve">
+    <value>Er lik</value>
+  </data>
+  <data name="StringId.FilterClauseGreater" xml:space="preserve">
+    <value>Er større enn</value>
+  </data>
+  <data name="StringId.FilterClauseGreaterOrEqual" xml:space="preserve">
+    <value>Er større enn eller lik</value>
+  </data>
+  <data name="StringId.FilterClauseIsNotNull" xml:space="preserve">
+    <value>Ikke er tomt</value>
+  </data>
+  <data name="StringId.FilterClauseIsNull" xml:space="preserve">
+    <value>Er tomt</value>
+  </data>
+  <data name="StringId.FilterClauseLess" xml:space="preserve">
+    <value>Er mindre enn</value>
+  </data>
+  <data name="StringId.FilterClauseLessOrEqual" xml:space="preserve">
+    <value>Er mindre enn eller lik</value>
+  </data>
+  <data name="StringId.FilterClauseLike" xml:space="preserve">
+    <value>Er som</value>
+  </data>
+  <data name="StringId.FilterClauseNoneOf" xml:space="preserve">
+    <value>Ingen av</value>
+  </data>
+  <data name="StringId.FilterClauseNotBetween" xml:space="preserve">
+    <value>Er ikke mellom</value>
+  </data>
+  <data name="StringId.FilterClauseDoesNotContain" xml:space="preserve">
+    <value>Inneholder ikke</value>
+  </data>
+  <data name="StringId.FilterClauseDoesNotEqual" xml:space="preserve">
+    <value>Er ikke lik</value>
+  </data>
+  <data name="StringId.FilterClauseNotLike" xml:space="preserve">
+    <value>Er ikke som</value>
+  </data>
+  <data name="StringId.FilterEmptyEnter" xml:space="preserve">
+    <value>&lt;skriv inn en verdi&gt;</value>
+  </data>
+  <data name="StringId.FilterEmptyValue" xml:space="preserve">
+    <value>&lt;tom&gt;</value>
+  </data>
+  <data name="StringId.FilterMenuConditionAdd" xml:space="preserve">
+    <value>Legg til betingelse</value>
+  </data>
+  <data name="StringId.FilterMenuGroupAdd" xml:space="preserve">
+    <value>Legg til gruppe</value>
+  </data>
+  <data name="StringId.FilterMenuClearAll" xml:space="preserve">
+    <value>Fjern alle</value>
+  </data>
+  <data name="StringId.FilterMenuRowRemove" xml:space="preserve">
+    <value>Fjern gruppe</value>
+  </data>
+  <data name="StringId.FilterToolTipNodeAdd" xml:space="preserve">
+    <value>Legger til en ny betingelse i denne gruppen</value>
+  </data>
+  <data name="StringId.FilterToolTipNodeRemove" xml:space="preserve">
+    <value>Fjerner denne tilstanden</value>
+  </data>
+  <data name="StringId.FilterToolTipNodeAction" xml:space="preserve">
+    <value>Handlinger</value>
+  </data>
+  <data name="StringId.FilterToolTipValueType" xml:space="preserve">
+    <value>Sammenligne med en verdi / et annet feltets verdi</value>
+  </data>
+  <data name="StringId.FilterToolTipElementAdd" xml:space="preserve">
+    <value>Legger til et nytt element i listen</value>
+  </data>
+  <data name="StringId.FilterToolTipKeysAdd" xml:space="preserve">
+    <value>(Bruk boksen Sett inn eller Legg til nøkkel)</value>
+  </data>
+  <data name="StringId.FilterToolTipKeysRemove" xml:space="preserve">
+    <value>(Bruk av Slett eller trekk nøkkel)</value>
+  </data>
+  <data name="StringId.ContainerAccessibleEditName" xml:space="preserve">
+    <value>Redigere kontroll</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringGroupOperatorAnd" xml:space="preserve">
+    <value>Og</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringGroupOperatorOr" xml:space="preserve">
+    <value>Eller</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringUnaryOperatorBitwiseNot" xml:space="preserve">
+    <value>~</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringUnaryOperatorIsNull" xml:space="preserve">
+    <value>Er null</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringUnaryOperatorMinus" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringUnaryOperatorNot" xml:space="preserve">
+    <value>Ikke</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringUnaryOperatorPlus" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorBitwiseAnd" xml:space="preserve">
+    <value>&amp;</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorBitwiseOr" xml:space="preserve">
+    <value>|</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorBitwiseXor" xml:space="preserve">
+    <value>^</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorDivide" xml:space="preserve">
+    <value>/</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorEqual" xml:space="preserve">
+    <value>=</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorGreater" xml:space="preserve">
+    <value>&gt;</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorGreaterOrEqual" xml:space="preserve">
+    <value>&gt;=</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorLess" xml:space="preserve">
+    <value>&lt;</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorLessOrEqual" xml:space="preserve">
+    <value>&lt;=</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorLike" xml:space="preserve">
+    <value>Inneholder</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorMinus" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorModulo" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorMultiply" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorNotEqual" xml:space="preserve">
+    <value>&lt;&gt;</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorPlus" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBetween" xml:space="preserve">
+    <value>Mellom</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringIn" xml:space="preserve">
+    <value>Inneholder</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringIsNotNull" xml:space="preserve">
+    <value>Er ikke null</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringNotLike" xml:space="preserve">
+    <value>Ikke like</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionNone" xml:space="preserve">
+    <value>Ingen</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionCustom" xml:space="preserve">
+    <value>Egendefinert</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIif" xml:space="preserve">
+    <value>IIf</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsNull" xml:space="preserve">
+    <value>ErNull</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionTrim" xml:space="preserve">
+    <value>Trim</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLen" xml:space="preserve">
+    <value>Lengde</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionSubstring" xml:space="preserve">
+    <value>Delstreng</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionUpper" xml:space="preserve">
+    <value>TilStoreBokstaver</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLower" xml:space="preserve">
+    <value>TilSmåBokstaver</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionConcat" xml:space="preserve">
+    <value>Concat</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeThisYear" xml:space="preserve">
+    <value>IÅr</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeThisMonth" xml:space="preserve">
+    <value>DenneMåned</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeLastWeek" xml:space="preserve">
+    <value>SisteUke</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeThisWeek" xml:space="preserve">
+    <value>DenneUken</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeYesterday" xml:space="preserve">
+    <value>IGår</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeToday" xml:space="preserve">
+    <value>IDag</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeNow" xml:space="preserve">
+    <value>Nå</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeTomorrow" xml:space="preserve">
+    <value>IMorgen</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeDayAfterTomorrow" xml:space="preserve">
+    <value>IOvermorgen</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeNextWeek" xml:space="preserve">
+    <value>NesteUke</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeTwoWeeksAway" xml:space="preserve">
+    <value>ToUkerFraNå</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeNextMonth" xml:space="preserve">
+    <value>NesteMåned</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeNextYear" xml:space="preserve">
+    <value>NesteÅr</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalBeyondThisYear" xml:space="preserve">
+    <value>ErEtterIÅr</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalLaterThisYear" xml:space="preserve">
+    <value>ErSenereIÅr</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalLaterThisMonth" xml:space="preserve">
+    <value>ErSenereDenneMåneden</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalNextWeek" xml:space="preserve">
+    <value>ErNesteUke</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalLaterThisWeek" xml:space="preserve">
+    <value>ErSenereDenneUken</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalTomorrow" xml:space="preserve">
+    <value>ErIMorgen</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalToday" xml:space="preserve">
+    <value>ErIDag</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalYesterday" xml:space="preserve">
+    <value>ErIGår</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalEarlierThisWeek" xml:space="preserve">
+    <value>ErTidligereDenneUken</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalLastWeek" xml:space="preserve">
+    <value>ErSisteUke</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalEarlierThisMonth" xml:space="preserve">
+    <value>ErTidligereDenneMåneden</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalEarlierThisYear" xml:space="preserve">
+    <value>ErTidligereIÅr</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalPriorThisYear" xml:space="preserve">
+    <value>ErTidligereIÅr</value>
+  </data>
+  <data name="StringId.Apply" xml:space="preserve">
+    <value>Bruk</value>
+  </data>
+  <data name="StringId.PreviewPanelText" xml:space="preserve">
+    <value>Forhåndsvisning:</value>
+  </data>
+  <data name="StringId.TransparentBackColorNotSupported" xml:space="preserve">
+    <value>Denne kontrollen støtter ikke gjennomsiktige bakgrunnsfarger</value>
+  </data>
+  <data name="StringId.FilterOutlookDateText" xml:space="preserve">
+    <value>Vis alle|Vis tomme|Filtrer på en bestemt dato: |Etter i år|Senere i år|Senere i måneden|Neste uke|Senere i uken|I morgen|I dag|I går|Tidligere i uken|Siste uke|Tidligere i måneden|Tidligere i år|Før i år</value>
+  </data>
+  <data name="StringId.FilterDateTimeConstantMenuCaption" xml:space="preserve">
+    <value>Konstanter for dato/klokkeslett</value>
+  </data>
+  <data name="StringId.FilterDateTimeOperatorMenuCaption" xml:space="preserve">
+    <value>dato/klokkeslett-operatorer</value>
+  </data>
+  <data name="StringId.FilterEmptyParameter" xml:space="preserve">
+    <value>&lt;skriv inn en parameter&gt;</value>
+  </data>
+  <data name="StringId.FilterMenuAddNewParameter" xml:space="preserve">
+    <value>Legg til en ny parameter...</value>
+  </data>
+  <data name="StringId.FilterDateTextAlt" xml:space="preserve">
+    <value>Vis alle|Vis tomme|Filtrer på en bestemt dato: |Senere|||Neste uke|I dag|Denne uken|Denne måneden|Tidligere|{0:yyyy}, {0: MMMM}</value>
+  </data>
+  <data name="StringId.ProgressCancelPending" xml:space="preserve">
+    <value>Avbryt ventende</value>
+  </data>
+  <data name="StringId.ProgressCancel" xml:space="preserve">
+    <value>Avbryt</value>
+  </data>
+</root>

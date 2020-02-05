@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5766B100-7185-4557-8F6C-CF845CC42591}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GUKV.DataMigration</RootNamespace>
+    <AssemblyName>Import1NFReportTool</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FirebirdSql.Data.FirebirdClient">
+      <HintPath>..\FirebirdDataProviderNET40\FirebirdSql.Data.FirebirdClient.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\Log4Net\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\DataMigrationTool\Debugging\CSVLog.cs">
+      <Link>Debugging\CSVLog.cs</Link>
+    </Compile>
+    <Compile Include="..\DataMigrationTool\Migration\Archiver.1NF.cs">
+      <Link>Migration\Archiver.1NF.cs</Link>
+    </Compile>
+    <Compile Include="..\DataMigrationTool\Migration\ObjectFinder.cs">
+      <Link>Migration\ObjectFinder.cs</Link>
+    </Compile>
+    <Compile Include="..\DataMigrationTool\Migration\OrganizationFinder.cs">
+      <Link>Migration\OrganizationFinder.cs</Link>
+    </Compile>
+    <Compile Include="..\DataMigrationTool\Migration\OrganizationInfo.cs">
+      <Link>Migration\OrganizationInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\DataMigrationTool\Properties\OrgTypes.Designer.cs">
+      <Link>Properties\OrgTypes.Designer.cs</Link>
+    </Compile>
+    <Compile Include="..\DataMigrationTool\Properties\Resources.Designer.cs">
+      <Link>Properties\Resources.Designer.cs</Link>
+    </Compile>
+    <Compile Include="..\DataMigrationTool\Properties\Settings.Designer.cs">
+      <Link>Properties\Settings.Designer.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="..\Itg.Utility\DefaultDistance.cs">
+      <Link>Itg.Utility\DefaultDistance.cs</Link>
+    </Compile>
+    <Compile Include="..\Itg.Utility\LevenshteinDistanceReference.cs">
+      <Link>Itg.Utility\LevenshteinDistanceReference.cs</Link>
+    </Compile>
+    <Compile Include="Import\Importer.cs" />
+    <Compile Include="Preferences\Preferences.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\DataMigrationTool\Properties\Settings.settings">
+      <Link>Properties\Settings.settings</Link>
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\DataMigrationTool\Properties\OrgTypes.resx">
+      <Link>Properties\OrgTypes.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\DataMigrationTool\Properties\Resources.resx">
+      <Link>Properties\Resources.resx</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Log4NetConfig.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

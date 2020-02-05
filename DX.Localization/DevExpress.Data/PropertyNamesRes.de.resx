@@ -1,0 +1,1872 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="System.Collections.CollectionBase">
+    <value>(Liste)</value>
+  </data>
+  <data name="System.Drawing.Size.Width">
+    <value>Breite</value>
+  </data>
+  <data name="System.Drawing.Size.Height">
+    <value>Höhe</value>
+  </data>
+  <data name="System.Boolean.True">
+    <value>Ja</value>
+  </data>
+  <data name="System.Boolean.False">
+    <value>Nein</value>
+  </data>
+  <data name="System.Drawing.Font.Name">
+    <value>Name</value>
+  </data>
+  <data name="System.Drawing.Font.Size">
+    <value>Größe</value>
+  </data>
+  <data name="System.Drawing.Font.Unit">
+    <value>Einheit</value>
+  </data>
+  <data name="System.Drawing.Font.Bold">
+    <value>Fett</value>
+  </data>
+  <data name="System.Drawing.Font.GdiCharSet">
+    <value>GDI Zeichensatz</value>
+  </data>
+  <data name="System.Drawing.Font.GdiVerticalFont">
+    <value>GDI vertikaler Zeichensatz</value>
+  </data>
+  <data name="System.Drawing.Font.Italic">
+    <value>Kursiv</value>
+  </data>
+  <data name="System.Drawing.Font.Strikeout">
+    <value>Durchgestrichen</value>
+  </data>
+  <data name="System.Drawing.Font.Underline">
+    <value>Unterstrichen</value>
+  </data>
+  <data name="DevExpress.Utils.DefaultBoolean.True">
+    <value>Wahr</value>
+  </data>
+  <data name="DevExpress.Utils.DefaultBoolean.False">
+    <value>Falsch</value>
+  </data>
+  <data name="DevExpress.Utils.DefaultBoolean.Default">
+    <value>Standard</value>
+  </data>
+  <data name="System.Drawing.StringAlignment.Near">
+    <value>Nah</value>
+  </data>
+  <data name="System.Drawing.StringAlignment.Center">
+    <value>Zentriert</value>
+  </data>
+  <data name="System.Drawing.StringAlignment.Far">
+    <value>Fern</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Min">
+    <value>Minimum</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Horizontal">
+    <value>Horizontal</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Vertical">
+    <value>Vertikal</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.ForwardDiagonal">
+    <value>Vorwärts Diagonal</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.BackwardDiagonal">
+    <value>Rückwärts Diagonal</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Max">
+    <value>Maximum</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Cross">
+    <value>Kreuz</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.LargeGrid">
+    <value>Grosses Raster</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DiagonalCross">
+    <value>Diagonales Kreuz</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent05">
+    <value>Prozent 05</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent10">
+    <value>Prozent 10</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent20">
+    <value>Prozent 20</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent25">
+    <value>Prozent 25</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent30">
+    <value>Prozent 30</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent40">
+    <value>Prozent 40</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent50">
+    <value>Prozent 50</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent60">
+    <value>Prozent 60</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent70">
+    <value>Prozent 70</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent75">
+    <value>Prozent 75</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent80">
+    <value>Prozent 80</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent90">
+    <value>Prozent 90</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.LightDownwardDiagonal">
+    <value>Hell Diagonal Nach Unten</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.LightUpwardDiagonal">
+    <value>Hell Diagonal Nach Oben</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DarkDownwardDiagonal">
+    <value>Dunkel Diagonal Nach Unten</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DarkUpwardDiagonal">
+    <value>Dunkel Diagonal Nach Oben</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.WideDownwardDiagonal">
+    <value>Breit Diagonal Nach Unten</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.WideUpwardDiagonal">
+    <value>Breit Diagonal Nach Oben</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.LightVertical">
+    <value>Hell Vertikal</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.LightHorizontal">
+    <value>Hell Horizontal</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.NarrowVertical">
+    <value>Schmal Vertikal</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.NarrowHorizontal">
+    <value>Schmal Horizontal</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DarkVertical">
+    <value>Dunkel Vertikal</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DarkHorizontal">
+    <value>Dunkel Horizontal</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DashedDownwardDiagonal">
+    <value>Gestrichelt Diagonal Nach Unten</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DashedUpwardDiagonal">
+    <value>Gestrichelt Diagonal Nach Oben</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DashedHorizontal">
+    <value>Gestrichelt Horizontal</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DashedVertical">
+    <value>Gestrichelt Vertikal</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.SmallConfetti">
+    <value>Klein Konfetti</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.LargeConfetti">
+    <value>Gross Konfetti</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.ZigZag">
+    <value>Zickzack</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Wave">
+    <value>Welle</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DiagonalBrick">
+    <value>Ziegel Diagonal</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.HorizontalBrick">
+    <value>Ziegel Horizontal</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Weave">
+    <value>Verwoben</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Plaid">
+    <value>Geflochten</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Divot">
+    <value>Kleines Stück</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DottedGrid">
+    <value>Gepunktetes Raster</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DottedDiamond">
+    <value>Gepunktete Raute</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Shingle">
+    <value>Kies</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Trellis">
+    <value>Spalier</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Sphere">
+    <value>Kugel</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.SmallGrid">
+    <value>Kleines Raster</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.SmallCheckerBoard">
+    <value>Kleines Schachbrett</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.LargeCheckerBoard">
+    <value>Grosses Schachbrett</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.OutlinedDiamond">
+    <value>Umriss Raute</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.SolidDiamond">
+    <value>Solider Diamant</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Custom">
+    <value>Benutzer</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Letter">
+    <value>Letter</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterSmall">
+    <value>Letter Klein</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Tabloid">
+    <value>Boulevardblatt</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Ledger">
+    <value>Hauptbuch</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Legal">
+    <value>Legal</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Statement">
+    <value>Erklärung</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Executive">
+    <value>Exekutive</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A3">
+    <value>A3</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4">
+    <value>A4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4Small">
+    <value>A4 Klein</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A5">
+    <value>A5</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B4">
+    <value>B4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B5">
+    <value>B5</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Folio">
+    <value>Blatt</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Quarto">
+    <value>Quart</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Standard10x14">
+    <value>Standard 10x14</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Standard11x17">
+    <value>Standard 11x17</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Note">
+    <value>Notiz</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Number9Envelope">
+    <value>Umschlag Nummer 9</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Number10Envelope">
+    <value>Umschlag Nummer 10</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Number11Envelope">
+    <value>Umschlag Nummer 11</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Number12Envelope">
+    <value>Umschlag Nummer 12</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Number14Envelope">
+    <value>Umschlag Nummer 14</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.CSheet">
+    <value>C Seite</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.DSheet">
+    <value>D Seite</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.ESheet">
+    <value>E Seite</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.DLEnvelope">
+    <value>DL Umschlag</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.C5Envelope">
+    <value>C5 Umschlag</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.C3Envelope">
+    <value>C3 Umschlag</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.C4Envelope">
+    <value>C4 Umschlag</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.C6Envelope">
+    <value>C6 Umschlag</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.C65Envelope">
+    <value>C65 Umschlag</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B4Envelope">
+    <value>B4 Umschlag</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B5Envelope">
+    <value>B5 Umschlag</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B6Envelope">
+    <value>B6 Umschlag</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.ItalyEnvelope">
+    <value>Italienischer Umschlag</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.MonarchEnvelope">
+    <value>Monarch Umschlag</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PersonalEnvelope">
+    <value>Persönlicher Umschlag (6 3/4)</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.USStandardFanfold">
+    <value>US Endlospapier</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.GermanStandardFanfold">
+    <value>Deutsches Standard-Endlospapier</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.GermanLegalFanfold">
+    <value>Deutsches Endlospapier</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.IsoB4">
+    <value>ISO B4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapanesePostcard">
+    <value>Japanische Postkarte</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Standard9x11">
+    <value>Standard 9x11</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Standard10x11">
+    <value>Standard 10x11</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Standard15x11">
+    <value>Standard 15x11</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.InviteEnvelope">
+    <value>Einladungsumschlag</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterExtra">
+    <value>Letter Extra</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LegalExtra">
+    <value>Legal Extra</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.TabloidExtra">
+    <value>Boulevardblatt Extra</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4Extra">
+    <value>A4 Extra</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterTransverse">
+    <value>Letter Quer</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4Transverse">
+    <value>A4 Quer</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterExtraTransverse">
+    <value>Letter Extra Quer</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.APlus">
+    <value>SuperA/SuperA/A4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.BPlus">
+    <value>SuperB/SuperB/A3</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterPlus">
+    <value>Letter Plus</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4Plus">
+    <value>A4 Plus</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A5Transverse">
+    <value>A5 Quer</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B5Transverse">
+    <value>JIS B5 Quer</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A3Extra">
+    <value>A3 Extra</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A5Extra">
+    <value>A5 Extra</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B5Extra">
+    <value>ISO B5 Extra</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A2">
+    <value>A2</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A3Transverse">
+    <value>A3 Quer</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A3ExtraTransverse">
+    <value>A3 Extra Quer</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseDoublePostcard">
+    <value>Japanische Doppelpostkarte</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A6">
+    <value>A6</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeKakuNumber2">
+    <value>Japanischer Umschlag Kaku 2</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeKakuNumber3">
+    <value>Japanischer Umschlag Kaku 3</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeChouNumber3">
+    <value>Japanischer Umschlag Chou 3</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeChouNumber4">
+    <value>Japanischer Umschlag Chou 4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterRotated">
+    <value>Letter Quer</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A3Rotated">
+    <value>A3 gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4Rotated">
+    <value>A4 gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A5Rotated">
+    <value>A5 gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B4JisRotated">
+    <value>JIS B4 gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B5JisRotated">
+    <value>JIS B5 gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapanesePostcardRotated">
+    <value>Japanische Postkarte gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseDoublePostcardRotated">
+    <value>Japanische Doppelpostkarte gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A6Rotated">
+    <value>A6 gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeKakuNumber2Rotated">
+    <value>Japanischer Umschlag Kaku 2 gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeKakuNumber3Rotated">
+    <value>Japanischer Umschlag Kaku 3 gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeChouNumber3Rotated">
+    <value>Japanischer Umschlag Chou 3 gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeChouNumber4Rotated">
+    <value>Japanischer Umschlag Chou 4 gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B6Jis">
+    <value>JIS B6</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B6JisRotated">
+    <value>JISB6 gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Standard12x11">
+    <value>Standard 12x11</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeYouNumber4">
+    <value>Japanischer Umschlag You 4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeYouNumber4Rotated">
+    <value>Japanischer Umschlag You 4 gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc16K">
+    <value>Prc 16K</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc32K">
+    <value>Prc 32K</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc32KBig">
+    <value>Prc 32K groß</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber1">
+    <value>Prc Umschlag 1</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber2">
+    <value>Prc Umschlag 2</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber3">
+    <value>Prc Umschlag 3</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber4">
+    <value>Prc Umschlag 4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber5">
+    <value>Prc Umschlag 5</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber6">
+    <value>Prc Umschlag 6</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber7">
+    <value>Prc Umschlag 7</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber8">
+    <value>Prc Umschlag 8</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber9">
+    <value>Prc Umschlag 9</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber10">
+    <value>Prc Umschlag 10</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc16KRotated">
+    <value>Prc 16K gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc32KRotated">
+    <value>Prc 32K gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc32KBigRotated">
+    <value>Prc 32K groß gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber1Rotated">
+    <value>Prc Umschlag 1 gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber2Rotated">
+    <value>Prc Umschlag 2 gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber3Rotated">
+    <value>Prc Umschlag 3 gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber4Rotated">
+    <value>Prc Umschlag 4 gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber5Rotated">
+    <value>Prc Umschlag 5 gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber6Rotated">
+    <value>Prc Umschlag 6 gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber7Rotated">
+    <value>Prc Umschlag 7 gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber8Rotated">
+    <value>Prc Umschlag 8 gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber9Rotated">
+    <value>Prc Umschlag 9 gedreht</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber10Rotated">
+    <value>Prc Umschlag 10 gedreht</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.VerticalContentSplitting.Exact">
+    <value>Exakt</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.VerticalContentSplitting.Smart">
+    <value>Schnell</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.VerticalAnchorStyles.None">
+    <value>Keiner</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.VerticalAnchorStyles.Top">
+    <value>Oben</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom">
+    <value>Unten</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.VerticalAnchorStyles.Both">
+    <value>Beide</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PrintOnPages.AllPages">
+    <value>Alle Seiten</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PrintOnPages.NotWithReportHeader">
+    <value>Nicht im Berichtskopf</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PrintOnPages.NotWithReportFooter">
+    <value>Nicht im Berichtsfuß</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PrintOnPages.NotWithReportHeaderAndReportFooter">
+    <value>Nicht im Berichtskopf und Fuß</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ExportOptions">
+    <value>Exportoptionen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EmailOptions">
+    <value>Email-Optionen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions">
+    <value>Vorschauoptionen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrinterSettingsUsing">
+    <value>Druckeinstellungen verwenden</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.DirectionMode.Horizontal">
+    <value>Horizontal</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.DirectionMode.ForwardDiagonal">
+    <value>Vorwärts Diagonal</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.DirectionMode.BackwardDiagonal">
+    <value>Rückwärts Diagonal</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.DirectionMode.Vertical">
+    <value>Vertikal</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.ImageViewMode.Clip">
+    <value>Zuschneiden</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.ImageViewMode.Stretch">
+    <value>Strecken</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.ImageViewMode.Zoom">
+    <value>Zoom</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.ShowBehind">
+    <value>Im Hintergrund</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.Image">
+    <value>Bild</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.ImageAlign">
+    <value>Bildausrichtung</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.ImageViewMode">
+    <value>Anzeigemodus</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.ImageTiling">
+    <value>Bild wiederholen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.TextDirection">
+    <value>Textrichtung</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.Text">
+    <value>Text</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.Font">
+    <value>Schriftart</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.ForeColor">
+    <value>Vordergrundfarbe</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.TextTransparency">
+    <value>Texttransparenz</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.ImageTransparency">
+    <value>Bildtransparenz</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.Watermark.PageRange">
+    <value>Seitenbereich</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrinterSettingsUsing.UseMargins">
+    <value>Ränder nutzen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrinterSettingsUsing.UsePaperKind">
+    <value>Papierart nutzen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrinterSettingsUsing.UseLandscape">
+    <value>Ausrichtung nutzen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EmailOptions.RecipientName">
+    <value>Empfängername</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EmailOptions.RecipientAddress">
+    <value>Empfänger Adresse</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EmailOptions.RecipientAddressPrefix">
+    <value>Empfänger Präfix</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EmailOptions.Subject">
+    <value>Betreff</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EmailOptions.Body">
+    <value>Text</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.ShowOptionsBeforeExport">
+    <value>Vor Export Optionen zeigen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.DefaultFileName">
+    <value>Standarddateiname</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.ActionAfterExport">
+    <value>Aktion nach Export</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.SaveMode">
+    <value>Speichermodus</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.DefaultDirectory">
+    <value>Standardordner</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.BarCodeGeneratorBase.CalcCheckSum">
+    <value>Prüfsumme berechnen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeBase.ShapeName">
+    <value>Name der Figur</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ActionAfterExport.None">
+    <value>Keine</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ActionAfterExport.Open">
+    <value>Öffnen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ActionAfterExport.AskUser">
+    <value>Benutzer fragen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.SaveMode.UsingDefaultPath">
+    <value>Standardordner benutzen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.SaveMode.UsingSaveFileDialog">
+    <value>Dateidialog benutzen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.BarCodeOrientation.Normal">
+    <value>Normal</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.BarCodeOrientation.UpsideDown">
+    <value>Umdrehen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.BarCodeOrientation.RotateLeft">
+    <value>Nach links rotieren</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.BarCodeOrientation.RotateRight">
+    <value>Nach rechts rotieren</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Code128Generator.CharacterSet">
+    <value>Zeichensatz</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.EAN128Generator.FNC1Substitute">
+    <value>FNC1 Zeichen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.EAN128Generator.HumanReadableText">
+    <value>Lesbarer Text</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodeMSIGenerator.MSICheckSum">
+    <value>MSI Prüfsumme</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Industrial2of5Generator.WideNarrowRatio">
+    <value>Breitenanteil</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Interleaved2of5Generator.WideNarrowRatio">
+    <value>Breitenanteil</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Code39Generator.WideNarrowRatio">
+    <value>Breitenanteil</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarGenerator.StartStopPair">
+    <value>Start und Stop Symbole</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarGenerator.WideNarrowRatio">
+    <value>Breitenanteil</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.FilletShapeBase.Fillet">
+    <value>Innen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapePolygon.NumberOfSides">
+    <value>Anzahl Seiten</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeBracket.TipLength">
+    <value>Länge Tip</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeBrace.Fillet">
+    <value>Innen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeBrace.TailLength">
+    <value>Länge des Endes</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeArrow.ArrowWidth">
+    <value>Pfeilbreite</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeArrow.ArrowHeight">
+    <value>Pfeilhöhe</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeCross.VerticalLineWidth">
+    <value>Linienbreite Vertikal</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeCross.HorizontalLineWidth">
+    <value>Linienbreite Horizontal</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeStar.StarPointCount">
+    <value>Anzahl Sternpunkte</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeStar.Concavity">
+    <value>Wölbung</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Code128Charset.CharsetA">
+    <value>Zeichensatz A</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Code128Charset.CharsetB">
+    <value>Zeichensatz B</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Code128Charset.CharsetC">
+    <value>Zeichensatz C</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Code128Charset.CharsetAuto">
+    <value>Auto Zeichensatz</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.MSICheckSum.None">
+    <value>Keine</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.MSICheckSum.Modulo10">
+    <value>Modul 10</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.MSICheckSum.DoubleModulo10">
+    <value>Doppelter Modulo 10</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarStartStopPair.None">
+    <value>Keines</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarStartStopPair.AT">
+    <value>AT</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarStartStopPair.BN">
+    <value>BN</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarStartStopPair.CStar">
+    <value>CStar</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarStartStopPair.DE">
+    <value>DE</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsxExportOptions.PageRange">
+    <value>Seitenbereich</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.PageRange">
+    <value>Seitenbereich</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.PageRange">
+    <value>Seitenbereich</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageByPageExportOptionsBase.PageRange">
+    <value>Seitenbereich</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions.PageRange">
+    <value>Seitenbereich</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.PageRange">
+    <value>Seitenbereich</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportMode.Value">
+    <value>Wert</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PaddingInfo.Top">
+    <value>Oben</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomCenter">
+    <value>Unten Zentriert</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomRight">
+    <value>Unten Rechts</value>
+  </data>
+  <data name="DevExpress.Utils.HorzAlignment.Far">
+    <value>Fern</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopRight">
+    <value>Oben Rechts</value>
+  </data>
+  <data name="System.Drawing.SizeF.Width">
+    <value>Breite</value>
+  </data>
+  <data name="DevExpress.Utils.FormatType.None">
+    <value>Keiner</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.None">
+    <value>Keine</value>
+  </data>
+  <data name="DevExpress.Utils.VertAlignment.Default">
+    <value>Standard</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.None">
+    <value>Keine</value>
+  </data>
+  <data name="DevExpress.Utils.VertAlignment.Top">
+    <value>Oben</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PaddingInfo.Right">
+    <value>Rechts</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopJustify">
+    <value>Oben Blocksatz</value>
+  </data>
+  <data name="DevExpress.Utils.VertAlignment.Center">
+    <value>Zentriert</value>
+  </data>
+  <data name="DevExpress.Utils.VertAlignment.Bottom">
+    <value>Unten</value>
+  </data>
+  <data name="System.Drawing.SizeF.Height">
+    <value>Höhe</value>
+  </data>
+  <data name="DevExpress.Utils.HorzAlignment.Center">
+    <value>Zentriert</value>
+  </data>
+  <data name="DevExpress.Utils.HorzAlignment.Near">
+    <value>Nah</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Bottom">
+    <value>Unten</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.CenterImage">
+    <value>Bild zentrieren</value>
+  </data>
+  <data name="DevExpress.Utils.HorzAlignment.Default">
+    <value>Standard</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.None">
+    <value>Keiner</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopCenter">
+    <value>Oben Zentriert</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopLeft">
+    <value>Oben Links</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomLeft">
+    <value>Unten Links</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Top">
+    <value>Oben</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomJustify">
+    <value>Unten Blocksatz</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PaddingInfo.All">
+    <value>Alle</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Right">
+    <value>Rechts</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.All">
+    <value>Alle</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PaddingInfo.Bottom">
+    <value>Unten</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PaddingInfo.Left">
+    <value>Links</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.ShowPrintDialogOnOpen">
+    <value>Druckdialog beim Öffnen anzeigen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleLeft">
+    <value>Mitte Links</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Left">
+    <value>Links</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleRight">
+    <value>Mitte Rechts</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleCenter">
+    <value>Mitte Zentriert</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleJustify">
+    <value>Mitte Blocksatz</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.ZoomImage">
+    <value>Bild zoomen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.StretchImage">
+    <value>Bild strecken</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.AutoSize">
+    <value>Automatische-Größe</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsDocumentOptions.Description">
+    <value>Beschreibung</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ShowLastPage">
+    <value>Letzte Seite</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendCsv">
+    <value>Sende als CSV</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.PageBorderWidth">
+    <value>Seitenrand Breite</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportCsv">
+    <value>Export als CSV</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsDocumentOptions.Keywords">
+    <value>Schlüsselwörter</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ShowFirstPage">
+    <value>Erste Seite</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportXps">
+    <value>Export als XPS</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.NativeFormatOptions.Compressed">
+    <value>Komprimiert</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsDocumentOptions.Creator">
+    <value>Verfasser</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.Ignore256ColumnsLimit">
+    <value>256 Spaltenlimit ignorieren</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Keywords">
+    <value>Schlüsselwörter</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportXls">
+    <value>Export als XLS</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.MultiplePages">
+    <value>Mehrere Seiten</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions">
+    <value>PDF Export Optionen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptionsBase.Encoding">
+    <value>Codierung</value>
+  </data>
+  <data name="DevExpress.Utils.OptionsColumnLayout.StoreAllOptions">
+    <value>Alle Optionen speichern</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ClosePreview">
+    <value>Vorausschau schließen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptionsBase.TextExportMode">
+    <value>Text Export Modus</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.CharacterSet">
+    <value>Zeichensatz</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417Generator.TruncateSymbol">
+    <value>Symbol kürzen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfPermissionsOptions">
+    <value>Pdf Berechtigungs Optionen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.Suppress65536RowsWarning">
+    <value>Spaltenwarnung bei 65536 Spalten unterdrücken</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.Number">
+    <value>Seitennummer</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.PrintDirect">
+    <value>Sofort drucken</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.ImageQuality">
+    <value>Bildqualität</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Customize">
+    <value>Anwender bezogen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportRtf">
+    <value>Export als RTF</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.ExportMode">
+    <value>Export Modus</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Highest">
+    <value>Höchste</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendTxt">
+    <value>Sende als TXT</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417Generator.ErrorCorrectionLevel">
+    <value>Fehlerkorrektur Level</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.RomHiNumber">
+    <value>Seitennummer (Römisch, groß)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendRtf">
+    <value>Sende als RTF</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsxExportMode.DifferentFiles">
+    <value>Mehrere Dateien</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsExportOptions.Compression">
+    <value>Kompression</value>
+  </data>
+  <data name="DevExpress.Utils.OptionsColumnLayout.RemoveOldColumns">
+    <value>Alte Spalten entfernen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsxExportMode.SingleFile">
+    <value>Eine Datei</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.SheetName">
+    <value>Name des Tabellenblatt</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsxExportOptions">
+    <value>XLSx Export Optionen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.ExportMode">
+    <value>Export Modus</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Magnifier">
+    <value>Lupe</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.NeverEmbeddedFonts">
+    <value>Schriftarten nie einbetten</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Lowest">
+    <value>Niedrigste</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.DocumentOptions">
+    <value>Dokument Optionen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ZoomToTwoPages">
+    <value>Zoom zwei Seiten</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Watermark">
+    <value>Wasserzeichen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Print">
+    <value>Drucken</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.Slant">
+    <value>Schräg</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsDocumentOptions.Title">
+    <value>Titel</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.DefaultResourceFile">
+    <value>Standard-Ressource-Datei</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportHtm">
+    <value>Export als HTML</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417Generator.CompactionMode">
+    <value>Kompaktmodus</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.DocumentMap">
+    <value>Dokument anzeigen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportMode.SingleFile">
+    <value>Einzelne Datei</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfPermissionsOptions.EnableCoping">
+    <value>AktiviereKopieren</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptions">
+    <value>Text Export Optionen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.View">
+    <value>Ansicht</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportMht">
+    <value>Export als MHT</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions">
+    <value>RTF Export Optionen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.PageLayoutFacing">
+    <value>Seiten Layout ändern</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfPasswordSecurityOptions.PermissionsOptions">
+    <value>BerechtigungsOptionen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.UserName">
+    <value>Anwendername</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.PageMargins">
+    <value>Seitenränder</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsDocumentOptions.Category">
+    <value>Kategorie</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfPasswordSecurityOptions.OpenPassword">
+    <value>PasswordÖffnen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.DefaultSendFormat">
+    <value>Standard Sendeformat</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportMode.DifferentFiles">
+    <value>Mehrere Dateien</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportMode.SingleFilePageByPage">
+    <value>Einzelne Datei (Seite für Seite)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendFile">
+    <value>Sende Datei</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptions">
+    <value>HTML Export Optionen</value>
+  </data>
+  <data name="DevExpress.Utils.OptionsColumnLayout.StoreAppearance">
+    <value>Aussehen speichern</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.CsvExportOptions">
+    <value>CSV Export Optionen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Medium">
+    <value>Mittlere</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportMode.SingleFilePageByPage">
+    <value>Einzelne Datei (Seite für Seite)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Parameters">
+    <value>Parameter</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.High">
+    <value>Höhe</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417Generator.Columns">
+    <value>Spalten</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.LinearGradientMode.Vertical">
+    <value>Vertikal</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal">
+    <value>diagonal nach vorne</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.EditPageHF">
+    <value>Seite ändern H F</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Application">
+    <value>Programm</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsDocumentOptions.Subject">
+    <value>Betreff</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ScrollPageDown">
+    <value>Seite nach unten blättern</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.NativeFormatOptions.ShowOptionsBeforeSave">
+    <value>Optionen vor dem Speichern anzeigen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportFile">
+    <value>Export Datei</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.MhtExportOptions">
+    <value>MHT Export Optionen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Background">
+    <value>Hintergrund</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.File">
+    <value>Datei</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ZoomToTextWidth">
+    <value>Zoom Textbreite</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.ShowGridLines">
+    <value>Tabellenlinene anzeigen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsxExportMode.SingleFilePageByPage">
+    <value>Eine Datei (Seite für Seite)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions.ExportWatermarks">
+    <value>Export Wasserzeichen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendMht">
+    <value>Sende als MHT</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ShowPrevPage">
+    <value>Letzte Seite</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.DefaultExportFormat">
+    <value>Standard Exportformat</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsDocumentOptions">
+    <value>XPS Dokument Optionen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.PageLayoutContinuous">
+    <value>Seiten Layout kontinuierlich</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportPdf">
+    <value>Export als PDF</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.PaperSize">
+    <value>Papiergröße</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ScrollPageUp">
+    <value>Seite nachoben blättern</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendGraphic">
+    <value>Sende als Bild</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ShowNextPage">
+    <value>Nächste Seite</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfPermissionsOptions.ChangingPermissions">
+    <value>WechsleBerechtigung</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ZoomToWholePage">
+    <value>Zoom ganze Seite</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.Suppress256ColumnsWarning">
+    <value>Spaltenwarnung bei 256 Spalten unterdrücken</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.PageBorderColor">
+    <value>Seitenrand Farbe</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendXls">
+    <value>Sende als XLS</value>
+  </data>
+  <data name="DevExpress.Utils.OptionsColumnLayout.AddNewColumns">
+    <value>Neue Spalte hinzufügen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.ExportMode">
+    <value>Export Modus</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.PageLayout">
+    <value>Seiten Layout</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportMode.SingleFilePageByPage">
+    <value>Einzelne Datei (Seite für Seite)</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.BackSlant">
+    <value>Schräg zurück</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportMode.SingleFile">
+    <value>EIne Datei</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.HandTool">
+    <value>Hand</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions">
+    <value>XLS Export Optionen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Pointer">
+    <value>Zeiger</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Title">
+    <value>Titel</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.UseNativeFormat">
+    <value>Original Format nutzen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.Ignore65536RowsLimit">
+    <value>65536 Spaltenlimit ignorieren</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal">
+    <value>Diagonal nach hinten</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ZoomTrackBar">
+    <value>Zoom Regler</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.PageBorderWidth">
+    <value>Seitenrand Breite</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Low">
+    <value>Niedrig</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Find">
+    <value>Suchen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportMode.DifferentFiles">
+    <value>Unterschiedliche Dateien</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Scale">
+    <value>Skalierung</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.Resolution">
+    <value>Auflösung</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ZoomIn">
+    <value>Zoom vergrößern</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Open">
+    <value>Öffnen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.Title">
+    <value>Titel</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfPasswordSecurityOptions.PermissionsPassword">
+    <value>BerechtigungPasswort</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportTxt">
+    <value>Export als TXT</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfPermissionsOptions.EnableScreenReaders">
+    <value>AktiviereBidschirmLeser</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.NativeFormatOptions">
+    <value>Allgemeine Format Optionen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.PageBorderColor">
+    <value>Seitenrand Farbe</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.NumberOfTotal">
+    <value>&quot;Aktuelle von Allen&quot; Seitennummerierung</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.PageOrientation">
+    <value>Seteinausrichtung</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Save">
+    <value>Speichern</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Subject">
+    <value>Betreff</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.StopPageBuilding">
+    <value>Stop Seiten erstellen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.PageSetup">
+    <value>Seite einrichten</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfPasswordSecurityOptions">
+    <value>Pdf Passwort  Sicherheitsoptionen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ViewWholePage">
+    <value>Ganze Seite anzeigen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.RomLowNumber">
+    <value>Seitennummer (Römisch, klein)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.RemoveSecondarySymbols">
+    <value>Zweite Zeichen löschen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfPermissionsOptions.PrintingPermissions">
+    <value>DruckBerechtigungen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ZoomOut">
+    <value>Zoom verkleinern</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendXlsx">
+    <value>Sende als XLSX</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptionsBase.TextExportMode">
+    <value>Text Export Modus</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Author">
+    <value>Autor</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions">
+    <value>Bild Export Optionen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportXlsx">
+    <value>Export als XLSX</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.DateTime">
+    <value>Aktuelle Uhrzeit und Datum</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportMode.DifferentFiles">
+    <value>Verschiedene Dateien</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportMode.SingleFile">
+    <value>Einzelne Datei</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417Generator.YToXRatio">
+    <value>Y nach X rotieren</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417CompactionMode.Binary">
+    <value>Binär</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportMode.SingleFile">
+    <value>Einzelne Datei</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ZoomToPageWidth">
+    <value>Zoom Seitenbreite</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsxExportOptions.ExportMode">
+    <value>Export Modus</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptionsBase.QuoteStringsWithSeparators">
+    <value>Separator vor Zeichenausgabe</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.FillBackground">
+    <value>Hintergrund auffüllen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportGraphic">
+    <value>Export als Bild</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions.ExportMode">
+    <value>Exportmodus</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendPdf">
+    <value>Sende als PDF</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendXps">
+    <value>Sende als XPS</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.PasswordSecurityOptions">
+    <value>Sicherheitsoptionen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsExportOptions.DocumentOptions">
+    <value>Dokument Optionen</value>
+  </data>
+  <data name="DevExpress.Utils.OptionsColumnLayout.StoreLayout">
+    <value> Layout speichern</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417Generator.Rows">
+    <value>Zeilen</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.Vertical">
+    <value>Vertikal</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.Compressed">
+    <value>Komprimiert</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfPasswordSecurityOptions.PdfPermissionsOptions">
+    <value>PdfBerechtigungsOptionen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions">
+    <value>PDF Dokument Optionen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderDashStyle.Double">
+    <value>Doppel</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingPermissions.HighResolution">
+    <value>Hohe Auflösung</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.BottomCenter">
+    <value>Unten Zentral</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptions.EmbedImagesInHTML">
+    <value>Bilder in HTML einbinden</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.MiddleRight">
+    <value>Mitte Rechts</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderDashStyle.Solid">
+    <value>Stark</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.BottomRight">
+    <value>Unten Rechts</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.ExportHyperlinks">
+    <value>Exportiere Hyperlinks</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.Squeeze">
+    <value>Pressen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ColumnLayout.DownThenAcross">
+    <value>Zuerst nach unten, dann horizontal</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderDashStyle.DashDot">
+    <value>Strich-Punkt</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ChangingPermissions.None">
+    <value>Keine</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SubmitParameters">
+    <value>Parameter senden</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.MiddleCenter">
+    <value>Mitte Zentral</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.BottomLeft">
+    <value>Unten Links</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderDashStyle.DashDotDot">
+    <value>Strich-Punkt-Punkt</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingPermissions.None">
+    <value>Keine</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptionsBase.Separator">
+    <value>Teiler</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ColumnLayout.AcrossThenDown">
+    <value>Erst horizontal,  dann nach unten</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderDashStyle.Dot">
+    <value>Punkt</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ChangingPermissions.FillingSigning">
+    <value>Füllen Signieren</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.TopCenter">
+    <value>Oben Zentral</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ChangingPermissions.CommentingFillingSigning">
+    <value>Kommentieren Füllen Signieren</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.TopLeft">
+    <value>Oben Links</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ChangingPermissions.InsertingDeletingRotating">
+    <value>Einfügen Löschen Drehen</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.TopRight">
+    <value>Oben Rechts</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.ConvertImagesToJpeg">
+    <value>Umwandeln der Bilder in JPEG</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderDashStyle.Dash">
+    <value>Strich</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ChangingPermissions.AnyExceptExtractingPages">
+    <value>Ausnahme beim Extrahieren von Seiten</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.MiddleLeft">
+    <value>Mitte Links</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingPermissions.LowResolution">
+    <value>Niedrige Auflösung</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix10x10">
+    <value>10 x 10</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix12x12">
+    <value>12 x 12</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix14x14">
+    <value>14 x 14</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix16x16">
+    <value>16 x 16</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix18x18">
+    <value>18 x 18</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix20x20">
+    <value>20 x 20</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix22x22">
+    <value>22 x 22</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix24x24">
+    <value>24 x 24</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix26x26">
+    <value>26 x 26</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix32x32">
+    <value>32 x 32</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix36x36">
+    <value>36 x 36</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix40x40">
+    <value>40 x 40</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix44x44">
+    <value>44 x 44</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix48x48">
+    <value>48 x 48</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix52x52">
+    <value>52 x 52</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix64x64">
+    <value>64 x 64</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix72x72">
+    <value>72 x 72</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix80x80">
+    <value>80 x 80</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix88x88">
+    <value>88 x 88</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix96x96">
+    <value>96 x 96</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix104x104">
+    <value>104 x 104</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix120x120">
+    <value>120 x 120</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix132x132">
+    <value>132 x 132</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix144x144">
+    <value>144 x 144</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix8x18">
+    <value>8 x 18</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix8x32">
+    <value>8 x 32</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix12x26">
+    <value>12 x 26</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix12x36">
+    <value>12 x 36</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix16x36">
+    <value>16 x 36</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix16x48">
+    <value>16 x 48</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixCompactionMode.ASCII">
+    <value>ASCII</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixCompactionMode.C40">
+    <value>C40</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixCompactionMode.X12">
+    <value>X12</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixCompactionMode.Edifact">
+    <value>Edifact</value>
+  </data>
+  <data name="System.Drawing.Image.Size">
+    <value>Grösse</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.Integer">
+    <value>Ganze Zahl</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.Bound">
+    <value>Bound</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixGenerator.MatrixSize">
+    <value>Matrix Grösse</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.DateTime">
+    <value>Datum Zeit</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixCompactionMode.Binary">
+    <value>Binär</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixGenerator.CompactionMode">
+    <value>Kompakt Modus</value>
+  </data>
+  <data name="System.Drawing.Image.HorizontalResolution">
+    <value>Horizontale Auflösung</value>
+  </data>
+  <data name="System.Drawing.Image.RawFormat">
+    <value>Zeilen Format</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.Decimal">
+    <value>Dezimal</value>
+  </data>
+  <data name="DevExpress.Utils.FormatInfo.FormatString">
+    <value>Erzeuge Datensatz</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.String">
+    <value>Datensatz</value>
+  </data>
+  <data name="DevExpress.Utils.FormatType.Numeric">
+    <value>Numerisch</value>
+  </data>
+  <data name="DevExpress.Utils.FormatType.Custom">
+    <value>Benutzerdefiniert</value>
+  </data>
+  <data name="System.Drawing.Image.PhysicalDimension">
+    <value>Physikalische Dimension</value>
+  </data>
+  <data name="DevExpress.Utils.FormatType.DateTime">
+    <value>Datum Zeit</value>
+  </data>
+  <data name="System.Drawing.Image.VerticalResolution">
+    <value>Vertikale Auflösung</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level4">
+    <value>Ebene 4</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level5">
+    <value>Ebene 5</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level6">
+    <value>Ebene 6</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level7">
+    <value>Ebene 7</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level0">
+    <value>Ebene 0</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level1">
+    <value>Ebene 1</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level2">
+    <value>Ebene 2</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level3">
+    <value>Ebene 3</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level8">
+    <value>Ebene 8</value>
+  </data>
+  <data name="DevExpress.Utils.FormatInfo.FormatType">
+    <value>ErzeugeType</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.Object">
+    <value>Objekt</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.Normal">
+    <value>Normal</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.LinearGradientMode.Horizontal">
+    <value>Horizontal</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.Format">
+    <value>Format</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.Horizontal">
+    <value>Horizontal</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportMode.Text">
+    <value>Text</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.MatrixAuto">
+    <value>Automatisch</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixCompactionMode.Auto">
+    <value>Automatisch</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417CompactionMode.Text">
+    <value>Text</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixCompactionMode.Text">
+    <value>Text</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.QRCodeCompactionMode.Numeric">
+    <value>Nummerisch</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.QRCodeGenerator.CompactionMode">
+    <value>Verdichtungsmodus</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.QRCodeGenerator.ErrorCorrectionLevel">
+    <value>Fehlerkorrekturstufe</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FieldType.None" xml:space="preserve">
+    <value>Keiner</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FieldType.Double" xml:space="preserve">
+    <value>Double</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FieldType.Decimal" xml:space="preserve">
+    <value>Dezimalzahl</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FieldType.Int32" xml:space="preserve">
+    <value>Integer</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FieldType.String" xml:space="preserve">
+    <value>Zeichenkette</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FieldType.DateTime" xml:space="preserve">
+    <value>Datum/Zeit</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FieldType.Float" xml:space="preserve">
+    <value>Float</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FieldType.Boolean" xml:space="preserve">
+    <value>Boolean</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FieldType.TimeSpan" xml:space="preserve">
+    <value>ZeitSpan</value>
+  </data>
+</root>

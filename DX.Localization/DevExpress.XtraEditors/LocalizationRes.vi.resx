@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1">
+                </xsd:element>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2">
+                </xsd:element>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1">
+              </xsd:attribute>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3">
+              </xsd:attribute>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4">
+              </xsd:attribute>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1">
+                </xsd:element>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required">
+              </xsd:attribute>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="StringId.CaptionError">
+    <value>Lỗi</value>
+  </data>
+  <data name="StringId.InvalidValueText">
+    <value>Giá trị không hợp lệ</value>
+  </data>
+  <data name="StringId.CheckChecked">
+    <value>Chọn</value>
+  </data>
+  <data name="StringId.CheckUnchecked">
+    <value>Không chọn</value>
+  </data>
+  <data name="StringId.CheckIndeterminate">
+    <value>Không xác định</value>
+  </data>
+  <data name="StringId.DateEditToday">
+    <value>Hôm nay</value>
+  </data>
+  <data name="StringId.DateEditClear">
+    <value>Xóa</value>
+  </data>
+  <data name="StringId.OK">
+    <value>&amp;Chấp thuận</value>
+  </data>
+  <data name="StringId.Cancel">
+    <value>&amp;Hủy bỏ</value>
+  </data>
+  <data name="StringId.NavigatorFirstButtonHint">
+    <value>Đầu</value>
+  </data>
+  <data name="StringId.NavigatorPreviousButtonHint">
+    <value>Trước</value>
+  </data>
+  <data name="StringId.NavigatorPreviousPageButtonHint">
+    <value>Trang trước</value>
+  </data>
+  <data name="StringId.NavigatorNextButtonHint">
+    <value>Tiếp</value>
+  </data>
+  <data name="StringId.NavigatorNextPageButtonHint">
+    <value>Trang tiếp</value>
+  </data>
+  <data name="StringId.NavigatorLastButtonHint">
+    <value>Cuối</value>
+  </data>
+  <data name="StringId.NavigatorAppendButtonHint">
+    <value>Thêm</value>
+  </data>
+  <data name="StringId.NavigatorRemoveButtonHint">
+    <value>Xóa</value>
+  </data>
+  <data name="StringId.NavigatorEditButtonHint">
+    <value>Sửa</value>
+  </data>
+  <data name="StringId.NavigatorEndEditButtonHint">
+    <value>Kết thúc sửa</value>
+  </data>
+  <data name="StringId.NavigatorCancelEditButtonHint">
+    <value>Hủy bỏ sửa</value>
+  </data>
+  <data name="StringId.NavigatorTextStringFormat">
+    <value>Bản ghi {0} trong {1}</value>
+  </data>
+  <data name="StringId.PictureEditMenuCut">
+    <value>Cắt</value>
+  </data>
+  <data name="StringId.PictureEditMenuCopy">
+    <value>Sao</value>
+  </data>
+  <data name="StringId.PictureEditMenuPaste">
+    <value>Dán</value>
+  </data>
+  <data name="StringId.PictureEditMenuDelete">
+    <value>Xóa</value>
+  </data>
+  <data name="StringId.PictureEditMenuLoad">
+    <value>Nạp</value>
+  </data>
+  <data name="StringId.PictureEditMenuSave">
+    <value>Lưu</value>
+  </data>
+  <data name="StringId.PictureEditOpenFileTitle">
+    <value>Mở</value>
+  </data>
+  <data name="StringId.PictureEditSaveFileTitle">
+    <value>Lưu như</value>
+  </data>
+  <data name="StringId.PictureEditOpenFileError">
+    <value>Sai định dạng ảnh</value>
+  </data>
+  <data name="StringId.PictureEditOpenFileErrorCaption">
+    <value>Lỗi mở</value>
+  </data>
+  <data name="StringId.LookUpEditValueIsNull">
+    <value>[Rỗng]</value>
+  </data>
+  <data name="StringId.LookUpInvalidEditValueType">
+    <value>Kiểu giá trị không hợp lệ</value>
+  </data>
+  <data name="StringId.PictureEditOpenFileFilter">
+    <value>Bitmap Files (*.bmp)|*.bmp|Graphics Interchange Format (*.gif)|*.gif|JPEG File Interchange Format (*.jpg;*.jpeg)|*.jpg;*.jpeg|Icon Files (*.ico)|*.ico|All Picture Files |*.bmp;*.gif;*.jpg;*.jpeg;*.ico;*.png;*.tif|All Files |*.*</value>
+  </data>
+  <data name="StringId.PictureEditSaveFileFilter">
+    <value>Bitmap Files (*.bmp)|*.bmp|Graphics Interchange Format (*.gif)|*.gif|JPEG File Interchange Format (*.jpg)|*.jpg</value>
+  </data>
+  <data name="StringId.MaskBoxValidateError">
+    <value>Giá trị đưa vào chưa hoàn chỉnh. Bạn có muốn hoàn chỉnh nó không?
+	
+	
+	Yes - return to the editor and correct the value.
+	No - leave the value as is.
+	Cancel - reset to the previous value.
+	</value>
+  </data>
+  <data name="StringId.UnknownPictureFormat">
+    <value>Không rõ định dạng ảnh</value>
+  </data>
+  <data name="StringId.DataEmpty">
+    <value>Dữ liệu rỗng</value>
+  </data>
+  <data name="StringId.NotValidArrayLength">
+    <value>Not valid array length.</value>
+  </data>
+  <data name="StringId.ImagePopupEmpty">
+    <value>(Rỗng)</value>
+  </data>
+  <data name="StringId.ImagePopupPicture">
+    <value>(Ảnh)</value>
+  </data>
+  <data name="StringId.ColorTabCustom">
+    <value>Tùy chọn</value>
+  </data>
+  <data name="StringId.ColorTabWeb">
+    <value>Web</value>
+  </data>
+  <data name="StringId.ColorTabSystem">
+    <value>System</value>
+  </data>
+  <data name="StringId.CalcButtonMC">
+    <value>MC</value>
+  </data>
+  <data name="StringId.CalcButtonMR">
+    <value>MR</value>
+  </data>
+  <data name="StringId.CalcButtonMS">
+    <value>MS</value>
+  </data>
+  <data name="StringId.CalcButtonMx">
+    <value>M+</value>
+  </data>
+  <data name="StringId.CalcButtonSqrt">
+    <value>sqrt</value>
+  </data>
+  <data name="StringId.CalcButtonBack">
+    <value>Back</value>
+  </data>
+  <data name="StringId.CalcButtonCE">
+    <value>CE</value>
+  </data>
+  <data name="StringId.CalcButtonC">
+    <value>C</value>
+  </data>
+  <data name="StringId.CalcError">
+    <value>Lỗi tính toán</value>
+  </data>
+</root>

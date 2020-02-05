@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxGridViewStringId.CommandUpdate" xml:space="preserve">
+    <value>Atjaunot</value>
+  </data>
+  <data name="ASPxGridViewStringId.PopupEditFormCaption" xml:space="preserve">
+    <value>Labot formu</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_LastWeek" xml:space="preserve">
+    <value>Iepriekšējā nedēļa</value>
+  </data>
+  <data name="ASPxGridViewStringId.EmptyDataRow" xml:space="preserve">
+    <value>Nav datu, ko attēlot</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterLessOrEqual" xml:space="preserve">
+    <value>Ir mazāks kā vai vienāds</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_EarlierThisMonth" xml:space="preserve">
+    <value>Agrāk, šomēnes</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_NextWeek" xml:space="preserve">
+    <value>Nākamnedēļ</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_ThreeWeeksAgo" xml:space="preserve">
+    <value>Pirms trīs nedēļām</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterGreaterOrEqual" xml:space="preserve">
+    <value>Lielāks kā vai vienāds</value>
+  </data>
+  <data name="ASPxGridViewStringId.ConfirmDelete" xml:space="preserve">
+    <value>Vai dzēst?</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterContains" xml:space="preserve">
+    <value>Satur</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandEdit" xml:space="preserve">
+    <value>Labot</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterGreater" xml:space="preserve">
+    <value>Lielāks kā</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandClearFilter" xml:space="preserve">
+    <value>Notīrīt</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_Today" xml:space="preserve">
+    <value>Šodien</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterNotEqual" xml:space="preserve">
+    <value>Nav vienāds</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandNew" xml:space="preserve">
+    <value>Jauns</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_TwoWeeksAgo" xml:space="preserve">
+    <value>Pirms divām nedēļām</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandSelect" xml:space="preserve">
+    <value>Izvēlēties</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandCancel" xml:space="preserve">
+    <value>Atcelt</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterBeginsWith" xml:space="preserve">
+    <value>Sākās ar</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_Tomorrow" xml:space="preserve">
+    <value>Rīt</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandDelete" xml:space="preserve">
+    <value>Dzēst</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterEndsWith" xml:space="preserve">
+    <value>Beidzas ar</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterDoesNotContain" xml:space="preserve">
+    <value>Nesatur</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_NextMonth" xml:space="preserve">
+    <value>Nākammēnes</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterLess" xml:space="preserve">
+    <value>Ir mazāks kā</value>
+  </data>
+  <data name="ASPxGridViewStringId.CustomizationWindowCaption" xml:space="preserve">
+    <value>Lauka izvēle</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_Older" xml:space="preserve">
+    <value>Senāki</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_TwoWeeksAway" xml:space="preserve">
+    <value>Pēc divām nedēļām</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_Yesterday" xml:space="preserve">
+    <value>Vakar</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_LastMonth" xml:space="preserve">
+    <value>Iepriekšējais mēnesis</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_BeyondNextMonth" xml:space="preserve">
+    <value>Aiznākammēnes</value>
+  </data>
+  <data name="ASPxGridViewStringId.GroupPanel" xml:space="preserve">
+    <value>Ievelciet kolonnu galvenē, lai grupētu pēc tās</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_DragAndDropHideColumnIcon" xml:space="preserve">
+    <value>Paslēpt</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterEquals" xml:space="preserve">
+    <value>Vienāds</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_ThreeWeeksAway" xml:space="preserve">
+    <value>Pēc trīs nedēļām</value>
+  </data>
+  <data name="ASPxGridViewStringId.EmptyHeaders" xml:space="preserve">
+    <value>Ievelciet kolonnu šie</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_LaterThisMonth" xml:space="preserve">
+    <value>Vēlāk, šomēnes</value>
+  </data>
+</root>

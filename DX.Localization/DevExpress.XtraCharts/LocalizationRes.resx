@@ -1,0 +1,3018 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 1.3
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">1.3</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1">this is my long string</data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        [base64 mime encoded serialized .NET Framework object]
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        [base64 mime encoded string representing a byte array form of the .NET Framework object]
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used forserialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ChartStringId.SeriesPrefix">
+    <value>Series </value>
+  </data>
+  <data name="ChartStringId.PalettePrefix">
+    <value>Palette </value>
+  </data>
+  <data name="ChartStringId.XYDiagramPanePrefix">
+    <value>Pane </value>
+  </data>
+  <data name="ChartStringId.SecondaryAxisXPrefix">
+    <value>Secondary AxisX </value>
+  </data>
+  <data name="ChartStringId.SecondaryAxisYPrefix">
+    <value>Secondary AxisY </value>
+  </data>
+  <data name="ChartStringId.ConstantLinePrefix">
+    <value>Constant Line </value>
+  </data>
+  <data name="ChartStringId.CustomAxisLabelPrefix">
+    <value>Label </value>
+  </data>
+  <data name="ChartStringId.ScaleBreakPrefix">
+    <value>Scale Break </value>
+  </data>
+  <data name="ChartStringId.AnnotationPrefix">
+    <value>Annotation </value>
+  </data>
+  <data name="ChartStringId.ImageAnnotationPrefix">
+    <value>Image Annotation </value>
+  </data>
+  <data name="ChartStringId.TextAnnotationPrefix">
+    <value>Text Annotation </value>
+  </data>
+  <data name="ChartStringId.StripPrefix">
+    <value>Strip </value>
+  </data>
+  <data name="ChartStringId.StackedGroupPrefix">
+    <value>Group</value>
+  </data>
+  <data name="ChartStringId.ArgumentMember">
+    <value>Argument</value>
+  </data>
+  <data name="ChartStringId.ValueMember">
+    <value>Value</value>
+  </data>
+  <data name="ChartStringId.WeightMember">
+    <value>Weight</value>
+  </data>
+  <data name="ChartStringId.LowValueMember">
+    <value>Low</value>
+  </data>
+  <data name="ChartStringId.HighValueMember">
+    <value>High</value>
+  </data>
+  <data name="ChartStringId.OpenValueMember">
+    <value>Open</value>
+  </data>
+  <data name="ChartStringId.CloseValueMember">
+    <value>Close</value>
+  </data>
+  <data name="ChartStringId.AutocreatedSeriesName">
+    <value>Auto-created Series</value>
+  </data>
+  <data name="ChartStringId.DefaultDataFilterName">
+    <value>DataFilter</value>
+  </data>
+  <data name="ChartStringId.DefaultChartTitle">
+    <value>Chart Title</value>
+  </data>
+  <data name="ChartStringId.DefaultAnnotation">
+    <value>Annotation</value>
+  </data>
+  <data name="ChartStringId.DefaultSeriesPointFilterName">
+    <value>SeriesPointFilter</value>
+  </data>
+  <data name="ChartStringId.MsgEquallySpacedItemsNotUsable">
+    <value>This property can't be used if the Direction property is set to {0}.</value>
+  </data>
+  <data name="ChartStringId.MsgSeriesViewDoesNotExist">
+    <value>The {0} SeriesView doesn't exist.</value>
+  </data>
+  <data name="ChartStringId.MsgEmptyArrayOfValues">
+    <value>The array of values is empty.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectArrayOfValues">
+    <value>The array of values must contain either numerical or date-time values.</value>
+  </data>
+  <data name="ChartStringId.MsgItemNotInCollection">
+    <value>The collection doesn't contain the specified item.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectIndentFromMarker">
+    <value>The indent value should be greater than or equal to 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectValue">
+    <value>Incorrect value "{0}" for the argument "{1}".</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatiblePointType">
+    <value>The type of the "{0}" point isn't compatible with the {1} scale.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleArgumentDataMember">
+    <value>The type of the "{0}" argument data member isn't compatible with the {1} scale.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleValueDataMember">
+    <value>The type of the "{0}" value data member isn't compatible with the {1} scale.</value>
+  </data>
+  <data name="ChartStringId.MsgDesignTimeOnlySetting">
+    <value>This property can't be customized at runtime.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidDataSource">
+    <value>Invalid datasource type (no supported interfaces are implemented).</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectDataMember">
+    <value>The datasource doesn't contain a datamember with the "{0}" name.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidSortingKey">
+    <value>It's impossible to set the sorting key's value to {0}.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidFilterCondition">
+    <value>The {0} condition can't be applied to the "{1}" data.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectDataAdapter">
+    <value>The {0} object isn't a data adapter.</value>
+  </data>
+  <data name="ChartStringId.MsgDataSnapshot">
+    <value>The data snapshot operation is complete. All series data now statically persist in the chart.
+This also means that now the chart is in unbound mode.
+
+NOTE: You can undo this operation by pressing Ctrl+Z in the Visual Studio designer.</value>
+  </data>
+  <data name="ChartStringId.MsgModifyDefaultPaletteError">
+    <value>The palette is default and then can't be modified.</value>
+  </data>
+  <data name="ChartStringId.MsgAddExistingPaletteError">
+    <value>The palette with the {0} name already exists in the repository.</value>
+  </data>
+  <data name="ChartStringId.MsgInternalPropertyChangeError">
+    <value>This property is intended for internal use only. You're not allowed to change its value.</value>
+  </data>
+  <data name="ChartStringId.MsgPaletteNotFound">
+    <value>The chart doesn't contain a palette with the {0} name.</value>
+  </data>
+  <data name="ChartStringId.MsgLabelSettingRuntimeError">
+    <value>The "Label" property can't be set at runtime.</value>
+  </data>
+  <data name="ChartStringId.MsgPointOptionsSettingRuntimeError">
+    <value>The "PointOptions" property can't be set at runtime.</value>
+  </data>
+  <data name="ChartStringId.MsgLegendPointOptionsSettingRuntimeError">
+    <value>The "LegendPointOptions" property can't be set at runtime.</value>
+  </data>
+  <data name="ChartStringId.MsgSynchronizePointOptionsSettingRuntimeError">
+    <value>The "SynchronizePointOptions" property can't be set at runtime.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectNumericPrecision">
+    <value>The precision should be greater than or equal to 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisThickness">
+    <value>The axis thickness should be greater than 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBarWidth">
+    <value>The bar width should be greater than 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBarDepth">
+    <value>The bar depth should be greater than 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLineWidth">
+    <value>The line width should be greater than 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAreaWidth">
+    <value>The area width should be greater than 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBorderThickness">
+    <value>The border width should be greater than 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectChartTitleIndent">
+    <value>The title indent should be greater than or equal to 0 and less than 1000.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectMaxLineCount">
+    <value>The maximum line count should be greater than or equal to 0 and less than or equal to 20.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLegendMarkerSize">
+    <value>The legend marker size should be greater than 0 and less than 1000.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLegendHorizontalIndent">
+    <value>The legend horizontal indent should be greater than or equal to 0 and less than 1000.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLegendVerticalIndent">
+    <value>The legend vertical indent should be greater than or equal to 0 and less than 1000.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLegendTextOffset">
+    <value>The legend text offset should be greater than or equal to 0 and less than 1000.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectMarkerSize">
+    <value>The marker size should be greater than 1.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectMarkerStarPointCount">
+    <value>The number of star points should be greater than 3 and less than 101.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPieSeriesLabelColumnIndent">
+    <value>The column indent should be greater than or equal to 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectRangeBarSeriesLabelIndent">
+    <value>The indent should be greater than or equal to 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPercentPrecision">
+    <value>The precision of the percent value should be greater than 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPercentageAccuracy">
+    <value>The percentage accuracy should be greater than 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesLabelLineLength">
+    <value>The line length should be greater than or equal to 0 and less than 1000.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStripConstructorParameters">
+    <value>	The minimum and maximum limits of the Strip can not be the same.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStripLimitAxisValue">
+    <value>The AxisValue property cannot be set to null for the StripLimit object.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStripMinLimit">
+    <value>The min limit of the strip should be less than the max limit.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStripMaxLimit">
+    <value>The max limit of the strip should be greater than the min limit.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLineThickness">
+    <value>The line thickness should be greater than 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectShadowSize">
+    <value>The shadow size should be greater than 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTickmarkThickness">
+    <value>The tickmark thickness should be greater than 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTickmarkLength">
+    <value>The tickmark length should be greater than 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTickmarkMinorThickness">
+    <value>The thickness of the minor tickmark should be greater than 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTickmarkMinorLength">
+    <value>The length of the minor tickmark should be greater than 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectMinorCount">
+    <value>The number of minor count should be greater than 0 and less than 100.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPercentValue">
+    <value>The percent value should be greater than or equal to 0 and less than or equal to 100.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectHeightToWidthRatioValue">
+    <value>Incorrect value for the HeightToWidthRatio property. It should be within the range 0,1;10.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPointDistance">
+    <value>The point distance value should be greater than 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSimpleDiagramDimension">
+    <value>The dimension of the simple diagram should be greater than 0 and less than 100.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStockLevelLineLengthValue">
+    <value>The stock level line length value should be greater than or equal to 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectReductionColorValue">
+    <value>The reduction color value can't be empty.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLabelAngle">
+    <value>The angle of the label should be greater than or equal to -360 and less than or equal to 360.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectImageBounds">
+    <value>Can't create an image for the specified size.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectUseImageUrlProperty">
+    <value>ImageUrl property can be used for the WebChartControl only. Please, use the Image property instead.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesDistance">
+    <value>The series distance should be greater than or equal to 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesDistanceFixed">
+    <value>The fixed series distance should be greater than or equal to 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesIndentFixed">
+    <value>The fixed series indent should be greater than or equal to 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPlaneDepthFixed">
+    <value>The fixed plane depth should be greater than or equal to 1.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectShapeFillet">
+    <value>The shape fillet should be greater than or equal to 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAnnotationHeight">
+    <value>The annotation height should be greater than 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAnnotationWidth">
+    <value>The annotation Width should be greater than 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTextAnnotationAngle">
+    <value>The angle of the annotation should be greater than or equal to -360 and less than or equal to 360.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectRelativePositionConnectorLength">
+    <value>The connector length should be greater than or equal to 0 and less than 1000.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectRelativePositionAngle">
+    <value>The angle should be greater than or equal to -360 and less than or equal to 360.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisCoordinateAxisValue">
+    <value>AxisValue can't be set to null for the AxisCoordinate object.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAnnotationZOrder">
+    <value>The ZOrder should be greater than or equal to 0 and less than 100.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLabelMaxWidth">
+    <value>The maximum width of the label should be greater than or equal to 0.</value>
+  </data>
+  <data name="ChartStringId.MsgNullPaneAnchorPointPane">
+    <value>Pane can't be set to null for the PaneAnchorPoint object.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPaneAnchorPointPane">
+    <value>Can't set the PaneAnchorPoint's pane, because the specified pane isn't default and isn't contained in the diagram's collection of panes.</value>
+  </data>
+  <data name="ChartStringId.MsgNullAxisXCoordinateAxis">
+    <value>Axis can't be set to null for the AxisXCoordinate object.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisXCoordinateAxis">
+    <value>Can't set the AxisXCoordinate's axis, because the specified axis isn't primary and isn't contained in the diagram's collection of secondary X-axes.</value>
+  </data>
+  <data name="ChartStringId.MsgNullAxisYCoordinateAxis">
+    <value>Axis can't be set to null for the AxisYCoordinate object.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisYCoordinateAxis">
+    <value>Can't set the AxisYCoordinate's axis, because the specified axis isn't primary and isn't contained in the diagram's collection of secondary Y-axes.</value>
+  </data>
+  <data name="ChartStringId.MsgNullAnchorPointSeriesPoint">
+    <value>"Series point can't be set to null for the SeriesPointAncherPoint object.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAnchorPointSeriesPoint">
+    <value>"Can't set the series point, because it should belong to a series, and the series should be contained in the chart's collection.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectFreePositionDockTarget">
+    <value>An incorrect value is specified. A dock target can only be a pane, or null (meaning the chart control itself).</value>
+  </data>
+  <data name="ChartStringId.MsgEmptyArgument">
+    <value>An argument can't be empty.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectImageFormat">
+    <value>Impossible to export a chart to the specified image format.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectValueDataMemberCount">
+    <value>It's necessary to specify {0} value data members for the current series view.</value>
+  </data>
+  <data name="ChartStringId.MsgPaletteEditingIsntAllowed">
+    <value>Editing isn't allowed!</value>
+  </data>
+  <data name="ChartStringId.MsgPaletteDoubleClickToEdit">
+    <value>Double-click to edit...</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidPaletteName">
+    <value>Can't add a palette which has an empty name (\"\") to the palette repository. Please, specify a name for the palette.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidScaleType">
+    <value>The specified value to convert to the scale's internal representation isn't compatible with the current scale type.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTransformationMatrix">
+    <value>Incorrect transformation matrix.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPerspectiveAngle">
+    <value>The perspective angle should be greater than or equal to 0 and less than 180.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPieDepth">
+    <value>The pie depth should be greater than 0 and less than or equal to 100, since its value is measured in percents.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectGridSpacing">
+    <value>The grid spacing should be greater than 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleArgumentScaleType">
+    <value>The {0} argument scale type is incompatible with the {1} series view.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleValueScaleType">
+    <value>The {0} value scale type is incompatible with the {1} series view.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleSummaryFunction">
+    <value>The '{0}' summary function is incompatible with the {1} scale.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectConstantLineAxisValue">
+    <value>AxisValue can't be set to null for the ConstantLine object.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectCustomAxisLabelAxisValue">
+    <value>AxisValue can't be set to null for the CustomAxisLabel object.</value>
+  </data>
+  <data name="ChartStringId.Msg3DRotationToolTip">
+    <value>Use Ctrl with the left mouse button
+to rotate the chart.</value>
+  </data>
+  <data name="ChartStringId.Msg3DScrollingToolTip">
+    <value>Use Ctrl with the center (wheel) mouse button
+to scroll the chart.</value>
+  </data>
+  <data name="ChartStringId.Msg2DScrollingToolTip">
+    <value>Use Ctrl with the left mouse button
+to scroll the chart.</value>
+  </data>
+  <data name="ChartStringId.Msg2DPieExplodingToolTip">
+    <value>Use Ctrl with the left mouse button
+to explode or collapse slices.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTaskLinkMinIndent">
+    <value>The task link's minimum indent should be greater than or equal to 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectArrowWidth">
+    <value>The arrow width should be always odd and greater than 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectArrowHeight">
+    <value>The arrow height should be greater than 0.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidZeroAxisAlignment">
+    <value>The Alignment can't be set to Alignment.Zero for the secondary axis.</value>
+  </data>
+  <data name="ChartStringId.MsgNullSeriesViewAxisX">
+    <value>The series view's X-axis can't be set to null.</value>
+  </data>
+  <data name="ChartStringId.MsgNullSeriesViewAxisY">
+    <value>The series view's Y-axis can't be set to null.</value>
+  </data>
+  <data name="ChartStringId.MsgNullSeriesViewPane">
+    <value>The series view's pane can't be set to null.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesViewPane">
+    <value>Can't set the series view's pane, because the specified pane isn't default and isn't contained in the diagram's collection of panes.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesViewAxisX">
+    <value>Can't set the series view's X-axis, because the specified axis isn't primary and isn't contained in the diagram's collection of secondary X-axes.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesViewAxisY">
+    <value>Can't set the series view's Y-axis, because the specified axis isn't primary and isn't contained in the diagram's collection of secondary Y-axes.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectParentSeriesPointOwner">
+    <value>Owner of the parent series point can't be null and must be of the Series type.</value>
+  </data>
+  <data name="ChartStringId.MsgSeriesViewNotSupportRelations">
+    <value>This series view doesn't support relations.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectChildSeriesPointOwner">
+    <value>Owner of the child series point can't be null and must be of the Series type.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectChildSeriesPointID">
+    <value>Child series point's ID must be positive or equal to zero.</value>
+  </data>
+	<data name="ChartStringId.MsgIncorrectSeriesOfParentAndChildPoints">
+    <value>Parent and child points must belong to the same series.</value>
+  </data>
+  <data name="ChartStringId.MsgSelfRelatedSeriesPoint">
+    <value>Series point can't have a relation to itself.</value>
+  </data>
+  <data name="ChartStringId.MsgSeriesPointRelationAlreadyExists">
+    <value>The SeriesPointRelations collection already contains this relation.</value>
+  </data>
+  <data name="ChartStringId.MsgChildSeriesPointNotExist">
+    <value>Child series point with ID equal to {0} doesn't exist.</value>
+  </data>
+  <data name="ChartStringId.MsgRelationChildPointIDNotUnique">
+    <value>Relation's ChildPointID must be unique.</value>
+  </data>
+  <data name="ChartStringId.MsgSeriesPointIDNotUnique">
+    <value>Series point's ID must be unique.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectFont">
+    <value>Font can't be null</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectScrollBarThickness">
+    <value>The scroll bar thickness should be greater than or equal to 3 and less than or equal to 25.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectZoomPercent">
+    <value>The zoom percent should be greater than 0 and less than or equal to {0}.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectHorizontalScrollPercent">
+    <value>The horizontal scroll percent should be greater than or equal to -{0} and less than or equal to {0}.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectVerticalScrollPercent">
+    <value>The vertical scroll percent should be greater than or equal to -{0} and less than or equal to {0}.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAnchorPoint">
+    <value>Anchor Point can't be null.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectShapePosition">
+    <value>Shape Position can't be null.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectToolTipPosition">
+    <value>Tool Tip Position can't be null.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectCrosshairPosition">
+    <value>Crosshair Position can't be null.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPath">
+    <value>The specified path cannot be resolved: {0}.</value>
+  </data>
+  <data name="ChartStringId.MsgRegisterPageInUnregisterGroup">
+    <value>The page can't be registered in the unregistered group</value>
+  </data>
+  <data name="ChartStringId.MsgUnregisterPageError">
+    <value>This page was already unregistered.</value>
+  </data>
+  <data name="ChartStringId.MsgUnregisterGroupError">
+    <value>This group was already unregistered.</value>
+  </data>
+  <data name="ChartStringId.MsgWizardAbsractPageType">
+    <value>The {0} is abstract, and so an object of this type can't be instantiated and added as a wizard page.</value>
+  </data>
+  <data name="ChartStringId.MsgWizardIncorrectBasePageType">
+    <value>The {0} must be inherited from the {1} class.</value>
+  </data>
+  <data name="ChartStringId.MsgWizardNonUniquePageType">
+    <value>The page of the {0} type is already registered. You can't add more than one page of a particular type.</value>
+  </data>
+  <data name="ChartStringId.MsgWizardNonUniqueGroupName">
+    <value>The group with the {0} name is already registered.</value>
+  </data>
+  <data name="ChartStringId.MsgOrderArrayLengthMismatch">
+    <value>The length of the order array isn't equal to the total number of registered elements.</value>
+  </data>
+  <data name="ChartStringId.MsgOrderUnregisteredElementFound">
+    <value>The unregistered element is found.</value>
+  </data>
+  <data name="ChartStringId.MsgOrderRepeatedElementFound">
+    <value>The same element is repeated several times in the order array.</value>
+  </data>
+  <data name="ChartStringId.MsgNotChartControl">
+    <value>The specified object isn't a ChartControl.</value>
+  </data>
+  <data name="ChartStringId.MsgNotBelongingChart">
+    <value>This control doesn't contain the specified chart.</value>
+  </data>
+  <data name="ChartStringId.MsgInitializeChartNotFound">
+    <value>The ChartControl isn't found, or there are several charts on this control. To solve the problem, you should handle the WizardPage.InitializePage event and manually specify the chart.</value>
+  </data>
+  <data name="ChartStringId.MsgAddPresentViewType">
+    <value>The specified view type is already present in the collection.</value>
+  </data>
+  <data name="ChartStringId.MsgAddLastViewType">
+    <value>You can't add any view type in this collection, because at least one view type must be available in the Wizard.</value>
+  </data>
+  <data name="ChartStringId.MsgCalcHitInfoNotSupported">
+    <value>Hit testing for 3D Chart Types isn't supported. So, this method is supported for 2D Chart Types only.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAppearanceName">
+    <value>The chart doesn't contain an appearance with the {0} name.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleByViewType">
+    <value>the view type</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleByArgumentScaleType">
+    <value>the argument scale type</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleByValueScaleType">
+    <value>the value scale type</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidExplodedSeriesPoint">
+    <value>The specified series point doesn't belong to the current Pie series views' collection of series points, and so it can't be added to the collection of exploded points.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidExplodedModeAdd">
+    <value>Since the current Pie series view displays the series created using a series template, the specified series point can't be added to the collection of exploded points. You need to use another Explode Mode instead.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidExplodedModeRemove">
+    <value>Since the current Pie series view displays the series created using a series template, the specified series point can't be removed from the collection of exploded points. You need to use another Explode Mode instead.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectExplodedDistancePercentage">
+    <value>The exploded distance percentage value should be greater than 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPaletteBaseColorNumber">
+    <value>The palette base color number should be greater than or equal to 0 and less than or equal to the total number of palette colors.</value>
+  </data>
+  <data name="ChartStringId.MsgDenyChangeSeriesPointCollection">
+    <value>You can't manually change this series point collection, because a chart is bound to data.</value>
+  </data>
+  <data name="ChartStringId.MsgDenyChangeSeriesPointAgument">
+    <value>You can't manually change the series point's argument, because a chart is bound to data.</value>
+  </data>
+  <data name="ChartStringId.MsgDenyChangeSeriesPointValue">
+    <value>You can't manually change the series point's value, because a chart is bound to data.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStartAngle">
+    <value>The start angle value should be greater than or equal to -360 and less than or equal to 360 degrees.</value>
+  </data>
+  <data name="ChartStringId.MsgPolarAxisXRangeChanged">
+    <value>The range of a polar X-axis can't be changed.</value>
+  </data>
+  <data name="ChartStringId.MsgPolarAxisXGridSpacingChanged">
+    <value>The grid spacing of a polar X-axis can't be changed.</value>
+  </data>
+  <data name="ChartStringId.MsgPolarAxisXLogarithmic">
+    <value>The PolarAxisX doesn't support logarithmic mode.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPieArgumentScaleType">
+    <value>{0} argument scale type cannot be specified, because the existing exploded point filters don't correspond to it.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectDoughnutHolePercent">
+    <value>The doughnut hole percentage should be greater than or equal to 0 and less than or equal to 100.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectFunnelHolePercent">
+    <value>The funnel hole percentage should be greater than or equal to 0 and less than or equal to 100.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLineTensionPercent">
+    <value>The line tension percentage should be greater than or equal to 0 and less than or equal to 100.</value>
+  </data>
+  <data name="ChartStringId.MsgEmptyChart">
+    <value>There are no visible series to represent in a chart.
+Try to add new series, or make sure that
+at least one of them is visible.</value>
+  </data>
+  <data name="ChartStringId.MsgNoPanes">
+    <value>There are no visible panes to show in a chart.
+Try to set the chart's Diagram.DefaultPane.Visible property to True,
+or show other panes from the Diagram.Panes collection.</value>
+  </data>
+  <data name="ChartStringId.MsgChartLoadingException">
+    <value>The specified XML file can't be opened,
+because it is either not a supported file type,
+or because the file has been damaged.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPaneWeight">
+    <value>The weight of the pane should be greater than 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPaneDistance">
+    <value>The distance between the panes should be greater than or equal to 0.</value>
+  </data>
+  <data name="ChartStringId.MsgEmptyPaneTextForVerticalLayout">
+    <value>Assign this pane to the Series.View.Pane property,
+to show a series on this pane</value>
+  </data>
+  <data name="ChartStringId.MsgEmptyPaneTextForHorizontalLayout">
+    <value>Assign this pane to the
+Series.View.Pane property,
+to show a series on this pane</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidPaneSizeInPixels">
+    <value>The pane's size in pixels should be greater than or equal to 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTopNCount">
+    <value>The top N values count should be greater than 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTopNThresholdValue">
+    <value>The top N threshold value should be greater than 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTopNThresholdPercent">
+    <value>The top N threshold percent should be greater than 0 and less than or equal to 100.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidPane">
+    <value>The specified pane either doesn't belong to a chart, or doesn't show the current axis whose visibility should be changed.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSummaryFunction">
+    <value>The specified summary function string is in an incorrect format.</value>
+  </data>
+  <data name="ChartStringId.MsgNullFinancialIndicatorArgument">
+    <value>The argument of the financial indicator's point can't be set to null.</value>
+  </data>
+  <data name="ChartStringId.MsgUnsupportedValueLevel">
+    <value>The {0} value level isn't supported by the {1}.</value>
+  </data>
+  <data name="ChartStringId.MsgSummaryFunctionIsNotRegistered">
+    <value>A summary function with the name '{0}' is not registered.</value>
+  </data>
+  <data name="ChartStringId.MsgSummaryFunctionParameterIsNotSpecified">
+    <value>You should specify all of the summary function parameters.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleSummaryFunctionDimension">
+    <value>The dimension of the {0} summary function isn't compatible with the {1} series view ({2} but should be {3}).</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSummaryFunctionParametersCount">
+    <value>The summary function '{0}' accepts {1} parameters instead of {2}.</value>
+  </data>
+  <data name="ChartStringId.MsgWebInvalidWidthUnit">
+    <value>The chart width must be set in pixels.</value>
+  </data>
+  <data name="ChartStringId.MsgWebInvalidHeightUnit">
+    <value>The chart height must be set in pixels.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBubbleMaxSize">
+    <value>The maximum size should be greater than the minimum size.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBubbleMinSize">
+    <value>The minimum size should be greater than or equal to 0, and less than the maximum size.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidLogarithmicBase">
+    <value>The logarithmic base should be greater than 1.</value>
+  </data>
+  <data name="ChartStringId.MsgUnsupportedTopNOptions">
+    <value>TopNOptions can't be enabled for this series, because either its ValueScaleType is not Numerical or its data points have more than 1 value.</value>
+  </data>
+  <data name="ChartStringId.MsgUnsupportedResolveOverlappingMode">
+    <value>The specified overlapping mode isn't supported by the current series view.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectDateTimeMeasureUnitPropertyUsing">
+    <value>The DateTimeMeasureUnit property can't be modified in the automatic date-time scale mode.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectDateTimeGridAlignmentPropertyUsing">
+    <value>The DateTimeGridAlignment property can't be modified in the automatic date-time scale mode.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectValueLevel">
+    <value>The {0} ValueLevel is invalid for the current regression line.</value>
+  </data>
+  <data name="ChartStringId.MsgUnsupportedDateTimeScaleModeWithScrollingZooming">
+    <value>Automatic DateTimeScaleMode can't work together with zooming and scrolling.</value>
+  </data>
+  <data name="ChartStringId.MsgUnsupportedDateTimeScaleModeForGanttDiagram">
+    <value>DateTimeScaleMode isn't supported for the GanttDiagram.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisRangeMinValue">
+    <value>MinValue can't be set to null.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisRangeMaxValue">
+    <value>MaxValue can't be set to null.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisRangeMinValueInternal">
+    <value>MinValueInternal can't be set to NaN and Infinity values.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisRangeMaxValueInternal">
+    <value>MaxValueInternal can't be set to NaN and Infinity values.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPropertyValue">
+    <value>Incorrect value "{0}" for the property "{1}".</value>
+  </data>
+  <data name="ChartStringId.MsgMinMaxDifferentTypes">
+    <value>The types of the MinValue and MaxValue don't match.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisRange">
+    <value>The min value of the axis range should be less than its max value.</value>
+  </data>
+  <data name="ChartStringId.MsgUnsupportedManualRangeForAutomaticDateTimeScaleMode">
+    <value>It is impossible to set a custom range, if the DateTimeScaleMode is not Manual.</value>
+  </data>
+  <data name="ChartStringId.MsgCantSwapSeries">
+    <value>It's impossible to swap autocreated and fixed series.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidEdge1">
+    <value>The edge1 value can't be null.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidEdge2">
+    <value>The edge2 value can't be null.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidSizeInPixels">
+    <value>Size in pixels should be greater than or equal to -1 and less than 50.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidMaxCount">
+    <value>Max count should be greater than 0.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidGradientMode">
+    <value>This PolygonGradientMode isn't compatible with AreaSeriesView.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectDashStyle">
+    <value>DashStyle.Empty can only be assigned to a constant line's LineStyle property.</value>
+  </data>
+  <data name="ChartStringId.MsgAnnotationMovingToolTip">
+    <value>Use Ctrl with the left mouse button
+to move the annotation.</value>    
+  </data>
+  <data name="ChartStringId.MsgAnnotationResizingToolTip">
+    <value>Use Ctrl with the left mouse button
+to resize the annotation.</value>
+  </data>
+  <data name="ChartStringId.MsgAnnotationRotationToolTip">
+    <value>Use Ctrl with the left mouse button
+to rotate the annotation.</value>
+  </data>
+  <data name="ChartStringId.MsgAnchorPointMovingToolTip">
+    <value>Use Ctrl with the left mouse button
+to move the anchor point.</value>
+  </data>
+  <data name="ChartStringId.MsgPivotGridDataSourceOptionsNotSupprotedProperty">
+    <value>The PivotGridDataSourceOptions.{0} property is available only if the chart's data source is a PivotGrid.</value>
+  </data>
+  <data name="ChartStringId.MsgDiagramToPointIncorrectValue">
+    <value>The specified {0} parameter type doesn't match the appropriate scale type, which is {1} for this axis.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBarDistancePropertyUsing">
+    <value>Cannot set the BarDistance property unless the series is added to the chart's collection.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBarDistanceFixedPropertyUsing">
+    <value>Cannot set the BarDistanceFixed property unless the series is added to the chart's collection.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectEqualBarWidthPropertyUsing">
+    <value>Cannot set the EqualBarWidth property unless the series is added to the chart's collection.</value>
+  </data>
+  <data name="ChartStringId.MsgFileNotFound">
+    <value>File '{0}' isn't found.</value>
+  </data>
+  <data name="ChartStringId.MsgCantImportHolidays">
+    <value>Failed to import holydays from the '{0}' file.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectIndicator">
+    <value>You can add only Indicator objects to this collection.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBarSeriesLabelPosition">
+    <value>The BarSeriesLabelPosition.Top value isn't supported for this series view type.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBarSeriesLabelIndent">
+    <value>The indent should be greater than or equal to 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPointsCount">
+    <value>The points count should be greater than 1.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectEnvelopePercent">
+    <value>The envelope percent should be greater than 0 and less than or equal to 100.</value>
+  </data>
+  <data name="ChartStringId.MsgEmptySecondaryAxisName">
+    <value>A secondary axis name can't be empty.</value>
+  </data>
+  <data name="ChartStringId.VerbAbout">
+    <value>About</value>
+  </data>
+  <data name="ChartStringId.VerbAboutDescription">
+    <value>See basic information on XtraCharts.</value>
+  </data>
+  <data name="ChartStringId.VerbPopulate">
+    <value>Populate</value>
+  </data>
+  <data name="ChartStringId.VerbPopulateDescription">
+    <value>Populate the chart's datasource with data.</value>
+  </data>
+  <data name="ChartStringId.VerbClearDataSource">
+    <value>Clear Data Source</value>
+  </data>
+  <data name="ChartStringId.VerbClearDataSourceDescription">
+    <value>Clear the chart's datasource.</value>
+  </data>
+  <data name="ChartStringId.VerbDataSnapshot">
+    <value>Data Snapshot</value>
+  </data>
+  <data name="ChartStringId.VerbDataSnapshotDescription">
+    <value>Copy all the data from the bound datasource to the chart, and then unbind the chart.</value>
+  </data>
+  <data name="ChartStringId.VerbAnnotations">
+    <value>Annotations...</value>
+  </data>
+  <data name="ChartStringId.VerbAnnotationsDescription">
+    <value>Open the Annotations Collection Editor.</value>
+  </data>
+  <data name="ChartStringId.VerbSeries">
+    <value>Series...</value>
+  </data>
+  <data name="ChartStringId.VerbSeriesDescription">
+    <value>Open the Series Collection Editor.</value>
+  </data>
+  <data name="ChartStringId.VerbResetLegendPointOptions">
+    <value>Reset legend point options</value>
+  </data>
+  <data name="ChartStringId.VerbResetLegendPointOptionsDescription">
+    <value>Revert the legend point options to their default values.</value>
+  </data>
+  <data name="ChartStringId.VerbEditPalettes">
+    <value>Palettes...</value>
+  </data>
+  <data name="ChartStringId.VerbEditPalettesDescription">
+    <value>Open the Palettes Editor.</value>
+  </data>
+  <data name="ChartStringId.VerbWizard">
+    <value>Run Wizard...</value>
+  </data>
+  <data name="ChartStringId.VerbWizardDescription">
+    <value>Run the Chart Wizard, which allows the properties of the chart to be edited.</value>
+  </data>
+  <data name="ChartStringId.VerbSaveLayout">
+    <value>Save...</value>
+  </data>
+  <data name="ChartStringId.VerbSaveLayoutDescription">
+    <value>Save a chart to an XML file.</value>
+  </data>
+  <data name="ChartStringId.VerbLoadLayout">
+    <value>Load...</value>
+  </data>
+  <data name="ChartStringId.VerbLoadLayoutDescription">
+    <value>Load a chart from an XML file.</value>
+  </data>
+  <data name="ChartStringId.PieIncorrectValuesText">
+    <value>This view can't represent negative
+values. All values must be either greater
+than or equal to zero.</value>
+  </data>
+  <data name="ChartStringId.FontFormat">
+    <value>{0}, {1}pt, {2}</value>
+  </data>
+  <data name="ChartStringId.TrnSeriesChanged">
+    <value>Series changed</value>
+  </data>
+  <data name="ChartStringId.TrnDataFiltersChanged">
+    <value>DataFilters changed</value>
+  </data>
+  <data name="ChartStringId.TrnChartTitlesChanged">
+    <value>Chart titles changed</value>
+  </data>
+  <data name="ChartStringId.TrnPalettesChanged">
+    <value>Palettes changed</value>
+  </data>
+  <data name="ChartStringId.TrnConstantLinesChanged">
+    <value>Constant Lines changed</value>
+  </data>
+  <data name="ChartStringId.TrnStripsChanged">
+    <value>Strips changed</value>
+  </data>
+  <data name="ChartStringId.TrnCustomAxisLabelChanged">
+    <value>Custom Axis Labels changed</value>
+  </data>
+  <data name="ChartStringId.TrnSecondaryAxesXChanged">
+    <value>Secondary axes X changed</value>
+  </data>
+  <data name="ChartStringId.TrnSecondaryAxesYChanged">
+    <value>Secondary axes Y changed</value>
+  </data>
+  <data name="ChartStringId.TrnXYDiagramPanesChanged">
+    <value>Panes changed</value>
+  </data>
+  <data name="ChartStringId.TrnChartWizard">
+    <value>Chart wizard settings applied</value>
+  </data>
+  <data name="ChartStringId.TrnSeriesDeleted">
+    <value>Series deleted</value>
+  </data>
+  <data name="ChartStringId.TrnChartTitleDeleted">
+    <value>Chart title deleted</value>
+  </data>
+  <data name="ChartStringId.TrnAnnotationDeleted">
+    <value>Annotation deleted</value>
+  </data>
+  <data name="ChartStringId.TrnConstantLineDeleted">
+    <value>Constant line deleted</value>
+  </data>
+  <data name="ChartStringId.TrnPaneDeleted">
+    <value>Pane deleted</value>
+  </data>
+  <data name="ChartStringId.TrnSecondryAxisXDeleted">
+    <value>Secondary axis X deleted</value>
+  </data>
+  <data name="ChartStringId.TrnSecondryAxisYDeleted">
+    <value>Secondary axis Y deleted</value>
+  </data>
+  <data name="ChartStringId.TrnExplodedPoints">
+    <value>Exploded points changed</value>
+  </data>
+  <data name="ChartStringId.TrnExplodedPointsFilters">
+    <value>ExplodedPointsFilters changed</value>
+  </data>
+  <data name="ChartStringId.TrnLegendPointOptionsReset">
+    <value>LegendPointOptions reset</value>
+  </data>
+  <data name="ChartStringId.TrnLoadLayout">
+    <value>Chart layout loaded</value>
+  </data>
+  <data name="ChartStringId.TrnSeriesTitleChanged">
+    <value>Series title changed</value>
+  </data>
+  <data name="ChartStringId.TrnSeriesTitleDeleted">
+    <value>Series title deleted</value>
+  </data>
+  <data name="ChartStringId.TrnAxisVisibilityChanged">
+    <value>Axis visibility changed</value>
+  </data>
+  <data name="ChartStringId.TrnSummaryFunctionChanged">
+    <value>Summary function changed</value>
+  </data>
+  <data name="ChartStringId.TrnIndicatorDeleted">
+    <value>Indicator deleted</value>
+  </data>
+  <data name="ChartStringId.TrnIndicatorsChanged">
+    <value>Indicators changed</value>
+  </data>
+  <data name="ChartStringId.TrnScaleBreaksChanged">
+    <value>Scale breaks changed</value>
+  </data>
+  <data name="ChartStringId.TrnAnnotationsChanged">
+    <value>Annotations changed</value>
+  </data>
+  <data name="ChartStringId.TrnHolidaysChanged">
+    <value>Holidays changed</value>
+  </data>
+  <data name="ChartStringId.TrnExactWorkdaysChanged">
+    <value>Exact workdays changed</value>
+  </data>
+  <data name="ChartStringId.AxisXDefaultTitle">
+    <value>Axis of arguments</value>
+  </data>
+  <data name="ChartStringId.AxisYDefaultTitle">
+    <value>Axis of values</value>
+  </data>
+  <data name="ChartStringId.DefaultWizardPageLabel">
+    <value>Wizard Page</value>
+  </data>
+  <data name="ChartStringId.MenuItemAdd">
+    <value>Add</value>
+  </data>
+  <data name="ChartStringId.MenuItemInsert">
+    <value>Insert</value>
+  </data>
+  <data name="ChartStringId.MenuItemDelete">
+    <value>Delete</value>
+  </data>
+  <data name="ChartStringId.MenuItemClear">
+    <value>Clear</value>
+  </data>
+  <data name="ChartStringId.MenuItemMoveUp">
+    <value>Move Up</value>
+  </data>
+  <data name="ChartStringId.MenuItemMoveDown">
+    <value>Move Down</value>
+  </data>
+  <data name="ChartStringId.WizAutoCreatedSeries">
+    <value>Auto-created Series</value>
+  </data>
+  <data name="ChartStringId.WizSpecifyDataFilters">
+    <value>Click the ellipsis button...</value>
+  </data>
+  <data name="ChartStringId.WizDataFiltersDisabled">
+    <value>(none)</value>
+  </data>
+  <data name="ChartStringId.WizDataFiltersEntered">
+    <value>{0} data filter(s)</value>
+  </data>
+  <data name="ChartStringId.WizBackImageFileNameFilter">
+    <value>Image Files(*.gif;*.jpg;*.jpeg;*.bmp;*.wmf;*.png)|*.gif;*.jpg;*.jpeg;*.bmp;*.wmf;*.png|All files(*.*)|*.*</value>
+  </data>
+  <data name="ChartStringId.WizNoBackImage">
+    <value>(None)</value>
+  </data>
+  <data name="ChartStringId.WizConstructionGroupName">
+    <value>Construction</value>
+  </data>
+  <data name="ChartStringId.WizPresentationGroupName">
+    <value>Presentation</value>
+  </data>
+  <data name="ChartStringId.WizChartTypePageName">
+    <value>Chart Type</value>
+  </data>
+  <data name="ChartStringId.WizAppearancePageName">
+    <value>Appearance</value>
+  </data>
+  <data name="ChartStringId.WizSeriesPageName">
+    <value>Series</value>
+  </data>
+  <data name="ChartStringId.WizDataPageName">
+    <value>Data</value>
+  </data>
+  <data name="ChartStringId.WizChartPageName">
+    <value>Chart</value>
+  </data>
+  <data name="ChartStringId.WizDiagramPageName">
+    <value>Diagram</value>
+  </data>
+  <data name="ChartStringId.WizAxesPageName">
+    <value>Axes</value>
+  </data>
+  <data name="ChartStringId.WizAxesAlignmentNear">
+    <value>Near</value>
+  </data>
+  <data name="ChartStringId.WizAxesAlignmentFar">
+    <value>Far</value>
+  </data>
+  <data name="ChartStringId.WizAxesAlignmentZero">
+    <value>Zero</value>
+  </data>
+  <data name="ChartStringId.WizPanesPageName">
+    <value>Panes</value>
+  </data>
+  <data name="ChartStringId.WizAnnotationsPageName">
+    <value>Annotations</value>
+  </data>
+  <data name="ChartStringId.WizSeriesViewPageName">
+    <value>Series Views</value>
+  </data>
+  <data name="ChartStringId.WizSeriesLabelsPageName">
+    <value>Point Labels</value>
+  </data>
+  <data name="ChartStringId.WizChartTitlesPageName">
+    <value>Chart Titles</value>
+  </data>
+  <data name="ChartStringId.WizLegendPageName">
+    <value>Legend</value>
+  </data>
+  <data name="ChartStringId.WizSeriesPointPageName">
+    <value>Points</value>
+  </data>
+  <data name="ChartStringId.WizSeriesDataBindingPageName">
+    <value>Series Binding</value>
+  </data>
+  <data name="ChartStringId.WizPivotGridDataSourcePageName">
+    <value>Pivot Grid Datasource</value>
+  </data>
+  <data name="ChartStringId.WizChartTypePageDescription">
+    <value>Choose a chart type you want to use. To filter chart types by their groups, use the values in the drop-down box.</value>
+  </data>
+  <data name="ChartStringId.WizAppearancePageDescription">
+    <value>Choose a palette to color series or their data points. Also choose the style, which specifies the chart's appearance depending on the current palette.</value>
+  </data>
+  <data name="ChartStringId.WizSeriesPageDescription">
+    <value>Create series, and adjust their general properties.
+Note that the view type of the first visible series determines the diagram type and its set of specific options.</value>
+  </data>
+  <data name="ChartStringId.WizDataPageDescription">
+    <value>To enter data points manually, use the Points tab. Or, use other tabs, to specify data source settings for individual or auto-created series.</value>
+  </data>
+  <data name="ChartStringId.WizChartPageDescription">
+    <value>Customize the chart's properties.</value>
+  </data>
+  <data name="ChartStringId.WizDiagramPageDescription">
+    <value>Customize the diagram's properties.</value>
+  </data>
+  <data name="ChartStringId.WizAxesPageDescription">
+    <value>Customize the X and Y axes of the diagram.
+Note that you may select an axis by clicking it in the chart preview.</value>
+  </data>
+  <data name="ChartStringId.WizPanesPageDescription">
+    <value>Customize the diagram's panes.
+Note that you may select a pane by clicking it in the chart preview.</value>
+  </data>
+  <data name="ChartStringId.WizAnnotationsPageDescription">
+    <value>Create and customize annotations anchored to a chart, pane or series point.
+Note that you may select an annotation by clicking it in the chart preview.</value>
+  </data>
+  <data name="ChartStringId.WizSeriesViewPageDescription">
+    <value>Customize the view-type-specific options of a series.
+Note that you may select a series by clicking it in the chart preview.</value>
+  </data>
+  <data name="ChartStringId.WizSeriesLabelsPageDescription">
+    <value>Customize the point labels of a series.
+Note that you may select labels of a series by clicking them in the chart preview.</value>
+  </data>
+  <data name="ChartStringId.WizChartTitlesPageDescription">
+    <value>Add titles to your chart, and customize their options.</value>
+  </data>
+  <data name="ChartStringId.WizLegendPageDescription">
+    <value>Customize the legend's properties.</value>
+  </data>
+  <data name="ChartStringId.WizFormTitle">
+    <value>Chart Wizard</value>
+  </data>
+  <data name="ChartStringId.WizHatchMin">
+    <value>Min</value>
+  </data>
+  <data name="ChartStringId.WizHatchHorizontal">
+    <value>Horizontal</value>
+  </data>
+  <data name="ChartStringId.WizHatchVertical">
+    <value>Vertical</value>
+  </data>
+  <data name="ChartStringId.WizHatchForwardDiagonal">
+    <value>ForwardDiagonal</value>
+  </data>
+  <data name="ChartStringId.WizHatchBackwardDiagonal">
+    <value>BackwardDiagonal</value>
+  </data>
+  <data name="ChartStringId.WizHatchMax">
+    <value>Max</value>
+  </data>
+  <data name="ChartStringId.WizHatchCross">
+    <value>Cross</value>
+  </data>
+  <data name="ChartStringId.WizHatchLargeGrid">
+    <value>LargeGrid</value>
+  </data>
+  <data name="ChartStringId.WizHatchDiagonalCross">
+    <value>DiagonalCross</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent05">
+    <value>Percent05</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent10">
+    <value>Percent10</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent20">
+    <value>Percent20</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent25">
+    <value>Percent25</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent30">
+    <value>Percent30</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent40">
+    <value>Percent40</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent50">
+    <value>Percent50</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent60">
+    <value>Percent60</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent70">
+    <value>Percent70</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent75">
+    <value>Percent75</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent80">
+    <value>Percent80</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent90">
+    <value>Percent90</value>
+  </data>
+  <data name="ChartStringId.WizHatchLightDownwardDiagonal">
+    <value>LightDownwardDiagonal</value>
+  </data>
+  <data name="ChartStringId.WizHatchLightUpwardDiagonal">
+    <value>LightUpwardDiagonal</value>
+  </data>
+  <data name="ChartStringId.WizHatchDarkDownwardDiagonal">
+    <value>DarkDownwardDiagonal</value>
+  </data>
+  <data name="ChartStringId.WizHatchDarkUpwardDiagonal">
+    <value>DarkUpwardDiagonal</value>
+  </data>
+  <data name="ChartStringId.WizHatchWideDownwardDiagonal">
+    <value>WideDownwardDiagonal</value>
+  </data>
+  <data name="ChartStringId.WizHatchWideUpwardDiagonal">
+    <value>WideUpwardDiagonal</value>
+  </data>
+  <data name="ChartStringId.WizHatchLightVertical">
+    <value>LightVertical</value>
+  </data>
+  <data name="ChartStringId.WizHatchLightHorizontal">
+    <value>LightHorizontal</value>
+  </data>
+  <data name="ChartStringId.WizHatchNarrowVertical">
+    <value>NarrowVertical</value>
+  </data>
+  <data name="ChartStringId.WizHatchNarrowHorizontal">
+    <value>NarrowHorizontal</value>
+  </data>
+  <data name="ChartStringId.WizHatchDarkVertical">
+    <value>DarkVertical</value>
+  </data>
+  <data name="ChartStringId.WizHatchDarkHorizontal">
+    <value>DarkHorizontal</value>
+  </data>
+  <data name="ChartStringId.WizHatchDashedDownwardDiagonal">
+    <value>DashedDownwardDiagonal</value>
+  </data>
+  <data name="ChartStringId.WizHatchDashedUpwardDiagonal">
+    <value>DashedUpwardDiagonal</value>
+  </data>
+  <data name="ChartStringId.WizHatchDashedHorizontal">
+    <value>DashedHorizontal</value>
+  </data>
+  <data name="ChartStringId.WizHatchDashedVertical">
+    <value>DashedVertical</value>
+  </data>
+  <data name="ChartStringId.WizHatchSmallConfetti">
+    <value>SmallConfetti</value>
+  </data>
+  <data name="ChartStringId.WizHatchLargeConfetti">
+    <value>LargeConfetti</value>
+  </data>
+  <data name="ChartStringId.WizHatchZigZag">
+    <value>ZigZag</value>
+  </data>
+  <data name="ChartStringId.WizHatchWave">
+    <value>Wave</value>
+  </data>
+  <data name="ChartStringId.WizHatchDiagonalBrick">
+    <value>DiagonalBrick</value>
+  </data>
+  <data name="ChartStringId.WizHatchHorizontalBrick">
+    <value>HorizontalBrick</value>
+  </data>
+  <data name="ChartStringId.WizHatchWeave">
+    <value>Weave</value>
+  </data>
+  <data name="ChartStringId.WizHatchPlaid">
+    <value>Plaid</value>
+  </data>
+  <data name="ChartStringId.WizHatchDivot">
+    <value>Divot</value>
+  </data>
+  <data name="ChartStringId.WizHatchDottedGrid">
+    <value>DottedGrid</value>
+  </data>
+  <data name="ChartStringId.WizHatchDottedDiamond">
+    <value>DottedDiamond</value>
+  </data>
+  <data name="ChartStringId.WizHatchShingle">
+    <value>Shingle</value>
+  </data>
+  <data name="ChartStringId.WizHatchTrellis">
+    <value>Trellis</value>
+  </data>
+  <data name="ChartStringId.WizHatchSphere">
+    <value>Sphere</value>
+  </data>
+  <data name="ChartStringId.WizHatchSmallGrid">
+    <value>SmallGrid</value>
+  </data>
+  <data name="ChartStringId.WizHatchSmallCheckerBoard">
+    <value>SmallCheckerBoard</value>
+  </data>
+  <data name="ChartStringId.WizHatchLargeCheckerBoard">
+    <value>LargeCheckerBoard</value>
+  </data>
+  <data name="ChartStringId.WizHatchOutlinedDiamond">
+    <value>OutlinedDiamond</value>
+  </data>
+  <data name="ChartStringId.WizHatchSolidDiamond">
+    <value>SolidDiamond</value>
+  </data>
+  <data name="ChartStringId.WizDataMemberNoneString">
+    <value>(None)</value>
+  </data>
+  <data name="ChartStringId.WizPositionLeftColumn">
+    <value>LeftColumn</value>
+  </data>
+  <data name="ChartStringId.WizPositionLeft">
+    <value>Left</value>
+  </data>
+  <data name="ChartStringId.WizPositionCenter">
+    <value>Center</value>
+  </data>
+  <data name="ChartStringId.WizPositionRight">
+    <value>Right</value>
+  </data>
+  <data name="ChartStringId.WizPositionRightColumn">
+    <value>RightColumn</value>
+  </data>
+  <data name="ChartStringId.WizGradientTopToBottom">
+    <value>TopToBottom</value>
+  </data>
+  <data name="ChartStringId.WizGradientBottomToTop">
+    <value>BottomToTop</value>
+  </data>
+  <data name="ChartStringId.WizGradientLeftToRight">
+    <value>LeftToRight</value>
+  </data>
+  <data name="ChartStringId.WizGradientRightToLeft">
+    <value>RightToLeft</value>
+  </data>
+  <data name="ChartStringId.WizGradientTopLeftToBottomRight">
+    <value>TopLeftToBottomRight</value>
+  </data>
+  <data name="ChartStringId.WizGradientBottomRightToTopLeft">
+    <value>BottomRightToTopLeft</value>
+  </data>
+  <data name="ChartStringId.WizGradientTopRightToBottomLeft">
+    <value>TopRightToBottomLeft</value>
+  </data>
+  <data name="ChartStringId.WizGradientBottomLeftToTopRight">
+    <value>BottomLeftToTopRight</value>
+  </data>
+  <data name="ChartStringId.WizGradientToCenter">
+    <value>ToCenter</value>
+  </data>
+  <data name="ChartStringId.WizGradientFromCenter">
+    <value>FromCenter</value>
+  </data>
+  <data name="ChartStringId.WizGradientToCenterHorizontal">
+    <value>ToCenterHorizontal</value>
+  </data>
+  <data name="ChartStringId.WizGradientFromCenterHorizontal">
+    <value>FromCenterHorizontal</value>
+  </data>
+  <data name="ChartStringId.WizGradientToCenterVertical">
+    <value>ToCenterVertical</value>
+  </data>
+  <data name="ChartStringId.WizGradientFromCenterVertical">
+    <value>FromCenterVertical</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelValue">
+    <value>Value</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelValue_1">
+    <value>Value_1</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelValue_2">
+    <value>Value_2</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelLow">
+    <value>Low</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelHigh">
+    <value>High</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelOpen">
+    <value>Open</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelClose">
+    <value>Close</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeMeasureUnitYear">
+    <value>Year</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeMeasureUnitQuarter">
+    <value>Quarter</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeMeasureUnitMonth">
+    <value>Month</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeMeasureUnitWeek">
+    <value>Week</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeMeasureUnitDay">
+    <value>Day</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeMeasureUnitHour">
+    <value>Hour</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeMeasureUnitMinute">
+    <value>Minute</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeMeasureUnitSecond">
+    <value>Second</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeMeasureUnitMillisecond">
+    <value>Millisecond</value>
+  </data>
+  <data name="ChartStringId.WizResolveOverlappingModeNone">
+    <value>None</value>
+  </data>
+  <data name="ChartStringId.WizResolveOverlappingModeDefault">
+    <value>Default</value>
+  </data>
+  <data name="ChartStringId.WizResolveOverlappingModeHideOverlapping">
+    <value>HideOverlapping</value>
+  </data>
+  <data name="ChartStringId.WizResolveOverlappingModeJustifyAroundPoint">
+    <value>JustifyAroundPoint</value>
+  </data>
+  <data name="ChartStringId.WizResolveOverlappingModeJustifyAllAroundPoints">
+    <value>JustifyAllAroundPoints</value>
+  </data>
+  <data name="ChartStringId.WizAxisLabelResolveOverlappingModeNone">
+    <value>None</value>
+  </data>
+  <data name="ChartStringId.WizAxisLabelResolveOverlappingModeHideOverlapping">
+    <value>HideOverlapping</value>
+  </data>
+  <data name="ChartStringId.WizErrorMessageTitle">
+    <value>Chart Wizard</value>
+  </data>
+  <data name="ChartStringId.WizInvalidBackgroundImage">
+    <value>The specified file isn't a correct image file. Please choose another one.</value>
+  </data>
+  <data name="ChartStringId.WizScrollBarAlignmentNear">
+    <value>Near</value>
+  </data>
+  <data name="ChartStringId.WizScrollBarAlignmentFar">
+    <value>Far</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeScaleModeManual">
+    <value>Manual</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeScaleModeAutomaticAverage">
+    <value>Automatic: Average</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeScaleModeAutomaticIntegral">
+    <value>Automatic: Integral</value>
+  </data>
+  <data name="ChartStringId.WizScaleBreakStyleRagged">
+    <value>Ragged</value>
+  </data>
+  <data name="ChartStringId.WizScaleBreakStyleStraight">
+    <value>Straight</value>
+  </data>
+  <data name="ChartStringId.WizScaleBreakStyleWaved">
+    <value>Waved</value>
+  </data>
+  <data name="ChartStringId.WizBarSeriesLabelPositionTop">
+    <value>Top</value>
+  </data>
+  <data name="ChartStringId.WizBarSeriesLabelPositionCenter">
+    <value>Center</value>
+  </data>
+  <data name="ChartStringId.WizBarSeriesLabelPositionTopInside">
+    <value>Top Inside</value>
+  </data>
+  <data name="ChartStringId.WizBarSeriesLabelPositionBottomInside">
+    <value>Bottom Inside</value>
+  </data>
+  <data name="ChartStringId.WizPieSeriesLabelPositionInside">
+    <value>Inside</value>
+  </data>
+  <data name="ChartStringId.WizPieSeriesLabelPositionOutside">
+    <value>Outside</value>
+  </data>
+  <data name="ChartStringId.WizPieSeriesLabelPositionRadial">
+    <value>Radial</value>
+  </data>
+  <data name="ChartStringId.WizPieSeriesLabelPositionTangent">
+    <value>Tangent</value>
+  </data>
+  <data name="ChartStringId.WizPieSeriesLabelPositionTwoColumns">
+    <value>Two Columns</value>
+  </data>
+  <data name="ChartStringId.WizBubbleLabelValueToDisplayValue">
+    <value>Value</value>
+  </data>
+  <data name="ChartStringId.WizBubbleLabelValueToDisplayWeight">
+    <value>Weight</value>
+  </data>
+  <data name="ChartStringId.WizBubbleLabelValueToDisplayValueAndWeight">
+    <value>Value and Weight</value>
+  </data>
+  <data name="ChartStringId.WizBubbleLabelPositionCenter">
+    <value>Center</value>
+  </data>
+  <data name="ChartStringId.WizBubbleLabelPositionOutside">
+    <value>Outside</value>
+  </data>
+  <data name="ChartStringId.WizFunnelSeriesLabelPositionCenter">
+    <value>Center</value>
+  </data>
+  <data name="ChartStringId.WizFunnelSeriesLabelPositionLeft">
+    <value>Left</value>
+  </data>
+  <data name="ChartStringId.WizFunnelSeriesLabelPositionLeftColumn">
+    <value>Left Column</value>
+  </data>
+  <data name="ChartStringId.WizFunnelSeriesLabelPositionRight">
+    <value>Right</value>
+  </data>
+  <data name="ChartStringId.WizFunnelSeriesLabelPositionRightColumn">
+    <value>Right Column</value>
+  </data>
+  <data name="ChartStringId.WizSeriesLabelTextOrientationHorizontal">
+    <value>Horizontal</value>
+  </data>
+  <data name="ChartStringId.WizSeriesLabelTextOrientationTopToBottom">
+    <value>TopToBottom</value>
+  </data>
+  <data name="ChartStringId.WizSeriesLabelTextOrientationBottomToTop">
+    <value>BottomToTop</value>
+  </data>
+  <data name="ChartStringId.WizBar3DModelBox">
+    <value>Box</value>
+  </data>
+  <data name="ChartStringId.WizBar3DModelCylinder">
+    <value>Cylinder</value>
+  </data>
+  <data name="ChartStringId.WizBar3DModelCone">
+    <value>Cone</value>
+  </data>
+  <data name="ChartStringId.WizBar3DModelPyramid">
+    <value>Pyramid</value>
+  </data>
+  <data name="ChartStringId.WizEnableScrollingTrue">
+    <value>Enable scrolling (true)</value>
+  </data>
+  <data name="ChartStringId.WizEnableScrollingFalse">
+    <value>Enable scrolling (false)</value>
+  </data>
+  <data name="ChartStringId.WizEnableZoomingTrue">
+    <value>Enable zooming (true)</value>
+  </data>
+  <data name="ChartStringId.WizEnableZoomingFalse">
+    <value>Enable zooming (false)</value>
+  </data>
+  <data name="ChartStringId.WizShapeKindRectangle">
+    <value>Rectangle</value>
+  </data>
+  <data name="ChartStringId.WizShapeKindRoundedRectangle">
+    <value>Rounded Rectangle</value>
+  </data>
+  <data name="ChartStringId.WizShapeKindEllipse">
+    <value>Ellipse</value>
+  </data>
+  <data name="ChartStringId.WizAnnotationConnectorStyleArrow">
+    <value>Arrow</value>
+  </data>
+  <data name="ChartStringId.WizAnnotationConnectorStyleLine">
+    <value>Line</value>
+  </data>
+  <data name="ChartStringId.WizAnnotationConnectorStyleNone">
+    <value>None</value>
+  </data>
+  <data name="ChartStringId.WizAnnotationConnectorStyleNotchedArrow">
+    <value>Notched Arrow</value>
+  </data>
+  <data name="ChartStringId.WizAnnotationConnectorStyleTail">
+    <value>Tail</value>
+  </data>
+  <data name="ChartStringId.WizStringAlignmentCenter">
+    <value>Center</value>
+  </data>
+  <data name="ChartStringId.WizStringAlignmentNear">
+    <value>Near</value>
+  </data>
+  <data name="ChartStringId.WizStringAlignmentFar">
+    <value>Far</value>
+  </data>
+  <data name="ChartStringId.WizChartImageSizeModeAutoSize">
+    <value>Auto Size</value>
+  </data>
+  <data name="ChartStringId.WizChartImageSizeModeStretch">
+    <value>Stretch</value>
+  </data>
+  <data name="ChartStringId.WizChartImageSizeModeTile">
+    <value>Tile</value>
+  </data>
+  <data name="ChartStringId.WizChartImageSizeModeZoom">
+    <value>Zoom</value>
+  </data>
+  <data name="ChartStringId.WizDockCornerLeftTop">
+    <value>Left-top</value>
+  </data>
+  <data name="ChartStringId.WizDockCornerLeftBottom">
+    <value>Left-bottom</value>
+  </data>
+  <data name="ChartStringId.WizDockCornerRightTop">
+    <value>Right-top</value>
+  </data>
+  <data name="ChartStringId.WizDockCornerRightBottom">
+    <value>Right-bottom</value>
+  </data>
+  <data name="ChartStringId.WizShapePositionKindFree">
+    <value>Free</value>
+  </data>
+  <data name="ChartStringId.WizShapePositionKindRelative">
+    <value>Relative</value>
+  </data>
+  <data name="ChartStringId.WizAnchorPointChart">
+    <value>Chart</value>
+  </data>
+  <data name="ChartStringId.WizAnchorPointPane">
+    <value>Pane</value>
+  </data>
+  <data name="ChartStringId.WizAnchorPointSeriesPoint">
+    <value>Series Point</value>
+  </data>
+  <data name="ChartStringId.WizIndentUndefined">
+    <value>Undefined</value>
+  </data>
+  <data name="ChartStringId.WizIndentDefault">
+    <value>Default</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideBar">
+    <value>Bar</value>
+  </data>
+  <data name="ChartStringId.SvnStackedBar">
+    <value>Bar Stacked</value>
+  </data>
+  <data name="ChartStringId.SvnFullStackedBar">
+    <value>Bar Stacked 100%</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideStackedBar">
+    <value>Side By Side Bar Stacked</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideFullStackedBar">
+    <value>Side By Side Bar Stacked 100%</value>
+  </data>
+  <data name="ChartStringId.SvnPie">
+    <value>Pie</value>
+  </data>
+  <data name="ChartStringId.SvnFunnel">
+    <value>Funnel</value>
+  </data>
+  <data name="ChartStringId.SvnDoughnut">
+    <value>Doughnut</value>
+  </data>
+  <data name="ChartStringId.SvnPoint">
+    <value>Point</value>
+  </data>
+  <data name="ChartStringId.SvnBubble">
+    <value>Bubble</value>
+  </data>
+  <data name="ChartStringId.SvnLine">
+    <value>Line</value>
+  </data>
+  <data name="ChartStringId.SvnStackedLine">
+    <value>Line Stacked</value>
+  </data>
+  <data name="ChartStringId.SvnFullStackedLine">
+    <value>Line Stacked 100%</value>
+  </data>
+  <data name="ChartStringId.SvnStepLine">
+    <value>Step Line</value>
+  </data>
+  <data name="ChartStringId.SvnSpline">
+    <value>Spline</value>
+  </data>
+  <data name="ChartStringId.SvnScatterLine">
+    <value>Scatter Line</value>
+  </data>
+  <data name="ChartStringId.SvnSpline3D">
+    <value>Spline 3D</value>
+  </data>
+  <data name="ChartStringId.SvnArea">
+    <value>Area</value>
+  </data>
+  <data name="ChartStringId.SvnStepArea">
+    <value>Step Area</value>
+  </data>
+  <data name="ChartStringId.SvnSplineArea">
+    <value>Spline Area</value>
+  </data>
+  <data name="ChartStringId.SvnStackedArea">
+    <value>Area Stacked</value>
+  </data>
+  <data name="ChartStringId.SvnSplineStackedArea">
+    <value>Spline Area Stacked</value>
+  </data>
+  <data name="ChartStringId.SvnFullStackedArea">
+    <value>Area Stacked 100%</value>
+  </data>
+  <data name="ChartStringId.SvnSplineFullStackedArea">
+    <value>Spline Area Stacked 100%</value>
+  </data>
+  <data name="ChartStringId.SvnRangeArea">
+    <value>Range Area</value>
+  </data>
+  <data name="ChartStringId.SvnRangeArea3D">
+    <value>Range Area 3D</value>
+  </data>
+  <data name="ChartStringId.SvnSpline3DArea">
+    <value>Spline Area 3D</value>
+  </data>
+  <data name="ChartStringId.SvnSplineAreaStacked3D">
+    <value>Spline Area 3D Stacked</value>
+  </data>
+  <data name="ChartStringId.SvnSplineAreaFullStacked3D">
+    <value>Spline Area 3D Stacked 100%</value>
+  </data>
+  <data name="ChartStringId.SvnStock">
+    <value>Stock</value>
+  </data>
+  <data name="ChartStringId.SvnCandleStick">
+    <value>Candle Stick</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideRangeBar">
+    <value>Side By Side Range Bar</value>
+  </data>
+  <data name="ChartStringId.SvnOverlappedRangeBar">
+    <value>Range Bar</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideGantt">
+    <value>Side By Side Gantt</value>
+  </data>
+  <data name="ChartStringId.SvnOverlappedGantt">
+    <value>Gantt</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideBar3D">
+    <value>Bar 3D</value>
+  </data>
+  <data name="ChartStringId.SvnStackedBar3D">
+    <value>Bar 3D Stacked</value>
+  </data>
+  <data name="ChartStringId.SvnFullStackedBar3D">
+    <value>Bar 3D Stacked 100%</value>
+  </data>
+  <data name="ChartStringId.SvnManhattanBar">
+    <value>Manhattan Bar</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideStackedBar3D">
+    <value>Side By Side Bar 3D Stacked</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideFullStackedBar3D">
+    <value>Side By Side Bar 3D Stacked 100%</value>
+  </data>
+  <data name="ChartStringId.SvnPie3D">
+    <value>Pie 3D</value>
+  </data>
+  <data name="ChartStringId.SvnDoughnut3D">
+    <value>Doughnut 3D</value>
+  </data>
+  <data name="ChartStringId.SvnFunnel3D">
+    <value>Funnel 3D</value>
+  </data>
+  <data name="ChartStringId.SvnLine3D">
+    <value>Line 3D</value>
+  </data>
+  <data name="ChartStringId.SvnStackedLine3D">
+    <value>Line 3D Stacked</value>
+  </data>
+  <data name="ChartStringId.SvnFullStackedLine3D">
+    <value>Line 3D Stacked 100%</value>
+  </data>
+  <data name="ChartStringId.SvnStepLine3D">
+    <value>Step Line 3D</value>
+  </data>
+  <data name="ChartStringId.SvnArea3D">
+    <value>Area 3D</value>
+  </data>
+  <data name="ChartStringId.SvnStackedArea3D">
+    <value>Area 3D Stacked</value>
+  </data>
+  <data name="ChartStringId.SvnFullStackedArea3D">
+    <value>Area 3D Stacked 100%</value>
+  </data>
+  <data name="ChartStringId.SvnStepArea3D">
+    <value>Step Area 3D</value>
+  </data>
+  <data name="ChartStringId.SvnRadarPoint">
+    <value>Radar Point</value>
+  </data>
+  <data name="ChartStringId.SvnRadarLine">
+    <value>Radar Line</value>
+  </data>
+  <data name="ChartStringId.SvnRadarArea">
+    <value>Radar Area</value>
+  </data>
+  <data name="ChartStringId.SvnPolarPoint">
+    <value>Polar Point</value>
+  </data>
+  <data name="ChartStringId.SvnPolarLine">
+    <value>Polar Line</value>
+  </data>
+  <data name="ChartStringId.SvnPolarArea">
+    <value>Polar Area</value>
+  </data>
+  <data name="ChartStringId.SvnSwiftPlot">
+    <value>Swift Plot</value>
+  </data>
+  <data name="ChartStringId.IndRegressionLine">
+    <value>Regression Line</value>
+  </data>
+  <data name="ChartStringId.IndTrendLine">
+    <value>Trend Line</value>
+  </data>
+  <data name="ChartStringId.IndFibonacciIndicator">
+    <value>Fibonacci Indicator</value>
+  </data>
+  <data name="ChartStringId.IndSimpleMovingAverage">
+    <value>Simple Moving Average</value>
+  </data>
+  <data name="ChartStringId.IndExponentialMovingAverage">
+    <value>Exponential Moving Average</value>
+  </data>
+  <data name="ChartStringId.IndWeightedMovingAverage">
+    <value>Weighted Moving Average</value>
+  </data>
+  <data name="ChartStringId.IndTriangularMovingAverage">
+    <value>Triangular Moving Average</value>
+  </data>
+  <data name="ChartStringId.AppDefault">
+    <value>Default</value>
+  </data>
+  <data name="ChartStringId.AppNatureColors">
+    <value>Nature Colors</value>
+  </data>
+  <data name="ChartStringId.AppPastelKit">
+    <value>Pastel Kit</value>
+  </data>
+  <data name="ChartStringId.AppInAFog">
+    <value>In A Fog</value>
+  </data>
+  <data name="ChartStringId.AppTerracottaPie">
+    <value>Terracotta Pie</value>
+  </data>
+  <data name="ChartStringId.AppNorthernLights">
+    <value>Northern Lights</value>
+  </data>
+  <data name="ChartStringId.AppChameleon">
+    <value>Chameleon</value>
+  </data>
+  <data name="ChartStringId.AppTheTrees">
+    <value>The Trees</value>
+  </data>
+  <data name="ChartStringId.AppLight">
+    <value>Light</value>
+  </data>
+  <data name="ChartStringId.AppGray">
+    <value>Gray</value>
+  </data>
+  <data name="ChartStringId.AppDark">
+    <value>Dark</value>
+  </data>
+  <data name="ChartStringId.AppDarkFlat">
+    <value>Dark Flat</value>
+  </data>
+  <data name="ChartStringId.PltNatureColors">
+    <value>Nature Colors</value>
+  </data>
+  <data name="ChartStringId.PltPastelKit">
+    <value>Pastel Kit</value>
+  </data>
+  <data name="ChartStringId.PltInAFog">
+    <value>In A Fog</value>
+  </data>
+  <data name="ChartStringId.PltTerracottaPie">
+    <value>Terracotta Pie</value>
+  </data>
+  <data name="ChartStringId.PltNorthernLights">
+    <value>Northern Lights</value>
+  </data>
+  <data name="ChartStringId.PltChameleon">
+    <value>Chameleon</value>
+  </data>
+  <data name="ChartStringId.PltTheTrees">
+    <value>The Trees</value>
+  </data>
+  <data name="ChartStringId.PltMixed">
+    <value>The Mixed</value>
+  </data>
+  <data name="ChartStringId.PltOffice">
+    <value>Office</value>
+  </data>
+  <data name="ChartStringId.PltBlackAndWhite">
+    <value>Black and White</value>
+  </data>
+  <data name="ChartStringId.PltGrayscale">
+    <value>Grayscale</value>
+  </data>
+  <data name="ChartStringId.PltApex">
+    <value>Apex</value>
+  </data>
+  <data name="ChartStringId.PltAspect">
+    <value>Aspect</value>
+  </data>
+  <data name="ChartStringId.PltCivic">
+    <value>Civic</value>
+  </data>
+  <data name="ChartStringId.PltConcourse">
+    <value>Concourse</value>
+  </data>
+  <data name="ChartStringId.PltEquity">
+    <value>Equity</value>
+  </data>
+  <data name="ChartStringId.PltFlow">
+    <value>Flow</value>
+  </data>
+  <data name="ChartStringId.PltFoundry">
+    <value>Foundry</value>
+  </data>
+  <data name="ChartStringId.PltMedian">
+    <value>Median</value>
+  </data>
+  <data name="ChartStringId.PltMetro">
+    <value>Metro</value>
+  </data>
+  <data name="ChartStringId.PltModule">
+    <value>Module</value>
+  </data>
+  <data name="ChartStringId.PltOpulent">
+    <value>Opulent</value>
+  </data>
+  <data name="ChartStringId.PltOriel">
+    <value>Oriel</value>
+  </data>
+  <data name="ChartStringId.PltOrigin">
+    <value>Origin</value>
+  </data>
+  <data name="ChartStringId.PltPaper">
+    <value>Paper</value>
+  </data>
+  <data name="ChartStringId.PltSolstice">
+    <value>Solstice</value>
+  </data>
+  <data name="ChartStringId.PltTechnic">
+    <value>Technic</value>
+  </data>
+  <data name="ChartStringId.PltTrek">
+    <value>Trek</value>
+  </data>
+  <data name="ChartStringId.PltUrban">
+    <value>Urban</value>
+  </data>
+  <data name="ChartStringId.PltVerve">
+    <value>Verve</value>
+  </data>
+  <data name="ChartStringId.PltIndDefault">
+    <value>Default</value>
+  </data>
+  <data name="ChartStringId.DefaultMinValue">
+    <value>Min</value>
+  </data>
+  <data name="ChartStringId.DefaultMaxValue">
+    <value>Max</value>
+  </data>
+  <data name="ChartStringId.IncompatibleSeriesView">
+    <value>(incompatible)</value>
+  </data>
+  <data name="ChartStringId.InvisibleSeriesView">
+    <value>(invisible)</value>
+  </data>
+  <data name="ChartStringId.IncompatibleSeriesHeader">
+    <value>This series is incompatible:
+  </value>
+  </data>
+  <data name="ChartStringId.IncompatibleSeriesMessage">
+    <value>by {0} with "{1}"</value>
+  </data>
+  <data name="ChartStringId.PrimaryAxisXName">
+    <value>Primary AxisX</value>
+  </data>
+  <data name="ChartStringId.PrimaryAxisYName">
+    <value>Primary AxisY</value>
+  </data>
+  <data name="ChartStringId.IOCaption">
+    <value>Illegal Operation</value>
+  </data>
+  <data name="ChartStringId.IODeleteAxis">
+    <value>The primary axis can't be deleted. If you want to hide it, set its Visible property to false.</value>
+  </data>
+  <data name="ChartStringId.IODeleteDefaultPane">
+    <value>The default pane can't be deleted.</value>
+  </data>
+  <data name="ChartStringId.PrintSizeModeNone">
+    <value>None (a chart is printed with the size identical to that
+shown on the form)</value>
+  </data>
+  <data name="ChartStringId.PrintSizeModeStretch">
+    <value>Stretch (a chart is stretched or shrunk to fit the page
+on which it is printed)</value>
+  </data>
+  <data name="ChartStringId.PrintSizeModeZoom">
+    <value>Zoom (a chart is resized proportionally (without clipping),
+so that it best fits the page on which it is printed)</value>
+  </data>
+  <data name="ChartStringId.StyleAllColors">
+    <value>All Colors</value>
+  </data>
+  <data name="ChartStringId.StyleColorNumber">
+    <value>Color {0}</value>
+  </data>
+  <data name="ChartStringId.DefaultPaneName">
+    <value>Default Pane</value>
+  </data>
+  <data name="ChartStringId.QuarterFormat">
+    <value>Q{0}</value>
+  </data>
+  <data name="ChartStringId.OthersArgument">
+    <value>Others</value>
+  </data>
+  <data name="ChartStringId.ExplodedPointsDialogExplodedColumn">
+    <value>Exploded</value>
+  </data>
+  <data name="ChartStringId.ScaleTypeQualitative">
+    <value>qualitative</value>
+  </data>
+  <data name="ChartStringId.ScaleTypeNumerical">
+    <value>numeric</value>
+  </data>
+  <data name="ChartStringId.ScaleTypeDateTime">
+    <value>date-time</value>
+  </data>
+  <data name="ChartStringId.FunctionNameMin">
+    <value>MIN</value>
+  </data>
+  <data name="ChartStringId.FunctionNameMax">
+    <value>MAX</value>
+  </data>
+  <data name="ChartStringId.FunctionNameSum">
+    <value>SUM</value>
+  </data>
+  <data name="ChartStringId.FunctionNameAverage">
+    <value>AVERAGE</value>
+  </data>
+  <data name="ChartStringId.FunctionNameCount">
+    <value>COUNT</value>
+  </data>
+  <data name="ChartStringId.FunctionArgumentName">
+    <value>Argument</value>
+  </data>
+  <data name="ChartStringId.TitleSummaryFunction">
+    <value>Summary Function</value>
+  </data>
+  <data name="ChartStringId.PanesVisibilityDialogVisibleColumn">
+    <value>Visible</value>
+  </data>
+  <data name="ChartStringId.PanesVisibilityDialogPanesColumn">
+    <value>Panes</value>
+  </data>
+  <data name="ChartStringId.FibonacciArcs">
+    <value>Fibonacci Arcs</value>
+  </data>
+  <data name="ChartStringId.FibonacciFans">
+    <value>Fibonacci Fans</value>
+  </data>
+  <data name="ChartStringId.FibonacciRetracement">
+    <value>Fibonacci Retracement</value>
+  </data>
+  <data name="ChartStringId.AnnotationChartAnchorPoint">
+    <value>Chart Anchor Point</value>
+  </data>
+  <data name="ChartStringId.AnnotationPaneAnchorPoint">
+    <value>Pane Anchor Point</value>
+  </data>
+  <data name="ChartStringId.AnnotationSeriesPointAnchorPoint">
+    <value>Series Point Anchor Point</value>
+  </data>
+  <data name="ChartStringId.AnnotationFreePosition">
+    <value>Free Position</value>
+  </data>
+  <data name="ChartStringId.AnnotationRelativePosition">
+    <value>Relative Position</value>
+  </data>
+  <data name="ChartStringId.TextAnnotation">
+    <value>Text Annotation</value>
+  </data>
+  <data name="ChartStringId.ImageAnnotation">
+    <value>Image Annotation</value>
+  </data>
+  <data name="ChartStringId.ToolTipMousePosition">
+    <value>Mouse Position</value>
+  </data>
+  <data name="ChartStringId.ToolTipFreePosition">
+    <value>Free Position</value>
+  </data>
+  <data name="ChartStringId.ToolTipRelativePosition">
+    <value>Relative Position</value>
+  </data>
+  <data name="ChartStringId.CrosshairLabelMousePosition">
+    <value>Mouse Position</value>
+  </data>
+  <data name="ChartStringId.CrosshairLabelFreePosition">
+    <value>Free Position</value>
+  </data>
+  <data name="ChartStringId.IncorrectSeriesCollectionToolTipText">
+    <value>There is no series in the chart's collection with at least one series point.</value>
+  </data>
+  <data name="ChartStringId.IncorrectDiagramTypeToolTipText">
+    <value>There is no panes to anchor to, because the chart's diagram type doesn't support panes.</value>
+  </data>
+  <data name="ChartStringId.DefaultSmallChartText">
+    <value>Increase the chart's size,
+to view its layout.
+    </value>
+  </data>
+  <data name="ChartStringId.ChartControlDockTarget">
+    <value>Chart Control</value>
+  </data>
+  <data name="ChartStringId.Holidays">
+    <value>Holidays</value>
+  </data>
+  <data name="ChartStringId.ExactWorkdays">
+    <value>Exact Workdays</value>
+  </data>
+  <data name="ChartStringId.Holiday">
+    <value>Holiday</value>
+  </data>
+  <data name="ChartStringId.Workday">
+    <value>Workday</value>
+  </data>
+  <data name="ChartStringId.HolidaysImportFilter">
+    <value>DevExpress Scheduler holidays files (*.xml)|*.xml|Microsoft Office Outlook holidays files (*.hol)|*.hol|Text files (*.txt)|*.txt|All files (*.*)|*.*</value>
+  </data>
+  <data name="ChartStringId.AllHolidays">
+    <value>All Holidays</value>
+  </data>
+  <data name="ChartStringId.AlternateTextPlaceholder">
+    <value>The{0} chart{1}.</value>
+  </data>
+  <data name="ChartStringId.AlternateTextSeriesPlaceholder">
+    <value> showing {0}</value>
+  </data>
+  <data name="ChartStringId.AlternateTextSeriesText">
+    <value>{0} series</value>
+  </data>
+  <data name="ChartStringId.ColumnAnnotations">
+    <value>Annotations</value>
+  </data>
+  <data name="ChartStringId.ColumnLinks">
+    <value>Links</value>
+  </data>
+  <data name="ChartStringId.InvalidRangeControlText">
+    <value>This chart diagram can not be displayed in a Range Control.</value>
+  </data>
+  <data name="ChartStringId.CmdEmptyMenuCaption">
+    <value></value>
+  </data>
+  <data name="ChartStringId.CmdEmptyDescription">
+    <value></value>
+  </data>
+  <data name="ChartStringId.CmdCreateBarChartMenuCaption">
+    <value>Clustered Column</value>
+  </data>
+  <data name="ChartStringId.CmdCreateBarChartDescription">
+    <value>Compare values across categories by using vertical rectangles.
+
+Use it when the order of categories is not important or for displaying item counts such as a histogram.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateBar3DChartMenuCaption">
+    <value>3-D Clustered Column</value>
+  </data>
+  <data name="ChartStringId.CmdCreateBar3DChartDescription">
+    <value>Compare values across categories and display clustered columns in 3-D format.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateFullStackedBarChartMenuCaption">
+    <value>100% Stacked Column</value>
+  </data>
+  <data name="ChartStringId.CmdCreateFullStackedBarChartDescription">
+    <value>Compare the percentage that each value contributes to a total across categories by using vertical rectangles.
+
+Use it to emphasize the proportion of each data series.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateFullStackedBar3DChartMenuCaption">
+    <value>100% Stacked Column in 3-D</value>
+  </data>
+  <data name="ChartStringId.CmdCreateFullStackedBar3DChartDescription">
+    <value>Compare the percentage each value contributes to a total across categories and display 100% stacked columns in 3-D format.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateSideBySideFullStackedBarChartMenuCaption">
+    <value>Clustered 100% Stacked Column</value>
+  </data>
+  <data name="ChartStringId.CmdCreateSideBySideFullStackedBarChartDescription">
+    <value>Combine the advantages of both the 100% Stacked Column and Clustered Column chart types, so that you can stack different columns, and combine them into groups across the same axis value.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateSideBySideFullStackedBar3DChartMenuCaption">
+    <value>Clustered 100% Stacked Column in 3-D</value>
+  </data>
+  <data name="ChartStringId.CmdCreateSideBySideFullStackedBar3DChartDescription">
+    <value>Combine the advantages of both the 100% Stacked Column and Clustered Column chart types, so that you can stack different columns, and combine them into groups across the same axis value.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateSideBySideStackedBarChartMenuCaption">
+    <value>Clustered Stacked Column</value>
+  </data>
+  <data name="ChartStringId.CmdCreateSideBySideStackedBarChartDescription">
+    <value>Combine the advantages of both the Stacked Column and Clustered Column chart types, so that you can stack different columns, and combine them into groups across the same axis value.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateSideBySideStackedBar3DChartMenuCaption">
+    <value>Clustered Stacked Column in 3-D</value>
+  </data>
+  <data name="ChartStringId.CmdCreateSideBySideStackedBar3DChartDescription">
+    <value>Combine the advantages of both the Stacked Column and Clustered Column chart types, so that you can stack different columns, and combine them into groups across the same axis value.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStackedBarChartMenuCaption">
+    <value>Stacked Column</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStackedBarChartDescription">
+    <value>Compare the contribution of each value to a total across categories by using vertical rectangles.
+
+Use it to emphasize the total across series for one category.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStackedBar3DChartMenuCaption">
+    <value>Stacked Column in 3-D</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStackedBar3DChartDescription">
+    <value>Compare the contribution of each value to a total across categories and display stacked columns in 3-D format.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateManhattanBarChartMenuCaption">
+    <value>3-D Column</value>
+  </data>
+  <data name="ChartStringId.CmdCreateManhattanBarChartDescription">
+    <value>Compare values across categories and across series on three axes.
+
+Use it when the categories and series are equally important.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateRangeBarChartMenuCaption">
+    <value>Range Column</value>
+  </data>
+  <data name="ChartStringId.CmdCreateRangeBarChartDescription">
+    <value>Display vertical columns along the Y-axis (the axis of values). Each column represents a range of data for each argument value.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateSideBySideRangeBarChartMenuCaption">
+    <value>Clustered Range Column</value>
+  </data>
+  <data name="ChartStringId.CmdCreateSideBySideRangeBarChartDescription">
+    <value>Show activity columns from different series grouped by their arguments. Each column represents a range of data with two values for each argument value.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateConeBar3DChartMenuCaption">
+    <value>Clustered Cone</value>
+  </data>
+  <data name="ChartStringId.CmdCreateConeBar3DChartDescription">
+    <value>Compare values across categories.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateConeFullStackedBar3DChartMenuCaption">
+    <value>100% Stacked Cone</value>
+  </data>
+  <data name="ChartStringId.CmdCreateConeFullStackedBar3DChartDescription">
+    <value>Compare the percentage each value contributes to a total across categories.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateConeSideBySideFullStackedBar3DChartMenuCaption">
+    <value>Clustered 100% Stacked Cone</value>
+  </data>
+  <data name="ChartStringId.CmdCreateConeSideBySideFullStackedBar3DChartDescription">
+    <value>Combine the advantages of both the 100% Stacked Cone and Clustered Cone chart types, so that you can stack different cones, and combine them into groups across the same axis value.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateConeSideBySideStackedBar3DChartMenuCaption">
+    <value>Clustered Stacked Cone</value>
+  </data>
+  <data name="ChartStringId.CmdCreateConeSideBySideStackedBar3DChartDescription">
+    <value>Combine the advantages of both the 100% Stacked Cone and Clustered Cone chart types, so that you can stack different cones, and combine them into groups across the same axis value.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateConeStackedBar3DChartMenuCaption">
+    <value>Stacked Cone</value>
+  </data>
+  <data name="ChartStringId.CmdCreateConeStackedBar3DChartDescription">
+    <value>Compare the contribution of each value to a total across categories.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateConeManhattanBarChartMenuCaption">
+    <value>3-D Cone</value>
+  </data>
+  <data name="ChartStringId.CmdCreateConeManhattanBarChartDescription">
+    <value>Compare values across categories and across series and display a cone chart on three axes.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateCylinderBar3DChartMenuCaption">
+    <value>Clustered Cylinder</value>
+  </data>
+  <data name="ChartStringId.CmdCreateCylinderBar3DChartDescription">
+    <value>Compare values across categories.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateCylinderFullStackedBar3DChartMenuCaption">
+    <value>100% Stacked Cylinder</value>
+  </data>
+  <data name="ChartStringId.CmdCreateCylinderFullStackedBar3DChartDescription">
+    <value>Compare the percentage each value contributes to a total across categories.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateCylinderSideBySideFullStackedBar3DChartMenuCaption">
+    <value>Clustered 100% Stacked Cylinder</value>
+  </data>
+  <data name="ChartStringId.CmdCreateCylinderSideBySideFullStackedBar3DChartDescription">
+    <value>Combine the advantages of both the 100% Stacked Cylinder and Clustered Cylinder chart types, so that you can stack different cylinders, and combine them into groups across the same axis value.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateCylinderSideBySideStackedBar3DChartMenuCaption">
+    <value>Clustered Stacked Cylinder</value>
+  </data>
+  <data name="ChartStringId.CmdCreateCylinderSideBySideStackedBar3DChartDescription">
+    <value>Combine the advantages of both the Stacked Cylinder and Clustered Cylinder chart types, so that you can stack different cylinders, and combine them into groups across the same axis value.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateCylinderStackedBar3DChartMenuCaption">
+    <value>Stacked Cylinder</value>
+  </data>
+  <data name="ChartStringId.CmdCreateCylinderStackedBar3DChartDescription">
+    <value>Compare the contribution of each value to a total across categories.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateCylinderManhattanBarChartMenuCaption">
+    <value>3-D Cylinder</value>
+  </data>
+  <data name="ChartStringId.CmdCreateCylinderManhattanBarChartDescription">
+    <value>Compare values across categories and across series and display a cylinder chart on three axes.</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePyramidBar3DChartMenuCaption">
+    <value>Clustered Pyramid</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePyramidBar3DChartDescription">
+    <value>Compare values across categories.</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePyramidFullStackedBar3DChartMenuCaption">
+    <value>100% Stacked Pyramid</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePyramidFullStackedBar3DChartDescription">
+    <value>Compare the percentage each value contributes to a total across categories.</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePyramidSideBySideFullStackedBar3DChartMenuCaption">
+    <value>Clustered 100% Stacked Pyramid</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePyramidSideBySideFullStackedBar3DChartDescription">
+    <value>Combine the advantages of both the 100% Stacked Pyramid and Clustered Pyramid chart types, so that you can stack different pyramids, and combine them into groups across the same axis value.</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePyramidSideBySideStackedBar3DChartMenuCaption">
+    <value>Clustered Stacked Pyramid</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePyramidSideBySideStackedBar3DChartDescription">
+    <value>Combine the advantages of both the Stacked Pyramid and Clustered Pyramid chart types, so that you can stack different pyramids, and combine them into groups across the same axis value.</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePyramidStackedBar3DChartMenuCaption">
+    <value>Stacked Pyramid</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePyramidStackedBar3DChartDescription">
+    <value>Compare the contribution of each value to a total across categories.</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePyramidManhattanBarChartMenuCaption">
+    <value>3-D Pyramid</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePyramidManhattanBarChartDescription">
+    <value>Compare values across categories and across series and display a pyramid chart on three axes.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateAreaChartMenuCaption">
+    <value>Area</value>
+  </data>
+  <data name="ChartStringId.CmdCreateAreaChartDescription">
+    <value>Insert an area chart.
+
+Area charts emphasize differences between several sets of data over a period of time.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateArea3DChartMenuCaption">
+    <value>3-D Area</value>
+  </data>
+  <data name="ChartStringId.CmdCreateArea3DChartDescription">
+    <value>Display data as filled areas on a diagram, with each data point displayed as a peak or hollow in the area. Use it when you need to show trends for several series on the same diagram, and also show the relationship of the parts to the whole.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateFullStackedAreaChartMenuCaption">
+    <value>100% Stacked Area</value>
+  </data>
+  <data name="ChartStringId.CmdCreateFullStackedAreaChartDescription">
+    <value>Display the trend of the percentage each value contributes over time or categories.
+
+Use it to emphasize the trend in the proportion of each series.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateFullStackedArea3DChartMenuCaption">
+    <value>100% Stacked Area in 3-D</value>
+  </data>
+  <data name="ChartStringId.CmdCreateFullStackedArea3DChartDescription">
+    <value>Display data as areas on a diagram, so that the value of each data point is stacked with all the other corresponding data points' values.
+
+Use it for comparing the percentage values of several series for the same point arguments.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateFullStackedSplineAreaChartMenuCaption">
+    <value>100% Stacked Spline Area</value>
+  </data>
+  <data name="ChartStringId.CmdCreateFullStackedSplineAreaChartDescription">
+    <value>Behave similar to 100% Stacked Area, but plot a fitted curve through each data point in a series.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateFullStackedSplineArea3DChartMenuCaption">
+    <value>100% Stacked Spline Area in 3-D</value>
+  </data>
+  <data name="ChartStringId.CmdCreateFullStackedSplineArea3DChartDescription">
+    <value>Behave similar to 100% Stacked Area Chart in 3D, but plot a fitted curve through each data point in a series.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateSplineAreaChartMenuCaption">
+    <value>Spline Area</value>
+  </data>
+  <data name="ChartStringId.CmdCreateSplineAreaChartDescription">
+    <value>Behave similar to Area Chart but plot a fitted curve through each data point in a series.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateSplineArea3DChartMenuCaption">
+    <value>Spline Area in 3-D</value>
+  </data>
+  <data name="ChartStringId.CmdCreateSplineArea3DChartDescription">
+    <value>Behave similar to 3D Area Chart, but plot a fitted curve through each data point in a series.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStackedAreaChartMenuCaption">
+    <value>Stacked Area</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStackedAreaChartDescription">
+    <value>Display the trend of the contribution of each value over time or categories.
+
+Use it to emphasize the trend in the total across series for one category.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStackedArea3DChartMenuCaption">
+    <value>Stacked Area in 3-D</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStackedArea3DChartDescription">
+    <value>Display series as areas on a diagram, so that the value of each data point is aggregated with the underlying data points' values.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStackedSplineAreaChartMenuCaption">
+    <value>Stacked Spline Area</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStackedSplineAreaChartDescription">
+    <value>Behave similar to Stacked Area Chart but plot a fitted curve through each data point in a series.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStackedSplineArea3DChartMenuCaption">
+    <value>Stacked Spline Area in 3-D</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStackedSplineArea3DChartDescription">
+    <value>Behave similar to Stacked Area in 3D chart, but plot a fitted curve through each data point in a series.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStepAreaChartMenuCaption">
+    <value>Step Area</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStepAreaChartDescription">
+    <value>Show how much values have changed for different points of the same series.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStepArea3DChartMenuCaption">
+    <value>Step Area in 3-D</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStepArea3DChartDescription">
+    <value>Show to what extent values have changed for different points in the same series.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateRangeAreaChartMenuCaption">
+    <value>Range Area</value>
+  </data>
+  <data name="ChartStringId.CmdCreateRangeAreaChartDescription">
+    <value>Display series as filled areas on a diagram, with two data points that define minimum and maximum limits.
+
+Use it when you need to accentuate the delta between start and end values.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateRangeArea3DChartMenuCaption">
+    <value>Range Area in 3-D</value>
+  </data>
+  <data name="ChartStringId.CmdCreateRangeArea3DChartDescription">
+    <value>Display series as filled areas on a diagram, with two data points that define minimum and maximum limits.
+
+Use it when you need to accentuate the delta between start and end values.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStockChartMenuCaption">
+    <value>Stock</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStockChartDescription">
+    <value>Show variation in stock prices over the course of a day. The Open and Close prices are represented by left and right lines on each point, and the Low and High prices are represented by the bottom and top values of the vertical line which is shown at each point.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateCandleStickChartMenuCaption">
+    <value>Candle Stick</value>
+  </data>
+  <data name="ChartStringId.CmdCreateCandleStickChartDescription">
+    <value>Show the variation in the price of stock over the course of a day. The Open and Close prices are represented by a filled rectangle, and the Low and High prices are represented by the bottom and top values of the vertical line which is shown at each point.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateFunnelChartMenuCaption">
+    <value>Funnel</value>
+  </data>
+  <data name="ChartStringId.CmdCreateFunnelChartDescription">
+    <value>Display a wide area at the top, indicating the total points' value, while other areas are proportionally smaller.
+
+Use it when it is necessary to represent stages in a sales process, show the amount of potential revenue for each stage, as well as identify potential problem areas in an organization's sales processes.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateFunnel3DChartMenuCaption">
+    <value>3-D Funnel</value>
+  </data>
+  <data name="ChartStringId.CmdCreateFunnel3DChartDescription">
+    <value>Display a wide area at the top, indicating the total points' value, while other areas are proportionally smaller.
+
+Use it when it is necessary to represent stages in a sales process, show the amount of potential revenue for each stage, as well as identify potential problem areas in an organization's sales processes.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateGanttChartMenuCaption">
+    <value>Gantt</value>
+  </data>
+  <data name="ChartStringId.CmdCreateGanttChartDescription">
+    <value>Track different activities during the time frame.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateSideBySideGanttChartMenuCaption">
+    <value>Clustered Gantt</value>
+  </data>
+  <data name="ChartStringId.CmdCreateSideBySideGanttChartDescription">
+    <value>Display horizontal bars along the time axis. Each bar represents a separate event with the start and end values, hence these charts are used to track different activities during the time frame.
+
+Use it when it's necessary to show activity bars from different series one above another, to compare their duration.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateLineChartMenuCaption">
+    <value>Line</value>
+  </data>
+  <data name="ChartStringId.CmdCreateLineChartDescription">
+    <value>Display trend overtime (dates, years) or ordered categories. Useful when there are many data points and the order is important.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateLine3DChartMenuCaption">
+    <value>3-D Line</value>
+  </data>
+  <data name="ChartStringId.CmdCreateLine3DChartDescription">
+    <value>Display each row or column of data as a 3-D ribbon on three axes.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateFullStackedLineChartMenuCaption">
+    <value>100% Stacked Line</value>
+  </data>
+  <data name="ChartStringId.CmdCreateFullStackedLineChartDescription">
+    <value>Display the trend of the percentage each value contributes over time or ordered categories.
+
+Consider using a 100% Stacked Area chart instead.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateFullStackedLine3DChartMenuCaption">
+    <value>100% Stacked Line in 3-D</value>
+  </data>
+  <data name="ChartStringId.CmdCreateFullStackedLine3DChartDescription">
+    <value>Display all series stacked and is useful when it is necessary to compare how much each series adds to the total aggregate value for specific arguments (as percents).</value>
+  </data>
+  <data name="ChartStringId.CmdCreateScatterLineChartMenuCaption">
+    <value>Scatter Line</value>
+  </data>
+  <data name="ChartStringId.CmdCreateScatterLineChartDescription">
+    <value>Represent series points in the same order that they have in the collection.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateSplineChartMenuCaption">
+    <value>Spline</value>
+  </data>
+  <data name="ChartStringId.CmdCreateSplineChartDescription">
+    <value>Plot a fitted curve through each data point in a series.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateSpline3DChartMenuCaption">
+    <value>3-D Spline</value>
+  </data>
+  <data name="ChartStringId.CmdCreateSpline3DChartDescription">
+    <value>Plot a fitted curve through each data point in a series.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStackedLineChartMenuCaption">
+    <value>Stacked Line</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStackedLineChartDescription">
+    <value>Display the trend of the contribution of each value over time or ordered categories.
+
+Consider using a Stacked Area chart instead.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStackedLine3DChartMenuCaption">
+    <value>Stacked Line in 3-D</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStackedLine3DChartDescription">
+    <value>Display all points from different series in a stacked manner and is useful when it is necessary to compare how much each series adds to the total aggregate value for specific arguments.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStepLineChartMenuCaption">
+    <value>Step Line</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStepLineChartDescription">
+    <value>Show to what extent values have changed for different points in the same series.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStepLine3DChartMenuCaption">
+    <value>Step Line in 3-D</value>
+  </data>
+  <data name="ChartStringId.CmdCreateStepLine3DChartDescription">
+    <value>Show to what extent values have changed for different points in the same series.</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePieChartMenuCaption">
+    <value>Pie</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePieChartDescription">
+    <value>Insert a pie chart.
+
+Pie charts display the contribution of each value to a total.
+
+Use it when values can be added together or when you have only one data series and all values are positive.</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePie3DChartMenuCaption">
+    <value>Pie in 3-D</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePie3DChartDescription">
+    <value>Display the contribution of each value to a total.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateDoughnutChartMenuCaption">
+    <value>Doughnut</value>
+  </data>
+  <data name="ChartStringId.CmdCreateDoughnutChartDescription">
+    <value>Display the contribution of each value to a total like a pie chart, but it can contain multiple series.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateDoughnut3DChartMenuCaption">
+    <value>Doughnut in 3-D</value>
+  </data>
+  <data name="ChartStringId.CmdCreateDoughnut3DChartDescription">
+    <value>Compare the percentage values of different point arguments in the same series, and illustrate these values as easy to understand pie slices, but with a hole in its center.</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePointChartMenuCaption">
+    <value>Point</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePointChartDescription">
+    <value>Use it when it's necessary to show stand-alone data points on the same chart plot.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateBubbleChartMenuCaption">
+    <value>Bubble</value>
+  </data>
+  <data name="ChartStringId.CmdCreateBubbleChartDescription">
+    <value>Resemble a Scatter chart, but compare sets of three values instead of two. The third value determines the size of the bubble marker.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateRadarPointChartMenuCaption">
+    <value>Radar Point</value>
+  </data>
+  <data name="ChartStringId.CmdCreateRadarPointChartDescription">
+    <value>Show points from two or more different series on the same points arguments on a circular grid that has multiple axes along which data can be plotted.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateRadarLineChartMenuCaption">
+    <value>Radar Line</value>
+  </data>
+  <data name="ChartStringId.CmdCreateRadarLineChartDescription">
+    <value>Show trends for several series and compare their values for the same points arguments on a circular grid that has multiple axes along which data can be plotted.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateRadarAreaChartMenuCaption">
+    <value>Radar Area</value>
+  </data>
+  <data name="ChartStringId.CmdCreateRadarAreaChartDescription">
+    <value>Display series as filled area on a circular grid that has multiple axes along which data can be plotted.</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePolarPointChartMenuCaption">
+    <value>Polar Point</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePolarPointChartDescription">
+    <value>Show points from two or more different series on the same circular diagram on the basis of angles.</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePolarLineChartMenuCaption">
+    <value>Polar Line</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePolarLineChartDescription">
+    <value>Show trends for several series and compare their values for the same points arguments on a circular diagram on the basis of angles.</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePolarAreaChartMenuCaption">
+    <value>Polar Area</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePolarAreaChartDescription">
+    <value>Display series as filled area on a circular diagram on the basis of angles.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateRotatedBarChartMenuCaption">
+    <value>Bar</value>
+  </data>
+  <data name="ChartStringId.CmdCreateRotatedBarChartDescription">
+    <value>Insert a bar chart.
+
+Bar charts are the best chart type for comparing multiple values.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateRotatedFullStackedBarChartMenuCaption">
+    <value>100% Stacked Bar</value>
+  </data>
+  <data name="ChartStringId.CmdCreateRotatedFullStackedBarChartDescription">
+    <value>Compare the percentage each value contributes to a total across categories using horizontal rectangles.
+
+Use it when the values on the chart represent durations or when the category text is very long.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateRotatedSideBySideFullStackedBarChartMenuCaption">
+    <value>Clustered 100% Stacked Bar</value>
+  </data>
+  <data name="ChartStringId.CmdCreateRotatedSideBySideFullStackedBarChartDescription">
+    <value>Combine the advantages of both the 100% Stacked Bar and Clustered Bar chart types, so you can stack different bars, and combine them into groups across the same axis value.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateRotatedSideBySideStackedBarChartMenuCaption">
+    <value>Clustered Stacked Bar</value>
+  </data>
+  <data name="ChartStringId.CmdCreateRotatedSideBySideStackedBarChartDescription">
+    <value>Combine the advantages of both the Stacked Bar and Clustered Bar chart types, so that you can stack different bars, and combine them into groups across the same axis value.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateRotatedStackedBarChartMenuCaption">
+    <value>Stacked Bar</value>
+  </data>
+  <data name="ChartStringId.CmdCreateRotatedStackedBarChartDescription">
+    <value>Compare the contribution of each value to a total across categories by using horizontal rectangles.</value>
+  </data>
+  <data name="ChartStringId.CmdPrintMenuCaption">
+    <value>Print</value>
+  </data>
+  <data name="ChartStringId.CmdPrintDescription">
+    <value>Select a printer, number of copies and other printing options before printing.</value>
+  </data>
+  <data name="ChartStringId.CmdPrintPreviewMenuCaption">
+    <value>Print Preview</value>
+  </data>
+  <data name="ChartStringId.CmdPrintPreviewDescription">
+    <value>Preview and make changes to pages before printing.</value>
+  </data>
+  <data name="ChartStringId.CmdExportPlaceHolderMenuCaption">
+    <value>Export</value>
+  </data>
+  <data name="ChartStringId.CmdExportPlaceHolderDescription">
+    <value>Export the current document in one of the available formats, and save it to the file on a disk.</value>
+  </data>
+  <data name="ChartStringId.CmdExportToPDFMenuCaption">
+    <value>Export to PDF</value>
+  </data>
+  <data name="ChartStringId.CmdExportToPDFDescription">
+    <value>Adobe Portable Document Format</value>
+  </data>
+  <data name="ChartStringId.CmdExportToHTMLMenuCaption">
+    <value>Export to HTML</value>
+  </data>
+  <data name="ChartStringId.CmdExportToHTMLDescription">
+    <value>Web Page</value>
+  </data>
+  <data name="ChartStringId.CmdExportToMHTMenuCaption">
+    <value>Export to MHT</value>
+  </data>
+  <data name="ChartStringId.CmdExportToMHTDescription">
+    <value>Single File Web Page</value>
+  </data>
+  <data name="ChartStringId.CmdExportToXLSMenuCaption">
+    <value>Export to XLS</value>
+  </data>
+  <data name="ChartStringId.CmdExportToXLSDescription">
+    <value>Microsoft Excel 2000-2003 Work Book</value>
+  </data>
+  <data name="ChartStringId.CmdExportToXLSXMenuCaption">
+    <value>Export to XLSX</value>
+  </data>
+  <data name="ChartStringId.CmdExportToXLSXDescription">
+    <value>Microsoft Excel 2007 Work Book</value>
+  </data>
+  <data name="ChartStringId.CmdExportToRTFMenuCaption">
+    <value>Export to RTF</value>
+  </data>
+  <data name="ChartStringId.CmdExportToRTFDescription">
+    <value>Rich Text Format</value>
+  </data>
+  <data name="ChartStringId.CmdExportToImagePlaceHolderMenuCaption">
+    <value>Export to Image</value>
+  </data>
+  <data name="ChartStringId.CmdExportToBMPMenuCaption">
+    <value>BMP</value>
+  </data>
+  <data name="ChartStringId.CmdExportToBMPDescription">
+    <value>Bitmap Picture</value>
+  </data>
+  <data name="ChartStringId.CmdExportToGIFMenuCaption">
+    <value>GIF</value>
+  </data>
+  <data name="ChartStringId.CmdExportToGIFDescription">
+    <value>Graphics Interchange Format</value>
+  </data>
+  <data name="ChartStringId.CmdExportToJPEGMenuCaption">
+    <value>JPEG</value>
+  </data>
+  <data name="ChartStringId.CmdExportToJPEGDescription">
+    <value>Joint Photographic Experts Group</value>
+  </data>
+  <data name="ChartStringId.CmdExportToPNGMenuCaption">
+    <value>PNG</value>
+  </data>
+  <data name="ChartStringId.CmdExportToPNGDescription">
+    <value>Portable Network Graphics</value>
+  </data>
+  <data name="ChartStringId.CmdExportToTIFFMenuCaption">
+    <value>TIFF</value>
+  </data>
+  <data name="ChartStringId.CmdExportToTIFFDescription">
+    <value>Tagged Image File Format</value>
+  </data>
+  <data name="ChartStringId.CmdRunWizardMenuCaption">
+    <value>Run Chart Wizard...</value>
+  </data>
+  <data name="ChartStringId.CmdRunWizardDescription">
+    <value>The Chart Wizard is invoked to help you adjust the main chart settings in one place.</value>
+  </data>
+  <data name="ChartStringId.CmdSaveAsTemplateMenuCaption">
+    <value>Save As
+Template</value>
+  </data>
+  <data name="ChartStringId.CmdSaveAsTemplateDescription">
+    <value>Create a template with the same setting as the current chart.</value>
+  </data>
+  <data name="ChartStringId.CmdLoadTemplateMenuCaption">
+    <value>Load
+Template</value>
+  </data>
+  <data name="ChartStringId.CmdLoadTemplateDescription">
+    <value>Load a chart from template</value>
+  </data>
+  <data name="ChartStringId.CmdCreateBarChartPlaceHolderMenuCaption">
+    <value>Column</value>
+  </data>
+  <data name="ChartStringId.CmdCreateBarChartPlaceHolderDescription">
+    <value>Insert a column chart.
+
+Column charts are used to compare values across categories.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateAreaChartPlaceHolderMenuCaption">
+    <value>Area</value>
+  </data>
+  <data name="ChartStringId.CmdCreateAreaChartPlaceHolderDescription">
+    <value>Display the trend of values over time or categories.</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePieChartPlaceHolderMenuCaption">
+    <value>Pie</value>
+  </data>
+  <data name="ChartStringId.CmdCreatePieChartPlaceHolderDescription">
+    <value>Display the contribution of each value to a total.
+
+Use it when the values can be added together or when you have only one data series and all values are positive.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateLineChartPlaceHolderMenuCaption">
+    <value>Line</value>
+  </data>
+  <data name="ChartStringId.CmdCreateLineChartPlaceHolderDescription">
+    <value>Insert a line chart.
+
+Line charts are used to display trends overtime.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateOtherSeriesTypesChartPlaceHolderMenuCaption">
+    <value>Other Charts</value>
+  </data>
+  <data name="ChartStringId.CmdCreateOtherSeriesTypesChartPlaceHolderDescription">
+    <value>Insert a point, funnel, financial, radar, polar, range, or gantt chart.</value>
+  </data>
+  <data name="ChartStringId.CmdCreateRotatedBarChartPlaceHolderMenuCaption">
+    <value>Bar</value>
+  </data>
+  <data name="ChartStringId.CmdCreateRotatedBarChartPlaceHolderDescription">
+    <value>Summarize and display categories of data and compare amounts or values between different categories.</value>
+  </data>
+  <data name="ChartStringId.CmdChangePalettePlaceHolderMenuCaption">
+    <value>Palette</value>
+  </data>
+  <data name="ChartStringId.CmdChangePalettePlaceHolderDescription">
+    <value>Change the palette for the current chart.</value>
+  </data>
+  <data name="ChartStringId.CmdChangeAppearancePlaceHolderMenuCaption">
+    <value>Appearance</value>
+  </data>
+  <data name="ChartStringId.CmdChangeAppearancePlaceHolderDescription">
+    <value>Contain numerous style presets of a chart control to specify its appearance depending on the selected palette.</value>
+  </data>
+  <data name="ChartStringId.CmdColumn2DGroupPlaceHolderMenuCaption">
+    <value>2-D Column</value>
+  </data>
+  <data name="ChartStringId.CmdColumn3DGroupPlaceHolderMenuCaption">
+    <value>3-D Column</value>
+  </data>
+  <data name="ChartStringId.CmdColumnCylinderGroupPlaceHolderMenuCaption">
+    <value>Cylinder</value>
+  </data>
+  <data name="ChartStringId.CmdColumnConeGroupPlaceHolderMenuCaption">
+    <value>Cone</value>
+  </data>
+  <data name="ChartStringId.CmdColumnPyramidGroupPlaceHolderMenuCaption">
+    <value>Pyramid</value>
+  </data>
+  <data name="ChartStringId.CmdLine2DGroupPlaceHolderMenuCaption">
+    <value>2-D Line</value>
+  </data>
+  <data name="ChartStringId.CmdLine3DGroupPlaceHolderMenuCaption">
+    <value>3-D Line</value>
+  </data>
+  <data name="ChartStringId.CmdPie2DGroupPlaceHolderMenuCaption">
+    <value>2-D Pie</value>
+  </data>
+  <data name="ChartStringId.CmdPie3DGroupPlaceHolderMenuCaption">
+    <value>3-D Pie</value>
+  </data>
+  <data name="ChartStringId.CmdBar2DGroupPlaceHolderMenuCaption">
+    <value>2-D Bar</value>
+  </data>
+  <data name="ChartStringId.CmdArea2DGroupPlaceHolderMenuCaption">
+    <value>2-D Area</value>
+  </data>
+  <data name="ChartStringId.CmdArea3DGroupPlaceHolderMenuCaption">
+    <value>3-D Area</value>
+  </data>
+  <data name="ChartStringId.CmdPointGroupPlaceHolderMenuCaption">
+    <value>Point</value>
+  </data>
+  <data name="ChartStringId.CmdFunnelGroupPlaceHolderMenuCaption">
+    <value>Funnel</value>
+  </data>
+  <data name="ChartStringId.CmdFinancialGroupPlaceHolderMenuCaption">
+    <value>Financial</value>
+  </data>
+  <data name="ChartStringId.CmdRadarGroupPlaceHolderMenuCaption">
+    <value>Radar</value>
+  </data>
+  <data name="ChartStringId.CmdPolarGroupPlaceHolderMenuCaption">
+    <value>Polar</value>
+  </data>
+  <data name="ChartStringId.CmdRangeGroupPlaceHolderMenuCaption">
+    <value>Range</value>
+  </data>
+  <data name="ChartStringId.CmdGanttGroupPlaceHolderMenuCaption">
+    <value>Gantt</value>
+  </data>
+  <data name="ChartStringId.RibbonOtherPageCaption">
+    <value>Other</value>
+  </data>
+  <data name="ChartStringId.RibbonDesignPageCaption">
+    <value>Design</value>
+  </data>
+  <data name="ChartStringId.RibbonAppearanceGroupCaption">
+    <value>Appearance</value>
+  </data>
+  <data name="ChartStringId.RibbonTypesGroupCaption">
+    <value>Chart Type</value>
+  </data>
+  <data name="ChartStringId.RibbonWizardGroupCaption">
+    <value>Wizard</value>
+  </data>
+  <data name="ChartStringId.RibbonTemplatesGroupCaption">
+    <value>Templates</value>
+  </data>
+  <data name="ChartStringId.RibbonPrintExportGroupCaption">
+    <value>Print and Export</value>
+  </data>
+  <data name="ChartStringId.RibbonPageCategoryCaption">
+    <value>Chart Tools</value>
+  </data>
+</root>

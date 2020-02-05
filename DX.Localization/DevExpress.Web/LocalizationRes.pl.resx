@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxperienceStringId.Loading">
+    <value>Wczytuję&amp;hellip;</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_All">
+    <value>Wszystko</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_First">
+    <value>Pierwszy</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Prev">
+    <value>Poprzedni</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Next">
+    <value>Następny</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Last">
+    <value>Ostatni</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_SummaryFormat">
+    <value>Strona {0} z {1} ({2} elementów)</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_SummaryAllPagesFormat">
+    <value>Strony: {0} - {1} ({2} elementów)</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerSummaryFormat">
+    <value>Strona {0} z {1}</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerSummaryAllPages">
+    <value>Wszystkie strony</value>
+  </data>
+  <data name="ASPxperienceStringId.DataViewBase_EmptyDataText">
+    <value>Brak danych do wyświetlenia</value>
+  </data>
+  <data name="ASPxperienceStringId.NewsControl_BackToTop">
+    <value>Wróć do góry</value>
+  </data>
+  <data name="ASPxperienceStringId.NewsControl_Page">
+    <value>Strona:</value>
+  </data>
+  <data name="ASPxperienceStringId.PopupControl_CloseButton">
+    <value>[Zamknij]</value>
+  </data>
+  <data name="ASPxperienceStringId.PopupControl_SizeGrip">
+    <value>[Zmień rozmiar]</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_FilterCaption">
+    <value>Filtr:&amp;nbsp;&amp;nbsp;&amp;nbsp;</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_FilterHint">
+    <value>&lt;b&gt;?&lt;/b&gt; = dowolny pojedyńczy znak
+&lt;b&gt;*&lt;/b&gt; = dowolne znaki</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_BackToTop">
+    <value>[Wróć do góry]</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_NoData">
+    <value>Brak danych dla aktualnego kryterium filtrowania</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_RemoveButton">
+    <value>Usuń</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_AddButton">
+    <value>Dodaj</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_UploadButton">
+    <value>Wgraj</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_CancelButton">
+    <value>Anuluj</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_InvalidWindowsPath">
+    <value>Scieżka pliku "{0}" nie jest poprawną scieżką systemu Windows.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_MaxRequestLengthExceeded">
+    <value>Całkowity rozmiar plików zaznaczonych do wgrania przewyższa maksymalną długośc zapytania ({0} Kb) zdefiniowanego przez aplikację.</value>
+  </data>
+</root>

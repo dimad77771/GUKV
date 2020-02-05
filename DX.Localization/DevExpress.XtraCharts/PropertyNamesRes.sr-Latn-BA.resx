@@ -1,0 +1,526 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DevExpress.XtraCharts.SeriesBase.LegendPointOptions" xml:space="preserve">
+    <value>Opcijei tačke legende</value>
+  </data>
+  <data name="DevExpress.XtraCharts.FunnelSeriesLabelPosition.RightColumn" xml:space="preserve">
+    <value>Desna kolona</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Weekday.Sunday" xml:space="preserve">
+    <value>nedjelja</value>
+  </data>
+  <data name="DevExpress.XtraCharts.BubbleSeriesView.Transparency" xml:space="preserve">
+    <value>Transparentnost</value>
+  </data>
+  <data name="DevExpress.XtraCharts.FinancialSeriesViewBase.ReductionOptions" xml:space="preserve">
+    <value>Opcije smanjenja</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Annotation.ShapeFillet" xml:space="preserve">
+    <value>Oblik kojim se puni</value>
+  </data>
+  <data name="DevExpress.XtraCharts.PieSeriesLabel.ColumnIndent" xml:space="preserve">
+    <value>Uvlačenje kolone</value>
+  </data>
+  <data name="DevExpress.XtraCharts.ScrollBarOptions.BarColor" xml:space="preserve">
+    <value>Boja kolone</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisLabel.ResolveOverlappingOptions" xml:space="preserve">
+    <value>Razrješiti opcije preklapanja</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SeriesBase.SeriesPointsSorting" xml:space="preserve">
+    <value>Sortiranje tačaka niza</value>
+  </data>
+  <data name="DevExpress.XtraCharts.XYDiagram.SecondaryAxesY" xml:space="preserve">
+    <value>Dodatna Y-osa</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisBase.DateTimeGridAlignment" xml:space="preserve">
+    <value>Poravnanje datuma/vremena</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SeriesBase.SeriesPointsSortingKey" xml:space="preserve">
+    <value>Ključ sortiranja tačaka niza</value>
+  </data>
+  <data name="DevExpress.XtraCharts.PercentOptions.PercentageAccuracy" xml:space="preserve">
+    <value>Tačnost postotka</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Legend.TextOffset" xml:space="preserve">
+    <value>Uvlačenje teksta</value>
+  </data>
+  <data name="DevExpress.XtraCharts.PointOptions.ValueNumericOptions" xml:space="preserve">
+    <value>Opcije za brojčane vrijednosti</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Bar3DSeriesView.BarDepth" xml:space="preserve">
+    <value>Dubina indikatora</value>
+  </data>
+  <data name="DevExpress.XtraCharts.LineSeriesView.LineMarkerOptions" xml:space="preserve">
+    <value>Opcije oznake crte</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisLabelResolveOverlappingOptions.AllowHide" xml:space="preserve">
+    <value>Dozvoli skrivanje</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SeriesBase.TopNOptions" xml:space="preserve">
+    <value>Prvih N opcija</value>
+  </data>
+  <data name="DevExpress.XtraCharts.ScrollingOptions.UseKeyboard" xml:space="preserve">
+    <value>Koristi tastaturu</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisYCoordinate.Axis" xml:space="preserve">
+    <value>Osa</value>
+  </data>
+  <data name="DevExpress.XtraCharts.PivotGridDataSourceOptions.MaxAllowedPointCountInSeries" xml:space="preserve">
+    <value>Max dozvoljeni broj tačaka u nizu</value>
+  </data>
+  <data name="DevExpress.XtraCharts.BarSeriesView.BarWidth" xml:space="preserve">
+    <value>Širina kolone</value>
+  </data>
+  <data name="DevExpress.XtraCharts.RadarDiagram.AxisX" xml:space="preserve">
+    <value>X-osa</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SideBySideRangeBarSeriesView.BarDistanceFixed" xml:space="preserve">
+    <value>Udaljenost kolone fiksno</value>
+  </data>
+  <data name="DevExpress.XtraCharts.LegendAlignmentHorizontal.RightOutside" xml:space="preserve">
+    <value>Desno van</value>
+  </data>
+  <data name="DevExpress.XtraCharts.DataFilter.ColumnName" xml:space="preserve">
+    <value>Naziv kolone</value>
+  </data>
+  <data name="DevExpress.XtraCharts.DataFilter.Condition" xml:space="preserve">
+    <value>Uslov</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisBase.Range" xml:space="preserve">
+    <value>Raspon</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisXCoordinate.Axis" xml:space="preserve">
+    <value>Osa</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisRange.MinValueInternal" xml:space="preserve">
+    <value>Minimalna vrijednost interna</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisBase.NumericOptions" xml:space="preserve">
+    <value>Numeričke opcije</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisRange.MaxValueInternal" xml:space="preserve">
+    <value>Maksimalna vrijednost interna</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisBase.DateTimeMeasureUnit" xml:space="preserve">
+    <value>Jedinica mjere datuma/vremena</value>
+  </data>
+  <data name="DevExpress.XtraCharts.LegendAlignmentVertical.BottomOutside" xml:space="preserve">
+    <value>Dolje van</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Bar3DModel.Cone" xml:space="preserve">
+    <value>Konus</value>
+  </data>
+  <data name="DevExpress.XtraCharts.DashStyle.DashDot" xml:space="preserve">
+    <value>Crta Tačka</value>
+  </data>
+  <data name="DevExpress.XtraCharts.TickmarksBase.CrossAxis" xml:space="preserve">
+    <value>Ukrštanje osa</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisLabelResolveOverlappingOptions.AllowStagger" xml:space="preserve">
+    <value>Dozvoli cik-cak</value>
+  </data>
+  <data name="DevExpress.XtraCharts.XYDiagram.AxisY" xml:space="preserve">
+    <value>Y-osa</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Annotation.ShapePosition" xml:space="preserve">
+    <value>Pozicija oblika</value>
+  </data>
+  <data name="DevExpress.XtraCharts.PieExplodeMode.UsePoints" xml:space="preserve">
+    <value>Koristi tačke</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Axis.ScaleBreakOptions" xml:space="preserve">
+    <value>Opcije prekida skaliranja</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SideBySideStackedBarSeriesView.BarDistance" xml:space="preserve">
+    <value>Udaljenost kolone</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Annotation.AnchorPoint" xml:space="preserve">
+    <value>Tačka učvršćivanja</value>
+  </data>
+  <data name="DevExpress.XtraCharts.XYDiagram3D.AxisY" xml:space="preserve">
+    <value>Y-osa</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Axis2D.InterlacedFillStyle" xml:space="preserve">
+    <value>Isprepleteni stil ispune</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SideBySideRangeBarSeriesView.BarDistance" xml:space="preserve">
+    <value>Udaljenost kolone</value>
+  </data>
+  <data name="DevExpress.XtraCharts.ResolveOverlappingMode.JustifyAroundPoint" xml:space="preserve">
+    <value>Poravnaj obostrano oko tačke</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Diagram3D.ScrollingOptions" xml:space="preserve">
+    <value>Opcije pomicanja</value>
+  </data>
+  <data name="DevExpress.XtraCharts.PieSeriesLabelPosition.TwoColumns" xml:space="preserve">
+    <value>Dve kolone</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AutoScaleBreaks.MaxCount" xml:space="preserve">
+    <value>Maksimalan broj</value>
+  </data>
+  <data name="DevExpress.XtraCharts.GanttSeriesView.LinkOptions" xml:space="preserve">
+    <value>Opcije za linkove</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisLabel.Angle" xml:space="preserve">
+    <value>Ugao</value>
+  </data>
+  <data name="DevExpress.XtraCharts.ZoomingOptions.UseKeyboardWithMouse" xml:space="preserve">
+    <value>Koristi tastaturu s mišem</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Bar3DSeriesView.BarWidth" xml:space="preserve">
+    <value>Širina indikatora</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisBase.GridSpacingAuto" xml:space="preserve">
+    <value>Automatski prored rešetke</value>
+  </data>
+  <data name="DevExpress.XtraCharts.FreePosition.InnerIndents" xml:space="preserve">
+    <value>Unutrašnje uvlačenje</value>
+  </data>
+  <data name="DevExpress.XtraCharts.LegendAlignmentVertical.TopOutside" xml:space="preserve">
+    <value>Gore van</value>
+  </data>
+  <data name="DevExpress.XtraCharts.XYDiagram.SecondaryAxesX" xml:space="preserve">
+    <value>Dodatna X-osa</value>
+  </data>
+  <data name="DevExpress.XtraCharts.FibonacciIndicator.BaseLevelLineStyle" xml:space="preserve">
+    <value>Stil linije osnovnog nivoa</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SideBySideStackedBarSeriesView.BarDistanceFixed" xml:space="preserve">
+    <value>Udaljenost kolone fiksno</value>
+  </data>
+  <data name="DevExpress.XtraCharts.TickmarksBase.MinorLength" xml:space="preserve">
+    <value>Pomoćna dužina</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisRange.MinValue" xml:space="preserve">
+    <value>Minimalna vrijednost</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisBase.WorkdaysOptions" xml:space="preserve">
+    <value>Osobine radnih dana</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Annotation.RuntimeRotation" xml:space="preserve">
+    <value>Rotacija u toku rada</value>
+  </data>
+  <data name="DevExpress.XtraCharts.FillStyleBase.Options" xml:space="preserve">
+    <value>Opcije</value>
+  </data>
+  <data name="DevExpress.XtraCharts.ResolveOverlappingMode.JustifyAllAroundPoint" xml:space="preserve">
+    <value>Poravnaj sve obostrano oko tačke</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SideBySideFullStackedBarSeriesView.BarDistanceFixed" xml:space="preserve">
+    <value>Udaljenost kolone fiksno</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Annotation.RuntimeAnchoring" xml:space="preserve">
+    <value>Priključivanje u toku rada</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Legend.VerticalIndent" xml:space="preserve">
+    <value>Okomito uvlačenje</value>
+  </data>
+  <data name="DevExpress.XtraCharts.ZoomingOptions.UseKeyboard" xml:space="preserve">
+    <value>Koristi tastaturu</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SideBySideBarSeriesView.BarDistanceFixed" xml:space="preserve">
+    <value>Udaljenost kolone fiksna</value>
+  </data>
+  <data name="DevExpress.XtraCharts.XYDiagramSeriesViewBase.AxisX" xml:space="preserve">
+    <value>X-osa</value>
+  </data>
+  <data name="DevExpress.XtraCharts.PaneAnchorPoint.AxisYCoordinate" xml:space="preserve">
+    <value>Koordinata Y-ose</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AreaSeriesViewBase.Transparency" xml:space="preserve">
+    <value>Transparentnost</value>
+  </data>
+  <data name="DevExpress.XtraCharts.DateTimeMeasurementUnit.Week" xml:space="preserve">
+    <value>Sedmica</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Bar3DModel.Cylinder" xml:space="preserve">
+    <value>Valjak</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SimplePointOptions.PercentOptions" xml:space="preserve">
+    <value>Opcije postotka</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SideBySideGanttSeriesView.BarDistance" xml:space="preserve">
+    <value>Udaljenost kolone</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SideBySideGanttSeriesView.BarDistanceFixed" xml:space="preserve">
+    <value>Udaljenost kolone fiksno</value>
+  </data>
+  <data name="DevExpress.XtraCharts.FullStackedPointOptions.PercentOptions" xml:space="preserve">
+    <value>Opcije postotka</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Relation.ChildPoint" xml:space="preserve">
+    <value>Tačka djeteta</value>
+  </data>
+  <data name="DevExpress.XtraCharts.DashStyle.Dot" xml:space="preserve">
+    <value>Tačka</value>
+  </data>
+  <data name="DevExpress.XtraCharts.RadarDiagram.StartAngleInDegrees" xml:space="preserve">
+    <value>Početni ugao u uglovima</value>
+  </data>
+  <data name="DevExpress.XtraCharts.FreePosition.DockCorner" xml:space="preserve">
+    <value>Usidri u ugao</value>
+  </data>
+  <data name="DevExpress.XtraCharts.PaneAnchorPoint.Pane" xml:space="preserve">
+    <value>Panel</value>
+  </data>
+  <data name="DevExpress.XtraCharts.XYDiagram.AxisX" xml:space="preserve">
+    <value>X-osa</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Annotation.LabelMode" xml:space="preserve">
+    <value>Vrsta oznaka</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Annotation.RuntimeMoving" xml:space="preserve">
+    <value>Pomjeranje u toku rada</value>
+  </data>
+  <data name="DevExpress.XtraCharts.XYDiagramSeriesViewBase.AxisY" xml:space="preserve">
+    <value>Y-osa</value>
+  </data>
+  <data name="DevExpress.XtraCharts.XYDiagram3D.AxisX" xml:space="preserve">
+    <value>X-osa</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SideBySideBar3DSeriesView.BarDistance" xml:space="preserve">
+    <value>Udaljenost kolone</value>
+  </data>
+  <data name="DevExpress.XtraCharts.FunnelSeriesLabelPosition.LeftColumn" xml:space="preserve">
+    <value>Lijeva kolona</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisLabelResolveOverlappingOptions.AllowRotate" xml:space="preserve">
+    <value>Dozvoli rotiranje</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Pie3DSeriesView.PieFillStyle" xml:space="preserve">
+    <value>Način punjenja pite</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Annotation.ZOrder" xml:space="preserve">
+    <value>Z-redoslijed</value>
+  </data>
+  <data name="DevExpress.XtraCharts.NumericFormat.General" xml:space="preserve">
+    <value>Opšte</value>
+  </data>
+  <data name="DevExpress.XtraCharts.DockableTitle.Indent" xml:space="preserve">
+    <value>Uvlačenje</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SeriesLabelBase.LineLength" xml:space="preserve">
+    <value>Dužina crte</value>
+  </data>
+  <data name="DevExpress.XtraCharts.RelativePosition.ConnectorLength" xml:space="preserve">
+    <value>Dužina konektora</value>
+  </data>
+  <data name="DevExpress.XtraCharts.PieSeriesLabelPosition.Inside" xml:space="preserve">
+    <value>Unutra</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SideBySideStackedBar3DSeriesView.BarDistanceFixed" xml:space="preserve">
+    <value>Udaljenost kolonefiksno</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Axis2D.VisibilityInPanes" xml:space="preserve">
+    <value>Vidljiv u panelima</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SideBySideStackedBar3DSeriesView.BarDistance" xml:space="preserve">
+    <value>Udaljenost kolone </value>
+  </data>
+  <data name="DevExpress.XtraCharts.ShapeKind.Rectangle" xml:space="preserve">
+    <value>Pravougaonik</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisRange.SideMarginsEnabled" xml:space="preserve">
+    <value>Omogućavanje bočne margine</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisBase.MinorCount" xml:space="preserve">
+    <value>Pomoćni zbir</value>
+  </data>
+  <data name="DevExpress.XtraCharts.XYDiagram3D.SeriesIndentFixed" xml:space="preserve">
+    <value>Uvlačenje niza (fiksno)</value>
+  </data>
+  <data name="DevExpress.XtraCharts.BarSeriesLabel.Indent" xml:space="preserve">
+    <value>Uvlačenje</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SideBySideFullStackedBarSeriesView.BarDistance" xml:space="preserve">
+    <value>Udaljenost kolone</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisLabel.MaxWidth" xml:space="preserve">
+    <value>Maksimalna širina</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Bar3DSeriesView.BarDepthAuto" xml:space="preserve">
+    <value>Automatska dubina indikatora</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Legend.HorizontalIndent" xml:space="preserve">
+    <value>Vodoravno uvlačenje</value>
+  </data>
+  <data name="DevExpress.XtraCharts.NumericFormat.FixedPoint" xml:space="preserve">
+    <value>Fiksna tačka</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisLabel.MaxLineCount" xml:space="preserve">
+    <value>Maksimalni broj linija</value>
+  </data>
+  <data name="DevExpress.XtraCharts.RadarDiagramDrawingStyle.Polygon" xml:space="preserve">
+    <value>Poligon</value>
+  </data>
+  <data name="DevExpress.XtraCharts.TaskLinkOptions.MinIndent" xml:space="preserve">
+    <value>Min uvlačenje</value>
+  </data>
+  <data name="DevExpress.XtraCharts.ScrollBarOptions.BarThickness" xml:space="preserve">
+    <value>Debljina kolone</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SideBySideFullStackedBar3DSeriesView.BarDistanceFixed" xml:space="preserve">
+    <value>Udaljenost kolone fiksno</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Annotation.ShapeKind" xml:space="preserve">
+    <value>Vrsta oblika</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Axis3D.InterlacedFillStyle" xml:space="preserve">
+    <value>Isprepleteni stil ispune</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisRange.MaxValue" xml:space="preserve">
+    <value>Maksimalna vrijednost</value>
+  </data>
+  <data name="DevExpress.XtraCharts.PointOptions.ArgumentNumericOptions" xml:space="preserve">
+    <value>Opcije za brojčane argumente</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisXBase.DateTimeScaleMode" xml:space="preserve">
+    <value>Model skaliranja datum/vrijeme</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisLabel.EnableAntialiasing" xml:space="preserve">
+    <value>Uključiti Antialiasing</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AreaSeriesViewBase.MarkerOptions" xml:space="preserve">
+    <value>Osobine markera</value>
+  </data>
+  <data name="DevExpress.XtraCharts.RadarDiagram.AxisY" xml:space="preserve">
+    <value>Y-osa</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SideBySideFullStackedBar3DSeriesView.BarDistance" xml:space="preserve">
+    <value>Udaljenost kolone</value>
+  </data>
+  <data name="DevExpress.XtraCharts.LegendAlignmentHorizontal.LeftOutside" xml:space="preserve">
+    <value>Lijevo van</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Diagram3D.ZoomingOptions" xml:space="preserve">
+    <value>Opcije zumiranja</value>
+  </data>
+  <data name="DevExpress.XtraCharts.RelativePosition.Angle" xml:space="preserve">
+    <value>Ugao</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisLabel.ResolveOverlappingMode" xml:space="preserve">
+    <value>Razrješiti vrstu preklapanja</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Annotation.Angle" xml:space="preserve">
+    <value>Ugao</value>
+  </data>
+  <data name="DevExpress.XtraCharts.FreePosition.OuterIndents" xml:space="preserve">
+    <value>Vanjsko uvlačenje</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SideBySideBarSeriesView.BarDistance" xml:space="preserve">
+    <value>Udaljenost kolone</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisLabelResolveOverlappingOptions.MinIndent" xml:space="preserve">
+    <value>Minimalno uvlačenje</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SeriesPointFilter.Condition" xml:space="preserve">
+    <value>Uslov</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisLabel.ResolveOverlappingMinIndent" xml:space="preserve">
+    <value>Razrješiti minimalno uvlačenje preklapanja</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SeriesPointAnchorPoint.SeriesPoint" xml:space="preserve">
+    <value>Tačka niza</value>
+  </data>
+  <data name="DevExpress.XtraCharts.PointOptions.ValueDateTimeOptions" xml:space="preserve">
+    <value>Opcije DateTime vrijednosti</value>
+  </data>
+  <data name="DevExpress.XtraCharts.PaneAnchorPoint.AxisXCoordinate" xml:space="preserve">
+    <value>Koordinata X-ose</value>
+  </data>
+  <data name="DevExpress.XtraCharts.DashStyle.DashDotDot" xml:space="preserve">
+    <value>Crta Tačka Tačka</value>
+  </data>
+  <data name="DevExpress.XtraCharts.BubbleSeriesView.BubbleMarkerOptions" xml:space="preserve">
+    <value>Opcije izrade mjehurića</value>
+  </data>
+  <data name="DevExpress.XtraCharts.SideBySideBar3DSeriesView.BarDistanceFixed" xml:space="preserve">
+    <value>Udaljenost kolone fiksno</value>
+  </data>
+  <data name="DevExpress.XtraCharts.MarkerKind.Cross" xml:space="preserve">
+    <value>Krst</value>
+  </data>
+  <data name="DevExpress.XtraCharts.PointSeriesLabel.Angle" xml:space="preserve">
+    <value>Ugao</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Annotation.RuntimeResizing" xml:space="preserve">
+    <value>Izmjena veličine u toku rada</value>
+  </data>
+  <data name="DevExpress.XtraCharts.WorkdaysOptions.ExactWorkdays" xml:space="preserve">
+    <value>Tačni radni dani</value>
+  </data>
+  <data name="DevExpress.XtraCharts.FibonacciIndicator.BaseLevelColor" xml:space="preserve">
+    <value>Boja osnovnog nivoa</value>
+  </data>
+  <data name="DevExpress.XtraCharts.AxisBase.DateTimeOptions" xml:space="preserve">
+    <value>Opcije za datum/vrijeme</value>
+  </data>
+  <data name="DevExpress.XtraCharts.PointView.Undefined" xml:space="preserve">
+    <value>Nedefinisano</value>
+  </data>
+  <data name="DevExpress.XtraCharts.Weekday.Saturday" xml:space="preserve">
+    <value>subota</value>
+  </data>
+  <data name="DevExpress.XtraCharts.RangeBarSeriesLabel.Indent" xml:space="preserve">
+    <value>Uvlačenje</value>
+  </data>
+</root>

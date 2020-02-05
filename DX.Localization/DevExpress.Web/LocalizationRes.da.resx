@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxperienceStringId.UploadControl_NotAllowedContentTypes">
+    <value>Indholdstypen er ikke tilladt</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Filter">
+    <value>Filtre med:</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_FilterHint">
+    <value>&lt;b&gt;?&lt;/b&gt; = Angiv et enkelt tegn
+&lt;b&gt;*&lt;/b&gt; = Angiv et eller flere tegn</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_SummaryFormat">
+    <value>Side {0} af {1} ({2} emner)</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_MovePopupHeader">
+    <value>Vælg destinationsmappen</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Prev">
+    <value>Tidligere</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbCreate">
+    <value>Opret (F7)</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Cancel">
+    <value>Afbryd</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorWrongExtension">
+    <value>Fil typen er ikke tilladt. Udførelsen kan ikke gennemføres</value>
+  </data>
+  <data name="ASPxperienceStringId.TreeView_AltExpand">
+    <value>Udvid</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_DeleteConfirm">
+    <value>Er du sikker på at slette '{0}'?</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerSummaryFormat">
+    <value>Side {0} af {1}</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_CancelButton">
+    <value>Afbryd</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_UploadWasCanceledError">
+    <value>Fil upload blev afbrydt.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Folder">
+    <value>Mappe</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_BackToTop">
+    <value>[Tilbage til Top]</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorRootFolderNotSpecified">
+    <value>Drev bogstav er ikke angivet eller findes ikke</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_InvalidWindowsPath">
+    <value>Fil stien "{0}" er ikke en valid Windows sti.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorUploadSeveralFiles">
+    <value>Upload kan ikke gennemføres for {0} af {1} filer</value>
+  </data>
+  <data name="ASPxperienceStringId.NewsControl_BackToTop">
+    <value>Til top</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbRefresh">
+    <value>Opfrisk</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_NoData">
+    <value>Ingen data for dette filter kriterie</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_SelectedSeveralFiles">
+    <value>{0} filer er valgt til upload</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_EnctypeError">
+    <value>Fil uploading fejler, da form'ens enctype attribute ikke er sat til 'multipart/form-data'</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_AccessDeniedError">
+    <value>Adgang til Server sti "{0}" er nægtet. Grunden kan skyldes manglende rettigheder til at skrive filer i denne (eller overordnet) mappe.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorNoAccess">
+    <value>Adgang nægtet. Udførelsen kan ikke gennemføres</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorInvalidSymbols">
+    <value>Navnet indeholde ugyldige tegn. Udførelsen kan ikke gennemføres</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorThumbnail">
+    <value>Ingen adgang til thumbnail mappe</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_First">
+    <value>Første</value>
+  </data>
+  <data name="ASPxperienceStringId.PopupControl_SizeGrip">
+    <value>[Størrelse]</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorUsedByAnotherProcess">
+    <value>Udførelsen kan ikke gennemføres, da filen eller mappen anvendes af en anden proces</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Next">
+    <value>Næste</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbRename">
+    <value>Omdåb (F2)</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorAccessProhibited">
+    <value>Adgang nægtet. Udførelsen kan ikke gennemføres
+</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_FolderLocked">
+    <value>Låst for upload</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_AddButton">
+    <value>Tilføj</value>
+  </data>
+  <data name="ASPxperienceStringId.DataViewBase_EmptyDataText">
+    <value>Intet indhold for visning</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorNameCannotBeEmpty">
+    <value>Fil eller mappe navn kan ikke være blank</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_SummaryAllPagesFormat">
+    <value>Sider: {0} - {1} ({2} emner)</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_SilverlightPluginLink">
+    <value>Venligst installer &lt;a href="{0}"&gt;Microsoft Silverlight v3 eller senere&lt;/a&gt; for at se dette indhold og mulighed for upload filer.</value>
+  </data>
+  <data name="ASPxperienceStringId.TreeView_AltCollapse">
+    <value>Skjul</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorFolderNotFound">
+    <value>Mappe ikke fundet</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerSummaryAllPages">
+    <value>Alle sider</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbMove">
+    <value>Flyt (F6)</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorAlreadyExists">
+    <value>Fl eller mappe findes allerede</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_RemoveButton">
+    <value>Fjern</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_NotAllowedFileExtension">
+    <value>Filtypen er ikke tilladt</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorOther">
+    <value>Uspecifik fejl</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorFileNotFound">
+    <value>Filen ikke fundet</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Path">
+    <value>Sti:</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorIO">
+    <value>Uspecifik IO fejl. Udførelsen kan ikke gennemføres</value>
+  </data>
+  <data name="ASPxperienceStringId.PopupControl_CloseButton">
+    <value>[Luk]</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbDelete">
+    <value>Slet (Del)</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_ClearFileSelectionButtonToolTip">
+    <value>Slet valg</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_GeneralError">
+    <value>Fil upload fejlede på grund af en extern fejl</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_MultiSelection">
+    <value>Bemærk! 
+
+Følgende {0} filer er ugyldige, da de overskrider den tilladte filstørrelse ({1}) eller filtypen ikke er tilladt. Disse filer er fjernet fra valgte filer, så de ikke vil blive uploaded. 
+
+{2}</value>
+  </data>
+  <data name="ASPxperienceStringId.NewsControl_Page">
+    <value>Side:</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_FileDoesNotExistError">
+    <value>Uploading fil findes ikke</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Last">
+    <value>Sidste</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_MaxSize">
+    <value>Filstørrelsen overskrider den maximale filestørrelse som er {0} bytes</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_UnspecifiedError">
+    <value>Serveren fejlede med en intern unspefik fejl, som bevirker at udførelsen ikke kan gennemføres.</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_All">
+    <value>Alle</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_FilterCaption">
+    <value>Filtrer:&amp;nbsp;&amp;nbsp;&amp;nbsp;</value>
+  </data>
+</root>

@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxGridViewStringId.GroupPanel" xml:space="preserve">
+    <value>(Agrupar) Arraste o cabeçalho de uma coluna para aqui</value>
+  </data>
+  <data name="ASPxGridViewStringId.EmptyDataRow" xml:space="preserve">
+    <value>Sem dados</value>
+  </data>
+  <data name="ASPxGridViewStringId.EmptyHeaders" xml:space="preserve">
+    <value>Arraste uma coluna para aqui...</value>
+  </data>
+  <data name="ASPxGridViewStringId.ConfirmDelete" xml:space="preserve">
+    <value>Confirma eliminação?</value>
+  </data>
+  <data name="ASPxGridViewStringId.GroupContinuedOnNextPage" xml:space="preserve">
+    <value>(Continua na próxima página)</value>
+  </data>
+  <data name="ASPxGridViewStringId.CustomizationWindowCaption" xml:space="preserve">
+    <value>Personalizar</value>
+  </data>
+  <data name="ASPxGridViewStringId.PopupEditFormCaption" xml:space="preserve">
+    <value>Editar Formulário</value>
+  </data>
+  <data name="ASPxGridViewStringId.HeaderFilterShowAllItem" xml:space="preserve">
+    <value>(Todos)</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandEdit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandNew" xml:space="preserve">
+    <value>Novo</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandDelete" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandSelect" xml:space="preserve">
+    <value>Selecionar</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandUpdate" xml:space="preserve">
+    <value>Gravar</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandClearFilter" xml:space="preserve">
+    <value>Limpar</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterBeginsWith" xml:space="preserve">
+    <value>Começa com</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterContains" xml:space="preserve">
+    <value>Contém</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterEndsWith" xml:space="preserve">
+    <value>Termina com</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterEquals" xml:space="preserve">
+    <value>Igual</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterGreater" xml:space="preserve">
+    <value>Maior que</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterGreaterOrEqual" xml:space="preserve">
+    <value>Maior ou igual a</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterLess" xml:space="preserve">
+    <value>Menor que</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterLessOrEqual" xml:space="preserve">
+    <value>Menor ou igual a</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterNotEqual" xml:space="preserve">
+    <value>Diferente</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_HeaderFilterButton" xml:space="preserve">
+    <value>[Filtro]</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_HeaderFilterButtonActive" xml:space="preserve">
+    <value>[Filtrado]</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_SortedAscending" xml:space="preserve">
+    <value>(Ascendente)</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_SortedDescending" xml:space="preserve">
+    <value>(Descendente)</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_DragAndDropHideColumnIcon" xml:space="preserve">
+    <value>Ocultar</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_Expand" xml:space="preserve">
+    <value>[Expandir]</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_Collapse" xml:space="preserve">
+    <value>[Contrair]</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_FilterRowButton" xml:space="preserve">
+    <value>[Condição]</value>
+  </data>
+  <data name="ASPxGridViewStringId.Checked" xml:space="preserve">
+    <value>Marcado</value>
+  </data>
+  <data name="ASPxGridViewStringId.Unchecked" xml:space="preserve">
+    <value>Desmarcado</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_Older" xml:space="preserve">
+    <value>Mais Antigos</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_LastMonth" xml:space="preserve">
+    <value>Último Mês</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_EarlierThisMonth" xml:space="preserve">
+    <value>Ínicio do mês</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_ThreeWeeksAgo" xml:space="preserve">
+    <value>3 semanas atrás</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_TwoWeeksAgo" xml:space="preserve">
+    <value>2 semanas atrás</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_LastWeek" xml:space="preserve">
+    <value>Última Semana</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_Yesterday" xml:space="preserve">
+    <value>Ontem</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_Today" xml:space="preserve">
+    <value>Hoje</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_Tomorrow" xml:space="preserve">
+    <value>Amanhã</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_NextWeek" xml:space="preserve">
+    <value>Próxima Semana</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_TwoWeeksAway" xml:space="preserve">
+    <value>Daqui a 2 semanas</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_ThreeWeeksAway" xml:space="preserve">
+    <value>Daqui a 3 semanas</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_LaterThisMonth" xml:space="preserve">
+    <value>Final do Mês</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_NextMonth" xml:space="preserve">
+    <value>Próximo Mês</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_BeyondNextMonth" xml:space="preserve">
+    <value>Depois do próximo mês</value>
+  </data>
+</root>

@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DevExpress.XtraReports.UI.SummaryRunning.Report" xml:space="preserve">
+    <value>Izvještaj</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRSummaryEvents.OnRowChanged" xml:space="preserve">
+    <value>Red promjenjen</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGrid" xml:space="preserve">
+    <value>Zaokretna tabela</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.PreviewRowCount" xml:space="preserve">
+    <value>Broj redova za pregled</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRTableRow" xml:space="preserve">
+    <value>Red tabele</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRShape.Angle" xml:space="preserve">
+    <value>Ugao</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.PivotGridDataSourceOptions" xml:space="preserve">
+    <value>Opcije izvora podataka zaokretne tablice</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.GroupHeaderBand.GroupUnion" xml:space="preserve">
+    <value>Unija grupe</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChartScripts.OnCustomDrawAxisLabel" xml:space="preserve">
+    <value>Prilagođeno iscrtavanje oznake ose</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport" xml:space="preserve">
+    <value>Izvještaj</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.ReportHeaderBand" xml:space="preserve">
+    <value>Zaglavlje izvještaja</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.MultiColumnMode.UseColumnCount" xml:space="preserve">
+    <value>Koristi broj kolona</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRCrossBandLine" xml:space="preserve">
+    <value>Cross-band linija</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.GroupHeaderBandScripts.OnSortingSummaryRowChanged" xml:space="preserve">
+    <value>Promjenjen red sažetka sortiranja</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.DesignerOptions" xml:space="preserve">
+    <value>Opcije dizajnera</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FormattingRule.Condition" xml:space="preserve">
+    <value>Uslov</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGrid.OptionsPrint" xml:space="preserve">
+    <value>Opcije ispisa</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGrid.OptionsView" xml:space="preserve">
+    <value>Opcije prikaza</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.PrinterName" xml:space="preserve">
+    <value>Naziv štampača</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRRichTextBoxBase.Multiline" xml:space="preserve">
+    <value>Više redova</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.ReportFooterBand" xml:space="preserve">
+    <value>Podnožje izvještaja</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRCrossBandControl.StartPoint" xml:space="preserve">
+    <value>Polazna tačka</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.MultiColumnMode.UseColumnWidth" xml:space="preserve">
+    <value>Koristi širinu kolona</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.DefaultPrinterSettingsUsing" xml:space="preserve">
+    <value>Koristim postavke standardnog štampača</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.MultiColumn.Mode" xml:space="preserve">
+    <value>Tip</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRBinding.PropertyName" xml:space="preserve">
+    <value>Naziv osobine</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.MultiColumn.ColumnSpacing" xml:space="preserve">
+    <value>Prored kolona</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.GroupFooterBand.GroupUnion" xml:space="preserve">
+    <value>Unija grupe</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChartScripts.OnCustomDrawSeriesPoint" xml:space="preserve">
+    <value>Prilagođeno iscrtavanje tačaka niza</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRLabel.Multiline" xml:space="preserve">
+    <value>Više redova</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRCrossBandControl.EndPoint" xml:space="preserve">
+    <value>Kraj tačke</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.DrawGrid" xml:space="preserve">
+    <value>Nacrtaj tabelu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRCrossBandBox" xml:space="preserve">
+    <value>Cross-band okvir</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRTable" xml:space="preserve">
+    <value>Tabela</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRLabel.Angle" xml:space="preserve">
+    <value>Ugao</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReportScripts.OnDataSourceRowChanged" xml:space="preserve">
+    <value>Promjenjen red izvora podataka</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.ExportOptions" xml:space="preserve">
+    <value>Opcije izvoza</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.ShowPreviewMarginLines" xml:space="preserve">
+    <value>Prikaži linije margina u pregledu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.MultiColumn.ColumnWidth" xml:space="preserve">
+    <value>Širina kolona</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.MultiColumn.ColumnCount" xml:space="preserve">
+    <value>Broj kolona</value>
+  </data>
+</root>

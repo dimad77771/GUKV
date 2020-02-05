@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+	<value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+	<value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+	<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+	<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxperienceStringId.Loading">
+    <value>Caricamento&amp;hellip;</value>
+  </data>
+	<data name="ASPxperienceStringId.Pager_All">
+    <value>Tutti</value>
+  </data>
+	<data name="ASPxperienceStringId.Pager_First">
+    <value>Primo</value>
+  </data>
+	<data name="ASPxperienceStringId.Pager_Prev">
+    <value>Precedente</value>
+  </data>
+	<data name="ASPxperienceStringId.Pager_Next">
+    <value>Successivo</value>
+  </data>
+	<data name="ASPxperienceStringId.Pager_Last">
+    <value>Ultimo</value>
+  </data>
+	<data name="ASPxperienceStringId.Pager_SummaryFormat">
+    <value>Pagina {0} di {1} ({2} oggetti)</value>
+  </data>
+	<data name="ASPxperienceStringId.Pager_SummaryAllPagesFormat">
+    <value>Pagine: {0} - {1} ({2} oggetti)</value>
+  </data>
+	<data name="ASPxperienceStringId.DataView_PagerSummaryFormat">
+    <value>Pagina {0} di {1}</value>
+  </data>
+	<data name="ASPxperienceStringId.DataView_PagerSummaryAllPages">
+    <value>Tutte le pagine</value>
+  </data>
+	<data name="ASPxperienceStringId.DataViewBase_EmptyDataText">
+    <value>Non ci sono dati da visualizzare</value>
+  </data>
+	<data name="ASPxperienceStringId.NewsControl_BackToTop">
+    <value>Torna in cima</value>
+  </data>
+	<data name="ASPxperienceStringId.NewsControl_Page">
+    <value>Pagina:</value>
+  </data>
+	<data name="ASPxperienceStringId.PopupControl_CloseButton">
+    <value>[Chiudi]</value>
+  </data>
+	<data name="ASPxperienceStringId.PopupControl_SizeGrip">
+    <value>[Ridimensiona]</value>
+  </data>
+	<data name="ASPxperienceStringId.TitleIndex_FilterCaption">
+    <value>Filtro:&amp;nbsp;&amp;nbsp;&amp;nbsp;</value>
+  </data>
+	<data name="ASPxperienceStringId.TitleIndex_FilterHint">
+    <value>&lt;b&gt;?&lt;/b&gt; = ogni singolo carattere
+&lt;b&gt;*&lt;/b&gt; = ogni carattere</value>
+  </data>
+	<data name="ASPxperienceStringId.TitleIndex_BackToTop">
+    <value>[Torna all'inizio]</value>
+  </data>
+	<data name="ASPxperienceStringId.TitleIndex_NoData">
+    <value>Non ci sono dati con i criteri specificati</value>
+  </data>
+	<data name="ASPxperienceStringId.UploadControl_RemoveButton">
+    <value>Rimuovi</value>
+  </data>
+	<data name="ASPxperienceStringId.UploadControl_UploadButton">
+    <value>Carica</value>
+  </data>
+	<data name="ASPxperienceStringId.UploadControl_CancelButton">
+    <value>Annulla</value>
+  </data>
+	<data name="ASPxperienceStringId.UploadControl_InvalidWindowsPath">
+    <value>Il percorso "{0}" non è un percorso Windows valido.</value>
+  </data>
+	<data name="ASPxperienceStringId.UploadControl_MaxRequestLengthExceeded">
+		<value>La lunghezza totale del contenuto dei file selezionati per il caricamento eccede la dimensione massima consentita ({0} KB) consentita dall'applicazione.</value>
+	</data>
+	<data name="ASPxperienceStringId.UploadControl_AddButton">
+		<value>Aggiungi</value>
+	</data>
+	<data name="ASPxperienceStringId.UploadControl_MaxSize">
+		<value>La dimensione del file è superiore al massimo consentito di {0} byte</value>
+	</data>
+	<data name="ASPxperienceStringId.UploadControl_GeneralError">
+		<value>Il caricamento del file è fallito; si è verificato un errore esterno alle funzionalità del controllo ASPxUploadControl</value>
+	</data>
+	<data name="ASPxperienceStringId.UploadControl_EnctypeError">
+		<value>Il caricamento del file non è riuscito perché l'attributo 'enctype' del form non è impostato a 'multipart/form-data'</value>
+	</data>
+	<data name="ASPxperienceStringId.UploadControl_NotAllowedContentTypes">
+		<value>Il tipo di file non è consentito</value>
+	</data>
+	<data name="ASPxperienceStringId.UploadControl_NotAllowedFileExtension">
+		<value>L'estensione specificata non è consentita</value>
+	</data>
+	<data name="ASPxperienceStringId.UploadControl_FileDoesNotExistError">
+		<value>Il file caricato non esiste</value>
+	</data>
+	<data name="ASPxperienceStringId.TreeView_AltExpand">
+		<value>Espandi</value>
+	</data>
+	<data name="ASPxperienceStringId.TreeView_AltCollapse">
+		<value>Collassa</value>
+	</data>
+	<data name="ASPxperienceStringId.TreeView_AltLoading">
+		<value>Carica</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManager_FolderLocked">
+		<value>Bloccato per caricare</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManager_Folder">
+		<value>Cartella</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManager_Filter">
+		<value>Filtra per:</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManager_Path">
+		<value>Percorso:</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManager_TbCreate">
+		<value>Crea</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManager_TbRename">
+		<value>Rinomina (F2)</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManager_TbMove">
+		<value>Muovi (F6)</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManager_TbDelete">
+		<value>Elimina (Del)</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManager_TbRefresh">
+		<value>Aggiorna</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManager_DeleteConfirm">
+		<value>Sei sicuro di voler eliminare '{0}'?</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManager_MovePopupHeader">
+		<value>Seleziona la cartella di destinazione</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManager_Ok">
+		<value>Ok</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManager_Cancel">
+		<value>Annulla</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManager_ErrorNoAccess">
+		<value>Accesso negato. L'operazione non può essere completata</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManager_ErrorIO">
+		<value>Errore I/O non specificato</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManager_ErrorFileNotFound">
+		<value>File non trovato</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManager_ErrorFolderNotFound">
+		<value>Cartella non trovata</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManager_ErrorOther">
+		<value>Errore non specificato</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManager_ErrorTypeNewName">
+		<value>Inserisci il nuovo nome</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManager_ErrorInvalidSymbols">
+		<value>Il nome contiene caratteri non validi. L'operazione non può essere completata.</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManager_ErrorWrongExtension">
+		<value>L'estensione del file non è accettata. L'operazione non può essere completata.</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManager_ErrorAlreadyExists">
+		<value>Il file o la cartella specificata esistono di già</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManagerActionList_AllowDelete">
+		<value>Consenti la cancellazione di file e cartelle</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManagerActionList_AllowMove">
+		<value>Consenti lo spostamento di file e cartelle</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManagerActionList_AllowRename">
+		<value>Consenti di rinominare file e cartelle</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManagerActionList_AllowCreate">
+		<value>Consenti di creare cartelle</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManagerActionList_ShowUploadPanel">
+		<value>Visualizza il pannello di caricamento</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManagerActionList_AddProgressPanelHttpModule">
+		<value>Abilita la barra di progressione per il pannello di caricamento (aggiorna il Web.Config)</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManagerActionList_AddProgressPanelHttpModuleDescription">
+		<value>Modifica il Web.Config con gli handler http necessari per visualizzare la barra di progressione nel pannello di caricamento</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManager_ErrorUsedByAnotherProcess">
+		<value>L'operazione non può essere completata perché il file o la cartella sono già in uso da qualche altro processo.</value>
+	</data>
+	<data name="ASPxperienceStringId.UploadControl_UploadWasCanceledError">
+        <value>Il caricamento del file e stato interrotto.</value>
+    </data>
+	<data name="ASPxperienceStringId.UploadControl_SilverlightPluginLink">
+        <value>Installare &lt;a href="{0}"&gt;Microsoft Silverlight v3 o successiva&lt;/a&gt; per vedere questo contenuto e avere la possibilita di caricare file</value>
+    </data>
+	<data name="ASPxperienceStringId.UploadControl_BrowseButton">
+        <value>Apri...</value>
+    </data>
+	<data name="ASPxperienceStringId.FileManager_TbDownload">
+        <value>Scarica</value>
+    </data>
+	<data name="ASPxperienceStringId.FileManager_ErrorRootFolderNotSpecified">
+        <value>La cartella radice non e stata specificata o non esiste</value>
+    </data>
+	<data name="ASPxperienceStringId.FileManager_ErrorNameCannotBeEmpty">
+        <value>Il nome di file o di cartella non puo essere vuoto</value>
+    </data>
+	<data name="ASPxperienceStringId.FileManager_ErrorAccessProhibited">
+        <value>Accesso negato. L'operazione non puo essere completata</value>
+    </data>
+	<data name="ASPxperienceStringId.FileManager_ErrorThumbnail">
+        <value>Negato l'accesso alla cartella delle miniature</value>
+    </data>
+	<data name="ASPxperienceStringId.UploadControl_UnspecifiedError">
+        <value>Il server ha restituito un errore interno, non specificato, per il quale non ha potuto soddisfare completamente la richiesta.</value>
+    </data>
+	<data name="ASPxperienceStringId.UploadControl_AccessDeniedError">
+		<value>L'accesso al percorso "{0}" sul server è stato negato. La ragione può essere dovuta alla mancanza dei permessi di scrittura in questa cartella o in quella superiore.</value>
+	</data>
+	<data name="ASPxperienceStringId.UploadControl_MultiSelection">
+		<value>Attenzione!
+
+I file {0} non sono validi perché eccedono la dimensione massima ({1}) o la loro estensione non è consentita. Questi file sono stati rimossi dalla selezione e non saranno caricati.
+
+{2}</value>
+	</data>
+	<data name="ASPxperienceStringId.UploadControl_ClearFileSelectionButtonToolTip">
+		<value>Cancella la selezione</value>
+	</data>
+	<data name="ASPxperienceStringId.UploadControl_SelectedSeveralFiles">
+		<value>Sono stati selezionati {0} file per il caricamento</value>
+	</data>
+	<data name="ASPxperienceStringId.FileManager_ErrorUploadSeveralFiles">
+		<value>Il caricamento è fallito per {0} di {1} file</value>
+	</data>
+</root>

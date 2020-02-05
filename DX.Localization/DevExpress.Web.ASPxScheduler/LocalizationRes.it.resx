@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="ASPxSchedulerStringId.Caption_RecurrenceType_Daily">
+    <value>Giornaliero</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_RecurrenceType_Weekly">
+    <value>Settimanale</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_RecurrenceType_Monthly">
+    <value>Mensile</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_RecurrenceType_Yearly">
+    <value>Annuale</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_RecurenceRange_NoEndDate">
+    <value>Nessun termine</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_RecurenceRange_OccurrenceCount">
+    <value>Fine dopo:</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_RecurenceRange_EndBy">
+    <value>Fine entro:</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_Days">
+    <value>giorno(i)</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_Every">
+    <value>Ogni</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_EveryWeekday">
+    <value>Ogni fine settimana</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_RecurEvery">
+    <value>Ricorre ogni</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_WeeksOn">
+    <value>settimana(e) su:</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_Day">
+    <value>Giorno</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_The">
+    <value>The</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_OfEvery">
+    <value>di ogni</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_Months">
+    <value>mese(i)</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_Of">
+    <value>di</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_Occurrences">
+    <value>ricorrenze</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_Recurrence">
+    <value>Ricorrenza</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_GotoDate">
+    <value>Vai alla data</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_DeleteRecurrentApt">
+    <value>Conferma eliminazione</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_OpenRecurrentApt">
+    <value>Apri ricorrenza</value>
+  </data>
+	<data name="ASPxSchedulerStringId.TooltipViewNavigator_Backward">
+    <value>Indietro</value>
+  </data>
+	<data name="ASPxSchedulerStringId.TooltipViewNavigator_Forward">
+    <value>Avanti</value>
+  </data>
+	<data name="ASPxSchedulerStringId.CaptionViewNavigator_Today">
+    <value>Oggi</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_ViewVisibleInterval_Format">
+    <value>{0:D} &amp;ndash; {1:D}</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_OperationToolTip">
+    <value>Premi ESC per cancellare l'operazione</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_Error">
+    <value>Errore</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_Warning">
+    <value>Attenzione</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_Info">
+    <value>Informazioni</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_DetailInfo">
+    <value>Visualizza dettagli</value>
+  </data>
+	<data name="ASPxSchedulerStringId.Caption_ShowMore">
+    <value>Visualizza ancora</value>
+  </data>
+	<data name="ASPxSchedulerStringId.TooltipViewNavigator_GotoDate">
+		<value>Vai alla data</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Caption_LoadError">
+		<value>Non posso caricare {0}</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Form_AllDayEvent">
+		<value>Evento giornaliero</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Form_ButtonCancel">
+		<value>Annulla</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Form_ButtonDelete">
+		<value>Elimina</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Form_ButtonDismiss">
+		<value>Archivia</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Form_ButtonDismissAll">
+		<value>Archivia tutto</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Form_ButtonOk">
+		<value>OK</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Form_ButtonSnooze">
+		<value>Posponi</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Form_ConfirmDelete">
+		<value>Eliminare tutte le occorrenze dell'appuntamento ricorrente "{0}" o solo questa?</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Form_ConfirmEdit">
+		<value>"{0}" è un appuntamento  ricorrente. Aprire solo questa occorrenza o l'intera serie?</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Form_Date">
+		<value>Data:</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Form_EndTime">
+		<value>Ora fine:</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Form_Label">
+		<value>Categorizza:</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Form_Location">
+		<value>Luogo:</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Form_Occurrence">
+		<value>Questa occorrenza</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Form_OpenEditForm">
+		<value>Apri la maschera di modifica...</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Form_Recurrence">
+		<value>Ricorrenza</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Form_Reminder">
+		<value>Promemoria</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Form_Resource">
+		<value>Risorsa:</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Form_Save">
+		<value>Salva</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Form_Series">
+		<value>Le serie</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Form_ShowIn">
+		<value>Visualizza in:</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Form_SnoozeInfo">
+		<value>Fare click su Posponi per rivisualizzare il promemoria tra:</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Form_StartTime">
+		<value>Ora inizio:</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Form_Status">
+		<value>Mostra come:</value>
+	</data>
+	<data name="ASPxSchedulerStringId.Form_Subject">
+		<value>Oggetto:</value>
+	</data>
+</root>

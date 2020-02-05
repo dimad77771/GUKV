@@ -1,0 +1,521 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxHtmlEditorStringId.Alt_ConstrainProportions" xml:space="preserve">
+    <value>Aránytartás bekapcsolva</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.Alt_ConstrainProportionsOff" xml:space="preserve">
+    <value>Aránytartás kikapcsolva</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.DesignViewTab" xml:space="preserve">
+    <value>Tervezés</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.HtmlViewTab" xml:space="preserve">
+    <value>HTML</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.PreviewTab" xml:space="preserve">
+    <value>Előnézet</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandCut" xml:space="preserve">
+    <value>Kivágás</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandCopy" xml:space="preserve">
+    <value>Másolás</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandPaste" xml:space="preserve">
+    <value>Beillesztés</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandPasteRtf" xml:space="preserve">
+    <value>Beillesztés Word-ből</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandUndo" xml:space="preserve">
+    <value>Visszavonás</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandRedo" xml:space="preserve">
+    <value>Mégis</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandPrint" xml:space="preserve">
+    <value>Nyomtatás</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandRemoveFormat" xml:space="preserve">
+    <value>Formázás törlése</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandSubscript" xml:space="preserve">
+    <value>Alsó index</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandSuperscript" xml:space="preserve">
+    <value>Felső index</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandOrderedList" xml:space="preserve">
+    <value>Rendezett lista</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandBulletList" xml:space="preserve">
+    <value>Felsorolás</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandIndent" xml:space="preserve">
+    <value>Behúzás</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandOutdent" xml:space="preserve">
+    <value>Behúzás csökkentése</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandUnlink" xml:space="preserve">
+    <value>Hiperhivatkozás törlése</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandCheckSpelling" xml:space="preserve">
+    <value>Helyesírás ellenőrzése</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandBold" xml:space="preserve">
+    <value>Félkövér</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandItalic" xml:space="preserve">
+    <value>Dőlt</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandUnderline" xml:space="preserve">
+    <value>Aláhúzás</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandStrikethrough" xml:space="preserve">
+    <value>Áthúzás</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandLeft" xml:space="preserve">
+    <value>Igazítás balra</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandCenter" xml:space="preserve">
+    <value>Igazítás középre</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandRight" xml:space="preserve">
+    <value>Igazítás jobbra</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandJustify" xml:space="preserve">
+    <value>Sorkizárás</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandBackColor" xml:space="preserve">
+    <value>Háttérszín</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandForeColor" xml:space="preserve">
+    <value>Betűszín</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandApplyCss" xml:space="preserve">
+    <value>CSS alkalmazása</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertImage" xml:space="preserve">
+    <value>Kép beszúrása</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ChangeImage" xml:space="preserve">
+    <value>Kép cseréje</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ContextMenu_ChangeImage" xml:space="preserve">
+    <value>Kép cseréje...</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertLink" xml:space="preserve">
+    <value>Hiperhivatkozás beszúrása</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ChangeLink" xml:space="preserve">
+    <value>Hiperhivatkozás cseréje</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ContextMenu_ChangeLink" xml:space="preserve">
+    <value>Hiperhivatkozás cseréje...</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.FontSize" xml:space="preserve">
+    <value>Betűméret</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.FontName" xml:space="preserve">
+    <value>Betűtípus</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.Paragraph" xml:space="preserve">
+    <value>Bekezdés</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.PasteRtf_Instructions" xml:space="preserve">
+    <value>Illessze be a következő szövegdobozba és nyomja meg az OK-t.</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.PasteRtf_StripFont" xml:space="preserve">
+    <value>Sáv betűcsalád</value>
+    <comment>??? Strip font family</comment>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ButtonOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ButtonCancel" xml:space="preserve">
+    <value>Mégse</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ButtonChange" xml:space="preserve">
+    <value>Módosítás</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ButtonInsert" xml:space="preserve">
+    <value>Beszúrás</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertLink_Url" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertLink_Email" xml:space="preserve">
+    <value>E-mail cím</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertLink_DisplayProperties" xml:space="preserve">
+    <value>Megjelenítési tulajdonságok</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertLink_Text" xml:space="preserve">
+    <value>Szöveg</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertLink_ToolTip" xml:space="preserve">
+    <value>ToolTip</value>
+    <comment>???</comment>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertLink_OpenInNewWindow" xml:space="preserve">
+    <value>Megnyitás új ablakban</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertLink_EmailTo" xml:space="preserve">
+    <value>Címzett</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertLink_Subject" xml:space="preserve">
+    <value>Tárgy</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.RequiredFieldError" xml:space="preserve">
+    <value>Ennek a mezőnek a kitöltése kötelező</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertImage_FromWeb" xml:space="preserve">
+    <value>Webről (URL)</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertImage_FromLocal" xml:space="preserve">
+    <value>Erről a számítógépről</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertImage_EnterUrl" xml:space="preserve">
+    <value>Kép webcímének megadása</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertImage_SaveToServer" xml:space="preserve">
+    <value>Fájl mentése erre a szerverre</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertImage_Preview" xml:space="preserve">
+    <value>Kép előnézet</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertImage_UploadInstructions" xml:space="preserve">
+    <value>Képek feltöltése a saját számítógépről</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertImage_MoreOptions" xml:space="preserve">
+    <value>Több lehetőség</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertImage_UseFloat" xml:space="preserve">
+    <value>Szöveg körbefuttatása a kép körül</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_Size" xml:space="preserve">
+    <value>Méret</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_OriginalSize" xml:space="preserve">
+    <value>Eredeti képméret</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_CustomSize" xml:space="preserve">
+    <value>Egyedi méret</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_Width" xml:space="preserve">
+    <value>Szélesség</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_Pixels" xml:space="preserve">
+    <value>pixel</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_Height" xml:space="preserve">
+    <value>Magasság</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_CreateThumbnail" xml:space="preserve">
+    <value>Előnézeti kép készítése</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_NewImageName" xml:space="preserve">
+    <value>Új kép neve</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_Position" xml:space="preserve">
+    <value>Helyzet</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_PositionLeft" xml:space="preserve">
+    <value>Balra rendezett</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_PositionCenter" xml:space="preserve">
+    <value>Középen</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_PositionRight" xml:space="preserve">
+    <value>Jobbra rendezett</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_Description" xml:space="preserve">
+    <value>Leírás</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable" xml:space="preserve">
+    <value>Táblázat beszúrása</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.TableProperties" xml:space="preserve">
+    <value>Táblázat tulajdonságai</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ContextMenu_TableProperties" xml:space="preserve">
+    <value>Táblázat tulajdonságai...</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.TableCellProperties" xml:space="preserve">
+    <value>Cella tulajdonságai</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ContextMenu_TableCellProperties" xml:space="preserve">
+    <value>Cella tulajdonságai...</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ChangeTableColumn_Size" xml:space="preserve">
+    <value>Méret</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.TableColumnProperties" xml:space="preserve">
+    <value>Oszlop tulajdonságai</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.TableRowProperties" xml:space="preserve">
+    <value>Sor tulajdonságai</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ContextMenu_TableColumnProperties" xml:space="preserve">
+    <value>Oszlop tulajdonságai...</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ContextMenu_TableRowProperties" xml:space="preserve">
+    <value>Sor tulajdonságai...</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTableRowAbove" xml:space="preserve">
+    <value>Sor beszúrása fölé</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTableRowBelow" xml:space="preserve">
+    <value>Sor beszúrása alá</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTableColumnToLeft" xml:space="preserve">
+    <value>Oszlop beszúrása balra</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTableColumnToRight" xml:space="preserve">
+    <value>Oszlop beszúrása jobbra</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.DeleteTable" xml:space="preserve">
+    <value>Táblázat törlése</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.DeleteTableRow" xml:space="preserve">
+    <value>Sor törlése</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.DeleteTableColumn" xml:space="preserve">
+    <value>Oszlop törlése</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.MergeTableCellDown" xml:space="preserve">
+    <value>Egyesítés lefelé</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.SplitTableCellVertical" xml:space="preserve">
+    <value>Függőleges osztás</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.MergeTableCellHorizontal" xml:space="preserve">
+    <value>Egyesítés jobbra</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.SplitTableCellHorizontal" xml:space="preserve">
+    <value>Vízszintes osztás</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_Size" xml:space="preserve">
+    <value>Táblázat mérete</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_Columns" xml:space="preserve">
+    <value>Oszlopok</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_Rows" xml:space="preserve">
+    <value>Sorok</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_Width" xml:space="preserve">
+    <value>Szélesség</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_Height" xml:space="preserve">
+    <value>Magasság</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_FullWidth" xml:space="preserve">
+    <value>Teljes szélesség</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_AutoFitToContent" xml:space="preserve">
+    <value>Automatikus igazítás a tartalomhoz</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_Custom" xml:space="preserve">
+    <value>Egyedi</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_EqualColumnWidths" xml:space="preserve">
+    <value>Azonos oszlopszélességek</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_Layout" xml:space="preserve">
+    <value>Elrendezés</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_CellPaddings" xml:space="preserve">
+    <value>Cella helykitöltés</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_Alignment" xml:space="preserve">
+    <value>Igazítás</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_VertAlignment" xml:space="preserve">
+    <value>Függőleges</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_HorzAlignment" xml:space="preserve">
+    <value>Vízszintes</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_None" xml:space="preserve">
+    <value>nincs</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_Alignment_Left" xml:space="preserve">
+    <value>Balra</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_Alignment_Center" xml:space="preserve">
+    <value>Középre</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_Alignment_Right" xml:space="preserve">
+    <value>Jobbra</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_VAlignment_Top" xml:space="preserve">
+    <value>Fent</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_VAlignment_Bottom" xml:space="preserve">
+    <value>Lent</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_VAlignment_Middle" xml:space="preserve">
+    <value>Középen</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_CellSpacing" xml:space="preserve">
+    <value>Cella térköz</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_Appearance" xml:space="preserve">
+    <value>Megjelenés</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_BorderColor" xml:space="preserve">
+    <value>Keretszín</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_BorderSize" xml:space="preserve">
+    <value>Keret vastagsága</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_BgColor" xml:space="preserve">
+    <value>Háttérszín</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_Accessibility" xml:space="preserve">
+    <value>Elérhetőség</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_Headers" xml:space="preserve">
+    <value>Fejlécek</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_FirstRow" xml:space="preserve">
+    <value>Első sor</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_FirstColumn" xml:space="preserve">
+    <value>Első oszlop</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_Both" xml:space="preserve">
+    <value>Mindegyik</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_Caption" xml:space="preserve">
+    <value>Felirat</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_Summary" xml:space="preserve">
+    <value>Összesítő</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertTable_ApplyToAllCell" xml:space="preserve">
+    <value>Alkalmazás a táblázat összes cellájára</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.SelectAll" xml:space="preserve">
+    <value>Összes kijelölése</value>
+  </data>
+</root>

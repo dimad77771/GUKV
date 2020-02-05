@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="EditReportController.Edit" Caption="Rediger" />
+      <Action Id="ExecuteReport" Caption="Kjør rapport" />
+      <Action Id="PreviewReport" Caption="Forhåndsvisning" />
+      <Action Id="ShowReportDesigner" Caption="Vis rapport designer" />
+    </Actions>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="DevExpress.ExpressApp.Reports.Win.NewReportParams" Caption="Nye rapport parametre" />
+    <Class Name="DevExpress.ExpressApp.Reports.Win.NewXafReportWizardParameters" Caption="Ny Xaf rapport veileder parametere">
+      <OwnMembers>
+        <Member Name="DataType" Caption="Datatype" />
+        <Member Name="ReportName" Caption="Rapportnavn" />
+        <Member Name="ReportType" Caption="Rapporttype" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <Localization>
+    <LocalizationGroup Name="Captions">
+      <LocalizationItem Name="ReportDesignerError" Value="Feil" />
+      <LocalizationItem Name="ReportDesignerWarning" Value="Advarsel" />
+    </LocalizationGroup>
+    <LocalizationGroup Name="Enums">
+      <LocalizationGroup Name="DevExpress.ExpressApp.Reports.Win.ReportType">
+        <LocalizationItem Name="Label" Value="Etikett" />
+      </LocalizationGroup>
+    </LocalizationGroup>
+    <LocalizationGroup Name="Messages">
+      <LocalizationItem Name="ReportPreviewFilter" Value="Filteret du har angitt kan ikke brukes som et design-time filter, fordi den bruker queryable felt. \nEn automatisk variant av filteret vil bli opprettet for bruk design-time, \nog du kan endre dette filteret selv ved å angi egenskapen FilterForDesignPreview." />
+      <LocalizationItem Name="WrongReportPreviewFilter" Value="Filtre med queryable felt kan ikke brukes for egenskapen FilterForDesignPreview." />
+    </LocalizationGroup>
+  </Localization>
+  <Views>
+    <DetailView Id="NewXafReportWizardParameters_DetailView" Caption="Ny rapport veiviser">
+      <Items>
+        <StaticText Id="ReportText" Text="Hvis du vil opprette en ny rapport, skriver du inn et navn i feltet nedenfor og velger primær datatype for rapporten fra listen." />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="Static">
+            <LayoutGroup Id="NewReportParams" Caption="Nye rapport parametre">
+              <LayoutGroup Id="SimpleEditors" Caption="Enkel tekstbehandler" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

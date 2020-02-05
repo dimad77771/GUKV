@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="GaugesPresetsStringId.ThemeMechanical" xml:space="preserve">
+    <value>Mecânico</value>
+  </data>
+  <data name="GaugesPresetsStringId.ThemeSilverBlur" xml:space="preserve">
+    <value>Prata borrão</value>
+  </data>
+  <data name="GaugesPresetsStringId.ThemeAfricaSunset" xml:space="preserve">
+    <value>África Pôr do sol</value>
+  </data>
+  <data name="GaugesPresetsStringId.ThemeDarkNight" xml:space="preserve">
+    <value>Noite escura</value>
+  </data>
+  <data name="GaugesPresetsStringId.StyleChooserFilterShape" xml:space="preserve">
+    <value>Fprma</value>
+  </data>
+  <data name="GaugesPresetsStringId.ThemeDefault" xml:space="preserve">
+    <value>Padrão</value>
+  </data>
+  <data name="GaugesPresetsStringId.ShapeQuarterRight" xml:space="preserve">
+    <value>QuartaDireita</value>
+  </data>
+  <data name="GaugesPresetsStringId.ShapeWide" xml:space="preserve">
+    <value>Largura</value>
+  </data>
+  <data name="GaugesPresetsStringId.ShapeFull" xml:space="preserve">
+    <value>Completo</value>
+  </data>
+  <data name="GaugesPresetsStringId.ThemeGothicMat" xml:space="preserve">
+    <value>Mat gótico</value>
+  </data>
+  <data name="GaugesPresetsStringId.ThemeWhite" xml:space="preserve">
+    <value>Branco</value>
+  </data>
+  <data name="GaugesPresetsStringId.ShapeHalf" xml:space="preserve">
+    <value>Metade</value>
+  </data>
+  <data name="GaugesPresetsStringId.ThemePureDark" xml:space="preserve">
+    <value>Escuro puro</value>
+  </data>
+  <data name="GaugesPresetsStringId.ShapeThreeFourth" xml:space="preserve">
+    <value>QuartaTrês</value>
+  </data>
+  <data name="GaugesPresetsStringId.ThemeIceColdZone" xml:space="preserve">
+    <value>Zona gelada</value>
+  </data>
+  <data name="GaugesPresetsStringId.ThemeCleanWhite" xml:space="preserve">
+    <value>Branco limpo</value>
+  </data>
+  <data name="GaugesPresetsStringId.StyleChooserFilterTheme" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="GaugesPresetsStringId.ThemeMilitary" xml:space="preserve">
+    <value>Militar</value>
+  </data>
+  <data name="GaugesPresetsStringId.ShapeQuarterLeft" xml:space="preserve">
+    <value>QuartaEsquerda</value>
+  </data>
+  <data name="GaugesPresetsStringId.ThemeShiningDark" xml:space="preserve">
+    <value>Escuro brilhando</value>
+  </data>
+  <data name="GaugesPresetsStringId.ThemeSportCar" xml:space="preserve">
+    <value>Carro esportivo</value>
+  </data>
+  <data name="GaugesPresetsStringId.ThemeDeepFire" xml:space="preserve">
+    <value>Fogo profunda</value>
+  </data>
+</root>

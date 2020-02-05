@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"></xsd:element>
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"></xsd:element>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+							<xsd:attribute name="type" type="xsd:string"></xsd:attribute>
+							<xsd:attribute name="mimetype" type="xsd:string"></xsd:attribute>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"></xsd:element>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="ResMimeType">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="Version">
+		<value>1.0.0.0</value>
+	</resheader>
+	<resheader name="Reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.3102.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="Writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.3102.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="MetaData_IncorrectPath">
+		<value>'{0}'类型的属性'{1}'路径错误</value>
+	</data>
+	<data name="MetaData_IncorrectPathMemberNotExists">
+		<value>由于'{2}.{3}'成员不存在而导致'{0}'类型的属性'{1}'路径错误</value>
+	</data>
+	<data name="MetaData_IncorrectPathNonPersistentMember">
+		<value>由于'{2}.{3}'成员不是固定成员而导致'{0}'类型的属性'{1}'路径错误</value>
+	</data>
+	<data name="MetaData_IncorrectPathNonReferenceMember">
+		<value>由于'{2}.{3}'成员不是所涉及到的成员而导致'{0}'类型的属性'{1}'路径错误</value>
+	</data>
+	<data name="ConnectionProvider_TypeMappingMissing">
+		<value>由于其无法映射到该类型的数据库,数据库驱动无法处理'{0}'类型.请使用其他类型</value>
+	</data>
+	<data name="ConnectionProvider_UnableToCreateDBObject">
+		<value>无法创建 '{0}' '{1}'. 父对象: '{2}'. 错误: {3}</value>
+	</data>
+	<data name="Session_TypeNotFound">
+		<value>ID = '{0}'的类型无法查找到</value>
+	</data>
+	<data name="Session_TypeFieldIsEmpty">
+		<value>'{0}' 字段为空 (基本类型 '{1}')</value>
+	</data>
+	<data name="ConnectionProvider_UnableToFillRefType">
+		<value>无法保证'{0}'类型的'{1}'成员的数据库计划.错误: {2}</value>
+	</data>
+	<data name="ConnectionProvider_SqlExecutionError">
+		<value>使用参数'{1}'和异常'{2}'来执行Sql'{0}'</value>
+	</data>
+	<data name="Generator_UnknownCriteriaOperator">
+		<value>无法识别'{0}' 操作员</value>
+	</data>
+	<data name="MetaData_KeyPropertyAbsent">
+		<value>缺少 '{0}' 类型的基本属性</value>
+	</data>
+	<data name="MetaData_DuplicateKeyProperty">
+		<value>'{0}'类型发现复制键</value>
+	</data>
+	<data name="MetaData_XMLLoadError">
+		<value>XML 字典加载出错: {0}</value>
+	</data>
+	<data name="MetaData_XMLLoadErrorCannotFindClassinfoType">
+		<value>无法找到类信息类型</value>
+	</data>
+	<data name="MetaData_XMLLoadErrorCannotFindConstructor">
+		<value>无法找到构造器</value>
+	</data>
+	<data name="MetaData_XMLLoadErrorModelTagAbsent">
+		<value>错误的XML格式Incorrect formed XML</value>
+	</data>
+	<data name="MetaData_XMLLoadErrorCannotResolveClassinfoInstanceType">
+		<value>无法解决类信息事例类型</value>
+	</data>
+	<data name="MetaData_XMLLoadErrorCannotLoadMember">
+		<value>无法载入成员[{0}]{1}.{2}</value>
+	</data>
+	<data name="MetaData_XMLLoadErrorUnknownAttribute">
+		<value>未知属性 '{0}'</value>
+	</data>
+	<data name="MetaData_PropertyTypeMismatch">
+		<value>类型'{3}'与类型'{4}'之间的关联'{1}'非法或无效。类型'{3}'包含属性'{2}'，该属性属于类型'{4}'。类型'{4}'包含属性'{0}'，该属性不恰当地归属到类型'{5}'，而该属性却必须归属于类型'{3}'</value>
+	</data>
+	<data name="MetaData_PropertyMissing">
+		<value>'{1}'类型中的属性'{0}'不存在</value>
+	</data>
+	<data name="MetaData_PropertyMissingReferenceType">
+		<value>归属于类型'{0}'</value>
+	</data>
+	<data name="MetaData_RequiredInterfaceMissing">
+		<value>'{0}'类型不支持IXPSimpleObject接口</value>
+	</data>
+	<data name="MetaData_AssociationElementTypeMissing">
+		<value>'Association'属性中的'{0}'属性为指定'ElementType'属性</value>
+	</data>
+	<data name="MetaData_RequiredAttributeMissing">
+		<value>属性'{0}'未定义'{1}'属性</value>
+	</data>
+	<data name="MetaData_PropertyNameMismatch">
+		<value>'{0}'属性使用不当</value>
+	</data>
+	<data name="MetaData_NonPersistentReferenceFound">
+		<value>当分析一个实际对象类型的时候,发现一个非持续的'{0}类型</value>
+	</data>
+	<data name="MetaData_RecursiveReferenceFound">
+		<value>发现一个递归</value>
+	</data>
+	<data name="Session_ObjectCannotBePurged">
+		<value>ID = '{1}'的'{0}'对象不能被清除.它是一个对象.</value>
+	</data>
+	<data name="Session_WrongConnectionString">
+		<value>无效的连接字符串: '{0}'</value>
+	</data>
+	<data name="Session_CannotReloadPurgedObject">
+		<value>被请求的对象不能被加载, 因为他们缺少数据存储过程.这些对象已经被删除或清理.如果你再一次看见相同对象列表中出现这个异常, 注意你的数据存储的参考性完整性可能被破坏. 再这种情况下,请联系您的系统管理员.({0})</value>
+	</data>
+	<data name="Session_SessionMixing">
+		<value>对象'{0}'属于不同的会话</value>
+	</data>
+	<data name="Session_CannotAddObjectToObjectCache">
+		<value>因为对象'{2}'使用相同的关键字添加了它，所以对象'{0}'不能使用关键字为'{1}'来添加.</value>
+	</data>
+	<data name="Session_LoadedPropertyAssignmentError">
+		<value>无法分配'{0}'类型的属性'{1}'来加载数据.原因:{2}</value>
+	</data>
+	<data name="ConnectionProvider_SchemaCorrectionNeeded">
+		<value>计划需要更新.联系您的系统管理员.Sql文本:{0}</value>
+	</data>
+	<data name="MetaData_SessionCtorAbsent">
+		<value>{0}类型尚未拥有会话构造器</value>
+	</data>
+	<data name="Paging_PageSizeShouldBeGreaterThanZero">
+		<value>页面大小必须大于0</value>
+	</data>
+	<data name="Paging_CurrentPageShouldBeGreaterOrEqualZero">
+		<value>当前页必须大于等于0</value>
+	</data>
+	<data name="Paging_CurrentPageShouldBeLessThanPageCount">
+		<value>当前页应该小于总页数</value>
+	</data>
+	<data name="Session_TranSequenceBegin">
+		<value>不能在该会话里启动更多事务</value>
+	</data>
+	<data name="Session_TranSequenceCommit">
+		<value>没有活动事务</value>
+	</data>
+	<data name="Session_TranSequenceRollback">
+		<value>没有活动事务</value>
+	</data>
+	<data name="Collections_InvalidCastOnAdd">
+		<value>不能在集合中增加对象.对象'{0}'不是类型'{1}'的实例</value>
+	</data>
+	<data name="Generator_OneOfBinaryOperatorsOperandsIsNull">
+		<value>二进制操作的一个操作数为空</value>
+	</data>
+	<data name="DataObject_ClassInfoArgumentIncorrect">
+		<value>类信息参数的值错误.XPDataObjectClassInfo的对象异常</value>
+	</data>
+	<data name="Criteria_NotImplementedForFiltering">
+		<value>过滤器的{0}未执行</value>
+	</data>
+	<data name="ConnectionProvider_KeysAutogenerationNonSupportedTypeException">
+		<value>密匙自动产生并仅支持Int32和Guid数据类型.类类型: '{0}'</value>
+	</data>
+	<data name="Session_CannotLoadInvalidType">
+		<value>无法加载无效类型'{0}'</value>
+	</data>
+	<data name="Paging_EnumeratorPositioning">
+		<value>例子被放在了集合的第一个元素之前或者最后一个元素之后</value>
+	</data>
+	<data name="Paging_EnumeratorObjectModifiedOrDeleted">
+		<value>所请求的一个或多个对象已经被修改或删除.您需要刷新已定义值列表</value>
+	</data>
+	<data name="Session_CannotChangePropertyWhenSessionIsConnected">
+		<value>当连接会话的时候不能改变{0}</value>
+	</data>
+	<data name="Session_DifferentObjectsWithSameKey">
+		<value>不同对象拥有了相同的关键字</value>
+	</data>
+	<data name="ConnectionProvider_TableNameTooLong">
+		<value>无法创建数据库表'{0}'.表名过长(超过64个字符)</value>
+	</data>
+	<data name="ConnectionProvider_ColumnNameTooLong">
+		<value>无法创建表'{0}'的列'{1}'.列名过长(超过64个字符)</value>
+	</data>
+	<data name="ConnectionProvider_AtLeastOneColumnExpected">
+		<value>至少执行一行</value>
+	</data>
+	<data name="MetaData_CannotResolveClassInfo">
+		<value>不能解决类型'[{0}]{1}'的类型信息</value>
+	</data>
+	<data name="Collection_CannotAssignProperty">
+		<value>当XPCollection集合不在设计或者初始化状态下不能改变属性{0}</value>
+	</data>
+	<data name="Session_IncompatibleIdType">
+		<value>通过的ID类型'{0}'与密码类型'{1}''{2}''{3}'不兼容</value>
+	</data>
+	<data name="MetaData_ReferenceTooComplex">
+		<value>'{0}.{1}'太复杂</value>
+	</data>
+	<data name="Metadata_SameTableName">
+		<value>类{0}部署到相同的表中,如{1}</value>
+	</data>
+	<data name="Metadata_CustomProperties_PersistentAndNonStorableType">
+		<value>类型{2}'的自定义成员'{0}.{1}'不能保证持续性</value>
+	</data>
+	<data name="Metadata_CustomProperties_ReferenceOrCollectionInSessionStore">
+		<value>由于'{0}'类没有实现'{2}'接口而无法创建相关类型或集合类型的用户成员'{1}'</value>
+	</data>
+	<data name="XpoDefault_CannotAssignPropertyWhileAnotherIsNotNull">
+		<value>当XpoDefault.{1}不为空则不能分配XpoDefault.{0}</value>
+	</data>
+	<data name="ThreadSafeDataLayer_DictionaryModified">
+		<value>抱歉,当它被线程安全数据层使用的时候不能修改字典.请呼叫会话.在使用线程安全数据层前在您的安装/管理应用程序中创建对象类型记录方法</value>
+	</data>
+	<data name="Metadata_DictionaryMixing">
+		<value>类'{0}'类信息属于不同的字典</value>
+	</data>
+	<data name="Object_ModifiedInsideCtor">
+		<value>不要使用构造器改变您的对象.而应该使用AfterConstruction方法来分配默认值</value>
+	</data>
+	<data name="Metadata_CantPersistGenericType">
+		<value>不能持续一般类型.请删除'{0}'类型中定义的持久属性并创建一个非普通的派生来替代</value>
+	</data>
+	<data name="PersistentAliasExpander_ReferenceOrCollectionExpectedInTheMiddleOfThePath">
+		<value>路径中的错误成员'{0}'.一个相关属性或者集合联合被执行</value>
+	</data>
+	<data name="XPWeakReference_SavedObjectExpected">
+		<value>保存对象被执行</value>
+	</data>
+	<data name="PersistentAliasExpander_NonPersistentCriteria">
+		<value>由于其使用了'{1}'持续特性所以不能使用"{0}"标准来查询数据记录</value>
+	</data>
+	<data name="View_PropertyNotFetched">
+		<value>'{0}'特性没有被获取</value>
+	</data>
+	<data name="Session_AlreadyConnected">
+		<value>会话已经连接</value>
+	</data>
+	<data name="Session_AssociationCollectionWithDisabledLoading">
+		<value>联合集合的状态被破坏(LoadingEnabled不为真)</value>
+	</data>
+	<data name="Metadata_SeveralClassesWithSameName">
+		<value>字典已经包含类信息'{1}'.可能的原因: 集合'{0}'已经加载了两次.</value>
+	</data>
+	<data name="Metadata_PersistentAliasCircular">
+		<value>'{0}'类型的'{1}'特性被持久别名和错误的'{2}'表达式标记.因为它涉及到了它本身所以就产生了周期</value>
+	</data>
+	<data name="Collection_CannotSortReference">
+		<value>数据不能被保存为'{0}'列的值,因为它没有实现IComparable接口</value>
+	</data>
+	<data name="Metadata_AssociationInvalid_AssociationAttributeOnlyForListOrReference">
+		<value>联合属性不能被'{1}.{2}'成员所使用.一个参照或列表被执行</value>
+	</data>
+	<data name="Metadata_AssociationInvalid_MoreThenOneAssociatedMemberFound">
+		<value>联合'{0}'不明确类'{1}'中的'{2}'和'{3}'中的成员</value>
+	</data>
+	<data name="Metadata_AssociationInvalid_NoAssociationListInAssociation">
+		<value>在'{1}.{2}'和'{3}.{4}'之间存在一个畸形的联合'{0}'.一个列表被联合的一侧所执行</value>
+	</data>
+	<data name="Metadata_AssociationInvalid_TwoAssociationListsInAssociation">
+		<value>在'{1}.{2}'和'{3}.{4}'列表之间存在一个畸形的联合'{0}'.使用多对多属性或者XPCollection类型列表表示多对多关系</value>
+	</data>
+	<data name="Metadata_AssociationInvalid_UseAssociationNameAsIntermediateTableNameMismatch">
+		<value>使用联合名称作为媒体表名称值应当使联合'{0}'的'{1}.{2}'和'{3}.{4}'两边相等</value>
+	</data>
+	<data name="Metadata_AssociationInvalid_PropertyTypeMismatch">
+		<value>类'{1}'与类'{3}'之间的关联'{0}'无效.类'{1}'包含属性'{2}',该属性引用了类'{3}'.类'{3}'包含属性'{4}',该属性不恰当地引用了类'{5}',而该属性却必须涉及到类'{1}'.</value>
+	</data>
+	<data name="Metadata_AssociationInvalid_NotFound">4
+		<value>存在一个畸形的关联'{0}'. 无法找到类'{3}'中的关联成员'{1}.{2}'</value>
+	</data>
+	<data name="">
+		<value></value>
+	</data>
+	<data name="">
+		<value></value>
+	</data>
+	<data name="">
+		<value></value>
+	</data>
+	<data name="">
+		<value></value>
+	</data>
+</root>

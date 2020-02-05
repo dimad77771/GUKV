@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="RichEditControlStringId.Caption_ParagraphFormIndentationLabel" xml:space="preserve">
+    <value>Uvlačenje</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupForm" xml:space="preserve">
+    <value>Kolone</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_CommonCharactersToggleButton" xml:space="preserve">
+    <value>Česti znakovi</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupFormApplyToLabel" xml:space="preserve">
+    <value>Primjeni na:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_InsertTableFormTableSizeLabel" xml:space="preserve">
+    <value>Veličina tabele</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_InsertTableForm" xml:space="preserve">
+    <value>Umetni tabelu</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_SplitTableCellsFormNumberOfColumnsLable" xml:space="preserve">
+    <value>Broj kolona:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_SplitTableCellsFormNumberOfRowsLable" xml:space="preserve">
+    <value>Broj redova:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_InsertTableCellsFormInsertEntireColumnRadioButton" xml:space="preserve">
+    <value>Umetnite cijelu kolonu</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupFormColumnSpacingLabel" xml:space="preserve">
+    <value>Razmak:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_DeleteTableCellsFormDeleteEntireColumnRadioButton" xml:space="preserve">
+    <value>Izbriši čitavu kolonu</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupFormNumberOfColumnsLabel" xml:space="preserve">
+    <value>Broj kolona:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupFormRightNarrowColumnPreset" xml:space="preserve">
+    <value>Desno</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupFormLeftNarrowColumnPreset" xml:space="preserve">
+    <value>Lijevo</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupFormPresetsGroup" xml:space="preserve">
+    <value>Predlošci</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupFormEqualColumnWidthCheckEdit" xml:space="preserve">
+    <value>Jednaka širina kolona</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupFormOneColumnPreset" xml:space="preserve">
+    <value>Jedan</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_InsertTableFormNumberOfRowsLabel" xml:space="preserve">
+    <value>Broj redova:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupFormColumnWidthLabel" xml:space="preserve">
+    <value>Širina:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TabsFormDotsRadioButton" xml:space="preserve">
+    <value>Tačke</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupFormWidthAndSpacingGroup" xml:space="preserve">
+    <value>Širina i razmak</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupFormTwoColumnsPreset" xml:space="preserve">
+    <value>Dva</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupFormColumnNumberLabel" xml:space="preserve">
+    <value>Kol #:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_InsertTableCellsFormInsertEntireRowRadioButton" xml:space="preserve">
+    <value>Umetnite cijeli reda</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TabsFormMiddleDotsRadioButton" xml:space="preserve">
+    <value>Tačkice po sredini</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_DeleteTableCellsFormDeleteEntireRowRadioButton" xml:space="preserve">
+    <value>Izbriši čitav red</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupFormThreeColumnsPreset" xml:space="preserve">
+    <value>Tri</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TabsFormHyphensRadioButton" xml:space="preserve">
+    <value>Crtice</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_InsertTableFormNumberOfColumnsLabel" xml:space="preserve">
+    <value>Broj kolona:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ParagraphFormGeneralLabel" xml:space="preserve">
+    <value>Opšte</value>
+  </data>
+</root>

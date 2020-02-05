@@ -1,0 +1,168 @@
+/* Чтобы предотвратить возможность потери данных, необходимо внимательно просмотреть этот скрипт, прежде чем запускать его вне контекста конструктора баз данных.*/
+BEGIN TRANSACTION
+SET QUOTED_IDENTIFIER ON
+SET ARITHABORT ON
+SET NUMERIC_ROUNDABORT OFF
+SET CONCAT_NULL_YIELDS_NULL ON
+SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET ANSI_WARNINGS ON
+COMMIT
+BEGIN TRANSACTION
+GO
+ALTER TABLE dbo.arenda_payments ADD
+	balans_org_id int NULL
+GO
+ALTER TABLE dbo.arenda_payments SET (LOCK_ESCALATION = TABLE)
+GO
+COMMIT
+
+
+update arenda_payments ap set ap.balans_org_id = (select a.bal_org_id from arenda a where a.id = ap.arenda_id)
+
+
+
+
+/* Чтобы предотвратить возможность потери данных, необходимо внимательно просмотреть этот скрипт, прежде чем запускать его вне контекста конструктора баз данных.*/
+BEGIN TRANSACTION
+SET QUOTED_IDENTIFIER ON
+SET ARITHABORT ON
+SET NUMERIC_ROUNDABORT OFF
+SET CONCAT_NULL_YIELDS_NULL ON
+SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET ANSI_WARNINGS ON
+COMMIT
+BEGIN TRANSACTION
+GO
+ALTER TABLE dbo.arenda_payments
+	DROP CONSTRAINT DF__arenda_pa__is_re__23C59D0A
+GO
+ALTER TABLE dbo.arenda_payments
+	DROP CONSTRAINT DF__arenda_pa__is_de__24B9C143
+GO
+CREATE TABLE dbo.Tmp_arenda_payments
+	(
+	id int NOT NULL IDENTITY (1, 1),
+	arenda_id int NULL,
+	rent_period_id int NULL,
+	sqr_total_rent numeric(15, 3) NULL,
+	sqr_payed_by_percent numeric(15, 3) NULL,
+	sqr_payed_by_1uah numeric(15, 3) NULL,
+	sqr_payed_hourly numeric(15, 3) NULL,
+	payment_narah numeric(15, 3) NULL,
+	last_year_saldo numeric(15, 3) NULL,
+	payment_received numeric(15, 3) NULL,
+	payment_nar_zvit numeric(15, 3) NULL,
+	payment_budget_special numeric(15, 3) NULL,
+	debt_total numeric(15, 3) NULL,
+	debt_zvit numeric(15, 3) NULL,
+	debt_3_month numeric(15, 3) NULL,
+	debt_12_month numeric(15, 3) NULL,
+	debt_3_years numeric(15, 3) NULL,
+	debt_over_3_years numeric(15, 3) NULL,
+	debt_v_mezhah_vitrat numeric(15, 3) NULL,
+	debt_spysano numeric(15, 3) NULL,
+	num_zahodiv_total int NULL,
+	num_zahodiv_zvit int NULL,
+	num_pozov_total int NULL,
+	num_pozov_zvit int NULL,
+	num_pozov_zadov_total int NULL,
+	num_pozov_zadov_zvit int NULL,
+	num_pozov_vikon_total int NULL,
+	num_pozov_vikon_zvit int NULL,
+	debt_pogasheno_total numeric(15, 3) NULL,
+	debt_pogasheno_zvit numeric(15, 3) NULL,
+	budget_narah_50_uah numeric(15, 3) NULL,
+	budget_zvit_50_uah numeric(15, 3) NULL,
+	budget_prev_50_uah numeric(15, 3) NULL,
+	budget_debt_50_uah numeric(15, 3) NULL,
+	budget_debt_30_50_uah numeric(15, 3) NULL,
+	is_renter_out int NULL,
+	is_debt_exists int NULL,
+	modify_date datetime NULL,
+	modified_by varchar(128) NULL,
+	is_special_organization int NULL,
+	old_debts_payed numeric(15, 3) NULL,
+	balans_org_id int NOT NULL
+	)  ON [PRIMARY]
+GO
+ALTER TABLE dbo.Tmp_arenda_payments SET (LOCK_ESCALATION = TABLE)
+GO
+ALTER TABLE dbo.Tmp_arenda_payments ADD CONSTRAINT
+	DF__arenda_pa__is_re__23C59D0A DEFAULT ((0)) FOR is_renter_out
+GO
+ALTER TABLE dbo.Tmp_arenda_payments ADD CONSTRAINT
+	DF__arenda_pa__is_de__24B9C143 DEFAULT ((0)) FOR is_debt_exists
+GO
+SET IDENTITY_INSERT dbo.Tmp_arenda_payments ON
+GO
+IF EXISTS(SELECT * FROM dbo.arenda_payments)
+	 EXEC('INSERT INTO dbo.Tmp_arenda_payments (id, arenda_id, rent_period_id, sqr_total_rent, sqr_payed_by_percent, sqr_payed_by_1uah, sqr_payed_hourly, payment_narah, last_year_saldo, payment_received, payment_nar_zvit, payment_budget_special, debt_total, debt_zvit, debt_3_month, debt_12_month, debt_3_years, debt_over_3_years, debt_v_mezhah_vitrat, debt_spysano, num_zahodiv_total, num_zahodiv_zvit, num_pozov_total, num_pozov_zvit, num_pozov_zadov_total, num_pozov_zadov_zvit, num_pozov_vikon_total, num_pozov_vikon_zvit, debt_pogasheno_total, debt_pogasheno_zvit, budget_narah_50_uah, budget_zvit_50_uah, budget_prev_50_uah, budget_debt_50_uah, budget_debt_30_50_uah, is_renter_out, is_debt_exists, modify_date, modified_by, is_special_organization, old_debts_payed, balans_org_id)
+		SELECT id, arenda_id, rent_period_id, sqr_total_rent, sqr_payed_by_percent, sqr_payed_by_1uah, sqr_payed_hourly, payment_narah, last_year_saldo, payment_received, payment_nar_zvit, payment_budget_special, debt_total, debt_zvit, debt_3_month, debt_12_month, debt_3_years, debt_over_3_years, debt_v_mezhah_vitrat, debt_spysano, num_zahodiv_total, num_zahodiv_zvit, num_pozov_total, num_pozov_zvit, num_pozov_zadov_total, num_pozov_zadov_zvit, num_pozov_vikon_total, num_pozov_vikon_zvit, debt_pogasheno_total, debt_pogasheno_zvit, budget_narah_50_uah, budget_zvit_50_uah, budget_prev_50_uah, budget_debt_50_uah, budget_debt_30_50_uah, is_renter_out, is_debt_exists, modify_date, modified_by, is_special_organization, old_debts_payed, balans_org_id FROM dbo.arenda_payments WITH (HOLDLOCK TABLOCKX)')
+GO
+SET IDENTITY_INSERT dbo.Tmp_arenda_payments OFF
+GO
+DROP TABLE dbo.arenda_payments
+GO
+EXECUTE sp_rename N'dbo.Tmp_arenda_payments', N'arenda_payments', 'OBJECT' 
+GO
+ALTER TABLE dbo.arenda_payments ADD CONSTRAINT
+	PK__arenda_p__3213E83F26A209B5 PRIMARY KEY CLUSTERED 
+	(
+	id
+	) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+
+GO
+COMMIT
+
+
+
+
+
+
+
+
+
+USE [GUKV]
+GO
+
+/****** Object:  Table [dbo].[org_by_period]    Script Date: 25.11.2016 16:19:38 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[org_by_period](
+	[period_id] [int] NOT NULL,
+	[org_occupation_id] [int] NOT NULL,
+	[org_id] [int] NOT NULL,
+ CONSTRAINT [PK_org_by_period] PRIMARY KEY CLUSTERED 
+(
+	[org_id] ASC,
+	[org_occupation_id] ASC,
+	[period_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+
+
+
+
+
+
+delete from org_by_period
+
+insert into org_by_period (period_id,org_id,org_occupation_id)
+select p.id,rbo.organization_id,rbo.rent_occupation_id 
+from rent_balans_org rbo
+left outer join dict_rent_period p on p.id > 0
+
+
+
+
+

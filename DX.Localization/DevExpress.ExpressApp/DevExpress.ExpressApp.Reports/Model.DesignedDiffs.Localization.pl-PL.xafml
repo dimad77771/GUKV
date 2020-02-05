@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="ShowInReport" Caption="Pokaż na raporcie" ToolTip="Pokaż wybrane pola na raporcie" />
+    </Actions>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="DevExpress.ExpressApp.Reports.ReportData" Caption="Raport">
+      <OwnMembers>
+        <Member Name="DataTypeCaption" Caption="Typ danych" />
+        <Member Name="IsInplaceReport" Caption="Czy w miejscu raportu" />
+        <Member Name="ReportName" Caption="Nazwa raportu" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <NavigationItems RelatedReportsGroupCaption="">
+    <Items>
+      <Item Id="Reports">
+        <Items>
+          <Item Id="Reports" Caption="Raporty" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
+  <Views>
+    <ListView Id="ReportData_ListView" Caption="Raporty" />
+  </Views>
+</Application>

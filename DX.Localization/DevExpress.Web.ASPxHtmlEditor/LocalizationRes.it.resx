@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxHtmlEditorStringId.Alt_ConstrainProportions">
+    <value>Mantieni proporzioni</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.Alt_ConstrainProportionsOff">
+    <value>Ignora proporzioni</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.DesignViewTab">
+    <value>Progettazione</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.HtmlViewTab">
+    <value>HTML</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.PreviewTab">
+    <value>Anteprima</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandCut">
+    <value>Taglia</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandCopy">
+    <value>Copia</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandPaste">
+    <value>Incolla</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandPasteRtf">
+    <value>Incolla da Word</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandUndo">
+    <value>Annulla</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandRedo">
+    <value>Ripeti</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandPrint">
+    <value>Stampa</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandRemoveFormat">
+    <value>Rimuovi formattazione</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandSubscript">
+    <value>Pedice</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandSuperscript">
+    <value>Apice</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandOrderedList">
+    <value>Elenco numerato</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandBulletList">
+    <value>Elenco puntato</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandIndent">
+    <value>Aumenta posizione rientro</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandOutdent">
+    <value>Riduci  posizione rientro</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandUnlink">
+    <value>Rimuovi collegamento</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandCheckSpelling">
+    <value>Controlla ortografia</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandBold">
+    <value>Grassetto</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandItalic">
+    <value>Corsivo</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandUnderline">
+    <value>Sottolineato</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandStrikethrough">
+    <value>Barrato</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandLeft">
+    <value>Allinea a sinistra</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandCenter">
+    <value>Centra</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandRight">
+    <value>Allinea a destra</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandJustify">
+    <value>Giustificato</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandBackColor">
+    <value>Colore di sfondo</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandForeColor">
+    <value>Colore primo piano</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.CommandApplyCss">
+    <value>Applica CSS</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.InsertImage">
+    <value>Inserisci immagine</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.ChangeImage">
+    <value>Modifica immagine</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.InsertLink">
+    <value>Inserisci collegamento</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.ChangeLink">
+    <value>Modifica collegamento</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.FontSize">
+    <value>Dimensione carattere</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.FontName">
+    <value>Tipo di carattere</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.Paragraph">
+    <value>Paragrafo</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.PasteRtf_Instructions">
+    <value>Incolla nella casella accanto e premi OK</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.PasteRtf_StripFont">
+    <value>Ignora tipo di carattere</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.ButtonOk">
+    <value>OK</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.ButtonCancel">
+    <value>Cancella</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.ButtonChange">
+    <value>Modifica</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.ButtonInsert">
+    <value>Inserisci</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.InsertLink_Url">
+    <value>URL</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.InsertLink_Email">
+    <value>Indirizzo email</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.InsertLink_DisplayProperties">
+    <value>Proprietà visualizzate</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.InsertLink_Text">
+    <value>Testo</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.InsertLink_ToolTip">
+    <value>Suggerimento</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.InsertLink_OpenInNewWindow">
+    <value>Apri in nuova finestra</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.InsertLink_EmailTo">
+    <value>Invia email a </value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.InsertLink_Subject">
+    <value>Oggetto</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.RequiredFieldError">
+    <value>Il campo è richiesto</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.InsertImage_FromWeb">
+    <value>Dal web (URL)</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.InsertImage_FromLocal">
+    <value>Dal computer</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.InsertImage_EnterUrl">
+    <value>Inserisci l'indirizzo web dell'immagine</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.InsertImage_SaveToServer">
+    <value>Invia il file al server</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.InsertImage_Preview">
+    <value>Anteprima immagine</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.InsertImage_UploadInstructions">
+    <value>Cerca nel tuo computer l'immagine da caricare</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.InsertImage_MoreOptions">
+    <value>Più opzioni</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.ImageProps_Size">
+    <value>Dimensione</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.ImageProps_OriginalSize">
+    <value>Originale dell'immagine</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.ImageProps_CustomSize">
+    <value>Personalizzata</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.ImageProps_Width">
+    <value>Larghezza</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.ImageProps_Pixels">
+    <value>Pixel</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.ImageProps_Height">
+    <value>Altezza</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.ImageProps_CreateThumbnail">
+    <value>Crea miniatura</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.ImageProps_NewImageName">
+    <value>Nuovo nome immagine</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.ImageProps_Position">
+    <value>Posizione</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.ImageProps_PositionLeft">
+    <value>Allineato a sinistra</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.ImageProps_PositionCenter">
+    <value>Centrato</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.ImageProps_PositionRight">
+    <value>Allineato a destra</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.ImageProps_Description">
+    <value>Descrizione</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.SelectAll">
+    <value>Seleziona tutto</value>
+  </data>
+	<data name="ASPxHtmlEditorStringId.ContextMenu_ChangeImage">
+		<value>Modifica immagine...</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.ContextMenu_ChangeLink">
+		<value>Modifica collegamento...</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertImage_UseFloat">
+		<value>Gira il testo intorno all'immagine</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable">
+		<value>Inserisci tabella</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.TableProperties">
+		<value>Proprietà tabella</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.ContextMenu_TableProperties">
+		<value>Proprietà tabella...</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.TableCellProperties">
+		<value>Proprietà cella</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.ContextMenu_TableCellProperties">
+		<value>Proprietà cella...</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.ChangeTableColumn_Size">
+		<value>Dimensione</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.TableColumnProperties">
+		<value>Proprietà colonna</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.TableRowProperties">
+		<value>Proprietà riga</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.ContextMenu_TableColumnProperties">
+		<value>Proprietà colonna...</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.ContextMenu_TableRowProperties">
+		<value>Proprietà riga...</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTableRowAbove">
+		<value>Inserisci riga sopra</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTableRowBelow">
+		<value>Inserisci riga sotto</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTableColumnToLeft">
+		<value>Inserisci colonna a sinistra</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTableColumnToRight">
+		<value>Inserisci colonna a destra</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.DeleteTable">
+		<value>Elimina tabella</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.DeleteTableRow">
+		<value>Elimina riga</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.DeleteTableColumn">
+		<value>Elimina colonna</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.MergeTableCellDown">
+		<value>Fondi con quella sottostante</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.SplitTableCellVertical">
+		<value>Dividi verticalmente</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.MergeTableCellHorizontal">
+		<value>Fondi con quella a destra</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.SplitTableCellHorizontal">
+		<value>Dividi orizzontalmente</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_Size">
+		<value>Dimensione tabella</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_Columns">
+		<value>Colonne</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_Rows">
+		<value>Righe</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_Width">
+		<value>Larghezza</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_Height">
+		<value>Altezza</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_FullWidth">
+		<value>Larghezza piena</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_AutoFitToContent">
+		<value>Adatta al contenuto</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_Custom">
+		<value>Personalizzato</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_EqualColumnWidths">
+		<value>Ripartisci uniformemente colonne</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_Layout">
+		<value>Aspetto</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_CellPaddings">
+		<value>Spaziatura interna celle</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_Alignment">
+		<value>Allineamento</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_VertAlignment">
+		<value>Verticale</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_HorzAlignment">
+		<value>Orizzontale</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_None">
+		<value>Nessuno</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_Alignment_Left">
+		<value>A sinistra</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_Alignment_Center">
+		<value>Al centro</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_Alignment_Right">
+		<value>A destra</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_VAlignment_Top">
+		<value>in alto</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_VAlignment_Bottom">
+		<value>In basso</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_VAlignment_Middle">
+		<value>In mezzo</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_CellSpacing">
+		<value>Spaziatura celle</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_Appearance">
+		<value>Aspetto</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_BorderColor">
+		<value>Colore bordo</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_BorderSize">
+		<value>Dimensione bordo</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_BgColor">
+		<value>Colore di sfondo</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_Accessibility">
+		<value>Accessibilità</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_Headers">
+		<value>Intestazione</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_FirstRow">
+		<value>Prima riga</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_FirstColumn">
+		<value>Prima colonna</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_Both">
+		<value>Entrambi</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_Caption">
+		<value>Etichetta</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_Summary">
+		<value>Sommario</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertTable_ApplyToAllCell">
+		<value>Applica a tutte le celle della tabella</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.CommandFullscreen">
+		<value>Schermo intero</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.SelectImage">
+		<value>Seleziona un'immagine</value>
+	</data>
+    <data name="ASPxHtmlEditorStringId.ButtonBrowse">
+        <value>Cerca...</value>
+    </data>
+	<data name="ASPxHtmlEditorStringId.ButtonSelect">
+		<value>Seleziona</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.DefaultErrorText">
+		<value>Il contenuto HTML non è valido</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.RequiredHtmlContentError">
+		<value>Il contenuto dell'editor non può essere vuoto</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InvalidUrlErrorText">
+		<value>Il formato dell'URL non è valido o non è possibile trovare un file corrispondente a questo URL</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.SelectDocument">
+		<value>Selezionare il documento</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertLink_SelectDocument">
+		<value>Apri la finestra di dialogo per selezionare un documento</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.InsertImage_SelectImage">
+		<value>Apri la finestra di dialogo per selezionare un'immagine</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.SaveAsRtf">
+		<value>Rich Text (.rtf)</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.SaveAsDocx">
+		<value>Office Open XML (.docx)</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.SaveAsMht">
+		<value>MIME HTML (.mht)</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.SaveAsOdt">
+		<value>Open Document (.odt)</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.SaveAsPdf">
+		<value>Portable Document (.pdf)</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.SaveAsTxt">
+		<value>Testo normale (.txt)</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.SaveAsRtf_ToolTip">
+		<value>Esporta in un file RTF e salva in locale</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.SaveAsDocx_ToolTip">
+		<value>Esporta in un file DOCX e salva in locale</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.SaveAsMht_ToolTip">
+		<value>Esporta in un file MHT e salva in locale</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.SaveAsOdt_ToolTip">
+		<value>Esporta in un file ODT e salva in locale</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.SaveAsPdf_ToolTip">
+		<value>Esporta in un file PDF e salva in locale</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.SaveAsTxt_ToolTip">
+		<value>Esporta in un file TXT e salva in locale</value>
+	</data>
+	<data name="ASPxHtmlEditorStringId.Alt_ConstrainProportions">
+		<value>Mantieni proporzioni</value>
+	</data>
+</root>

@@ -1,0 +1,621 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions" xml:space="preserve">
+    <value>Postavke izvoza PDF dokumenta</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions" xml:space="preserve">
+    <value>mogućnosti izvoza XLS datoteke</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptions" xml:space="preserve">
+    <value>Mogućnosti izvoza teksta</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.CsvExportOptions" xml:space="preserve">
+    <value>Mogućnosti izvoza CSV datoteke</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions" xml:space="preserve">
+    <value>Postavke izvoza slike</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptions" xml:space="preserve">
+    <value>Postavke izvoza HTML datoteke</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.MhtExportOptions" xml:space="preserve">
+    <value>Postavke izvoza slike MHT datoteke</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions" xml:space="preserve">
+    <value>Mogućnosti izvoza RTF datoteka</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.NativeFormatOptions" xml:space="preserve">
+    <value>Izvorne postavke formata</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions" xml:space="preserve">
+    <value>Postavke PDF dokumenta</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.None" xml:space="preserve">
+    <value>Ništa</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Left" xml:space="preserve">
+    <value>Lijevo</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Top" xml:space="preserve">
+    <value>Vrh</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Right" xml:space="preserve">
+    <value>Desno</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Bottom" xml:space="preserve">
+    <value>Dno</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.All" xml:space="preserve">
+    <value>Sve</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportMode.SingleFile" xml:space="preserve">
+    <value>Jedna datoteka</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportMode.SingleFilePageByPage" xml:space="preserve">
+    <value>Jedna datoteka (Stranica-po-stranica)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportMode.SingleFile" xml:space="preserve">
+    <value>Jedna datoteka</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportMode.SingleFilePageByPage" xml:space="preserve">
+    <value>Jedna datoteka (Stranica-po-stranica)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportMode.DifferentFiles" xml:space="preserve">
+    <value>Različite datoteke</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportMode.SingleFile" xml:space="preserve">
+    <value>Jedna datoteka</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportMode.SingleFilePageByPage" xml:space="preserve">
+    <value>Jedna datoteka (Stranica-po-stranica)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportMode.DifferentFiles" xml:space="preserve">
+    <value>Različite datoteke</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Lowest" xml:space="preserve">
+    <value>Najniža</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Low" xml:space="preserve">
+    <value>Niska</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Medium" xml:space="preserve">
+    <value>Srednja</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.High" xml:space="preserve">
+    <value>Visoka</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Highest" xml:space="preserve">
+    <value>Najviša</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EncodingType.Default" xml:space="preserve">
+    <value>Zadano</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EncodingType.ASCII" xml:space="preserve">
+    <value>ASCII</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EncodingType.Unicode" xml:space="preserve">
+    <value>Unicode</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EncodingType.BigEndianUnicode" xml:space="preserve">
+    <value>BigEndianUnicode</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EncodingType.UTF7" xml:space="preserve">
+    <value>UTF7</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EncodingType.UTF8" xml:space="preserve">
+    <value>UTF8</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EncodingType.UTF32" xml:space="preserve">
+    <value>UTF32</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopLeft" xml:space="preserve">
+    <value>Gore lijevo</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopCenter" xml:space="preserve">
+    <value>Gore po sredini</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopRight" xml:space="preserve">
+    <value>Gore desno</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleLeft" xml:space="preserve">
+    <value>Po sredini lijevo</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleCenter" xml:space="preserve">
+    <value>Po sredini</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleRight" xml:space="preserve">
+    <value>Po sredini desno</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomLeft" xml:space="preserve">
+    <value>Dolje lijevo</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomCenter" xml:space="preserve">
+    <value>Dolje po sredini</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomRight" xml:space="preserve">
+    <value>Dolje desno</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopJustify" xml:space="preserve">
+    <value>Gore obostrano</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleJustify" xml:space="preserve">
+    <value>Po sredini obostrano</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomJustify" xml:space="preserve">
+    <value>Dolje obostrano</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.Slant" xml:space="preserve">
+    <value>Slant</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.BackSlant" xml:space="preserve">
+    <value>Back Slant</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.Horizontal" xml:space="preserve">
+    <value>Horizontalno</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.Vertical" xml:space="preserve">
+    <value>Vertikalno</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.Normal" xml:space="preserve">
+    <value>Normalno</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.StretchImage" xml:space="preserve">
+    <value>Raširi sliku</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.AutoSize" xml:space="preserve">
+    <value>Automatski podesi veličinu</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.CenterImage" xml:space="preserve">
+    <value>Centriraj sliku</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.ZoomImage" xml:space="preserve">
+    <value>Zumiraj sliku</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.None" xml:space="preserve">
+    <value>Ništa</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.Number" xml:space="preserve">
+    <value>Broj stranica</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.NumberOfTotal" xml:space="preserve">
+    <value>"Current of Total" broj stranica</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.RomLowNumber" xml:space="preserve">
+    <value>Broj stranica (Roman, Mala slova)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.RomHiNumber" xml:space="preserve">
+    <value>Broj stranica (Roman, Velika slova)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.DateTime" xml:space="preserve">
+    <value>Trenutni datum i vrijeme</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.UserName" xml:space="preserve">
+    <value>Korisničko ime</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.DashStyle.Solid" xml:space="preserve">
+    <value>Puno</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.DashStyle.Dash" xml:space="preserve">
+    <value>Crta</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.DashStyle.Dot" xml:space="preserve">
+    <value>Točka</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.DashStyle.DashDot" xml:space="preserve">
+    <value>Crta-Točka</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.DashStyle.DashDotDot" xml:space="preserve">
+    <value>Crta-Točka-Točka</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.DashStyle.Custom" xml:space="preserve">
+    <value>Prilagođeno</value>
+  </data>
+  <data name="System.Windows.Forms.CheckState.Unchecked" xml:space="preserve">
+    <value>Nepotvrđeno</value>
+  </data>
+  <data name="System.Windows.Forms.CheckState.Checked" xml:space="preserve">
+    <value>Potvrđeno</value>
+  </data>
+  <data name="System.Windows.Forms.CheckState.Indeterminate" xml:space="preserve">
+    <value>Neodređeno</value>
+  </data>
+  <data name="DevExpress.XtraEditors.Controls.FilterButtonShowMode.Default" xml:space="preserve">
+    <value>Zadano</value>
+  </data>
+  <data name="DevExpress.XtraEditors.Controls.FilterButtonShowMode.Button" xml:space="preserve">
+    <value>Gumb</value>
+  </data>
+  <data name="DevExpress.XtraEditors.Controls.FilterButtonShowMode.SmartTag" xml:space="preserve">
+    <value>Pametna oznaka</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.NativeFormatOptions.Compressed" xml:space="preserve">
+    <value>Komprimiran</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.NativeFormatOptions.ShowOptionsBeforeSave" xml:space="preserve">
+    <value>Prikaži postavke prije snimanja</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.ShowPrintDialogOnOpen" xml:space="preserve">
+    <value>Pri otvaranju prikaži dijalog za ispis</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.DocumentOptions" xml:space="preserve">
+    <value>Postavke dokumenta</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.Compressed" xml:space="preserve">
+    <value>Komprimiran</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.NeverEmbeddedFonts" xml:space="preserve">
+    <value>Nikad ne uključi fontove</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.DefaultResourceFile" xml:space="preserve">
+    <value>Default Resource File</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.ImageQuality" xml:space="preserve">
+    <value>Kvaliteta slike</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Author" xml:space="preserve">
+    <value>Autor</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Application" xml:space="preserve">
+    <value>Program</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Title" xml:space="preserve">
+    <value>naslov</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Subject" xml:space="preserve">
+    <value>Predmet</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Keywords" xml:space="preserve">
+    <value>Ključne riječi</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.UseNativeFormat" xml:space="preserve">
+    <value>Koristi izvorni format</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.ShowGridLines" xml:space="preserve">
+    <value>Prikaži crte rešetke</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.SheetName" xml:space="preserve">
+    <value>Ime lista</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.Ignore256ColumnsLimit" xml:space="preserve">
+    <value>Zanemari  ograničenje od 256 stupaca</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.Ignore65536RowsLimit" xml:space="preserve">
+    <value>Zanemari ograničenje od 65536 redaka</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.PageBorderColor" xml:space="preserve">
+    <value>Boja obruba stranice</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.PageBorderWidth" xml:space="preserve">
+    <value>Širina obruba stranice</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.ExportMode" xml:space="preserve">
+    <value>Način izvoza</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.PageRange" xml:space="preserve">
+    <value>Stranice u rasponu</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.Format" xml:space="preserve">
+    <value>Format</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.Resolution" xml:space="preserve">
+    <value>Rezolucija</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions.ExportMode" xml:space="preserve">
+    <value>Način izvoza</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions.ExportWatermarks" xml:space="preserve">
+    <value>Izvezi vodeni žig</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions.PageRange" xml:space="preserve">
+    <value>Stranice u rasponu</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.ExportHyperlinks" xml:space="preserve">
+    <value>Izvezi hiperveze</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageByPageExportOptionsBase.PageRange" xml:space="preserve">
+    <value>Stranice u rasponu</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptionsBase.Encoding" xml:space="preserve">
+    <value>Kodiranje</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptionsBase.Separator" xml:space="preserve">
+    <value>Separator</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptionsBase.QuoteStringsWithSeparators" xml:space="preserve">
+    <value>Quote Strings with Separators</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.PageBorderColor" xml:space="preserve">
+    <value>Boja obruba stranice</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.PageBorderWidth" xml:space="preserve">
+    <value>Širina obruba stranice</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.ExportMode" xml:space="preserve">
+    <value>Način izvoza</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.PageRange" xml:space="preserve">
+    <value>Stranice u rasponu</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.CharacterSet" xml:space="preserve">
+    <value>Character Set</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.Title" xml:space="preserve">
+    <value>Naslov</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.RemoveSecondarySymbols" xml:space="preserve">
+    <value>Ukloni drugorazredne simbole</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObject.Options" xml:space="preserve">
+    <value>Mogućnosti</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObject.BackColor2" xml:space="preserve">
+    <value>Boja pozadine2</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObject.Image" xml:space="preserve">
+    <value>Slika</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObject.TextOptions" xml:space="preserve">
+    <value>Postavke teksta</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObject.GradientMode" xml:space="preserve">
+    <value>Način prijelaza</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObject.ForeColor" xml:space="preserve">
+    <value>Boja</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObject.BorderColor" xml:space="preserve">
+    <value>Boja obruba</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObject.BackColor" xml:space="preserve">
+    <value>Boja pozadine</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObject.Font" xml:space="preserve">
+    <value>Font</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceOptions.UseForeColor" xml:space="preserve">
+    <value>Koristi boju</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceOptions.UseTextOptions" xml:space="preserve">
+    <value>Koristi mogućnosti teksta</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceOptions.UseBorderColor" xml:space="preserve">
+    <value>Koristi boju obruba</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceOptions.UseBackColor" xml:space="preserve">
+    <value>Koristi boju pozadine</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceOptions.UseImage" xml:space="preserve">
+    <value>Koristi sliku</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceOptions.UseFont" xml:space="preserve">
+    <value>Koristi font</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceOptionsEx.HighPriority" xml:space="preserve">
+    <value>Prioritetno</value>
+  </data>
+  <data name="DevExpress.Utils.TextOptions.WordWrap" xml:space="preserve">
+    <value>Prelomi tekst</value>
+  </data>
+  <data name="DevExpress.Utils.TextOptions.HotkeyPrefix" xml:space="preserve">
+    <value>Prefiks kratice</value>
+  </data>
+  <data name="DevExpress.Utils.TextOptions.HAlignment" xml:space="preserve">
+    <value>Vodoravno poravnjanje</value>
+  </data>
+  <data name="DevExpress.Utils.TextOptions.VAlignment" xml:space="preserve">
+    <value>Okomito poravnjanje</value>
+  </data>
+  <data name="DevExpress.Utils.TextOptions.Trimming" xml:space="preserve">
+    <value>Podešavanje</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObjectEx.Options" xml:space="preserve">
+    <value>Mogućnosti</value>
+  </data>
+  <data name="DevExpress.XtraEditors.StyleFormatConditionBase.Appearance" xml:space="preserve">
+    <value>Izgled</value>
+  </data>
+  <data name="DevExpress.XtraEditors.StyleFormatConditionBase.Condition" xml:space="preserve">
+    <value>Uvjet</value>
+  </data>
+  <data name="DevExpress.XtraEditors.StyleFormatConditionBase.Value1" xml:space="preserve">
+    <value>Vrijednost1</value>
+  </data>
+  <data name="DevExpress.XtraEditors.StyleFormatConditionBase.Value2" xml:space="preserve">
+    <value>Vrijednost2</value>
+  </data>
+  <data name="DevExpress.XtraEditors.StyleFormatConditionBase.Tag" xml:space="preserve">
+    <value>Oznaka</value>
+  </data>
+  <data name="DevExpress.Utils.WordWrap.Default" xml:space="preserve">
+    <value>Zadano</value>
+  </data>
+  <data name="DevExpress.Utils.WordWrap.NoWrap" xml:space="preserve">
+    <value>Ne prelamaj</value>
+  </data>
+  <data name="DevExpress.Utils.WordWrap.Wrap" xml:space="preserve">
+    <value>Prelomi</value>
+  </data>
+  <data name="DevExpress.Utils.Trimming.Default" xml:space="preserve">
+    <value>Zadano</value>
+  </data>
+  <data name="DevExpress.Utils.Trimming.None" xml:space="preserve">
+    <value>Ništa</value>
+  </data>
+  <data name="DevExpress.Utils.Trimming.Character" xml:space="preserve">
+    <value>Znak</value>
+  </data>
+  <data name="DevExpress.Utils.Trimming.Word" xml:space="preserve">
+    <value>Riječ</value>
+  </data>
+  <data name="DevExpress.Utils.Trimming.EllipsisCharacter" xml:space="preserve">
+    <value>Ellipsis slovo</value>
+  </data>
+  <data name="DevExpress.Utils.Trimming.EllipsisWord" xml:space="preserve">
+    <value>Ellipsis riječ</value>
+  </data>
+  <data name="DevExpress.Utils.Trimming.EllipsisPath" xml:space="preserve">
+    <value>Ellipsis staza</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.None" xml:space="preserve">
+    <value>Ništa</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.Equal" xml:space="preserve">
+    <value>Jednako</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.NotEqual" xml:space="preserve">
+    <value>NijeJednako</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.Between" xml:space="preserve">
+    <value>Između</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.NotBetween" xml:space="preserve">
+    <value>NijeIzmedu</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.Less" xml:space="preserve">
+    <value>Manje</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.Greater" xml:space="preserve">
+    <value>Veće</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.GreaterOrEqual" xml:space="preserve">
+    <value>VeceIliJednako</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.LessOrEqual" xml:space="preserve">
+    <value>ManjeIliJednako</value>
+  </data>
+  <data name="DevExpress.Utils.HKeyPrefix.Default" xml:space="preserve">
+    <value>Zadano</value>
+  </data>
+  <data name="DevExpress.Utils.HKeyPrefix.None" xml:space="preserve">
+    <value>Ništa</value>
+  </data>
+  <data name="DevExpress.Utils.HKeyPrefix.Show" xml:space="preserve">
+    <value>Prikaži</value>
+  </data>
+  <data name="DevExpress.Utils.HKeyPrefix.Hide" xml:space="preserve">
+    <value>Sakrij</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.Expression" xml:space="preserve">
+    <value>Izraz</value>
+  </data>
+  <data name="DevExpress.XtraEditors.StyleFormatConditionBase.Expression" xml:space="preserve">
+    <value>Izraz</value>
+  </data>
+</root>

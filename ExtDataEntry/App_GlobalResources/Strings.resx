@@ -1,0 +1,864 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ComparableFieldIncome" xml:space="preserve">
+    <value>Чистий прибуток/збиток</value>
+  </data>
+  <data name="ComparableFieldVidrahuvannia" xml:space="preserve">
+    <value>Сума відрахувань частки прибутку до бюджету</value>
+  </data>
+  <data name="CompFieldColumn" xml:space="preserve">
+    <value>Динаміка: '{0}' та '{1}'</value>
+  </data>
+  <data name="DocDownloadTitleDate" xml:space="preserve">
+    <value>_вiд_</value>
+  </data>
+  <data name="DocDownloadTitleSimple" xml:space="preserve">
+    <value>Документ</value>
+  </data>
+  <data name="DocDownloadTitleWithNum" xml:space="preserve">
+    <value>Документ_№_</value>
+  </data>
+  <data name="GridFilterExportPrefixFiltered" xml:space="preserve">
+    <value>Звіт згенеровано {0:g} з наступними показниками: {1}</value>
+  </data>
+  <data name="GridFilterExportPrefixSimple" xml:space="preserve">
+    <value>Звіт згенеровано {0:g}</value>
+  </data>
+  <data name="ObjectGroups" xml:space="preserve">
+    <value>АБВГДЕЖ</value>
+  </data>
+  <data name="PrivatKindAuction" xml:space="preserve">
+    <value>Аукціон</value>
+  </data>
+  <data name="PrivatKindSell" xml:space="preserve">
+    <value>Викуп</value>
+  </data>
+  <data name="ReportDateFormat" xml:space="preserve">
+    <value>Дата підготовки звіту: {0:g}</value>
+  </data>
+  <data name="ReportFilterFormat" xml:space="preserve">
+    <value>Звіт згенеровано з наступними показниками: {0}</value>
+  </data>
+  <data name="RishenCityName" xml:space="preserve">
+    <value>м. Київ</value>
+  </data>
+  <data name="RishenPoverh" xml:space="preserve">
+    <value>Поверх</value>
+  </data>
+  <data name="RishenStreet" xml:space="preserve">
+    <value>вул.</value>
+  </data>
+  <data name="SqlObjCardArendaFromBalans" xml:space="preserve">
+    <value>SELECT arenda_id, building_id, balans_id, org_renter_id, org_renter_full_name, org_renter_zkpo, org_giver_id, org_giver_full_name, org_giver_zkpo, object_name, agreement_kind, agreement_date, agreement_num, rent_start_date, rent_finish_date, rent_actual_finish_date, agreement_active, rent_square FROM view_arenda WHERE balans_id = @bid AND agreement_active_int = 1</value>
+  </data>
+  <data name="SqlObjCardArendaFromBuildings" xml:space="preserve">
+    <value>SELECT arenda_id, building_id, balans_id, org_renter_id, org_renter_full_name, org_renter_zkpo, org_giver_id, org_giver_full_name, org_giver_zkpo, object_name, agreement_kind, agreement_date, agreement_num, rent_start_date, rent_finish_date, rent_actual_finish_date, agreement_active, rent_square FROM view_arenda WHERE building_id = @bid AND agreement_active_int = 1</value>
+  </data>
+  <data name="SqlObjCardPurchaseFromBalans" xml:space="preserve">
+    <value>SELECT arenda_id, building_id, balans_id, org_renter_id, org_renter_full_name, org_renter_zkpo, org_giver_id, org_giver_full_name, org_giver_zkpo, object_name, agreement_kind, agreement_date, agreement_num, rent_start_date, rent_finish_date, rent_actual_finish_date, agreement_active, rent_square FROM view_arenda_privat_docs WHERE balans_id = @bid</value>
+  </data>
+  <data name="SqlObjCardPurchaseFromBuildings" xml:space="preserve">
+    <value>SELECT arenda_id, building_id, balans_id, org_renter_id, org_renter_full_name, org_renter_zkpo, org_giver_id, org_giver_full_name, org_giver_zkpo, object_name, agreement_kind, agreement_date, agreement_num, rent_start_date, rent_finish_date, rent_actual_finish_date, agreement_active, rent_square FROM view_arenda_privat_docs WHERE building_id = @bid</value>
+  </data>
+  <data name="SqlObjCardSelectFromBalans" xml:space="preserve">
+    <value>SELECT district, street_full_name, addr_nomer, floors, form_ownership, object_kind, object_type, condition, purpose_group, purpose, history, cost_balans, sqr_total, sqr_non_habit, num_floors, obj_bti_code, addr_zip_code, construct_year, oatuu_code, facade, note, org_full_name, org_zkpo_code, org_industry, org_occupation, sqr_pidval, sqr_vlas_potreb, sqr_free, sqr_in_rent, sqr_privatizov, sqr_not_for_rent, sqr_gurtoj, cost_expert_1m, cost_expert_total, cost_zalishkova, o26_code, bti_condition, org_maintainer_full_name, org_maintainer_zkpo_code, otdel_gukv, date_expert, znos, znos_date, memo FROM view_balans WHERE balans_id = @bid</value>
+  </data>
+  <data name="SqlObjCardSelectFromBuildings" xml:space="preserve">
+    <value>SELECT district, street_full_name, addr_nomer, NULL as 'floors', NULL as 'form_ownership', object_kind, object_type, condition, NULL as 'purpose_group', NULL as 'purpose', history, cost_balans, sqr_total, sqr_non_habit, num_floors, bti_code as 'obj_bti_code', addr_zip_code, construct_year, oatuu_code, facade, additional_info as 'note', NULL as 'org_full_name', NULL as 'org_zkpo_code', NULL as 'org_industry', NULL as 'org_occupation', sqr_pidval, NULL as 'sqr_vlas_potreb', NULL as 'sqr_free', sqr_rented as 'sqr_in_rent', NULL as 'sqr_privatizov', NULL as 'sqr_not_for_rent', sqr_gurtoj, NULL as 'cost_expert_1m', NULL as 'cost_expert_total', NULL as 'cost_zalishkova', NULL as 'o26_code', NULL as 'bti_condition', NULL as 'org_maintainer_full_name', NULL as 'org_maintainer_zkpo_code', NULL as 'otdel_gukv', NULL as 'date_expert', NULL as 'znos', NULL as 'znos_date', NULL as 'memo' FROM view_buildings WHERE building_id = @bid</value>
+  </data>
+  <data name="SqlObjTransfer" xml:space="preserve">
+    <value>SELECT transfer_id, building_id, district, street_full_name, addr_nomer, condition, object_type, object_kind, purpose_group, purpose, org_from_id, org_from_full_name, org_from_short_name, org_from_zkpo_code, org_from_industry, org_from_occupation, org_from_ownership, org_from_form_gosp, org_to_id, org_to_full_name, org_to_short_name, org_to_zkpo_code, org_to_industry, org_to_occupation, org_to_ownership, org_to_form_gosp, right_name, transfer_date, transfer_year, transfer_quarter, akt_id, akt_num, akt_date, akt_topic, akt_search_name, rozp_doc_id, rozp_doc_num, rozp_doc_date, rozp_doc_topic, rozp_doc_search_name, modified_by, modify_date, name, characteristic, misc_info, sum_balans, sum_zalishkova, sqr_transferred, len_transferred, akt_text_exists, rozp_text_exists, org_from_vedomstvo, org_to_vedomstvo, akt_date_year, akt_date_quarter FROM view_object_rights</value>
+  </data>
+  <data name="ComparableFieldTotalNoPDV" xml:space="preserve">
+    <value>Сукупні доходи (без ПДВ)</value>
+  </data>
+  <data name="ComparableFieldAvgNumWorkers" xml:space="preserve">
+    <value>Середня чисельність працюючих</value>
+  </data>
+  <data name="ComparableFieldAvgSalary" xml:space="preserve">
+    <value>Середня заробітна плата</value>
+  </data>
+  <data name="ComparableFieldCostAct" xml:space="preserve">
+    <value>Вартість активів</value>
+  </data>
+  <data name="ComparableFieldCurZobov" xml:space="preserve">
+    <value>Поточні зобов'язання</value>
+  </data>
+  <data name="ComparableFieldDebitDebt" xml:space="preserve">
+    <value>Дебіторська заборгованість</value>
+  </data>
+  <data name="ComparableFieldDebtCredit" xml:space="preserve">
+    <value>Кредиторська заборгованість</value>
+  </data>
+  <data name="ComparableFieldLongBankCredit" xml:space="preserve">
+    <value>Довгострокові кредити банків</value>
+  </data>
+  <data name="ComparableFieldLongDebitDebt" xml:space="preserve">
+    <value>Довгострокова дебіторська заборгованість</value>
+  </data>
+  <data name="ComparableFieldLongZobov" xml:space="preserve">
+    <value>Довгострокові зобов'язання</value>
+  </data>
+  <data name="ComparableFieldPributokFact" xml:space="preserve">
+    <value>Прибуток-збиток фактичний</value>
+  </data>
+  <data name="ComparableFieldShortBankCredit" xml:space="preserve">
+    <value>Короткострокові кредити банків</value>
+  </data>
+  <data name="ComparableFieldZagalDohod" xml:space="preserve">
+    <value>Загальний обсяг доходів</value>
+  </data>
+  <data name="RenterDirector" xml:space="preserve">
+    <value>Керівник: </value>
+  </data>
+  <data name="RenterLetterNum" xml:space="preserve">
+    <value>№ </value>
+  </data>
+  <data name="RenterPhone" xml:space="preserve">
+    <value>тел: </value>
+  </data>
+  <data name="RishennyaDate" xml:space="preserve">
+    <value>від </value>
+  </data>
+  <data name="RishennyaDodatok" xml:space="preserve">
+    <value>дод. </value>
+  </data>
+  <data name="RishennyaNum" xml:space="preserve">
+    <value>Рішення № </value>
+  </data>
+  <data name="RishennyaPunkt" xml:space="preserve">
+    <value>п. </value>
+  </data>
+  <data name="RenterLetterDate" xml:space="preserve">
+    <value>від</value>
+  </data>
+  <data name="RentAddressDistrict" xml:space="preserve">
+    <value>район</value>
+  </data>
+  <data name="RentAgreementDate" xml:space="preserve">
+    <value> від </value>
+  </data>
+  <data name="RentAgreementNum" xml:space="preserve">
+    <value>№ </value>
+  </data>
+  <data name="FinFormTitle" xml:space="preserve">
+    <value>{0} (Форма "{1}")</value>
+  </data>
+  <data name="FinFormTitleWithType" xml:space="preserve">
+    <value>{0} (Форма "{1}" {2})</value>
+  </data>
+  <data name="RentObjectsUseColumnFormat" xml:space="preserve">
+    <value>{0} за {1}</value>
+  </data>
+  <data name="RentObjectsUse_50_DebtPrev" xml:space="preserve">
+    <value>Заборгованість зі сплати 30% (50%) до бюджету попередніх періодів (грн.)</value>
+  </data>
+  <data name="RentObjectsUse_50_DebtZvit" xml:space="preserve">
+    <value>Заборгованість зі сплати 50% до бюджету за звітний період (грн.)</value>
+  </data>
+  <data name="RentObjectsUse_50_Narah" xml:space="preserve">
+    <value>Нарахована сума до бюджету 50% (30%) (грн.)</value>
+  </data>
+  <data name="RentObjectsUse_50_Payed" xml:space="preserve">
+    <value>Перерахована до бюджету 50% (30%), враховуючи перераховану заборгованість за попередні періоди (грн.)</value>
+  </data>
+  <data name="RentObjectsUse_Narahovano" xml:space="preserve">
+    <value>Нараховано орендної плати за здачу нежитлової площі (грн.)</value>
+  </data>
+  <data name="RentObjectsUse_NumAgreements" xml:space="preserve">
+    <value>Кількість Договорів Оренди</value>
+  </data>
+  <data name="RentObjectsUse_NumRenters" xml:space="preserve">
+    <value>Кількість Орендарів</value>
+  </data>
+  <data name="RentObjectsUse_Otrymano" xml:space="preserve">
+    <value>Отримано орендної плати за здачу нежитлової площі (грн.)</value>
+  </data>
+  <data name="RentObjectsUse_RentAvg" xml:space="preserve">
+    <value>Середній розмір орендної плати за 1 кв.м нежитлової площі (грн.)</value>
+  </data>
+  <data name="RentObjectsUse_RentDebt" xml:space="preserve">
+    <value>Заборгованість по орендній платі за здачу нежитлової площі (грн.)</value>
+  </data>
+  <data name="RentObjectsUse_SqrBalans" xml:space="preserve">
+    <value>Нежитлова площа, всього (кв.м.)</value>
+  </data>
+  <data name="RentObjectsUse_SqrRentTotal" xml:space="preserve">
+    <value>Здається в оренду, всього (кв.м.)</value>
+  </data>
+  <data name="VipiskiWorksheetTitle" xml:space="preserve">
+    <value>Перерахування коштiв</value>
+  </data>
+  <data name="RentObjectsUseCompColumnTitle" xml:space="preserve">
+    <value>Порівняння: '{0}' та '{1}'</value>
+  </data>
+  <data name="FinNormativVidrahuvannia" xml:space="preserve">
+    <value>НОРМАТИВ ВІДРАХУВАН</value>
+  </data>
+  <data name="SignatureObjCard" xml:space="preserve">
+    <value>Дані внесено користувачем {0}, дата внесення змін: {1}</value>
+  </data>
+  <data name="SignatureUnknownDate" xml:space="preserve">
+    <value>НЕМА ДАНИХ</value>
+  </data>
+  <data name="SignatureUnknownUser" xml:space="preserve">
+    <value>НЕВІДОМИЙ</value>
+  </data>
+  <data name="ArendaCardTitle" xml:space="preserve">
+    <value>Договір Оренди</value>
+  </data>
+  <data name="ArendaCardTitleArch" xml:space="preserve">
+    <value>Архівний Стан Договору Оренди</value>
+  </data>
+  <data name="BalansCardTitle" xml:space="preserve">
+    <value>Об'єкт На Балансі</value>
+  </data>
+  <data name="BalansCardTitleArch" xml:space="preserve">
+    <value>Архівний Стан Об'єкту На Балансі</value>
+  </data>
+  <data name="CardColumnTitle" xml:space="preserve">
+    <value>картка</value>
+  </data>
+  <data name="RishProjRADA" xml:space="preserve">
+    <value>КИЇВСЬКА МІСЬКА РАДА</value>
+  </data>
+  <data name="RishProjRishennya" xml:space="preserve">
+    <value>РІШЕННЯ</value>
+  </data>
+  <data name="RishProjRishNum" xml:space="preserve">
+    <value> № </value>
+  </data>
+  <data name="BPRishProjectChangeRecord" xml:space="preserve">
+    <value>Змінено {0}</value>
+  </data>
+  <data name="BPRishProjectDateChange" xml:space="preserve">
+    <value>дату Рішення на '{0}'</value>
+  </data>
+  <data name="BPRishProjectNameChange" xml:space="preserve">
+    <value>назву Рішення на '{0}'</value>
+  </data>
+  <data name="BPRishProjectNumChange" xml:space="preserve">
+    <value>номер Рішення на '{0}'</value>
+  </data>
+  <data name="BPRishProjectStateChange" xml:space="preserve">
+    <value>стан на '{0}'</value>
+  </data>
+  <data name="BPRishProjectAppendixObject" xml:space="preserve">
+    <value>Об'єкт</value>
+  </data>
+  <data name="BPRishProjectAppendixTitleSimple" xml:space="preserve">
+    <value>Додаток {0}</value>
+  </data>
+  <data name="BPRishProjectAppendixTitleWithNote" xml:space="preserve">
+    <value>Додаток {0}: {1}</value>
+  </data>
+  <data name="BPRishProjectIntroChange" xml:space="preserve">
+    <value>Змінено текст вводної частини Рішення на: {0}</value>
+  </data>
+  <data name="BPRishProjectOutroChange" xml:space="preserve">
+    <value>Змінено текст заключної частини Рішення на: {0}</value>
+  </data>
+  <data name="BPRishProjectPrevValue" xml:space="preserve">
+    <value>Попереднє значення: {0}</value>
+  </data>
+  <data name="BPRishProjectPunktChange" xml:space="preserve">
+    <value>Змінено текст пункту Рішення на: {0}</value>
+  </data>
+  <data name="BPRishProjectPunktDeleted" xml:space="preserve">
+    <value>Видалено пункт Рішення: {0}</value>
+  </data>
+  <data name="BPRishProjectAddAppendix" xml:space="preserve">
+    <value>Створено новий Додаток: {0}</value>
+  </data>
+  <data name="BPRishProjectDelAppendix" xml:space="preserve">
+    <value>Видалено Додаток {0}</value>
+  </data>
+  <data name="BPRishProjectAddAppItem" xml:space="preserve">
+    <value>Додано новий рядок до Додатку {0}</value>
+  </data>
+  <data name="BPRishProjectAddAppItemText" xml:space="preserve">
+    <value>Текст рядка: {0}</value>
+  </data>
+  <data name="BPRishProjectAddColumn" xml:space="preserve">
+    <value>Додано нову колонку '{0}' в таблицю Додатку {1}</value>
+  </data>
+  <data name="BPRishProjectAnyChange" xml:space="preserve">
+    <value>'{0}' на '{1}'</value>
+  </data>
+  <data name="BPRishProjectChangeAppItem" xml:space="preserve">
+    <value>Змінено рядкок в Додатку {0}</value>
+  </data>
+  <data name="BPRishProjectDelAppItem" xml:space="preserve">
+    <value>Видалено рядок з Додатку {0}</value>
+  </data>
+  <data name="BPRishProjectDelColumn" xml:space="preserve">
+    <value>Видалено колонку '{0}' з таблиці Додатку {1}</value>
+  </data>
+  <data name="BPRishProjectAppendixObjIndex" xml:space="preserve">
+    <value>№ п/п</value>
+  </data>
+  <data name="Month1" xml:space="preserve">
+    <value>січня</value>
+  </data>
+  <data name="Month10" xml:space="preserve">
+    <value>жовтня</value>
+  </data>
+  <data name="Month11" xml:space="preserve">
+    <value>листопада</value>
+  </data>
+  <data name="Month12" xml:space="preserve">
+    <value>грудня</value>
+  </data>
+  <data name="Month2" xml:space="preserve">
+    <value>лютого</value>
+  </data>
+  <data name="Month3" xml:space="preserve">
+    <value>березня</value>
+  </data>
+  <data name="Month4" xml:space="preserve">
+    <value>квітня</value>
+  </data>
+  <data name="Month5" xml:space="preserve">
+    <value>травня</value>
+  </data>
+  <data name="Month6" xml:space="preserve">
+    <value>червня</value>
+  </data>
+  <data name="Month7" xml:space="preserve">
+    <value>липня</value>
+  </data>
+  <data name="Month8" xml:space="preserve">
+    <value>серпня</value>
+  </data>
+  <data name="Month9" xml:space="preserve">
+    <value>вересня</value>
+  </data>
+  <data name="RishProjDodatok" xml:space="preserve">
+    <value>Додаток {0}</value>
+  </data>
+  <data name="RishProjDoRishennya" xml:space="preserve">
+    <value>до рішення Київради</value>
+  </data>
+  <data name="RishProjDoRishennyaN" xml:space="preserve">
+    <value>від "{0}" {1} {2}    № {3}</value>
+  </data>
+  <data name="RishProjSessiya" xml:space="preserve">
+    <value>Х СЕСІЯ VІ СКЛИКАННЯ</value>
+  </data>
+  <data name="HtmlEditorInsertAddr" xml:space="preserve">
+    <value>Вставити адресу...</value>
+  </data>
+  <data name="HtmlEditorInsertObject" xml:space="preserve">
+    <value>Вставити назву об'єкту...</value>
+  </data>
+  <data name="HtmlEditorInsertOrgFrom" xml:space="preserve">
+    <value>Вставити назву організації, від якої передається об'єкт</value>
+  </data>
+  <data name="HtmlEditorInsertOrgTo" xml:space="preserve">
+    <value>Вставити назву організації, до якої передається об'єкт</value>
+  </data>
+  <data name="ReportNotSubmitted" xml:space="preserve">
+    <value>ЗВІТ НЕ НАДІСЛАНО ДО ДКВ</value>
+  </data>
+  <data name="Report1NFCommentBodyDkvArenda" xml:space="preserve">
+    <value>
+Співробітник ДКВ {0} залишив коментар у Вашому звіті про використання комунальної власності.
+
+Договір надання в оренду: {2}
+
+Інформація, що коментується: {3}
+
+Коментар: {4}
+
+Перейти до звіту: {5}</value>
+  </data>
+  <data name="Report1NFCommentBodyDkvBalans" xml:space="preserve">
+    <value>
+Співробітник ДКВ {0} залишив коментар у Вашому звіті про використання комунальної власності.
+
+Об'єкт на балансі: {2}
+
+Інформація, що коментується: {3}
+
+Коментар: {4}
+
+Перейти до звіту: {5}</value>
+  </data>
+  <data name="Report1NFCommentBodyDkvBalansDel" xml:space="preserve">
+    <value>
+Співробітник ДКВ {0} залишив коментар у Вашому звіті про використання комунальної власності.
+
+Відчужений об'єкт: {2}
+
+Інформація, що коментується: {3}
+
+Коментар: {4}
+
+Перейти до звіту: {5}</value>
+  </data>
+  <data name="Report1NFCommentBodyDkvOrg" xml:space="preserve">
+    <value>
+Співробітник ДКВ {0} залишив коментар у Вашому звіті про використання комунальної власності.
+
+Сторінка звіту: Відомості про організацію
+
+Інформація, що коментується: {3}
+
+Коментар: {4}
+
+Перейти до звіту: {5}</value>
+  </data>
+  <data name="Report1NFCommentBodyDkvRented" xml:space="preserve">
+    <value>
+Співробітник ДКВ {0} залишив коментар у Вашому звіті про використання комунальної власності.
+
+Договір орендування: {2}
+
+Інформація, що коментується: {3}
+
+Коментар: {4}
+
+Перейти до звіту: {5}</value>
+  </data>
+  <data name="Report1NFCommentBodyOrgArenda" xml:space="preserve">
+    <value>
+Користувач {0} залишив коментар у звіті про використання комунальної власності.
+
+Організація: {1}
+
+Договір надання в оренду: {2}
+
+Інформація, що коментується: {3}
+
+Коментар: {4}
+
+Перейти до звіту: {5}</value>
+  </data>
+  <data name="Report1NFCommentBodyOrgBalans" xml:space="preserve">
+    <value>
+Користувач {0} залишив коментар у звіті про використання комунальної власності.
+
+Організація: {1}
+
+Об'єкт на балансі: {2}
+
+Інформація, що коментується: {3}
+
+Коментар: {4}
+
+Перейти до звіту: {5}</value>
+  </data>
+  <data name="Report1NFCommentBodyOrgBalansDel" xml:space="preserve">
+    <value>
+Користувач {0} залишив коментар у звіті про використання комунальної власності.
+
+Організація: {1}
+
+Відчужений об'єкт: {2}
+
+Інформація, що коментується: {3}
+
+Коментар: {4}
+
+Перейти до звіту: {5}</value>
+  </data>
+  <data name="Report1NFCommentBodyOrgOrg" xml:space="preserve">
+    <value>
+Користувач {0} залишив коментар у звіті про використання комунальної власності.
+
+Організація: {1}
+
+Сторінка звіту: Відомості про організацію
+
+Інформація, що коментується: {3}
+
+Коментар: {4}
+
+Перейти до звіту: {5}</value>
+  </data>
+  <data name="Report1NFCommentBodyOrgRented" xml:space="preserve">
+    <value>
+Користувач {0} залишив коментар у звіті про використання комунальної власності.
+
+Організація: {1}
+
+Договір орендування: {2}
+
+Інформація, що коментується: {3}
+
+Коментар: {4}
+
+Перейти до звіту: {5}</value>
+  </data>
+  <data name="Report1NFCommentSubjectDkvArenda" xml:space="preserve">
+    <value>Новий коментар від співробітника ДКВ щодо договору надання в оренду</value>
+  </data>
+  <data name="Report1NFCommentSubjectDkvBalans" xml:space="preserve">
+    <value>Новий коментар від співробітника ДКВ щодо об'єкту на балансі</value>
+  </data>
+  <data name="Report1NFCommentSubjectDkvBalansDel" xml:space="preserve">
+    <value>Новий коментар від співробітника ДКВ щодо відчуженого об'єкту</value>
+  </data>
+  <data name="Report1NFCommentSubjectDkvOrg" xml:space="preserve">
+    <value>Новий коментар від співробітника ДКВ щодо відомостей про організацію</value>
+  </data>
+  <data name="Report1NFCommentSubjectDkvRented" xml:space="preserve">
+    <value>Новий коментар від співробітника ДКВ щодо договору орендування</value>
+  </data>
+  <data name="Report1NFCommentSubjectOrgArenda" xml:space="preserve">
+    <value>Новий коментар від балансоутримувача щодо договору надання в оренду</value>
+  </data>
+  <data name="Report1NFCommentSubjectOrgBalans" xml:space="preserve">
+    <value>Новий коментар від балансоутримувача щодо об'єкту на балансі</value>
+  </data>
+  <data name="Report1NFCommentSubjectOrgBalansDel" xml:space="preserve">
+    <value>Новий коментар від балансоутримувача щодо відчуженого об'єкту</value>
+  </data>
+  <data name="Report1NFCommentSubjectOrgOrg" xml:space="preserve">
+    <value>Новий коментар від балансоутримувача щодо відомостей про організацію</value>
+  </data>
+  <data name="Report1NFCommentSubjectOrgRented" xml:space="preserve">
+    <value>Новий коментар від балансоутримувача щодо договору орендування</value>
+  </data>
+  <data name="Reports1NFRentFormat" xml:space="preserve">
+    <value>№ {0} від {1}, орендар: {2}</value>
+  </data>
+  <data name="Reports1NFRentedFormat" xml:space="preserve">
+    <value>№ {0} від {1}</value>
+  </data>
+  <data name="Report1NFCommentBodyRdaArenda" xml:space="preserve">
+    <value>
+Співробітник РДА {0} залишив коментар у Вашому звіті про використання комунальної власності.
+
+Договір надання в оренду: {2}
+
+Інформація, що коментується: {3}
+
+Коментар: {4}
+
+Перейти до звіту: {5}</value>
+  </data>
+  <data name="Report1NFCommentBodyRdaBalans" xml:space="preserve">
+    <value>
+Співробітник РДА {0} залишив коментар у Вашому звіті про використання комунальної власності.
+
+Об'єкт на балансі: {2}
+
+Інформація, що коментується: {3}
+
+Коментар: {4}
+
+Перейти до звіту: {5}</value>
+  </data>
+  <data name="Report1NFCommentBodyRdaBalansDel" xml:space="preserve">
+    <value>
+Співробітник РДА {0} залишив коментар у Вашому звіті про використання комунальної власності.
+
+Відчужений об'єкт: {2}
+
+Інформація, що коментується: {3}
+
+Коментар: {4}
+
+Перейти до звіту: {5}</value>
+  </data>
+  <data name="Report1NFCommentBodyRdaOrg" xml:space="preserve">
+    <value>
+Співробітник РДА {0} залишив коментар у Вашому звіті про використання комунальної власності.
+
+Сторінка звіту: Відомості про організацію
+
+Інформація, що коментується: {3}
+
+Коментар: {4}
+
+Перейти до звіту: {5}</value>
+  </data>
+  <data name="Report1NFCommentBodyRdaRented" xml:space="preserve">
+    <value>
+Співробітник РДА {0} залишив коментар у Вашому звіті про використання комунальної власності.
+
+Договір орендування: {2}
+
+Інформація, що коментується: {3}
+
+Коментар: {4}
+
+Перейти до звіту: {5}</value>
+  </data>
+  <data name="Report1NFCommentSubjectRdaArenda" xml:space="preserve">
+    <value>Новий коментар від співробітника РДА щодо договору надання в оренду</value>
+  </data>
+  <data name="Report1NFCommentSubjectRdaBalans" xml:space="preserve">
+    <value>Новий коментар від співробітника РДА щодо об'єкту на балансі</value>
+  </data>
+  <data name="Report1NFCommentSubjectRdaBalansDel" xml:space="preserve">
+    <value>Новий коментар від співробітника РДА щодо відчуженого об'єкту</value>
+  </data>
+  <data name="Report1NFCommentSubjectRdaOrg" xml:space="preserve">
+    <value>Новий коментар від співробітника РДА щодо відомостей про організацію</value>
+  </data>
+  <data name="Report1NFCommentSubjectRdaRented" xml:space="preserve">
+    <value>Новий коментар від співробітника РДА щодо договору орендування</value>
+  </data>
+  <data name="RentAgreementGiver" xml:space="preserve">
+    <value>Орендодавець</value>
+  </data>
+  <data name="Report1NFNewPasswordBody" xml:space="preserve">
+    <value>
+Вітаємо, {0}.
+
+Адреса веб-сайту ДКВ, який Ви можете використовувати для звітування з використання комунальної власності: {1}
+
+Ваш обліковий запис (ім'я користувача) для входу на веб-сайт ДКВ: {2}
+Ваш пароль для входу на веб-сайт ДКВ: {3}
+</value>
+  </data>
+  <data name="Report1NFNewPasswordTitle" xml:space="preserve">
+    <value>Реєстрація на веб-сайті ДКВ для подання звітності щодо використання комунальної власності</value>
+  </data>
+  <data name="Report1NFRdaNewPasswordBody" xml:space="preserve">
+    <value>
+Вітаємо, {0}.
+
+Адреса веб-сайту ДКВ, який Ви можете використовувати для перегляду та контролю звітності балансоутримувачів з використання комунальної власності: {1}
+
+Ваш обліковий запис (ім'я користувача) для входу на веб-сайт ДКВ: {2}
+Ваш пароль для входу на веб-сайт ДКВ: {3}</value>
+  </data>
+  <data name="Report1NFRdaNewPasswordTitle" xml:space="preserve">
+    <value>Реєстрація на веб-сайті ДКВ для контролю звітності балансоутримувачів щодо використання комунальної власності</value>
+  </data>
+  <data name="KorpusPrefixCheck" xml:space="preserve">
+    <value>К</value>
+  </data>
+  <data name="KorpusPrefixCorrect" xml:space="preserve">
+    <value>К.</value>
+  </data>
+  <data name="FinishedProcessing" xml:space="preserve">
+    <value>Обробку завершено.</value>
+  </data>
+  <data name="ProcessingBalansObjects" xml:space="preserve">
+    <value>Будь ласка, не закривайте браузер, доки виконується надсилання усіх змінених об'єктів на балансі...</value>
+  </data>
+  <data name="ProcessingDeletedBalansObjects" xml:space="preserve">
+    <value>Будь ласка, не закривайте браузер, доки виконується надсилання усіх змінених відчужених об'єктів...</value>
+  </data>
+  <data name="ProcessingArendaObjects" xml:space="preserve">
+    <value>Будь ласка, не закривайте браузер, доки виконується надсилання усіх змінених договорів надання в оренду...</value>
+  </data>
+  <data name="ProcessingRentedObjects" xml:space="preserve">
+    <value>Будь ласка, не закривайте браузер, доки виконується надсилання усіх змінених договорів орендування...</value>
+  </data>
+  <data name="GlobalWebSiteURL" xml:space="preserve">
+    <value>http://185.151.105.59/gukv</value>
+  </data>
+  <data name="Report1NFCommentBodyDkvArendaPayment" xml:space="preserve">
+    <value>Співробітник ДКВ {0} залишив коментар у Вашому звіті про використання комунальної власності.
+
+Договір надання в оренду: {2}
+
+Інформація, що коментується: {3}
+
+Коментар: {4}
+
+Перейти до звіту: {5}</value>
+  </data>
+  <data name="Report1NFCommentBodyOrgArendaPayment" xml:space="preserve">
+    <value>Користувач {0} залишив коментар у звіті про використання комунальної власності.
+
+Організація: {1}
+
+Договір надання в оренду: {2}
+
+Інформація, що коментується: {3}
+
+Коментар: {4}
+
+Перейти до звіту: {5}</value>
+  </data>
+  <data name="Report1NFCommentBodyRdaArendaPayment" xml:space="preserve">
+    <value>Співробітник РДА {0} залишив коментар у Вашому звіті про використання комунальної власності.
+
+Договір надання в оренду: {2}
+
+Інформація, що коментується: {3}
+
+Коментар: {4}
+
+Перейти до звіту: {5}</value>
+  </data>
+  <data name="Report1NFCommentSubjectDkvArendaPayment" xml:space="preserve">
+    <value>Новий коментар від співробітника ДКВ щодо орендної плати за договором орендування</value>
+  </data>
+  <data name="Report1NFCommentSubjectOrgArendaPayment" xml:space="preserve">
+    <value>Новий коментар від балансоутримувача щодо орендної плати за договором надання в оренду</value>
+  </data>
+  <data name="Report1NFCommentSubjectRdaArendaPayment" xml:space="preserve">
+    <value>Новий коментар від співробітника РДА щодо орендної плати за договором надання в оренду</value>
+  </data>
+  <data name="Report1NFCommentBodyDkvOrgArendaPayment" xml:space="preserve">
+    <value>
+Співробітник ДКВ {0} залишив коментар у Вашому звіті про використання комунальної власності.
+
+Сторінка звіту: Відомості про організацію (надходження від орендної плати)
+
+Інформація, що коментується: {3}
+
+Коментар: {4}
+
+Перейти до звіту: {5}</value>
+  </data>
+  <data name="Report1NFCommentBodyOrgOrgArendaPayment" xml:space="preserve">
+    <value>
+Користувач {0} залишив коментар у звіті про використання комунальної власності.
+
+Організація: {1}
+
+Сторінка звіту: Відомості про організацію (надходження від орендної плати)
+
+Інформація, що коментується: {3}
+
+Коментар: {4}
+
+Перейти до звіту: {5}</value>
+  </data>
+  <data name="Report1NFCommentBodyRdaOrgArendaPayment" xml:space="preserve">
+    <value>
+Співробітник РДА {0} залишив коментар у Вашому звіті про використання комунальної власності.
+
+Сторінка звіту: Відомості про організацію (надходження від орендної плати)
+
+Інформація, що коментується: {3}
+
+Коментар: {4}
+
+Перейти до звіту: {5}</value>
+  </data>
+  <data name="Report1NFCommentSubjectDkvOrgArendaPayment" xml:space="preserve">
+    <value>Новий коментар від співробітника ДКВ щодо відомостей про надходження від орендної плати</value>
+  </data>
+  <data name="Report1NFCommentSubjectOrgOrgArendaPayment" xml:space="preserve">
+    <value>Новий коментар від балансоутримувача щодо відомостей про надходження від орендної плати</value>
+  </data>
+  <data name="Report1NFCommentSubjectRdaOrgArendaPayment" xml:space="preserve">
+    <value>Новий коментар від співробітника РДА щодо відомостей про надходження від орендної плати</value>
+  </data>
+</root>

@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="GridControlStringId.SummaryEditorFormCancelButton" xml:space="preserve">
+    <value>Odustani</value>
+  </data>
+  <data name="GridControlStringId.MenuFooterCount" xml:space="preserve">
+    <value>Izbrojano</value>
+  </data>
+  <data name="GridControlStringId.PopupFilterBlanks" xml:space="preserve">
+    <value>(Prazno)</value>
+  </data>
+  <data name="GridControlStringId.MenuFooterAverage" xml:space="preserve">
+    <value>Prosječno</value>
+  </data>
+  <data name="GridControlStringId.GridGroupPanelText" xml:space="preserve">
+    <value>Za grupiranje povucite ovdje zaglavlje stupca</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnResetGroupSummarySort" xml:space="preserve">
+    <value>Očisti sumarno sortiranje</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnClearSorting" xml:space="preserve">
+    <value>Očisti sortiranje</value>
+  </data>
+  <data name="GridControlStringId.PopupFilterNonBlanks" xml:space="preserve">
+    <value>(Nije prazno)</value>
+  </data>
+  <data name="GridControlStringId.ErrorWindowTitle" xml:space="preserve">
+    <value>Pogreška</value>
+  </data>
+  <data name="GridControlStringId.SummaryEditorFormOkButton" xml:space="preserve">
+    <value>U redu</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatString_Count" xml:space="preserve">
+    <value>Izbrojano={0}</value>
+  </data>
+  <data name="GridControlStringId.ColumnChooserCaption" xml:space="preserve">
+    <value>Odabir stupaca</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortBySummaryAscending" xml:space="preserve">
+    <value>Uzlazno</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatStringInSameColumn_Count" xml:space="preserve">
+    <value>Izbrojano={0}</value>
+  </data>
+  <data name="GridControlStringId.PopupFilterAll" xml:space="preserve">
+    <value>(Svi)</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupSummaryFormatString_Count" xml:space="preserve">
+    <value>Izbrojano={0}</value>
+  </data>
+  <data name="GridControlStringId.SummaryEditorFormItemsTabCaption" xml:space="preserve">
+    <value>Stavke</value>
+  </data>
+  <data name="GridControlStringId.MenuGroupPanelClearGrouping" xml:space="preserve">
+    <value>Očisti grupiranje</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnClearFilter" xml:space="preserve">
+    <value>Očisti filter</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortGroupBySummaryMenu" xml:space="preserve">
+    <value>Sortiraj po sumarnom</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnShowGroupPanel" xml:space="preserve">
+    <value>Prikaži panel za grupiranje</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortAscending" xml:space="preserve">
+    <value>Sortiraj uzlazno</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupIntervalNone" xml:space="preserve">
+    <value>Ništa</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnFixedNone" xml:space="preserve">
+    <value>Ništa</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortBySummaryDescending" xml:space="preserve">
+    <value>Silazno</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnUnGroup" xml:space="preserve">
+    <value>Razgrupiraj</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnUnboundExpressionEditor" xml:space="preserve">
+    <value>Uređivač izraza...</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnBestFitColumns" xml:space="preserve">
+    <value>Najbolje pristajanje (svi stupci)</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupIntervalYear" xml:space="preserve">
+    <value>Godina</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnFixedLeft" xml:space="preserve">
+    <value>Lijevo</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatString_Avg" xml:space="preserve">
+    <value>Prosje. od {1} je {0:#.##}</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnHideGroupPanel" xml:space="preserve">
+    <value>Sakrij panel za grupiranje</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupSummaryFormatString_Avg" xml:space="preserve">
+    <value>Prosje. od {1} je {0:#.##}</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnHideColumnChooser" xml:space="preserve">
+    <value>Sakrij odabir stupaca</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortDescending" xml:space="preserve">
+    <value>Sortiraj silazno</value>
+  </data>
+  <data name="GridControlStringId.MenuFooterSum" xml:space="preserve">
+    <value>Suma</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatStringInSameColumn_Avg" xml:space="preserve">
+    <value>Pros={0:#.##}</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupSummaryEditor" xml:space="preserve">
+    <value>Uređivač rekapitulacije grupe...</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupIntervalDay" xml:space="preserve">
+    <value>Dan</value>
+  </data>
+  <data name="GridControlStringId.TotalSummaryEditorFormCaption" xml:space="preserve">
+    <value>Ukupno za '{0}'</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnBestFit" xml:space="preserve">
+    <value>Najbolje pristajanje</value>
+  </data>
+  <data name="GridControlStringId.MenuFooterCustomize" xml:space="preserve">
+    <value>Prilagodi...</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupInterval" xml:space="preserve">
+    <value>Interval grupe</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortBySummarySum" xml:space="preserve">
+    <value>Suma</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroup" xml:space="preserve">
+    <value>Grupiraj po ovoj koloni</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnFilterEditor" xml:space="preserve">
+    <value>Uređivač filtra...</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupIntervalSmart" xml:space="preserve">
+    <value>Pametno</value>
+  </data>
+  <data name="GridControlStringId.ColumnChooserDragText" xml:space="preserve">
+    <value>Za prilagodbu izgleda povucite ovdje stupac</value>
+  </data>
+  <data name="GridControlStringId.MenuGroupPanelFullExpand" xml:space="preserve">
+    <value>Puno proširenje</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortBySummaryAverage" xml:space="preserve">
+    <value>Prosječno</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnFixedStyle" xml:space="preserve">
+    <value>Fiksni stil</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupSummaryFormatString_Max" xml:space="preserve">
+    <value>Max od {1} je {0}</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortBySummaryCount" xml:space="preserve">
+    <value>Izbrojano</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnFixedRight" xml:space="preserve">
+    <value>Desno</value>
+  </data>
+  <data name="GridControlStringId.SummaryEditorFormMoveItemDownCaption" xml:space="preserve">
+    <value>Dolje</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatString_Max" xml:space="preserve">
+    <value>Max od {1} je {0}</value>
+  </data>
+  <data name="GridControlStringId.MenuGroupPanelFullCollapse" xml:space="preserve">
+    <value>Puno minimiziranje</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatString_Min" xml:space="preserve">
+    <value>Min od {1} je {0}</value>
+  </data>
+  <data name="GridControlStringId.SummaryEditorFormOrderTabCaption" xml:space="preserve">
+    <value>Redoslijed</value>
+  </data>
+  <data name="GridControlStringId.FilterEditorTitle" xml:space="preserve">
+    <value>Uređivač filtra</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupIntervalMonth" xml:space="preserve">
+    <value>Mjesec</value>
+  </data>
+  <data name="GridControlStringId.GridNewRowText" xml:space="preserve">
+    <value>Klikni ovdje za novi redak</value>
+  </data>
+</root>

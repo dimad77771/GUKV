@@ -1,0 +1,3347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4C0BA46F-2FCC-498B-7740-EC27E6944F8C}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>DevExpress.XtraReports.v12.1.Extensions</AssemblyName>
+    <AssemblyOriginatorKeyFile>..\DevExpress.Key\StrongKey.snk</AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>DevExpress.XtraReports</RootNamespace>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <SignAssembly>true</SignAssembly>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>..\DevExpress.Dll\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE;DEBUG;DXWhidbey</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>..\DevExpress.Dll\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE;DXWhidbey</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Design">
+      <Name>System.Design</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Name>System.Web</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\AssemblyVersion.cs">
+      <Link>AssemblyVersion.cs</Link>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Design\BandCollectionEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Design\BordersEditor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Design\BindingMapper\BindingMapperForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Design\NewParameterEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Design\FormattingRulesEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Design\GroupSortingSummaryEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Design\LookUpValuesEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Design\SummaryEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Design\SummaryEditorFormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Design\XmlSchemaEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Native\Templates\TemplateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\WizPageChooseFields.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\WizPageConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\WizPageDataset.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\WizPageGroupedLayout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\WizPageGrouping.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\WizPageLabelOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\WizPageLabelType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\WizPageLayoutBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\WizPageReportTitle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\WizPageStyle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\WizPageSummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\WizPageTables.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\WizPageUngroupedLayout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\WizPageWelcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\WizPreviewControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\XtraReportWizardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.de-CH.resx">
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.sr-Latn-BA.resx">
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.bg.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.ca.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.cs.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.da.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.de.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.es.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.fi-FI.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.fr.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.he-IL.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.hr.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.hu.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.it-IT.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.it.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.ja.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.nl.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.no.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.pl-PL.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.pt-BR.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.ro.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.ru.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.sl.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.sr-Latn-BA.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.sv.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.tr-TR.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.vi-VN.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.zh-CHS.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.zh-CHT.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.zh-Hans.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BindingMapper\BindingMapperForm.zh-Hant.resx">
+      <DependentUpon>BindingMapperForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.de-CH.resx">
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.de-CH.resx">
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.sr-Latn-BA.resx">
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\GroupSortingSummaryEditorForm.de-CH.resx">
+      <DependentUpon>GroupSortingSummaryEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.sr-Latn-BA.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.bg.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.ca.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.cs.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.da.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.de.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.es.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.fi-FI.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.fr.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.he-IL.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.hr.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.hu.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.it-IT.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.it.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.ja.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.nl.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.no.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.pl-PL.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.pt-BR.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.ro.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.ru.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.sl.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.sr-Latn-BA.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.sv.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.tr-TR.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.vi-VN.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.zh-Hans.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\NewParameterEditorForm.zh-Hant.resx">
+      <DependentUpon>NewParameterEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.sl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.sl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.bg.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.ca.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.cs.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.da.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.de.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.es.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.fi-FI.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.fr.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.he-IL.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.hr.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.hu.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.it-IT.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.it.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.ja.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.nl.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.no.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.pl-PL.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.pt-BR.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.ro.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.ru.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.sl.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.sv.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.tr-TR.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.vi-VN.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.zh-Hans.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\LookUpValuesEditorForm.zh-Hant.resx">
+      <DependentUpon>LookUpValuesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.de-CH.resx">
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.sr-Latn-BA.resx">
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorFormBase.de-CH.resx">
+      <DependentUpon>SummaryEditorFormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorFormBase.sl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SummaryEditorFormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.de-CH.resx">
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.sr-Latn-BA.resx">
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Native\Templates\TemplateForm.de.resx">
+      <DependentUpon>TemplateForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Native\Templates\TemplateForm.resx">
+      <DependentUpon>TemplateForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Native\Templates\TemplateForm.ru.resx">
+      <DependentUpon>TemplateForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignForm.de-CH.resx" />
+    <EmbeddedResource Include="UserDesigner\XRDesignForm.sr-Latn-BA.resx" />
+    <EmbeddedResource Include="UserDesigner\XRDesignRibbonForm.de-CH.resx" />
+    <EmbeddedResource Include="UserDesigner\XRDesignRibbonForm.sr-Latn-BA.resx" />
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.de-CH.resx">
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.sr-Latn-BA.resx">
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.de-CH.resx">
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.sr-Latn-BA.resx">
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.de-CH.resx">
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.sr-Latn-BA.resx">
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.de-CH.resx">
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.de-CH.resx">
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.sr-Latn-BA.resx">
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.de-CH.resx">
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.sr-Latn-BA.resx">
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.de-CH.resx">
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.de-CH.resx">
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.de-CH.resx">
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.sr-Latn-BA.resx">
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.de-CH.resx">
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.de-CH.resx">
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.sr-Latn-BA.resx">
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.de-CH.resx">
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.sr-Latn-BA.resx">
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.de-CH.resx">
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.sl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.sl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.sl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.hr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignRibbonForm.es.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignForm.es.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignForm.pt.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignRibbonForm.pt.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.tr-TR.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.sr-Latn-BA.resx">
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.de-CH.resx">
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.sr-Latn-BA.resx">
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.de-CH.resx">
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.sr-Latn-BA.resx">
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.tr-TR.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.de-CH.resx">
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.tr-TR.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.tr-TR.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.tr-TR.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorFormBase.tr-TR.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SummaryEditorFormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.tr-TR.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignForm.tr-TR.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.tr-TR.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.tr-TR.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.tr-TR.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.tr-TR.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.tr-TR.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignRibbonForm.tr-TR.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.tr-TR.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.tr-TR.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.tr-TR.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.tr-TR.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.tr-TR.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.tr-TR.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.tr-TR.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.tr-TR.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\GroupSortingSummaryEditorForm.tr-TR.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>GroupSortingSummaryEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.tr-TR.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.tr-TR.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.sv.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.sv.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.sv.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorFormBase.sv.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SummaryEditorFormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.sv.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.sv.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.sv.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\GroupSortingSummaryEditorForm.sv.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>GroupSortingSummaryEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.sv.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignForm.sv.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.sv.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.sv.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.sv.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.sv.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.sv.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.sv.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.sv.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.sv.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.sv.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.sv.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.sv.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.sv.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignRibbonForm.sv.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.sv.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.sv.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignRibbonForm.pl-PL.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignForm.pl-PL.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.no.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorFormBase.no.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SummaryEditorFormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.no.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.no.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.no.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.no.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.no.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\GroupSortingSummaryEditorForm.no.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>GroupSortingSummaryEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\GroupSortingSummaryEditorForm.fi-FI.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>GroupSortingSummaryEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorFormBase.fi-FI.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SummaryEditorFormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignForm.fi-FI.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.fi-FI.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignRibbonForm.fi-FI.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.fi-FI.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.fi-FI.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.fi-FI.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.da.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorFormBase.da.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SummaryEditorFormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignRibbonForm.da.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.da.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\GroupSortingSummaryEditorForm.da.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>GroupSortingSummaryEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.da.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.da.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.da.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.da.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignForm.da.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.da.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.da.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.da.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.vi-VN.resx">
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.vi-VN.resx">
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.he-IL.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.vi-VN.resx">
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\GroupSortingSummaryEditorForm.es.resx">
+      <DependentUpon>GroupSortingSummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\GroupSortingSummaryEditorForm.vi-VN.resx">
+      <DependentUpon>GroupSortingSummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.vi-VN.resx">
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorFormBase.es.resx">
+      <DependentUpon>SummaryEditorFormBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorFormBase.vi-VN.resx">
+      <DependentUpon>SummaryEditorFormBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.he-IL.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorFormBase.he-IL.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SummaryEditorFormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\GroupSortingSummaryEditorForm.ru.resx">
+      <DependentUpon>GroupSortingSummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorFormBase.ru.resx">
+      <DependentUpon>SummaryEditorFormBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.vi-VN.resx">
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignForm.vi-VN.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignRibbonForm.ca.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\GroupSortingSummaryEditorForm.ca.resx">
+      <DependentUpon>GroupSortingSummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignForm.ca.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorFormBase.ca.resx">
+      <DependentUpon>SummaryEditorFormBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\GroupSortingSummaryEditorForm.cs.resx">
+      <DependentUpon>GroupSortingSummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.cs.resx">
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.cs.resx">
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorFormBase.cs.resx">
+      <DependentUpon>SummaryEditorFormBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.cs.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.cs.resx">
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorFormBase.fr.resx">
+      <DependentUpon>SummaryEditorFormBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignRibbonForm.fr.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\GroupSortingSummaryEditorForm.fr.resx">
+      <DependentUpon>GroupSortingSummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignForm.fr.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignRibbonForm.hr.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\GroupSortingSummaryEditorForm.hr.resx">
+      <DependentUpon>GroupSortingSummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignRibbonForm.vi-VN.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.vi-VN.resx">
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.vi-VN.resx">
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.vi-VN.resx">
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.vi-VN.resx">
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.vi-VN.resx">
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.vi-VN.resx">
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.vi-VN.resx">
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.vi-VN.resx">
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.vi-VN.resx">
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.vi-VN.resx">
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.vi-VN.resx">
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.vi-VN.resx">
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.vi-VN.resx">
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.vi-VN.resx">
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.hr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.hr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.hr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignForm.hr.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.hr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.hr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorFormBase.hr.resx">
+      <DependentUpon>SummaryEditorFormBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.ca.resx">
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.ca.resx">
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.ca.resx">
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\GroupSortingSummaryEditorForm.nl.resx">
+      <DependentUpon>GroupSortingSummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\GroupSortingSummaryEditorForm.resx">
+      <DependentUpon>GroupSortingSummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.ca.resx">
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorFormBase.nl.resx">
+      <DependentUpon>SummaryEditorFormBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.ca.resx">
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignForm.nl.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignRibbonForm.nl.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\GroupSortingSummaryEditorForm.hu.resx">
+      <DependentUpon>GroupSortingSummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignForm.hu.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignRibbonForm.hu.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorFormBase.hu.resx">
+      <DependentUpon>SummaryEditorFormBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.zh-Hans.resx">
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignForm.zh-Hans.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.zh-Hans.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorFormBase.zh-Hans.resx">
+      <DependentUpon>SummaryEditorFormBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.zh-Hans.resx">
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.zh-Hans.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\GroupSortingSummaryEditorForm.zh-Hans.resx">
+      <DependentUpon>GroupSortingSummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignRibbonForm.zh-Hans.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.zh-Hans.resx">
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorFormBase.de.resx">
+      <DependentUpon>SummaryEditorFormBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignForm.no.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignRibbonForm.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\GroupSortingSummaryEditorForm.de.resx">
+      <DependentUpon>GroupSortingSummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignForm.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignRibbonForm.no.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.ca.resx">
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.ca.resx">
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.no.resx">
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.ca.resx">
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.no.resx">
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.ca.resx">
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.ja.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.ca.resx">
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.ca.resx">
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.ca.resx">
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.ca.resx">
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.ca.resx">
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.ca.resx">
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.ca.resx">
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.ca.resx">
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.no.resx">
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.ca.resx">
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.ja.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\GroupSortingSummaryEditorForm.pl-PL.resx">
+      <DependentUpon>GroupSortingSummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorFormBase.pl-PL.resx">
+      <DependentUpon>SummaryEditorFormBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.it-IT.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.ca.resx">
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.ca.resx">
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.vi-VN.resx">
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.ca.resx">
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.it-IT.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.it-IT.resx">
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.it-IT.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignRibbonForm.it-IT.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.it-IT.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.it-IT.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.it-IT.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.it-IT.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.it-IT.resx">
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.it-IT.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.it-IT.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.it-IT.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.it-IT.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.it-IT.resx">
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.it-IT.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.it-IT.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.it-IT.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.it-IT.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignForm.it-IT.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorFormBase.it-IT.resx">
+      <DependentUpon>SummaryEditorFormBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.it-IT.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.it-IT.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.it-IT.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\GroupSortingSummaryEditorForm.it-IT.resx">
+      <DependentUpon>GroupSortingSummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.it.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.it.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.it.resx">
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.it.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignRibbonForm.it.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.it.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.it.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.it.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.it.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.it.resx">
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.it.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.it.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.it.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.it.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.it.resx">
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.it.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.it.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.it.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.it.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignForm.it.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorFormBase.it.resx">
+      <DependentUpon>SummaryEditorFormBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.it.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.it.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.it.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\GroupSortingSummaryEditorForm.it.resx">
+      <DependentUpon>GroupSortingSummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignForm.pt-BR.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignRibbonForm.pt-BR.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorFormBase.pt-BR.resx">
+      <DependentUpon>SummaryEditorFormBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\GroupSortingSummaryEditorForm.pt-BR.resx">
+      <DependentUpon>GroupSortingSummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\GroupSortingSummaryEditorForm.ja.resx">
+      <DependentUpon>GroupSortingSummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorFormBase.ja.resx">
+      <DependentUpon>SummaryEditorFormBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignRibbonForm.ja.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDesigner\XRDesignForm.ja.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.ja.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.ja.resx">
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.ja.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.ja.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.ja.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.ja.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.ja.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.ja.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.ja.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.ja.resx">
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.ja.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.ja.resx">
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.ja.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.ja.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.ja.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.ja.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.ja.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.ja.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.ja.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.fr.resx">
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.nl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.de.resx">
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.zh-Hans.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.zh-Hans.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.zh-Hans.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.vi-VN.resx">
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.zh-Hans.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.zh-Hans.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.zh-Hans.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.zh-Hans.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.zh-Hans.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.zh-Hans.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.zh-Hans.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.zh-Hans.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.zh-Hans.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.zh-Hans.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.zh-Hans.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.zh-Hans.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.zh-Hans.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.zh-CN.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.zh-CN.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.zh-CN.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.zh-CN.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.zh-CN.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.zh-CN.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.zh-CN.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.zh-CN.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.zh-CN.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.zh-CN.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.zh-CN.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.zh-CN.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.zh-CN.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.zh-CN.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.zh-CN.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.zh-CN.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.zh-Hant.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.zh-Hant.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.zh-Hant.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.zh-Hant.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.zh-Hant.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.zh-Hant.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.zh-Hant.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.zh-Hant.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.zh-Hant.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.zh-Hant.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.zh-Hant.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.zh-Hant.resx">
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.zh-Hant.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.zh-Hant.resx">
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.zh-Hant.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.zh-Hant.resx">
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.zh-Hant.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.zh-Hant.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.zh-Hant.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.zh-Hant.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.zh-Hant.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.bg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.bg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.bg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.bg.resx">
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.bg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.bg.resx">
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.bg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.bg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.bg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.bg.resx">
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.bg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.pt-BR.resx">
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.pl-PL.resx">
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.pl-PL.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.pl-PL.resx">
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.pl-PL.resx">
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.hr.resx">
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.hr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.hr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.hr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.hr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.hr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.hr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.hr.resx">
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.hr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.hr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.hr.resx">
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.hr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.hr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.hr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.hr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.hu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.hu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.hu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.hu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.hu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.hu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.hu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.hu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.hu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.hu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.hu.resx">
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.hu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.hu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.hu.resx">
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.hu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.hu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.hu.resx">
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.hu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.hu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.hu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.hu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.de.resx">
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.es.resx">
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.fr.resx">
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.nl.resx">
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.pt-BR.resx">
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.resx">
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.ro.resx">
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BandCollectionEditorForm.ru.resx">
+      <DependentUpon>BandCollectionEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.de.resx">
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.es.resx">
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.fr.resx">
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.nl.resx">
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.pt-BR.resx">
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.ro.resx">
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.ru.resx">
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\BordersEditor.resx">
+      <DependentUpon>BordersEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.es.resx">
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.nl.resx">
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.pt-BR.resx">
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.resx">
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.ro.resx">
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\FormattingRulesEditorForm.ru.resx">
+      <DependentUpon>FormattingRulesEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.cs.resx">
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.de.resx">
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.el.resx">
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.es.resx">
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.fi-FI.resx">
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.fr.resx">
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.nl.resx">
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.pl-PL.resx">
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.pt-BR.resx">
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.resx">
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.ro.resx">
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.ru.resx">
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\SummaryEditorForm.sk.resx">
+      <DependentUpon>SummaryEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.de.resx">
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.es.resx">
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.fr.resx">
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.nl.resx">
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.ro.resx">
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.ru.resx">
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\XmlSchemaEditorForm.resx">
+      <DependentUpon>XmlSchemaEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.cs.resx">
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.da.resx">
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.de.resx">
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.el.resx">
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.es.resx">
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.fi-FI.resx">
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.fr.resx">
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.nl.resx">
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.no.resx">
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.pl-PL.resx">
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.pt-BR.resx">
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.pt.resx">
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.resx">
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.ro.resx">
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.ru.resx">
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.sk.resx">
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageChooseFields.sl.resx">
+      <DependentUpon>WizPageChooseFields.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.cs.resx">
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.de.resx">
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.el.resx">
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.es.resx">
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.fi-FI.resx">
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.fr.resx">
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.nl.resx">
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.pl-PL.resx">
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.pt-BR.resx">
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.resx">
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.ro.resx">
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.ru.resx">
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageConnection.sk.resx">
+      <DependentUpon>WizPageConnection.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.cs.resx">
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.de.resx">
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.el.resx">
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.es.resx">
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.fi-FI.resx">
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.fr.resx">
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.nl.resx">
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.pl-PL.resx">
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.pt-BR.resx">
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.resx">
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.ro.resx">
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.ru.resx">
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageDataset.sk.resx">
+      <DependentUpon>WizPageDataset.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.cs.resx">
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.da.resx">
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.de.resx">
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.el.resx">
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.es.resx">
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.fi-FI.resx">
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.fr.resx">
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.nl.resx">
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.no.resx">
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.pl-PL.resx">
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.pt-BR.resx">
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.resx">
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.ro.resx">
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.ru.resx">
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.sk.resx">
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGroupedLayout.sl.resx">
+      <DependentUpon>WizPageGroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.cs.resx">
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.da.resx">
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.de.resx">
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.el.resx">
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.es.resx">
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.fi-FI.resx">
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.fr.resx">
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.nl.resx">
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.no.resx">
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.pl-PL.resx">
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.pt-BR.resx">
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.pt.resx">
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.resx">
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.ro.resx">
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.ru.resx">
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.sk.resx">
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageGrouping.sl.resx">
+      <DependentUpon>WizPageGrouping.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.cs.resx">
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.da.resx">
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.de.resx">
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.el.resx">
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.es.resx">
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.fi-FI.resx">
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.fr.resx">
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.nl.resx">
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.no.resx">
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.pl-PL.resx">
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.pt-BR.resx">
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.pt.resx">
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.resx">
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.ro.resx">
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.ru.resx">
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.sk.resx">
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelOptions.sl.resx">
+      <DependentUpon>WizPageLabelOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.cs.resx">
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.da.resx">
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.de.resx">
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.el.resx">
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.es.resx">
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.fi-FI.resx">
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.fr.resx">
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.nl.resx">
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.no.resx">
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.pl-PL.resx">
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.pt-BR.resx">
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.pt.resx">
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.resx">
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.ro.resx">
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.ru.resx">
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.sk.resx">
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLabelType.sl.resx">
+      <DependentUpon>WizPageLabelType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.cs.resx">
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.da.resx">
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.de.resx">
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.el.resx">
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.es.resx">
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.fi-FI.resx">
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.fr.resx">
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.nl.resx">
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.no.resx">
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.pl-PL.resx">
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.pt-BR.resx">
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.pt.resx">
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.resx">
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.ro.resx">
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.ru.resx">
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.sk.resx">
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageLayoutBase.sl.resx">
+      <DependentUpon>WizPageLayoutBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.cs.resx">
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.da.resx">
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.de.resx">
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.el.resx">
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.es.resx">
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.fi-FI.resx">
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.fr.resx">
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.nl.resx">
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.no.resx">
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.pl-PL.resx">
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.pt-BR.resx">
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.pt.resx">
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.resx">
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.ro.resx">
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.ru.resx">
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.sk.resx">
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageReportTitle.sl.resx">
+      <DependentUpon>WizPageReportTitle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.cs.resx">
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.da.resx">
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.de.resx">
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.el.resx">
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.es.resx">
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.fi-FI.resx">
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.fr.resx">
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.nl.resx">
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.no.resx">
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.pl-PL.resx">
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.pt-BR.resx">
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.pt.resx">
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.resx">
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.ro.resx">
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.ru.resx">
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.sk.resx">
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageStyle.sl.resx">
+      <DependentUpon>WizPageStyle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.cs.resx">
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.da.resx">
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.de.resx">
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.el.resx">
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.es.resx">
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.fi-FI.resx">
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.fr.resx">
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.nl.resx">
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.no.resx">
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.pl-PL.resx">
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.pt-BR.resx">
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.pt.resx">
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.resx">
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.ro.resx">
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.ru.resx">
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.sk.resx">
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageSummary.sl.resx">
+      <DependentUpon>WizPageSummary.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.cs.resx">
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.de.resx">
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.el.resx">
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.es.resx">
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.fi-FI.resx">
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.fr.resx">
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.nl.resx">
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.pl-PL.resx">
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.pt-BR.resx">
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.resx">
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.ro.resx">
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.ru.resx">
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageTables.sk.resx">
+      <DependentUpon>WizPageTables.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.cs.resx">
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.da.resx">
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.de.resx">
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.el.resx">
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.es.resx">
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.fi-FI.resx">
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.fr.resx">
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.nl.resx">
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.no.resx">
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.pl-PL.resx">
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.pt-BR.resx">
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.resx">
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.ro.resx">
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.ru.resx">
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageUngroupedLayout.sk.resx">
+      <DependentUpon>WizPageUngroupedLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.cs.resx">
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.da.resx">
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.de.resx">
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.el.resx">
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.es.resx">
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.fi-FI.resx">
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.fr.resx">
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.nl.resx">
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.no.resx">
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.pl-PL.resx">
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.pt-BR.resx">
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.pt.resx">
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.resx">
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.ro.resx">
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.ru.resx">
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.sk.resx">
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPageWelcome.sl.resx">
+      <DependentUpon>WizPageWelcome.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.cs.resx">
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.de.resx">
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.el.resx">
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.es.resx">
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.fi-FI.resx">
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.fr.resx">
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.pl-PL.resx">
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.pt-BR.resx">
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.resx">
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.ro.resx">
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.ru.resx">
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizPreviewControl.sk.resx">
+      <DependentUpon>WizPreviewControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.cs.resx">
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.da.resx">
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.de.resx">
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.el.resx">
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.es.resx">
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.fi-FI.resx">
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.fr.resx">
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.nl.resx">
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.no.resx">
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.pl-PL.resx">
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.pt-BR.resx">
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.pt.resx">
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.resx">
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.ro.resx">
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.ru.resx">
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.sk.resx">
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\XtraReportWizardForm.sl.resx">
+      <DependentUpon>XtraReportWizardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="RefreshKpi" Caption="Osvježi KPI" />
+      <Action Id="ShowChart" Caption="Prikaži graf" />
+    </Actions>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="DevExpress.ExpressApp.Kpi.BaseKpiObject" Caption="Bazni Kpi objekt" />
+    <Class Name="DevExpress.ExpressApp.Kpi.IDateRange" Caption="IDate raspon">
+      <OwnMembers>
+        <Member Name="Caption" Caption="Naslov" />
+        <Member Name="EndPoint" Caption="Završna točka" />
+        <Member Name="Name" Caption="Naziv" />
+        <Member Name="StartPoint" Caption="Početna točka" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Kpi.KpiDefinition" Caption="Definicija">
+      <OwnMembers>
+        <Member Name="Active" Caption="Aktivan" />
+        <Member Name="Compare" Caption="Usporedi" />
+        <Member Name="Criteria" Caption="Kriterij" />
+        <Member Name="Current" Caption="Trenutni" />
+        <Member Name="Direction" Caption="Smjer" />
+        <Member Name="EnableCustomizeRepresentation" Caption="Omogući prilagodbu reprezentacije" />
+        <Member Name="Expression" Caption="Izraz" />
+        <Member Name="GreenZone" Caption="Zelena zona" />
+        <Member Name="MeasurementFrequency" Caption="Frekvencija mjerenja" />
+        <Member Name="Name" Caption="Naziv" />
+        <Member Name="Objects" Caption="Objekti" />
+        <Member Name="Range" Caption="Raspon" />
+        <Member Name="RangeToCompare" Caption="Uspon za usporedbu" />
+        <Member Name="RedZone" Caption="Crvena zona" />
+        <Member Name="SuppressedSeries" Caption="Potisnute serije" />
+        <Member Name="TargetObjectType" Caption="Ciljni tip objekta" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Kpi.KpiHistoryItem" Caption="Kpi stavka povijesti">
+      <OwnMembers>
+        <Member Name="RangeEnd" Caption="Završetak raspona" />
+        <Member Name="RangeStart" Caption="Početak raspona" />
+        <Member Name="Value" Caption="Vrijednost" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Kpi.KpiInstance" Caption="Kpi instanca">
+      <OwnMembers>
+        <Member Name="Change" Caption="Promijeni" />
+        <Member Name="ChartDataSource" Caption="Izvor podataka za graf" />
+        <Member Name="Current" Caption="Trenutni" />
+        <Member Name="GaugeDataSource" Caption="Izvor podataka za mjerač" />
+        <Member Name="HistoryItems" Caption="Povijesne stavke" />
+        <Member Name="KpiName" Caption="Kpi Naziv" />
+        <Member Name="Previous" Caption="Prethodi" />
+        <Member Name="Scorecards" Caption="Bodovne kartice" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Kpi.KpiScorecard" Caption="Bodovna kartica">
+      <OwnMembers>
+        <Member Name="Indicators" Caption="Indikatori" />
+        <Member Name="Name" Caption="Naziv" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <Localization>
+    <LocalizationGroup Name="DateRanges">
+      <LocalizationItem Name="DayMonthAgo" Value="Mjesec unatrag" />
+      <LocalizationItem Name="DayWeekAgo" Value="Tjedan unatrag" />
+      <LocalizationItem Name="DayYearAgo" Value="Godina unatrag" />
+      <LocalizationItem Name="LastMonthToDate" Value="Prethodni mjesec" />
+      <LocalizationItem Name="LastTenDays" Value="Zadnjih 10 dana" />
+      <LocalizationItem Name="LastThirtyDays" Value="Zadnjih 30 dana" />
+      <LocalizationItem Name="LastThreeDays" Value="Zadnja 3 dana" />
+      <LocalizationItem Name="LastWeekToDate" Value="Prethodni tjedan" />
+      <LocalizationItem Name="LastYearToDate" Value="Prethodna godina" />
+      <LocalizationItem Name="Now" Value="Sada" />
+      <LocalizationItem Name="ThisMonthToDate" Value="Ovaj mjesec do datuma" />
+      <LocalizationItem Name="ThisWeekToDate" Value="Ovaj tjedan do datuma" />
+      <LocalizationItem Name="ThisYearToDate" Value="Ova godina do datuma" />
+      <LocalizationItem Name="Today" Value="Danas" />
+      <LocalizationItem Name="Yesterday" Value="Jučer" />
+    </LocalizationGroup>
+    <LocalizationGroup Name="Enums">
+      <LocalizationGroup Name="DevExpress.ExpressApp.Editors.Trend">
+        <LocalizationItem Name="Better" Value="Bolje" />
+        <LocalizationItem Name="NoChange" Value="Bez promjene" />
+        <LocalizationItem Name="Worse" Value="Lošije" />
+      </LocalizationGroup>
+      <LocalizationGroup Name="DevExpress.ExpressApp.Kpi.Direction" Value="Smjer">
+        <LocalizationItem Name="HighIsBetter" Value="Više je bolje" />
+        <LocalizationItem Name="LowIsBetter" Value="Manje je bolje" />
+      </LocalizationGroup>
+      <LocalizationGroup Name="DevExpress.ExpressApp.Kpi.TimeIntervalType" Value="Tip vremenskog intervala">
+        <LocalizationItem Name="Day" Value="Dan" />
+        <LocalizationItem Name="Hour" Value="Sat" />
+        <LocalizationItem Name="Month" Value="Mjesec" />
+        <LocalizationItem Name="Week" Value="Tjedan" />
+        <LocalizationItem Name="Year" Value="Godina" />
+      </LocalizationGroup>
+    </LocalizationGroup>
+  </Localization>
+  <Views>
+    <DetailView Id="KpiDefinition_DetailView">
+      <Layout>
+        <TabbedGroup Id="Tabs">
+          <LayoutGroup Id="Definition" Caption="Definicija">
+            <LayoutGroup Id="SimpleEditors">
+              <LayoutGroup Id="SizeableEditors" Caption="Kriterij" />
+            </LayoutGroup>
+            <LayoutGroup Id="Options">
+              <TabbedGroup Id="OptionsTabs">
+                <LayoutGroup Id="Zones" Caption="Zone" />
+              </TabbedGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="Preview" Caption="Pregled">
+            <LayoutGroup Id="Objects_Group" Caption="Objekti" />
+          </LayoutGroup>
+        </TabbedGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

@@ -1,0 +1,1815 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DevExpress.Data.UnboundColumnType.Boolean" xml:space="preserve">
+    <value>Boolean</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.Bound" xml:space="preserve">
+    <value>Bind til</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.DateTime" xml:space="preserve">
+    <value>Dato Tid</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.Decimal" xml:space="preserve">
+    <value>Decimal</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.Integer" xml:space="preserve">
+    <value>Heltal</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.Object" xml:space="preserve">
+    <value>Objekt</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.String" xml:space="preserve">
+    <value>Streng</value>
+  </data>
+  <data name="DevExpress.Utils.DefaultBoolean.Default" xml:space="preserve">
+    <value>Standard </value>
+  </data>
+  <data name="DevExpress.Utils.DefaultBoolean.False" xml:space="preserve">
+    <value>Nej</value>
+  </data>
+  <data name="DevExpress.Utils.DefaultBoolean.True" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="DevExpress.Utils.FormatInfo.FormatString" xml:space="preserve">
+    <value>Formatstreng</value>
+  </data>
+  <data name="DevExpress.Utils.FormatInfo.FormatType" xml:space="preserve">
+    <value>Formattype</value>
+  </data>
+  <data name="DevExpress.Utils.FormatType.Custom" xml:space="preserve">
+    <value>Bruger</value>
+  </data>
+  <data name="DevExpress.Utils.FormatType.DateTime" xml:space="preserve">
+    <value>Dato Tid</value>
+  </data>
+  <data name="DevExpress.Utils.FormatType.None" xml:space="preserve">
+    <value>Ingen</value>
+  </data>
+  <data name="DevExpress.Utils.FormatType.Numeric" xml:space="preserve">
+    <value>Numerisk</value>
+  </data>
+  <data name="DevExpress.Utils.HorzAlignment.Center" xml:space="preserve">
+    <value>Centreret</value>
+  </data>
+  <data name="DevExpress.Utils.HorzAlignment.Default" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="DevExpress.Utils.HorzAlignment.Far" xml:space="preserve">
+    <value>Væk fra</value>
+  </data>
+  <data name="DevExpress.Utils.HorzAlignment.Near" xml:space="preserve">
+    <value>Nær mod</value>
+  </data>
+  <data name="DevExpress.Utils.OptionsColumnLayout.AddNewColumns" xml:space="preserve">
+    <value>Tilføj nye kolonner</value>
+  </data>
+  <data name="DevExpress.Utils.OptionsColumnLayout.RemoveOldColumns" xml:space="preserve">
+    <value>Fjern gamle kolonner</value>
+  </data>
+  <data name="DevExpress.Utils.OptionsColumnLayout.StoreAllOptions" xml:space="preserve">
+    <value>Gem alle muligheder</value>
+  </data>
+  <data name="DevExpress.Utils.OptionsColumnLayout.StoreAppearance" xml:space="preserve">
+    <value>Gem udseende</value>
+  </data>
+  <data name="DevExpress.Utils.OptionsColumnLayout.StoreLayout" xml:space="preserve">
+    <value>Gem layout</value>
+  </data>
+  <data name="DevExpress.Utils.VertAlignment.Bottom" xml:space="preserve">
+    <value>Bund</value>
+  </data>
+  <data name="DevExpress.Utils.VertAlignment.Center" xml:space="preserve">
+    <value>Centreret</value>
+  </data>
+  <data name="DevExpress.Utils.VertAlignment.Default" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="DevExpress.Utils.VertAlignment.Top" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ActionAfterExport.AskUser" xml:space="preserve">
+    <value>Spørg en bruger</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ActionAfterExport.None" xml:space="preserve">
+    <value>Ingen </value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ActionAfterExport.Open" xml:space="preserve">
+    <value>Åben</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.BarCodeGeneratorBase.CalcCheckSum" xml:space="preserve">
+    <value>Beregn check-sum</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.BarCodeOrientation.Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.BarCodeOrientation.RotateLeft" xml:space="preserve">
+    <value>Roter mod venstre</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.BarCodeOrientation.RotateRight" xml:space="preserve">
+    <value>Roter modhøjre</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.BarCodeOrientation.UpsideDown" xml:space="preserve">
+    <value>Op ned</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarGenerator.StartStopPair" xml:space="preserve">
+    <value>Start og stop symboler</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarGenerator.WideNarrowRatio" xml:space="preserve">
+    <value>Vend bred og smal</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarStartStopPair.AT" xml:space="preserve">
+    <value>AT</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarStartStopPair.BN" xml:space="preserve">
+    <value>BN</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarStartStopPair.CStar" xml:space="preserve">
+    <value>CStar</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarStartStopPair.DE" xml:space="preserve">
+    <value>DE</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarStartStopPair.None" xml:space="preserve">
+    <value>Ingen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Code128Charset.CharsetA" xml:space="preserve">
+    <value>Karaktersæt A</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Code128Charset.CharsetAuto" xml:space="preserve">
+    <value>Auto - karaktersæt</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Code128Charset.CharsetB" xml:space="preserve">
+    <value>Karaktersæt B</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Code128Charset.CharsetC" xml:space="preserve">
+    <value>Karaktersæt C</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Code128Generator.CharacterSet" xml:space="preserve">
+    <value>Karaktersæt</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Code39Generator.WideNarrowRatio" xml:space="preserve">
+    <value>Vend bred og smal </value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodeMSIGenerator.MSICheckSum" xml:space="preserve">
+    <value>MSI check-sum </value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.EAN128Generator.FNC1Substitute" xml:space="preserve">
+    <value>FNC1 Funktions-karakterer</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.EAN128Generator.HumanReadableText" xml:space="preserve">
+    <value>Ordinær tekst</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level0" xml:space="preserve">
+    <value>Niveau 0</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level1" xml:space="preserve">
+    <value>Niveau 1</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level2" xml:space="preserve">
+    <value>Niveau 2</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level3" xml:space="preserve">
+    <value>Niveau 3</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level4" xml:space="preserve">
+    <value>Niveau 4</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level5" xml:space="preserve">
+    <value>Niveau 5</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level6" xml:space="preserve">
+    <value>Niveau 6</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level7" xml:space="preserve">
+    <value>Niveau 7</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level8" xml:space="preserve">
+    <value>Niveau 8</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Industrial2of5Generator.WideNarrowRatio" xml:space="preserve">
+    <value>Vend bred og smal</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Interleaved2of5Generator.WideNarrowRatio" xml:space="preserve">
+    <value>Vend bred og smal </value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.MSICheckSum.DoubleModulo10" xml:space="preserve">
+    <value>Dobbelt modulus 10</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.MSICheckSum.Modulo10" xml:space="preserve">
+    <value>Modulus 10</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.MSICheckSum.None" xml:space="preserve">
+    <value>Ingen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417CompactionMode.Binary" xml:space="preserve">
+    <value>Binær</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417CompactionMode.Text" xml:space="preserve">
+    <value>Tekst</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417Generator.Columns" xml:space="preserve">
+    <value>Kolonner</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417Generator.CompactionMode" xml:space="preserve">
+    <value>Komprimeret tilstand </value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417Generator.ErrorCorrectionLevel" xml:space="preserve">
+    <value>Fejl rettelsesniveau</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417Generator.Rows" xml:space="preserve">
+    <value>Rækker</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417Generator.TruncateSymbol" xml:space="preserve">
+    <value>Sammentræk symbol </value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417Generator.YToXRatio" xml:space="preserve">
+    <value>Vend Y og X </value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.All" xml:space="preserve">
+    <value>Alle</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Bottom" xml:space="preserve">
+    <value>Bund</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Left" xml:space="preserve">
+    <value>Venstre</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.None" xml:space="preserve">
+    <value>Ingen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Right" xml:space="preserve">
+    <value>Højre</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Top" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.CsvExportOptions" xml:space="preserve">
+    <value>CSV eksportmuligheder</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.DirectionMode.BackwardDiagonal" xml:space="preserve">
+    <value>Baglæns diagonalt</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.DirectionMode.ForwardDiagonal" xml:space="preserve">
+    <value>Forlæng diagonalt</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.DirectionMode.Horizontal" xml:space="preserve">
+    <value>Horisontalt</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.DirectionMode.Vertical" xml:space="preserve">
+    <value>Verticalt</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.ImageViewMode.Clip" xml:space="preserve">
+    <value>Klip</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.ImageViewMode.Stretch" xml:space="preserve">
+    <value>Udvid</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.ImageViewMode.Zoom" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.Font" xml:space="preserve">
+    <value>Skrifttype</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.ForeColor" xml:space="preserve">
+    <value>Forgrundsfarve</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.Image" xml:space="preserve">
+    <value>Billede</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.ImageAlign" xml:space="preserve">
+    <value>Billedtilpasning</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.ImageTiling" xml:space="preserve">
+    <value>Billedfliser</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.ImageTransparency" xml:space="preserve">
+    <value>Billedgennemsigtighed</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.ImageViewMode" xml:space="preserve">
+    <value>Billedvisning</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.ShowBehind" xml:space="preserve">
+    <value>Vis bagved</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.Text" xml:space="preserve">
+    <value>Tekst</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.TextDirection" xml:space="preserve">
+    <value>Tekstretning</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.TextTransparency" xml:space="preserve">
+    <value>Tekstgennemsigtighed</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.Watermark.PageRange" xml:space="preserve">
+    <value>Siderækkefølge</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EmailOptions" xml:space="preserve">
+    <value>E-mail muligheder</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EmailOptions.Body" xml:space="preserve">
+    <value>Brødtekst</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EmailOptions.RecipientAddress" xml:space="preserve">
+    <value>Modtagers adresse</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EmailOptions.RecipientAddressPrefix" xml:space="preserve">
+    <value>Modtagers adresse - prefix</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EmailOptions.RecipientName" xml:space="preserve">
+    <value>Modtagers navn</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EmailOptions.Subject" xml:space="preserve">
+    <value>Emne</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ExportOptions" xml:space="preserve">
+    <value>Eksportmuligheder</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportMode.DifferentFiles" xml:space="preserve">
+    <value>Forskellige filer</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportMode.SingleFile" xml:space="preserve">
+    <value>Enkeltfil</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportMode.SingleFilePageByPage" xml:space="preserve">
+    <value>Enkeltfil (side for side)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptions" xml:space="preserve">
+    <value>HTML-Eksportmuligheder</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.CharacterSet" xml:space="preserve">
+    <value>Karaktersæt</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.ExportMode" xml:space="preserve">
+    <value>Eksporttype</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.PageBorderColor" xml:space="preserve">
+    <value>Sideramme-farve</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.PageBorderWidth" xml:space="preserve">
+    <value>Sideramme-bredde</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.PageRange" xml:space="preserve">
+    <value>Siderækkefølge</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.RemoveSecondarySymbols" xml:space="preserve">
+    <value>Fjern sekundære symboler</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.Title" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportMode.DifferentFiles" xml:space="preserve">
+    <value>Forskellige filer</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportMode.SingleFile" xml:space="preserve">
+    <value>Enkeltfil</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportMode.SingleFilePageByPage" xml:space="preserve">
+    <value>Enkeltfil (side for side)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions" xml:space="preserve">
+    <value>Billed eksportmuligheder</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.ExportMode" xml:space="preserve">
+    <value>Eksportmåde</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.Format" xml:space="preserve">
+    <value>Format</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.PageBorderColor" xml:space="preserve">
+    <value>Siderammens farve</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.PageBorderWidth" xml:space="preserve">
+    <value>Siderammens bredde</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.PageRange" xml:space="preserve">
+    <value>Siderækkefølge</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.Resolution" xml:space="preserve">
+    <value>Opløsning </value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.AutoSize" xml:space="preserve">
+    <value>Auto-størrelse</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.CenterImage" xml:space="preserve">
+    <value>Centrer billede</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.StretchImage" xml:space="preserve">
+    <value>Stræk billede</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.ZoomImage" xml:space="preserve">
+    <value>Zoom billede</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.MhtExportOptions" xml:space="preserve">
+    <value>MHT-eksportmuligheder</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.NativeFormatOptions" xml:space="preserve">
+    <value>Standard-eksportmuligheder</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.NativeFormatOptions.Compressed" xml:space="preserve">
+    <value>Komprimeret tilstand </value>
+  </data>
+  <data name="DevExpress.XtraPrinting.NativeFormatOptions.ShowOptionsBeforeSave" xml:space="preserve">
+    <value>Vis muligheder før Gem</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PaddingInfo.Bottom" xml:space="preserve">
+    <value>Bund</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PaddingInfo.Left" xml:space="preserve">
+    <value>Venstre</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PaddingInfo.Right" xml:space="preserve">
+    <value>Højre</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PaddingInfo.Top" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageByPageExportOptionsBase.PageRange" xml:space="preserve">
+    <value>Siderækkefølge</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.DateTime" xml:space="preserve">
+    <value>Aktuel dato og tid</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.None" xml:space="preserve">
+    <value>Ingen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.Number" xml:space="preserve">
+    <value>Sidenummer</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.NumberOfTotal" xml:space="preserve">
+    <value>Aktuel</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.RomHiNumber" xml:space="preserve">
+    <value>Sidenummer (Romertal, store bogstaver)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.RomLowNumber" xml:space="preserve">
+    <value>Sidenummer (Romertal, små bogstaver)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.UserName" xml:space="preserve">
+    <value>Brugernavn</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions" xml:space="preserve">
+    <value>PDF-dokumentmuligheder</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Application" xml:space="preserve">
+    <value>Applikation</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Author" xml:space="preserve">
+    <value>Forfatter</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Keywords" xml:space="preserve">
+    <value>Nøgleord</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Subject" xml:space="preserve">
+    <value>Emne</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Title" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions" xml:space="preserve">
+    <value>PDF-eksportmuligheder</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.Compressed" xml:space="preserve">
+    <value>Komprimeret tilstand </value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.DefaultResourceFile" xml:space="preserve">
+    <value>Standard resoursefil</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.DocumentOptions" xml:space="preserve">
+    <value>Dokumentmuligheder</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.ImageQuality" xml:space="preserve">
+    <value>Billedkvalitet</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.NeverEmbeddedFonts" xml:space="preserve">
+    <value>Ikke inkluderede fonte</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.ShowPrintDialogOnOpen" xml:space="preserve">
+    <value>Vis udskft når Åben</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.High" xml:space="preserve">
+    <value>Højre</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Highest" xml:space="preserve">
+    <value>Højest</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Low" xml:space="preserve">
+    <value>Lav</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Lowest" xml:space="preserve">
+    <value>Lavest</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Medium" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrinterSettingsUsing" xml:space="preserve">
+    <value>Anvend printerindstilolinger</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrinterSettingsUsing.UseLandscape" xml:space="preserve">
+    <value>Anvend Landskab</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrinterSettingsUsing.UseMargins" xml:space="preserve">
+    <value>Anvend margener</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrinterSettingsUsing.UsePaperKind" xml:space="preserve">
+    <value>Avend papirtype</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions" xml:space="preserve">
+    <value>Vis printmuligheder</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.ActionAfterExport" xml:space="preserve">
+    <value>Action - efter eksport</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.DefaultDirectory" xml:space="preserve">
+    <value>Standardbibliotek</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.DefaultFileName" xml:space="preserve">
+    <value>Standard filnavn</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.SaveMode" xml:space="preserve">
+    <value>Gem som</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.ShowOptionsBeforeExport" xml:space="preserve">
+    <value>Vis muligheder før Eksport</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportMode.SingleFile" xml:space="preserve">
+    <value>Enkeltfil</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportMode.SingleFilePageByPage" xml:space="preserve">
+    <value>Enkeltfil (side for side)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions" xml:space="preserve">
+    <value>RTF-eksportmuligheder</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions.ExportMode" xml:space="preserve">
+    <value>Eksporttype</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions.ExportWatermarks" xml:space="preserve">
+    <value>Eksporter vandmærke</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions.PageRange" xml:space="preserve">
+    <value>Siderækkefølge</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.SaveMode.UsingDefaultPath" xml:space="preserve">
+    <value>Anvend Standard-sti</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.SaveMode.UsingSaveFileDialog" xml:space="preserve">
+    <value>Anvend Gem som dialogboks</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.FilletShapeBase.Fillet" xml:space="preserve">
+    <value>Filere</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeArrow.ArrowHeight" xml:space="preserve">
+    <value>Pil - højde</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeArrow.ArrowWidth" xml:space="preserve">
+    <value>Pil - bredde</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeBase.ShapeName" xml:space="preserve">
+    <value>Facon-navn</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeBrace.Fillet" xml:space="preserve">
+    <value>Filere</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeBrace.TailLength" xml:space="preserve">
+    <value>Halens længde </value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeBracket.TipLength" xml:space="preserve">
+    <value>Taleboksens længde </value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeCross.HorizontalLineWidth" xml:space="preserve">
+    <value>Horisontalt liniebredde</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeCross.VerticalLineWidth" xml:space="preserve">
+    <value>Vertikal liniebredde</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapePolygon.NumberOfSides" xml:space="preserve">
+    <value>Antal sider</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeStar.Concavity" xml:space="preserve">
+    <value>Spidser</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeStar.StarPointCount" xml:space="preserve">
+    <value>Tæl stjernepunkter</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomCenter" xml:space="preserve">
+    <value>Centrer - bund</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomJustify" xml:space="preserve">
+    <value>Justér - bund</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomLeft" xml:space="preserve">
+    <value>Venstre - bund</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomRight" xml:space="preserve">
+    <value>Højre - bund</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleCenter" xml:space="preserve">
+    <value>Centrer - midt</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleJustify" xml:space="preserve">
+    <value>Justér -midt</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleLeft" xml:space="preserve">
+    <value>Venstre - midt</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleRight" xml:space="preserve">
+    <value>Højre - midt</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopCenter" xml:space="preserve">
+    <value>Centrer - top</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopJustify" xml:space="preserve">
+    <value>Justér - top</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopLeft" xml:space="preserve">
+    <value>Venstre - top</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopRight" xml:space="preserve">
+    <value>Højre - top</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportMode.Text" xml:space="preserve">
+    <value>Tekst</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportMode.Value" xml:space="preserve">
+    <value>Værdi</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptions" xml:space="preserve">
+    <value>Tekst - eksportmuligheder</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptionsBase.Encoding" xml:space="preserve">
+    <value>Kodning</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptionsBase.QuoteStringsWithSeparators" xml:space="preserve">
+    <value>Angivelsestegn for tekst </value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptionsBase.Separator" xml:space="preserve">
+    <value>Separator</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptionsBase.TextExportMode" xml:space="preserve">
+    <value>Tekst - eksporttyper</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.VerticalContentSplitting.Exact" xml:space="preserve">
+    <value>Præcis</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.VerticalContentSplitting.Smart" xml:space="preserve">
+    <value>Variabel</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions" xml:space="preserve">
+    <value>XLS - eksportmuligheder</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.ExportHyperlinks" xml:space="preserve">
+    <value>Eksporter hyperlinks</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.Ignore256ColumnsLimit" xml:space="preserve">
+    <value>Ignorer 256 kolonne-grænsen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.Ignore65536RowsLimit" xml:space="preserve">
+    <value>Ignorer 65536 række-grænsen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.SheetName" xml:space="preserve">
+    <value>Sidenavn</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.ShowGridLines" xml:space="preserve">
+    <value>Vis gitterlinier</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.Suppress256ColumnsWarning" xml:space="preserve">
+    <value>Undertryk 256 kolonne-advarsel</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.Suppress65536RowsWarning" xml:space="preserve">
+    <value>Undertryk 65536 række-advarsel</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.UseNativeFormat" xml:space="preserve">
+    <value>Anvend standardformat</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptionsBase.TextExportMode" xml:space="preserve">
+    <value>Tekst - eksporttyper</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsxExportOptions" xml:space="preserve">
+    <value>XLS - eksportmuligheder</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.BackSlant" xml:space="preserve">
+    <value>Baglæns rettet </value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.Horizontal" xml:space="preserve">
+    <value>Horisontal</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.Slant" xml:space="preserve">
+    <value>Retning </value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.Vertical" xml:space="preserve">
+    <value>Vertikal liniebredde</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PrintOnPages.AllPages" xml:space="preserve">
+    <value>Alle sider</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PrintOnPages.NotWithReportFooter" xml:space="preserve">
+    <value>Uden sidefod</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PrintOnPages.NotWithReportHeader" xml:space="preserve">
+    <value>Uden sidehoved</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PrintOnPages.NotWithReportHeaderAndReportFooter" xml:space="preserve">
+    <value>Uden sidehoved og sidefod</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.VerticalAnchorStyles.Both" xml:space="preserve">
+    <value>Begge</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom" xml:space="preserve">
+    <value>Bund</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.VerticalAnchorStyles.None" xml:space="preserve">
+    <value>Ingen</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.VerticalAnchorStyles.Top" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="System.Boolean.False" xml:space="preserve">
+    <value>Nej</value>
+  </data>
+  <data name="System.Boolean.True" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="System.Collections.CollectionBase" xml:space="preserve">
+    <value>(Samling)</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.BackwardDiagonal" xml:space="preserve">
+    <value>Baglæns diagonalt</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Cross" xml:space="preserve">
+    <value>Skråt</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DarkDownwardDiagonal" xml:space="preserve">
+    <value>Mørk diagonalt nedad</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DarkHorizontal" xml:space="preserve">
+    <value>Mørk horisontalt</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DarkUpwardDiagonal" xml:space="preserve">
+    <value>Mørk diagonalt opad</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DarkVertical" xml:space="preserve">
+    <value>Mørk vertikalt</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DashedDownwardDiagonal" xml:space="preserve">
+    <value>Prikket diagonalt nedad</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DashedHorizontal" xml:space="preserve">
+    <value>Prikket horisontalt</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DashedUpwardDiagonal" xml:space="preserve">
+    <value>Prikket diagonalt opad</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DashedVertical" xml:space="preserve">
+    <value>Prikket vertikalt</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DiagonalBrick" xml:space="preserve">
+    <value>Diagonal flise</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DiagonalCross" xml:space="preserve">
+    <value>Diagonalt skråt</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Divot" xml:space="preserve">
+    <value>Fyldtegn</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DottedDiamond" xml:space="preserve">
+    <value>Stiblet diamant</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DottedGrid" xml:space="preserve">
+    <value>Stiblet gitter</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.ForwardDiagonal" xml:space="preserve">
+    <value>Forlæns diagonal</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Horizontal" xml:space="preserve">
+    <value>Horisontalt</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.HorizontalBrick" xml:space="preserve">
+    <value>Horisontalt flise</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.LargeCheckerBoard" xml:space="preserve">
+    <value>Stor kontrolplade</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.LargeConfetti" xml:space="preserve">
+    <value>Stor konfetti</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.LargeGrid" xml:space="preserve">
+    <value>Stort gitter</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.LightDownwardDiagonal" xml:space="preserve">
+    <value>Lyst diagonalt nedad</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.LightHorizontal" xml:space="preserve">
+    <value>Lyst horisontalt</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.LightUpwardDiagonal" xml:space="preserve">
+    <value>Lyst diagonalt opad</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.LightVertical" xml:space="preserve">
+    <value>Lyst vertikalt</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Max" xml:space="preserve">
+    <value>Maksimum</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Min" xml:space="preserve">
+    <value>Minimum</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.NarrowHorizontal" xml:space="preserve">
+    <value>Tæt horisontalt</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.NarrowVertical" xml:space="preserve">
+    <value>Tæt vertikalt</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.OutlinedDiamond" xml:space="preserve">
+    <value>Outline - Diamant</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent05" xml:space="preserve">
+    <value>Procent 05</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent10" xml:space="preserve">
+    <value>Procent 10</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent20" xml:space="preserve">
+    <value>Procent 20</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent25" xml:space="preserve">
+    <value>Procent 25</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent30" xml:space="preserve">
+    <value>Procent 30</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent40" xml:space="preserve">
+    <value>Procent 40</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent50" xml:space="preserve">
+    <value>Procent 50</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent60" xml:space="preserve">
+    <value>Procent 60</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent70" xml:space="preserve">
+    <value>Procent 70</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent75" xml:space="preserve">
+    <value>Procent 75</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent80" xml:space="preserve">
+    <value>Procent 80</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent90" xml:space="preserve">
+    <value>Procent 90</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Plaid" xml:space="preserve">
+    <value>Tæppe</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Shingle" xml:space="preserve">
+    <value>Overlæg</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.SmallCheckerBoard" xml:space="preserve">
+    <value>Lille kontrolplade</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.SmallConfetti" xml:space="preserve">
+    <value>Lille konfetti</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.SmallGrid" xml:space="preserve">
+    <value>Lille gitter</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.SolidDiamond" xml:space="preserve">
+    <value>Udfyldt diamant</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Sphere" xml:space="preserve">
+    <value>Område </value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Trellis" xml:space="preserve">
+    <value>Tremmer</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Vertical" xml:space="preserve">
+    <value>Vertikal</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Wave" xml:space="preserve">
+    <value>Bølge</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Weave" xml:space="preserve">
+    <value>Indflette</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.WideDownwardDiagonal" xml:space="preserve">
+    <value>Bred diagonalt nedad</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.WideUpwardDiagonal" xml:space="preserve">
+    <value>Bred diagonalt upad</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.ZigZag" xml:space="preserve">
+    <value>Zig Zag</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal" xml:space="preserve">
+    <value>Baglæng diagonalt</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal" xml:space="preserve">
+    <value>Forlæns diagonal</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.LinearGradientMode.Horizontal" xml:space="preserve">
+    <value>Horisontalt</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.LinearGradientMode.Vertical" xml:space="preserve">
+    <value>Vertikal</value>
+  </data>
+  <data name="System.Drawing.Font.Bold" xml:space="preserve">
+    <value>Fed</value>
+  </data>
+  <data name="System.Drawing.Font.GdiCharSet" xml:space="preserve">
+    <value>GDI karaktersæt</value>
+  </data>
+  <data name="System.Drawing.Font.GdiVerticalFont" xml:space="preserve">
+    <value>GDI vertikal font</value>
+  </data>
+  <data name="System.Drawing.Font.Italic" xml:space="preserve">
+    <value>Kursiv</value>
+  </data>
+  <data name="System.Drawing.Font.Name" xml:space="preserve">
+    <value>Navn</value>
+  </data>
+  <data name="System.Drawing.Font.Size" xml:space="preserve">
+    <value>Størrelse</value>
+  </data>
+  <data name="System.Drawing.Font.Strikeout" xml:space="preserve">
+    <value>Udvid</value>
+  </data>
+  <data name="System.Drawing.Font.Underline" xml:space="preserve">
+    <value>Understreg</value>
+  </data>
+  <data name="System.Drawing.Font.Unit" xml:space="preserve">
+    <value>Enhed</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A2" xml:space="preserve">
+    <value>A2</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A3" xml:space="preserve">
+    <value>A3</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A3Extra" xml:space="preserve">
+    <value>A3 ekstra  </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A3ExtraTransverse" xml:space="preserve">
+    <value>A3 ekstra - tværgående</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A3Rotated" xml:space="preserve">
+    <value>A3 - roteret</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A3Transverse" xml:space="preserve">
+    <value>A3 - tværgående</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4" xml:space="preserve">
+    <value>A4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4Extra" xml:space="preserve">
+    <value>A4 ekstra</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4Plus" xml:space="preserve">
+    <value>A4 plus</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4Rotated" xml:space="preserve">
+    <value>A4 - roteret</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4Small" xml:space="preserve">
+    <value>A4 lille</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4Transverse" xml:space="preserve">
+    <value>A4 - tværgående</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A5" xml:space="preserve">
+    <value>A5</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A5Extra" xml:space="preserve">
+    <value>A5 ekstra</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A5Rotated" xml:space="preserve">
+    <value>A5 roteret</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A5Transverse" xml:space="preserve">
+    <value>A5 - tværgående</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A6" xml:space="preserve">
+    <value>A6</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A6Rotated" xml:space="preserve">
+    <value>A6 - roteret</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.APlus" xml:space="preserve">
+    <value>SuperA/SuperA/A4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B4" xml:space="preserve">
+    <value>B4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B4Envelope" xml:space="preserve">
+    <value>B4 kuvert</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B4JisRotated" xml:space="preserve">
+    <value>JIS B4 - roteret</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B5" xml:space="preserve">
+    <value>B5</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B5Envelope" xml:space="preserve">
+    <value>B5 kuvert</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B5Extra" xml:space="preserve">
+    <value>ISA B5 ekstra</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B5JisRotated" xml:space="preserve">
+    <value>JIS B5 roteret</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B5Transverse" xml:space="preserve">
+    <value>JIS B5 - tværgående</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B6Envelope" xml:space="preserve">
+    <value>B6 kuvert</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B6Jis" xml:space="preserve">
+    <value>JIS B6</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B6JisRotated" xml:space="preserve">
+    <value>JIS B6 - roteret</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.BPlus" xml:space="preserve">
+    <value>SuperB/SuperB/A3</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.C3Envelope" xml:space="preserve">
+    <value>C3 kuvert</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.C4Envelope" xml:space="preserve">
+    <value>C4 kuvert</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.C5Envelope" xml:space="preserve">
+    <value>C5 kuvert</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.C65Envelope" xml:space="preserve">
+    <value>C65 kuvert</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.C6Envelope" xml:space="preserve">
+    <value>C6 kuvert</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.CSheet" xml:space="preserve">
+    <value>C ark</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Custom" xml:space="preserve">
+    <value>Bruger</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.DLEnvelope" xml:space="preserve">
+    <value>DL kuvert</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.DSheet" xml:space="preserve">
+    <value>D ark</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.ESheet" xml:space="preserve">
+    <value>E ark</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Executive" xml:space="preserve">
+    <value>Executive</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Folio" xml:space="preserve">
+    <value>Folio</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.GermanLegalFanfold" xml:space="preserve">
+    <value>Tysk juridisk Fanfold</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.GermanStandardFanfold" xml:space="preserve">
+    <value>Tysk standard Fanfold</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.InviteEnvelope" xml:space="preserve">
+    <value>Invite kuverte</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.IsoB4" xml:space="preserve">
+    <value>Iso B4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.ItalyEnvelope" xml:space="preserve">
+    <value>Italiensk kuvert</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseDoublePostcard" xml:space="preserve">
+    <value>Janpansk dobbeltkort</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseDoublePostcardRotated" xml:space="preserve">
+    <value>Japansk dobbeltkort - roteret</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeChouNumber3" xml:space="preserve">
+    <value>Japansk kuvert Chou Nr. 3</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeChouNumber3Rotated" xml:space="preserve">
+    <value>Japansk kuvert Chou Nr. 3 - roteret</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeChouNumber4" xml:space="preserve">
+    <value>Japansk kuvert Chou Nr. 4 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeChouNumber4Rotated" xml:space="preserve">
+    <value>Japansk kuvert Chou Nr. 4 - roteret</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeKakuNumber2" xml:space="preserve">
+    <value>Japansk kuvert Kaku Nr. 2</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeKakuNumber2Rotated" xml:space="preserve">
+    <value>Japansk kuvert Kaku Nr. 2 - roteret </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeKakuNumber3" xml:space="preserve">
+    <value>Japansk kuvert Kaku Nr. 3 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeKakuNumber3Rotated" xml:space="preserve">
+    <value>Japansk kuvert Kaku Nr. 3 - roteret </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeYouNumber4" xml:space="preserve">
+    <value>Japansk kuvert Kaku Nr. 4 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeYouNumber4Rotated" xml:space="preserve">
+    <value>Japansk kuvert Kaku Nr. 34- roteret </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapanesePostcard" xml:space="preserve">
+    <value>Japansk postkort</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapanesePostcardRotated" xml:space="preserve">
+    <value>Japansk postkort - roteret </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Ledger" xml:space="preserve">
+    <value>Ledger</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Legal" xml:space="preserve">
+    <value>Legal</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LegalExtra" xml:space="preserve">
+    <value>Legal ekstra </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Letter" xml:space="preserve">
+    <value>Letter</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterExtra" xml:space="preserve">
+    <value>Letter ekstra</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterExtraTransverse" xml:space="preserve">
+    <value>Letter ekstra - tværgående</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterPlus" xml:space="preserve">
+    <value>Letter plus</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterRotated" xml:space="preserve">
+    <value>Letter - roteret </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterSmall" xml:space="preserve">
+    <value>Letter - lille</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterTransverse" xml:space="preserve">
+    <value>Letter -tværgående </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.MonarchEnvelope" xml:space="preserve">
+    <value>Monarch kuvert </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Note" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Number10Envelope" xml:space="preserve">
+    <value>Kuvert Nr. 10</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Number11Envelope" xml:space="preserve">
+    <value>Kuvert Nr. 11</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Number12Envelope" xml:space="preserve">
+    <value>Kuvert Nr. 12</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Number14Envelope" xml:space="preserve">
+    <value>Kuvert Nr. 14</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Number9Envelope" xml:space="preserve">
+    <value>Kuvert Nr. 9</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PersonalEnvelope" xml:space="preserve">
+    <value>Persolig kuvert (6 3/4)</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc16K" xml:space="preserve">
+    <value>Prc 16K</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc16KRotated" xml:space="preserve">
+    <value>Prc 16K - roteret </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc32K" xml:space="preserve">
+    <value>Prc 32K</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc32KBig" xml:space="preserve">
+    <value>Prc 32K stor</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc32KBigRotated" xml:space="preserve">
+    <value>Prc 32K stor - roteret </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc32KRotated" xml:space="preserve">
+    <value>Prc 32K - roteret </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber1" xml:space="preserve">
+    <value>Prc kuvert Nr. 1</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber10" xml:space="preserve">
+    <value>Prc kuvert Nr. 10</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber10Rotated" xml:space="preserve">
+    <value>Prc kuvert Nr. 10 - roteret </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber1Rotated" xml:space="preserve">
+    <value>Prc kuvert Nr. 1 - roteret </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber2" xml:space="preserve">
+    <value>Prc kuvert Nr. 2 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber2Rotated" xml:space="preserve">
+    <value>Prc kuvert Nr. 2 - roteret </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber3" xml:space="preserve">
+    <value>Prc kuvert Nr. 3</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber3Rotated" xml:space="preserve">
+    <value>Prc kuvert Nr. 3 - roteret </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber4" xml:space="preserve">
+    <value>Prc kuvert Nr. 4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber4Rotated" xml:space="preserve">
+    <value>Prc kuvert Nr. 4 - roteret </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber5" xml:space="preserve">
+    <value>Prc kuvert Nr. 5 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber5Rotated" xml:space="preserve">
+    <value>Prc kuvert Nr. 5 - roteret </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber6" xml:space="preserve">
+    <value>Prc kuvert Nr. 6 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber6Rotated" xml:space="preserve">
+    <value>Prc kuvert Nr. 6 - roteret </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber7" xml:space="preserve">
+    <value>Prc kuvert Nr. 7 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber7Rotated" xml:space="preserve">
+    <value>Prc kuvert Nr. 7 - roteret </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber8" xml:space="preserve">
+    <value>Prc kuvert Nr. 8 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber8Rotated" xml:space="preserve">
+    <value>Prc kuvert Nr. 8 - roteret </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber9" xml:space="preserve">
+    <value>Prc kuvert Nr. 9 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber9Rotated" xml:space="preserve">
+    <value>Prc kuvert Nr. 9 - roteret </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Quarto" xml:space="preserve">
+    <value>Kvadratisk </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Standard10x11" xml:space="preserve">
+    <value>Standard 10x11</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Standard10x14" xml:space="preserve">
+    <value>Standard 10x14</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Standard11x17" xml:space="preserve">
+    <value>Standard 11x17</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Standard12x11" xml:space="preserve">
+    <value>Standard 12x11</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Standard15x11" xml:space="preserve">
+    <value>Standard 15x11</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Standard9x11" xml:space="preserve">
+    <value>Standard 9x11</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Statement" xml:space="preserve">
+    <value>Statement</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Tabloid" xml:space="preserve">
+    <value>Tabloid</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.TabloidExtra" xml:space="preserve">
+    <value>Tabloid ekstra </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.USStandardFanfold" xml:space="preserve">
+    <value>US standard Fanfold</value>
+  </data>
+  <data name="System.Drawing.Size.Height" xml:space="preserve">
+    <value>Højde</value>
+  </data>
+  <data name="System.Drawing.Size.Width" xml:space="preserve">
+    <value>Bredde</value>
+  </data>
+  <data name="System.Drawing.StringAlignment.Center" xml:space="preserve">
+    <value>Centreret</value>
+  </data>
+  <data name="System.Drawing.StringAlignment.Far" xml:space="preserve">
+    <value>Lang væk</value>
+  </data>
+  <data name="System.Drawing.StringAlignment.Near" xml:space="preserve">
+    <value>Nær</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendPdf" xml:space="preserve">
+    <value>Send som PDF</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportRtf" xml:space="preserve">
+    <value>Eksporter som RTF</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportMode.DifferentFiles" xml:space="preserve">
+    <value>Forskellige filer</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Scale" xml:space="preserve">
+    <value>Skalér</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsDocumentOptions.Subject" xml:space="preserve">
+    <value>Emne</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Save" xml:space="preserve">
+    <value>Gem</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.PrintDirect" xml:space="preserve">
+    <value>Udskriv direkte</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.DefaultExportFormat" xml:space="preserve">
+    <value>Standard eksport format</value>
+  </data>
+  <data name="System.Drawing.Image.VerticalResolution" xml:space="preserve">
+    <value>Vertikal opløsning</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.PageRange" xml:space="preserve">
+    <value>Sideinterval</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ZoomToPageWidth" xml:space="preserve">
+    <value>Zoom til sidebredde</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ZoomOut" xml:space="preserve">
+    <value>Zoom ud</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportXlsx" xml:space="preserve">
+    <value>Eksporter som XLSX</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsDocumentOptions" xml:space="preserve">
+    <value>XPS dokument muligheder</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Background" xml:space="preserve">
+    <value>Baggrund</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptions.EmbedImagesInHTML" xml:space="preserve">
+    <value>Integrer billeder i HTML</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Parameters" xml:space="preserve">
+    <value>Parametre</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendXps" xml:space="preserve">
+    <value>Send som XPS</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendXlsx" xml:space="preserve">
+    <value>Send som XLSX</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ZoomToWholePage" xml:space="preserve">
+    <value>Zoom til hel side</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ColumnLayout.AcrossThenDown" xml:space="preserve">
+    <value>Først på tværs, så ned</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.Squeeze" xml:space="preserve">
+    <value>Pres</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.PageSetup" xml:space="preserve">
+    <value>Sideopsætning</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.None" xml:space="preserve">
+    <value>Ingen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderDashStyle.DashDotDot" xml:space="preserve">
+    <value>Streg-Prik-Prik</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendCsv" xml:space="preserve">
+    <value>Send som CSV</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ShowFirstPage" xml:space="preserve">
+    <value>Vis første side</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.BottomRight" xml:space="preserve">
+    <value>Bund højre</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportFile" xml:space="preserve">
+    <value>Eksporter fil</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.TopCenter" xml:space="preserve">
+    <value>Top centreret</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendMht" xml:space="preserve">
+    <value>Send som MHT</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsxExportMode.SingleFilePageByPage" xml:space="preserve">
+    <value>Enkelt fil (side-efter-side)</value>
+  </data>
+  <data name="System.Drawing.Image.HorizontalResolution" xml:space="preserve">
+    <value>Horisontal opløsning</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsDocumentOptions.Keywords" xml:space="preserve">
+    <value>Nøgleord</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsxExportOptions.PageRange" xml:space="preserve">
+    <value>Sideinterval</value>
+  </data>
+  <data name="System.Drawing.Image.PhysicalDimension" xml:space="preserve">
+    <value>Fysisk dimension</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Customize" xml:space="preserve">
+    <value>Tilpas</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfPermissionsOptions" xml:space="preserve">
+    <value>Pdf rettighedsmuligheder</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ScrollPageUp" xml:space="preserve">
+    <value>Rul side op</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ZoomToTextWidth" xml:space="preserve">
+    <value>Zoom til tekstbredde</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsExportOptions.DocumentOptions" xml:space="preserve">
+    <value>Dokument muligheder</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SubmitParameters" xml:space="preserve">
+    <value>Send parametre</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.MiddleLeft" xml:space="preserve">
+    <value>Midten venstre</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.PageOrientation" xml:space="preserve">
+    <value>Sideorientering</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsDocumentOptions.Category" xml:space="preserve">
+    <value>Kategori</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ScrollPageDown" xml:space="preserve">
+    <value>Rul side ned</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Magnifier" xml:space="preserve">
+    <value>Forstørrelsesglas</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsDocumentOptions.Title" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ShowPrevPage" xml:space="preserve">
+    <value>Vis forrige side</value>
+  </data>
+  <data name="System.Drawing.SizeF.Width" xml:space="preserve">
+    <value>Bredde</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.MiddleCenter" xml:space="preserve">
+    <value>Midten centreret</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Open" xml:space="preserve">
+    <value>Åben</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendFile" xml:space="preserve">
+    <value>Send fil</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendTxt" xml:space="preserve">
+    <value>Send som TXT</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendXls" xml:space="preserve">
+    <value>Send som XLS</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ZoomIn" xml:space="preserve">
+    <value>Zoom ind</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportHtm" xml:space="preserve">
+    <value>Eksporter som HTML</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderDashStyle.Dash" xml:space="preserve">
+    <value>Streg</value>
+  </data>
+  <data name="System.Drawing.SizeF.Height" xml:space="preserve">
+    <value>Højde</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixGenerator.CompactionMode" xml:space="preserve">
+    <value>Komprimeringstilstand Mode</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendGraphic" xml:space="preserve">
+    <value>Send som billede</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixCompactionMode.Text" xml:space="preserve">
+    <value>Tekst</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.HandTool" xml:space="preserve">
+    <value>Håndværktøj</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ChangingPermissions.None" xml:space="preserve">
+    <value>Ingen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.ExportMode" xml:space="preserve">
+    <value>Eksport tilstand</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderDashStyle.Dot" xml:space="preserve">
+    <value>Prik</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsxExportOptions.ExportMode" xml:space="preserve">
+    <value>Eksport tilstand</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ChangingPermissions.FillingSigning" xml:space="preserve">
+    <value>Udfyldning  Signering</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.File" xml:space="preserve">
+    <value>Fil</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsExportOptions.Compression" xml:space="preserve">
+    <value>Komprimering</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderDashStyle.DashDot" xml:space="preserve">
+    <value>Streg-Prik</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.PaperSize" xml:space="preserve">
+    <value>Papir størrelse</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportMht" xml:space="preserve">
+    <value>Eksporter som MHT</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.PageLayoutContinuous" xml:space="preserve">
+    <value>Sidelayout løbende</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.TopLeft" xml:space="preserve">
+    <value>Top venstre</value>
+  </data>
+  <data name="System.Drawing.Image.PixelFormat" xml:space="preserve">
+    <value>Pixel format</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.View" xml:space="preserve">
+    <value>Vis</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ColumnLayout.DownThenAcross" xml:space="preserve">
+    <value>Først ned, så på tværs</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsDocumentOptions.Creator" xml:space="preserve">
+    <value>Skaber</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendRtf" xml:space="preserve">
+    <value>Send som RTF</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.DefaultSendFormat" xml:space="preserve">
+    <value>Standard send format</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.PageLayout" xml:space="preserve">
+    <value>Sidelayout</value>
+  </data>
+  <data name="System.Drawing.Image.RawFormat" xml:space="preserve">
+    <value>Rå format</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ShowNextPage" xml:space="preserve">
+    <value>Vis næste side</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.BottomLeft" xml:space="preserve">
+    <value>Bund venstre</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Watermark" xml:space="preserve">
+    <value>Vandmærke</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.MiddleRight" xml:space="preserve">
+    <value>Midten højre</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.FillBackground" xml:space="preserve">
+    <value>Udfyld baggrund</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.PageMargins" xml:space="preserve">
+    <value>Sidemargener</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingPermissions.None" xml:space="preserve">
+    <value>Ingen</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportCsv" xml:space="preserve">
+    <value>Eksporter som CSV</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.DocumentMap" xml:space="preserve">
+    <value>Dokument tilknytning</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.PageLayoutFacing" xml:space="preserve">
+    <value>Sidelayout modstående</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ChangingPermissions.CommentingFillingSigning" xml:space="preserve">
+    <value>Kommentering  Udfyldning  Signering</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportPdf" xml:space="preserve">
+    <value>Eksporter som PDF</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.BottomCenter" xml:space="preserve">
+    <value>Bund centreret</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsDocumentOptions.Description" xml:space="preserve">
+    <value>Beskrivelse</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingPermissions.LowResolution" xml:space="preserve">
+    <value>Lav opløsning</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfPasswordSecurityOptions" xml:space="preserve">
+    <value>Pdf adgangskode sikkerhedsmuligheder</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Print" xml:space="preserve">
+    <value>Udskriv</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderDashStyle.Double" xml:space="preserve">
+    <value>Dobbelt</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ClosePreview" xml:space="preserve">
+    <value>Luk forhåndsvisning</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportMode.SingleFile" xml:space="preserve">
+    <value>Enkelt fil</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ShowLastPage" xml:space="preserve">
+    <value>Vis sidste side</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportTxt" xml:space="preserve">
+    <value>Eksporter som TXT</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportGraphic" xml:space="preserve">
+    <value>Eksporter som billede</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.EditPageHF" xml:space="preserve">
+    <value>Rediger side H F</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PaddingInfo.All" xml:space="preserve">
+    <value>Alle</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportXps" xml:space="preserve">
+    <value>Eksporter som XPS</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.MultiplePages" xml:space="preserve">
+    <value>Flere sider</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.StopPageBuilding" xml:space="preserve">
+    <value>Stop sidebygning</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsxExportMode.SingleFile" xml:space="preserve">
+    <value>Enkelt fil</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Pointer" xml:space="preserve">
+    <value>Markør</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ChangingPermissions.AnyExceptExtractingPages" xml:space="preserve">
+    <value>Alle undtagen udpakningssider</value>
+  </data>
+  <data name="System.Drawing.Image.Size" xml:space="preserve">
+    <value>Størrelse</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ViewWholePage" xml:space="preserve">
+    <value>Vis hel side</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ZoomToTwoPages" xml:space="preserve">
+    <value>Zoom til to sider</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingPermissions.HighResolution" xml:space="preserve">
+    <value>Høj opløsning</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ChangingPermissions.InsertingDeletingRotating" xml:space="preserve">
+    <value>Oprettelse Sletning Rotation</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.TopRight" xml:space="preserve">
+    <value>Top højre</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportXls" xml:space="preserve">
+    <value>Eksporter som XLS</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.ConvertImagesToJpeg" xml:space="preserve">
+    <value>Konverter billeder til Jpeg</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsxExportMode.DifferentFiles" xml:space="preserve">
+    <value>Forskellige filer</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixGenerator.MatrixSize" xml:space="preserve">
+    <value>Matrix størrelse</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FieldType.None" xml:space="preserve">
+    <value>Ingen</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FieldType.Double" xml:space="preserve">
+    <value>Dobbelt</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FieldType.String" xml:space="preserve">
+    <value>Streng</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FieldType.DateTime" xml:space="preserve">
+    <value>DatoKlokkeslæt</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FieldType.TimeSpan" xml:space="preserve">
+    <value>Tidshorisont</value>
+  </data>
+</root>

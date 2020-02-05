@@ -1,0 +1,1029 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="StringId.CaptionError" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="StringId.InvalidValueText" xml:space="preserve">
+    <value>Некорректное значение</value>
+  </data>
+  <data name="StringId.CheckChecked" xml:space="preserve">
+    <value>Отмечено</value>
+  </data>
+  <data name="StringId.CheckUnchecked" xml:space="preserve">
+    <value>Неотмечено</value>
+  </data>
+  <data name="StringId.CheckIndeterminate" xml:space="preserve">
+    <value>Неопределено</value>
+  </data>
+  <data name="StringId.DateEditToday" xml:space="preserve">
+    <value>Сегодня</value>
+  </data>
+  <data name="StringId.DateEditClear" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
+  <data name="StringId.OK" xml:space="preserve">
+    <value>ОК</value>
+  </data>
+  <data name="StringId.Cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="StringId.NavigatorFirstButtonHint" xml:space="preserve">
+    <value>Первая</value>
+  </data>
+  <data name="StringId.NavigatorPreviousButtonHint" xml:space="preserve">
+    <value>Предыдущая</value>
+  </data>
+  <data name="StringId.NavigatorPreviousPageButtonHint" xml:space="preserve">
+    <value>Предыдущая страница</value>
+  </data>
+  <data name="StringId.NavigatorNextButtonHint" xml:space="preserve">
+    <value>Следующая</value>
+  </data>
+  <data name="StringId.NavigatorNextPageButtonHint" xml:space="preserve">
+    <value>Следующая страница</value>
+  </data>
+  <data name="StringId.NavigatorLastButtonHint" xml:space="preserve">
+    <value>Последняя</value>
+  </data>
+  <data name="StringId.NavigatorAppendButtonHint" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="StringId.NavigatorRemoveButtonHint" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="StringId.NavigatorEditButtonHint" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="StringId.NavigatorEndEditButtonHint" xml:space="preserve">
+    <value>Запомнить</value>
+  </data>
+  <data name="StringId.NavigatorCancelEditButtonHint" xml:space="preserve">
+    <value>Отменить редактирование</value>
+  </data>
+  <data name="StringId.NavigatorTextStringFormat" xml:space="preserve">
+    <value>Запись {0} из {1}</value>
+  </data>
+  <data name="StringId.PictureEditMenuCut" xml:space="preserve">
+    <value>&amp;Вырезать</value>
+  </data>
+  <data name="StringId.PictureEditMenuCopy" xml:space="preserve">
+    <value>&amp;Копировать</value>
+  </data>
+  <data name="StringId.PictureEditMenuPaste" xml:space="preserve">
+    <value>Вст&amp;авить</value>
+  </data>
+  <data name="StringId.PictureEditMenuDelete" xml:space="preserve">
+    <value>У&amp;далить</value>
+  </data>
+  <data name="StringId.PictureEditMenuLoad" xml:space="preserve">
+    <value>&amp;Открыть</value>
+  </data>
+  <data name="StringId.PictureEditMenuSave" xml:space="preserve">
+    <value>&amp;Сохранить</value>
+  </data>
+  <data name="StringId.PictureEditOpenFileTitle" xml:space="preserve">
+    <value>Открыть</value>
+  </data>
+  <data name="StringId.PictureEditSaveFileTitle" xml:space="preserve">
+    <value>Сохранить как...</value>
+  </data>
+  <data name="StringId.PictureEditOpenFileError" xml:space="preserve">
+    <value>Невозможно загрузить картинку из этого файла</value>
+  </data>
+  <data name="StringId.PictureEditOpenFileErrorCaption" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="StringId.PictureEditCopyImageError" xml:space="preserve">
+    <value>Нельзя скопировать изображение</value>
+  </data>
+  <data name="StringId.LookUpEditValueIsNull" xml:space="preserve">
+    <value>[нет данных]</value>
+  </data>
+  <data name="StringId.LookUpInvalidEditValueType" xml:space="preserve">
+    <value>Неверный тип LookUpEdit.EditValue.</value>
+  </data>
+  <data name="StringId.LookUpColumnDefaultName" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="StringId.PictureEditOpenFileFilter" xml:space="preserve">
+    <value>Битовые изображения (*.bmp)|*.bmp|GIF файлы (*.gif)|*.gif|JPEG файлы (*.jpg;*.jpeg)|*.jpg;*.jpeg|Файлы иконок (*.ico)|*.ico|Все файлы изображений |*.bmp;*.gif;*.jpg;*.jpeg;*.ico;*.png;*.tif|Все файлы |*.*</value>
+  </data>
+  <data name="StringId.PictureEditSaveFileFilter" xml:space="preserve">
+    <value>Битовые изображения (*.bmp)|*.bmp|GIF файлы (*.gif)|*.gif|JPEG файлы (*.jpg;*.jpeg)|*.jpg;*.jpeg</value>
+  </data>
+  <data name="StringId.MaskBoxValidateError" xml:space="preserve">
+    <value>Ввод значения не закончен.  Хотите дописать?
+	
+	
+	Yes - return to the editor and correct the value.
+	No - leave the value as is.
+	Cancel - reset to the previous value.
+	</value>
+  </data>
+  <data name="StringId.UnknownPictureFormat" xml:space="preserve">
+    <value>Неизвестный формат данных </value>
+  </data>
+  <data name="StringId.DataEmpty" xml:space="preserve">
+    <value>[нет картинки]</value>
+  </data>
+  <data name="StringId.FilterCriteriaInvalidExpression" xml:space="preserve">
+    <value>Указанное выражение содержит недопустимые символы ( строка {0}, символ {1})</value>
+  </data>
+  <data name="StringId.FilterCriteriaInvalidExpressionEx" xml:space="preserve">
+    <value>Неверное выражение.</value>
+  </data>
+  <data name="StringId.NotValidArrayLength" xml:space="preserve">
+    <value>Некорректная длина массива.</value>
+  </data>
+  <data name="StringId.ImagePopupEmpty" xml:space="preserve">
+    <value>(пусто)</value>
+  </data>
+  <data name="StringId.ImagePopupPicture" xml:space="preserve">
+    <value>(изображение)</value>
+  </data>
+  <data name="StringId.ColorTabCustom" xml:space="preserve">
+    <value>Пользователя</value>
+  </data>
+  <data name="StringId.ColorTabWeb" xml:space="preserve">
+    <value>Разные</value>
+  </data>
+  <data name="StringId.ColorTabSystem" xml:space="preserve">
+    <value>Системные</value>
+  </data>
+  <data name="StringId.CalcButtonSqrt" xml:space="preserve">
+    <value>корень</value>
+  </data>
+  <data name="StringId.CalcButtonBack" xml:space="preserve">
+    <value>Назад</value>
+  </data>
+  <data name="StringId.CalcError" xml:space="preserve">
+    <value>Ошибка вычисления</value>
+  </data>
+  <data name="StringId.TabHeaderButtonPrev" xml:space="preserve">
+    <value>Прокрутка влево</value>
+  </data>
+  <data name="StringId.TabHeaderButtonNext" xml:space="preserve">
+    <value>Прокрутка вправо</value>
+  </data>
+  <data name="StringId.TabHeaderButtonClose" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="StringId.TabHeaderSelectorButton" xml:space="preserve">
+    <value>Показать список окон</value>
+  </data>
+  <data name="StringId.XtraMessageBoxOkButtonText" xml:space="preserve">
+    <value>&amp;ОК</value>
+  </data>
+  <data name="StringId.XtraMessageBoxCancelButtonText" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="StringId.XtraMessageBoxYesButtonText" xml:space="preserve">
+    <value>&amp;Да</value>
+  </data>
+  <data name="StringId.XtraMessageBoxNoButtonText" xml:space="preserve">
+    <value>&amp;Нет</value>
+  </data>
+  <data name="StringId.XtraMessageBoxAbortButtonText" xml:space="preserve">
+    <value>&amp;Прервать</value>
+  </data>
+  <data name="StringId.XtraMessageBoxRetryButtonText" xml:space="preserve">
+    <value>&amp;Повторить</value>
+  </data>
+  <data name="StringId.XtraMessageBoxIgnoreButtonText" xml:space="preserve">
+    <value>&amp;Пропустить</value>
+  </data>
+  <data name="StringId.TextEditMenuUndo" xml:space="preserve">
+    <value>&amp;Отменить</value>
+  </data>
+  <data name="StringId.TextEditMenuCut" xml:space="preserve">
+    <value>&amp;Вырезать</value>
+  </data>
+  <data name="StringId.TextEditMenuCopy" xml:space="preserve">
+    <value>&amp;Копировать</value>
+  </data>
+  <data name="StringId.TextEditMenuPaste" xml:space="preserve">
+    <value>Вст&amp;авить</value>
+  </data>
+  <data name="StringId.TextEditMenuDelete" xml:space="preserve">
+    <value>&amp;Удалить</value>
+  </data>
+  <data name="StringId.TextEditMenuSelectAll" xml:space="preserve">
+    <value>Выд&amp;елить все</value>
+  </data>
+  <data name="StringId.FilterShowAll" xml:space="preserve">
+    <value>(Показать все)</value>
+  </data>
+  <data name="StringId.FilterGroupAnd" xml:space="preserve">
+    <value>И</value>
+  </data>
+  <data name="StringId.FilterGroupNotAnd" xml:space="preserve">
+    <value>НЕ И</value>
+  </data>
+  <data name="StringId.FilterGroupNotOr" xml:space="preserve">
+    <value>НЕ ИЛИ</value>
+  </data>
+  <data name="StringId.FilterGroupOr" xml:space="preserve">
+    <value>ИЛИ</value>
+  </data>
+  <data name="StringId.FilterClauseAnyOf" xml:space="preserve">
+    <value>Любое из</value>
+  </data>
+  <data name="StringId.FilterClauseBeginsWith" xml:space="preserve">
+    <value>Начинается с</value>
+  </data>
+  <data name="StringId.FilterClauseBetween" xml:space="preserve">
+    <value>Между</value>
+  </data>
+  <data name="StringId.FilterClauseBetweenAnd" xml:space="preserve">
+    <value>и</value>
+  </data>
+  <data name="StringId.FilterClauseContains" xml:space="preserve">
+    <value>Содержит</value>
+  </data>
+  <data name="StringId.FilterClauseEndsWith" xml:space="preserve">
+    <value>Заканчивается на</value>
+  </data>
+  <data name="StringId.FilterClauseEquals" xml:space="preserve">
+    <value>Равно</value>
+  </data>
+  <data name="StringId.FilterClauseGreater" xml:space="preserve">
+    <value>Больше</value>
+  </data>
+  <data name="StringId.FilterClauseGreaterOrEqual" xml:space="preserve">
+    <value>Больше или равно</value>
+  </data>
+  <data name="StringId.FilterClauseIsNotNull" xml:space="preserve">
+    <value>Задано</value>
+  </data>
+  <data name="StringId.FilterClauseIsNull" xml:space="preserve">
+    <value>Не задано</value>
+  </data>
+  <data name="StringId.FilterClauseLess" xml:space="preserve">
+    <value>Меньше</value>
+  </data>
+  <data name="StringId.FilterClauseLessOrEqual" xml:space="preserve">
+    <value>Меньше или равно</value>
+  </data>
+  <data name="StringId.FilterClauseLike" xml:space="preserve">
+    <value>Соответствует маске</value>
+  </data>
+  <data name="StringId.FilterClauseNoneOf" xml:space="preserve">
+    <value>Ни одно из</value>
+  </data>
+  <data name="StringId.FilterClauseNotBetween" xml:space="preserve">
+    <value>Не между</value>
+  </data>
+  <data name="StringId.FilterClauseDoesNotContain" xml:space="preserve">
+    <value>Не содержит</value>
+  </data>
+  <data name="StringId.FilterClauseDoesNotEqual" xml:space="preserve">
+    <value>Не равно</value>
+  </data>
+  <data name="StringId.FilterClauseNotLike" xml:space="preserve">
+    <value>Не соответствует маске</value>
+  </data>
+  <data name="StringId.FilterEmptyEnter" xml:space="preserve">
+    <value>&lt;введите значение&gt;</value>
+  </data>
+  <data name="StringId.FilterEmptyValue" xml:space="preserve">
+    <value>&lt;пусто&gt;</value>
+  </data>
+  <data name="StringId.FilterMenuConditionAdd" xml:space="preserve">
+    <value>Добавить условие</value>
+  </data>
+  <data name="StringId.FilterMenuGroupAdd" xml:space="preserve">
+    <value>Добавить группу</value>
+  </data>
+  <data name="StringId.FilterMenuClearAll" xml:space="preserve">
+    <value>Очистить все</value>
+  </data>
+  <data name="StringId.FilterMenuRowRemove" xml:space="preserve">
+    <value>Удалить группу</value>
+  </data>
+  <data name="StringId.FilterToolTipNodeAdd" xml:space="preserve">
+    <value>Добавляет новое условие в выбранную группу</value>
+  </data>
+  <data name="StringId.FilterToolTipNodeRemove" xml:space="preserve">
+    <value>Удаляет выбранное условие</value>
+  </data>
+  <data name="StringId.FilterToolTipNodeAction" xml:space="preserve">
+    <value>Действия</value>
+  </data>
+  <data name="StringId.FilterToolTipValueType" xml:space="preserve">
+    <value>Сравнить со значением / значением другой колонки</value>
+  </data>
+  <data name="StringId.FilterToolTipElementAdd" xml:space="preserve">
+    <value>Добавляет новый элемент в список</value>
+  </data>
+  <data name="StringId.FilterToolTipKeysAdd" xml:space="preserve">
+    <value>(Используйте клавиши Insert или Add)</value>
+  </data>
+  <data name="StringId.FilterToolTipKeysRemove" xml:space="preserve">
+    <value>(Используйте клавиши Delete или Subtract)</value>
+  </data>
+  <data name="StringId.ContainerAccessibleEditName" xml:space="preserve">
+    <value>Элемент редактирования</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringGroupOperatorAnd" xml:space="preserve">
+    <value>И</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringGroupOperatorOr" xml:space="preserve">
+    <value>Или</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringUnaryOperatorIsNull" xml:space="preserve">
+    <value>Пусто</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringUnaryOperatorMinus" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringUnaryOperatorNot" xml:space="preserve">
+    <value>Не равно</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorBitwiseAnd" xml:space="preserve">
+    <value>&amp;</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorLike" xml:space="preserve">
+    <value>Соответствует маске</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorMinus" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorModulo" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBetween" xml:space="preserve">
+    <value>Между</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringIn" xml:space="preserve">
+    <value>в</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringIsNotNull" xml:space="preserve">
+    <value>Не пусто</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringNotLike" xml:space="preserve">
+    <value>Не соответствует маске</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionNone" xml:space="preserve">
+    <value>Ни одно из</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionCustom" xml:space="preserve">
+    <value>Пользовательский</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIif" xml:space="preserve">
+    <value>Если</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsNull" xml:space="preserve">
+    <value>Пусто</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionTrim" xml:space="preserve">
+    <value>Обрезать пробелы</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLen" xml:space="preserve">
+    <value>Длина</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionSubstring" xml:space="preserve">
+    <value>Подстрока</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionUpper" xml:space="preserve">
+    <value>Верхний регистр</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLower" xml:space="preserve">
+    <value>Нижний регистр</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionConcat" xml:space="preserve">
+    <value>Объединить</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeThisYear" xml:space="preserve">
+    <value>Текущий год</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeThisMonth" xml:space="preserve">
+    <value>Текущий месяц</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeLastWeek" xml:space="preserve">
+    <value>Прошедшая неделя</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeThisWeek" xml:space="preserve">
+    <value>Текущая неделя</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeYesterday" xml:space="preserve">
+    <value>Вчера</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeToday" xml:space="preserve">
+    <value>Сегодня</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeNow" xml:space="preserve">
+    <value>Сейчас</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeTomorrow" xml:space="preserve">
+    <value>Завтра</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeDayAfterTomorrow" xml:space="preserve">
+    <value>Послезавтра</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeNextWeek" xml:space="preserve">
+    <value>Следующая неделя</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeTwoWeeksAway" xml:space="preserve">
+    <value>2 недели назад</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeNextMonth" xml:space="preserve">
+    <value>Следующий месяц</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeNextYear" xml:space="preserve">
+    <value>Следующий год</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalBeyondThisYear" xml:space="preserve">
+    <value>В следующем году</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalLaterThisYear" xml:space="preserve">
+    <value>Позднее в этом году</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalLaterThisMonth" xml:space="preserve">
+    <value>Позднее в этом месяце</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalNextWeek" xml:space="preserve">
+    <value>На следующей неделе</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalLaterThisWeek" xml:space="preserve">
+    <value>Позднее на этой неделе</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalTomorrow" xml:space="preserve">
+    <value>Завтра</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalToday" xml:space="preserve">
+    <value>Сегодня</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalYesterday" xml:space="preserve">
+    <value>Вчера</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalEarlierThisWeek" xml:space="preserve">
+    <value>Ранее на этой неделе</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalLastWeek" xml:space="preserve">
+    <value>На предыдущей неделе</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalEarlierThisMonth" xml:space="preserve">
+    <value>Ранее в этом месяце</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalEarlierThisYear" xml:space="preserve">
+    <value>Ранее в этом году</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalPriorThisYear" xml:space="preserve">
+    <value>В предыдущем году</value>
+  </data>
+  <data name="StringId.Apply" xml:space="preserve">
+    <value>Применить</value>
+  </data>
+  <data name="StringId.PreviewPanelText" xml:space="preserve">
+    <value>Предварительный просмотр:</value>
+  </data>
+  <data name="StringId.TransparentBackColorNotSupported" xml:space="preserve">
+    <value>Этот управляющий элемент не поддерживает прозрачный фон</value>
+  </data>
+  <data name="StringId.FilterOutlookDateText" xml:space="preserve">
+    <value>Показать все|Показать пустые|Сортировать по дате:|Со следующего года|Позднее в этом году|Позднее в этом месяце|Следующая неделя|Позднее на этой неделе|Завтра|Сегодня|Вчера|Ранее на этой неделе|На прошлой неделе|Ранее в этом месяце|Ранее в этом году|До этого года</value>
+  </data>
+  <data name="StringId.FilterDateTimeConstantMenuCaption" xml:space="preserve">
+    <value>Константы даты/времени</value>
+  </data>
+  <data name="StringId.FilterDateTimeOperatorMenuCaption" xml:space="preserve">
+    <value>Операторы даты/времени</value>
+  </data>
+  <data name="StringId.FilterEmptyParameter" xml:space="preserve">
+    <value>&lt;введите параметр&gt;</value>
+  </data>
+  <data name="StringId.FilterMenuAddNewParameter" xml:space="preserve">
+    <value>Добавить новый параметр...</value>
+  </data>
+  <data name="StringId.FilterDateTextAlt" xml:space="preserve">
+    <value>Показать все|Показать пустые|Сортировать по дате: |Позже|||следующей недели|Сегодня|Этой недели|Этого месяца|Ранее|{0:yyyy}, {0:MMMM}</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionReplace" xml:space="preserve">
+    <value>Заменить</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionRemove" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionAddYears" xml:space="preserve">
+    <value>Прибавить года</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionGetMilliSecond" xml:space="preserve">
+    <value>Получить миллисекунду</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionAddTicks" xml:space="preserve">
+    <value>Прибавить тики</value>
+  </data>
+  <data name="StringId.FilterEditorTabText" xml:space="preserve">
+    <value>Текст</value>
+  </data>
+  <data name="StringId.FilterFunctionsMenuCaption" xml:space="preserve">
+    <value>Функции</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionGetDate" xml:space="preserve">
+    <value>Получить дату</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionAddMinutes" xml:space="preserve">
+    <value>Прибавить минуты</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionGetYear" xml:space="preserve">
+    <value>Получить год</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionRound" xml:space="preserve">
+    <value>Округлить</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionGetDayOfWeek" xml:space="preserve">
+    <value>Получить день недели</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionAddMonths" xml:space="preserve">
+    <value>Прибавить месяцы</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionAddSeconds" xml:space="preserve">
+    <value>Прибавить секунды</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionMin" xml:space="preserve">
+    <value>Минимум</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionAddTimeSpan" xml:space="preserve">
+    <value>Прибавить временной промежуток</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionGetTimeOfDay" xml:space="preserve">
+    <value>Получить время дня</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionGetDay" xml:space="preserve">
+    <value>Получить день</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionGetHour" xml:space="preserve">
+    <value>Получить час</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionGetMinute" xml:space="preserve">
+    <value>Получить минуту</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionPower" xml:space="preserve">
+    <value>Степень</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionAddDays" xml:space="preserve">
+    <value>Прибавить дни</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionAddHours" xml:space="preserve">
+    <value>Прибавить часы</value>
+  </data>
+  <data name="StringId.DefaultBooleanDefault" xml:space="preserve">
+    <value>По умолчанию</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionGetSecond" xml:space="preserve">
+    <value>Получить секунду</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionUtcNow" xml:space="preserve">
+    <value>Текущее Utc время</value>
+  </data>
+  <data name="StringId.FilterEditorTabVisual" xml:space="preserve">
+    <value>Отображение</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionMax" xml:space="preserve">
+    <value>Максимум</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionToday" xml:space="preserve">
+    <value>Сегодня</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionGetDayOfYear" xml:space="preserve">
+    <value>Получить день года</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionGetMonth" xml:space="preserve">
+    <value>Получить месяц</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionToStr" xml:space="preserve">
+    <value>Преобразовать к строке</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionCustomNonDeterministic" xml:space="preserve">
+    <value>Пользовательская не детерминированная</value>
+  </data>
+  <data name="StringId.DefaultBooleanTrue" xml:space="preserve">
+    <value>Истина</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionInsert" xml:space="preserve">
+    <value>Вставить</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionNow" xml:space="preserve">
+    <value>Now</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionCharIndex" xml:space="preserve">
+    <value>Индекс символа</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionAddMilliSeconds" xml:space="preserve">
+    <value>Прибавить миллисекунды</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsNullOrEmpty" xml:space="preserve">
+    <value>Равен null или пуст</value>
+  </data>
+  <data name="StringId.DefaultBooleanFalse" xml:space="preserve">
+    <value>Ложь</value>
+  </data>
+  <data name="StringId.CalcButtonC" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="StringId.CalcButtonCE" xml:space="preserve">
+    <value>CE</value>
+  </data>
+  <data name="StringId.CalcButtonMC" xml:space="preserve">
+    <value>MC</value>
+  </data>
+  <data name="StringId.CalcButtonMR" xml:space="preserve">
+    <value>MR</value>
+  </data>
+  <data name="StringId.CalcButtonMS" xml:space="preserve">
+    <value>MS</value>
+  </data>
+  <data name="StringId.CalcButtonMx" xml:space="preserve">
+    <value>M+</value>
+  </data>
+  <data name="StringId.FilterAggregateAvg" xml:space="preserve">
+    <value>Среднее</value>
+  </data>
+  <data name="StringId.FilterAggregateCount" xml:space="preserve">
+    <value>Количество</value>
+  </data>
+  <data name="StringId.FilterAggregateExists" xml:space="preserve">
+    <value>Существует</value>
+  </data>
+  <data name="StringId.FilterAggregateMax" xml:space="preserve">
+    <value>Максимальное</value>
+  </data>
+  <data name="StringId.FilterAggregateMin" xml:space="preserve">
+    <value>Минимальное</value>
+  </data>
+  <data name="StringId.FilterAggregateSum" xml:space="preserve">
+    <value>Сумма</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorBitwiseOr" xml:space="preserve">
+    <value>|</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorBitwiseXor" xml:space="preserve">
+    <value>^</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorDivide" xml:space="preserve">
+    <value>/</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorEqual" xml:space="preserve">
+    <value>=</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorGreater" xml:space="preserve">
+    <value>&gt;</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorGreaterOrEqual" xml:space="preserve">
+    <value>&gt;=</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorLess" xml:space="preserve">
+    <value>&lt;</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorLessOrEqual" xml:space="preserve">
+    <value>&lt;=</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorMultiply" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorNotEqual" xml:space="preserve">
+    <value>&lt;&gt;</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorPlus" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionAbs" xml:space="preserve">
+    <value>Абсолютный</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionAcos" xml:space="preserve">
+    <value>Арккосинус</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionAscii" xml:space="preserve">
+    <value>Ascii</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionAsin" xml:space="preserve">
+    <value>Арксинус</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionAtn" xml:space="preserve">
+    <value>Арктангенс</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionAtn2" xml:space="preserve">
+    <value>Арктангенс2</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionBigMul" xml:space="preserve">
+    <value>Большое умножение</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionCeiling" xml:space="preserve">
+    <value>Округлить вверх</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionChar" xml:space="preserve">
+    <value>Символ</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionContains" xml:space="preserve">
+    <value>Содержит</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionCos" xml:space="preserve">
+    <value>Косинус</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionCosh" xml:space="preserve">
+    <value>Косинус гиперболический</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionDateDiffDay" xml:space="preserve">
+    <value>Разница дат в днях</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionDateDiffHour" xml:space="preserve">
+    <value>Разница дат в часах</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionDateDiffMilliSecond" xml:space="preserve">
+    <value>Разница дат в милисекундах</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionDateDiffMinute" xml:space="preserve">
+    <value>Разница дат в минутах</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionDateDiffMonth" xml:space="preserve">
+    <value>Разница дат в месяцах</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionDateDiffSecond" xml:space="preserve">
+    <value>Разница дат в секундах</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionDateDiffTick" xml:space="preserve">
+    <value>Разница дат в тиках</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionDateDiffYear" xml:space="preserve">
+    <value>Разница дат в годах</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionEndsWith" xml:space="preserve">
+    <value>Заканчивается на</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionExp" xml:space="preserve">
+    <value>Экспонента</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionFloor" xml:space="preserve">
+    <value>Округлить вниз</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLog" xml:space="preserve">
+    <value>Логарифм</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLog10" xml:space="preserve">
+    <value>Логарифм десятичный</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionPadLeft" xml:space="preserve">
+    <value>Дополнить слева</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionPadRight" xml:space="preserve">
+    <value>Дополнить справа</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionReverse" xml:space="preserve">
+    <value>Перевернуть</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionRnd" xml:space="preserve">
+    <value>Случайное число</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionSign" xml:space="preserve">
+    <value>Знак</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionSin" xml:space="preserve">
+    <value>Синус</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionSinh" xml:space="preserve">
+    <value>Синус гиперболический</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionSqr" xml:space="preserve">
+    <value>Корень</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionStartsWith" xml:space="preserve">
+    <value>Начинается с</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionTan" xml:space="preserve">
+    <value>Тангенс</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionTanh" xml:space="preserve">
+    <value>Тангенс гиперболический</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringUnaryOperatorBitwiseNot" xml:space="preserve">
+    <value>~</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringUnaryOperatorPlus" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="StringId.None" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="StringId.ProgressCancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="StringId.ProgressCancelPending" xml:space="preserve">
+    <value>Происходит отмена</value>
+  </data>
+  <data name="StringId.ProgressCreateDocument" xml:space="preserve">
+    <value>Создание документа</value>
+  </data>
+  <data name="StringId.ProgressExport" xml:space="preserve">
+    <value>Экспорт</value>
+  </data>
+  <data name="StringId.ProgressLoadingData" xml:space="preserve">
+    <value>Загрузка данных</value>
+  </data>
+  <data name="StringId.ProgressPrinting" xml:space="preserve">
+    <value>Печать</value>
+  </data>
+  <data name="StringId.FieldListName" xml:space="preserve">
+    <value>Список полей ({0})</value>
+  </data>
+  <data name="StringId.RestoreLayoutDialogFileFilter" xml:space="preserve">
+    <value>XML файлы (*.xml)|*.xml|Все файлы|*.*</value>
+  </data>
+  <data name="StringId.SaveLayoutDialogFileFilter" xml:space="preserve">
+    <value>XML файлы (*.xml)|*.xml</value>
+  </data>
+  <data name="StringId.RestoreLayoutDialogTitle" xml:space="preserve">
+    <value>Восстановить макет</value>
+  </data>
+  <data name="StringId.SaveLayoutDialogTitle" xml:space="preserve">
+    <value>Сохранить макет</value>
+  </data>
+  <data name="StringId.FilterClauseIsNotNullOrEmpty" xml:space="preserve">
+    <value>Не пусто</value>
+  </data>
+  <data name="StringId.FilterClauseIsNullOrEmpty" xml:space="preserve">
+    <value>Пусто</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionToDecimal" xml:space="preserve">
+    <value>Конвертить в decimal</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionToDouble" xml:space="preserve">
+    <value>Конвертить в double</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionToFloat" xml:space="preserve">
+    <value>Конвертить в float</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionToInt" xml:space="preserve">
+    <value>Конвертить в  int</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionToLong" xml:space="preserve">
+    <value>Конвертить в long</value>
+  </data>
+  <data name="StringId.PictureEditMenuFitImage" xml:space="preserve">
+    <value>Подогнать размер</value>
+  </data>
+  <data name="StringId.PictureEditMenuFullSize" xml:space="preserve">
+    <value>Полный размер</value>
+  </data>
+  <data name="StringId.PictureEditMenuZoom" xml:space="preserve">
+    <value>Изменение размера</value>
+  </data>
+  <data name="StringId.PictureEditMenuZoomIn" xml:space="preserve">
+    <value>Увеличить размер</value>
+  </data>
+  <data name="StringId.PictureEditMenuZoomOut" xml:space="preserve">
+    <value>Уменьшить размер</value>
+  </data>
+  <data name="StringId.PictureEditMenuZoomTo" xml:space="preserve">
+    <value>Изменить размер до:</value>
+  </data>
+  <data name="StringId.PictureEditMenuZoomToolTip" xml:space="preserve">
+    <value>{0}%</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsThisMonth" xml:space="preserve">
+    <value>В этом месяце</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsThisWeek" xml:space="preserve">
+    <value>На этой неделе</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsThisYear" xml:space="preserve">
+    <value>В этом году</value>
+  </data>
+  <data name="StringId.FilterPopupToolbarShowOnlyAvailableItems" xml:space="preserve">
+    <value>Показывать только доступные значения</value>
+  </data>
+  <data name="StringId.FilterPopupToolbarMultiSelection" xml:space="preserve">
+    <value>Разрешить выделение нескольких значений</value>
+  </data>
+  <data name="StringId.FilterPopupToolbarShowNewValues" xml:space="preserve">
+    <value>Показывать новые значения</value>
+  </data>
+  <data name="StringId.FilterPopupToolbarRadioMode" xml:space="preserve">
+    <value>Режим выбора одного значения</value>
+  </data>
+  <data name="StringId.FilterPopupToolbarIncrementalSearch" xml:space="preserve">
+    <value>Инкрементный поиск</value>
+  </data>
+  <data name="StringId.FilterPopupToolbarInvertFilter" xml:space="preserve">
+    <value>Инвертировать фильтр</value>
+  </data>
+  <data name="StringId.ColorPickPopupAutomaticItemCaption" xml:space="preserve">
+	<value>Авто</value>
+  </data>
+</root>

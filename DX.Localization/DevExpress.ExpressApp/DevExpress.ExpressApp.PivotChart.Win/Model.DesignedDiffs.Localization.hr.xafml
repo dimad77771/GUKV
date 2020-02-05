@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="ChartWizard" Caption="GrafČarobnjak" />
+      <Action Id="PrintChart" Caption="Ispiši graf" />
+      <Action Id="PrintPreviewPivotGrid" Caption="Ispiši PivotTablicu" />
+    </Actions>
+  </ActionDesign>
+</Application>

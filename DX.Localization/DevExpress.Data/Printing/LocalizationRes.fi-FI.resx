@@ -1,0 +1,849 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="PreviewStringId.Button_Help" xml:space="preserve">
+    <value>Ohje</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_PageSetup" xml:space="preserve">
+    <value>Sivun asetukset</value>
+  </data>
+  <data name="PreviewStringId.MPForm_Lbl_Pages" xml:space="preserve">
+    <value>Sivut</value>
+  </data>
+  <data name="PreviewStringId.SB_ZoomFactor" xml:space="preserve">
+    <value>Zoomaus:</value>
+  </data>
+  <data name="PreviewStringId.SB_TotalPageNo" xml:space="preserve">
+    <value>Sivuja:</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_ZoomIn" xml:space="preserve">
+    <value>Zoom +</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_FirstPage" xml:space="preserve">
+    <value>Ensimmäinen sivu</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_PreviousPage" xml:space="preserve">
+    <value>Edellinen sivu</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_NextPage" xml:space="preserve">
+    <value>Seuraava sivu</value>
+  </data>
+  <data name="PreviewStringId.Msg_EmptyDocument" xml:space="preserve">
+    <value>Tiedostossa ei ole yhtään sivua.</value>
+  </data>
+  <data name="PreviewStringId.Msg_CreatingDocument" xml:space="preserve">
+    <value>Luo tiedostoa...</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_MultiplePages" xml:space="preserve">
+    <value>Monta sivua</value>
+  </data>
+  <data name="PreviewStringId.Button_Apply" xml:space="preserve">
+    <value>Hyväksy</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_ZoomOut" xml:space="preserve">
+    <value>Zoom -</value>
+  </data>
+  <data name="PreviewStringId.SB_CurrentPageNo" xml:space="preserve">
+    <value>Valittu sivu nro:</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_Zoom" xml:space="preserve">
+    <value>Zoomaa</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_PrintDirect" xml:space="preserve">
+    <value>Tulosta suoraan</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_Magnifier" xml:space="preserve">
+    <value>Suurennuslasi</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_Print" xml:space="preserve">
+    <value>Tulosta</value>
+  </data>
+  <data name="PreviewStringId.Button_Cancel" xml:space="preserve">
+    <value>Peruuta</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_Close" xml:space="preserve">
+    <value>Sulje esikatselu</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_Backgr" xml:space="preserve">
+    <value>Taustakuva</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_EditPageHF" xml:space="preserve">
+    <value>Ylä- ja alatunniste</value>
+  </data>
+  <data name="PreviewStringId.Button_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="PreviewStringId.SB_PageNone" xml:space="preserve">
+    <value>Tyhjä</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_LastPage" xml:space="preserve">
+    <value>Viimeinen sivu</value>
+  </data>
+  <data name="PreviewStringId.Msg_UnavailableNetPrinter" xml:space="preserve">
+    <value>Verkkotulostin ei ole käytettävissä.</value>
+  </data>
+  <data name="PreviewStringId.Msg_NeedPrinter" xml:space="preserve">
+    <value>Ei asennettuja tulostimia.</value>
+  </data>
+  <data name="PreviewStringId.Msg_WrongPrinter" xml:space="preserve">
+    <value>Tulostimen nimi on väärin. Katso tulostimen asetukset.</value>
+  </data>
+  <data name="PreviewStringId.Msg_WrongPageSettings" xml:space="preserve">
+    <value>Tulostin ei tue valittua paperikokoa.\nJatketaanko tulostamista?</value>
+  </data>
+  <data name="PreviewStringId.Msg_CustomDrawWarning" xml:space="preserve">
+    <value>Varoitus!</value>
+  </data>
+  <data name="PreviewStringId.PreviewForm_Caption" xml:space="preserve">
+    <value>Esikatselu</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_Customize" xml:space="preserve">
+    <value>Muokkaa</value>
+  </data>
+  <data name="PreviewStringId.Margin_Inch" xml:space="preserve">
+    <value>Tuuma</value>
+  </data>
+  <data name="PreviewStringId.Margin_Millimeter" xml:space="preserve">
+    <value>mm</value>
+  </data>
+  <data name="PreviewStringId.Margin_TopMargin" xml:space="preserve">
+    <value>Ylämarginaali</value>
+  </data>
+  <data name="PreviewStringId.Margin_BottomMargin" xml:space="preserve">
+    <value>Alamarginaali</value>
+  </data>
+  <data name="PreviewStringId.Margin_LeftMargin" xml:space="preserve">
+    <value>Vasen marginaali</value>
+  </data>
+  <data name="PreviewStringId.Margin_RightMargin" xml:space="preserve">
+    <value>Oikea marginaali</value>
+  </data>
+  <data name="PreviewStringId.ScrollingInfo_Page" xml:space="preserve">
+    <value>Sivu</value>
+  </data>
+  <data name="PreviewStringId.Msg_PageMarginsWarning" xml:space="preserve">
+    <value>Yksi tai useampi marginaali on tulostusalueen ulkopuolella. Jatketaanko?</value>
+  </data>
+  <data name="PreviewStringId.SB_PageInfo" xml:space="preserve">
+    <value>{0}/{1}</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_HandTool" xml:space="preserve">
+    <value>Osoitin</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_Export" xml:space="preserve">
+    <value>Vie tiedosto...</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_Send" xml:space="preserve">
+    <value>Lähetä sähköposti...</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_Map" xml:space="preserve">
+    <value>Tiedosto kartta</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_Search" xml:space="preserve">
+    <value>Etsi</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_Watermark" xml:space="preserve">
+    <value>Leima</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_File" xml:space="preserve">
+    <value>&amp;Tiedosto</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_View" xml:space="preserve">
+    <value>&amp;Näytä</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_Background" xml:space="preserve">
+    <value>&amp;Taustaväri</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_PageSetup" xml:space="preserve">
+    <value>Sivun &amp;asetukset....</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_Print" xml:space="preserve">
+    <value>&amp;Tulosta...</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_PrintDirect" xml:space="preserve">
+    <value>T&amp;ulosta</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_Export" xml:space="preserve">
+    <value>&amp;Vie</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_Send" xml:space="preserve">
+    <value>&amp;Lähetä</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_Exit" xml:space="preserve">
+    <value>&amp;Sulje</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_ViewToolbar" xml:space="preserve">
+    <value>&amp;Työkalurivi</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_ViewStatusbar" xml:space="preserve">
+    <value>&amp;Tilarivi</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_ViewContinuous" xml:space="preserve">
+    <value>&amp;Jatkuva</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_ViewFacing" xml:space="preserve">
+    <value>&amp;Vierekkäin</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_BackgrColor" xml:space="preserve">
+    <value>&amp;Väri...</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_Watermark" xml:space="preserve">
+    <value>&amp;Leima...</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_PdfDocument" xml:space="preserve">
+    <value>PDF tiedosto</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_TxtDocument" xml:space="preserve">
+    <value>Tekstitiedosto</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_CsvDocument" xml:space="preserve">
+    <value>CSV Tiedosto</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_MhtDocument" xml:space="preserve">
+    <value>MHT tiedosto</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_XlsDocument" xml:space="preserve">
+    <value>Excel tiedosto</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_RtfDocument" xml:space="preserve">
+    <value>Rich Text tiedosto</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_HtmDocument" xml:space="preserve">
+    <value>HTML tiedosto</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_GraphicDocument" xml:space="preserve">
+    <value>Kuvatiedosto</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_ZoomPageWidth" xml:space="preserve">
+    <value>Sivun leveys</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_ZoomTextWidth" xml:space="preserve">
+    <value>Tekstin leveys</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_PageLayout" xml:space="preserve">
+    <value>&amp;Sivun ulkoasu</value>
+  </data>
+  <data name="PreviewStringId.SaveDlg_FilterPdf" xml:space="preserve">
+    <value>PDF tiedosto</value>
+  </data>
+  <data name="PreviewStringId.SaveDlg_FilterTxt" xml:space="preserve">
+    <value>Tekstitiedosto</value>
+  </data>
+  <data name="PreviewStringId.SaveDlg_FilterCsv" xml:space="preserve">
+    <value>CSV tiedosto</value>
+  </data>
+  <data name="PreviewStringId.SaveDlg_FilterMht" xml:space="preserve">
+    <value>MHT tiedosto</value>
+  </data>
+  <data name="PreviewStringId.SaveDlg_FilterXls" xml:space="preserve">
+    <value>Excel tiedosto</value>
+  </data>
+  <data name="PreviewStringId.SaveDlg_FilterRtf" xml:space="preserve">
+    <value>Rich Text tiedosto</value>
+  </data>
+  <data name="PreviewStringId.SaveDlg_FilterHtm" xml:space="preserve">
+    <value>HTML tiedosto</value>
+  </data>
+  <data name="PreviewStringId.SaveDlg_FilterBmp" xml:space="preserve">
+    <value>BMP tiedosto</value>
+  </data>
+  <data name="PreviewStringId.SaveDlg_FilterGif" xml:space="preserve">
+    <value>GIF tiedosto</value>
+  </data>
+  <data name="PreviewStringId.SaveDlg_FilterJpeg" xml:space="preserve">
+    <value>JPEG tiedosto</value>
+  </data>
+  <data name="PreviewStringId.SaveDlg_FilterPng" xml:space="preserve">
+    <value>PNG tiedosto</value>
+  </data>
+  <data name="PreviewStringId.SaveDlg_FilterTiff" xml:space="preserve">
+    <value>TIFF tiedosto</value>
+  </data>
+  <data name="PreviewStringId.SaveDlg_FilterEmf" xml:space="preserve">
+    <value>EMF tiedosto</value>
+  </data>
+  <data name="PreviewStringId.SaveDlg_FilterWmf" xml:space="preserve">
+    <value>WMF tiedosto</value>
+  </data>
+  <data name="PreviewStringId.SaveDlg_Title" xml:space="preserve">
+    <value>Tallenna nimellä</value>
+  </data>
+  <data name="PreviewStringId.EMail_From" xml:space="preserve">
+    <value>Lähettäjä</value>
+  </data>
+  <data name="PreviewStringId.Msg_IncorrectPageRange" xml:space="preserve">
+    <value>Virheellinen sivujen väli</value>
+  </data>
+  <data name="PreviewStringId.WMForm_ImageZoom" xml:space="preserve">
+    <value>Zoomaa</value>
+  </data>
+  <data name="PreviewStringId.WMForm_Direction_Horizontal" xml:space="preserve">
+    <value>Vaaka</value>
+  </data>
+  <data name="PreviewStringId.WMForm_Direction_Vertical" xml:space="preserve">
+    <value>Pysty</value>
+  </data>
+  <data name="PreviewStringId.WMForm_Direction_BackwardDiagonal" xml:space="preserve">
+    <value>BackwardDiagonal</value>
+  </data>
+  <data name="PreviewStringId.WMForm_Direction_ForwardDiagonal" xml:space="preserve">
+    <value>ForwardDiagonal</value>
+  </data>
+  <data name="PreviewStringId.WMForm_VertAlign_Bottom" xml:space="preserve">
+    <value>Alas</value>
+  </data>
+  <data name="PreviewStringId.WMForm_VertAlign_Middle" xml:space="preserve">
+    <value>Keskelle</value>
+  </data>
+  <data name="PreviewStringId.WMForm_VertAlign_Top" xml:space="preserve">
+    <value>Ylös</value>
+  </data>
+  <data name="PreviewStringId.WMForm_HorzAlign_Left" xml:space="preserve">
+    <value>Vasen</value>
+  </data>
+  <data name="PreviewStringId.WMForm_HorzAlign_Center" xml:space="preserve">
+    <value>Keskitä</value>
+  </data>
+  <data name="PreviewStringId.WMForm_HorzAlign_Right" xml:space="preserve">
+    <value>Oikea</value>
+  </data>
+  <data name="PreviewStringId.WMForm_PictureDlg_Title" xml:space="preserve">
+    <value>Valitse kuva</value>
+  </data>
+  <data name="PreviewStringId.WMForm_ImageStretch" xml:space="preserve">
+    <value>Venytä</value>
+  </data>
+  <data name="PreviewStringId.WMForm_ImageClip" xml:space="preserve">
+    <value>Leike</value>
+  </data>
+  <data name="PreviewStringId.WMForm_Watermark_Asap" xml:space="preserve">
+    <value>ASAP</value>
+  </data>
+  <data name="PreviewStringId.WMForm_Watermark_Confidential" xml:space="preserve">
+    <value>LUOTTAMUKSELLINEN</value>
+  </data>
+  <data name="PreviewStringId.WMForm_Watermark_Copy" xml:space="preserve">
+    <value>KOPIO</value>
+  </data>
+  <data name="PreviewStringId.WMForm_Watermark_DoNotCopy" xml:space="preserve">
+    <value>ÄLÄ KOPIOI</value>
+  </data>
+  <data name="PreviewStringId.WMForm_Watermark_Draft" xml:space="preserve">
+    <value>LUONNOS</value>
+  </data>
+  <data name="PreviewStringId.WMForm_Watermark_Evaluation" xml:space="preserve">
+    <value>ARVIOINTI</value>
+  </data>
+  <data name="PreviewStringId.WMForm_Watermark_Original" xml:space="preserve">
+    <value>ALKUPERÄINEN</value>
+  </data>
+  <data name="PreviewStringId.WMForm_Watermark_Personal" xml:space="preserve">
+    <value>HENKILÖKOHTAINEN</value>
+  </data>
+  <data name="PreviewStringId.WMForm_Watermark_Sample" xml:space="preserve">
+    <value>ESIMERKKI</value>
+  </data>
+  <data name="PreviewStringId.WMForm_Watermark_TopSecret" xml:space="preserve">
+    <value>SALAINEN</value>
+  </data>
+  <data name="PreviewStringId.WMForm_Watermark_Urgent" xml:space="preserve">
+    <value>KIIREELLINEN</value>
+  </data>
+  <data name="PreviewStringId.Msg_FontInvalidNumber" xml:space="preserve">
+    <value>Fontin koko ei voi olla nolla tai negatiivinen luku</value>
+  </data>
+  <data name="PreviewStringId.Msg_NotSupportedFont" xml:space="preserve">
+    <value>Tämä fontti ei ole vielä tuettu</value>
+  </data>
+  <data name="PreviewStringId.WMForm_ZOrderRgrItem_InFront" xml:space="preserve">
+    <value>&amp;Edessä</value>
+  </data>
+  <data name="PreviewStringId.WMForm_ZOrderRgrItem_Behind" xml:space="preserve">
+    <value>&amp;Takana</value>
+  </data>
+  <data name="PreviewStringId.WMForm_PageRangeRgrItem_All" xml:space="preserve">
+    <value>&amp;Kaikki</value>
+  </data>
+  <data name="PreviewStringId.WMForm_PageRangeRgrItem_Pages" xml:space="preserve">
+    <value>&amp;Sivut:</value>
+  </data>
+  <data name="PreviewStringId.PageInfo_PageNumber" xml:space="preserve">
+    <value>[Sivu #]</value>
+  </data>
+  <data name="PreviewStringId.PageInfo_PageNumberOfTotal" xml:space="preserve">
+    <value>[Sivu #/#]</value>
+  </data>
+  <data name="PreviewStringId.PageInfo_PageDate" xml:space="preserve">
+    <value>[Tulostuspäivä]</value>
+  </data>
+  <data name="PreviewStringId.PageInfo_PageTime" xml:space="preserve">
+    <value>[Tulostusaika]</value>
+  </data>
+  <data name="PreviewStringId.PageInfo_PageUserName" xml:space="preserve">
+    <value>[Käyttäjänimi]</value>
+  </data>
+  <data name="PreviewStringId.BarText_Toolbar" xml:space="preserve">
+    <value>Työkalurivi</value>
+  </data>
+  <data name="PreviewStringId.BarText_MainMenu" xml:space="preserve">
+    <value>Päävalikko</value>
+  </data>
+  <data name="PreviewStringId.BarText_StatusBar" xml:space="preserve">
+    <value>Tilarivi</value>
+  </data>
+  <data name="PreviewStringId.Msg_IncorrectZoomFactor" xml:space="preserve">
+    <value>Luvun pitää olla {0} ja {1} välillä.</value>
+  </data>
+  <data name="PreviewStringId.Msg_InvalidMeasurement" xml:space="preserve">
+    <value>Tämä ei ole kelvollinen mittaus.</value>
+  </data>
+  <data name="PreviewStringId.Msg_CannotAccessFile" xml:space="preserve">
+    <value>Ei voi käsitellä tiedostoa &quot;{0}&quot; koska se on toisen prosessin käytössä.</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_ZoomTwoPages" xml:space="preserve">
+    <value>Kaksi sivua</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_ZoomWholePage" xml:space="preserve">
+    <value>Koko sivu</value>
+  </data>
+  <data name="PreviewStringId.Msg_CantFitBarcodeToControlBounds" xml:space="preserve">
+    <value>Kontrollin rajat ovat liian pienet viivakoodille</value>
+  </data>
+  <data name="PreviewStringId.Msg_InvalidBarcodeText" xml:space="preserve">
+    <value>Tekstissä on virheellisiä merkkejä</value>
+  </data>
+  <data name="PreviewStringId.Msg_InvalidBarcodeTextFormat" xml:space="preserve">
+    <value>Virheellinen tekstiformaatti</value>
+  </data>
+  <data name="PreviewStringId.Msg_SearchDialogFinishedSearching" xml:space="preserve">
+    <value>Etsintä dokumentista on päättynyt</value>
+  </data>
+  <data name="PreviewStringId.Msg_SearchDialogTotalFound" xml:space="preserve">
+    <value>Löytyi yhteensä: </value>
+  </data>
+  <data name="PreviewStringId.Msg_SearchDialogReady" xml:space="preserve">
+    <value>Valmis</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_TextSeparator_TabAlias" xml:space="preserve">
+    <value>TAB</value>
+  </data>
+  <data name="PreviewStringId.Msg_FileReadOnly" xml:space="preserve">
+    <value>Tiedosto &quot;{0}&quot; on &quot;vain luku&quot; -tilassa, yritä uudestaan toisella tiedostonimellä.</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_TextQuoteStringsWithSeparators" xml:space="preserve">
+    <value>Käytä teksteissä lainausmerkkejä</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_ActionAfterExport" xml:space="preserve">
+    <value>Toimenpide viennin jälkeen:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_ActionAfterExport_None" xml:space="preserve">
+    <value>Ei mitään</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_ActionAfterExport_Open" xml:space="preserve">
+    <value>Avaa tiedosto</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_ActionAfterExport_AskUser" xml:space="preserve">
+    <value>Kysy käyttäjää</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_DefaultDirectory" xml:space="preserve">
+    <value>Oletushakemisto:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_DefaultFileName" xml:space="preserve">
+    <value>Oletustiedostonimi:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_SaveMode" xml:space="preserve">
+    <value>Tallenna tiedostona:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_SaveMode_UsingDefaultPath" xml:space="preserve">
+    <value>Oletustiedostopolku</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_SaveMode_UsingSaveFileDialog" xml:space="preserve">
+    <value>Tallenna tiedostoikkuna</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_ShowOptionsBeforeExport" xml:space="preserve">
+    <value>Näytä valintaikkuna ennen vientiä</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_RtfExportMode" xml:space="preserve">
+    <value>Vientitila:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_RtfExportMode_SingleFile" xml:space="preserve">
+    <value>Yksittäinen tiedosto</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_RtfExportMode_SingleFilePageByPage" xml:space="preserve">
+    <value>Yksittäinen tiedosto sivu sivulta</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_RtfPageRange" xml:space="preserve">
+    <value>Sivualue:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_RtfExportWatermarks" xml:space="preserve">
+    <value>Vie vesileimat</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_PdfPageRange" xml:space="preserve">
+    <value>Sivualue:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_PdfCompressed" xml:space="preserve">
+    <value>Pakattu</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_PdfShowPrintDialogOnOpen" xml:space="preserve">
+    <value>Näytä tulostusikkuna avattaessa</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_PdfNeverEmbeddedFonts" xml:space="preserve">
+    <value>Älä upota näitä fontteja:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_PdfImageQuality" xml:space="preserve">
+    <value>Kuvien laatu:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_PdfImageQuality_Lowest" xml:space="preserve">
+    <value>Alhaisin</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_PdfImageQuality_Low" xml:space="preserve">
+    <value>Pieni</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_PdfImageQuality_Medium" xml:space="preserve">
+    <value>Keskitaso</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_PdfImageQuality_High" xml:space="preserve">
+    <value>Suuri</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_PdfImageQuality_Highest" xml:space="preserve">
+    <value>Korkein</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_PdfDocumentAuthor" xml:space="preserve">
+    <value>Tekijä:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_PdfDocumentApplication" xml:space="preserve">
+    <value>Käyttökohde:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_PdfDocumentTitle" xml:space="preserve">
+    <value>Nimike:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_PdfDocumentSubject" xml:space="preserve">
+    <value>Aihe:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_PdfDocumentKeywords" xml:space="preserve">
+    <value>Avainsanat:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_PdfPasswordSecurityOptions" xml:space="preserve">
+    <value>Turvallisuus:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_HtmlExportMode" xml:space="preserve">
+    <value>Vientitila:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_HtmlExportMode_SingleFile" xml:space="preserve">
+    <value>Yksittäinen tiedosto</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_HtmlExportMode_SingleFilePageByPage" xml:space="preserve">
+    <value>Yksittäinen tiedosto sivu sivulta</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_HtmlExportMode_DifferentFiles" xml:space="preserve">
+    <value>Eri tiedostot</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_HtmlCharacterSet" xml:space="preserve">
+    <value>Merkintö:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_HtmlTitle" xml:space="preserve">
+    <value>Nimike:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_HtmlRemoveSecondarySymbols" xml:space="preserve">
+    <value>Poista rivinvaihdot</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_HtmlPageRange" xml:space="preserve">
+    <value>Sivualue:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_HtmlPageBorderWidth" xml:space="preserve">
+    <value>Sivun marginaalin leveys:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_HtmlPageBorderColor" xml:space="preserve">
+    <value>Sivun marginaalin väri:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_TextSeparator" xml:space="preserve">
+    <value>Tekstierotin:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_TextEncoding" xml:space="preserve">
+    <value>Koodaus:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XlsShowGridLines" xml:space="preserve">
+    <value>Näytä ruudukkoviivat</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XlsUseNativeFormat" xml:space="preserve">
+    <value>Vie arvot niiden muotoa käyttäen</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XlsExportHyperlinks" xml:space="preserve">
+    <value>Vie hyperlinkit</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XlsExportMode" xml:space="preserve">
+    <value>Eri tiedostot</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XlsExportMode_DifferentFiles" xml:space="preserve">
+    <value>Eri</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XlsExportMode_SingleFile" xml:space="preserve">
+    <value>Yksittäinen tiedosto</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XlsPageRange" xml:space="preserve">
+    <value>Sivualue</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XlsSheetName" xml:space="preserve">
+    <value>Nimi</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XlsxExportMode" xml:space="preserve">
+    <value>Vientitila</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XlsxExportMode_DifferentFiles" xml:space="preserve">
+    <value>Eri</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XlsxExportMode_SingleFile" xml:space="preserve">
+    <value>Yksittäinen tiedosto</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XlsxExportMode_SingleFilePageByPage" xml:space="preserve">
+    <value>Yksittäinen tiedosto sivu sivulta</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XlsxPageRange" xml:space="preserve">
+    <value>Sivualue</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XpsCompression_Normal" xml:space="preserve">
+    <value>Normaali</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_TextExportMode" xml:space="preserve">
+    <value>Vientitila</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_TextExportMode_Text" xml:space="preserve">
+    <value>Teksti</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_TextExportMode_Value" xml:space="preserve">
+    <value>Tiedot</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_ImageExportMode" xml:space="preserve">
+    <value>Vientitila:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_ImageExportMode_SingleFile" xml:space="preserve">
+    <value>Yksittäinen tiedosto</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_ImageExportMode_SingleFilePageByPage" xml:space="preserve">
+    <value>Yksittäinen tiedosto sivu sivulta</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_ImageExportMode_DifferentFiles" xml:space="preserve">
+    <value>Eri tiedostot</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_ImagePageRange" xml:space="preserve">
+    <value>Sivualue:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_ImagePageBorderWidth" xml:space="preserve">
+    <value>Sivun marginaalin leveys:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_ImagePageBorderColor" xml:space="preserve">
+    <value>Sivun marginaalin väri:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_ImageResolution" xml:space="preserve">
+    <value>Tarkkuus (dpi):</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_ImageFormat" xml:space="preserve">
+    <value>Kuvamuoto:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XpsPageRange" xml:space="preserve">
+    <value>Sivualue:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XpsCompression" xml:space="preserve">
+    <value>Pakkausasetukset:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XpsCompression_NotCompressed" xml:space="preserve">
+    <value>Pakkaamaton</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XpsCompression_Maximum" xml:space="preserve">
+    <value>Maksimi</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XpsCompression_Fast" xml:space="preserve">
+    <value>Nopea</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XpsCompression_SuperFast" xml:space="preserve">
+    <value>Erikoisnopea</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XpsDocumentCreator" xml:space="preserve">
+    <value>Luoja:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XpsDocumentCategory" xml:space="preserve">
+    <value>Luokka:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XpsDocumentTitle" xml:space="preserve">
+    <value>Nimike:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XpsDocumentSubject" xml:space="preserve">
+    <value>Aihe:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XpsDocumentKeywords" xml:space="preserve">
+    <value>Avainsanat:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XpsDocumentVersion" xml:space="preserve">
+    <value>Versio:</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_XpsDocumentDescription" xml:space="preserve">
+    <value>Kuvaus:</value>
+  </data>
+  <data name="PreviewStringId.FolderBrowseDlg_ExportDirectory" xml:space="preserve">
+    <value>Valitse kansio, johon viety asiakirja tallennetaan:</value>
+  </data>
+  <data name="PreviewStringId.ExportOptionsForm_CaptionPdf" xml:space="preserve">
+    <value>PDF-vientiasetukset</value>
+  </data>
+  <data name="PreviewStringId.ExportOptionsForm_CaptionXls" xml:space="preserve">
+    <value>XLS-vientiasetukset</value>
+  </data>
+  <data name="PreviewStringId.ExportOptionsForm_CaptionXlsx" xml:space="preserve">
+    <value>XLSX-vientiasetukset</value>
+  </data>
+  <data name="PreviewStringId.ExportOptionsForm_CaptionTxt" xml:space="preserve">
+    <value>Tekstin vientiasetukset</value>
+  </data>
+  <data name="PreviewStringId.ExportOptionsForm_CaptionCsv" xml:space="preserve">
+    <value>CSV-vientiasetukset</value>
+  </data>
+  <data name="PreviewStringId.ExportOptionsForm_CaptionImage" xml:space="preserve">
+    <value>Kuvan vientiasetukset</value>
+  </data>
+  <data name="PreviewStringId.ExportOptionsForm_CaptionHtml" xml:space="preserve">
+    <value>HTML-vientiasetukset</value>
+  </data>
+  <data name="PreviewStringId.ExportOptionsForm_CaptionMht" xml:space="preserve">
+    <value>MHT-vientiasetukset</value>
+  </data>
+  <data name="PreviewStringId.ExportOptionsForm_CaptionRtf" xml:space="preserve">
+    <value>RTF-vientiasetukset</value>
+  </data>
+  <data name="PreviewStringId.ExportOptionsForm_CaptionXps" xml:space="preserve">
+    <value>XPS-vientiasetukset</value>
+  </data>
+  <data name="PreviewStringId.Msg_OpenFileQuestionCaption" xml:space="preserve">
+    <value>Vie</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_PageGroup_Export" xml:space="preserve">
+    <value>Vie</value>
+  </data>
+  <data name="PreviewStringId.Msg_OpenFileQuestion" xml:space="preserve">
+    <value>Avaa tiedosto?</value>
+  </data>
+  <data name="PreviewStringId.NoneString" xml:space="preserve">
+    <value>(ei mitään)</value>
+  </data>
+  <data name="PreviewStringId.Msg_InvPropName" xml:space="preserve">
+    <value>Virheellinen ominaisuuden nimi</value>
+  </data>
+  <data name="PreviewStringId.NoneString" xml:space="preserve">
+    <value>(Ei mitään)</value>
+  </data>
+</root>

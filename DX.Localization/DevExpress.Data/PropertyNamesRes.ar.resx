@@ -1,0 +1,1959 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="System.Collections.CollectionBase" xml:space="preserve">
+    <value>(Collection)</value>
+  </data>
+  <data name="System.Drawing.Size.Width" xml:space="preserve">
+    <value>العرض</value>
+  </data>
+  <data name="System.Drawing.Size.Height" xml:space="preserve">
+    <value>الطول</value>
+  </data>
+  <data name="System.Boolean.True" xml:space="preserve">
+    <value>نعم</value>
+  </data>
+  <data name="System.Boolean.False" xml:space="preserve">
+    <value>كلا</value>
+  </data>
+  <data name="System.Drawing.Font.Name" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+  <data name="System.Drawing.Font.Size" xml:space="preserve">
+    <value>الحجم</value>
+  </data>
+  <data name="System.Drawing.Font.Unit" xml:space="preserve">
+    <value>الوحدة</value>
+  </data>
+  <data name="System.Drawing.Font.Bold" xml:space="preserve">
+    <value>عريض</value>
+  </data>
+  <data name="System.Drawing.Font.GdiCharSet" xml:space="preserve">
+    <value>مجموعة رموز GDI</value>
+  </data>
+  <data name="System.Drawing.Font.GdiVerticalFont" xml:space="preserve">
+    <value>خط GDI عامودي</value>
+  </data>
+  <data name="System.Drawing.Font.Italic" xml:space="preserve">
+    <value>مائل</value>
+  </data>
+  <data name="System.Drawing.Font.Strikeout" xml:space="preserve">
+    <value>يتخلله خط</value>
+  </data>
+  <data name="System.Drawing.Font.Underline" xml:space="preserve">
+    <value>مسطر</value>
+  </data>
+  <data name="DevExpress.Utils.DefaultBoolean.True" xml:space="preserve">
+    <value>نعم</value>
+  </data>
+  <data name="DevExpress.Utils.DefaultBoolean.False" xml:space="preserve">
+    <value>كلا</value>
+  </data>
+  <data name="DevExpress.Utils.DefaultBoolean.Default" xml:space="preserve">
+    <value>إفتراضي</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Custom" xml:space="preserve">
+    <value>مخصص</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Letter" xml:space="preserve">
+    <value>Letter</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterSmall" xml:space="preserve">
+    <value>Letter Small</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Tabloid" xml:space="preserve">
+    <value>Tabloid</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Ledger" xml:space="preserve">
+    <value>Ledger</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Legal" xml:space="preserve">
+    <value>Legal</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Statement" xml:space="preserve">
+    <value>Statement</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Executive" xml:space="preserve">
+    <value>Executive</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A3" xml:space="preserve">
+    <value>A3</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4" xml:space="preserve">
+    <value>A4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4Small" xml:space="preserve">
+    <value>A4 Small</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A5" xml:space="preserve">
+    <value>A5</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B4" xml:space="preserve">
+    <value>B4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B5" xml:space="preserve">
+    <value>B5</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Folio" xml:space="preserve">
+    <value>Folio</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Quarto" xml:space="preserve">
+    <value>Quarto</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Standard10x14" xml:space="preserve">
+    <value>Standard 10x14</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Standard11x17" xml:space="preserve">
+    <value>Standard 11x17</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Note" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Number9Envelope" xml:space="preserve">
+    <value>Number 9 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Number10Envelope" xml:space="preserve">
+    <value>Number 10 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Number11Envelope" xml:space="preserve">
+    <value>Number 11 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Number12Envelope" xml:space="preserve">
+    <value>Number 12 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Number14Envelope" xml:space="preserve">
+    <value>Number 14 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.CSheet" xml:space="preserve">
+    <value>C Sheet</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.DSheet" xml:space="preserve">
+    <value>D Sheet</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.ESheet" xml:space="preserve">
+    <value>E Sheet</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.DLEnvelope" xml:space="preserve">
+    <value>DL Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.C5Envelope" xml:space="preserve">
+    <value>C5 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.C3Envelope" xml:space="preserve">
+    <value>C3 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.C4Envelope" xml:space="preserve">
+    <value>C4 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.C6Envelope" xml:space="preserve">
+    <value>C6 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.C65Envelope" xml:space="preserve">
+    <value>C65 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B4Envelope" xml:space="preserve">
+    <value>B4 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B5Envelope" xml:space="preserve">
+    <value>B5 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B6Envelope" xml:space="preserve">
+    <value>B6 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.ItalyEnvelope" xml:space="preserve">
+    <value>Italy Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.MonarchEnvelope" xml:space="preserve">
+    <value>Monarch Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PersonalEnvelope" xml:space="preserve">
+    <value>Personal Envelope (6 3/4)</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.USStandardFanfold" xml:space="preserve">
+    <value>US Standard Fanfold</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.GermanStandardFanfold" xml:space="preserve">
+    <value>German Standard Fanfold</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.GermanLegalFanfold" xml:space="preserve">
+    <value>German Legal Fanfold</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.IsoB4" xml:space="preserve">
+    <value>Iso B4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapanesePostcard" xml:space="preserve">
+    <value>Japanese Postcard</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Standard9x11" xml:space="preserve">
+    <value>Standard 9x11</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Standard10x11" xml:space="preserve">
+    <value>Standard 10x11</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Standard15x11" xml:space="preserve">
+    <value>Standard 15x11</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.InviteEnvelope" xml:space="preserve">
+    <value>Invite Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterExtra" xml:space="preserve">
+    <value>Letter Extra</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LegalExtra" xml:space="preserve">
+    <value>Legal Extra</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.TabloidExtra" xml:space="preserve">
+    <value>Tabloid Extra</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4Extra" xml:space="preserve">
+    <value>A4 Extra</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterTransverse" xml:space="preserve">
+    <value>Letter Transverse</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4Transverse" xml:space="preserve">
+    <value>A4 Transverse</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterExtraTransverse" xml:space="preserve">
+    <value>Letter Extra Transverse</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.APlus" xml:space="preserve">
+    <value>SuperA/SuperA/A4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.BPlus" xml:space="preserve">
+    <value>SuperB/SuperB/A3</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterPlus" xml:space="preserve">
+    <value>Letter Plus</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4Plus" xml:space="preserve">
+    <value>A4 Plus</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A5Transverse" xml:space="preserve">
+    <value>A5 Transverse</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B5Transverse" xml:space="preserve">
+    <value>JIS B5 Transverse</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A3Extra" xml:space="preserve">
+    <value>A3 Extra</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A5Extra" xml:space="preserve">
+    <value>A5 Extra</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B5Extra" xml:space="preserve">
+    <value>ISO B5 Extra</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A2" xml:space="preserve">
+    <value>A2</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A3Transverse" xml:space="preserve">
+    <value>A3 Transverse</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A3ExtraTransverse" xml:space="preserve">
+    <value>A3 Extra Transverse</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseDoublePostcard" xml:space="preserve">
+    <value>Japanese Double Postcard</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A6" xml:space="preserve">
+    <value>A6</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeKakuNumber2" xml:space="preserve">
+    <value>Japanese Envelope Kaku Number 2</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeKakuNumber3" xml:space="preserve">
+    <value>Japanese Envelope Kaku Number 3</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeChouNumber3" xml:space="preserve">
+    <value>Japanese Envelope Chou Number 3</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeChouNumber4" xml:space="preserve">
+    <value>Japanese Envelope Chou Number 4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterRotated" xml:space="preserve">
+    <value>Letter Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A3Rotated" xml:space="preserve">
+    <value>A3 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4Rotated" xml:space="preserve">
+    <value>A4 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A5Rotated" xml:space="preserve">
+    <value>A5 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B4JisRotated" xml:space="preserve">
+    <value>JIS B4 Rotated </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B5JisRotated" xml:space="preserve">
+    <value>JIS B5 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapanesePostcardRotated" xml:space="preserve">
+    <value>Japanese Postcard Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseDoublePostcardRotated" xml:space="preserve">
+    <value>Japanese Double Postcard Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A6Rotated" xml:space="preserve">
+    <value>A6 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeKakuNumber2Rotated" xml:space="preserve">
+    <value>Japanese Envelope Kaku Number 2 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeKakuNumber3Rotated" xml:space="preserve">
+    <value>Japanese Envelope Kaku Number 3 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeChouNumber3Rotated" xml:space="preserve">
+    <value>Japanese Envelope Chou Number 3 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeChouNumber4Rotated" xml:space="preserve">
+    <value>Japanese Envelope Chou Number 4 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B6Jis" xml:space="preserve">
+    <value>JIS B6</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B6JisRotated" xml:space="preserve">
+    <value>JIS B6 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Standard12x11" xml:space="preserve">
+    <value>Standard 12x11</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeYouNumber4" xml:space="preserve">
+    <value>Japanese Envelope You Number 4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeYouNumber4Rotated" xml:space="preserve">
+    <value>Japanese Envelope You Number 4 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc16K" xml:space="preserve">
+    <value>Prc 16K</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc32K" xml:space="preserve">
+    <value>Prc 32K</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc32KBig" xml:space="preserve">
+    <value>Prc 32K Big</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber1" xml:space="preserve">
+    <value>Prc Envelope Number 1</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber2" xml:space="preserve">
+    <value>Prc Envelope Number 2</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber3" xml:space="preserve">
+    <value>Prc Envelope Number 3</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber4" xml:space="preserve">
+    <value>Prc Envelope Number 4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber5" xml:space="preserve">
+    <value>Prc Envelope Number 5</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber6" xml:space="preserve">
+    <value>Prc Envelope Number 6</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber7" xml:space="preserve">
+    <value>Prc Envelope Number 7</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber8" xml:space="preserve">
+    <value>Prc Envelope Number 8</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber9" xml:space="preserve">
+    <value>Prc Envelope Number 9</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber10" xml:space="preserve">
+    <value>Prc Envelope Number 10</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc16KRotated" xml:space="preserve">
+    <value>Prc 16K Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc32KRotated" xml:space="preserve">
+    <value>Prc 32K Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc32KBigRotated" xml:space="preserve">
+    <value>Prc 32K Big Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber1Rotated" xml:space="preserve">
+    <value>Prc Envelope Number 1 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber2Rotated" xml:space="preserve">
+    <value>Prc Envelope Number 2 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber3Rotated" xml:space="preserve">
+    <value>Prc Envelope Number 3 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber4Rotated" xml:space="preserve">
+    <value>Prc Envelope Number 4 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber5Rotated" xml:space="preserve">
+    <value>Prc Envelope Number 5 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber6Rotated" xml:space="preserve">
+    <value>Prc Envelope Number 6 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber7Rotated" xml:space="preserve">
+    <value>Prc Envelope Number 7 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber8Rotated" xml:space="preserve">
+    <value>Prc Envelope Number 8 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber9Rotated" xml:space="preserve">
+    <value>Prc Envelope Number 9 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber10Rotated" xml:space="preserve">
+    <value>Prc Envelope Number 10 Rotated</value>
+  </data>
+  <data name="System.Drawing.StringAlignment.Near" xml:space="preserve">
+    <value>قريب</value>
+  </data>
+  <data name="System.Drawing.StringAlignment.Center" xml:space="preserve">
+    <value>وسط</value>
+  </data>
+  <data name="System.Drawing.StringAlignment.Far" xml:space="preserve">
+    <value>بعيد</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Min" xml:space="preserve">
+    <value>أدنى</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Horizontal" xml:space="preserve">
+    <value>عرضي</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Vertical" xml:space="preserve">
+    <value>عامودي</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.ForwardDiagonal" xml:space="preserve">
+    <value>قطري أمامي</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.BackwardDiagonal" xml:space="preserve">
+    <value>قطري خلفي</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Max" xml:space="preserve">
+    <value>أعلى</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Cross" xml:space="preserve">
+    <value>متقاطع</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.LargeGrid" xml:space="preserve">
+    <value>شبكة كبيرة</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DiagonalCross" xml:space="preserve">
+    <value>قطري متقاطع</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent05" xml:space="preserve">
+    <value>05 بالمئة</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent10" xml:space="preserve">
+    <value>10 بالمئة</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent20" xml:space="preserve">
+    <value>20 بالمئة</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent25" xml:space="preserve">
+    <value>25 بالمئة</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent30" xml:space="preserve">
+    <value>30 بالمئة</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent40" xml:space="preserve">
+    <value>40 بالمئة</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent50" xml:space="preserve">
+    <value>50 بالمئة</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent60" xml:space="preserve">
+    <value>60 بالمئة</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent70" xml:space="preserve">
+    <value>70 بالمئة</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent75" xml:space="preserve">
+    <value>75 بالمئة</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent80" xml:space="preserve">
+    <value>80 بالمئة</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Percent90" xml:space="preserve">
+    <value>90 بالمئة</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.LightDownwardDiagonal" xml:space="preserve">
+    <value>قطري فاتح إلى الأسفل</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.LightUpwardDiagonal" xml:space="preserve">
+    <value>قطري فاتح إلى الأعلى</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DarkDownwardDiagonal" xml:space="preserve">
+    <value>قطري داكن إلى الأسفل</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DarkUpwardDiagonal" xml:space="preserve">
+    <value>قطري داكن إلى الأعلى</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.WideDownwardDiagonal" xml:space="preserve">
+    <value>قطري عريض إلى الأسفل</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.WideUpwardDiagonal" xml:space="preserve">
+    <value>قطري عريض إلى الأعلى</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.LightVertical" xml:space="preserve">
+    <value>عامودي فاتح</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.LightHorizontal" xml:space="preserve">
+    <value>عرضي فاتح</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.NarrowVertical" xml:space="preserve">
+    <value>عامودي ضيق</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.NarrowHorizontal" xml:space="preserve">
+    <value>عرضي ضيق</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DarkVertical" xml:space="preserve">
+    <value>عامودي داكن</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DarkHorizontal" xml:space="preserve">
+    <value>عرضي داكن</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DashedDownwardDiagonal" xml:space="preserve">
+    <value>قطري متقطع إلى الأسفل</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DashedUpwardDiagonal" xml:space="preserve">
+    <value>قطري متقطع إلى الأعلى</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DashedHorizontal" xml:space="preserve">
+    <value>عرضي متقطع</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DashedVertical" xml:space="preserve">
+    <value>عامودي متقطع</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.SmallConfetti" xml:space="preserve">
+    <value>رقائق ورقية صغيرة</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.LargeConfetti" xml:space="preserve">
+    <value>رقائق ورقية كبيرة</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.ZigZag" xml:space="preserve">
+    <value>متعرج</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Wave" xml:space="preserve">
+    <value>موجة</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DiagonalBrick" xml:space="preserve">
+    <value>قرميد قطري</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.HorizontalBrick" xml:space="preserve">
+    <value>قرميد عرضي</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Weave" xml:space="preserve">
+    <value>نسيج</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Plaid" xml:space="preserve">
+    <value>مربع النقش</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Divot" xml:space="preserve">
+    <value>Divot</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DottedGrid" xml:space="preserve">
+    <value>شبكي منقط</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.DottedDiamond" xml:space="preserve">
+    <value>ماسي منقط</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Shingle" xml:space="preserve">
+    <value>خشبي</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Trellis" xml:space="preserve">
+    <value>تعريشة</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.Sphere" xml:space="preserve">
+    <value>كروي</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.SmallGrid" xml:space="preserve">
+    <value>شبكة صغيرة</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.SmallCheckerBoard" xml:space="preserve">
+    <value>لوح شطرنج صغير</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.LargeCheckerBoard" xml:space="preserve">
+    <value>لوح شطرنج كبير</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.OutlinedDiamond" xml:space="preserve">
+    <value>ماسي محدد المحيط</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.HatchStyle.SolidDiamond" xml:space="preserve">
+    <value>ماسي صلب</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.VerticalContentSplitting.Exact" xml:space="preserve">
+    <value>دقيق</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.VerticalContentSplitting.Smart" xml:space="preserve">
+    <value>ذكي</value>
+  </data>
+  <data name="DevExpress.Utils.FormatInfo.FormatString" xml:space="preserve">
+    <value>سلسلة التصميم</value>
+  </data>
+  <data name="DevExpress.Utils.FormatInfo.FormatType" xml:space="preserve">
+    <value>نوع التصميم</value>
+  </data>
+  <data name="DevExpress.Utils.FormatType.None" xml:space="preserve">
+    <value>لا يوجد</value>
+  </data>
+  <data name="DevExpress.Utils.FormatType.Numeric" xml:space="preserve">
+    <value>رقمي</value>
+  </data>
+  <data name="DevExpress.Utils.FormatType.DateTime" xml:space="preserve">
+    <value>تاريخ/ وقت</value>
+  </data>
+  <data name="DevExpress.Utils.FormatType.Custom" xml:space="preserve">
+    <value>غير جاهز</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.Bound" xml:space="preserve">
+    <value>حد</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.Integer" xml:space="preserve">
+    <value>عدد صحيح</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.Decimal" xml:space="preserve">
+    <value>عدد عشري</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.DateTime" xml:space="preserve">
+    <value>تاريخ/ وقت</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.String" xml:space="preserve">
+    <value>سلسلة</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.Boolean" xml:space="preserve">
+    <value>منطقية</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.Object" xml:space="preserve">
+    <value>شيء</value>
+  </data>
+  <data name="DevExpress.Utils.HorzAlignment.Default" xml:space="preserve">
+    <value>إفتراضي</value>
+  </data>
+  <data name="DevExpress.Utils.HorzAlignment.Near" xml:space="preserve">
+    <value>قريب</value>
+  </data>
+  <data name="DevExpress.Utils.HorzAlignment.Center" xml:space="preserve">
+    <value>وسط</value>
+  </data>
+  <data name="DevExpress.Utils.HorzAlignment.Far" xml:space="preserve">
+    <value>بعيد</value>
+  </data>
+  <data name="DevExpress.Utils.VertAlignment.Default" xml:space="preserve">
+    <value>إفتراضي</value>
+  </data>
+  <data name="DevExpress.Utils.VertAlignment.Top" xml:space="preserve">
+    <value>أعلى</value>
+  </data>
+  <data name="DevExpress.Utils.VertAlignment.Center" xml:space="preserve">
+    <value>وسط</value>
+  </data>
+  <data name="DevExpress.Utils.VertAlignment.Bottom" xml:space="preserve">
+    <value>أسفل</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.LinearGradientMode.Horizontal" xml:space="preserve">
+    <value>عرضي</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.LinearGradientMode.Vertical" xml:space="preserve">
+    <value>عامودي</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal" xml:space="preserve">
+    <value>قطري إلى الأمام</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal" xml:space="preserve">
+    <value>قطري إلى الوراء</value>
+  </data>
+  <data name="DevExpress.Utils.OptionsColumnLayout.RemoveOldColumns" xml:space="preserve">
+    <value>حذف أعمدة قديمة</value>
+  </data>
+  <data name="DevExpress.Utils.OptionsColumnLayout.AddNewColumns" xml:space="preserve">
+    <value>إضافة أعمدة جديدة</value>
+  </data>
+  <data name="DevExpress.Utils.OptionsColumnLayout.StoreLayout" xml:space="preserve">
+    <value>تخزين التصميم</value>
+  </data>
+  <data name="DevExpress.Utils.OptionsColumnLayout.StoreAppearance" xml:space="preserve">
+    <value>تخزين المظهر</value>
+  </data>
+  <data name="DevExpress.Utils.OptionsColumnLayout.StoreAllOptions" xml:space="preserve">
+    <value>تخزين كل الخيارات</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptionsBase.Encoding" xml:space="preserve">
+    <value>الترميز</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptionsBase.Separator" xml:space="preserve">
+    <value>فاصل</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptionsBase.QuoteStringsWithSeparators" xml:space="preserve">
+    <value>تحديد السلاسل ضمن فواصل</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.CsvExportOptions" xml:space="preserve">
+    <value>خيارات تصدير CSV</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportMode.SingleFile" xml:space="preserve">
+    <value>ملف وحيد</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportMode.SingleFilePageByPage" xml:space="preserve">
+    <value>ملف وحيد، صفحة بصفحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageByPageExportOptionsBase.PageRange" xml:space="preserve">
+    <value>مدى الصفحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.PageBorderColor" xml:space="preserve">
+    <value>لون حاشية الصفحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.PageBorderWidth" xml:space="preserve">
+    <value>عرض حاشية الصفحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.ExportMode" xml:space="preserve">
+    <value>أسلوب التصدير</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.PageRange" xml:space="preserve">
+    <value>مدى الصفحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.CharacterSet" xml:space="preserve">
+    <value>مجموعة الأحرف</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.Title" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.RemoveSecondarySymbols" xml:space="preserve">
+    <value>إزالة الرموز الثانوية</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptions" xml:space="preserve">
+    <value>خيارات تصدير HTML</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptions.EmbedImagesInHTML" xml:space="preserve">
+    <value>تضمين الصور في صيغة HTML</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions" xml:space="preserve">
+    <value>خيارات تصدير الصورة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.PageBorderColor" xml:space="preserve">
+    <value>لون حاشية الصفحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.PageBorderWidth" xml:space="preserve">
+    <value>عرض حاشية الصفحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.ExportMode" xml:space="preserve">
+    <value>أسلوب التصدير</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.PageRange" xml:space="preserve">
+    <value>مدى الصفحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.Format" xml:space="preserve">
+    <value>تنسيق</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.Resolution" xml:space="preserve">
+    <value>الدقة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.MhtExportOptions" xml:space="preserve">
+    <value>خيارات تصدير MHT</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.NativeFormatOptions" xml:space="preserve">
+    <value>خيارات التنسيق الأصلية</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.NativeFormatOptions.Compressed" xml:space="preserve">
+    <value>مضغوط</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.NativeFormatOptions.ShowOptionsBeforeSave" xml:space="preserve">
+    <value>إظهار الخيارات قبل الحفظ</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions" xml:space="preserve">
+    <value>خيارات وثيقة Pdf</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Author" xml:space="preserve">
+    <value>الكاتب</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Application" xml:space="preserve">
+    <value>تطبيق</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Title" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Subject" xml:space="preserve">
+    <value>الموضوع</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Keywords" xml:space="preserve">
+    <value>الكلمات المفاتيح</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions" xml:space="preserve">
+    <value>خيارات تصدير Pdf</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.ShowPrintDialogOnOpen" xml:space="preserve">
+    <value>إظهار مربع حوار الطباعة عند الفتح</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.DocumentOptions" xml:space="preserve">
+    <value>خيارات الوثيقة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.Compressed" xml:space="preserve">
+    <value>مضفوط</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.NeverEmbeddedFonts" xml:space="preserve">
+    <value>الخطوط الغير مضمنة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.DefaultResourceFile" xml:space="preserve">
+    <value>ملف الموارد الإفنتراضي</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.ImageQuality" xml:space="preserve">
+    <value>جودة الصورة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions" xml:space="preserve">
+    <value>خيارات تصدير RTF</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions.ExportMode" xml:space="preserve">
+    <value>أسلوب التصدير</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions.ExportWatermarks" xml:space="preserve">
+    <value>تصدير العلامات المائية</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions.PageRange" xml:space="preserve">
+    <value>مدى الصفحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptions" xml:space="preserve">
+    <value>خيارات تصدير النص</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions" xml:space="preserve">
+    <value>خيارات تصدير XLS</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.UseNativeFormat" xml:space="preserve">
+    <value>إستخدام الصيغة الأصلية</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.ShowGridLines" xml:space="preserve">
+    <value>إظهار خطوط الشبكة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.SheetName" xml:space="preserve">
+    <value>اسم الورقة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.Ignore256ColumnsLimit" xml:space="preserve">
+    <value>تجاهل حد 256 عامود</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.Ignore65536RowsLimit" xml:space="preserve">
+    <value>تجاهل حد 65536 صف</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.Suppress256ColumnsWarning" xml:space="preserve">
+    <value>قمع تحذير 256 عامود</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.Suppress65536RowsWarning" xml:space="preserve">
+    <value>قمع تحذير 65536 صف</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.ExportHyperlinks" xml:space="preserve">
+    <value>تصدير Hyperlinks</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsxExportOptions" xml:space="preserve">
+    <value>خيارات تصدير XLSx</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopLeft" xml:space="preserve">
+    <value>أعلى اليسار</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopCenter" xml:space="preserve">
+    <value>أعلى الوسط</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopRight" xml:space="preserve">
+    <value>أعلى اليمين</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleLeft" xml:space="preserve">
+    <value>منتصف اليسار</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleCenter" xml:space="preserve">
+    <value>منتصف الوسط</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleRight" xml:space="preserve">
+    <value>منتصف اليمين</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomLeft" xml:space="preserve">
+    <value>أسفل اليسار</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomCenter" xml:space="preserve">
+    <value>أسفل الوسط</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomRight" xml:space="preserve">
+    <value>أسفل اليمين</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopJustify" xml:space="preserve">
+    <value>أعلى مع تصحيح</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleJustify" xml:space="preserve">
+    <value>منتصف مع تصحيح</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomJustify" xml:space="preserve">
+    <value>أسفل مع تصحيح</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.None" xml:space="preserve">
+    <value>لا شيء</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.Number" xml:space="preserve">
+    <value>رقم الصفحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.NumberOfTotal" xml:space="preserve">
+    <value>أرقام الصفحات: الصفحة الحالية / عدد الصفحات</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.RomLowNumber" xml:space="preserve">
+    <value>رقم الصفحة: روماني، صغير</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.RomHiNumber" xml:space="preserve">
+    <value>رقم الصفحة: روماني، كبير</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.DateTime" xml:space="preserve">
+    <value>التاريخ والوقت الحاليان</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.UserName" xml:space="preserve">
+    <value>اسم المستخدم</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.None" xml:space="preserve">
+    <value>لا شيء</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Left" xml:space="preserve">
+    <value>يسار</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Top" xml:space="preserve">
+    <value>أعلى</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Right" xml:space="preserve">
+    <value>يمين</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Bottom" xml:space="preserve">
+    <value>أسفل</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.All" xml:space="preserve">
+    <value>الكل</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.Normal" xml:space="preserve">
+    <value>عادي</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.StretchImage" xml:space="preserve">
+    <value>تمديد الصورة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.AutoSize" xml:space="preserve">
+    <value>حجم تلقائي</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.CenterImage" xml:space="preserve">
+    <value>توسط الصورة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.ZoomImage" xml:space="preserve">
+    <value>تكبير الصورة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.Squeeze" xml:space="preserve">
+    <value>ضغط</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Lowest" xml:space="preserve">
+    <value>أدنى جودة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Low" xml:space="preserve">
+    <value>ضعيفة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Medium" xml:space="preserve">
+    <value>متوسطة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.High" xml:space="preserve">
+    <value>عالية</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Highest" xml:space="preserve">
+    <value>أعلى جودة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportMode.SingleFile" xml:space="preserve">
+    <value>ملف وحيد</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportMode.SingleFilePageByPage" xml:space="preserve">
+    <value>ملف وحيد، صفحة بصفحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportMode.DifferentFiles" xml:space="preserve">
+    <value>ملفات مختلفة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportMode.Value" xml:space="preserve">
+    <value>قيمة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportMode.Text" xml:space="preserve">
+    <value>تص</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.Slant" xml:space="preserve">
+    <value>مائل</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.BackSlant" xml:space="preserve">
+    <value>مائل خلفي</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.Horizontal" xml:space="preserve">
+    <value>عرضي</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.Vertical" xml:space="preserve">
+    <value>عامودي</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.VerticalAnchorStyles.None" xml:space="preserve">
+    <value>لا شيء</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.VerticalAnchorStyles.Top" xml:space="preserve">
+    <value>أعلى</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom" xml:space="preserve">
+    <value>أسفل</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.VerticalAnchorStyles.Both" xml:space="preserve">
+    <value>كلاهما</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PrintOnPages.AllPages" xml:space="preserve">
+    <value>كل الصفحات</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PrintOnPages.NotWithReportHeader" xml:space="preserve">
+    <value>من دون رأس التقرير</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PrintOnPages.NotWithReportFooter" xml:space="preserve">
+    <value>من دون تذييل التقرير</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PrintOnPages.NotWithReportHeaderAndReportFooter" xml:space="preserve">
+    <value>من دون رأس وتذييل التقرير</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ExportOptions" xml:space="preserve">
+    <value>خيارات التصدير</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EmailOptions" xml:space="preserve">
+    <value>خيارات البريد الإلكتروني</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions" xml:space="preserve">
+    <value>خيارات معاينة الطباعة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrinterSettingsUsing" xml:space="preserve">
+    <value>إستخدام خيارات الطابعة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.DirectionMode.Horizontal" xml:space="preserve">
+    <value>عرضي</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.DirectionMode.ForwardDiagonal" xml:space="preserve">
+    <value>خط قطري إلى الأمام</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.DirectionMode.BackwardDiagonal" xml:space="preserve">
+    <value>خط قطري إلى الوراء</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.DirectionMode.Vertical" xml:space="preserve">
+    <value>طولي</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.ImageViewMode.Clip" xml:space="preserve">
+    <value>قص</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.ImageViewMode.Stretch" xml:space="preserve">
+    <value>تمديد</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.ImageViewMode.Zoom" xml:space="preserve">
+    <value>تكبير</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.ShowBehind" xml:space="preserve">
+    <value>إظهار خلف</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.Image" xml:space="preserve">
+    <value>صورة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.ImageAlign" xml:space="preserve">
+    <value>محاذاة الصورة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.ImageViewMode" xml:space="preserve">
+    <value>أسلوب معاينة الصورة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.ImageTiling" xml:space="preserve">
+    <value>قرمدة الصورة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.TextDirection" xml:space="preserve">
+    <value>إتجاه النص</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.Text" xml:space="preserve">
+    <value>نص</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.Font" xml:space="preserve">
+    <value>الخط</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.ForeColor" xml:space="preserve">
+    <value>لون المقدمة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.TextTransparency" xml:space="preserve">
+    <value>شفافية النص</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.ImageTransparency" xml:space="preserve">
+    <value>شفافية الصورة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.Watermark.PageRange" xml:space="preserve">
+    <value>نطاق الصفحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrinterSettingsUsing.UseMargins" xml:space="preserve">
+    <value>إستخدام الهوامش</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrinterSettingsUsing.UsePaperKind" xml:space="preserve">
+    <value>إستخدام صنف الورق</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrinterSettingsUsing.UseLandscape" xml:space="preserve">
+    <value>إستخدام الإتجاه العرضي</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EmailOptions.RecipientName" xml:space="preserve">
+    <value>اسم المرسل إليه</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EmailOptions.RecipientAddress" xml:space="preserve">
+    <value>عنوان المرسل إليه</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EmailOptions.RecipientAddressPrefix" xml:space="preserve">
+    <value>بادئة عنوان المرسل إليه</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EmailOptions.Subject" xml:space="preserve">
+    <value>الموضوع</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EmailOptions.Body" xml:space="preserve">
+    <value>البدن</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.ShowOptionsBeforeExport" xml:space="preserve">
+    <value>إظهار حوار الخيارات قبل التصدير</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.DefaultFileName" xml:space="preserve">
+    <value>اسم الملف الإفتراضي</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.ActionAfterExport" xml:space="preserve">
+    <value>الحركة بعد التصدير</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.SaveMode" xml:space="preserve">
+    <value>أسلوب الحفظ</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.DefaultDirectory" xml:space="preserve">
+    <value>المجلد الإفتراضي</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.DefaultExportFormat" xml:space="preserve">
+    <value>صيغة التصدير الإفتراضية</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.DefaultSendFormat" xml:space="preserve">
+    <value>صيغة الإرسال الإفتراضية</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.BarCodeGeneratorBase.CalcCheckSum" xml:space="preserve">
+    <value>حساب فاتورة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeBase.ShapeName" xml:space="preserve">
+    <value>اسم الشكل</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ActionAfterExport.None" xml:space="preserve">
+    <value>لا شيء</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ActionAfterExport.Open" xml:space="preserve">
+    <value>فتح</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ActionAfterExport.AskUser" xml:space="preserve">
+    <value>اسأل مستخدم</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.SaveMode.UsingDefaultPath" xml:space="preserve">
+    <value>استخدام مسار افتراضي</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.SaveMode.UsingSaveFileDialog" xml:space="preserve">
+    <value>استخدام مربع حوار حفظ ملف</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.BarCodeOrientation.Normal" xml:space="preserve">
+    <value>عادي</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.BarCodeOrientation.UpsideDown" xml:space="preserve">
+    <value>رأساً على عقب</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.BarCodeOrientation.RotateLeft" xml:space="preserve">
+    <value>إدارة إلى اليسار</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.BarCodeOrientation.RotateRight" xml:space="preserve">
+    <value>إدارة إلى اليمين</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level0" xml:space="preserve">
+    <value>المستوى 0</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level1" xml:space="preserve">
+    <value>المستوى 1</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level2" xml:space="preserve">
+    <value>المستوى 2</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level3" xml:space="preserve">
+    <value>المستوى 3</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level4" xml:space="preserve">
+    <value>المستوى 4</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level5" xml:space="preserve">
+    <value>المستوى 5</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level6" xml:space="preserve">
+    <value>المستوى 6</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level7" xml:space="preserve">
+    <value>المستوى 7</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level8" xml:space="preserve">
+    <value>المستوى 8</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417Generator.CompactionMode" xml:space="preserve">
+    <value>أسلوب التقليص</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417CompactionMode.Binary" xml:space="preserve">
+    <value>ثنائي</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417CompactionMode.Text" xml:space="preserve">
+    <value>نص</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixGenerator.MatrixSize" xml:space="preserve">
+    <value>مقاس الماتريكس</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.MatrixAuto" xml:space="preserve">
+    <value>أوتوماتيكي</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix10x10" xml:space="preserve">
+    <value>10 x 10</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix12x12" xml:space="preserve">
+    <value>12 x 12</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix14x14" xml:space="preserve">
+    <value>14 x 14</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix16x16" xml:space="preserve">
+    <value>16 x 16</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix18x18" xml:space="preserve">
+    <value>18 x 18</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix20x20" xml:space="preserve">
+    <value>20 x 20</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix22x22" xml:space="preserve">
+    <value>22 x 22</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix24x24" xml:space="preserve">
+    <value>24 x 24</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix26x26" xml:space="preserve">
+    <value>26 x 26</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix32x32" xml:space="preserve">
+    <value>32 x 32</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix36x36" xml:space="preserve">
+    <value>36 x 36</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix40x40" xml:space="preserve">
+    <value>40 x 40</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix44x44" xml:space="preserve">
+    <value>44 x 44</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix48x48" xml:space="preserve">
+    <value>48 x 48</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix52x52" xml:space="preserve">
+    <value>52 x 52</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix64x64" xml:space="preserve">
+    <value>64 x 64</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix72x72" xml:space="preserve">
+    <value>72 x 72</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix80x80" xml:space="preserve">
+    <value>80 x 80</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix88x88" xml:space="preserve">
+    <value>88 x 88</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix96x96" xml:space="preserve">
+    <value>96 x 96</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix104x104" xml:space="preserve">
+    <value>104 x 104</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix120x120" xml:space="preserve">
+    <value>120 x 120</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix132x132" xml:space="preserve">
+    <value>132 x 132</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix144x144" xml:space="preserve">
+    <value>144 x 144</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix8x18" xml:space="preserve">
+    <value>8 x 18</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix8x32" xml:space="preserve">
+    <value>8 x 32</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix12x26" xml:space="preserve">
+    <value>12 x 26</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix12x36" xml:space="preserve">
+    <value>12 x 36</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix16x36" xml:space="preserve">
+    <value>16 x 36</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.Matrix16x48" xml:space="preserve">
+    <value>16 x 48</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixGenerator.CompactionMode" xml:space="preserve">
+    <value>أسلوب التقليص</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixCompactionMode.Auto" xml:space="preserve">
+    <value>تلقائي</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixCompactionMode.ASCII" xml:space="preserve">
+    <value>ASCII</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixCompactionMode.C40" xml:space="preserve">
+    <value>C40</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixCompactionMode.Text" xml:space="preserve">
+    <value>نص</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixCompactionMode.X12" xml:space="preserve">
+    <value>X12</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixCompactionMode.Edifact" xml:space="preserve">
+    <value>Edifact</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixCompactionMode.Binary" xml:space="preserve">
+    <value>ثنائي</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Code128Generator.CharacterSet" xml:space="preserve">
+    <value>مجموعة الأحرف</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.EAN128Generator.FNC1Substitute" xml:space="preserve">
+    <value>حرف FNC1 الوظيفي</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.EAN128Generator.HumanReadableText" xml:space="preserve">
+    <value>نص مقروء من قبل البشر</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodeMSIGenerator.MSICheckSum" xml:space="preserve">
+    <value>فاتورة MSI</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Industrial2of5Generator.WideNarrowRatio" xml:space="preserve">
+    <value>نسبة العرض والضيق</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Interleaved2of5Generator.WideNarrowRatio" xml:space="preserve">
+    <value>نسبة العرض والضيق</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Code39Generator.WideNarrowRatio" xml:space="preserve">
+    <value>نسبة العرض والضيق</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarGenerator.StartStopPair" xml:space="preserve">
+    <value>رموز البدء والإيقاف</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarGenerator.WideNarrowRatio" xml:space="preserve">
+    <value>نسبة العرض والضيق</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417Generator.Columns" xml:space="preserve">
+    <value>أعمدة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417Generator.Rows" xml:space="preserve">
+    <value>صفوف</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417Generator.ErrorCorrectionLevel" xml:space="preserve">
+    <value>مستوى تصحيح الأخطاء</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417Generator.TruncateSymbol" xml:space="preserve">
+    <value>رمز Truncate</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417Generator.YToXRatio" xml:space="preserve">
+    <value>نسبىة النظيم إلى القطوع</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.FilletShapeBase.Fillet" xml:space="preserve">
+    <value>شريحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapePolygon.NumberOfSides" xml:space="preserve">
+    <value>عدد الشرائح</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeBracket.TipLength" xml:space="preserve">
+    <value>طول الرأس</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeBrace.Fillet" xml:space="preserve">
+    <value>شريحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeBrace.TailLength" xml:space="preserve">
+    <value>طول الذنب</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeArrow.ArrowWidth" xml:space="preserve">
+    <value>عرض السهم</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeArrow.ArrowHeight" xml:space="preserve">
+    <value>طول السهم</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeCross.VerticalLineWidth" xml:space="preserve">
+    <value>عرض الخط الطولي</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeCross.HorizontalLineWidth" xml:space="preserve">
+    <value>عرض الخط العرضي</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeStar.StarPointCount" xml:space="preserve">
+    <value>عدد نقاط النجم</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeStar.Concavity" xml:space="preserve">
+    <value>التقعر</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Code128Charset.CharsetA" xml:space="preserve">
+    <value>Charset A</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Code128Charset.CharsetB" xml:space="preserve">
+    <value>Charset B</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Code128Charset.CharsetC" xml:space="preserve">
+    <value>Charset C</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Code128Charset.CharsetAuto" xml:space="preserve">
+    <value>Charset تلقائية</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.MSICheckSum.None" xml:space="preserve">
+    <value>لا شيء</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.MSICheckSum.Modulo10" xml:space="preserve">
+    <value>Modulo 10</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.MSICheckSum.DoubleModulo10" xml:space="preserve">
+    <value>Modulo 10 مزدوج</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarStartStopPair.None" xml:space="preserve">
+    <value>لا شيء</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarStartStopPair.AT" xml:space="preserve">
+    <value>AT</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarStartStopPair.BN" xml:space="preserve">
+    <value>BN</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarStartStopPair.CStar" xml:space="preserve">
+    <value>CStar</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarStartStopPair.DE" xml:space="preserve">
+    <value>DE</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PaddingInfo.Left" xml:space="preserve">
+    <value>يسار</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PaddingInfo.Right" xml:space="preserve">
+    <value>يمين</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PaddingInfo.Top" xml:space="preserve">
+    <value>أعلى</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PaddingInfo.Bottom" xml:space="preserve">
+    <value>أسفل</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptionsBase.TextExportMode" xml:space="preserve">
+    <value>أسلوب تصدير النص</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptionsBase.TextExportMode" xml:space="preserve">
+    <value>خيارات تصدير النص</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.ExportMode" xml:space="preserve">
+    <value>أسلوب التصدير</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.PageRange" xml:space="preserve">
+    <value>مدى الصفحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsxExportOptions.ExportMode" xml:space="preserve">
+    <value>أسلوب التصدير</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsxExportOptions.PageRange" xml:space="preserve">
+    <value>مدى الصفحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportMode.SingleFile" xml:space="preserve">
+    <value>ملف وحيد</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportMode.DifferentFiles" xml:space="preserve">
+    <value>ملفات مختلفة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsxExportMode.SingleFile" xml:space="preserve">
+    <value>ملف وحيد</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsxExportMode.SingleFilePageByPage" xml:space="preserve">
+    <value>ملف وحيد، صفحة بصفحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsxExportMode.DifferentFiles" xml:space="preserve">
+    <value>ملفات مختلفة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.None" xml:space="preserve">
+    <value>لا شيء</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.DocumentMap" xml:space="preserve">
+    <value>خريطة الوثيقة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Parameters" xml:space="preserve">
+    <value>المعطيات</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Pointer" xml:space="preserve">
+    <value>مؤشر</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.HandTool" xml:space="preserve">
+    <value>أداة التصفح</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Customize" xml:space="preserve">
+    <value>تخصيص</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Print" xml:space="preserve">
+    <value>طباعة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.PrintDirect" xml:space="preserve">
+    <value>طباعة مباشرة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.PageSetup" xml:space="preserve">
+    <value>إعداد الصفحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.EditPageHF" xml:space="preserve">
+    <value>تحرير رأس وتذييل الصفحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Magnifier" xml:space="preserve">
+    <value>المكبر</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ZoomIn" xml:space="preserve">
+    <value>تكبير</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ZoomOut" xml:space="preserve">
+    <value>تصغير</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Zoom" xml:space="preserve">
+    <value>تكبير/تصغير</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ZoomTrackBar" xml:space="preserve">
+    <value>تكبير/تصغير شريط المسار</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ViewWholePage" xml:space="preserve">
+    <value>معاينة كل الصفحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ShowFirstPage" xml:space="preserve">
+    <value>إظهار الصفحة الأولى</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ShowPrevPage" xml:space="preserve">
+    <value>إظهار الصفحة السابقة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ShowNextPage" xml:space="preserve">
+    <value>إظهار الصفحة التالية</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ScrollPageUp" xml:space="preserve">
+    <value>الإنتقال بالصفحة للإعلى</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ScrollPageDown" xml:space="preserve">
+    <value>الإنتقال بالصفحة للإسفل</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ShowLastPage" xml:space="preserve">
+    <value>إظهار الصفحة الأخيرة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.MultiplePages" xml:space="preserve">
+    <value>صفحات متعددة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.FillBackground" xml:space="preserve">
+    <value>ملء الخلفية</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Find" xml:space="preserve">
+    <value>العثور على</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ClosePreview" xml:space="preserve">
+    <value>إغلاق المعاينة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Watermark" xml:space="preserve">
+    <value>علامة مائية</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportFile" xml:space="preserve">
+    <value>تصدير ملف</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendFile" xml:space="preserve">
+    <value>إرسال الملف</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportGraphic" xml:space="preserve">
+    <value>تصدير كصورة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportPdf" xml:space="preserve">
+    <value>التصدير بصيغة PDF</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportHtm" xml:space="preserve">
+    <value>التصدير بصيغة HTML</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportMht" xml:space="preserve">
+    <value>التصدير بصيغة MHT</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportRtf" xml:space="preserve">
+    <value>التصدير بصيغة RTF</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportXls" xml:space="preserve">
+    <value>التصدير بصيغة XLS</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportXlsx" xml:space="preserve">
+    <value>التصدير بصيغة XLSX</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportTxt" xml:space="preserve">
+    <value>التصدير بصيغة TXT</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportCsv" xml:space="preserve">
+    <value>التصدير بصيغة CSV</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ExportXps" xml:space="preserve">
+    <value>التصدير بصيغة XPS</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendGraphic" xml:space="preserve">
+    <value>إرسال كصورة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendPdf" xml:space="preserve">
+    <value>إرسال بصيغة PDF</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendTxt" xml:space="preserve">
+    <value>إرسال بصيغة TXT</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendCsv" xml:space="preserve">
+    <value>إرسال بصيغة CSV</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendMht" xml:space="preserve">
+    <value>إرسال بصيغة MHT</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendXls" xml:space="preserve">
+    <value>إرسال بصيغة XLS</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendXlsx" xml:space="preserve">
+    <value>إرسال بصيغة XLSX</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendRtf" xml:space="preserve">
+    <value>إرسال بصيغة RTF</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SendXps" xml:space="preserve">
+    <value>إرسال بصيغة XPS</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ZoomToPageWidth" xml:space="preserve">
+    <value>تكبير/تصغير إلى عرض الصفحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ZoomToTextWidth" xml:space="preserve">
+    <value>تكبير/تصغير إلى عرض النص</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ZoomToWholePage" xml:space="preserve">
+    <value>تكبير/تصغير إلى كل الصفحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.ZoomToTwoPages" xml:space="preserve">
+    <value>تكبير/تصغير إلى صفحتين</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.PageLayout" xml:space="preserve">
+    <value>تصميم الصفحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.PageLayoutFacing" xml:space="preserve">
+    <value>تصميم الصفحة المتقابل</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.PageLayoutContinuous" xml:space="preserve">
+    <value>تصميم الصفحة المتواصل</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.File" xml:space="preserve">
+    <value>ملف</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.View" xml:space="preserve">
+    <value>معاينة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Background" xml:space="preserve">
+    <value>الخلفية</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Scale" xml:space="preserve">
+    <value>قياس</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.PaperSize" xml:space="preserve">
+    <value>حجم الورق</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.PageOrientation" xml:space="preserve">
+    <value>اتجاه الصفحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.PageMargins" xml:space="preserve">
+    <value>هوامش الصفحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Open" xml:space="preserve">
+    <value>فتح</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.Save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.StopPageBuilding" xml:space="preserve">
+    <value>إيقاف بناء الصفحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsDocumentOptions" xml:space="preserve">
+    <value>خيارات مستند XPS</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsDocumentOptions.Creator" xml:space="preserve">
+    <value>المبتكر</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsDocumentOptions.Category" xml:space="preserve">
+    <value>الفئة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsDocumentOptions.Title" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsDocumentOptions.Subject" xml:space="preserve">
+    <value>الموضوع</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsDocumentOptions.Keywords" xml:space="preserve">
+    <value>الكلمات المفاتيح</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsDocumentOptions.Version" xml:space="preserve">
+    <value>الإصدار</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsDocumentOptions.Description" xml:space="preserve">
+    <value>الوصف</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsExportOptions.DocumentOptions" xml:space="preserve">
+    <value>خيارات المستند</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsExportOptions.Compression" xml:space="preserve">
+    <value>الضغط</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfPasswordSecurityOptions" xml:space="preserve">
+    <value>خيارات حماية كلمة سر Pdf</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfPasswordSecurityOptions.PermissionsPassword" xml:space="preserve">
+    <value>كلمة سر الأذونات</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfPasswordSecurityOptions.OpenPassword" xml:space="preserve">
+    <value>كلمة سر الفتح</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfPasswordSecurityOptions.PermissionsOptions" xml:space="preserve">
+    <value>خيارات الأذونات</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfPasswordSecurityOptions.PdfPermissionsOptions" xml:space="preserve">
+    <value>خيارات أذونات Pdf</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfPermissionsOptions" xml:space="preserve">
+    <value>خيارات أذونات Pdf</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfPermissionsOptions.PrintingPermissions" xml:space="preserve">
+    <value>أذونات الطباعة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfPermissionsOptions.ChangingPermissions" xml:space="preserve">
+    <value>تغيير الأذونات</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfPermissionsOptions.EnableCoping" xml:space="preserve">
+    <value>تمكين Coping</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfPermissionsOptions.EnableScreenReaders" xml:space="preserve">
+    <value>تمكين قارئ الشاشة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.PasswordSecurityOptions" xml:space="preserve">
+    <value>خيارات الحماية</value>
+  </data>
+  <data name="System.Drawing.SizeF.Width" xml:space="preserve">
+    <value>العرض</value>
+  </data>
+  <data name="System.Drawing.SizeF.Height" xml:space="preserve">
+    <value>الطول</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PaddingInfo.All" xml:space="preserve">
+    <value>الكل</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingSystemCommand.SubmitParameters" xml:space="preserve">
+    <value>رفع المعطيات</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingPermissions.None" xml:space="preserve">
+    <value>لا شيء</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingPermissions.LowResolution" xml:space="preserve">
+    <value>دقة منخفضة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintingPermissions.HighResolution" xml:space="preserve">
+    <value>دقة عالية</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ChangingPermissions.None" xml:space="preserve">
+    <value>لا شيء</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ChangingPermissions.InsertingDeletingRotating" xml:space="preserve">
+    <value>إدراج حذف تدوير</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ChangingPermissions.FillingSigning" xml:space="preserve">
+    <value>تعبئة توقيع</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ChangingPermissions.CommentingFillingSigning" xml:space="preserve">
+    <value>تعليق تعبئة توقيع</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ChangingPermissions.AnyExceptExtractingPages" xml:space="preserve">
+    <value>الكل ما عدا صفحات الإستخراج</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.TopLeft" xml:space="preserve">
+    <value>أعلى اليسار</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.TopCenter" xml:space="preserve">
+    <value>أعلى الوسط</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.TopRight" xml:space="preserve">
+    <value>أعلى اليمين</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.MiddleLeft" xml:space="preserve">
+    <value>منتصف اليسار</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.MiddleCenter" xml:space="preserve">
+    <value>منتصف الوسط</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.MiddleRight" xml:space="preserve">
+    <value>منتصف اليمين</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.BottomLeft" xml:space="preserve">
+    <value>أسفل اليسار</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.BottomCenter" xml:space="preserve">
+    <value>أسفل الوسط</value>
+  </data>
+  <data name="System.Drawing.ContentAlignment.BottomRight" xml:space="preserve">
+    <value>أسفل اليمين</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ColumnLayout.DownThenAcross" xml:space="preserve">
+    <value>أسفل ثم عبر</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ColumnLayout.AcrossThenDown" xml:space="preserve">
+    <value>عبر ثم أسفل</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderDashStyle.Solid" xml:space="preserve">
+    <value>صلب</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderDashStyle.Dash" xml:space="preserve">
+    <value>شرطة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderDashStyle.Dot" xml:space="preserve">
+    <value>نقطة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderDashStyle.DashDot" xml:space="preserve">
+    <value>شرطة - نقطة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderDashStyle.DashDotDot" xml:space="preserve">
+    <value>شرطة - نقطة - نقطة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderDashStyle.Double" xml:space="preserve">
+    <value>مزدوج</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.ConvertImagesToJpeg" xml:space="preserve">
+    <value>تحويل الصور إلى صيغة Jpeg</value>
+  </data>
+  <data name="System.Drawing.Image.HorizontalResolution" xml:space="preserve">
+    <value>الدقة العرضية</value>
+  </data>
+  <data name="System.Drawing.Image.VerticalResolution" xml:space="preserve">
+    <value>الدقة العامودية</value>
+  </data>
+  <data name="System.Drawing.Image.PhysicalDimension" xml:space="preserve">
+    <value>البعد المادي</value>
+  </data>
+  <data name="System.Drawing.Image.PixelFormat" xml:space="preserve">
+    <value>صيغة البكسل</value>
+  </data>
+  <data name="System.Drawing.Image.RawFormat" xml:space="preserve">
+    <value>صيغة Raw</value>
+  </data>
+  <data name="System.Drawing.Image.Size" xml:space="preserve">
+    <value>الحجم</value>
+  </data>
+  <data name="System.Drawing.Image.Tag" xml:space="preserve">
+    <value>البطاقة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportMode.DifferentFiles" xml:space="preserve">
+    <value>ملفات مختلفة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportMode.SingleFile" xml:space="preserve">
+    <value>ملف وحيد</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportMode.SingleFilePageByPage" xml:space="preserve">
+    <value>ملف وحيد،صفحة بصفحة</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfPasswordSecurityOptions.PdfPermissionsOptions1" xml:space="preserve">
+    <value>خيارات أذونات Pdf</value>
+  </data>
+</root>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="ChooseTheme" Caption="Odaberite temu" />
+      <Action Id="Edit" Caption="Izmjena" />
+      <Action Id="InlineEdit" Caption="Izmjena u retku" />
+      <Action Id="NavigateTo" Caption="Navigiraj do" />
+      <Action Id="QuickCreateAction" Caption="Brzo kreiranje" />
+      <Action Id="SwitchToEditMode" Caption="Izmjena" />
+    </Actions>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="DevExpress.ExpressApp.Web.LogonAttemptsAmountedToLimit" Caption="Dosegli ste maksimalan broj pokušaja prijave" />
+    <Class Name="DevExpress.ExpressApp.Web.ParameterlessLogonFailedInfo" Caption="Informacija o neuspjeloj prijavi bez parametara">
+      <OwnMembers>
+        <Member Name="Message" Caption="Poruka" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <Localization>
+    <LocalizationGroup Name="Messages">
+      <LocalizationItem Name="ThereAreNoRecordsToDisplay" Value="Nema zapisa za prikazati." />
+    </LocalizationGroup>
+  </Localization>
+  <Views>
+    <DetailView Id="AboutInfo_DetailView">
+      <Items>
+        <StaticText Id="AboutText" Text="{0:ProductName}&lt;br&gt;{0:Version}&lt;br&gt;&lt;br&gt;{0:Copyright}&lt;br&gt;&lt;br&gt;{0:Description}" />
+      </Items>
+    </DetailView>
+    <DetailView Id="LogonAttemptsAmountedToLimit_DetailView" Caption="Prijava">
+      <Items>
+        <StaticText Id="LogonText" Text="Nekon tri neuspješna pokušaja prijave, trebali bi zatvoriti preglednik. Molimo kontaktirajte administratora glede Vaših podataka za prijavu." />
+      </Items>
+    </DetailView>
+    <DetailView Id="ParameterlessLogonFailedInfo_DefaultDetailView" Caption="Prijava">
+      <Items>
+        <StaticText Id="Message" Text="{0} Molimo kontaktirajte administratora glede Vaših podataka za prijavu." />
+      </Items>
+    </DetailView>
+  </Views>
+</Application>

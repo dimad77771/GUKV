@@ -1,0 +1,1251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="System.Collections.CollectionBase" xml:space="preserve">
+    <value>(колекција)</value>
+  </data>
+  <data name="System.Drawing.Size.Width" xml:space="preserve">
+    <value>Ширина</value>
+  </data>
+  <data name="System.Drawing.Size.Height" xml:space="preserve">
+    <value>Висина</value>
+  </data>
+  <data name="System.Boolean.True" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="System.Boolean.False" xml:space="preserve">
+    <value>Не</value>
+  </data>
+  <data name="System.Drawing.Font.Name" xml:space="preserve">
+    <value>Назив</value>
+  </data>
+  <data name="System.Drawing.Font.Size" xml:space="preserve">
+    <value>Величина</value>
+  </data>
+  <data name="System.Drawing.Font.Unit" xml:space="preserve">
+    <value>Јед. мере</value>
+  </data>
+  <data name="System.Drawing.Font.Bold" xml:space="preserve">
+    <value>подебљано</value>
+  </data>
+  <data name="System.Drawing.Font.GdiCharSet" xml:space="preserve">
+    <value>GDI Character Set</value>
+  </data>
+  <data name="System.Drawing.Font.GdiVerticalFont" xml:space="preserve">
+    <value>GDI Vertical Font</value>
+  </data>
+  <data name="System.Drawing.Font.Italic" xml:space="preserve">
+    <value>Курзив</value>
+  </data>
+  <data name="System.Drawing.Font.Strikeout" xml:space="preserve">
+    <value>Прецртано</value>
+  </data>
+  <data name="System.Drawing.Font.Underline" xml:space="preserve">
+    <value>Подвучено</value>
+  </data>
+  <data name="DevExpress.Utils.DefaultBoolean.True" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="DevExpress.Utils.DefaultBoolean.False" xml:space="preserve">
+    <value>Не</value>
+  </data>
+  <data name="DevExpress.Utils.DefaultBoolean.Default" xml:space="preserve">
+    <value>задато</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Custom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Letter" xml:space="preserve">
+    <value>Letter</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterSmall" xml:space="preserve">
+    <value>Letter Small</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Tabloid" xml:space="preserve">
+    <value>Tabloid</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Ledger" xml:space="preserve">
+    <value>Ledger</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Legal" xml:space="preserve">
+    <value>Legal</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Statement" xml:space="preserve">
+    <value>Statement</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Executive" xml:space="preserve">
+    <value>Executive</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A3" xml:space="preserve">
+    <value>A3</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4" xml:space="preserve">
+    <value>A4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4Small" xml:space="preserve">
+    <value>A4 Small</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A5" xml:space="preserve">
+    <value>A5</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B4" xml:space="preserve">
+    <value>B4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B5" xml:space="preserve">
+    <value>B5</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Folio" xml:space="preserve">
+    <value>Folio</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Quarto" xml:space="preserve">
+    <value>Quarto</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Standard10x14" xml:space="preserve">
+    <value>Standard 10x14</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Standard11x17" xml:space="preserve">
+    <value>Standard 11x17</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Note" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Number9Envelope" xml:space="preserve">
+    <value>Number 9 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Number10Envelope" xml:space="preserve">
+    <value>Number 10 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Number11Envelope" xml:space="preserve">
+    <value>Number 11 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Number12Envelope" xml:space="preserve">
+    <value>Number 12 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Number14Envelope" xml:space="preserve">
+    <value>Number 14 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.CSheet" xml:space="preserve">
+    <value>C Sheet</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.DSheet" xml:space="preserve">
+    <value>D Sheet</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.ESheet" xml:space="preserve">
+    <value>E Sheet</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.DLEnvelope" xml:space="preserve">
+    <value>DL Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.C5Envelope" xml:space="preserve">
+    <value>C5 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.C3Envelope" xml:space="preserve">
+    <value>C3 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.C4Envelope" xml:space="preserve">
+    <value>C4 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.C6Envelope" xml:space="preserve">
+    <value>C6 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.C65Envelope" xml:space="preserve">
+    <value>C65 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B4Envelope" xml:space="preserve">
+    <value>B4 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B5Envelope" xml:space="preserve">
+    <value>B5 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B6Envelope" xml:space="preserve">
+    <value>B6 Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.ItalyEnvelope" xml:space="preserve">
+    <value>Italy Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.MonarchEnvelope" xml:space="preserve">
+    <value>Monarch Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PersonalEnvelope" xml:space="preserve">
+    <value>Personal Envelope (6 3/4)</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.USStandardFanfold" xml:space="preserve">
+    <value>US Standard Fanfold</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.GermanStandardFanfold" xml:space="preserve">
+    <value>German Standard Fanfold</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.GermanLegalFanfold" xml:space="preserve">
+    <value>German Legal Fanfold</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.IsoB4" xml:space="preserve">
+    <value>Iso B4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapanesePostcard" xml:space="preserve">
+    <value>Japanese Postcard</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Standard9x11" xml:space="preserve">
+    <value>Standard 9x11</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Standard10x11" xml:space="preserve">
+    <value>Standard 10x11</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Standard15x11" xml:space="preserve">
+    <value>Standard 15x11</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.InviteEnvelope" xml:space="preserve">
+    <value>Invite Envelope</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterExtra" xml:space="preserve">
+    <value>Letter Extra</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LegalExtra" xml:space="preserve">
+    <value>Legal Extra</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.TabloidExtra" xml:space="preserve">
+    <value>Tabloid Extra</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4Extra" xml:space="preserve">
+    <value>A4 Extra</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterTransverse" xml:space="preserve">
+    <value>Letter Transverse</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4Transverse" xml:space="preserve">
+    <value>A4 Transverse</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterExtraTransverse" xml:space="preserve">
+    <value>Letter Extra Transverse</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.APlus" xml:space="preserve">
+    <value>SuperA/SuperA/A4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.BPlus" xml:space="preserve">
+    <value>SuperB/SuperB/A3</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterPlus" xml:space="preserve">
+    <value>Letter Plus</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4Plus" xml:space="preserve">
+    <value>A4 Plus</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A5Transverse" xml:space="preserve">
+    <value>A5 Transverse</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B5Transverse" xml:space="preserve">
+    <value>JIS B5 Transverse</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A3Extra" xml:space="preserve">
+    <value>A3 Extra</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A5Extra" xml:space="preserve">
+    <value>A5 Extra</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B5Extra" xml:space="preserve">
+    <value>ISO B5 Extra</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A2" xml:space="preserve">
+    <value>A2</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A3Transverse" xml:space="preserve">
+    <value>A3 Transverse</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A3ExtraTransverse" xml:space="preserve">
+    <value>A3 Extra Transverse</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseDoublePostcard" xml:space="preserve">
+    <value>Japanese Double Postcard</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A6" xml:space="preserve">
+    <value>A6</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeKakuNumber2" xml:space="preserve">
+    <value>Japanese Envelope Kaku Number 2</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeKakuNumber3" xml:space="preserve">
+    <value>Japanese Envelope Kaku Number 3</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeChouNumber3" xml:space="preserve">
+    <value>Japanese Envelope Chou Number 3</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeChouNumber4" xml:space="preserve">
+    <value>Japanese Envelope Chou Number 4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterRotated" xml:space="preserve">
+    <value>Letter Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A3Rotated" xml:space="preserve">
+    <value>A3 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4Rotated" xml:space="preserve">
+    <value>A4 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A5Rotated" xml:space="preserve">
+    <value>A5 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B4JisRotated" xml:space="preserve">
+    <value>JIS B4 Rotated </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B5JisRotated" xml:space="preserve">
+    <value>JIS B5 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapanesePostcardRotated" xml:space="preserve">
+    <value>Japanese Postcard Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseDoublePostcardRotated" xml:space="preserve">
+    <value>Japanese Double Postcard Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A6Rotated" xml:space="preserve">
+    <value>A6 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeKakuNumber2Rotated" xml:space="preserve">
+    <value>Japanese Envelope Kaku Number 2 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeKakuNumber3Rotated" xml:space="preserve">
+    <value>Japanese Envelope Kaku Number 3 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeChouNumber3Rotated" xml:space="preserve">
+    <value>Japanese Envelope Chou Number 3 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeChouNumber4Rotated" xml:space="preserve">
+    <value>Japanese Envelope Chou Number 4 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B6Jis" xml:space="preserve">
+    <value>JIS B6</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B6JisRotated" xml:space="preserve">
+    <value>JIS B6 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Standard12x11" xml:space="preserve">
+    <value>Standard 12x11</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeYouNumber4" xml:space="preserve">
+    <value>Japanese Envelope You Number 4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeYouNumber4Rotated" xml:space="preserve">
+    <value>Japanese Envelope You Number 4 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc16K" xml:space="preserve">
+    <value>Prc 16K</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc32K" xml:space="preserve">
+    <value>Prc 32K</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc32KBig" xml:space="preserve">
+    <value>Prc 32K Big</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber1" xml:space="preserve">
+    <value>Prc Envelope Number 1</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber2" xml:space="preserve">
+    <value>Prc Envelope Number 2</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber3" xml:space="preserve">
+    <value>Prc Envelope Number 3</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber4" xml:space="preserve">
+    <value>Prc Envelope Number 4</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber5" xml:space="preserve">
+    <value>Prc Envelope Number 5</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber6" xml:space="preserve">
+    <value>Prc Envelope Number 6</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber7" xml:space="preserve">
+    <value>Prc Envelope Number 7</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber8" xml:space="preserve">
+    <value>Prc Envelope Number 8</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber9" xml:space="preserve">
+    <value>Prc Envelope Number 9</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber10" xml:space="preserve">
+    <value>Prc Envelope Number 10</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc16KRotated" xml:space="preserve">
+    <value>Prc 16K Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc32KRotated" xml:space="preserve">
+    <value>Prc 32K Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc32KBigRotated" xml:space="preserve">
+    <value>Prc 32K Big Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber1Rotated" xml:space="preserve">
+    <value>Prc Envelope Number 1 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber2Rotated" xml:space="preserve">
+    <value>Prc Envelope Number 2 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber3Rotated" xml:space="preserve">
+    <value>Prc Envelope Number 3 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber4Rotated" xml:space="preserve">
+    <value>Prc Envelope Number 4 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber5Rotated" xml:space="preserve">
+    <value>Prc Envelope Number 5 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber6Rotated" xml:space="preserve">
+    <value>Prc Envelope Number 6 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber7Rotated" xml:space="preserve">
+    <value>Prc Envelope Number 7 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber8Rotated" xml:space="preserve">
+    <value>Prc Envelope Number 8 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber9Rotated" xml:space="preserve">
+    <value>Prc Envelope Number 9 Rotated</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber10Rotated" xml:space="preserve">
+    <value>Prc Envelope Number 10 Rotated</value>
+  </data>
+  <data name="System.Drawing.StringAlignment.Near" xml:space="preserve">
+    <value>ближе</value>
+  </data>
+  <data name="System.Drawing.StringAlignment.Center" xml:space="preserve">
+    <value>центрирано</value>
+  </data>
+  <data name="System.Drawing.StringAlignment.Far" xml:space="preserve">
+    <value>даље</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.VerticalContentSplitting.Exact" xml:space="preserve">
+    <value>Дословно</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.VerticalContentSplitting.Smart" xml:space="preserve">
+    <value>Паметно</value>
+  </data>
+  <data name="DevExpress.Utils.FormatInfo.FormatString" xml:space="preserve">
+    <value>облик ниске</value>
+  </data>
+  <data name="DevExpress.Utils.FormatInfo.FormatType" xml:space="preserve">
+    <value>облик типа</value>
+  </data>
+  <data name="DevExpress.Utils.FormatType.None" xml:space="preserve">
+    <value>ништа</value>
+  </data>
+  <data name="DevExpress.Utils.FormatType.Numeric" xml:space="preserve">
+    <value>број</value>
+  </data>
+  <data name="DevExpress.Utils.FormatType.DateTime" xml:space="preserve">
+    <value>датум и време</value>
+  </data>
+  <data name="DevExpress.Utils.FormatType.Custom" xml:space="preserve">
+    <value>прилагођено</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.Bound" xml:space="preserve">
+    <value>Bound</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.Integer" xml:space="preserve">
+    <value>цео број</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.Decimal" xml:space="preserve">
+    <value>децимални број</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.DateTime" xml:space="preserve">
+    <value>датум и време</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.String" xml:space="preserve">
+    <value>ниска</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.Boolean" xml:space="preserve">
+    <value>логичка вред.</value>
+  </data>
+  <data name="DevExpress.Data.UnboundColumnType.Object" xml:space="preserve">
+    <value>објекат</value>
+  </data>
+  <data name="DevExpress.Utils.HorzAlignment.Default" xml:space="preserve">
+    <value>подразумевано</value>
+  </data>
+  <data name="DevExpress.Utils.HorzAlignment.Near" xml:space="preserve">
+    <value>ближе</value>
+  </data>
+  <data name="DevExpress.Utils.HorzAlignment.Center" xml:space="preserve">
+    <value>средина</value>
+  </data>
+  <data name="DevExpress.Utils.HorzAlignment.Far" xml:space="preserve">
+    <value>даље</value>
+  </data>
+  <data name="DevExpress.Utils.VertAlignment.Default" xml:space="preserve">
+    <value>подразумевано</value>
+  </data>
+  <data name="DevExpress.Utils.VertAlignment.Top" xml:space="preserve">
+    <value>врх</value>
+  </data>
+  <data name="DevExpress.Utils.VertAlignment.Center" xml:space="preserve">
+    <value>средина</value>
+  </data>
+  <data name="DevExpress.Utils.VertAlignment.Bottom" xml:space="preserve">
+    <value>дно</value>
+  </data>
+  <data name="DevExpress.Utils.OptionsColumnLayout.RemoveOldColumns" xml:space="preserve">
+    <value>Обриши старе колоне</value>
+  </data>
+  <data name="DevExpress.Utils.OptionsColumnLayout.AddNewColumns" xml:space="preserve">
+    <value>Додај нове колоне</value>
+  </data>
+  <data name="DevExpress.Utils.OptionsColumnLayout.StoreLayout" xml:space="preserve">
+    <value>Сачувај распоред</value>
+  </data>
+  <data name="DevExpress.Utils.OptionsColumnLayout.StoreAppearance" xml:space="preserve">
+    <value>Сачувај изглед</value>
+  </data>
+  <data name="DevExpress.Utils.OptionsColumnLayout.StoreAllOptions" xml:space="preserve">
+    <value>Сачувај све опције</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptionsBase.Encoding" xml:space="preserve">
+    <value>Кодна страна</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptionsBase.Separator" xml:space="preserve">
+    <value>Сепаратор</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptionsBase.QuoteStringsWithSeparators" xml:space="preserve">
+    <value>Знаци навода са сепараторима</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.CsvExportOptions" xml:space="preserve">
+    <value>Опције извоза у CSV</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportMode.SingleFile" xml:space="preserve">
+    <value>Један фајл</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportMode.SingleFilePageByPage" xml:space="preserve">
+    <value>Један фајл (страна по страна)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageByPageExportOptionsBase.PageRange" xml:space="preserve">
+    <value>Опсег страна</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.PageBorderColor" xml:space="preserve">
+    <value>Боја ивице стране</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.PageBorderWidth" xml:space="preserve">
+    <value>Ширина ивице стране</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.ExportMode" xml:space="preserve">
+    <value>Начин извоза</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.PageRange" xml:space="preserve">
+    <value>Опсег страна</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.CharacterSet" xml:space="preserve">
+    <value>Скуп знакова</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.Title" xml:space="preserve">
+    <value>Наслов</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptionsBase.RemoveSecondarySymbols" xml:space="preserve">
+    <value>Уклони секундарне симболе</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptions" xml:space="preserve">
+    <value>Опције извоза у ХТМЛ</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions" xml:space="preserve">
+    <value>Опције извоза слике</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.PageBorderColor" xml:space="preserve">
+    <value>Боја ивице стране</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.PageBorderWidth" xml:space="preserve">
+    <value>Ширина ивице стране</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.ExportMode" xml:space="preserve">
+    <value>Начин извоза</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.PageRange" xml:space="preserve">
+    <value>Опсег страна</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.Format" xml:space="preserve">
+    <value>Формат слике</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.Resolution" xml:space="preserve">
+    <value>Резолуција</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.MhtExportOptions" xml:space="preserve">
+    <value>Опције извоза у MHT</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.NativeFormatOptions" xml:space="preserve">
+    <value>Опције природног формата</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.NativeFormatOptions.Compressed" xml:space="preserve">
+    <value>Компримовано</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.NativeFormatOptions.ShowOptionsBeforeSave" xml:space="preserve">
+    <value>Прикажи опције пре чувања</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions" xml:space="preserve">
+    <value>Опције PDF документа</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Author" xml:space="preserve">
+    <value>Аутор</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Application" xml:space="preserve">
+    <value>Програм</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Title" xml:space="preserve">
+    <value>Наслов</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Subject" xml:space="preserve">
+    <value>Предмет</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Keywords" xml:space="preserve">
+    <value>Кључне речи</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions" xml:space="preserve">
+    <value>Опције извоза у PDF</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.ShowPrintDialogOnOpen" xml:space="preserve">
+    <value>Приликом отварања прикажи прозор за штампање </value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.DocumentOptions" xml:space="preserve">
+    <value>Опције документа</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.Compressed" xml:space="preserve">
+    <value>Компримовано</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.NeverEmbeddedFonts" xml:space="preserve">
+    <value>Немојте уградити ове фонтове</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.DefaultResourceFile" xml:space="preserve">
+    <value>Подразумевани изворни фајл</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.ImageQuality" xml:space="preserve">
+    <value>Квалитет слике</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions" xml:space="preserve">
+    <value>Опције извоза у RTF</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions.ExportMode" xml:space="preserve">
+    <value>Начин извоза</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions.ExportWatermarks" xml:space="preserve">
+    <value>Извези водени жиг</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions.PageRange" xml:space="preserve">
+    <value>Опсег страна</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptions" xml:space="preserve">
+    <value>Опције извоза текста</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions" xml:space="preserve">
+    <value>Опције извоза у XLS</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.UseNativeFormat" xml:space="preserve">
+    <value>Користи природни формат</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.ShowGridLines" xml:space="preserve">
+    <value>Прикажи координатну мрежу</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.SheetName" xml:space="preserve">
+    <value>Име листа</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.Ignore256ColumnsLimit" xml:space="preserve">
+    <value>Игнориши лимит од 256 колона</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.Ignore65536RowsLimit" xml:space="preserve">
+    <value>Игнориши лимит од 65536 редова</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.Suppress256ColumnsWarning" xml:space="preserve">
+    <value>Блокирај упозорење о 256 колона</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.Suppress65536RowsWarning" xml:space="preserve">
+    <value>Блокирај упозорење о 65536 редова</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.ExportHyperlinks" xml:space="preserve">
+    <value>Извези хипервезе</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsxExportOptions" xml:space="preserve">
+    <value>Начин извоза у XLSx</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopLeft" xml:space="preserve">
+    <value>Горе лево</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopCenter" xml:space="preserve">
+    <value>Горе центрирано</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopRight" xml:space="preserve">
+    <value>Горе десно</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleLeft" xml:space="preserve">
+    <value>Средина лево</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleCenter" xml:space="preserve">
+    <value>Средина центрирано</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleRight" xml:space="preserve">
+    <value>Средина десно</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomLeft" xml:space="preserve">
+    <value>Доле лево</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomCenter" xml:space="preserve">
+    <value>Доле центрирано</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomRight" xml:space="preserve">
+    <value>Доле десно</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopJustify" xml:space="preserve">
+    <value>Горе обострано поравнато</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleJustify" xml:space="preserve">
+    <value>Средина обострано поравнато</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomJustify" xml:space="preserve">
+    <value>Доле обострано поравнато</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.None" xml:space="preserve">
+    <value>Ништа</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.Number" xml:space="preserve">
+    <value>Број стране</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.NumberOfTotal" xml:space="preserve">
+    <value>&quot;Тренутна од укупно&quot; број стране</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.RomLowNumber" xml:space="preserve">
+    <value>Број стране (римски, мала слова)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.RomHiNumber" xml:space="preserve">
+    <value>Број стране (римски, велика слова)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.DateTime" xml:space="preserve">
+    <value>Тренутни датум и време</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.UserName" xml:space="preserve">
+    <value>Корисничко име</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.None" xml:space="preserve">
+    <value>Ништа</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Left" xml:space="preserve">
+    <value>Лево</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Top" xml:space="preserve">
+    <value>Врх</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Right" xml:space="preserve">
+    <value>Десно</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Bottom" xml:space="preserve">
+    <value>Дно</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.All" xml:space="preserve">
+    <value>Сви</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.Normal" xml:space="preserve">
+    <value>Нормално</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.StretchImage" xml:space="preserve">
+    <value>Развлачење слике</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.AutoSize" xml:space="preserve">
+    <value>Аутоматска величина</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.CenterImage" xml:space="preserve">
+    <value>Центрирање слике</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.ZoomImage" xml:space="preserve">
+    <value>Зумирање слике</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Lowest" xml:space="preserve">
+    <value>Најнижи</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Low" xml:space="preserve">
+    <value>Низак</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Medium" xml:space="preserve">
+    <value>Средњи</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.High" xml:space="preserve">
+    <value>Висок</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Highest" xml:space="preserve">
+    <value>Највиши</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportMode.SingleFile" xml:space="preserve">
+    <value>Један фајл</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportMode.SingleFilePageByPage" xml:space="preserve">
+    <value>Један фајл (страна по страна)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportMode.DifferentFiles" xml:space="preserve">
+    <value>Различити фајлови</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportMode.SingleFile" xml:space="preserve">
+    <value>Један фајл </value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportMode.SingleFilePageByPage" xml:space="preserve">
+    <value>Један фајл (страна по страна)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportMode.DifferentFiles" xml:space="preserve">
+    <value>Различити фајлови</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportMode.Value" xml:space="preserve">
+    <value>Вредност</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportMode.Text" xml:space="preserve">
+    <value>Текст</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.Slant" xml:space="preserve">
+    <value>коса</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.BackSlant" xml:space="preserve">
+    <value>коса уназад</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.Horizontal" xml:space="preserve">
+    <value>хоризонтална</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.Vertical" xml:space="preserve">
+    <value>вертикална</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.VerticalAnchorStyles.None" xml:space="preserve">
+    <value>Ништа</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.VerticalAnchorStyles.Top" xml:space="preserve">
+    <value>Врх</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom" xml:space="preserve">
+    <value>Дно</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.VerticalAnchorStyles.Both" xml:space="preserve">
+    <value>Оба</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PrintOnPages.AllPages" xml:space="preserve">
+    <value>Све стране</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PrintOnPages.NotWithReportHeader" xml:space="preserve">
+    <value>Без заглавља извештаја</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PrintOnPages.NotWithReportFooter" xml:space="preserve">
+    <value>Без подножја извештаја</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PrintOnPages.NotWithReportHeaderAndReportFooter" xml:space="preserve">
+    <value>Без заглавља и подножја извештаја</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ExportOptions" xml:space="preserve">
+    <value>Опције извоза</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EmailOptions" xml:space="preserve">
+    <value>Опције е-поште</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions" xml:space="preserve">
+    <value>Опције прегледа пре штампања</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrinterSettingsUsing" xml:space="preserve">
+    <value>Искористи поставке штампача</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.DirectionMode.Horizontal" xml:space="preserve">
+    <value>хоризонтално</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.DirectionMode.ForwardDiagonal" xml:space="preserve">
+    <value>Дијагонално унапред</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.DirectionMode.BackwardDiagonal" xml:space="preserve">
+    <value>Дијагонално уназад</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.DirectionMode.Vertical" xml:space="preserve">
+    <value>вертикално</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.ImageViewMode.Clip" xml:space="preserve">
+    <value>Оквир</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.ImageViewMode.Stretch" xml:space="preserve">
+    <value>Развуци</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.ImageViewMode.Zoom" xml:space="preserve">
+    <value>Зумирај</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.ShowBehind" xml:space="preserve">
+    <value>Прикажи иза</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.Image" xml:space="preserve">
+    <value>Слика</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.ImageAlign" xml:space="preserve">
+    <value>Поравнање слике</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.ImageViewMode" xml:space="preserve">
+    <value>Изглед слике</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.ImageTiling" xml:space="preserve">
+    <value>Уклапање слика</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.TextDirection" xml:space="preserve">
+    <value>Правац текста</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.Text" xml:space="preserve">
+    <value>Текст</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.Font" xml:space="preserve">
+    <value>Фонт</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.ForeColor" xml:space="preserve">
+    <value>Боја фонта</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.TextTransparency" xml:space="preserve">
+    <value>Прозирност текста</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.PageWatermark.ImageTransparency" xml:space="preserve">
+    <value>Прозирност слике</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Drawing.Watermark.PageRange" xml:space="preserve">
+    <value>Опсег страна</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrinterSettingsUsing.UseMargins" xml:space="preserve">
+    <value>Користи маргине</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrinterSettingsUsing.UsePaperKind" xml:space="preserve">
+    <value>Користи врсту папира</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrinterSettingsUsing.UseLandscape" xml:space="preserve">
+    <value>Користи хоризонталну оријентацију</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EmailOptions.RecipientName" xml:space="preserve">
+    <value>Име примаоца</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EmailOptions.RecipientAddress" xml:space="preserve">
+    <value>Адреса примаоца</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EmailOptions.RecipientAddressPrefix" xml:space="preserve">
+    <value>Префикс адресе примаоца</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EmailOptions.Subject" xml:space="preserve">
+    <value>Тема</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EmailOptions.Body" xml:space="preserve">
+    <value>Тело</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.ShowOptionsBeforeExport" xml:space="preserve">
+    <value>Прикажи прозор са опцијама пре извоза</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.DefaultFileName" xml:space="preserve">
+    <value>Подразумевано име фајла</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.ActionAfterExport" xml:space="preserve">
+    <value>Акција после извоза</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.SaveMode" xml:space="preserve">
+    <value>Начин чувања</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PrintPreviewOptions.DefaultDirectory" xml:space="preserve">
+    <value>Подразумевани директоријум</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.BarCodeGeneratorBase.CalcCheckSum" xml:space="preserve">
+    <value>Израчунај контролни збир</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeBase.ShapeName" xml:space="preserve">
+    <value>Назив облика</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ActionAfterExport.None" xml:space="preserve">
+    <value>Ништа</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ActionAfterExport.Open" xml:space="preserve">
+    <value>Отвори</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ActionAfterExport.AskUser" xml:space="preserve">
+    <value>Питај корисника</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.SaveMode.UsingDefaultPath" xml:space="preserve">
+    <value>Коришћење подразумеване локације</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.SaveMode.UsingSaveFileDialog" xml:space="preserve">
+    <value>Коришћење прозора за чување фајла</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.BarCodeOrientation.Normal" xml:space="preserve">
+    <value>Нормалан</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.BarCodeOrientation.UpsideDown" xml:space="preserve">
+    <value>Наопачке</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.BarCodeOrientation.RotateLeft" xml:space="preserve">
+    <value>Ротирај улево</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.BarCodeOrientation.RotateRight" xml:space="preserve">
+    <value>Ротирај удесно</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level0" xml:space="preserve">
+    <value>Ниво 0</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level1" xml:space="preserve">
+    <value>Ниво 1</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level2" xml:space="preserve">
+    <value>Ниво 2</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level3" xml:space="preserve">
+    <value>Ниво 3</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level4" xml:space="preserve">
+    <value>Ниво 4</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level5" xml:space="preserve">
+    <value>Ниво 5</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level6" xml:space="preserve">
+    <value>Ниво 6</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level7" xml:space="preserve">
+    <value>Ниво 7</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level8" xml:space="preserve">
+    <value>Ниво 8</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417Generator.CompactionMode" xml:space="preserve">
+    <value>Збијање</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417CompactionMode.Binary" xml:space="preserve">
+    <value>Бинарно</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417CompactionMode.Text" xml:space="preserve">
+    <value>Текст</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Code128Generator.CharacterSet" xml:space="preserve">
+    <value>Скуп знакова</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.EAN128Generator.FNC1Substitute" xml:space="preserve">
+    <value>FNC1 фукционални знак</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.EAN128Generator.HumanReadableText" xml:space="preserve">
+    <value>Читљив текст </value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodeMSIGenerator.MSICheckSum" xml:space="preserve">
+    <value>MSI контролни збир</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Industrial2of5Generator.WideNarrowRatio" xml:space="preserve">
+    <value>Однос широко-уско</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Interleaved2of5Generator.WideNarrowRatio" xml:space="preserve">
+    <value>Однос широко-уско</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Code39Generator.WideNarrowRatio" xml:space="preserve">
+    <value>Однос широко-уско</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarGenerator.StartStopPair" xml:space="preserve">
+    <value>Симболи за почетак и крај</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarGenerator.WideNarrowRatio" xml:space="preserve">
+    <value>Однос широко-уско</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417Generator.Columns" xml:space="preserve">
+    <value>Колоне</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417Generator.Rows" xml:space="preserve">
+    <value>Редови</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417Generator.ErrorCorrectionLevel" xml:space="preserve">
+    <value>Ниво исправке грешке</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417Generator.TruncateSymbol" xml:space="preserve">
+    <value>Симбол за скраћивање</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.PDF417Generator.YToXRatio" xml:space="preserve">
+    <value>Однос Y према X</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.FilletShapeBase.Fillet" xml:space="preserve">
+    <value>Пантљика</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapePolygon.NumberOfSides" xml:space="preserve">
+    <value>Број страна</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeBracket.TipLength" xml:space="preserve">
+    <value>Дужина врха</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeBrace.Fillet" xml:space="preserve">
+    <value>Пантљика</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeBrace.TailLength" xml:space="preserve">
+    <value>Дужина репа</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeArrow.ArrowWidth" xml:space="preserve">
+    <value>Ширина стрелице</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeArrow.ArrowHeight" xml:space="preserve">
+    <value>Висина стрелице</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeCross.VerticalLineWidth" xml:space="preserve">
+    <value>Ширина вертикалне линије</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeCross.HorizontalLineWidth" xml:space="preserve">
+    <value>Ширина хоризонталне линије</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeStar.StarPointCount" xml:space="preserve">
+    <value>Број врхова звезде</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.Shape.ShapeStar.Concavity" xml:space="preserve">
+    <value>Конкавност</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Code128Charset.CharsetA" xml:space="preserve">
+    <value>Скуп знакова A</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Code128Charset.CharsetB" xml:space="preserve">
+    <value>Скуп знакова Б</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Code128Charset.CharsetC" xml:space="preserve">
+    <value>Скуп знакова В</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.Code128Charset.CharsetAuto" xml:space="preserve">
+    <value>Аутоматски скуп знакова</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.MSICheckSum.None" xml:space="preserve">
+    <value>Ништа</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.MSICheckSum.Modulo10" xml:space="preserve">
+    <value>Модуо 10</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.MSICheckSum.DoubleModulo10" xml:space="preserve">
+    <value>дупли модуо 10</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarStartStopPair.None" xml:space="preserve">
+    <value>Ништа</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarStartStopPair.AT" xml:space="preserve">
+    <value>AT</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarStartStopPair.BN" xml:space="preserve">
+    <value>BN</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarStartStopPair.CStar" xml:space="preserve">
+    <value>CStar</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.CodabarStartStopPair.DE" xml:space="preserve">
+    <value>DE</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PaddingInfo.Left" xml:space="preserve">
+    <value>Лево</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PaddingInfo.Right" xml:space="preserve">
+    <value>Десно</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PaddingInfo.Top" xml:space="preserve">
+    <value>Горе</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PaddingInfo.Bottom" xml:space="preserve">
+    <value>Доле</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptionsBase.TextExportMode" xml:space="preserve">
+    <value>Начин извоза текста</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptionsBase.TextExportMode" xml:space="preserve">
+    <value>Начин извоза текста</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XpsDocumentOptions.Subject" xml:space="preserve">
+    <value>predmet</value>
+  </data>
+</root>

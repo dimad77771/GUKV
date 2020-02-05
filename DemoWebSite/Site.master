@@ -1,0 +1,43 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<%@ Register Src="~/UserControls/ThemeSelector.ascx" TagPrefix="dx" TagName="ThemeSelector" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title>Єдина Інформаційна Система ГУКВ м. Києва</title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/DXTheme.js") %>"></script>
+    <form runat="server">
+    <div class="page">
+        <div class="header">
+            <div style="float: right; padding-top: 137px;">
+                <dx:ThemeSelector ID="ThemeSelector" runat="server" />
+            </div>
+        </div>
+        <div class="clear hideSkiplink">
+            <asp:Panel ID="PanelNavigation" runat="server" Width="100%">
+                <dx:ASPxMenu ID="MainMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
+                    <Items>
+                        <dx:MenuItem NavigateUrl="~/UniversalReporting/Default.aspx" Text="Універсальна звітність"></dx:MenuItem>
+                        <dx:MenuItem NavigateUrl="~/Privatization/PrivatizationView.aspx" Text="Приватизація"></dx:MenuItem>
+                    </Items>
+                </dx:ASPxMenu>
+            </asp:Panel>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        
+    </div>
+    </form>
+</body>
+</html>

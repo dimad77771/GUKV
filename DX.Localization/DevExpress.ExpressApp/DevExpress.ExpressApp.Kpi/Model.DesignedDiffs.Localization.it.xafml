@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="ShowChart" Caption="Mostra Grafico" />
+    </Actions>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="DevExpress.ExpressApp.Kpi.BaseKpiObject" Caption="Oggetto Base Kpi" />
+    <Class Name="DevExpress.ExpressApp.Kpi.IDateRange" Caption="Intervallo IDate">
+      <OwnMembers>
+        <Member Name="Caption" Caption="Didascalia" />
+        <Member Name="EndPoint" Caption="Punto Finale" />
+        <Member Name="Name" Caption="Nome" />
+        <Member Name="StartPoint" Caption="Punto Iniziale" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Kpi.KpiDefinition" Caption="Definizione">
+      <OwnMembers>
+        <Member Name="Active" Caption="Attivo" />
+        <Member Name="Compare" Caption="Confronto" />
+        <Member Name="Criteria" Caption="Criteri" />
+        <Member Name="Current" Caption="Corrente" />
+        <Member Name="Direction" Caption="Direzione" />
+        <Member Name="EnableCustomizeRepresentation" Caption="Abilita Personalizzazione Rappresentazione" />
+        <Member Name="Expression" Caption="Espressione" />
+        <Member Name="GreenZone" Caption="Zona Verde" />
+        <Member Name="MeasurementFrequency" Caption="Frequenza Misurazioni" />
+        <Member Name="Name" Caption="Nome" />
+        <Member Name="Objects" Caption="Oggetti" />
+        <Member Name="Period" Caption="Periodo" />
+        <Member Name="Range" Caption="Intervallo" />
+        <Member Name="RangeToCompare" Caption="Intervallo da Confrontare" />
+        <Member Name="RedZone" Caption="Zona Rossa" />
+        <Member Name="SuppressedSeries" Caption="Serie Soppresse" />
+        <Member Name="TargetObjectType" Caption="Tipo Oggetto Destinatario" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Kpi.KpiHistoryItem" Caption="Elemento Storico Kpi">
+      <OwnMembers>
+        <Member Name="RangeEnd" Caption="Fine Intervallo" />
+        <Member Name="RangeStart" Caption="Inizio Intervallo" />
+        <Member Name="Value" Caption="Valore" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Kpi.KpiInstance" Caption="Istanza Kpi">
+      <OwnMembers>
+        <Member Name="Change" Caption="Modifica" />
+        <Member Name="ChartDataSource" Caption="Origine Dati Grafico" />
+        <Member Name="Current" Caption="Corrente" />
+        <Member Name="GaugeDataSource" Caption="Origine Dati Misuratore" />
+        <Member Name="HistoryItems" Caption="Elementi Storici" />
+        <Member Name="KpiName" Caption="Nome Kpi" />
+        <Member Name="Period" Caption="Periodo" />
+        <Member Name="Previous" Caption="Precedente" />
+        <Member Name="Scorecards" Caption="Segnapunti" />
+        <Member Name="Trend" Caption="Tendenza" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Kpi.KpiScorecard" Caption="Segnapunti">
+      <OwnMembers>
+        <Member Name="Indicators" Caption="Indicatori" />
+        <Member Name="Name" Caption="Nome" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <Localization>
+    <LocalizationGroup Name="Enums">
+      <LocalizationGroup Name="DevExpress.ExpressApp.Editors.Trend">
+        <LocalizationItem Name="Better" Value="Migliore" />
+        <LocalizationItem Name="NoChange" Value="Invariato" />
+        <LocalizationItem Name="Worse" Value="Peggiore" />
+      </LocalizationGroup>
+      <LocalizationGroup Name="DevExpress.ExpressApp.Kpi.Direction">
+        <LocalizationItem Name="HighIsBetter" Value="Alto è Meglio" />
+        <LocalizationItem Name="LowIsBetter" Value="Basso è Meglio" />
+      </LocalizationGroup>
+      <LocalizationGroup Name="DevExpress.ExpressApp.Kpi.TimeIntervalType">
+        <LocalizationItem Name="Day" Value="Giorno" />
+        <LocalizationItem Name="Hour" Value="Ora" />
+        <LocalizationItem Name="Month" Value="Mese" />
+        <LocalizationItem Name="Week" Value="Settimana" />
+        <LocalizationItem Name="Year" Value="Anno" />
+      </LocalizationGroup>
+    </LocalizationGroup>
+  </Localization>
+  <Views>
+    <DetailView Id="KpiDefinition_DetailView">
+      <Layout>
+        <TabbedGroup Id="Tabs">
+          <LayoutGroup Id="Definition">
+            <LayoutGroup Id="Options">
+              <TabbedGroup Id="OptionsTabs">
+                <LayoutGroup Id="MeasurementOptions" Caption="Opzioni di Misurazione" />
+                <LayoutGroup Id="Zones" Caption="Zone" />
+              </TabbedGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="Preview" Caption="Anteprima">
+            <LayoutGroup Id="Preview.Objects_Group" Caption="Anteprima.Oggetti_Gruppo" />
+          </LayoutGroup>
+        </TabbedGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

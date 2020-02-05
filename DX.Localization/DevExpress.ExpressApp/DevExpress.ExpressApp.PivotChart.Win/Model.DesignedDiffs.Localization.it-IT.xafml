@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="ChartWizard" Caption="Procedura Guidata Grafico" />
+      <Action Id="PrintChart" Caption="Stampa Grafico" />
+      <Action Id="PrintPreviewPivotGrid" Caption="Stampa Griglia Pivot" />
+    </Actions>
+  </ActionDesign>
+</Application>

@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxperienceStringId.Loading">
+    <value>Carregando&amp;hellip;</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_All">
+    <value>Todos</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_First">
+    <value>Primeiro</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Prev">
+    <value>Anterior</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Next">
+    <value>Próximo</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Last">
+    <value>Último</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_SummaryFormat">
+    <value>Pág: {0} de {1} ({2} item(s))</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_SummaryAllPagesFormat">
+    <value>Pág: {0} - {1} ({2} item(s))</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerSummaryFormat">
+    <value>Pág: {0} de {1}</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerSummaryAllPages">
+    <value>Todas as páginas</value>
+  </data>
+  <data name="ASPxperienceStringId.DataViewBase_EmptyDataText">
+    <value>Sem dados</value>
+  </data>
+  <data name="ASPxperienceStringId.NewsControl_BackToTop">
+    <value>Voltar ao topo</value>
+  </data>
+  <data name="ASPxperienceStringId.NewsControl_Page">
+    <value>Pág:</value>
+  </data>
+  <data name="ASPxperienceStringId.PopupControl_CloseButton">
+    <value>[Fechar]</value>
+  </data>
+  <data name="ASPxperienceStringId.PopupControl_SizeGrip">
+    <value>[Redimensionar]</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_FilterCaption">
+    <value>Filtro:&amp;nbsp;&amp;nbsp;&amp;nbsp;</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_FilterHint">
+    <value>&lt;b&gt;?&lt;/b&gt; = qualquer caracter
+&lt;b&gt;*&lt;/b&gt; = quaisquer caracteres</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_BackToTop">
+    <value>[Voltar ao topo]</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_NoData">
+    <value>Sem dados para estes filtros</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_RemoveButton">
+    <value>Remover</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_AddButton">
+    <value>Adicionar</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_UploadButton">
+    <value>Upload</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_CancelButton">
+    <value>Cancelar</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_InvalidWindowsPath">
+    <value>O caminho do arquivo "(0)" não é um caminho válido do Windows.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_MaxRequestLengthExceeded">
+    <value>O tamanho total dos arquivos selecionados para upload excede o tamanho máximo permitido ((0) Kb) que foi definido pela aplicação.</value>
+  </data>
+</root>

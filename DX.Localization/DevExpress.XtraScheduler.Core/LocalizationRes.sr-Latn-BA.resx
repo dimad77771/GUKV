@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SchedulerStringId.Msg_CantFitIntoPage" xml:space="preserve">
+    <value>Nemoguće je prilagoditi ispis na jednu stranu koristeći trenute postavke štampača. Molim pokušajte povećati visinu stranice ili smanjiti PrintTime interval.</value>
+  </data>
+  <data name="SchedulerStringId.Msg_InvalidYearCountValue" xml:space="preserve">
+    <value>Neispravan broj sedmica. Unesite cjelobrojnu pozitivnu vrijednost.</value>
+  </data>
+  <data name="SchedulerStringId.Msg_InvalidDayOfWeek" xml:space="preserve">
+    <value>Nije odabran dan. Molim odaberite barem jedan dan u sedmici.</value>
+  </data>
+  <data name="SchedulerStringId.ViewShortDisplayName_WorkDays" xml:space="preserve">
+    <value>Radna sedmica</value>
+  </data>
+  <data name="SchedulerStringId.Msg_DuplicateCustomFieldMappings" xml:space="preserve">
+    <value>Dupli naziv za polje. Provjerite ponovo prilagođavanje: 
+{0}</value>
+  </data>
+  <data name="SchedulerStringId.PrintCalendarDetailsControlWeekPeriod" xml:space="preserve">
+    <value>Sedmica</value>
+  </data>
+  <data name="SchedulerStringId.TextRecurrenceTypeWeekly" xml:space="preserve">
+    <value>Sedmično</value>
+  </data>
+  <data name="SchedulerStringId.Caption_GanttViewDescription" xml:space="preserve">
+    <value>Prebacivanje na Gantt skalu. Ispisuje obaveze u odnosu na vrijeme.</value>
+  </data>
+  <data name="SchedulerStringId.MenuCmd_NewAppointment" xml:space="preserve">
+    <value>Nov&amp;a obaveza</value>
+  </data>
+  <data name="SchedulerStringId.Caption_20Minutes" xml:space="preserve">
+    <value>20 minuta</value>
+  </data>
+  <data name="SchedulerStringId.Msg_iCalendar_AppointmentsImportWarning" xml:space="preserve">
+    <value>Ne mogu učitati neke obaveze</value>
+  </data>
+  <data name="SchedulerStringId.Caption_30Minutes" xml:space="preserve">
+    <value>30 minuta</value>
+  </data>
+  <data name="SchedulerStringId.Caption_DayViewDescription" xml:space="preserve">
+    <value>Prebacivanje na Dnevni pregled. Najdetaljniji pregled obaveza za određen dan(e).</value>
+  </data>
+  <data name="SchedulerStringId.Msg_InternalError" xml:space="preserve">
+    <value>Interna greška!</value>
+  </data>
+  <data name="SchedulerStringId.PrintTriFoldOptControlWeeklyCalendar" xml:space="preserve">
+    <value>Sedmični kalendar</value>
+  </data>
+  <data name="SchedulerStringId.Caption_WeekViewDescription" xml:space="preserve">
+    <value>Prebacivanje na sedmični pregled. Slaže obaveze za određenu sedmicu u kompaktnoj formi.</value>
+  </data>
+  <data name="SchedulerStringId.Msg_InvalidWeekCount" xml:space="preserve">
+    <value>Neispravan broj sedmica. Unesite cjelobrojnu pozitivnu vrijednost.</value>
+  </data>
+  <data name="SchedulerStringId.Caption_ShadingApplyToAppointments" xml:space="preserve">
+    <value>Obaveze</value>
+  </data>
+  <data name="SchedulerStringId.MenuCmd_30Minutes" xml:space="preserve">
+    <value>&amp;30 minuta</value>
+  </data>
+  <data name="SchedulerStringId.Caption_WeeklyPrintStyle" xml:space="preserve">
+    <value>Sedmični stil</value>
+  </data>
+  <data name="SchedulerStringId.TimeScaleDisplayName_Week" xml:space="preserve">
+    <value>Sedmica</value>
+  </data>
+  <data name="SchedulerStringId.Reporting_NotAssigned_TimeCells" xml:space="preserve">
+    <value>Obavezna TimeCells kontrola nije pridružena</value>
+  </data>
+  <data name="SchedulerStringId.Msg_MissingMappingMember" xml:space="preserve">
+    <value>Nedostaje '{1}' član '{0}' prilikom mapiranja osobine.</value>
+  </data>
+  <data name="SchedulerStringId.DescCmd_CreateAppointmentDependency" xml:space="preserve">
+    <value>Napravi zavisnost između obaveza</value>
+  </data>
+  <data name="SchedulerStringId.DisplayName_Appointment" xml:space="preserve">
+    <value>Obaveza</value>
+  </data>
+  <data name="SchedulerStringId.PrintPageSetupFormCaption" xml:space="preserve">
+    <value>Opcije ispisa: {0}</value>
+  </data>
+  <data name="SchedulerStringId.Caption_SetupAppointmentMappings" xml:space="preserve">
+    <value>Uredi preslikavanja obaveza</value>
+  </data>
+  <data name="SchedulerStringId.Msg_iCalendar_NotValidFile" xml:space="preserve">
+    <value>Neispravna datoteka Internet kalendara</value>
+  </data>
+  <data name="SchedulerStringId.MenuCmd_6Minutes" xml:space="preserve">
+    <value>&amp;6 minuta</value>
+  </data>
+  <data name="SchedulerStringId.MenuCmd_SwitchToGroupByDate" xml:space="preserve">
+    <value>&amp;Grupiši po datumu</value>
+  </data>
+  <data name="SchedulerStringId.TextWeekly_0Day" xml:space="preserve">
+    <value>neodređen dan u sedmici</value>
+  </data>
+  <data name="SchedulerStringId.MenuCmd_NewRecurringAppointment" xml:space="preserve">
+    <value>Nova ponavljajuća  &amp;obaveza</value>
+  </data>
+  <data name="SchedulerStringId.Caption_15Minutes" xml:space="preserve">
+    <value>15 minuta</value>
+  </data>
+  <data name="SchedulerStringId.MenuCmd_15Minutes" xml:space="preserve">
+    <value>&amp;15 minuta</value>
+  </data>
+  <data name="SchedulerStringId.MenuCmd_SwitchToGroupByResource" xml:space="preserve">
+    <value>&amp;Grupiši po resursima</value>
+  </data>
+  <data name="SchedulerStringId.Caption_ModifyAppointmentStorageTransactionDescription" xml:space="preserve">
+    <value>Izmijeni spremište obaveza</value>
+  </data>
+  <data name="SchedulerStringId.Caption_5Minutes" xml:space="preserve">
+    <value>5 minuta</value>
+  </data>
+  <data name="SchedulerStringId.MenuCmd_5Minutes" xml:space="preserve">
+    <value>&amp;5 minuta</value>
+  </data>
+  <data name="SchedulerStringId.PrintNoPrintersInstalled" xml:space="preserve">
+    <value>Nema instaliranih štampača</value>
+  </data>
+  <data name="SchedulerStringId.Msg_Conflict" xml:space="preserve">
+    <value>Trenutna obaveza je u konfliktu sa jednom ili više obaveza.</value>
+  </data>
+  <data name="SchedulerStringId.MenuCmd_20Minutes" xml:space="preserve">
+    <value>&amp;20 minuta</value>
+  </data>
+  <data name="SchedulerStringId.ViewDisplayName_Week" xml:space="preserve">
+    <value>Sedmični kalendar</value>
+  </data>
+  <data name="SchedulerStringId.AppointmentLabel_Personal" xml:space="preserve">
+    <value>Privatno</value>
+  </data>
+  <data name="SchedulerStringId.Caption_GroupByNoneDescription" xml:space="preserve">
+    <value>Ukloni grupisanje</value>
+  </data>
+  <data name="SchedulerStringId.Msg_ApplyToAllStyles" xml:space="preserve">
+    <value>Primijeni trenute postavke štampača na sve stilove?</value>
+  </data>
+  <data name="SchedulerStringId.Caption_Tentative" xml:space="preserve">
+    <value>Uslovno</value>
+  </data>
+  <data name="SchedulerStringId.PrintWeeklyOptControlTwoWeekPerPage" xml:space="preserve">
+    <value>2 strane/sedmici</value>
+  </data>
+  <data name="SchedulerStringId.TextAppointmentSnapToCells_Always" xml:space="preserve">
+    <value>Uvjek</value>
+  </data>
+  <data name="SchedulerStringId.Caption_GroupByDateDescription" xml:space="preserve">
+    <value>Grupiši po datumima</value>
+  </data>
+  <data name="SchedulerStringId.Caption_SetupAppointmentStorage" xml:space="preserve">
+    <value>Uredi spremište obaveza</value>
+  </data>
+  <data name="SchedulerStringId.ViewDisplayName_WorkDays" xml:space="preserve">
+    <value>Kalendar radne sedmice</value>
+  </data>
+  <data name="SchedulerStringId.Caption_6Minutes" xml:space="preserve">
+    <value>6 minuta</value>
+  </data>
+  <data name="SchedulerStringId.Caption_Appointment" xml:space="preserve">
+    <value>{0} - Obaveza</value>
+  </data>
+  <data name="SchedulerStringId.ViewShortDisplayName_Week" xml:space="preserve">
+    <value>Sedmica</value>
+  </data>
+  <data name="SchedulerStringId.Reporting_NotAssigned_View" xml:space="preserve">
+    <value>Obavezna View komponenta nije pridružena</value>
+  </data>
+  <data name="SchedulerStringId.MenuCmd_SwitchToWeekView" xml:space="preserve">
+    <value>&amp;Sedmičnii pregled</value>
+  </data>
+  <data name="SchedulerStringId.Msg_InvalidWeekCountValue" xml:space="preserve">
+    <value>Neispravan broj sedmica. Unesite cjelobrojnu pozitivnu vrijednost.</value>
+  </data>
+  <data name="SchedulerStringId.Msg_WarningAppointmentDeleted" xml:space="preserve">
+    <value>Oabvezu je obrisao drugi korisnik.</value>
+  </data>
+  <data name="SchedulerStringId.DescCmd_ViewZoomIn" xml:space="preserve">
+    <value>Napravi prilagođavanje (zumiraj) kako bi prikazao sadržaj sa više detalja.</value>
+  </data>
+  <data name="SchedulerStringId.Caption_GroupByResourceDescription" xml:space="preserve">
+    <value>Grupiši po resursima</value>
+  </data>
+  <data name="SchedulerStringId.DescCmd_SplitAppointment" xml:space="preserve">
+    <value>Podijeli obavezu</value>
+  </data>
+  <data name="SchedulerStringId.Msg_InvalidDayOfWeekForDailyRecurrence" xml:space="preserve">
+    <value>Neispravan dan u sedmici za dnevno ponavljanje. Samo WeekDays.EveryDay, WeekDays.WeekendDays i WeekDays.WorkDays su ispravni u ovom kontekstu.</value>
+  </data>
+  <data name="SchedulerStringId.Msg_InvalidYearCount" xml:space="preserve">
+    <value>Neispravan broj sedmica. Unesite cjelobrojnu pozitivnu vrijednost.</value>
+  </data>
+  <data name="SchedulerStringId.DescCmd_DeleteAppointmentDependency" xml:space="preserve">
+    <value>Izbriši zavisnost za obavezu.</value>
+  </data>
+  <data name="SchedulerStringId.VS_SchedulerReportsToolboxCategoryName" xml:space="preserve">
+    <value>DX.{0}: Izvještavanje planera</value>
+  </data>
+  <data name="SchedulerStringId.MenuCmd_Tentative" xml:space="preserve">
+    <value>&amp;Uslovno</value>
+  </data>
+  <data name="SchedulerStringId.MenuCmd_AppointmentLabelAnniversary" xml:space="preserve">
+    <value>&amp;Godišnjica</value>
+  </data>
+  <data name="SchedulerStringId.Caption_TimelineViewDescription" xml:space="preserve">
+    <value>Prebacivanje na Vremensku skalu. Ispisuje obaveze u odnosu na vrijeme.</value>
+  </data>
+  <data name="SchedulerStringId.Caption_ShadingApplyToAppointmentStatuses" xml:space="preserve">
+    <value>Status obaveza</value>
+  </data>
+  <data name="SchedulerStringId.MenuCmd_60Minutes" xml:space="preserve">
+    <value>6&amp;0 minuta</value>
+  </data>
+  <data name="SchedulerStringId.Caption_ModifyAppointmentMappingsTransactionDescription" xml:space="preserve">
+    <value>Izmijen preslikavanja obaveza</value>
+  </data>
+  <data name="SchedulerStringId.Abbr_Week" xml:space="preserve">
+    <value>sedmica</value>
+  </data>
+  <data name="SchedulerStringId.AppointmentLabel_Anniversary" xml:space="preserve">
+    <value>Godišnjica</value>
+  </data>
+  <data name="SchedulerStringId.MenuCmd_10Minutes" xml:space="preserve">
+    <value>10 &amp;minuta</value>
+  </data>
+  <data name="SchedulerStringId.MenuCmd_TimeScaleWeek" xml:space="preserve">
+    <value>&amp;Sedmica</value>
+  </data>
+  <data name="SchedulerStringId.Caption_10Minutes" xml:space="preserve">
+    <value>10 minuta</value>
+  </data>
+  <data name="SchedulerStringId.MenuCmd_SwitchToGroupByNone" xml:space="preserve">
+    <value>Ukloni &amp;grupisanje</value>
+  </data>
+  <data name="SchedulerStringId.Caption_WorkWeekViewDescription" xml:space="preserve">
+    <value>Prebacivanje na pregled radne sedmice. Detaljan pregled radnih dana u nekoj sedmici.</value>
+  </data>
+  <data name="SchedulerStringId.MenuCmd_ToggleRecurrence" xml:space="preserve">
+    <value>Ponavljanje</value>
+  </data>
+  <data name="SchedulerStringId.Caption_60Minutes" xml:space="preserve">
+    <value>60 minuta</value>
+  </data>
+  <data name="SchedulerStringId.MenuCmd_CreateAppointmentDependency" xml:space="preserve">
+    <value>Napravi zavisnost</value>
+  </data>
+  <data name="SchedulerStringId.Abbr_Weeks" xml:space="preserve">
+    <value>sedmica</value>
+  </data>
+  <data name="SchedulerStringId.Caption_NAppointmentsAreSelected" xml:space="preserve">
+    <value>odabrano je {0} obaveza</value>
+  </data>
+  <data name="SchedulerStringId.PrintWeeklyOptControlOneWeekPerPage" xml:space="preserve">
+    <value>1 strana/sedmici</value>
+  </data>
+</root>

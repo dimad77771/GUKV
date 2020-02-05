@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="tbcTabPages.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="txtSizeInPixels.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 20</value>
+  </data>
+  <data name="lblSizeInPixels.Text" xml:space="preserve">
+    <value>Grösse in Pixel:</value>
+  </data>
+  <data name="panelSizeInPixels.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 69</value>
+  </data>
+  <data name="panelSizeInPixels.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 20</value>
+  </data>
+  <data name="txtWeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 20</value>
+  </data>
+  <data name="lblWeight.Text" xml:space="preserve">
+    <value>Gewichtung:</value>
+  </data>
+  <data name="panelWeight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 49</value>
+  </data>
+  <data name="panelWeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 20</value>
+  </data>
+  <data name="chartPanelControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 45</value>
+  </data>
+  <data name="chartPanelControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 4</value>
+  </data>
+  <data name="cbSizeMode.Properties.Items" xml:space="preserve">
+    <value>Gewichtung</value>
+  </data>
+  <data name="cbSizeMode.Properties.Items1" xml:space="preserve">
+    <value>Grösse in Pixel</value>
+  </data>
+  <data name="cbSizeMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 20</value>
+  </data>
+  <data name="lblSizeMode.Text" xml:space="preserve">
+    <value>Grössenmodus:</value>
+  </data>
+  <data name="panelSizeMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 25</value>
+  </data>
+  <data name="panelSizeMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 20</value>
+  </data>
+  <data name="groupSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 61</value>
+  </data>
+  <data name="groupSize.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>7, 7, 7, 7</value>
+  </data>
+  <data name="groupSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>288, 96</value>
+  </data>
+  <data name="groupSize.Text" xml:space="preserve">
+    <value>Grösse</value>
+  </data>
+  <data name="chartPanelControl2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 53</value>
+  </data>
+  <data name="chartPanelControl2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>288, 8</value>
+  </data>
+  <data name="txtName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 20</value>
+  </data>
+  <data name="panelName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 0</value>
+  </data>
+  <data name="panelName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 20</value>
+  </data>
+  <data name="chartPanelControl5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 33</value>
+  </data>
+  <data name="chartPanelControl5.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>7, 0, 7, 0</value>
+  </data>
+  <data name="chartPanelControl5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>288, 20</value>
+  </data>
+  <data name="panelControl11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 19</value>
+  </data>
+  <data name="panelControl11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>288, 8</value>
+  </data>
+  <data name="&gt;&gt;panelControl11.Parent" xml:space="preserve">
+    <value>panelVisible</value>
+  </data>
+  <data name="&gt;&gt;panelControl11.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chVisible.Properties.Caption" xml:space="preserve">
+    <value>&amp;Sichtbar</value>
+  </data>
+  <data name="chVisible.Size" type="System.Drawing.Size, System.Drawing">
+    <value>288, 19</value>
+  </data>
+  <data name="&gt;&gt;chVisible.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panelVisible.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="panelVisible.Size" type="System.Drawing.Size, System.Drawing">
+    <value>288, 27</value>
+  </data>
+  <data name="&gt;&gt;panelVisible.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tbGeneral.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="tbGeneral.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 469</value>
+  </data>
+  <data name="tbGeneral.Text" xml:space="preserve">
+    <value>Allgemein</value>
+  </data>
+  <data name="backgroundControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="backgroundControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="backgroundControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>288, 274</value>
+  </data>
+  <data name="backgroundControl.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tbAppearance.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="tbAppearance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 469</value>
+  </data>
+  <data name="tbAppearance.Text" xml:space="preserve">
+    <value>Aussehen</value>
+  </data>
+  <data name="ceBorderColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 20</value>
+  </data>
+  <data name="lblColor.Text" xml:space="preserve">
+    <value>Farbe:</value>
+  </data>
+  <data name="chartPanelControl3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 33</value>
+  </data>
+  <data name="chartPanelControl3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>288, 21</value>
+  </data>
+  <data name="chartPanelControl4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="chartPanelControl4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>288, 8</value>
+  </data>
+  <data name="cbBorderVisible.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="cbBorderVisible.Properties.Caption" xml:space="preserve">
+    <value>Sichtbar</value>
+  </data>
+  <data name="cbBorderVisible.Size" type="System.Drawing.Size, System.Drawing">
+    <value>288, 19</value>
+  </data>
+  <data name="&gt;&gt;cbBorderVisible.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tbBorder.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="tbBorder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 469</value>
+  </data>
+  <data name="tbBorder.Text" xml:space="preserve">
+    <value>Rand</value>
+  </data>
+  <data name="shadowControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="tbShadow.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="tbShadow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 469</value>
+  </data>
+  <data name="tbShadow.Text" xml:space="preserve">
+    <value>Schatten</value>
+  </data>
+  <data name="chEnableAxisYZooming.Properties.Caption" xml:space="preserve">
+    <value>Zoomen aktivieren</value>
+  </data>
+  <data name="chEnableAxisYScrolling.Properties.Caption" xml:space="preserve">
+    <value>Verschieben aktivieren</value>
+  </data>
+  <data name="gcAxisY.Text" xml:space="preserve">
+    <value>Y-Achse</value>
+  </data>
+  <data name="chEnableAxisXZooming.Properties.Caption" xml:space="preserve">
+    <value>Zoomen aktivieren</value>
+  </data>
+  <data name="chEnableAxisXScrolling.Properties.Caption" xml:space="preserve">
+    <value>Verschieben aktivieren</value>
+  </data>
+  <data name="gcAxisX.Text" xml:space="preserve">
+    <value>X-Achse</value>
+  </data>
+  <data name="lblNote.Text" xml:space="preserve">
+    <value>Wenn die Standardeinstellung angegeben ist, wird der reale Wert aus dem entsprechenden Diagramm die Option erhalten. Der wahre Wert ist in Klammern angegeben.</value>
+  </data>
+  <data name="tbScrollingZooming.Text" xml:space="preserve">
+    <value>Verschieben &amp;&amp; Zoom</value>
+  </data>
+  <data name="tbScrollBarOptions.Text" xml:space="preserve">
+    <value>Rollleisten</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+</root>

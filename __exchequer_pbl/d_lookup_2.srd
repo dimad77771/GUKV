@@ -1,0 +1,33 @@
+$PBExportHeader$d_lookup_1.srd
+release 6;
+datawindow(units=1 timer_interval=0 color=80269524 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 24 print.margin.right = 24 print.margin.top = 24 print.margin.bottom = 24 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 selected.mouse=no )
+header(height=29 color="80269524" )
+summary(height=0 color="536870912" )
+footer(height=14 color="80269524" )
+detail(height=21 color="553648127"  height.autosize=yes)
+table(column=(type=char(100) update=yes updatewhereclause=yes key=yes name=pay_zkpo dbname="lookup_1.pay_zkpo" )
+ column=(type=char(8000) update=yes updatewhereclause=yes name=pay_name dbname="lookup_1.pay_name" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=bal_zkpo dbname="lookup_1.bal_zkpo" )
+ column=(type=char(8000) update=yes updatewhereclause=yes name=bal_name dbname="lookup_1.bal_name" )
+ retrieve="select 
+* 
+from exchequer.lookup_1 A 
+where 2=2 
+" update="exchequer.lookup_1" updatewhere=0 updatekeyinplace=no )
+text(band=header alignment="2" text=""border="6" color="0" x="2" y="1" height="26" width="16"  name=select_all  font.face="Arial" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+bitmap(band=detail filename="c:\_an\pictures\focus.bmp" x="2" y="1" height="15" width="16" border="0"  name=f2 visible="1~tif(getrow() = currentrow(), 1, 0)" )
+compute(band=detail alignment="0" expression="''"border="0" color="0" x="2" y="1" height="18~trowheight()" width="16" format="[general]"  name=select visible="1~t1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="204" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="2" tabsequence=10 border="0" color="0" x="21" y="1" height="19" width="89" format="[general]"  name=pay_zkpo height.autosize=yes edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.nilisnull=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="204" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="2" tabsequence=30 border="0" color="0" x="371" y="1" height="19" width="115" format="[general]"  name=bal_zkpo edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.nilisnull=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="204" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="0" expression="~"З-п: ~" + rowcount()"border="0" color="0" x="20" y="0" height="13" width="90" format="[general]"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="ЄДРПОУ
+платника"border="6" color="0" x="20" y="1" height="26" width="90"  name=pay_zkpo_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Назва
+платника"border="6" color="0" x="112" y="1" height="26" width="256"  name=pay_name_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="ЄДРПОУ
+балансоутрим."border="6" color="0" x="370" y="1" height="26" width="116"  name=bal_zkpo_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Назва
+балансоутримувача"border="6" color="0" x="488" y="1" height="26" width="295"  name=bal_name_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="113" y="1" height="19" width="255" format="[general]"  name=pay_name height.autosize=yes edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.nilisnull=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="204" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="0" color="0" x="489" y="1" height="19" width="294" format="[general]"  name=bal_name edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.nilisnull=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="204" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes") 

@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxEditorsStringId.DefaultErrorText">
+    <value>Nieprawidłowa wartość</value>
+  </data>
+  <data name="ASPxEditorsStringId.RegExValidationErrorText">
+    <value>Sprawdzanie poprawności za pomocą wyrażenia regularnego zakończone niepowoedzeniem</value>
+  </data>
+  <data name="ASPxEditorsStringId.RequiredFieldErrorText">
+    <value>*</value>
+  </data>
+  <data name="ASPxEditorsStringId.Calendar_Today">
+    <value>Dziś</value>
+  </data>
+  <data name="ASPxEditorsStringId.Calendar_Clear">
+    <value>Wyczyść</value>
+  </data>
+  <data name="ASPxEditorsStringId.Calendar_OK">
+    <value>Zatwierdź</value>
+  </data>
+  <data name="ASPxEditorsStringId.Calendar_Cancel">
+    <value>Anuluj</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_OK">
+    <value>Zatwierdź</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_Cancel">
+    <value>Anuluj</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_GroupType">
+    <value>I,Lub,I Nie,Lub Nie</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_ClauseType">
+    <value>Równy,Różny,Większy,Większy lub równy,Mniejszy niż,Mniejszy lub równy,Pomiędzy,Nie jest między,Zawiera,Nie zawiera,Zaczyna się od,Kończy się na,Jest podobne do,Nie jest podobne do,Jest puste,Nie jest puste,Jeden z,Żaden z</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_BetweenAnd">
+    <value>I</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_AddConditionHint">
+    <value>Dodaje nowy warunek do grupy</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_RemoveConditionHint">
+    <value>Usuwa warunek</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_AddValueHint">
+    <value>Dodaje nowy element do listy</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_ClearFilter">
+    <value>Wyczyść</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_ShowFilterControl">
+    <value>Utwórz filtr</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_AddGroup">
+    <value>Dodaj grupę</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_AddCondition">
+    <value>Dodaj warunek</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_Remove">
+    <value>Usuń</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterConrol_Empty">
+    <value>&amp;lt;pusty&amp;gt;</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterConrol_EmptyEnter">
+    <value>&amp;lt;wprowadź wartość&amp;gt;</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_PopupHeaderText">
+    <value>Edytor filtru</value>
+  </data>
+</root>

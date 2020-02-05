@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="PrintingStringId.PageSetupMarginsRight" xml:space="preserve">
+    <value>Rechts:</value>
+  </data>
+  <data name="PrintingStringId.PageSetupMarginsCaptionFormat" xml:space="preserve">
+    <value>Marges in {0}</value>
+  </data>
+  <data name="PrintingStringId.ExportXls" xml:space="preserve">
+    <value>XLS bestand</value>
+  </data>
+  <data name="PrintingStringId.Open" xml:space="preserve">
+    <value>Openen</value>
+  </data>
+  <data name="PrintingStringId.Cancel" xml:space="preserve">
+    <value>Annuleren</value>
+  </data>
+  <data name="PrintingStringId.ToolBarCaption" xml:space="preserve">
+    <value>Afdrukvoorbeeld</value>
+  </data>
+  <data name="PrintingStringId.SendXps" xml:space="preserve">
+    <value>XPS bestand</value>
+  </data>
+  <data name="PrintingStringId.PageSetupPaperSize" xml:space="preserve">
+    <value>Papier grootte:</value>
+  </data>
+  <data name="PrintingStringId.ExportXlsx" xml:space="preserve">
+    <value>XLSX bestand</value>
+  </data>
+  <data name="PrintingStringId.PdfPasswordSecurityOptions_Title" xml:space="preserve">
+    <value>PDF wachtwoord beveiliging</value>
+  </data>
+  <data name="PrintingStringId.ParametersReset" xml:space="preserve">
+    <value>Leegmaken</value>
+  </data>
+  <data name="PrintingStringId.PageSetupOrientationCaption" xml:space="preserve">
+    <value>Afdrukstand:</value>
+  </data>
+  <data name="PrintingStringId.RepeatPassword_PermissionsPassword" xml:space="preserve">
+    <value>Rechten wachtwoord:</value>
+  </data>
+  <data name="PrintingStringId.PdfPasswordSecurityOptions_OpenPasswordHeader" xml:space="preserve">
+    <value>Document openen wachtwoord</value>
+  </data>
+  <data name="PrintingStringId.PdfPasswordSecurityOptions_PrintingPermissions" xml:space="preserve">
+    <value>Afdrukken toegestaan:</value>
+  </data>
+  <data name="PrintingStringId.PdfPasswordSecurityOptions_PermissionsPassword" xml:space="preserve">
+    <value>Rechten wijzigen wachtwoord:</value>
+  </data>
+  <data name="PrintingStringId.StatusBarCaption" xml:space="preserve">
+    <value>Statusbalk</value>
+  </data>
+  <data name="PrintingStringId.ExportMht" xml:space="preserve">
+    <value>MHT bestand</value>
+  </data>
+  <data name="PrintingStringId.ZoomToPageWidth" xml:space="preserve">
+    <value>Pagina breedte</value>
+  </data>
+  <data name="PrintingStringId.PdfPasswordSecurityOptions_EnableScreenReaders" xml:space="preserve">
+    <value>Tekst toegang voor scherm lezers voor slechtzienden toestaan</value>
+  </data>
+  <data name="PrintingStringId.FirstPage" xml:space="preserve">
+    <value>Eerste pagina</value>
+  </data>
+  <data name="PrintingStringId.RepeatPassword_OpenPassword_Note" xml:space="preserve">
+    <value>Bevestig het document openen wachtwoord. Vergeet dit wachtwoord niet, het is nodig om het document te openen.</value>
+  </data>
+  <data name="PrintingStringId.Save" xml:space="preserve">
+    <value>Opslaan</value>
+  </data>
+  <data name="PrintingStringId.PdfPasswordSecurityOptions_Permissions" xml:space="preserve">
+    <value>Rechten</value>
+  </data>
+  <data name="PrintingStringId.SendTxt" xml:space="preserve">
+    <value>Tekstbestand</value>
+  </data>
+  <data name="PrintingStringId.PageSetupMarginsTop" xml:space="preserve">
+    <value>Boven:</value>
+  </data>
+  <data name="PrintingStringId.PageSetup" xml:space="preserve">
+    <value>Pagina-instelling...</value>
+  </data>
+  <data name="PrintingStringId.DocumentMap" xml:space="preserve">
+    <value>Document map</value>
+  </data>
+  <data name="PrintingStringId.SendMht" xml:space="preserve">
+    <value>MHT bestand</value>
+  </data>
+  <data name="PrintingStringId.IncreaseZoom" xml:space="preserve">
+    <value>Inzoomen</value>
+  </data>
+  <data name="PrintingStringId.Information" xml:space="preserve">
+    <value>Informatie</value>
+  </data>
+  <data name="PrintingStringId.ExportHtm" xml:space="preserve">
+    <value>HTML bestand</value>
+  </data>
+  <data name="PrintingStringId.PreviousPage" xml:space="preserve">
+    <value>Vorige pagina</value>
+  </data>
+  <data name="PrintingStringId.LastPage" xml:space="preserve">
+    <value>Laatste pagina</value>
+  </data>
+  <data name="PrintingStringId.RepeatPassword_ConfirmationPasswordDoesNotMatch" xml:space="preserve">
+    <value>Het bevestigings wachtwoord komt niet overeen. Probeer het opnieuw.</value>
+  </data>
+  <data name="PrintingStringId.PageSetupPaperCaption" xml:space="preserve">
+    <value>Papier</value>
+  </data>
+  <data name="PrintingStringId.ExportTxt" xml:space="preserve">
+    <value>Tekst bestand</value>
+  </data>
+  <data name="PrintingStringId.PdfPasswordSecurityOptions_RestrictPermissions" xml:space="preserve">
+    <value>Wijzigen en afdrukken van het document beperken</value>
+  </data>
+  <data name="PrintingStringId.PageSetupPrinterPort" xml:space="preserve">
+    <value>Poort:</value>
+  </data>
+  <data name="PrintingStringId.PageSetupMarginsBottom" xml:space="preserve">
+    <value>Onderkant:</value>
+  </data>
+  <data name="PrintingStringId.PageSetupInches" xml:space="preserve">
+    <value>Aantal inch</value>
+  </data>
+  <data name="PrintingStringId.StopPageBuilding" xml:space="preserve">
+    <value>Stoppen</value>
+  </data>
+  <data name="PrintingStringId.ExportCsv" xml:space="preserve">
+    <value>CSV bestand</value>
+  </data>
+  <data name="PrintingStringId.RepeatPassword_PermissionsPassword_Note" xml:space="preserve">
+    <value>Bevestig het rechten wachtwoord. Vergeet dit wachtwoord niet, het is nodig om in de toekomst de rechten aan te passen.</value>
+  </data>
+  <data name="PrintingStringId.PageSetupWindowTitle" xml:space="preserve">
+    <value>Pagina-instelling</value>
+  </data>
+  <data name="PrintingStringId.ParametersSubmit" xml:space="preserve">
+    <value>Bevestigen</value>
+  </data>
+  <data name="PrintingStringId.PrintPreviewWindowCaption" xml:space="preserve">
+    <value>Afdrukvoorbeeld</value>
+  </data>
+  <data name="PrintingStringId.RepeatPassword_OpenPassword_Title" xml:space="preserve">
+    <value>Bevestig document openen wachtwoord</value>
+  </data>
+  <data name="PrintingStringId.ExportXps" xml:space="preserve">
+    <value>XPC bestand</value>
+  </data>
+  <data name="PrintingStringId.RepeatPassword_OpenPassword" xml:space="preserve">
+    <value>Document openen wachtwoord:</value>
+  </data>
+  <data name="PrintingStringId.PdfPasswordSecurityOptions_EnableCopying" xml:space="preserve">
+    <value>Kopiëren van tekst, afbeeldingen of andere inhoud toestaan</value>
+  </data>
+  <data name="PrintingStringId.PdfPasswordSecurityOptions_OpenPassword" xml:space="preserve">
+    <value>Document openen wachtwoord:</value>
+  </data>
+  <data name="PrintingStringId.PageSetupPrinterComment" xml:space="preserve">
+    <value>Commentaar:</value>
+  </data>
+  <data name="PrintingStringId.SendPdf" xml:space="preserve">
+    <value>PDF bestand</value>
+  </data>
+  <data name="PrintingStringId.GoToPage" xml:space="preserve">
+    <value>Pagina:</value>
+  </data>
+  <data name="PrintingStringId.ServerErrorMessage" xml:space="preserve">
+    <value>Het rapport is verlopen. Klik op 'Verversen' om het rapport opnieuw aan te maken.</value>
+  </data>
+  <data name="PrintingStringId.NextPage" xml:space="preserve">
+    <value>Volgende pagina</value>
+  </data>
+  <data name="PrintingStringId.Error" xml:space="preserve">
+    <value>Fout</value>
+  </data>
+  <data name="PrintingStringId.SendXlsx" xml:space="preserve">
+    <value>XLSX bestand</value>
+  </data>
+  <data name="PrintingStringId.Print" xml:space="preserve">
+    <value>Afdrukken...</value>
+  </data>
+  <data name="PrintingStringId.SendFile" xml:space="preserve">
+    <value>Verstuur via e-mail...</value>
+  </data>
+  <data name="PrintingStringId.Refresh" xml:space="preserve">
+    <value>Verversen</value>
+  </data>
+  <data name="PrintingStringId.ExportFile" xml:space="preserve">
+    <value>Exporteer document</value>
+  </data>
+  <data name="PrintingStringId.CurrentPageDisplayFormat" xml:space="preserve">
+    <value>Pagina {0} van {1}</value>
+  </data>
+  <data name="PrintingStringId.Zoom" xml:space="preserve">
+    <value>Zoomen</value>
+  </data>
+  <data name="PrintingStringId.SendXls" xml:space="preserve">
+    <value>XLS bestand</value>
+  </data>
+  <data name="PrintingStringId.PdfPasswordSecurityOptions_RequireOpenPassword" xml:space="preserve">
+    <value>Een wachtwoord vereisen om het document te openen</value>
+  </data>
+  <data name="PrintingStringId.ExportRtf" xml:space="preserve">
+    <value>RTF bestand</value>
+  </data>
+  <data name="PrintingStringId.ExportPdf" xml:space="preserve">
+    <value>PDF bestand</value>
+  </data>
+  <data name="PrintingStringId.SendCsv" xml:space="preserve">
+    <value>CSV bestand</value>
+  </data>
+  <data name="PrintingStringId.PageSetupOrientationPortrait" xml:space="preserve">
+    <value>Staand</value>
+  </data>
+  <data name="PrintingStringId.ExportImage" xml:space="preserve">
+    <value>Afbeelding</value>
+  </data>
+  <data name="PrintingStringId.SendImage" xml:space="preserve">
+    <value>Afbeelding</value>
+  </data>
+  <data name="PrintingStringId.PageSetupMarginsLeft" xml:space="preserve">
+    <value>Links:</value>
+  </data>
+  <data name="PrintingStringId.DecreaseZoom" xml:space="preserve">
+    <value>Uitzoomen</value>
+  </data>
+  <data name="PrintingStringId.ZoomToPageHeight" xml:space="preserve">
+    <value>Pagina hoogte</value>
+  </data>
+  <data name="PrintingStringId.PageSetupOrientationLandscape" xml:space="preserve">
+    <value>Liggend</value>
+  </data>
+  <data name="PrintingStringId.ZoomToWholePage" xml:space="preserve">
+    <value>Gehele pagina</value>
+  </data>
+  <data name="PrintingStringId.ZoomToTwoPages" xml:space="preserve">
+    <value>Twee pagina's</value>
+  </data>
+  <data name="PrintingStringId.RepeatPassword_PermissionsPassword_Title" xml:space="preserve">
+    <value>Bevestig rechten wachtwoord</value>
+  </data>
+  <data name="PrintingStringId.SendRtf" xml:space="preserve">
+    <value>RTF bestand</value>
+  </data>
+  <data name="PrintingStringId.PdfPasswordSecurityOptions_ChangingPermissions" xml:space="preserve">
+    <value>Toegestane wijzigingen:</value>
+  </data>
+  <data name="PrintingStringId.PrintDirect" xml:space="preserve">
+    <value>Snel afdrukken</value>
+  </data>
+  <data name="PrintingStringId.Scaling_Fit_End_Label" xml:space="preserve">
+    <value>pagina's breed</value>
+  </data>
+  <data name="PrintingStringId.Search_EmptyResult" xml:space="preserve">
+    <value>Uw zoek criteria heeft geen resultaat opgeleverd.</value>
+  </data>
+  <data name="PrintingStringId.Scaling_Fit_Start_Label" xml:space="preserve">
+    <value>Passend tot</value>
+  </data>
+  <data name="PrintingStringId.Scaling_ComboBoxEdit_Validation_Error" xml:space="preserve">
+    <value>De waarde is fout</value>
+  </data>
+  <data name="PrintingStringId.Scaling_Adjust_Start_Label" xml:space="preserve">
+    <value>Aanpassen tot</value>
+  </data>
+  <data name="PrintingStringId.Scaling" xml:space="preserve">
+    <value>Schaal</value>
+  </data>
+  <data name="PrintingStringId.Search" xml:space="preserve">
+    <value>Zoeken</value>
+  </data>
+  <data name="PrintingStringId.Scaling_ComboBoxEdit_Validation_OutOfRange_Error" xml:space="preserve">
+    <value>De waarde valt buiten het bereik</value>
+  </data>
+  <data name="PrintingStringId.Scaling_Adjust_End_Label" xml:space="preserve">
+    <value>normale grootte</value>
+  </data>
+</root>

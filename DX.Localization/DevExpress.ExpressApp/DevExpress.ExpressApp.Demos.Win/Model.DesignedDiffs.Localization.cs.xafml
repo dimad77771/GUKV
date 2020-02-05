@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="CategorizeImages" Caption="Kategorizovat obrázky" />
+      <Action Id="FillCategories" Caption="Vyplnit kategorie" />
+      <Action Id="ImagePreviewListMode" Caption="Režim seznamu náhledu obrázku" />
+      <Action Id="OpenCategory" Caption="Otevřít" />
+    </Actions>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="DevExpress.ExpressApp.Demos.Win.AssemblyImageSourceBrowser" Caption="Sestavit prohlížeč zdroje obrázku" />
+    <Class Name="DevExpress.ExpressApp.Demos.Win.CategoryString" Caption="Kategorie">
+      <OwnMembers>
+        <Member Name="Images" Caption="Obrázky" />
+        <Member Name="Name" Caption="Jméno" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Demos.Win.FileImageSourceBrowser" Caption="Prohlížeč zdroje souboru obrázku" />
+    <Class Name="DevExpress.ExpressApp.Demos.Win.ImageBrowserCategory" Caption="Kategorie prohlížeče obrázku">
+      <OwnMembers>
+        <Member Name="ChildCategories" Caption="Podřízená kategorie" />
+        <Member Name="Name" Caption="Jméno" />
+        <Member Name="Owner" Caption="Vlastník" />
+        <Member Name="ParentCategory" Caption="Nadřazená kategorie" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Demos.Win.ImageNode" Caption="Uzel obrázku">
+      <OwnMembers>
+        <Member Name="Image" Caption="Obrázek" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Demos.Win.ImagePreviewObject" Caption="Obrázek">
+      <OwnMembers>
+        <Member Name="Categories" Caption="Kategorie" />
+        <Member Name="Image12x12" Caption="Malý" />
+        <Member Name="Image16x16" Caption="Původní" />
+        <Member Name="Image32x32" Caption="Velký" />
+        <Member Name="Image48x48" Caption="Dialogové okno" />
+        <Member Name="ImageName" Caption="Název obrázku" />
+        <Member Name="OriginalImage" Caption="Původní obrázek" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Demos.Win.ImagesGroupNode" Caption="Obrázky uzlu skupiny">
+      <OwnMembers>
+        <Member Name="Images" Caption="Obrázky" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Demos.Win.ImageSourceBrowserBase" Caption="Prohlížeč zdroje obrázku">
+      <OwnMembers>
+        <Member Name="Categories" Caption="Kategorie" />
+        <Member Name="ImageCategories" Caption="Obrázek kategorií" />
+        <Member Name="ImageSourceName" Caption="Název zdroje obrázku" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <Views>
+    <DetailView Id="ImagePreviewObject_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="ImagePreviewObject" Caption="Objekt náhledu obrázku" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

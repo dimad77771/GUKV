@@ -1,0 +1,126 @@
+﻿<%@ master language="C#" autoeventwireup="true" inherits="SiteMaster, App_Web_site.master.cdcab7d2" %>
+
+<%@ Register Src="~/UserControls/ThemeSelector.ascx" TagPrefix="dx" TagName="ThemeSelector" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title>Єдина Інформаційна Система ДКВ м. Києва</title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/DXTheme.js") %>"></script>
+    <form runat="server">
+    <div class="page">
+        <div class="header">
+            <div style="float: right; padding-top: 2px;">
+                <dx:ThemeSelector ID="ThemeSelector" runat="server" />
+            </div>
+        </div>
+        <div class="clear hideSkiplink">
+            <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                <tr>
+                    <td>
+                        <div style="float: left; padding-top: 0px; width:inherit; ">
+                            <asp:Panel ID="PanelNavigation" runat="server" Width="100%">
+                                <dx:ASPxMenu ID="MainMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
+                                    <ItemStyle Paddings-PaddingLeft="5px" Paddings-PaddingRight="5px" />
+                                    <Items>
+                                        <dx:MenuItem NavigateUrl="~/Default.aspx" Text="Звіти"></dx:MenuItem>
+                                        <dx:MenuItem NavigateUrl="~/Objects/Objects.aspx" Text="Передача Прав"></dx:MenuItem>
+                                        <dx:MenuItem NavigateUrl="~/Balans/BalansObjects.aspx" Text="Об'єкти"></dx:MenuItem>
+                                        <dx:MenuItem NavigateUrl="~/Arenda/RentAgreements.aspx" Text="Оренда"></dx:MenuItem>
+                                        <dx:MenuItem NavigateUrl="~/Documents/DocRelations.aspx" Text="Документи"></dx:MenuItem>
+                                        <dx:MenuItem NavigateUrl="~/Finance/FinanceView.aspx" Text="Фін. Аналіз"></dx:MenuItem>
+                                        <dx:MenuItem NavigateUrl="~/Privatization/PrivatObjects.aspx" Text="Приватизація"></dx:MenuItem>
+                                        <dx:MenuItem NavigateUrl="~/OrendnaPlata/OrPlataByBalans.aspx" Text="Орендна плата"></dx:MenuItem>
+                                        <dx:MenuItem NavigateUrl="~/Assessment/AssessmentObjects.aspx" Text="Оцінка"></dx:MenuItem>
+                                        <dx:MenuItem NavigateUrl="~/Catalogue/AddrCatalogue.aspx" Text="Каталог"></dx:MenuItem>
+                                        <dx:MenuItem NavigateUrl="~/Reports1NF/Report1NFList.aspx" Text="Дистанційна Подача Звітів"></dx:MenuItem>
+                                        <dx:MenuItem NavigateUrl="~/UserGuide/UserGuide.aspx" Text="Довідка"></dx:MenuItem>
+                                    </Items>
+                                </dx:ASPxMenu>
+                            </asp:Panel>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div style="float: right; padding-top: 0px;">
+                            <asp:LoginView ID="LoginView1" runat="server">
+                                <AnonymousTemplate>
+                                    <dx:ASPxMenu ID="LoginMenu1" runat="server" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
+                                        <ItemStyle Paddings-PaddingLeft="6px" Paddings-PaddingRight="6px" />
+                                        <Items>
+                                            <dx:MenuItem NavigateUrl="~/Account/Login.aspx" Text="Увійти"></dx:MenuItem>
+                                            <dx:MenuItem NavigateUrl="~/Account/RecoverPwd.aspx" Text="?"></dx:MenuItem>
+                                        </Items>
+                                    </dx:ASPxMenu>
+                                </AnonymousTemplate>
+                                <LoggedInTemplate>
+                                    <table border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td valign="middle">
+                                                <div class="username">
+                                                    <asp:LoginName id="LoginName1" runat="server" FormatString ="{0}" /> &nbsp;
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <dx:ASPxMenu ID="LoginMenu2" runat="server" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
+                                                    <ItemStyle Paddings-PaddingLeft="6px" Paddings-PaddingRight="6px" />
+                                                    <Items>
+                                                        <dx:MenuItem NavigateUrl="~/Account/Logout.aspx" Text="Вийти"></dx:MenuItem>
+                                                        <dx:MenuItem NavigateUrl="~/Account/ChangePassword.aspx" Text="Пароль"></dx:MenuItem>
+                                                    </Items>
+                                                </dx:ASPxMenu>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </LoggedInTemplate>
+                                <RoleGroups>
+                                    <asp:RoleGroup Roles="Administrator">
+                                        <ContentTemplate>
+                                            <table border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td valign="middle">
+                                                        <div class="username">
+                                                            <asp:LoginName id="LoginName1" runat="server" FormatString ="{0}" /> &nbsp;
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <dx:ASPxMenu ID="LoginMenu2" runat="server" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
+                                                            <ItemStyle Paddings-PaddingLeft="5px" Paddings-PaddingRight="5px" />
+                                                            <Items>
+                                                                <dx:MenuItem NavigateUrl="~/Account/Logout.aspx" Text="Вийти"></dx:MenuItem>
+                                                                <dx:MenuItem NavigateUrl="~/Account/ChangePassword.aspx" Text="Пароль"></dx:MenuItem>
+                                                                <dx:MenuItem NavigateUrl="~/Account/Register.aspx" Text="+"></dx:MenuItem>
+                                                            </Items>
+                                                        </dx:ASPxMenu>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </ContentTemplate>
+                                    </asp:RoleGroup>
+                                </RoleGroups>
+                            </asp:LoginView>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        
+    </div>
+    </form>
+    <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/CommonScript.js") %>"></script>
+    <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jquery-1.8.3.js") %>"></script>
+    <%= StackExchange.Profiling.MiniProfiler.RenderIncludes() %> 
+</body>
+</html>

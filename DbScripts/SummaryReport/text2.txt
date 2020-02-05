@@ -1,0 +1,13 @@
+UPDATE arenda_payments SET arenda_archive_link_code = (select max(archive_link_code) from arch_arenda where arch_arenda.id = arenda_payments.arenda_id)
+
+update arenda_payments set balans_org_id = (select org_balans_id from arenda where arenda.id = arenda_payments.arenda_id)
+
+delete from org_by_period
+insert into org_by_period (period_id,org_id,org_occupation_id)
+select p.id,rbo.organization_id,rbo.rent_occupation_id 
+from rent_balans_org rbo
+left outer join dict_rent_period p on p.id > 0
+
+delete from DictSummaryReportSphere
+insert into DictSummaryReportSphere (id, name)
+select * from [dbo].[dict_rent_occupation]

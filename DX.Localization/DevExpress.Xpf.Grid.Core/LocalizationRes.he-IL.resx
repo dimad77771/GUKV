@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace">
+    </xsd:import>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0">
+                </xsd:element>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string">
+              </xsd:attribute>
+              <xsd:attribute name="type" type="xsd:string">
+              </xsd:attribute>
+              <xsd:attribute name="mimetype" type="xsd:string">
+              </xsd:attribute>
+              <xsd:attribute ref="xml:space">
+              </xsd:attribute>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string">
+              </xsd:attribute>
+              <xsd:attribute name="name" type="xsd:string">
+              </xsd:attribute>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1">
+                </xsd:element>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2">
+                </xsd:element>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1">
+              </xsd:attribute>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3">
+              </xsd:attribute>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4">
+              </xsd:attribute>
+              <xsd:attribute ref="xml:space">
+              </xsd:attribute>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1">
+                </xsd:element>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required">
+              </xsd:attribute>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="GridControlStringId.GridGroupPanelText">
+    <value>גרור כותרת שדה לכאן בכדי לקבץ לפי שדה זה</value>
+  </data>
+  <data name="GridControlStringId.ErrorWindowTitle">
+    <value>שגיאה</value>
+  </data>
+  <data name="GridControlStringId.InvalidRowExceptionMessage">
+    <value>האם ברצונך לתקן את הערך?</value>
+  </data>
+  <data name="GridControlStringId.GridOutlookIntervals">
+    <value>ישן יותר;בחודש הקודם;מוקדם יותר החודש;לפני שלושה שבועות;לפני שבועיים;בשבוע שעבר;;;;;;;;אתמול;היום;מחר;;;;;;;;בשבוע הבא;בעוד שבועיים;בעוד שלושה שבועות;מאוחר יותר החודש;בחודש הבא;מעבר לחודש הבא;</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupSummaryFormatString_Count">
+    <value>סך רשומות={0}</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupSummaryFormatString_Min">
+    <value>הערך המינימלי של  {1} הוא {0}</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupSummaryFormatString_Max">
+    <value>הערך המקסימלי של {1} הוא {0}</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupSummaryFormatString_Avg">
+    <value>הערך הממוצע של {1} הוא {0:#.##}</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupSummaryFormatString_Sum">
+    <value>הסכום של {1} הוא {0:#.##}</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatStringInSameColumn_Count">
+    <value>סך רשומות={0}</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatStringInSameColumn_Min">
+    <value>מינימום={0}</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatStringInSameColumn_Max">
+    <value>מקסימום={0}</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatStringInSameColumn_Avg">
+    <value>ממוצע={0:#.##}</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatStringInSameColumn_Sum">
+    <value>סכום={0:#.##}</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatString_Count">
+    <value>סך רשומות={0}</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatString_Min">
+    <value>הערך המינימלי של {1} הוא {0}</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatString_Max">
+    <value>הערך המקסימלי של {1} הוא {0}</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatString_Avg">
+    <value>הערך הממוצע של {1} הוא {0:#.##}</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatString_Sum">
+    <value>הסכום של {1} הוא {0:#.##}</value>
+  </data>
+  <data name="GridControlStringId.PopupFilterAll">
+    <value>(הכל)</value>
+  </data>
+  <data name="GridControlStringId.PopupFilterBlanks">
+    <value>(ריקים)</value>
+  </data>
+  <data name="GridControlStringId.PopupFilterNonBlanks">
+    <value>(לא ריקים)</value>
+  </data>
+  <data name="GridControlStringId.ColumnChooserCaption">
+    <value>בוחר השדות</value>
+  </data>
+  <data name="GridControlStringId.ColumnChooserDragText">
+    <value>גרור כותרת שדה לכאן בכדי לקבוע עיצוב מותאם אישית</value>
+  </data>
+  <data name="GridControlStringId.GridNewRowText">
+    <value>לחץ להוספת רשומה חדשה</value>
+  </data>
+  <data name="GridControlStringId.MenuGroupPanelFullCollapse">
+    <value>קבץ הכל</value>
+  </data>
+  <data name="GridControlStringId.MenuGroupPanelFullExpand">
+    <value>הרחב הכל</value>
+  </data>
+  <data name="GridControlStringId.MenuGroupPanelClearGrouping">
+    <value>נקה קיבוץ</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortAscending">
+    <value>מיין בסדר עולה</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortDescending">
+    <value>מיין בסדר יורד</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortBySummaryAscending">
+    <value>סדר עולה</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortBySummaryDescending">
+    <value>סדר יורד</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnClearSorting">
+    <value>נקה מיון</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnUnGroup">
+    <value>בטל קיבוץ</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroup">
+    <value>קבץ לפי שדה זה</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnShowGroupPanel">
+    <value>הצג אזור קיבוץ שדות</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnHideGroupPanel">
+    <value>הסתר אזור קיבוץ שדות</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnResetGroupSummarySort">
+    <value>נקה מיוני סיכומים</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortGroupBySummaryMenu">
+    <value>מיין על פי סיכומים</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupSummarySortFormat">
+    <value>{1} לפי '{0}' - {2}</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupSummaryEditor">
+    <value>עורך סיכומי קבוצות...</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnShowColumnChooser">
+    <value>הצג את בוחר השדות</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnHideColumnChooser">
+    <value>הסתר את בוחר השדות</value>
+  </data>
+  <data name="GridControlStringId.MenuFooterSum">
+    <value>סכום</value>
+  </data>
+  <data name="GridControlStringId.MenuFooterMax">
+    <value>מקסימום</value>
+  </data>
+  <data name="GridControlStringId.MenuFooterMin">
+    <value>מינימום</value>
+  </data>
+  <data name="GridControlStringId.MenuFooterCount">
+    <value>ספירה</value>
+  </data>
+  <data name="GridControlStringId.MenuFooterAverage">
+    <value>ממוצע</value>
+  </data>
+  <data name="GridControlStringId.MenuFooterCustomize">
+    <value>התאם אישית...</value>
+  </data>
+  <data name="GridControlStringId.GroupSummaryEditorFormCaption">
+    <value>סיכומים לקבוצה</value>
+  </data>
+  <data name="GridControlStringId.TotalSummaryEditorFormCaption">
+    <value>סה"כ עבור '{0}'</value>
+  </data>
+  <data name="GridControlStringId.SummaryEditorFormItemsTabCaption">
+    <value>פריטים</value>
+  </data>
+  <data name="GridControlStringId.SummaryEditorFormOrderTabCaption">
+    <value>סדר</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnBestFit" xml:space="preserve">
+    <value>התאמה מיטבית</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnBestFitColumns" xml:space="preserve">
+    <value>התאמה מיטבית (כל השדות)</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnUnboundExpressionEditor" xml:space="preserve">
+    <value>עורך הביטויים...</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnClearFilter" xml:space="preserve">
+    <value>נקה מסנן</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnFilterEditor" xml:space="preserve">
+    <value>עריכת מסנן...</value>
+  </data>
+  <data name="GridControlStringId.FilterEditorTitle" xml:space="preserve">
+    <value>עריכת מסנן</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnFixedStyle">
+    <value>עיצוב קבוע</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnFixedNone">
+    <value>ללא</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnFixedLeft">
+    <value>שמאל</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnFixedRight">
+    <value>ימין</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupInterval">
+    <value>מרווחים בין קבוצות</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupIntervalNone">
+    <value>ללא</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupIntervalDay">
+    <value>יום</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupIntervalMonth">
+    <value>חודש</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupIntervalYear">
+    <value>שנה</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupIntervalSmart">
+    <value>חכם</value>
+  </data>
+</root>

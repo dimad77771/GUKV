@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="btnCancel.AccessibleName" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="btnOk.Text" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="btnOk.AccessibleName" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Propriétés du tableau</value>
+  </data>
+  <data name="tableTab.Text" xml:space="preserve">
+    <value>&amp;Table</value>
+  </data>
+  <data name="rowTab.Text" xml:space="preserve">
+    <value>&amp;Ligne</value>
+  </data>
+  <data name="columnTab.Text" xml:space="preserve">
+    <value>&amp;Colonne</value>
+  </data>
+  <data name="cellTab.Text" xml:space="preserve">
+    <value>C&amp;ellule</value>
+  </data>
+  <data name="lblTableSize.Text" xml:space="preserve">
+    <value>Taille</value>
+  </data>
+  <data name="lblTableAlignment.Text" xml:space="preserve">
+    <value>Alignement</value>
+  </data>
+  <data name="rgTableAlignment.Properties.Items" xml:space="preserve">
+    <value>&amp;Gauche</value>
+  </data>
+  <data name="rgTableAlignment.Properties.Items1" xml:space="preserve">
+    <value>&amp;Au centre</value>
+  </data>
+  <data name="rgTableAlignment.Properties.Items2" xml:space="preserve">
+    <value>&amp;Droite</value>
+  </data>
+  <data name="btnTableOptions.Text" xml:space="preserve">
+    <value>&amp;Options...</value>
+  </data>
+  <data name="lblIndentFromLeft.Text" xml:space="preserve">
+    <value>&amp;Retrait à gauche:</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>438, 314</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>412, 236</value>
+  </data>
+  <data name="btnTableOptions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>298, 177</value>
+  </data>
+  <data name="btnOk.Location" type="System.Drawing.Point, System.Drawing">
+    <value>264, 254</value>
+  </data>
+  <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>345, 254</value>
+  </data>
+  <data name="tableSizeControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>390, 25</value>
+  </data>
+  <data name="lblIndentFromLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>278, 81</value>
+  </data>
+  <data name="spnIndentFromLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>278, 100</value>
+  </data>
+  <data name="lblRowSize.Text" xml:space="preserve">
+    <value>Taille</value>
+  </data>
+  <data name="lblRowNumber.Text" xml:space="preserve">
+    <value>Ligne</value>
+  </data>
+  <data name="lblRowOptions.Text" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="chkCantSplit.Properties.Caption" xml:space="preserve">
+    <value>Autoriser le &amp;fractionnement des lignes sur plusieurs pages</value>
+  </data>
+  <data name="chkHeader.Properties.Caption" xml:space="preserve">
+    <value>&amp;Répéter en haut de chaque page en tant que ligne d'en-tête</value>
+  </data>
+  <data name="tableRowHeightControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>390, 25</value>
+  </data>
+  <data name="btnPreviousRow.Text" xml:space="preserve">
+    <value>Ligne &amp;précédente</value>
+  </data>
+  <data name="btnPreviousRow.AccessibleName" xml:space="preserve">
+    <value>Ligne précédente</value>
+  </data>
+  <data name="btnNextRow.Text" xml:space="preserve">
+    <value>Ligne s&amp;uivante</value>
+  </data>
+  <data name="btnNextRow.AccessibleName" xml:space="preserve">
+    <value>Ligne suivante</value>
+  </data>
+  <data name="lblColumnSize.Text" xml:space="preserve">
+    <value>Taille</value>
+  </data>
+  <data name="lblColumn.Text" xml:space="preserve">
+    <value>Colonne</value>
+  </data>
+  <data name="btnPreviousColumn.Text" xml:space="preserve">
+    <value>Colonne p&amp;récédente</value>
+  </data>
+  <data name="btnPreviousColumn.AccessibleName" xml:space="preserve">
+    <value>Colonne précédente</value>
+  </data>
+  <data name="btnNextColumn.Text" xml:space="preserve">
+    <value>Colonne &amp;suivante</value>
+  </data>
+  <data name="btnNextColumn.AccessibleName" xml:space="preserve">
+    <value>Colonne suivante</value>
+  </data>
+  <data name="columnSizeControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>390, 25</value>
+  </data>
+  <data name="cellSizeControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>390, 25</value>
+  </data>
+  <data name="btnCellOptions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>298, 177</value>
+  </data>
+  <data name="lblCellSize.Text" xml:space="preserve">
+    <value>Taille</value>
+  </data>
+  <data name="lblCellVerticalAlighment.Text" xml:space="preserve">
+    <value>Alignement vertical</value>
+  </data>
+  <data name="rgCellVerticalAlignment.Properties.Items" xml:space="preserve">
+    <value>&amp;Haut</value>
+  </data>
+  <data name="rgCellVerticalAlignment.Properties.Items1" xml:space="preserve">
+    <value>&amp;Au centre</value>
+  </data>
+  <data name="rgCellVerticalAlignment.Properties.Items2" xml:space="preserve">
+    <value>&amp;Bas</value>
+  </data>
+  <data name="btnCellOptions.Text" xml:space="preserve">
+    <value>&amp;Options...</value>
+  </data>
+  <data name="btnCellOptions.AccessibleName" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="btnTableOptions.AccessibleName" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="lblTableSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>394, 13</value>
+  </data>
+  <data name="lblTableAlignment.Size" type="System.Drawing.Size, System.Drawing">
+    <value>394, 13</value>
+  </data>
+  <data name="lblRowSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>394, 13</value>
+  </data>
+  <data name="lblRowOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>394, 13</value>
+  </data>
+  <data name="lblColumnSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>394, 13</value>
+  </data>
+  <data name="lblCellSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>394, 13</value>
+  </data>
+  <data name="lblCellVerticalAlighment.Size" type="System.Drawing.Size, System.Drawing">
+    <value>394, 13</value>
+  </data>
+</root>

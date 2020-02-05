@@ -1,0 +1,2157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 1.3
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">1.3</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1">this is my long string</data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        [base64 mime encoded serialized .NET Framework object]
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        [base64 mime encoded string representing a byte array form of the .NET Framework object]
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used forserialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ChartStringId.SeriesPrefix">
+    <value>Reeks </value>
+  </data>
+  <data name="ChartStringId.PalettePrefix">
+    <value>Palet </value>
+  </data>
+  <data name="ChartStringId.XYDiagramPanePrefix">
+    <value>Deelvenster </value>
+  </data>
+  <data name="ChartStringId.SecondaryAxisXPrefix">
+    <value>Secundaire X-as</value>
+  </data>
+  <data name="ChartStringId.SecondaryAxisYPrefix">
+    <value>Secundaire Y-as </value>
+  </data>
+  <data name="ChartStringId.ConstantLinePrefix">
+    <value>Constantelijn </value>
+  </data>
+  <data name="ChartStringId.ScaleBreakPrefix">
+    <value>Schaalonderbreking </value>
+  </data>
+  <data name="ChartStringId.AnnotationPrefix">
+    <value>Aantekening </value>
+  </data>
+  <data name="ChartStringId.ImageAnnotationPrefix">
+    <value>Afbeeldingsaantekening </value>
+  </data>
+  <data name="ChartStringId.TextAnnotationPrefix">
+    <value>Aantekening met tekst </value>
+  </data>
+  <data name="ChartStringId.StripPrefix">
+    <value>Strook </value>
+  </data>
+  <data name="ChartStringId.StackedGroupPrefix">
+    <value>Groep</value>
+  </data>
+  <data name="ChartStringId.ValueMember">
+    <value>Waarde</value>
+  </data>
+  <data name="ChartStringId.WeightMember">
+    <value>Gewicht</value>
+  </data>
+  <data name="ChartStringId.LowValueMember">
+    <value>Laag</value>
+  </data>
+  <data name="ChartStringId.HighValueMember">
+    <value>Hoog</value>
+  </data>
+  <data name="ChartStringId.OpenValueMember">
+    <value>Openen</value>
+  </data>
+  <data name="ChartStringId.CloseValueMember">
+    <value>Sluiten</value>
+  </data>
+  <data name="ChartStringId.AutocreatedSeriesName">
+    <value>Automatisch gemaakte reeks</value>
+  </data>
+  <data name="ChartStringId.DefaultDataFilterName">
+    <value>Gegevensfilter</value>
+  </data>
+  <data name="ChartStringId.DefaultChartTitle">
+    <value>Grafiektitel</value>
+  </data>
+  <data name="ChartStringId.DefaultAnnotation">
+    <value>Aantekening</value>
+  </data>
+  <data name="ChartStringId.DefaultSeriesPointFilterName">
+    <value>PuntenreeksFilter</value>
+  </data>
+  <data name="ChartStringId.MsgEmptyArrayOfValues">
+    <value>De matrix met waarden is leeg.</value>
+  </data>
+  <data name="ChartStringId.MsgSeriesViewDoesNotExist">
+    <value>De SeriesView {0} bestaat niet.</value>
+  </data>
+  <data name="ChartStringId.MsgEquallySpacedItemsNotUsable">
+    <value>Deze eigenschap kan niet worden gebruikt als de eigenschap Direction is ingesteld op {0}.</value>
+  </data>
+  <data name="ChartStringId.MsgItemNotInCollection">
+    <value>Het opgegeven item komt niet voor in de verzameling.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectValue">
+    <value>Onjuiste waarde "{0}" voor het argument "{1}".</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatiblePointType">
+    <value>Het type van het punt "{0}" is niet compatibel met de schaal {1}.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleArgumentDataMember">
+    <value>Het type van het argumentgegevenslid "{0}" is niet compatibel met de schaal {1}.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleValueDataMember">
+    <value>Het type van het waardegegevenslid "{0}" is niet compatibel met de schaal {1}.</value>
+  </data>
+  <data name="ChartStringId.MsgDesignTimeOnlySetting">
+    <value>Deze eigenschap kan niet tijdens runtime worden aangepast.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidDataSource">
+    <value>Ongeldig type gegevensbron (er zijn geen ondersteunde interfaces geïmplementeerd).</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectDataMember">
+    <value>De gegevensbron bevat geen gegevenslid met de naam "{0}".</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidSortingKey">
+    <value>U kunt de waarde van de sorteersleutel niet instellen op {0}.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidFilterCondition">
+    <value>De voorwaarde {0} kan niet worden toegepast op de gegevens "{1}".</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectDataAdapter">
+    <value>Het object {0} is geen gegevensadapter.</value>
+  </data>
+  <data name="ChartStringId.MsgDataSnapshot">
+    <value>De momentopname van de gegevens is gemaakt. Alle reeksgegevens in de grafiek zijn nu statisch. Dit houdt ook in dat de grafiek nu niet gebonden is.
+
+Opmerking: U kunt deze bewerking ongedaan maken door in de ontwerpmodus van Visual Studio op Ctrl+Z te drukken.</value>
+  </data>
+  <data name="ChartStringId.MsgModifyDefaultPaletteError">
+    <value>Het standaardpalet kan niet worden gewijzigd.</value>
+  </data>
+  <data name="ChartStringId.MsgAddExistingPaletteError">
+    <value>Het palet met de naam {0} bestaat al in de opslagplaats.</value>
+  </data>
+  <data name="ChartStringId.MsgInternalPropertyChangeError">
+    <value>Deze eigenschap is alleen bedoeld voor intern gebruik. U kunt de waarde ervan niet wijzigen.</value>
+  </data>
+  <data name="ChartStringId.MsgPaletteNotFound">
+    <value>De grafiek bevat geen palet met de naam {0}.</value>
+  </data>
+  <data name="ChartStringId.MsgLabelSettingRuntimeError">
+    <value>De eigenschap "Label" kan niet tijdens runtime worden ingesteld.</value>
+  </data>
+  <data name="ChartStringId.MsgPointOptionsSettingRuntimeError">
+    <value>De eigenschap "PointOptions" kan niet tijdens runtime worden ingesteld.</value>
+  </data>
+  <data name="ChartStringId.MsgLegendPointOptionsSettingRuntimeError">
+    <value>De eigenschap "LegendPointOptions" kan niet tijdens runtime worden ingesteld.</value>
+  </data>
+  <data name="ChartStringId.MsgSynchronizePointOptionsSettingRuntimeError">
+    <value>De eigenschap "SynchronizePointOptions" kan niet tijdens runtime worden ingesteld.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectNumericPrecision">
+    <value>De precisie moet groter zijn dan of gelijk zijn aan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisThickness">
+    <value>De asdikte moet groter zijn dan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBarWidth">
+    <value>De staafbreedte moet groter zijn dan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBarDepth">
+    <value>De staafdiepte moet groter zijn dan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLineWidth">
+    <value>De lijndikte moet groter zijn dan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAreaWidth">
+    <value>De breedte van het vlak moet groter zijn dan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBorderThickness">
+    <value>De randbreedte moet groter zijn dan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectChartTitleIndent">
+    <value>De inspringing voor de titel moet groter zijn dan of gelijk zijn aan 0 en kleiner zijn dan 1000.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLegendMarkerSize">
+    <value>De afmeting van de legendamarkering moet groter zijn dan 0 en kleiner dan 1000.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLegendSpacingVertical">
+    <value>De verticale afstand voor de legenda moet groter zijn dan of gelijk zijn aan 0 en kleiner zijn dan 1000.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLegendSpacingHorizontal">
+    <value>De horizontale afstand voor de legenda moet groter zijn dan of gelijk zijn aan 0 en kleiner zijn dan 1000.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectMarkerSize">
+    <value>De afmeting van de markering moet groter zijn dan 1.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectMarkerStarPointCount">
+    <value>Het aantal sterpunten moet groter zijn dan 3 en kleiner zijn dan 101.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPieSeriesLabelColumnIndent">
+    <value>De kolominspringwaarde moet groter zijn dan of gelijk zijn aan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectRangeBarSeriesLabelIndent">
+    <value>De inspringing moet groter zijn dan of gelijk zijn aan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPercentPrecision">
+    <value>De precisie van het percentage moet groter zijn dan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPercentageAccuracy">
+    <value>De nauwkeurigheid van het percentage moet groter zijn dan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesLabelLineLength">
+    <value>De lijnlengte moet groter zijn dan of gelijk zijn aan 0 en kleiner zijn dan 1000.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStripConstructorParameters">
+    <value> De minimum- en maximumlimieten van de strip kunnen niet gelijk zijn.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStripLimitAxisValue">
+    <value>De eigenschap AxisValue kan niet op NULL worden ingesteld voor het StripLimit-object.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStripMinLimit">
+    <value>De minimumlimiet van de strook moet kleiner zijn dan de maximumlimiet.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStripMaxLimit">
+    <value>De maximumlimiet van de strook moet groter zijn dan de minimumlimiet.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLineThickness">
+    <value>De lijndikte moet groter zijn dan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectShadowSize">
+    <value>De schaduwgrootte moet groter zijn dan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTickmarkThickness">
+    <value>De dikte van het maatstreepje moet groter zijn dan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTickmarkLength">
+    <value>De lengte van het maatstreepje moet groter zijn dan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectMinorCount">
+    <value>Het aantal secundaire maatstreepjes moet groter zijn dan 0 en kleiner zijn dan 100.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTickmarkMinorThickness">
+    <value>De dikte van het secundaire maatstreepje moet groter zijn dan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTickmarkMinorLength">
+    <value>De lengte van het secundaire maatstreepje moet groter zijn dan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPercentValue">
+    <value>Het percentage moet groter zijn dan of gelijk zijn aan 0 en kleiner zijn dan of gelijk zijn aan 100.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectHeightToWidthRatioValue">
+    <value>Onjuiste waarde voor de eigenschap HeightToWidthRatio. Waarde moet in bereik 0,1;10 liggen.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPointDistance">
+    <value>De puntafstand moet groter zijn dan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSimpleDiagramDimension">
+    <value>De afmeting van een eenvoudig diagram moet groter zijn dan 0 en kleiner zijn dan 100.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStockLevelLineLengthValue">
+    <value>De lijnlengte voor het aandelenniveau moet groter zijn dan of gelijk zijn aan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectReductionColorValue">
+    <value>De waarde van de reductiekleur mag niet leeg zijn.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLabelAngle">
+    <value>De hoek van het label moet groter zijn dan of gelijk zijn aan -360 en kleiner zijn dan of gelijk zijn aan 360.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectImageFormat">
+    <value>Kan grafiek niet exporteren naar de opgegeven afbeeldingindeling.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectImageBounds">
+    <value>Kan geen afbeelding voor de opgegeven grootte maken.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectUseImageUrlProperty">
+    <value>De eigenschap ImageUrl kan alleen worden gebruikt voor de WebChartControl. Gebruik de eigenschap Image.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTaskLinkMinIndent">
+    <value>De minimale inspringing voor de taakkoppeling moet groter zijn dan of gelijk zijn aan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectArrowWidth">
+    <value>De pijlbreedte moet altijd oneven zijn en groter zijn dan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectArrowHeight">
+    <value>De pijlhoogte moet groter zijn dan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgEmptyArgument">
+    <value>Een argument kan niet leeg zijn.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectValueDataMemberCount">
+    <value>U moet {0} waardegegevensleden opgeven voor de huidige reeksweergave.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectShapeFillet">
+    <value>De vormafronding moet groter zijn dan of gelijk zijn aan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAnnotationHeight">
+    <value>De hoogte van de aantekening moet groter zijn dan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAnnotationWidth">
+    <value>De breedte van de aantekening moet groter zijn dan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTextAnnotationAngle">
+    <value>De hoek van de aantekening moet groter zijn dan of gelijk zijn aan -360 en kleiner zijn dan of gelijk zijn aan 360.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectRelativePositionConnectorLength">
+    <value>De lengte van de verbindingslijn moet groter zijn dan of gelijk zijn aan 0 en kleiner zijn dan 1000.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectRelativePositionAngle">
+    <value>De hoek moet groter zijn dan of gelijk zijn aan -360 en kleiner zijn dan of gelijk zijn aan 360.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisCoordinateAxisValue">
+    <value>Aswaarde kan niet op NULL worden ingesteld voor het object AxisCoordinate.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAnnotationZOrder">
+    <value>De Z-volgorde moet groter zijn dan of gelijk zijn aan 0 en kleiner zijn dan 100.</value>
+  </data>
+  <data name="ChartStringId.MsgNullPaneAnchorPointPane">
+    <value>Deelvenster kan niet op NULL worden ingesteld voor het object PaneAnchorPoint.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPaneAnchorPointPane">
+    <value>Kan het deelvenster van PaneAnchorPoint niet instellen, omdat het opgegeven deelvenster geen standaarddeelvenster is en niet in de verzameling deelvensters van het diagram voorkomt.</value>
+  </data>
+  <data name="ChartStringId.MsgNullAxisXCoordinateAxis">
+    <value>As kan niet op NULL worden ingesteld voor het object AxisXCoordinate.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisXCoordinateAxis">
+    <value>Kan de Y-as van AxisXCoordinate niet instellen, omdat de opgegeven as geen primaire as is en niet in de verzameling secundaire X-assen van het diagram voorkomt.</value>
+  </data>
+  <data name="ChartStringId.MsgNullAxisYCoordinateAxis">
+    <value>As kan niet op NULL worden ingesteld voor het object AxisYCoordinate.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisYCoordinateAxis">
+    <value>Kan de Y-as van AxisYCoordinate niet instellen, omdat de opgegeven as geen primaire as is en niet in de verzameling secundaire Y-assen van het diagram voorkomt.</value>
+  </data>
+  <data name="ChartStringId.MsgNullAnchorPointSeriesPoint">
+    <value>Series punt kan niet null zijn voor het SeriesPointAncherPoint object.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAnchorPointSeriesPoint">
+    <value>Kan het serie punt niet toevoegen, omdat het aan een serie moet behoren en de serie moet in de grafiek aanwezig zijn.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectFreePositionDockTarget">
+    <value>Er is een onjuiste waarde opgegeven. Een dokdoel kan alleen een deelvenster zijn of NULL zijn (het grafiekbesturingselement zelf).</value>
+  </data>
+  <data name="ChartStringId.MsgPaletteEditingIsntAllowed">
+    <value>Bewerken is niet toegestaan!</value>
+  </data>
+  <data name="ChartStringId.MsgPaletteDoubleClickToEdit">
+    <value>Dubbelklik om te wijzigen...</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidPaletteName">
+    <value>Kan geen palet zonder naam (\"\") aan de opslagplaats toevoegen. Geef een naam voor het palet op.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidScaleType">
+    <value>De opgegeven waarde voor de conversie naar de interne weergave van de schaal is niet compatibel met het huidige schaaltype.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTransformationMatrix">
+    <value>Onjuiste transformatiematrix.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPerspectiveAngle">
+    <value>De perspectiefhoek moet groter zijn dan of gelijk zijn aan 0 en kleiner zijn dan 180.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPieDepth">
+    <value>De taartdiepte moet groter zijn dan 0 en kleiner zijn dan of gelijk zijn aan 100, aangezien de waarde wordt gemeten als percentage.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesDistance">
+    <value>De reeksafstand moet groter zijn dan of gelijk zijn aan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesDistanceFixed">
+    <value>De vaste reeksafstand moet groter zijn dan of gelijk zijn aan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesIndentFixed">
+    <value>De vaste reeksinspringing moet groter zijn dan of gelijk zijn aan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPlaneDepthFixed">
+    <value>De vaste vlakdiepte moet groter zijn dan of gelijk zijn aan 1.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectGridSpacing">
+    <value>De rasterafstand moet groter zijn dan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleArgumentScaleType">
+    <value>Het argumentschaaltype {0} is niet compatibel met de reeksweergave {1}.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleValueScaleType">
+    <value>Het waardeschaaltype {0} is niet compatibel met de reeksweergave {1}.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleSummaryFunction">
+    <value>De samenvattingsfunctie '{0}' is niet compatibel met de schaal {1}.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectConstantLineAxisValue">
+    <value>Aswaarde kan niet op NULL worden ingesteld voor het object ConstantLine.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectCustomAxisLabelAxisValue">
+    <value>Aswaarde kan niet op NULL worden ingesteld voor het object CustomAxisLabel.</value>
+  </data>
+  <data name="ChartStringId.Msg3DRotationToolTip">
+    <value>Gebruik CTRL+linkermuisknop om grafiek te draaien.</value>
+  </data>
+  <data name="ChartStringId.Msg3DScrollingToolTip">
+    <value>Gebruik CTRL+middelste muisknop (wiel) om de kaart te schuiven.</value>
+  </data>
+  <data name="ChartStringId.Msg2DScrollingToolTip">
+    <value>Gebruik CTRL+linkermuisknop om grafiek te schuiven.</value>
+  </data>
+  <data name="ChartStringId.Msg2DPieExplodingToolTip">
+    <value>Gebruik CTRL+linkermuisknop om segmenten uit te vouwen of samen te vouwen.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPadding">
+    <value>De opvulling moet groter zijn dan of gelijk zijn aan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectMargins">
+    <value>De marge moet groter zijn dan of gelijk zijn aan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidZeroAxisAlignment">
+    <value>De uitlijning kan niet voor de tweede as worden ingesteld op Alignment.Zero.</value>
+  </data>
+  <data name="ChartStringId.MsgNullSeriesViewAxisX">
+    <value>De X-as van de reeksweergave kan niet op NULL worden ingesteld.</value>
+  </data>
+  <data name="ChartStringId.MsgNullSeriesViewAxisY">
+    <value>De Y-as van de reeksweergave kan niet op NULL worden ingesteld.</value>
+  </data>
+  <data name="ChartStringId.MsgNullSeriesViewPane">
+    <value>Het deelvenster van de reeksweergave kan niet worden ingesteld op NULL.</value>
+  </data>
+  <data name="ChartStringId.MsgNonExistentSeriesViewAxisX">
+    <value>Kan de X-as van de reeksweergave niet instellen, omdat de opgegeven secundaire as niet in de verzameling secundaire X-assen van het diagram voorkomt.</value>
+  </data>
+  <data name="ChartStringId.MsgNonExistentSeriesViewAxisY">
+    <value>Kan de Y-as van de reeksweergave niet instellen, omdat de opgegeven secundaire as niet in de verzameling secundaire Y-assen van het diagram voorkomt.</value>
+  </data>
+  <data name="ChartStringId.MsgNonExistentSeriesViewPane">
+    <value>Kan het deelvenster van de reeksweergave niet instellen, omdat het opgegeven deelvenster niet in de verzameling deelvensters van het diagram voorkomt.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesViewPane">
+    <value>Kan het deelvenster van de reeksweergave niet instellen, omdat het opgegeven deelvenster geen standaarddeelvenster is en niet in de verzameling deelvensters van het diagram voorkomt.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesViewAxisX">
+    <value>Kan de X-as van de reeksweergave niet instellen, omdat de opgegeven as geen primaire as is en niet in de verzameling secundaire X-assen van het diagram voorkomt.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesViewAxisY">
+    <value>Kan de Y-as van de reeksweergave niet instellen, omdat de opgegeven as geen primaire as is en niet in de verzameling secundaire Y-assen van het diagram voorkomt.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectParentSeriesPointOwner">
+    <value>De eigenaar van het bovenliggende reekspunt kan niet NULL zijn en moet van het type Reeks zijn.</value>
+  </data>
+  <data name="ChartStringId.MsgSeriesViewNotSupportRelations">
+    <value>Deze reeksweergave ondersteunt geen relaties.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectChildSeriesPointOwner">
+    <value>De eigenaar van het onderliggende reekspunt kan niet NULL zijn en moet van het type Reeks zijn.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectChildSeriesPointID">
+    <value>De id van de onderliggende reekspunt moet positief of gelijk aan nul zijn.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectIndentFromMarker">
+    <value>De inspringwaarde moet groter zijn dan of gelijk zijn aan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesOfParentAndChildPoints">
+    <value>Bovenliggende en onderliggende punten moeten tot dezelfde reeks behoren.</value>
+  </data>
+  <data name="ChartStringId.MsgSelfRelatedSeriesPoint">
+    <value>Reekspunt kan geen relatie met zichzelf hebben.</value>
+  </data>
+  <data name="ChartStringId.MsgSeriesPointRelationAlreadyExists">
+    <value>De verzameling SeriesPointRelations bevat deze relatie al.</value>
+  </data>
+  <data name="ChartStringId.MsgChildSeriesPointNotExist">
+    <value>Id {0} van onderliggende reekspunt bestaat niet.</value>
+  </data>
+  <data name="ChartStringId.MsgRelationChildPointIDNotUnique">
+    <value>ChildPointID van relatie moet uniek zijn.</value>
+  </data>
+  <data name="ChartStringId.MsgSeriesPointIDNotUnique">
+    <value>De ID van de reekspunt moet uniek zijn.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectFont">
+    <value>Lettertype kan niet NULL zijn</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectScrollBarThickness">
+    <value>De dikte van de schuifbalk moet groter zijn dan of gelijk zijn aan 3 en kleiner zijn dan of gelijk zijn aan 25.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectZoomPercent">
+    <value>Het zoompercentage moet groter zijn dan 0 en kleiner zijn dan of gelijk zijn aan {0}.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectHorizontalScrollPercent">
+    <value>Het percentage voor horizontaal schuiven moet groter zijn dan of gelijk zijn aan -{0} en kleiner zijn dan of gelijk zijn aan {0}.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectVerticalScrollPercent">
+    <value>Het percentage voor verticaal schuiven moet groter zijn dan of gelijk zijn aan -{0} en kleiner zijn dan of gelijk zijn aan {0}.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAnchorPoint">
+    <value>Ankerpunt Ankerpunt kan niet NULL zijn.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectShapePosition">
+    <value>Vormpositie kan niet NULL zijn.</value>
+  </data>
+  <data name="ChartStringId.MsgUnregisterGroupError">
+    <value>De registratie van deze groep is al ongedaan gemaakt.</value>
+  </data>
+  <data name="ChartStringId.MsgUnregisterPageError">
+    <value>De registratie van deze pagina is al ongedaan gemaakt.</value>
+  </data>
+  <data name="ChartStringId.MsgWizardAbsractPageType">
+    <value>Omdat {0} abstract is, kan een object van dit type niet worden geïnstantieerd en worden toegevoegd als wizardpagina.</value>
+  </data>
+  <data name="ChartStringId.MsgWizardIncorrectBasePageType">
+    <value>{0} moet worden overgenomen van klasse {1}.</value>
+  </data>
+  <data name="ChartStringId.MsgWizardNonUniquePageType">
+    <value>De pagina van type {0} is al geregistreerd. Het is niet mogelijk om meerdere pagina's van hetzelfde type te registreren.</value>
+  </data>
+  <data name="ChartStringId.MsgWizardNonUniqueGroupName">
+    <value>De groep met de naam {0} is al geregistreerd.</value>
+  </data>
+  <data name="ChartStringId.MsgOrderArrayLengthMismatch">
+    <value>De lengte van de volgordematrix is niet gelijk aan het totale aantal geregistreerde elementen.</value>
+  </data>
+  <data name="ChartStringId.MsgOrderUnregisteredElementFound">
+    <value>Er is een niet-geregistreerd element gevonden.</value>
+  </data>
+  <data name="ChartStringId.MsgOrderRepeatedElementFound">
+    <value>Hetzelfde element komt meerdere malen voor in de volgordematrix.</value>
+  </data>
+  <data name="ChartStringId.MsgAddPresentViewType">
+    <value>Het opgegeven weergavetype is al aanwezig in de verzameling.</value>
+  </data>
+  <data name="ChartStringId.MsgAddLastViewType">
+    <value>U kunt geen weergavetype aan deze verzameling toevoegen, omdat minimaal één weergavetype beschikbaar moet zijn in de wizard.</value>
+  </data>
+  <data name="ChartStringId.MsgCalcHitInfoNotSupported">
+    <value>Hittests worden niet ondersteund voor 3D-grafiektypen. Deze methode wordt alleen ondersteund voor 2D-grafiektypen.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAppearanceName">
+    <value>De grafiek bevat geen vormgeving met de naam {0}.</value>
+  </data>
+  <data name="ChartStringId.MsgNotChartControl">
+    <value>Het opgegeven object is geen ChartControl.</value>
+  </data>
+  <data name="ChartStringId.MsgNotBelongingChart">
+    <value>Dit besturingselement bevat niet de opgegeven grafiek.</value>
+  </data>
+  <data name="ChartStringId.MsgInitializeChartNotFound">
+    <value>Het grafiekbesturingselement is niet gevonden of er bevinden zich meerdere grafieken op dit besturingselement. Om dit probleem op te lossen, moet u de gebeurtenis WizardPage.InitializePage afvangen en de grafiek handmatig opgeven.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleByViewType">
+    <value>het weergavetype</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleByArgumentScaleType">
+    <value>het schaaltype voor het argument</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleByValueScaleType">
+    <value>het type waardeschaal</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidExplodedSeriesPoint">
+    <value>De opgegeven reekspunt behoort niet tot de verzameling reekspunten van de huidige taartreeksweergaven en kan daarom niet aan de verzameling uitgelichte punten worden toegevoegd.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidExplodedModeAdd">
+    <value>Omdat de reeks in de huidige taartreeksweergave wordt getoond op basis van een reekssjabloon, kan het opgegeven reekspunt niet worden toegevoegd aan de verzameling uitgelichte punten. Gebruik een andere uitlichtmodus.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidExplodedModeRemove">
+    <value>Omdat de reeks in de huidige taartreeksweergave wordt getoond op basis van een reekssjabloon, kan het opgegeven reekspunt niet worden verwijderd uit de verzameling uitgelichte punten. Gebruik een andere uitlichtmodus.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectExplodedDistancePercentage">
+    <value>Het percentage voor de uitgelichte afstand moet groter zijn dan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPaletteBaseColorNumber">
+    <value>Het basiskleurnummer moet groter zijn dan of gelijk zijn aan 0 en kleiner zijn dan of gelijk zijn aan het totale aantal paletkleuren.</value>
+  </data>
+  <data name="ChartStringId.MsgDenyChangeSeriesPointCollection">
+    <value>U kunt deze verzameling reekspunten niet handmatig wijzigen, omdat een grafiek aan gegevens is gekoppeld.</value>
+  </data>
+  <data name="ChartStringId.MsgDenyChangeSeriesPointAgument">
+    <value>U kunt het argument van de reekspunt niet handmatig wijzigen, omdat een grafiek aan gegevens is gekoppeld.</value>
+  </data>
+  <data name="ChartStringId.MsgDenyChangeSeriesPointValue">
+    <value>U kunt de waarde van de reekspunt niet handmatig wijzigen, omdat een grafiek aan gegevens is gekoppeld.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStartAngle">
+    <value>De beginhoek moet groter zijn dan of gelijk zijn aan -360 en kleiner zijn dan of gelijk zijn aan 360 graden.</value>
+  </data>
+  <data name="ChartStringId.MsgPolarAxisXRangeChanged">
+    <value>Het bereik van een polaire X-as kan niet worden gewijzigd.</value>
+  </data>
+  <data name="ChartStringId.MsgPolarAxisXGridSpacingChanged">
+    <value>De rasterafstand van een polaire X-as kan niet worden gewijzigd.</value>
+  </data>
+  <data name="ChartStringId.MsgPolarAxisXLogarithmic">
+    <value>De PolarAxisX ondersteunt geen logaritmische modus.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPieArgumentScaleType">
+    <value>Het argument-schaaltype {0} kan hier niet gespecificeerd worden, omdat de bestaande exploded point filters er niet mee overeen komen.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectDoughnutHolePercent">
+    <value>Het gatpercentage van een ringdiagram moet groter zijn dan of gelijk zijn aan 0 en kleiner zijn dan of gelijk zijn aan 100.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLineTensionPercent">
+    <value>Het percentage voor de lijnspanning moet groter zijn dan of gelijk zijn aan 0 en kleiner zijn dan of gelijk zijn aan 100.</value>
+  </data>
+  <data name="ChartStringId.MsgEmptyChart">
+    <value>Er zijn geen zichtbare reeksen die in een grafiek kunnen worden weergegeven. Voeg een nieuwe reeks toe of zorg ervoor dat er minimaal één zichtbaar is.</value>
+  </data>
+  <data name="ChartStringId.MsgNoPanes">
+    <value>Er zijn geen zichtbare deelvensters om in een grafiek weer te geven. Stel de eigenschap Diagram.DefaultPane.Visible van de grafiek in op Waar of geef ander deelvensters uit de verzameling Diagram.Panes weer.</value>
+  </data>
+  <data name="ChartStringId.MsgChartLoadingException">
+    <value>Het opgegeven XML-bestand kan niet worden geopend, omdat het bestandstype niet wordt ondersteund of omdat het bestand is beschadigd.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPaneWeight">
+    <value>Het gewicht van het deelvenster moet groter zijn dan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPaneDistance">
+    <value>De afstand tussen de deelvensters moet groter zijn dan of gelijk zijn aan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgEmptyPaneTextForVerticalLayout">
+    <value>Dit deelvenster toewijzen aan de eigenschap Series.View.Pane, om in dit deelvenster een reeks weer te geven</value>
+  </data>
+  <data name="ChartStringId.MsgEmptyPaneTextForHorizontalLayout">
+    <value>Dit deelvenster toewijzen aan de eigenschap Series.View.Pane, om in dit deelvenster een reeks weer te geven</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidPaneSizeInPixels">
+    <value>De grootte van het deelvenster in pixels moet groter zijn dan of gelijk zijn aan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTopNCount">
+    <value>Het aantal waarden voor de hoogste N moet groter zijn dan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTopNThresholdValue">
+    <value>De drempelwaarde voor de hoogste N moet groter zijn dan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTopNThresholdPercent">
+    <value>Het drempelpercentage voor de hoogste N moet groter zijn dan 0 en kleiner zijn dan of gelijk zijn aan 100.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidPane">
+    <value>Het opgegeven deelvenster hoort niet bij een grafiek, of de huidige as waarvan de zichtbaarheid moet worden gewijzigd, wordt niet in het opgegeven deelvenster weergegeven.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSummaryFunction">
+    <value>De opgegeven tekenreeks voor de samenvattingsfunctie heeft niet de juiste indeling.</value>
+  </data>
+  <data name="ChartStringId.MsgNullFinancialIndicatorArgument">
+    <value>Het argument van het punt van de financiële indicator kan niet worden ingesteld op NULL.</value>
+  </data>
+  <data name="ChartStringId.MsgUnsupportedValueLevel">
+    <value>Het waardeniveau {0} wordt niet ondersteund door {1}.</value>
+  </data>
+  <data name="ChartStringId.MsgSummaryFunctionIsNotRegistered">
+    <value>Een samenvatting functie met de naam "{0} 'is niet geregistreerd.</value>
+  </data>
+  <data name="ChartStringId.MsgSummaryFunctionParameterIsNotSpecified">
+    <value>U moet alle parameters voor de samenvattingsfunctie opgeven.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleSummaryFunctionDimension">
+    <value>De dimensie van de samenvattingsfunctie {0} is niet compatibel met de reeksweergave {1} ({2}, maar moet {3} zijn).</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSummaryFunctionParametersCount">
+    <value>De samenvattingsfunctie '{0}' accepteert {1} parameters in plaats van {2}.</value>
+  </data>
+  <data name="ChartStringId.MsgWebInvalidWidthUnit">
+    <value>De grafiekbreedte moet worden ingesteld in pixels.</value>
+  </data>
+  <data name="ChartStringId.MsgWebInvalidHeightUnit">
+    <value>De grafiekhoogte moet worden ingesteld in pixels.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBubbleMaxSize">
+    <value>De maximale grootte moet groter zijn dan de minimale grootte.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBubbleMinSize">
+    <value>De minimale grootte moet groter zijn dan of gelijk zijn aan 0 en kleiner zijn dan de maximale grootte.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidLogarithmicBase">
+    <value>Het grondtal moet groter zijn dan 1.</value>
+  </data>
+  <data name="ChartStringId.MsgUnsupportedTopNOptions">
+    <value>TopNOptions kan niet worden ingeschakeld voor deze reeks, omdat het ValueScaleType niet numeriek is of de gegevenspunten meerdere waarden hebben.</value>
+  </data>
+  <data name="ChartStringId.MsgUnsupportedResolveOverlappingMode">
+    <value>De opgegeven overlappende modus wordt niet ondersteund door de huidige reeksweergave.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectDateTimeMeasureUnitPropertyUsing">
+    <value>De eigenschap DateTimeMeasureUnit kan niet worden gewijzigd in de modus Automatische datum-tijdschaal.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectDateTimeGridAlignmentPropertyUsing">
+    <value>De eigenschap DateTimeGridAlignment kan niet worden gewijzigd in de modus Automatische datum-tijdschaal.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectValueLevel">
+    <value>Het ValueLevel {0} is niet geldig voor de huidige regressielijn.</value>
+  </data>
+  <data name="ChartStringId.MsgUnsupportedDateTimeScaleModeWithScrollingZooming">
+    <value>Automatisch DateTimeScaleMode werkt niet in combinatie met zoomen en scrollen.</value>
+  </data>
+  <data name="ChartStringId.MsgUnsupportedDateTimeScaleModeForGanttDiagram">
+    <value>DateTimeScaleMode wordt niet ondersteund voor het Gantt-diagram.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisRangeMinValue">
+    <value>MinValue kan niet worden ingesteld op NULL.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisRangeMaxValue">
+    <value>MaxValue kan niet worden ingesteld op NULL.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisRangeMinValueInternal">
+    <value>MinValueInternal kan niet worden ingesteld op NaN- of Infinity-waarden.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisRangeMaxValueInternal">
+    <value>MaxValueInternal kan niet worden ingesteld op NaN- of Infinity-waarden.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPropertyValue">
+    <value>Onjuiste waarde "{0}" voor de eigenschap "{1}".</value>
+  </data>
+  <data name="ChartStringId.MsgMinMaxDifferentTypes">
+    <value>De typen van MinValue en MaxValue komen niet overeen.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisRange">
+    <value>De minimale waarde van het asbereik moet kleiner zijn dan de maximale waarde.</value>
+  </data>
+  <data name="ChartStringId.MsgUnsupportedManualRangeForAutomaticDateTimeScaleMode">
+    <value>U kunt geen aangepast bereik instellen als de DateTimeScaleMode niet is ingesteld op Handmatig.</value>
+  </data>
+  <data name="ChartStringId.MsgCantSwapSeries">
+    <value>U kunt automatisch gemaakte en vaste reeksen niet omwisselen.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidEdge1">
+    <value>De edge1-waarde kan niet NULL zijn.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidEdge2">
+    <value>De edge2-waarde kan niet NULL zijn.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidSizeInPixels">
+    <value>Grootte in pixels moet groter zijn dan of gelijk zijn aan -1 en kleiner zijn dan 50.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidMaxCount">
+    <value>Maximale aantal moet groter zijn dan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidGradientMode">
+    <value>Deze PolygonGradientMode is niet compatibel met AreaSeriesView.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectDashStyle">
+    <value>DashStyle.Empty kan alleen worden toegekend aan de eigenschap LineStyle van een constantelijn.</value>
+  </data>
+  <data name="ChartStringId.MsgAnnotationMovingToolTip">
+    <value>Gebruik CTRL+linkermuisknop om aantekening te verplaatsen.</value>
+  </data>
+  <data name="ChartStringId.MsgAnnotationResizingToolTip">
+    <value>Gebruik CTRL+linkermuisknop om formaat van aantekening te wijzigen.</value>
+  </data>
+  <data name="ChartStringId.MsgAnnotationRotationToolTip">
+    <value>Gebruik CTRL+linkermuisknop om aantekening te draaien.</value>
+  </data>
+  <data name="ChartStringId.MsgAnchorPointMovingToolTip">
+    <value>Gebruik CTRL+linkermuisknop om fixeerpunt te verplaatsen.</value>
+  </data>
+  <data name="ChartStringId.MsgPivotGridDataSourceOptionsNotSupprotedProperty">
+    <value>Het PivotGridDataSourceOptions.{0} eigenschap is alleen beschkbaar als de grafiek gegevensbron een PivotGrid is.</value>
+  </data>
+  <data name="ChartStringId.MsgDiagramToPointIncorrectValue">
+    <value>Het opgegeven parameter type {0} is niet gelijk aan het schaal type, {1}, voor deze as.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBarDistancePropertyUsing">
+    <value>Kan de eigenschap BarDistance alleen instellen als de reeks is toegevoegd aan de verzameling van de grafiek.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBarDistanceFixedPropertyUsing">
+    <value>Kan de eigenschap BarDistanceFixed alleen instellen als de reeks is toegevoegd aan de verzameling van de grafiek.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectEqualBarWidthPropertyUsing">
+    <value>Kan de eigenschap EqualBarWidth alleen instellen als de reeks is toegevoegd aan de verzameling van de grafiek.</value>
+  </data>
+  <data name="ChartStringId.MsgFileNotFound">
+    <value>Bestand '{0}' is niet gevonden.</value>
+  </data>
+  <data name="ChartStringId.MsgCantImportHolidays">
+    <value>Feestdagen uit bestand '{0}' konden niet geïmporteerd worden.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectIndicator">
+    <value>U kunt alleen Indicator objecten aan deze verzameling toevoegen.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBarSeriesLabelPosition">
+    <value>De BarSeriesLabelPosition.Top waarde wordt niet ondersteund voor het weergave type van deze serie.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBarSeriesLabelIndent">
+    <value>De inspringing moet groter zijn dan of gelijk zijn aan 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPointsCount">
+    <value>Het aantal punten moet groter zijn dan 1.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectEnvelopePercent">
+    <value>Het omslag percentage moet groter zijn dan 0 en minder of gelijk zijn aan 100.</value>
+  </data>
+  <data name="ChartStringId.VerbAbout">
+    <value>Info</value>
+  </data>
+  <data name="ChartStringId.VerbAboutDescription">
+    <value>Zie algemene informatie over XtraCharts.</value>
+  </data>
+  <data name="ChartStringId.VerbPopulate">
+    <value>Invullen</value>
+  </data>
+  <data name="ChartStringId.VerbPopulateDescription">
+    <value>Gegevensbron van grafiek invullen met gegevens.</value>
+  </data>
+  <data name="ChartStringId.VerbClearDataSource">
+    <value>Gegevensbron wissen</value>
+  </data>
+  <data name="ChartStringId.VerbClearDataSourceDescription">
+    <value>Gegevensbron van grafiek wissen.</value>
+  </data>
+  <data name="ChartStringId.VerbDataSnapshot">
+    <value>Momentopname van gegevens</value>
+  </data>
+  <data name="ChartStringId.VerbDataSnapshotDescription">
+    <value>Alle gegevens uit de gebonden gegevensbron kopiëren naar de grafiek en vervolgens de grafiek loskoppelen.</value>
+  </data>
+  <data name="ChartStringId.VerbAnnotations">
+    <value>Aantekeningen...</value>
+  </data>
+  <data name="ChartStringId.VerbAnnotationsDescription">
+    <value>De editor voor verzameling aantekeningen openen.</value>
+  </data>
+  <data name="ChartStringId.VerbSeries">
+    <value>Reeks...</value>
+  </data>
+  <data name="ChartStringId.VerbSeriesDescription">
+    <value>De editor voor verzameling reeksen openen</value>
+  </data>
+  <data name="ChartStringId.VerbResetLegendPointOptions">
+    <value>Puntinstellingen legenda herstellen</value>
+  </data>
+  <data name="ChartStringId.VerbResetLegendPointOptionsDescription">
+    <value>Herstelt de standaardwaarden van de opties voor het legendapunt.</value>
+  </data>
+  <data name="ChartStringId.VerbEditPalettes">
+    <value>Paletten...</value>
+  </data>
+  <data name="ChartStringId.VerbEditPalettesDescription">
+    <value>Open de paleteditor.</value>
+  </data>
+  <data name="ChartStringId.VerbWizard">
+    <value>Wizard uitvoeren...</value>
+  </data>
+  <data name="ChartStringId.VerbWizardDescription">
+    <value>De wizard Grafieken uitvoeren, waarmee de eigenschappen van de grafiek kunnen worden bewerkt.</value>
+  </data>
+  <data name="ChartStringId.VerbSaveLayout">
+    <value>Opslaan...</value>
+  </data>
+  <data name="ChartStringId.VerbSaveLayoutDescription">
+    <value>Een grafiek opslaan naar een XML-bestand.</value>
+  </data>
+  <data name="ChartStringId.VerbLoadLayout">
+    <value>Laden...</value>
+  </data>
+  <data name="ChartStringId.VerbLoadLayoutDescription">
+    <value>Laad een grafiek uit een XML-bestand.</value>
+  </data>
+  <data name="ChartStringId.TrnSeriesChanged">
+    <value>Reeks gewijzigd</value>
+  </data>
+  <data name="ChartStringId.TrnDataFiltersChanged">
+    <value>Gegevensfilters gewijzigd</value>
+  </data>
+  <data name="ChartStringId.TrnChartTitlesChanged">
+    <value>Grafiektitels gewijzigd</value>
+  </data>
+  <data name="ChartStringId.TrnStripsChanged">
+    <value>Stroken gewijzigd</value>
+  </data>
+  <data name="ChartStringId.TrnPalettesChanged">
+    <value>Paletten gewijzigd</value>
+  </data>
+  <data name="ChartStringId.TrnConstantLinesChanged">
+    <value>Constantelijnen gewijzigd</value>
+  </data>
+  <data name="ChartStringId.TrnCustomAxisLabelChanged">
+    <value>Aangepaste aslabels gewijzigd</value>
+  </data>
+  <data name="ChartStringId.TrnSecondaryAxesXChanged">
+    <value>Secundaire X-assen gewijzigd</value>
+  </data>
+  <data name="ChartStringId.TrnSecondaryAxesYChanged">
+    <value>Secundaire Y-assen gewijzigd</value>
+  </data>
+  <data name="ChartStringId.TrnXYDiagramPanesChanged">
+    <value>Deelvensters gewijzigd</value>
+  </data>
+  <data name="ChartStringId.TrnChartWizard">
+    <value>Instellingen van wizard Grafieken toegepast</value>
+  </data>
+  <data name="ChartStringId.TrnSeriesDeleted">
+    <value>Reeks verwijderd</value>
+  </data>
+  <data name="ChartStringId.TrnChartTitleDeleted">
+    <value>Grafiektitel verwijderd</value>
+  </data>
+  <data name="ChartStringId.TrnAnnotationDeleted">
+    <value>Aantekening verwijderd</value>
+  </data>
+  <data name="ChartStringId.TrnConstantLineDeleted">
+    <value>Constantelijn verwijderd</value>
+  </data>
+  <data name="ChartStringId.TrnPaneDeleted">
+    <value>Deelvenster verwijderd</value>
+  </data>
+  <data name="ChartStringId.TrnSecondryAxisXDeleted">
+    <value>Secundaire X-as verwijderd</value>
+  </data>
+  <data name="ChartStringId.TrnSecondryAxisYDeleted">
+    <value>Secundaire Y-as verwijderd</value>
+  </data>
+  <data name="ChartStringId.TrnExplodedPoints">
+    <value>Uitgelichte punten gewijzigd</value>
+  </data>
+  <data name="ChartStringId.TrnExplodedPointsFilters">
+    <value>ExplodedPointsFilters gewijzigd</value>
+  </data>
+  <data name="ChartStringId.TrnLegendPointOptionsReset">
+    <value>LegendPointOptions hersteld</value>
+  </data>
+  <data name="ChartStringId.TrnLoadLayout">
+    <value>Grafiekopmaak geladen</value>
+  </data>
+  <data name="ChartStringId.TrnSeriesTitleChanged">
+    <value>Reekstitel gewijzigd</value>
+  </data>
+  <data name="ChartStringId.TrnSeriesTitleDeleted">
+    <value>Reekstitel verwijderd</value>
+  </data>
+  <data name="ChartStringId.TrnAxisVisibilityChanged">
+    <value>Zichtbaarheid van as is gewijzigd</value>
+  </data>
+  <data name="ChartStringId.TrnSummaryFunctionChanged">
+    <value>Samenvattingsfunctie gewijzigd</value>
+  </data>
+  <data name="ChartStringId.TrnIndicatorDeleted">
+    <value>Indicator verwijderd</value>
+  </data>
+  <data name="ChartStringId.TrnIndicatorsChanged">
+    <value>Indicatoren gewijzigd</value>
+  </data>
+  <data name="ChartStringId.TrnScaleBreaksChanged">
+    <value>Schaalonderbrekingen gewijzigd</value>
+  </data>
+  <data name="ChartStringId.TrnAnnotationsChanged">
+    <value>Aantekeningen gewijzigd</value>
+  </data>
+  <data name="ChartStringId.TrnHolidaysChanged">
+    <value>Feestdagen gewijzigd</value>
+  </data>
+  <data name="ChartStringId.TrnExactWorkdaysChanged">
+    <value>Exacte feestdagen gewijzigd</value>
+  </data>
+  <data name="ChartStringId.PieIncorrectValuesText">
+    <value>Deze weergave kan geen negatieve waarden vertegenwoordigen. Alle waarden moeten groter zijn dan of gelijk zijn aan nul.</value>
+  </data>
+  <data name="ChartStringId.FontFormat">
+    <value>{0},{1} pt, {2}</value>
+  </data>
+  <data name="ChartStringId.AxisXDefaultTitle">
+    <value>As met argumenten</value>
+  </data>
+  <data name="ChartStringId.AxisYDefaultTitle">
+    <value>As met waarden</value>
+  </data>
+  <data name="ChartStringId.DefaultWizardPageLabel">
+    <value>Wizardpagina</value>
+  </data>
+  <data name="ChartStringId.MenuItemAdd">
+    <value>Toevoegen</value>
+  </data>
+  <data name="ChartStringId.MenuItemInsert">
+    <value>Invoegen</value>
+  </data>
+  <data name="ChartStringId.MenuItemDelete">
+    <value>Verwijderen</value>
+  </data>
+  <data name="ChartStringId.MenuItemClear">
+    <value>Wissen</value>
+  </data>
+  <data name="ChartStringId.MenuItemMoveUp">
+    <value>Omhoog</value>
+  </data>
+  <data name="ChartStringId.MenuItemMoveDown">
+    <value>Omlaag</value>
+  </data>
+  <data name="ChartStringId.WizAutoCreatedSeries">
+    <value>Automatisch gemaakte reeks</value>
+  </data>
+  <data name="ChartStringId.WizSpecifyDataFilters">
+    <value>Klik op de bladeren knop...</value>
+  </data>
+  <data name="ChartStringId.WizDataFiltersEntered">
+    <value>{0} gegevensfilter(s)</value>
+  </data>
+  <data name="ChartStringId.WizDataFiltersDisabled">
+    <value>(geen)</value>
+  </data>
+  <data name="ChartStringId.WizBackImageFileNameFilter">
+    <value>Afbeeldingsbestanden (*.gif;*.jpg;*.jpeg;*.bmp;*.wmf;*.png)|*.gif;*.jpg;*.jpeg;*.bmp;*.wmf;*.png|Alle bestanden(*.*)|*.*</value>
+  </data>
+  <data name="ChartStringId.WizNoBackImage">
+    <value>(geen)</value>
+  </data>
+  <data name="ChartStringId.WizConstructionGroupName">
+    <value>Opbouw</value>
+  </data>
+  <data name="ChartStringId.WizPresentationGroupName">
+    <value>Presentatie</value>
+  </data>
+  <data name="ChartStringId.WizChartTypePageName">
+    <value>Grafiektype</value>
+  </data>
+  <data name="ChartStringId.WizAppearancePageName">
+    <value>Vormgeving</value>
+  </data>
+  <data name="ChartStringId.WizSeriesPageName">
+    <value>Reeks</value>
+  </data>
+  <data name="ChartStringId.WizDataPageName">
+    <value>Gegevens</value>
+  </data>
+  <data name="ChartStringId.WizChartPageName">
+    <value>Grafiek</value>
+  </data>
+  <data name="ChartStringId.WizAxesPageName">
+    <value>Assen</value>
+  </data>
+  <data name="ChartStringId.WizPanesPageName">
+    <value>Deelvensters</value>
+  </data>
+  <data name="ChartStringId.WizAnnotationsPageName">
+    <value>Aantekeningen</value>
+  </data>
+  <data name="ChartStringId.WizAxesAlignmentNear">
+    <value>Ongeveer</value>
+  </data>
+  <data name="ChartStringId.WizAxesAlignmentFar">
+    <value>Ver</value>
+  </data>
+  <data name="ChartStringId.WizAxesAlignmentZero">
+    <value>Nul</value>
+  </data>
+  <data name="ChartStringId.WizSeriesViewPageName">
+    <value>Reeksweergaven</value>
+  </data>
+  <data name="ChartStringId.WizSeriesLabelsPageName">
+    <value>Puntlabels</value>
+  </data>
+  <data name="ChartStringId.WizChartTitlesPageName">
+    <value>Grafiektitels</value>
+  </data>
+  <data name="ChartStringId.WizLegendPageName">
+    <value>Legenda</value>
+  </data>
+  <data name="ChartStringId.WizSeriesPointPageName">
+    <value>Punten</value>
+  </data>
+  <data name="ChartStringId.WizSeriesDataBindingPageName">
+    <value>Reeksbinding</value>
+  </data>
+  <data name="ChartStringId.WizPivotGridDataSourcePageName">
+    <value>Pivot Grid gegevensbron</value>
+  </data>
+  <data name="ChartStringId.WizChartTypePageDescription">
+    <value>Kies het grafiektype dat u wilt gebruiken. Gebruik de waarden in de vervolgkeuzelijst als u grafiektypen wilt filteren op groep.</value>
+  </data>
+  <data name="ChartStringId.WizAppearancePageDescription">
+    <value>Kies een kleurenpalet voor de reeks of de gegevenspunten daarvan. Kies ook de stijl. De stijl bepaalt de vormgeving van de grafiek, afhankelijk van het huidige palet.</value>
+  </data>
+  <data name="ChartStringId.WizSeriesPageDescription">
+    <value>Reeksen maken en de algemene eigenschappen daarvan aanpassen. Het weergavetype van de eerste zichtbare reeks bepaalt het diagramtype en de specifieke opties daarvan.</value>
+  </data>
+  <data name="ChartStringId.WizDataPageDescription">
+    <value>Als u handmatig gegevenspunten wilt invoeren, gebruikt u het tabblad Punten. Op andere tabbladen kunt u gegevensbroninstellingen voor afzonderlijke of automatisch gemaakte reeksen opgeven.</value>
+  </data>
+  <data name="ChartStringId.WizChartPageDescription">
+    <value>Eigenschappen van grafiek aanpassen.</value>
+  </data>
+  <data name="ChartStringId.WizDiagramPageDescription">
+    <value>Pas de eigenschappen van het diagram aan.</value>
+  </data>
+  <data name="ChartStringId.WizAxesPageDescription">
+    <value>Pas de X- en Y-as van het diagram aan. U kunt een as selecteren door er in het grafiekvoorbeeld op te klikken.</value>
+  </data>
+  <data name="ChartStringId.WizPanesPageDescription">
+    <value>Pas de deelvensters van het diagram aan. U kunt een deelvenster selecteren door er in het grafiekvoorbeeld op te klikken.</value>
+  </data>
+  <data name="ChartStringId.WizAnnotationsPageDescription">
+    <value>Aantekeningen maken en aanpassen die zijn verankerd met een grafiek, deelvenster of reekspunt. U kunt een aantekening selecteren door er in het grafiekvoorbeeld op te klikken.</value>
+  </data>
+  <data name="ChartStringId.WizSeriesViewPageDescription">
+    <value>Pas de weergavetype-specifieke opties van een reeks aan. U kunt labels van een reeks selecteren door er in het grafiekvoorbeeld op te klikken.</value>
+  </data>
+  <data name="ChartStringId.WizSeriesLabelsPageDescription">
+    <value>Pas de puntlabels van een reeks aan. U kunt labels van een reeks selecteren door er in het grafiekvoorbeeld op te klikken.</value>
+  </data>
+  <data name="ChartStringId.WizChartTitlesPageDescription">
+    <value>Titels toevoegen aan uw grafiek en de opties daarvoor aanpassen.</value>
+  </data>
+  <data name="ChartStringId.WizLegendPageDescription">
+    <value>Pas de legenda-eigenschappen aan.</value>
+  </data>
+  <data name="ChartStringId.WizFormTitle">
+    <value>Wizard Grafieken</value>
+  </data>
+  <data name="ChartStringId.WizHatchHorizontal">
+    <value>Horizontaal</value>
+  </data>
+  <data name="ChartStringId.WizHatchVertical">
+    <value>Verticaal</value>
+  </data>
+  <data name="ChartStringId.WizHatchForwardDiagonal">
+    <value>Voorwaarts diagonaal</value>
+  </data>
+  <data name="ChartStringId.WizHatchBackwardDiagonal">
+    <value>Achterstevoren diagonaal</value>
+  </data>
+  <data name="ChartStringId.WizHatchCross">
+    <value>Kruis</value>
+  </data>
+  <data name="ChartStringId.WizHatchLargeGrid">
+    <value>Grote grid</value>
+  </data>
+  <data name="ChartStringId.WizHatchDiagonalCross">
+    <value>Diagonaal gekruist</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent05">
+    <value>Percentage05</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent10">
+    <value>Percentage10</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent20">
+    <value>Percentage20</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent25">
+    <value>Percentage25</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent30">
+    <value>Percentage30</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent40">
+    <value>Percentage40</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent50">
+    <value>Percentage50</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent60">
+    <value>Percentage60</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent70">
+    <value>Percentage70</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent75">
+    <value>Percentage75</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent80">
+    <value>Percentage80</value>
+  </data>
+  <data name="ChartStringId.WizHatchPercent90">
+    <value>Percentage90</value>
+  </data>
+  <data name="ChartStringId.WizHatchLightDownwardDiagonal">
+    <value>Licht neerwaarts diagonaal</value>
+  </data>
+  <data name="ChartStringId.WizHatchLightUpwardDiagonal">
+    <value>Licht opwaarts diagonaal</value>
+  </data>
+  <data name="ChartStringId.WizHatchDarkDownwardDiagonal">
+    <value>Donker neerwaarts diagonaal</value>
+  </data>
+  <data name="ChartStringId.WizHatchDarkUpwardDiagonal">
+    <value>Donker opwaarts diagonaal</value>
+  </data>
+  <data name="ChartStringId.WizHatchWideDownwardDiagonal">
+    <value>Wijd neerwaarts diagonaal</value>
+  </data>
+  <data name="ChartStringId.WizHatchWideUpwardDiagonal">
+    <value>Wijd opwaarts diagonaal</value>
+  </data>
+  <data name="ChartStringId.WizHatchLightVertical">
+    <value>Licht verticaal</value>
+  </data>
+  <data name="ChartStringId.WizHatchLightHorizontal">
+    <value>Licht horizontaal</value>
+  </data>
+  <data name="ChartStringId.WizHatchNarrowVertical">
+    <value>NauwVerticaal</value>
+  </data>
+  <data name="ChartStringId.WizHatchNarrowHorizontal">
+    <value>NauwHorizontaal</value>
+  </data>
+  <data name="ChartStringId.WizHatchDarkVertical">
+    <value>Donker verticaal</value>
+  </data>
+  <data name="ChartStringId.WizHatchDarkHorizontal">
+    <value>Donker horizontaal</value>
+  </data>
+  <data name="ChartStringId.WizHatchDashedDownwardDiagonal">
+    <value>Gestreept neerwaarts diagonaal</value>
+  </data>
+  <data name="ChartStringId.WizHatchDashedUpwardDiagonal">
+    <value>Gestreept opwaars diagonaal</value>
+  </data>
+  <data name="ChartStringId.WizHatchDashedHorizontal">
+    <value>Gestreept horizontaal</value>
+  </data>
+  <data name="ChartStringId.WizHatchDashedVertical">
+    <value>Gestreept verticaal</value>
+  </data>
+  <data name="ChartStringId.WizHatchSmallConfetti">
+    <value>SmalleConfetti</value>
+  </data>
+  <data name="ChartStringId.WizHatchLargeConfetti">
+    <value>Grote confetti</value>
+  </data>
+  <data name="ChartStringId.WizHatchZigZag">
+    <value>Zigzag</value>
+  </data>
+  <data name="ChartStringId.WizHatchWave">
+    <value>Golf</value>
+  </data>
+  <data name="ChartStringId.WizHatchDiagonalBrick">
+    <value>Diagonale brick</value>
+  </data>
+  <data name="ChartStringId.WizHatchHorizontalBrick">
+    <value>Horizontale brick</value>
+  </data>
+  <data name="ChartStringId.WizHatchWeave">
+    <value>Geweven</value>
+  </data>
+  <data name="ChartStringId.WizHatchPlaid">
+    <value>Gevlochten</value>
+  </data>
+  <data name="ChartStringId.WizHatchDivot">
+    <value>Kraaienpootjes</value>
+  </data>
+  <data name="ChartStringId.WizHatchDottedGrid">
+    <value>Gestippelde grid</value>
+  </data>
+  <data name="ChartStringId.WizHatchDottedDiamond">
+    <value>Gestippelde diamant</value>
+  </data>
+  <data name="ChartStringId.WizHatchShingle">
+    <value>Dakspaan</value>
+  </data>
+  <data name="ChartStringId.WizHatchTrellis">
+    <value>Traliewerk</value>
+  </data>
+  <data name="ChartStringId.WizHatchSphere">
+    <value>Bol</value>
+  </data>
+  <data name="ChartStringId.WizHatchSmallGrid">
+    <value>SmalleGrid</value>
+  </data>
+  <data name="ChartStringId.WizHatchSmallCheckerBoard">
+    <value>SmalleCheckerBoard</value>
+  </data>
+  <data name="ChartStringId.WizHatchLargeCheckerBoard">
+    <value>Grote checker board</value>
+  </data>
+  <data name="ChartStringId.WizHatchOutlinedDiamond">
+    <value>OmtrekDiamant</value>
+  </data>
+  <data name="ChartStringId.WizHatchSolidDiamond">
+    <value>SolideDiamant</value>
+  </data>
+  <data name="ChartStringId.WizDataMemberNoneString">
+    <value>(geen)</value>
+  </data>
+  <data name="ChartStringId.WizPositionLeftColumn">
+    <value>Linker kolom</value>
+  </data>
+  <data name="ChartStringId.WizPositionLeft">
+    <value>Links</value>
+  </data>
+  <data name="ChartStringId.WizPositionCenter">
+    <value>Midden</value>
+  </data>
+  <data name="ChartStringId.WizPositionRight">
+    <value>Rechts</value>
+  </data>
+  <data name="ChartStringId.WizPositionRightColumn">
+    <value>RechterKolom</value>
+  </data>
+  <data name="ChartStringId.WizGradientBottomLeftToTopRight">
+    <value>Linksonder naar rechtsboven</value>
+  </data>
+  <data name="ChartStringId.WizGradientBottomRightToTopLeft">
+    <value>Rechtsonder naar linksboven</value>
+  </data>
+  <data name="ChartStringId.WizGradientBottomToTop">
+    <value>Onder naar boven</value>
+  </data>
+  <data name="ChartStringId.WizGradientFromCenter">
+    <value>Van midden</value>
+  </data>
+  <data name="ChartStringId.WizGradientLeftToRight">
+    <value>Links naar rechts</value>
+  </data>
+  <data name="ChartStringId.WizGradientRightToLeft">
+    <value>RechtsNaarLinks</value>
+  </data>
+  <data name="ChartStringId.WizGradientToCenter">
+    <value>NaarMidden</value>
+  </data>
+  <data name="ChartStringId.WizGradientTopLeftToBottomRight">
+    <value>Linksboven naar rechtsonder</value>
+  </data>
+  <data name="ChartStringId.WizGradientTopRightToBottomLeft">
+    <value>Rechtsboven naar linksonder</value>
+  </data>
+  <data name="ChartStringId.WizGradientTopToBottom">
+    <value>Boven naar beneden</value>
+  </data>
+  <data name="ChartStringId.WizGradientToCenterHorizontal">
+    <value>NaarMiddenHorizontaal</value>
+  </data>
+  <data name="ChartStringId.WizGradientFromCenterHorizontal">
+    <value>Van midden horizontaal</value>
+  </data>
+  <data name="ChartStringId.WizGradientToCenterVertical">
+    <value>NaarMiddenVerticaal</value>
+  </data>
+  <data name="ChartStringId.WizGradientFromCenterVertical">
+    <value>Van midden verticaal</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelValue">
+    <value>Waarde</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelValue_1">
+    <value>Waarde_1</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelValue_2">
+    <value>Waarde_2</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelLow">
+    <value>Laag</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelHigh">
+    <value>Hoog</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelOpen">
+    <value>Openen</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelClose">
+    <value>Sluiten</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeMeasureUnitYear">
+    <value>Jaar</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeMeasureUnitQuarter">
+    <value>Kwartaal</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeMeasureUnitMonth">
+    <value>Maand</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeMeasureUnitDay">
+    <value>Dag</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeMeasureUnitHour">
+    <value>Uur</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeMeasureUnitMinute">
+    <value>Minuut</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeMeasureUnitSecond">
+    <value>Tweede</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeMeasureUnitMillisecond">
+    <value>Milliseconde</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideBar">
+    <value>Staaf</value>
+  </data>
+  <data name="ChartStringId.WizResolveOverlappingModeDefault">
+    <value>Standaard</value>
+  </data>
+  <data name="ChartStringId.WizResolveOverlappingModeHideOverlapping">
+    <value>Verberg overlappende</value>
+  </data>
+  <data name="ChartStringId.WizResolveOverlappingModeJustifyAroundPoint">
+    <value>Uitvullen rond alle punten</value>
+  </data>
+  <data name="ChartStringId.WizResolveOverlappingModeJustifyAllAroundPoints">
+    <value>Uitvullen rond alle punten</value>
+  </data>
+  <data name="ChartStringId.WizErrorMessageTitle">
+    <value>Wizard Grafieken</value>
+  </data>
+  <data name="ChartStringId.WizInvalidBackgroundImage">
+    <value>Het opgegeven bestand is geen juist afbeeldingsbestand. Kies een ander bestand.</value>
+  </data>
+  <data name="ChartStringId.WizScrollBarAlignmentNear">
+    <value>Ongeveer</value>
+  </data>
+  <data name="ChartStringId.WizScrollBarAlignmentFar">
+    <value>Ver</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeScaleModeManual">
+    <value>Handmatig</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeScaleModeAutomaticAverage">
+    <value>Automatisch: Gemiddelde</value>
+  </data>
+  <data name="ChartStringId.WizDateTimeScaleModeAutomaticIntegral">
+    <value>Automatisch: Integraal</value>
+  </data>
+  <data name="ChartStringId.WizScaleBreakStyleRagged">
+    <value>Ruw</value>
+  </data>
+  <data name="ChartStringId.WizScaleBreakStyleStraight">
+    <value>Recht</value>
+  </data>
+  <data name="ChartStringId.WizScaleBreakStyleWaved">
+    <value>Golvend</value>
+  </data>
+  <data name="ChartStringId.WizSeriesLabelTextOrientationHorizontal">
+    <value>Horizontaal</value>
+  </data>
+  <data name="ChartStringId.WizSeriesLabelTextOrientationTopToBottom">
+    <value>Boven naar beneden</value>
+  </data>
+  <data name="ChartStringId.WizSeriesLabelTextOrientationBottomToTop">
+    <value>Onder naar boven</value>
+  </data>
+  <data name="ChartStringId.WizBarSeriesLabelPositionTop">
+    <value>Boven</value>
+  </data>
+  <data name="ChartStringId.WizBarSeriesLabelPositionCenter">
+    <value>Midden</value>
+  </data>
+  <data name="ChartStringId.WizBarSeriesLabelPositionTopInside">
+    <value>Bovenkant binnen</value>
+  </data>
+  <data name="ChartStringId.WizBarSeriesLabelPositionBottomInside">
+    <value>Onderkant binnen</value>
+  </data>
+  <data name="ChartStringId.WizPieSeriesLabelPositionInside">
+    <value>Binnenkant</value>
+  </data>
+  <data name="ChartStringId.WizPieSeriesLabelPositionOutside">
+    <value>Buitenkant</value>
+  </data>
+  <data name="ChartStringId.WizPieSeriesLabelPositionRadial">
+    <value>Radiaal</value>
+  </data>
+  <data name="ChartStringId.WizPieSeriesLabelPositionTangent">
+    <value>Tangens</value>
+  </data>
+  <data name="ChartStringId.WizPieSeriesLabelPositionTwoColumns">
+    <value>Twee kolommen</value>
+  </data>
+  <data name="ChartStringId.WizBubbleLabelValueToDisplayValue">
+    <value>Waarde</value>
+  </data>
+  <data name="ChartStringId.WizBubbleLabelValueToDisplayWeight">
+    <value>Gewicht</value>
+  </data>
+  <data name="ChartStringId.WizBubbleLabelValueToDisplayValueAndWeight">
+    <value>Waarde en gewicht</value>
+  </data>
+  <data name="ChartStringId.WizBubbleLabelPositionCenter">
+    <value>Midden</value>
+  </data>
+  <data name="ChartStringId.WizBubbleLabelPositionOutside">
+    <value>Buitenkant</value>
+  </data>
+  <data name="ChartStringId.WizFunnelSeriesLabelPositionCenter">
+    <value>Midden</value>
+  </data>
+  <data name="ChartStringId.WizFunnelSeriesLabelPositionLeft">
+    <value>Links</value>
+  </data>
+  <data name="ChartStringId.WizFunnelSeriesLabelPositionLeftColumn">
+    <value>Linkerkolom</value>
+  </data>
+  <data name="ChartStringId.WizFunnelSeriesLabelPositionRight">
+    <value>Rechts</value>
+  </data>
+  <data name="ChartStringId.WizFunnelSeriesLabelPositionRightColumn">
+    <value>Rechterkolom</value>
+  </data>
+  <data name="ChartStringId.WizBar3DModelBox">
+    <value>Vak</value>
+  </data>
+  <data name="ChartStringId.WizBar3DModelCylinder">
+    <value>Cilinder</value>
+  </data>
+  <data name="ChartStringId.WizBar3DModelCone">
+    <value>Kegel</value>
+  </data>
+  <data name="ChartStringId.WizBar3DModelPyramid">
+    <value>Piramide</value>
+  </data>
+  <data name="ChartStringId.WizEnableScrollingTrue">
+    <value>Schuiven inschakelen (waar)</value>
+  </data>
+  <data name="ChartStringId.WizEnableScrollingFalse">
+    <value>Schuiven inschakelen (onwaar)</value>
+  </data>
+  <data name="ChartStringId.WizEnableZoomingTrue">
+    <value>In-/uitzoomen inschakelen (waar)</value>
+  </data>
+  <data name="ChartStringId.WizEnableZoomingFalse">
+    <value>In-/uitzoomen inschakelen (onwaar)</value>
+  </data>
+  <data name="ChartStringId.WizShapeKindRectangle">
+    <value>Rechthoek</value>
+  </data>
+  <data name="ChartStringId.WizShapeKindRoundedRectangle">
+    <value>Afgeronde rechthoek</value>
+  </data>
+  <data name="ChartStringId.WizShapeKindEllipse">
+    <value>Ovaal</value>
+  </data>
+  <data name="ChartStringId.WizAnnotationConnectorStyleArrow">
+    <value>Pijl</value>
+  </data>
+  <data name="ChartStringId.WizAnnotationConnectorStyleLine">
+    <value>Lijn</value>
+  </data>
+  <data name="ChartStringId.WizAnnotationConnectorStyleNone">
+    <value>Geen</value>
+  </data>
+  <data name="ChartStringId.WizAnnotationConnectorStyleNotchedArrow">
+    <value>Ingekeepte pijl</value>
+  </data>
+  <data name="ChartStringId.WizAnnotationConnectorStyleTail">
+    <value>Staart</value>
+  </data>
+  <data name="ChartStringId.WizStringAlignmentCenter">
+    <value>Midden</value>
+  </data>
+  <data name="ChartStringId.WizStringAlignmentNear">
+    <value>Ongeveer</value>
+  </data>
+  <data name="ChartStringId.WizStringAlignmentFar">
+    <value>Ver</value>
+  </data>
+  <data name="ChartStringId.WizChartImageSizeModeAutoSize">
+    <value>Automatische grootte</value>
+  </data>
+  <data name="ChartStringId.WizChartImageSizeModeStretch">
+    <value>Uitrekken</value>
+  </data>
+  <data name="ChartStringId.WizChartImageSizeModeTile">
+    <value>Naast elkaar</value>
+  </data>
+  <data name="ChartStringId.WizChartImageSizeModeZoom">
+    <value>In- en uitzoomen</value>
+  </data>
+  <data name="ChartStringId.WizDockCornerLeftTop">
+    <value>Linksboven</value>
+  </data>
+  <data name="ChartStringId.WizDockCornerLeftBottom">
+    <value>Linksonder</value>
+  </data>
+  <data name="ChartStringId.WizDockCornerRightTop">
+    <value>Rechtsboven</value>
+  </data>
+  <data name="ChartStringId.WizDockCornerRightBottom">
+    <value>Rechtsonder</value>
+  </data>
+  <data name="ChartStringId.WizShapePositionKindFree">
+    <value>Vrij</value>
+  </data>
+  <data name="ChartStringId.WizShapePositionKindRelative">
+    <value>Relatief</value>
+  </data>
+  <data name="ChartStringId.WizAnchorPointChart">
+    <value>Grafiek</value>
+  </data>
+  <data name="ChartStringId.WizAnchorPointPane">
+    <value>Deelvenster</value>
+  </data>
+  <data name="ChartStringId.WizAnchorPointSeriesPoint">
+    <value>Reekspunt</value>
+  </data>
+  <data name="ChartStringId.WizIndentUndefined">
+    <value>Onbepaald</value>
+  </data>
+  <data name="ChartStringId.WizIndentDefault">
+    <value>Standaard</value>
+  </data>
+  <data name="ChartStringId.SvnStackedBar">
+    <value>Staaf, gestapeld</value>
+  </data>
+  <data name="ChartStringId.SvnFullStackedBar">
+    <value>Staaf, gestapeld 100%</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideStackedBar">
+    <value>Naast elkaar, gestapelde staaf</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideFullStackedBar">
+    <value>Naast elkaar, gestapelde staaf, 100%</value>
+  </data>
+  <data name="ChartStringId.SvnPie">
+    <value>Taart</value>
+  </data>
+  <data name="ChartStringId.SvnFunnel">
+    <value>Trechter</value>
+  </data>
+  <data name="ChartStringId.SvnDoughnut">
+    <value>Ring</value>
+  </data>
+  <data name="ChartStringId.SvnPoint">
+    <value>Punt</value>
+  </data>
+  <data name="ChartStringId.SvnLine">
+    <value>Lijn</value>
+  </data>
+  <data name="ChartStringId.SvnStepLine">
+    <value>Staplijn</value>
+  </data>
+  <data name="ChartStringId.SvnSpline">
+    <value>Kromme</value>
+  </data>
+  <data name="ChartStringId.SvnScatterLine">
+    <value>Spreidingslijn</value>
+  </data>
+  <data name="ChartStringId.SvnSpline3D">
+    <value>Spline, 3D</value>
+  </data>
+  <data name="ChartStringId.SvnArea">
+    <value>Vlak</value>
+  </data>
+  <data name="ChartStringId.SvnSplineArea">
+    <value>Spline, vlak</value>
+  </data>
+  <data name="ChartStringId.SvnStackedArea">
+    <value>Vlakdiagram, gestapeld</value>
+  </data>
+  <data name="ChartStringId.SvnSplineStackedArea">
+    <value>Spline, vlak, gestapeld</value>
+  </data>
+  <data name="ChartStringId.SvnFullStackedArea">
+    <value>Vlakdiagram, gestapeld 100%</value>
+  </data>
+  <data name="ChartStringId.SvnSplineFullStackedArea">
+    <value>Spline, vlak, gestapeld, 100%</value>
+  </data>
+  <data name="ChartStringId.SvnArea3D">
+    <value>Vlak, 3D</value>
+  </data>
+  <data name="ChartStringId.SvnStackedArea3D">
+    <value>Vlak, 3D, gestapeld</value>
+  </data>
+  <data name="ChartStringId.SvnFullStackedArea3D">
+    <value>Vlak, 3D, gestapeld, 100%</value>
+  </data>
+  <data name="ChartStringId.SvnSpline3DArea">
+    <value>Spline, vlak, 3D</value>
+  </data>
+  <data name="ChartStringId.SvnSplineAreaStacked3D">
+    <value>Spline, vlak, 3D, gestapeld</value>
+  </data>
+  <data name="ChartStringId.SvnSplineAreaFullStacked3D">
+    <value>Spline, vlak, 3D, gestapeld, 100%</value>
+  </data>
+  <data name="ChartStringId.SvnStock">
+    <value>Aandelen</value>
+  </data>
+  <data name="ChartStringId.SvnCandleStick">
+    <value>Kaars</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideRangeBar">
+    <value>Naast elkaar, bereikbalk</value>
+  </data>
+  <data name="ChartStringId.SvnOverlappedRangeBar">
+    <value>Bereikbalk</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideGantt">
+    <value>Naast elkaar, Gantt</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideBar3D">
+    <value>Staaf, 3D</value>
+  </data>
+  <data name="ChartStringId.SvnStackedBar3D">
+    <value>Staaf, 3D, gestapeld</value>
+  </data>
+  <data name="ChartStringId.SvnFullStackedBar3D">
+    <value>Staaf, 3D, gestapeld, 100%</value>
+  </data>
+  <data name="ChartStringId.SvnManhattanBar">
+    <value>Manhattan-staaf</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideStackedBar3D">
+    <value>Naast elkaar, staaf, 3D, gestapeld</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideFullStackedBar3D">
+    <value>Naast elkaar, staaf, 3D, gestapeld, 100%</value>
+  </data>
+  <data name="ChartStringId.SvnPie3D">
+    <value>Taart, 3D</value>
+  </data>
+  <data name="ChartStringId.SvnDoughnut3D">
+    <value>Ring, 3D</value>
+  </data>
+  <data name="ChartStringId.SvnFunnel3D">
+    <value>Trechter, 3D</value>
+  </data>
+  <data name="ChartStringId.SvnLine3D">
+    <value>Lijn, 3D</value>
+  </data>
+  <data name="ChartStringId.SvnStepLine3D">
+    <value>Staplijn, 3D</value>
+  </data>
+  <data name="ChartStringId.SvnRadarPoint">
+    <value>Radarpunt</value>
+  </data>
+  <data name="ChartStringId.SvnRadarLine">
+    <value>Radarlijnen</value>
+  </data>
+  <data name="ChartStringId.SvnRadarArea">
+    <value>Radarvlak</value>
+  </data>
+  <data name="ChartStringId.SvnPolarPoint">
+    <value>Polaire punt</value>
+  </data>
+  <data name="ChartStringId.SvnPolarLine">
+    <value>Polaire lijn</value>
+  </data>
+  <data name="ChartStringId.SvnPolarArea">
+    <value>Polair vlak</value>
+  </data>
+  <data name="ChartStringId.SvnSwiftPlot">
+    <value>Snelle plot</value>
+  </data>
+  <data name="ChartStringId.IndRegressionLine">
+    <value>Regressielijn</value>
+  </data>
+  <data name="ChartStringId.IndTrendLine">
+    <value>Trendlijn</value>
+  </data>
+  <data name="ChartStringId.IndFibonacciIndicator">
+    <value>Fibonacci indicator</value>
+  </data>
+  <data name="ChartStringId.IndSimpleMovingAverage">
+    <value>Eenvoudig voortschrijdend gemiddelde</value>
+  </data>
+  <data name="ChartStringId.IndExponentialMovingAverage">
+    <value>Exponentieel voortschrijdend gemiddelde</value>
+  </data>
+  <data name="ChartStringId.IndWeightedMovingAverage">
+    <value>Gewogen voortschrijdend gemiddelde</value>
+  </data>
+  <data name="ChartStringId.IndTriangularMovingAverage">
+    <value>Driehoeking voortschrijdend gemiddelde</value>
+  </data>
+  <data name="ChartStringId.AppDefault">
+    <value>Standaard</value>
+  </data>
+  <data name="ChartStringId.IncompatibleSeriesView">
+    <value>(niet compatible)</value>
+  </data>
+  <data name="ChartStringId.InvisibleSeriesView">
+    <value>(onzichtbaar)</value>
+  </data>
+  <data name="ChartStringId.IncompatibleSeriesHeader">
+    <value>Deze reeks is niet compatibel: </value>
+  </data>
+  <data name="ChartStringId.IncompatibleSeriesMessage">
+    <value>door {0} met "{1}"</value>
+  </data>
+  <data name="ChartStringId.PrimaryAxisXName">
+    <value>Primaire X-as</value>
+  </data>
+  <data name="ChartStringId.PrimaryAxisYName">
+    <value>Primaire Y-as</value>
+  </data>
+  <data name="ChartStringId.IOCaption">
+    <value>Ongeldige bewerking</value>
+  </data>
+  <data name="ChartStringId.IODeleteDefaultPane">
+    <value>Het standaarddeelvenster kan niet worden verwijderd.</value>
+  </data>
+  <data name="ChartStringId.IODeleteAxis">
+    <value>De primaire as kan niet worden verwijderd. Als u deze wilt verbergen, stelt u de eigenschap Visible in op Onwaar.</value>
+  </data>
+  <data name="ChartStringId.PrintSizeModeNone">
+    <value>Geen (een grafiek wordt afgedrukt met dezelfde grootte als op het formulier)</value>
+  </data>
+  <data name="ChartStringId.PrintSizeModeStretch">
+    <value>Uitrekken (een grafiek wordt uitgerekt of gekrompen, zodat de grafiek op de pagina past waarop de grafiek wordt afgedrukt)</value>
+  </data>
+  <data name="ChartStringId.PrintSizeModeZoom">
+    <value>In-/uitzoomen (het grafiekformaat wordt proportioneel, zonder te knippen, gewijzigd, zodat de grafiek het beste past op de pagina waarop deze wordt afgedrukt)</value>
+  </data>
+  <data name="ChartStringId.StyleAllColors">
+    <value>Alle kleuren</value>
+  </data>
+  <data name="ChartStringId.StyleColorNumber">
+    <value>Kleur {0}</value>
+  </data>
+  <data name="ChartStringId.DefaultPaneName">
+    <value>Standaarddeelvenster</value>
+  </data>
+  <data name="ChartStringId.QuarterFormat">
+    <value>Q {0}</value>
+  </data>
+  <data name="ChartStringId.OthersArgument">
+    <value>Overige</value>
+  </data>
+  <data name="ChartStringId.ExplodedPointsDialogExplodedColumn">
+    <value>Uitgelicht</value>
+  </data>
+  <data name="ChartStringId.ScaleTypeQualitative">
+    <value>kwalitatief</value>
+  </data>
+  <data name="ChartStringId.ScaleTypeNumerical">
+    <value>numeriek</value>
+  </data>
+  <data name="ChartStringId.ScaleTypeDateTime">
+    <value>datum/tijd</value>
+  </data>
+  <data name="ChartStringId.FunctionNameMin">
+    <value>Min</value>
+  </data>
+  <data name="ChartStringId.FunctionNameMax">
+    <value>Max</value>
+  </data>
+  <data name="ChartStringId.FunctionNameSum">
+    <value>Som</value>
+  </data>
+  <data name="ChartStringId.FunctionNameAverage">
+    <value>GEMIDDELDE</value>
+  </data>
+  <data name="ChartStringId.FunctionNameCount">
+    <value>AANTAL</value>
+  </data>
+  <data name="ChartStringId.TitleSummaryFunction">
+    <value>Samenvattingsfunctie</value>
+  </data>
+  <data name="ChartStringId.PanesVisibilityDialogVisibleColumn">
+    <value>Zichtbaar</value>
+  </data>
+  <data name="ChartStringId.PanesVisibilityDialogPanesColumn">
+    <value>Deelvensters</value>
+  </data>
+  <data name="ChartStringId.FibonacciArcs">
+    <value>Fibonacci-bogen</value>
+  </data>
+  <data name="ChartStringId.FibonacciFans">
+    <value>Fibonacci-waaiers</value>
+  </data>
+  <data name="ChartStringId.FibonacciRetracement">
+    <value>Fibonacci-retracement</value>
+  </data>
+  <data name="ChartStringId.AnnotationChartAnchorPoint">
+    <value>Fixeerpunt grafiek</value>
+  </data>
+  <data name="ChartStringId.AnnotationPaneAnchorPoint">
+    <value>Fixeerpunt deelvenster</value>
+  </data>
+  <data name="ChartStringId.AnnotationSeriesPointAnchorPoint">
+    <value>Fixeerpunt voor reekspunt</value>
+  </data>
+  <data name="ChartStringId.AnnotationFreePosition">
+    <value>Vrije positie</value>
+  </data>
+  <data name="ChartStringId.AnnotationRelativePosition">
+    <value>Relatieve positie</value>
+  </data>
+  <data name="ChartStringId.IncorrectSeriesCollectionToolTipText">
+    <value>In de verzameling van de grafiek komt geen reeks met minimaal één reekspunt voor.</value>
+  </data>
+  <data name="ChartStringId.IncorrectDiagramTypeToolTipText">
+    <value>Er zijn geen deelvensters waarop kan worden gefixeerd, omdat het diagramtype van de grafiek geen deelvensters ondersteunt.</value>
+  </data>
+  <data name="ChartStringId.ChartControlDockTarget">
+    <value>Besturingselement grafiek</value>
+  </data>
+  <data name="ChartStringId.Holidays">
+    <value>Feestdagen</value>
+  </data>
+  <data name="ChartStringId.ExactWorkdays">
+    <value>Exacte werkdagen</value>
+  </data>
+  <data name="ChartStringId.Holiday">
+    <value>Feestdag</value>
+  </data>
+  <data name="ChartStringId.Workday">
+    <value>Werkdag</value>
+  </data>
+  <data name="ChartStringId.HolidaysImportFilter">
+    <value>DevExpress Scheduler feestdagen bestand (*.xml)|*.xml|Microsoft Office Outlook feestdagen bestand (*.hol)|*.hol|Tekstbestanden (*.txt)|*.txt|Alle bestanden (*.*)|*.*</value>
+  </data>
+  <data name="ChartStringId.AllHolidays">
+    <value>Alle feestdagen</value>
+  </data>
+  <data name="ChartStringId.AppTerracottaPie" xml:space="preserve">
+    <value>Terracotta Taart</value>
+  </data>
+  <data name="ChartStringId.AppGray" xml:space="preserve">
+    <value>Grijs</value>
+  </data>
+  <data name="ChartStringId.MsgEmptySecondaryAxisName" xml:space="preserve">
+    <value>De naam van een secundaire as kan niet leeg zijn.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPath" xml:space="preserve">
+    <value>Het opgegeven pad bestaat niet: {0}.</value>
+  </data>
+  <data name="ChartStringId.SvnFullStackedLine" xml:space="preserve">
+    <value>Lijn gestapeld 100%%</value>
+  </data>
+  <data name="ChartStringId.AlternateTextPlaceholder" xml:space="preserve">
+    <value>De{0} grafiek{1}.</value>
+  </data>
+  <data name="ChartStringId.AppNorthernLights" xml:space="preserve">
+    <value>Noorderlicht</value>
+  </data>
+  <data name="ChartStringId.MsgRegisterPageInUnregisterGroup" xml:space="preserve">
+    <value>De pagina kan niet geregistreerd worden in de ongeregistreerd groep</value>
+  </data>
+  <data name="ChartStringId.AlternateTextSeriesPlaceholder" xml:space="preserve">
+    <value> tonen {0}</value>
+  </data>
+  <data name="ChartStringId.SvnStackedLine3D" xml:space="preserve">
+    <value>Lijn 3D gestapeld</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectFunnelHolePercent" xml:space="preserve">
+    <value>Het trechter gat percentage moet groter of gelijk zijn aan 0 en kleiner of gelijk zijn aan 100.</value>
+  </data>
+  <data name="ChartStringId.SvnFullStackedLine3D" xml:space="preserve">
+    <value>Lijn 3D gestapeld 100%</value>
+  </data>
+  <data name="ChartStringId.SvnRangeArea3D" xml:space="preserve">
+    <value>Bereik gebied 3D</value>
+  </data>
+  <data name="ChartStringId.SvnStepArea3D" xml:space="preserve">
+    <value>Stap gebied 3D</value>
+  </data>
+  <data name="ChartStringId.ImageAnnotation" xml:space="preserve">
+    <value>Afbeelding commentaar</value>
+  </data>
+  <data name="ChartStringId.AlternateTextSeriesText" xml:space="preserve">
+    <value>{0} reeksen</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLabelMaxWidth" xml:space="preserve">
+    <value>De maximum grootte van een label moet groter of gelijk zijn aan 0.</value>
+  </data>
+  <data name="ChartStringId.AppDark" xml:space="preserve">
+    <value>Donker</value>
+  </data>
+  <data name="ChartStringId.WizResolveOverlappingModeNone" xml:space="preserve">
+    <value>Geen</value>
+  </data>
+  <data name="ChartStringId.DefaultSmallChartText" xml:space="preserve">
+    <value>Vergroot de grafiek grootte\r\nom zijn layout te tonen.</value>
+  </data>
+  <data name="ChartStringId.SvnStackedLine" xml:space="preserve">
+    <value>Lijn gestapeld</value>
+  </data>
+  <data name="ChartStringId.AppInAFog" xml:space="preserve">
+    <value>Mistig</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLegendVerticalIndent" xml:space="preserve">
+    <value>De verticale inspringing van de legenda moet groter of gelijk zijn aan 0 en kleiner dan 1000.</value>
+  </data>
+  <data name="ChartStringId.SvnBubble" xml:space="preserve">
+    <value>Bel</value>
+  </data>
+  <data name="ChartStringId.AppPastelKit" xml:space="preserve">
+    <value>Pastel pakket</value>
+  </data>
+  <data name="ChartStringId.AppNatureColors" xml:space="preserve">
+    <value>Natuurlijke Kleuren</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectMaxLineCount" xml:space="preserve">
+    <value>Het maximum aantal regels moet groter of gelijk zijn aan 0 en kleiner of gelijk aan 20.</value>
+  </data>
+  <data name="ChartStringId.AppDarkFlat" xml:space="preserve">
+    <value>Donker plat</value>
+  </data>
+  <data name="ChartStringId.TextAnnotation" xml:space="preserve">
+    <value>Tekst commentaar</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLegendHorizontalIndent" xml:space="preserve">
+    <value>De horizontale inspringing van de legenda moet groter of gelijk zijn aan 0 en kleiner dan 1000.</value>
+  </data>
+  <data name="ChartStringId.SvnRangeArea" xml:space="preserve">
+    <value>Bereik gebied</value>
+  </data>
+  <data name="ChartStringId.AppChameleon" xml:space="preserve">
+    <value>Kameleon</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLegendTextOffset" xml:space="preserve">
+    <value>De tekst compensatie van de legenda moet groter of gelijk zijn aan 0 en kleiner dan 1000.</value>
+  </data>
+  <data name="ChartStringId.AppLight" xml:space="preserve">
+    <value>Licht</value>
+  </data>
+  <data name="ChartStringId.SvnStepArea" xml:space="preserve">
+    <value>Stap gebied</value>
+  </data>
+  <data name="ChartStringId.AppTheTrees" xml:space="preserve">
+    <value>De Bomen</value>
+  </data>
+  <data name="ChartStringId.PltMedian" xml:space="preserve">
+    <value>Mediaan</value>
+  </data>
+  <data name="ChartStringId.PltTrek" xml:space="preserve">
+    <value>Trektocht</value>
+  </data>
+  <data name="ChartStringId.PltUrban" xml:space="preserve">
+    <value>Stad</value>
+  </data>
+  <data name="ChartStringId.PltChameleon" xml:space="preserve">
+    <value>Kameleon</value>
+  </data>
+  <data name="ChartStringId.PltGrayscale" xml:space="preserve">
+    <value>Grijsschaal</value>
+  </data>
+  <data name="ChartStringId.PltNorthernLights" xml:space="preserve">
+    <value>Noorderlicht</value>
+  </data>
+  <data name="ChartStringId.PltIndDefault" xml:space="preserve">
+    <value>Standaard</value>
+  </data>
+  <data name="ChartStringId.PltBlackAndWhite" xml:space="preserve">
+    <value>Zwart-wit</value>
+  </data>
+  <data name="ChartStringId.PltMixed" xml:space="preserve">
+    <value>Gemengd</value>
+  </data>
+  <data name="ChartStringId.PltConcourse" xml:space="preserve">
+    <value>Samenloopo</value>
+  </data>
+  <data name="ChartStringId.PltSolstice" xml:space="preserve">
+    <value>Zonnestilstand</value>
+  </data>
+  <data name="ChartStringId.PltVerve" xml:space="preserve">
+    <value>Gloed</value>
+  </data>
+  <data name="ChartStringId.PltCivic" xml:space="preserve">
+    <value>Burgerlijk</value>
+  </data>
+  <data name="ChartStringId.PltTerracottaPie" xml:space="preserve">
+    <value>Terracotta</value>
+  </data>
+  <data name="ChartStringId.PltEquity" xml:space="preserve">
+    <value>Vermogen</value>
+  </data>
+  <data name="ChartStringId.PltPaper" xml:space="preserve">
+    <value>Papier</value>
+  </data>
+  <data name="ChartStringId.PltNatureColors" xml:space="preserve">
+    <value>Natuur</value>
+  </data>
+  <data name="ChartStringId.PltPastelKit" xml:space="preserve">
+    <value>Pastel</value>
+  </data>
+  <data name="ChartStringId.PltOrigin" xml:space="preserve">
+    <value>Begin</value>
+  </data>
+  <data name="ChartStringId.PltFlow" xml:space="preserve">
+    <value>Stroom</value>
+  </data>
+  <data name="ChartStringId.PltTechnic" xml:space="preserve">
+    <value>Technisch</value>
+  </data>
+  <data name="ChartStringId.PltOpulent" xml:space="preserve">
+    <value>Rijk</value>
+  </data>
+  <data name="ChartStringId.PltTheTrees" xml:space="preserve">
+    <value>Bomen</value>
+  </data>
+  <data name="ChartStringId.PltInAFog" xml:space="preserve">
+    <value>Mist</value>
+  </data>
+  <data name="ChartStringId.PltFoundry" xml:space="preserve">
+    <value>Gieterij</value>
+  </data>
+  <data name="ChartStringId.WizAxisLabelResolveOverlappingModeNone" xml:space="preserve">
+    <value>Geen</value>
+  </data>
+  <data name="ChartStringId.WizAxisLabelResolveOverlappingModeHideOverlapping">
+    <value>Verberg overlappende</value>
+  </data>
+  <data name="ChartStringId.ColumnAnnotations">
+    <value>Aantekeningen</value>
+  </data>
+</root>

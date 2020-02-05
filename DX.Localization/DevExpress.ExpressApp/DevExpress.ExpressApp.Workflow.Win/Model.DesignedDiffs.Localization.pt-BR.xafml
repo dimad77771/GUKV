@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="DebugWorkflow" Caption="Depurar" ToolTip="Iniciar/continuar a depuração do workflow atual." />
+      <Action Id="StopDebug" Caption="Parar Depuração" ToolTip="Para a depuração do workflow atual." />
+      <Action Id="ToggleBreakpoint" Caption="Incluir Breakpoint" ToolTip="Incluir breakpoint na atividade selecionada." />
+    </Actions>
+  </ActionDesign>
+</Application>

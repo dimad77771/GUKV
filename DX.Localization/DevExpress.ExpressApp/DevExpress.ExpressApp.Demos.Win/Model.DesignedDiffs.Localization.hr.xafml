@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="CategorizeImages" Caption="Kategoriziraj slike" />
+      <Action Id="FillCategories" Caption="Popuni kategorije" />
+      <Action Id="ImagePreviewListMode" Caption="Popisani način pregleda slika" />
+      <Action Id="OpenCategory" Caption="Otvori" />
+    </Actions>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="DevExpress.ExpressApp.Demos.Win.AssemblyImageSourceBrowser" Caption="Preglednik izvora slika u assembly-u" />
+    <Class Name="DevExpress.ExpressApp.Demos.Win.CategoryString" Caption="Kategorija">
+      <OwnMembers>
+        <Member Name="Images" Caption="Slike" />
+        <Member Name="Name" Caption="Naziv" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Demos.Win.FileImageSourceBrowser" Caption="Pregledni izvora slika u datoteci" />
+    <Class Name="DevExpress.ExpressApp.Demos.Win.ImageBrowserCategory" Caption="Kategorija preglednika slika">
+      <OwnMembers>
+        <Member Name="ChildCategories" Caption="Dijete kategorije" />
+        <Member Name="Name" Caption="Naziv" />
+        <Member Name="Owner" Caption="Vlasnik" />
+        <Member Name="ParentCategory" Caption="Roditelj kategorija" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Demos.Win.ImageNode" Caption="Čvor slike">
+      <OwnMembers>
+        <Member Name="Image" Caption="Slika" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Demos.Win.ImagePreviewObject" Caption="Slika">
+      <OwnMembers>
+        <Member Name="Categories" Caption="Kategorije" />
+        <Member Name="Image12x12" Caption="Mala" />
+        <Member Name="Image32x32" Caption="Velika" />
+        <Member Name="Image48x48" Caption="Dijalog" />
+        <Member Name="ImageName" Caption="Naziv slike" />
+        <Member Name="OriginalImage" Caption="Originalna slika" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Demos.Win.ImagesGroupNode" Caption="Grupni čvor slika">
+      <OwnMembers>
+        <Member Name="Images" Caption="Slike" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Demos.Win.ImageSourceBrowserBase" Caption="Preglednik izvora slika">
+      <OwnMembers>
+        <Member Name="Categories" Caption="Kategorije" />
+        <Member Name="ImageCategories" Caption="Kategorije slike" />
+        <Member Name="ImageSourceName" Caption="Naziv izvora slike" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <Views>
+    <DetailView Id="ImagePreviewObject_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="ImagePreviewObject" Caption="Objekt pregleda slike" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

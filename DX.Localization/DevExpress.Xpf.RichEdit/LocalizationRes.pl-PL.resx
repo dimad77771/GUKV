@@ -1,0 +1,670 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="RichEditControlStringId.Caption_ParagraphSpacingBeforeLabel" xml:space="preserve">
+    <value>Przed:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_BookmarkFormDeleteButton" xml:space="preserve">
+    <value>Usuń</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_BookmarkFormBookmarkNameLabel" xml:space="preserve">
+    <value>Nazwa zakładki:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_HyperlinkFormExistingFileOrWebPageRadioButton" xml:space="preserve">
+    <value>Istniejący plik lub strona WWW</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_DeleteTableCellsForm" xml:space="preserve">
+    <value>Usuń komórki</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_BookmarkFormSortByLabel" xml:space="preserve">
+    <value>Sortuj według:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_RangeEditingPermissionsFormGroupsLabel" xml:space="preserve">
+    <value>Grupy:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ParagraphSpacingAfterLabel" xml:space="preserve">
+    <value>Po:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TabsFormClearAllButton" xml:space="preserve">
+    <value>Wyczyść wszystko</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_BookmarkFormAddButton" xml:space="preserve">
+    <value>Dodaj</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ParagraphSpacingAtLabel" xml:space="preserve">
+    <value>W:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_HyperlinkFormAddressLabel" xml:space="preserve">
+    <value>Adres:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_BookmarkForm" xml:space="preserve">
+    <value>Zakładka</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FontFormForeColorLabel" xml:space="preserve">
+    <value>Kolor pierwszoplanowy:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TabsFormClearButton" xml:space="preserve">
+    <value>Wyczyść</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_DocumentProtectionQueryPasswordForm" xml:space="preserve">
+    <value>Niechroniony dokument</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TabsFormDotsRadioButton" xml:space="preserve">
+    <value>Kropki</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TabsFormTabStopsToBeClearedLabel" xml:space="preserve">
+    <value>Tabulatory do usunięcia:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_HyperlinkFormPlaceInThisDocumentRadioButton" xml:space="preserve">
+    <value>Wstaw w tym dokumencie</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_DeleteTableCellsFormShiftCellsUpRadioButton" xml:space="preserve">
+    <value>Przesuń komórki w górę</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_InsertTableFormNumberOfColumnsLabel" xml:space="preserve">
+    <value>Ilość kolumn:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_InsertTableCellsFormInsertEntireColumnRadioButton" xml:space="preserve">
+    <value>Wstaw całą kolumnę</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FontFormSizeLabel" xml:space="preserve">
+    <value>Rozmiar:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_DeleteTableCellsFormDeleteEntireRowRadioButton" xml:space="preserve">
+    <value>Usuń cały wiersz</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_SplitTableCellsFormNumberOfRowsLable" xml:space="preserve">
+    <value>Ilość wierszy:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TabsFormDecimalRadionButton" xml:space="preserve">
+    <value>Zmienno-przecinkowy</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FontFormBoldItalicListBox" xml:space="preserve">
+    <value>Pogrubiona kursywa</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_DeleteTableCellsFormDeleteEntireColumnRadioButton" xml:space="preserve">
+    <value>Usuń całą kolumnę</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_InsertTableCellsFormShiftCellsRightRadioButton" xml:space="preserve">
+    <value>Przesuń komórki w prawo</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_RangeEditingPermissionsFormUsersLabel" xml:space="preserve">
+    <value>Użytkownicy:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FontFormStyleLabel" xml:space="preserve">
+    <value>Styl:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_DeleteTableCellsFormShiftCellsLeftRadioButton" xml:space="preserve">
+    <value>Przesuń komórki w lewo</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_DocumentProtectionQueryPasswordFormPasswordLabel" xml:space="preserve">
+    <value>Hasło:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_InsertTableCellsFormInsertEntireRowRadioButton" xml:space="preserve">
+    <value>Wstaw cały wiersz</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TabsFormCenterRadioButton" xml:space="preserve">
+    <value>Wyśrodkowany</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TabsFormNoneRadioButton" xml:space="preserve">
+    <value>Brak</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_SplitTableCellsFormNumberOfColumnsLable" xml:space="preserve">
+    <value>Ilość kolumn:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TabsFormUnderlineRadioButton" xml:space="preserve">
+    <value>Podkreślenie</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_SplitTableCellsForm" xml:space="preserve">
+    <value>Podziel komórki</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_SplitTableCellsFormMergeCellsBeforeSplitCheckEdit" xml:space="preserve">
+    <value>Złącz komórki przed podziałem</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_DocumentProtectionQueryNewPasswordFormEnterNewPasswordLabel" xml:space="preserve">
+    <value>Podaj nowe hasło (opcjonalnie):</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_InsertTableForm" xml:space="preserve">
+    <value>Wstaw tabelę</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_HyperlinkFormTextToDisplayLabel" xml:space="preserve">
+    <value>Tekst do wyświetlenia:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_InsertTableCellsForm" xml:space="preserve">
+    <value>Wstaw komórki</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_InsertTableFormNumberOfRowsLabel" xml:space="preserve">
+    <value>Ilość wierszy:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_DocumentProtectionQueryNewPasswordFormReenterPasswordToConfirmLabel" xml:space="preserve">
+    <value>Ponów hasło aby potwierdzić:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_RangeEditingPermissionsForm" xml:space="preserve">
+    <value>Edycja uprawnień</value>
+  </data>
+  <data name="RichEditControlStringId.Msg_Warning" xml:space="preserve">
+    <value>Ostrzeżenie</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FontFormUnderlineLabel" xml:space="preserve">
+    <value>Podkreślenie:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FontFormBoldListBox" xml:space="preserve">
+    <value>Pogrubienie</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_InsertTableCellsFormShiftCellsDownRadioButton" xml:space="preserve">
+    <value>Przesuń komórki niżej</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_HyperlinkFormLinkToLabel" xml:space="preserve">
+    <value>Łącze do:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ParagraphSpacingLineSpacingLabel" xml:space="preserve">
+    <value>Interlinia:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FontFormStrikeNormalRadioButton" xml:space="preserve">
+    <value>Normalne</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TabsForm" xml:space="preserve">
+    <value>Odstępy</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TabsFormDefaultTabStopsLabel" xml:space="preserve">
+    <value>Domyślne tabulatory:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TabsFormRightRadioButton" xml:space="preserve">
+    <value>Prawy</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TabsFormEqualSignRadioButton" xml:space="preserve">
+    <value>===</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ParagraphIndentationLeftLabel" xml:space="preserve">
+    <value>Z lewej:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FontFormNormalListBox" xml:space="preserve">
+    <value>Normalne</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FontFormStrikeoutRadioButton" xml:space="preserve">
+    <value>Przekreślenie</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FontFormItalicListBox" xml:space="preserve">
+    <value>Kursywa</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FontFormSuperscriptRadioButton" xml:space="preserve">
+    <value>Indeks górny</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ParagraphIndentationRightLabel" xml:space="preserve">
+    <value>Prawy:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TabsFormMiddleDotsRadioButton" xml:space="preserve">
+    <value>···</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_BookmarkFormGoToButton" xml:space="preserve">
+    <value>Idź do</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FontFormNameLabel" xml:space="preserve">
+    <value>Nazwa:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_BookmarkFormSortByNameRadioButton" xml:space="preserve">
+    <value>Nazwa</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ParagraphIndentationByLabel" xml:space="preserve">
+    <value>Co:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ParagraphFormAlignmentLabel" xml:space="preserve">
+    <value>Wyrównanie:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FontFormDoubleStrikeoutRadionButton" xml:space="preserve">
+    <value>Podwójne przekreślenie</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ParagraphFormSpacingLabel" xml:space="preserve">
+    <value>Odstępy</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FontFormAllCapsCheckEdit" xml:space="preserve">
+    <value>KAPITALIKI</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_DocumentProtectionQueryNewPasswordForm" xml:space="preserve">
+    <value>Zabezpieczanie dokumentu</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TabsFormAlignmentLabel" xml:space="preserve">
+    <value>Wyrównanie</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_InsertTableFormTableSizeLabel" xml:space="preserve">
+    <value>Rozmiar tabeli</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ParagraphFormGeneralLabel" xml:space="preserve">
+    <value>Ogólne</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_BookmarkFormSortByLocationRadioButton" xml:space="preserve">
+    <value>Pozycja</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FontFormScriptNormalRadioButton" xml:space="preserve">
+    <value>Normalne</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TabsFormLeaderLabel" xml:space="preserve">
+    <value>Znak wiądący</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TabsFormHyphensRadioButton" xml:space="preserve">
+    <value>---</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FontFormSubscriptRadioButton" xml:space="preserve">
+    <value>Indeks dolny</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TabsFormLeftRadioButton" xml:space="preserve">
+    <value>Do lewej</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_HyperlinkFormScreenTipLabel" xml:space="preserve">
+    <value>Etykieta:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TabsFormSetButton" xml:space="preserve">
+    <value>Ustaw</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_HyperlinkFormTargetFrameLabel" xml:space="preserve">
+    <value>Ramka docelowa:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FontFormEffectsLabel" xml:space="preserve">
+    <value>Efekty:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TabsFormThickLineRadioButton" xml:space="preserve">
+    <value>─</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ParagraphFormTabsButton" xml:space="preserve">
+    <value>Odstępy...</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ParagraphIndentationSpecialLabel" xml:space="preserve">
+    <value>Specjalne:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FontForm" xml:space="preserve">
+    <value>Czcionka</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ParagraphForm" xml:space="preserve">
+    <value>Paragraf</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ParagraphFormOutlineLevelLabel" xml:space="preserve">
+    <value>Poziom konspektu:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TabsFormTabStopPositionLabel" xml:space="preserve">
+    <value>Pozycja tabulatora:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ParagraphFormIndentationLabel" xml:space="preserve">
+    <value>Wcięcia</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_PageSetupPaperSizeLabel" xml:space="preserve">
+    <value>Rozmiar kartki</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TablePropertiesFormSizeLabel" xml:space="preserve">
+    <value>Rozmiar</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_GroupTableCellSize" xml:space="preserve">
+    <value>Rozmiar komórki</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_GroupPageSetup" xml:space="preserve">
+    <value>Ustawienia strony</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_LineNumberingFormAddLineNumberingCheckEdit" xml:space="preserve">
+    <value>Dodaj numeracje linii</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TablePropertiesFormCellVerticalAlignmentLabel" xml:space="preserve">
+    <value>Ułożenie w pionie</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_GroupPages" xml:space="preserve">
+    <value>Strony</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_LineNumberingCountByLabel" xml:space="preserve">
+    <value>Licz po:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_PagePageLayout" xml:space="preserve">
+    <value>Układ strony</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_PageSetupForm" xml:space="preserve">
+    <value>Ustawienia strony</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_GroupHeaderFooterToolsDesignClose" xml:space="preserve">
+    <value>Zamknij</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_GroupHeaderFooterToolsDesignNavigation" xml:space="preserve">
+    <value>Nawigacja</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_PageSetupOrientationPortraitRadioButton" xml:space="preserve">
+    <value>Pionowo</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_EditStyleFormLineSpacingBarSubItem" xml:space="preserve">
+    <value>Interlinia</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TableCellOptionsFormOptionsLabel" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TableOptionsFormRightLabel" xml:space="preserve">
+    <value>Prawy:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_LineNumberingRestartEachSectionRadioButton" xml:space="preserve">
+    <value>Resetuj w każdej sekcji</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_GroupStyles" xml:space="preserve">
+    <value>Style</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_GroupHeaderFooterToolsDesignOptions" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_GroupTableMerge" xml:space="preserve">
+    <value>Scal</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_LineNumberingRestartEachPageRadioButton" xml:space="preserve">
+    <value>Resetuj na każdej stronie</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupFormColumnSpacingLabel" xml:space="preserve">
+    <value>Odstępy:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TablePropertiesFormRightRadioButton" xml:space="preserve">
+    <value>Prawy</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TablePropertiesFormOptionsLabel" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_GroupTableTable" xml:space="preserve">
+    <value>Tabela</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupFormOneColumnPreset" xml:space="preserve">
+    <value>Jedna</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TableCellOptionsFormRightLabel" xml:space="preserve">
+    <value>Prawy:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupFormRightNarrowColumnPreset" xml:space="preserve">
+    <value>Prawy</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_PageReview" xml:space="preserve">
+    <value>Recenzja</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_GroupTables" xml:space="preserve">
+    <value>Tabele</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupFormThreeColumnsPreset" xml:space="preserve">
+    <value>Trzy</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_PageSetupSectionLabel" xml:space="preserve">
+    <value>Zaznaczenie</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TableOptionsForm" xml:space="preserve">
+    <value>Opcje tabeli</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_EditStyleFormTabsButton" xml:space="preserve">
+    <value>Odstępy...</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_GroupFloatingPictureToolsShapeStyles" xml:space="preserve">
+    <value>Stylistyka kształtów</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_GroupText" xml:space="preserve">
+    <value>Tekst</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TablePropertiesFormRowTab" xml:space="preserve">
+    <value>Wiersz</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_GroupTableOfContents" xml:space="preserve">
+    <value>Spis treści</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_LineNumberingNumberingLabel" xml:space="preserve">
+    <value>Numerowanie:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_GroupDocumentProtection" xml:space="preserve">
+    <value>Ochrona</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_EditStyleFormRightBarCheckItemDescription" xml:space="preserve">
+    <value>Prawy</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_PageSetupPaperTab" xml:space="preserve">
+    <value>Strona</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TableOptionsFormTopLabel" xml:space="preserve">
+    <value>Góra:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TableCellOptionsFormTopLabel" xml:space="preserve">
+    <value>Góra:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_PageSetupRightMarginLabel" xml:space="preserve">
+    <value>Prawy:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupFormNumberOfColumnsLabel" xml:space="preserve">
+    <value>Ilość kolumn:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_GroupShow" xml:space="preserve">
+    <value>Pokaż</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_PasteSpecialPasteAsLabel" xml:space="preserve">
+    <value>Wklej jako:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TableCellOptionsFormWrapTextCheckEdit" xml:space="preserve">
+    <value>Zawiń tekst</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_PageSetupPaperWidthLabel" xml:space="preserve">
+    <value>Szerokość:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_PageSetupOrientationLabel" xml:space="preserve">
+    <value>Orientacja</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TablePropertiesFormRowLabel" xml:space="preserve">
+    <value>Wiersz</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_EditStyleFormUnderlineBarCheckItemDescription" xml:space="preserve">
+    <value>Podkreślenie</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupFormColumnWidthLabel" xml:space="preserve">
+    <value>Szerokość:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_SymbolFormSearchByCode" xml:space="preserve">
+    <value>Szukaj po kodzie:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TablePropertiesFormOptionsButton" xml:space="preserve">
+    <value>Ustawienia...</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_EditStyleFormStyleNameTextEdit" xml:space="preserve">
+    <value>Nazwa:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FontFormUnderlineColorLabel" xml:space="preserve">
+    <value>Kolor podkreślenia:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TablePropertiesForm" xml:space="preserve">
+    <value>Właściwości tabeli</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TablePropertiesFormTableTab" xml:space="preserve">
+    <value>Tabela</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_GroupZoom" xml:space="preserve">
+    <value>Powiększenie</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_PageSetupMarginsTab" xml:space="preserve">
+    <value>Marginesy</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TablePropertiesFormTopRadioButton" xml:space="preserve">
+    <value>Góra</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TableRowHeightHeightIsLabel" xml:space="preserve">
+    <value>Wysokość wiersza:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_GroupParagraph" xml:space="preserve">
+    <value>Paragraf</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_GroupTableRowsAndColumns" xml:space="preserve">
+    <value>Wiersze &amp; Kolumny</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupFormTwoColumnsPreset" xml:space="preserve">
+    <value>Dwie</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_PageView" xml:space="preserve">
+    <value>Widok</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_PageSetupMarginsLabel" xml:space="preserve">
+    <value>Marginesy</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_PageReferences" xml:space="preserve">
+    <value>Odwołania</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TableOptionsFormOptionsLabel" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_GroupDocumentProofing" xml:space="preserve">
+    <value>Sprawdzanie</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_PageSetupTopMarginLabel" xml:space="preserve">
+    <value>Góra:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_EditStyleFormParagraphButton" xml:space="preserve">
+    <value>Paragraf...</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_PageFile" xml:space="preserve">
+    <value>Plik</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FloatingObjectLayoutFormVerticalAbsolutePositionLabel" xml:space="preserve">
+    <value>poniżej</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FloatingObjectLayoutFormHorizontalPositionAlignmentRadioButton" xml:space="preserve">
+    <value>Położenie</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupFormApplyToLabel" xml:space="preserve">
+    <value>Zastosuj dla:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_GroupHeaderFooter" xml:space="preserve">
+    <value>Nagłówek i stopka</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_GroupLinks" xml:space="preserve">
+    <value>Odnośniki</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_EditStyleFormCurrentStyleNameComboBox" xml:space="preserve">
+    <value>Aktualny styl:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_SymbolFormFontName" xml:space="preserve">
+    <value>Nazwa czcionki:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TablePropertiesFormTableAlignmentLabel" xml:space="preserve">
+    <value>Położenie</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupFormEqualColumnWidthCheckEdit" xml:space="preserve">
+    <value>Równa szerokość kolumn</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_PageCategoryTableTools" xml:space="preserve">
+    <value>Narzędzia tabeli</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupForm" xml:space="preserve">
+    <value>Kolumny</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_LineNumberingContinuousRadioButton" xml:space="preserve">
+    <value>Ciągły</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_PageInsert" xml:space="preserve">
+    <value>Wstaw</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_EditStyleFormFontButton" xml:space="preserve">
+    <value>Czcionka...</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TableCellOptionsFormFitTextCheckEdit" xml:space="preserve">
+    <value>Dopasuj tekst</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FontFormHiddenCheckEdit" xml:space="preserve">
+    <value>Ukryty</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FloatingObjectLayoutFormTextWrapping" xml:space="preserve">
+    <value>Zawijanie tekstu</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_GroupWriteInsertFields" xml:space="preserve">
+    <value>Napisz &amp; Wstaw pola</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupFormColumnNumberLabel" xml:space="preserve">
+    <value>Kol #:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FloatingObjectLayoutFormScaleLabel" xml:space="preserve">
+    <value>Skala</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_PageCategoryHeaderFooterTools" xml:space="preserve">
+    <value>Narzędzia nagłówka i stopki</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_LineNumberingStartAtLabel" xml:space="preserve">
+    <value>Start od:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_GroupDocumentViews" xml:space="preserve">
+    <value>Widok dokumentu</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FloatingObjectLayoutFormSize" xml:space="preserve">
+    <value>Rozmiar</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_TableCellOptionsFormCellMarginsLabel" xml:space="preserve">
+    <value>Marginesy komórki</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_SymbolFormFilter" xml:space="preserve">
+    <value>Filtr:</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FloatingObjectLayoutFormOptionsLabel" xml:space="preserve">
+    <value>Opcje</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_GroupTableAlignment" xml:space="preserve">
+    <value>Położenie</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FloatingObjectLayoutFormVerticalPositionAlignmentRadioButton" xml:space="preserve">
+    <value>Położenie</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_ColumnsSetupFormWidthAndSpacingGroup" xml:space="preserve">
+    <value>Szerokość i rozstaw</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_FloatingObjectLayoutFormPosition" xml:space="preserve">
+    <value>Pozycja</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_PageCategoryFloatingObjectPictureTools" xml:space="preserve">
+    <value>Narzędzia obrazka</value>
+  </data>
+  <data name="RichEditControlStringId.Caption_GroupTableStyles" xml:space="preserve">
+    <value>Style tabeli</value>
+  </data>
+</root>

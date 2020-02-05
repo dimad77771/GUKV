@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxperienceStringId.FileManager_ErrorRootFolderNotSpecified" xml:space="preserve">
+    <value>Korijenski folder nije naveden ili ne postoji</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Folder" xml:space="preserve">
+    <value>Folder</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorUsedByAnotherProcess" xml:space="preserve">
+    <value>Operacija ne može biti dovršena jer datoteku/folder koristi netko drugi.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_InvalidWindowsPath" xml:space="preserve">
+    <value>Putanja do dokumenta "{0}" nije ispravna Windows putanja.</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerRowPerPage" xml:space="preserve">
+    <value>Redova po stranici:</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_MovePopupHeader" xml:space="preserve">
+    <value>Odaberite odredišnu lokaciju</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_PageSizeAllItem" xml:space="preserve">
+    <value>Svi</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_AccessDeniedError" xml:space="preserve">
+    <value>Pristup putanju "{0}" na serveru nije dozvoljen. Razlog bi mogao biti neodgovarajuće dozvole za pisanje po fajlovima u ovom (ili roditeljskom u hijerarhiji) folderu.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorThumbnail" xml:space="preserve">
+    <value>Nemam pristup folderu sa smanjenim sličicama</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_UnspecifiedError" xml:space="preserve">
+    <value>Server je naišao na nedefinisane interne greške, spriječen je u ispunjavanju zahtjeva.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_SilverlightPluginLink" xml:space="preserve">
+    <value>Molimo instalirajte &lt;a href="{0}"&gt; Microsoft Silverlight v3 ili kasnije &lt;/ a&gt; kako biste vidjeli ovaj sadržaj i imali sposobnost za učitavanjedatoteka.</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_PageSize" xml:space="preserve">
+    <value>Veličina strane:</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_SelectedSeveralFiles" xml:space="preserve">
+    <value>{0} fajlova je odabrano za učitavanje</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_GeneralError" xml:space="preserve">
+    <value>Učitavanje datoteke nije uspjelo zbog vanjske greške koja se ne odnosi na ASPxUploadControl funkcionalnost</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorOther" xml:space="preserve">
+    <value>Neodređena greška</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_MaxSize" xml:space="preserve">
+    <value>Veličina datoteke premašuje maksimalnu dozvoljenu veličinu, koja je {0} bajtova</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorUploadSeveralFiles" xml:space="preserve">
+    <value>Učitavanje je bilo neuspješno za {0} od {1} fajlova</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_MultiSelection" xml:space="preserve">
+    <value>Pažnja! Sledećih {0} fajlova su nevažeći jer prekoračuju dozvoljenu veličinu fajla ({1}) ili su nastavci u njihovim imenima nedozvoljeni. Ovi fajlovi su uklonjeni sa odabrane liste i neće biti učitani. 
+
+{2}</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorAlreadyExists" xml:space="preserve">
+    <value>Navedena datoteka/folder već postoji</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Path" xml:space="preserve">
+    <value>Putanja:</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorIO" xml:space="preserve">
+    <value>Neodređena IO greška.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorFolderNotFound" xml:space="preserve">
+    <value>Folder nije nađen</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerPageSize" xml:space="preserve">
+    <value>Veličina stranice:</value>
+  </data>
+</root>

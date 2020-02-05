@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppendixColTitleAddress" xml:space="preserve">
+    <value>Адреса</value>
+  </data>
+  <data name="AppendixColTitleBalansCost" xml:space="preserve">
+    <value>Балансова Вартість</value>
+  </data>
+  <data name="AppendixColTitleBuildYear" xml:space="preserve">
+    <value>Рік побудови</value>
+  </data>
+  <data name="AppendixColTitleCharacteristics" xml:space="preserve">
+    <value>Характеристика</value>
+  </data>
+  <data name="AppendixColTitleDiameter" xml:space="preserve">
+    <value>Діаметр</value>
+  </data>
+  <data name="AppendixColTitleExplYear" xml:space="preserve">
+    <value>Рік введення в експлуатацію</value>
+  </data>
+  <data name="AppendixColTitleFinalCost" xml:space="preserve">
+    <value>Залишкова Вартість</value>
+  </data>
+  <data name="AppendixColTitleLength" xml:space="preserve">
+    <value>Довжина</value>
+  </data>
+  <data name="AppendixColTitleObject1NF" xml:space="preserve">
+    <value>Об'єкт в БД</value>
+  </data>
+  <data name="AppendixColTitleObjKind" xml:space="preserve">
+    <value>Вид Об'єкту</value>
+  </data>
+  <data name="AppendixColTitleObjName" xml:space="preserve">
+    <value>Назва Об'єкту</value>
+  </data>
+  <data name="AppendixColTitleObjType" xml:space="preserve">
+    <value>Тип Об'єкту</value>
+  </data>
+  <data name="AppendixColTitlePurpose" xml:space="preserve">
+    <value>Призначення</value>
+  </data>
+  <data name="AppendixColTitlePurposeGroup" xml:space="preserve">
+    <value>Група Призначення</value>
+  </data>
+  <data name="AppendixColTitleSquare" xml:space="preserve">
+    <value>Площа</value>
+  </data>
+  <data name="AppendixColTitleTransfers" xml:space="preserve">
+    <value>Права</value>
+  </data>
+  <data name="AppendixTransfersExist" xml:space="preserve">
+    <value>ЗАДАНО</value>
+  </data>
+  <data name="AppendixTransfersMissing" xml:space="preserve">
+    <value>НЕ ЗАДАНО</value>
+  </data>
+  <data name="AppendixUnmatchedObject" xml:space="preserve">
+    <value>ОБ'ЄКТ НЕ ЗНАЙДЕНО</value>
+  </data>
+  <data name="DocTextDatePrefix" xml:space="preserve">
+    <value>ВІД </value>
+  </data>
+  <data name="DocTextKMDA" xml:space="preserve">
+    <value>КИЇВСЬКА МІСЬКА ДЕРЖАВНА АДМІНІСТРАЦІЯ</value>
+  </data>
+  <data name="DocTextKMR" xml:space="preserve">
+    <value>КИЇВСЬКА МІСЬКА РАДА</value>
+  </data>
+  <data name="DocTextKyiv" xml:space="preserve">
+    <value>КИЇВ</value>
+  </data>
+  <data name="DocTextNumPrefix" xml:space="preserve">
+    <value>N </value>
+  </data>
+  <data name="DocTextRishennya" xml:space="preserve">
+    <value>РІШЕННЯ</value>
+  </data>
+  <data name="DocTextRozp" xml:space="preserve">
+    <value>РОЗПОРЯДЖЕННЯ</value>
+  </data>
+  <data name="DocTextSession" xml:space="preserve">
+    <value>СЕСІЯ</value>
+  </data>
+  <data name="StreetAddrPrefix" xml:space="preserve">
+    <value>ВУЛ.</value>
+  </data>
+  <data name="TransferTooltipFormatFrom" xml:space="preserve">
+    <value>ВІД:</value>
+  </data>
+  <data name="TransferTooltipFormatRight" xml:space="preserve">
+    <value>ПРАВО:</value>
+  </data>
+  <data name="TransferTooltipFormatTo" xml:space="preserve">
+    <value>ДО:</value>
+  </data>
+  <data name="LabelMasterDocAct" xml:space="preserve">
+    <value>Номер Розпорядження, до якого відноситься Акт</value>
+  </data>
+  <data name="LabelMasterDocRozp" xml:space="preserve">
+    <value>Номер Документу, в який вносяться зміни</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Warning" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Warning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="KorpusPrefix" xml:space="preserve">
+    <value>К.</value>
+  </data>
+  <data name="TransferTooltipFormatAddr" xml:space="preserve">
+    <value>АДРЕСА:</value>
+  </data>
+  <data name="TransferTooltipFormatBalansFound" xml:space="preserve">
+    <value>ОБ'ЄКТ НА БАЛАНСІ: Знайдено</value>
+  </data>
+  <data name="TransferTooltipFormatBalansNotFound" xml:space="preserve">
+    <value>ОБ'ЄКТ НА БАЛАНСІ: НЕ ЗНАЙДЕНО</value>
+  </data>
+  <data name="TransferTooltipFormatSqr" xml:space="preserve">
+    <value>ПЛОЩА:</value>
+  </data>
+  <data name="BalansTransferFail" xml:space="preserve">
+    <value>ПОТРЕБУЄ КОРЕГУВАННЯ</value>
+  </data>
+  <data name="BalansTransferOK" xml:space="preserve">
+    <value>ЗАДАНО КОРЕКТНО</value>
+  </data>
+  <data name="Inaplicable" xml:space="preserve">
+    <value>(Заповнювати не потрібно)</value>
+  </data>
+  <data name="TransferTypeCreate" xml:space="preserve">
+    <value>ПРИЙНЯТТЯ НА БАЛАНС</value>
+  </data>
+  <data name="TransferTypeDestroy" xml:space="preserve">
+    <value>ВІДЧУЖЕННЯ</value>
+  </data>
+  <data name="TransferTypeTransfer" xml:space="preserve">
+    <value>З БАЛАНСУ НА БАЛАНС</value>
+  </data>
+  <data name="TransferTooltipFormatType" xml:space="preserve">
+    <value>ПЕРЕДАЧА:</value>
+  </data>
+</root>

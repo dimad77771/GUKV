@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="CategorizeImages" Caption="Cataloga Immagini" />
+      <Action Id="FillCategories" Caption="Riempi Categorie" />
+      <Action Id="ImagePreviewListMode" Caption="Modalità Anteprima Elenco Immagini" />
+      <Action Id="OpenCategory" Caption="Apri" />
+    </Actions>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="DevExpress.ExpressApp.Demos.Win.AssemblyImageSourceBrowser" Caption="Browser Assembly Origine Immagini" />
+    <Class Name="DevExpress.ExpressApp.Demos.Win.CategoryString" Caption="Categoria">
+      <OwnMembers>
+        <Member Name="Images" Caption="Immagini" />
+        <Member Name="Name" Caption="Nome" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Demos.Win.FileImageSourceBrowser" Caption="Browser File Origine Immagini" />
+    <Class Name="DevExpress.ExpressApp.Demos.Win.ImageBrowserCategory" Caption="Categoria Browser Immagini">
+      <OwnMembers>
+        <Member Name="ChildCategories" Caption="Categorie Figlie" />
+        <Member Name="Name" Caption="Nome" />
+        <Member Name="Owner" Caption="Proprietario" />
+        <Member Name="ParentCategory" Caption="Categoria Padre" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Demos.Win.ImageNode" Caption="Nodo Immagine">
+      <OwnMembers>
+        <Member Name="Image" Caption="Immagine" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Demos.Win.ImagePreviewObject" Caption="Immagine">
+      <OwnMembers>
+        <Member Name="Categories" Caption="Categorie" />
+        <Member Name="Image12x12" Caption="Piccola" />
+        <Member Name="Image16x16" Caption="Originale" />
+        <Member Name="Image32x32" Caption="Grande" />
+        <Member Name="Image48x48" Caption="Molto Grande" />
+        <Member Name="ImageName" Caption="Nome Immagine" />
+        <Member Name="OriginalImage" Caption="Immagine Originale" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Demos.Win.ImagesGroupNode" Caption="Nodo Gruppo Immagini">
+      <OwnMembers>
+        <Member Name="Images" Caption="Immagini" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Demos.Win.ImageSourceBrowserBase" Caption="Browser Origine Immagini">
+      <OwnMembers>
+        <Member Name="Categories" Caption="Categorie" />
+        <Member Name="ImageCategories" Caption="Categorie Immagine" />
+        <Member Name="ImageSourceName" Caption="Nome Origine Immagine" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <Views>
+    <DetailView Id="ImagePreviewObject_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="ImagePreviewObject" Caption="Oggetto Anteprima Immagine" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

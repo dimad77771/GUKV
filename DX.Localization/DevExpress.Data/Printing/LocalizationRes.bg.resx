@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="PreviewStringId.RibbonPreview_Watermark_Caption" xml:space="preserve">
+    <value>Воден знак</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_HtmlTitle" xml:space="preserve">
+    <value>Заглавие:</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_FillBackground_STipTitle" xml:space="preserve">
+    <value>Цвят на фона</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_SendTxt_Caption" xml:space="preserve">
+    <value>Текстов файл</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_ExportCsv_STipTitle" xml:space="preserve">
+    <value>Експортирай в CSV</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_Watermark" xml:space="preserve">
+    <value>Воден знак</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_ZoomIn_STipTitle" xml:space="preserve">
+    <value>Увеличи</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_ExportXlsx_Caption" xml:space="preserve">
+    <value>XLSX файл</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_Watermark_STipTitle" xml:space="preserve">
+    <value>Воден знак</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_ExportFile_STipTitle" xml:space="preserve">
+    <value>Експортиране в...</value>
+  </data>
+  <data name="PreviewStringId.BarText_StatusBar" xml:space="preserve">
+    <value>Лента на състоянието</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_ZoomOut" xml:space="preserve">
+    <value>Намали</value>
+  </data>
+  <data name="PreviewStringId.SaveDlg_FilterHtm" xml:space="preserve">
+    <value>HTML документ</value>
+  </data>
+  <data name="PreviewStringId.WMForm_Direction_Vertical" xml:space="preserve">
+    <value>Вертикална</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_RtfDocument" xml:space="preserve">
+    <value>RTF файл</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_SendPdf_Caption" xml:space="preserve">
+    <value>PDF файл</value>
+  </data>
+  <data name="PreviewStringId.PreviewForm_Caption" xml:space="preserve">
+    <value>Визуализация</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_SendRtf_Caption" xml:space="preserve">
+    <value>RTF файл</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_ExportXls_Caption" xml:space="preserve">
+    <value>XLS файл</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_CsvDocument" xml:space="preserve">
+    <value>CSV файл</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_ExportPdf_STipTitle" xml:space="preserve">
+    <value>Експортирай в PDF</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_Save_Caption" xml:space="preserve">
+    <value>Запиши</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_Parameters_Caption" xml:space="preserve">
+    <value>Параметри</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_PdfDocumentTitle" xml:space="preserve">
+    <value>Заглавие:</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_ExportXps_Caption" xml:space="preserve">
+    <value>XPS файл</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_Zoom" xml:space="preserve">
+    <value>Мащабиране</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_ExportXls_STipTitle" xml:space="preserve">
+    <value>Експортирай в XLS</value>
+  </data>
+  <data name="PreviewStringId.BarText_Toolbar" xml:space="preserve">
+    <value>Лента с инструменти</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_GraphicDocument" xml:space="preserve">
+    <value>Файл с изображение</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_TxtDocument" xml:space="preserve">
+    <value>Текстов файл</value>
+  </data>
+  <data name="PreviewStringId.Button_Apply" xml:space="preserve">
+    <value>Приложи</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_ExportCsv_Caption" xml:space="preserve">
+    <value>CSV файл</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_XlsxDocument" xml:space="preserve">
+    <value>XLSX файл</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_SendXlsx_Caption" xml:space="preserve">
+    <value>XLSX файл</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_Customize_STipTitle" xml:space="preserve">
+    <value>Опции</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_ExportGraphic_Caption" xml:space="preserve">
+    <value>Файл с изображение</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_SendCsv_Caption" xml:space="preserve">
+    <value>CSV файл</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_ZoomOut_STipTitle" xml:space="preserve">
+    <value>Намали</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_Customize" xml:space="preserve">
+    <value>Персонализирай</value>
+  </data>
+  <data name="PreviewStringId.Margin_Inch" xml:space="preserve">
+    <value>Инч</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_ZoomIn_Caption" xml:space="preserve">
+    <value>Увеличи</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_ExportFile_Caption" xml:space="preserve">
+    <value>Експортиране в</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_XlsDocument" xml:space="preserve">
+    <value>XLS файл</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_ExportRtf_Caption" xml:space="preserve">
+    <value>RTF файл</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_Parameters_STipTitle" xml:space="preserve">
+    <value>Параметри</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_PaperSize_Caption" xml:space="preserve">
+    <value>Размер</value>
+  </data>
+  <data name="PreviewStringId.Button_Cancel" xml:space="preserve">
+    <value>Отказ</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_ExportHtm_Description" xml:space="preserve">
+    <value>Уеб страница</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_ExportMht_STipTitle" xml:space="preserve">
+    <value>Експортирай в MHT</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_SendGraphic_Caption" xml:space="preserve">
+    <value>Файл с изображение</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_PdfDocumentApplication" xml:space="preserve">
+    <value>Приложение:</value>
+  </data>
+  <data name="PreviewStringId.SaveDlg_Title" xml:space="preserve">
+    <value>Запиши като</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_Customize_Caption" xml:space="preserve">
+    <value>Опции</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_ExportRtf_STipTitle" xml:space="preserve">
+    <value>Експортирай в RTF</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_PdfDocument" xml:space="preserve">
+    <value>PDF файл</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_ExportTxt_Caption" xml:space="preserve">
+    <value>Текстов файл</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_TextExportMode_Text" xml:space="preserve">
+    <value>Текст</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_Zoom_Caption" xml:space="preserve">
+    <value>Мащабиране</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_DocumentMap_Caption" xml:space="preserve">
+    <value>Показалци </value>
+  </data>
+  <data name="PreviewStringId.WMForm_ImageZoom" xml:space="preserve">
+    <value>Мащабиране</value>
+  </data>
+  <data name="PreviewStringId.SaveDlg_FilterPdf" xml:space="preserve">
+    <value>PDF документ</value>
+  </data>
+  <data name="PreviewStringId.Button_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_PageGroup_Zoom" xml:space="preserve">
+    <value>Мащабиране</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_ExportTxt_STipTitle" xml:space="preserve">
+    <value>Export to Text</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_ExportPdf_Caption" xml:space="preserve">
+    <value>PDF файл</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_SendXls_Caption" xml:space="preserve">
+    <value>XLS файл</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_Zoom_STipTitle" xml:space="preserve">
+    <value>Мащабиране</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_PageGroup_Document" xml:space="preserve">
+    <value>Документ</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_ZoomWholePage" xml:space="preserve">
+    <value>Цялата страница</value>
+  </data>
+  <data name="PreviewStringId.Msg_CustomDrawWarning" xml:space="preserve">
+    <value>Предупреждение!</value>
+  </data>
+  <data name="PreviewStringId.SB_PageNone" xml:space="preserve">
+    <value>няма</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_ExportXlsx_STipTitle" xml:space="preserve">
+    <value>Експортирай в XLSX</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_SendXps_Caption" xml:space="preserve">
+    <value>XPS файл</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_ExportHtm_STipTitle" xml:space="preserve">
+    <value>Експортирай в HTML</value>
+  </data>
+  <data name="PreviewStringId.MenuItem_HtmDocument" xml:space="preserve">
+    <value>HTML файл</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_ZoomIn" xml:space="preserve">
+    <value>Увеличи</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_ZoomOut_Caption" xml:space="preserve">
+    <value>Намали</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_PageGroup_Navigation" xml:space="preserve">
+    <value>Навигация</value>
+  </data>
+  <data name="PreviewStringId.RibbonPreview_ExportHtm_Caption" xml:space="preserve">
+    <value>HTML файл</value>
+  </data>
+  <data name="PreviewStringId.ExportOption_TextExportMode_Value" xml:space="preserve">
+    <value>Стойност</value>
+  </data>
+  <data name="PreviewStringId.TB_TTip_Parameters" xml:space="preserve">
+    <value>Параметри</value>
+  </data>
+  <data name="PreviewStringId.ParametersRequest_Caption" xml:space="preserve">
+    <value>Параметри</value>
+  </data>
+  <data name="PreviewStringId.NoneString" xml:space="preserve">
+    <value>(няма)</value>
+  </data>
+  <data name="PreviewStringId.NoneString" xml:space="preserve">
+    <value>(Няма)</value>
+  </data>
+</root>

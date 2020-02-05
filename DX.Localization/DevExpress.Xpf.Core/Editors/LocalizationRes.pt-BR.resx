@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="EditorStringId.FilterCriteriaToStringGroupOperatorAnd" xml:space="preserve">
+    <value>E</value>
+  </data>
+  <data name="EditorStringId.Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringUnaryOperatorNot" xml:space="preserve">
+    <value>Not</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringNotLike" xml:space="preserve">
+    <value>Not Like</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringUnaryOperatorIsNull" xml:space="preserve">
+    <value>Is Null</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringBetween" xml:space="preserve">
+    <value>Between</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringBinaryOperatorLike" xml:space="preserve">
+    <value>Like</value>
+  </data>
+  <data name="EditorStringId.SelectAll" xml:space="preserve">
+    <value>(Selecionar Todos)</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringBinaryOperatorNotEqual" xml:space="preserve">
+    <value>&lt;&gt;</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringIsNotNull" xml:space="preserve">
+    <value>Is Not Null</value>
+  </data>
+  <data name="EditorStringId.Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringIn" xml:space="preserve">
+    <value>In</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringGroupOperatorOr" xml:space="preserve">
+    <value>Or</value>
+  </data>
+  <data name="EditorStringId.OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_FunctionType_AllItems" xml:space="preserve">
+    <value>(Todos)</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_AddHours_Description" xml:space="preserve">
+    <value>AdicionarHoras(DataHora, NroHoras)\nAdiciona horas a uma determinada data.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Acos_Description" xml:space="preserve">
+    <value>Acos(Value)
+Retorna o arco cosseno de um número (o ângulo, em radianos, cujo o cosseno é dado pela expressão).</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_AddSeconds_Description" xml:space="preserve">
+    <value>AdicionaSegundos(DataHora, NroSegundos)\nAdiciona segundos a uma determinada data.</value>
+  </data>
+  <data name="EditorStringId.FilterEmptyValueText" xml:space="preserve">
+    <value>&lt;digite um valor&gt;</value>
+  </data>
+  <data name="EditorStringId.FilterToolTipNodeAdd" xml:space="preserve">
+    <value>Adiciona uma nova condição para este grupo</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_AddMonths_Description" xml:space="preserve">
+    <value>AdicionaMeses(DataHora, NroMeses)\nAdiciona meses a uma determinada data.</value>
+  </data>
+  <data name="EditorStringId.FilterGroupAddCondition" xml:space="preserve">
+    <value>Adicionar Condição</value>
+  </data>
+  <data name="EditorStringId.FilterClauseBetweenAnd" xml:space="preserve">
+    <value>e</value>
+  </data>
+  <data name="EditorStringId.FilterToolTipKeysAdd" xml:space="preserve">
+    <value>(Use a tecla Insert para Adicionar uma chave)</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_AddDays_Description" xml:space="preserve">
+    <value>AdicionarDias(Data, NroDias)\nAdiciona dias a uma determinada data.</value>
+  </data>
+  <data name="EditorStringId.FilterToolTipNodeAction" xml:space="preserve">
+    <value>Ações</value>
+  </data>
+  <data name="EditorStringId.FilterToolTipElementAdd" xml:space="preserve">
+    <value>Adiciona um novo item na lista</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_AddTicks_Description" xml:space="preserve">
+    <value>AdicionaTiques(DataHora, NroTiques)\nAdiciona tiques a uma determinada data.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_AddYears_Description" xml:space="preserve">
+    <value>AdicionaAnos(DataHora, NroAnos)\nAdiciona anos a uma determinada data.</value>
+  </data>
+  <data name="EditorStringId.FilterToolTipKeysRemove" xml:space="preserve">
+    <value>(Use as teclas Delete ou Subtrair)</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_AddTimeSpan_Description" xml:space="preserve">
+    <value>AdicionaIntervaloTempo(DataHora, IntervaloTempo)\n
+Adiciona um intervalo de tempo a uma determinda data.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_AddMinutes_Description" xml:space="preserve">
+    <value>AdicionaMinutos(DataHora, NroMinutos)\nAdiciona minutos a uma determinada data.</value>
+  </data>
+  <data name="EditorStringId.Apply" xml:space="preserve">
+    <value>Aplicar</value>
+  </data>
+  <data name="EditorStringId.FilterGroupAddGroup" xml:space="preserve">
+    <value>Adicionar Grupo</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Plus_Description" xml:space="preserve">
+    <value>Adiciona um valor de expressão numérica a outra, ou concatena duas strings.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Asin_Description" xml:space="preserve">
+    <value>Asin(Value)
+Retorna o arco seno de um número (o ângulo, em radianos, cujo o seno é dado pela expressão).</value>
+  </data>
+  <data name="EditorStringId.FilterGroupAnd" xml:space="preserve">
+    <value>E</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_AddMilliSeconds_Description" xml:space="preserve">
+    <value>AdicionaMilliSegundos(DataHora, NroMilliSegundos)\nAdiciona milisegundos a uma determinada data.</value>
+  </data>
+</root>

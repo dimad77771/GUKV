@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+	<ActionDesign>
+		<Actions>
+			<Action Id="EditSeries" Caption="Редактировать все повторы" />
+			<Action Id="EditSeriesDetailView" Caption="Редактировать все повторы" />
+			<Action Id="OpenSeries" Caption="Просмотреть все повторы" />
+			<Action Id="RestoreOccurrence" Caption="Восстановить этот повтор" />
+		</Actions>
+	</ActionDesign>
+</Application>

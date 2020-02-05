@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="PageSetup" Caption="Seite einrichten…" ToolTip="Seite einrichten" />
+      <Action Id="Print" Caption="Drucken…" ToolTip="Druckdialog" />
+      <Action Id="PrintPreview" Caption="Druckvorschau…" ToolTip="Druckvorschau" />
+    </Actions>
+  </ActionDesign>
+</Application>

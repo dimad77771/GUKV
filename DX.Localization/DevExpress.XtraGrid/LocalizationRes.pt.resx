@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="GridStringId.FileIsNotFoundError">
+    <value>Ficheiro {0} não foi encontrado</value>
+  </data>
+  <data name="GridStringId.ColumnViewExceptionMessage">
+    <value> Deseja corrigir o valor ?</value>
+  </data>
+  <data name="GridStringId.CustomizationCaption">
+    <value>Personalização</value>
+  </data>
+  <data name="GridStringId.CustomizationColumns">
+    <value>Colunas</value>
+  </data>
+  <data name="GridStringId.CustomizationBands">
+    <value>Faixas</value>
+  </data>
+  <data name="GridStringId.PopupFilterAll">
+    <value>(Todos)</value>
+  </data>
+  <data name="GridStringId.PopupFilterCustom">
+    <value>(Personalizar)</value>
+  </data>
+  <data name="GridStringId.PopupFilterBlanks">
+    <value>(Em branco)</value>
+  </data>
+  <data name="GridStringId.PopupFilterNonBlanks">
+    <value>(Não brancos)</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogFormCaption">
+    <value>Filtro Automático Personalizado</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogCaption">
+    <value>Mostrar registos onde:</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogRadioAnd">
+    <value>&amp;E</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogRadioOr">
+    <value>&amp;Ou</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogOkButton">
+    <value>C&amp;onfirmar</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogClearFilter">
+    <value>&amp;Remover Filtro</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogCancelButton">
+    <value>&amp;Cancelar</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialog2FieldCheck">
+    <value>Campo</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogConditionEQU">
+    <value>é igual</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogConditionNEQ">
+    <value>não é igual</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogConditionGT">
+    <value>é maior que</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogConditionGTE">
+    <value>é maior ou igual a</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogConditionLT">
+    <value>é menor que</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogConditionLTE">
+    <value>é menor ou igual a</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogConditionBlanks">
+    <value>brancos</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogConditionNonBlanks">
+    <value>não brancos</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogConditionLike">
+    <value>como</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogConditionNotLike">
+    <value>diferente</value>
+  </data>
+  <data name="GridStringId.MenuFooterSum">
+    <value>Soma</value>
+  </data>
+  <data name="GridStringId.MenuFooterMin">
+    <value>Mín</value>
+  </data>
+  <data name="GridStringId.MenuFooterMax">
+    <value>Máx</value>
+  </data>
+  <data name="GridStringId.MenuFooterCount">
+    <value>Contagem</value>
+  </data>
+  <data name="GridStringId.MenuFooterAverage">
+    <value>Média</value>
+  </data>
+  <data name="GridStringId.MenuFooterSumFormat">
+    <value>Soma={0:#,#.##}</value>
+  </data>
+  <data name="GridStringId.MenuFooterMinFormat">
+    <value>Mín={0:#,#.####}</value>
+  </data>
+  <data name="GridStringId.MenuFooterMaxFormat">
+    <value>Máx={0:#,#.####}</value>
+  </data>
+  <data name="GridStringId.MenuFooterCountFormat">
+    <value>{0:#,#.####}</value>
+  </data>
+  <data name="GridStringId.MenuFooterAverageFormat">
+    <value>Méd={0:#,#.##}</value>
+  </data>
+  <data name="GridStringId.MenuColumnSortAscending">
+    <value>Ordenar Ascendente</value>
+  </data>
+  <data name="GridStringId.MenuColumnSortDescending">
+    <value>Ordenar Descendente</value>
+  </data>
+  <data name="GridStringId.MenuColumnGroup">
+    <value>Agrupar por este Campo</value>
+  </data>
+  <data name="GridStringId.MenuColumnUnGroup">
+    <value>Desagrupar</value>
+  </data>
+  <data name="GridStringId.MenuColumnColumnCustomization">
+    <value>Lista de Colunas</value>
+  </data>
+  <data name="GridStringId.MenuColumnBestFit">
+    <value>Melhor Ajuste</value>
+  </data>
+  <data name="GridStringId.MenuColumnFilter">
+    <value>Pode Filtrar</value>
+  </data>
+  <data name="GridStringId.MenuColumnClearFilter">
+    <value>Remover Filtro</value>
+  </data>
+  <data name="GridStringId.MenuColumnBestFitAllColumns">
+    <value>Melhor Ajuste (Todas as colunas)</value>
+  </data>
+  <data name="GridStringId.MenuGroupPanelFullExpand">
+    <value>Expandir Todos</value>
+  </data>
+  <data name="GridStringId.MenuGroupPanelFullCollapse">
+    <value>Fechar Todos</value>
+  </data>
+  <data name="GridStringId.MenuGroupPanelClearGrouping">
+    <value>Remover Agrupamentos</value>
+  </data>
+  <data name="GridStringId.PrintDesignerBandedView">
+    <value>Definições de Impressão (Vista de Faixas)</value>
+  </data>
+  <data name="GridStringId.PrintDesignerGridView">
+    <value>Definições de Impressão (Vista de Grelha)</value>
+  </data>
+  <data name="GridStringId.PrintDesignerCardView">
+    <value>Definições de Impressão (Vista de Fichas)</value>
+  </data>
+  <data name="GridStringId.PrintDesignerBandHeader">
+    <value>Faixa Cabeçalho</value>
+  </data>
+  <data name="GridStringId.PrintDesignerDescription">
+    <value>Ajustar várias opções de impressão para a vista actual.</value>
+  </data>
+  <data name="GridStringId.MenuColumnGroupBox">
+    <value>Caixa de Agrupamento</value>
+  </data>
+  <data name="GridStringId.CardViewNewCard">
+    <value>Novo Cartão</value>
+  </data>
+  <data name="GridStringId.CardViewQuickCustomizationButton">
+    <value>Personalizar</value>
+  </data>
+  <data name="GridStringId.CardViewQuickCustomizationButtonFilter">
+    <value>Filtro</value>
+  </data>
+  <data name="GridStringId.CardViewQuickCustomizationButtonSort">
+    <value>Ordenar:</value>
+  </data>
+  <data name="GridStringId.GridGroupPanelText">
+    <value>Arraste para aqui o cabeçalho de uma coluna para agrupar por ela</value>
+  </data>
+  <data name="GridStringId.GridNewRowText">
+    <value>Clique aqui para adicionar um novo registo</value>
+  </data>
+  <data name="GridStringId.GridOutlookIntervals">
+    <value>Anterior;Último Mês;Três Semanas atrás;Duas Semanas atrás;Última Semana;;;;;;;;Ontem;Hoje;Amanhã;;;;;;;;Próxima Semana;Daqui a duas Semanas;Daqui a três Semanas;Próximo Mês;Depois do Próximo Mês;</value>
+  </data>
+  <data name="GridStringId.MenuColumnClearSorting">
+    <value>Limpar ordenação</value>
+  </data>
+  <data name="GridStringId.MenuFooterCountGroupFormat">
+    <value>Contagem={0}</value>
+  </data>
+  <data name="GridStringId.MenuFooterCustomFormat">
+    <value>Personalização={0}</value>
+  </data>
+  <data name="GridStringId.MenuFooterNone">
+    <value>Nenhum</value>
+  </data>
+  <data name="GridStringId.MenuColumnRemoveColumn" xml:space="preserve">
+    <value>Remover Esta Coluna</value>
+  </data>
+  <data name="GridStringId.MenuColumnShowColumn" xml:space="preserve">
+    <value>Exibir Esta Coluna</value>
+  </data>
+  <data name="GridStringId.FilterBuilderOkButton" xml:space="preserve">
+    <value>&amp;OK</value>
+  </data>
+  <data name="GridStringId.FilterBuilderCancelButton" xml:space="preserve">
+    <value>&amp;Cancelar</value>
+  </data>
+  <data name="GridStringId.FilterBuilderApplyButton" xml:space="preserve">
+    <value>&amp;Aplicar</value>
+  </data>
+  <data name="GridStringId.FilterBuilderCaption" xml:space="preserve">
+    <value>Editor de Filtro</value>
+  </data>
+</root>

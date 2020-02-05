@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CannotFindInfoForProperty" xml:space="preserve">
+    <value>Impossibile trovare il corrispondente '{0}' per la seguente proprietà: '{1}'.</value>
+  </data>
+  <data name="CannotHideShowEditorLayoutManagerIsNotSupported" xml:space="preserve">
+    <value>Impossibile chiamare il metodo HideShowEditor perchè non supportato dal corrente DetailView's LayoutManager oppure '{0}' non è predisposto per la personalizzazione.</value>
+  </data>
+  <data name="CannotHideShowColumnListEditorIsNotSupported" xml:space="preserve">
+    <value>Impossibile chiamare il metodo HideShowColumn perchè non supportato dal corrente ListView's ListEditor oppure '{0}' non è predisposto per la personalizzazione.</value>
+  </data>
+  <data name="BrokenRuleIncorrectPropertiesParameter" xml:space="preserve">
+    <value>E' stato rilevata una errata configurazione della EditorStateRule per la classe {0}.
+Il parametro 'Properties' ({1}) della regola non è impostato o contiene informazioni errate.
+Questo parametro può contenere:
+- i nomi di proprietà di classe;
+- identificatori di elementi di layout, che sono mostrati nel Model Editor sotto il nodo Layout della DetailView corrispondente alla classe.
+Notare che i separatori ammessi sono: {2}
+
+Per risolvere il problema, correggere il parametro 'Properties' della regola nel codice della classe o nel file XAFML, tramite l'editor di testo.
+Se sono stati utilizzati gli identificatori di elementi di layout, assicurarsi di gestire correttamente l'evento statico 'CustomParseProperties' della classe 'DevExpress.ExpressApp.ConditionalEditorState.Core.EditorStateRuleManager'.
+Nel caso più semplice, impostando il parametro 'Handled' a 'True' è sufficiente ad evitare questo errore e consente di personalizzare gli elementi di layout.
+
+Se queste informazioni non sono esaudienti, contattare il Team di Supporto all'indirizzo http://www.devexpress.com/sc</value>
+  </data>
+  <data name="BrokenRuleContainsBothCriteriaAndMethodInfoParameters" xml:space="preserve">
+    <value>E' stata rilevata una errata configurazione della EditorStateRule per la classe {0}.
+Il parametro 'Criteria' ({1}) è impostato insieme al parametro 'MethodInfo' ({2}) mentro è lecito impostarne solo uno dei due.
+Per impostazione predefinita, verrà usato il parametro 'MethodInfo' che ha una priorità maggiore.
+Per risolvere il problema, correggere la regola nella classe o eliminare il parametro 'Criteria' nell' Application Model, tramite il Model Editor.</value>
+  </data>
+</root>

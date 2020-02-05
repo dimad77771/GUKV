@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+	<value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+	<value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+	<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+	<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxGridViewStringId.GroupPanel">
+    <value>Per raggruppare su una colonna, trascinane l'intestazione qui</value>
+  </data>
+	<data name="ASPxGridViewStringId.EmptyDataRow">
+    <value>Non ci sono dati da visualizzare</value>
+  </data>
+	<data name="ASPxGridViewStringId.EmptyHeaders">
+    <value>Trascina una colonna qui...</value>
+  </data>
+	<data name="ASPxGridViewStringId.ConfirmDelete">
+    <value>Confermi eliminazione?</value>
+  </data>
+	<data name="ASPxGridViewStringId.GroupContinuedOnNextPage">
+    <value>(Continua nella pagina successiva)</value>
+  </data>
+	<data name="ASPxGridViewStringId.CustomizationWindowCaption">
+    <value>Scelta campi</value>
+  </data>
+	<data name="ASPxGridViewStringId.PopupEditFormCaption">
+    <value>Maschera di modifica</value>
+  </data>
+	<data name="ASPxGridViewStringId.HeaderFilterShowAllItem">
+    <value>(Tutti)</value>
+  </data>
+	<data name="ASPxGridViewStringId.CommandEdit">
+    <value>Modifica</value>
+  </data>
+	<data name="ASPxGridViewStringId.CommandNew">
+    <value>Nuovo</value>
+  </data>
+	<data name="ASPxGridViewStringId.CommandDelete">
+    <value>Elimina</value>
+  </data>
+	<data name="ASPxGridViewStringId.CommandSelect">
+    <value>Seleziona</value>
+  </data>
+	<data name="ASPxGridViewStringId.CommandCancel">
+    <value>Annulla</value>
+  </data>
+	<data name="ASPxGridViewStringId.CommandUpdate">
+    <value>Aggiorna</value>
+  </data>
+	<data name="ASPxGridViewStringId.CommandClearFilter">
+    <value>Cancella</value>
+  </data>
+	<data name="ASPxGridViewStringId.AutoFilterBeginsWith">
+    <value>Inizia per</value>
+  </data>
+	<data name="ASPxGridViewStringId.AutoFilterContains">
+    <value>Contiene</value>
+  </data>
+	<data name="ASPxGridViewStringId.AutoFilterEndsWith">
+    <value>Finisce per</value>
+  </data>
+	<data name="ASPxGridViewStringId.AutoFilterEquals">
+    <value>Uguale</value>
+  </data>
+	<data name="ASPxGridViewStringId.AutoFilterGreater">
+    <value>Maggiore di</value>
+  </data>
+	<data name="ASPxGridViewStringId.AutoFilterGreaterOrEqual">
+    <value>Maggiore o uguale di</value>
+  </data>
+	<data name="ASPxGridViewStringId.AutoFilterLess">
+    <value>Minore di</value>
+  </data>
+	<data name="ASPxGridViewStringId.AutoFilterLessOrEqual">
+    <value>Minore o uguale di</value>
+  </data>
+	<data name="ASPxGridViewStringId.AutoFilterNotEqual">
+    <value>Diverso</value>
+  </data>
+	<data name="ASPxGridViewStringId.Alt_HeaderFilterButton">
+    <value>[Filtro]</value>
+  </data>
+	<data name="ASPxGridViewStringId.Alt_HeaderFilterButtonActive">
+    <value>[Filtrato]</value>
+  </data>
+	<data name="ASPxGridViewStringId.Alt_SortedAscending">
+    <value>(Ascendente)</value>
+  </data>
+	<data name="ASPxGridViewStringId.Alt_SortedDescending">
+    <value>(Discendente)</value>
+  </data>
+	<data name="ASPxGridViewStringId.Alt_DragAndDropHideColumnIcon">
+    <value>Nascondi</value>
+  </data>
+	<data name="ASPxGridViewStringId.Alt_Expand">
+    <value>[Espandi]</value>
+  </data>
+	<data name="ASPxGridViewStringId.Alt_Collapse">
+    <value>[Contrai]</value>
+  </data>
+	<data name="ASPxGridViewStringId.Alt_FilterRowButton">
+    <value>[Condizione]</value>
+  </data>
+	<data name="ASPxGridViewStringId.Outlook_Older">
+    <value>Più vecchio di</value>
+  </data>
+	<data name="ASPxGridViewStringId.Outlook_LastMonth">
+    <value>Ultimo mese</value>
+  </data>
+	<data name="ASPxGridViewStringId.Outlook_EarlierThisMonth">
+    <value>Prima di questo mese</value>
+  </data>
+	<data name="ASPxGridViewStringId.Outlook_ThreeWeeksAgo">
+    <value>Tre settimane fa</value>
+  </data>
+	<data name="ASPxGridViewStringId.Outlook_TwoWeeksAgo">
+    <value>Due settimane fa</value>
+  </data>
+	<data name="ASPxGridViewStringId.Outlook_LastWeek">
+    <value>Ultima settimana</value>
+  </data>
+	<data name="ASPxGridViewStringId.Outlook_Yesterday">
+    <value>Ieri</value>
+  </data>
+	<data name="ASPxGridViewStringId.Outlook_Today">
+    <value>Oggi</value>
+  </data>
+	<data name="ASPxGridViewStringId.Outlook_Tomorrow">
+    <value>Domani</value>
+  </data>
+	<data name="ASPxGridViewStringId.Outlook_NextWeek">
+    <value>Prossima settimana</value>
+  </data>
+	<data name="ASPxGridViewStringId.Outlook_TwoWeeksAway">
+    <value>Due settimane dopo</value>
+  </data>
+	<data name="ASPxGridViewStringId.Outlook_ThreeWeeksAway">
+    <value>Tre settimane dopo</value>
+  </data>
+	<data name="ASPxGridViewStringId.Outlook_LaterThisMonth">
+    <value>Dopo questo mese</value>
+  </data>
+	<data name="ASPxGridViewStringId.Outlook_NextMonth">
+    <value>Prossimo mese</value>
+  </data>
+	<data name="ASPxGridViewStringId.Outlook_BeyondNextMonth">
+    <value>Oltre il mese dopo</value>
+  </data>
+  <data name="ASPxGridViewStringId.HeaderFilterShowBlanksItem">
+	<value>(Vuoti)</value>
+  </data>
+  <data name="ASPxGridViewStringId.HeaderFilterShowNonBlanksItem">
+	<value>(Non vuoti)</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterDoesNotContain">
+	<value>Non contiene</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Sum">
+    <value>Somma={0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Sum_OtherColumn">
+	<value>La somma di {1} è {0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Min">
+	<value>Min={0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Min_OtherColumn">
+	<value>Il min di {1} è {0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Max">
+	<value>Max={0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Max_OtherColumn">
+	<value>Il max di {1} è {0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Average">
+	<value>Media={0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Average_OtherColumn">
+	<value>La media di {1} è {0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Count">
+	<value>Conteggio={0}</value>
+  </data>
+</root>

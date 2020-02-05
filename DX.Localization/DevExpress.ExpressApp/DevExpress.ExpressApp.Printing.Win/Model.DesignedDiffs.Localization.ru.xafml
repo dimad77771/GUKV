@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="PageSetup" Caption="Параметры страницы..." ToolTip="Параметры страницы"/>
+      <Action Id="Print" Caption="Печать..." ToolTip="Диалог печати"/>
+	  <Action Id="PrintPreview" Caption="Предварительный просмотр..." ToolTip="Предварительный просмотр"/>
+    </Actions>
+  </ActionDesign>
+</Application>

@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="StringId.FilterCriteriaToStringFunctionGetDayOfWeek" xml:space="preserve">
+    <value>Uzmi dan u sedmici</value>
+  </data>
+  <data name="StringId.FilterPopupToolbarIncrementalSearch" xml:space="preserve">
+    <value>Incrementalna pretraga</value>
+  </data>
+  <data name="StringId.ColorPickPopupAutomaticItemCaption" xml:space="preserve">
+    <value>Automatisko</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringBinaryOperatorLike" xml:space="preserve">
+    <value>Kao</value>
+  </data>
+  <data name="StringId.NotValidArrayLength" xml:space="preserve">
+    <value>Neispravna dužina niza.</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionStartsWith" xml:space="preserve">
+    <value>Počinje sa</value>
+  </data>
+  <data name="StringId.SaveLayoutDialogFileFilter" xml:space="preserve">
+    <value>XML fajlovi (*.xml)|*.xml</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalNextWeek" xml:space="preserve">
+    <value>Slijedeće sedmice</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalEarlierThisWeek" xml:space="preserve">
+    <value>Ranije ove sedmice</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsThisMonth" xml:space="preserve">
+    <value>Je ovog mjeseca</value>
+  </data>
+  <data name="StringId.CaptionError" xml:space="preserve">
+    <value>Greška</value>
+  </data>
+  <data name="StringId.PictureEditOpenFileError" xml:space="preserve">
+    <value>Pogrešan format slike</value>
+  </data>
+  <data name="StringId.RestoreLayoutDialogTitle" xml:space="preserve">
+    <value>Obnovi raspored</value>
+  </data>
+  <data name="StringId.RestoreLayoutDialogFileFilter" xml:space="preserve">
+    <value>XML fajlovi (*.xml)|*.xml|Svi fajlovi|*.*</value>
+  </data>
+  <data name="StringId.ColorTabSystem" xml:space="preserve">
+    <value>Sistem</value>
+  </data>
+  <data name="StringId.PreviewPanelText" xml:space="preserve">
+    <value>Pregled:</value>
+  </data>
+  <data name="StringId.FilterDateTextAlt" xml:space="preserve">
+    <value>Prikaži sve|Prikaži prazne|Filter po specifičnom datumu:|Iza ove godine|||Slijedeće sedmice|danas|Ove sedmice|Ovaj mjesec|Ranije|{0:yyyy}, {0:MMMM}</value>
+  </data>
+  <data name="StringId.SaveLayoutDialogTitle" xml:space="preserve">
+    <value>Spremi raspored</value>
+  </data>
+  <data name="StringId.FilterMenuConditionAdd" xml:space="preserve">
+    <value>Dodaj uslov</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionUtcNow" xml:space="preserve">
+    <value>UTC trenutno vrijeme</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalYesterday" xml:space="preserve">
+    <value>Juče</value>
+  </data>
+  <data name="StringId.FilterOutlookDateText" xml:space="preserve">
+    <value>Prikaži sve|Prikaži prazne|Filter po specifičnom datumu:|Iza ove godine|Kasnije ove godine|Kasnije ovog mjeseca|Slijedeće sedmice|Kasnije ove sedmice|Sutra|Danas|Jučer|Ranije ove sedmice|Prošle sedmice|Ranije ovog mjeseca|Ranije ove godine|Prije ove godine</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeYesterday" xml:space="preserve">
+    <value>Juče</value>
+  </data>
+  <data name="StringId.PictureEditOpenFileErrorCaption" xml:space="preserve">
+    <value>Greška kod otvaranja</value>
+  </data>
+  <data name="StringId.FilterEditorTabVisual" xml:space="preserve">
+    <value>Vizualni</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalLastWeek" xml:space="preserve">
+    <value>Prošlog sedmice</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsThisWeek" xml:space="preserve">
+    <value>Je ove sedmice</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionRound" xml:space="preserve">
+    <value>Zaokruži</value>
+  </data>
+  <data name="StringId.FilterPopupToolbarShowNewValues" xml:space="preserve">
+    <value>Prikaži nove vrijednosti polja</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeTwoWeeksAway" xml:space="preserve">
+    <value>Nakon dve sedmice</value>
+  </data>
+  <data name="StringId.FilterToolTipNodeAdd" xml:space="preserve">
+    <value>Dodaje novi uslov ovoj grupi</value>
+  </data>
+  <data name="StringId.FilterToolTipNodeRemove" xml:space="preserve">
+    <value>Ukloni ovaj uslov</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsThisYear" xml:space="preserve">
+    <value>Je ove godine</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeLastWeek" xml:space="preserve">
+    <value>Prošle sedmice</value>
+  </data>
+  <data name="StringId.ProgressExport" xml:space="preserve">
+    <value>Izvoz u toku</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionIsOutlookIntervalLaterThisWeek" xml:space="preserve">
+    <value>Kasnije ove sedmice</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeNextWeek" xml:space="preserve">
+    <value>Sljedeće sedmice</value>
+  </data>
+  <data name="StringId.CalcError" xml:space="preserve">
+    <value>Greška u izračunu</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionPower" xml:space="preserve">
+    <value>Stepen</value>
+  </data>
+  <data name="StringId.FilterPopupToolbarMultiSelection" xml:space="preserve">
+    <value>Višestruka selekcija</value>
+  </data>
+  <data name="StringId.FilterCriteriaToStringFunctionLocalDateTimeThisWeek" xml:space="preserve">
+    <value>Ove sedmice</value>
+  </data>
+</root>

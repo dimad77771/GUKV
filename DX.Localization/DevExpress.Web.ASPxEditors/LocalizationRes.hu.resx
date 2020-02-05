@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxEditorsStringId.DefaultErrorText">
+    <value>Érvénytelen érték</value>
+  </data>
+  <data name="ASPxEditorsStringId.RegExValidationErrorText">
+    <value>A "Regular expression" ellenőrzése sikertelen</value>
+  </data>
+  <data name="ASPxEditorsStringId.RequiredFieldErrorText">
+    <value>*</value>
+  </data>
+  <data name="ASPxEditorsStringId.Calendar_Today">
+    <value>Ma</value>
+  </data>
+  <data name="ASPxEditorsStringId.Calendar_Clear">
+    <value>Törlés</value>
+  </data>
+  <data name="ASPxEditorsStringId.Calendar_OK">
+    <value>OK</value>
+  </data>
+  <data name="ASPxEditorsStringId.Calendar_Cancel">
+    <value>Mégse</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_OK">
+    <value>OK</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_Cancel">
+    <value>Mégse</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_GroupType">
+    <value> És,Vagy,Nem És,Nem Vagy</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_ClauseType">
+    <value>Egyenlő,Nem egyenlő,Nagyobb mint,Nagyobb vagy egyenlő,Kisebb mint,Kisebb vagy egyenlő,Ezek között van,Nincs ezek között,Tartalmazza,Nem tartalmazza,Ezzel kezdődik,Ezzel végződik,Hasonló,Nem hasonló,Üres,Nem üres,Valamelyik,Egyik sem</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_BetweenAnd">
+    <value>És</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_AddConditionHint">
+    <value>Új feltétel hozzáadása a csoporthoz</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_RemoveConditionHint">
+    <value>Feltétel törlése</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_AddValueHint">
+    <value>Új elem hozzáadása a listához</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_ClearFilter">
+    <value>Törlés</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_ShowFilterControl">
+    <value>Szűrő létrehozása</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_AddGroup">
+    <value>Csoport hozzáadása</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_AddCondition">
+    <value>Feltétel hozzáadása</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_Remove">
+    <value>Törlés</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterConrol_Empty">
+    <value>&amp;lt;üres&amp;gt;</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterConrol_EmptyEnter">
+    <value>&amp;lt;adja meg az értéket&amp;gt;</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_PopupHeaderText">
+    <value>Szűrő szerkesztő</value>
+  </data>
+  <data name="ASPxEditorsStringId.CheckBox_Checked">
+    <value>Bejelölt</value>
+  </data>
+  <data name="ASPxEditorsStringId.CheckBox_Unchecked">
+    <value>Nem bejelölt</value>
+  </data>
+  <data name="ASPxEditorsStringId.Captcha_DefaultErrorText">
+    <value>A megadott kód hibás</value>
+  </data>
+  <data name="ASPxEditorsStringId.Captcha_DefaultImageAlternateText">
+    <value>Kép</value>
+  </data>
+  <data name="ASPxEditorsStringId.Captcha_DefaultTextBoxLabelText">
+    <value>Adja meg a kódot:</value>
+  </data>
+  <data name="ASPxEditorsStringId.Captcha_RefreshText">
+    <value>További kódok megjelenítése</value>
+  </data>
+  <data name="ASPxEditorsStringId.CheckBox_Undefined">
+    <value>?</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_Not">
+    <value>Nem</value>
+  </data>    
+</root>

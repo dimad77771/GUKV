@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="EditorStringId.FilterClauseIsLaterThisMonth" xml:space="preserve">
+    <value>Ist später in diesem Monat</value>
+  </data>
+  <data name="EditorStringId.FilterClauseNotLike" xml:space="preserve">
+    <value>Ist nicht ähnlich</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringBetween" xml:space="preserve">
+    <value>Zwischen</value>
+  </data>
+  <data name="EditorStringId.SelectAll" xml:space="preserve">
+    <value>(Alle auswählen)</value>
+  </data>
+  <data name="EditorStringId.FilterClauseNoneOf" xml:space="preserve">
+    <value>Ist keines von</value>
+  </data>
+  <data name="EditorStringId.FilterClauseGreater" xml:space="preserve">
+    <value>Ist grösser als</value>
+  </data>
+  <data name="EditorStringId.Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="EditorStringId.ColorEdit_MoreColorsButtonCaption" xml:space="preserve">
+    <value>Mehr Farben...</value>
+  </data>
+  <data name="EditorStringId.FilterGroupNotAnd" xml:space="preserve">
+    <value>NichtUnd</value>
+  </data>
+  <data name="EditorStringId.FilterGroupRemoveGroup" xml:space="preserve">
+    <value>Entferne Gruppe</value>
+  </data>
+  <data name="EditorStringId.ColorEdit_AutomaticButtonCaption" xml:space="preserve">
+    <value>Automatisch</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringUnaryOperatorIsNull" xml:space="preserve">
+    <value>Ist Null</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsYesterday" xml:space="preserve">
+    <value>Ist gestern</value>
+  </data>
+  <data name="EditorStringId.FilterToolTipValueType" xml:space="preserve">
+    <value>Vergleich mit einem Wert / Wert eines anderen Felds</value>
+  </data>
+  <data name="EditorStringId.FilterToolTipKeysRemove" xml:space="preserve">
+    <value>(Drücke Taste Entfernen oder Subtraktion)</value>
+  </data>
+  <data name="EditorStringId.FilterClauseLessOrEqual" xml:space="preserve">
+    <value>Ist kleiner als oder gleich</value>
+  </data>
+  <data name="EditorStringId.FilterEmptyValueText" xml:space="preserve">
+    <value>&lt;Wert eingeben&gt;</value>
+  </data>
+  <data name="EditorStringId.FilterClauseContains" xml:space="preserve">
+    <value>Enthält</value>
+  </data>
+  <data name="EditorStringId.ColorEdit_ThemeColorsCaption" xml:space="preserve">
+    <value>Theme Farben</value>
+  </data>
+  <data name="EditorStringId.ColorEdit_RecentColorsCaption" xml:space="preserve">
+    <value>Letzte Farben</value>
+  </data>
+  <data name="EditorStringId.FilterClauseNotBetween" xml:space="preserve">
+    <value>Ist nicht zwischen</value>
+  </data>
+  <data name="EditorStringId.FilterToolTipNodeAction" xml:space="preserve">
+    <value>Aktionen</value>
+  </data>
+  <data name="EditorStringId.No" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsLastWeek" xml:space="preserve">
+    <value>Ist letzte Woche</value>
+  </data>
+  <data name="EditorStringId.FilterPanelClearFilter" xml:space="preserve">
+    <value>Filter löschen</value>
+  </data>
+  <data name="EditorStringId.CalculatorError" xml:space="preserve">
+    <value>Fehler</value>
+  </data>
+  <data name="EditorStringId.FilterToolTipNodeAdd" xml:space="preserve">
+    <value>Eine neue Bedingung zur Gruppe hinzufügen</value>
+  </data>
+  <data name="EditorStringId.FilterGroupAddCondition" xml:space="preserve">
+    <value>Bedingung hinzufügen</value>
+  </data>
+  <data name="EditorStringId.CaptionError" xml:space="preserve">
+    <value>Fehler</value>
+  </data>
+  <data name="EditorStringId.FilterClauseLike" xml:space="preserve">
+    <value>Ist ähnlich</value>
+  </data>
+  <data name="EditorStringId.FilterGroupClearAll" xml:space="preserve">
+    <value>Alle entfernen</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsTomorrow" xml:space="preserve">
+    <value>Ist morgen</value>
+  </data>
+  <data name="EditorStringId.FilterClauseBetweenAnd" xml:space="preserve">
+    <value>Und</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaInvalidExpression" xml:space="preserve">
+    <value>Der gegebene Ausdruck enthält ungültige Symbole (Zeile {0}, Buchstabe {1}).</value>
+  </data>
+  <data name="EditorStringId.FilterPanelEnableFilter" xml:space="preserve">
+    <value>Filter aktivieren</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsNull" xml:space="preserve">
+    <value>Ist leer</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Constants_Text" xml:space="preserve">
+    <value>Konstanten</value>
+  </data>
+  <data name="EditorStringId.FilterClauseDoesNotContain" xml:space="preserve">
+    <value>Enthält nicht</value>
+  </data>
+  <data name="EditorStringId.Paste" xml:space="preserve">
+    <value>Einfügen</value>
+  </data>
+  <data name="EditorStringId.CalculatorInvalidInputError" xml:space="preserve">
+    <value>Ungültige Eingabe</value>
+  </data>
+  <data name="EditorStringId.FilterGroupOr" xml:space="preserve">
+    <value>Oder</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Functions_Text" xml:space="preserve">
+    <value>Funktionen</value>
+  </data>
+  <data name="EditorStringId.FilterPanelEditFilter" xml:space="preserve">
+    <value>Filter bearbeiten</value>
+  </data>
+  <data name="EditorStringId.FilterClauseGreaterOrEqual" xml:space="preserve">
+    <value>Ist grösser als oder gleich</value>
+  </data>
+  <data name="EditorStringId.FilterGroupAddGroup" xml:space="preserve">
+    <value>Gruppe hinzufügen</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringUnaryOperatorNot" xml:space="preserve">
+    <value>Nicht</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsLaterThisYear" xml:space="preserve">
+    <value>Ist später in diesem Jahr</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsNextWeek" xml:space="preserve">
+    <value>Ist nächste Woche</value>
+  </data>
+  <data name="EditorStringId.Apply" xml:space="preserve">
+    <value>Anwenden</value>
+  </data>
+  <data name="EditorStringId.Cancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsPriorThisYear" xml:space="preserve">
+    <value>Ist vor diesem Jahr</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringGroupOperatorAnd" xml:space="preserve">
+    <value>Und</value>
+  </data>
+  <data name="EditorStringId.FilterToolTipKeysAdd" xml:space="preserve">
+    <value>(Drücke Taste Einfügen oder Addition)</value>
+  </data>
+  <data name="EditorStringId.FilterPanelDisableFilter" xml:space="preserve">
+    <value>Filter deaktivieren</value>
+  </data>
+  <data name="EditorStringId.FilterClauseBetween" xml:space="preserve">
+    <value>Ist zwischen</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsEarlierThisYear" xml:space="preserve">
+    <value>Ist früher in diesem Jahr</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsEarlierThisMonth" xml:space="preserve">
+    <value>Ist früher in diesem Monat</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsNotNull" xml:space="preserve">
+    <value>Ist nicht leer</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsToday" xml:space="preserve">
+    <value>Ist heute</value>
+  </data>
+  <data name="EditorStringId.FilterClauseEndsWith" xml:space="preserve">
+    <value>Endet mit</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaInvalidExpressionEx" xml:space="preserve">
+    <value>Der gegebene Ausdruck ist ungültig.</value>
+  </data>
+  <data name="EditorStringId.FilterToolTipElementAdd" xml:space="preserve">
+    <value>Neuen Eintrag in die Liste einfügen</value>
+  </data>
+  <data name="EditorStringId.FilterClauseAnyOf" xml:space="preserve">
+    <value>Ist einer von</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringGroupOperatorOr" xml:space="preserve">
+    <value>Oder</value>
+  </data>
+  <data name="EditorStringId.Cut" xml:space="preserve">
+    <value>Ausschneiden</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Abs_Description" xml:space="preserve">
+    <value>Abs(Value)
+Gibt den absoluten, positiven Betrag eines gegebenen numerischen Ausdrucks zurück.</value>
+  </data>
+  <data name="EditorStringId.FilterEditorChecked" xml:space="preserve">
+    <value>Markiert</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsLaterThisWeek" xml:space="preserve">
+    <value>Ist später in dieser Woche</value>
+  </data>
+  <data name="EditorStringId.CalculatorDivisionByZeroError" xml:space="preserve">
+    <value>Division durch Null nicht erlaubt</value>
+  </data>
+  <data name="EditorStringId.ColorEdit_ColorChooserWindowTitle" xml:space="preserve">
+    <value>Farben</value>
+  </data>
+  <data name="EditorStringId.Open" xml:space="preserve">
+    <value>Öffnen</value>
+  </data>
+  <data name="EditorStringId.FilterClauseBeginsWith" xml:space="preserve">
+    <value>Beginnt mit</value>
+  </data>
+  <data name="EditorStringId.FilterGroupAnd" xml:space="preserve">
+    <value>Und</value>
+  </data>
+  <data name="EditorStringId.FilterClauseDoesNotEqual" xml:space="preserve">
+    <value>Ist nicht gleich</value>
+  </data>
+  <data name="EditorStringId.Clear" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="EditorStringId.ImageEdit_OpenFileFilter" xml:space="preserve">
+    <value>Bilddateien(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*</value>
+  </data>
+  <data name="EditorStringId.FilterDateTimeOperatorMenuCaption" xml:space="preserve">
+    <value>Datums- und Zeit-Operatoren</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsEarlierThisWeek" xml:space="preserve">
+    <value>Ist früher in dieser Woche</value>
+  </data>
+  <data name="EditorStringId.Save" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="EditorStringId.Copy" xml:space="preserve">
+    <value>Kopieren</value>
+  </data>
+  <data name="EditorStringId.FilterEditorUnchecked" xml:space="preserve">
+    <value>Unmarkiert</value>
+  </data>
+  <data name="EditorStringId.FilterClauseLess" xml:space="preserve">
+    <value>Ist kleiner als</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Fields_Text" xml:space="preserve">
+    <value>Felder</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringIsNotNull" xml:space="preserve">
+    <value>Ist nicht Null</value>
+  </data>
+  <data name="EditorStringId.ColorEdit_StandardColorsCaption" xml:space="preserve">
+    <value>Standard Farben</value>
+  </data>
+  <data name="EditorStringId.FilterGroupNotOr" xml:space="preserve">
+    <value>NichtOder</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringBinaryOperatorLike" xml:space="preserve">
+    <value>Ähnlich</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringNotLike" xml:space="preserve">
+    <value>Nicht ähnlich</value>
+  </data>
+  <data name="EditorStringId.ColorEdit_NoColorButtonCaption" xml:space="preserve">
+    <value>Keine Farbe</value>
+  </data>
+  <data name="EditorStringId.FilterToolTipNodeRemove" xml:space="preserve">
+    <value>Entferne diese Bedingung</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsBeyondThisYear" xml:space="preserve">
+    <value>Ist nach diesem Jahr</value>
+  </data>
+  <data name="EditorStringId.FilterClauseEquals" xml:space="preserve">
+    <value>Gleich</value>
+  </data>
+  <data name="EditorStringId.OutOfRange" xml:space="preserve">
+    <value>Der Wert ist ausserhalb des zulässigen Bereiches</value>
+  </data>
+</root>

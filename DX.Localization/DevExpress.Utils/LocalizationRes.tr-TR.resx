@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccStringId.GridRowExpand" xml:space="preserve">
+    <value>Genişlet</value>
+  </data>
+  <data name="AccStringId.TreeListNodeExpand" xml:space="preserve">
+    <value>Genişlet</value>
+  </data>
+  <data name="AccStringId.GridCardExpand" xml:space="preserve">
+    <value>Genişlet</value>
+  </data>
+  <data name="AccStringId.TreeListHeaderPanel" xml:space="preserve">
+    <value>Başlık Paneli</value>
+  </data>
+  <data name="AccStringId.NavBarGroupExpand" xml:space="preserve">
+    <value>Genişlet</value>
+  </data>
+  <data name="AccStringId.GridDataRowExpand" xml:space="preserve">
+    <value>Genişletme Detayları</value>
+  </data>
+  <data name="AccStringId.GridHeaderPanel" xml:space="preserve">
+    <value>Başlık Paneli</value>
+  </data>
+  <data name="AccStringId.NameScrollLineUp" xml:space="preserve">
+    <value>Yükselerek Sırala</value>
+  </data>
+  <data name="AccStringId.TreeListCellEdit" xml:space="preserve">
+    <value>Değiştir</value>
+  </data>
+  <data name="AccStringId.DescScrollColumnLeft" xml:space="preserve">
+    <value>Yatay pozisyonu bir sıra sola taşır</value>
+  </data>
+  <data name="AccStringId.GridColumnSortDescending" xml:space="preserve">
+    <value>İnerek sınıflandır</value>
+  </data>
+  <data name="AccStringId.DescScrollColumnRight" xml:space="preserve">
+    <value>Yatay pozisyonu bir sıra sağa taşır</value>
+  </data>
+  <data name="AccStringId.BarLinkMenuOpen" xml:space="preserve">
+    <value>Aç</value>
+  </data>
+  <data name="AccStringId.DescScrollVertIndicator" xml:space="preserve">
+    <value>Geçerli dikey pozisyonu gösterir ve hemen değiştirebilmek için çelilebilir</value>
+  </data>
+  <data name="AccStringId.TreeListColumnSortAscending" xml:space="preserve">
+    <value>Yükselerek sınıflandır</value>
+  </data>
+  <data name="AccStringId.NameScroll" xml:space="preserve">
+    <value>kaydırma çubuğu</value>
+  </data>
+  <data name="AccStringId.TreeListColumnSortDescending" xml:space="preserve">
+    <value>İnerek sınıflandır</value>
+  </data>
+  <data name="AccStringId.TreeListNodeCollapse" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="AccStringId.BarDockControlTop" xml:space="preserve">
+    <value>Üstten azalt</value>
+  </data>
+  <data name="AccStringId.CheckEditCheck" xml:space="preserve">
+    <value>Onayını koy</value>
+  </data>
+  <data name="AccStringId.MouseDoubleClick" xml:space="preserve">
+    <value>İki kez bas</value>
+  </data>
+  <data name="AccStringId.TreeListColumnSortNone" xml:space="preserve">
+    <value>Sınıflandırmayı kaldır</value>
+  </data>
+  <data name="AccStringId.NameScrollLineDown" xml:space="preserve">
+    <value>İnerek Sırala</value>
+  </data>
+  <data name="AccStringId.BarDockControlLeft" xml:space="preserve">
+    <value>Soldan azalt</value>
+  </data>
+  <data name="AccStringId.ButtonPush" xml:space="preserve">
+    <value>Bas</value>
+  </data>
+  <data name="AccStringId.TreeListNodeCell" xml:space="preserve">
+    <value>hücre</value>
+  </data>
+  <data name="AccStringId.SpinLeftButton" xml:space="preserve">
+    <value>Sol</value>
+  </data>
+  <data name="AccStringId.DescScrollHorzIndicator" xml:space="preserve">
+    <value>Geçerli yatay pozisyonu gösterir ve hemen değiştirebilmek için çelilebilir</value>
+  </data>
+  <data name="AccStringId.GridRow" xml:space="preserve">
+    <value>Sıra {0}</value>
+  </data>
+  <data name="AccStringId.GridRowActivate" xml:space="preserve">
+    <value>Aktif haline getir</value>
+  </data>
+  <data name="AccStringId.ScrollableControlDefaultAction" xml:space="preserve">
+    <value>Deafult Eylem</value>
+  </data>
+  <data name="AccStringId.BarDockControlRight" xml:space="preserve">
+    <value>Sağdan azalt</value>
+  </data>
+  <data name="AccStringId.NavBarGroupCollapse" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="AccStringId.NavBarItemClick" xml:space="preserve">
+    <value>Bas</value>
+  </data>
+  <data name="AccStringId.CheckEditUncheck" xml:space="preserve">
+    <value>Onayını kaldır</value>
+  </data>
+  <data name="AccStringId.SpinDownButton" xml:space="preserve">
+    <value>Aşağı</value>
+  </data>
+  <data name="AccStringId.BarDockControlBottom" xml:space="preserve">
+    <value>Alttan azalt</value>
+  </data>
+  <data name="AccStringId.GridCell" xml:space="preserve">
+    <value>hücre</value>
+  </data>
+  <data name="AccStringId.SpinRightButton" xml:space="preserve">
+    <value>Sağ</value>
+  </data>
+  <data name="AccStringId.GridDataRowCollapse" xml:space="preserve">
+    <value>Detay kapat</value>
+  </data>
+  <data name="AccStringId.DescScrollAreaRight" xml:space="preserve">
+    <value>Yatay pozisyonu birkaç sıra sağa taşır</value>
+  </data>
+  <data name="AccStringId.DescScrollLineDown" xml:space="preserve">
+    <value>Dikey pozisyonu bir sıra aşağıya taşır</value>
+  </data>
+  <data name="AccStringId.SpinUpButton" xml:space="preserve">
+    <value>Yukarı</value>
+  </data>
+  <data name="AccStringId.GridColumnSortNone" xml:space="preserve">
+    <value>Sınıflandırmayı kaldır</value>
+  </data>
+  <data name="AccStringId.BarLinkClick" xml:space="preserve">
+    <value>Bas</value>
+  </data>
+  <data name="AccStringId.BarLinkStatic" xml:space="preserve">
+    <value>Statık</value>
+  </data>
+  <data name="AccStringId.DescScrollAreaDown" xml:space="preserve">
+    <value>Dikey pozisyonu birkaç sıra aşağıya taşır</value>
+  </data>
+  <data name="AccStringId.BarLinkEdit" xml:space="preserve">
+    <value>Değiştir</value>
+  </data>
+  <data name="AccStringId.NameScrollColumnLeft" xml:space="preserve">
+    <value>Sol Kolon</value>
+  </data>
+  <data name="AccStringId.DescScrollAreaUp" xml:space="preserve">
+    <value>Dikey pozisyonu birkaç sıra yukarıya taşır</value>
+  </data>
+  <data name="AccStringId.GridColumnSortAscending" xml:space="preserve">
+    <value>Yükselerek sınıflandır</value>
+  </data>
+  <data name="AccStringId.DescScrollAreaLeft" xml:space="preserve">
+    <value>Yatay pozisyonu birkaç sıra sola taşır</value>
+  </data>
+  <data name="AccStringId.BarLinkMenuClose" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="AccStringId.GridCellEdit" xml:space="preserve">
+    <value>Değiştir</value>
+  </data>
+  <data name="AccStringId.TabSwitch" xml:space="preserve">
+    <value>Dğiştir</value>
+  </data>
+  <data name="AccStringId.GridCardCollapse" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="AccStringId.TreelistRowActivate" xml:space="preserve">
+    <value>Aktif haline getir</value>
+  </data>
+  <data name="AccStringId.GridCellFocus" xml:space="preserve">
+    <value>Odakla</value>
+  </data>
+  <data name="AccStringId.GridNewItemRow" xml:space="preserve">
+    <value>YeniMadde Sıra</value>
+  </data>
+  <data name="AccStringId.GridFilterRow" xml:space="preserve">
+    <value>Sıra Filtre</value>
+  </data>
+  <data name="AccStringId.ActionPress" xml:space="preserve">
+    <value>Bas</value>
+  </data>
+  <data name="AccStringId.TreeListNode" xml:space="preserve">
+    <value>Düğüm</value>
+  </data>
+  <data name="AccStringId.NameScrollColumnRight" xml:space="preserve">
+    <value>Sağ Kolon</value>
+  </data>
+  <data name="AccStringId.GridRowCollapse" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="AccStringId.ButtonClose" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="AccStringId.NameScrollIndicator" xml:space="preserve">
+    <value>Pozisyon</value>
+  </data>
+  <data name="AccStringId.BarLinkCaption" xml:space="preserve">
+    <value>Madde</value>
+  </data>
+  <data name="AccStringId.DescScrollLineUp" xml:space="preserve">
+    <value>Dikey pozisyonu bir sıra yukarıya taşır</value>
+  </data>
+  <data name="AccStringId.ButtonOpen" xml:space="preserve">
+    <value>Aç</value>
+  </data>
+</root>

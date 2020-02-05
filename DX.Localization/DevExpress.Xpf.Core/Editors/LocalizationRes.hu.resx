@@ -1,0 +1,766 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="EditorStringId.FilterCriteriaToStringIsNotNull" xml:space="preserve">
+    <value>Nem NULL</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringNotLike" xml:space="preserve">
+    <value>Nem hasonló</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringIn" xml:space="preserve">
+    <value>Benne van ebben</value>
+  </data>
+  <data name="EditorStringId.SelectAll" xml:space="preserve">
+    <value>(Összes kijelölése)</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringGroupOperatorOr" xml:space="preserve">
+    <value>Vagy</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringUnaryOperatorIsNull" xml:space="preserve">
+    <value>NULL</value>
+  </data>
+  <data name="EditorStringId.Clear" xml:space="preserve">
+    <value>Törlés</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringBinaryOperatorLike" xml:space="preserve">
+    <value>Hasonló</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringUnaryOperatorNot" xml:space="preserve">
+    <value>Nem</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringGroupOperatorAnd" xml:space="preserve">
+    <value>És</value>
+  </data>
+  <data name="EditorStringId.Cancel" xml:space="preserve">
+    <value>Mégse</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringBetween" xml:space="preserve">
+    <value>Ezek között</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_AddYears_Description" xml:space="preserve">
+    <value>AddYears(DátumIdő, ÉvekSzáma)
+A megadott DátumIdő értékhez hozzáadja az ÉvekSzáma-t és az így kapott DátumIdő értéket adja vissza.</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsLaterThisWeek" xml:space="preserve">
+    <value>Később ezen a héten</value>
+  </data>
+  <data name="EditorStringId.FilterPanelDisableFilter" xml:space="preserve">
+    <value>Szűrő letiltása</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_AddTimeSpan_Description" xml:space="preserve">
+    <value>AddTimeSpan(DátumIdő, IdőTartam)
+A megadott DátumIdő értékhez hozzáadja az IdőTartam-ot és az így kapott DátumIdő értéket adja vissza.</value>
+  </data>
+  <data name="EditorStringId.FilterPanelEnableFilter" xml:space="preserve">
+    <value>Szűrő engedélyezése</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Fields_Text" xml:space="preserve">
+    <value>Mezők</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Log_Description" xml:space="preserve">
+    <value>Log(Érték)
+A megadott szám természetes alapú logaritmusát adja vissza.</value>
+  </data>
+  <data name="EditorStringId.FilterClauseLessOrEqual" xml:space="preserve">
+    <value>Kisebb vagy egyenlő mint</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_AddMonths_Description" xml:space="preserve">
+    <value>AddMonths(DátumIdő, HónapokSzáma)
+A megadott DátumIdő értékhez hozzáadja a HónapokSzáma-t és az így kapott DátumIdő értéket adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Insert_Description" xml:space="preserve">
+    <value>Insert(Szöveg1, KezdőPozíció, Szöveg2)
+A Szöveg2-t beszúrja a Szöveg1-be a KezdőPozíció-val megadott helyre.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Now_Description" xml:space="preserve">
+    <value>Now()
+Az aktuális rendszer dátumot és időt adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Trim_Description" xml:space="preserve">
+    <value>Trim(Szöveg)
+Minden szóköz karaktert eltávolít a megadott szöveg elejéről és végéről.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Less_Description" xml:space="preserve">
+    <value>Kisebb mint operátor. Kifejezések összehasonlításához.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Or_Description" xml:space="preserve">
+    <value>Logikai VAGY művelet végrehajtása két Boolean kifejezésen.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_DateDiffMonth_Description" xml:space="preserve">
+    <value>DateDiffMonth(KezdőDátum, VégDátum)
+Két (nem null) dátum közötti hónapok számát adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Operators_Text" xml:space="preserve">
+    <value>Operátorok</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_FunctionType_DateTimeItems" xml:space="preserve">
+    <value>Dátum és idő</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Rnd_Description" xml:space="preserve">
+    <value>Rnd()
+Véletlenszerű értéket ad vissza, ami kisebb mint 1 és nagyobb vagy egyenlő 0.</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsToday" xml:space="preserve">
+    <value>Ma</value>
+  </data>
+  <data name="EditorStringId.FilterClauseEndsWith" xml:space="preserve">
+    <value>Ezzel végződik</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Sign_Description" xml:space="preserve">
+    <value>Sign(Érték)
+A megadott kifejezés pozitív (+1), nulla (0), vagy negatív (-1) előjelét adja vissza.</value>
+  </data>
+  <data name="EditorStringId.OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GetMinute_Description" xml:space="preserve">
+    <value>GetMinute(DátumIdő)
+A megadott DátumIdő-ből kivett percet adja vissza.</value>
+  </data>
+  <data name="EditorStringId.FilterDateTimeOperatorMenuCaption" xml:space="preserve">
+    <value>DátumIdő operátorok</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Title" xml:space="preserve">
+    <value>Kifejezés szerkesztő</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Round_Description" xml:space="preserve">
+    <value>Round(Érték)
+A megadott értéket a legközelebbi egészre kerekíti.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_False_Description" xml:space="preserve">
+    <value>Logikai HAMIS érték.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_LessOrEqual_Description" xml:space="preserve">
+    <value>Kisebb vagy egyenlő operátor. Kifejezések összehasonlításához.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Functions_Text" xml:space="preserve">
+    <value>Függvények</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GetDay_Description" xml:space="preserve">
+    <value>GetDay(DátumIdő)
+A megadott DátumIdő-ből kivett napot adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_DateDiffYear_Description" xml:space="preserve">
+    <value>DateDiffYear(KezdőDátum, VégDátum)
+Két (nem null) dátum közötti évek számát adja vissza.</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsLastWeek" xml:space="preserve">
+    <value>Múlt héten</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_IsNull_Description" xml:space="preserve">
+    <value>IsNull(Érték)
+IGAZ értéket ad vissza, ha a megadott Érték NULL.</value>
+  </data>
+  <data name="EditorStringId.FilterToolTipKeysAdd" xml:space="preserve">
+    <value>(Használja az Insert vagy a + billentyűt)</value>
+  </data>
+  <data name="EditorStringId.CaptionError" xml:space="preserve">
+    <value>Hiba</value>
+  </data>
+  <data name="EditorStringId.FilterClauseNotBetween" xml:space="preserve">
+    <value>Nincs ezek között</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsEarlierThisMonth" xml:space="preserve">
+    <value>Korábban ebben a hónapban</value>
+  </data>
+  <data name="EditorStringId.FilterEditorUnchecked" xml:space="preserve">
+    <value>Nem bejelölt</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsLaterThisYear" xml:space="preserve">
+    <value>Később ebben az évben</value>
+  </data>
+  <data name="EditorStringId.FilterClauseDoesNotContain" xml:space="preserve">
+    <value>Nem tartalmazza</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Abs_Description" xml:space="preserve">
+    <value>Abs(Érték)
+A megadott numerikus kifejezés abszolút (pozitív) értékét adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_And_Description" xml:space="preserve">
+    <value>Logikai ÉS művelet végrehajtása két kifejezésen.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_PadLeft3Param_Description" xml:space="preserve">
+    <value>PadLeft(Szöveg, Hossz, Karakter)
+Balra igazítja a karaktereket a megadott szövegben, kitöltve a bal oldalát a megadott karakterekkel a megadott teljes hosszig.</value>
+  </data>
+  <data name="EditorStringId.FilterClauseGreaterOrEqual" xml:space="preserve">
+    <value>Nagyobb vagy egyenlő mint</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsPriorThisYear" xml:space="preserve">
+    <value>Ez év előtt</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_ToStr_Description" xml:space="preserve">
+    <value>ToStr(Érték)
+Egy objektum szöveges megfelelőjét adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GetDayOfWeek_Description" xml:space="preserve">
+    <value>GetDayOfWeek(DátumIdő)
+A megadott DátumIdő-ből kivett hét napját adja vissza.</value>
+  </data>
+  <data name="EditorStringId.FilterGroupAnd" xml:space="preserve">
+    <value>És</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Minus_Description" xml:space="preserve">
+    <value>Két szám különbségét keresi meg.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_BitwiseXor_Description" xml:space="preserve">
+    <value>Logikai VAGY művelet végrehajtása két Boolean kifejezésen vagy két numerikus kifejezésen.</value>
+  </data>
+  <data name="EditorStringId.FilterEmptyValueText" xml:space="preserve">
+    <value>&lt;adjon meg egy értéket&gt;</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Acos_Description" xml:space="preserve">
+    <value>Acos(Érték)
+Egy szám arkusz koszinuszát adja vissza (a szög radiánban van megadva).</value>
+  </data>
+  <data name="EditorStringId.FilterEditorChecked" xml:space="preserve">
+    <value>Bejelölt</value>
+  </data>
+  <data name="EditorStringId.FilterToolTipNodeRemove" xml:space="preserve">
+    <value>Feltétel törlése</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_AddHours_Description" xml:space="preserve">
+    <value>AddHours(DátumIdő, ÓrákSzáma)
+A megadott DátumIdő értékhez hozzáadja az ÓrákSzáma-t és az így kapott DátumIdő értéket adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_BigMul_Description" xml:space="preserve">
+    <value>BigMul(Érték1, Érték2)
+Két 32 bites szám teljes szorzatát adja vissza Int64 típusként.</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringBinaryOperatorNotEqual" xml:space="preserve">
+    <value>&lt;&gt;</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GetDate_Description" xml:space="preserve">
+    <value>GetDate(DátumIdő)
+A megadott DátumIdő-ből kivett dátumot adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_DateDiffDay_Description" xml:space="preserve">
+    <value>DateDiffDay(KezdőDátum, VégDátum)
+Két (nem null) dátum közötti napok számát adja vissza.</value>
+  </data>
+  <data name="EditorStringId.FilterToolTipNodeAction" xml:space="preserve">
+    <value>Műveletek</value>
+  </data>
+  <data name="EditorStringId.FilterGroupAddGroup" xml:space="preserve">
+    <value>Csoport hozzáadása</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GetTimeOfDay_Description" xml:space="preserve">
+    <value>GetTimeOfDay(DátumIdő)
+A megadott DátumIdő-ből kivett nap időpontját adja vissza (Tick-ben).</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_PadLeft_Description" xml:space="preserve">
+    <value>PadLeft(Szöveg, Hossz)
+Balra igazítja a karaktereket a megadott szövegben, kitöltve a bal oldalát üres karakterekkel a megadott teljes hosszig.</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsNotNull" xml:space="preserve">
+    <value>Nem üres</value>
+  </data>
+  <data name="EditorStringId.FilterClauseGreater" xml:space="preserve">
+    <value>Nagyobb mint</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Multiply_Description" xml:space="preserve">
+    <value>Két kifejezés szorzatát adja.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Tan_Description" xml:space="preserve">
+    <value>Tan(Érték)
+A radiánban megadott szög tangensét adja vissza.</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsEarlierThisYear" xml:space="preserve">
+    <value>Korábban ebben az évben</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GetSecond_Description" xml:space="preserve">
+    <value>GetSecond(DátumIdő)
+A megadott DátumIdő-ből kivett másodpercet adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_DateDiffTick_Description" xml:space="preserve">
+    <value>DateDiffTick(KezdőDátum, VégDátum)
+Két (nem null) dátum közötti tick-ek számát adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Sin_Description" xml:space="preserve">
+    <value>Sin(Érték)
+A radiánban megadott szög szinuszát adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Len_Description" xml:space="preserve">
+    <value>Len(Érték)
+A megadott szöveg karaktereinek számát adja vissza, vagy a változó tárolásához szükséges bájtok névleges számát.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_In_Description" xml:space="preserve">
+    <value>In(,,,)
+Egy tulajdonság meglétét teszteli egy objektumban.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Power_Description" xml:space="preserve">
+    <value>Power(Érték, Kitevő)
+A megadott szám megadott kitevőre emelt hatványát adja vissza.</value>
+  </data>
+  <data name="EditorStringId.FilterPanelClearFilter" xml:space="preserve">
+    <value>Szűrő törlése</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Tanh_Description" xml:space="preserve">
+    <value>Tanh(Érték)
+A radiánban megadott szög tangens hiperbolikuszát adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GetYear_Description" xml:space="preserve">
+    <value>GetYear(DátumIdő)
+A megadott DátumIdő-ből kivett évet adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_BitwiseAnd_Description" xml:space="preserve">
+    <value>Logikai ÉS művelet végrehajtása két egész számon.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Modulo_Description" xml:space="preserve">
+    <value>Két kifejezés osztásának maradékát (modulusát) adja vissza.</value>
+  </data>
+  <data name="EditorStringId.FilterClauseNotLike" xml:space="preserve">
+    <value>Nem hasonló</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_DateDiffMinute_Description" xml:space="preserve">
+    <value>DateDiffMinute(KezdőDátum, VégDátum)
+Két (nem null) dátum közötti percek számát adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Min_Description" xml:space="preserve">
+    <value>Min(Érték1, Érték2)
+A megadott értékek minimumát adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Null_Description" xml:space="preserve">
+    <value>Null referencia, ami nem hivatkozik semmilyen objektumra.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Char_Description" xml:space="preserve">
+    <value>Char(Szám)
+Egy integerASCIICode számot konvertál karakterré.</value>
+  </data>
+  <data name="EditorStringId.FilterClauseContains" xml:space="preserve">
+    <value>Tartalmazza</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Today_Description" xml:space="preserve">
+    <value>Today()
+Az aktuális dátumot adja vissza. Függetlenül az aktuális időtől, a függvény a mai nap éjfélt adja meg az idő-tagnak.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GetMilliSecond_Description" xml:space="preserve">
+    <value>GetMilliSecond(DátumIdő)
+A megadott DátumIdő-ből kivett ezredmásodpercet adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_AddMilliSeconds_Description" xml:space="preserve">
+    <value>AddMilliSeconds(DátumIdő, EzredmásodpercekSzáma)
+A megadott DátumIdő értékhez hozzáadja az EzredmásodpercekSzáma-t és az így kapott DátumIdő értéket adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_DateDiffMilliSecond_Description" xml:space="preserve">
+    <value>DateDiffMilliSecond(KezdőDátum, VégDátum)
+Két (nem null) dátum közötti ezredmásodpercek számát adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Cos_Description" xml:space="preserve">
+    <value>Cos(Érték)
+A radiánban megadott szög koszinuszát adja vissza.</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsYesterday" xml:space="preserve">
+    <value>Tegnap</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Replace_Description" xml:space="preserve">
+    <value>Replace(Szöveg1, AlSzöveg2, Szöveg3)
+Szöveg1 másolatát adja vissza, amelyben az AlSzöveg2-t Szöveg3-ra cseréli.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_CharIndex_Description" xml:space="preserve">
+    <value>CharIndex(Szöveg1, Szöveg2)
+A Szöveg2-ben előforduló Szöveg1 első karakterének pozícióját adja vissza (a 0. karaktertől kezdve keres).</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_PadRight_Description" xml:space="preserve">
+    <value>PadRight(Szöveg, Hossz)
+Jobbra igazítja a karaktereket a megadott szövegben, kitöltve a jobb oldalát üres karakterekkel a megadott teljes hosszig.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_AddDays_Description" xml:space="preserve">
+    <value>AddDays(DátumIdő, NapokSzáma)
+A megadott DátumIdő értékhez hozzáadja a NapokSzáma-t és az így kapott DátumIdő értéket adja vissza.</value>
+  </data>
+  <data name="EditorStringId.FilterGroupOr" xml:space="preserve">
+    <value>Vagy</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Equal_Description" xml:space="preserve">
+    <value>Ha mindkét operandus értéke azonos, akkor IGAZ értéket ad vissza, egyébként HAMIS értéket.</value>
+  </data>
+  <data name="EditorStringId.FilterToolTipKeysRemove" xml:space="preserve">
+    <value>(Használja a Delete vagy a - billentyűt)</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Substring2param_Description" xml:space="preserve">
+    <value>Substring(Szöveg, KezdőPozíció)
+A megadott Szöveg KezdőPozíció-nál kezdődő részét adja vissza.</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaInvalidExpression" xml:space="preserve">
+    <value>A megadott kifejezés érvénytelen karaktereket tartalmaz (sor: {0}, karakter: {1}).</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Upper_Description" xml:space="preserve">
+    <value>Upper(Szöveg)
+A megadott szöveget nagybetűsre alakítja.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_AddMinutes_Description" xml:space="preserve">
+    <value>AddHours(DátumIdő, PercekSzáma)
+A megadott DátumIdő értékhez hozzáadja a PercekSzáma-t és az így kapott DátumIdő értéket adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_CharIndex3Param_Description" xml:space="preserve">
+    <value>CharIndex(Szöveg1, Szöveg2, KezdőPozíció)
+A Szöveg2-ben előforduló Szöveg1 első karakterének pozícióját adja vissza (a keresés kezdőpontja a KezdőPozíció megadásával határozható meg).</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_AddSeconds_Description" xml:space="preserve">
+    <value>AddSeconds(DátumIdő, MásodpercekSzáma)
+A megadott DátumIdő értékhez hozzáadja a MásodpercekSzáma-t és az így kapott DátumIdő értéket adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_AddTicks_Description" xml:space="preserve">
+    <value>AddTicks(DátumIdő, TickekSzáma)
+A megadott DátumIdő értékhez hozzáadja a TickekSzáma-t és az így kapott DátumIdő értéket adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Constants_Text" xml:space="preserve">
+    <value>Konstansok</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_UtcNow_Description" xml:space="preserve">
+    <value>UtcNow()
+Az aktuális rendszer dátumot és időt adja vissza UTC (Coordinated Universal Time) formában.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GetHour_Description" xml:space="preserve">
+    <value>GetHour(DátumIdő)
+A megadott DátumIdő-ből kivett órát adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Atn_Description" xml:space="preserve">
+    <value>Atan(Érték)
+Egy szám arkusz tangensét adja vissza (a szög radiánban van megadva).</value>
+  </data>
+  <data name="EditorStringId.FilterClauseBetween" xml:space="preserve">
+    <value>Ezek között van</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Atn2_Description" xml:space="preserve">
+    <value>Atn2(Érték1, Érték2)
+Azt a szöget adja vissza radiánban, amelynek a tangense a két megadott szám hányadosa.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Max_Description" xml:space="preserve">
+    <value>Max(Érték1, Érték2)
+A megadott értékek maximumát adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GetMonth_Description" xml:space="preserve">
+    <value>GetMonth(DátumIdő)
+A megadott DátumIdő-ből kivett hónapot adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Plus_Description" xml:space="preserve">
+    <value>Két numerikus értéket ad össze, vagy két szöveget fűz össze.</value>
+  </data>
+  <data name="EditorStringId.FilterToolTipElementAdd" xml:space="preserve">
+    <value>Új elem hozzáadása a listához</value>
+  </data>
+  <data name="EditorStringId.FilterClauseBetweenAnd" xml:space="preserve">
+    <value>és</value>
+  </data>
+  <data name="EditorStringId.FilterGroupNotOr" xml:space="preserve">
+    <value>Nem Vagy</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Sqr_Description" xml:space="preserve">
+    <value>Sqr(Érték)
+A megadott szám négyzetgyökét adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Greater_Description" xml:space="preserve">
+    <value>Nagyobb mint operátor. Kifejezések összehasonlításához.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Exp_Description" xml:space="preserve">
+    <value>Exp(Value)
+A megadott lebegőpontos kifejezés exponenciális értékét adja vissza.</value>
+  </data>
+  <data name="EditorStringId.FilterGroupAddCondition" xml:space="preserve">
+    <value>Feltétel hozzáadása</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Log2Param_Description" xml:space="preserve">
+    <value>Log(Érték, Alap)
+A megadott szám megadott alapú logaritmusát adja vissza.</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaInvalidExpressionEx" xml:space="preserve">
+    <value>A megadott kifejezés érvénytelen.</value>
+  </data>
+  <data name="EditorStringId.FilterPanelEditFilter" xml:space="preserve">
+    <value>Szűrő szerkesztése</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_FunctionType_AllItems" xml:space="preserve">
+    <value>(Mind)</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Floor_Description" xml:space="preserve">
+    <value>Floor(Érték)
+A legnagyobb egész számot adja vissza, ami kisebb vagy egyenlő mint a megadott numerikus kifejezés.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Remove_Description" xml:space="preserve">
+    <value>Remove(Szöveg, KezdőPozíció, Hossz)
+A megadott Szöveg-ből Hossz számú karaktert töröl a KezdőPozíció-tól kezdve.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Between_Description" xml:space="preserve">
+    <value>Between (,)
+Egy tesztelendő tartományt határoz meg. A visszaadott érték IGAZ, ha egy érték nagyobb vagy egyenlő mint az első operandus és kisebb vagy egyenlő mint a második operandus.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Concat_Description" xml:space="preserve">
+    <value>Concat(Szöveg1, ... , SzövegN)
+A megadott szövegeket fűzi össze egy szöveggé.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Like_Description" xml:space="preserve">
+    <value>A szöveget összeveti egy mintával. Ha illeszkedik, akkor az értéke Igaz. Ha nem illeszkedik, akkor az értéke Hamis. Ha a szöveg és a minta is üres, az értéke Igaz.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Lower_Description" xml:space="preserve">
+    <value>Lower(Szöveg)
+A megadott szöveget kisbetűsre alakítja.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_DateDiffSecond_Description" xml:space="preserve">
+    <value>DateDiffSecond(KezdőDátum, VégDátum)
+Két (nem null) dátum közötti másodpercek számát adja vissza.</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsNull" xml:space="preserve">
+    <value>Üres</value>
+  </data>
+  <data name="EditorStringId.FilterToolTipNodeAdd" xml:space="preserve">
+    <value>Új feltétel hozzáadása a csoporthoz</value>
+  </data>
+  <data name="EditorStringId.FilterClauseBeginsWith" xml:space="preserve">
+    <value>Ezzel kezdődik</value>
+  </data>
+  <data name="EditorStringId.FilterClauseNoneOf" xml:space="preserve">
+    <value>Egyik sem</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsBeyondThisYear" xml:space="preserve">
+    <value>Ez év után</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_NotEqual_Description" xml:space="preserve">
+    <value>Ha a két operandus értéke eltér, akkor IGAZ értéket ad vissza, egyébként HAMIS értéket.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Cosh_Description" xml:space="preserve">
+    <value>Cosh(Érték)
+A radiánban megadott szög koszinusz hiperbolikuszát adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_DateDiffHour_Description" xml:space="preserve">
+    <value>DateDiffHour(KezdőDátum, VégDátum)
+Két (nem null) dátum közötti órák számát adja vissza.</value>
+  </data>
+  <data name="EditorStringId.FilterGroupRemoveGroup" xml:space="preserve">
+    <value>Csoport törlése</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Reverse_Description" xml:space="preserve">
+    <value>Reverse(Szöveg)
+A megadott szövegen belül a karakterek sorrendjét megfordítja.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Log10_Description" xml:space="preserve">
+    <value>Log10(Érték)
+A megadott szám tízes alapú logaritmusát adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_PadRight3Param_Description" xml:space="preserve">
+    <value>PadRight(Szöveg, Hossz, Karakter)
+Jobbra igazítja a karaktereket a megadott szövegben, kitöltve a jobb oldalát a megadott karakterekkel a megadott teljes hosszig.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Asin_Description" xml:space="preserve">
+    <value>Asin(Érték)
+Egy szám arkusz szinuszát adja vissza (a szög radiánban van megadva).</value>
+  </data>
+  <data name="EditorStringId.FilterClauseLike" xml:space="preserve">
+    <value>Hasonló</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Substring3param_Description" xml:space="preserve">
+    <value>Substring(Szöveg, KezdőPozíció, Hossz)
+A megadott Szöveg KezdőPozíció-nál kezdődő, Hossz hosszúságú részét adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Sinh_Description" xml:space="preserve">
+    <value>Sinh(Érték)
+A radiánban megadott szög szinusz hiperbolikuszát adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Not_Description" xml:space="preserve">
+    <value>Logikai NEM művelet végrehajtása két kifejezésen.</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsLaterThisMonth" xml:space="preserve">
+    <value>Később ebben a hónapban</value>
+  </data>
+  <data name="EditorStringId.FilterGroupNotAnd" xml:space="preserve">
+    <value>Nem És</value>
+  </data>
+  <data name="EditorStringId.FilterClauseAnyOf" xml:space="preserve">
+    <value>Bármelyik</value>
+  </data>
+  <data name="EditorStringId.FilterClauseLess" xml:space="preserve">
+    <value>Kisebb mint</value>
+  </data>
+  <data name="EditorStringId.FilterToolTipValueType" xml:space="preserve">
+    <value>Összehasonlítás egy értékkel / másik mező értékével</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsEarlierThisWeek" xml:space="preserve">
+    <value>Korábban ezen a héten</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Ceiling_Description" xml:space="preserve">
+    <value>Ceiling(Érték)
+A legkisebb egész számot adja vissza, ami nagyobb vagy egyenlő mint a megadott numerikus kifejezés.</value>
+  </data>
+  <data name="EditorStringId.FilterGroupClearAll" xml:space="preserve">
+    <value>Összes törlése</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GridFields_Description_Prefix" xml:space="preserve">
+    <value>Mező információ
+Felirat: {1}
+A mező típusa: {2}</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_IsNullOrEmpty_Description" xml:space="preserve">
+    <value>IsNullOrEmpty(Szöveg)
+IGAZ értéket ad vissza, ha a megadott Szöveg NULL vagy üres szöveg. Egyébként HAMIS.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Ascii_Description" xml:space="preserve">
+    <value>Ascii(String)
+A megadott kifejezés első (bal) karakterének ASCII kódját adja vissza.</value>
+  </data>
+  <data name="EditorStringId.FilterClauseEquals" xml:space="preserve">
+    <value>Egyenlő</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Iif_Description" xml:space="preserve">
+    <value>Iif(Kifejezés, IgazRész, HamisRész)
+IgazRész-t vagy HamisRész-t ad vissza a Kifejezés kiértékelésétől függően.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_BitwiseOr_Description" xml:space="preserve">
+    <value>Az első operandus minden bitjét összehasonlítja a második operandus megfelelő bitjével. Ha valamelyik bit 1, a másik, neki megfelelő bitet is 1-re állítja. Egyébként a másik bitet 0-ra állítja.</value>
+  </data>
+  <data name="EditorStringId.FilterClauseDoesNotEqual" xml:space="preserve">
+    <value>Nem egyenlő</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_FunctionType_MathItems" xml:space="preserve">
+    <value>Matematikai</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GreaterOrEqual_Description" xml:space="preserve">
+    <value>Nagyobb vagy egyenlő operátor. Kifejezések összehasonlításához.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GetDayOfYear_Description" xml:space="preserve">
+    <value>GetDayOfYear(DátumIdő)
+A megadott DátumIdő-ből kivett év napját adja vissza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Divide_Description" xml:space="preserve">
+    <value>Az első operandust elosztja a másodikkal.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_FunctionType_LogicalItems" xml:space="preserve">
+    <value>Logikai</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsTomorrow" xml:space="preserve">
+    <value>Holnap</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsNextWeek" xml:space="preserve">
+    <value>Jövő héten</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_FunctionType_StringItems" xml:space="preserve">
+    <value>Szöveg</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_True_Description" xml:space="preserve">
+    <value>Logikai IGAZ érték.</value>
+  </data>
+  <data name="EditorStringId.No" xml:space="preserve">
+    <value>Nem</value>
+  </data>
+  <data name="EditorStringId.ColorEdit_ThemeColorsCaption" xml:space="preserve">
+    <value>Téma színei</value>
+  </data>
+  <data name="EditorStringId.ColorEdit_MoreColorsButtonCaption" xml:space="preserve">
+    <value>Több szín...</value>
+  </data>
+  <data name="EditorStringId.Cut" xml:space="preserve">
+    <value>Kivágás</value>
+  </data>
+  <data name="EditorStringId.Copy" xml:space="preserve">
+    <value>Másolás</value>
+  </data>
+  <data name="EditorStringId.ColorEdit_NoColorButtonCaption" xml:space="preserve">
+    <value>Nincs szín</value>
+  </data>
+  <data name="EditorStringId.Yes" xml:space="preserve">
+    <value>Igen</value>
+  </data>
+  <data name="EditorStringId.Save" xml:space="preserve">
+    <value>Mentés</value>
+  </data>
+  <data name="EditorStringId.Paste" xml:space="preserve">
+    <value>Beillesztés</value>
+  </data>
+  <data name="EditorStringId.ColorEdit_ColorChooserWindowTitle" xml:space="preserve">
+    <value>Színek</value>
+  </data>
+  <data name="EditorStringId.ImageEdit_OpenFileFilter" xml:space="preserve">
+    <value>Képfájlok (*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|Minden fájl (*.*)|*.*</value>
+  </data>
+  <data name="EditorStringId.Apply" xml:space="preserve">
+    <value>Alkalmaz</value>
+  </data>
+  <data name="EditorStringId.CalculatorDivisionByZeroError" xml:space="preserve">
+    <value>Nem lehet nullával osztani</value>
+  </data>
+  <data name="EditorStringId.ColorEdit_AutomaticButtonCaption" xml:space="preserve">
+    <value>Automatikus</value>
+  </data>
+  <data name="EditorStringId.ColorEdit_RecentColorsCaption" xml:space="preserve">
+    <value>Legutóbbi színek</value>
+  </data>
+  <data name="EditorStringId.CalculatorError" xml:space="preserve">
+    <value>Hiba</value>
+  </data>
+  <data name="EditorStringId.ColorEdit_StandardColorsCaption" xml:space="preserve">
+    <value>Standard színek</value>
+  </data>
+  <data name="EditorStringId.CalculatorInvalidInputError" xml:space="preserve">
+    <value>Érvénytelen érték</value>
+  </data>
+  <data name="EditorStringId.Open" xml:space="preserve">
+    <value>Megnyitás</value>
+  </data>
+  <data name="EditorStringId.PasswordBoxEditToolTipHeader" xml:space="preserve">
+    <value>A Caps Lock be van kapcsolva</value>
+  </data>
+  <data name="EditorStringId.OutOfRange" xml:space="preserve">
+    <value>Az érték a tartományon kívül esik</value>
+  </data>
+  <data name="EditorStringId.PasswordBoxEditToolTipContent" xml:space="preserve">
+    <value>A bekapcsolt Caps Lock azt okozhatja, hogy rosszul adja meg a jelszót.
+Nyomja meg a Caps Lock billentyűt a kikapcsoláshoz, mielőtt megadja a jelszavát.</value>
+  </data>
+</root>

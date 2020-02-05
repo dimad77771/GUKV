@@ -1,0 +1,961 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ValidationNoOrgInfo" xml:space="preserve">
+    <value>Відомості про організацію не заповнені</value>
+  </data>
+  <data name="CorrectionMsgWrongBalansHolder" xml:space="preserve">
+    <value>Даний об'єкт в 1НФ закріплено за іншим балансоутримувачем. Необхідна перевірка.</value>
+  </data>
+  <data name="ValidationAddrSquare" xml:space="preserve">
+    <value>загальна площа, житлова площа, нежитлова площа</value>
+  </data>
+  <data name="FormulaBudgPayments2012Q2" xml:space="preserve">
+    <value>Сума відрахувань частки прибутку до бюджету за II кв. 2012 р.</value>
+  </data>
+  <data name="ValidationNoObjectInfo" xml:space="preserve">
+    <value>Відомості про об'єкт не заповнені</value>
+  </data>
+  <data name="CorrectionMsgFromPrivatization" xml:space="preserve">
+    <value>За інформацією з БД 'Приватизація'</value>
+  </data>
+  <data name="UncategorizedOrgID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="StreetZhukova" xml:space="preserve">
+    <value>ЖУКОВА</value>
+  </data>
+  <data name="BuildingLitPrefix3" xml:space="preserve">
+    <value>ЛІТЕРА</value>
+  </data>
+  <data name="FormulaDovgZobov" xml:space="preserve">
+    <value>Довгострокові зобов'язання станом на </value>
+  </data>
+  <data name="ValidationOrgIndustry" xml:space="preserve">
+    <value>галузь</value>
+  </data>
+  <data name="FormulaCostActives2012Q1" xml:space="preserve">
+    <value>Вартість активів на 01.04.2012</value>
+  </data>
+  <data name="LiteraA" xml:space="preserve">
+    <value>А</value>
+  </data>
+  <data name="BuildingAddressNoNumber" xml:space="preserve">
+    <value>Б/Н</value>
+  </data>
+  <data name="RentPaymentStreetTypeAvenue1" xml:space="preserve">
+    <value>ПРОС</value>
+  </data>
+  <data name="FormulaDebitDebt" xml:space="preserve">
+    <value>Дебіторська заборгованість на </value>
+  </data>
+  <data name="CorrectionMsgBalansSqrCorrected" xml:space="preserve">
+    <value>{0}: Змінено площу об'єкту, нова площа становить {1}</value>
+  </data>
+  <data name="FormulaBudgPayments2011Q1" xml:space="preserve">
+    <value>Сума відрахувань частки прибутку до бюджету за I кв. 2011 р.</value>
+  </data>
+  <data name="DocTypeOrderKMDA" xml:space="preserve">
+    <value>РОЗПОРЯДЖЕННЯ КМДА</value>
+  </data>
+  <data name="FormulaPotochZobov" xml:space="preserve">
+    <value>Поточні зобов'язання станом на </value>
+  </data>
+  <data name="CorrectionPrivatInfo" xml:space="preserve">
+    <value>Об'єкт з БД 'Приватизація' {0} за адресою {1}, площа {2} кв.м., приватизовано організацією '{3}'</value>
+  </data>
+  <data name="StreetFranka" xml:space="preserve">
+    <value>ФРАНКА</value>
+  </data>
+  <data name="DocKindRozpRadyanskAdmin" xml:space="preserve">
+    <value>РОЗПОРЯДЖЕННЯ РАДЯНСЬКОЇ РАЙДЕРЖАДМІНІСТРАЦІЇ</value>
+  </data>
+  <data name="CorrectionMsgIncorrectPrivatSquare" xml:space="preserve">
+    <value>Площа цього об'єкту в 1НФ не співпадає з площею об'єкту з БД 'Приватизація'. Необхідна перевірка.</value>
+  </data>
+  <data name="ValidationArendaStart" xml:space="preserve">
+    <value>дата початку оренди</value>
+  </data>
+  <data name="DocKindRozpZaliznAdmin" xml:space="preserve">
+    <value>РОЗПОРЯДЖЕННЯ ЗАЛІЗНИЧНОЇ РАЙДЕРЖАДМІНІСТРАЦІЇ</value>
+  </data>
+  <data name="ValidationMsgOrgIncomplete" xml:space="preserve">
+    <value>Необхідно заповнити показники для організації: {0}</value>
+  </data>
+  <data name="ObjectTypeInBuilt" xml:space="preserve">
+    <value>ВБУДОВАНЕ ПРИМІЩ.</value>
+  </data>
+  <data name="DocKindRozpKyivRadi" xml:space="preserve">
+    <value>РОЗПОРЯДЖЕННЯ КИЇВРАДИ</value>
+  </data>
+  <data name="DocKindRozpMoskAdmin" xml:space="preserve">
+    <value>РОЗПОРЯДЖЕННЯ МОСКОВСЬКОЇ РАЙДЕРЖАДМІНІСТРАЦІЇ</value>
+  </data>
+  <data name="FormulaBudgPayments2010Q3" xml:space="preserve">
+    <value>Сума відрахувань частки прибутку до бюджету за III кв. 2010 р.</value>
+  </data>
+  <data name="StreetKindAvenueCorrect" xml:space="preserve">
+    <value>ПРОСП.</value>
+  </data>
+  <data name="AddrShutova" xml:space="preserve">
+    <value>ШУТОВА</value>
+  </data>
+  <data name="PrivatCSVLogAddr1NF" xml:space="preserve">
+    <value>Адреса об'єкту в БД "1НФ"</value>
+  </data>
+  <data name="StreetAntonovaAvia" xml:space="preserve">
+    <value>АНТОНОВА АВІАКОНСТРУКТОРА</value>
+  </data>
+  <data name="DocArchiveFlagRus" xml:space="preserve">
+    <value>А</value>
+  </data>
+  <data name="ValidationBalansObject" xml:space="preserve">
+    <value>адреса</value>
+  </data>
+  <data name="AddrBehterevskyyLit2" xml:space="preserve">
+    <value>літ. 2</value>
+  </data>
+  <data name="ValidationOrgOwnership" xml:space="preserve">
+    <value>форма власності</value>
+  </data>
+  <data name="CorrectionMsgBalansObjCreatedFromTransfer" xml:space="preserve">
+    <value>Створено новий об'єкт на балансі по інформації з БД 'Розпорядження'</value>
+  </data>
+  <data name="BuildingAddressNoNumberCorrect" xml:space="preserve">
+    <value>БН</value>
+  </data>
+  <data name="ValidationOrgDuplicateZKPO" xml:space="preserve">
+    <value>Код ЄДРПОУ {0} дублюється в базі 1НФ. Неможливо виконати однозначне співставлення організації</value>
+  </data>
+  <data name="PrivatCSVLogAddrPrivat" xml:space="preserve">
+    <value>Адреса об'єкту в БД "Приватизація"</value>
+  </data>
+  <data name="NumberAslashA" xml:space="preserve">
+    <value>А/А</value>
+  </data>
+  <data name="DocTypeDecision" xml:space="preserve">
+    <value>РІШЕННЯ</value>
+  </data>
+  <data name="RentPaymentStreetTypeBoulevard1" xml:space="preserve">
+    <value>БУЛ</value>
+  </data>
+  <data name="StreetKotelnikova" xml:space="preserve">
+    <value>КОТЕЛЬНИКОВА</value>
+  </data>
+  <data name="BuildingKorpusPrefix2" xml:space="preserve">
+    <value>корп.</value>
+  </data>
+  <data name="StreetOvsienkaShort" xml:space="preserve">
+    <value>ОВСІЄНКА</value>
+  </data>
+  <data name="StreetDegtarivska" xml:space="preserve">
+    <value>ДЕГТЯРІВСЬКА</value>
+  </data>
+  <data name="ValidationBalansPurposeGroup" xml:space="preserve">
+    <value>група призначення</value>
+  </data>
+  <data name="FormulaCostActives2012Q3" xml:space="preserve">
+    <value>Вартість активів на 01.10.2012</value>
+  </data>
+  <data name="FormulaAvgSalary" xml:space="preserve">
+    <value>Середня заробітна плата за </value>
+  </data>
+  <data name="CorrectionMsgTooManyObjOnBalans" xml:space="preserve">
+    <value>Неможливо однозначно співставити об'єкт з базою 1НФ, оскільки в 1НФ за цією адресою є кілька об'єктів на балансі у організації '{0}'. Необхідна перевірка.</value>
+  </data>
+  <data name="ValidationBalansNonHabitSqr" xml:space="preserve">
+    <value>нежитлова площа</value>
+  </data>
+  <data name="FinPlanVidrahuvannia2" xml:space="preserve">
+    <value>%ПРИБУТКУ%</value>
+  </data>
+  <data name="AddrFranka24A_wrong" xml:space="preserve">
+    <value>-а літ.</value>
+  </data>
+  <data name="StreetKomarova" xml:space="preserve">
+    <value>КОМАРОВА</value>
+  </data>
+  <data name="CvsLogPrivatObjNumber" xml:space="preserve">
+    <value>Номер будинку</value>
+  </data>
+  <data name="ValidationBalansOrg" xml:space="preserve">
+    <value>балансоутримувач</value>
+  </data>
+  <data name="ValidationOrgActivity" xml:space="preserve">
+    <value>вид діяльності</value>
+  </data>
+  <data name="UncategorizedOrgShortName" xml:space="preserve">
+    <value>Коротке і'мя</value>
+  </data>
+  <data name="OrgKindDeputy" xml:space="preserve">
+    <value>ДЕПУТАТ</value>
+  </data>
+  <data name="RentPaymentStreetTypeAvenue5" xml:space="preserve">
+    <value>ПРТ</value>
+  </data>
+  <data name="AddrNoInfo2" xml:space="preserve">
+    <value>ВІДС</value>
+  </data>
+  <data name="StreetKurenivska" xml:space="preserve">
+    <value>КУРЕНІВСЬКА</value>
+  </data>
+  <data name="FormulaShortBankCredit" xml:space="preserve">
+    <value>Короткострокові кредити банків станом на </value>
+  </data>
+  <data name="CorrectionMsgBalansObjCreatedFromPrivat" xml:space="preserve">
+    <value>Створено новий об'єкт на балансі по інформації з БД 'Приватизація'</value>
+  </data>
+  <data name="FormulaBudgPayments2010Q1" xml:space="preserve">
+    <value>Сума відрахувань частки прибутку до бюджету за I кв. 2010 р.</value>
+  </data>
+  <data name="FinResultsPureIncome2" xml:space="preserve">
+    <value>%ПРИБУТОК%</value>
+  </data>
+  <data name="UncategorizedOrgFullName" xml:space="preserve">
+    <value>Повне і'мя</value>
+  </data>
+  <data name="StreetSuffix2" xml:space="preserve">
+    <value>ВУЛ</value>
+  </data>
+  <data name="StreetVozduhoflotskyyProsp" xml:space="preserve">
+    <value>ПОВІТРОФЛОТСЬКИЙ ПРОСП.</value>
+  </data>
+  <data name="BuildingLitPrefix4" xml:space="preserve">
+    <value>ЛІТЕР</value>
+  </data>
+  <data name="FormulaCostActives2010Q2" xml:space="preserve">
+    <value>Вартість активів на 01.07.2010</value>
+  </data>
+  <data name="ValidationAddrNumber" xml:space="preserve">
+    <value>номер будинку</value>
+  </data>
+  <data name="ValidationBalansPurpose" xml:space="preserve">
+    <value>призначення</value>
+  </data>
+  <data name="FormulaCostActives2010" xml:space="preserve">
+    <value>Вартість активів на 01.01.2011</value>
+  </data>
+  <data name="ValidationBalansTotalSqr" xml:space="preserve">
+    <value>загальна площа</value>
+  </data>
+  <data name="StreetDniprodz" xml:space="preserve">
+    <value>ДНІПРОДЗЕРЖИНСЬКА</value>
+  </data>
+  <data name="BuildingLitPrefix8" xml:space="preserve">
+    <value>ЛІТ</value>
+  </data>
+  <data name="FormulaCreditDebt" xml:space="preserve">
+    <value>Кредиторська заборгованість станом на </value>
+  </data>
+  <data name="ValidationArendaObject" xml:space="preserve">
+    <value>адреса</value>
+  </data>
+  <data name="ValidationAddrStreet" xml:space="preserve">
+    <value>назва вулиці</value>
+  </data>
+  <data name="StreetKindLaneCorrect" xml:space="preserve">
+    <value>ПРОВ.</value>
+  </data>
+  <data name="FormulaBudgPayments2011" xml:space="preserve">
+    <value>Сума відрахувань частки прибутку до бюджету за 2011 р.</value>
+  </data>
+  <data name="CorrectionRentInfo" xml:space="preserve">
+    <value>Договір {0} на оренду {1} кв.м. між балансоутримувачем '{2}' та орендарем '{3}' за адресою {4}</value>
+  </data>
+  <data name="AddrIllinska37A3k" xml:space="preserve">
+    <value>/7 ЛІТ.А 3К.</value>
+  </data>
+  <data name="FormulaCostActives2011Q1" xml:space="preserve">
+    <value>Вартість активів на 01.04.2011</value>
+  </data>
+  <data name="StreetAntonovaOvs" xml:space="preserve">
+    <value>АНТОНОВА-ОВСІЄНКА</value>
+  </data>
+  <data name="FormulaBudgPayments2012Q1" xml:space="preserve">
+    <value>Сума відрахувань частки прибутку до бюджету за I кв. 2012 р.</value>
+  </data>
+  <data name="StreetBehterevskyy" xml:space="preserve">
+    <value>БЕХТЕРЕВСЬКИЙ</value>
+  </data>
+  <data name="DocTypePolojennya" xml:space="preserve">
+    <value>ПОЛОЖЕННЯ</value>
+  </data>
+  <data name="OrderTopicKMDADefault" xml:space="preserve">
+    <value>Розпорядження КМДА</value>
+  </data>
+  <data name="ValidationMsgBalansIncomplete" xml:space="preserve">
+    <value>Необхідно заповнити показники для об'єкту на балансі: {0}</value>
+  </data>
+  <data name="RentPaymentStreetTypeBoulevard" xml:space="preserve">
+    <value>БУЛЬВ.</value>
+  </data>
+  <data name="CvsLogBalansOrgFullName" xml:space="preserve">
+    <value>Повне ім'я організації</value>
+  </data>
+  <data name="FinResultsForm1" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="StreetBoryspil" xml:space="preserve">
+    <value>БОРИСП</value>
+  </data>
+  <data name="FormulaBudgPayments2011Q2" xml:space="preserve">
+    <value>Сума відрахувань частки прибутку до бюджету за II кв. 2011 р.</value>
+  </data>
+  <data name="FinResultsForm2" xml:space="preserve">
+    <value>2-М</value>
+  </data>
+  <data name="CorrectionMsgNoPrivatAkt" xml:space="preserve">
+    <value>Продаж даного об'єкту в БД 'Приватизація' не підтверджено Актом. Необхідна перевірка.</value>
+  </data>
+  <data name="CorrectionMsgNoDataByAddress" xml:space="preserve">
+    <value>В 1НФ нема об'єктів на балансі за адресою {0}</value>
+  </data>
+  <data name="StreetSuffixProsp" xml:space="preserve">
+    <value>ПРОСП.</value>
+  </data>
+  <data name="ValidationOrgName" xml:space="preserve">
+    <value>повна назва</value>
+  </data>
+  <data name="FormulaDovgBankCredit" xml:space="preserve">
+    <value>Довгострокові кредити банків станом на </value>
+  </data>
+  <data name="CorrectionTransferBalansUpToDate" xml:space="preserve">
+    <value>{0}: Дані по цьому об'єкту є більш актуальними, ніж інформація про передачу прав з БД 'Розпорядження', і не можуть бути змінені. Необхідна перевірка.</value>
+  </data>
+  <data name="CorrectionBalansInfoNoDate" xml:space="preserve">
+    <value>Об'єкт {0} кв.м. на балансі у організації '{1}' за адресою {2}</value>
+  </data>
+  <data name="FormulaBudgPaymentsRate" xml:space="preserve">
+    <value>Норматив відрахувань частки прибутку до бюджету на {0}</value>
+  </data>
+  <data name="BuildingKorpusPrefixCorrect" xml:space="preserve">
+    <value>К.</value>
+  </data>
+  <data name="FormulaAvgNumWorkers" xml:space="preserve">
+    <value>Середня чисельність працюючих за </value>
+  </data>
+  <data name="ValidationRentAgreementDescr" xml:space="preserve">
+    <value>Договір оренди № {0} від {1}</value>
+  </data>
+  <data name="FormulaCostActives2012Q2" xml:space="preserve">
+    <value>Вартість активів на 01.07.2012</value>
+  </data>
+  <data name="FormulaCostActives2011" xml:space="preserve">
+    <value>Вартість активів на 01.01.2012</value>
+  </data>
+  <data name="DocTypeContract" xml:space="preserve">
+    <value>КОНТРАКТ</value>
+  </data>
+  <data name="ProtocolTopicForConstCommitty" xml:space="preserve">
+    <value>Протокол засідання постійної комісії</value>
+  </data>
+  <data name="CorrectionTransferSqrMismatch" xml:space="preserve">
+    <value>Не співпадає площа об'єкту в БД '1НФ' та в БД 'Розпорядження'. Необхідна перевірка.</value>
+  </data>
+  <data name="CorrectionTransferOwnerMismatch" xml:space="preserve">
+    <value>В БД '1НФ' існує схожий об'єкт, але він знаходиться на балансі іншої організації. Необхідна перевірка.</value>
+  </data>
+  <data name="FormulaNameQ3" xml:space="preserve">
+    <value>третій квартал {0} р.</value>
+  </data>
+  <data name="AddrDniprodz130K10B_wrong" xml:space="preserve">
+    <value>,К.10 (ЛІТ.Б) ПОБУ</value>
+  </data>
+  <data name="ProtocolTopicDefault" xml:space="preserve">
+    <value>Протокол засідання комісії</value>
+  </data>
+  <data name="BuildingLitPrefix6" xml:space="preserve">
+    <value>ЛІТЕР  .</value>
+  </data>
+  <data name="ValidationUnknownStreetCode" xml:space="preserve">
+    <value>Невідомий код вулиці</value>
+  </data>
+  <data name="ValidationArendaGiver" xml:space="preserve">
+    <value>орендодавець</value>
+  </data>
+  <data name="CorrectionTransferTooManyObjForGiver" xml:space="preserve">
+    <value>Неможливо однозначно визначити об'єкт в БД 1НФ, оскільки організація, від якої передано об'єкт, має кілька об'єктів на балансі за цією адресою. Необхідна перевірка.</value>
+  </data>
+  <data name="ValidationArendaBalansHolder" xml:space="preserve">
+    <value>балансоутримувач</value>
+  </data>
+  <data name="PrivatGroupCodeA" xml:space="preserve">
+    <value>А</value>
+  </data>
+  <data name="CorrectionMsgOwnershipChanged" xml:space="preserve">
+    <value>Змінено форму власності об'єкту на '{0}'</value>
+  </data>
+  <data name="RentPaymentStreetTypeSquare1" xml:space="preserve">
+    <value>ПЛ</value>
+  </data>
+  <data name="CorrectionTransferNoSuitableObjForGiver" xml:space="preserve">
+    <value>Організація, від якої передано об'єкт, не має схожого об'єкту на балансі за цією адресою в БД '1НФ'. Необхідна перевірка.</value>
+  </data>
+  <data name="RentPaymentStreetTypeAvenue4" xml:space="preserve">
+    <value>ПР-Т</value>
+  </data>
+  <data name="NJFPurposeGroupNezhitlovi" xml:space="preserve">
+    <value>НЕЖИТЛОВІ</value>
+  </data>
+  <data name="NumberAblockA" xml:space="preserve">
+    <value>А БЛОК А</value>
+  </data>
+  <data name="ValidationArendaPayment" xml:space="preserve">
+    <value>орендна плата</value>
+  </data>
+  <data name="DocArchiveFlagEng" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="FinPlanVidrahuvannia1" xml:space="preserve">
+    <value>%ВІДРАХУВАННЯ%</value>
+  </data>
+  <data name="FormulaBudgPayments2012Q3" xml:space="preserve">
+    <value>Сума відрахувань частки прибутку до бюджету за III кв. 2012 р.</value>
+  </data>
+  <data name="AddrBoryspilske23KMK1" xml:space="preserve">
+    <value>23 КМ, К.1</value>
+  </data>
+  <data name="StreetIllinska" xml:space="preserve">
+    <value>ІЛЛІНСЬКА</value>
+  </data>
+  <data name="CvsLogPrivatObjZIP" xml:space="preserve">
+    <value>Поштовий індекс</value>
+  </data>
+  <data name="FormulaBudgPayments" xml:space="preserve">
+    <value>Зобов'язання з відрахувань частки прибутку до бюджету на {0}</value>
+  </data>
+  <data name="StreetKopylivska" xml:space="preserve">
+    <value>КОПИЛІВСЬКА</value>
+  </data>
+  <data name="BuildingLitPrefix2" xml:space="preserve">
+    <value>ЛІТЕР.</value>
+  </data>
+  <data name="AddrKopylivska1_7_k2_wrong" xml:space="preserve">
+    <value>/7  К2</value>
+  </data>
+  <data name="LesiUkrainkiShort" xml:space="preserve">
+    <value>ЛЕСІ УКРАЇНКИ</value>
+  </data>
+  <data name="CorrectionBalansInfoWithDate" xml:space="preserve">
+    <value>Об'єкт {0} кв.м. на балансі у організації '{1}' за адресою {2}, дата актуальності {3}</value>
+  </data>
+  <data name="StreetKindBoulevardCorrect" xml:space="preserve">
+    <value>БУЛЬВ.</value>
+  </data>
+  <data name="AddrBehterevskyyLit17" xml:space="preserve">
+    <value>літ. 17</value>
+  </data>
+  <data name="ObjectTypeInBlock" xml:space="preserve">
+    <value>ВНУТРІШНЬОКВАРТАЛЬНЕ</value>
+  </data>
+  <data name="CvsLogBalansOrgOKPO" xml:space="preserve">
+    <value>Код ЗКПО</value>
+  </data>
+  <data name="RentPaymentStreetTypeUzviz1" xml:space="preserve">
+    <value>УЗВ</value>
+  </data>
+  <data name="SquareMeters" xml:space="preserve">
+    <value>кв.м.</value>
+  </data>
+  <data name="FormulaCostActives2010Q1" xml:space="preserve">
+    <value>Вартість активів на 01.04.2010</value>
+  </data>
+  <data name="OrgKindSmallBusiness" xml:space="preserve">
+    <value>МАЛЕ ПІДПРИЄМСТВО</value>
+  </data>
+  <data name="ValidationOrgZKPO" xml:space="preserve">
+    <value>код ЄДРПОУ</value>
+  </data>
+  <data name="AddrKopylivska1_7_k2_correct" xml:space="preserve">
+    <value>/7  К.2</value>
+  </data>
+  <data name="NJFUnmatchedObjAddrMisc" xml:space="preserve">
+    <value>Доп. Адреса</value>
+  </data>
+  <data name="CvsLogPrivatObjName" xml:space="preserve">
+    <value>Назва</value>
+  </data>
+  <data name="FormulaNameQ1" xml:space="preserve">
+    <value>перший квартал {0} р.</value>
+  </data>
+  <data name="CorrectionMsgWrongRentAgreement" xml:space="preserve">
+    <value>Неможливо однозначно співставити об'єкт з базою 1НФ, оскільки є невідповідність між догором оренди організації '{0}' в 1НФ та даними з БД 'Приватизація'. Необхідна перевірка.</value>
+  </data>
+  <data name="FinPlan" xml:space="preserve">
+    <value>%ФІНАНСОВИЙ ПЛАН%</value>
+  </data>
+  <data name="ValidationMsgObjDiffSqr" xml:space="preserve">
+    <value>Надто велике відхилення площі будинку: було {0}, стало {1}</value>
+  </data>
+  <data name="FinResults2" xml:space="preserve">
+    <value>%РЕЗУЛЬТАТИ%</value>
+  </data>
+  <data name="NJFUnmatchedObjNomer1" xml:space="preserve">
+    <value>Номер</value>
+  </data>
+  <data name="ValidationMsgBalansTotalSquareMismatch" xml:space="preserve">
+    <value>Надто велике відхилення загальної площі об'єкту: було {0}, стало {1}</value>
+  </data>
+  <data name="FormulaBudgPayments2012" xml:space="preserve">
+    <value>Сума відрахувань частки прибутку до бюджету за 2012 р.</value>
+  </data>
+  <data name="FormulaBudgPayments2010Q2" xml:space="preserve">
+    <value>Сума відрахувань частки прибутку до бюджету за II кв. 2010 р.</value>
+  </data>
+  <data name="FinResultsPureIncome1" xml:space="preserve">
+    <value>%ЧИСТИЙ%</value>
+  </data>
+  <data name="AddrGorkogoLitB" xml:space="preserve">
+    <value>Б</value>
+  </data>
+  <data name="StreetSuffix1" xml:space="preserve">
+    <value>ВУЛ.</value>
+  </data>
+  <data name="BuildingLitPrefix7" xml:space="preserve">
+    <value>ЛІТЕРА -</value>
+  </data>
+  <data name="FormulaBudgPayments2010" xml:space="preserve">
+    <value>Сума відрахувань частки прибутку до бюджету за 2010 р.</value>
+  </data>
+  <data name="FormulaCostActives2011Q3" xml:space="preserve">
+    <value>Вартість активів на 01.10.2011</value>
+  </data>
+  <data name="UncategorizedOrgZKPO" xml:space="preserve">
+    <value>ЗКПО</value>
+  </data>
+  <data name="DocKindArendaDocuments" xml:space="preserve">
+    <value>ДОКУМЕНТИ З АРЕНДИ</value>
+  </data>
+  <data name="CorrectionReasonTransfer" xml:space="preserve">
+    <value>Наявність інформації про передачу об'єкту в БД 'Розпорядження'</value>
+  </data>
+  <data name="ProtocolTopicForCity" xml:space="preserve">
+    <value>Протокол засідання міської комісії</value>
+  </data>
+  <data name="RentPaymentStreetTypeSquare" xml:space="preserve">
+    <value>ПЛ.</value>
+  </data>
+  <data name="CorrectionTransferInfo" xml:space="preserve">
+    <value>Передано {0} {1} кв.м. за адресою {2} від організації '{3}' до організації '{4}', право {5}</value>
+  </data>
+  <data name="BuildingKorpusDuplicate" xml:space="preserve">
+    <value>К.К.</value>
+  </data>
+  <data name="RentPaymentStreetTypeUzviz" xml:space="preserve">
+    <value>УЗВІЗ</value>
+  </data>
+  <data name="ValidationMsgBalansNonHabitSquareMismatch" xml:space="preserve">
+    <value>Надто велике відхилення нежитлової площі об'єкту: було {0}, стало {1}</value>
+  </data>
+  <data name="DocKindNakazMinEnergetiki" xml:space="preserve">
+    <value>НАКАЗ МІНІСТЕРСТВА ПАЛИВА ТА ЕНЕРГЕТИКИ</value>
+  </data>
+  <data name="AddrSmolicha" xml:space="preserve">
+    <value>СМОЛИЧА</value>
+  </data>
+  <data name="DocTypeStatut" xml:space="preserve">
+    <value>СТАТУТ</value>
+  </data>
+  <data name="ValidationMsgOrgMismatch" xml:space="preserve">
+    <value>В організації з кодом ЄДРПОУ {0} не співпадає: {1}</value>
+  </data>
+  <data name="FormulaCostActives2012" xml:space="preserve">
+    <value>Вартість активів на 01.01.2013</value>
+  </data>
+  <data name="NJFUnmatchedObjID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="FinPlanVidrahuvannia3" xml:space="preserve">
+    <value>%БЮДЖЕТУ%</value>
+  </data>
+  <data name="StreetVozduhoflotskyyProv" xml:space="preserve">
+    <value>ПОВІТРОФЛОТСЬКИЙ ПРОВ.</value>
+  </data>
+  <data name="RentPaymentStreetTypeAvenue" xml:space="preserve">
+    <value>ПРОСП.</value>
+  </data>
+  <data name="CorrectionMsgBalansObjNewHolder" xml:space="preserve">
+    <value>{0}: Встановлено новий балансоутримувач '{1}'</value>
+  </data>
+  <data name="StreetSuffixProv" xml:space="preserve">
+    <value>ПРОВ.</value>
+  </data>
+  <data name="NJFUnmatchedObjNomer3" xml:space="preserve">
+    <value>Номер 3</value>
+  </data>
+  <data name="CvsLogPrivatObjKorpus" xml:space="preserve">
+    <value>Корпус</value>
+  </data>
+  <data name="StreetNaberezhnoPechDoroga" xml:space="preserve">
+    <value>НАБЕРЕЖНО-ПЕЧЕРСЬКА ДОРОГА</value>
+  </data>
+  <data name="StreetGlushkova" xml:space="preserve">
+    <value>ГЛУШКОВА</value>
+  </data>
+  <data name="CorrectionMsgNoRentAgreements" xml:space="preserve">
+    <value>Неможливо однозначно співставити об'єкт з базою 1НФ, оскільки в 1НФ за цією адресою нема договорів оренди у організації '{0}'. Необхідна перевірка.</value>
+  </data>
+  <data name="RentPaymentStreetTypeAvenue2" xml:space="preserve">
+    <value>ПРСП</value>
+  </data>
+  <data name="FinResultsPureIncome3" xml:space="preserve">
+    <value>%ЗБИТОК%</value>
+  </data>
+  <data name="BuildingPartPrefix1" xml:space="preserve">
+    <value>Ч.</value>
+  </data>
+  <data name="DocTypeProtocol" xml:space="preserve">
+    <value>ПРОТОКОЛ</value>
+  </data>
+  <data name="LesiUkrainkiCorrect" xml:space="preserve">
+    <value>ЛЕСІ УКРАЇНКИ БУЛЬВ.</value>
+  </data>
+  <data name="DocNum" xml:space="preserve">
+    <value>№</value>
+  </data>
+  <data name="BuildingLitPrefix5" xml:space="preserve">
+    <value>ЛІТЕР .</value>
+  </data>
+  <data name="FormulaCostActives2010Q3" xml:space="preserve">
+    <value>Вартість активів на 01.10.2010</value>
+  </data>
+  <data name="CorrectionMsgTooManyRentAgreements" xml:space="preserve">
+    <value>Неможливо однозначно співставити об'єкт з базою 1НФ, оскільки в 1НФ за цією адресою є кілька договорів оренди у організації '{0}'. Необхідна перевірка.</value>
+  </data>
+  <data name="BuildingKorpusPrefix3" xml:space="preserve">
+    <value>К-</value>
+  </data>
+  <data name="StreetHarkivske" xml:space="preserve">
+    <value>ХАРКІВСЬКЕ</value>
+  </data>
+  <data name="UncategorizedOrgIsCategorized" xml:space="preserve">
+    <value>Категорія відома</value>
+  </data>
+  <data name="ObjectTypeOther" xml:space="preserve">
+    <value>ІНШІ</value>
+  </data>
+  <data name="DocKind1NFDocuments" xml:space="preserve">
+    <value>ДОКУМЕНТИ 1НФ</value>
+  </data>
+  <data name="ValidationMsgArendaIncomplete" xml:space="preserve">
+    <value>Необхідно заповнити показники для договору оренди: {0}</value>
+  </data>
+  <data name="NJFPurposeGroupPidpr" xml:space="preserve">
+    <value>ПІДПРИЄМСТВО</value>
+  </data>
+  <data name="FormulaLongDebitDebt" xml:space="preserve">
+    <value>Довгострокова дебіторська заборгованість на </value>
+  </data>
+  <data name="BuildingPrefixNumber" xml:space="preserve">
+    <value>№</value>
+  </data>
+  <data name="NJFPurposeGroupNezhili" xml:space="preserve">
+    <value>НЕЖИЛІ БУДІВЛІ</value>
+  </data>
+  <data name="FormulaTotalIncome2012" xml:space="preserve">
+    <value>Сукупні доходи (без ПДВ) за 2012 р.</value>
+  </data>
+  <data name="StreetGorkogo" xml:space="preserve">
+    <value>ГОРЬКОГО</value>
+  </data>
+  <data name="StreetKindSquareCorrect" xml:space="preserve">
+    <value>ПЛ.</value>
+  </data>
+  <data name="BuildingLetterA" xml:space="preserve">
+    <value>А</value>
+  </data>
+  <data name="CrossRoadPrefix" xml:space="preserve">
+    <value>РІГ</value>
+  </data>
+  <data name="ValidationArendaSquare" xml:space="preserve">
+    <value>орендована площа</value>
+  </data>
+  <data name="BuildingLitPrefix" xml:space="preserve">
+    <value>ЛІТ.</value>
+  </data>
+  <data name="StreetAntonovaShort" xml:space="preserve">
+    <value>АНТОНОВА</value>
+  </data>
+  <data name="AddrNoInfo1" xml:space="preserve">
+    <value>НЕМ</value>
+  </data>
+  <data name="FormulaTotalDohod" xml:space="preserve">
+    <value>Загальний обсяг доходів за </value>
+  </data>
+  <data name="DocKindPrivatDocuments" xml:space="preserve">
+    <value>ДОКУМЕНТИ З ПРИВАТИЗАЦІЇ</value>
+  </data>
+  <data name="RentPaymentStreetTypeLane1" xml:space="preserve">
+    <value>ПРОВ</value>
+  </data>
+  <data name="FormulaBudgPayments2011Q3" xml:space="preserve">
+    <value>Сума відрахувань частки прибутку до бюджету за III кв. 2011 р.</value>
+  </data>
+  <data name="Street40LetOkt" xml:space="preserve">
+    <value>СОРОКАРІЧЧЯ ЖОВТНЯ</value>
+  </data>
+  <data name="CorrectionTransferAmbiguity" xml:space="preserve">
+    <value>Інформація в БД '1НФ' за цією адресою не відповідає інформації з БД 'Розпорядження'. Необхідна перевірка.</value>
+  </data>
+  <data name="CorrectionMsgBalansUpToDate" xml:space="preserve">
+    <value>{0}: Дані по цьому об'єкту є більш актуальними, ніж договір купівлі-продажу з БД 'Приватизація', і не можуть бути змінені. Необхідна перевірка.</value>
+  </data>
+  <data name="NJFPurposeGroupComplex" xml:space="preserve">
+    <value>МАЙНОВИЙ КОМПЛЕКС</value>
+  </data>
+  <data name="CvsLogPrivatObjStreet" xml:space="preserve">
+    <value>Вулиця</value>
+  </data>
+  <data name="DocDate" xml:space="preserve">
+    <value>від</value>
+  </data>
+  <data name="PrivatGroupCodeE" xml:space="preserve">
+    <value>Е</value>
+  </data>
+  <data name="AddrKM" xml:space="preserve">
+    <value>КМ</value>
+  </data>
+  <data name="NJFPurposeGroupNezavershene" xml:space="preserve">
+    <value>НЕЗАВЕРШЕНЕ БУДІВНИЦТВО</value>
+  </data>
+  <data name="AddrFranka24A_correct" xml:space="preserve">
+    <value>А ЛІТ.А</value>
+  </data>
+  <data name="FormulaClearIncome" xml:space="preserve">
+    <value>Чистий прибуток/збиток за </value>
+  </data>
+  <data name="BuildingKorpusPrefix1" xml:space="preserve">
+    <value>КОРП.</value>
+  </data>
+  <data name="ValidationMsgOrgNoAdditionalInfo" xml:space="preserve">
+    <value>Необхідно заповнити додаткові показники для організації: {0}</value>
+  </data>
+  <data name="AddrDniprodz130K10B_correct" xml:space="preserve">
+    <value>,К.10 (ЛІТ.Б)</value>
+  </data>
+  <data name="StreetRustaveli" xml:space="preserve">
+    <value>РУСТАВЕЛІ</value>
+  </data>
+  <data name="FormulaNameYear" xml:space="preserve">
+    <value>{0} рік</value>
+  </data>
+  <data name="ValidationAddrDistrict" xml:space="preserve">
+    <value>район</value>
+  </data>
+  <data name="ValidationMsgObjIncomplete" xml:space="preserve">
+    <value>Необхідно заповнити показники для будинку: {0}</value>
+  </data>
+  <data name="FormulaNameQ2" xml:space="preserve">
+    <value>другий квартал {0} р.</value>
+  </data>
+  <data name="CorrectionMsgBalansObjNewHolderAndOwnership" xml:space="preserve">
+    <value>{0}: Встановлено новий балансоутримувач '{1}', та форма власності '{2}'</value>
+  </data>
+  <data name="FormulaCostActives2011Q2" xml:space="preserve">
+    <value>Вартість активів на 01.07.2011</value>
+  </data>
+  <data name="FinResults1" xml:space="preserve">
+    <value>%ФІНАНСОВІ%</value>
+  </data>
+  <data name="BuildingDockPrefix1" xml:space="preserve">
+    <value>ДОК-</value>
+  </data>
+  <data name="FinPlanQuarterCol" xml:space="preserve">
+    <value>%КВА%</value>
+  </data>
+  <data name="RentPaymentStreetTypeLane" xml:space="preserve">
+    <value>ПРОВ.</value>
+  </data>
+  <data name="DocTypeOrder" xml:space="preserve">
+    <value>РОЗПОРЯДЖЕННЯ</value>
+  </data>
+  <data name="NJFUnmatchedObjStreet" xml:space="preserve">
+    <value>Вулиця</value>
+  </data>
+  <data name="ValidationRentAgreementRenter" xml:space="preserve">
+    <value>Орендар:</value>
+  </data>
+  <data name="ValidationArendaRenter" xml:space="preserve">
+    <value>орендар</value>
+  </data>
+  <data name="StreetSuffixBulv" xml:space="preserve">
+    <value>БУЛЬВ.</value>
+  </data>
+  <data name="FormulaPributokZbitokFact" xml:space="preserve">
+    <value>Прибуток-збиток факт. за </value>
+  </data>
+  <data name="CvsLogBalansOrgShortName" xml:space="preserve">
+    <value>Коротке ім'я організації</value>
+  </data>
+  <data name="StreetParkPushkina" xml:space="preserve">
+    <value>ПАРК ІМ. ПУШКІНА О.С.</value>
+  </data>
+  <data name="RentPaymentStreetTypeAvenue3" xml:space="preserve">
+    <value>ПР.</value>
+  </data>
+  <data name="BuildingKorpusPrefix4" xml:space="preserve">
+    <value>К</value>
+  </data>
+  <data name="CorrectionTransferTooManyObjForReceiver" xml:space="preserve">
+    <value>Неможливо однозначно визначити об'єкт в БД 1НФ, оскільки організація, якій передано об'єкт, має кілька об'єктів на балансі за цією адресою. Необхідна перевірка.</value>
+  </data>
+  <data name="NJFUnmatchedObjNomer2" xml:space="preserve">
+    <value>Номер 2</value>
+  </data>
+  <data name="Report1NFObjectAddedBody" xml:space="preserve">
+    <value>
+Шановний користистувач веб-сайту ДКВ!
+
+Повідомляємо Вам, що згідно документу: {0} № {1} від {2} на баланс організації {3} передано {4} кв.м. за адресою: {5}
+
+Адреса веб-сайту ДКВ, який Ви можете використовувати для заповненния звітності з використання комунальної власності: {6}</value>
+  </data>
+  <data name="Report1NFObjectAddedTitle" xml:space="preserve">
+    <value>Повідомлення про прийняття на баланс нового об'єкту нерухомого майна</value>
+  </data>
+  <data name="Report1NFObjectRemovedBody" xml:space="preserve">
+    <value>
+Шановний користистувач веб-сайту ДКВ!
+
+Повідомляємо Вам, що згідно документу: {0} № {1} від {2} з балансу організації {3} знято {4} кв.м. за адресою: {5}
+
+Адреса веб-сайту ДКВ, який Ви можете використовувати для заповненния звітності з використання комунальної власності: {6}</value>
+  </data>
+  <data name="Report1NFObjectRemovedTitle" xml:space="preserve">
+    <value>Повідомлення про зняття об'єкту нерухомого майна з балансу</value>
+  </data>
+  <data name="GlobalWebSiteURL" xml:space="preserve">
+    <value>http://eis.gukv.gov.ua/gukv</value>
+  </data>
+  <data name="FinCoefWordFileName1" xml:space="preserve">
+    <value>Норматив відрахувань місто.dot</value>
+  </data>
+  <data name="FinCoefWordFileName2" xml:space="preserve">
+    <value>Норматив відрахувань райони.dot</value>
+  </data>
+  <data name="FinCoefDocFileZKPOPattern" xml:space="preserve">
+    <value>ЄДРПОУ</value>
+  </data>
+  <data name="DocTypePostanova" xml:space="preserve">
+    <value>ПОСТАНОВА</value>
+  </data>
+  <data name="DocTypePovidomlennya" xml:space="preserve">
+    <value>ПОВІДОМЛЕННЯ ПРО ПРИПИНЕННЯ ЮР.ОСОБИ</value>
+  </data>
+</root>

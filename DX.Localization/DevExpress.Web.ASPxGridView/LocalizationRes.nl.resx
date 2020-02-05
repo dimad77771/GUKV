@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxGridViewStringId.GroupPanel">
+    <value>Sleep een kolomkop hier naar toe om te groeperen op die kolom</value>
+  </data>
+  <data name="ASPxGridViewStringId.EmptyDataRow">
+    <value>Geen gegevens beschikbaar</value>
+  </data>
+  <data name="ASPxGridViewStringId.EmptyHeaders">
+    <value>Sleep hier een kolom naar toe...</value>
+  </data>
+  <data name="ASPxGridViewStringId.ConfirmDelete">
+    <value>Weet u het zeker?</value>
+  </data>
+  <data name="ASPxGridViewStringId.GroupContinuedOnNextPage">
+    <value>(Vervolg op de volgende pagina)</value>
+  </data>
+  <data name="ASPxGridViewStringId.CustomizationWindowCaption">
+    <value>Veld kiezer</value>
+  </data>
+  <data name="ASPxGridViewStringId.PopupEditFormCaption">
+    <value>Bewerk formulier</value>
+  </data>
+  <data name="ASPxGridViewStringId.HeaderFilterShowAllItem">
+    <value>(Alles)</value>
+  </data>
+  <data name="ASPxGridViewStringId.HeaderFilterShowBlanksItem">
+    <value>(Leeg)</value>
+  </data>
+  <data name="ASPxGridViewStringId.HeaderFilterShowNonBlanksItem">
+    <value>(Niet leeg)</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandEdit">
+    <value>Bewerken</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandNew">
+    <value>Nieuw</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandDelete">
+    <value>Verwijderen</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandSelect">
+    <value>Selecteren</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandCancel">
+    <value>Annuleren</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandUpdate">
+    <value>Opslaan</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandClearFilter">
+    <value>Leegmaken</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterBeginsWith">
+    <value>Begint met</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterContains">
+    <value>Bevat</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterDoesNotContain">
+    <value>Bevat niet</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterEndsWith">
+    <value>Eindigt met</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterEquals">
+    <value>Gelijk aan</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterGreater">
+    <value>Is groter dan</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterGreaterOrEqual">
+    <value>Is groter dan of gelijk aan</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterLess">
+    <value>Is kleiner dan</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterLessOrEqual">
+    <value>Is kleiner dan of gelijk aan</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterNotEqual">
+    <value>Niet gelijk aan</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_HeaderFilterButton">
+    <value>[Filter]</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_HeaderFilterButtonActive">
+    <value>[Gefilterd]</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_SortedAscending">
+    <value>(Oplopend)</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_SortedDescending">
+    <value>(Aflopend)</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_DragAndDropHideColumnIcon">
+    <value>Verbergen</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_Expand">
+    <value>[Uitklappen]</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_Collapse">
+    <value>[Inklappen]</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_FilterRowButton">
+    <value>[Conditie]</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_Older">
+    <value>Ouder</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_LastMonth">
+    <value>Vorige maand</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_EarlierThisMonth">
+    <value>Eerder deze maand</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_ThreeWeeksAgo">
+    <value>Drie weken geleden</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_TwoWeeksAgo">
+    <value>Twee weken geleden</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_LastWeek">
+    <value>Vorige week</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_Yesterday">
+    <value>Gisteren</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_Today">
+    <value>Vandaag</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_Tomorrow">
+    <value>Morgen</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_NextWeek">
+    <value>Volgende week</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_TwoWeeksAway">
+    <value>Over twee weken</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_ThreeWeeksAway">
+    <value>Over drie weken</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_LaterThisMonth">
+    <value>Later deze maand</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_NextMonth">
+    <value>Volgende maand</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_BeyondNextMonth">
+    <value>Verder als volgende maand</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Sum">
+    <value>Som={0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Sum_OtherColumn">
+    <value>Som van {1} is {0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Min">
+    <value>Min={0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Min_OtherColumn">
+    <value>Min van {1} is {0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Max">
+    <value>Max={0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Max_OtherColumn">
+    <value>Max van {1} is {0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Average">
+    <value>Gem={0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Average_OtherColumn">
+    <value>Gemiddelde van {1} is {0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Count">
+    <value>Aantal={0}</value>
+  </data>
+</root>

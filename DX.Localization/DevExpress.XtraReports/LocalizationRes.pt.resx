@@ -1,0 +1,592 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ReportStringId.CatAppearance">
+    <value>Aspecto</value>
+  </data>
+  <data name="ReportStringId.CatData">
+    <value>Dados</value>
+  </data>
+  <data name="ReportStringId.CatLayout">
+    <value>Arranjo</value>
+  </data>
+  <data name="ReportStringId.CatBehavior">
+    <value>Comportamento</value>
+  </data>
+  <data name="ReportStringId.CatPageSettings">
+    <value>Definições de Página</value>
+  </data>
+  <data name="ReportStringId.Cmd_TopMargin">
+    <value>Margem Superior</value>
+  </data>
+  <data name="ReportStringId.Cmd_PageHeader">
+    <value>Cabeçalho de Página</value>
+  </data>
+  <data name="ReportStringId.Cmd_GroupHeader">
+    <value>Rodapé Grupo</value>
+  </data>
+  <data name="ReportStringId.Cmd_GroupFooter">
+    <value>Rodapé Grupo</value>
+  </data>
+  <data name="ReportStringId.Cmd_ReportFooter">
+    <value>Rodapé de Relatório</value>
+  </data>
+  <data name="ReportStringId.Cmd_PageFooter">
+    <value>Rodapé de Página</value>
+  </data>
+  <data name="ReportStringId.Cmd_BottomMargin">
+    <value>Margem Inferior</value>
+  </data>
+  <data name="ReportStringId.BandDsg_QuantityPerPage">
+    <value>uma faixa por página</value>
+  </data>
+  <data name="ReportStringId.BandDsg_QuantityPerReport">
+    <value>uma faixa por relatório</value>
+  </data>
+  <data name="ReportStringId.Msg_CreateReportInstance">
+    <value>O relatório que está sendo editado é de um tipo diferente do que esse você está tentando carregar &lt; br/&gt;Deseja criar uma instancia na mesma deste relatório?</value>
+  </data>
+  <data name="ReportStringId.Msg_FileCorrupted">
+    <value>Impossível carregar o relatório. O ficheiro está corrompido ou em falta.</value>
+  </data>
+  <data name="ReportStringId.Msg_FileNotFound">
+    <value>Ficheiro não encontrado.</value>
+  </data>
+  <data name="ReportStringId.Msg_WrongReportClassName">
+    <value>Um erro ocorreu durante a des-serialização - é possível que o nome da classe de relatório esteja errado.</value>
+  </data>
+  <data name="ReportStringId.Msg_IncorrectBandType">
+    <value>Tipo incorrecto da faixa</value>
+  </data>
+  <data name="ReportStringId.UD_ReportDesigner">
+    <value>Desenhador XtraReport</value>
+  </data>
+  <data name="ReportStringId.UD_Msg_ReportChanged">
+    <value>O relatório foi alterado. Deseja guardar as alterações ?</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_VertSpaceIncrease">
+    <value>Aumentar o Espaçamento Vertical</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_SizeToControl">
+    <value>Ajustar para o mesmo tamanho</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_CenterVertically">
+    <value>CentrarVertical</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_FormatItalic">
+    <value>Itálico</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_CenterHorizontally">
+    <value>Central Horizontal</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_FileSave">
+    <value>Guardar Ficheiro</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_EditCut">
+    <value>Cortar</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_EditCopy">
+    <value>Copiar</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_EditPaste">
+    <value>Colar</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_AlignHorizontalCenters">
+    <value>Alinhar Meio</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_SizeToGrid">
+    <value>Ajustar Tamanho à Grelha</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_FormatAlignLeft">
+    <value>Alinhar Esquerda</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_AlignRight">
+    <value>Alinhar Direita</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_HorizSpaceDecrease">
+    <value>Diminuir Espaço Horizontal</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_AlignVerticalCenters">
+    <value>Alinhar Centro</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_FormatFontSize">
+    <value>Tamanho de Tipo de Letra</value>
+  </data>
+  <data name="ReportStringId.UD_Trans_Delete">
+    <value>Remover Componentes</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_VertSpaceMakeEqual">
+    <value>Distribuir espaçamento vertical</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_AlignTop">
+    <value>Alinhar Topo</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_VertSpaceDecrease">
+    <value>Diminuir Espaço Vertical</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_SizeToControlWidth">
+    <value>Ajustar para a mesma largura</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_AlignLeft">
+    <value>Alinhar Esquerda</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_FormatFontName">
+    <value>Nome da Tipo de Letra</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_FormatAlignRight">
+    <value>Alinhar Direita</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_FileOpen">
+    <value>Abrir Ficheiro</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_HorizSpaceMakeEqual">
+    <value>Tornar Espaçamento Vertical Igual</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_BringToFront">
+    <value>Trazer para a Frente</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_FormatBold">
+    <value>Negrito</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_AlignToGrid">
+    <value>Alinha pela Grelha</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_VertSpaceConcatenate">
+    <value>Remover Espaçamento Vertical</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_FormatCenter">
+    <value>Centrado</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_SizeToControlHeight">
+    <value>Ajustar para a mesma altura</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_AlignBottom">
+    <value>Alinhar Fundo</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_SendToBack">
+    <value>Enviar para Trás</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_HorizSpaceConcatenate">
+    <value>Remover Espaçamento Horizontal</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_HorizSpaceIncrease">
+    <value>Aumentar o Espaçamento Horizontal</value>
+  </data>
+  <data name="ReportStringId.UD_FormCaption">
+    <value>Desenhador XtraReport</value>
+  </data>
+  <data name="ReportStringId.VS_XtraReportsToolboxCategoryName">
+    <value>Relatórios</value>
+  </data>
+  <data name="ReportStringId.FSForm_Lbl_CustomGeneral">
+    <value>Formato geral não tem formato especifico</value>
+  </data>
+  <data name="ReportStringId.FSForm_Lbl_Suffix">
+    <value>Sufixo</value>
+  </data>
+  <data name="ReportStringId.FSForm_Tab_StandardTypes">
+    <value>Tipos Padrão</value>
+  </data>
+  <data name="ReportStringId.FSForm_Msg_BadSymbol">
+    <value>Símbolo errado</value>
+  </data>
+  <data name="ReportStringId.FSForm_Lbl_Prefix">
+    <value>Prefixo</value>
+  </data>
+  <data name="ReportStringId.FSForm_GrBox_Sample">
+    <value>Exemplo</value>
+  </data>
+  <data name="ReportStringId.FSForm_Lbl_Category">
+    <value>Categoria</value>
+  </data>
+  <data name="ReportStringId.FSForm_Btn_Delete">
+    <value>Remover</value>
+  </data>
+  <data name="ReportStringId.FSForm_Tab_Custom">
+    <value>Personalizado</value>
+  </data>
+  <data name="ReportStringId.BCForm_Lbl_Property">
+    <value>Propriedade</value>
+  </data>
+  <data name="ReportStringId.BCForm_Lbl_Binding">
+    <value>Ligar</value>
+  </data>
+  <data name="ReportStringId.CatNavigation">
+    <value>Navegação</value>
+  </data>
+  <data name="ReportStringId.Msg_IncorrectArgument">
+    <value>Valor do argumento incorrecto</value>
+  </data>
+  <data name="ReportStringId.Cmd_Detail">
+    <value>Detalhe</value>
+  </data>
+  <data name="ReportStringId.Cmd_InsertDetailReport">
+    <value>Inserir Sub-relatório</value>
+  </data>
+  <data name="ReportStringId.Cmd_InsertUnboundDetailReport">
+    <value>Não atribuido</value>
+  </data>
+  <data name="ReportStringId.Cmd_ViewCode">
+    <value>Ver &amp;Código</value>
+  </data>
+  <data name="ReportStringId.Cmd_BringToFront">
+    <value>&amp;Trazer para a Frente</value>
+  </data>
+  <data name="ReportStringId.Cmd_SendToBack">
+    <value>&amp;Enviar para trás</value>
+  </data>
+  <data name="ReportStringId.Cmd_AlignToGrid">
+    <value>Alinhar pela &amp;Grelha</value>
+  </data>
+  <data name="ReportStringId.Cmd_RtfLoad">
+    <value>Abrir Ficheiro...</value>
+  </data>
+  <data name="ReportStringId.Cmd_RtfClear">
+    <value>Limpar</value>
+  </data>
+  <data name="ReportStringId.Cmd_TableInsert">
+    <value>&amp;Inserir</value>
+  </data>
+  <data name="ReportStringId.Cmd_TableInsertRowAbove">
+    <value>Registo &amp;Acima</value>
+  </data>
+  <data name="ReportStringId.Cmd_TableInsertRowBelow">
+    <value>Registo A&amp;baixo</value>
+  </data>
+  <data name="ReportStringId.Cmd_TableInsertColumnToLeft">
+    <value>Coluna para &amp;Esquerda</value>
+  </data>
+  <data name="ReportStringId.Cmd_TableInsertColumnToRight">
+    <value>Coluna para Di&amp;reita</value>
+  </data>
+  <data name="ReportStringId.Cmd_TableInsertCell">
+    <value>&amp;Célula</value>
+  </data>
+  <data name="ReportStringId.Cmd_TableDelete">
+    <value>Re&amp;mover</value>
+  </data>
+  <data name="ReportStringId.Cmd_TableDeleteRow">
+    <value>&amp;Linha</value>
+  </data>
+  <data name="ReportStringId.Cmd_TableDeleteColumn">
+    <value>&amp;Coluna</value>
+  </data>
+  <data name="ReportStringId.Cmd_TableDeleteCell">
+    <value>Cé&amp;lula</value>
+  </data>
+  <data name="ReportStringId.Cmd_Cut">
+    <value>Cor&amp;tar</value>
+  </data>
+  <data name="ReportStringId.Cmd_Copy">
+    <value>Cop&amp;iar</value>
+  </data>
+  <data name="ReportStringId.Cmd_Paste">
+    <value>&amp;Colar</value>
+  </data>
+  <data name="ReportStringId.Cmd_Delete">
+    <value>&amp;Eliminar</value>
+  </data>
+  <data name="ReportStringId.Cmd_Properties">
+    <value>P&amp;ropriedades</value>
+  </data>
+  <data name="ReportStringId.Cmd_InsertBand">
+    <value>Inserir &amp;Faixa</value>
+  </data>
+  <data name="ReportStringId.Msg_InvalidReportSource">
+    <value>Não pode ser definido como descendente do relatório actual</value>
+  </data>
+  <data name="ReportStringId.SSForm_Caption">
+    <value>Editor De Estilos</value>
+  </data>
+  <data name="ReportStringId.SSForm_Btn_Close">
+    <value>Fechar</value>
+  </data>
+  <data name="ReportStringId.SSForm_Msg_NoStyleSelected">
+    <value>Estilos não seleccionados</value>
+  </data>
+  <data name="ReportStringId.SSForm_Msg_MoreThanOneStyle">
+    <value>Seleccionou mais que um estilo</value>
+  </data>
+  <data name="ReportStringId.SSForm_Msg_SelectedStylesText">
+    <value> estilos seleccionados</value>
+  </data>
+  <data name="ReportStringId.SSForm_Msg_InvalidFileFormat">
+    <value>Tipo de Ficheiro Inválido</value>
+  </data>
+  <data name="ReportStringId.SSForm_Msg_StyleNamePreviewPostfix">
+    <value> estilo</value>
+  </data>
+  <data name="ReportStringId.SSForm_TTip_AddStyle">
+    <value>Adicionar Estilo</value>
+  </data>
+  <data name="ReportStringId.SSForm_TTip_RemoveStyle">
+    <value>Remover Estilo</value>
+  </data>
+  <data name="ReportStringId.SSForm_TTip_ClearStyles">
+    <value>Remover estilos</value>
+  </data>
+  <data name="ReportStringId.SSForm_TTip_PurgeStyles">
+    <value>Remover estilos</value>
+  </data>
+  <data name="ReportStringId.SSForm_TTip_SaveStyles">
+    <value>Guardar Estilos para Ficheiro</value>
+  </data>
+  <data name="ReportStringId.SSForm_TTip_LoadStyles">
+    <value>Abrir estilos de ficheiro...</value>
+  </data>
+  <data name="ReportStringId.Cmd_DetailReport">
+    <value>Subrelatório</value>
+  </data>
+  <data name="ReportStringId.Msg_CantFitBarcodeToControlBounds">
+    <value>Margens do Controlo são pequenas para o código de barras</value>
+  </data>
+  <data name="ReportStringId.Msg_InvalidBarcodeText">
+    <value>Existem caracteres inválidos no texto.</value>
+  </data>
+  <data name="ReportStringId.Msg_InvalidBarcodeTextFormat">
+    <value>Formato de Texto Inválido</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_FormatBackColor">
+    <value>Cor de Fundo</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_FormatForeColor">
+    <value>Cor da Face</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_FormatJustify">
+    <value>Justificado</value>
+  </data>
+  <data name="ReportStringId.Msg_CreateSomeInstance">
+    <value>Não é possível criar duas instancias de uma classe em um Formulário</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_Undo">
+    <value>Anular</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_Redo">
+    <value>Refazer</value>
+  </data>
+  <data name="ReportStringId.FindForm_Msg_FinishedSearching">
+    <value>Terminada a procura no documento</value>
+  </data>
+  <data name="ReportStringId.FindForm_Msg_TotalFound">
+    <value>Total encontrado:</value>
+  </data>
+  <data name="ReportStringId.RepTabCtl_HtmlView">
+    <value>Vista HTML</value>
+  </data>
+  <data name="ReportStringId.RepTabCtl_Preview">
+    <value>Pré-Visualização</value>
+  </data>
+  <data name="ReportStringId.RepTabCtl_Designer">
+    <value>Desenhador</value>
+  </data>
+  <data name="ReportStringId.Msg_InvalidMethodCall">
+    <value>Esta chamada do método é inválida para o estado actual do objecto.</value>
+  </data>
+  <data name="ReportStringId.Msg_ScriptError">
+    <value>Existem os seguintes erros no(s) script(s):
+{0}</value>
+  </data>
+  <data name="ReportStringId.Msg_DontSupportMulticolumn">
+    <value>Sub-relatórios não suportam múltiplas colunas.</value>
+  </data>
+  <data name="ReportStringId.PanelDesignMsg">
+    <value>Coloque aqui os controlos para os manter juntos</value>
+  </data>
+  <data name="ReportStringId.MultiColumnDesignMsg1">
+    <value>Espaço para colunas repetidas.</value>
+  </data>
+  <data name="ReportStringId.MultiColumnDesignMsg2">
+    <value>Controlos colocados aqui serão impressos erradamente.</value>
+  </data>
+  <data name="ReportStringId.Msg_ScriptExecutionError">
+    <value>O seguinte erro ocorreu no script na rotina {0}</value>
+  </data>
+  <data name="ReportStringId.Msg_FillDataError">
+    <value>Erro ao popular a origem de dados. Ocorreu a seguinte excepção:</value>
+  </data>
+  <data name="ReportStringId.Msg_CyclicBookmarks">
+    <value>Há bookmarks cíclicos no relatório.</value>
+  </data>
+  <data name="ReportStringId.Msg_LargeText">
+    <value>O texto é demasiado extenso.</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_SaveAll_STipTitle" xml:space="preserve">
+    <value>Gravar Todos os Relatórios</value>
+  </data>
+  <data name="ReportStringId.CatPrinting" xml:space="preserve">
+    <value>Imprimindo</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_SaveFile_STipContent" xml:space="preserve">
+    <value>Gravar o relatório atual.</value>
+  </data>
+  <data name="ReportStringId.DesignerStatus_Size" xml:space="preserve">
+    <value>Tamnho</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_HtmlFind_STipContent" xml:space="preserve">
+    <value>Localizar o texto nesta página.</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_SaveFileAs_Caption" xml:space="preserve">
+    <value>Gravar Como...</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_SaveFile_Caption" xml:space="preserve">
+    <value>Gravar</value>
+  </data>
+  <data name="ReportStringId.PivotGridForm_ItemSettings_Caption" xml:space="preserve">
+    <value>Opções de Impressão</value>
+  </data>
+  <data name="ReportStringId.PivotGridForm_GroupPrinting_Caption" xml:space="preserve">
+    <value>Imprimindo</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_OpenFile_STipTitle" xml:space="preserve">
+    <value>Abrir Relatório</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_OpenFile_Caption" xml:space="preserve">
+    <value>Abrir...</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_SaveFile_STipTitle" xml:space="preserve">
+    <value>Gravar Relatório</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_AlignBottom_Caption" xml:space="preserve">
+    <value>Align Bottoms</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_SaveFileAs_STipContent" xml:space="preserve">
+    <value>Gravar o reltório atual com um novo nome.</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_FontSize_STipContent" xml:space="preserve">
+    <value>Mudar o tamanho do tipo de letra.</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_SaveAll_STipContent" xml:space="preserve">
+    <value>Gravar todos os relatórios modificados.</value>
+  </data>
+  <data name="ReportStringId.CatParameters" xml:space="preserve">
+    <value>Parâmetros</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_HtmlFind_Caption" xml:space="preserve">
+    <value>Localizar</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_SaveFileAs_STipTitle" xml:space="preserve">
+    <value>Gravar Relatório Como</value>
+  </data>
+  <data name="ReportStringId.Msg_CyclicBoormarks" xml:space="preserve">
+    <value>Há marcadores cíclicos no relatório.</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_HtmlFind_STipTitle" xml:space="preserve">
+    <value>Localizar</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_SaveAll_Caption" xml:space="preserve">
+    <value>Gravar Tudo</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_OpenFile_STipContent" xml:space="preserve">
+    <value>Abrir um relatório.</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_FontSize_STipTitle" xml:space="preserve">
+    <value>Tamanho do Tipo de Letra</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_HtmlHome_STipTitle" xml:space="preserve">
+    <value>Base</value>
+  </data>
+  <data name="ReportStringId.UD_Group_Font" xml:space="preserve">
+    <value>&amp;Tipo de Letra</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_PageGroup_View" xml:space="preserve">
+    <value>Ver</value>
+  </data>
+  <data name="ReportStringId.UD_Capt_Redo" xml:space="preserve">
+    <value>&amp;Refazer</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_Undo_Caption" xml:space="preserve">
+    <value>Anular</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_Redo_Caption" xml:space="preserve">
+    <value>Refazer</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_HtmlHome_Caption" xml:space="preserve">
+    <value>Base</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_FontUnderline_Caption" xml:space="preserve">
+    <value>Sublinhado</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_Redo_STipTitle" xml:space="preserve">
+    <value>Refazer</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_Undo_STipContent" xml:space="preserve">
+    <value>Anular a última operação.</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_PageGroup_Font" xml:space="preserve">
+    <value>Tipo de Letra</value>
+  </data>
+  <data name="ReportStringId.UD_Capt_Undo" xml:space="preserve">
+    <value>&amp;Anular</value>
+  </data>
+  <data name="ReportStringId.UD_Hint_Undo" xml:space="preserve">
+    <value>Anular a última operação.</value>
+  </data>
+  <data name="ReportStringId.UD_TTip_FormatUnderline" xml:space="preserve">
+    <value>Sublinhado</value>
+  </data>
+  <data name="ReportStringId.UD_Hint_Redo" xml:space="preserve">
+    <value>Refazer a última operação.</value>
+  </data>
+  <data name="ReportStringId.Verb_RTFClear" xml:space="preserve">
+    <value>Limpar</value>
+  </data>
+  <data name="ReportStringId.FSForm_Cat_Special" xml:space="preserve">
+    <value>Especial</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_Undo_STipTitle" xml:space="preserve">
+    <value>Anular</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_Redo_STipContent" xml:space="preserve">
+    <value>Refazer a última operação.</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_FontName_STipTitle" xml:space="preserve">
+    <value>Tipo de Letra</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_FontUnderline_STipTitle" xml:space="preserve">
+    <value>Sublinhado</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_SaveFile_Description" xml:space="preserve">
+    <value>Gravar o relatório atual.</value>
+  </data>
+  <data name="ReportStringId.RibbonXRDesign_SaveFileAs_Description" xml:space="preserve">
+    <value>Gravar o reltório atual com um novo nome.</value>
+  </data>
+</root>

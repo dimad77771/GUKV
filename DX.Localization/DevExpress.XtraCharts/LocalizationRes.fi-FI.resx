@@ -1,0 +1,574 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 1.3
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">1.3</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1">this is my long string</data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        [base64 mime encoded serialized .NET Framework object]
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        [base64 mime encoded string representing a byte array form of the .NET Framework object]
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used forserialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ChartStringId.SeriesPrefix">
+    <value>Sarjat</value>
+  </data>
+  <data name="ChartStringId.PalettePrefix">
+    <value>Paletti</value>
+  </data>
+  <data name="ChartStringId.ArgumentMember">
+    <value>Muuttuja</value>
+  </data>
+  <data name="ChartStringId.ValueMember">
+    <value>Arvo</value>
+  </data>
+  <data name="ChartStringId.LowValueMember">
+    <value>Matala</value>
+  </data>
+  <data name="ChartStringId.HighValueMember">
+    <value>Korkea</value>
+  </data>
+  <data name="ChartStringId.OpenValueMember">
+    <value>Avaa</value>
+  </data>
+  <data name="ChartStringId.CloseValueMember">
+    <value>Sulje</value>
+  </data>
+  <data name="ChartStringId.AutocreatedSeriesName">
+    <value>Automaattisesti luodut sarjat</value>
+  </data>
+  <data name="ChartStringId.DefaultDataFilterName">
+    <value>Suodatin</value>
+  </data>
+  <data name="ChartStringId.DefaultChartTitle">
+    <value>Taulukon otsikko</value>
+  </data>
+  <data name="ChartStringId.MsgEmptyArrayOfValues">
+    <value>Arvojen taulukko on tyhjä.</value>
+  </data>
+  <data name="ChartStringId.MsgSeriesViewDoesNotExist">
+    <value>{0} näkymää ei ole.</value>
+  </data>
+  <data name="ChartStringId.MsgItemNotInCollection">
+    <value>Kokoelmassa ei ole määritettyä objektia.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectValue">
+    <value>Virheellinen arvo "{0}" muuttujalle "{1}".</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatiblePointType">
+    <value>"{0}" tyyppinen piste ei ole yhteensopiva {1} asteikolla.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleArgumentDataMember">
+    <value>"{0}" tyyppinen muuttuja ei ole yhteensopiva {1} asteikolla.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleValueDataMember">
+    <value>"{0}" tyyppi ei ole yhteensopiva asteikolla {1}.</value>
+  </data>
+  <data name="ChartStringId.MsgDesignTimeOnlySetting">
+    <value>Tätä ominaisuutta ei voi asettaa ajon aikana.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidDataSource">
+    <value>Virheellinen DataSourcen tyyppi ( Rajapintoja ei ole määritetty).</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectDataMember">
+    <value> DataSource:ssa ei ole "{0}" nimistä objektia.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidSortingKey">
+    <value>Lajittelukriteeriksi ei voi asettaa arvoa {0}.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidFilterCondition">
+    <value>{0} ehtoa ei voi hyväksyä datalle "{1}".</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectDataAdapter">
+    <value>{0} objeksti ei ole data adapteri.</value>
+  </data>
+  <data name="ChartStringId.MsgModifyDefaultPaletteError">
+    <value>Paletti on oletus, eikä sitä voida muokata.</value>
+  </data>
+  <data name="ChartStringId.MsgAddExistingPaletteError">
+    <value>{0} niminen paletti on jo olemassa.</value>
+  </data>
+  <data name="ChartStringId.MsgInternalPropertyChangeError">
+    <value>Ominaisuus on tarkoitettu vain sisäiseen käyttöön. Tätä arvoa ei voi muuttaa.</value>
+  </data>
+  <data name="ChartStringId.MsgPaletteNotFound">
+    <value>Taulukko ei sisällä palettia nimeltä {0}.</value>
+  </data>
+  <data name="ChartStringId.MsgLabelSettingRuntimeError">
+    <value>"Label"-ominaisuutta ei voida asettaa suorituksen aikana.</value>
+  </data>
+  <data name="ChartStringId.MsgPointOptionsSettingRuntimeError">
+    <value>"PointOptions" ominaisuutta ei voi asettaa suorituksen aikana.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectNumericPrecision">
+    <value>Tarkkuuden pitää olla suurempi tai yhtä suuri kuin 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisThickness">
+    <value>Akselin paksuus pitää olla suurempi kuin 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBarWidth">
+    <value>Rajan leveys pitää olla suurempi tai yhtä suuri kuin 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBarDepth">
+    <value>Rajan paksuus pitää olla suurempi kuin 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBorderThickness">
+    <value>Reunan leveys pitää olla suurempi tai yhtä suuri kuin 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectChartTitleIndent">
+    <value>Otsikon sisennys pitää olla suurempi tai yhtä suuri kuin 0 ja alle 1000</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLegendMarkerSize">
+    <value>Merkin koko pitää olla suurempi kuin 0 ja pienempi kuin 1000.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLegendSpacingVertical">
+    <value>Arvotaulukon vertical spacing ominaisuus pitää olla suurempi tai yhtä suuri kuin 0 ja pienempi kuin 1000.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLegendSpacingHorizontal">
+    <value>Arvotaulukon horizontal spacing ominaisuus pitää olla suurempi tai yhtä suuri kuin 0 ja pienempi kuin 1000.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectMarkerSize">
+    <value>Merkin koko pitää olla suurempi kuin 1.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectMarkerStarPointCount">
+    <value>Pisteitä pitää olla enemmän kuin 3 ja vähemmän kuin 101.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPieSeriesLabelColumnIndent">
+    <value>Sarakkeen sisennys pitää olla suurempi tai yhtä suuri kuin 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectRangeBarSeriesLabelIndent">
+    <value>Sisennys pitää olla suurempi tai yhtä suuri kuin 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPercentPrecision">
+    <value>Prosentin tarkkuus pitää olla suurempi kuin 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesLabelLineLength">
+    <value>Viivan pituus pitää olla suurempi tai yhtä suuri kuin 0 ja vähemmän kuin 1000.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStripConstructorParameters">
+    <value>	Minimi- ja maksimirajat eivät voi olla samat.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStripLimitAxisValue">
+    <value>StripLimit objektin AxisValue ominaisuus ei voi olla null.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStripMinLimit">
+    <value>Minimin pitää olla pienempi kuin maksimi.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStripMaxLimit">
+    <value>Maksimin pitää olla suurempi kuin minimi.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLineThickness">
+    <value>Viivan paksuus pitää olla suurempi kuin 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectShadowSize">
+    <value>Varjon koko pitää olla suurempi kuin 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTickmarkThickness">
+    <value>Taustaviivojen paksuus pitää olla suurempi kuin 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTickmarkLength">
+    <value>Viivan pituus pitää olla suurempi kuin 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectMinorCount">
+    <value>Minimi määrän pitää olla suurempi kuin 100 ja alle 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTickmarkMinorThickness">
+    <value>Pienempien taustaviivojen paksuus pitää olla suurempi kuin 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTickmarkMinorLength">
+    <value>Pienempien taustaviivojen pituus pitää olla suurempi kuin 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPercentValue">
+    <value>Prosentin pitää olla suurempi tai yhtä suuri kuin 0 ja pienempi tai yhtä suuri kuin 100.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSimpleDiagramDimension">
+    <value>Yksinkertaisen diagrammin ulottuvuus pitää olla suurempi kuin 0 ja pienempi kuin 100.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectStockLevelLineLengthValue">
+    <value>Vakio pituus pitää olla suurempi tai yhtä suuri kuin 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectReductionColorValue">
+    <value>Vähennysvärin arvo ei voi olla tyhjä.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLabelAngle">
+    <value>Otsikon kulma pitää olla suurempi tai yhtä suuri kuin -360 ja vähemmän tai yhtä suuri kuin 360.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectImageFormat">
+    <value>Ei voi muuntaa taulukkoa määritettyyn kuva muotoon.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectImageBounds">
+    <value>Ei voi tehdä määritellyn kokoista kuvaa.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectUseImageUrlProperty">
+    <value>ImageUrl-ominaisuutta voidaan käyttää vain WebChart-kontrollille. Käytä Image-ominaisuutta.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTaskLinkMinIndent">
+    <value>Minimi sisennys pitää olla suurempi tai yhtä suuri kuin 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectArrowWidth">
+    <value>Nuolen leveys pitää olla pariton ja suurempi kuin 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectArrowHeight">
+    <value>Nuolen korkeus pitää olla suurempi kuin 0.</value>
+  </data>
+  <data name="ChartStringId.MsgEmptyArgument">
+    <value>Tämä muuttuja ei voi olla tyhjä.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectValueDataMemberCount">
+    <value>On pakollista määrittää arvo {0} nykyiselle sarja näkymälle. </value>
+  </data>
+  <data name="ChartStringId.MsgPaletteDoubleClickToEdit">
+    <value>Muokkaa tuplaklikkaamalla...</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidPaletteName">
+    <value>Ei voi lisätä palettia, jonka nimi on tyhjä (\"\"). Määrittele paletille nimi.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidScaleType">
+    <value>Määritetty arvo asteikon muuttamiseksi ei ole yhteensopiva asteikon tyypin kanssa.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTransformationMatrix">
+    <value>Väärä muunnosmatriisi.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPerspectiveAngle">
+    <value>Kulman pitää olla suurempi tai yhtä suuri kuin 0 ja pienempi kuin 180.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPieDepth">
+    <value>Piirakan syvyys pitää olla yli 0 ja pienempi tai yhtä suuri kuin 100, kun arvot on prosentteja.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesDistance">
+    <value>Sarjan etäisyys pitää olla suurempi tai yhtä suuri kuin 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesDistanceFixed">
+    <value>Muutettu sarjan etäisyys pitää olla suurempi tai yhtä suuri kuin 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesIndentFixed">
+    <value>Muutettu sarjan sisennys pitää olla suurempi tai yhtä suuri kuin 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPlaneDepthFixed">
+    <value>Tason syvyys pitää olla suurempi tai yhtä suuri kuin 1.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectGridSpacing">
+    <value>Taulukon välin pitää olla suurempi kuin 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectConstantLineAxisValue">
+    <value>ConstantLine objektin AxisValue ei voi olla null.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectCustomAxisLabelAxisValue">
+    <value>CustomAxisLabel objektin AxisValue ei voi olla null.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectPadding">
+    <value>Täytön pitää olla suurempi tai yhtä suuri kuin 0.</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidZeroAxisAlignment">
+    <value>Tasausta ei voi asettaa Alignment.Zero toissijaiselle akselille.</value>
+  </data>
+  <data name="ChartStringId.MsgNullSeriesViewAxisX">
+    <value>Näkymän X-akseli ei voi olla null.</value>
+  </data>
+  <data name="ChartStringId.MsgNullSeriesViewAxisY">
+    <value>Näkymän Y-akseli ei voi olla null.</value>
+  </data>
+  <data name="ChartStringId.MsgNonExistentSeriesViewAxisX">
+    <value>Ei voi asettaa näkymän X-akselia, koska määritetty toissijainen akseli ei ole diagrammissa.</value>
+  </data>
+  <data name="ChartStringId.MsgNonExistentSeriesViewAxisY">
+    <value>Ei voi asettaa näkymän Y-akselia, koska määritetty toissijainen akseli ei ole diagrammissa.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectParentSeriesPointOwner">
+    <value>Pisteen Owner ei voi olla null ja sen pitää olla tyyppiä Series.</value>
+  </data>
+  <data name="ChartStringId.MsgSeriesViewNotSupportRelations">
+    <value>Tämä näkymä ei tue relaatioita</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectChildSeriesPointOwner">
+    <value>Sarjan Owner ei voi olla null ja täytyy olla tyyppiä Series.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectChildSeriesPointID">
+    <value>Sarjan pisteiden ID pitää olla positiivinen luku tai 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectSeriesOfParentAndChildPoints">
+    <value>Parent ja child pisteiden pitää kuulua samaan sarjaan.</value>
+  </data>
+  <data name="ChartStringId.MsgSelfRelatedSeriesPoint">
+    <value>Pisteellä ei voi olla relaatiota itseensä.</value>
+  </data>
+  <data name="ChartStringId.MsgSeriesPointRelationAlreadyExists">
+    <value>SeriesPointRelations kokoelmassa on jo tämä relaatio</value>
+  </data>
+  <data name="ChartStringId.MsgChildSeriesPointNotExist">
+    <value>Sarjan pistettä ID:llä {0} ei ole</value>
+  </data>
+  <data name="ChartStringId.MsgRelationChildPointIDNotUnique">
+    <value>Relaation ChildPointID pitää olla yksilöllinen.</value>
+  </data>
+  <data name="ChartStringId.MsgSeriesPointIDNotUnique">
+    <value>Pisteen ID pitää olla yksilöllinen</value>
+  </data>
+  <data name="ChartStringId.MsgMinMaxDifferentTypes">
+    <value>MinValue:n ja MaxValuen tyypit eivät ole yhteensopivia.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisRange">
+    <value>Akselin ({0}) minimiarvo pitää olla pienempi kuin sen maksimiarvo ({1}).</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBarSeriesLabelIndent">
+    <value>Sisennys pitää olla suurempi tai yhtä suuri kuin 0.</value>
+  </data>
+  <data name="ChartStringId.VerbAbout">
+    <value>Tietoja</value>
+  </data>
+  <data name="ChartStringId.VerbPopulate">
+    <value>Täytä</value>
+  </data>
+  <data name="ChartStringId.VerbSeries">
+    <value>Sarjat...</value>
+  </data>
+  <data name="ChartStringId.TrnSeriesChanged">
+    <value>Sarjat muuttuneet</value>
+  </data>
+  <data name="ChartStringId.TrnDataFiltersChanged">
+    <value>Tiedon suodattimet muuttuneet</value>
+  </data>
+  <data name="ChartStringId.TrnChartTitlesChanged">
+    <value>Taulukon otsikot muuttuneet.</value>
+  </data>
+  <data name="ChartStringId.TrnStripsChanged">
+    <value>Listat muuttuneet</value>
+  </data>
+  <data name="ChartStringId.TrnPalettesChanged">
+    <value>Paletit muuttuneet</value>
+  </data>
+  <data name="ChartStringId.TrnConstantLinesChanged">
+    <value>Vakiorivit muuttuneet</value>
+  </data>
+  <data name="ChartStringId.TrnCustomAxisLabelChanged">
+    <value>Custom-akselin otsikot muuttuneet.</value>
+  </data>
+  <data name="ChartStringId.TrnSecondaryAxesXChanged">
+    <value>Toissijainen X-akseli muuttunut</value>
+  </data>
+  <data name="ChartStringId.TrnSecondaryAxesYChanged">
+    <value>Toissijainen Y-akseli muuttunut</value>
+  </data>
+  <data name="ChartStringId.TrnChartWizard">
+    <value>Taulukkovelhon asetukset hyväksytty</value>
+  </data>
+  <data name="ChartStringId.TrnSeriesDeleted">
+    <value>Sarjat poistettu</value>
+  </data>
+  <data name="ChartStringId.TrnChartTitleDeleted">
+    <value>Taulukon otsikko poistettu.</value>
+  </data>
+  <data name="ChartStringId.TrnConstantLineDeleted">
+    <value>Vakiorivi poistettu</value>
+  </data>
+  <data name="ChartStringId.TrnSecondryAxisXDeleted">
+    <value>Toissijainen X-akseli poistettu</value>
+  </data>
+  <data name="ChartStringId.TrnSecondryAxisYDeleted">
+    <value>Toissijainen Y-akseli poistettu</value>
+  </data>
+  <data name="ChartStringId.AxisXDefaultTitle">
+    <value>Muuttujan akseli</value>
+  </data>
+  <data name="ChartStringId.AxisYDefaultTitle">
+    <value>Arvojen akseli</value>
+  </data>
+  <data name="ChartStringId.MenuItemAdd">
+    <value>Lisää</value>
+  </data>
+  <data name="ChartStringId.MenuItemInsert">
+    <value>Lisää</value>
+  </data>
+  <data name="ChartStringId.MenuItemDelete">
+    <value>Poista</value>
+  </data>
+  <data name="ChartStringId.MenuItemClear">
+    <value>Tyhjennä</value>
+  </data>
+  <data name="ChartStringId.MenuItemMoveUp">
+    <value>Siirrä ylös</value>
+  </data>
+  <data name="ChartStringId.MenuItemMoveDown">
+    <value>Siirrä alas</value>
+  </data>
+  <data name="ChartStringId.WizAutoCreatedSeries">
+    <value>Automaattisesti luodut sarjat</value>
+  </data>
+  <data name="ChartStringId.WizSeriesPointPageName">
+    <value>Pisteet</value>
+  </data>
+  <data name="ChartStringId.WizPositionCenter">
+    <value>Keskellä</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelValue">
+    <value>Arvo</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelLow">
+    <value>Matala</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelHigh">
+    <value>Korkea</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelOpen">
+    <value>Avaa</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelClose">
+    <value>Sulje</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideBar">
+    <value>Raja</value>
+  </data>
+  <data name="ChartStringId.WizBarSeriesLabelPositionCenter">
+    <value>Keskellä</value>
+  </data>
+  <data name="ChartStringId.WizPieSeriesLabelPositionInside">
+    <value>Sisällä</value>
+  </data>
+  <data name="ChartStringId.WizPieSeriesLabelPositionTwoColumns">
+    <value>Kaksi saraketta</value>
+  </data>
+  <data name="ChartStringId.WizBubbleLabelPositionCenter">
+    <value>Keskellä</value>
+  </data>
+  <data name="ChartStringId.WizFunnelSeriesLabelPositionCenter">
+    <value>Keskellä</value>
+  </data>
+  <data name="ChartStringId.WizAnnotationConnectorStyleLine">
+    <value>Viiva</value>
+  </data>
+  <data name="ChartStringId.WizStringAlignmentCenter">
+    <value>Keskellä</value>
+  </data>
+  <data name="ChartStringId.SvnStackedBar">
+    <value>Pinottu raja</value>
+  </data>
+  <data name="ChartStringId.SvnPie">
+    <value>Piirakka</value>
+  </data>
+  <data name="ChartStringId.SvnPoint">
+    <value>Piste</value>
+  </data>
+  <data name="ChartStringId.SvnLine">
+    <value>Viiva</value>
+  </data>
+  <data name="ChartStringId.SvnArea">
+    <value>Alue</value>
+  </data>
+  <data name="ChartStringId.SvnStackedArea">
+    <value>Pinottu alue</value>
+  </data>
+  <data name="ChartStringId.SvnStock">
+    <value>Vakio</value>
+  </data>
+  <data name="ChartStringId.SvnPie3D">
+    <value>Piirakka 3D</value>
+  </data>
+  <data name="ChartStringId.IncompatibleSeriesView">
+    <value>(yhteensopimaton)</value>
+  </data>
+  <data name="ChartStringId.InvisibleSeriesView">
+    <value>(näkymätön)</value>
+  </data>
+  <data name="ChartStringId.IncompatibleSeriesHeader">
+    <value>Sarja on yhteensopimaton</value>
+  </data>
+  <data name="ChartStringId.IncompatibleSeriesMessage">
+    <value>{0} ja "{1}" on yhteensopimattomia</value>
+  </data>
+  <data name="ChartStringId.IOCaption">
+    <value>Operaatio ei ole sallittu</value>
+  </data>
+  <data name="ChartStringId.IODeleteAxis">
+    <value>Ensisijaista akselia ei voi poistaa. Jos haluat piilottaa akselin, aseta Visible ominaisuus false:ksi.</value>
+  </data>
+  <data name="ChartStringId.FunctionArgumentName">
+    <value>Muuttuja</value>
+  </data>
+</root>

@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1">
+                </xsd:element>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2">
+                </xsd:element>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1">
+              </xsd:attribute>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3">
+              </xsd:attribute>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4">
+              </xsd:attribute>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1">
+                </xsd:element>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required">
+              </xsd:attribute>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="GridStringId.FileIsNotFoundError">
+    <value>Không tìm thấy tệp {0}</value>
+  </data>
+  <data name="GridStringId.ColumnViewExceptionMessage">
+    <value>Bạn có muốn sửa đúng giá trị này?</value>
+  </data>
+  <data name="GridStringId.CustomizationCaption">
+    <value>Tùy biến</value>
+  </data>
+  <data name="GridStringId.CustomizationColumns">
+    <value>Cột</value>
+  </data>
+  <data name="GridStringId.CustomizationBands">
+    <value>Băng</value>
+  </data>
+  <data name="GridStringId.PopupFilterAll">
+    <value>(Tất cả)</value>
+  </data>
+  <data name="GridStringId.PopupFilterCustom">
+    <value>(Tùy chọn)</value>
+  </data>
+  <data name="GridStringId.PopupFilterBlanks">
+    <value>(Rỗng)</value>
+  </data>
+  <data name="GridStringId.PopupFilterNonBlanks">
+    <value>(Không rỗng)</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogFormCaption">
+    <value>Tùy chọn tự động lọc</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogCaption">
+    <value>Hiển thị dòng tại:</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogRadioAnd">
+    <value>&amp;Và</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogRadioOr">
+    <value>&amp;Hoặc</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogOkButton">
+    <value>&amp;Chấp thuận</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogCancelButton">
+    <value>&amp;Hủy bỏ</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialog2FieldCheck">
+    <value>Trường</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogConditionEQU">
+    <value>bằng</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogConditionNEQ">
+    <value>không bằng</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogConditionGT">
+    <value>lớn hơn</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogConditionGTE">
+    <value>lớn hơn hoặc bằng</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogConditionLT">
+    <value>nhỏ hơn</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogConditionLTE">
+    <value>nhỏ hơn hoặc bằng</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogConditionBlanks">
+    <value>rỗng</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogConditionNonBlanks">
+    <value>không rỗng</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogConditionLike">
+    <value>tương tự</value>
+  </data>
+  <data name="GridStringId.CustomFilterDialogConditionNotLike">
+    <value>không tương tự</value>
+  </data>
+  <data name="GridStringId.MenuFooterSum">
+    <value>Tổng</value>
+  </data>
+  <data name="GridStringId.MenuFooterMin">
+    <value>Nhỏ nhất</value>
+  </data>
+  <data name="GridStringId.MenuFooterMax">
+    <value>Lớn nhất</value>
+  </data>
+  <data name="GridStringId.MenuFooterCount">
+    <value>Đếm</value>
+  </data>
+  <data name="GridStringId.MenuFooterAverage">
+    <value>Trung bình</value>
+  </data>
+  <data name="GridStringId.MenuFooterNone">
+    <value>Không</value>
+  </data>
+  <data name="GridStringId.MenuFooterSumFormat">
+    <value>TỔNG={0:#.##}</value>
+  </data>
+  <data name="GridStringId.MenuFooterMinFormat">
+    <value>NHỎ NHẤT={0}</value>
+  </data>
+  <data name="GridStringId.MenuFooterMaxFormat">
+    <value>LỚN NHẤT={0}</value>
+  </data>
+  <data name="GridStringId.MenuFooterCountFormat">
+    <value>{0}</value>
+  </data>
+  <data name="GridStringId.MenuFooterAverageFormat">
+    <value>TRUNG BÌNH={0:#.##}</value>
+  </data>
+  <data name="GridStringId.MenuColumnSortAscending">
+    <value>Sắp xếp tăng</value>
+  </data>
+  <data name="GridStringId.MenuColumnSortDescending">
+    <value>Sắp xếp giảm</value>
+  </data>
+  <data name="GridStringId.MenuColumnGroup">
+    <value>Nhóm theo trường này</value>
+  </data>
+  <data name="GridStringId.MenuColumnUnGroup">
+    <value>Bỏ nhóm</value>
+  </data>
+  <data name="GridStringId.MenuColumnColumnCustomization">
+    <value>Tùy biến cột khi chạy</value>
+  </data>
+  <data name="GridStringId.MenuColumnBestFit">
+    <value>Vừa xem nhất</value>
+  </data>
+  <data name="GridStringId.MenuColumnFilter">
+    <value>Có thể lọc</value>
+  </data>
+  <data name="GridStringId.MenuColumnClearFilter">
+    <value>Bỏ lọc</value>
+  </data>
+  <data name="GridStringId.MenuColumnBestFitAllColumns">
+    <value>Vừa xem nhất (tất cả cột)</value>
+  </data>
+  <data name="GridStringId.MenuGroupPanelFullExpand">
+    <value>Mở rộng tất</value>
+  </data>
+  <data name="GridStringId.MenuGroupPanelFullCollapse">
+    <value>Thu hẹp tất</value>
+  </data>
+  <data name="GridStringId.MenuGroupPanelClearGrouping">
+    <value>Xóa nhóm</value>
+  </data>
+  <data name="GridStringId.PrintDesignerBandedView">
+    <value>Report Designer (Banded View)</value>
+  </data>
+  <data name="GridStringId.PrintDesignerGridView">
+    <value>Report Designer (Grid View)</value>
+  </data>
+  <data name="GridStringId.PrintDesignerCardView">
+    <value>Report Designer (Card View)</value>
+  </data>
+  <data name="GridStringId.PrintDesignerBandHeader">
+    <value>Tiêu đề băng</value>
+  </data>
+  <data name="GridStringId.MenuColumnGroupBox">
+    <value>Hiện/Ẩn vùng nhóm</value>
+  </data>
+</root>

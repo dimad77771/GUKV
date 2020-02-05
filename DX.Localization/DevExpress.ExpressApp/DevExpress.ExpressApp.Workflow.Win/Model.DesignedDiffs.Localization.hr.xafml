@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="DebugWorkflow" ToolTip="Pokreni/nastavi debugging trenutnog workflow-a" />
+      <Action Id="StopDebug" Caption="Zaustavi Debug" ToolTip="Zaustavi debugging trenutnog workflow-a." />
+      <Action Id="ToggleBreakpoint" Caption="Preklopi Breakpoint" ToolTip="Preklopi breakpoint trenutne aktivnosti." />
+    </Actions>
+  </ActionDesign>
+</Application>

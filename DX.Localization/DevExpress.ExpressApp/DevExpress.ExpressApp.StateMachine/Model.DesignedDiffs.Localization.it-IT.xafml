@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="ChangeStateAction" Caption="Modifica Stato" ToolTip="Modifica lo stato dell'oggetto corrente." />
+    </Actions>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="DevExpress.ExpressApp.StateMachine.Dc.IDCState">
+      <OwnMembers>
+        <Member Name="Appearances" Caption="Aspetti" />
+        <Member Name="Caption" Caption="Didascalia" />
+        <Member Name="Marker" Caption="Marcatore" />
+        <Member Name="MarkerObject" Caption="Oggetto Marcatore" />
+        <Member Name="StateMachine" Caption="Macchina a Stati" />
+        <Member Name="TargetObjectCriteria" Caption="Criterio dell'Oggetto Destinatario" />
+        <Member Name="Transitions" Caption="Transizioni" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.StateMachine.Dc.IDCStateAppearance" Caption="Aspetto StatoIDC">
+      <OwnMembers>
+        <Member Name="AppearanceItemType" Caption="Tipo Elemento Aspetto" />
+        <Member Name="BackColor" Caption="Colore Sfondo" />
+        <Member Name="Context" Caption="Ambito" />
+        <Member Name="Criteria" Caption="Criterio" />
+        <Member Name="DeclaringType" Caption="Tipo Dichiarante" />
+        <Member Name="Enabled" Caption="Abilitato" />
+        <Member Name="FontColor" Caption="Colore Carattere" />
+        <Member Name="FontStyle" Caption="Stile Carattere" />
+        <Member Name="Method" Caption="Metodo" />
+        <Member Name="Priority" Caption="Priorità" />
+        <Member Name="State" Caption="Stato" />
+        <Member Name="TargetItems" Caption="Elementi Destinatari" />
+        <Member Name="Visibility" Caption="Visibilità" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.StateMachine.Dc.IDCStateMachine" Caption="Macchina StatoIDC">
+      <OwnMembers>
+        <Member Name="Active" Caption="Attiva" />
+        <Member Name="ExpandActionsInDetailView" Caption="Espandi Azioni nella Vista Dettagli" />
+        <Member Name="Name" Caption="Nome" />
+        <Member Name="StartState" Caption="Stato Iniziale" />
+        <Member Name="StatePropertyName" Caption="Nome Proprietà Stato" />
+        <Member Name="States" Caption="Stati" />
+        <Member Name="TargetObjectType" Caption="Tipo Oggetto Destinatario" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.StateMachine.Dc.IDCTransition" Caption="TransizioneIDC">
+      <OwnMembers>
+        <Member Name="Caption" Caption="Didascalia" />
+        <Member Name="SourceState" Caption="Stato Sorgente" />
+        <Member Name="TargetState" Caption="Stato Destinazione" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.StateMachine.Utils.MarkerObject" Caption="Oggetto Marcatore">
+      <OwnMembers>
+        <Member Name="DisplayName" Caption="Nome Visualizzato" />
+        <Member Name="Marker" Caption="Marcatore" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.StateMachine.Xpo.StateMachineObjectBase" Caption="Base Oggetto Macchina a Stati" />
+    <Class Name="DevExpress.ExpressApp.StateMachine.Xpo.XpoState" Caption="Stato">
+      <OwnMembers>
+        <Member Name="Appearance" Caption="Aspetto" />
+        <Member Name="Caption" Caption="Didascalia" />
+        <Member Name="Marker" Caption="Marcatore" />
+        <Member Name="StateMachine" Caption="Macchina a Stati" />
+        <Member Name="TargetObjectCriteria" Caption="Criterio dell'Oggetto Destinatario" />
+        <Member Name="Transitions" Caption="Transizioni" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.StateMachine.Xpo.XpoStateAppearance" Caption="Aspetto">
+      <OwnMembers>
+        <Member Name="AppearanceItemType" Caption="Tipo Elemento Aspetto" />
+        <Member Name="BackColor" Caption="Colore Sfondo" />
+        <Member Name="Context" Caption="Ambito" />
+        <Member Name="Enabled" Caption="Abilitato" />
+        <Member Name="FontColor" Caption="Colore Carattere" />
+        <Member Name="FontStyle" Caption="Stile Carattere" />
+        <Member Name="Priority" Caption="Priorità" />
+        <Member Name="TargetItems" Caption="Elementi Destinatari" />
+        <Member Name="Visibility" Caption="Visibilità" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.StateMachine.Xpo.XpoStateMachine" Caption="Macchina a Stati">
+      <OwnMembers>
+        <Member Name="Active" Caption="Attiva" />
+        <Member Name="ExpandActionsInDetailView" Caption="Espandi Azioni nella Vista Dettagli" />
+        <Member Name="Name" Caption="Nome" />
+        <Member Name="StartState" Caption="Stato Iniziale" />
+        <Member Name="StatePropertyName" Caption="Nome Proprietà Stato" />
+        <Member Name="States" Caption="Stati" />
+        <Member Name="TargetObjectType" Caption="Tipo Oggetto Destinatario" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.StateMachine.Xpo.XpoTransition" Caption="Transizioni">
+      <OwnMembers>
+        <Member Name="Caption" Caption="Didascalia" />
+        <Member Name="Index" Caption="Indice" />
+        <Member Name="SaveAndCloseView" Caption="Salva e Chiudi la Vista" />
+        <Member Name="SourceState" Caption="Stato Sorgente" />
+        <Member Name="TargetState" Caption="Stato Destinazione" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Utils.StringObject" Caption="Oggetto Stringa">
+      <OwnMembers>
+        <Member Name="Name" Caption="Nome" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <Localization>
+    <LocalizationGroup Name="Enums">
+      <LocalizationGroup Name="DevExpress.ExpressApp.Editors.ViewItemVisibility" Value="Visibilità Elemento Vista">
+        <LocalizationItem Name="Hide" Value="Nascondi" />
+        <LocalizationItem Name="Show" Value="Mostra" />
+        <LocalizationItem Name="ShowEmptySpace" Value="Mostra Spazio Vuoto" />
+      </LocalizationGroup>
+      <LocalizationGroup Name="System.Drawing.FontStyle" Value="Stile Carattere">
+        <LocalizationItem Name="Bold" Value="Grassetto" />
+        <LocalizationItem Name="Italic" Value="Corsivo" />
+        <LocalizationItem Name="Regular" Value="Normale" />
+        <LocalizationItem Name="Strikeout" Value="Barrato" />
+        <LocalizationItem Name="Underline" Value="Sottolineato" />
+      </LocalizationGroup>
+    </LocalizationGroup>
+  </Localization>
+  <NavigationItems>
+    <Items>
+      <Item Id="State Machine" Caption="Macchina a Stati" />
+    </Items>
+  </NavigationItems>
+  <Validation>
+    <Rules>
+      <RuleIsReferenced Id="StateIsReferencedDc" MessageTemplateMustBeReferenced="Se si desidera eliminare questo Stato, accertarsi che non sia referenziato come Stato Destinazione in alcuna Transizione." />
+      <RuleIsReferenced Id="StateIsReferencedXpo" MessageTemplateMustBeReferenced="Se si desidera eliminare questo Stato, accertarsi che non sia referenziato come Stato Destinazione in alcuna Transizione." />
+    </Rules>
+  </Validation>
+  <Views>
+    <DetailView Id="IDCStateAppearance_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="IDCStateAppearance" Caption="Aspetto StatoIDC" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="IDCStateMachine_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="IDCStateMachine" Caption="Macchina StatoIDC" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

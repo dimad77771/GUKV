@@ -1,0 +1,1447 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DevExpress.XtraReports.UI.ValueSuppressType.Suppress" xml:space="preserve">
+    <value>Bastır</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlStyle.Borders" xml:space="preserve">
+    <value>Kenarlıkları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SortingSummaryFunction.DStdDevP" xml:space="preserve">
+    <value>Standart Nüfus Sapması (Belirgin)</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlStyle.TextAlignment" xml:space="preserve">
+    <value>Metin Hizalaması</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGrid.OptionsData" xml:space="preserve">
+    <value>Veri Seçenekleri</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGrid.Prefilter" xml:space="preserve">
+    <value>Ön Filtre</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SortingSummaryFunction.DSum" xml:space="preserve">
+    <value>Özet (Belirgin)</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRGroupSortingSummary" xml:space="preserve">
+    <value>Grup Sırlama Özeti</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGridScripts.OnCustomCellValue" xml:space="preserve">
+    <value>Özelleştirilmiş Hücre Değeri</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.Name" xml:space="preserve">
+    <value>Adı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlEvents.OnSizeChanged" xml:space="preserve">
+    <value>Boyut Değişti</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGrid.OptionsView" xml:space="preserve">
+    <value>Görünüm Seçenekleri</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.StyleUsing.UseBorderColor" xml:space="preserve">
+    <value>Kenarlık Rengi Kullan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.DetailBand.KeepTogetherWithDetailReports" xml:space="preserve">
+    <value>Ayrıntılı Raporlarla Bir Arada Tut</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGrid" xml:space="preserve">
+    <value>Özet Tablo Kılavuz Çizgisi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGrid.Styles" xml:space="preserve">
+    <value>Stiller</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SummaryFunc.DStdDevP" xml:space="preserve">
+    <value>Standart Nüfus Sapması (Belirgin)</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRRichTextBoxBase.Font" xml:space="preserve">
+    <value>Yazı tipi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.Location" xml:space="preserve">
+    <value>Konum</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlEvents.OnPrintOnPage" xml:space="preserve">
+    <value>Sayfa Yazdır</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGrid.DataSource" xml:space="preserve">
+    <value>Veri Kaynağı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGrid.DataAdapter" xml:space="preserve">
+    <value>Veri Adaptörü</value>
+  </data>
+  <data name="DevExpress.XtraReports.Design.GroupSort.GroupSortReflectItem.ShowFooter" xml:space="preserve">
+    <value>Alt Bilgiyi Göster</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReportScripts.OnFillEmptySpace" xml:space="preserve">
+    <value>Boş Alanı Doldur</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SummaryFunc.Var" xml:space="preserve">
+    <value>Değişim</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SortingSummaryFunction.Max" xml:space="preserve">
+    <value>Maks</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SortingSummaryFunction.DVar" xml:space="preserve">
+    <value>Değişim (Belirgin)</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SummaryFunc.DCount" xml:space="preserve">
+    <value>Sayı (Belirgin)</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.CanShrink" xml:space="preserve">
+    <value>Daraltabilir</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRLine.LineWidth" xml:space="preserve">
+    <value>Çizgi Genişliği</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPageInfo.StartPageNumber" xml:space="preserve">
+    <value>Başlangıç Sayfası Numarası</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SnappingMode.SnapLines" xml:space="preserve">
+    <value>Oturtma Çizgileri</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.TextAlignment" xml:space="preserve">
+    <value>Metin Hizalaması</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SummaryFunc.StdDevP" xml:space="preserve">
+    <value>Standart Nüfus Sapması</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PivotGrid.XRPivotGridStyles.FieldHeaderStyle" xml:space="preserve">
+    <value>Alan Üst Bilgisi Stili</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SubreportBase.Scripts" xml:space="preserve">
+    <value>Komut Dosyaları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.ScriptReferences" xml:space="preserve">
+    <value>Komut Dosyası Referansları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRLine" xml:space="preserve">
+    <value>Çizgi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlEvents.OnPreviewMouseDown" xml:space="preserve">
+    <value>Önizlemede Fare Aşağı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.StyleSheet" xml:space="preserve">
+    <value>Stil Sayfası</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.GroupFooterBand.PrintAtBottom" xml:space="preserve">
+    <value>Altta Yazdır</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.CanGrow" xml:space="preserve">
+    <value>Büyüyebilir</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.ScriptSecurityPermissions" xml:space="preserve">
+    <value>Komut Dosyası Güvenlik İzinleri</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.DataBindings" xml:space="preserve">
+    <value>Veri Bağlantıları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRShape.Stretch" xml:space="preserve">
+    <value>Uzat</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReportBase.Bands" xml:space="preserve">
+    <value>Şeritler</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRLabelScripts.OnSummaryCalculated" xml:space="preserve">
+    <value>Özet Hesaplandı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.StylePriority.UseBorderWidth" xml:space="preserve">
+    <value>Kenarlık Genişliği Kullan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRCrossBandLine" xml:space="preserve">
+    <value>Çapraz şerit çizgisi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReportScripts.OnParametersRequestValueChanged" xml:space="preserve">
+    <value>Parametreler Değişti</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.ChartImageType.Metafile" xml:space="preserve">
+    <value>Meta dosyası</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport" xml:space="preserve">
+    <value>Rapor</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SortingSummaryFunction.DCount" xml:space="preserve">
+    <value>Sayı (Belirgin)</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.StylePriority.UseForeColor" xml:space="preserve">
+    <value>Ön Plan Rengi Kullan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.Bookmark" xml:space="preserve">
+    <value>Yer işareti</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.StylePriority.UseTextAlignment" xml:space="preserve">
+    <value>Metin Hizalaması Kullan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.StylePriority" xml:space="preserve">
+    <value>Stil önceliği</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.Font" xml:space="preserve">
+    <value>Yazı tipi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SortingSummaryFunction.Sum" xml:space="preserve">
+    <value>Toplam</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.PivotGridDataSourceOptions" xml:space="preserve">
+    <value>Özet Tablosu Kılavuz Çizgisi Kaynağı Seçenekleri</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRDockStyle.Bottom" xml:space="preserve">
+    <value>Alt</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChartScripts.OnDateTimeMeasurementUnitsCalculated" xml:space="preserve">
+    <value>Tarih-saat Ölçü Birimleri Hesaplandı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGrid.Appearance" xml:space="preserve">
+    <value>Görüntü</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FormattingRule" xml:space="preserve">
+    <value>Biçimlendirme Kuralı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.AppearanceName" xml:space="preserve">
+    <value>Görüntü Adı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.XRControlStyles.Style" xml:space="preserve">
+    <value>Stil</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PageBreak.None" xml:space="preserve">
+    <value>Yok</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SortingSummaryFunction.Var" xml:space="preserve">
+    <value>Değişim</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.ShowPrintingWarnings" xml:space="preserve">
+    <value>Yazdırma Uyarılarını Göster</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPageBreak" xml:space="preserve">
+    <value>Sayfa Sonu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.Scripts" xml:space="preserve">
+    <value>Komut Dosyaları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.ShowPrintStatusDialog" xml:space="preserve">
+    <value>Yazdırma Durumu İletişim Kutusunu Göster</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PivotGrid.XRPivotGridAppearances.Lines" xml:space="preserve">
+    <value>Çizgiler</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlEvents.OnEvaluateBinding" xml:space="preserve">
+    <value>Bağlantıları Değerlendir</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.PaletteBaseColorNumber" xml:space="preserve">
+    <value>Paletin Taban Rengi Numarası</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.GroupField" xml:space="preserve">
+    <value>Grup Alanı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.GroupUnion.None" xml:space="preserve">
+    <value>Yok</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRSubreport" xml:space="preserve">
+    <value>Alt Rapor</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.GroupHeaderBandScripts" xml:space="preserve">
+    <value>Grup Üst Bilgisi Şeridi Komut Dosyaları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRBarCode.Symbology" xml:space="preserve">
+    <value>Semboloji</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.KeepTogether" xml:space="preserve">
+    <value>Bir Arada Tut</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.ForeColor" xml:space="preserve">
+    <value>Ön Plan Rengi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.StylePriority" xml:space="preserve">
+    <value>Stil önceliği</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SummaryFunc.VarP" xml:space="preserve">
+    <value>Nüfus Değişimi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGrid.Fields" xml:space="preserve">
+    <value>Alanlar</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRBarCode.PaddingInfo" xml:space="preserve">
+    <value>Dolgu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.GroupFooterBand.GroupUnion" xml:space="preserve">
+    <value>Grup Birliği</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.GroupHeaderBand.Scripts" xml:space="preserve">
+    <value>Komut Dosyaları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.Watermark" xml:space="preserve">
+    <value>Filigran</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SummaryFunc.Avg" xml:space="preserve">
+    <value>Ortalama</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.Landscape" xml:space="preserve">
+    <value>Yatay</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.BorderDashStyle" xml:space="preserve">
+    <value>Kenarlık Tiresi Stili</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRRichText.Lines" xml:space="preserve">
+    <value>Çizgiler</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRLabel.Lines" xml:space="preserve">
+    <value>Çizgiler</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.WinControlDrawMethod.UseWMPrintRecursive" xml:space="preserve">
+    <value>WMPrint'i Yinelemeli Olarak Kullan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRRichText" xml:space="preserve">
+    <value>Zengin Metin</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.TopMarginBand" xml:space="preserve">
+    <value>Üst Kenar Boşluğu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRRichTextBoxBase.Multiline" xml:space="preserve">
+    <value>Çok çizgili</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.Scripts" xml:space="preserve">
+    <value>Komut Dosyaları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.ReportUnit.TenthsOfAMillimeter" xml:space="preserve">
+    <value>Milimetrenin onda biri</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRLabel.AutoWidth" xml:space="preserve">
+    <value>Otomatik Genişlik</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.DataSourceSchema" xml:space="preserve">
+    <value>Veri Kaynağının Şeması</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRBarCode" xml:space="preserve">
+    <value>Barkod</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.StyleUsing.UseFont" xml:space="preserve">
+    <value>Yazı Tipi Kullan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPageInfo.Format" xml:space="preserve">
+    <value>Biçim</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.WinControlDrawMethod.UseWMPrint" xml:space="preserve">
+    <value>WMPrint Yöntemini Kullan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRSummaryEvents.OnGetResult" xml:space="preserve">
+    <value>Sonuç Al</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.ReportUnit" xml:space="preserve">
+    <value>Ölçü Birimi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PivotGrid.XRPivotGridAppearances.FilterSeparator" xml:space="preserve">
+    <value>Filtre Ayracı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.CalculatedField.DataMember" xml:space="preserve">
+    <value>Veri Üyesi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGrid.OLAPConnectionString" xml:space="preserve">
+    <value>OLAP Bağlantı Dizesi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.Titles" xml:space="preserve">
+    <value>Başlıklar</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRLineScripts" xml:space="preserve">
+    <value>Çizgi Komut Dosyaları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.ValueSuppressType.Leave" xml:space="preserve">
+    <value>Bırak</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.XRControlStyles.OddStyle" xml:space="preserve">
+    <value>Tek Stil</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRCrossBandControl.StartBand" xml:space="preserve">
+    <value>Başlangıç Şeridi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.BottomMarginBand" xml:space="preserve">
+    <value>Alt Kenar Boşluğu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.GroupHeaderBandScripts.OnSortingSummaryReset" xml:space="preserve">
+    <value>Sıralama Özeti Sıfırlandı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SortingSummaryFunction.VarP" xml:space="preserve">
+    <value>Nüfus Değişimi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.WinControlPrintMode.AsImage" xml:space="preserve">
+    <value>Görüntü Olarak</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRBarCode.Alignment" xml:space="preserve">
+    <value>Hizalama</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlStyle.StyleUsing" xml:space="preserve">
+    <value>Stil Kullanmak</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChartScripts.OnCustomDrawAxisLabel" xml:space="preserve">
+    <value>Eksen Etiketini Özelleştirilmiş Olarak çiz</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.SeriesDataMember" xml:space="preserve">
+    <value>Dizi Veri Üyesi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGrid.OptionsDataField" xml:space="preserve">
+    <value>Veri Alanı Seçenekleri</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SummaryFunc.Count" xml:space="preserve">
+    <value>Say</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRLabel.Angle" xml:space="preserve">
+    <value>Açı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.GroupHeaderBandScripts.OnSortingSummaryRowChanged" xml:space="preserve">
+    <value>Sıralama Özeti Satırı Değişti</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FormattingRule.Formatting" xml:space="preserve">
+    <value>Biçimlendirme</value>
+  </data>
+  <data name="DevExpress.XtraReports.Design.DataBinding.Binding" xml:space="preserve">
+    <value>Bağlantı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPageInfo.PageInfo" xml:space="preserve">
+    <value>Sayfa Bilgisi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.SeriesNameTemplate" xml:space="preserve">
+    <value>Dizi Adı Şablonu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRRichTextBase.RtfText" xml:space="preserve">
+    <value>Zengin Metin</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.GroupField.FieldName" xml:space="preserve">
+    <value>Alan Adı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.Padding" xml:space="preserve">
+    <value>Dolgu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRTableRow" xml:space="preserve">
+    <value>Tablo Satırı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.GroupUnion.WholePage" xml:space="preserve">
+    <value>Tüm Sayfa</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRLabelScripts.OnSummaryReset" xml:space="preserve">
+    <value>Özet Sıfırlandı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.ShowExportWarnings" xml:space="preserve">
+    <value>Dışa Aktarma Uyarılarını Göster</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.StylePriority.UseBorderDashStyle" xml:space="preserve">
+    <value>Kenarlık Tiresi Stili Kullan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.WinControlContainer" xml:space="preserve">
+    <value>Windows Formları Kontrolleri</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlStyle" xml:space="preserve">
+    <value>Kontrol Stili</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.Visible" xml:space="preserve">
+    <value>Görünür</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.DesignerOptions" xml:space="preserve">
+    <value>Tasarımcı Seçenekleri</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.CalculatedFieldScripts.OnGetValue" xml:space="preserve">
+    <value>Bir Değer Al</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGrid.Scripts" xml:space="preserve">
+    <value>Komut Dosyaları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRBinding.FormatString" xml:space="preserve">
+    <value>Biçim Dizesi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.AutoBindingSettingsEnabled" xml:space="preserve">
+    <value>Otomatik Bağlantı Ayarları Devreye Alındı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.Band.Scripts" xml:space="preserve">
+    <value>Komut Dosyaları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SortingSummaryFunction.Count" xml:space="preserve">
+    <value>Say</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReportBase.DataAdapter" xml:space="preserve">
+    <value>Veri Adaptörü</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.GroupUnion.WithFirstDetail" xml:space="preserve">
+    <value>İlk Ayrıntıyla Birlikte</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGridScripts.OnFieldValueDisplayText" xml:space="preserve">
+    <value>Alan Değeri Görüntüleme Metni</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.Parameters" xml:space="preserve">
+    <value>Parametreler</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReportBase.SortFields" xml:space="preserve">
+    <value>Alanları Sırala</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.WinControlDrawMethod.UseWMPaint" xml:space="preserve">
+    <value>WMPaint Yöntemini Kullan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.RequestParameters" xml:space="preserve">
+    <value>Parametreler İste</value>
+  </data>
+  <data name="System.Drawing.Printing.Margins.Bottom" xml:space="preserve">
+    <value>Alt</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlStyle.BackColor" xml:space="preserve">
+    <value>Arka Plan Rengi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart" xml:space="preserve">
+    <value>Grafik</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SortingSummaryFunction.StdDevP" xml:space="preserve">
+    <value>Standart Nüfus Sapması</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.PaperKind" xml:space="preserve">
+    <value>Kağıt Türü</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRLabelScripts.OnSummaryGetResult" xml:space="preserve">
+    <value>Özet Sonucunu Al</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChartScripts.OnCustomDrawSeries" xml:space="preserve">
+    <value>Diziyi Özelleştirilmiş Olarak Çiz</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SortingSummaryFunction.DAvg" xml:space="preserve">
+    <value>Ortalama (Belirgin)</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.Diagram" xml:space="preserve">
+    <value>Çizelge</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SortingSummaryFunction.DStdDev" xml:space="preserve">
+    <value>Standart Sapma (Belirgin)</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.BookmarkParent" xml:space="preserve">
+    <value>Üst Öğe Yer İşareti</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.SnapLinePadding" xml:space="preserve">
+    <value>Oturtma Çizgisi Dolgusu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRLabelScripts" xml:space="preserve">
+    <value>Etiket Komut Dosyaları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRShape.LineWidth" xml:space="preserve">
+    <value>Çizgi Genişliği</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChartScripts.OnBoundDataChanged" xml:space="preserve">
+    <value>Sınır Verisi Değişti</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PivotGrid.XRPivotGridStyles.HeaderGroupLineStyle" xml:space="preserve">
+    <value>Üst Bilgi Grup Çizgisi Stili</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SummaryFunc.Sum" xml:space="preserve">
+    <value>Toplam</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGridScripts.OnCustomGroupInterval" xml:space="preserve">
+    <value>Özelleştirilmiş Grup Zaman Aralığı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.WinControlImageType.Metafile" xml:space="preserve">
+    <value>Meta dosyası</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.Size" xml:space="preserve">
+    <value>Boyut</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRBarCode.AutoModule" xml:space="preserve">
+    <value>Otomatik Modül</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SummaryFunc.RecordNumber" xml:space="preserve">
+    <value>Kayıt Numarası</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPageBreak.Scripts" xml:space="preserve">
+    <value>Komut Dosyaları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.ColumnDirection.DownThenAcross" xml:space="preserve">
+    <value>Önce Aşağı, Sonra Karşıya</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.MultiColumn.Layout" xml:space="preserve">
+    <value>Yerleşim</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlEvents.OnHtmlItemCreated" xml:space="preserve">
+    <value>HTML Öğesi Oluşturuldu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.PageWidth" xml:space="preserve">
+    <value>Sayfa Genişliği</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGridScripts.OnCustomCellDisplayText" xml:space="preserve">
+    <value>Özelleştirilmiş Hücre Görüntü Metni</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.IndicatorsPaletteName" xml:space="preserve">
+    <value>Gösterge Paleti Adı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.ValueSuppressType.SuppressAndShrink" xml:space="preserve">
+    <value>Bastır ve Daralt</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.ReportFooterBand" xml:space="preserve">
+    <value>Rapor Alt Bilgisi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SortingSummaryFunction.Avg" xml:space="preserve">
+    <value>Ortalama</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.CalculatedField.DisplayName" xml:space="preserve">
+    <value>Görünen Adı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGrid.OptionsChartDataSource" xml:space="preserve">
+    <value>Seçenekler Grafiği Veri Kaynağı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlStyle.BorderDashStyle" xml:space="preserve">
+    <value>Kenarlık Tiresi Stili</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.MultiColumn.Mode" xml:space="preserve">
+    <value>Mod</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SummaryFunc.Custom" xml:space="preserve">
+    <value>Özelleştirilmiş</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.StylePriority.UseBorders" xml:space="preserve">
+    <value>Kenarlıklar Kullan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.FormattingRuleSheet" xml:space="preserve">
+    <value>Biçimlendirme Kuralı Sayfası</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRDockStyle.Top" xml:space="preserve">
+    <value>Üst</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.ReportUnit.HundredthsOfAnInch" xml:space="preserve">
+    <value>Bir inçin yüzde biri</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending" xml:space="preserve">
+    <value>Artan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRShape" xml:space="preserve">
+    <value>Şekil</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.WinControlContainer.ImageType" xml:space="preserve">
+    <value>Görüntü Tipi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRCrossBandControl.StartPoint" xml:space="preserve">
+    <value>Başlangıç Noktası</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReportScripts.OnPrintProgress" xml:space="preserve">
+    <value>Yazdırma İşlemi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.StylePriority.UseFont" xml:space="preserve">
+    <value>Yazı Tipi Kullan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.SnapGridSize" xml:space="preserve">
+    <value>Kılavuz Çizgisi Boyutuna Oturt</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.StyleUsing.UseForeColor" xml:space="preserve">
+    <value>Ön Plan Rengi Kullan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PivotGrid.XRPivotGridAppearances.FieldValueTotal" xml:space="preserve">
+    <value>Alan Değeri Toplamı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.Borders" xml:space="preserve">
+    <value>Kenarlıkları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.Padding" xml:space="preserve">
+    <value>Dolgu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRShape.Shape" xml:space="preserve">
+    <value>Şekil</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.PrinterName" xml:space="preserve">
+    <value>Yazıcı Adı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.StyleSheetPath" xml:space="preserve">
+    <value>Stil Sayfasının Yolu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SummaryFunc.Median" xml:space="preserve">
+    <value>Ortalama</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.VerticalContentSplitting" xml:space="preserve">
+    <value>Dikey İçerik Bölme</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.DetailBand.MultiColumn" xml:space="preserve">
+    <value>Çoklu Sütun Seçenekleri</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.AnchorVertical" xml:space="preserve">
+    <value>Dikey olarak tut</value>
+  </data>
+  <data name="System.Drawing.Printing.Margins.Right" xml:space="preserve">
+    <value>Sağ</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PivotGrid.XRPivotGridAppearances.CustomTotalCell" xml:space="preserve">
+    <value>Özel Toplam Hücre</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.SnapToGrid" xml:space="preserve">
+    <value>Kılavuz Çizgisine Oturt</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRTableCell" xml:space="preserve">
+    <value>Tablo Hücresi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.Width" xml:space="preserve">
+    <value>Genişlik</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRBarCode.Module" xml:space="preserve">
+    <value>Modül</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.MultiColumn.ColumnWidth" xml:space="preserve">
+    <value>Sütun Genişliği</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRLine.LineStyle" xml:space="preserve">
+    <value>Çizgi Stili</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRShape.Angle" xml:space="preserve">
+    <value>Açı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChartScripts.OnPieSeriesPointExploded" xml:space="preserve">
+    <value>Dilim Dizileri Noktası Ayrıldı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PivotGrid.XRPivotGridStyles.FieldValueGrandTotalStyle" xml:space="preserve">
+    <value>Alan Değeri Genel Toplam Stili</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRGroupSortingSummary.SortOrder" xml:space="preserve">
+    <value>Sıralama Düzeni</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.SmallChartText" xml:space="preserve">
+    <value>Küçük Grafik Metni</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.StylePriority.UseBorderColor" xml:space="preserve">
+    <value>Kenarlık Rengi Kullan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PivotGrid.XRPivotGridAppearances.FieldValue" xml:space="preserve">
+    <value>Alan Değeri</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.GroupHeaderBand.SortingSummary" xml:space="preserve">
+    <value>Sıralama Özeti</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPictureBox" xml:space="preserve">
+    <value>Resim Kutusu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.ScriptLanguage" xml:space="preserve">
+    <value>Komut Dosyası Dili</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PageHeaderBand" xml:space="preserve">
+    <value>Sayfa Üst Bilgisi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRZipCode.SegmentWidth" xml:space="preserve">
+    <value>Bölüm Genişliği</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SummaryFunc.Percentage" xml:space="preserve">
+    <value>Yüzde</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.Annotations" xml:space="preserve">
+    <value>Ek Açıklamalar</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRCrossBandControl.EndBand" xml:space="preserve">
+    <value>Uç Şerit</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlStyle.ForeColor" xml:space="preserve">
+    <value>Ön Plan Rengi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SummaryFunc.StdDev" xml:space="preserve">
+    <value>Standart Sapma</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlEvents.OnTextChanged" xml:space="preserve">
+    <value>Metin Değişti</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SummaryRunning.Page" xml:space="preserve">
+    <value>Sayfa</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SummaryFunc.Max" xml:space="preserve">
+    <value>Maks</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.SnappingMode" xml:space="preserve">
+    <value>Oturtma Modu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.DataSource" xml:space="preserve">
+    <value>Veri Kaynağı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.CalculatedField.Expression" xml:space="preserve">
+    <value>İfade</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.DefaultPrinterSettingsUsing" xml:space="preserve">
+    <value>Varsayılan Yazıcının Ayarlarını Kullanmak</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.StylePriority.UseBackColor" xml:space="preserve">
+    <value>Arka Plan Rengi Kullan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.DetailBand" xml:space="preserve">
+    <value>Ayrıntı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.WinControlPrintMode.Default" xml:space="preserve">
+    <value>Varsayılan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FormattingRule.DataSource" xml:space="preserve">
+    <value>Veri Kaynağı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PivotGrid.XRPivotGridStyles.CellStyle" xml:space="preserve">
+    <value>Hücre Stili</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRRichTextBoxBase.BackColor" xml:space="preserve">
+    <value>Arka Plan Rengi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.StylePriority.UsePadding" xml:space="preserve">
+    <value>Dolgu Kullan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPictureBox.Image" xml:space="preserve">
+    <value>Görüntü</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlEvents.OnAfterPrint" xml:space="preserve">
+    <value>Yazdırdıktan Sonra</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.Series" xml:space="preserve">
+    <value>Dizi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.FillStyle" xml:space="preserve">
+    <value>Dolgu Stili</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRDockStyle.None" xml:space="preserve">
+    <value>Yok</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.PageColor" xml:space="preserve">
+    <value>Sayfa Rengi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRSummaryEvents.OnRowChanged" xml:space="preserve">
+    <value>Satır Değişti</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.PaperName" xml:space="preserve">
+    <value>Kağıt Adı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRLabel.ProcessNullValues" xml:space="preserve">
+    <value>Boş Değerleri İşle</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.GroupHeaderBand.GroupFields" xml:space="preserve">
+    <value>Grup Alanları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRSubreport.ReportSourceUrl" xml:space="preserve">
+    <value>Rapor Kaynağı Url'si</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.WinControlPrintMode.AsBricks" xml:space="preserve">
+    <value>Tuğla Olarak</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.CalculatedFields" xml:space="preserve">
+    <value>Hesaplanan Alanlar</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.GroupHeaderBandScripts.OnSortingSummaryGetResult" xml:space="preserve">
+    <value>Sıralama Özeti Sonucunu Al</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PivotGrid.XRPivotGridStyles.LinesStyle" xml:space="preserve">
+    <value>Çizgi Stili</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SortingSummaryFunction.Median" xml:space="preserve">
+    <value>Ortalama</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.XRControlStyles.EvenStyle" xml:space="preserve">
+    <value>Çift Stil</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SummaryRunning.Report" xml:space="preserve">
+    <value>Rapor</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FormattingRule.DataMember" xml:space="preserve">
+    <value>Veri Üyesi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.ChartImageType.Bitmap" xml:space="preserve">
+    <value>Bit eşlem</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlEvents.OnPreviewMouseUp" xml:space="preserve">
+    <value>Önizlemede Fare Yukarı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRTable" xml:space="preserve">
+    <value>Tablo</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.CalculatedField.Scripts" xml:space="preserve">
+    <value>Komut Dosyaları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.WinControlDrawMethod.UseWMPaintRecursive" xml:space="preserve">
+    <value>WMPaint'i Yinelemeli Olarak Kullan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.SnapLineMargin" xml:space="preserve">
+    <value>Çizgi Kenar Boşluğuna Oturt</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.GroupField.SortOrder" xml:space="preserve">
+    <value>Sıralama Düzeni</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SummaryFunc.RunningSum" xml:space="preserve">
+    <value>Çalışan Özet</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.Bookmark" xml:space="preserve">
+    <value>Yer işareti</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRCheckBox.Checked" xml:space="preserve">
+    <value>Kontrol edildi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SummaryFunc.DAvg" xml:space="preserve">
+    <value>Ortalama (Belirgin)</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChartScripts.OnCustomPaint" xml:space="preserve">
+    <value>Özelleştirilmiş Boyama</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.BackColor" xml:space="preserve">
+    <value>Arka Plan Rengi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PivotGrid.XRPivotGridStyles.FieldValueTotalStyle" xml:space="preserve">
+    <value>Alan Değeri Toplam Stili</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRGroupSortingSummary.Enabled" xml:space="preserve">
+    <value>Etkin</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRLine.Scripts" xml:space="preserve">
+    <value>Komut Dosyaları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRLabelScripts.OnSummaryRowChanged" xml:space="preserve">
+    <value>Özet Satırı Değişti</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.ShowPrintMarginsWarning" xml:space="preserve">
+    <value>Yazdırma Kenar Boşlukları Uyarısını Göster</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRRichTextBoxBase.Lines" xml:space="preserve">
+    <value>Çizgiler</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PageBreak.BeforeBand" xml:space="preserve">
+    <value>Şeritten Önce</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.DisplayName" xml:space="preserve">
+    <value>Görünen Adı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.AutoLayoutSettingsEnabled" xml:space="preserve">
+    <value>Otomatik Düzen Ayarları Devreye Alındı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRGroupSortingSummary.FieldName" xml:space="preserve">
+    <value>Alan Adı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRColumnSortOrder.Descending" xml:space="preserve">
+    <value>Azalan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PivotGrid.XRPivotGridStyles.TotalCellStyle" xml:space="preserve">
+    <value>Toplam Hücre Stili</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRSummaryEvents.OnReset" xml:space="preserve">
+    <value>Sıfırla</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRLabel" xml:space="preserve">
+    <value>Etiket</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlStyle.BorderColor" xml:space="preserve">
+    <value>Kenarlık Rengi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlEvents.OnBeforePrint" xml:space="preserve">
+    <value>Yazdırmadan Önce</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.ReportFooterBand.PrintAtBottom" xml:space="preserve">
+    <value>Altta Yazdır</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReportScripts.OnDataSourceRowChanged" xml:space="preserve">
+    <value>Veri Kaynağının Satırı Değişti</value>
+  </data>
+  <data name="DevExpress.XtraReports.Design.GroupSort.GroupSortReflectItem.ShowHeader" xml:space="preserve">
+    <value>Üst Bilgiyi Göster</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.XlsxFormatString" xml:space="preserve">
+    <value>Xlsx Biçimi Dizesi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PivotGrid.XRPivotGridStyles.FieldValueStyle" xml:space="preserve">
+    <value>Alan Değeri Stili</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SummaryRunning.Group" xml:space="preserve">
+    <value>Grup</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRGroupSortingSummary.IgnoreNullValues" xml:space="preserve">
+    <value>Boş Değerleri Yok Say</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGridScripts" xml:space="preserve">
+    <value>ÖzetTabloKılavuzÇizgisi Komut Dosyaları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.Target" xml:space="preserve">
+    <value>Gezinti Hedefi</value>
+  </data>
+  <data name="System.Drawing.Printing.Margins.Left" xml:space="preserve">
+    <value>Sol</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.DetailBand.SortFields" xml:space="preserve">
+    <value>Alanları Sırala</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.DrawGrid" xml:space="preserve">
+    <value>Kılavuz Çizgisini Çiz</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.WinControlImageType.Bitmap" xml:space="preserve">
+    <value>Bit eşlem</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.BorderWidth" xml:space="preserve">
+    <value>Kenarlık Genişliği</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SortingSummaryFunction.DVarP" xml:space="preserve">
+    <value>Nüfus Değişimi (Belirgin)</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PivotGrid.XRPivotGridAppearances.Cell" xml:space="preserve">
+    <value>Hücre</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SummaryFunc.DStdDev" xml:space="preserve">
+    <value>Standart Sapma (Belirgin)</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.ReportHeaderBand" xml:space="preserve">
+    <value>Rapor Üst Bilgisi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChartScripts.OnCustomDrawSeriesPoint" xml:space="preserve">
+    <value>Seri Noktasını Özel Olarak Çiz</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.DetailReportBand" xml:space="preserve">
+    <value>Ayrıntı Raporu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRCrossBandLine.LineStyle" xml:space="preserve">
+    <value>Çizgi Stili</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.SeriesTemplate" xml:space="preserve">
+    <value>Dizi Şablonu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SummaryRunning.None" xml:space="preserve">
+    <value>Yok</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.Margins" xml:space="preserve">
+    <value>Kenar Boşlukları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.MultiColumn.ColumnCount" xml:space="preserve">
+    <value>Sütun Sayısı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRLine.LineDirection" xml:space="preserve">
+    <value>Çizgi Yönü</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.BackImage" xml:space="preserve">
+    <value>Arka Plan Görüntüsü</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReportScripts.OnParametersRequestBeforeShow" xml:space="preserve">
+    <value>Parametreler İste</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPageInfo.RunningBand" xml:space="preserve">
+    <value>Çalışan Şerit</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGrid.DataMember" xml:space="preserve">
+    <value>Veri Üyesi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.WordWrap" xml:space="preserve">
+    <value>Sözcük Kaydırma</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.SeriesSorting" xml:space="preserve">
+    <value>Dizi Sıralanıyor</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PivotGrid.XRPivotGridAppearances.TotalCell" xml:space="preserve">
+    <value>Toplam Hücre</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReportScripts.OnBandHeightChanged" xml:space="preserve">
+    <value>Şeridin Yüksekliği Değişti</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.BackColor" xml:space="preserve">
+    <value>Arka Plan Rengi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.LockedInUserDesigner" xml:space="preserve">
+    <value>Son Kullanıcı Tasarımcısında Kilitli</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlEvents.OnParentChanged" xml:space="preserve">
+    <value>Üst Öğe Değişti</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.MultiColumnMode.None" xml:space="preserve">
+    <value>Yok</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.BorderColor" xml:space="preserve">
+    <value>Kenarlık Rengi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRBinding.PropertyName" xml:space="preserve">
+    <value>Özellik Adı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.StyleUsing.UsePadding" xml:space="preserve">
+    <value>Dolgu Kullan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.PreviewRowCount" xml:space="preserve">
+    <value>Önizleme yapılacak Satır Sayısı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.DetailReportBand.Level" xml:space="preserve">
+    <value>Düzey</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.ShowPreviewMarginLines" xml:space="preserve">
+    <value>Önizlemede Kenar Boşluğu Çizgilerini Göster</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlStyle.Font" xml:space="preserve">
+    <value>Yazı tipi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SnappingMode.SnapToGrid" xml:space="preserve">
+    <value>Kılavuz Çizgisine Oturt</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.DataAdapter" xml:space="preserve">
+    <value>Veri Adaptörü</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SummaryFunc.DVarP" xml:space="preserve">
+    <value>Nüfus Değişimi (Belirgin)</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.PaletteName" xml:space="preserve">
+    <value>Palet Adı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PageBand.PrintOn" xml:space="preserve">
+    <value>Yazdırma Açık</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRDockStyle.Fill" xml:space="preserve">
+    <value>Doldur</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRBarCode.BinaryData" xml:space="preserve">
+    <value>İkilik Değer Verisi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRSummary.IgnoreNullValues" xml:space="preserve">
+    <value>Boş Değerleri Yok Say</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.Band.PageBreak" xml:space="preserve">
+    <value>Sayfa Sonu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGridScripts.OnPrintHeader" xml:space="preserve">
+    <value>Yazdırma Üst Bİlgisi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRCheckBox" xml:space="preserve">
+    <value>Onay Kutusu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.WinControlContainer.SyncBounds" xml:space="preserve">
+    <value>Sınırları Senkronize Et</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.StyleUsing" xml:space="preserve">
+    <value>Stil Kullanmak</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGrid.OptionsPrint" xml:space="preserve">
+    <value>Yazdırma Seçenekleri</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRZipCode" xml:space="preserve">
+    <value>Posta Kodu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.Scripts" xml:space="preserve">
+    <value>Komut Dosyaları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.Height" xml:space="preserve">
+    <value>Boy uzunluğu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.CalculatedField.DataSource" xml:space="preserve">
+    <value>Veri Kaynağı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PivotGrid.XRPivotGridAppearances.GrandTotalCell" xml:space="preserve">
+    <value>Genel Toplam Hücresi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRLabel.Scripts" xml:space="preserve">
+    <value>Komut Dosyaları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.GroupHeaderBand.GroupUnion" xml:space="preserve">
+    <value>Grup Birliği</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRLabel.KeepTogether" xml:space="preserve">
+    <value>Bir Arada Tut</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlEvents.OnPreviewClick" xml:space="preserve">
+    <value>Önizlemede Tıklatı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPictureBox.Sizing" xml:space="preserve">
+    <value>Boyutlandırma</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlStyle.Padding" xml:space="preserve">
+    <value>Dolgu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRSummary.FormatString" xml:space="preserve">
+    <value>Biçim Dizesi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.Styles" xml:space="preserve">
+    <value>Stiller</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRCrossBandControl.EndPoint" xml:space="preserve">
+    <value>Uç Nokta</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.ShowDesignerHints" xml:space="preserve">
+    <value>Tasarımcının İpuçlarını Göster</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRLabel.Summary" xml:space="preserve">
+    <value>Özet</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PivotGrid.XRPivotGridStyles.FilterSeparatorStyle" xml:space="preserve">
+    <value>Filtre Ayracı Stili</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReportBase.DataMember" xml:space="preserve">
+    <value>Veri Üyesi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.CalculatedField.FieldType" xml:space="preserve">
+    <value>Alan Tipi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRBarCode.ShowText" xml:space="preserve">
+    <value>Metni Göster</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.GroupBand.Level" xml:space="preserve">
+    <value>Düzey</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SummaryFunc.DVar" xml:space="preserve">
+    <value>Değişim (Belirgin)</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.FormattingRules" xml:space="preserve">
+    <value>Biçimlendirme Kuralları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.ImageType" xml:space="preserve">
+    <value>Görüntü Tipi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PivotGrid.XRPivotGridStyles.GrandTotalCellStyle" xml:space="preserve">
+    <value>Genel Toplam Hücresi Stili</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SortingSummaryFunction.Custom" xml:space="preserve">
+    <value>Özelleştirilmiş</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.CalculatedFieldScripts" xml:space="preserve">
+    <value>Hesaplanan Alan Komut Dosyaları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.Legend" xml:space="preserve">
+    <value>Gösterge</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRShape.FillColor" xml:space="preserve">
+    <value>Dolgu Rengi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReportBase.DataSource" xml:space="preserve">
+    <value>Veri Kaynağı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SummaryFunc.DSum" xml:space="preserve">
+    <value>Özet (Belirgin)</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGridScripts.OnPrintCell" xml:space="preserve">
+    <value>Yazdırma Hücresi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRSummary.Running" xml:space="preserve">
+    <value>Çalışıyor</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlStyle.BorderWidth" xml:space="preserve">
+    <value>Kenarlık Genişliği</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRGroupSortingSummary.Function" xml:space="preserve">
+    <value>İşlev</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReportBase.XmlDataPath" xml:space="preserve">
+    <value>XML Veri Yolu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.DataMember" xml:space="preserve">
+    <value>Veri Üyesi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.MultiColumn.ColumnSpacing" xml:space="preserve">
+    <value>Sütun Boşluğu</value>
+  </data>
+  <data name="DevExpress.XtraReports.Design.DataBinding.FormatString" xml:space="preserve">
+    <value>Biçim Dizesi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReportScripts" xml:space="preserve">
+    <value>Rapor Komut Dosyaları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReportBase.FilterString" xml:space="preserve">
+    <value>Filtre Dizesi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGridScripts.OnCustomSummary" xml:space="preserve">
+    <value>Özelleştirilmiş Özet</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.GroupBand.RepeatEveryPage" xml:space="preserve">
+    <value>Her Sayfayı Tekrarla</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlEvents.OnDraw" xml:space="preserve">
+    <value>Çiz</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SortingSummaryFunction.StdDev" xml:space="preserve">
+    <value>Standart Sapma</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRCrossBandBox" xml:space="preserve">
+    <value>Çapraz şerit kutusu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPageInfo" xml:space="preserve">
+    <value>Sayfa Bilgisi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPictureBox.ImageUrl" xml:space="preserve">
+    <value>Görüntü URL'si</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.MultiColumn" xml:space="preserve">
+    <value>Çoklu Sütun Seçenekleri</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.ExportOptions" xml:space="preserve">
+    <value>Dışa Aktarma Seçenekleri</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PivotGrid.XRPivotGridAppearances.HeaderGroupLine" xml:space="preserve">
+    <value>Üst Bilgi Grup Çizgisi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.MultiColumn.Direction" xml:space="preserve">
+    <value>Yön</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.ParentStyleUsing" xml:space="preserve">
+    <value>Üst Öğe Stilini Kullanmak</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.CalculatedField" xml:space="preserve">
+    <value>Hesaplanan Alan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlScripts" xml:space="preserve">
+    <value>Kontrol Komut Dosyaları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.GroupFooterUnion.None" xml:space="preserve">
+    <value>Yok</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.ConditionFormatting.Visible" xml:space="preserve">
+    <value>Görünür</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.WinControlContainer.DrawMethod" xml:space="preserve">
+    <value>Çizme Yöntemi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.NavigateUrl" xml:space="preserve">
+    <value>Gezinme URL'si</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReportScripts.OnParametersRequestSubmit" xml:space="preserve">
+    <value>Parametreler Gönderildi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.Text" xml:space="preserve">
+    <value>Metin</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChartScripts" xml:space="preserve">
+    <value>Grafik Komut Dosyaları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControl.Tag" xml:space="preserve">
+    <value>Etiket</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.StyleUsing.UseBackColor" xml:space="preserve">
+    <value>Arka Plan Rengi Kullan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PageFooterBand" xml:space="preserve">
+    <value>Sayfa Alt Bilgisi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FormattingRule.Condition" xml:space="preserve">
+    <value>Durum</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlEvents.OnPreviewMouseMove" xml:space="preserve">
+    <value>Önizlemede Fareyi Oynat</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.SubreportBase.ReportSource" xml:space="preserve">
+    <value>Rapor Kaynağı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.Band.Height" xml:space="preserve">
+    <value>Boy uzunluğu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRRichTextBoxBase.DetectUrls" xml:space="preserve">
+    <value>URL'leri tespit et</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRSummary.Func" xml:space="preserve">
+    <value>İşlev</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.ConditionFormatting.Style" xml:space="preserve">
+    <value>Stil</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PivotGrid.XRPivotGridAppearances.FieldValueGrandTotal" xml:space="preserve">
+    <value>AlanDeğeriGenelToplamı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlEvents.OnLocationChanged" xml:space="preserve">
+    <value>Konum Değişti</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRLabel.Multiline" xml:space="preserve">
+    <value>Çok çizgili</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.GroupFooterBand" xml:space="preserve">
+    <value>Grup Alt Bilgisi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.StyleUsing.UseBorderWidth" xml:space="preserve">
+    <value>Kenarlık Genişliği Kullan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.WinControlContainer.PrintMode" xml:space="preserve">
+    <value>Yazdırma Modu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.StyleUsing.UseTextAlignment" xml:space="preserve">
+    <value>Metin Hizalaması Kullan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRPivotGridScripts.OnPrintFieldValue" xml:space="preserve">
+    <value>Yazdırma Alanı Değeri</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.AnnotationRepository" xml:space="preserve">
+    <value>Ek Açıklama Havuzu</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRCheckBox.CheckState" xml:space="preserve">
+    <value>Durumu Kontrol Et</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XtraReport.PageHeight" xml:space="preserve">
+    <value>Sayfa Yüksekliği</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRBarCode.BarCodeOrientation" xml:space="preserve">
+    <value>Oryantasyon</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRLabel.ProcessDuplicates" xml:space="preserve">
+    <value>İşlem Kopyalar</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PageBreak.AfterBand" xml:space="preserve">
+    <value>Şeritten Sonra</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRBinding.DataMember" xml:space="preserve">
+    <value>Veri Üyesi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.StyleUsing.UseBorders" xml:space="preserve">
+    <value>Kenarlıklar Kullan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PivotGrid.XRPivotGridAppearances.FieldHeader" xml:space="preserve">
+    <value>Alan Üst Bilgisi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.PivotGrid.XRPivotGridStyles.CustomTotalCellStyle" xml:space="preserve">
+    <value>Özel Toplam Hücre Stili</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.BandScripts" xml:space="preserve">
+    <value>Şerit Komut Dosyaları</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRChart.EmptyChartText" xml:space="preserve">
+    <value>Boş Grafik Metni</value>
+  </data>
+  <data name="System.Drawing.Printing.Margins.Top" xml:space="preserve">
+    <value>Üst</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRAppearanceObject.TextAlignment" xml:space="preserve">
+    <value>Metin Hizalaması</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.XRControlEvents.OnPreviewDoubleClick" xml:space="preserve">
+    <value>Önizlemede Çift Tıklatın</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.ColumnDirection.AcrossThenDown" xml:space="preserve">
+    <value>Önce Karşıya, Sonra Aşağı</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.GroupHeaderBand" xml:space="preserve">
+    <value>Grup Üst Bilgisi</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.MultiColumnMode.UseColumnCount" xml:space="preserve">
+    <value>Sütun Sayısı Kullan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.MultiColumnMode.UseColumnWidth" xml:space="preserve">
+    <value>Sütun Genişliği Kullan</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.ReportPrintOptions.PrintOnEmptyDataSource" xml:space="preserve">
+    <value>Veri Kaynağı Boşken Yazdır</value>
+  </data>
+</root>

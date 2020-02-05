@@ -1,0 +1,621 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ReportDesignerStringId.NewReportWizard_Caption" xml:space="preserve">
+    <value>Мастер отчетов</value>
+  </data>
+  <data name="ReportDesignerStringId.NewReportWizard_Hint" xml:space="preserve">
+    <value>Запускает мастре отчетов для создания нового отчета</value>
+  </data>
+  <data name="ReportDesignerStringId.OpenReport_Caption" xml:space="preserve">
+    <value>Открыть...</value>
+  </data>
+  <data name="ReportDesignerStringId.OpenReport_Hint" xml:space="preserve">
+    <value>Открывает отчет</value>
+  </data>
+  <data name="ReportDesignerStringId.ShowFieldList_Caption" xml:space="preserve">
+    <value>Список полей</value>
+  </data>
+  <data name="ReportDesignerStringId.ShowFieldList_Hint" xml:space="preserve">
+    <value>Показывает панель списка полей</value>
+  </data>
+  <data name="ReportDesignerStringId.SaveReport_Caption" xml:space="preserve">
+    <value>Сохранить изменения</value>
+  </data>
+  <data name="ReportDesignerStringId.SaveReport_Hint" xml:space="preserve">
+    <value>Сохраняет изменения, сделанные в отчете</value>
+  </data>
+  <data name="ReportDesignerStringId.DiscardReportChanges_Caption" xml:space="preserve">
+    <value>Отменить изменения</value>
+  </data>
+  <data name="ReportDesignerStringId.DiscardReportChanges_Hint" xml:space="preserve">
+    <value>Отменяет все изменения, сделанные в документе с момента последнего сохранения</value>
+  </data>
+  <data name="ReportDesignerStringId.FontBold_Caption" xml:space="preserve">
+    <value>Жирный</value>
+  </data>
+  <data name="ReportDesignerStringId.FontBold_Hint" xml:space="preserve">
+    <value>Делает выделенный текст жирным</value>
+  </data>
+  <data name="ReportDesignerStringId.FontItalic_Caption" xml:space="preserve">
+    <value>Курсив</value>
+  </data>
+  <data name="ReportDesignerStringId.FontItalic_Hint" xml:space="preserve">
+    <value>Делает выделенный текст курсивом</value>
+  </data>
+  <data name="ReportDesignerStringId.FontUnderline_Caption" xml:space="preserve">
+    <value>Нижнее подчеркивание</value>
+  </data>
+  <data name="ReportDesignerStringId.FontUnderline_Hint" xml:space="preserve">
+    <value>Добавляет нижнее подчеркивание выделенному тексту</value>
+  </data>
+  <data name="ReportDesignerStringId.JustifyLeft_Caption" xml:space="preserve">
+    <value>Выравнять по левому краю</value>
+  </data>
+  <data name="ReportDesignerStringId.JustifyLeft_Hint" xml:space="preserve">
+    <value>Выравнивает текст по левому краю</value>
+  </data>
+  <data name="ReportDesignerStringId.JustifyCenter_Caption" xml:space="preserve">
+    <value>Выровнять текст по центру</value>
+  </data>
+  <data name="ReportDesignerStringId.JustifyCenter_Hint" xml:space="preserve">
+    <value>Выравнивает текст по центру</value>
+  </data>
+  <data name="ReportDesignerStringId.JustifyRight_Caption" xml:space="preserve">
+    <value>Выравнять по правому краю</value>
+  </data>
+  <data name="ReportDesignerStringId.JustifyRight_Hint" xml:space="preserve">
+    <value>Выравнивает текст по правому краю</value>
+  </data>
+  <data name="ReportDesignerStringId.JustifyJustify_Caption" xml:space="preserve">
+    <value>Выравнять по ширине</value>
+  </data>
+  <data name="ReportDesignerStringId.AlignLeft_Caption" xml:space="preserve">
+    <value>Выравнять левые края</value>
+  </data>
+  <data name="ReportDesignerStringId.AlignLeft_Hint" xml:space="preserve">
+    <value>Выравнивает левые края выделенных элементов</value>
+  </data>
+  <data name="ReportDesignerStringId.AlignVerticalCenter_Caption" xml:space="preserve">
+    <value>Выравнять центры</value>
+  </data>
+  <data name="ReportDesignerStringId.AlignVerticalCenter_Hint" xml:space="preserve">
+    <value>Выравнивает центры выделенных элементов по вертикали</value>
+  </data>
+  <data name="ReportDesignerStringId.AlignRight_Caption" xml:space="preserve">
+    <value>Выравнять правые края</value>
+  </data>
+  <data name="ReportDesignerStringId.AlignRight_Hint" xml:space="preserve">
+    <value>Выравнивает правые края выделенных элементов</value>
+  </data>
+  <data name="ReportDesignerStringId.AlignTop_Caption" xml:space="preserve">
+    <value>Выравнять верхние края</value>
+  </data>
+  <data name="ReportDesignerStringId.AlignTop_Hint" xml:space="preserve">
+    <value>Выравнивает верхние края выделенных элементов</value>
+  </data>
+  <data name="ReportDesignerStringId.AlignMiddle_Caption" xml:space="preserve">
+    <value>Выравнять центры</value>
+  </data>
+  <data name="ReportDesignerStringId.AlignMiddle_Hint" xml:space="preserve">
+    <value>Выравнивает центры выделенных элементов по горизонтали</value>
+  </data>
+  <data name="ReportDesignerStringId.AlignBottom_Caption" xml:space="preserve">
+    <value>Выравнять нижние края</value>
+  </data>
+  <data name="ReportDesignerStringId.AlignBottom_Hint" xml:space="preserve">
+    <value>Выравнивает нижние края выделенных элементов</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutSameWidth_Caption" xml:space="preserve">
+    <value>Сделать ширину одинаковой</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutSameWidth_Hint" xml:space="preserve">
+    <value>Делает ширину выделенных элементов одинаковой</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutSameSize_Caption" xml:space="preserve">
+    <value>Сделать размер одинаковым</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutSameSize_Hint" xml:space="preserve">
+    <value>Делает размер выделенных элементов одинаковым</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutSameHeight_Caption" xml:space="preserve">
+    <value>Сделать высоту одинаковой</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutSameHeight_Hint" xml:space="preserve">
+    <value>Делает высоту выделенных элементов одинаковой</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutEquateHorizontalSpace_Caption" xml:space="preserve">
+    <value>Сделать отступ одинаковым по горизонтали</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutEquateHorizontalSpace_Hint" xml:space="preserve">
+    <value>Делает отступ между выделенными элементами одинаковым по горизонтали</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutIncreaseHorizontalSpace_Caption" xml:space="preserve">
+    <value>Увеличить отступ по горизонтали</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutIncreaseHorizontalSpace_Hint" xml:space="preserve">
+    <value>Увеличивает отступ между выделенными элементами по горизонтали</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutDecreaseHorizontalSpace_Caption" xml:space="preserve">
+    <value>Уменьшить отступ по горизонтали</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutDecreaseHorizontalSpace_Hint" xml:space="preserve">
+    <value>Уменьшает отступ между выделенными элементами по горизонтали</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutRemoveHorizontalSpace_Caption" xml:space="preserve">
+    <value>Убрать отступ по горизонтали</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutRemoveHorizontalSpace_Hint" xml:space="preserve">
+    <value>Убирает отступ по горизонтали между выделенными элементами</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutEquateVerticalSpacing_Caption" xml:space="preserve">
+    <value>Сделать отступ одинаковым по вертикали</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutEquateVerticalSpacing_Hint" xml:space="preserve">
+    <value>Делает отступ между выделенными элементами одинаковым по вертикали</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutIncreaseVerticalSpacing_Caption" xml:space="preserve">
+    <value>Увеличить отступ по вертикали</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutIncreaseVerticalSpacing_Hint" xml:space="preserve">
+    <value>Увеличивает отступ между выделенными элементами по вертикали</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutDecreaseVerticalSpacing_Caption" xml:space="preserve">
+    <value>Уменьшить отступ по вертикали</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutDecreaseVerticalSpacing_Hint" xml:space="preserve">
+    <value>Уменьшает отступ между выделенными элементами по вертикали</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutRemoveVerticalSpacing_Caption" xml:space="preserve">
+    <value>Убрать отступ по вертикали</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutRemoveVerticalSpacing_Hint" xml:space="preserve">
+    <value>Убирает отступ по вертикали между выделенными элементами</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutCenterHorizontally_Caption" xml:space="preserve">
+    <value>Выравнять по центру по горизонтали</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutCenterHorizontally_Hint" xml:space="preserve">
+    <value>Выравнивает по центру по горизонтали внутри бэнда</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutCenterVertically_Caption" xml:space="preserve">
+    <value>Выравнять по центру по вертикали</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutCenterVertically_Hint" xml:space="preserve">
+    <value>Выравнивает по центру по вертикали внутри бэнда</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutBringToFront_Caption" xml:space="preserve">
+    <value>На передний план</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutBringToFront_Hint" xml:space="preserve">
+    <value>Помещает выделенные элементы на передний план</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutSendToBack_Caption" xml:space="preserve">
+    <value>Поместить на задний план</value>
+  </data>
+  <data name="ReportDesignerStringId.LayoutSendToBack_Hint" xml:space="preserve">
+    <value>Пемещает выделенные элементы на задний план</value>
+  </data>
+  <data name="ReportDesignerStringId.ZoomIn_Caption" xml:space="preserve">
+    <value>Приблизить</value>
+  </data>
+  <data name="ReportDesignerStringId.ZoomIn_Hint" xml:space="preserve">
+    <value>Увеличивает масштаб отображения отчета</value>
+  </data>
+  <data name="ReportDesignerStringId.ZoomOut_Caption" xml:space="preserve">
+    <value>Отдалить</value>
+  </data>
+  <data name="ReportDesignerStringId.ZoomOut_Hint" xml:space="preserve">
+    <value>Уменьшает масштаб отображения отчета</value>
+  </data>
+  <data name="ReportDesignerStringId.Zoom_Caption" xml:space="preserve">
+    <value>Масштаб</value>
+  </data>
+  <data name="ReportDesignerStringId.Zoom_Hint" xml:space="preserve">
+    <value>Меняет маштаб отображения отчета</value>
+  </data>
+  <data name="ReportDesignerStringId.EditWatermark_Caption" xml:space="preserve">
+    <value>Водяной знак</value>
+  </data>
+  <data name="ReportDesignerStringId.EditWatermark_Hint" xml:space="preserve">
+    <value>Открывает диалог редактирования водяного знака</value>
+  </data>
+  <data name="ReportDesignerStringId.Error" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="ReportDesignerStringId.ImageLoadError" xml:space="preserve">
+    <value>Во время загрузки картинки произошла ошибка</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_ChooseDataConnection" xml:space="preserve">
+    <value>Доступные элементы</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_InputDatasetName" xml:space="preserve">
+    <value>Введите название источника данных</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_CreateANewDataset" xml:space="preserve">
+    <value>Выберите источник данных</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_CreateANewDataset_Description" xml:space="preserve">
+    <value>Выберите источник данных для отчета</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_AddConnection" xml:space="preserve">
+    <value>Добавить соединение...</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_ChooseReportType" xml:space="preserve">
+    <value>Выберите тип отчета</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_ChooseReportType_Description" xml:space="preserve">
+    <value>Выбор, какой тип отчета будет создан</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_ReportTypeStandard" xml:space="preserve">
+    <value>Обычный</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_ReportTypeLabel" xml:space="preserve">
+    <value>Этикетка</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_ChooseTableOrView" xml:space="preserve">
+    <value>Выберите таблицу или вид</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_ChooseTableOrView_Description" xml:space="preserve">
+    <value>Определяет, какие поля будут доступны в вашем отчете</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_AvailableItems" xml:space="preserve">
+    <value>Доступные элементы</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_ChooseColumns" xml:space="preserve">
+    <value>Выберите колонки</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_ChooseColumns_Description" xml:space="preserve">
+    <value>Выберите колонки для отображения в отчете</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_AvailableFields" xml:space="preserve">
+    <value>Доступные поля</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_FieldsToDisplay" xml:space="preserve">
+    <value>Поля для отображения в отчете</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_AddGroupingLvl" xml:space="preserve">
+    <value>Создание уровней группировки</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_AddGroupingLvl_Description" xml:space="preserve">
+    <value>Создание нескольких групп, каждая со своим значением поля, или объявление нескольких полей в одной группе</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_Tables" xml:space="preserve">
+    <value>Таблицы</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_Views" xml:space="preserve">
+    <value>Виды:</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_Fields" xml:space="preserve">
+    <value>Поля</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_ChooseSummaryOptions" xml:space="preserve">
+    <value>Выберите настройки подсчета итога</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_ChooseSummaryOptions_Description" xml:space="preserve">
+    <value>Итог по каким полям вы хотите вычислить?</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_Sum" xml:space="preserve">
+    <value>Сумма</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_Avg" xml:space="preserve">
+    <value>Среднее</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_Min" xml:space="preserve">
+    <value>Мин</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_Max" xml:space="preserve">
+    <value>Макс</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_Count" xml:space="preserve">
+    <value>Количество</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_IgnoreNull" xml:space="preserve">
+    <value>Игнорировать значения, равные null</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_ReportLayout" xml:space="preserve">
+    <value>Выберите вид отчета</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_ReportLayout_Description" xml:space="preserve">
+    <value>Вид отчета определяет способ расположения полей данных на отчете</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_Portrait" xml:space="preserve">
+    <value>Портретный</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_Landscape" xml:space="preserve">
+    <value>Ландшафтный</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_AdjustFields" xml:space="preserve">
+    <value>Подбирает ширину поля так, чтобы все поля поместились в ширину страницы</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_Stepped" xml:space="preserve">
+    <value>Ступенчатый</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_Outline1" xml:space="preserve">
+    <value>Набросок 1</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_Outline2" xml:space="preserve">
+    <value>Набросок 2</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_AlignLeft1" xml:space="preserve">
+    <value>По левому краю 1</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_AlignLeft2" xml:space="preserve">
+    <value>По левому краю 2</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_ReportStyle" xml:space="preserve">
+    <value>Выберите стиль отчета</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_ReportStyle_Description" xml:space="preserve">
+    <value>Стиль отчета определяет внешний вид</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_StyleBold" xml:space="preserve">
+    <value>Жирный</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_StyleCasual" xml:space="preserve">
+    <value>Казуальный</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_StyleCompact" xml:space="preserve">
+    <value>Компактный</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_StyleCorporate" xml:space="preserve">
+    <value>Копротативный</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_StyleFormal" xml:space="preserve">
+    <value>Формальный</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_ReportComplete" xml:space="preserve">
+    <value>Создание отчета завершено</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_ReportComplete_Description" xml:space="preserve">
+    <value>Вся информация, необходимая для создания отчета, собрана</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_ReportTitle" xml:space="preserve">
+    <value>Определите заголовок отчета</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_WizardWelcome" xml:space="preserve">
+    <value>Добро пожаловать в мастер отчетов</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_WizardWelcome_Description" xml:space="preserve">
+    <value>Мастер отчетов поможет автоматичетски создать отчет в зависимости от настроек, которые вы выберете.</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_LabelInformation" xml:space="preserve">
+    <value>Информация об этикетке</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_LabelInformation_Description" xml:space="preserve">
+    <value>Выберите одну из этикетов установкой Продукта или его идентификатора</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_LabelProducts" xml:space="preserve">
+    <value>Продукты</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_ProductNumber" xml:space="preserve">
+    <value>Номер продукта</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_Width" xml:space="preserve">
+    <value>Ширина:</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_Height" xml:space="preserve">
+    <value>Высота:</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_PageType" xml:space="preserve">
+    <value>Тип страницы:</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_PageSize" xml:space="preserve">
+    <value>Размер страницы:</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_LabelOptions" xml:space="preserve">
+    <value>Изменить настройки этикетки</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_LabelOptions_Description" xml:space="preserve">
+    <value>Здесь вы можете изменить параметры этикетки, если это требуется</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_LabelWidth" xml:space="preserve">
+    <value>Ширина этикетки:</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_LabelHeight" xml:space="preserve">
+    <value>Высота этикетки:</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_VerticalPitch" xml:space="preserve">
+    <value>Угол наклона по вертикали:</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_HorizontalPitch" xml:space="preserve">
+    <value>Угол наклона по горизонтали:</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_TopMargin" xml:space="preserve">
+    <value>Отступ сверху:</value>
+  </data>
+  <data name="ReportDesignerStringId.ReportWizard_SideMargin" xml:space="preserve">
+    <value>Отступ по сторонам:</value>
+  </data>
+  <data name="ReportDesignerStringId.PageGroupReport_Caption" xml:space="preserve">
+    <value>Отчет</value>
+  </data>
+  <data name="ReportDesignerStringId.PageGroupPanels_Caption" xml:space="preserve">
+    <value>Панели</value>
+  </data>
+  <data name="ReportDesignerStringId.PageGroupFont_Caption" xml:space="preserve">
+    <value>Шрифт</value>
+  </data>
+  <data name="ReportDesignerStringId.PageGroupAlignment_Caption" xml:space="preserve">
+    <value>Выравнивание</value>
+  </data>
+  <data name="ReportDesignerStringId.PageGroupLayout_Caption" xml:space="preserve">
+    <value>Позиционирование</value>
+  </data>
+  <data name="ReportDesignerStringId.PageGroupZoom_Caption" xml:space="preserve">
+    <value>Масштаб</value>
+  </data>
+  <data name="ReportDesignerStringId.PageGroupPageOptions_Caption" xml:space="preserve">
+    <value>Настройки страницы</value>
+  </data>
+  <data name="ReportDesignerStringId.LoadImage" xml:space="preserve">
+    <value>Загрузить картинку</value>
+  </data>
+  <data name="ReportDesignerStringId.ImageEditorCaption" xml:space="preserve">
+    <value>Картинка</value>
+  </data>
+  <data name="ReportDesignerStringId.BindingEditorCaption" xml:space="preserve">
+    <value>Привязка</value>
+  </data>
+  <data name="ReportDesignerStringId.ImageEditorLoad" xml:space="preserve">
+    <value>Загрузить</value>
+  </data>
+  <data name="ReportDesignerStringId.ImageEditorClear" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
+  <data name="ReportDesignerStringId.PageSetup_Caption" xml:space="preserve">
+    <value>Настройка параметров страницы</value>
+  </data>
+  <data name="ReportDesignerStringId.PageSetup_Hint" xml:space="preserve">
+    <value>Открывает диалог настройки параметров страницы</value>
+  </data>
+  <data name="ReportDesignerStringId.CommandContainer_Indexer_EmptyOrNullId" xml:space="preserve">
+    <value>Идентификатор команды путой или равен null</value>
+  </data>
+  <data name="ReportDesignerStringId.CommandContainer_Indexer_InvalidId" xml:space="preserve">
+    <value>Идентификатор команды имеет некорректное значение</value>
+  </data>
+  <data name="ReportDesignerStringId.FieldListPanel_Caption" xml:space="preserve">
+    <value>Список полей</value>
+  </data>
+  <data name="ReportDesignerStringId.FieldList_NoneNode" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="ReportDesignerStringId.FieldList_DummyNode" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="ReportDesignerStringId.FieldList_UnboundFieldsNode" xml:space="preserve">
+    <value>Unbound Fields</value>
+  </data>
+  <data name="ReportDesignerStringId.FieldList_UnboundLabelNode" xml:space="preserve">
+    <value>Надпись</value>
+  </data>
+  <data name="ReportDesignerStringId.FieldList_UnboundCheckboxNode" xml:space="preserve">
+    <value>Флажок</value>
+  </data>
+  <data name="ReportDesignerStringId.FieldList_UnboundPictureNode" xml:space="preserve">
+    <value>Картинка</value>
+  </data>
+  <data name="ReportDesignerStringId.StatusInfoDisplayText" xml:space="preserve">
+    <value>x={0} y={1}   {2} пикселей x {3} пикселей</value>
+  </data>
+  <data name="ReportDesignerStringId.JustifyJustify_Hint" xml:space="preserve">
+    <value>Выравнивает текст по ширине</value>
+  </data>
+</root>

@@ -1,0 +1,35 @@
+﻿<%@ master language="C#" autoeventwireup="true" inherits="NoMenu, App_Web_nomenu.master.cdcab7d2" %>
+
+<%@ Register Src="~/UserControls/ThemeSelector.ascx" TagPrefix="dx" TagName="ThemeSelector" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head id="Head1" runat="server">
+    <title>Єдина Інформаційна Система ДКВ м. Києва</title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/DXTheme.js") %>"></script>
+    <form id="Form1" runat="server">
+    <div class="page">
+        <div class="narrowheader">
+            <div style="float: right; padding-top: 2px;">
+                <dx:ThemeSelector ID="ThemeSelector" runat="server" />
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    </form>
+    <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/CommonScript.js") %>"></script>
+    <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jquery-1.8.3.js") %>"></script>
+    <asp:ContentPlaceHolder ID="FooterContent" runat="server">
+    </asp:ContentPlaceHolder>
+    <%= StackExchange.Profiling.MiniProfiler.RenderIncludes() %> 
+</body>
+</html>

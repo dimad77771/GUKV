@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="XtraRichEditStringId.MenuCmd_Zoom" xml:space="preserve">
+    <value>Мащабиране</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ZoomIn" xml:space="preserve">
+    <value>Увеличи</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapPostalCode" xml:space="preserve">
+    <value>Пощенски код</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_UndoDescription" xml:space="preserve">
+    <value>Отмени</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_FirstLineIndentNone" xml:space="preserve">
+    <value>(няма)</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapAddress3" xml:space="preserve">
+    <value>Адрес 3</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SaveDocumentDescription" xml:space="preserve">
+    <value>Запиши</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_DeleteDescription" xml:space="preserve">
+    <value>Изтрий</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowFontForm" xml:space="preserve">
+    <value>Шрифт</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeColumnCount" xml:space="preserve">
+    <value>Колони</value>
+  </data>
+  <data name="XtraRichEditStringId.FileFilterDescription_TextFiles" xml:space="preserve">
+    <value>Текстови файлове</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ScrollDown" xml:space="preserve">
+    <value>Превърти надолу</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapSuffix" xml:space="preserve">
+    <value>Суфикс</value>
+  </data>
+  <data name="XtraRichEditStringId.UnitAbbreviation_Pica" xml:space="preserve">
+    <value> пика</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ShowParagraphForm" xml:space="preserve">
+    <value>Абзац</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_Delete" xml:space="preserve">
+    <value>Изтрий</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ZoomOutDescription" xml:space="preserve">
+    <value>Намали</value>
+  </data>
+  <data name="XtraRichEditStringId.UnderlineNone" xml:space="preserve">
+    <value>(няма)</value>
+  </data>
+  <data name="XtraRichEditStringId.BorderLineStyleNone" xml:space="preserve">
+    <value>няма</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_Redo" xml:space="preserve">
+    <value>Върни</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleFontItalic" xml:space="preserve">
+    <value>Курсив</value>
+  </data>
+  <data name="XtraRichEditStringId.UnitAbbreviation_Centimeter" xml:space="preserve">
+    <value> см</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SaveDocumentAs" xml:space="preserve">
+    <value>Запиши като</value>
+  </data>
+  <data name="XtraRichEditStringId.FontStyle_Bold" xml:space="preserve">
+    <value>Получер</value>
+  </data>
+  <data name="XtraRichEditStringId.FontStyle_Italic" xml:space="preserve">
+    <value>Курсив</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ZoomInDescription" xml:space="preserve">
+    <value>Увеличи</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SaveDocumentAsDescription" xml:space="preserve">
+    <value>Запиши като</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ParagraphAlignmentJustify" xml:space="preserve">
+    <value>Двустранно</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ZoomDescription" xml:space="preserve">
+    <value>Мащабиране</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeColumnCountDescription" xml:space="preserve">
+    <value>Колони</value>
+  </data>
+  <data name="XtraRichEditStringId.UnitAbbreviation_Millimeter" xml:space="preserve">
+    <value> мм</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapWebPage" xml:space="preserve">
+    <value>Уеб страница</value>
+  </data>
+  <data name="XtraRichEditStringId.UnitAbbreviation_Point" xml:space="preserve">
+    <value> пкт</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ZoomOut" xml:space="preserve">
+    <value>Намали</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapAddress2" xml:space="preserve">
+    <value>Адрес 2</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapEMailAddress" xml:space="preserve">
+    <value>Имейл адрес</value>
+  </data>
+  <data name="XtraRichEditStringId.FieldMapAddress1" xml:space="preserve">
+    <value>Адрес 1</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_SaveDocument" xml:space="preserve">
+    <value>Запиши</value>
+  </data>
+  <data name="XtraRichEditStringId.DefaultStyleName_Title" xml:space="preserve">
+    <value>Заглавие</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_Undo" xml:space="preserve">
+    <value>Отмени</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ScrollDownDescription" xml:space="preserve">
+    <value>Превърти надолу</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_RedoDescription" xml:space="preserve">
+    <value>Върни</value>
+  </data>
+  <data name="XtraRichEditStringId.Caption_AlignmentJustify" xml:space="preserve">
+    <value>Двустранно</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ChangeFontName" xml:space="preserve">
+    <value>Шрифт</value>
+  </data>
+  <data name="XtraRichEditStringId.FileFilterDescription_OpenXmlFiles" xml:space="preserve">
+    <value>Документ на Word 2007</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_Paste" xml:space="preserve">
+    <value>Постави</value>
+  </data>
+  <data name="XtraRichEditStringId.MenuCmd_ToggleFontBold" xml:space="preserve">
+    <value>Получер</value>
+  </data>
+</root>

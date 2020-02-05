@@ -1,0 +1,197 @@
+﻿@{
+    ViewBag.Title = "Об'єкти комунальної власності";
+}
+
+@section styles
+{
+@Styles.Render("~/Content/jRange")
+<style type="text/css">
+    #map-canvas
+    {
+    	width: 100%;
+    	height: 500px;
+        position: relative;
+        z-index: 1;
+    }
+    #loading-overlay
+    {
+    	position: absolute;
+        z-index: 2;
+    	left: 0;
+    	top: 0;
+    	right: 0;
+    	bottom: 0;
+    	opacity: 0.6;
+    	background-image: url(@Url.Content("~/Content/images/ajax-loader.gif"));
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: white;
+    	display: none;
+    }
+    .undefined {
+        font-style: italic;
+        color: #AAA;
+    }
+</style>
+}
+
+<div class="container">
+    <div class="row" style="position: relative;">
+        <div id="loading-overlay"></div>
+        <h2 style="margin-bottom: 20px; margin-top: 0;">Об'єкти комунальної власності з вільними приміщеннями для оренди</h2>
+        <div class="col-md-12">
+            <div id="map-canvas"></div>
+        </div>
+        <div class="col-md-12" style="margin-top: 20px;">
+            <div class="well" style="text-align: center;">
+                <form class="form-inline" action="">
+                    <span>Показати об'єкти з вільною площею </span>
+
+                    @*<input type="hidden" class="slider-input" id="freeAreaRange" />*@
+
+                    <div class="input-group">
+                        <input type="number" min="0" max="999999" class="form-control" placeholder="від" id="freeAreaFrom" />
+                        <div class="input-group-addon">кв.м.</div>
+                    </div>
+                    <span> - </span>
+                    <div class="input-group">
+                        <input type="number" min="0" max="999999" class="form-control" placeholder="до" id="freeAreaTo" />
+                        <div class="input-group-addon">кв.м.</div>
+                    </div>
+
+                    <button type="button" class="btn btn-sm btn-primary" id="applyFilter">Показати</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+@Scripts.Render("~/bundles/jRange")
+<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3.exp&language=uk"></script>
+<script type="text/javascript">
+    var map;
+
+    $(function () {
+        var dataObjects;
+
+        function parseNumericParameter(value) {
+            var intValue = parseInt(value);
+            if (isNaN(intValue))
+                return null;
+            return intValue;
+        }
+
+        function applyFilter(filters) {
+            $.each(dataObjects, function (index, element) {
+                var show = true;
+
+                if (show && filters.freeAreaFrom) {
+                    show = (element.Obj.sqr_free >= filters.freeAreaFrom);
+                }
+                if (show && filters.freeAreaTo) {
+                    show = (element.Obj.sqr_free <= filters.freeAreaTo);
+                }
+
+                element.marker.setVisible(show);
+            });
+        }
+
+        $('#applyFilter').click(function () {
+            applyFilter({
+                freeAreaFrom: parseNumericParameter($('#freeAreaFrom').val()),
+                freeAreaTo: parseNumericParameter($('#freeAreaTo').val())
+            });
+        });
+
+        function initialize() {
+            var mapOptions = {
+                zoom: 11,
+                center: new google.maps.LatLng(50.4501, 30.5234)
+            };
+
+            map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+            var infowindow = new google.maps.InfoWindow({
+                maxWidth: 400
+            });
+            google.maps.event.addListener(map, 'click', function () {
+                infowindow.close();
+            });
+
+            function openInfowindow(marker) {
+                infowindow.setContent(marker.infoContentHTML);
+                infowindow.open(map, marker);
+            }
+
+            $('#loading-overlay').show();
+
+            $.get('@Url.Action("Objects")', function (d) {
+                dataObjects = d.Objects;
+                var iconSmall = '@Url.Content("~/Content/images/spotlight-poi-10.png")';
+                var iconMedium = '@Url.Content("~/Content/images/spotlight-poi-16.png")';
+                var minSqrFree, maxSqrFree;
+
+                $.each(d.Objects, function (index, element) {
+                    if (!minSqrFree || minSqrFree > element.Obj.sqr_free)
+                        minSqrFree = element.Obj.sqr_free;
+                    if (!maxSqrFree || maxSqrFree < element.Obj.sqr_free)
+                        maxSqrFree = element.Obj.sqr_free;
+
+                    var icon = null;
+                    if (Math.max(element.Obj.sqr_total, element.Obj.sqr_free) < 100)
+                        icon = iconSmall;
+                    else if (Math.max(element.Obj.sqr_total, element.Obj.sqr_free) < 1000)
+                        icon = iconMedium;
+                    var marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(element.Loc.loc_lat, element.Loc.loc_lng),
+                        map: map,
+                        title: element.Obj.org_short_name,
+                        icon: icon
+                    });
+                    element.marker = marker;
+
+                    element.marker.infoContentHTML = '<h3>' + element.Obj.org_full_name + '</h3>'
+                        + '<div class="col-sm-6">'
+                        + '<dl>'
+                        + '<dt>Район</dt><dd>' + element.Obj.district + '</dd>'
+                        + '<dt>Адреса</dt><dd>' + element.Obj.street_full_name + ' ' + element.Obj.addr_nomer + '</dd>'
+                        + '<dt>Вид об\'єкту</dt><dd>' + element.Obj.object_kind + '</dd>'
+                        + '<dt>Тип об\'єкту</dt><dd>' + element.Obj.object_type + '</dd>'
+                        + '<dt>Стан</dt><dd>' + element.Obj.condition + '</dd>'
+                        + '</dl>'
+                        + '</div>'
+                        + '<div class="col-sm-6">'
+                        + '<dl>'
+                        + '<dt>Поверхи</dt><dd>' + (element.Obj.floors || '<span class="undefined">не визначено</span>') + '</dd>'
+                        + '<dt>Загальна площа (кв. м.)</dt><dd>' + (element.Obj.sqr_total || '<span class="undefined">не визначено</span>') + '</dd>'
+                        + '<dt>Вільна площа (кв. м.)</dt><dd>' + element.Obj.sqr_free + '</dd>'
+                        + '<dt>Група призначення</dt><dd>' + (element.Obj.purpose_group || '<span class="undefined">не визначено</span>') + '</dd>'
+                        + '</dl>'
+                        + '</div>'
+                        ;
+
+                    google.maps.event.addListener(marker, 'click', function () {
+                        openInfowindow(marker);
+                    });
+                });
+
+                $('#loading-overlay').hide();
+
+                $('#freeAreaRange').jRange({
+                    from: minSqrFree,
+                    to: maxSqrFree,
+                    step: 1,
+                    format: '%s кв. м.',
+                    width: 300,
+                    showLabels: true,
+                    isRange: true
+                });
+            });
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+    });
+</script>
+}

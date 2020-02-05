@@ -1,0 +1,235 @@
+﻿<%@ control language="C#" autoeventwireup="true" inherits="RishProjectTableOrgFromEditor, App_Web_rishprojecttableorgfromeditor.ascx.23e82b75" %>
+
+<%@ Register Namespace="MiniProfilerHelpers" TagPrefix="mini" %>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceOrgSearch" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT TOP 20 id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations WHERE
+        (is_deleted IS NULL OR is_deleted = 0) AND (master_org_id IS NULL) AND (zkpo_code LIKE @zkpo) AND (full_name LIKE @fname)"
+    OnSelecting="SqlDataSourceOrgSearch_Selecting">
+    <SelectParameters>
+        <asp:Parameter DbType="String" DefaultValue="%" Name="zkpo" />
+        <asp:Parameter DbType="String" DefaultValue="%" Name="fname" />
+    </SelectParameters>
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictDistricts2" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_1nf_districts2 ORDER BY name"
+    EnableCaching="true">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictOrgStatus" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_1nf_org_status ORDER BY name"
+    EnableCaching="true">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictOrgFormGosp" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_1nf_org_form_gosp ORDER BY name"
+    EnableCaching="true">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictOrgOwnership" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="select id, name from dict_1nf_org_ownership where len(name) > 0 order by name"
+    EnableCaching="true">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictOrgIndustry" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_1nf_org_industry ORDER BY name"
+    EnableCaching="true">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictOrgOccupation" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_1nf_org_occupation ORDER BY name"
+    EnableCaching="true">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictOrgVedomstvo" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_1nf_org_vedomstvo ORDER BY name"
+    EnableCaching="true">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictStreets" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_1nf_streets ORDER BY name"
+    EnableCaching="true">
+</mini:ProfiledSqlDataSource>
+
+<dx:ASPxCallbackPanel ID="CPOrgFromEditor" ClientInstanceName="CPOrgFromEditor" runat="server" OnCallback="CPOrgFromEditor_Callback">
+    <PanelCollection>
+        <dx:panelcontent ID="Panelcontent3" runat="server">
+
+<table border="0" cellspacing="4" cellpadding="0" style="padding: 20px;">
+    <tr>
+        <td>
+            <dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="Код ЄДРПОУ:" Width="85px" />
+        </td>
+        <td>
+            <dx:ASPxTextBox ID="EditOrgFromZKPO" ClientInstanceName="EditOrgFromZKPO" runat="server" Width="100px" />
+        </td>
+        <td>
+            <dx:ASPxLabel ID="ASPxLabel18" runat="server" Text="Назва:" Width="40px" />
+        </td>
+        <td>
+            <dx:ASPxTextBox ID="EditOrgFromName" ClientInstanceName="EditOrgFromName" runat="server" Width="150px" />
+        </td>
+        <td>
+            <dx:ASPxButton ID="ButtonFindOrgFrom" ClientInstanceName="ButtonFindOrgFrom" runat="server"
+                AutoPostBack="False" Text="Знайти">
+                <ClientSideEvents Click="function (s, e) { 
+    ComboOrgFrom.PerformCallback(EditOrgFromZKPO.GetText() + '|' + EditOrgFromName.GetText()); 
+}" />
+            </dx:ASPxButton>
+        </td>
+        <td>
+            <dx:ASPxPopupControl ID="PopupAddOrgFrom" runat="server" ClientInstanceName="PopupAddOrgFrom"
+                HeaderText="Створення Організації, від якої передається Об'єкт" PopupElementID="ButtonAddOrgFrom">
+                <ContentCollection>
+                    <dx:PopupControlContentControl ID="PopupControlContentControl5" runat="server">
+
+                        <table border="0" cellspacing="0" cellpadding="2">
+                            <tr>
+                                <td> <dx:ASPxLabel ID="ASPxLabel3" runat="server" Text="Повна Назва:" Width="85px" /> </td>
+                                <td colspan="3"> <dx:ASPxTextBox ID="TextBoxFullNameFrom" ClientInstanceName="TextBoxFullNameFrom" runat="server" Width="100%" /> </td>
+                            </tr>
+                            <tr>
+                                <td> <dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Код ЄДРПОУ:" Width="85px" /> </td>
+                                <td> <dx:ASPxTextBox ID="TextBoxZkpoCodeFrom" ClientInstanceName="TextBoxZkpoCodeFrom" runat="server" Width="90px" /> </td>
+                                <td> <dx:ASPxLabel ID="ASPxLabel4" runat="server" Text="Коротка Назва" Width="85px" /> </td>
+                                <td> <dx:ASPxTextBox ID="TextBoxShortNameFrom" runat="server" Width="290px" ClientInstanceName="TextBoxShortNameFrom" /> </td>
+                            </tr>
+                        </table>
+    
+                        <br />
+                        <table border="0" cellspacing="0" cellpadding="2">
+                            <tr>
+                                <td> <dx:ASPxLabel ID="ASPxLabel9" runat="server" Text="Статус (фіз./юр. особа)" Width="160px"/> </td>
+                                <td> <dx:ASPxComboBox ID="ComboBoxStatusFrom" runat="server" ClientInstanceName="ComboBoxStatusFrom" 
+                                    ValueType="System.Int32" TextField="name" ValueField="id" Width="400px" 
+                                        IncrementalFilteringMode="StartsWith" 
+                                        DataSourceID="SqlDataSourceDictOrgStatus" /> </td>
+                            </tr>
+                            <tr>
+                                <td> <dx:ASPxLabel ID="ASPxLabel6" runat="server" Text="Форма Фінансування" Width="160px" /> </td>
+                                <td> <dx:ASPxComboBox ID="ComboBoxFormGospFrom" runat="server" ClientInstanceName="ComboBoxFormGospFrom" 
+                                    ValueType="System.Int32" TextField="name" ValueField="id" Width="400px" 
+                                        IncrementalFilteringMode="StartsWith" 
+                                        DataSourceID="SqlDataSourceDictOrgFormGosp" /></td>
+                            </tr>
+                            <tr>
+                                <td> <dx:ASPxLabel ID="ASPxLabel23" runat="server" Text="Форма Власності" Width="160px" /> </td>
+                                <td> <dx:ASPxComboBox ID="ComboBoxFormVlasnFrom" runat="server" ClientInstanceName="ComboBoxFormVlasnFrom" 
+                                    ValueType="System.Int32" TextField="name" ValueField="id" Width="400px" 
+                                        IncrementalFilteringMode="StartsWith" 
+                                        DataSourceID="SqlDataSourceDictOrgOwnership" /></td>
+                            </tr>
+                            <tr>
+                                <td> <dx:ASPxLabel ID="ASPxLabel7" runat="server" Text="Галузь" Width="160px" /> </td>
+                                <td> <dx:ASPxComboBox ID="ComboBoxIndustryFrom" runat="server" ClientInstanceName="ComboBoxIndustryFrom" 
+                                    ValueType="System.Int32" TextField="name" ValueField="id" Width="400px" 
+                                        IncrementalFilteringMode="StartsWith" 
+                                        DataSourceID="SqlDataSourceDictOrgIndustry" /> </td>
+                            </tr>
+                            <tr>
+                                <td> <dx:ASPxLabel ID="ASPxLabel8" runat="server" Text="Вид Діяльності" Width="160px" /> </td>
+                                <td> <dx:ASPxComboBox ID="ComboBoxOccupationFrom" runat="server" ClientInstanceName="ComboBoxOccupationFrom" 
+                                    ValueType="System.Int32" TextField="name" ValueField="id" Width="400px" 
+                                        IncrementalFilteringMode="StartsWith" 
+                                        DataSourceID="SqlDataSourceDictOrgOccupation" /> </td>
+                            </tr>
+                            <tr>
+                                <td> <dx:ASPxLabel ID="ASPxLabel10" runat="server" Text="Орган Управління" Width="160px" /> </td>
+                                <td> <dx:ASPxComboBox ID="ComboBoxVedomstvoFrom" runat="server" ClientInstanceName="ComboBoxVedomstvoFrom" 
+                                    ValueType="System.Int32" TextField="name" ValueField="id" Width="400px" 
+                                        IncrementalFilteringMode="StartsWith" 
+                                        DataSourceID="SqlDataSourceDictOrgVedomstvo" /> </td>
+                            </tr>
+                        </table>
+    
+                        <br />
+                        <table border="0" cellspacing="0" cellpadding="2">
+                            <tr>
+                                <td> <dx:ASPxLabel ID="ASPxLabel11" runat="server" Text="ФІО Директора" Width="95px" /> </td>
+                                <td> <dx:ASPxTextBox ID="TextBoxDirectorFioFrom" runat="server" ClientInstanceName="TextBoxDirectorFioFrom" Width="250px" /> </td>
+                                <td> &nbsp; </td>
+                                <td> <dx:ASPxLabel ID="ASPxLabel12" runat="server" Text="Тел. Директора" Width="100px" /> </td>
+                                <td> <dx:ASPxTextBox ID="TextBoxDirectorPhoneFrom" runat="server" ClientInstanceName="TextBoxDirectorPhoneFrom" Width="100px" /> </td>
+                            </tr>
+                            <tr>
+                                <td> <dx:ASPxLabel ID="ASPxLabel24" runat="server" Text="ФІО Бухгалтера" Width="95px" /> </td>
+                                <td> <dx:ASPxTextBox ID="TextBoxBuhgalterFioFrom" runat="server" ClientInstanceName="TextBoxBuhgalterFioFrom" Width="250px" /> </td>
+                                <td> &nbsp; </td>
+                                <td> <dx:ASPxLabel ID="ASPxLabel25" runat="server" Text="Тел. Бухгалтера" Width="100px" /> </td>
+                                <td> <dx:ASPxTextBox ID="TextBoxBuhgalterPhoneFrom" runat="server" ClientInstanceName="TextBoxBuhgalterPhoneFrom" Width="100px" /> </td>
+                            </tr>
+                        </table>
+    
+                        <br />
+                        <table border="0" cellspacing="0" cellpadding="2">
+                            <tr>
+                                <td> <dx:ASPxLabel ID="ASPxLabel13" runat="server" Text="КВЕД" Width="95px" /> </td>
+                                <td> <dx:ASPxTextBox ID="TextBoxKvedCodeFrom" runat="server" Width="465px" ClientInstanceName="TextBoxKvedCodeFrom" /> </td>
+                            </tr>
+                        </table>
+    
+                        <br />
+                        <table border="0" cellspacing="0" cellpadding="2">
+                            <tr>
+                                <td> <dx:ASPxLabel ID="ASPxLabel15" runat="server" Text="Район" Width="95px" /> </td>
+                                <td> <dx:ASPxComboBox ID="ComboBoxDistrictFrom" runat="server" ClientInstanceName="ComboBoxDistrictFrom" 
+                                    ValueType="System.Int32" TextField="name" ValueField="id" Width="120px" 
+                                        IncrementalFilteringMode="StartsWith" 
+                                        DataSourceID="SqlDataSourceDictDistricts2" /> </td>
+                                <td> <dx:ASPxLabel ID="ASPxLabel19" runat="server" Text="Назва Вулиці" Width="84px" /> </td>
+                                <td colspan="3"> <dx:ASPxComboBox ID="ComboBoxStreetNameFrom" runat="server" ClientInstanceName="ComboBoxStreetNameFrom" 
+                                    ValueType="System.Int32" TextField="name" ValueField="id" Width="100%" IncrementalFilteringMode="StartsWith"
+                                    EnableCallbackMode="True" CallbackPageSize="50" EnableViewState="False" 
+                                        EnableSynchronization="False" FilterMinLength="2" 
+                                        DataSourceID="SqlDataSourceDictStreets" /> </td>
+                            </tr>
+                            <tr>
+                                <td> <dx:ASPxLabel ID="ASPxLabel16" runat="server" Text="Номер Будинку" /> </td>
+                                <td> <dx:ASPxTextBox ID="TextBoxAddrNomerFrom" runat="server" Text="" Width="120px" ClientInstanceName="TextBoxAddrNomerFrom" /> </td>
+                                <td> <dx:ASPxLabel ID="ASPxLabel17" runat="server" Text="Корпус" /> </td>
+                                <td> <dx:ASPxTextBox ID="TextBoxAddrKorpusFrom" runat="server" Text="" Width="80px" ClientInstanceName="TextBoxAddrKorpusFrom" /> </td>
+                                <td> <dx:ASPxLabel ID="ASPxLabel14" runat="server" Text="Пошт. Індекс" Width="85px" /> </td>
+                                <td> <dx:ASPxTextBox ID="TextBoxAddrZipCodeFrom" runat="server" Width="80px" ClientInstanceName="TextBoxAddrZipCodeFrom" /> </td>
+                            </tr>
+                        </table>
+
+                        <br/>
+                        <dx:ASPxLabel ID="LabelOrgFromCreationError" ClientInstanceName="LabelOrgFromCreationError" runat="server" Text="" ClientVisible="false" ForeColor="Red" />
+                        <dx:ASPxButton ID="ButtonDoAddOrgFrom" ClientInstanceName="ButtonDoAddOrgFrom" runat="server" AutoPostBack="False" Text="Створити">
+                            <ClientSideEvents Click="function (s, e) { CPOrgFromEditor.PerformCallback('create:'); }" />
+                        </dx:ASPxButton>
+
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+            </dx:ASPxPopupControl>
+
+            <dx:ASPxButton ID="ButtonAddOrgFrom" ClientInstanceName="ButtonAddOrgFrom" runat="server" AutoPostBack="False" Text="Створити">
+                <ClientSideEvents Click="function (s, e) { TextBoxZkpoCodeFrom.SetText(EditOrgFromZKPO.GetText()); TextBoxFullNameFrom.SetText(EditOrgFromName.GetText()); }" />
+            </dx:ASPxButton>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="6">
+            <dx:ASPxComboBox ID="ComboOrgFrom" ClientInstanceName="ComboOrgFrom" runat="server"
+                Width="100%" DataSourceID="SqlDataSourceOrgSearch" ValueField="id" ValueType="System.Int32"
+                TextField="search_name" EnableSynchronization="True" OnCallback="ComboOrgSearch_Callback">
+            </dx:ASPxComboBox>
+        </td>
+    </tr>
+</table>
+
+        </dx:panelcontent>
+    </PanelCollection>
+
+    <ClientSideEvents EndCallback="function (s, e) { if (!LabelOrgFromCreationError.GetVisible()) { PopupAddOrgFrom.Hide(); }; }" />
+</dx:ASPxCallbackPanel>

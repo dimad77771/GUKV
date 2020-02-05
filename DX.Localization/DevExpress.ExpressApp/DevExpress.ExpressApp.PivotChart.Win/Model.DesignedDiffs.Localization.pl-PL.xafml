@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="ChartWizard" Caption="Kreator wykresu" />
+      <Action Id="PrintChart" Caption="Drukuj wykres" />
+      <Action Id="PrintPreviewPivotGrid" Caption="Drukuj tabelę przestawną" />
+    </Actions>
+  </ActionDesign>
+</Application>

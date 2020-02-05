@@ -1,0 +1,16 @@
+$PBExportHeader$f_wnd_init.srf
+global type f_wnd_init from function_object
+end type
+
+forward prototypes
+global subroutine f_wnd_init (window wnd)
+end prototypes
+
+global subroutine f_wnd_init (window wnd);if not g_dev then
+	wnd.SetToolbarPos(1, 1, 509, false)
+else
+	wnd.SetToolbarPos(1, 1, 309, false)
+end if
+
+end subroutine
+

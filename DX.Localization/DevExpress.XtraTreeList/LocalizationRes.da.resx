@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="TreeListStringId.MenuFooterSum">
+    <value>Sum</value>
+  </data>
+  <data name="TreeListStringId.MenuFooterMin">
+    <value>Min</value>
+  </data>
+  <data name="TreeListStringId.MenuFooterMax">
+    <value>Max</value>
+  </data>
+  <data name="TreeListStringId.MenuFooterCount">
+    <value>Optælling</value>
+  </data>
+  <data name="TreeListStringId.MenuFooterAverage">
+    <value>Gennemsnit</value>
+  </data>
+  <data name="TreeListStringId.MenuFooterNone">
+    <value>Ingen</value>
+  </data>
+  <data name="TreeListStringId.MenuFooterAllNodes">
+    <value>Alle knudepunkter</value>
+  </data>
+  <data name="TreeListStringId.MenuFooterSumFormat">
+    <value>SUM={0:#.##}</value>
+  </data>
+  <data name="TreeListStringId.MenuFooterMinFormat">
+    <value>MIN={0}</value>
+  </data>
+  <data name="TreeListStringId.MenuFooterMaxFormat">
+    <value>MAX={0}</value>
+  </data>
+  <data name="TreeListStringId.MenuFooterCountFormat">
+    <value>{0}</value>
+  </data>
+  <data name="TreeListStringId.MenuFooterAverageFormat">
+    <value>Gennemsnit={0:#.##}</value>
+  </data>
+  <data name="TreeListStringId.MenuColumnSortAscending">
+    <value>Sorter stigende</value>
+  </data>
+  <data name="TreeListStringId.MenuColumnSortDescending">
+    <value>Sorter faldende</value>
+  </data>
+  <data name="TreeListStringId.MenuColumnColumnCustomization">
+    <value>Kolonnetilpasning</value>
+  </data>
+  <data name="TreeListStringId.MenuColumnBestFit">
+    <value>Optimal bredde</value>
+  </data>
+  <data name="TreeListStringId.MenuColumnBestFitAllColumns">
+    <value>Optimal bredde (alle kolonner)</value>
+  </data>
+  <data name="TreeListStringId.ColumnCustomizationText">
+    <value>Tilpasning</value>
+  </data>
+  <data name="TreeListStringId.PrintDesignerHeader">
+    <value>Rapportdesigner</value>
+  </data>
+  <data name="TreeListStringId.InvalidNodeExceptionText">
+    <value>Skal værdien rettes ?</value>
+  </data>
+  <data name="TreeListStringId.MultiSelectMethodNotSupported">
+    <value>Specificeret metode dur ikke når OptionsBehavior.MultiSelect er inaktiv.</value>
+  </data>
+  <data name="TreeListStringId.ColumnNamePrefix ">
+    <value>Kol</value>
+  </data>
+  <data name="TreeListStringId.PrintDesignerDescription">
+    <value>Lav diverse udskriftsindstillinger for denne visning</value>
+  </data>
+</root>

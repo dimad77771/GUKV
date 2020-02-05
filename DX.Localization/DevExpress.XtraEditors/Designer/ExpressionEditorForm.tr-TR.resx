@@ -1,0 +1,1060 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonOK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>397, 385</value>
+  </data>
+  <data name="buttonOK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 24</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="buttonOK.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="buttonOK.Text" xml:space="preserve">
+    <value>Tamam</value>
+  </data>
+  <data name="&gt;&gt;buttonOK.Name" xml:space="preserve">
+    <value>buttonOK</value>
+  </data>
+  <data name="&gt;&gt;buttonOK.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonOK.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="buttonCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>478, 385</value>
+  </data>
+  <data name="buttonCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 24</value>
+  </data>
+  <data name="buttonCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="buttonCancel.Text" xml:space="preserve">
+    <value>İptal</value>
+  </data>
+  <data name="&gt;&gt;buttonCancel.Name" xml:space="preserve">
+    <value>buttonCancel</value>
+  </data>
+  <data name="&gt;&gt;buttonCancel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonCancel.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="expressionEdit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 8</value>
+  </data>
+  <data name="expressionEdit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>550, 116</value>
+  </data>
+  <data name="expressionEdit.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;expressionEdit.Name" xml:space="preserve">
+    <value>expressionEdit</value>
+  </data>
+  <data name="&gt;&gt;expressionEdit.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;expressionEdit.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="labelControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 134</value>
+  </data>
+  <data name="labelControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>2, 24</value>
+  </data>
+  <data name="labelControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;labelControl1.Name" xml:space="preserve">
+    <value>labelControl1</value>
+  </data>
+  <data name="&gt;&gt;labelControl1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelControl1.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="labelControl2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>444, 134</value>
+  </data>
+  <data name="labelControl2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>2, 24</value>
+  </data>
+  <data name="labelControl2.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;labelControl2.Name" xml:space="preserve">
+    <value>labelControl2</value>
+  </data>
+  <data name="&gt;&gt;labelControl2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelControl2.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="labelControl3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 364</value>
+  </data>
+  <data name="labelControl3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>566, 10</value>
+  </data>
+  <data name="labelControl3.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;labelControl3.Name" xml:space="preserve">
+    <value>labelControl3</value>
+  </data>
+  <data name="&gt;&gt;labelControl3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelControl3.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="descriptionControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>380, 168</value>
+  </data>
+  <data name="descriptionControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 194</value>
+  </data>
+  <data name="descriptionControl.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;descriptionControl.Name" xml:space="preserve">
+    <value>descriptionControl</value>
+  </data>
+  <data name="&gt;&gt;descriptionControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;descriptionControl.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="listOfInputTypes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 168</value>
+  </data>
+  <data name="listOfInputTypes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 194</value>
+  </data>
+  <data name="listOfInputTypes.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;listOfInputTypes.Name" xml:space="preserve">
+    <value>listOfInputTypes</value>
+  </data>
+  <data name="&gt;&gt;listOfInputTypes.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;listOfInputTypes.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="listOfInputParameters.Location" type="System.Drawing.Point, System.Drawing">
+    <value>194, 168</value>
+  </data>
+  <data name="listOfInputParameters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 194</value>
+  </data>
+  <data name="listOfInputParameters.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;listOfInputParameters.Name" xml:space="preserve">
+    <value>listOfInputParameters</value>
+  </data>
+  <data name="&gt;&gt;listOfInputParameters.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;listOfInputParameters.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="functionsTypes.EditValue" xml:space="preserve">
+    <value>(Tümü)</value>
+  </data>
+  <data name="functionsTypes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>194, 168</value>
+  </data>
+  <data name="functionsTypes.Properties.AllItems" xml:space="preserve">
+    <value>(Tümü)</value>
+  </data>
+  <data name="functionsTypes.Properties.DateTimeItems" xml:space="preserve">
+    <value>Zaman</value>
+  </data>
+  <data name="functionsTypes.Properties.LogicalItems" xml:space="preserve">
+    <value>Mantıksal</value>
+  </data>
+  <data name="functionsTypes.Properties.MathItems" xml:space="preserve">
+    <value>Matematik</value>
+  </data>
+  <data name="functionsTypes.Properties.StringItems" xml:space="preserve">
+    <value>Sözcük</value>
+  </data>
+  <data name="functionsTypes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 20</value>
+  </data>
+  <data name="&gt;&gt;functionsTypes.Name" xml:space="preserve">
+    <value>functionsTypes</value>
+  </data>
+  <data name="&gt;&gt;functionsTypes.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;functionsTypes.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="labelControl4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>186, 134</value>
+  </data>
+  <data name="labelControl4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>2, 24</value>
+  </data>
+  <data name="labelControl4.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;labelControl4.Name" xml:space="preserve">
+    <value>labelControl4</value>
+  </data>
+  <data name="&gt;&gt;labelControl4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelControl4.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="layoutItemButton15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>197, 132</value>
+  </data>
+  <data name="layoutItemButton15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="layoutItemButton15.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton15.Name" xml:space="preserve">
+    <value>layoutItemButton15</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton15.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton15.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="layoutItemButton12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>455, 132</value>
+  </data>
+  <data name="layoutItemButton12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="layoutItemButton12.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton12.Name" xml:space="preserve">
+    <value>layoutItemButton12</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton12.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton12.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="layoutItemButton13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>487, 132</value>
+  </data>
+  <data name="layoutItemButton13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="layoutItemButton13.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton13.Name" xml:space="preserve">
+    <value>layoutItemButton13</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton13.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton13.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="layoutItemButton14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>519, 132</value>
+  </data>
+  <data name="layoutItemButton14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="layoutItemButton14.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton14.Name" xml:space="preserve">
+    <value>layoutItemButton14</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton14.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton14.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="layoutItemButton11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>406, 132</value>
+  </data>
+  <data name="layoutItemButton11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="layoutItemButton11.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton11.Name" xml:space="preserve">
+    <value>layoutItemButton11</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton11.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton11.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="layoutItemButton10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>374, 132</value>
+  </data>
+  <data name="layoutItemButton10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="layoutItemButton10.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton10.Name" xml:space="preserve">
+    <value>layoutItemButton10</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton10.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton10.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="layoutItemButton9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 132</value>
+  </data>
+  <data name="layoutItemButton9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="layoutItemButton9.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton9.Name" xml:space="preserve">
+    <value>layoutItemButton9</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton9.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton9.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="layoutItemButton8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>310, 132</value>
+  </data>
+  <data name="layoutItemButton8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="layoutItemButton8.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton8.Name" xml:space="preserve">
+    <value>layoutItemButton8</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton8.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton8.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="layoutItemButton7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>278, 132</value>
+  </data>
+  <data name="layoutItemButton7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="layoutItemButton7.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton7.Name" xml:space="preserve">
+    <value>layoutItemButton7</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton7.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton7.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="layoutItemButton6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>246, 132</value>
+  </data>
+  <data name="layoutItemButton6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="layoutItemButton6.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton6.Name" xml:space="preserve">
+    <value>layoutItemButton6</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton6.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton6.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="layoutItemButton5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>148, 132</value>
+  </data>
+  <data name="layoutItemButton5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="layoutItemButton5.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton5.Name" xml:space="preserve">
+    <value>layoutItemButton5</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton5.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="layoutItemButton4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>116, 132</value>
+  </data>
+  <data name="layoutItemButton4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="layoutItemButton4.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton4.Name" xml:space="preserve">
+    <value>layoutItemButton4</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton4.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="layoutItemButton3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>84, 132</value>
+  </data>
+  <data name="layoutItemButton3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="layoutItemButton3.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton3.Name" xml:space="preserve">
+    <value>layoutItemButton3</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton3.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="layoutItemButton2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>52, 132</value>
+  </data>
+  <data name="layoutItemButton2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="layoutItemButton2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton2.Name" xml:space="preserve">
+    <value>layoutItemButton2</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;layoutItemButton2.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="plusItemButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 132</value>
+  </data>
+  <data name="plusItemButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="plusItemButton.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;plusItemButton.Name" xml:space="preserve">
+    <value>plusItemButton</value>
+  </data>
+  <data name="&gt;&gt;plusItemButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;plusItemButton.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>566, 421</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>566, 421</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Formül Alanı Editörü</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>CalculatedFieldExpressionEditorForm</value>
+  </data>
+  <data name="Constants.Text" xml:space="preserve">
+    <value>Sabitler</value>
+  </data>
+  <data name="Fields.Text" xml:space="preserve">
+    <value>Sütunlar</value>
+  </data>
+  <data name="Functions.Text" xml:space="preserve">
+    <value>Fonksiyonlar</value>
+  </data>
+  <data name="Parameters.Text" xml:space="preserve">
+    <value>Parametreler</value>
+  </data>
+  <data name="Operators.Text" xml:space="preserve">
+    <value>İşleçler</value>
+  </data>
+  <data name="Trim.Description" xml:space="preserve">
+    <value>Trim(Sözcük)
+Sözcük başlangıcındaki ve bitişindeki boşlukları kaldırır.</value>
+  </data>
+  <data name="Len.Description" xml:space="preserve">
+    <value>Len(Değer)
+Sözcükteki karakter sayısını belirten tamsayı değeri veya değişkenin saklanması için gereken Byte sayısını döner.</value>
+  </data>
+  <data name="Substring3param.Description" xml:space="preserve">
+    <value>Substring(Sözcük, Başlangıç Pozisyonu, Uzunluk)
+Sözcükten belirtilen başlangıç pozisyonundan başlayacak şekilde belirtilen uzunlukta altsözcük oluşturur.</value>
+  </data>
+  <data name="Iif.Description" xml:space="preserve">
+    <value>Iif(İfade, Doğru Kısım, Yanlış Kısım)
+Verilen Boole ifadesinin değerine göre Doğru Kısım veya Yanlış Kısım döner.</value>
+  </data>
+  <data name="IsNull.Description" xml:space="preserve">
+    <value>IsNull(Değer)
+Belirtilen değer Null ise doğru döner.</value>
+  </data>
+  <data name="Upper.Description" xml:space="preserve">
+    <value>Upper(Sözcük)
+Sözcüğü büyük harfle döner.</value>
+  </data>
+  <data name="Lower.Description" xml:space="preserve">
+    <value>Lower(Sözcük)
+Sözcüğü küçük harfle döner.</value>
+  </data>
+  <data name="Concat.Description" xml:space="preserve">
+    <value>Concat(Sözcük1, ... , SözcükN)
+Şu anki sözcüğün ilave başka sözcülerle birleşimi olan sözcük değerini döner.</value>
+  </data>
+  <data name="Abs.Description" xml:space="preserve">
+    <value>Abs(Değer)
+Verilen sayısal değerin mutlak, pozitif değerini döner.</value>
+  </data>
+  <data name="Acos.Description" xml:space="preserve">
+    <value>Acos(Değer)
+Sayının arccosinus değerini verir (Ondalık olarak cosinus değeri verilmiş sayının radyan karşılığı olan açı).</value>
+  </data>
+  <data name="AddDays.Description" xml:space="preserve">
+    <value>AddDays(Zaman, Gün Sayısı)
+Belirtilmiş zamandan verilen gün sayısı kadar sonrasını döner.</value>
+  </data>
+  <data name="AddHours.Description" xml:space="preserve">
+    <value>AddHours(Zaman, Saat Sayısı)
+Belirtilmiş zamandan verilen saat sayısı kadar sonrasını döner.</value>
+  </data>
+  <data name="AddMilliSeconds.Description" xml:space="preserve">
+    <value>AddMilliSeconds(Zaman, Milisaniye Sayısı)
+Belirtilmiş zamandan verilen milisaniye sayısı kadar sonrasını döner.</value>
+  </data>
+  <data name="AddMinutes.Description" xml:space="preserve">
+    <value>AddMinutes(Zaman, Dakika Sayısı)
+Belirtilmiş zamandan verilen dakika sayısı kadar sonrasını döner.</value>
+  </data>
+  <data name="AddMonths.Description" xml:space="preserve">
+    <value>AddMonths(Zaman, Ay Sayısı)
+Belirtilmiş zamandan verilen ay sayısı kadar sonrasını döner.</value>
+  </data>
+  <data name="AddSeconds.Description" xml:space="preserve">
+    <value>AddSeconds(Zaman, Saniye Sayısı)
+Belirtilmiş zamandan verilen saniye sayısı kadar sonrasını döner.</value>
+  </data>
+  <data name="AddTicks.Description" xml:space="preserve">
+    <value>AddTicks(Zaman, Tık Sayısı)
+Belirtilmiş zamandan verilen tık sayısı kadar sonrasını döner.</value>
+  </data>
+  <data name="AddTimeSpan.Description" xml:space="preserve">
+    <value>AddTimeSpan(Zaman, Süre)
+Belirtilmiş zamandan verilen süre kadar sonrasını döner.</value>
+  </data>
+  <data name="AddYears.Description" xml:space="preserve">
+    <value>AddYears(Zaman, Yıl Sayısı)
+Belirtilmiş zamandan verilen yıl sayısı kadar sonrasını döner.</value>
+  </data>
+  <data name="Ascii.Description" xml:space="preserve">
+    <value>Ascii(Sözcük)
+En sol karakterin ASCII kodunu döner.</value>
+  </data>
+  <data name="Asin.Description" xml:space="preserve">
+    <value>Asin(Değer)
+Sayının arcsinus değerini verir (Ondalık olarak sinus değeri verilmiş sayının radyan karşılığı olan açı).</value>
+  </data>
+  <data name="Atn.Description" xml:space="preserve">
+    <value>Atn(Değer)
+Sayının arctanjant değerini verir (Ondalık olarak tanjant değeri verilmiş sayının radyan karşılığı olan açı).</value>
+  </data>
+  <data name="Atn2.Description" xml:space="preserve">
+    <value>Atn2(Değer1, Değer2)
+Verilen sayıların bölümleri tanjant değeri olan açıyo döner.</value>
+  </data>
+  <data name="BigMul.Description" xml:space="preserve">
+    <value>BigMul(Değer1, Değer2)
+Verilen iki 32-bit sayının çarpımının karşılığı olan Int64 değerini döner.</value>
+  </data>
+  <data name="Ceiling.Description" xml:space="preserve">
+    <value>Ceiling(Değer)
+Verilen sayısal ifadeden büyük veya eşit en küçük tam sayıyı döner.</value>
+  </data>
+  <data name="Char.Description" xml:space="preserve">
+    <value>Char(Sayı)
+Verilen ASCII kodunun karakter karşılığını döner.</value>
+  </data>
+  <data name="CharIndex.Description" xml:space="preserve">
+    <value>CharIndex(Sözcük1, Sözcük2)
+Sıfırıncı karakterden başlıyarak sözcüğün sonuna kadar, Sözcük1'in Sözcük2 içindeki pozisyonunu döner.</value>
+  </data>
+  <data name="CharIndex3Param.Description" xml:space="preserve">
+    <value>CharIndex(Sözcük1, Sözcük2, Başlangıç Pozisyonu)
+Başlangıç pozisyonundan başlıyarak sözcüğün sonuna kadar, Sözcük1'in Sözcük2 içindeki pozisyonunu döner.</value>
+  </data>
+  <data name="Cos.Description" xml:space="preserve">
+    <value>Cos(Değer)
+Radyan olarak tanımlanmış açının cosinus değerini döner.</value>
+  </data>
+  <data name="Cosh.Description" xml:space="preserve">
+    <value>Cosh(Değer)
+Radyan olarak tanımlanmış açının hiperbolik cosinus değerini döner.</value>
+  </data>
+  <data name="DateDiffDay.Description" xml:space="preserve">
+    <value>DateDiffDay(Başlangıç Zamanı, Bitiş Zamanı)
+Null olmayan iki zaman arasındaki gün sınırlarının sayısını döner.</value>
+  </data>
+  <data name="DateDiffHour.Description" xml:space="preserve">
+    <value>DateDiffHour(Başlangıç Zamanı, Bitiş Zamanı)
+Null olmayan iki zaman arasındaki saat sınırlarının sayısını döner.</value>
+  </data>
+  <data name="DateDiffMilliSecond.Description" xml:space="preserve">
+    <value>DateDiffMilliSecond(Başlangıç Zamanı, Bitiş Zamanı)
+Null olmayan iki zaman arasındaki milisaniye sınırlarının sayısını döner.</value>
+  </data>
+  <data name="DateDiffMinute.Description" xml:space="preserve">
+    <value>DateDiffMinute(Başlangıç Zamanı, Bitiş Zamanı)
+Null olmayan iki zaman arasındaki dakika sınırlarının sayısını döner.</value>
+  </data>
+  <data name="DateDiffMonth.Description" xml:space="preserve">
+    <value>DateDiffMonth(Başlangıç Zamanı, Bitiş Zamanı)
+Null olmayan iki zaman arasındaki ay sınırlarının sayısını döner.</value>
+  </data>
+  <data name="DateDiffSecond.Description" xml:space="preserve">
+    <value>DateDiffSecond(Başlangıç Zamanı, Bitiş Zamanı)
+Null olmayan iki zaman arasındaki saniye sınırlarının sayısını döner.</value>
+  </data>
+  <data name="DateDiffTick.Description" xml:space="preserve">
+    <value>DateDiffTick(Başlangıç Zamanı, Bitiş Zamanı)
+Null olmayan iki zaman arasındaki tık sınırlarının sayısını döner.</value>
+  </data>
+  <data name="DateDiffYear.Description" xml:space="preserve">
+    <value>DateDiffYear(Başlangıç Zamanı, Bitiş Zamanı)
+Null olmayan iki zaman arasındaki yıl sınırlarının sayısını döner.</value>
+  </data>
+  <data name="Exp.Description" xml:space="preserve">
+    <value>Exp(Değer)
+Verilen ondalık ifadenin üstel değerini döner.</value>
+  </data>
+  <data name="Floor.Description" xml:space="preserve">
+    <value>Floor(Değer)
+Verilen sayısal ifadeden küçük veya eşit en büyük tam sayıyı döner.</value>
+  </data>
+  <data name="GetDate.Description" xml:space="preserve">
+    <value>GetDate(Zaman)
+Verilen zamanın tarih kısmını döner.</value>
+  </data>
+  <data name="GetDay.Description" xml:space="preserve">
+    <value>GetDay(Zaman)
+Verilen zamanın gün kısmını döner.</value>
+  </data>
+  <data name="GetDayOfWeek.Description" xml:space="preserve">
+    <value>GetDayOfWeek(Zaman)
+Verilen zamanın hafta günü kısmını döner.</value>
+  </data>
+  <data name="GetDayOfYear.Description" xml:space="preserve">
+    <value>GetDayOfYear(Zaman)
+Verilen zamanın yıl günü kısmını döner.</value>
+  </data>
+  <data name="GetHour.Description" xml:space="preserve">
+    <value>GetHour(Zaman)
+Verilen zamanın saat kısmını döner.</value>
+  </data>
+  <data name="GetMilliSecond.Description" xml:space="preserve">
+    <value>GetMilliSecond(Zaman)
+Verilen zamanın milisaniye kısmını döner.</value>
+  </data>
+  <data name="GetMinute.Description" xml:space="preserve">
+    <value>GetMinute(Zaman)
+Verilen zamanın dakika kısmını döner.</value>
+  </data>
+  <data name="GetMonth.Description" xml:space="preserve">
+    <value>GetMonth(Zaman)
+Verilen zamanın ay kısmını döner.</value>
+  </data>
+  <data name="GetSecond.Description" xml:space="preserve">
+    <value>GetSecond(Zaman)
+Verilen zamanın saniye kısmını döner.</value>
+  </data>
+  <data name="GetTimeOfDay.Description" xml:space="preserve">
+    <value>GetTimeOfDay(Zaman)
+Verilen zamanın gün tarihi kısmını tık bazında döner.</value>
+  </data>
+  <data name="GetYear.Description" xml:space="preserve">
+    <value>GetYear(Zaman)
+Verilen zamanın yıl kısmını döner.</value>
+  </data>
+  <data name="IsNullOrEmpty.Description" xml:space="preserve">
+    <value>IsNullOrEmpty(Sözcük)
+Eğer verilen sözcük Null veya boş sözcük ise doğru döner, değilse yanlış döner.</value>
+  </data>
+  <data name="Log.Description" xml:space="preserve">
+    <value>Log(Değer)
+Verilen sayının doğal logaritma değerini döner.</value>
+  </data>
+  <data name="Log2Param.Description" xml:space="preserve">
+    <value>Log(Değer, Taban)
+Verilen sayının verilen tabandaki logaritma değerini döner.</value>
+  </data>
+  <data name="Log10.Description" xml:space="preserve">
+    <value>Log10(Değer)
+Verilen sayının onluk tabanda logaritma değerini döner.</value>
+  </data>
+  <data name="Now.Description" xml:space="preserve">
+    <value>Now()
+Şu anki sistem zamanını döner.</value>
+  </data>
+  <data name="PadLeft.Description" xml:space="preserve">
+    <value>PadLeft(Sözcük, Uzunluk)
+Belirtilen sözcükte karakterleri sözcüğün soluna belirtilen sayıda boşluk bırakarak sola hizalar.</value>
+  </data>
+  <data name="PadLeft3Param.Description" xml:space="preserve">
+    <value>PadLeft(Sözcük, Uzunluk, Karakter)
+Belirtilen sözcükte karakterleri sözcüğün soluna belirtilen sayıda karakter koyarak sola hizalar.</value>
+  </data>
+  <data name="PadRight.Description" xml:space="preserve">
+    <value>PadRight(Sözcük, Uzunluk)
+Belirtilen sözcükte karakterleri sözcüğün sağına belirtilen sayıda boşluk bırakarak sağa hizalar.</value>
+  </data>
+  <data name="PadRight3Param.Description" xml:space="preserve">
+    <value>PadRight(Sözcük, Uzunluk, Karakter)
+Belirtilen sözcükte karakterleri sözcüğün sağına belirtilen sayıda karakter koyarak sağa hizalar.</value>
+  </data>
+  <data name="Power.Description" xml:space="preserve">
+    <value>Power(Değer, Kuvvet)
+Verilen sayının belirtilen derecede kuvvetini alır.</value>
+  </data>
+  <data name="Remove.Description" xml:space="preserve">
+    <value>Remove(Sözcük, Başlangıç Pozisyonu, Uzunluk)
+Verilen sözcükten belirtilmiş başlangıç pozisyonundan başlayarak belirtilmiş sayıda karakteri siler.</value>
+  </data>
+  <data name="Replace.Description" xml:space="preserve">
+    <value>Replace(Sözcük1, AltSözcük2, Sözcük3)
+Sözcük1 içindeki AltSözcük2'yi Sözcük3 ile değiştirerek Sözcük1'in kopyasını döner.</value>
+  </data>
+  <data name="Reverse.Description" xml:space="preserve">
+    <value>Reverse(Sözcük)
+Sözcük içindeki eleman sıralamasını tersine çevirir.</value>
+  </data>
+  <data name="Rnd.Description" xml:space="preserve">
+    <value>Rnd()
+1'den küçük, 0'dan büyük veya eşit rastgele sayı döner.</value>
+  </data>
+  <data name="Round.Description" xml:space="preserve">
+    <value>Round(Değer)
+Verilen değeri en yakın tamsayıya yuvarlar.</value>
+  </data>
+  <data name="Sign.Description" xml:space="preserve">
+    <value>Sign(Değer)
+Verilen ifadenin pozitif (+1), sıfır (0), veya negatif (-1) işaretini döner.</value>
+  </data>
+  <data name="Sin.Description" xml:space="preserve">
+    <value>Sin(Değer)
+Radyan olarak tanımlanmış açının sinus değerini döner.</value>
+  </data>
+  <data name="Sinh.Description" xml:space="preserve">
+    <value>Sinh(Değer)
+Radyan olarak tanımlanmış açının hiperbolik sinus değerini döner.</value>
+  </data>
+  <data name="Sqr.Description" xml:space="preserve">
+    <value>Sqr(Değer)
+Verilen sayının kare kökünü döner.</value>
+  </data>
+  <data name="Insert.Description" xml:space="preserve">
+    <value>Insert(Sözcük1, Başlangıç Pozisyonu, Sözcük2)
+Sözcük2'yi Sözcük1'in belirtilen Başlangıç Pozisyonu'na yerleştirir.</value>
+  </data>
+  <data name="Tan.Description" xml:space="preserve">
+    <value>Tan(Değer)
+Radyan olarak tanımlanmış açının tanjant değerini döner.</value>
+  </data>
+  <data name="Tanh.Description" xml:space="preserve">
+    <value>Tanh(Değer)
+Radyan olarak tanımlanmış açının hiperbolik tanjant değerini döner.</value>
+  </data>
+  <data name="Today.Description" xml:space="preserve">
+    <value>Today()
+Bugünün gece yarısı zamanını döner.</value>
+  </data>
+  <data name="ToStr.Description" xml:space="preserve">
+    <value>ToStr(Değer)
+Nesnenin sözcük olarak sunuluşunu döner.</value>
+  </data>
+  <data name="UtcNow.Description" xml:space="preserve">
+    <value>UtcNow()
+Şu anki tarihi UTC şeklinde döner.</value>
+  </data>
+  <data name="Fields Description Prefix" xml:space="preserve">
+    <value>Bu sütunun tipi:</value>
+  </data>
+  <data name="GridFields Description Prefix" xml:space="preserve">
+    <value>Sütun bilgisi
+Başlık: {1}
+Bu sütunun tipi: {2}</value>
+  </data>
+  <data name="Parameters Description Prefix" xml:space="preserve">
+    <value>Bu parametrenin tipi:</value>
+  </data>
+  <data name="Plus.Description" xml:space="preserve">
+    <value>İki sayısal ifadeyi toplar veya iki sözcüğü birleştirir.</value>
+  </data>
+  <data name="Minus.Description" xml:space="preserve">
+    <value>İki sayı arasındaki farkı döner.</value>
+  </data>
+  <data name="Multiply.Description" xml:space="preserve">
+    <value>İki sayının çarpımını döner.</value>
+  </data>
+  <data name="Divide.Description" xml:space="preserve">
+    <value>İlk girdiyi ikincisine böler.</value>
+  </data>
+  <data name="Modulo.Description" xml:space="preserve">
+    <value>Bir sayının başka bir sayıya bölümünden oluşan kalanı (modu) döner.</value>
+  </data>
+  <data name="BitwiseOr.Description" xml:space="preserve">
+    <value>İlk girdinin her bir bitini ikinci girdinin karşılık gelen bitleriyle kıyaslar. Eğer bitlerden biri 1 ise karşılık gelen sonuç bit 1 olur, değilse karşılık gelen sonuç bit 0 olur.</value>
+  </data>
+  <data name="BitwiseAnd.Description" xml:space="preserve">
+    <value>İki tamsayı arasında bit bazlı mantıksal VE operasyonu uygular.</value>
+  </data>
+  <data name="BitwiseXor.Description" xml:space="preserve">
+    <value>Verilen iki Boole ifadesine matıksal hariçleme operasyonu veya iki sayılal ifadeye bit bazlı hariçleme uygular.</value>
+  </data>
+  <data name="Equal.Description" xml:space="preserve">
+    <value>Eğer girdiler eşit değerlere sahipse doğru döner, değilse yanlış döner.</value>
+  </data>
+  <data name="NotEqual.Description" xml:space="preserve">
+    <value>Eğer girdiler eşit değerlere sahip değilse doğru döner, sahipse yanlış döner.</value>
+  </data>
+  <data name="Less.Description" xml:space="preserve">
+    <value>Küçüktür operasyonu. İfadeleri karşılaştırmak için kullanılır.</value>
+  </data>
+  <data name="LessOrEqual.Description" xml:space="preserve">
+    <value>Küçüktür Veya Eşittir operasyonu. İfadeleri karşılaştırmak için kullanılır.</value>
+  </data>
+  <data name="GreaterOrEqual.Description" xml:space="preserve">
+    <value>Büyüktür Veya Eşittir operasyonu. İfadeleri karşılaştırmak için kullanılır.</value>
+  </data>
+  <data name="Greater.Description" xml:space="preserve">
+    <value>Büyüktür operasyonu. İfadeleri karşılaştırmak için kullanılır.</value>
+  </data>
+  <data name="In.Description" xml:space="preserve">
+    <value>In (,,,)
+Özelliğin nesne içindeki varlığını test eder.</value>
+  </data>
+  <data name="Like.Description" xml:space="preserve">
+    <value>Sözcüğü verilen şablonla karşılaştırır. Eğer sözcük şablona uyarsa doğru döner, uymazsa yanlış döner. Eğer sözcük ve şablon boş ise doğru döner.</value>
+  </data>
+  <data name="Between.Description" xml:space="preserve">
+    <value>Between (,)
+Test amaçlı bir aralık belirler.Eğer değer ilk girdiden büyük veya ilk girdiye eşitse ve ikinci girdiden küçük veya ikinci girdiye eşitse doğru döner.</value>
+  </data>
+  <data name="And.Description" xml:space="preserve">
+    <value>İki ifadenin mantıksal birleşimini döner.</value>
+  </data>
+  <data name="Or.Description" xml:space="preserve">
+    <value>İki ifadenin mantıksal ayrımını döner.</value>
+  </data>
+  <data name="Not.Description" xml:space="preserve">
+    <value>Bir ifadeye mantıksal negasyon uygular.</value>
+  </data>
+  <data name="True.Description" xml:space="preserve">
+    <value>Boole Doğru değeri sunar.</value>
+  </data>
+  <data name="False.Description" xml:space="preserve">
+    <value>Boole Yanlış değeri sunar.</value>
+  </data>
+  <data name="Null.Description" xml:space="preserve">
+    <value>Null referansı sunar.</value>
+  </data>
+  <data name="Substring2param.Description" xml:space="preserve">
+    <value>Substring(Sözcük, Başlangıç Pozisyonu)
+Sözcükten belirtilen başlangıç pozisyonundan başlayacak şekilde altsözcük oluşturur.</value>
+  </data>
+  <data name="Condition.Text" xml:space="preserve">
+    <value>Koşul editörü</value>
+  </data>
+  <data name="Expression.Text" xml:space="preserve">
+    <value>Formül Alanı Editörü</value>
+  </data>
+  <data name="Variables.Text" xml:space="preserve">
+    <value>Değişkenler</value>
+  </data>
+  <data name="RowCount.Description" xml:space="preserve">
+    <value>Veri kaynağındaki toplam veri satırı sayısını döner.</value>
+  </data>
+  <data name="CurrentRowIndex.Description" xml:space="preserve">
+    <value>Veri kaynağındaki şu anki veri satırının indisini döner. Not: Bu indis sıfır-tabanlıdır.</value>
+  </data>
+  <data name="UnboundColumn.Caption" xml:space="preserve">
+    <value>Formül Alanı Editörü</value>
+  </data>
+  <data name="Condition.Caption" xml:space="preserve">
+    <value>Koşul ifadesi editörü</value>
+  </data>
+  <data name="Max.Description" xml:space="preserve">
+    <value>Max(Değer1, Değer2)
+Verilen sayıların en büyük değerini döner.</value>
+  </data>
+  <data name="Min.Description" xml:space="preserve">
+    <value>Min(Değer1, Değer2)
+Verilen sayıların en küçük değerini döner.</value>
+  </data>
+</root>

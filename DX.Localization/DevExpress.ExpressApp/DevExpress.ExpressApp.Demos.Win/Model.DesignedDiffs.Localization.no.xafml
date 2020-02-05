@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="CategorizeImages" Caption="Kategoriser bilder" />
+      <Action Id="FillCategories" Caption="Fyll kategorier" />
+      <Action Id="ImagePreviewListMode" Caption="Bilde forhåndsvisning liste-modus" />
+      <Action Id="OpenCategory" Caption="Åpne" />
+    </Actions>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="DevExpress.ExpressApp.Demos.Win.AssemblyImageSourceBrowser" Caption="Samling bilde kilde fremviser" />
+    <Class Name="DevExpress.ExpressApp.Demos.Win.CategoryString" Caption="Kategori">
+      <OwnMembers>
+        <Member Name="Images" Caption="Bilder" />
+        <Member Name="Name" Caption="navn" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Demos.Win.FileImageSourceBrowser" Caption="Fil bilde kilde fremviser" />
+    <Class Name="DevExpress.ExpressApp.Demos.Win.ImageBrowserCategory" Caption="Bilde fremviser kategori">
+      <OwnMembers>
+        <Member Name="ChildCategories" Caption="Barn kategorier" />
+        <Member Name="Name" Caption="Navn" />
+        <Member Name="Owner" Caption="Eier" />
+        <Member Name="ParentCategory" Caption="Overordnet kategori" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Demos.Win.ImageNode" Caption="Bilde-node">
+      <OwnMembers>
+        <Member Name="Image" Caption="Bilde" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Demos.Win.ImagePreviewObject" Caption="Bilde">
+      <OwnMembers>
+        <Member Name="Categories" Caption="Kategorier" />
+        <Member Name="Image12x12" Caption="Liten" />
+        <Member Name="Image16x16" Caption="Opprinnelig" />
+        <Member Name="Image32x32" Caption="Stort" />
+        <Member Name="Image48x48" Caption="Skjermbilde" />
+        <Member Name="ImageName" Caption="Navn på bildet" />
+        <Member Name="OriginalImage" Caption="Opprinnelig bilde" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Demos.Win.ImagesGroupNode" Caption="Bilder Gruppenode">
+      <OwnMembers>
+        <Member Name="Images" Caption="Bilder" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Demos.Win.ImageSourceBrowserBase" Caption="Bilde kilde fremviser">
+      <OwnMembers>
+        <Member Name="Categories" Caption="Kategorier" />
+        <Member Name="ImageCategories" Caption="Bildekategorier" />
+        <Member Name="ImageSourceName" Caption="Bilde kildenavn" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <Views>
+    <DetailView Id="ImagePreviewObject_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="ImagePreviewObject" Caption="Bilde forhåndsvisning objekt" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

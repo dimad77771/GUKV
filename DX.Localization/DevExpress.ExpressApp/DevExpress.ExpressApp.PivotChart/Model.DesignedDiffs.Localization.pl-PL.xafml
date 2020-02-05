@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="BindAnalysisData" Caption="Powiąż analizowane dane" />
+      <Action Id="UnbindAnalysisData" Caption="Rozwiąż analizowane dane" />
+    </Actions>
+  </ActionDesign>
+  <NavigationItems RelatedAnalysisGroupCaption="" />
+</Application>

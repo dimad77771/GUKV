@@ -1,0 +1,119 @@
+$PBExportHeader$m_main.srm
+forward
+global type m_main from menu
+end type
+type m_m_task_list from menu within m_main
+end type
+type m_m_task_payment from menu within m_m_task_list
+end type
+type m_m_task_list from menu within m_main
+m_m_task_payment m_m_task_payment
+end type
+type m_exit from menu within m_main
+end type
+type m_exit from menu within m_main
+end type
+type m_help from menu within m_main
+end type
+type m_help from menu within m_main
+end type
+end forward
+
+global type m_main from menu
+m_m_task_list m_m_task_list
+m_exit m_exit
+m_help m_help
+end type
+global m_main m_main
+
+forward prototypes
+public subroutine organ_open (long otyp)
+end prototypes
+
+public subroutine organ_open (long otyp);s_parm parm
+window wnd
+
+parm.p1 = "organ"
+parm.p2 = otyp
+opensheetwithparm(wnd, parm, "w_obj_list", w_main, 0, layered!)
+end subroutine
+
+on m_main.create
+m_main=this
+this.m_m_task_list=create m_m_task_list
+this.m_exit=create m_exit
+this.m_help=create m_help
+this.Item[]={this.m_m_task_list, &
+this.m_exit, &
+this.m_help}
+end on
+
+on m_main.destroy
+destroy(this.m_m_task_list)
+destroy(this.m_exit)
+destroy(this.m_help)
+end on
+
+
+type m_m_task_list from menu within m_main
+m_m_task_payment m_m_task_payment
+end type
+
+on m_m_task_list.create
+this.Text="Задачи"
+this.m_m_task_payment=create m_m_task_payment
+this.Item[]={this.m_m_task_payment}
+end on
+
+on m_m_task_list.destroy
+destroy(this.m_m_task_payment)
+end on
+
+
+type m_m_task_payment from menu within m_m_task_list
+end type
+
+on m_m_task_payment.create
+this.Text="Платежи"
+this.ToolBarItemName="C:\_AN\pictures\person_s.bmp"
+this.ToolBarItemText="Лица"
+end on
+
+event clicked;s_parm parm
+window wnd
+
+parm.p1 = ""
+opensheetwithparm(wnd, parm, "w_payment_list", w_main, 0, layered!)
+end event
+
+type m_exit from menu within m_main
+end type
+
+on m_exit.create
+this.Text="Выход"
+this.ToolBarItemName="C:\_AN\Pictures\stop.bmp"
+this.ToolBarItemText="Выход"
+this.ToolBarItemSpace=2
+end on
+
+on m_exit.destroy
+end on
+
+event clicked;//close(parentwindow)
+halt
+end event
+
+
+type m_help from menu within m_main
+end type
+
+on m_help.create
+this.Text="Помощь"
+end on
+
+on m_help.destroy
+end on
+
+event clicked;f_help()
+end event
+

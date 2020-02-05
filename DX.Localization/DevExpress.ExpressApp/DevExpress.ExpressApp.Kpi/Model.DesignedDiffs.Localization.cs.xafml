@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="RefreshKpi" Caption="Obnovit KPI" />
+      <Action Id="ShowChart" Caption="Ukázat graf" />
+    </Actions>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="DevExpress.ExpressApp.Kpi.BaseKpiObject" Caption="Objekt Kpi " />
+    <Class Name="DevExpress.ExpressApp.Kpi.IDateRange" Caption="IRozsah dat">
+      <OwnMembers>
+        <Member Name="Caption" Caption="Titulek" />
+        <Member Name="EndPoint" Caption="Koncový bod" />
+        <Member Name="Name" Caption="Jméno" />
+        <Member Name="StartPoint" Caption="Počáteční bod" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Kpi.KpiDefinition" Caption="Definice">
+      <OwnMembers>
+        <Member Name="Active" Caption="Aktivní " />
+        <Member Name="Compare" Caption="Porovnat" />
+        <Member Name="Criteria" Caption="Kritéria" />
+        <Member Name="Current" Caption="Aktuální" />
+        <Member Name="Direction" Caption="Směr" />
+        <Member Name="EnableCustomizeRepresentation" Caption="Povolit úpravu znázornění" />
+        <Member Name="Expression" Caption="Výraz" />
+        <Member Name="GreenZone" Caption="Zelená zóna" />
+        <Member Name="MeasurementFrequency" Caption="Frekvence měření" />
+        <Member Name="Name" Caption="Jméno" />
+        <Member Name="Objects" Caption="Objekty" />
+        <Member Name="Period" Caption="Limit" />
+        <Member Name="Range" Caption="Rozsah" />
+        <Member Name="RangeToCompare" Caption="Rozsah pro porovnání" />
+        <Member Name="RedZone" Caption="Červená zóna" />
+        <Member Name="SuppressedSeries" Caption="Potlačené série" />
+        <Member Name="TargetObjectType" Caption="Typ cílového objektu" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Kpi.KpiHistoryItem" Caption="Položka historie Kpi">
+      <OwnMembers>
+        <Member Name="RangeEnd" Caption="Konec rozsahu" />
+        <Member Name="RangeStart" Caption="Začátek rozsahu" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Kpi.KpiInstance" Caption="Instance Kpi ">
+      <OwnMembers>
+        <Member Name="Change" Caption="Změna" />
+        <Member Name="ChartDataSource" Caption="Zdroj dat pro graf" />
+        <Member Name="Current" Caption="Aktuální" />
+        <Member Name="GaugeDataSource" Caption="Zdroj měřených dat" />
+        <Member Name="HistoryItems" Caption="Položky historie" />
+        <Member Name="KpiName" Caption="Název Kpi " />
+        <Member Name="Period" Caption="Období" />
+        <Member Name="Previous" Caption="Předchozí " />
+        <Member Name="Scorecards" Caption="Scorecardy" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Kpi.KpiScorecard">
+      <OwnMembers>
+        <Member Name="Indicators" Caption="Ukazatelé" />
+        <Member Name="Name" Caption="Jméno" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <Localization>
+    <LocalizationGroup Name="DateRanges">
+      <LocalizationItem Name="DayMonthAgo" Value="Před dnem/měsícem" />
+      <LocalizationItem Name="DayWeekAgo" Value="Před dnem/týdnem" />
+      <LocalizationItem Name="DayYearAgo" Value="Před dnem/rokem" />
+      <LocalizationItem Name="LastMonthToDate" Value="Poslední měsíc před aktuálním" />
+      <LocalizationItem Name="LastTenDays" Value="Posledních deset dní" />
+      <LocalizationItem Name="LastThirtyDays" Value="Posledních třicet dní" />
+      <LocalizationItem Name="LastThreeDays" Value="Poslední tři dny" />
+      <LocalizationItem Name="LastWeekToDate" Value="Poslední týden před aktuálním" />
+      <LocalizationItem Name="LastYearToDate" Value="Poslední rok před aktuálním" />
+      <LocalizationItem Name="Now" Value="Nyní" />
+      <LocalizationItem Name="ThisMonthToDate" Value="Tento měsíc" />
+      <LocalizationItem Name="ThisWeekToDate" Value="Tento týden" />
+      <LocalizationItem Name="ThisYearToDate" Value="Tento rok" />
+      <LocalizationItem Name="Today" Value="Dnes" />
+      <LocalizationItem Name="Yesterday" Value="Včera" />
+    </LocalizationGroup>
+    <LocalizationGroup Name="Enums">
+      <LocalizationGroup Name="DevExpress.ExpressApp.Editors.Trend">
+        <LocalizationItem Name="Better" Value="Lepší" />
+        <LocalizationItem Name="NoChange" Value="Beze změny" />
+        <LocalizationItem Name="Worse" Value="Horší" />
+      </LocalizationGroup>
+      <LocalizationGroup Name="DevExpress.ExpressApp.Kpi.Direction" Value="Směr">
+        <LocalizationItem Name="HighIsBetter" Value="Vysoký je lepší" />
+        <LocalizationItem Name="LowIsBetter" Value="Nízký je lepší" />
+      </LocalizationGroup>
+      <LocalizationGroup Name="DevExpress.ExpressApp.Kpi.TimeIntervalType" Value="Typ časového intervalu">
+        <LocalizationItem Name="Day" Value="Den " />
+        <LocalizationItem Name="Hour" Value="Hodina" />
+        <LocalizationItem Name="Month" Value="Měsíc" />
+        <LocalizationItem Name="Week" Value="Týden" />
+        <LocalizationItem Name="Year" Value="Rok" />
+      </LocalizationGroup>
+    </LocalizationGroup>
+  </Localization>
+  <Views>
+    <DetailView Id="KpiDefinition_DetailView">
+      <Layout>
+        <TabbedGroup Id="Tabs">
+          <LayoutGroup Id="Definition" Caption="Definice">
+            <LayoutGroup Id="SimpleEditors">
+              <LayoutGroup Id="SizeableEditors" Caption="Kritéria" />
+            </LayoutGroup>
+            <LayoutGroup Id="Options">
+              <TabbedGroup Id="OptionsTabs">
+                <LayoutGroup Id="MeasurementOptions" Caption="Možnosti měření" />
+                <LayoutGroup Id="Zones" Caption="Zóny" />
+              </TabbedGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="Preview" Caption="Náhled">
+            <LayoutGroup Id="Objects_Group" Caption="Objekty" />
+          </LayoutGroup>
+        </TabbedGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

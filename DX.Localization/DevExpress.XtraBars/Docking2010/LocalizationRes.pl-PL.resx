@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DocumentManagerStringId.CommandClose" xml:space="preserve">
+    <value>Zamknij</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandVerticalOrientation" xml:space="preserve">
+    <value>Pionowo</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandNewVerticalDocumentGroup" xml:space="preserve">
+    <value>Nowa pionowa zakładka grupy</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandTileVertical" xml:space="preserve">
+    <value>Pokaż okna obok siebie</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandRestoreAll" xml:space="preserve">
+    <value>Przywróć okna</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandMoveToPrevDocumentGroup" xml:space="preserve">
+    <value>Przenieś na wcześniejszą zakładkę grupy</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandHorizontalOrientation" xml:space="preserve">
+    <value>Poziomy</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandCloseAllButThis" xml:space="preserve">
+    <value>Zamknij wszystkie poza tym</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandNewHorizontalDocumentGroup" xml:space="preserve">
+    <value>Nowa pozioma zakładka grupy</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandArrangeIcons" xml:space="preserve">
+    <value>Rozmieść ikony</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandNewDocumentGroup" xml:space="preserve">
+    <value>Nowa zakładka grupy</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandFloat" xml:space="preserve">
+    <value>Pływające okna</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandMinimizeAll" xml:space="preserve">
+    <value>Minimalizuj okna</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandCascade" xml:space="preserve">
+    <value>Okna kaskadowo</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandMoveToNextDocumentGroup" xml:space="preserve">
+    <value>Przenieś na następną zakładkę grupy</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandTileHorizontal" xml:space="preserve">
+    <value>Pokaż okna zgrupowane</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandMaximize" xml:space="preserve">
+    <value>Maksymalizuj</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandRestore" xml:space="preserve">
+    <value>Przywróć</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandCloseAll" xml:space="preserve">
+    <value>Zamknij wszystkie dokumenty</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandBack" xml:space="preserve">
+    <value>Cofnij</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandActivate" xml:space="preserve">
+    <value>Aktywuj</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandBackDescription" xml:space="preserve">
+    <value>Nawiguj wstecz</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandDock" xml:space="preserve">
+    <value>Dock as Tabbed Document</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandExit" xml:space="preserve">
+    <value>Zamknij</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandFlip" xml:space="preserve">
+    <value>Przerzuć</value>
+  </data>
+  <data name="DocumentManagerStringId.OpenedWindowsDialogNameColumnCaption" xml:space="preserve">
+    <value>Nazwa</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandFlipDescription" xml:space="preserve">
+    <value>Przerzuć dokumenty</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandOverviewDescription" xml:space="preserve">
+    <value>Pokaż dokumenty jako listę</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandOpenedWindowsDialog" xml:space="preserve">
+    <value>Okna...</value>
+  </data>
+  <data name="DocumentManagerStringId.LoadingIndicatorDescription" xml:space="preserve">
+    <value>Wczytywanie...</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandEnableFullScreenMode" xml:space="preserve">
+    <value>Pełen ekran</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandDisableFullScreenMode" xml:space="preserve">
+    <value>Wyłącz pełen ekran</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandRotate" xml:space="preserve">
+    <value>Obrót</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandRotateDescription" xml:space="preserve">
+    <value>Obróć układ</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandDisableFullScreenModeDescription" xml:space="preserve">
+    <value>Przełącz do normalnego widoku</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandDetail" xml:space="preserve">
+    <value>Detal</value>
+  </data>
+  <data name="DocumentManagerStringId.SplashScreenCaption" xml:space="preserve">
+    <value>Wczytywanie...</value>
+  </data>
+  <data name="DocumentManagerStringId.OpenedWindowsDialogPathColumnCaption" xml:space="preserve">
+    <value>Ścieżka</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandExitDescription" xml:space="preserve">
+    <value>Zamknij aplikację</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandEnableFullScreenModeDescription" xml:space="preserve">
+    <value>Przełącz na pełen ekran</value>
+  </data>
+  <data name="DocumentManagerStringId.LoadingIndicatorCaption" xml:space="preserve">
+    <value>Proszę czekać</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandOverview" xml:space="preserve">
+    <value>Przegląd</value>
+  </data>
+</root>

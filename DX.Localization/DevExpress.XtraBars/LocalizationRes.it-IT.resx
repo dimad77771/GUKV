@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BarString.SkinsMain" xml:space="preserve">
+    <value>Skins Predefinite</value>
+  </data>
+  <data name="BarString.NewToolbarCaption" xml:space="preserve">
+    <value>Nuova Barra degli Strumenti</value>
+  </data>
+  <data name="BarString.RibbonUnassignedPages" xml:space="preserve">
+    <value>(Pagine non Assegnate)</value>
+  </data>
+  <data name="BarString.MenuAnimationFade" xml:space="preserve">
+    <value>Dissolvenza</value>
+  </data>
+  <data name="BarString.PopupMenuEditor" xml:space="preserve">
+    <value>Editor Menù Contestuale</value>
+  </data>
+  <data name="BarString.SkinsOffice" xml:space="preserve">
+    <value>Skins di Office</value>
+  </data>
+  <data name="BarString.NewMenuName" xml:space="preserve">
+    <value>Menù Principale</value>
+  </data>
+  <data name="BarString.RibbonGalleryFilterNone" xml:space="preserve">
+    <value>Nessuno</value>
+  </data>
+  <data name="BarString.ToolBarMenu" xml:space="preserve">
+    <value>&amp;Ripristina$&amp;Elimina$!&amp;Nome$!Sti&amp;le Predefinito$&amp;Solo Testo (Sempre)$S&amp;olo Testo (nei Menù)$Imm&amp;agine e Testo$!Inizializza un &amp;Gruppo$&amp;Visibile$&amp;Usati di Recente</value>
+  </data>
+  <data name="BarString.ResetBarCaption" xml:space="preserve">
+    <value>Personalizza</value>
+  </data>
+  <data name="BarString.NewToolbarName" xml:space="preserve">
+    <value>Strumenti</value>
+  </data>
+  <data name="BarString.CustomizeButton" xml:space="preserve">
+    <value>&amp;Personalizza...</value>
+  </data>
+  <data name="BarString.RibbonAllPages" xml:space="preserve">
+    <value>(Tutte le Pagine)</value>
+  </data>
+  <data name="BarString.SkinsBonus" xml:space="preserve">
+    <value>Skins Aggiuntive</value>
+  </data>
+  <data name="BarString.CloseButton" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="BarString.ResetBar" xml:space="preserve">
+    <value>Annullare le modifiche apportate alla barra degli strumenti '{0}'?</value>
+  </data>
+  <data name="BarString.MenuAnimationRandom" xml:space="preserve">
+    <value>Casuale</value>
+  </data>
+  <data name="BarString.RibbonToolbarRemove" xml:space="preserve">
+    <value>&amp;Rimuovi dalla Barra di Accesso Rapido</value>
+  </data>
+  <data name="BarString.RenameToolbarCaption" xml:space="preserve">
+    <value>Rinomina Barra degli Strumenti</value>
+  </data>
+  <data name="BarString.RibbonToolbarMinimizeRibbon" xml:space="preserve">
+    <value>Riduci a Ico&amp;na la Barra Multifunzione</value>
+  </data>
+  <data name="BarString.MaximizeButton" xml:space="preserve">
+    <value>Ingrandisci</value>
+  </data>
+  <data name="BarString.HelpButton" xml:space="preserve">
+    <value>Aiuto</value>
+  </data>
+  <data name="BarString.BarUnassignedItems" xml:space="preserve">
+    <value>(Elementi non Assegnati)</value>
+  </data>
+  <data name="BarString.CustomizeWindowCaption" xml:space="preserve">
+    <value>Personalizzazione</value>
+  </data>
+  <data name="BarString.RibbonToolbarBelow" xml:space="preserve">
+    <value>&amp;Mostra Sotto la Barra Multifunzione</value>
+  </data>
+  <data name="BarString.MenuAnimationSlide" xml:space="preserve">
+    <value>Scorrimento</value>
+  </data>
+  <data name="BarString.RibbonGalleryFilter" xml:space="preserve">
+    <value>Tutti i Gruppi</value>
+  </data>
+  <data name="BarString.NewStatusBarName" xml:space="preserve">
+    <value>Barra di Stato</value>
+  </data>
+  <data name="BarString.MenuAnimationNone" xml:space="preserve">
+    <value>Nessuno</value>
+  </data>
+  <data name="BarString.ToolbarNameCaption" xml:space="preserve">
+    <value>Nome Barra degli S&amp;trumenti:</value>
+  </data>
+  <data name="BarString.MinimizeButton" xml:space="preserve">
+    <value>Riduci</value>
+  </data>
+  <data name="BarString.BarAllItems" xml:space="preserve">
+    <value>(Tutti gli Elementi)</value>
+  </data>
+  <data name="BarString.NewToolbarCustomNameFormat" xml:space="preserve">
+    <value>Personalizzata {0}</value>
+  </data>
+  <data name="BarString.MenuAnimationUnfold" xml:space="preserve">
+    <value>Diapositiva</value>
+  </data>
+  <data name="BarString.ResetButton" xml:space="preserve">
+    <value>Rei&amp;mposta</value>
+  </data>
+  <data name="BarString.RibbonToolbarAdd" xml:space="preserve">
+    <value>&amp;Aggiungi alla Barra di Accesso Rapido</value>
+  </data>
+  <data name="BarString.AddOrRemove" xml:space="preserve">
+    <value>&amp;Aggiungi o Rimuovi Pulsanti</value>
+  </data>
+  <data name="BarString.MenuAnimationSystem" xml:space="preserve">
+    <value>(Predefinita dal sistema)</value>
+  </data>
+  <data name="BarString.RibbonToolbarAbove" xml:space="preserve">
+    <value>&amp;Mostra Sopra la Barra Multifunzione</value>
+  </data>
+  <data name="BarString.RestoreButton" xml:space="preserve">
+    <value>Ripristina</value>
+  </data>
+  <data name="BarString.ShowShortcutKeysOnScreenTipsName" xml:space="preserve">
+    <value>Mostra Tasti di Scelta Rapida nella Descrizione Comandi</value>
+  </data>
+  <data name="BarString.ShowScreenTipsOnToolbarsName" xml:space="preserve">
+    <value>Mostra Descrizione Comandi sulle Barre degli Strumenti</value>
+  </data>
+  <data name="BarString.CollapseRibbonSuperTipText" xml:space="preserve">
+    <value>Mostra solo i nomi delle schede sulla Barra Multifunzione</value>
+  </data>
+  <data name="BarString.ExpandRibbonSuperTipText" xml:space="preserve">
+    <value>Visualizza la Barra Multifunzione in maniera che sia sempre espansa anche dopo aver cliccato su un comando</value>
+  </data>
+  <data name="BarString.ExpandRibbonSuperTipHeader" xml:space="preserve">
+    <value>Espandi la Barra Multifunzione (Ctrl+F1)</value>
+  </data>
+  <data name="BarString.CustomizeToolbarSuperTipText" xml:space="preserve">
+    <value>Personalizza la Barra di Accesso Rapido</value>
+  </data>
+  <data name="BarString.CollapseRibbonSuperTipHeader" xml:space="preserve">
+    <value>Riduci a icona la Barra Multifunzione (Ctrl+F1)</value>
+  </data>
+  <data name="BarString.CustomizeToolbarText" xml:space="preserve">
+    <value>Personalizza la Barra</value>
+  </data>
+  <data name="BarString.CustomizeQuickAccessToolbar" xml:space="preserve">
+    <value>&amp;Personalizza Barra di Accesso Rapido...</value>
+  </data>
+  <data name="BarString.CustomizeRibbon" xml:space="preserve">
+    <value>Personalizza la &amp;Barra Multifunzione...</value>
+  </data>
+  <data name="BarString.SkinsCustom" xml:space="preserve">
+    <value>Skin Personalizzata</value>
+  </data>
+  <data name="BarString.MoreCommands" xml:space="preserve">
+    <value>&amp;Altri Comandi...</value>
+  </data>
+  <data name="BarString.SkinsTheme" xml:space="preserve">
+    <value>Tema Skin</value>
+  </data>
+  <data name="DocumentManagerStringId.CommandFloat" xml:space="preserve">
+    <value>Mobile</value>
+  </data>
+  <data name="BarString.CancelButton" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="BarString.SkinCaptions" xml:space="preserve">
+    <value>|Predefinito|Caramello|Onde Blu|Predefinito Scuro|iMaginary|Lilian|Nero|Blu|Office 2010 Blu|Office 2010 Nero|Office 2010 Argento|Office 2007 Blu|Office 2007 Nero|Office 2007 Argento|Office 2007 Verde|Office 2007 Rosa|Windows 7|Windows 7 Classico|Camera Oscura|McSkin|Chiaro|Chiaro Plus|Foggy|Scuro|Natale (Blu)|Autunno|Estate|Halloween|San Valentino|Stardust|Caffe|Oceano|Contrasto Elevato|Cielo|Cielo Londinese|Blu Sbiadito|Sfondo Blu|Sfondo Bianco|VS 2010|Metropolis|</value>
+  </data>
+</root>

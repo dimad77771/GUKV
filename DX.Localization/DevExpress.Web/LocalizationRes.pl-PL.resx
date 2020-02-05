@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxperienceStringId.FileManager_TbRefresh" xml:space="preserve">
+    <value>Odśwież</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_InvalidWindowsPath" xml:space="preserve">
+    <value>Ścieżka do pliku "{0}" nie jest poprawną ścieżkasystemu Windows.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorAlreadyExists" xml:space="preserve">
+    <value>Podany plik/katalog już istnieje</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerSummaryFormat" xml:space="preserve">
+    <value>Strona {0} z {1}</value>
+  </data>
+  <data name="ASPxperienceStringId.NewsControl_Page" xml:space="preserve">
+    <value>Strona:</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_RemoveButton" xml:space="preserve">
+    <value>Usuń</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_MovePopupHeader" xml:space="preserve">
+    <value>Wybierz katalog docelowy</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorOther" xml:space="preserve">
+    <value>Nieokreślony błąd</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorRootFolderNotSpecified" xml:space="preserve">
+    <value>Główny katalog jest nie określony lub nie istnieje</value>
+  </data>
+  <data name="ASPxperienceStringId.TreeView_AltLoading" xml:space="preserve">
+    <value>Ładowanie</value>
+  </data>
+  <data name="ASPxperienceStringId.PopupControl_SizeGrip" xml:space="preserve">
+    <value>[Zmień rozmiar]</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbRename" xml:space="preserve">
+    <value>Zmień nazwę (F2)</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_AddButton" xml:space="preserve">
+    <value>Dodaj</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_BrowseButton" xml:space="preserve">
+    <value>Przeglądaj...</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_CancelButton" xml:space="preserve">
+    <value>Anuluj</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Path" xml:space="preserve">
+    <value>Ścieżka:</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_FileDoesNotExistError" xml:space="preserve">
+    <value>Pobierany plik nie istnieje</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Prev" xml:space="preserve">
+    <value>Poprzednia</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_ClearFileSelectionButtonToolTip" xml:space="preserve">
+    <value>Wyczyść zaznaczenie</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorFolderNotFound" xml:space="preserve">
+    <value>Folder nie znaleziony</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbMove" xml:space="preserve">
+    <value>Przenieś (F6)</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_UploadButton" xml:space="preserve">
+    <value>Pobieranie</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_PageSize" xml:space="preserve">
+    <value>Rozmiar strony:</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbCreate" xml:space="preserve">
+    <value>Stwórz (F7)</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_PageSizeAllItem" xml:space="preserve">
+    <value>Wszystkie</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorInvalidSymbols" xml:space="preserve">
+    <value>Nazwa zawiera nieprawidłowe znaki. Operacja nie może zostać zakończona</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerSummaryAllPages" xml:space="preserve">
+    <value>Wszystkie strony</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_All" xml:space="preserve">
+    <value>Wszystkie</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbDelete" xml:space="preserve">
+    <value>Usuń (Del)</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbDownload" xml:space="preserve">
+    <value>Ściągnij</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_DeleteConfirm" xml:space="preserve">
+    <value>Czy jesteś pewien, że chcesz usunąć '{0}'?</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_FolderLocked" xml:space="preserve">
+    <value>Zablokowany do ściągnięcia</value>
+  </data>
+  <data name="ASPxperienceStringId.NewsControl_BackToTop" xml:space="preserve">
+    <value>Powrót do góry</value>
+  </data>
+  <data name="ASPxperienceStringId.PopupControl_CloseButton" xml:space="preserve">
+    <value>[Zamknij]</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Last" xml:space="preserve">
+    <value>Ostatnia</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorAccessProhibited" xml:space="preserve">
+    <value>Dostęp ograniczony. Operacja nie może zostać zakończona</value>
+  </data>
+  <data name="ASPxperienceStringId.DataViewBase_EmptyDataText" xml:space="preserve">
+    <value>Brak danych do wyświetlenia</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorFileNotFound" xml:space="preserve">
+    <value>Plik nie znaleziony</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerRowPerPage" xml:space="preserve">
+    <value>Liczba wierszy na stronie</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorNameCannotBeEmpty" xml:space="preserve">
+    <value>Nazwa pliku/folderu nie może być pusta</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerPageSize" xml:space="preserve">
+    <value>Rozmiar strony:</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Next" xml:space="preserve">
+    <value>Następna</value>
+  </data>
+  <data name="ASPxperienceStringId.TreeView_AltExpand" xml:space="preserve">
+    <value>Rozwiń</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_BackToTop" xml:space="preserve">
+    <value>[Powrót do góry]</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorNoAccess" xml:space="preserve">
+    <value>Brak dostępu. Operacja nie może zostać zakończona</value>
+  </data>
+  <data name="ASPxperienceStringId.TreeView_AltCollapse" xml:space="preserve">
+    <value>Zwiń</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_NoData" xml:space="preserve">
+    <value>Brak danych dla zadanych kryteriów</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Cancel" xml:space="preserve">
+    <value>Anuluj</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_First" xml:space="preserve">
+    <value>Pierwsza</value>
+  </data>
+</root>

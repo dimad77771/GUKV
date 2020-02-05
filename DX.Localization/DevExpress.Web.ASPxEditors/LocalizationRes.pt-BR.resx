@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxEditorsStringId.DefaultErrorText">
+    <value>Valor Inválido</value>
+  </data>
+  <data name="ASPxEditorsStringId.RegExValidationErrorText">
+    <value>Validação da Expressão Regular falhou</value>
+  </data>
+  <data name="ASPxEditorsStringId.RequiredFieldErrorText">
+    <value>*</value>
+  </data>
+  <data name="ASPxEditorsStringId.Calendar_Today">
+    <value>Hoje</value>
+  </data>
+  <data name="ASPxEditorsStringId.Calendar_Clear">
+    <value>Limpar</value>
+  </data>
+  <data name="ASPxEditorsStringId.Calendar_OK">
+    <value>OK</value>
+  </data>
+  <data name="ASPxEditorsStringId.Calendar_Cancel">
+    <value>Cancelar</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_OK">
+    <value>OK</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_Cancel">
+    <value>Cancelar</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_GroupType">
+    <value>E,Ou,Não E,Não Ou</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_ClauseType">
+    <value>Igual,Diferente,Maior que,Maior ou igual a,Menor que,Menor ou igual a,No intervalo,Fora do Intervalo,Contém,Não Contém,Começa com,Termina com,Como,Não como,Nulo,Não nulo,Algum dos,Nenhum dos</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_BetweenAnd">
+    <value>E</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_Not">
+    <value>Não</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_AddConditionHint">
+    <value>Adicionar nova condição ao grupo</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_RemoveConditionHint">
+    <value>Remover as condições</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_AddValueHint">
+    <value>Adicionar novo item a lista</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_ClearFilter">
+    <value>Limpar</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_ShowFilterControl">
+    <value>Criar Filtros</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_AddGroup">
+    <value>Adicionar Grupo</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_AddCondition">
+    <value>Adicionar Condição</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_Remove">
+    <value>Remover</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterConrol_Empty">
+    <value>&amp;lt;Vazio&amp;gt;</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterConrol_EmptyEnter">
+    <value>&amp;lt;Entre com o valor&amp;gt;</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_PopupHeaderText">
+    <value>Construtor de Filtros</value>
+  </data>
+  <data name="ASPxEditorsStringId.Captcha_DefaultImageAlternateText">
+    <value>Imagem de Validação</value>
+  </data>
+  <data name="ASPxEditorsStringId.Captcha_RefreshText">
+    <value>Mostrar outro código</value>
+  </data>
+  <data name="ASPxEditorsStringId.Captcha_DefaultErrorText">
+    <value>O código que você digitou era incorreto</value>
+  </data>
+  <data name="ASPxEditorsStringId.Captcha_DefaultTextBoxLabelText">
+    <value>Digite o código mostrado:</value>
+  </data>
+  <data name="ASPxEditorsStringId.CheckBox_Checked">
+    <value>Marcado</value>
+  </data>
+  <data name="ASPxEditorsStringId.CheckBox_Unchecked">
+    <value>Desmarcado</value>
+  </data>
+  <data name="ASPxEditorsStringId.CheckBox_Undefined">
+    <value>?</value>
+  </data>
+</root>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="Download" Caption="Preuzmi" />
+    </Actions>
+  </ActionDesign>
+  <Localization>
+    <LocalizationGroup Name="FileAttachments">
+      <LocalizationItem Name="Editor_Clear" Value="Očisti" />
+      <LocalizationItem Name="Editor_DownLoad" Value="Preuzmi sadržaj datoteke" />
+      <LocalizationItem Name="Editor_Edit" Value="Promijeni datoteku" />
+    </LocalizationGroup>
+  </Localization>
+</Application>

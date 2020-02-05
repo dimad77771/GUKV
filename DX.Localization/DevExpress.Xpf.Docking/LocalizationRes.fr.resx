@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DockingStringId.MenuItemDTGroupOrientation" xml:space="preserve">
+    <value>Orientation du groupe</value>
+  </data>
+  <data name="DockingStringId.MenuItemCaptionImageLocation" xml:space="preserve">
+    <value>Légende emplacement image</value>
+  </data>
+  <data name="DockingStringId.MenuItemAddDocument" xml:space="preserve">
+    <value>Ajouter document</value>
+  </data>
+  <data name="DockingStringId.MenuItemControlVerticalAlignment" xml:space="preserve">
+    <value>Contrôle d'alignement vertical</value>
+  </data>
+  <data name="DockingStringId.DefaultSplitterContent" xml:space="preserve">
+    <value>Séparateur</value>
+  </data>
+  <data name="DockingStringId.DTLoadLayoutWarning" xml:space="preserve">
+    <value>La mise en page actuelle sera effacée. Voulez-vous continuer?</value>
+  </data>
+  <data name="DockingStringId.MenuItemHideDocument" xml:space="preserve">
+    <value>Masquer Document</value>
+  </data>
+  <data name="DockingStringId.ButtonReplaceControlDetails" xml:space="preserve">
+    <value>Choisissez cette option pour remplacer le contrôle existant par un nouveau.</value>
+  </data>
+  <data name="DockingStringId.MenuItemRemoveDocument" xml:space="preserve">
+    <value>Supprimer Document</value>
+  </data>
+  <data name="DockingStringId.ButtonCreateLayoutItem" xml:space="preserve">
+    <value>Ajouter le contrôle sur le panneau</value>
+  </data>
+  <data name="DockingStringId.MenuItemRemoveAll" xml:space="preserve">
+    <value>Effacer</value>
+  </data>
+  <data name="DockingStringId.MenuItemHorizontalAlignmentRight" xml:space="preserve">
+    <value>Droite</value>
+  </data>
+  <data name="DockingStringId.MenuItemMoveToNextTabGroup" xml:space="preserve">
+    <value>Déplacer vers le groupe onglet suivant</value>
+  </data>
+  <data name="DockingStringId.MenuItemStyleNoBorder" xml:space="preserve">
+    <value>Pas de frontière</value>
+  </data>
+  <data name="DockingStringId.MenuItemControlHorizontalAlignment" xml:space="preserve">
+    <value>Contôle d'alignement horizontal</value>
+  </data>
+  <data name="DockingStringId.MenuItemClosedPanels" xml:space="preserve">
+    <value>Panneaux fermés</value>
+  </data>
+  <data name="DockingStringId.DTEmptyPanelText" xml:space="preserve">
+    <value>Ce panneau est vide. Glissez et déposez les contrôles ici pour construire votre mise en page.</value>
+  </data>
+  <data name="DockingStringId.MenuItemBottom" xml:space="preserve">
+    <value>Bas</value>
+  </data>
+  <data name="DockingStringId.ButtonCreateLayoutItemDetails" xml:space="preserve">
+    <value>Choisir l'option crée un nouveau groupe mise en page et l'assigne au contenu du panneau. Les commandes nouvelles et existantes seront transférées à la mise en page crée.</value>
+  </data>
+  <data name="DockingStringId.ButtonNewLayoutItemFormat" xml:space="preserve">
+    <value>Nouveau ({0})</value>
+  </data>
+  <data name="DockingStringId.MenuItemMoveToPreviousTabGroup" xml:space="preserve">
+    <value>Déplacer vers le groupe onglet précédent</value>
+  </data>
+  <data name="DockingStringId.ShowCustomizationPanel" xml:space="preserve">
+    <value>Afficher Panneau Personnalisation</value>
+  </data>
+  <data name="DockingStringId.DTLoadLayoutWarningCaption" xml:space="preserve">
+    <value>Chargement mise en page</value>
+  </data>
+  <data name="DockingStringId.MenuItemShowCaptionImage" xml:space="preserve">
+    <value>Afficher légende image</value>
+  </data>
+  <data name="DockingStringId.ReplaceDialogText" xml:space="preserve">
+    <value>Choissisez une action:</value>
+  </data>
+  <data name="DockingStringId.MenuItemRestoreItem" xml:space="preserve">
+    <value>Rétablir objet</value>
+  </data>
+  <data name="DockingStringId.ControlButtonMaximize" xml:space="preserve">
+    <value>Maximalizer</value>
+  </data>
+  <data name="DockingStringId.MenuItemRight" xml:space="preserve">
+    <value>Droite</value>
+  </data>
+  <data name="DockingStringId.DocumentSelectorPanels" xml:space="preserve">
+    <value>Panneaux actives</value>
+  </data>
+  <data name="DockingStringId.MenuItemBeginCustomization" xml:space="preserve">
+    <value>Commencer personnalisation</value>
+  </data>
+  <data name="DockingStringId.ButtonSave" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="DockingStringId.TitleCustomizationForm" xml:space="preserve">
+    <value>Personnalisation</value>
+  </data>
+  <data name="DockingStringId.MenuItemHide" xml:space="preserve">
+    <value>Masquer</value>
+  </data>
+  <data name="DockingStringId.MenuItemContentVerticalAlignment" xml:space="preserve">
+    <value>Contenu d'alignement vertical </value>
+  </data>
+  <data name="DockingStringId.MenuItemContentHorizontalAlignment" xml:space="preserve">
+    <value>Contenu d 'alignement horizontal </value>
+  </data>
+  <data name="DockingStringId.MenuItemStyle" xml:space="preserve">
+    <value>Style de groupe</value>
+  </data>
+  <data name="DockingStringId.MenuItemDTGroupStyle" xml:space="preserve">
+    <value>Style du groupe</value>
+  </data>
+  <data name="DockingStringId.ControlButtonClose" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
+  <data name="DockingStringId.ButtonReplaceControl" xml:space="preserve">
+    <value>Remplacez le contrôle existant</value>
+  </data>
+  <data name="DockingStringId.MenuItemHorizontalAlignmentCenter" xml:space="preserve">
+    <value>Centre</value>
+  </data>
+  <data name="DockingStringId.MenuItemCaptionVerticalAlignment" xml:space="preserve">
+    <value>Légende alignement vertical</value>
+  </data>
+  <data name="DockingStringId.MenuItemEndCustomization" xml:space="preserve">
+    <value>Finalizer personnalisation</value>
+  </data>
+  <data name="DockingStringId.MenuItemVerticalAlignment" xml:space="preserve">
+    <value>Alignement verticale</value>
+  </data>
+  <data name="DockingStringId.DocumentSelectorDocuments" xml:space="preserve">
+    <value>Documents actives</value>
+  </data>
+  <data name="DockingStringId.MenuItemAutoHide" xml:space="preserve">
+    <value>Auto Masquer</value>
+  </data>
+  <data name="DockingStringId.MenuItemHideCustomizationWindow" xml:space="preserve">
+    <value>Masquer fenêtre personnalisation</value>
+  </data>
+  <data name="DockingStringId.TitleHiddenItemsList" xml:space="preserve">
+    <value>Eléments masqués</value>
+  </data>
+  <data name="DockingStringId.ControlButtonScrollPrev" xml:space="preserve">
+    <value>Faire défiler le précédent</value>
+  </data>
+  <data name="DockingStringId.MenuItemNewVerticalTabGroup" xml:space="preserve">
+    <value>Nouveau groupe onglet vertical</value>
+  </data>
+  <data name="DockingStringId.MenuItemUngroup" xml:space="preserve">
+    <value>Dissocier</value>
+  </data>
+  <data name="DockingStringId.MenuItemVerticalAlignmentBottom" xml:space="preserve">
+    <value>Bas</value>
+  </data>
+  <data name="DockingStringId.MenuItemHideItem" xml:space="preserve">
+    <value>Masquer élément</value>
+  </data>
+  <data name="DockingStringId.ReplaceDialogTitle" xml:space="preserve">
+    <value>Ajouter nouveau contrôle </value>
+  </data>
+  <data name="DockingStringId.MenuItemShowCaption" xml:space="preserve">
+    <value>Afficher légende</value>
+  </data>
+  <data name="DockingStringId.MenuItemShowControl" xml:space="preserve">
+    <value>Afficher contrôle</value>
+  </data>
+  <data name="DockingStringId.NoItemSelected" xml:space="preserve">
+    <value>(Aucun élément sélectionné)</value>
+  </data>
+  <data name="DockingStringId.MenuItemDock" xml:space="preserve">
+    <value>Dock</value>
+  </data>
+  <data name="DockingStringId.ToolTipChangeItemType" xml:space="preserve">
+    <value>Cliquez ici pour changer type d'élément</value>
+  </data>
+  <data name="DockingStringId.DTLayoutControlItemCaption" xml:space="preserve">
+    <value>Elément mise en page</value>
+  </data>
+  <data name="DockingStringId.FloatingOperations" xml:space="preserve">
+    <value>Opérations flottantes</value>
+  </data>
+  <data name="DockingStringId.MenuItemRemoveItem" xml:space="preserve">
+    <value>Supprimer Elément</value>
+  </data>
+  <data name="DockingStringId.MenuItemVerticalAlignmentCenter" xml:space="preserve">
+    <value>Centre</value>
+  </data>
+  <data name="DockingStringId.ButtonDoNothingDetails" xml:space="preserve">
+    <value>N'ajoutez pas le contrôle sur le panneau</value>
+  </data>
+  <data name="DockingStringId.MenuItemBeforeText" xml:space="preserve">
+    <value>Avant texte</value>
+  </data>
+  <data name="DockingStringId.MenuItemTop" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="DockingStringId.MenuItemStyleGroupBox" xml:space="preserve">
+    <value>Box groupe</value>
+  </data>
+  <data name="DockingStringId.MenuItemVertical" xml:space="preserve">
+    <value>Verticale</value>
+  </data>
+  <data name="DockingStringId.MenuItemExpandGroup" xml:space="preserve">
+    <value>Elargir</value>
+  </data>
+  <data name="DockingStringId.ResetLayoutOperation" xml:space="preserve">
+    <value>Remettre mise en page</value>
+  </data>
+  <data name="DockingStringId.DefaultEmptySpaceContent" xml:space="preserve">
+    <value>Elément espace vide</value>
+  </data>
+  <data name="DockingStringId.LoadLayoutOperation" xml:space="preserve">
+    <value>Charger mise en page</value>
+  </data>
+  <data name="DockingStringId.MenuItemAfterText" xml:space="preserve">
+    <value>Après le texte</value>
+  </data>
+  <data name="DockingStringId.ButtonDoNothing" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="DockingStringId.MenuItemHorizontalAlignment" xml:space="preserve">
+    <value>Alignement horizontal</value>
+  </data>
+  <data name="DockingStringId.MenuItemLeft" xml:space="preserve">
+    <value>Gauche</value>
+  </data>
+  <data name="DockingStringId.ControlButtonAutoHide" xml:space="preserve">
+    <value>Auto Masquer</value>
+  </data>
+  <data name="DockingStringId.MenuItemRemovePanel" xml:space="preserve">
+    <value>Supprimer Panneau</value>
+  </data>
+  <data name="DockingStringId.MenuItemHorizontalAlignmentStretch" xml:space="preserve">
+    <value>Elargir</value>
+  </data>
+  <data name="DockingStringId.DockingOperations" xml:space="preserve">
+    <value>Dock Opérations </value>
+  </data>
+  <data name="DockingStringId.NewGroupCaption" xml:space="preserve">
+    <value>Groupe</value>
+  </data>
+  <data name="DockingStringId.MenuItemHidePanel" xml:space="preserve">
+    <value>Masquer Panneau</value>
+  </data>
+  <data name="DockingStringId.MenuItemResetCustomization" xml:space="preserve">
+    <value>Remettre paramètres personnalisation</value>
+  </data>
+  <data name="DockingStringId.DTLayoutPanelCaption" xml:space="preserve">
+    <value>Panneau</value>
+  </data>
+  <data name="DockingStringId.MenuItemGroupItems" xml:space="preserve">
+    <value>Groupe</value>
+  </data>
+  <data name="DockingStringId.MenuItemCaptionHorizontalAlignment" xml:space="preserve">
+    <value>Légende alignement horizontal</value>
+  </data>
+  <data name="DockingStringId.MenuItemStyleTabbed" xml:space="preserve">
+    <value>Mettre au Onglet</value>
+  </data>
+  <data name="DockingStringId.DTEmptyGroupText" xml:space="preserve">
+    <value>Ce groupe est vide. Cliquez sur le bouton droit de votre souris pour créer des paneaux par le menu contexte.</value>
+  </data>
+  <data name="DockingStringId.MenuItemDTCaptionLocation" xml:space="preserve">
+    <value>Légende Emplacement</value>
+  </data>
+  <data name="DockingStringId.MenuItemNewHorizontalTabGroup" xml:space="preserve">
+    <value>Nouveau groupe onglet horizontal</value>
+  </data>
+  <data name="DockingStringId.ControlButtonMinimize" xml:space="preserve">
+    <value>Minimalizer</value>
+  </data>
+  <data name="DockingStringId.CloseOperations" xml:space="preserve">
+    <value>Fermer opérations</value>
+  </data>
+  <data name="DockingStringId.MenuItemAddPanel" xml:space="preserve">
+    <value>Ajouter paneau</value>
+  </data>
+  <data name="DockingStringId.CheckBoxAskNextTime" xml:space="preserve">
+    <value>Demander la prochaine fois</value>
+  </data>
+  <data name="DockingStringId.MenuItemStyleGroup" xml:space="preserve">
+    <value>Groupe</value>
+  </data>
+  <data name="DockingStringId.DefaultLabelContent" xml:space="preserve">
+    <value>Etiqueter</value>
+  </data>
+  <data name="DockingStringId.DefaultSeparatorContent" xml:space="preserve">
+    <value>Séparateur</value>
+  </data>
+  <data name="DockingStringId.ControlButtonRestore" xml:space="preserve">
+    <value>Récuperer</value>
+  </data>
+  <data name="DockingStringId.MenuItemShowCustomizationWindow" xml:space="preserve">
+    <value>Afficher fenêtre personnalisation</value>
+  </data>
+  <data name="DockingStringId.ToolTipEditCaption" xml:space="preserve">
+    <value>Cliquez ici pour éditer légende d'élément</value>
+  </data>
+  <data name="DockingStringId.MenuItemCaptionLocation" xml:space="preserve">
+    <value>Légende emplacement</value>
+  </data>
+  <data name="DockingStringId.MenuItemGroupOrientation" xml:space="preserve">
+    <value>Orientation du groupe</value>
+  </data>
+  <data name="DockingStringId.ToolTipCreateItem" xml:space="preserve">
+    <value>Cliquez ici pour créer nouveau élément</value>
+  </data>
+  <data name="DockingStringId.ButtonRestore" xml:space="preserve">
+    <value>Récuperer</value>
+  </data>
+  <data name="DockingStringId.MenuItemHorizontalAlignmentLeft" xml:space="preserve">
+    <value>Gauche</value>
+  </data>
+  <data name="DockingStringId.MenuItemRename" xml:space="preserve">
+    <value>Renommer</value>
+  </data>
+  <data name="DockingStringId.MenuItemCreateDefaultLayout" xml:space="preserve">
+    <value>Créer mise en page défaut </value>
+  </data>
+  <data name="DockingStringId.MenuItemResetLayout" xml:space="preserve">
+    <value>Remettre mise en page</value>
+  </data>
+  <data name="DockingStringId.ToolTipDeleteItem" xml:space="preserve">
+    <value>Cliquez ici pour annuler l'élément sélectionné</value>
+  </data>
+  <data name="DockingStringId.CheckBoxShowInvisibleItems" xml:space="preserve">
+    <value>Afficher les éléments invisibles</value>
+  </data>
+  <data name="DockingStringId.MenuItemFloat" xml:space="preserve">
+    <value>Flotter</value>
+  </data>
+  <data name="DockingStringId.ControlButtonScrollNext" xml:space="preserve">
+    <value>Faire défiler le suivant</value>
+  </data>
+  <data name="DockingStringId.MenuItemVerticalAlignmentStretch" xml:space="preserve">
+    <value>Elargir</value>
+  </data>
+  <data name="DockingStringId.AutoHideOperations" xml:space="preserve">
+    <value>Auto-masquer opérations</value>
+  </data>
+  <data name="DockingStringId.TitleLayoutTreeView" xml:space="preserve">
+    <value>Arbre Mise en page</value>
+  </data>
+</root>

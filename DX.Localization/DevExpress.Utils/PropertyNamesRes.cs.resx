@@ -1,0 +1,504 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions" xml:space="preserve">
+    <value>Možnosti exportu do PDF</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions" xml:space="preserve">
+    <value>Možnosti exportu do XLS</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextExportOptions" xml:space="preserve">
+    <value>Možnosti exportu textu</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.CsvExportOptions" xml:space="preserve">
+    <value>Možnosti exportu do CSV</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions" xml:space="preserve">
+    <value>Možnosti exportu obrázku</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportOptions" xml:space="preserve">
+    <value>Možnosti exportu do HTML</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.MhtExportOptions" xml:space="preserve">
+    <value>Možnosti exportu do MHT</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions" xml:space="preserve">
+    <value>Možnosti exportu do RTF</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.NativeFormatOptions" xml:space="preserve">
+    <value>Možnosti exportu do nativního formátu</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions" xml:space="preserve">
+    <value>Možnosti PDF dokumentu</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.None" xml:space="preserve">
+    <value>Žádné</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Left" xml:space="preserve">
+    <value>Vlevo</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Top" xml:space="preserve">
+    <value>Nahoře</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Right" xml:space="preserve">
+    <value>Vpravo</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.Bottom" xml:space="preserve">
+    <value>Dole</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BorderSide.All" xml:space="preserve">
+    <value>Všechny</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportMode.SingleFile" xml:space="preserve">
+    <value>Jediný soubor</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportMode.SingleFilePageByPage" xml:space="preserve">
+    <value>Jediný soubor se stránkováním</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportMode.SingleFile" xml:space="preserve">
+    <value>Jediný soubor</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportMode.SingleFilePageByPage" xml:space="preserve">
+    <value>Jediný soubor se stránkováním</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.HtmlExportMode.DifferentFiles" xml:space="preserve">
+    <value>Více souborů</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportMode.SingleFile" xml:space="preserve">
+    <value>Jediný soubor</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportMode.SingleFilePageByPage" xml:space="preserve">
+    <value>Jediný soubor se stránkováním</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportMode.DifferentFiles" xml:space="preserve">
+    <value>Více souborů</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Lowest" xml:space="preserve">
+    <value>Nejnižší</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Low" xml:space="preserve">
+    <value>Nízká</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Medium" xml:space="preserve">
+    <value>Střední</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.High" xml:space="preserve">
+    <value>Vysoká</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfJpegImageQuality.Highest" xml:space="preserve">
+    <value>Nejvyšší</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EncodingType.Default" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EncodingType.ASCII" xml:space="preserve">
+    <value>ASCII</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EncodingType.Unicode" xml:space="preserve">
+    <value>Unicode</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EncodingType.BigEndianUnicode" xml:space="preserve">
+    <value>BigEndianUnicode</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EncodingType.UTF7" xml:space="preserve">
+    <value>UTF7</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EncodingType.UTF8" xml:space="preserve">
+    <value>UTF8</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.EncodingType.UTF32" xml:space="preserve">
+    <value>UTF32</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopLeft" xml:space="preserve">
+    <value>Nahoře vlevo</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopCenter" xml:space="preserve">
+    <value>Nahoře na střed</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopRight" xml:space="preserve">
+    <value>Nahoře vpravo</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleLeft" xml:space="preserve">
+    <value>Uprostřed vlevo</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleCenter" xml:space="preserve">
+    <value>Uprostřed</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleRight" xml:space="preserve">
+    <value>Uprostřed vpravo</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomLeft" xml:space="preserve">
+    <value>Dole vlevo</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomCenter" xml:space="preserve">
+    <value>Dole na střed</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomRight" xml:space="preserve">
+    <value>Dole vpravo</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.TopJustify" xml:space="preserve">
+    <value>Nahoře do bloku</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.MiddleJustify" xml:space="preserve">
+    <value>Uprostřed do bloku</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.TextAlignment.BottomJustify" xml:space="preserve">
+    <value>Dole do bloku</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.Slant" xml:space="preserve">
+    <value>Skloněný vpravo</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.BackSlant" xml:space="preserve">
+    <value>Skloněný vlevo</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.Horizontal" xml:space="preserve">
+    <value>Vodorovný</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.LineDirection.Vertical" xml:space="preserve">
+    <value>Svislý</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.Normal" xml:space="preserve">
+    <value>Původní velikost</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.StretchImage" xml:space="preserve">
+    <value>Roztáhnout do rámu</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.AutoSize" xml:space="preserve">
+    <value>Velikost podle obrázku</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.CenterImage" xml:space="preserve">
+    <value>Vycentrovat</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageSizeMode.ZoomImage" xml:space="preserve">
+    <value>Přizpůsobit do rámu</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.None" xml:space="preserve">
+    <value>Žádné</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.Number" xml:space="preserve">
+    <value>Číslo strany</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.NumberOfTotal" xml:space="preserve">
+    <value>Číslo strany z počtu stran</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.RomLowNumber" xml:space="preserve">
+    <value>Číslo strany (římsky, malé znaky)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.RomHiNumber" xml:space="preserve">
+    <value>Číslo strany (římsky, velké znaky)</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.DateTime" xml:space="preserve">
+    <value>Aktuální datum a čas</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PageInfo.UserName" xml:space="preserve">
+    <value>Jméno uživatele z Windows</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.DashStyle.Solid" xml:space="preserve">
+    <value>Plná</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.DashStyle.Dash" xml:space="preserve">
+    <value>Čárkovaná</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.DashStyle.Dot" xml:space="preserve">
+    <value>Tečkovaná</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.DashStyle.DashDot" xml:space="preserve">
+    <value>Čerchovaná</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.DashStyle.DashDotDot" xml:space="preserve">
+    <value>Dvojčerchovaná</value>
+  </data>
+  <data name="System.Drawing.Drawing2D.DashStyle.Custom" xml:space="preserve">
+    <value>Vlastní</value>
+  </data>
+  <data name="System.Windows.Forms.CheckState.Unchecked" xml:space="preserve">
+    <value>Nezaškrtnuto</value>
+  </data>
+  <data name="System.Windows.Forms.CheckState.Checked" xml:space="preserve">
+    <value>Zaškrtnuto</value>
+  </data>
+  <data name="System.Windows.Forms.CheckState.Indeterminate" xml:space="preserve">
+    <value>Neurčitý</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.VerticalContentSplitting.Exact" xml:space="preserve">
+    <value>Přesné</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.VerticalContentSplitting.Smart" xml:space="preserve">
+    <value>Automatické</value>
+  </data>
+  <data name="DevExpress.XtraEditors.Controls.FilterButtonShowMode.Default" xml:space="preserve">
+    <value>Výchozí</value>
+  </data>
+  <data name="DevExpress.XtraEditors.Controls.FilterButtonShowMode.Button" xml:space="preserve">
+    <value>Tlačítko</value>
+  </data>
+  <data name="DevExpress.XtraEditors.Controls.FilterButtonShowMode.SmartTag" xml:space="preserve">
+    <value>Smart Tag</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.NativeFormatOptions.Compressed" xml:space="preserve">
+    <value>Komprimovat</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.NativeFormatOptions.ShowOptionsBeforeSave" xml:space="preserve">
+    <value>Zobrazit možnosti před uložením</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.ShowPrintDialogOnOpen" xml:space="preserve">
+    <value>Nabídnout tisk při otevření</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.DocumentOptions" xml:space="preserve">
+    <value>Možnosti dokumentu</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.Compressed" xml:space="preserve">
+    <value>Komprimovat</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.NeverEmbeddedFonts" xml:space="preserve">
+    <value>Nevkládat žádná písma</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.DefaultResourceFile" xml:space="preserve">
+    <value>Výchozí resource soubor</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfExportOptions.ImageQuality" xml:space="preserve">
+    <value>Kvalita obrázků</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Author" xml:space="preserve">
+    <value>Autor</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Application" xml:space="preserve">
+    <value>Aplikace</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Title" xml:space="preserve">
+    <value>Nadpis</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Subject" xml:space="preserve">
+    <value>Předmět</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.PdfDocumentOptions.Keywords" xml:space="preserve">
+    <value>Klíčová slova</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.UseNativeFormat" xml:space="preserve">
+    <value>Použít nativní formát</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.ShowGridLines" xml:space="preserve">
+    <value>Zobrazovat mřížku</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.SheetName" xml:space="preserve">
+    <value>Název listu</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.PageBorderColor" xml:space="preserve">
+    <value>Barva okraje stránky</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.PageBorderWidth" xml:space="preserve">
+    <value>Šířka okraje stránky</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.ExportMode" xml:space="preserve">
+    <value>Způsob exportu</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.PageRange" xml:space="preserve">
+    <value>Rozsah stránek</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.Format" xml:space="preserve">
+    <value>Formát</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.ImageExportOptions.Resolution" xml:space="preserve">
+    <value>Rozlišení</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions.ExportMode" xml:space="preserve">
+    <value>Způsob exportu</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions.ExportWatermarks" xml:space="preserve">
+    <value>Exportovat vodoznak</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.RtfExportOptions.PageRange" xml:space="preserve">
+    <value>Rozsah stran</value>
+  </data>
+  <data name="DevExpress.XtraEditors.StyleFormatConditionBase.Appearance" xml:space="preserve">
+    <value>Vzhled</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.Greater" xml:space="preserve">
+    <value>je větsí</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.GreaterOrEqual" xml:space="preserve">
+    <value>je větší nebo rovno</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.Between" xml:space="preserve">
+    <value>Mezi</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObject.ForeColor" xml:space="preserve">
+    <value>Barva popředí</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObject.Font" xml:space="preserve">
+    <value>Písmo</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.LessOrEqual" xml:space="preserve">
+    <value>Je menší nebo rovno</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.Less" xml:space="preserve">
+    <value>Je menší</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObject.BackColor" xml:space="preserve">
+    <value>Barva pozadí</value>
+  </data>
+  <data name="DevExpress.Utils.WordWrap.Default" xml:space="preserve">
+    <value>Výchozí</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObject.BorderColor" xml:space="preserve">
+    <value>Barva orámování</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObject.Image" xml:space="preserve">
+    <value>Obrázek</value>
+  </data>
+  <data name="DevExpress.Utils.HKeyPrefix.Hide" xml:space="preserve">
+    <value>Skrýt</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.NotBetween" xml:space="preserve">
+    <value>Není mezi</value>
+  </data>
+  <data name="DevExpress.Utils.TextOptions.WordWrap" xml:space="preserve">
+    <value>Zalomit řádky</value>
+  </data>
+  <data name="DevExpress.Utils.TextOptions.HAlignment" xml:space="preserve">
+    <value>Zarovnat vodorovně</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.Equal" xml:space="preserve">
+    <value>se rovná</value>
+  </data>
+  <data name="DevExpress.XtraEditors.StyleFormatConditionBase.Condition" xml:space="preserve">
+    <value>Podmínka</value>
+  </data>
+  <data name="DevExpress.Utils.AppearanceObject.BackColor2" xml:space="preserve">
+    <value>Barva pozadí 2</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.Expression" xml:space="preserve">
+    <value>Funkce</value>
+  </data>
+  <data name="DevExpress.XtraEditors.StyleFormatConditionBase.Expression" xml:space="preserve">
+    <value>Funkce</value>
+  </data>
+  <data name="DevExpress.Utils.Trimming.Default" xml:space="preserve">
+    <value>Výchozí</value>
+  </data>
+  <data name="DevExpress.XtraGrid.FormatConditionEnum.NotEqual" xml:space="preserve">
+    <value>Není rovno</value>
+  </data>
+  <data name="DevExpress.Utils.HKeyPrefix.Default" xml:space="preserve">
+    <value>Výchozí</value>
+  </data>
+  <data name="DevExpress.Utils.Trimming.Character" xml:space="preserve">
+    <value>Znak</value>
+  </data>
+</root>

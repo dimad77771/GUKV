@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxGridViewStringId.GroupPanel">
+    <value>Przeciągnij tutaj nagłówek kolumny aby grupować po tej kolumnie</value>
+  </data>
+  <data name="ASPxGridViewStringId.EmptyDataRow">
+    <value>Brak danych do wyświetlenia</value>
+  </data>
+  <data name="ASPxGridViewStringId.EmptyHeaders">
+    <value>Przeciągnij kolumnę tutaj...</value>
+  </data>
+  <data name="ASPxGridViewStringId.ConfirmDelete">
+    <value>Potwierdź chęć usunięcia?</value>
+  </data>
+  <data name="ASPxGridViewStringId.GroupContinuedOnNextPage">
+    <value>(Ciąg dalszy na następnej stronie)</value>
+  </data>
+  <data name="ASPxGridViewStringId.CustomizationWindowCaption">
+    <value>Wybór pól</value>
+  </data>
+  <data name="ASPxGridViewStringId.PopupEditFormCaption">
+    <value>Edycja</value>
+  </data>
+  <data name="ASPxGridViewStringId.HeaderFilterShowAllItem">
+    <value>(Wszystko)</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandEdit">
+    <value>Edytuj</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandNew">
+    <value>Nowy</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandDelete">
+    <value>Usuń</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandSelect">
+    <value>Wybierz</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandCancel">
+    <value>Anuluj</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandUpdate">
+    <value>Zmień</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandClearFilter">
+    <value>Wyczyść</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterBeginsWith">
+    <value>Zaczyna się od</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterContains">
+    <value>Zawiera</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterEndsWith">
+    <value>Kończy się na</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterEquals">
+    <value>Równy</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterGreater">
+    <value>Większy jak</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterGreaterOrEqual">
+    <value>Większy lub równy</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterLess">
+    <value>Mniejszy niż</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterLessOrEqual">
+    <value>Mniejszy niż lub równy</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterNotEqual">
+    <value>Różny</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_HeaderFilterButton">
+    <value>[Filtr]</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_HeaderFilterButtonActive">
+    <value>[Przefiltrowany]</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_SortedAscending">
+    <value>(Rosnąco)</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_SortedDescending">
+    <value>(Malejąco)</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_DragAndDropHideColumnIcon">
+    <value>Ukryj</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_Expand">
+    <value>[Rozszerz]</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_Collapse">
+    <value>[Zwęż]</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_FilterRowButton">
+    <value>[Warunek]</value>
+  </data>
+  <data name="ASPxGridViewStringId.Checked">
+    <value>Zaznaczony</value>
+  </data>
+  <data name="ASPxGridViewStringId.Unchecked">
+    <value>Odznaczony</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_Older">
+    <value>Starszy</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_LastMonth">
+    <value>Poprzedni miesiąc</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_EarlierThisMonth">
+    <value>Początek aktualnego miesiąca</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_ThreeWeeksAgo">
+    <value>Trzy tygodnie temu</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_TwoWeeksAgo">
+    <value>Dwa tygodnie temu</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_LastWeek">
+    <value>Ostatni tydzień</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_Yesterday">
+    <value>Wczoraj</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_Today">
+    <value>Dziś</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_Tomorrow">
+    <value>Jutro</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_NextWeek">
+    <value>Następny tydzień</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_TwoWeeksAway">
+    <value>Dwa tygodnie później</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_ThreeWeeksAway">
+    <value>Trzy tygodnie później</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_LaterThisMonth">
+    <value>Koniec aktualnego miesiąca</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_NextMonth">
+    <value>Następny miesiąć</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_BeyondNextMonth">
+    <value>Poza następnym miesiącem</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterDoesNotContain" xml:space="preserve">
+    <value>Nie zawiera</value>
+  </data>
+</root>

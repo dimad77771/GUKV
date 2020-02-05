@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxperienceStringId.Loading">
+    <value>Încarc&amp;hellip;</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_All">
+    <value>Toate</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_First">
+    <value>Prima</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Prev">
+    <value>Prec</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Next">
+    <value>Următoarea</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Last">
+    <value>Ultimul</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_SummaryFormat">
+    <value>Pag. {0} din {1} ({2} elem.)</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_SummaryAllPagesFormat">
+    <value>Pagini: {0} - {1} ({2} elemente)</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerSummaryFormat">
+    <value>Pag. {0} din {1}</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerSummaryAllPages">
+    <value>Toate paginile</value>
+  </data>
+  <data name="ASPxperienceStringId.DataViewBase_EmptyDataText">
+    <value>Nu am date de afișat</value>
+  </data>
+  <data name="ASPxperienceStringId.NewsControl_BackToTop">
+    <value>Înapoi la început</value>
+  </data>
+  <data name="ASPxperienceStringId.NewsControl_Page">
+    <value>Pagina :</value>
+  </data>
+  <data name="ASPxperienceStringId.PopupControl_CloseButton">
+    <value>[Închide]</value>
+  </data>
+  <data name="ASPxperienceStringId.PopupControl_SizeGrip">
+    <value>[Redimensionează]</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_FilterCaption">
+    <value>Filtru:&amp;nbsp;&amp;nbsp;&amp;nbsp;</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_FilterHint">
+    <value>&lt;b&gt;?&lt;/b&gt; = orice caracter
+&lt;b&gt;*&lt;/b&gt; = orice caractere</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_BackToTop">
+    <value>[Înapoi la început]</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_NoData">
+    <value>Nu am date pe acest filtru</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_RemoveButton">
+    <value>Elimină</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_AddButton">
+    <value>Adaug</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_UploadButton">
+    <value>Încarcă</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_CancelButton">
+    <value>Renunță</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_InvalidWindowsPath">
+    <value>Calea "{0}" nu este o cale validă Windows.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_MaxRequestLengthExceeded">
+    <value>Mărimea totală a fişierelor selectate depăşeşte maximul ({0} KB) definită în aplicaţie.</value>
+    <comment>The total content length of the files selected for uploading exceeds the allowed maximum request length ({0} Kb) defined by the application.</comment>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Cancel" xml:space="preserve">
+    <value>Renunță</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_UnspecifiedError" xml:space="preserve">
+    <value>Serverul a întălnit o eroare internă neprevăzută și nu poate continua.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorFileNotFound" xml:space="preserve">
+    <value>Fișier negăsit</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_MultiSelection" xml:space="preserve">
+    <value>Atenție! 
+
+Următoarele {0} fișiere sunt invalide deoarece depășesc mărimea acceptată ({1}) sau extensia lor nu este acceptată. Aceste fișiere au fost eliminate din selecție, deci nu vor fi încărcate. 
+
+{2}</value>
+  </data>
+  <data name="ASPxperienceStringId.TreeView_AltLoading" xml:space="preserve">
+    <value>Încarc</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_NotAllowedContentTypes" xml:space="preserve">
+    <value>Acest tip de conținut nu este permis</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_EnctypeError" xml:space="preserve">
+    <value>Încărcarea fișierului nu a reușit deoarce atributul enctype al formului nu este 'multipart/form-data'</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_GeneralError" xml:space="preserve">
+    <value>Înărcarea fișierului nu a reușit datorită unei erori externe</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_SilverlightPluginLink" xml:space="preserve">
+    <value>Va rog să instalați &lt;a href="{0}"&gt;Microsoft Silverlight v3 sau mai mare&lt;/a&gt; ptr. a vedea conținutul și ptr. a reuși să încărcați fișiere.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_DeleteConfirm" xml:space="preserve">
+    <value>Sigur ștergeți '{0}'?</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorWrongExtension" xml:space="preserve">
+    <value>Această extensie nu este permisă. Operația nu poate continua.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbCreate" xml:space="preserve">
+    <value>Crează (F7)</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Path" xml:space="preserve">
+    <value>Cale:</value>
+  </data>
+  <data name="ASPxperienceStringId.TreeView_AltExpand" xml:space="preserve">
+    <value>Extinde</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_SelectedSeveralFiles" xml:space="preserve">
+    <value>{0} fișiere sunt selectate ptr. încărcare</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_NotAllowedFileExtension" xml:space="preserve">
+    <value>Această extensie de fișier nu este permisă</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorNoAccess" xml:space="preserve">
+    <value>Acces interzis. Operația nu poate continua</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorFolderNotFound" xml:space="preserve">
+    <value>Folder negăsit</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_BrowseButton" xml:space="preserve">
+    <value>Răsfoiește...</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorInvalidSymbols" xml:space="preserve">
+    <value>Acest nume conține caractere invalide. Operația nu poate continua</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbMove" xml:space="preserve">
+    <value>Mută (F6)</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorUsedByAnotherProcess" xml:space="preserve">
+    <value>Operația nu poate continua deoarece fișierul/folderul este utilizat de alt proces</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorRootFolderNotSpecified" xml:space="preserve">
+    <value>Folderul rădăcină nu este specificat sau nu există</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_ClearFileSelectionButtonToolTip" xml:space="preserve">
+    <value>Șterge selecția</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_UploadWasCanceledError" xml:space="preserve">
+    <value>Incărcarea fișierului a fost oprită.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorIO" xml:space="preserve">
+    <value>Eroare IO nespecificată. Operația nu poate continua</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorUploadSeveralFiles" xml:space="preserve">
+    <value>Încărcarea nu a avut succes ptr. {0} din {1} fișiere</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_FileDoesNotExistError" xml:space="preserve">
+    <value>Fișierul de încărcat nu există</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbDownload" xml:space="preserve">
+    <value>Descarcă</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorAccessProhibited" xml:space="preserve">
+    <value>Acces interzis. Operația nu poate continua</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbRefresh" xml:space="preserve">
+    <value>Înprospătează</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_MaxSize" xml:space="preserve">
+    <value>Mărimea fișierului depășește mărimea maxim admisă , care este {0} bytes</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorAlreadyExists" xml:space="preserve">
+    <value>Fișierul/folderul specificat există deja</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Filter" xml:space="preserve">
+    <value>Filtrează ptr.:</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_FolderLocked" xml:space="preserve">
+    <value>Blocat ptr. încărcare</value>
+  </data>
+  <data name="ASPxperienceStringId.TreeView_AltCollapse" xml:space="preserve">
+    <value>Restrânge</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorNameCannotBeEmpty" xml:space="preserve">
+    <value>Numele fișierului/folderului nu poate fi gol</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbRename" xml:space="preserve">
+    <value>Redenumește (F2)</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_MovePopupHeader" xml:space="preserve">
+    <value>Selectează folderul destinație</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorOther" xml:space="preserve">
+    <value>Eroare nespecificată</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorThumbnail" xml:space="preserve">
+    <value>Nu am acces la foderul de thumbnails</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_AccessDeniedError" xml:space="preserve">
+    <value>Accesul către calea "{0}" este interzis. Motivul poate fi o lipsă de privilegii ptr. a scrie fișiere în acest folder (sau în părinte).</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbDelete" xml:space="preserve">
+    <value>Șterge (Del)</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_PageSize" xml:space="preserve">
+    <value>Mărime pag:</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_PageSizeAllItem" xml:space="preserve">
+    <value>Toate</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerPageSize" xml:space="preserve">
+    <value>Mărime pag:</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerRowPerPage" xml:space="preserve">
+    <value>Rânduri pe pag.:</value>
+  </data>
+</root>

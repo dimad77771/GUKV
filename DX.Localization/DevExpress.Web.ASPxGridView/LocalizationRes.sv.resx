@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxGridViewStringId.GroupPanel">
+    <value>Drag en kolumnrubrik hit för att gruppera på den kolumnen</value>
+  </data>
+  <data name="ASPxGridViewStringId.EmptyDataRow">
+    <value>Ingen data för visning</value>
+  </data>
+  <data name="ASPxGridViewStringId.EmptyHeaders">
+    <value>Drag hit en kolumn...</value>
+  </data>
+  <data name="ASPxGridViewStringId.ConfirmDelete">
+    <value>Bekräfta radering?</value>
+  </data>
+  <data name="ASPxGridViewStringId.GroupContinuedOnNextPage">
+    <value>(Fortsättning på nästa sida)</value>
+  </data>
+  <data name="ASPxGridViewStringId.CustomizationWindowCaption">
+    <value>Fältväljare</value>
+  </data>
+  <data name="ASPxGridViewStringId.PopupEditFormCaption">
+    <value>Ändra formulär</value>
+  </data>
+  <data name="ASPxGridViewStringId.HeaderFilterShowAllItem">
+    <value>(Alla)</value>
+  </data>
+  <data name="ASPxGridViewStringId.HeaderFilterShowBlanksItem">
+    <value>(Tomma)</value>
+  </data>
+  <data name="ASPxGridViewStringId.HeaderFilterShowNonBlanksItem">
+    <value>(Ej tomma)</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandEdit">
+    <value>Ändra</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandNew">
+    <value>Nytt</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandDelete">
+    <value>Radera</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandSelect">
+    <value>Välj</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandCancel">
+    <value>Avbryt</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandUpdate">
+    <value>Uppdatera</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandClearFilter">
+    <value>Rensa</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterBeginsWith">
+    <value>Börjar med</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterContains">
+    <value>Innehåller</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterDoesNotContain">
+    <value>Innehåller ej</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterEndsWith">
+    <value>Slutar med</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterEquals">
+    <value>Lika med</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterGreater">
+    <value>Är större än</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterGreaterOrEqual">
+    <value>Är större än eller lika med</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterLess">
+    <value>Är mindre än</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterLessOrEqual">
+    <value>Är mindre än eller lika med</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterNotEqual">
+    <value>Ej lika med</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_HeaderFilterButton">
+    <value>[Filter]</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_HeaderFilterButtonActive">
+    <value>[Filtrerad]</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_SortedAscending">
+    <value>(Ökande)</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_SortedDescending">
+    <value>(Minskande)</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_DragAndDropHideColumnIcon">
+    <value>Göm</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_Expand">
+    <value>[Expandera]</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_Collapse">
+    <value>[Fäll ihop]</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_FilterRowButton">
+    <value>[Villkor]</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_Older">
+    <value>Äldre</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_LastMonth">
+    <value>Senaste månaden</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_EarlierThisMonth">
+    <value>Tidigare i denna månad</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_ThreeWeeksAgo">
+    <value>Tre veckor tillbaks</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_TwoWeeksAgo">
+    <value>Två veckor tillbaks</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_LastWeek">
+    <value>Senaste veckan</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_Yesterday">
+    <value>Igår</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_Today">
+    <value>Idag</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_Tomorrow">
+    <value>Imorgon</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_NextWeek">
+    <value>Nästa vecka</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_TwoWeeksAway">
+    <value>Två veckor tillbaks</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_ThreeWeeksAway">
+    <value>Tre veckor tillbaks</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_LaterThisMonth">
+    <value>Senare denna månad</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_NextMonth">
+    <value>Nästa månad</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_BeyondNextMonth">
+    <value>Bortom nästa månad</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Sum">
+    <value>Summa={0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Sum_OtherColumn">
+    <value>Summa av {1} är {0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Min">
+    <value>Min={0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Min_OtherColumn">
+    <value>Moin av {1} är {0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Max">
+    <value>Max={0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Max_OtherColumn">
+    <value>Max av {1} är {0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Average">
+    <value>Genomsnitt={0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Average_OtherColumn">
+    <value>Genomsnitt av {1} av {0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Count">
+    <value>Antal={0}</value>
+  </data>
+</root>

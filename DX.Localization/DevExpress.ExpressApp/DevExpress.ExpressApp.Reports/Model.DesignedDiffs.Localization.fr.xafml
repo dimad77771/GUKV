@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="ShowInReport" Caption="Imprimer" ToolTip="Affiche les enregistrements sélectionnés dans le tableau de bord" />
+    </Actions>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="DevExpress.ExpressApp.Reports.ReportData" Caption="État">
+      <OwnMembers>
+        <Member Name="DataTypeCaption" Caption="Type de données" />
+        <Member Name="IsInplaceReport" Caption="Impression depuis l'élément" />
+        <Member Name="ReportName" Caption="Nom de l'état" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <Localization>
+    <LocalizationGroup Name="Namespaces">
+      <LocalizationItem Name="DevExpress.ExpressApp.Reports" Value="États" />
+    </LocalizationGroup>
+  </Localization>
+  <NavigationItems RelatedReportsGroupCaption="États">
+    <Items>
+      <Item Id="Reports">
+        <Items>
+          <Item Id="Reports" Caption="États" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
+  <Views>
+    <DetailView Id="ReportData_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" Caption="Principal" />
+      </Layout>
+    </DetailView>
+    <ListView Id="ReportData_ListView" Caption="États" />
+  </Views>
+</Application>

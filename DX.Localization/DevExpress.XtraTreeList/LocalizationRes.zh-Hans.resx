@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="TreeListStringId.MenuColumnBestFit" xml:space="preserve">
+    <value>最佳匹配</value>
+  </data>
+  <data name="TreeListStringId.PrintDesignerHeader" xml:space="preserve">
+    <value>打印设置</value>
+  </data>
+  <data name="TreeListStringId.ColumnCustomizationText" xml:space="preserve">
+    <value>自定义</value>
+  </data>
+  <data name="TreeListStringId.MenuFooterMin" xml:space="preserve">
+    <value>最小值</value>
+  </data>
+  <data name="TreeListStringId.MenuFooterMax" xml:space="preserve">
+    <value>最大值</value>
+  </data>
+  <data name="TreeListStringId.MenuFooterSum" xml:space="preserve">
+    <value>和</value>
+  </data>
+  <data name="TreeListStringId.MenuFooterAllNodes" xml:space="preserve">
+    <value>所有节点</value>
+  </data>
+  <data name="TreeListStringId.MenuFooterCount" xml:space="preserve">
+    <value>计数</value>
+  </data>
+  <data name="TreeListStringId.MenuColumnSortAscending" xml:space="preserve">
+    <value>升序排列</value>
+  </data>
+  <data name="TreeListStringId.MenuFooterNone" xml:space="preserve">
+    <value>无</value>
+  </data>
+  <data name="TreeListStringId.MenuColumnSortDescending" xml:space="preserve">
+    <value>降序排列</value>
+  </data>
+  <data name="TreeListStringId.PrintDesignerDescription" xml:space="preserve">
+    <value>为当前的树状列表设置不同的打印选项</value>
+  </data>
+  <data name="TreeListStringId.MenuColumnBestFitAllColumns" xml:space="preserve">
+    <value>最佳匹配 (所有列)</value>
+  </data>
+  <data name="TreeListStringId.MenuFooterAverageFormat" xml:space="preserve">
+    <value>平均值={0:#.##}</value>
+  </data>
+  <data name="TreeListStringId.ColumnNamePrefix" xml:space="preserve">
+    <value>列</value>
+  </data>
+  <data name="TreeListStringId.MenuFooterMinFormat" xml:space="preserve">
+    <value>最小值={0}</value>
+  </data>
+  <data name="TreeListStringId.MenuFooterCountFormat" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="TreeListStringId.MenuColumnColumnCustomization" xml:space="preserve">
+    <value>列选择</value>
+  </data>
+  <data name="TreeListStringId.MenuFooterMaxFormat" xml:space="preserve">
+    <value>最大值={0}</value>
+  </data>
+  <data name="TreeListStringId.MenuFooterSumFormat" xml:space="preserve">
+    <value>和={0:#.##}</value>
+  </data>
+  <data name="TreeListStringId.MultiSelectMethodNotSupported" xml:space="preserve">
+    <value>OptionsBehavior.MultiSelect未激活时，指定方法不能工作.</value>
+  </data>
+  <data name="TreeListStringId.InvalidNodeExceptionText" xml:space="preserve">
+    <value> 要修正当前值吗?</value>
+  </data>
+  <data name="TreeListStringId.MenuFooterAverage" xml:space="preserve">
+    <value>平均值</value>
+  </data>
+</root>

@@ -1,0 +1,379 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="EditorStringId.ColorEdit_DefaultColors_DarkRed" xml:space="preserve">
+    <value>Tamno crveno</value>
+  </data>
+  <data name="EditorStringId.DisplayFormatTextControlPrefix" xml:space="preserve">
+    <value>Prefiks:</value>
+  </data>
+  <data name="EditorStringId.ColorEdit_StandardColorsCaption" xml:space="preserve">
+    <value>Standardne boje</value>
+  </data>
+  <data name="EditorStringId.ConfirmationDialogCaption" xml:space="preserve">
+    <value>Potvrda</value>
+  </data>
+  <data name="EditorStringId.ColorEdit_DefaultColors_LightBlue" xml:space="preserve">
+    <value>Svjetlo plava</value>
+  </data>
+  <data name="EditorStringId.DisplayFormatGroupTypePercent" xml:space="preserve">
+    <value>Procent</value>
+  </data>
+  <data name="EditorStringId.ConfirmationDialogMessage" xml:space="preserve">
+    <value>Font "{0}" nije dostupan na vašem sistemu. Da li i dalje želite da ga koristite?</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_EndsWith_Description" xml:space="preserve">
+    <value>EndsWith(String, EndString)Vraća logičko tačno ako kraj niza znakova odgovara EndString; inače vraća logičko netačno.</value>
+  </data>
+  <data name="EditorStringId.FilterGroupAddCondition" xml:space="preserve">
+    <value>Dodaj uslov</value>
+  </data>
+  <data name="EditorStringId.FilterDateTimeOperatorMenuCaption" xml:space="preserve">
+    <value>Datum/vrijeme operatori</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GreaterOrEqual_Description" xml:space="preserve">
+    <value>Operator Veće ili jednako. Koristi se za poređenje izraza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Atn_Description" xml:space="preserve">
+    <value>Atn(Value)
+Vraća arkus tangens broja (ugao u radijanima, čiji je tangens dan kao float izraz).</value>
+  </data>
+  <data name="EditorStringId.LookUpSearch" xml:space="preserve">
+    <value>Pretraga</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsEarlierThisWeek" xml:space="preserve">
+    <value>Ranije ove sedmice</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Char_Description" xml:space="preserve">
+    <value>Char(Number)
+Pretvara cjelobrojni ASCIICode u znak.</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringFunctionStartsWith" xml:space="preserve">
+    <value>Počinje sa</value>
+  </data>
+  <data name="EditorStringId.FilterToolTipValueType" xml:space="preserve">
+    <value>Uporedi sa vrijednošću/vrijednošću drugog polja</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Greater_Description" xml:space="preserve">
+    <value>Operator Veći od. Koristi se za poređenje izraza.</value>
+  </data>
+  <data name="EditorStringId.DisplayFormatNullValue" xml:space="preserve">
+    <value>Nijedan</value>
+  </data>
+  <data name="EditorStringId.Page" xml:space="preserve">
+    <value>Strana</value>
+  </data>
+  <data name="EditorStringId.FilterToolTipNodeRemove" xml:space="preserve">
+    <value>Ukloni ovaj uslov</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GetMinute_Description" xml:space="preserve">
+    <value>GetMinute(DateTime)Izvlači minut iz datum/vrijeme izraza.</value>
+  </data>
+  <data name="EditorStringId.CheckChecked" xml:space="preserve">
+    <value>Označeno</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_And_Description" xml:space="preserve">
+    <value>Izvodi logičko spajanje dva izraza.</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringFunctionIsNullOrEmpty" xml:space="preserve">
+    <value>Je null ili prazno</value>
+  </data>
+  <data name="EditorStringId.DisplayFormatGroupTypeCurrency" xml:space="preserve">
+    <value>Valuta</value>
+  </data>
+  <data name="EditorStringId.FilterGroupNotOr" xml:space="preserve">
+    <value>NeIli</value>
+  </data>
+  <data name="EditorStringId.CalculatorInvalidInputError" xml:space="preserve">
+    <value>Nevažeći unos</value>
+  </data>
+  <data name="EditorStringId.MaskIncomplete" xml:space="preserve">
+    <value>Maskirati nekompletirano</value>
+  </data>
+  <data name="EditorStringId.ImageEdit_OpenFileFilter_SL" xml:space="preserve">
+    <value>Slikovne datoteke(*.JPG;*.PNG)|*.JPG;*.PNG|Sve datoteke (*.*)|*.*</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_DateDiffTick_Description" xml:space="preserve">
+    <value>DateDiffTick(startDate, endDate)
+Vraća broj tikova između dva navedena datuma.</value>
+  </data>
+  <data name="EditorStringId.CheckUnchecked" xml:space="preserve">
+    <value>Neoznačeno</value>
+  </data>
+  <data name="EditorStringId.ColorEdit_DefaultColors_Orange" xml:space="preserve">
+    <value>Narandžasta</value>
+  </data>
+  <data name="EditorStringId.ColorEdit_DefaultColors_LightGreen" xml:space="preserve">
+    <value>Svjetlo zelena</value>
+  </data>
+  <data name="EditorStringId.OutOfRange" xml:space="preserve">
+    <value>Vrijednost je van opsega</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_FunctionType_MathItems" xml:space="preserve">
+    <value>Matematički</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Cos_Description" xml:space="preserve">
+    <value>Cos(Value)Vraća kosinus ugla definisanog u radijanima.</value>
+  </data>
+  <data name="EditorStringId.CantModifySelectedDates" xml:space="preserve">
+    <value>Samo SelectedDates kolekcija se može mjenjati u modu višestrukog odabira. FocusedDate se koristi u jednostrukom modu odabira.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Equal_Description" xml:space="preserve">
+    <value>Vraća logičko tačno ako oba operanda imaju istu vrijednost, inače vraća logičko netačno.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_DateDiffMonth_Description" xml:space="preserve">
+    <value>DateDiffMonth(startDate, endDate)Vraća broj mjeseci između dva navedena datuma.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GetMonth_Description" xml:space="preserve">
+    <value>GetMonth(DateTime)Izvlači mjesec iz datum/vrijeme izraza.</value>
+  </data>
+  <data name="EditorStringId.ColorEdit_ThemeColorsCaption" xml:space="preserve">
+    <value>Tematske boje</value>
+  </data>
+  <data name="EditorStringId.DisplayFormatTextControlExample" xml:space="preserve">
+    <value>Primjer: </value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Asin_Description" xml:space="preserve">
+    <value>Asin(Value)
+Vraća arkus sinus broja (ugao u radijanima, čiji je sinus ugla daje brojčani izraz).</value>
+  </data>
+  <data name="EditorStringId.Of" xml:space="preserve">
+    <value>od {0}</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_DateDiffYear_Description" xml:space="preserve">
+    <value>DateDiffYear(startDate, endDate)Vraća broj godina između dva navedena datuma.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GetDayOfWeek_Description" xml:space="preserve">
+    <value>GetDayOfWeek(DateTime)
+Izvlači dan sedmice iz datum/vrijeme izrazae.</value>
+  </data>
+  <data name="EditorStringId.DisplayFormatGroupTypeDefault" xml:space="preserve">
+    <value>Standardni</value>
+  </data>
+  <data name="EditorStringId.DisplayFormatGroupTypeNumber" xml:space="preserve">
+    <value>Broj</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Cosh_Description" xml:space="preserve">
+    <value>Cosh(Value)Vraća hiperbolički kosinus ugla definisanog u radijanima.
+.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GetMilliSecond_Description" xml:space="preserve">
+    <value>GetMilliSecond(DateTime)Izvlači milisekunde iz datum/vrijeme izraza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Concat_Description" xml:space="preserve">
+    <value>Concat(String1, ... , StringN)
+Vraća niz znakova koji predstavlja spoj trenutnog niza znakova sa dodatnim nizovima.</value>
+  </data>
+  <data name="EditorStringId.DisplayFormatTextControlDisplayFormatText" xml:space="preserve">
+    <value>Format za prikaz teksta:</value>
+  </data>
+  <data name="EditorStringId.DisplayFormatGroupTypeSpecial" xml:space="preserve">
+    <value>Specialni</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsLaterThisWeek" xml:space="preserve">
+    <value>Kasnije ove sedmice</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GetDay_Description" xml:space="preserve">
+    <value>GetDay(DateTime)
+Izvlači dan iz datum/vrijeme izraza.</value>
+  </data>
+  <data name="EditorStringId.ColorEdit_DefaultColors_Purple" xml:space="preserve">
+    <value>Ljubičasta</value>
+  </data>
+  <data name="EditorStringId.CheckIndeterminate" xml:space="preserve">
+    <value>Neodređeno</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_BigMul_Description" xml:space="preserve">
+    <value>BigMul(Value1, Value2)Vraća 64 bitni cijeli broj koji sadrži puni proizvod dva navedena 32-bitna cijela broja.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Contains_Description" xml:space="preserve">
+    <value>Contains(String, SubString)
+Vraća tačno ako se SubString pojavljuje unutar String; inače vraća netačno.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GetHour_Description" xml:space="preserve">
+    <value>GetHour(DateTime)
+Izvlači sat iz datum/vrijeme izraza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GetDayOfYear_Description" xml:space="preserve">
+    <value>GetDayOfYear(DateTime)Izvlači dan godine iz datum/vrijeme izraza.</value>
+  </data>
+  <data name="EditorStringId.PasswordBoxEditToolTipContent" xml:space="preserve">
+    <value>Uključivanje Caps Lock može uzrokovati upisom pogrešne lozinke. Isključite Caps Lock prije unosa lozinke.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GridFields_Description_Prefix" xml:space="preserve">
+    <value>Polje Information
+Caption: {1}
+Tip polja je: {2}</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GetTimeOfDay_Description" xml:space="preserve">
+    <value>GetTimeOfDay(DateTime)Izvlači dio dana u tikovima iz datum/vrijeme izraza.</value>
+  </data>
+  <data name="EditorStringId.ColorEdit_RecentColorsCaption" xml:space="preserve">
+    <value>Poslednje bolje</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsYesterday" xml:space="preserve">
+    <value>Juče</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_DateDiffMilliSecond_Description" xml:space="preserve">
+    <value>DateDiffMilliSecond(startDate, endDate)Vraća broj milisekundi između dva navedena datuma.</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsNextWeek" xml:space="preserve">
+    <value>Slijedeće sedmice</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_BitwiseAnd_Description" xml:space="preserve">
+    <value>Izvodi logičku I operaciju između dvije cjelobrojne vrijednosti.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GetDate_Description" xml:space="preserve">
+    <value>GetDate(DateTime)Izvlači datum iz datum/vrijeme izraza.</value>
+  </data>
+  <data name="EditorStringId.FilterClauseIsLastWeek" xml:space="preserve">
+    <value>Prošle sedmice</value>
+  </data>
+  <data name="EditorStringId.ListBoxSelectAllSelectionMode" xml:space="preserve">
+    <value>Može se pozvati samo SelectAll kad je SelectionMode Multiple ili Extended.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_DateDiffDay_Description" xml:space="preserve">
+    <value>DateDiffDay(startDate, endDate)Vraća broj dana između dva navedena datuma.</value>
+  </data>
+  <data name="EditorStringId.ImageEdit_InvalidFormatMessage" xml:space="preserve">
+    <value>Pogrešan format slike</value>
+  </data>
+  <data name="EditorStringId.ColorEdit_DefaultColors_DarkBlue" xml:space="preserve">
+    <value>Tamno plavo</value>
+  </data>
+  <data name="EditorStringId.DisplayFormatGroupTypeDatetime" xml:space="preserve">
+    <value>Datum/vrijeme</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringFunctionContains" xml:space="preserve">
+    <value>Sadrži</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_DateDiffMinute_Description" xml:space="preserve">
+    <value>DateDiffMinute(startDate, endDate)Vraća broj minuta između dva navedena datuma.</value>
+  </data>
+  <data name="EditorStringId.CaptionError" xml:space="preserve">
+    <value>Greška</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Abs_Description" xml:space="preserve">
+    <value>Abs(Value)
+Vraća apsolutnu, pozitivnu vrijednost za dati numerički izraz.</value>
+  </data>
+  <data name="EditorStringId.FilterToolTipNodeAdd" xml:space="preserve">
+    <value>Dodaje novi uslov ovoj grupi</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Exp_Description" xml:space="preserve">
+    <value>Exp(Value)Vraća eksponencijalnu vrijednost decimalnog izraza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_BitwiseXor_Description" xml:space="preserve">
+    <value>Izvodi logičku ekskluziju dva logička iziraza ili ekskluziju na nivou bitova na dva numerička izraza.</value>
+  </data>
+  <data name="EditorStringId.CalculatorError" xml:space="preserve">
+    <value>Greška</value>
+  </data>
+  <data name="EditorStringId.DisplayFormatHelperWrongDisplayFormatValue" xml:space="preserve">
+    <value>Nevažeći format za prikaz teksta</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Atn2_Description" xml:space="preserve">
+    <value>Atn2(Value1, Value2)
+Vraća ugao čiji je tangens kvocijent dvaju navedenih brojeva, u radijanima.</value>
+  </data>
+  <data name="EditorStringId.DisplayFormatTextControlSuffix" xml:space="preserve">
+    <value>Sufiks:</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Between_Description" xml:space="preserve">
+    <value>Between (,)
+Određuje raspon za testiranje. Vraća TRUE ako je vrijednost veća ili jednaka prvom operandu i manje ili jednaka drugom operandu.</value>
+  </data>
+  <data name="EditorStringId.FilterCriteriaToStringFunctionEndsWith" xml:space="preserve">
+    <value>Završava sa</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_False_Description" xml:space="preserve">
+    <value>Predstavlja logičku vrijednost netačno.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GetYear_Description" xml:space="preserve">
+    <value>GetYear(DateTime)
+Izvlači godinu iz datum/vrijeme izraza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Floor_Description" xml:space="preserve">
+    <value>Floor(Value)Vraća najveći cijeli broj manji ili jednak datom numeričkom izrazu.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_Acos_Description" xml:space="preserve">
+    <value>Acos(Value)
+Vraća arkus kosinus broja (ugao u radijanima, čiji je kosinus dani decimalni izraz).</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_GetSecond_Description" xml:space="preserve">
+    <value>GetSecond(DateTime)
+Izvlači sekund iz datum/vrijeme izraza.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_DateDiffSecond_Description" xml:space="preserve">
+    <value>DateDiffSecond(startDate, endDate)Vraća broj sekundi između dva navedena datuma.</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_BitwiseOr_Description" xml:space="preserve">
+    <value>Upoređuje svaki bit svog prvog operanda s odgovarajućim bitom drugog operanda. Ako su oba bita 1, odgovarajući rezultat bit će postavljen na 1. Inače, odgovarajući rezultat bit će postavljen na 0.</value>
+  </data>
+  <data name="EditorStringId.DisplayFormatGroupTypeCustom" xml:space="preserve">
+    <value>Definisani</value>
+  </data>
+  <data name="EditorStringId.OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="EditorStringId.ExpressionEditor_DateDiffHour_Description" xml:space="preserve">
+    <value>DateDiffHour(startDate, endDate)Vraća broj sati između dva navedena datuma.</value>
+  </data>
+</root>

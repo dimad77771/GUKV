@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="System.Drawing.Printing.PaperKind.Folio" xml:space="preserve">
+    <value>对折</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterExtraTransverse" xml:space="preserve">
+    <value>附加的横向信</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.InviteEnvelope" xml:space="preserve">
+    <value>邀请信</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level6" xml:space="preserve">
+    <value>等级6 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber7" xml:space="preserve">
+    <value>中国信封 编号7 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber7Rotated" xml:space="preserve">
+    <value>中国信封 编号7 旋转 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeChouNumber3Rotated" xml:space="preserve">
+    <value>日本信封chou 编号3 旋转</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber4" xml:space="preserve">
+    <value>中国信封 编号4 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A3Rotated" xml:space="preserve">
+    <value>A3 旋转</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeYouNumber4Rotated" xml:space="preserve">
+    <value>日本信封You 编号4 旋转</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.GermanStandardFanfold" xml:space="preserve">
+    <value>德国标准折叠式</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber6Rotated" xml:space="preserve">
+    <value>中国信封 编号6 旋转 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B5JisRotated" xml:space="preserve">
+    <value>JIS B5 旋转</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseDoublePostcard" xml:space="preserve">
+    <value>日本双明信片</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber2Rotated" xml:space="preserve">
+    <value>中国信封 编号2 旋转 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc16KRotated" xml:space="preserve">
+    <value>中国16K旋转</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc32KBigRotated" xml:space="preserve">
+    <value>中国大32K旋转</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber2" xml:space="preserve">
+    <value>中国信封 编号2 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B5Transverse" xml:space="preserve">
+    <value>JIS B5 横向</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A5Transverse" xml:space="preserve">
+    <value>A5 横向</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level2" xml:space="preserve">
+    <value>等级2 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B6JisRotated" xml:space="preserve">
+    <value>JIS B6 旋转</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapanesePostcardRotated" xml:space="preserve">
+    <value>日本明信片旋转</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Letter" xml:space="preserve">
+    <value>信</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Number14Envelope" xml:space="preserve">
+    <value>编号 14 信封</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc16K" xml:space="preserve">
+    <value>中国16K </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.ESheet" xml:space="preserve">
+    <value>E 表格</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeChouNumber3" xml:space="preserve">
+    <value>日本信封chou 编号3 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Legal" xml:space="preserve">
+    <value>法律文书</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixCompactionMode.Binary" xml:space="preserve">
+    <value>二进制</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4Small" xml:space="preserve">
+    <value>小型A4 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber1Rotated" xml:space="preserve">
+    <value>中国信封 编号1 旋转</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level4" xml:space="preserve">
+    <value>等级4 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B4JisRotated" xml:space="preserve">
+    <value>JIS B4 旋转</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc32KRotated" xml:space="preserve">
+    <value>中国32K旋转</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterRotated" xml:space="preserve">
+    <value>旋转信</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber9Rotated" xml:space="preserve">
+    <value>中国信封 编号9 旋转</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4Extra" xml:space="preserve">
+    <value>A4 其他</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Number9Envelope" xml:space="preserve">
+    <value>编号 9 信封</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixGenerator.CompactionMode" xml:space="preserve">
+    <value>压缩模式</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.C4Envelope" xml:space="preserve">
+    <value>C4 信封</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber5" xml:space="preserve">
+    <value>中国信封 编号5 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4Rotated" xml:space="preserve">
+    <value>A4旋转</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber4Rotated" xml:space="preserve">
+    <value>中国信封 编号4 旋转 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4Plus" xml:space="preserve">
+    <value>A4 附加</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber10" xml:space="preserve">
+    <value>中国信封 编号10 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A3ExtraTransverse" xml:space="preserve">
+    <value>A3旋转附件</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber8" xml:space="preserve">
+    <value>中国信封 编号8 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber6" xml:space="preserve">
+    <value>中国信封 编号6 </value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level0" xml:space="preserve">
+    <value>等级0 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber9" xml:space="preserve">
+    <value>中国信封 编号9 </value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixSize.MatrixAuto" xml:space="preserve">
+    <value>自动</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LegalExtra" xml:space="preserve">
+    <value>附加法律文书</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.CSheet" xml:space="preserve">
+    <value>C 表格</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.C6Envelope" xml:space="preserve">
+    <value>C6 信封</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeYouNumber4" xml:space="preserve">
+    <value>日本信封You 编号4 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeChouNumber4Rotated" xml:space="preserve">
+    <value>日本信封chou 编号4 旋转</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc32KBig" xml:space="preserve">
+    <value>中国大32K</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Note" xml:space="preserve">
+    <value>笔记</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapanesePostcard" xml:space="preserve">
+    <value>日本明信片</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A4Transverse" xml:space="preserve">
+    <value>A4 横向</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.Suppress256ColumnsWarning" xml:space="preserve">
+    <value>禁止256 列警告</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeKakuNumber2" xml:space="preserve">
+    <value>日本信封Kaku 编号2 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber8Rotated" xml:space="preserve">
+    <value>中国信封 编号8 旋转 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.GermanLegalFanfold" xml:space="preserve">
+    <value>德国法律文书折叠式</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.C3Envelope" xml:space="preserve">
+    <value>C3 信封</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeChouNumber4" xml:space="preserve">
+    <value>日本信封chou 编号4 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Statement" xml:space="preserve">
+    <value>声明</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Number10Envelope" xml:space="preserve">
+    <value>编号 10 信封</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeKakuNumber3" xml:space="preserve">
+    <value>日本信封Kaku3 </value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level3" xml:space="preserve">
+    <value>等级3 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber3Rotated" xml:space="preserve">
+    <value>中国信封 编号3 旋转</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A6Rotated" xml:space="preserve">
+    <value>A6 旋转</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterSmall" xml:space="preserve">
+    <value>小型信</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A3Extra" xml:space="preserve">
+    <value>A3 附加</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Number11Envelope" xml:space="preserve">
+    <value>编号 11 信封 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A3Transverse" xml:space="preserve">
+    <value>A3 横向</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterExtra" xml:space="preserve">
+    <value>附加的信</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PersonalEnvelope" xml:space="preserve">
+    <value>个人信封 (6 3/4) </value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level5" xml:space="preserve">
+    <value>等级5 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber5Rotated" xml:space="preserve">
+    <value>中国信封 编号5 旋转</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber10Rotated" xml:space="preserve">
+    <value>中国信封 编号10 旋转 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B4Envelope" xml:space="preserve">
+    <value>B4 信封</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A5Extra" xml:space="preserve">
+    <value>A5 附加</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterTransverse" xml:space="preserve">
+    <value>横向信</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.DLEnvelope" xml:space="preserve">
+    <value>DL信封</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseDoublePostcardRotated" xml:space="preserve">
+    <value>日本双明信片旋转</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level1" xml:space="preserve">
+    <value>等级1 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeKakuNumber3Rotated" xml:space="preserve">
+    <value>日本信封Kaku3 旋转</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixCompactionMode.Text" xml:space="preserve">
+    <value>文本</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.JapaneseEnvelopeKakuNumber2Rotated" xml:space="preserve">
+    <value>日本信封Kaku 编号2 旋转</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.C65Envelope" xml:space="preserve">
+    <value>C65 信封</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.LetterPlus" xml:space="preserve">
+    <value>附加信</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber3" xml:space="preserve">
+    <value>中国信封 编号3 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Number12Envelope" xml:space="preserve">
+    <value>编号 12 信封</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level8" xml:space="preserve">
+    <value>等级8 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.PrcEnvelopeNumber1" xml:space="preserve">
+    <value>中国信封 编号1 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Prc32K" xml:space="preserve">
+    <value>中国32K </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.A5Rotated" xml:space="preserve">
+    <value>A5 旋转</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.Quarto" xml:space="preserve">
+    <value>季刊</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel.Level7" xml:space="preserve">
+    <value>等级7 </value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.C5Envelope" xml:space="preserve">
+    <value>C5 信封</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.BarCode.DataMatrixCompactionMode.Auto" xml:space="preserve">
+    <value>自动</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B6Envelope" xml:space="preserve">
+    <value>B6 信封</value>
+  </data>
+  <data name="System.Drawing.Printing.PaperKind.B5Envelope" xml:space="preserve">
+    <value>B5 信封</value>
+  </data>
+  <data name="DevExpress.XtraPrinting.XlsExportOptions.Suppress65536RowsWarning" xml:space="preserve">
+    <value>禁止65536 行警告</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FieldType.None" xml:space="preserve">
+    <value>空</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FieldType.Boolean" xml:space="preserve">
+    <value>布尔类型</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FieldType.DateTime" xml:space="preserve">
+    <value>日期</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FieldType.String" xml:space="preserve">
+    <value>字符串</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FieldType.Int32" xml:space="preserve">
+    <value>整形数字</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FieldType.Double" xml:space="preserve">
+    <value>双精度浮点数</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FieldType.Float" xml:space="preserve">
+    <value>浮点数</value>
+  </data>
+  <data name="DevExpress.XtraReports.UI.FieldType.Decimal" xml:space="preserve">
+    <value>十进制数字</value>
+  </data>
+</root>

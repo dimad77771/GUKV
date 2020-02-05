@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="PrintingStringId.ZoomToPageWidth" xml:space="preserve">
+    <value>Lap szélessége</value>
+  </data>
+  <data name="PrintingStringId.PrintDirect" xml:space="preserve">
+    <value>Gyors nyomtatás</value>
+  </data>
+  <data name="PrintingStringId.PageSetupMarginsCaptionFormat" xml:space="preserve">
+    <value>Margók: {0}</value>
+  </data>
+  <data name="PrintingStringId.PageSetupPrinterType" xml:space="preserve">
+    <value>Típus:</value>
+  </data>
+  <data name="PrintingStringId.PageSetupMarginsTop" xml:space="preserve">
+    <value>Felső:</value>
+  </data>
+  <data name="PrintingStringId.NextPage" xml:space="preserve">
+    <value>Következő lap</value>
+  </data>
+  <data name="PrintingStringId.ExportImage" xml:space="preserve">
+    <value>Képfájl</value>
+  </data>
+  <data name="PrintingStringId.PageSetup" xml:space="preserve">
+    <value>Lapbeállítás...</value>
+  </data>
+  <data name="PrintingStringId.DefaultPrintJobDescription" xml:space="preserve">
+    <value>Dokumentum</value>
+  </data>
+  <data name="PrintingStringId.RepeatPassword_ConfirmationPasswordDoesNotMatch" xml:space="preserve">
+    <value>A két jelszó nem egyezik. Adja meg a két jelszót újra.</value>
+  </data>
+  <data name="PrintingStringId.PageSetupMarginsBottom" xml:space="preserve">
+    <value>Alsó:</value>
+  </data>
+  <data name="PrintingStringId.RepeatPassword_OpenPassword" xml:space="preserve">
+    <value>Dokumentum _megnyitási jelszó</value>
+  </data>
+  <data name="PrintingStringId.SendImage" xml:space="preserve">
+    <value>Képfájl</value>
+  </data>
+  <data name="PrintingStringId.SendRtf" xml:space="preserve">
+    <value>RTF fájl</value>
+  </data>
+  <data name="PrintingStringId.PageSetupPaperCaption" xml:space="preserve">
+    <value>Papír</value>
+  </data>
+  <data name="PrintingStringId.Open" xml:space="preserve">
+    <value>Megnyitás</value>
+  </data>
+  <data name="PrintingStringId.CurrentPageDisplayFormat" xml:space="preserve">
+    <value>Lap: {0} / {1}</value>
+  </data>
+  <data name="PrintingStringId.PdfPasswordSecurityOptions_EnableScreenReaders" xml:space="preserve">
+    <value>Hozzáférés a szövegekhez képernyő olvasók számára (gyengén látóknak)</value>
+  </data>
+  <data name="PrintingStringId.PdfPasswordSecurityOptions_RestrictPermissions" xml:space="preserve">
+    <value>A dokumentum szerkesztésének és nyomtatásának korlátozása</value>
+  </data>
+  <data name="PrintingStringId.PageSetupMarginsLeft" xml:space="preserve">
+    <value>Bal:</value>
+  </data>
+  <data name="PrintingStringId.SendXlsx" xml:space="preserve">
+    <value>XLSX fájl</value>
+  </data>
+  <data name="PrintingStringId.ExportXps" xml:space="preserve">
+    <value>XPS fájl</value>
+  </data>
+  <data name="PrintingStringId.ZoomToPageHeight" xml:space="preserve">
+    <value>Lap magassága</value>
+  </data>
+  <data name="PrintingStringId.PageSetupInches" xml:space="preserve">
+    <value>Inch</value>
+  </data>
+  <data name="PrintingStringId.RepeatPassword_OpenPassword_Note" xml:space="preserve">
+    <value>Erősítse meg a dokumentum megnyitási jelszót. Győződjön meg róla, hogy a jelszót megjegyezte. A dokumentum megnyitásához szüksége lesz rá.</value>
+  </data>
+  <data name="PrintingStringId.SendTxt" xml:space="preserve">
+    <value>Szövegfájl</value>
+  </data>
+  <data name="PrintingStringId.RepeatPassword_PermissionsPassword_Title" xml:space="preserve">
+    <value>Erősítse meg a dokumentum hozzáférési jelszót</value>
+  </data>
+  <data name="PrintingStringId.PdfPasswordSecurityOptions_PermissionsPassword" xml:space="preserve">
+    <value>Hozzáférési jelszó módosítása:</value>
+  </data>
+  <data name="PrintingStringId.RepeatPassword_PermissionsPassword" xml:space="preserve">
+    <value>_Hozzáférési jelszó:</value>
+  </data>
+  <data name="PrintingStringId.ExportMht" xml:space="preserve">
+    <value>MHT fájl</value>
+  </data>
+  <data name="PrintingStringId.ZoomDisplayFormat" xml:space="preserve">
+    <value>Nagyítás: {0:0}%</value>
+  </data>
+  <data name="PrintingStringId.PrintPreviewWindowCaption" xml:space="preserve">
+    <value>Nyomtatási kép</value>
+  </data>
+  <data name="PrintingStringId.PageSetupPrinter" xml:space="preserve">
+    <value>Nyomtató:</value>
+  </data>
+  <data name="PrintingStringId.ExportCsv" xml:space="preserve">
+    <value>CSV fájl</value>
+  </data>
+  <data name="PrintingStringId.IncreaseZoom" xml:space="preserve">
+    <value>Nagyítás</value>
+  </data>
+  <data name="PrintingStringId.PageSetupOrientationLandscape" xml:space="preserve">
+    <value>Fekvő</value>
+  </data>
+  <data name="PrintingStringId.ZoomToWholePage" xml:space="preserve">
+    <value>Teljes lap</value>
+  </data>
+  <data name="PrintingStringId.SendPdf" xml:space="preserve">
+    <value>PDF fájl</value>
+  </data>
+  <data name="PrintingStringId.PreviousPage" xml:space="preserve">
+    <value>Előző lap</value>
+  </data>
+  <data name="PrintingStringId.ExportFile" xml:space="preserve">
+    <value>Dokumentum exportálása...</value>
+  </data>
+  <data name="PrintingStringId.SendXls" xml:space="preserve">
+    <value>XLS fájl</value>
+  </data>
+  <data name="PrintingStringId.PageSetupPrinterCaption" xml:space="preserve">
+    <value>Nyomtató</value>
+  </data>
+  <data name="PrintingStringId.PdfPasswordSecurityOptions_OpenPassword" xml:space="preserve">
+    <value>Dokumentum megnyitási jelszó:</value>
+  </data>
+  <data name="PrintingStringId.Error" xml:space="preserve">
+    <value>Hiba</value>
+  </data>
+  <data name="PrintingStringId.ExportPdf" xml:space="preserve">
+    <value>PDF fájl</value>
+  </data>
+  <data name="PrintingStringId.GoToPage" xml:space="preserve">
+    <value>Lap:</value>
+  </data>
+  <data name="PrintingStringId.PageSetupPrinterComment" xml:space="preserve">
+    <value>Megjegyzés:</value>
+  </data>
+  <data name="PrintingStringId.SendMht" xml:space="preserve">
+    <value>MHT fájl</value>
+  </data>
+  <data name="PrintingStringId.PageSetupPaperSize" xml:space="preserve">
+    <value>Lapméret:</value>
+  </data>
+  <data name="PrintingStringId.StatusBarCaption" xml:space="preserve">
+    <value>Státusz sor</value>
+  </data>
+  <data name="PrintingStringId.Save" xml:space="preserve">
+    <value>Mentés</value>
+  </data>
+  <data name="PrintingStringId.RepeatPassword_OpenPassword_Title" xml:space="preserve">
+    <value>Dokumentum megnyitási jelszó megerősítése</value>
+  </data>
+  <data name="PrintingStringId.PdfPasswordSecurityOptions_RequireOpenPassword" xml:space="preserve">
+    <value>A dokumentum megnyitásához jelszó szükséges</value>
+  </data>
+  <data name="PrintingStringId.RepeatPassword_PermissionsPassword_Note" xml:space="preserve">
+    <value>Erősítse meg a dokumentum hozzáférési jelszót. Győződjön meg róla, hogy a jelszót megjegyezte. A dokumentum biztonsági beállításainak módosításához szüksége lesz rá.</value>
+  </data>
+  <data name="PrintingStringId.ZoomValueItemFormat" xml:space="preserve">
+    <value>{0}%</value>
+  </data>
+  <data name="PrintingStringId.PageSetupOrientationCaption" xml:space="preserve">
+    <value>Tájolás:</value>
+  </data>
+  <data name="PrintingStringId.PageSetupMarginsRight" xml:space="preserve">
+    <value>Jobb:</value>
+  </data>
+  <data name="PrintingStringId.ExportTxt" xml:space="preserve">
+    <value>Szövegfájl</value>
+  </data>
+  <data name="PrintingStringId.PdfPasswordSecurityOptions_Title" xml:space="preserve">
+    <value>Pdf jelszó biztonság</value>
+  </data>
+  <data name="PrintingStringId.LastPage" xml:space="preserve">
+    <value>Utolsó lap</value>
+  </data>
+  <data name="PrintingStringId.PageSetupOrientationPortrait" xml:space="preserve">
+    <value>Álló</value>
+  </data>
+  <data name="PrintingStringId.ZoomToTwoPages" xml:space="preserve">
+    <value>Két lap</value>
+  </data>
+  <data name="PrintingStringId.SendCsv" xml:space="preserve">
+    <value>CSV fájl</value>
+  </data>
+  <data name="PrintingStringId.PdfPasswordSecurityOptions_PrintingPermissions" xml:space="preserve">
+    <value>Nyomtatás engedélyezett:</value>
+  </data>
+  <data name="PrintingStringId.Cancel" xml:space="preserve">
+    <value>Mégse</value>
+  </data>
+  <data name="PrintingStringId.ExportXls" xml:space="preserve">
+    <value>XLS fájl</value>
+  </data>
+  <data name="PrintingStringId.PageSetupWindowTitle" xml:space="preserve">
+    <value>Lapbeállítás</value>
+  </data>
+  <data name="PrintingStringId.PdfPasswordSecurityOptions_ChangingPermissions" xml:space="preserve">
+    <value>Engedélyezett módosítások:</value>
+  </data>
+  <data name="PrintingStringId.Print" xml:space="preserve">
+    <value>Nyomtatás...</value>
+  </data>
+  <data name="PrintingStringId.PdfPasswordSecurityOptions_EnableCopying" xml:space="preserve">
+    <value>Szövegek, képek és egyéb tartalom másolásának engedélyezése</value>
+  </data>
+  <data name="PrintingStringId.ToolBarCaption" xml:space="preserve">
+    <value>Nyomtatási kép</value>
+  </data>
+  <data name="PrintingStringId.ExportHtm" xml:space="preserve">
+    <value>HTML fájl</value>
+  </data>
+  <data name="PrintingStringId.SendFile" xml:space="preserve">
+    <value>Küldés e-mailben...</value>
+  </data>
+  <data name="PrintingStringId.SendXps" xml:space="preserve">
+    <value>XPS fájl</value>
+  </data>
+  <data name="PrintingStringId.ExportRtf" xml:space="preserve">
+    <value>RTF fájl</value>
+  </data>
+  <data name="PrintingStringId.FirstPage" xml:space="preserve">
+    <value>Első lap</value>
+  </data>
+  <data name="PrintingStringId.PageSetupMillimeters" xml:space="preserve">
+    <value>Milliméter</value>
+  </data>
+  <data name="PrintingStringId.ExportXlsx" xml:space="preserve">
+    <value>XLSX fájl</value>
+  </data>
+  <data name="PrintingStringId.DecreaseZoom" xml:space="preserve">
+    <value>Kicsinyítés</value>
+  </data>
+  <data name="PrintingStringId.Refresh" xml:space="preserve">
+    <value>Frissítés</value>
+  </data>
+  <data name="PrintingStringId.ParametersSubmit" xml:space="preserve">
+    <value>Elküld</value>
+  </data>
+  <data name="PrintingStringId.PdfPasswordSecurityOptions_Permissions" xml:space="preserve">
+    <value>Hozzáférések</value>
+  </data>
+  <data name="PrintingStringId.ParametersReset" xml:space="preserve">
+    <value>Visszaállítás</value>
+  </data>
+  <data name="PrintingStringId.Information" xml:space="preserve">
+    <value>Információ</value>
+  </data>
+  <data name="PrintingStringId.MsgCaption" xml:space="preserve">
+    <value>Nyomtatás</value>
+  </data>
+  <data name="PrintingStringId.ServerErrorMessage" xml:space="preserve">
+    <value>A riport érvényességi ideje lejárt. Klikkeljen a 'Frissítés' gombra a riport újragenerálásához.</value>
+  </data>
+  <data name="PrintingStringId.Parameters" xml:space="preserve">
+    <value>Paraméterek</value>
+  </data>
+  <data name="PrintingStringId.DocumentMap" xml:space="preserve">
+    <value>Dokumentumtérkép</value>
+  </data>
+  <data name="PrintingStringId.PdfPasswordSecurityOptions_OpenPasswordHeader" xml:space="preserve">
+    <value>Dokumentum megnyitási jelszó</value>
+  </data>
+  <data name="PrintingStringId.Zoom" xml:space="preserve">
+    <value>Nagyítás</value>
+  </data>
+</root>

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxHtmlEditorStringId.Alt_ConstrainProportions">
+    <value>Obsahuje proporce(rozměry)</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.Alt_ConstrainProportionsOff">
+    <value>Neobsahuje proporce(rozměry)</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.DesignViewTab">
+    <value>Projekt</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.HtmlViewTab">
+    <value>HTML</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.PreviewTab">
+    <value>Předchozí tabulátor</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandCut">
+    <value>Vystřihni</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandCopy">
+    <value>Kopíruj</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandPaste">
+    <value>Vlož</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandPasteRtf">
+    <value>Vlož soubor rtf</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandUndo">
+    <value>Zpět</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandRedo">
+    <value>Vpřed</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandPrint">
+    <value>Tisk</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandRemoveFormat">
+    <value>Odstraň formát</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandSubscript">
+    <value>Subscript</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandSuperscript">
+    <value>Superscript</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandOrderedList">
+    <value>List požadavků</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandBulletList">
+    <value>Odrážkový seznam</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandIndent">
+    <value>Odsazení</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandOutdent">
+    <value>Přesazení</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandUnlink">
+    <value>Odstraň odkaz</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandCheckSpelling">
+    <value>Kontrola pravopisu</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandBold">
+    <value>Tlustě</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandItalic">
+    <value>Kurzíva</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandUnderline">
+    <value>Podtržení</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandStrikethrough">
+    <value>Přeškrtnutí</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandLeft">
+    <value>Zarovnání doleva</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandCenter">
+    <value>Zarovnání na střed</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandRight">
+    <value>Zarovnání doprava</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandJustify">
+    <value>Vyrovnat</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandBackColor">
+    <value>Barva pozadí</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandForeColor">
+    <value>Barva textu</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.CommandApplyCss">
+    <value>Připoj CSS</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertImage">
+    <value>Vlož obrázek</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ChangeImage">
+    <value>Změň obrázek</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertLink">
+    <value>Vlož okaz</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ChangeLink">
+    <value>Změň odkaz</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.FontSize">
+    <value>Rozměr písma</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.FontName">
+    <value>Název písma</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.Paragraph">
+    <value>Paragraf</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.PasteRtf_Instructions">
+    <value>Vlož "rtf" instrukce</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.PasteRtf_StripFont">
+    <value>Strip font family</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ButtonOk">
+    <value>Ok</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ButtonCancel">
+    <value>Storno</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ButtonChange">
+    <value>Změň</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ButtonInsert">
+    <value>Vlož</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertLink_Url">
+    <value>Url</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertLink_Email">
+    <value>Emailová adresa</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertLink_DisplayProperties">
+    <value>Zobraz vlastnosti</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertLink_Text">
+    <value>Text</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertLink_ToolTip">
+    <value>Tip</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertLink_OpenInNewWindow">
+    <value>Otevři v novém okně</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertLink_EmailTo">
+    <value>Pošli do</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertLink_Subject">
+    <value>Předmět</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.RequiredFieldError">
+    <value>Povinný údaj</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertImage_FromWeb">
+    <value>Vlož odkaz obrázku</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertImage_FromLocal">
+    <value>Vlož obrázek ze souboru</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertImage_EnterUrl">
+    <value>Url obrázku</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertImage_SaveToServer">
+    <value>Ulož na server</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertImage_Preview">
+    <value>Vlož další obrázek</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertImage_UploadInstructions">
+    <value>Nahraj instrukce</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.InsertImage_MoreOptions">
+    <value>Více</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_Size">
+    <value>Rozměr</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_OriginalSize">
+    <value>Původní velikost</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_CustomSize">
+    <value>Vlastní rozměr</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_Width">
+    <value>Šířka</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_Pixels">
+    <value>pixelů</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_Height">
+    <value>Výška</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_CreateThumbnail">
+    <value>Vytvoř miniaturu</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_NewImageName">
+    <value>Nový název obrázku</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_Position">
+    <value>Pozice</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_PositionLeft">
+    <value>Pozice doleva</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_PositionCenter">
+    <value>Pozice na střed</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_PositionRight">
+    <value>Pozice doprava</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.ImageProps_Description">
+    <value>Popis</value>
+  </data>
+  <data name="ASPxHtmlEditorStringId.SelectAll">
+    <value>Vyber vše</value>
+  </data>
+</root>

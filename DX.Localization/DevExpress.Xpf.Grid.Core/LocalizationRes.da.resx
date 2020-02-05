@@ -1,0 +1,296 @@
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="GridControlStringId.GridGroupPanelText">
+    <value>Træk en kolonneoverskrift hertil for at gruppere efter denne kolonne</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupSummaryFormatString_Min" xml:space="preserve">
+    <value>Min af {1} er {0}</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatStringInSameColumn_Count" xml:space="preserve">
+    <value>Antal={0}</value>
+  </data>
+  <data name="GridControlStringId.GridNewRowText" xml:space="preserve">
+    <value>Klik her for at tilføje en række</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupIntervalMonth" xml:space="preserve">
+    <value>Måned</value>
+  </data>
+  <data name="GridControlStringId.InvalidRowExceptionMessage" xml:space="preserve">
+    <value>Ønsker du at rette værdien?</value>
+  </data>
+  <data name="GridControlStringId.MenuFooterMax" xml:space="preserve">
+    <value>Maks</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupColumnSummaryFormatStringInSameColumn_Sum" xml:space="preserve">
+    <value>Sum={0:0.##}</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupSummarySortFormat" xml:space="preserve">
+    <value>{1} af '{0}' - {2}</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnBestFit" xml:space="preserve">
+    <value>Optimal bredde</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortBySummaryDescending" xml:space="preserve">
+    <value>Faldende</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupColumnSummaryFormatString_Count" xml:space="preserve">
+    <value>Antal={0}</value>
+  </data>
+  <data name="GridControlStringId.MenuGroupPanelFullCollapse" xml:space="preserve">
+    <value>Luk alle niveauer</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnFixedStyle" xml:space="preserve">
+    <value>Fast layout</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatString_Count" xml:space="preserve">
+    <value>Antal={0}</value>
+  </data>
+  <data name="GridControlStringId.CellPeerName" xml:space="preserve">
+    <value>Post: {0}, Kolonne visnings index: {1}</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnFilterEditor" xml:space="preserve">
+    <value>Udtrykseditor...</value>
+  </data>
+  <data name="GridControlStringId.TotalSummaryEditorFormCaption" xml:space="preserve">
+    <value>Totaler for '{0}'</value>
+  </data>
+  <data name="GridControlStringId.MenuFooterCount" xml:space="preserve">
+    <value>Antal</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatStringInSameColumn_Sum" xml:space="preserve">
+    <value>Sum={0:0.##}</value>
+  </data>
+  <data name="GridControlStringId.GroupSummaryEditorFormCaption" xml:space="preserve">
+    <value>Gruppeoversigt</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupColumnSummaryFormatStringInSameColumn_Avg" xml:space="preserve">
+    <value>Gennemsnit={0:0.##}</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnHideGroupPanel" xml:space="preserve">
+    <value>Skjul "Gruppér efter" panelet</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatString_Max" xml:space="preserve">
+    <value>Maks af {1} er {0}</value>
+  </data>
+  <data name="GridControlStringId.SummaryEditorFormMoveItemUpCaption" xml:space="preserve">
+    <value>Op</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupInterval" xml:space="preserve">
+    <value>Gruppér med interval</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupSummaryFormatString_Count" xml:space="preserve">
+    <value>Antal={0}</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortBySummaryMax" xml:space="preserve">
+    <value>Maks</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnFixedLeft" xml:space="preserve">
+    <value>Venstre</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupSummaryFormatString_Max" xml:space="preserve">
+    <value>Maks af {1} er {0}</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortDescending" xml:space="preserve">
+    <value>Sortér faldende</value>
+  </data>
+  <data name="GridControlStringId.MenuGroupPanelClearGrouping" xml:space="preserve">
+    <value>Nulstil gruppering</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnClearFilter" xml:space="preserve">
+    <value>Ophæv filter</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortBySummaryAverage" xml:space="preserve">
+    <value>Gennemsnit</value>
+  </data>
+  <data name="GridControlStringId.FilterEditorTitle" xml:space="preserve">
+    <value>Filter redigering</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupSummaryFormatString_Avg" xml:space="preserve">
+    <value>Gennemsnit af {1} er {0:0.##}</value>
+  </data>
+  <data name="GridControlStringId.ProgressWindowCancel" xml:space="preserve">
+    <value>Annuller</value>
+  </data>
+  <data name="GridControlStringId.ProgressWindowTitle" xml:space="preserve">
+    <value>Henter data</value>
+  </data>
+  <data name="GridControlStringId.MenuFooterCustomize" xml:space="preserve">
+    <value>Tilpas...</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnUnGroup" xml:space="preserve">
+    <value>Ophæv gruppering</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnFixedNone" xml:space="preserve">
+    <value>Ingen</value>
+  </data>
+  <data name="GridControlStringId.PopupFilterAll" xml:space="preserve">
+    <value>(Alle)</value>
+  </data>
+  <data name="GridControlStringId.ColumnChooserCaption" xml:space="preserve">
+    <value>Kolonnevælger</value>
+  </data>
+  <data name="GridControlStringId.ColumnChooserDragText" xml:space="preserve">
+    <value>Træk en kolonneoverskrift hertil for at tilpasse layoutet</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatString_Avg" xml:space="preserve">
+    <value>Gennemsnit af {1} er {0:0.##}</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupIntervalDay" xml:space="preserve">
+    <value>Dag</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnResetGroupSummarySort" xml:space="preserve">
+    <value>Nulstil summarisk sortering</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupColumnSummaryFormatString_Min" xml:space="preserve">
+    <value>Min af {1} er {0}</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnShowGroupPanel" xml:space="preserve">
+    <value>Vis "Gruppér efter" boksen</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortBySummaryAscending" xml:space="preserve">
+    <value>Stigende</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupSummaryFormatString_Sum" xml:space="preserve">
+    <value>Sum af {1} er {0:0.##}</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupColumnSummaryFormatString_Sum" xml:space="preserve">
+    <value>Sum af {1} er {0:0.##}</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnFixedRight" xml:space="preserve">
+    <value>Højre</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnHideColumnChooser" xml:space="preserve">
+    <value>Skjul kolonnevælger</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnClearSorting" xml:space="preserve">
+    <value>Ophæv sortering</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupSummaryEditor" xml:space="preserve">
+    <value>Gruppe sum editor...</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupColumnSummaryFormatString_Max" xml:space="preserve">
+    <value>Maks af {1} er {0}</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupIntervalYear" xml:space="preserve">
+    <value>År</value>
+  </data>
+  <data name="GridControlStringId.SummaryEditorFormOrderTabCaption" xml:space="preserve">
+    <value>Rækkefølge</value>
+  </data>
+  <data name="GridControlStringId.MenuGroupPanelFullExpand" xml:space="preserve">
+    <value>Åben alle niveauer</value>
+  </data>
+  <data name="GridControlStringId.SummaryEditorFormMoveItemDownCaption" xml:space="preserve">
+    <value>Ned</value>
+  </data>
+  <data name="GridControlStringId.MenuFooterAverage" xml:space="preserve">
+    <value>Gennemsnit</value>
+  </data>
+  <data name="GridControlStringId.PopupFilterNonBlanks" xml:space="preserve">
+    <value>(Udfyldte)</value>
+  </data>
+  <data name="GridControlStringId.GridOutlookIntervals" xml:space="preserve">
+    <value>Ældre;Sidste måned;Tidligere denne måned;Tre uger siden;To uger siden;Sidste uge;;;;;;;;I går;I dag;I morgen;;;;;;;;Næste uge;Om to uger;Om tre uger;Senere denne måned;Næste måned;Efter næste måned;</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupIntervalNone" xml:space="preserve">
+    <value>Ingen</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatString_Sum" xml:space="preserve">
+    <value>Sum af {1} er {0:0.##}</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupColumnSummaryFormatString_Avg" xml:space="preserve">
+    <value>Gennemsnit af {1} er {0:0.##}</value>
+  </data>
+  <data name="GridControlStringId.SummaryEditorFormItemsTabCaption" xml:space="preserve">
+    <value>Poster</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatStringInSameColumn_Min" xml:space="preserve">
+    <value>Min={0}</value>
+  </data>
+  <data name="GridControlStringId.ErrorPanelTextFormatString" xml:space="preserve">
+    <value>Der opstod en fejl under behandlingen af server anmodningen ({0})</value>
+  </data>
+  <data name="GridControlStringId.ErrorWindowTitle" xml:space="preserve">
+    <value>Fejl</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupColumnSummaryFormatStringInSameColumn_Max" xml:space="preserve">
+    <value>Maks={0}</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnUnboundExpressionEditor" xml:space="preserve">
+    <value>Udtryk editor...</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnBestFitColumns" xml:space="preserve">
+    <value>Optimal bredde (alle kolonner)</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupColumnSummaryFormatStringInSameColumn_Count" xml:space="preserve">
+    <value>Antal={0}</value>
+  </data>
+  <data name="GridControlStringId.PopupFilterBlanks" xml:space="preserve">
+    <value>(Tomme)</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortGroupBySummaryMenu" xml:space="preserve">
+    <value>Sortér efter summering</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatStringInSameColumn_Avg" xml:space="preserve">
+    <value>Gennemsnit={0:0.##}</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroup" xml:space="preserve">
+    <value>Gruppér efter denne kolonne</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortAscending" xml:space="preserve">
+    <value>Sortér stigende</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatString_Min" xml:space="preserve">
+    <value>Min af {1} er {0}</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortBySummaryCount" xml:space="preserve">
+    <value>Antal</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupColumnSummaryFormatStringInSameColumn_Min" xml:space="preserve">
+    <value>Min={0}</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatStringInSameColumn_Max" xml:space="preserve">
+    <value>Maks={0}</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnShowColumnChooser" xml:space="preserve">
+    <value>Vis kolonnevælger</value>
+  </data>
+</root>

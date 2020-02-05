@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxEditorsStringId.Captcha_DefaultTextBoxLabelText" xml:space="preserve">
+    <value>Indtast den viste kode:</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_AddConditionHint" xml:space="preserve">
+    <value>Tilføj ny kondition til denne gruppe</value>
+  </data>
+  <data name="ASPxEditorsStringId.Captcha_RefreshText" xml:space="preserve">
+    <value>Vis en anden kode</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_AddCondition" xml:space="preserve">
+    <value>Tilføj kondition</value>
+  </data>
+  <data name="ASPxEditorsStringId.Calendar_Clear" xml:space="preserve">
+    <value>Slet</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_AddGroup" xml:space="preserve">
+    <value>Tilføj gruppe</value>
+  </data>
+  <data name="ASPxEditorsStringId.CheckBox_Checked" xml:space="preserve">
+    <value>Markeret</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterConrol_EmptyEnter" xml:space="preserve">
+    <value>&amp;lt;indtast en værdi&amp;gt;</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_Remove" xml:space="preserve">
+    <value>Fjern</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterConrol_Empty" xml:space="preserve">
+    <value>&amp;lt;tom&amp;gt;</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_BetweenAnd" xml:space="preserve">
+    <value>Og</value>
+  </data>
+  <data name="ASPxEditorsStringId.RegExValidationErrorText" xml:space="preserve">
+    <value>Fejl i udtrykket</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_AddValueHint" xml:space="preserve">
+    <value>Tilføj nyt emne til listen</value>
+  </data>
+  <data name="ASPxEditorsStringId.CheckBox_Unchecked" xml:space="preserve">
+    <value>Umarkeret</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_Not" xml:space="preserve">
+    <value>Ikke</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_Cancel" xml:space="preserve">
+    <value>Afbryd</value>
+  </data>
+  <data name="ASPxEditorsStringId.Calendar_Today" xml:space="preserve">
+    <value>I dag</value>
+  </data>
+  <data name="ASPxEditorsStringId.Calendar_Cancel" xml:space="preserve">
+    <value>Afbryd</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_PopupHeaderText" xml:space="preserve">
+    <value>Filter bygger</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_RemoveConditionHint" xml:space="preserve">
+    <value>Fjerne denne kondition</value>
+  </data>
+  <data name="ASPxEditorsStringId.Captcha_DefaultErrorText" xml:space="preserve">
+    <value>Den indtastede kode er ikke korrekt</value>
+  </data>
+  <data name="ASPxEditorsStringId.Captcha_DefaultImageAlternateText" xml:space="preserve">
+    <value>Captcha billed</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_ClauseType" xml:space="preserve">
+    <value>Lig med,Ikke lig med,Er større end,Er større end or lig med,Er mindre end,Er mindre end or lig med,Er mellem,Er ikke mellem,Indeholder,Indeholder ikke,Begynder med,Slutter med,Er indeholdt i,Er ikke indeholdt i,Er tomt,Er ikke tomt,Er en af,Er ikke en af</value>
+  </data>
+  <data name="ASPxEditorsStringId.DefaultErrorText" xml:space="preserve">
+    <value>Ugyldig værdi</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_GroupType" xml:space="preserve">
+    <value>Og,Eller,Ikke og,Ikke eller</value>
+  </data>
+  <data name="ASPxEditorsStringId.TrackBar_Drag" xml:space="preserve">
+    <value>Træk</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_ClearFilter" xml:space="preserve">
+    <value>Slet</value>
+  </data>
+  <data name="ASPxEditorsStringId.FilterControl_ShowFilterControl" xml:space="preserve">
+    <value>Opret filter</value>
+  </data>
+</root>

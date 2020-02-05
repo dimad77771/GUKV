@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="GridControlStringId.MenuColumnSortGroupBySummaryMenu" xml:space="preserve">
+    <value>Ordina per Riepilogo</value>
+  </data>
+  <data name="GridControlStringId.InvalidRowExceptionMessage" xml:space="preserve">
+    <value>Si desidera correggere il valore?</value>
+  </data>
+  <data name="GridControlStringId.MenuFooterSum" xml:space="preserve">
+    <value>Somma</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnFilterEditor" xml:space="preserve">
+    <value>Editor Filtro...</value>
+  </data>
+  <data name="GridControlStringId.GridOutlookIntervals" xml:space="preserve">
+    <value>Prima del Mese Precedente;Mese Precedente;Inizio Mese Corrente;Tre Settimane Fà;Due Settimane Fà;Settimana Scorsa;;;;;;;;Ieri;Oggi;Domani;;;;;;;;Settimana Prossima;Tra Due Settimane;Tra Tre Settimane;Fine Mese Corrente;Mese Prossimo;Dopo il Mese Prossimo;</value>
+  </data>
+  <data name="GridControlStringId.TotalSummaryEditorFormCaption" xml:space="preserve">
+    <value>Totale di '{0}'</value>
+  </data>
+  <data name="GridControlStringId.MenuFooterCustomize" xml:space="preserve">
+    <value>Personalizza...</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupIntervalSmart" xml:space="preserve">
+    <value>Intelligente</value>
+  </data>
+  <data name="GridControlStringId.ErrorWindowTitle" xml:space="preserve">
+    <value>Errore</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupSummaryFormatString_Min" xml:space="preserve">
+    <value>Min di {1} = {0}</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatStringInSameColumn_Sum" xml:space="preserve">
+    <value>Somma={0:#.##}</value>
+  </data>
+  <data name="GridControlStringId.ColumnChooserCaption" xml:space="preserve">
+    <value>Selezione Colonne</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatString_Avg" xml:space="preserve">
+    <value>Media di {1} = {0:#.##}</value>
+  </data>
+  <data name="GridControlStringId.MenuGroupPanelFullExpand" xml:space="preserve">
+    <value>Espandi Tutto</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnUnGroup" xml:space="preserve">
+    <value>Separa</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupSummaryFormatString_Count" xml:space="preserve">
+    <value>Conteggio={0}</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupSummaryFormatString_Sum" xml:space="preserve">
+    <value>Somma di {1} = {0:#.##}</value>
+  </data>
+  <data name="GridControlStringId.SummaryEditorFormItemsTabCaption" xml:space="preserve">
+    <value>Elementi</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatStringInSameColumn_Avg" xml:space="preserve">
+    <value>Media={0:#.##}</value>
+  </data>
+  <data name="GridControlStringId.GridNewRowText" xml:space="preserve">
+    <value>Fare click qui per aggiungere una nuova riga.</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnFixedRight" xml:space="preserve">
+    <value>A Destra</value>
+  </data>
+  <data name="GridControlStringId.PopupFilterBlanks" xml:space="preserve">
+    <value>(Vuote)</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroup" xml:space="preserve">
+    <value>Raggruppa per questa Colonna</value>
+  </data>
+  <data name="GridControlStringId.PopupFilterAll" xml:space="preserve">
+    <value>(Seleziona Tutto)</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupSummarySortFormat" xml:space="preserve">
+    <value>{1} di '{0}' - {2}</value>
+  </data>
+  <data name="GridControlStringId.PopupFilterNonBlanks" xml:space="preserve">
+    <value>(Non Vuote)</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnFixedNone" xml:space="preserve">
+    <value>Nessuno</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnShowColumnChooser" xml:space="preserve">
+    <value>Mostra Selezione Colonne</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupIntervalMonth" xml:space="preserve">
+    <value>Mese</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnHideGroupPanel" xml:space="preserve">
+    <value>Nascondi Pannello di Raggruppamento</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortBySummaryAscending" xml:space="preserve">
+    <value>Crescente</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnBestFitColumns" xml:space="preserve">
+    <value>Adatta Tutte le Colonne</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnClearSorting" xml:space="preserve">
+    <value>Pulisci Ordinamento</value>
+  </data>
+  <data name="GridControlStringId.GroupSummaryEditorFormCaption" xml:space="preserve">
+    <value>Riepilogo di Gruppo</value>
+  </data>
+  <data name="GridControlStringId.MenuFooterCount" xml:space="preserve">
+    <value>Conteggio</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupIntervalYear" xml:space="preserve">
+    <value>Anno</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnUnboundExpressionEditor" xml:space="preserve">
+    <value>Editor Espressione...</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnResetGroupSummarySort" xml:space="preserve">
+    <value>Pulisci Riepilogo di Ordinamento</value>
+  </data>
+  <data name="GridControlStringId.MenuGroupPanelFullCollapse" xml:space="preserve">
+    <value>Comprimi Tutto</value>
+  </data>
+  <data name="GridControlStringId.SummaryEditorFormOrderTabCaption" xml:space="preserve">
+    <value>Ordine</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnShowGroupPanel" xml:space="preserve">
+    <value>Mostra Pannello di Raggruppamento</value>
+  </data>
+  <data name="GridControlStringId.ColumnChooserDragText" xml:space="preserve">
+    <value>Trascinare una colonna qui per personalizzare il layout.</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatString_Min" xml:space="preserve">
+    <value>Min di {1} = {0}</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatString_Sum" xml:space="preserve">
+    <value>Somma di {1} = {0:#.##}</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatString_Max" xml:space="preserve">
+    <value>Max di {1} = {0}</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupSummaryFormatString_Max" xml:space="preserve">
+    <value>Max di {1} = {0}</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupInterval" xml:space="preserve">
+    <value>Intervallo di Gruppo</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupIntervalNone" xml:space="preserve">
+    <value>Nessuno</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatStringInSameColumn_Count" xml:space="preserve">
+    <value>Conteggio={0}</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnBestFit" xml:space="preserve">
+    <value>Adatta Colonna</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupIntervalDay" xml:space="preserve">
+    <value>Giorno</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnFixedLeft" xml:space="preserve">
+    <value>A Sinistra</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnFixedStyle" xml:space="preserve">
+    <value>Blocca Colonna</value>
+  </data>
+  <data name="GridControlStringId.FilterEditorTitle" xml:space="preserve">
+    <value>Editor Filtro</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortBySummaryDescending" xml:space="preserve">
+    <value>Decrescente</value>
+  </data>
+  <data name="GridControlStringId.MenuFooterAverage" xml:space="preserve">
+    <value>Media</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortAscending" xml:space="preserve">
+    <value>Ordinamento Crescente</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortDescending" xml:space="preserve">
+    <value>Ordinamento Decrescente</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnClearFilter" xml:space="preserve">
+    <value>Pulisci Filtro</value>
+  </data>
+  <data name="GridControlStringId.MenuGroupPanelClearGrouping" xml:space="preserve">
+    <value>Pulisci Raggruppamento</value>
+  </data>
+  <data name="GridControlStringId.GridGroupPanelText" xml:space="preserve">
+    <value>Trascinare un'intestazione di colonna qui per raggruppare in base a tale colonna.</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnHideColumnChooser" xml:space="preserve">
+    <value>Nascondi Selezione Colonne</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnGroupSummaryEditor" xml:space="preserve">
+    <value>Editor Riepilogo di Gruppo...</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupSummaryFormatString_Avg" xml:space="preserve">
+    <value>Media di {1} = {0: #. ##}</value>
+  </data>
+  <data name="GridControlStringId.DefaultTotalSummaryFormatString_Count" xml:space="preserve">
+    <value>Conteggio={0}</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortBySummarySum" xml:space="preserve">
+    <value>Somma</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortBySummaryCount" xml:space="preserve">
+    <value>Conteggio</value>
+  </data>
+  <data name="GridControlStringId.SummaryEditorFormMoveItemDownCaption" xml:space="preserve">
+    <value>Giù</value>
+  </data>
+  <data name="GridControlStringId.SummaryEditorFormMoveItemUpCaption" xml:space="preserve">
+    <value>Sù</value>
+  </data>
+  <data name="GridControlStringId.MenuColumnSortBySummaryAverage" xml:space="preserve">
+    <value>Media</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupColumnSummaryFormatStringInSameColumn_Count" xml:space="preserve">
+    <value>Conteggio={0}</value>
+  </data>
+  <data name="GridControlStringId.CellPeerName" xml:space="preserve">
+    <value>Elemento: {0}, Indice Colonna Visualizzata: {1}</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupColumnSummaryFormatString_Max" xml:space="preserve">
+    <value>Il Max di {1} è {0}</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupColumnSummaryFormatString_Avg" xml:space="preserve">
+    <value>La Media di {1} è {0:0.##}</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupColumnSummaryFormatString_Count" xml:space="preserve">
+    <value>Conteggio={0}</value>
+  </data>
+  <data name="GridControlStringId.ErrorPanelTextFormatString" xml:space="preserve">
+    <value>Si è verificato un errore durante l'elaborazione della reichiesta al server ({0})</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupColumnSummaryFormatString_Min" xml:space="preserve">
+    <value>Il Min di {1} è {0}</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupColumnSummaryFormatString_Sum" xml:space="preserve">
+    <value>La Somma di {1} è {0:0.##}</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupColumnSummaryFormatStringInSameColumn_Sum" xml:space="preserve">
+    <value>Somma={0:0.##}</value>
+  </data>
+  <data name="GridControlStringId.DefaultGroupColumnSummaryFormatStringInSameColumn_Avg" xml:space="preserve">
+    <value>Media={0:0.##}</value>
+  </data>
+</root>

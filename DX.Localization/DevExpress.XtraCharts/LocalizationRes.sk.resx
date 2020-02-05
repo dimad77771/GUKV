@@ -1,0 +1,754 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 1.3
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">1.3</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1">this is my long string</data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        [base64 mime encoded serialized .NET Framework object]
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        [base64 mime encoded string representing a byte array form of the .NET Framework object]
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used forserialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ChartStringId.SeriesPrefix">
+    <value>Série</value>
+  </data>
+  <data name="ChartStringId.PalettePrefix">
+    <value>Paleta</value>
+  </data>
+  <data name="ChartStringId.XYDiagramPanePrefix">
+    <value>Sekcia</value>
+  </data>
+  <data name="ChartStringId.ValueMember">
+    <value>Hodnota</value>
+  </data>
+  <data name="ChartStringId.LowValueMember">
+    <value>Nízky</value>
+  </data>
+  <data name="ChartStringId.HighValueMember">
+    <value>Vysoký</value>
+  </data>
+  <data name="ChartStringId.OpenValueMember">
+    <value>Otvorená</value>
+  </data>
+  <data name="ChartStringId.CloseValueMember">
+    <value>Zatvoriť</value>
+  </data>
+  <data name="ChartStringId.AutocreatedSeriesName">
+    <value>Automaticky vytvorené série</value>
+  </data>
+  <data name="ChartStringId.DefaultDataFilterName">
+    <value>Filter údajov</value>
+  </data>
+  <data name="ChartStringId.DefaultChartTitle">
+    <value>Nadpis grafu</value>
+  </data>
+  <data name="ChartStringId.MsgEmptyArrayOfValues">
+    <value>Pole hodnôt je prázdne.</value>
+  </data>
+  <data name="ChartStringId.MsgEquallySpacedItemsNotUsable">
+    <value>Typ z "{0}" argumentu datovej súčasti nie je zlúčiteľný so {1} stupnicou.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectValue">
+    <value>Neplatná hodnota "{0}" pre argument "{1}".</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatiblePointType">
+    <value>Typ z "{0}" bod nie je zlúčiteľný so {1} stupnicou.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleArgumentDataMember">
+    <value>Typ z "{0}" argumentu datovej súčasti nie je zlúčiteľný so {1} stupnicou.</value>
+  </data>
+  <data name="ChartStringId.MsgDesignTimeOnlySetting">
+    <value>Nie je možné meniť túto vlastnosť.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectDataMember">
+    <value>Dátový zdroj neobsahuje súčást s názvom "{0}".</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectDataAdapter">
+    <value>Objekt {0} nie je v data adapteru.</value>
+  </data>
+  <data name="ChartStringId.MsgModifyDefaultPaletteError">
+    <value>Východziu paletu nie je možné upravovať.</value>
+  </data>
+  <data name="ChartStringId.MsgAddExistingPaletteError">
+    <value>Paleta s názvom {0} už existuje.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisThickness">
+    <value>Hrúbka osy by mala byť väčšia ako 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBarWidth">
+    <value>Šírka stĺpca by mala byť väčšia alebo rovná  0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectBorderThickness">
+    <value>Šírka okraja by mala byť väčšia ako 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectChartTitleIndent">
+    <value>Odstyp napdpisu by mal byť väčší alebo rovný 0 a menší než 1000.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLegendMarkerSize">
+    <value>Ukazovaťeľ veľkosťi by mal byť väčší než 1.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectLabelAngle">
+    <value>Uhol štítku by mal býť väčší alebo rovný -360 a menší alebo rovný 360.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectImageFormat">
+    <value>Nie je možné exportovať obrázok grafu v tomto formáte.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectImageBounds">
+    <value>Nie je možné vytvoriť obrázok pre túto veľkosť.</value>
+  </data>
+  <data name="ChartStringId.MsgEmptyArgument">
+    <value>Argument nemôže byť prázdny.</value>
+  </data>
+  <data name="ChartStringId.MsgPaletteDoubleClickToEdit">
+    <value>Dvojklikom editovať...</value>
+  </data>
+  <data name="ChartStringId.MsgInvalidPaletteName">
+    <value>Nie je možné pridať paletu bez názvu (\"\") do zásobníka paliet. Prosím zadajte názov pre paletu.</value>
+  </data>
+  <data name="ChartStringId.Msg3DRotationToolTip">
+    <value>Použite Ctrl + Ľavé tlačidlo myši pre otáčanie grafu.</value>
+  </data>
+  <data name="ChartStringId.Msg3DScrollingToolTip">
+    <value>Použite Ctrl + Ľavé tlačidlo myši pre rozbaľovanie/zabaľovanie grafu.</value>
+  </data>
+  <data name="ChartStringId.Msg2DScrollingToolTip">
+    <value>Použite Ctrl + Ľavé tlačidlo myši pre rolovanie grafu.</value>
+  </data>
+  <data name="ChartStringId.Msg2DPieExplodingToolTip">
+    <value>Použite Ctrl + Ľavé tlačidlo myši pre rolovanie grafu.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectZoomPercent">
+    <value>Zväčšenie by malo byť väčšie ako 0 a menšie alebo rovné {0}.</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleByViewType">
+    <value>typ pohľadu</value>
+  </data>
+  <data name="ChartStringId.MsgIncompatibleByValueScaleType">
+    <value>typ stupnice</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectTopNCount">
+    <value>Hodnota Prvých N musí byť väčšia ako 0.</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisRangeMinValue">
+    <value>Min hodnota musí byť definovaná</value>
+  </data>
+  <data name="ChartStringId.MsgIncorrectAxisRangeMaxValue">
+    <value>Max hodnota musí byť definovaná</value>
+  </data>
+  <data name="ChartStringId.VerbAbout">
+    <value>O grafu....</value>
+  </data>
+  <data name="ChartStringId.VerbAboutDescription">
+    <value>Základné informácie o grafe</value>
+  </data>
+  <data name="ChartStringId.VerbPopulate">
+    <value>Získať</value>
+  </data>
+  <data name="ChartStringId.VerbPopulateDescription">
+    <value>Naplniť graf údajmi z datového zdroja.</value>
+  </data>
+  <data name="ChartStringId.VerbClearDataSource">
+    <value>Vyčistiť údajový zdroj</value>
+  </data>
+  <data name="ChartStringId.VerbClearDataSourceDescription">
+    <value>Odstrániť údajový zdroj grafu</value>
+  </data>
+  <data name="ChartStringId.VerbSeries">
+    <value>Série...</value>
+  </data>
+  <data name="ChartStringId.VerbSeriesDescription">
+    <value>Otvoriť editor sérií.</value>
+  </data>
+  <data name="ChartStringId.VerbEditPalettes">
+    <value>Palety...</value>
+  </data>
+  <data name="ChartStringId.VerbEditPalettesDescription">
+    <value>Otvoriť editor paliet.</value>
+  </data>
+  <data name="ChartStringId.VerbWizard">
+    <value>Spustiť sprievodcu...</value>
+  </data>
+  <data name="ChartStringId.VerbSaveLayout">
+    <value>Uložiť...</value>
+  </data>
+  <data name="ChartStringId.VerbSaveLayoutDescription">
+    <value>Uložiť graf do XML súboru.</value>
+  </data>
+  <data name="ChartStringId.VerbLoadLayout">
+    <value>Nahrať...</value>
+  </data>
+  <data name="ChartStringId.VerbLoadLayoutDescription">
+    <value>Nahrať graf zo XML súboru.</value>
+  </data>
+  <data name="ChartStringId.TrnSeriesChanged">
+    <value>Série boli zmenené.</value>
+  </data>
+  <data name="ChartStringId.TrnDataFiltersChanged">
+    <value>Údajový filter bol zmenený</value>
+  </data>
+  <data name="ChartStringId.TrnChartTitlesChanged">
+    <value>Nadpis zmenený</value>
+  </data>
+  <data name="ChartStringId.TrnStripsChanged">
+    <value>Lišta bola zmenená</value>
+  </data>
+  <data name="ChartStringId.TrnPalettesChanged">
+    <value>Paleta zmenená</value>
+  </data>
+  <data name="ChartStringId.TrnConstantLinesChanged">
+    <value>Konštantná čiara zmenená</value>
+  </data>
+  <data name="ChartStringId.TrnCustomAxisLabelChanged">
+    <value>Menovka vlastnej osi zmenená</value>
+  </data>
+  <data name="ChartStringId.TrnSecondaryAxesXChanged">
+    <value>Sekundárna os X zmenená</value>
+  </data>
+  <data name="ChartStringId.TrnSecondaryAxesYChanged">
+    <value>Sekundárna os Y zmenená</value>
+  </data>
+  <data name="ChartStringId.TrnXYDiagramPanesChanged">
+    <value>Sekcie zmenené</value>
+  </data>
+  <data name="ChartStringId.TrnChartWizard">
+    <value>Nastavenia sprievodcu boli aplikované</value>
+  </data>
+  <data name="ChartStringId.TrnSeriesDeleted">
+    <value>Serie odstránená</value>
+  </data>
+  <data name="ChartStringId.TrnChartTitleDeleted">
+    <value>Nadpis odstránený</value>
+  </data>
+  <data name="ChartStringId.TrnConstantLineDeleted">
+    <value>Konštantná čiara odstránená</value>
+  </data>
+  <data name="ChartStringId.TrnPaneDeleted">
+    <value>Sekcia odstránená</value>
+  </data>
+  <data name="ChartStringId.TrnSecondryAxisXDeleted">
+    <value>Sekundárna os X odstránená</value>
+  </data>
+  <data name="ChartStringId.TrnSecondryAxisYDeleted">
+    <value>Sekundárna os Y odstránená</value>
+  </data>
+  <data name="ChartStringId.TrnLoadLayout">
+    <value>Usporiadanie grafu nahrané</value>
+  </data>
+  <data name="ChartStringId.TrnSeriesTitleChanged">
+    <value>Menovka série bola zmenená</value>
+  </data>
+  <data name="ChartStringId.TrnSeriesTitleDeleted">
+    <value>Menovka séria bola odstránená</value>
+  </data>
+  <data name="ChartStringId.TrnAxisVisibilityChanged">
+    <value>Viditeľnosť osi zmenená</value>
+  </data>
+  <data name="ChartStringId.TrnSummaryFunctionChanged">
+    <value>Sumarizačná funkcia zmenená</value>
+  </data>
+  <data name="ChartStringId.PieIncorrectValuesText">
+    <value>Tento pohľad neumožňuje zobrazenie záporných hodnôt. Všetky hodnoty musia byť väčšie alebo rovné 0.</value>
+  </data>
+  <data name="ChartStringId.AxisXDefaultTitle">
+    <value>Os argumentov</value>
+  </data>
+  <data name="ChartStringId.AxisYDefaultTitle">
+    <value>Os hodnôt</value>
+  </data>
+  <data name="ChartStringId.DefaultWizardPageLabel">
+    <value>Strana sprievodcu</value>
+  </data>
+  <data name="ChartStringId.MenuItemAdd">
+    <value>Pridať</value>
+  </data>
+  <data name="ChartStringId.MenuItemInsert">
+    <value>Vložiť</value>
+  </data>
+  <data name="ChartStringId.MenuItemDelete">
+    <value>Odstrániť</value>
+  </data>
+  <data name="ChartStringId.MenuItemClear">
+    <value>Vyčistiť</value>
+  </data>
+  <data name="ChartStringId.MenuItemMoveUp">
+    <value>Hore</value>
+  </data>
+  <data name="ChartStringId.MenuItemMoveDown">
+    <value>Dole</value>
+  </data>
+  <data name="ChartStringId.WizAutoCreatedSeries">
+    <value>Automaticky vytvorené série</value>
+  </data>
+  <data name="ChartStringId.WizSpecifyDataFilters">
+    <value>Kliknite na tlačidlo...</value>
+  </data>
+  <data name="ChartStringId.WizDataFiltersDisabled">
+    <value>(žiadny)</value>
+  </data>
+  <data name="ChartStringId.WizBackImageFileNameFilter">
+    <value>Súbory obrázkov(*.gif;*.jpg;*.jpeg;*.bmp;*.wmf;*.png)|*.gif;*.jpg;*.jpeg;*.bmp;*.wmf;*.png|Všetky súbory(*.*)|*.*</value>
+  </data>
+  <data name="ChartStringId.WizNoBackImage">
+    <value>(žiadny)</value>
+  </data>
+  <data name="ChartStringId.WizConstructionGroupName">
+    <value>Návrh grafu</value>
+  </data>
+  <data name="ChartStringId.WizPresentationGroupName">
+    <value>Vzhľad</value>
+  </data>
+  <data name="ChartStringId.WizChartTypePageName">
+    <value>Typ grafu</value>
+  </data>
+  <data name="ChartStringId.WizAppearancePageName">
+    <value>Vzhľad</value>
+  </data>
+  <data name="ChartStringId.WizSeriesPageName">
+    <value>Série</value>
+  </data>
+  <data name="ChartStringId.WizDataPageName">
+    <value>Údaje</value>
+  </data>
+  <data name="ChartStringId.WizChartPageName">
+    <value>Graf</value>
+  </data>
+  <data name="ChartStringId.WizDiagramPageName">
+    <value>Schéma</value>
+  </data>
+  <data name="ChartStringId.WizAxesPageName">
+    <value>Osi</value>
+  </data>
+  <data name="ChartStringId.WizPanesPageName">
+    <value>Sekcie</value>
+  </data>
+  <data name="ChartStringId.WizAxesAlignmentNear">
+    <value>Blízko</value>
+  </data>
+  <data name="ChartStringId.WizAxesAlignmentFar">
+    <value>Ďaleko</value>
+  </data>
+  <data name="ChartStringId.WizAxesAlignmentZero">
+    <value>Žiadne</value>
+  </data>
+  <data name="ChartStringId.WizSeriesViewPageName">
+    <value>Pohľady na série</value>
+  </data>
+  <data name="ChartStringId.WizSeriesLabelsPageName">
+    <value>Značky</value>
+  </data>
+  <data name="ChartStringId.WizChartTitlesPageName">
+    <value>Nadpisy grafu</value>
+  </data>
+  <data name="ChartStringId.WizLegendPageName">
+    <value>Legenda</value>
+  </data>
+  <data name="ChartStringId.WizSeriesPointPageName">
+    <value>Údaje</value>
+  </data>
+  <data name="ChartStringId.WizSeriesDataBindingPageName">
+    <value>Väzby sérií</value>
+  </data>
+  <data name="ChartStringId.WizChartTypePageDescription">
+    <value>Vyberte typ grafu ktorý chcete použiť. Pre zobrazenie skupiny grafov použite výber.</value>
+  </data>
+  <data name="ChartStringId.WizAppearancePageDescription">
+    <value>Vyberte farebnú paletu a štýl pre sériu grafu a body.</value>
+  </data>
+  <data name="ChartStringId.WizChartPageDescription">
+    <value>Úprava vlastnosti grafu</value>
+  </data>
+  <data name="ChartStringId.WizDiagramPageDescription">
+    <value>Úprava vlastnosti schémy.</value>
+  </data>
+  <data name="ChartStringId.WizLegendPageDescription">
+    <value>Úprava vlastností legendy</value>
+  </data>
+  <data name="ChartStringId.WizFormTitle">
+    <value>Sprievodca grafom</value>
+  </data>
+  <data name="ChartStringId.WizDataMemberNoneString">
+    <value>(žiadny)</value>
+  </data>
+  <data name="ChartStringId.WizGradientBottomLeftToTopRight">
+    <value>ZdolaVľavo-HoreVpravo</value>
+  </data>
+  <data name="ChartStringId.WizGradientBottomRightToTopLeft">
+    <value>ZdolaVpravo-HoreVľavo</value>
+  </data>
+  <data name="ChartStringId.WizGradientBottomToTop">
+    <value>Zdola-Hore</value>
+  </data>
+  <data name="ChartStringId.WizGradientFromCenter">
+    <value>Zo stredu</value>
+  </data>
+  <data name="ChartStringId.WizGradientLeftToRight">
+    <value>Zľava-doprava</value>
+  </data>
+  <data name="ChartStringId.WizGradientRightToLeft">
+    <value>Zprava-doľava</value>
+  </data>
+  <data name="ChartStringId.WizGradientToCenter">
+    <value>Do stredu</value>
+  </data>
+  <data name="ChartStringId.WizGradientTopLeftToBottomRight">
+    <value>ZhoraVľavo-DoleVpravo</value>
+  </data>
+  <data name="ChartStringId.WizGradientTopRightToBottomLeft">
+    <value>ZhoraVpravo-DoleVľavo</value>
+  </data>
+  <data name="ChartStringId.WizGradientTopToBottom">
+    <value>Zhora-Dole</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelValue">
+    <value>Hodnota</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelLow">
+    <value>Nízky</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelHigh">
+    <value>Vysoký</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelOpen">
+    <value>Otvorená</value>
+  </data>
+  <data name="ChartStringId.WizValueLevelClose">
+    <value>Zatvoriť</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideBar">
+    <value>Stĺpcový</value>
+  </data>
+  <data name="ChartStringId.WizErrorMessageTitle">
+    <value>Sprievodca grafom</value>
+  </data>
+  <data name="ChartStringId.WizScrollBarAlignmentNear">
+    <value>Bližšie</value>
+  </data>
+  <data name="ChartStringId.WizScrollBarAlignmentFar">
+    <value>Vzdialenejšie</value>
+  </data>
+  <data name="ChartStringId.WizSeriesLabelTextOrientationTopToBottom">
+    <value>Zhora-Dole</value>
+  </data>
+  <data name="ChartStringId.WizSeriesLabelTextOrientationBottomToTop">
+    <value>Zdola-Hore</value>
+  </data>
+  <data name="ChartStringId.WizBarSeriesLabelPositionCenter">
+    <value>Na stred</value>
+  </data>
+  <data name="ChartStringId.WizPieSeriesLabelPositionInside">
+    <value>Dovnútra</value>
+  </data>
+  <data name="ChartStringId.WizPieSeriesLabelPositionOutside">
+    <value>Von</value>
+  </data>
+  <data name="ChartStringId.WizPieSeriesLabelPositionTwoColumns">
+    <value>Dva stĺpce</value>
+  </data>
+  <data name="ChartStringId.WizBubbleLabelValueToDisplayValue">
+    <value>Hodnota</value>
+  </data>
+  <data name="ChartStringId.WizBubbleLabelPositionCenter">
+    <value>Na stred</value>
+  </data>
+  <data name="ChartStringId.WizBubbleLabelPositionOutside">
+    <value>Von</value>
+  </data>
+  <data name="ChartStringId.WizFunnelSeriesLabelPositionCenter">
+    <value>Na stred</value>
+  </data>
+  <data name="ChartStringId.WizAnnotationConnectorStyleLine">
+    <value>Čiarový</value>
+  </data>
+  <data name="ChartStringId.WizStringAlignmentCenter">
+    <value>Na stred</value>
+  </data>
+  <data name="ChartStringId.WizStringAlignmentNear">
+    <value>Bližšie</value>
+  </data>
+  <data name="ChartStringId.WizStringAlignmentFar">
+    <value>Vzdialenejšie</value>
+  </data>
+  <data name="ChartStringId.WizChartImageSizeModeStretch">
+    <value>Roztiahnuť</value>
+  </data>
+  <data name="ChartStringId.WizAnchorPointChart">
+    <value>Graf</value>
+  </data>
+  <data name="ChartStringId.WizIndentUndefined">
+    <value>Nedefinovaé</value>
+  </data>
+  <data name="ChartStringId.SvnStackedBar">
+    <value>Stĺpcový skladaný</value>
+  </data>
+  <data name="ChartStringId.SvnFullStackedBar">
+    <value>Stĺpcový skladaný 100%</value>
+  </data>
+  <data name="ChartStringId.SvnPie">
+    <value>Koláčový</value>
+  </data>
+  <data name="ChartStringId.SvnDoughnut">
+    <value>Prstencový</value>
+  </data>
+  <data name="ChartStringId.SvnPoint">
+    <value>Bodový</value>
+  </data>
+  <data name="ChartStringId.SvnLine">
+    <value>Čiarový</value>
+  </data>
+  <data name="ChartStringId.SvnStepLine">
+    <value>Schodový</value>
+  </data>
+  <data name="ChartStringId.SvnSpline">
+    <value>Krivkový</value>
+  </data>
+  <data name="ChartStringId.SvnSpline3D">
+    <value>Krivkový 3D</value>
+  </data>
+  <data name="ChartStringId.SvnArea">
+    <value>Plošný</value>
+  </data>
+  <data name="ChartStringId.SvnSplineArea">
+    <value>Plošný krivkový</value>
+  </data>
+  <data name="ChartStringId.SvnStackedArea">
+    <value>Plošný skladaný</value>
+  </data>
+  <data name="ChartStringId.SvnSplineStackedArea">
+    <value>Plošný krivkový skladaný</value>
+  </data>
+  <data name="ChartStringId.SvnFullStackedArea">
+    <value>Plošný skladaný 100%</value>
+  </data>
+  <data name="ChartStringId.SvnSplineFullStackedArea">
+    <value>Plošný krivkový skladaný 100%</value>
+  </data>
+  <data name="ChartStringId.SvnArea3D">
+    <value>Plošný 3D</value>
+  </data>
+  <data name="ChartStringId.SvnStackedArea3D">
+    <value>Plošný 3D skladaný</value>
+  </data>
+  <data name="ChartStringId.SvnFullStackedArea3D">
+    <value>Plošný 3D skladaný 100%</value>
+  </data>
+  <data name="ChartStringId.SvnSpline3DArea">
+    <value>Plošný krivkový 3D</value>
+  </data>
+  <data name="ChartStringId.SvnSplineAreaStacked3D">
+    <value>Plošný krivkový skladaný</value>
+  </data>
+  <data name="ChartStringId.SvnSplineAreaFullStacked3D">
+    <value>Plošný krivkový skladaný 3D 100%</value>
+  </data>
+  <data name="ChartStringId.SvnStock">
+    <value>Burzový</value>
+  </data>
+  <data name="ChartStringId.SvnCandleStick">
+    <value>Sviečkový</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideRangeBar">
+    <value>Rozsahový (vedľa seba)</value>
+  </data>
+  <data name="ChartStringId.SvnOverlappedRangeBar">
+    <value>Stĺpcový rozsahový</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideGantt">
+    <value>Gantt (vedľa seba)</value>
+  </data>
+  <data name="ChartStringId.SvnSideBySideBar3D">
+    <value>Stĺpcový 3D</value>
+  </data>
+  <data name="ChartStringId.SvnStackedBar3D">
+    <value>Stĺpcový 3D skladaný</value>
+  </data>
+  <data name="ChartStringId.SvnFullStackedBar3D">
+    <value>Stĺpcový 3D skladaný 100%</value>
+  </data>
+  <data name="ChartStringId.SvnManhattanBar">
+    <value>Stĺpcový Manhattan</value>
+  </data>
+  <data name="ChartStringId.SvnPie3D">
+    <value>Koláčový 3D</value>
+  </data>
+  <data name="ChartStringId.SvnDoughnut3D">
+    <value>Prstencový 3D</value>
+  </data>
+  <data name="ChartStringId.SvnLine3D">
+    <value>Čiarový 3D</value>
+  </data>
+  <data name="ChartStringId.SvnStepLine3D">
+    <value>Schodový čiarový 3D</value>
+  </data>
+  <data name="ChartStringId.SvnRadarPoint">
+    <value>Radarový bodovy</value>
+  </data>
+  <data name="ChartStringId.SvnRadarLine">
+    <value>Radarový čiarový</value>
+  </data>
+  <data name="ChartStringId.SvnRadarArea">
+    <value>Radarový plošný</value>
+  </data>
+  <data name="ChartStringId.SvnPolarPoint">
+    <value>Pólový bodový</value>
+  </data>
+  <data name="ChartStringId.SvnPolarLine">
+    <value>Pólový čiarový</value>
+  </data>
+  <data name="ChartStringId.SvnPolarArea">
+    <value>Pólový plošný</value>
+  </data>
+  <data name="ChartStringId.IncompatibleSeriesView">
+    <value>(Nezlúčiteľné)</value>
+  </data>
+  <data name="ChartStringId.InvisibleSeriesView">
+    <value>(Neviditeľné)</value>
+  </data>
+  <data name="ChartStringId.IncompatibleSeriesHeader">
+    <value>Tato série je nekompatibilná:</value>
+  </data>
+  <data name="ChartStringId.IncompatibleSeriesMessage">
+    <value>{0} s "{1}"</value>
+  </data>
+  <data name="ChartStringId.IOCaption">
+    <value>Nesprávna operácia</value>
+  </data>
+  <data name="ChartStringId.IODeleteDefaultPane">
+    <value>Východzia sekcia sa nedá odstrániť</value>
+  </data>
+  <data name="ChartStringId.IODeleteAxis">
+    <value>Primárne osy nemôžu byť zamazané.</value>
+  </data>
+  <data name="ChartStringId.PrintSizeModeNone">
+    <value>Žiadne (graf je vytlačený s rovnakými rozmermi ako je zobrazený na formulári)</value>
+  </data>
+  <data name="ChartStringId.StyleAllColors">
+    <value>Všetky farby</value>
+  </data>
+  <data name="ChartStringId.StyleColorNumber">
+    <value>Farba {0}</value>
+  </data>
+  <data name="ChartStringId.DefaultPaneName">
+    <value>Východzia sekcia</value>
+  </data>
+  <data name="ChartStringId.QuarterFormat">
+    <value>Kv{0}</value>
+  </data>
+  <data name="ChartStringId.OthersArgument">
+    <value>Iný argument</value>
+  </data>
+  <data name="ChartStringId.ScaleTypeQualitative">
+    <value>kvalitatívna</value>
+  </data>
+  <data name="ChartStringId.ScaleTypeNumerical">
+    <value>numerická</value>
+  </data>
+  <data name="ChartStringId.ScaleTypeDateTime">
+    <value>časová</value>
+  </data>
+  <data name="ChartStringId.FunctionNameSum">
+    <value>SUMA</value>
+  </data>
+  <data name="ChartStringId.FunctionNameAverage">
+    <value>PRIEMER</value>
+  </data>
+  <data name="ChartStringId.FunctionNameCount">
+    <value>POČET</value>
+  </data>
+  <data name="ChartStringId.TitleSummaryFunction">
+    <value>Sumarizačná funkcia</value>
+  </data>
+  <data name="ChartStringId.PanesVisibilityDialogVisibleColumn">
+    <value>Viditeľné</value>
+  </data>
+  <data name="ChartStringId.PanesVisibilityDialogPanesColumn">
+    <value>Sekcie</value>
+  </data>
+</root>

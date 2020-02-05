@@ -1,0 +1,20 @@
+﻿<!--
+    You can find existing browser definitions at
+    <windir>\Microsoft.NET\Framework\<ver>\CONFIG\Browsers
+-->
+<browsers>
+  <browser refID="default">
+    <controlAdapters>
+      <adapter controlType="System.Web.UI.HtmlControls.HtmlForm" adapterType="ControlAdapterTracing" />
+      <adapter controlType="System.Web.UI.WebControls.Button" adapterType="ControlAdapterTracing" />
+      <adapter controlType="System.Web.UI.UserControl" adapterType="ControlAdapterTracing" />
+      
+      <!--<adapter controlType="DevExpress.Web.ASPxTabControl.ASPxPageControl, DevExpress.Web.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" adapterType="ControlAdapterTracing" />
+      <adapter controlType="DevExpress.Web.ASPxEditors.ASPxCheckBox, DevExpress.Web.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" adapterType="ControlAdapterTracing" />
+      <adapter controlType="DevExpress.Web.ASPxEditors.ASPxButton, DevExpress.Web.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" adapterType="ControlAdapterTracing" />
+      <adapter controlType="DevExpress.Web.ASPxPopupControl.ASPxPopupControl, DevExpress.Web.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" adapterType="ControlAdapterTracing" />
+      <adapter controlType="DevExpress.Web.ASPxGridView.Export.ASPxGridViewExporter, DevExpress.Web.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" adapterType="ControlAdapterTracing" />
+      <adapter controlType="DevExpress.Web.ASPxGridView.ASPxGridView, DevExpress.Web.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" adapterType="ControlAdapterTracing" />-->
+    </controlAdapters>
+  </browser>
+</browsers>

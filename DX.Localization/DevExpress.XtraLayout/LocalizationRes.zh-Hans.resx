@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LayoutStringId.CustomizationParentName" xml:space="preserve">
+    <value>定制</value>
+    <comment>Customization</comment>
+  </data>
+  <data name="LayoutStringId.DefaultItemText" xml:space="preserve">
+    <value>项目</value>
+    <comment>Item </comment>
+  </data>
+  <data name="LayoutStringId.DefaultActionText" xml:space="preserve">
+    <value>默认动作</value>
+    <comment>DefaultAction</comment>
+  </data>
+  <data name="LayoutStringId.DefaultEmptyText" xml:space="preserve">
+    <value>无</value>
+    <comment>none</comment>
+  </data>
+  <data name="LayoutStringId.LayoutItemDescription" xml:space="preserve">
+    <value>版面设计控制器的项目元素</value>
+    <comment>Layout control item element</comment>
+  </data>
+  <data name="LayoutStringId.LayoutGroupDescription" xml:space="preserve">
+    <value>版面设计控制器的群组元素</value>
+    <comment>Layout control group element</comment>
+  </data>
+  <data name="LayoutStringId.TabbedGroupDescription" xml:space="preserve">
+    <value>版面控制器的群组标签页元素</value>
+    <comment>Layout control tabbedGroup element</comment>
+  </data>
+  <data name="LayoutStringId.LayoutControlDescription" xml:space="preserve">
+    <value>版面控制</value>
+    <comment>Layout control</comment>
+  </data>
+  <data name="LayoutStringId.CustomizationFormTitle" xml:space="preserve">
+    <value>定制</value>
+    <comment>Customization</comment>
+  </data>
+  <data name="LayoutStringId.TreeViewPageTitle" xml:space="preserve">
+    <value>版面设计树状视图</value>
+    <comment>Layout Tree View</comment>
+  </data>
+  <data name="LayoutStringId.HiddenItemsPageTitle" xml:space="preserve">
+    <value>隐藏项目</value>
+    <comment>Hidden Items</comment>
+  </data>
+  <data name="LayoutStringId.RenameSelected" xml:space="preserve">
+    <value>重命名</value>
+    <comment>Rename</comment>
+  </data>
+  <data name="LayoutStringId.HideItemMenutext" xml:space="preserve">
+    <value>隐藏项目</value>
+    <comment>Hide Item</comment>
+  </data>
+  <data name="LayoutStringId.LockItemSizeMenuText" xml:space="preserve">
+    <value>锁定项目大小</value>
+    <comment>Lock Item Size</comment>
+  </data>
+  <data name="LayoutStringId.UnLockItemSizeMenuText" xml:space="preserve">
+    <value>解除项目大小锁定</value>
+    <comment>UnLock Item Size</comment>
+  </data>
+  <data name="LayoutStringId.GroupItemsMenuText" xml:space="preserve">
+    <value>群组</value>
+    <comment>Group</comment>
+  </data>
+  <data name="LayoutStringId.UnGroupItemsMenuText" xml:space="preserve">
+    <value>解除群组设定</value>
+    <comment>Ungroup</comment>
+  </data>
+  <data name="LayoutStringId.CreateTabbedGroupMenuText" xml:space="preserve">
+    <value>创建群组标签页</value>
+    <comment>Create Tabbed Group</comment>
+  </data>
+  <data name="LayoutStringId.AddTabMenuText" xml:space="preserve">
+    <value>增加标签页</value>
+    <comment>Add Tab</comment>
+  </data>
+  <data name="LayoutStringId.UnGroupTabbedGroupMenuText" xml:space="preserve">
+    <value>解除群组标签页设定</value>
+    <comment>Ungroup Tabbed Group</comment>
+  </data>
+  <data name="LayoutStringId.TreeViewRootNodeName" xml:space="preserve">
+    <value>最上层</value>
+    <comment>Root</comment>
+  </data>
+  <data name="LayoutStringId.ShowCustomizationFormMenuText" xml:space="preserve">
+    <value>定制版面</value>
+    <comment>Customize Layout</comment>
+  </data>
+  <data name="LayoutStringId.HideCustomizationFormMenuText" xml:space="preserve">
+    <value>隐藏定制表格</value>
+    <comment>Hide Customization Form</comment>
+  </data>
+  <data name="LayoutStringId.EmptySpaceItemDefaultText" xml:space="preserve">
+    <value>空白区域项目</value>
+    <comment>Empty Space Item</comment>
+  </data>
+  <data name="LayoutStringId.SplitterItemDefaultText" xml:space="preserve">
+    <value>分隔器版面設計控制器的群組標籤頁項目</value>
+    <comment>Splitter</comment>
+  </data>
+  <data name="LayoutStringId.ControlGroupDefaultText" xml:space="preserve">
+    <value>群组</value>
+    <comment>Group </comment>
+  </data>
+  <data name="LayoutStringId.EmptyRootGroupText" xml:space="preserve">
+    <value>在这里放置控件</value>
+    <comment>Drop controls here</comment>
+  </data>
+  <data name="LayoutStringId.EmptyTabbedGroupText" xml:space="preserve">
+    <value>将群组拖放到群组标签页区域</value>
+    <comment>Drag and drop groups into the TabbedGroup area</comment>
+  </data>
+  <data name="LayoutStringId.ResetLayoutMenuText" xml:space="preserve">
+    <value>重设版面</value>
+    <comment>Reset Layout</comment>
+  </data>
+  <data name="LayoutStringId.RenameMenuText" xml:space="preserve">
+    <value>重命名</value>
+    <comment>Rename</comment>
+  </data>
+  <data name="LayoutStringId.TextPositionMenuText" xml:space="preserve">
+    <value>文本位置</value>
+    <comment>Text Position</comment>
+  </data>
+  <data name="LayoutStringId.TextPositionLeftMenuText" xml:space="preserve">
+    <value>左边</value>
+    <comment>Left</comment>
+  </data>
+  <data name="LayoutStringId.TextPositionRightMenuText" xml:space="preserve">
+    <value>右边</value>
+    <comment>Right</comment>
+  </data>
+  <data name="LayoutStringId.TextPositionTopMenuText" xml:space="preserve">
+    <value>上方</value>
+    <comment>Top</comment>
+  </data>
+  <data name="LayoutStringId.TextPositionBottomMenuText" xml:space="preserve">
+    <value>下方</value>
+    <comment>Bottom</comment>
+  </data>
+  <data name="LayoutStringId.ShowTextMenuItem" xml:space="preserve">
+    <value>显示文本</value>
+    <comment>Show Text</comment>
+  </data>
+  <data name="LayoutStringId.HideTextMenuItem" xml:space="preserve">
+    <value>隐藏文本</value>
+    <comment>Hide Text</comment>
+  </data>
+  <data name="LayoutStringId.LockSizeMenuItem" xml:space="preserve">
+    <value>锁定大小</value>
+    <comment>Lock Size</comment>
+  </data>
+  <data name="LayoutStringId.LockWidthMenuItem" xml:space="preserve">
+    <value>锁定宽度</value>
+    <comment>Lock Width</comment>
+  </data>
+  <data name="LayoutStringId.CreateEmptySpaceItem" xml:space="preserve">
+    <value>创建空白区域项目</value>
+    <comment>Create EmptySpace Item</comment>
+  </data>
+  <data name="LayoutStringId.LockHeightMenuItem" xml:space="preserve">
+    <value>锁定高度</value>
+    <comment>Lock Height</comment>
+  </data>
+  <data name="LayoutStringId.LockMenuGroup" xml:space="preserve">
+    <value>强制限定大小</value>
+    <comment>Size Constraints</comment>
+  </data>
+  <data name="LayoutStringId.FreeSizingMenuItem" xml:space="preserve">
+    <value>允许改变大小</value>
+    <comment>Free sizing</comment>
+  </data>
+  <data name="LayoutStringId.ResetConstraintsToDefaultsMenuItem" xml:space="preserve">
+    <value>重设为默认值</value>
+    <comment>Reset to default</comment>
+  </data>
+</root>

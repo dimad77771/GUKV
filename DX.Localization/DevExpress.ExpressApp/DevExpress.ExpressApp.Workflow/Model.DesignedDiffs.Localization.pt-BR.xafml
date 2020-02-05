@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="Activate" Caption="Ativar" />
+      <Action Id="CancelWorkflowInstance" Caption="Cancelar" ConfirmationMessage="Você está prestes a cancelar o(s) item(s) selecionado(s). Deseja continuar?" />
+      <Action Id="Deactivate" Caption="Desativar" />
+      <Action Id="ResumeWorkflowInstance" Caption="Reiniciar" ConfirmationMessage="Você está prestes a reiniciar o(s) item(s) selecionado(s). Deseja continuar?" />
+      <Action Id="ShowWorkflowInstances" Caption="Mostrar as Instâncias de Workflow" />
+      <Action Id="SuspendWorkflowInstance" ConfirmationMessage="Você está prestes a suspender o(s) item(s) selecionado(s). Deseja continuar?" Caption="Suspenso" />
+      <Action Id="TerminateWorkflowInstance" Caption="Terminar" ConfirmationMessage="Você está prestes a terminar o(s) item(s) selecionado(s). Deseja continuar?" />
+    </Actions>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="DevExpress.ExpressApp.Workflow.Versioning.IUserActivityVersion" Caption="IUser Versão da Atividade">
+      <OwnMembers>
+        <Member Name="Version" Caption="Versão" />
+        <Member Name="WorkflowUniqueId" Caption="Id Única do Workflow" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Workflow.Versioning.XpoUserActivityVersion" Caption="Versão da Atividade do Usuário Xpo">
+      <OwnMembers>
+        <Member Name="Version" Caption="Versão" />
+        <Member Name="WorkflowUniqueId" Caption="Id Única do Workflow" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Workflow.Xpo.WFBaseObject" Caption="Objeto WFBase" />
+    <Class Name="DevExpress.ExpressApp.Workflow.Xpo.XpoRunningWorkflowInstanceInfo" Caption="Informações da Instância de Workflow em Execução">
+      <OwnMembers>
+        <Member Name="State" Caption="Estado" />
+        <Member Name="TargetObjectHandle" Caption="Critério Objeto Destino" />
+        <Member Name="TrackingRecords" Caption="Rastreamento de Registros" />
+        <Member Name="TrackingRecordVisualizationInfo" Caption="Visualização das Informações do Rastreamento de Registro" />
+        <Member Name="WorkflowName" Caption="Nome do Workflow" />
+        <Member Name="WorkflowUniqueId" Caption="Id Única do Workflow" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Workflow.Xpo.XpoStartWorkflowRequest">
+      <OwnMembers>
+        <Member Name="TargetObjectKey" Caption="Chave Objeto Destino" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Workflow.Xpo.XpoWorkflowDefinition" Caption="Definição do Workflow">
+      <OwnMembers>
+        <Member Name="AutoStartWhenObjectFitsCriteria" Caption="Iniciar automaticamente quando o objeto atender ao critério" />
+        <Member Name="AutoStartWhenObjectIsCreated" Caption="Iniciar automaticamente quando o objeto for criado" />
+        <Member Name="Criteria" Caption="Critério" />
+        <Member Name="IsActive" Caption="Ativo" />
+        <Member Name="Name" Caption="Nome" />
+        <Member Name="TargetObjectType" Caption="Tipo Objeto Destino" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Workflow.Xpo.XpoWorkflowInstanceControlCommandRequest">
+      <OwnMembers>
+        <Member Name="Command" Caption="Comando" />
+        <Member Name="CreatedOn" Caption="Criado em" />
+        <Member Name="Result" Caption="Resultado" />
+        <Member Name="TargetActivityInstanceId" Caption="Id da Instancia da Atividade Destino" />
+        <Member Name="TargetWorkflowUniqueId" Caption="Id Única Workflow Destino" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Workflow.Xpo.XpoTrackingRecord" Caption="Registro de Rastreamento Xpo">
+      <OwnMembers>
+        <Member Name="ActivityId" Caption="Id Atividade" />
+        <Member Name="Data" Caption="Dados" />
+        <Member Name="DateTime" Caption="Data Hora" />
+        <Member Name="InstanceId" Caption="Id Instância" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Workflow.Xpo.XpoWorkflowInstance">
+      <OwnMembers>
+        <Member Name="ExpirationDateTime" Caption="Data Hora Vencimento" />
+        <Member Name="InstanceId" Caption="Id Instância" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <Localization>
+    <LocalizationGroup Name="Enums">
+      <LocalizationGroup Name="DevExpress.ExpressApp.Workflow.WorkflowControlCommand" Value="Comando de Controle do Workflow">
+        <LocalizationItem Name="Cancel" Value="Cancelar" />
+        <LocalizationItem Name="Resume" Value="Reiniciar" />
+        <LocalizationItem Name="Suspend" Value="Suspenso" />
+        <LocalizationItem Name="Terminate" Value="Terminar" />
+      </LocalizationGroup>
+      <LocalizationGroup Name="System.Activities.ActivityInstanceState" Value="Estado da Instância da Atividade">
+        <LocalizationItem Name="Canceled" Value="Cancelado" />
+        <LocalizationItem Name="Closed" Value="Fechado" />
+        <LocalizationItem Name="Executing" Value="Executando" />
+        <LocalizationItem Name="Faulted" Value="Falha" />
+      </LocalizationGroup>
+    </LocalizationGroup>
+  </Localization>
+  <Views>
+    <DetailView Id="XpoRunningWorkflowInstanceInfo_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="XpoRunningWorkflowInstanceInfo" Caption="Informações da Instância de Workflow em Execução" />
+          </LayoutGroup>
+          <LayoutGroup Id="TrackingRecords_Group" Caption="Rastreamento de Registros" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="XpoWorkflowDefinition_DetailView">
+      <Items>
+        <PropertyEditor Id="AutoStartWhenObjectFitsCriteria" Caption="Objeto atende ao critério" />
+        <PropertyEditor Id="AutoStartWhenObjectIsCreated" Caption="O Objeto foi Criado" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main_Copy">
+          <LayoutGroup Id="SizeableEditors">
+            <TabbedGroup Id="Item1">
+              <LayoutGroup Id="XpoWorkflowDefinition" Caption="Propriedades">
+                <LayoutGroup Id="Item2" Caption="Iniciar automaticamente quando:" />
+              </LayoutGroup>
+              <LayoutGroup Id="Item2" Caption="Desenhador" />
+            </TabbedGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>
