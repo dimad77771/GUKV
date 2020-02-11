@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -138,6 +140,12 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 		var username = (user == null ? String.Empty : (String)user.UserName);
 		dbparams.AddWithValue("@modified_by2", username);
 
+		var geodata_map_points = (string)(e.Command.Parameters["@geodata_map_points"].Value);
+		if (!Validate_geodata_map_points(geodata_map_points))
+		{
+			throw new Exception("Невірно заповнене поле \"Координати на мапі\". Приклад вірно заповненого поля (широта довгота) \"50.509205 30.426741\"");
+		}
+
 
 		//e.Command.Parameters.Add("@modify_date2");
 		//e.Command.Parameters.Add("@modified_by2");
@@ -148,6 +156,32 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 
 		//e.Command.Parameters["@id"].Value = 1;
 		//e.Command.Parameters["@komis_protocol"].Value = "fff";
+	}
+
+	bool Validate_geodata_map_points(string geodata_map_points)
+	{
+		if (string.IsNullOrEmpty(geodata_map_points))
+		{
+			return true;
+		}
+
+		var is_good = false;
+		var regpoints = (new Regex(@"^(\d+\.\d+)\s+(\d+\.\d+)$")).Match(geodata_map_points);
+		if (regpoints.Groups.Count == 3)
+		{
+			try
+			{
+				var point1 = Decimal.Parse(regpoints.Groups[1].Value, CultureInfo.InvariantCulture);
+				var point2 = Decimal.Parse(regpoints.Groups[2].Value, CultureInfo.InvariantCulture);
+				is_good = true;
+			}
+			catch (Exception ex)
+			{
+				is_good = false;
+			}
+		}
+
+		return is_good;
 	}
 
 	protected void ObjectDataSourcePhotoFiles_Inserting(object sender, ObjectDataSourceMethodEventArgs e)
