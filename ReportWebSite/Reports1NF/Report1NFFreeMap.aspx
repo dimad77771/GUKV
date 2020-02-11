@@ -182,6 +182,11 @@
 							html_need_zgoda +
 
 							'<tr>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">Орендодавець</td>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">' + apoint.orandodatel + '</td>' +
+							'</tr>' +
+
+							'<tr>' +
 							'<td style="text-align:left; border:1px solid; padding:5px">Балансоутримувач</td>' +
 							'<td style="text-align:left; border:1px solid; padding:5px">' + apoint.org_name + '</td>' +
 							'</tr>' +

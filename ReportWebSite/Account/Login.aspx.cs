@@ -13,9 +13,12 @@ public partial class Account_Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-    }
+		//var user = Membership.GetUser("О.Синенко");
+		//var password = user.ResetPassword();
+		//user.ChangePassword(password, "fq,jkbn66+++");
+	}
 
-    protected void LoginUser_LoggedIn(object sender, EventArgs e)
+	protected void LoginUser_LoggedIn(object sender, EventArgs e)
     {
         String username = LoginUser.UserName.Trim();
 

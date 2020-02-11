@@ -17,7 +17,7 @@
     
     void Application_BeginRequest()
     {
-        if (Request.IsLocal) { StackExchange.Profiling.MiniProfiler.Start(); }
+        //if (Request.IsLocal) { StackExchange.Profiling.MiniProfiler.Start(); }
   
 		var response = HttpContext.Current.Response;
 

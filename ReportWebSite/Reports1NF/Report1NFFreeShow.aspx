@@ -119,6 +119,7 @@
 
 ,st.kind
 ,rep.form_of_ownership
+,dbo.get_reports1NF_orandodatel(b.district, rep.form_of_ownership) as orandodatel
 ,rep.old_organ
 
 ,b.object_kind as vydbudynku
@@ -419,12 +420,12 @@ WHERE id = @id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("zgoda_renter") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>--%>
-        <dx:GridViewDataTextColumn FieldName="form_of_ownership" Caption="Форма Власності" VisibleIndex="22" Width="100px">
+        <dx:GridViewDataTextColumn FieldName="orandodatel" Caption="Орендодавець" VisibleIndex="22" Width="500px">
 			<EditItemTemplate>
-				<dx:ASPxLabel runat="server" Text='<%# Eval("form_of_ownership") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("orandodatel") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="vydbudynku" Caption="Вид будинку" VisibleIndex="22" Width="100px">
+        <dx:GridViewDataTextColumn FieldName="vydbudynku" Caption="Вид будинку" VisibleIndex="22" Width="180px">
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("vydbudynku") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
@@ -444,7 +445,7 @@ WHERE id = @id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("sf_upr") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>--%>
-		<dx:GridViewDataTextColumn FieldName="pdfurl" Caption="Pdf" VisibleIndex="25" Width="100px" Visible="false">
+		<dx:GridViewDataTextColumn FieldName="pdfurl" Caption="Pdf" VisibleIndex="25" Width="150px" Visible="false">
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("pdfurl") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>

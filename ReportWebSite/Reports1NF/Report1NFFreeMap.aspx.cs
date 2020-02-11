@@ -55,6 +55,7 @@ public partial class Reports1NF_Report1NFFreeMap : System.Web.UI.Page
 					var period_used_name = GetStringValue(reader, 21);
 					var need_zgoda = GetStringValue(reader, 22);
 					var invest_solution = GetStringValue(reader, 23);
+					var orandodatel = GetStringValue(reader, 24);
 
 					var regpoints = (new Regex(@"(\d+\.\d+)\s+(\d+\.\d+)")).Match(geodata_map_points);
 					if (regpoints.Groups.Count != 3) throw new Exception();
@@ -90,6 +91,7 @@ public partial class Reports1NF_Report1NFFreeMap : System.Web.UI.Page
 						period_used_name = period_used_name,
 						need_zgoda = need_zgoda,
 						invest_solution = invest_solution,
+						orandodatel = orandodatel,
 					};
 					AllPoints.Add(pointInfo);
 				}
@@ -204,6 +206,7 @@ public partial class Reports1NF_Report1NFFreeMap : System.Web.UI.Page
 		public string period_used_name;
 		public string need_zgoda;
 		public string invest_solution;
+		public string orandodatel;
 	}
 
 
@@ -238,6 +241,7 @@ SELECT
 	(select qq.name from dict_1nf_period_used qq where qq.id = fs.period_used_id) as period_used_name,
 	case when fs.zgoda_control_id = 100 or fs.zgoda_renter_id = 100 then '+' else '-' end as need_zgoda,
 	(select qq.name from dict_1nf_invest_solution qq where qq.id = fs.invest_solution_id) as invest_solution,
+	dbo.get_reports1NF_orandodatel(b.district, rep.form_of_ownership) as orandodatel,
 		
  row_number() over (order by org.short_name, b.street_full_name, b.addr_nomer, fs.total_free_sqr) as npp     
 ,fs.id
