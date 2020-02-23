@@ -18,7 +18,7 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        string reportIdStr = Request.QueryString["rid"];
+        string reportIdStr = Request.QueryString["rid"]; 
 
         if (reportIdStr != null && reportIdStr.Length > 0)
         {
