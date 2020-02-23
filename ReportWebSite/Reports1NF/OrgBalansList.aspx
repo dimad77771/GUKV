@@ -77,6 +77,7 @@
         bld.addr_street_name,
         (COALESCE(LTRIM(RTRIM(bld.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer2)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer3)), '')) AS 'addr_nomer',
         bal.sqr_total,
+        bal.sqr_vlas_potreb,
         COALESCE(bal.purpose_str, dict_balans_purpose.name) AS 'purpose', bal.is_deleted, bal.modify_date, bal.submit_date, dict_own.name AS ownership_type,
         CASE WHEN (((bal.is_valid = 0) OR (bal.is_valid IS NULL)) OR ((bal.submit_date IS NULL OR bal.modify_date > bal.submit_date))) THEN N'НІ' ELSE N'ТАК' END AS 'is_submitted',
         bal.modified_by,
@@ -95,7 +96,7 @@
         LEFT OUTER JOIN dict_districts2 ON dict_districts2.id = bld.addr_distr_new_id
         LEFT OUTER JOIN dict_org_ownership dict_own ON bal.form_ownership_id = dict_own.id
 
-        outer apply (select sum(fs.total_free_sqr) as total_free_sqr from reports1nf_balans_free_square fs where fs.balans_id = bal.id and fs.report_id = bal.report_id and fs.is_included = 1) bfs 
+        outer apply (select sum(fs.total_free_sqr) as total_free_sqr from reports1nf_balans_free_square fs where fs.balans_id = bal.id and fs.report_id = bal.report_id /*and fs.is_included = 1*/) bfs 
         outer apply (select COUNT(distinct ar.id) as num_rent_agr, sum(an.rent_square) as total_rent_sqr from reports1nf_arenda ar left join reports1nf_arenda_notes an on ar.id = an.arenda_id and isnull(an.is_deleted,0) = 0 where bal.report_id = ar.report_id and bal.organization_id = ar.org_balans_id and bal.building_id = ar.building_id and isnull(ar.is_deleted,0)=0 and ar.agreement_state = 1) ag 
         --left join reports1nf_balans_free_square fs on fs.balans_id = bal.id and fs.report_id = bal.report_id
         --LEFT JOIN reports1nf_arenda ar ON bal.report_id = ar.report_id and bal.organization_id = ar.org_balans_id and bal.building_id = ar.building_id and isnull(ar.is_deleted,0)=0 and ar.agreement_state = 1
@@ -106,6 +107,7 @@
         bld.addr_street_name,
         (COALESCE(LTRIM(RTRIM(bld.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer2)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer3)), '')),
         bal.sqr_total
+       , bal.sqr_vlas_potreb
        , bfs.total_free_sqr
        , ag.num_rent_agr
        , ag.total_rent_sqr
@@ -279,6 +281,8 @@
 
         <dx:GridViewDataTextColumn FieldName="num_rent_agr" VisibleIndex="12" Caption="Кількість договорів оренди" ShowInCustomizationForm="True" Visible="False"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="total_rent_sqr" VisibleIndex="13" Caption="Площа, що надається в оренду"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="sqr_vlas_potreb" VisibleIndex="14" Caption="Площа об'єкту для власних потреб" ShowInCustomizationForm="True" Visible="False"></dx:GridViewDataTextColumn>
+
 
     </Columns>
 
@@ -288,6 +292,7 @@
         <dx:ASPxSummaryItem FieldName="total_free_sqr" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="num_rent_agr" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="total_rent_sqr" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="sqr_vlas_potreb" SummaryType="Sum" DisplayFormat="{0}" />
     </TotalSummary>
 
     <SettingsBehavior AutoFilterRowInputDelay="2500" ColumnResizeMode="Control" EnableCustomizationWindow="True" />

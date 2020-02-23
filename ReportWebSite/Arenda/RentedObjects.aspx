@@ -167,7 +167,8 @@
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT m.*
     --, (CASE WHEN ar.agreement_state = 1 THEN 'Договір діє' ELSE CASE WHEN ar.agreement_state = 2 THEN 'Договір закінчився, але заборгованність не погашено' ELSE CASE WHEN ar.agreement_state = 3 THEN 'Договір закінчився, оренда продовжена іншим договором' ELSE '' END END END) AS 'agreement_active_s'
-    , pryzn4doc = (select dbo.efn_concat_string(purpose_str, '; ','', 0) FROM view_arenda_link_2_decisions WHERE arenda_id = m.arenda_id)
+/*    , pryzn4doc = (select dbo.efn_concat_string(purpose_str, '; ','', 0) FROM view_arenda_link_2_decisions WHERE arenda_id = m.arenda_id)      */
+    , pryzn4doc = (select top 1 doc_display_name from view_arenda_link_2_decisions ld where ld.arenda_id = m.arenda_id order by ld.link_id) 
     --, prop_using_type = substring(r.short_name, 1, Charindex(' ',r.short_name)-1)
     , prop_using_type = substring(m.payment_type_obj, 1, 60)
     --, r.rental_rate
@@ -324,6 +325,12 @@
             VisibleIndex="31" Visible="True" Caption="Номер Договору Оренди"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="cost_narah" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="32" Visible="False" Caption="Ставка за використання, %"></dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="invent_no_balans" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="33" Visible="True" Caption="Інвентарний номер об'єкту"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="invent_no_agr_obj" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="34" Visible="True" Caption="Інвентарний номер об'єкту за договором"></dx:GridViewDataTextColumn>
+
 <%--        
         <dx:GridViewDataTextColumn FieldName="floor_number" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="33" Visible="False" Caption="Поверх"></dx:GridViewDataTextColumn>

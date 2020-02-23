@@ -224,7 +224,7 @@
 ,dpt.name AS 'payment_type'
       ,[org].[zkpo_code] AS 'org_renter_zkpo'
       ,[org_giver].[zkpo_code] AS 'org_giver_zkpo'
-,ad.purpose_str as priznachennya
+    ,isnull(ad.pidstava+' ','')+ isnull(ad.doc_num+' ','')+ isnull('від '+ad.doc_date+' ','')+ad.purpose_str as priznachennya
 ,ar.insurance_sum
 ,ar.insurance_start
 ,ar.insurance_end
@@ -244,7 +244,10 @@ FROM reports1nf_arenda ar
         left join dbo.reports1NF_arenda_payments ap on ap.arenda_id = a.id and ap.rent_period_id = mrp.max_rent_period_id
 
         LEFT JOIN dict_arenda_payment_type dpt ON a.payment_type_id = dpt.id
-        left join (select report_id,arenda_id,purpose_str  from dbo.reports1nf_arenda_decisions t1 where id = (select top 1 id from dbo.reports1nf_arenda_decisions t2 where t2.arenda_id = t1.arenda_id)) ad on ad.arenda_id = ar.id and ad.report_id = rep.id
+
+/*        left join (select report_id,arenda_id,purpose_str, pidstava, doc_num  from dbo.reports1nf_arenda_decisions t1 where id = (select top 1 id from dbo.reports1nf_arenda_decisions t2 where t2.arenda_id = t1.arenda_id)) ad on ad.arenda_id = ar.id and ad.report_id = rep.id */
+        outer apply (select top 1 report_id,arenda_id,purpose_str, pidstava, doc_num, doc_date=convert(varchar(10),doc_date, 104)  from dbo.reports1nf_arenda_decisions t1 where t1.arenda_id = ar.id and t1.report_id = rep.id order by t1.id) ad 
+
 		outer apply (select top 1 id as period_id from dict_rent_period per where per.is_active = 1) apd
 
         WHERE ar.report_id = @rep_id AND isnull(a.is_deleted, 0) = 0 ORDER BY ar.modify_date DESC" >

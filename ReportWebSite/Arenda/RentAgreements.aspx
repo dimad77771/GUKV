@@ -214,6 +214,7 @@
 ,ar.insurance_end
 
 ,isnull(ddd.name, 'Невідомо') as sphera_dialnosti
+,priznachennya = dc.doc_display_name
 
         FROM view_arenda_agreements m  /*m_view_arenda_agreements m*/
         join arenda ar on ar.id = m.arenda_id
@@ -222,6 +223,7 @@
                from [dbo].[arenda_notes] n where n.arenda_id = ar.id and isnull(n.is_deleted, 0) = 0 order by n.cost_agreement desc) an2
 		join dbo.organizations org on m.org_balans_id = org.id
 		outer apply (select top 1 * from arenda_payments where arenda_id = ar.id order by id desc) p 
+		outer apply (select top 1 doc_display_name from view_arenda_link_2_decisions ld where ld.arenda_id = ar.id order by ld.link_id) dc 
 		left join [dbo].[dict_otdel_gukv] d on org.otdel_gukv_id = d.id 
                     LEFT OUTER JOIN (select obp.org_id,occ.name from org_by_period obp
                                       join dict_rent_occupation occ on occ.id = obp.org_occupation_id
@@ -377,10 +379,12 @@
             VisibleIndex="32" Visible="False" Caption="Поверх"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="cost_narah" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="33" Visible="True" Caption="Середня Ставка за використання (%)"></dx:GridViewDataTextColumn>      --%>
+        <dx:GridViewDataTextColumn FieldName="priznachennya" VisibleIndex="33" Caption="Призначення за Документом" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+
         <dx:GridViewDataTextColumn FieldName="cost_payed" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="34" Visible="False" Caption="Сплачена Вартість (грн.)"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="cost_debt" ReadOnly="True" ShowInCustomizationForm="False"
-            VisibleIndex="35" Visible="False" Caption="Борг (грн.)"></dx:GridViewDataTextColumn>
+<%--        <dx:GridViewDataTextColumn FieldName="cost_debt" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="35" Visible="False" Caption="Борг (грн.)"></dx:GridViewDataTextColumn>       --%>
         <dx:GridViewDataTextColumn FieldName="n_cost_agreement" ReadOnly="True"
             VisibleIndex="36" Visible="True" Caption="Плата за використання, грн."></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="cost_agreement_max" ReadOnly="True"
@@ -439,9 +443,9 @@
             VisibleIndex="61" Visible="False" Caption="Орендар - Орган Управління" Width="180px"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_giver_vedomstvo" ReadOnly="True" 
             VisibleIndex="62" Visible="False" Caption="Орендодавець - Орган Управління" Width="180px"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="balans_sqr_total" ReadOnly="True" ShowInCustomizationForm="False"
+ <%--       <dx:GridViewDataTextColumn FieldName="balans_sqr_total" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="63" Visible="False" Caption="Балансоутримувач - Загальна Площа На Балансі (кв.м.)"></dx:GridViewDataTextColumn>
-<%--        <dx:GridViewDataTextColumn FieldName="balans_num_rent_agr" ReadOnly="True"
+        <dx:GridViewDataTextColumn FieldName="balans_num_rent_agr" ReadOnly="True"
             VisibleIndex="64" Visible="False" Caption="Балансоутримувач - Кількість Договорів Оренди"></dx:GridViewDataTextColumn>      --%>
         <dx:GridViewDataTextColumn FieldName="stanjuro" ReadOnly="True"
             VisibleIndex="64" Visible="True" Caption="Балансоутримувач - стан юр. особи"></dx:GridViewDataTextColumn> 
@@ -453,9 +457,9 @@
         <dx:GridViewDataTextColumn FieldName="org_balans_form_ownership" ReadOnly="True"
             VisibleIndex="67" Visible="False" Caption="Балансоутримувач - Форма Власності"></dx:GridViewDataTextColumn>
 <%--        <dx:GridViewDataTextColumn FieldName="agreement_num_int" ReadOnly="True"
-            VisibleIndex="68" Visible="False" Caption="Номер Договору Оренди (число)"></dx:GridViewDataTextColumn>     --%>
+            VisibleIndex="68" Visible="False" Caption="Номер Договору Оренди (число)"></dx:GridViewDataTextColumn>     
         <dx:GridViewDataTextColumn FieldName="is_in_privat" ReadOnly="True"
-            VisibleIndex="69" Visible="False" Caption="Будинок В Програмі Приватизації"></dx:GridViewDataTextColumn>
+            VisibleIndex="69" Visible="False" Caption="Будинок В Програмі Приватизації"></dx:GridViewDataTextColumn>      --%>
 <%--        <dx:GridViewDataTextColumn FieldName="sqr_free_total" ReadOnly="True"
             VisibleIndex="70" Visible="False" Caption="Вільні Приміщення: Загальна Площа (кв.м.)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="sqr_free_korysna" ReadOnly="True"
@@ -522,7 +526,6 @@
             VisibleIndex="99" Visible="True" Caption="Сфера діяльності"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_renter_form_of_ownership" ReadOnly="True"  ShowInCustomizationForm="True"
             VisibleIndex="100" Visible="False" Caption="Орендар - Форма власності"></dx:GridViewDataTextColumn>
-
 <%--        <dx:GridViewDataTextColumn FieldName="n_cost_narah" ReadOnly="True" VisibleIndex="78" Caption="(NEW) Орендна ставка (%)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="n_rent_rate" ReadOnly="True" VisibleIndex="79" Caption="(NEW) Орендна ставка (грн)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="n_cost_expert_total" ReadOnly="True" VisibleIndex="81" Caption="(NEW) Експертна вартість (грн)"></dx:GridViewDataTextColumn>
