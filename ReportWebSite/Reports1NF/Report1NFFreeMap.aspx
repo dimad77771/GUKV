@@ -221,6 +221,11 @@
 							'<td style="text-align:left; border:1px solid; padding:5px">' + apoint.invest_solution + '</td>' +
 							'</tr>' +
 
+							'<tr>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">Включено до переліку №</td>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">' + apoint.include_in_perelik + '</td>' +
+							'</tr>' +
+
 							'';
 
 						//if (isNotEmpty(apoint.current_stage_name)) {
