@@ -122,6 +122,7 @@
 	fs.komis_protocol,
 	fs.using_possible_id,
 	fs.geodata_map_points,
+	fs.include_in_perelik,
 	fs.current_stage_id,
 	fs.freecycle_step_dict_id,
 	fs.current_stage_docdate,
@@ -216,6 +217,7 @@ SET
     [komis_protocol] = @komis_protocol,
 	[using_possible_id] = @using_possible_id,
 	[geodata_map_points] = @geodata_map_points,
+	[include_in_perelik] = @include_in_perelik,
 	[freecycle_step_dict_id] = @freecycle_step_dict_id,
 	[current_stage_docdate] = @current_stage_docdate,
 	[current_stage_docnum] = @current_stage_docnum,
@@ -245,6 +247,11 @@ WHERE id = @id"
 <mini:ProfiledSqlDataSource ID="SqlDataSourceUsingPossible" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT id, left(full_name, 150) as name, rental_rate, 1 as ordrow FROM dict_rental_rate union select null, '<пусто>', null, 2 as ordrow ORDER BY ordrow, name">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceIncludeInPerelik" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT '1' id, '1' name, 1 as ordrow union SELECT '2' id, '2' name, 1 as ordrow union select null, '',  2 as ordrow ORDER BY ordrow, name">
 </mini:ProfiledSqlDataSource>
 
 
@@ -431,7 +438,7 @@ WHERE id = @id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("zkpo_code") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
-		<dx:GridViewDataCheckColumn FieldName="isexistsphoto" Caption="Наяв- ність фото" VisibleIndex="1" Width="30px" ReadOnly="true">
+		<dx:GridViewDataCheckColumn FieldName="isexistsphoto" Caption="Наявність фото" VisibleIndex="1" Width="30px" ReadOnly="true">
 <%--			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("isexistsphoto") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>--%>
@@ -464,6 +471,14 @@ WHERE id = @id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("id") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
+
+        <%--<dx:GridViewDataTextColumn FieldName="include_in_perelik" Caption="Включено до переліку №" VisibleIndex="4" Width="50px">
+        </dx:GridViewDataTextColumn>--%>
+		<dx:GridViewDataComboBoxColumn FieldName="include_in_perelik" VisibleIndex="4" Width = "50px" Visible="True" Caption="Включено до переліку №">
+			<HeaderStyle Wrap="True" />
+			<PropertiesComboBox DataSourceID="SqlDataSourceIncludeInPerelik" ValueField="id" TextField="name" ValueType="System.String" />
+		</dx:GridViewDataComboBoxColumn>
+
 
         <dx:GridViewDataTextColumn FieldName="komis_protocol" Caption="Рішення орендодавця" VisibleIndex="4" Width="100px">
 			<%--<EditItemTemplate>
@@ -684,7 +699,7 @@ WHERE id = @id"
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A2_37" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A2_38" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
