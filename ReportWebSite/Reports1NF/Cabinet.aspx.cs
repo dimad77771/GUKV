@@ -577,7 +577,9 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
                     decimal payUnknown = reader.IsDBNull(35) ? 0m : reader.GetDecimal(35);
                     decimal pay50debt_cur = pay50narah - pay50zvit + pay50prev - payUnknown;
 
-                    properties.Add("{PAY_50_DEBT_CUR}", pay50debt_cur > 0 ? pay50debt_cur.ToString("F2") : "");
+					
+					properties.Add("{PAY_SALDO}", payUnknown > 0 ? payUnknown.ToString("F2") : "");
+					properties.Add("{PAY_50_DEBT_CUR}", pay50debt_cur > 0 ? pay50debt_cur.ToString("F2") : "");
 
                     properties.Add("{PAY_50_NARAH}", reader.IsDBNull(29) ? "" : reader.GetDecimal(29).ToString("F2"));
 //pgv                    properties.Add("{PAY_50_PAYED}", reader.IsDBNull(30) ? "" : reader.GetDecimal(30).ToString("F2"));

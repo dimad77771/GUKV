@@ -111,7 +111,12 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         GridViewDecisions.DataSource = tableDecisions;
         GridViewDecisions.DataBind();
 
-        DataTable tableNotes = NotesDataSource;
+		DataTable tableSubleases = SubleasesDataSource;
+		GridViewSubleases.DataSource = tableSubleases;
+		GridViewSubleases.DataBind();
+
+
+		DataTable tableNotes = NotesDataSource;
         GridViewNotes.DataSource = tableNotes;
         GridViewNotes.DataBind();
 
@@ -202,14 +207,16 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         Reports1NFUtils.EnableDevExpressEditors(InsuranceForm, reportBelongsToUser && userIsReportSubmitter, markedControls);
 
         GridViewDecisions.Enabled = reportBelongsToUser && userIsReportSubmitter;
-        GridViewNotes.Enabled = reportBelongsToUser && userIsReportSubmitter;
+		GridViewSubleases.Enabled = reportBelongsToUser && userIsReportSubmitter;
+		GridViewNotes.Enabled = reportBelongsToUser && userIsReportSubmitter;
         StatusForm.Visible = reportBelongsToUser && userIsReportSubmitter;
 
         ButtonSave.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
         ButtonSend.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
         ButtonClear.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
         ButtonAddDecision.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
-        ButtonAddNote.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
+		ButtonAddSublease.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
+		ButtonAddNote.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
 
         // Enable or disable 'special payments' field
         /*
@@ -638,11 +645,269 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         }
     }
 
-    #endregion Working with the table of Decisions
+	#endregion Working with the table of Decisions
 
-    #region Working with the table of Notes
+	#region Working with the table of Subleases
 
-    protected DataTable NotesDataSource
+	protected DataTable SubleasesDataSource
+	{
+		get
+		{
+			string key = GetPageUniqueKey();
+
+			object ds = Session[key + "_SUBLEASES_DATA_SOURCE"];
+
+			if (ds is DataTable)
+			{
+				return ds as DataTable;
+			}
+
+			object view = SqlDataSourceSubleases.Select(new DataSourceSelectArguments());
+
+			if (view is DataView)
+			{
+				DataTable dt = (view as DataView).ToTable();
+
+				Session[key + "_SUBLEASES_DATA_SOURCE"] = dt;
+
+				return dt;
+			}
+
+			return null;
+		}
+
+		set
+		{
+			Session[GetPageUniqueKey() + "_SUBLEASES_DATA_SOURCE"] = value;
+		}
+	}
+
+	protected void CPSubleases_Callback(object sender, CallbackEventArgsBase e)
+	{
+		if (e.Parameter.StartsWith("add:"))
+		{
+			DataTable table = SubleasesDataSource;
+
+			if (table != null)
+			{
+				// Look through all the rows in the table, and find a minimum existing id
+				int minExistingId = 0;
+
+				for (int row = 0; row < table.Rows.Count; row++)
+				{
+					object id = table.Rows[row]["id"];
+
+					if (id is int && (int)id < minExistingId)
+					{
+						minExistingId = (int)id;
+					}
+				}
+
+				int newRowId = (minExistingId < 0) ? minExistingId - 1 : -1;
+
+				// id, arenda_id, payment_type_id, agreement_date, agreement_num, rent_start_date, rent_finish_date, rent_square, rent_payment_month
+
+				object[] values = new object[] { newRowId, RentAgreementID, null, null, null, null, null, null, null };
+
+				table.Rows.Add(values);
+
+				GridViewSubleases.DataBind();
+			}
+		}
+	}
+
+	protected void GridViewSubleases_RowDeleting(object sender, ASPxDataDeletingEventArgs e)
+	{
+		object rowKey = e.Keys[GridViewSubleases.KeyFieldName];
+
+		if (rowKey is int)
+		{
+			int subleaseId = (int)rowKey;
+
+			// Find a row in the DataTable, and delete it
+			DataTable table = SubleasesDataSource;
+
+			if (table != null)
+			{
+				for (int row = 0; row < table.Rows.Count; row++)
+				{
+					object id = table.Rows[row]["id"];
+
+					if (id is int && (int)id == subleaseId)
+					{
+						table.Rows.RemoveAt(row);
+						break;
+					}
+				}
+
+				GridViewSubleases.DataBind();
+			}
+		}
+
+		e.Cancel = true;
+	}
+
+	protected void GridViewSubleases_RowUpdating(object sender, ASPxDataUpdatingEventArgs e)
+	{
+		var edit_payment_type_id = GridViewSubleases.FindEditFormTemplateControl("edit_payment_type_id") as ASPxComboBox;
+		var edit_agreement_num = GridViewSubleases.FindEditFormTemplateControl("edit_agreement_num") as ASPxTextBox;
+		var edit_agreement_date = GridViewSubleases.FindEditFormTemplateControl("edit_agreement_date") as ASPxDateEdit;
+		var edit_rent_start_date = GridViewSubleases.FindEditFormTemplateControl("edit_rent_start_date") as ASPxDateEdit;
+		var edit_rent_finish_date = GridViewSubleases.FindEditFormTemplateControl("edit_rent_finish_date") as ASPxDateEdit;
+		var edit_rent_square = GridViewSubleases.FindEditFormTemplateControl("edit_rent_square") as ASPxSpinEdit;
+		var edit_rent_payment_month = GridViewSubleases.FindEditFormTemplateControl("edit_rent_payment_month") as ASPxSpinEdit;
+
+
+		if (edit_agreement_num != null && edit_agreement_date != null && edit_rent_start_date != null && 
+			edit_rent_finish_date != null && edit_payment_type_id != null && edit_rent_square != null && edit_rent_payment_month != null)
+		{
+			object rowKey = e.Keys[GridViewSubleases.KeyFieldName];
+
+			if (rowKey is int)
+			{
+				int subleaseId = (int)rowKey;
+
+				// Find a row in the DataTable, and modify it
+				DataTable table = SubleasesDataSource;
+
+				if (table != null)
+				{
+					for (int row = 0; row < table.Rows.Count; row++)
+					{
+						object id = table.Rows[row]["id"];
+
+						if (id is int && (int)id == subleaseId)
+						{
+							object[] values = table.Rows[row].ItemArray;
+
+							// id, arenda_id, payment_type_id, agreement_date, agreement_num, rent_start_date, rent_finish_date, rent_square, rent_payment_month
+
+							values[2] = edit_payment_type_id.Value == null ? (int?)null : (int)edit_payment_type_id.Value;
+							values[3] = edit_agreement_date.Date.Year >= 1900 ? (object)edit_agreement_date.Date : DBNull.Value;
+							values[4] = edit_agreement_num.Text.Trim();
+							values[5] = edit_rent_start_date.Date.Year >= 1900 ? (object)edit_rent_start_date.Date : DBNull.Value;
+							values[6] = edit_rent_finish_date.Date.Year >= 1900 ? (object)edit_rent_finish_date.Date : DBNull.Value;
+							values[7] = Utils.ConvertStrToDecimal(edit_rent_square.Text);
+							values[8] = Utils.ConvertStrToDecimal(edit_rent_payment_month.Text);
+							table.Rows[row].ItemArray = values;
+							break;
+						}
+					}
+
+					GridViewSubleases.DataBind();
+				}
+			}
+		}
+
+		e.Cancel = true;
+		GridViewSubleases.CancelEdit();
+	}
+
+	protected void SaveSubleases(SqlConnection connection)
+	{
+		System.Web.Security.MembershipUser user = System.Web.Security.Membership.GetUser();
+		string username = (user == null ? "System" : user.UserName);
+
+		// Delete all rent subleases related to this agreement
+		using (SqlCommand cmd = new SqlCommand("DELETE FROM reports1nf_arenda_subleases WHERE report_id = @rid AND arenda_id = @aid", connection))
+		{
+			cmd.Parameters.Add(new SqlParameter("rid", ReportID));
+			cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
+			cmd.ExecuteNonQuery();
+		}
+
+		// Save each sublease as a new one
+		DataTable table = SubleasesDataSource;
+
+		if (table != null)
+		{
+			Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+			for (int row = 0; row < table.Rows.Count; row++)
+			{
+				object[] values = table.Rows[row].ItemArray;
+
+				// id, arenda_id, payment_type_id, agreement_date, agreement_num, rent_start_date, rent_finish_date, rent_square, rent_payment_month
+
+				string fieldList = "report_id, arenda_id, modify_date, modified_by";
+				string paramList = "@rid, @aid, @mdt, @mby";
+
+				parameters.Clear();
+				parameters.Add("rid", ReportID);
+				parameters.Add("aid", RentAgreementID);
+				parameters.Add("mdt", DateTime.Now);
+				parameters.Add("mby", username.Left(18));
+
+				if (values[2] is int)
+				{
+					fieldList += ", payment_type_id";
+					paramList += ", @payment_type_id";
+					parameters.Add("payment_type_id", values[2]);
+				}
+
+
+				if (values[3] is DateTime)
+				{
+					fieldList += ", agreement_date";
+					paramList += ", @agreement_date";
+					parameters.Add("agreement_date", values[3]);
+				}
+
+				if (values[4] is string)
+				{
+					fieldList += ", agreement_num";
+					paramList += ", @agreement_num";
+					parameters.Add("agreement_num", values[4]);
+				}
+
+				if (values[5] is DateTime)
+				{
+					fieldList += ", rent_start_date";
+					paramList += ", @rent_start_date";
+					parameters.Add("rent_start_date", values[5]);
+				}
+
+				if (values[6] is DateTime)
+				{
+					fieldList += ", rent_finish_date";
+					paramList += ", @rent_finish_date";
+					parameters.Add("rent_finish_date", values[6]);
+				}
+
+				if (values[7] is decimal)
+				{
+					fieldList += ", rent_square";
+					paramList += ", @rent_square";
+					parameters.Add("rent_square", values[7]);
+				}
+
+				if (values[8] is decimal)
+				{
+					fieldList += ", rent_payment_month";
+					paramList += ", @rent_payment_month";
+					parameters.Add("rent_payment_month", values[8]);
+				}
+
+
+
+				using (SqlCommand cmdInsert = new SqlCommand("INSERT INTO reports1nf_arenda_subleases (" + fieldList + ") VALUES (" + paramList + ")", connection))
+				{
+					foreach (KeyValuePair<string, object> param in parameters)
+					{
+						cmdInsert.Parameters.Add(new SqlParameter(param.Key, param.Value));
+					}
+
+					cmdInsert.ExecuteNonQuery();
+				}
+			}
+		}
+	}
+
+	#endregion Working with the table of Subleases
+
+	#region Working with the table of Notes
+
+	protected DataTable NotesDataSource
     {
         get
         {
@@ -1377,8 +1642,11 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         // Update the rent decisions
         SaveDecisions(connection);
 
-        // Update the agreement notes
-        SaveNotes(connection);
+		// Update the rent subleases
+		SaveSubleases(connection);
+
+		// Update the agreement notes
+		SaveNotes(connection);
 
         // Update the payment documents
         SavePaymentDocuments(connection);
@@ -1399,7 +1667,9 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         AddQueryParameter(ref fieldList, "date_expert", "dtexp", Reports1NFUtils.GetDateValue(controls, "EditDateExpert"), parameters);
         AddQueryParameter(ref fieldList, "note", "note", Reports1NFUtils.GetEditText(controls, "MemoProlongationComment"), parameters);
 
-        AddQueryParameter(ref fieldList, "is_subarenda", "issub", Reports1NFUtils.GetCheckBoxValue(controls, "CheckSubarenda") ? 1 : 0, parameters);
+        //AddQueryParameter(ref fieldList, "is_subarenda", "issub", Reports1NFUtils.GetCheckBoxValue(controls, "CheckSubarenda") ? 1 : 0, parameters);
+		AddQueryParameter(ref fieldList, "is_subarenda", "issub", (SubleasesDataSource.Rows.Count > 0 ? 1 : 0), parameters);
+				
         AddQueryParameter(ref fieldList, "is_loan_agreement", "isloanagr", Reports1NFUtils.GetCheckBoxValue(controls, "CheckLoanAgreement") ? 1 : 0, parameters);
         
         AddQueryParameter(ref fieldList, "agreement_state", "ast", 
@@ -1729,8 +1999,19 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         GridViewDecisions.DataSource = DecisionsDataSource;
         GridViewDecisions.DataBind();
 
-        // Rebind the grid of objects
-        view = SqlDataSourceNotes.Select(new DataSourceSelectArguments());
+		// Rebind the grid of rent subleases
+		view = SqlDataSourceSubleases.Select(new DataSourceSelectArguments());
+
+		if (view is DataView)
+		{
+			SubleasesDataSource = (view as DataView).ToTable();
+		}
+
+		GridViewSubleases.DataSource = SubleasesDataSource;
+		GridViewSubleases.DataBind();
+
+		// Rebind the grid of objects
+		view = SqlDataSourceNotes.Select(new DataSourceSelectArguments());
 
         if (view is DataView)
         {
