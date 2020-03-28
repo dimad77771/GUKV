@@ -117,7 +117,9 @@ public partial class Arenda_RentAgreements : System.Web.UI.Page
 
     protected void SqlDataSourceArendaObjects_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
     {
-        e.Command.Parameters["@p_dpz_filter"].Value = CheckBoxRentedObjectsDPZ.Checked ? 1 : 0;
+		e.Command.CommandTimeout = 600;
+
+		e.Command.Parameters["@p_dpz_filter"].Value = CheckBoxRentedObjectsDPZ.Checked ? 1 : 0;
         e.Command.Parameters["@p_com_filter"].Value = CheckBoxRentedObjectsComVlasn.Checked ? 1 : 0;
         e.Command.Parameters["@p_rda_district_id"].Value = Utils.RdaDistrictID;
     }
@@ -140,4 +142,5 @@ public partial class Arenda_RentAgreements : System.Web.UI.Page
 
         return str;
     }
+
 }

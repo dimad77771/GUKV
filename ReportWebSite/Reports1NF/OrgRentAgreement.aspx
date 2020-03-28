@@ -195,6 +195,12 @@
         }
         function OnCancelDecisionClick(s, e) {
             GridViewDecisions.CancelEdit();
+		}
+        function OnSaveSubleaseClick(s, e) {
+            GridViewSubleases.UpdateEdit();
+        }
+        function OnCancelSubleaseClick(s, e) {
+            GridViewSubleases.CancelEdit();
         }
         function OnSaveNoteClick(s, e) {
             GridViewNotes.UpdateEdit();
@@ -510,6 +516,17 @@
     </SelectParameters>
 </mini:ProfiledSqlDataSource>
 
+<mini:ProfiledSqlDataSource ID="SqlDataSourceSubleases" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, arenda_id, payment_type_id, agreement_date, agreement_num, rent_start_date, rent_finish_date, rent_square, rent_payment_month
+        FROM reports1nf_arenda_subleases WHERE report_id = @rep_id AND arenda_id = @aid"
+    OnSelecting="SqlDataSource_Selecting">
+    <SelectParameters>
+        <asp:Parameter DbType="Int32" DefaultValue="0" Name="aid" />
+        <asp:Parameter DbType="Int32" DefaultValue="0" Name="rep_id" />
+    </SelectParameters>
+</mini:ProfiledSqlDataSource>
+
 <mini:ProfiledSqlDataSource ID="SqlDataSourceNotes" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT id, purpose_group_id, purpose_id, purpose_str, rent_square, note, rent_rate, cost_narah, cost_agreement,
@@ -688,7 +705,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
 </dx:ASPxMenu>
 
 <p style="font-size: 1.4em; margin: 0 0 0 0; padding: 0 0 0 0; border-bottom: 1px solid #D0D0D0;">
-    <asp:Label runat="server" ID="ASPxLabel19" Text="Картка процесу передачі в оренду вільного приміщення" CssClass="pagetitle"/>
+    <asp:Label runat="server" ID="ASPxLabel19" Text="Картка договору передачі в оренду вільного приміщення" CssClass="pagetitle"/>
 </p>
 
 <dx:ASPxCallbackPanel ID="CPMainPanel" ClientInstanceName="CPMainPanel" runat="server" OnCallback="CPMainPanel_Callback">
@@ -1246,7 +1263,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                             </tr>
                                             <tr>
                                                 <td colspan="2">
-                                                    <dx:ASPxCheckBox ID="CheckSubarenda" runat="server" Text="Суборенда" Checked='<%# 1.Equals(Eval("is_subarenda")) %>' Title="Суборенда" />
+                                                    <dx:ASPxCheckBox ID="CheckSubarenda" runat="server" Text="Суборенда" Checked='<%# 1.Equals(Eval("is_subarenda")) %>' Title="Суборенда" ReadOnly="true" />
                                                 </td>
                                                 <td> &nbsp; </td>
                                                 <td colspan="2">
@@ -2013,6 +2030,128 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                             </td>
                         </tr>
                     </table>
+                </dx:ContentControl>
+            </ContentCollection>
+        </dx:TabPage>
+
+		<dx:TabPage Text="Суборенда" Name="Tab2">
+            <ContentCollection>
+                <dx:ContentControl ID="ContentControl9" runat="server">
+
+                    <dx:ASPxCallbackPanel ID="CPSubleases" ClientInstanceName="CPSubleases" runat="server" OnCallback="CPSubleases_Callback">
+                        <PanelCollection>
+                            <dx:panelcontent ID="Panelcontent17" runat="server">
+
+                                <dx:ASPxGridView ID="GridViewSubleases" ClientInstanceName="GridViewSubleases" runat="server" AutoGenerateColumns="False" 
+                                    KeyFieldName="id" Width="810px"
+                                    OnRowDeleting="GridViewSubleases_RowDeleting"
+                                    OnRowUpdating="GridViewSubleases_RowUpdating" >
+
+                                    <Columns>
+                                        <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image">
+                                            <EditButton visible="True"> <Image ToolTip="Редагувати Підставу" Url="../Styles/EditIcon.png" /> </EditButton>
+                                            <DeleteButton visible="True"> <Image ToolTip="Видалити Підставу" Url="../Styles/DeleteIcon.png" /> </DeleteButton>
+                                        </dx:GridViewCommandColumn>
+										<dx:GridViewDataTextColumn FieldName="agreement_num" VisibleIndex="1" Caption="Номер договору суборендування" Width="150px"></dx:GridViewDataTextColumn>
+                                        <dx:GridViewDataDateColumn FieldName="agreement_date" VisibleIndex="2" Caption="Дата укладання договору" Width="100px"></dx:GridViewDataDateColumn>
+                                        <dx:GridViewDataDateColumn FieldName="rent_start_date" VisibleIndex="3" Caption="Початок оренди згідно з договором"></dx:GridViewDataDateColumn>
+										<dx:GridViewDataDateColumn FieldName="rent_finish_date" VisibleIndex="4" Caption="Закінчення оренди згідно з договором"></dx:GridViewDataDateColumn>
+                                        <dx:GridViewDataTextColumn FieldName="rent_square" VisibleIndex="5" Caption="Орендована площа, кв.м."></dx:GridViewDataTextColumn>
+										<dx:GridViewDataTextColumn FieldName="rent_payment_month" VisibleIndex="6" Caption="Суборендна плата, грн. (без ПДВ)"></dx:GridViewDataTextColumn>
+                                    </Columns>
+                                    <SettingsBehavior AutoFilterRowInputDelay="2500" ColumnResizeMode="Control" EnableCustomizationWindow="True" />
+                                    <Settings HorizontalScrollBarMode="Visible" ShowFooter="True" ShowFilterRow="True" ShowFilterRowMenu="True" ShowFilterBar="Visible" ShowHeaderFilterButton="True" VerticalScrollBarMode="Hidden" VerticalScrollBarStyle="Standard" />
+                                    <SettingsPager Mode="ShowAllRecords" PageSize="10" />
+                                    <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
+                                    <Styles Header-Wrap="True" >
+                                        <Header Wrap="True"></Header>
+                                    </Styles>
+                                    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaSubleases" Enabled="False" Version="A2" />
+
+                                    <Templates>
+                                        <EditForm>
+                                            <table border="0" cellspacing="0" cellpadding="2">
+												<tr>
+													<td><dx:ASPxLabel ID="ASPxLabel35" runat="server" Text="Номер договору суборендування"></dx:ASPxLabel></td>
+													<td>
+														<dx:ASPxTextBox ID="edit_agreement_num" runat="server" Text='<%# Eval("agreement_num") %>' Width="190px" MaxLength="18" Title="Номер договору орендування">
+															<ValidationSettings Display="None" ValidationGroup="MainGroup" EnableCustomValidation="true"></ValidationSettings>
+														</dx:ASPxTextBox>
+													</td>
+													<td> &nbsp; </td>
+													<td><dx:ASPxLabel ID="ASPxLabel36" runat="server" Text="Дата укладання договору"></dx:ASPxLabel></td>
+													<td>
+														<dx:ASPxDateEdit ID="edit_agreement_date" runat="server" Value='<%# Eval("agreement_date") %>' Width="100%" Title="Дата укладання договору">
+															<ValidationSettings Display="None" ValidationGroup="MainGroup" EnableCustomValidation="true"></ValidationSettings>
+														</dx:ASPxDateEdit>
+													</td>
+												</tr>
+												<tr>
+													<td><dx:ASPxLabel ID="ASPxLabel4" runat="server" Text="Початок оренди згідно з договором"></dx:ASPxLabel></td>
+													<td>
+														<dx:ASPxDateEdit ID="edit_rent_start_date" runat="server" Value='<%# Eval("rent_start_date") %>' Width="190px" Title="Початок оренди згідно з договором">
+															<ValidationSettings Display="None" ValidationGroup="MainGroup" EnableCustomValidation="true"></ValidationSettings>
+														</dx:ASPxDateEdit>
+													</td>
+													<td> &nbsp; </td>
+													<td><dx:ASPxLabel runat="server" Text="Закінчення оренди згідно з договором"></dx:ASPxLabel></td>
+													<td><dx:ASPxDateEdit ID="edit_rent_finish_date" runat="server" Value='<%# Eval("rent_finish_date") %>' Width="100%"  Title="Закінчення оренди згідно з договором" /></td>
+												</tr>
+												<tr>
+													<td><dx:ASPxLabel ID="ASPxLabel6" runat="server" Text="Вид оплати"></dx:ASPxLabel></td>
+													<td colspan="4">
+														<dx:ASPxComboBox ID="edit_payment_type_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="100%" 
+															IncrementalFilteringMode="StartsWith" DataSourceID="SqlDataSourcePaymentType" Value='<%# Eval("payment_type_id") %>'
+															 Title="Вид оплати">
+															<ValidationSettings Display="None"> <RequiredField IsRequired="True" ErrorText="Необхідно вибрати вид оплати за договором" /> </ValidationSettings>
+														</dx:ASPxComboBox>
+													</td>
+												</tr>
+												<tr>
+													<td><dx:ASPxLabel ID="ASPxLabel7" runat="server" Text="Орендована площа, кв.м."></dx:ASPxLabel></td>
+													<td><dx:ASPxSpinEdit ID="edit_rent_square" runat="server" NumberType="Float" Value='<%# Eval("rent_square") %>' Width="190px"  Title="Орендована площа" /></td>
+													<td> &nbsp; </td>
+													<td><dx:ASPxLabel ID="ASPxLabel60" runat="server" Text="Суборендна плата, грн. (без ПДВ)"></dx:ASPxLabel></td>
+													<td><dx:ASPxSpinEdit ID="edit_rent_payment_month" runat="server" NumberType="Float" Value='<%# Eval("rent_payment_month") %>' Width="190px"  Title="Суборендна плата" /></td>
+												</tr>
+                                            </table>
+
+                                            <br/>
+
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Зберегти" AutoPostBack="false">
+                                                            <ClientSideEvents Click="function (s, e) { OnSaveSubleaseClick(s, e); }" />
+                                                        </dx:ASPxButton>
+                                                    </td>
+                                                    <td>
+                                                        <dx:ASPxButton ID="ASPxButton2" runat="server" Text="Відмінити" AutoPostBack="false">
+                                                            <ClientSideEvents Click="function (s, e) { OnCancelSubleaseClick(s, e); }" />
+                                                        </dx:ASPxButton>
+                                                    </td>
+                                                </tr>
+                                            </table>    
+                                        </EditForm>
+                                    </Templates>
+                                </dx:ASPxGridView>
+
+                            </dx:panelcontent>
+                        </PanelCollection>
+                    </dx:ASPxCallbackPanel>
+
+                    <p class="SpacingPara"/>
+
+                    <table border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td>
+                                <dx:ASPxButton ID="ButtonAddSublease" runat="server" Text="Додати Суборенду" AutoPostBack="false">
+                                    <ClientSideEvents Click="function (s,e) { CPSubleases.PerformCallback('add:');  }" />
+                                </dx:ASPxButton>
+                            </td>
+                        </tr>
+                    </table>
+
                 </dx:ContentControl>
             </ContentCollection>
         </dx:TabPage>

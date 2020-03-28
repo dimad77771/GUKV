@@ -77,6 +77,7 @@
 	fs.geodata_map_url,
  row_number() over (order by org.short_name, b.street_full_name, b.addr_nomer, fs.total_free_sqr) as npp     
 ,fs.id
+,fs.include_in_perelik
 ,org.short_name as org_name
 ,org.zkpo_code
 ,org.director_title as vidpov_osoba
@@ -316,6 +317,11 @@ WHERE id = @id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("id") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
+
+		<dx:GridViewDataComboBoxColumn FieldName="include_in_perelik" VisibleIndex="4" Width = "50px" Visible="True" Caption="Включено до переліку №">
+			<HeaderStyle Wrap="True" />
+		</dx:GridViewDataComboBoxColumn>
+
 
         <%--<dx:GridViewDataTextColumn FieldName="geodata_map_url" Caption="URL на мапі" VisibleIndex="4" Width="100px">
         </dx:GridViewDataTextColumn>--%>

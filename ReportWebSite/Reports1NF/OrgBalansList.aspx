@@ -97,7 +97,7 @@
         LEFT OUTER JOIN dict_districts2 ON dict_districts2.id = bld.addr_distr_new_id
         LEFT OUTER JOIN dict_org_ownership dict_own ON bal.form_ownership_id = dict_own.id
 
-        outer apply (select sum(fs.total_free_sqr) as total_free_sqr from reports1nf_balans_free_square fs where fs.balans_id = bal.id and fs.report_id = bal.report_id /*and fs.is_included = 1*/) bfs 
+        outer apply (select sum(case when fs.is_included = 1 then fs.total_free_sqr else 0 end) as total_free_sqr from reports1nf_balans_free_square fs where fs.balans_id = bal.id and fs.report_id = bal.report_id /*and fs.is_included = 1*/) bfs 
         outer apply (select COUNT(distinct ar.id) as num_rent_agr, sum(an.rent_square) as total_rent_sqr from reports1nf_arenda ar left join reports1nf_arenda_notes an on ar.id = an.arenda_id and isnull(an.is_deleted,0) = 0 where bal.report_id = ar.report_id and bal.organization_id = ar.org_balans_id and bal.building_id = ar.building_id and isnull(ar.is_deleted,0)=0 and ar.agreement_state = 1) ag 
         --left join reports1nf_balans_free_square fs on fs.balans_id = bal.id and fs.report_id = bal.report_id
         --LEFT JOIN reports1nf_arenda ar ON bal.report_id = ar.report_id and bal.organization_id = ar.org_balans_id and bal.building_id = ar.building_id and isnull(ar.is_deleted,0)=0 and ar.agreement_state = 1

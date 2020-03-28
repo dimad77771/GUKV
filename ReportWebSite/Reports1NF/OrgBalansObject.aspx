@@ -1532,7 +1532,7 @@ WHERE id = @id"
                                                 <td width="8px">&nbsp;</td>
                                                 <td><dx:ASPxLabel ID="ASPxLabel18" runat="server" Text="Реєстраційний номер об'єкту нерухомого майна"> </dx:ASPxLabel> </td>
                                                 <td>
-                                                    <dx:ASPxTextBox ID="EditObjBTICondition" ClientInstanceName="EditObjBTICondition" runat="server" Width="250px" MaxLength="10" 
+                                                    <dx:ASPxTextBox ID="EditObjBTICondition" ClientInstanceName="EditObjBTICondition" runat="server" Width="250px" MaxLength="13"  
                                                         Text='<%# Eval("bti_id") %>'
                                                         Title="Реєстраційний номер об'єкту нерухомого майна">
                                                         <ValidationSettings Display="None"></ValidationSettings>
