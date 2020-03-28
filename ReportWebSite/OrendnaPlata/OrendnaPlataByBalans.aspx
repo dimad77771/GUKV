@@ -115,7 +115,7 @@
 --           ,ph_street.name AS 'physAddrStreet' -- 22
            --,org.phys_addr_nomer AS 'physAddrNumber' -- 23
            --,org.phys_addr_misc AS 'physAddrMisc'-- 24
---           ,CASE WHEN org.contribution_rate IS NULL THEN 50 ELSE ORG.contribution_rate END AS 'ORG_CONTRIB_RATE' -- 25
+--           ,CASE WHEN org.contribution_rate IS NULL THEN 0 ELSE ORG.contribution_rate END AS 'ORG_CONTRIB_RATE' -- 25
            ,org.buhgalter_fio  -- 26
            ,org.buhgalter_phone  -- 27
 --           ,org.buhgalter_email AS 'USER_EMAIL' -- 28
@@ -200,7 +200,7 @@
 		,sum(ap.old_debts_payed) PAY_LAST_PER
 --		, case when ap.rent_period_id is null then '*'  else '' end as notpayed
 		FROM  dbo.arch_arenda_m arn 
-				join dbo.arenda_payments ap on ap.arenda_id = arn.id and arn.rent_period_id = ap.rent_period_id and ap.id in (select top 1 id from dbo.arenda_payments t where t.arenda_id = ap.arenda_id and t.rent_period_id = ap.rent_period_id order by modify_date desc)
+				join dbo.arenda_payments ap on ap.arenda_id = arn.id and arn.rent_period_id = ap.rent_period_id and ap.id = (select top 1 id from dbo.arenda_payments t where t.arenda_id = ap.arenda_id and t.rent_period_id = ap.rent_period_id order by t.modify_date desc)
 		GROUP BY arn.org_balans_id, arn.rent_period_id) ap on org.id = ap.org_id1 and per.rent_period_id = ap.pay_period_id
 
         LEFT JOIN (select 

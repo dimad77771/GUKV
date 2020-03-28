@@ -88,6 +88,7 @@
          bfs.total_free_sqr
          , ag.num_rent_agr
          , ag.total_rent_sqr
+         , inv_num = bal.reestr_no
 
         FROM reports1nf_balans bal
         INNER JOIN reports1nf rep ON rep.id = bal.report_id
@@ -103,6 +104,7 @@
         --LEFT JOIN reports1nf_arenda_notes an on ar.id = an.arenda_id and isnull(an.is_deleted,0) = 0 
         WHERE bal.report_id = @rep_id and ISNULL(bal.is_deleted,0)=0
         group by  
+        bal.id,
         dict_districts2.name, 
         bld.addr_street_name,
         (COALESCE(LTRIM(RTRIM(bld.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer2)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer3)), '')),
@@ -111,10 +113,10 @@
        , bfs.total_free_sqr
        , ag.num_rent_agr
        , ag.total_rent_sqr
+       , bal.reestr_no
         ,COALESCE(bal.purpose_str, dict_balans_purpose.name), bal.is_deleted, bal.modify_date, bal.submit_date, dict_own.name,
         CASE WHEN (((bal.is_valid = 0) OR (bal.is_valid IS NULL)) OR ((bal.submit_date IS NULL OR bal.modify_date > bal.submit_date))) THEN N'НІ' ELSE N'ТАК' END,
-        bal.modified_by
-        ,bal.id " >
+        bal.modified_by" >
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="rep_id" />
     </SelectParameters>
@@ -282,6 +284,7 @@
         <dx:GridViewDataTextColumn FieldName="num_rent_agr" VisibleIndex="12" Caption="Кількість договорів оренди" ShowInCustomizationForm="True" Visible="False"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="total_rent_sqr" VisibleIndex="13" Caption="Площа, що надається в оренду"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="sqr_vlas_potreb" VisibleIndex="14" Caption="Площа об'єкту для власних потреб" ShowInCustomizationForm="True" Visible="False"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="inv_num" VisibleIndex="15" Caption="Інвентарний номер" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
 
 
     </Columns>

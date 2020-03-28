@@ -21,6 +21,7 @@
 </style>
 
 <script type="text/javascript" src="../Scripts/PageScript.js"></script>
+
 <script type="text/javascript" language="javascript">
 
     document.addEventListener("DOMContentLoaded", ready);
@@ -70,7 +71,8 @@
         var agreementNum = EditAgreementNum.GetText();
         var agreementDate = EditAgreementDate.GetValue();
         var buildingId = ComboBuilding.GetValue();
-        var orgBalansId = ComboBalansOrg.GetValue();
+//        var orgBalansId = ComboBalansOrg.GetValue();
+        var orgBalansId = ValBalansOrgId.GetValue();
         var orgGiverId = ComboGiverOrg.GetValue();
         var orgRenterId = ComboRenterOrg.GetValue();
         var giverComment = EditGiverComment.GetText();
@@ -225,9 +227,6 @@
       ,[org].[zkpo_code] AS 'org_renter_zkpo'
       ,[org_giver].[zkpo_code] AS 'org_giver_zkpo'
     ,isnull(ad.pidstava+' ','')+ isnull(ad.doc_num+' ','')+ isnull('від '+ad.doc_date+' ','')+ad.purpose_str as priznachennya
-,ar.insurance_sum
-,ar.insurance_start
-,ar.insurance_end
 
 FROM reports1nf_arenda ar
         INNER JOIN reports1nf rep ON rep.id = ar.report_id
@@ -245,9 +244,8 @@ FROM reports1nf_arenda ar
 
         LEFT JOIN dict_arenda_payment_type dpt ON a.payment_type_id = dpt.id
 
-/*        left join (select report_id,arenda_id,purpose_str, pidstava, doc_num  from dbo.reports1nf_arenda_decisions t1 where id = (select top 1 id from dbo.reports1nf_arenda_decisions t2 where t2.arenda_id = t1.arenda_id)) ad on ad.arenda_id = ar.id and ad.report_id = rep.id */
+/*        left join (select report_id,arenda_id,purpose_str, pidstava, doc_num, doc_date=convert(varchar(10),doc_date, 104)  from dbo.reports1nf_arenda_decisions t1 where id = (select top 1 id from dbo.reports1nf_arenda_decisions t2 where t2.arenda_id = t1.arenda_id order by id)) ad on ad.arenda_id = ar.id and ad.report_id = rep.id */
         outer apply (select top 1 report_id,arenda_id,purpose_str, pidstava, doc_num, doc_date=convert(varchar(10),doc_date, 104)  from dbo.reports1nf_arenda_decisions t1 where t1.arenda_id = ar.id and t1.report_id = rep.id order by t1.id) ad 
-
 		outer apply (select top 1 id as period_id from dict_rent_period per where per.is_active = 1) apd
 
         WHERE ar.report_id = @rep_id AND isnull(a.is_deleted, 0) = 0 ORDER BY ar.modify_date DESC" >
@@ -258,25 +256,48 @@ FROM reports1nf_arenda ar
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDictStreets" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="select s.id, s.name as sname, r.name as rname,  s.name as name from dict_streets s left join dict_regions r on r.id = s.region_id where (not s.name is null) and (RTRIM(LTRIM(s.name)) <> '')">
+    SelectCommand="/* select s.id, s.name as sname, r.name as rname,  s.name as name from dict_streets s left join dict_regions r on r.id = s.region_id where (not s.name is null) and (RTRIM(LTRIM(s.name)) <> '') */
+
+select distinct s.id, s.name 
+from dict_streets s
+join reports1nf_buildings b on b.addr_street_id = s.id
+join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
+ where 
+        isnull(b.is_deleted, 0) = 0 AND isnull(bal.is_deleted, 0) = 0 AND
+       /* (b.master_building_id IS NULL) AND*/
+       bal.organization_id = @org_id AND
+        (RTRIM(LTRIM(b.addr_nomer)) <> '') 
+        ORDER BY s.name">
 <%--    SelectCommand="select s.id, s.name as sname, r.name as rname, ISNULL(r.name + ' - ', '') + s.name as name from dict_streets s left join dict_regions r on r.id = s.region_id where (not s.name is null) and (RTRIM(LTRIM(s.name)) <> '')">	--%>
 
 <%--    SelectCommand="select id, name from dict_streets where (not name is null) and (RTRIM(LTRIM(name)) <> '')">	--%>
-
+    <SelectParameters>
+        <asp:Parameter DbType="Int32" DefaultValue="0" Name="org_id" />
+    </SelectParameters>
 </mini:ProfiledSqlDataSource>
 
 
 <%-- убрано условие после where (id < 100000) AND--%>
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDictBuildings" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="select id, LTRIM(RTRIM(addr_nomer)) AS 'nomer' from buildings where 
+    SelectCommand="/*select id, LTRIM(RTRIM(addr_nomer)) AS 'nomer' from buildings where 
         (is_deleted IS NULL OR is_deleted = 0) AND
        /* (master_building_id IS NULL) AND*/
         addr_street_id = @street_id AND
-        (RTRIM(LTRIM(addr_nomer)) <> '') ORDER BY RTRIM(LTRIM(addr_nomer))"
+        (RTRIM(LTRIM(addr_nomer)) <> '') ORDER BY RTRIM(LTRIM(addr_nomer))*/
+    select b.id, LTRIM(RTRIM(b.addr_nomer)) AS 'nomer', LTRIM(RTRIM(b.addr_nomer)) + ' ('+ isnull(bal.reestr_no, '-')+ ')' AS 'nomer1' 
+        /* from buildings b join balans bal on b.id = bal.building_id */
+        from reports1nf_buildings b join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
+        where 
+        isnull(b.is_deleted, 0) = 0 AND isnull(bal.is_deleted, 0) = 0 AND 
+       /* (b.master_building_id IS NULL) AND*/
+        b.addr_street_id = @street_id AND bal.organization_id = @org_id AND
+        (RTRIM(LTRIM(b.addr_nomer)) <> '') 
+        ORDER BY RTRIM(LTRIM(b.addr_nomer))"
     OnSelecting="SqlDataSourceDictBuildings_Selecting" >
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="street_id" />
+        <asp:Parameter DbType="Int32" DefaultValue="0" Name="org_id" />
     </SelectParameters>
 </mini:ProfiledSqlDataSource>
 
@@ -288,6 +309,15 @@ FROM reports1nf_arenda ar
     <SelectParameters>
         <asp:Parameter DbType="String" DefaultValue="%" Name="zkpo" />
         <asp:Parameter DbType="String" DefaultValue="%" Name="fname" />
+    </SelectParameters>
+
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceOrgBalans" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, zkpo_code, full_name as org_name FROM organizations WHERE id = @org_id">
+    <SelectParameters>
+        <asp:Parameter DbType="Int32" DefaultValue="0" Name="org_id" />
     </SelectParameters>
 </mini:ProfiledSqlDataSource>
 
@@ -379,7 +409,7 @@ FROM reports1nf_arenda ar
         <td>
             <dx:ASPxButton ID="ButtonAddAgreement" runat="server" Text="Додати Новий Договір" AutoPostBack="false"></dx:ASPxButton>
 
-            <dx:ASPxPopupControl ID="PopupAddAgreement" runat="server" ClientInstanceName="PopupAddAgreement"
+            <dx:ASPxPopupControl ID="PopupAddAgreement" runat="server" ClientInstanceName="PopupAddAgreement" AllowDragging ="true"
                 HeaderText="Введення нового Договору надання в оренду" PopupElementID="ButtonAddAgreement">
                 <ContentCollection>
                     <dx:PopupControlContentControl ID="PopupControlContentControl5" runat="server">
@@ -389,14 +419,14 @@ FROM reports1nf_arenda ar
                             <PanelCollection>
                                 <dx:PanelContent ID="PanelContent3" runat="server">
 
-                                    <table border="0" cellspacing="0" cellpadding="2" width="100%">
+                                    <table border="0" cellspacing="0" cellpadding="2" >
                                         <tr>
-                                            <td> <dx:ASPxLabel ID="ASPxLabel5" runat="server" Text="Номер Договору:" /> </td>
-                                            <td> <dx:ASPxTextBox ID="EditAgreementNum" ClientInstanceName="EditAgreementNum" runat="server" Width="100%" MaxLength ="18"/> </td>
+                                            <td> <dx:ASPxLabel ID="ASPxLabel5" runat="server" Text="Номер Договору:" Width="120px" /> </td>
+                                            <td> <dx:ASPxTextBox ID="EditAgreementNum" ClientInstanceName="EditAgreementNum" runat="server" Width="160px" MaxLength ="18" /> </td>
                                         </tr>
                                         <tr>
-                                            <td> <dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Дата Договору:" /> </td>
-                                            <td> <dx:ASPxDateEdit ID="EditAgreementDate" ClientInstanceName="EditAgreementDate" runat="server" Width="100%" /> </td>
+                                            <td> <dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Дата Договору:" Width="120px" /> </td>
+                                            <td> <dx:ASPxDateEdit ID="EditAgreementDate" ClientInstanceName="EditAgreementDate" runat="server" Width="100px" /> </td>
                                         </tr>
                                     </table>
 
@@ -417,7 +447,7 @@ FROM reports1nf_arenda ar
                                             <td>
                                                 <dx:ASPxComboBox ID="ComboStreet" runat="server" ClientInstanceName="ComboStreet"
                                                     DataSourceID="SqlDataSourceDictStreets" DropDownStyle="DropDownList" ValueType="System.Int32"
-                                                    TextField="name" ValueField="id" Width="220px" IncrementalFilteringMode="StartsWith"
+                                                    TextField="name" ValueField="id" Width="250px" IncrementalFilteringMode="StartsWith"
                                                     FilterMinLength="3" EnableCallbackMode="True" CallbackPageSize="50" EnableViewState="False"
                                                     EnableSynchronization="False">
                                                     <ClientSideEvents SelectedIndexChanged="function(s, e) { ComboBuilding.PerformCallback(ComboStreet.GetValue().toString()); }" />
@@ -426,8 +456,8 @@ FROM reports1nf_arenda ar
                                             <td> <dx:ASPxLabel ID="LabelAddrPickerNumber" runat="server" Text="Номер будинку:" Width="95px" /> </td>
                                             <td>
                                                 <dx:ASPxComboBox runat="server" ID="ComboBuilding" ClientInstanceName="ComboBuilding"
-                                                    DataSourceID="SqlDataSourceDictBuildings" DropDownStyle="DropDownList" TextField="nomer"
-                                                    ValueField="id" ValueType="System.Int32" Width="100px" IncrementalFilteringMode="StartsWith"
+                                                    DataSourceID="SqlDataSourceDictBuildings" DropDownStyle="DropDownList" TextField="nomer1"
+                                                    ValueField="id" ValueType="System.Int32" Width="100px" IncrementalFilteringMode="Contains"
                                                     EnableSynchronization="False" OnCallback="ComboBuilding_Callback">
                                                 </dx:ASPxComboBox>
                                             </td>
@@ -440,6 +470,9 @@ FROM reports1nf_arenda ar
 
                         <p class="SpacingPara"/>
 
+                       <asp:FormView runat="server" BorderStyle="None" ID="BalansForm" DataSourceID="SqlDataSourceOrgBalans" EnableViewState="False">
+                        <ItemTemplate>
+
                         <dx:ASPxRoundPanel ID="PanelOrgBalans" runat="server" HeaderText="Балансоутримувач">
                             <ContentPaddings PaddingTop="4px" PaddingLeft="2px" PaddingRight="2px" PaddingBottom="2px" />
                             <PanelCollection>
@@ -448,14 +481,19 @@ FROM reports1nf_arenda ar
                                     <table border="0" cellspacing="0" cellpadding="2">
                                         <tr>
                                             <td> <dx:ASPxLabel ID="ASPxLabel88" runat="server" Text="Код ЄДРПОУ:" Width="90px" /> </td>
-                                            <td> <dx:ASPxTextBox ID="EditBalansOrgZKPO" ClientInstanceName="EditBalansOrgZKPO" runat="server" Width="120px" /> </td>
+                                            <td> <dx:ASPxTextBox ID="EditBalansOrgZKPO" ClientInstanceName="EditBalansOrgZKPO" runat="server" Text = '<%# Eval("zkpo_code") %>' Width="120px" ReadOnly ="true" /> </td>
+                                            <td> <dx:ASPxTextBox ID="ValBalansOrgId" ClientInstanceName="ValBalansOrgId" runat="server" Text = '<%# Eval("id") %>' Width="20px" ClientVisible ="false" /> </td>
+                                        <tr>
                                             <td> <dx:ASPxLabel ID="ASPxLabel4" runat="server" Text="Назва:" Width="50px" /> </td>
-                                            <td> <dx:ASPxTextBox ID="EditBalansOrgName" ClientInstanceName="EditBalansOrgName" runat="server" Width="180px" /> </td>
+                                            <td> <dx:ASPxTextBox ID="EditBalansOrgName" ClientInstanceName="EditBalansOrgName" runat="server" Text = '<%# Eval("org_name") %>' Width="450px" ReadOnly ="true" /> </td>
+                                        </tr>
+<%--                                             <td> <dx:ASPxLabel ID="ASPxLabel4" runat="server" Text="Назва:" Width="50px" /> </td>
+                                            <td> <dx:ASPxTextBox ID="EditBalansOrgName" ClientInstanceName="EditBalansOrgName" runat="server" Text = '<%# Eval("org_name") %>' Width="200px" /> </td>
                                             <td>
                                                 <dx:ASPxButton ID="BtnFindBalansOrg" ClientInstanceName="BtnFindBalansOrg" runat="server" AutoPostBack="False" Text="Знайти">
                                                     <ClientSideEvents Click="function (s, e) { ComboBalansOrg.PerformCallback(EditBalansOrgZKPO.GetText() + '|' + EditBalansOrgName.GetText()); }" />
                                                 </dx:ASPxButton>
-                                            </td>
+                                            </td>      
                                         </tr>
                                         <tr>
                                             <td colspan="5">
@@ -464,12 +502,14 @@ FROM reports1nf_arenda ar
                                                     TextField="search_name" EnableSynchronization="True" OnCallback="ComboBalansOrg_Callback">
                                                 </dx:ASPxComboBox>
                                             </td>
-                                        </tr>
+                                        </tr>      --%>
                                     </table>
 
                                 </dx:PanelContent>
                             </PanelCollection>
                         </dx:ASPxRoundPanel>
+                        </ItemTemplate>
+                    </asp:FormView>
 
                         <p class="SpacingPara"/>
 
@@ -890,9 +930,6 @@ FROM reports1nf_arenda ar
         <dx:GridViewDataTextColumn FieldName="org_renter_zkpo" VisibleIndex="44" Caption="Код ЄДРПОУ Орендаря" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_giver_zkpo" VisibleIndex="45" Caption="Код ЄДРПОУ Орендодавця" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_spysano" VisibleIndex="46" Caption="Списано заборгованості з орендної плати у звітному періоді, грн. (без ПДВ)" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="insurance_sum" VisibleIndex="47" Caption="Вартість об'єкту страхування" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataDateColumn FieldName="insurance_start" VisibleIndex="48" Caption="Дата початку періоду страхування" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
-        <dx:GridViewDataDateColumn FieldName="insurance_end" VisibleIndex="49" Caption="Дата закінчення періоду страхування" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
 
     </Columns>
 
@@ -926,7 +963,6 @@ FROM reports1nf_arenda ar
         <dx:ASPxSummaryItem FieldName="debt_pogasheno_zvit" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="old_debts_payed" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="debt_spysano" SummaryType="Sum" DisplayFormat="{0}" />
-        <dx:ASPxSummaryItem FieldName="insurance_sum" SummaryType="Sum" DisplayFormat="{0}" />
 
     </TotalSummary>
 

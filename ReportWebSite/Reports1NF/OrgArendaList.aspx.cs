@@ -48,6 +48,11 @@ public partial class Reports1NF_OrgArendaList : System.Web.UI.Page
         {
             int reportRdaDistrictId = -1;
             int reportOrganizationId = Reports1NFUtils.GetReportOrganizationId(ReportID, ref reportRdaDistrictId);
+//pgv
+            SqlDataSourceDictStreets.SelectParameters["org_id"].DefaultValue = reportOrganizationId.ToString();
+            SqlDataSourceDictBuildings.SelectParameters["org_id"].DefaultValue = reportOrganizationId.ToString();
+            SqlDataSourceOrgBalans.SelectParameters["org_id"].DefaultValue = reportOrganizationId.ToString();
+
 
             for (int i = 0; i < SectionMenu.Items.Count; i++)
             {
@@ -94,8 +99,11 @@ public partial class Reports1NF_OrgArendaList : System.Web.UI.Page
         // Bind data to the grid dynamically
         this.ProcessGridDataFetch(ViewState, PrimaryGridView);
 
-        if (ReportID > 0)
-        {
+        Boolean isAgrCheck = false;
+
+        if (ReportID > 0 && isAgrCheck)
+//        if (ReportID > 0)
+            {
             if (!IsPostBack)
             {
                 String ErrorMessage = String.Empty;
