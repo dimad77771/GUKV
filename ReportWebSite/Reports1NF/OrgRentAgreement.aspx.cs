@@ -207,15 +207,15 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         Reports1NFUtils.EnableDevExpressEditors(InsuranceForm, reportBelongsToUser && userIsReportSubmitter, markedControls);
 
         GridViewDecisions.Enabled = reportBelongsToUser && userIsReportSubmitter;
-		GridViewSubleases.Enabled = reportBelongsToUser && userIsReportSubmitter;
+		//!!!! GridViewSubleases.Enabled = reportBelongsToUser && userIsReportSubmitter;
 		GridViewNotes.Enabled = reportBelongsToUser && userIsReportSubmitter;
         StatusForm.Visible = reportBelongsToUser && userIsReportSubmitter;
 
-        ButtonSave.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
-        ButtonSend.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
-        ButtonClear.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
+		ButtonSave.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
+		//!!!! ButtonSend.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
+		ButtonClear.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
         ButtonAddDecision.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
-		ButtonAddSublease.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
+		//!!!! ButtonAddSublease.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
 		ButtonAddNote.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
 
         // Enable or disable 'special payments' field
@@ -756,10 +756,12 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		var edit_rent_finish_date = GridViewSubleases.FindEditFormTemplateControl("edit_rent_finish_date") as ASPxDateEdit;
 		var edit_rent_square = GridViewSubleases.FindEditFormTemplateControl("edit_rent_square") as ASPxSpinEdit;
 		var edit_rent_payment_month = GridViewSubleases.FindEditFormTemplateControl("edit_rent_payment_month") as ASPxSpinEdit;
+		var edit_using_possible_id = GridViewSubleases.FindEditFormTemplateControl("edit_using_possible_id") as ASPxComboBox;
 
 
 		if (edit_agreement_num != null && edit_agreement_date != null && edit_rent_start_date != null && 
-			edit_rent_finish_date != null && edit_payment_type_id != null && edit_rent_square != null && edit_rent_payment_month != null)
+			edit_rent_finish_date != null && edit_payment_type_id != null && edit_rent_square != null && edit_rent_payment_month != null &&
+			edit_using_possible_id != null)
 		{
 			object rowKey = e.Keys[GridViewSubleases.KeyFieldName];
 
@@ -782,13 +784,14 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 
 							// id, arenda_id, payment_type_id, agreement_date, agreement_num, rent_start_date, rent_finish_date, rent_square, rent_payment_month
 
-							values[2] = edit_payment_type_id.Value == null ? (int?)null : (int)edit_payment_type_id.Value;
+							values[2] = edit_payment_type_id.Value == null ? DBNull.Value : (object)edit_payment_type_id.Value;
 							values[3] = edit_agreement_date.Date.Year >= 1900 ? (object)edit_agreement_date.Date : DBNull.Value;
 							values[4] = edit_agreement_num.Text.Trim();
 							values[5] = edit_rent_start_date.Date.Year >= 1900 ? (object)edit_rent_start_date.Date : DBNull.Value;
 							values[6] = edit_rent_finish_date.Date.Year >= 1900 ? (object)edit_rent_finish_date.Date : DBNull.Value;
 							values[7] = Utils.ConvertStrToDecimal(edit_rent_square.Text);
 							values[8] = Utils.ConvertStrToDecimal(edit_rent_payment_month.Text);
+							values[9] = edit_using_possible_id.Value == null ? DBNull.Value : (object)edit_using_possible_id.Value;
 							table.Rows[row].ItemArray = values;
 							break;
 						}
@@ -888,6 +891,12 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 					parameters.Add("rent_payment_month", values[8]);
 				}
 
+				if (values[9] is int)
+				{
+					fieldList += ", using_possible_id";
+					paramList += ", @using_possible_id";
+					parameters.Add("using_possible_id", values[9]);
+				}
 
 
 				using (SqlCommand cmdInsert = new SqlCommand("INSERT INTO reports1nf_arenda_subleases (" + fieldList + ") VALUES (" + paramList + ")", connection))
@@ -1748,7 +1757,11 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         AddQueryParameter(ref fieldList, "is_debt_exists", "isdebt", Reports1NFUtils.GetCheckBoxValue(controls, "CheckNoDebt") ? 0 : 1, parameters);
         //AddQueryParameter(ref fieldList, "is_special_organization", "isSpecOrg", Reports1NFUtils.GetCheckBoxValue(controls, "CheckIsSpecialOrganization") ? 1 : 0, parameters);
 
-        AddQueryParameter(ref fieldList, "debt_total", "debttot", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebtTotal"), parameters);
+		AddQueryParameter(ref fieldList, "zvilneno_percent", "zvilnenopercent", Reports1NFUtils.GetEditNumeric(controls, "edit_zvilneno_percent"), parameters);
+		AddQueryParameter(ref fieldList, "zvilneno_date1", "zvilnenodate1", Reports1NFUtils.GetDateValue(controls, "edit_zvilneno_date1"), parameters);
+		AddQueryParameter(ref fieldList, "zvilneno_date2", "zvilnenodate2", Reports1NFUtils.GetDateValue(controls, "edit_zvilneno_date2"), parameters);
+
+		AddQueryParameter(ref fieldList, "debt_total", "debttot", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebtTotal"), parameters);
         AddQueryParameter(ref fieldList, "debt_zvit", "debtzvit", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebtZvit"), parameters);
         AddQueryParameter(ref fieldList, "debt_3_month", "debt3m", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebt3Month"), parameters);
         AddQueryParameter(ref fieldList, "debt_12_month", "debt12m", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebt12Month"), parameters);

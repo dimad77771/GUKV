@@ -90,6 +90,20 @@ function ShowArendaCard(arendaId) {
     window.open(cardUrl);
 }
 
+function ShowArendaCard(arendaId) {
+
+	var cardUrl = "../Cards/ArendaCardArchive.aspx?arid=" + arendaId;
+
+	window.open(cardUrl);
+}
+
+function ShowSubleaseCard(reportId, arendaId) {
+
+	var cardUrl = "../Reports1NF/OrgRentAgreement.aspx?rid=" + reportId + "&aid=" + arendaId;
+
+	window.open(cardUrl);
+}
+
 function OpenDocText(docId) {
 
     var docUrl = "../Documents/DoTextDownload.aspx?docid=" + docId;

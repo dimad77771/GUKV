@@ -91,10 +91,12 @@ public static class Utils
     public const int GridIDAssessment_Experts = 25;
 
     public const int GridIDArenda_Agreements = 26;
+	public const int GridIDArenda_Subleases = 33;
 
-    public const int GridIDReports1NF_ReportList = 30;
+	public const int GridIDReports1NF_ReportList = 30;
 
     public const int GridIDReports1NF_FreeSquare = 31;
+
 
     // TODO!!! УДАЛИТЬ ИДЕНТИФИКАТОРЫ ИЗ КОДА
     public const int GUKVOrganizationID = 27065;

@@ -71,6 +71,7 @@
         <dx:MenuItem NavigateUrl="../Arenda/RentAgreements.aspx" Text="Договори Оренди"></dx:MenuItem>
         <dx:MenuItem NavigateUrl="../Arenda/RentedObjects.aspx" Text="Орендовані Об'єкти"></dx:MenuItem>
         <dx:MenuItem NavigateUrl="../Arenda/RentOrgList.aspx" Text="Перелік Орендарів"></dx:MenuItem>
+		<dx:MenuItem NavigateUrl="../Arenda/RentSubleases.aspx" Text="Договори Суборенди"></dx:MenuItem>
     </Items>
 </dx:ASPxMenu>
 

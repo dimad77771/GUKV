@@ -518,7 +518,7 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceSubleases" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT id, arenda_id, payment_type_id, agreement_date, agreement_num, rent_start_date, rent_finish_date, rent_square, rent_payment_month
+    SelectCommand="SELECT id, arenda_id, payment_type_id, agreement_date, agreement_num, rent_start_date, rent_finish_date, rent_square, rent_payment_month, using_possible_id
         FROM reports1nf_arenda_subleases WHERE report_id = @rep_id AND arenda_id = @aid"
     OnSelecting="SqlDataSource_Selecting">
     <SelectParameters>
@@ -680,6 +680,12 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT id, short_name = left(full_name, 150), rental_rate FROM dict_rental_rate ORDER BY short_name">
 </mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceUsingPossible" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, left(full_name, 150) as name, rental_rate, 1 as ordrow FROM dict_rental_rate union select null, '<пусто>', null, 2 as ordrow ORDER BY ordrow, name">
+</mini:ProfiledSqlDataSource>
+
 
 <asp:ObjectDataSource ID="ObjectDataSourceBalansPhoto" runat="server" SelectMethod="SelectFromTempFolder" 
     TypeName="ExtDataEntry.Models.FileAttachment">
@@ -1773,9 +1779,18 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                     <dx:PanelContent ID="PanelContent11" runat="server">
                                         <table border="0" cellspacing="0" cellpadding="2" width="810px">
                                             <tr>
-                                                <td colspan="2">
+                                                <td colspan="7">
                                                     <dx:ASPxCheckBox ID="CheckRenterIsOut" runat="server" Text="Орендар виїхав" Checked='<%# 1.Equals(Eval("is_renter_out")) %>' Title="Орендар виїхав" />
                                                 </td>
+                                            </tr>
+                                            <tr>
+                                                <td><dx:ASPxLabel runat="server" Text="Звільнено від сплати орендної плати на"></dx:ASPxLabel></td>
+												<td><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
+                                                <td align="left"><dx:ASPxSpinEdit ID="edit_zvilneno_percent" runat="server" NumberType="Float" Value='<%# Eval("zvilneno_percent") %>' Width="130px" Title="%"/></td>
+												<td><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
+												<td align="left"><dx:ASPxDateEdit ID="edit_zvilneno_date1" runat="server" NumberType="Float" Value='<%# Eval("zvilneno_date1") %>' Width="100px" Title="з"/></td>
+												<td><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
+												<td align="left"><dx:ASPxDateEdit ID="edit_zvilneno_date2" runat="server" NumberType="Float" Value='<%# Eval("zvilneno_date2") %>' Width="100px" Title="по"/></td>
                                             </tr>
                                         </table>
                                     </dx:PanelContent>
@@ -2043,7 +2058,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                             <dx:panelcontent ID="Panelcontent17" runat="server">
 
                                 <dx:ASPxGridView ID="GridViewSubleases" ClientInstanceName="GridViewSubleases" runat="server" AutoGenerateColumns="False" 
-                                    KeyFieldName="id" Width="810px"
+                                    KeyFieldName="id" Width="1150px"
                                     OnRowDeleting="GridViewSubleases_RowDeleting"
                                     OnRowUpdating="GridViewSubleases_RowUpdating" >
 
@@ -2058,6 +2073,10 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
 										<dx:GridViewDataDateColumn FieldName="rent_finish_date" VisibleIndex="4" Caption="Закінчення оренди згідно з договором"></dx:GridViewDataDateColumn>
                                         <dx:GridViewDataTextColumn FieldName="rent_square" VisibleIndex="5" Caption="Орендована площа, кв.м."></dx:GridViewDataTextColumn>
 										<dx:GridViewDataTextColumn FieldName="rent_payment_month" VisibleIndex="6" Caption="Суборендна плата, грн. (без ПДВ)"></dx:GridViewDataTextColumn>
+										<dx:GridViewDataComboBoxColumn FieldName="using_possible_id" VisibleIndex="10" Width = "320px" Visible="True" Caption="Можливе використання вільного приміщення">
+											<HeaderStyle Wrap="True" />
+											<PropertiesComboBox DataSourceID="SqlDataSourceUsingPossible" ValueField="id" TextField="name" ValueType="System.Int32" />
+										</dx:GridViewDataComboBoxColumn>
                                     </Columns>
                                     <SettingsBehavior AutoFilterRowInputDelay="2500" ColumnResizeMode="Control" EnableCustomizationWindow="True" />
                                     <Settings HorizontalScrollBarMode="Visible" ShowFooter="True" ShowFilterRow="True" ShowFilterRowMenu="True" ShowFilterBar="Visible" ShowHeaderFilterButton="True" VerticalScrollBarMode="Hidden" VerticalScrollBarStyle="Standard" />
@@ -2113,6 +2132,15 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
 													<td> &nbsp; </td>
 													<td><dx:ASPxLabel ID="ASPxLabel60" runat="server" Text="Суборендна плата, грн. (без ПДВ)"></dx:ASPxLabel></td>
 													<td><dx:ASPxSpinEdit ID="edit_rent_payment_month" runat="server" NumberType="Float" Value='<%# Eval("rent_payment_month") %>' Width="190px"  Title="Суборендна плата" /></td>
+												</tr>
+												<tr>
+													<td><dx:ASPxLabel ID="ASPxLabel61" runat="server" Text="Можливе використання вільного приміщення"></dx:ASPxLabel></td>
+													<td colspan="4">
+														<dx:ASPxComboBox ID="edit_using_possible_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="100%" 
+															IncrementalFilteringMode="StartsWith" DataSourceID="SqlDataSourceUsingPossible" Value='<%# Eval("using_possible_id") %>'
+															 Title="Можливе використання вільного приміщення">
+														</dx:ASPxComboBox>
+													</td>
 												</tr>
                                             </table>
 
