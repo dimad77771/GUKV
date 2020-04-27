@@ -13,7 +13,7 @@ public partial class Account_Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-		//var user = Membership.GetUser("О.Синенко");
+		//var user = Membership.GetUser("А.О39605452");
 		//var password = user.ResetPassword();
 		//user.ChangePassword(password, "fq,jkbn66+++");
 	}

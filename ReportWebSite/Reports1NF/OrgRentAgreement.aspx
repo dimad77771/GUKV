@@ -1676,7 +1676,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                 <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="0px" />
                                 <PanelCollection>
                                     <dx:PanelContent ID="PanelContent4" runat="server">                                        
-                                        <table border="0" cellspacing="0" cellpadding="2" width="810px">
+                                        <table border="0" cellspacing="0" cellpadding="2" width="910px">
                                             <tr>
                                                 <td><dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="Площа, надана в оренду, всього, кв.м." Width="650px"></dx:ASPxLabel></td>
                                                 <td><dx:ASPxTextBox ID="EditPaymentSqrTotal_orndpymnt" runat="server" Enabled="false" Width="150px" Title="Загальна площа, надана в оренду" /></td>
@@ -1710,7 +1710,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                         <dx:ASPxCallbackPanel ID="CPRentPayment" ClientInstanceName="CPRentPayment" runat="server" OnCallback="CPRentPayment_Callback">
                                             <PanelCollection>
                                             <dx:panelcontent ID="Panelcontent12" runat="server">
-                                                <table border="0" cellspacing="0" cellpadding="2" width="810px">
+                                                <table border="0" cellspacing="0" cellpadding="2" width="910px">
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel27" runat="server" Text="Нараховано орендної плати за звітний період, грн. (без ПДВ)" Width="650px"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="EditPaymentNarah_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("payment_narah") %>' Width="150px"
@@ -1777,20 +1777,48 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                 <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="0px" />
                                 <PanelCollection>
                                     <dx:PanelContent ID="PanelContent11" runat="server">
-                                        <table border="0" cellspacing="0" cellpadding="2" width="810px">
+                                        <table border="0" cellspacing="0" cellpadding="2" width="910px">
                                             <tr>
                                                 <td colspan="7">
-                                                    <dx:ASPxCheckBox ID="CheckRenterIsOut" runat="server" Text="Орендар виїхав" Checked='<%# 1.Equals(Eval("is_renter_out")) %>' Title="Орендар виїхав" />
+                                                    <dx:ASPxCheckBox ID="CheckRenterIsOut" runat="server" Text="Знижка" Checked='<%# 1.Equals(Eval("is_discount")) %>' Title="Знижка" />
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td><dx:ASPxLabel runat="server" Text="Звільнено від сплати орендної плати на"></dx:ASPxLabel></td>
-												<td><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
-                                                <td align="left"><dx:ASPxSpinEdit ID="edit_zvilneno_percent" runat="server" NumberType="Float" Value='<%# Eval("zvilneno_percent") %>' Width="130px" Title="%"/></td>
-												<td><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
+												<td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
+                                                <td align="left"><dx:ASPxSpinEdit ID="edit_zvilneno_percent" runat="server" NumberType="Float" Value='<%# Eval("zvilneno_percent") %>' Width="100px" Title="%"/></td>
+												<td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
 												<td align="left"><dx:ASPxDateEdit ID="edit_zvilneno_date1" runat="server" NumberType="Float" Value='<%# Eval("zvilneno_date1") %>' Width="100px" Title="з"/></td>
-												<td><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
+												<td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
 												<td align="left"><dx:ASPxDateEdit ID="edit_zvilneno_date2" runat="server" NumberType="Float" Value='<%# Eval("zvilneno_date2") %>' Width="100px" Title="по"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1"><dx:ASPxLabel runat="server" Text="Повідомлення орендаря до балансоутримувача про неможлівість використання"></dx:ASPxLabel></td>
+												<td align="right"><dx:ASPxLabel runat="server" Text="дата"></dx:ASPxLabel></td>
+                                                <td align="left"><dx:ASPxDateEdit ID="edit_povidoleno1_date" runat="server" Value='<%# Eval("povidoleno1_date") %>' Width="100px" Title="дата"/></td>
+                                                <td align="right"><dx:ASPxLabel runat="server" Text="№"></dx:ASPxLabel></td>
+                                                <td align="left"><dx:ASPxTextBox ID="edit_povidoleno1_num" runat="server" Text='<%# Eval("povidoleno1_num") %>' Width="100px" Title="№" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1"><dx:ASPxLabel runat="server" Text="Повідомлення орендаря до орендодавця про неможлівість використання"></dx:ASPxLabel></td>
+												<td align="right"><dx:ASPxLabel runat="server" Text="дата"></dx:ASPxLabel></td>
+                                                <td align="left"><dx:ASPxDateEdit ID="edit_povidoleno2_date" runat="server" Value='<%# Eval("povidoleno2_date") %>' Width="100px" Title="дата"/></td>
+                                                <td align="right"><dx:ASPxLabel runat="server" Text="№"></dx:ASPxLabel></td>
+                                                <td align="left"><dx:ASPxTextBox ID="edit_povidoleno2_num" runat="server" Text='<%# Eval("povidoleno2_num") %>' Width="100px" Title="№" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1"><dx:ASPxLabel runat="server" Text="Повідомлення орендаря до балансоутримувача про намір використовувати об'єкт"></dx:ASPxLabel></td>
+												<td align="right"><dx:ASPxLabel runat="server" Text="дата"></dx:ASPxLabel></td>
+                                                <td align="left"><dx:ASPxDateEdit ID="edit_povidoleno3_date" runat="server" Value='<%# Eval("povidoleno3_date") %>' Width="100px" Title="дата"/></td>
+                                                <td align="right"><dx:ASPxLabel runat="server" Text="№"></dx:ASPxLabel></td>
+                                                <td align="left"><dx:ASPxTextBox ID="edit_povidoleno3_num" runat="server" Text='<%# Eval("povidoleno3_num") %>' Width="100px" Title="№" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1"><dx:ASPxLabel runat="server" Text="Повідомлення орендаря до орендодавця про намір використовувати об'єкт"></dx:ASPxLabel></td>
+												<td align="right"><dx:ASPxLabel runat="server" Text="дата"></dx:ASPxLabel></td>
+                                                <td align="left"><dx:ASPxDateEdit ID="edit_povidoleno4_date" runat="server" Value='<%# Eval("povidoleno4_date") %>' Width="100px" Title="дата"/></td>
+                                                <td align="right"><dx:ASPxLabel runat="server" Text="№"></dx:ASPxLabel></td>
+                                                <td align="left"><dx:ASPxTextBox ID="edit_povidoleno4_num" runat="server" Text='<%# Eval("povidoleno4_num") %>' Width="100px" Title="№" /></td>
                                             </tr>
                                         </table>
                                     </dx:PanelContent>

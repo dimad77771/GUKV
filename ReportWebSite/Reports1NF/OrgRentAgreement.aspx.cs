@@ -234,9 +234,22 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         }
         */
 
+        new[]
+        { 
+            //"edit_povidoleno1_date", "edit_povidoleno1_num",
+            "edit_povidoleno2_date", "edit_povidoleno2_num",
+            //"edit_povidoleno3_date", "edit_povidoleno3_num",
+            "edit_povidoleno4_date", "edit_povidoleno4_num"
+        }.ToList().ForEach(q => (PaymentForm.FindControlRecursive(q) as ASPxEdit).ReadOnly = false);
+
 //        EnableCollectionControls();
         EnableInsuranceControls();
     }
+
+    //bool a(Control q)
+    //{
+    //    
+    //}
 
     protected string GetPageUniqueKey()
     {
@@ -1753,7 +1766,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         //AddQueryParameter(ref fieldList, "budget_debt_50_uah", "budg50d", Reports1NFUtils.GetEditNumeric(controls, "EditBudgetDebt50_orndpymnt"), parameters);
         //AddQueryParameter(ref fieldList, "budget_debt_30_50_uah", "budg50o", Reports1NFUtils.GetEditNumeric(controls, "EditBudgetDebtOld50_orndpymnt"), parameters);
 
-        AddQueryParameter(ref fieldList, "is_renter_out", "isout", Reports1NFUtils.GetCheckBoxValue(controls, "CheckRenterIsOut") ? 1 : 0, parameters);
+        AddQueryParameter(ref fieldList, "is_discount", "isout", Reports1NFUtils.GetCheckBoxValue(controls, "CheckRenterIsOut") ? 1 : 0, parameters);
         AddQueryParameter(ref fieldList, "is_debt_exists", "isdebt", Reports1NFUtils.GetCheckBoxValue(controls, "CheckNoDebt") ? 0 : 1, parameters);
         //AddQueryParameter(ref fieldList, "is_special_organization", "isSpecOrg", Reports1NFUtils.GetCheckBoxValue(controls, "CheckIsSpecialOrganization") ? 1 : 0, parameters);
 
@@ -1761,7 +1774,16 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		AddQueryParameter(ref fieldList, "zvilneno_date1", "zvilnenodate1", Reports1NFUtils.GetDateValue(controls, "edit_zvilneno_date1"), parameters);
 		AddQueryParameter(ref fieldList, "zvilneno_date2", "zvilnenodate2", Reports1NFUtils.GetDateValue(controls, "edit_zvilneno_date2"), parameters);
 
-		AddQueryParameter(ref fieldList, "debt_total", "debttot", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebtTotal"), parameters);
+        AddQueryParameter(ref fieldList, "povidoleno1_date", "povidoleno1date", Reports1NFUtils.GetDateValue(controls, "edit_povidoleno1_date"), parameters);
+        AddQueryParameter(ref fieldList, "povidoleno1_num", "povidoleno1num", Reports1NFUtils.GetEditText(controls, "edit_povidoleno1_num"), parameters);
+        AddQueryParameter(ref fieldList, "povidoleno2_date", "povidoleno2date", Reports1NFUtils.GetDateValue(controls, "edit_povidoleno2_date"), parameters);
+        AddQueryParameter(ref fieldList, "povidoleno2_num", "povidoleno2num", Reports1NFUtils.GetEditText(controls, "edit_povidoleno2_num"), parameters);
+        AddQueryParameter(ref fieldList, "povidoleno3_date", "povidoleno3date", Reports1NFUtils.GetDateValue(controls, "edit_povidoleno3_date"), parameters);
+        AddQueryParameter(ref fieldList, "povidoleno3_num", "povidoleno3num", Reports1NFUtils.GetEditText(controls, "edit_povidoleno3_num"), parameters);
+        AddQueryParameter(ref fieldList, "povidoleno4_date", "povidoleno4date", Reports1NFUtils.GetDateValue(controls, "edit_povidoleno4_date"), parameters);
+        AddQueryParameter(ref fieldList, "povidoleno4_num", "povidoleno4num", Reports1NFUtils.GetEditText(controls, "edit_povidoleno4_num"), parameters);
+
+        AddQueryParameter(ref fieldList, "debt_total", "debttot", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebtTotal"), parameters);
         AddQueryParameter(ref fieldList, "debt_zvit", "debtzvit", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebtZvit"), parameters);
         AddQueryParameter(ref fieldList, "debt_3_month", "debt3m", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebt3Month"), parameters);
         AddQueryParameter(ref fieldList, "debt_12_month", "debt12m", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebt12Month"), parameters);
@@ -1953,6 +1975,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         else if (e.Parameter.StartsWith("send:"))
         {
             validator.ValidateUI();
+            ValidatePaymentForm();
             this.errorForm.DataSource = validator.FormatErrorDataSource();
             this.errorForm.DataBind();
 
@@ -2043,6 +2066,24 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
             var lognet = log4net.LogManager.GetLogger("ReportWebSite");
             lognet.Debug("--------------- OrgRentAgreement CPMainPanel_Callback ----------------", ex);
             throw ex;
+        }
+    }
+
+    void ValidatePaymentForm()
+    {
+        Dictionary<string, Control> controls = new Dictionary<string, Control>();
+        Reports1NFUtils.GetAllControls(PaymentForm, controls);
+
+        var is_discount = Reports1NFUtils.GetCheckBoxValue(controls, "CheckRenterIsOut");
+        var zvilneno_percent = Reports1NFUtils.GetEditNumeric(controls, "edit_zvilneno_percent");
+        var zvilneno_date1 = Reports1NFUtils.GetDateValue(controls, "edit_zvilneno_date1");
+        var zvilneno_date2 = Reports1NFUtils.GetDateValue(controls, "edit_zvilneno_date2");
+        if (is_discount)
+        {
+            if (zvilneno_percent == null || zvilneno_date1 == null || zvilneno_date2 == null)
+            {
+                throw new Exception("Всі поля \"Звільнено від сплати орендної плати на\" повинні бути заповнені");
+            }
         }
     }
 

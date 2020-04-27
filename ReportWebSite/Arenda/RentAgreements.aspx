@@ -208,6 +208,19 @@
 ,p.num_zahodiv_total
 ,p.num_zahodiv_zvit
 
+,p.is_discount
+,p.zvilneno_percent
+,p.zvilneno_date1
+,p.zvilneno_date2
+,p.povidoleno1_date
+,p.povidoleno1_num
+,p.povidoleno2_date
+,p.povidoleno2_num
+,p.povidoleno3_date
+,p.povidoleno3_num
+,p.povidoleno4_date
+,p.povidoleno4_num
+
 ,d.name as stanjuro
 
 ,ar.insurance_sum
@@ -527,6 +540,34 @@
             VisibleIndex="99" Visible="True" Caption="Сфера діяльності"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_renter_form_of_ownership" ReadOnly="True"  ShowInCustomizationForm="True"
             VisibleIndex="100" Visible="False" Caption="Орендар - Форма власності"></dx:GridViewDataTextColumn>
+
+
+        <dx:GridViewDataCheckColumn FieldName="is_discount" ReadOnly="True"
+            VisibleIndex="110" Visible="True" Caption="Знижка"></dx:GridViewDataCheckColumn>
+        <dx:GridViewDataTextColumn FieldName="zvilneno_percent" ReadOnly="True"
+            VisibleIndex="111" Visible="True" Caption="Звільнено від сплати орендної плати на (%)"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataDateColumn FieldName="zvilneno_date1" ReadOnly="True"
+            VisibleIndex="112" Visible="True" Caption="Звільнено від сплати орендної плати на (з)"></dx:GridViewDataDateColumn>
+        <dx:GridViewDataDateColumn FieldName="zvilneno_date2" ReadOnly="True"
+            VisibleIndex="113" Visible="True" Caption="Звільнено від сплати орендної плати на (по)"></dx:GridViewDataDateColumn>
+        <dx:GridViewDataDateColumn FieldName="povidoleno1_date" ReadOnly="True"
+            VisibleIndex="114" Visible="True" Caption="Повідомлення орендаря до балансоутримувача про неможлівість використання (дата)"></dx:GridViewDataDateColumn>
+        <dx:GridViewDataTextColumn FieldName="povidoleno1_num" ReadOnly="True"
+            VisibleIndex="115" Visible="True" Caption="Повідомлення орендаря до балансоутримувача про неможлівість використання (№)"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataDateColumn FieldName="povidoleno2_date" ReadOnly="True"
+            VisibleIndex="116" Visible="True" Caption="Повідомлення орендаря до орендодавця про неможлівість використання (дата)"></dx:GridViewDataDateColumn>
+        <dx:GridViewDataTextColumn FieldName="povidoleno2_num" ReadOnly="True"
+            VisibleIndex="117" Visible="True" Caption="Повідомлення орендаря до орендодавця про неможлівість використання (№)"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataDateColumn FieldName="povidoleno3_date" ReadOnly="True"
+            VisibleIndex="118" Visible="True" Caption="Повідомлення орендаря до балансоутримувача про намір використовувати об'єкт (дата)"></dx:GridViewDataDateColumn>
+        <dx:GridViewDataTextColumn FieldName="povidoleno3_num" ReadOnly="True"
+            VisibleIndex="119" Visible="True" Caption="Повідомлення орендаря до балансоутримувача про намір використовувати об'єкт (№)"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataDateColumn FieldName="povidoleno4_date" ReadOnly="True"
+            VisibleIndex="120" Visible="True" Caption="Повідомлення орендаря до орендодавця про намір використовувати об'єкт (дата)"></dx:GridViewDataDateColumn>
+        <dx:GridViewDataTextColumn FieldName="povidoleno4_num" ReadOnly="True"
+            VisibleIndex="121" Visible="True" Caption="Повідомлення орендаря до орендодавця про намір використовувати об'єкт (№)"></dx:GridViewDataTextColumn>
+
+
 <%--        <dx:GridViewDataTextColumn FieldName="n_cost_narah" ReadOnly="True" VisibleIndex="78" Caption="(NEW) Орендна ставка (%)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="n_rent_rate" ReadOnly="True" VisibleIndex="79" Caption="(NEW) Орендна ставка (грн)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="n_cost_expert_total" ReadOnly="True" VisibleIndex="81" Caption="(NEW) Експертна вартість (грн)"></dx:GridViewDataTextColumn>
@@ -567,7 +608,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_3" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_5" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
