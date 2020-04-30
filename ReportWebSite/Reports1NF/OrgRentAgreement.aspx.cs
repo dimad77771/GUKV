@@ -1975,7 +1975,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         else if (e.Parameter.StartsWith("send:"))
         {
             validator.ValidateUI();
-            ValidatePaymentForm();
+            //!!ValidatePaymentForm();
             this.errorForm.DataSource = validator.FormatErrorDataSource();
             this.errorForm.DataBind();
 

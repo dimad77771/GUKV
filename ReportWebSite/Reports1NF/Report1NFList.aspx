@@ -84,6 +84,7 @@
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT 
         isnull(ddd.name, 'Невідомо') as 'dict_rent_occupation_name',
+        (SELECT Q.stan_recieve_name FROM dict_stan_recieve Q where Q.stan_recieve_id = rep.stan_recieve_id) stan_recieve_name,
 		rep.*,
 		ar.NumOfSubmAgr, 
 		ar.NumOfAgr, 
@@ -514,6 +515,9 @@ WHERE id = @report_id"
             </PropertiesComboBox>  
         </dx:GridViewDataComboBoxColumn>
 
+        <dx:GridViewDataTextColumn FieldName="stan_recieve_name" ReadOnly="False" ShowInCustomizationForm="True" VisibleIndex="5" Visible="False" Caption="Поточний стан звіту(*)" Width="150px">
+        </dx:GridViewDataTextColumn>
+
         <dx:GridViewDataTextColumn FieldName="stan_recieve_description" ReadOnly="False" ShowInCustomizationForm="True" VisibleIndex="5" Visible="True" Caption="Примітки" Width="150px">
         </dx:GridViewDataTextColumn>
 
@@ -885,7 +889,7 @@ WHERE id = @report_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A2_15" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A2_19" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

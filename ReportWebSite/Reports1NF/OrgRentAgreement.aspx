@@ -1773,12 +1773,12 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
 
                             <p class="SpacingPara"/>
 
-                            <dx:ASPxRoundPanel ID="AdditionalInfoPanel" runat="server" HeaderText="Додаткові відомості">
+                            <dx:ASPxRoundPanel ID="AdditionalInfoPanel" runat="server" HeaderText="Знижка">
                                 <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="0px" />
                                 <PanelCollection>
                                     <dx:PanelContent ID="PanelContent11" runat="server">
                                         <table border="0" cellspacing="0" cellpadding="2" width="910px">
-                                            <tr>
+                                            <tr style="visibility:collapse">
                                                 <td colspan="7">
                                                     <dx:ASPxCheckBox ID="CheckRenterIsOut" runat="server" Text="Знижка" Checked='<%# 1.Equals(Eval("is_discount")) %>' Title="Знижка" />
                                                 </td>
