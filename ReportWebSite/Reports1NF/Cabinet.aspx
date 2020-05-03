@@ -15,7 +15,17 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceReport" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>"
-    SelectCommand="SELECT * FROM view_reports1nf WHERE report_id = @rep_id"
+    SelectCommand="
+    SELECT 
+    *,
+    (SELECT MAX(sdt) FROM (VALUES
+     (rep.bal_max_submit_date),
+     (rep.bal_del_max_submit_date),
+     (rep.arenda_max_submit_date),
+     (rep.arenda_rented_max_submit_date),
+     (rep.org_max_submit_date)) AS AllMaxSubmitDates(sdt)) AS 'max_submit_date'
+    FROM view_reports1nf rep
+    WHERE rep.report_id = @rep_id"
     OnSelecting="SqlDataSourceReport_Selecting" >
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="rep_id" />
@@ -61,7 +71,8 @@
             <tr>
                 <td> <dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Дата останньої актуалізації даних:" /> </td>
                 <td> &nbsp; &nbsp; </td>
-                <td> <dx:ASPxDateEdit ID="EditReportDueDate" runat="server" ReadOnly="true" Value='<%# GetMaxDate( Eval("bal_max_submit_date"), Eval("org_max_submit_date") ) %>' /> </td>
+                <td> <dx:ASPxDateEdit ID="EditReportDueDate" runat="server" ReadOnly="true" Value='<%# Eval("max_submit_date") %>' /> </td>
+                <%--<td> <dx:ASPxDateEdit ID="EditReportDueDate" runat="server" ReadOnly="true" Value='<%# GetMaxDate( Eval("bal_max_submit_date"), Eval("org_max_submit_date") ) %>' /> </td>--%>
             </tr>
 
             <tr>

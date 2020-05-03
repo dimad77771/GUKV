@@ -96,6 +96,8 @@
             var DO3Years = EditCollectionDebtOver3Years.GetValue();
             val = D3Month + D12Month + D3Years + DO3Years;
             EditCollectionDebtTotal.SetValue(val);
+
+            EditCollectionDebtZvit.SetValue(D3Month);
         }
 
         function PerformAllValidations(s, e) {
@@ -262,8 +264,8 @@
                     document.getElementById('valError').style.display = '';
                     document.getElementById('valError').innerHTML = "По договору, що має статус «Договір діє» та “Вид оплати”-«ГРОШОВА ОПЛАТА», «ПОГОДИННО», повинен бути встановлений діючий Звітний період";
                     return false;
-                }
-               
+            }
+
 
                 if (!ComboPaymentTypeValidate())
                     return false;
@@ -273,6 +275,23 @@
 
                 if (!CheckRadioAgreementActiveValidate())
                     return false;
+
+			    if (!CheckEndOfDogogor())
+				    return false;
+
+			    if (!CheckZaborgMensheNadzhodg())
+	    			return false;
+
+			    if (!CheckReturnOrendPayed())
+                    return false;
+
+			    if (!CheckReceivedLessNarazh())
+                    return false;
+
+			    if (!CheckNarazhAndZaborgSum())
+				    return false;
+			    
+
 
 //                if (!CheckRadioAgreementAndSquare())
 //                    return false;
@@ -294,7 +313,8 @@
 
                 var EditPaymentNarah = document.getElementById('<%=PaymentForm.ClientID %>' + '_PanelRentPaymentDocuments_CPRentPayment_EditPaymentNarah_orndpymnt_I').value; //ctl00_MainContent_CPMainPanel_CardPageControl_PaymentForm_PanelRentPaymentDocuments_CPRentPayment_EditPaymentNarah_orndpymnt
                 var EditPaymentNarZvit = document.getElementById('<%=PaymentForm.ClientID %>' + '_PanelRentPaymentDocuments_CPRentPayment_EditPaymentNarZvit_orndpymnt_I').value;
-//                if (EditPaymentNarah < EditPaymentNarZvit) {
+                //                if (EditPaymentNarah < EditPaymentNarZvit) {
+                console.log(111);
                 if (parseFloat(EditPaymentNarah.replace(",", ".")) <  parseFloat(EditPaymentNarZvit.replace(",", ".")) ) {
 
                     document.getElementById('valError').style.display = '';
@@ -329,10 +349,10 @@
 
                 if (EditPaymentNarah == "" && EditCollectionDebtZvit != "" && EditPaymentNarZvit != "" && EditPaymentSaldo != "")
                     EditPaymentNarah = "0";
-                if (parseFloat(EditPaymentNarah.replace(",", ".")) > Math.round(parseFloat(parseFloat(EditCollectionDebtZvit.replace(",", ".")) + parseFloat(EditPaymentNarZvit.replace(",", ".")) + parseFloat(EditPaymentSaldo.replace(",", "."))) * 1000) / 1000) {
+                if (parseFloat(EditPaymentNarah.replace(",", ".")) != Math.round(parseFloat(parseFloat(EditCollectionDebtZvit.replace(",", ".")) + parseFloat(EditPaymentNarZvit.replace(",", ".")) + parseFloat(EditPaymentSaldo.replace(",", "."))) * 1000) / 1000) {
                     document.getElementById('valError').style.display = '';
-//                    document.getElementById('valError').innerHTML = "По договору, що має статус «Договір діє» та «Вид оплати»-«ГРОШОВА ОПЛАТА», значення поля «Нараховано орендної плати за звітний період, грн. (без ПДВ)» повинно дорівнювати сумі значень полів «у тому числі, з нарахованої за звітний період (без боргів та переплат)» та «Заборгованість по орендній платі, грн. - (без ПДВ): - за звітний період» та «Сальдо на початок року (незмінна впродовж року величина)».";
-                    document.getElementById('valError').innerHTML = "По договору, що має статус «Договір діє» та «Вид оплати»-«ГРОШОВА ОПЛАТА», «ПОГОДИННО», значення поля «Нараховано орендної плати за звітний період, грн. (без ПДВ)» не повинно перевищувати суму значень полів «у тому числі, з нарахованої за звітний період (без боргів та переплат)» та «Заборгованість по орендній платі, грн. - (без ПДВ): - за звітний період» та «Сальдо на початок року (незмінна впродовж року величина)».";
+                    document.getElementById('valError').innerHTML = "По договору, що має статус «Договір діє» та «Вид оплати»-«ГРОШОВА ОПЛАТА», значення поля «Нараховано орендної плати за звітний період, грн. (без ПДВ)» повинно дорівнювати сумі значень полів «у тому числі, з нарахованої за звітний період (без боргів та переплат)» та «Заборгованість по орендній платі, грн. - (без ПДВ): - за звітний період» та «Сальдо на початок року (незмінна впродовж року величина)».";
+//                    document.getElementById('valError').innerHTML = "По договору, що має статус «Договір діє» та «Вид оплати»-«ГРОШОВА ОПЛАТА», «ПОГОДИННО», значення поля «Нараховано орендної плати за звітний період, грн. (без ПДВ)» не повинно перевищувати суму значень полів «у тому числі, з нарахованої за звітний період (без боргів та переплат)» та «Заборгованість по орендній платі, грн. - (без ПДВ): - за звітний період» та «Сальдо на початок року (незмінна впродовж року величина)».";
                     return false;
                 }
             }
@@ -367,6 +387,110 @@
             }
             return true;
         }
+
+        function CheckEndOfDogogor() {
+            //var reportingPeriod = ReportingPeriodCombo.GetValue();
+            //var reportingPeriodText = ReportingPeriodCombo.GetItem(reportingPeriod);
+            var reportingPeriodInfo = ReportingPeriodCombo.GetItem(ReportingPeriodCombo.GetSelectedIndex());
+            if (reportingPeriodInfo != null) {
+				var reportingPeriodText = reportingPeriodInfo.text;
+                var s1 = "3 місяці ";
+                if (reportingPeriodText.substring(0, s1.length) == s1) {
+                    var yy = reportingPeriodText.replace(s1, "");
+
+                    var actualFinishDate = clEditActualFinishDate.GetDate();
+                    if (actualFinishDate != null) {
+                        if (actualFinishDate.getFullYear() == yy - 1) {
+							var radioAgreementToxic = clRadioAgreementToxic.GetValue();
+                            if (radioAgreementToxic == true) {
+                                var editCollectionDebtTotal = EditCollectionDebtTotal.GetValue();
+                                if (editCollectionDebtTotal == 0 || editCollectionDebtTotal == null) {
+                                    var v1 = clEditPaymentNarah_orndpymnt.GetValue();
+									var v2 = clEditPaymentSaldo_orndpymnt.GetValue();
+									var v3 = Received_orndpymnt.GetValue();
+									var v4 = Zvit_orndpymnt.GetValue();
+                                    var v5 = clEditPaymentOldDebtsPayed_orndpymnt.GetValue();
+                                    if (v1 > 0 || v2 > 0 || v3 > 0 || v4 > 0 || v5 > 0) {
+										document.getElementById('valError').style.display = '';
+										document.getElementById('valError').innerHTML = 'Надходження по цьому договору за звітний період НЕ можливі. Потрібно очистить поля блока "Надходження орендної плати" закладки "Плата за використання"';
+										return false;
+									}
+								}
+							}
+							
+						}
+					}
+                }
+            }
+			return true;
+        }
+
+        function CheckZaborgMensheNadzhodg() {
+            var v1 = Received_orndpymnt.GetValue();
+            var v2 = clEditPaymentNarah_orndpymnt.GetValue();
+            var v3 = EditCollectionDebtZvit.GetValue();
+            if (v1 == null) v1 = 0;
+            if (v2 == null) v2 = 0;
+            if (v3 == null) v3 = 0;
+            if (v3 > v2) {
+			   document.getElementById('valError').style.display = '';
+               document.getElementById('valError').innerHTML = 'Значення показника  "Заборгованість по орендній платі, грн. (без ПДВ): - за звітний період",  перевищує  значення показника: "Нараховано орендної плати за звітний період, грн. (без ПДВ)"';
+               return false;
+            }
+			return true;
+        }
+
+
+		function CheckReturnOrendPayed() {
+            var radioAgreementToxic = clRadioAgreementToxic.GetValue();
+            if (radioAgreementToxic == true) {
+                var return_orend_payed = edit_return_orend_payed.GetValue();
+                if (return_orend_payed > 0) {
+                    var payment_received = Received_orndpymnt.GetValue();
+                    var payment_narah = clEditPaymentNarah_orndpymnt.GetValue();
+                    if (payment_received == null) payment_received = 0;
+                    if (payment_narah == null) payment_narah = 0;
+                    if (return_orend_payed - payment_received != payment_narah) {
+                        document.getElementById('valError').style.display = '';
+						document.getElementById('valError').innerHTML = 'Повернення більше переплати неможливо';
+                        return false;
+                    }
+                }
+            }
+			return true;
+        }
+
+		function CheckReceivedLessNarazh() {
+            var v1 = Received_orndpymnt.GetValue();
+			var v2 = Zvit_orndpymnt.GetValue();
+			if (v1 < v2) {
+				document.getElementById('valError').style.display = '';
+				document.getElementById('valError').innerHTML = 'Надходження орендної плати за звітний період, всього, не може бути меньше ніж   - у тому числі, з нарахованої за звітний період';
+				return false;
+			}
+			return true;
+		}
+
+        function CheckNarazhAndZaborgSum() {
+			return true;
+
+			var v1 = Received_orndpymnt.GetValue();
+            var v2 = EditCollectionDebtZvit.GetValue();
+            var v3 = clEditPaymentNarah_orndpymnt.GetValue();
+			var v4 = clEditPaymentSaldo_orndpymnt.GetValue();
+            if (v1 == null) v1 = 0;
+            if (v2 == null) v2 = 0;
+            if (v3 == null) v3 = 0;
+			if (v4 == null) v4 = 0;
+			//alert(v1); alert(v2); alert(v3);
+			if (v1 + v2 + v4 != v3) {
+				document.getElementById('valError').style.display = '';
+				document.getElementById('valError').innerHTML = 'Надходження + заборгованість + Сальдо на початок року не дорівнюють Нарахуванню';
+				return false;
+			}
+			return true;
+		}
+
 
 
         function OnRentalRateChanged(s, e) {
@@ -1240,7 +1364,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                 </td>
                                                 <td> &nbsp; </td>
                                                 <td><dx:ASPxLabel ID="ASPxLabel7" runat="server" Text="Фактична дата закінчення договору"></dx:ASPxLabel></td>
-                                                <td><dx:ASPxDateEdit ID="EditActualFinishDate" runat="server" Value='<%# Eval("rent_actual_finish_date") %>' Width="190px" Title="Фактична дата закінчення оренди" >
+                                                <td><dx:ASPxDateEdit ID="EditActualFinishDate" ClientInstanceName="clEditActualFinishDate" runat="server" Value='<%# Eval("rent_actual_finish_date") %>' Width="190px" Title="Фактична дата закінчення оренди" >
                                                      <ClientSideEvents 
                                                             DateChanged ="function (s, e) { HideValidator(); }"
                                                         />
@@ -1283,11 +1407,11 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                             </tr>
                                             <tr>
                                                 <td colspan="2">
-                                                    <dx:ASPxCheckBox ID="CheckLoanAgreement" runat="server"  Text="Договір позички" Checked='<%# 1.Equals(Eval("is_loan_agreement")) %>' Title="Договір позички" Font-Bold="true" />
+                                                    <dx:ASPxCheckBox ID="CheckLoanAgreement" ClientInstanceName="clCheckLoanAgreement" runat="server"  Text="Договір позички" Checked='<%# 1.Equals(Eval("is_loan_agreement")) %>' Title="Договір позички" Font-Bold="true" />
                                                 </td>
                                                 <td> &nbsp; </td>
                                                 <td colspan="2">
-                                                    <dx:ASPxRadioButton ID="RadioAgreementToxic" runat="server" GroupName="AgreementState" Value='<%# 1.Equals(Eval("agr_toxic")) %>'
+                                                    <dx:ASPxRadioButton ID="RadioAgreementToxic" ClientInstanceName="clRadioAgreementToxic" runat="server" GroupName="AgreementState" Value='<%# 1.Equals(Eval("agr_toxic")) %>'
                                                         Text="Договір закінчився" Title="Договір закінчився (заборгованності немає або не погашено і видаляти не можна)"> 
                                                         <ClientSideEvents 
                                                             CheckedChanged ="function (s, e) { HideValidator(); }"
@@ -1713,7 +1837,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                 <table border="0" cellspacing="0" cellpadding="2" width="910px">
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel27" runat="server" Text="Нараховано орендної плати за звітний період, грн. (без ПДВ)" Width="650px"></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="EditPaymentNarah_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("payment_narah") %>' Width="150px"
+                                                        <td><dx:ASPxSpinEdit ID="EditPaymentNarah_orndpymnt" ClientInstanceName="clEditPaymentNarah_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("payment_narah") %>' Width="150px"
                                                             Title="Нараховано орендної плати за звітний період">
                                                               <ClientSideEvents 
                                                             ValueChanged ="function (s, e) { HideValidator(); }"
@@ -1722,7 +1846,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                     </tr>
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel28" runat="server" Text="Сальдо на початок року (незмінна впродовж року величина), грн. (без ПДВ)"></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="EditPaymentSaldo_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("last_year_saldo") %>' Width="150px"
+                                                        <td><dx:ASPxSpinEdit ID="EditPaymentSaldo_orndpymnt" ClientInstanceName="clEditPaymentSaldo_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("last_year_saldo") %>' Width="150px"
                                                             Title="Переплачено орендної плати на початок звітного періоду"/></td>
                                                     </tr>
                                                     <tr>
@@ -1760,9 +1884,15 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                     </tr>
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel55" runat="server" Text="Погашення заборгованості минулих періодів, грн."></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="EditPaymentOldDebtsPayed_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("old_debts_payed") %>' Width="150px"
+                                                        <td><dx:ASPxSpinEdit ID="EditPaymentOldDebtsPayed_orndpymnt" ClientInstanceName="clEditPaymentOldDebtsPayed_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("old_debts_payed") %>' Width="150px"
                                                             Title="Погашення заборгованості минулих періодів"/></td>
                                                     </tr>
+                                                    <tr>
+                                                        <td><dx:ASPxLabel ID="ASPxLabel62" runat="server" Text="Повернення переплати орендної плати всього за звітний період, грн. (без ПДВ)"></dx:ASPxLabel></td>
+                                                        <td><dx:ASPxSpinEdit ID="edit_return_orend_payed" ClientInstanceName="edit_return_orend_payed" runat="server" NumberType="Float" Value='<%# Eval("return_orend_payed") %>' Width="150px"
+                                                            Title="Повернення переплати орендної плати всього за звітний період, грн. (без ПДВ)"/></td>
+                                                    </tr>
+
                                                 </table>
                                             </dx:panelcontent>    
                                             </PanelCollection>                                                    
@@ -1858,7 +1988,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                     </dx:ASPxSpinEdit></td>
                                                 <td><div style="width:30px;"></div></td>
                                                 <td><dx:ASPxLabel ID="ASPxLabel25" runat="server" Text="- за звітний період" Width="280px"></dx:ASPxLabel></td>
-                                                <td><dx:ASPxSpinEdit ID="EditCollectionDebtZvit" ClientInstanceName="EditCollectionDebtZvit" runat="server" NumberType="Float" Value='<%# Eval("debt_zvit") %>' Width="100px"
+                                                <td><dx:ASPxSpinEdit ID="EditCollectionDebtZvit" ClientInstanceName="EditCollectionDebtZvit" runat="server" NumberType="Float" Value='<%# Eval("debt_zvit") %>' Width="100px" ReadOnly = "true"
                                                     Title="Заборгованість по орендній платі за звітний період"/></td>
                                             </tr>
                                             <tr>

@@ -599,7 +599,8 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
 //pgv                 otherRentPayments = payUnknown + payKonkurs;
                     otherRentPayments = payKonkurs;
                     properties.Add("{PAY_RECV_OTHER}", otherRentPayments > 0 ? otherRentPayments.ToString("F2") : "");
-                    pay50zvit = pay50zvit + payUnknown;
+                    //pay50zvit = pay50zvit + payUnknown;
+                    //pay50zvit = pay50zvit;
                     properties.Add("{PAY_50_PAYED}", pay50zvit > 0 ? pay50zvit.ToString("F2") : "");
                 }
 
@@ -833,6 +834,7 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
                 ,SUM(budget_debt_50_uah)
                 ,SUM(budget_debt_30_50_uah)
                 ,SUM(pay.old_debts_payed)
+                ,SUM(pay.return_orend_payed)
             FROM reports1nf_arenda_payments pay
             WHERE pay.report_id = @rep AND pay.rent_period_id = @per
                 AND NOT EXISTS(SELECT id FROM arenda a WHERE a.id = pay.arenda_id AND ISNULL(a.is_deleted, 1) = 1) and pay.arenda_id > 0
@@ -855,6 +857,7 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
                         properties.Add("{PAY_PEREPLATA}", reader.IsDBNull(5) ? "" : reader.GetDecimal(5).ToString("F2"));
                         properties.Add("{PAY_RECV_ZVIT}", payRecvZvit > 0m ? payRecvZvit.ToString("F2") : "");
                         properties.Add("{PAY_RECV_NARAH}", reader.IsDBNull(7) ? "" : reader.GetDecimal(7).ToString("F2"));
+                        properties.Add("{PAY_RET_OREND}", reader.IsDBNull(23) ? "" : reader.GetDecimal(23).ToString("F2"));
                         properties.Add("{PAY_LAST_PER}", reader.IsDBNull(22) ? "" : reader.GetDecimal(22).ToString("F2"));                        
                         properties.Add("{PAY_DEBT_TOTAL}", reader.IsDBNull(9) ? "" : reader.GetDecimal(9).ToString("F2"));
                         properties.Add("{PAY_DEBT_ZVIT}", reader.IsDBNull(10) ? "" : reader.GetDecimal(10).ToString("F2"));

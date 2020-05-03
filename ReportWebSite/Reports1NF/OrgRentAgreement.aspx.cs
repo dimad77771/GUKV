@@ -1759,6 +1759,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         AddQueryParameter(ref fieldList, "payment_nar_zvit", "payzv", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentNarZvit_orndpymnt"), parameters);
         //AddQueryParameter(ref fieldList, "payment_budget_special", "paysp", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentSpecial_orndpymnt"), parameters);
         AddQueryParameter(ref fieldList, "old_debts_payed", "odbtp", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentOldDebtsPayed_orndpymnt"), parameters);
+        AddQueryParameter(ref fieldList, "return_orend_payed", "returnorendpayed", Reports1NFUtils.GetEditNumeric(controls, "edit_return_orend_payed"), parameters);
 
         //AddQueryParameter(ref fieldList, "budget_narah_50_uah", "budg50n", Reports1NFUtils.GetEditNumeric(controls, "EditBudgetNarah50_orndpymnt"), parameters);
         //AddQueryParameter(ref fieldList, "budget_zvit_50_uah", "budg50z", Reports1NFUtils.GetEditNumeric(controls, "EditBudgetZvit50_orndpymnt"), parameters);

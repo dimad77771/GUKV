@@ -163,7 +163,7 @@
     </Styles>
 </dx:ASPxGridViewExporter>
 
-<mini:ProfiledSqlDataSource ID="SqlDataSourceArendaObjects" runat="server" EnableCaching="true"
+<mini:ProfiledSqlDataSource ID="SqlDataSourceArendaObjects" runat="server" EnableCaching="false"
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT m.*
         ,(CASE WHEN ar.agreement_state = 1 THEN 'Договір діє' ELSE CASE WHEN ar.agreement_state = 2 THEN 'Договір закінчився, але заборгованність не погашено' ELSE CASE WHEN ar.agreement_state = 3 THEN 'Договір закінчився, оренда продовжена іншим договором' ELSE '' END END END) AS 'agreement_active_s'
@@ -197,6 +197,7 @@
 ,p.payment_received
 ,p.payment_nar_zvit
 ,p.old_debts_payed
+,p.return_orend_payed
 ,p.debt_total
 ,p.debt_zvit
 ,p.debt_3_month
@@ -508,6 +509,8 @@
             VisibleIndex="84" Visible="True" Caption="- у тому числі, з нарахованої за звітний період (без боргів та переплат)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="old_debts_payed" ReadOnly="True"
             VisibleIndex="85" Visible="True" Caption="Погашення заборгованості минулих періодів, грн"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="return_orend_payed" ReadOnly="True"
+            VisibleIndex="86" Visible="True" Caption="Повернення переплати орендної плати всього за звітний період, грн. (без ПДВ)"></dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn FieldName="debt_total" ReadOnly="True"
             VisibleIndex="86" Visible="True" Caption="Загальна заборгованість по орендній платі - всього"></dx:GridViewDataTextColumn>
@@ -608,7 +611,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_5" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_7" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
