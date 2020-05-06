@@ -221,6 +221,10 @@
 ,p.povidoleno3_num
 ,p.povidoleno4_date
 ,p.povidoleno4_num
+,p.zvilbykmp_percent
+,p.zvilbykmp_date1
+,p.zvilbykmp_date2
+
 
 ,d.name as stanjuro
 
@@ -553,22 +557,31 @@
             VisibleIndex="112" Visible="True" Caption="Звільнено від сплати орендної плати на (з)"></dx:GridViewDataDateColumn>
         <dx:GridViewDataDateColumn FieldName="zvilneno_date2" ReadOnly="True"
             VisibleIndex="113" Visible="True" Caption="Звільнено від сплати орендної плати на (по)"></dx:GridViewDataDateColumn>
+
+        <dx:GridViewDataTextColumn FieldName="zvilbykmp_percent" ReadOnly="True"
+            VisibleIndex="114" Visible="True" Caption="Звільнено від сплати згідно абзац 3 пукнт 2 рішення КМР 903/9073 (%)"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataDateColumn FieldName="zvilbykmp_date1" ReadOnly="True"
+            VisibleIndex="115" Visible="True" Caption="Звільнено від сплати згідно абзац 3 пукнт 2 рішення КМР 903/9073 (з)"></dx:GridViewDataDateColumn>
+        <dx:GridViewDataDateColumn FieldName="zvilbykmp_date2" ReadOnly="True"
+            VisibleIndex="116" Visible="True" Caption="Звільнено від сплати згідно абзац 3 пукнт 2 рішення КМР 903/9073 (по)"></dx:GridViewDataDateColumn>
+
+
         <dx:GridViewDataDateColumn FieldName="povidoleno1_date" ReadOnly="True"
-            VisibleIndex="114" Visible="True" Caption="Повідомлення орендаря до балансоутримувача про неможлівість використання (дата)"></dx:GridViewDataDateColumn>
+            VisibleIndex="117" Visible="True" Caption="Повідомлення орендаря до балансоутримувача про неможлівість використання (дата)"></dx:GridViewDataDateColumn>
         <dx:GridViewDataTextColumn FieldName="povidoleno1_num" ReadOnly="True"
-            VisibleIndex="115" Visible="True" Caption="Повідомлення орендаря до балансоутримувача про неможлівість використання (№)"></dx:GridViewDataTextColumn>
+            VisibleIndex="118" Visible="True" Caption="Повідомлення орендаря до балансоутримувача про неможлівість використання (№)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataDateColumn FieldName="povidoleno2_date" ReadOnly="True"
-            VisibleIndex="116" Visible="True" Caption="Повідомлення орендаря до орендодавця про неможлівість використання (дата)"></dx:GridViewDataDateColumn>
+            VisibleIndex="119" Visible="True" Caption="Повідомлення орендаря до орендодавця про неможлівість використання (дата)"></dx:GridViewDataDateColumn>
         <dx:GridViewDataTextColumn FieldName="povidoleno2_num" ReadOnly="True"
-            VisibleIndex="117" Visible="True" Caption="Повідомлення орендаря до орендодавця про неможлівість використання (№)"></dx:GridViewDataTextColumn>
+            VisibleIndex="120" Visible="True" Caption="Повідомлення орендаря до орендодавця про неможлівість використання (№)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataDateColumn FieldName="povidoleno3_date" ReadOnly="True"
-            VisibleIndex="118" Visible="True" Caption="Повідомлення орендаря до балансоутримувача про намір використовувати об'єкт (дата)"></dx:GridViewDataDateColumn>
+            VisibleIndex="121" Visible="True" Caption="Повідомлення орендаря до балансоутримувача про намір використовувати об'єкт (дата)"></dx:GridViewDataDateColumn>
         <dx:GridViewDataTextColumn FieldName="povidoleno3_num" ReadOnly="True"
-            VisibleIndex="119" Visible="True" Caption="Повідомлення орендаря до балансоутримувача про намір використовувати об'єкт (№)"></dx:GridViewDataTextColumn>
+            VisibleIndex="122" Visible="True" Caption="Повідомлення орендаря до балансоутримувача про намір використовувати об'єкт (№)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataDateColumn FieldName="povidoleno4_date" ReadOnly="True"
-            VisibleIndex="120" Visible="True" Caption="Повідомлення орендаря до орендодавця про намір використовувати об'єкт (дата)"></dx:GridViewDataDateColumn>
+            VisibleIndex="123" Visible="True" Caption="Повідомлення орендаря до орендодавця про намір використовувати об'єкт (дата)"></dx:GridViewDataDateColumn>
         <dx:GridViewDataTextColumn FieldName="povidoleno4_num" ReadOnly="True"
-            VisibleIndex="121" Visible="True" Caption="Повідомлення орендаря до орендодавця про намір використовувати об'єкт (№)"></dx:GridViewDataTextColumn>
+            VisibleIndex="124" Visible="True" Caption="Повідомлення орендаря до орендодавця про намір використовувати об'єкт (№)"></dx:GridViewDataTextColumn>
 
 
 <%--        <dx:GridViewDataTextColumn FieldName="n_cost_narah" ReadOnly="True" VisibleIndex="78" Caption="(NEW) Орендна ставка (%)"></dx:GridViewDataTextColumn>
@@ -611,7 +624,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_7" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_8" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

@@ -97,7 +97,7 @@
             val = D3Month + D12Month + D3Years + DO3Years;
             EditCollectionDebtTotal.SetValue(val);
 
-            EditCollectionDebtZvit.SetValue(D3Month);
+			EditCollectionDebtZvit.SetValue(D3Month + D12Month);
         }
 
         function PerformAllValidations(s, e) {
@@ -349,10 +349,10 @@
 
                 if (EditPaymentNarah == "" && EditCollectionDebtZvit != "" && EditPaymentNarZvit != "" && EditPaymentSaldo != "")
                     EditPaymentNarah = "0";
-                if (parseFloat(EditPaymentNarah.replace(",", ".")) != Math.round(parseFloat(parseFloat(EditCollectionDebtZvit.replace(",", ".")) + parseFloat(EditPaymentNarZvit.replace(",", ".")) + parseFloat(EditPaymentSaldo.replace(",", "."))) * 1000) / 1000) {
+                if (parseFloat(EditPaymentNarah.replace(",", ".")) > Math.round(parseFloat(parseFloat(EditCollectionDebtZvit.replace(",", ".")) + parseFloat(EditPaymentNarZvit.replace(",", ".")) + parseFloat(EditPaymentSaldo.replace(",", "."))) * 1000) / 1000) {
                     document.getElementById('valError').style.display = '';
-                    document.getElementById('valError').innerHTML = "По договору, що має статус «Договір діє» та «Вид оплати»-«ГРОШОВА ОПЛАТА», значення поля «Нараховано орендної плати за звітний період, грн. (без ПДВ)» повинно дорівнювати сумі значень полів «у тому числі, з нарахованої за звітний період (без боргів та переплат)» та «Заборгованість по орендній платі, грн. - (без ПДВ): - за звітний період» та «Сальдо на початок року (незмінна впродовж року величина)».";
-//                    document.getElementById('valError').innerHTML = "По договору, що має статус «Договір діє» та «Вид оплати»-«ГРОШОВА ОПЛАТА», «ПОГОДИННО», значення поля «Нараховано орендної плати за звітний період, грн. (без ПДВ)» не повинно перевищувати суму значень полів «у тому числі, з нарахованої за звітний період (без боргів та переплат)» та «Заборгованість по орендній платі, грн. - (без ПДВ): - за звітний період» та «Сальдо на початок року (незмінна впродовж року величина)».";
+//                    document.getElementById('valError').innerHTML = "По договору, що має статус «Договір діє» та «Вид оплати»-«ГРОШОВА ОПЛАТА», значення поля «Нараховано орендної плати за звітний період, грн. (без ПДВ)» повинно дорівнювати сумі значень полів «у тому числі, з нарахованої за звітний період (без боргів та переплат)» та «Заборгованість по орендній платі, грн. - (без ПДВ): - за звітний період» та «Сальдо на початок року (незмінна впродовж року величина)».";
+                    document.getElementById('valError').innerHTML = "По договору, що має статус «Договір діє» та «Вид оплати»-«ГРОШОВА ОПЛАТА», «ПОГОДИННО», значення поля «Нараховано орендної плати за звітний період, грн. (без ПДВ)» не повинно перевищувати суму значень полів «у тому числі, з нарахованої за звітний період (без боргів та переплат)» та «Заборгованість по орендній платі, грн. - (без ПДВ): - за звітний період» та «Сальдо на початок року (незмінна впродовж року величина)».";
                     return false;
                 }
             }
@@ -441,21 +441,15 @@
         }
 
 
-		function CheckReturnOrendPayed() {
-            var radioAgreementToxic = clRadioAgreementToxic.GetValue();
-            if (radioAgreementToxic == true) {
-                var return_orend_payed = edit_return_orend_payed.GetValue();
-                if (return_orend_payed > 0) {
-                    var payment_received = Received_orndpymnt.GetValue();
-                    var payment_narah = clEditPaymentNarah_orndpymnt.GetValue();
-                    if (payment_received == null) payment_received = 0;
-                    if (payment_narah == null) payment_narah = 0;
-                    if (return_orend_payed - payment_received != payment_narah) {
-                        document.getElementById('valError').style.display = '';
-						document.getElementById('valError').innerHTML = 'Повернення більше переплати неможливо';
-                        return false;
-                    }
-                }
+        function CheckReturnOrendPayed() {
+            var v1 = clEditPaymentSaldo_orndpymnt.GetValue();
+            var v2 = edit_return_orend_payed.GetValue();
+            if (v1 == null) v1 = 0;
+			if (v2 == null) v2 = 0;
+            if (v1 - v2 < 0) {
+                document.getElementById('valError').style.display = '';
+			    document.getElementById('valError').innerHTML = 'Повернення більше переплати неможливо';
+                return false;
             }
 			return true;
         }
@@ -1921,6 +1915,15 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
 												<td align="left"><dx:ASPxDateEdit ID="edit_zvilneno_date1" runat="server" NumberType="Float" Value='<%# Eval("zvilneno_date1") %>' Width="100px" Title="з"/></td>
 												<td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
 												<td align="left"><dx:ASPxDateEdit ID="edit_zvilneno_date2" runat="server" NumberType="Float" Value='<%# Eval("zvilneno_date2") %>' Width="100px" Title="по"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td><dx:ASPxLabel runat="server" Text="Звільнено від сплати згідно абзац 3 пукнт 2 рішення КМР 903/9073"></dx:ASPxLabel></td>
+												<td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
+                                                <td align="left"><dx:ASPxSpinEdit ID="edit_zvilbykmp_percent" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp_percent") %>' Width="100px" Title="%"/></td>
+												<td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
+												<td align="left"><dx:ASPxDateEdit ID="edit_zvilbykmp_date1" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp_date1") %>' Width="100px" Title="з"/></td>
+												<td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
+												<td align="left"><dx:ASPxDateEdit ID="edit_zvilbykmp_date2" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp_date2") %>' Width="100px" Title="по"/></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="1"><dx:ASPxLabel runat="server" Text="Повідомлення орендаря до балансоутримувача про неможлівість використання"></dx:ASPxLabel></td>
