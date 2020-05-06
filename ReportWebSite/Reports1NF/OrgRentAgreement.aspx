@@ -31,6 +31,7 @@
 
         function ready(event) {
             HidePnl();
+			setTimeout(CalcCollectionDebtZvit, 100);
         }
 
         function HidePnl() {
@@ -96,9 +97,21 @@
             var DO3Years = EditCollectionDebtOver3Years.GetValue();
             val = D3Month + D12Month + D3Years + DO3Years;
             EditCollectionDebtTotal.SetValue(val);
-
-			EditCollectionDebtZvit.SetValue(D3Month + D12Month);
         }
+
+        function CalcCollectionDebtZvit() {
+            var v1 = clEditPaymentNarah_orndpymnt.GetValue();
+            var v2 = Zvit_orndpymnt.GetValue();
+            if (v1 == null) v1 = 0;
+			if (v2 == null) v2 = 0;
+
+            var rez = v1 - v2;
+            rez = Math.round(rez * 100) / 100;
+            if (rez == 0) rez = null;
+            console.log(rez);
+			EditCollectionDebtZvit.SetValue(rez);
+		}
+
 
         function PerformAllValidations(s, e) {
             var errorsFound = false;
@@ -1835,6 +1848,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                             Title="Нараховано орендної плати за звітний період">
                                                               <ClientSideEvents 
                                                             ValueChanged ="function (s, e) { HideValidator(); }"
+                                                            LostFocus="CalcCollectionDebtZvit"
                                                             />
                                                             </dx:ASPxSpinEdit></td>
                                                     </tr>
@@ -1860,6 +1874,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                         <td><dx:ASPxLabel ID="ASPxLabel30" runat="server" Text="- у тому числі, з нарахованої за звітний період (без боргів та переплат)"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="EditPaymentNarZvit_orndpymnt"  ClientInstanceName="Zvit_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("payment_nar_zvit") %>' Width="150px"
                                                             Title="Надходження орендної плати з нарахованої за звітний період" MinValue ="0" MaxValue="999999999">
+                                                                <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
  <%--                                                       <ValidationSettings Display="Dynamic"></ValidationSettings>
                                                              <ClientSideEvents 
                                                                  Validation="function (s,e) {
