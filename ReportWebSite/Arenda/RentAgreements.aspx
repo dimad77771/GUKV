@@ -506,7 +506,7 @@
         <dx:GridViewDataTextColumn FieldName="payment_narah" ReadOnly="True"
             VisibleIndex="81" Visible="True" Caption="Нараховано орендної плати за звітний період, грн. (без ПДВ)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="last_year_saldo" ReadOnly="True"
-            VisibleIndex="82" Visible="True" Caption="Сальдо на початок року (незмінна впродовж року величина), грн. (без ПДВ)"></dx:GridViewDataTextColumn>
+            VisibleIndex="82" Visible="True" Caption="Сальдо (переплата) на початок року (незмінна впродовж року величина), грн. (без ПДВ)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="payment_received" ReadOnly="True"
             VisibleIndex="83" Visible="True" Caption="Надходження орендної плати за звітний період, всього, грн. (без ПДВ)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="payment_nar_zvit" ReadOnly="True"

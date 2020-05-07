@@ -1853,7 +1853,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                             </dx:ASPxSpinEdit></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><dx:ASPxLabel ID="ASPxLabel28" runat="server" Text="Сальдо на початок року (незмінна впродовж року величина), грн. (без ПДВ)"></dx:ASPxLabel></td>
+                                                        <td><dx:ASPxLabel ID="ASPxLabel28" runat="server" Text="Сальдо (переплата) на початок року (незмінна впродовж року величина), грн. (без ПДВ)"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="EditPaymentSaldo_orndpymnt" ClientInstanceName="clEditPaymentSaldo_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("last_year_saldo") %>' Width="150px"
                                                             Title="Переплачено орендної плати на початок звітного періоду"/></td>
                                                     </tr>
