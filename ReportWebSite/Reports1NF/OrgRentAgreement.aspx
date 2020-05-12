@@ -131,14 +131,16 @@
 
 
 		function CalcEditReturnOrendPayed() {
-            var v1 = clEditPaymentNarah_orndpymnt.GetValue();
-			var v2 = clEditPaymentSaldo_orndpymnt.GetValue();
-			var v3 = Received_orndpymnt.GetValue();
+			var v1 = clEditPaymentNarah_orndpymnt.GetValue();   //"Нараховано орендної плати за звітний період, грн. (без ПДВ)"
+			var v2 = clEditPaymentSaldo_orndpymnt.GetValue();   //"Сальдо (переплата) на початок року (незмінна впродовж року величина), грн. (без ПДВ)"	
+			var v3 = Received_orndpymnt.GetValue();             //"Надходження орендної плати за звітний період"	
+			var v4 = EditCollectionDebtTotal.GetValue();        //"Загальна заборгованість по орендній платі"
 			if (v1 == null) v1 = 0;
 			if (v2 == null) v2 = 0;
-			if (v3 == null) v3 = 0;
+            if (v3 == null) v3 = 0;
+			if (v4 == null) v4 = 0;
 
-			var rez = v1 - v2 - v3;
+			var rez = v2 + v3 - v1 - v4;
 			rez = Math.round(rez * 100) / 100;
 			if (rez <= 0) rez = null;
 			edit_return_orend_payed.SetValue(rez);
@@ -1938,9 +1940,9 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                             Title="Погашення заборгованості минулих періодів"/></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><dx:ASPxLabel ID="ASPxLabel62" runat="server" Text="Переплата орендної плати всього за звітний період, грн. (без ПДВ)"></dx:ASPxLabel></td>
+                                                        <td><dx:ASPxLabel ID="ASPxLabel62" runat="server" Text="Переплата орендної плати всього, грн. (без ПДВ)"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="edit_return_orend_payed" ClientInstanceName="edit_return_orend_payed" runat="server" NumberType="Float" Value='<%# Eval("return_orend_payed") %>' Width="150px" ReadOnly="true"
-                                                            Title="Переплата орендної плати всього за звітний період, грн. (без ПДВ)"/></td>
+                                                            Title="Переплата орендної плати всього, грн. (без ПДВ)"/></td>
                                                     </tr>
 
                                                 </table>
@@ -2054,26 +2056,26 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                 <td><dx:ASPxLabel ID="ASPxLabel26" runat="server" Text="- поточна до 3-х місяців"></dx:ASPxLabel></td>
                                                 <td><dx:ASPxSpinEdit ID="EditCollectionDebt3Month" ClientInstanceName="EditCollectionDebt3Month" runat="server" NumberType="Float" Value='<%# Eval("debt_3_month") %>' Width="100px" ReadOnly = "true"
                                                     Title="Заборгованість по орендній платі поточна до 3-х місяців">
-                                                    <ClientSideEvents LostFocus="CalcDebt" />
+                                                    <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                 </dx:ASPxSpinEdit></td>
                                                 <td></td>
                                                 <td><dx:ASPxLabel ID="ASPxLabel27" runat="server" Text="- прострочена від 3 до 12 місяців"></dx:ASPxLabel></td>
                                                 <td><dx:ASPxSpinEdit ID="EditCollectionDebt12Month" ClientInstanceName="EditCollectionDebt12Month" runat="server" NumberType="Float" Value='<%# Eval("debt_12_month") %>' Width="100px" ReadOnly = "true"
                                                     Title="Заборгованість по орендній платі прострочена від 3 до 12 місяців">
-                                                    <ClientSideEvents LostFocus="CalcDebt" />
+                                                    <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                 </dx:ASPxSpinEdit></td>
                                             </tr>
                                             <tr>
                                                 <td><dx:ASPxLabel ID="ASPxLabel28" runat="server" Text="- прострочена від 1 до 3 років"></dx:ASPxLabel></td>
                                                 <td><dx:ASPxSpinEdit ID="EditCollectionDebt3Years" ClientInstanceName="EditCollectionDebt3Years" runat="server" NumberType="Float" Value='<%# Eval("debt_3_years") %>' Width="100px"
                                                     Title="Заборгованість по орендній платі прострочена від 1 до 3 років">
-                                                    <ClientSideEvents LostFocus="CalcDebt" />
+                                                    <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                 </dx:ASPxSpinEdit></td>
                                                 <td></td>                                                
                                                 <td><dx:ASPxLabel ID="ASPxLabel29" runat="server" Text="- безнадійна більше 3-х років"></dx:ASPxLabel></td>
                                                 <td><dx:ASPxSpinEdit ID="EditCollectionDebtOver3Years" ClientInstanceName="EditCollectionDebtOver3Years" runat="server" NumberType="Float" Value='<%# Eval("debt_over_3_years") %>' Width="100px"
                                                     Title="Заборгованість по орендній платі безнадійна більше 3-х років">
-                                                    <ClientSideEvents LostFocus="CalcDebt" />
+                                                    <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                 </dx:ASPxSpinEdit></td>
                                             </tr>
                                             <tr>
