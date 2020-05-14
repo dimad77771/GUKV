@@ -134,13 +134,15 @@
 			var v1 = clEditPaymentNarah_orndpymnt.GetValue();   //"Нараховано орендної плати за звітний період, грн. (без ПДВ)"
 			var v2 = clEditPaymentSaldo_orndpymnt.GetValue();   //"Сальдо (переплата) на початок року (незмінна впродовж року величина), грн. (без ПДВ)"	
 			var v3 = Received_orndpymnt.GetValue();             //"Надходження орендної плати за звітний період"	
-			var v4 = EditCollectionDebtTotal.GetValue();        //"Загальна заборгованість по орендній платі"
+            var v4 = EditCollectionDebtTotal.GetValue();        //"Загальна заборгованість по орендній платі"
+			var v5 = edit_return_all_orend_payed.GetValue();    //"Повернення переплати орендної плати всього за звітний період, грн. (без ПДВ)"
 			if (v1 == null) v1 = 0;
 			if (v2 == null) v2 = 0;
             if (v3 == null) v3 = 0;
-			if (v4 == null) v4 = 0;
+            if (v4 == null) v4 = 0;
+			if (v5 == null) v5 = 0;
 
-			var rez = v2 + v3 - v1 - v4;
+			var rez = v2 + v3 - v1 - v4 - v5;
 			rez = Math.round(rez * 100) / 100;
 			if (rez <= 0) rez = null;
 			edit_return_orend_payed.SetValue(rez);
@@ -339,6 +341,8 @@
 			    if (!CheckNarazhAndZaborgSum())
 				    return false;
 			    
+			    if (!CheckReturnAllOrendPayed())
+	    			return false;
 
 
 //                if (!CheckRadioAgreementAndSquare())
@@ -534,7 +538,21 @@
 				return false;
 			}
 			return true;
+        }
+
+		function CheckReturnAllOrendPayed() {
+			var v1 = edit_return_all_orend_payed.GetValue();
+			var v2 = edit_return_orend_payed.GetValue();
+			if (v1 == null) v1 = 0;
+			if (v2 == null) v2 = 0;
+			if (v1 > v2) {
+				document.getElementById('valError').style.display = '';
+				document.getElementById('valError').innerHTML = 'Сума повернення більше наявної суми переплати';
+				return false;
+			}
+			return true;
 		}
+
 
 
 
@@ -1946,6 +1964,14 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                         <td><dx:ASPxLabel ID="ASPxLabel62" runat="server" Text="Переплата орендної плати всього, грн. (без ПДВ)"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="edit_return_orend_payed" ClientInstanceName="edit_return_orend_payed" runat="server" NumberType="Float" Value='<%# Eval("return_orend_payed") %>' Width="150px" ReadOnly="true"
                                                             Title="Переплата орендної плати всього, грн. (без ПДВ)"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><dx:ASPxLabel ID="ASPxLabel63" runat="server" Text="Повернення переплати орендної плати всього за звітний період, грн. (без ПДВ)"></dx:ASPxLabel></td>
+                                                        <td><dx:ASPxSpinEdit ID="edit_return_all_orend_payed" ClientInstanceName="edit_return_all_orend_payed" runat="server" NumberType="Float" Value='<%# Eval("return_all_orend_payed") %>' Width="150px" 
+                                                            Title="Повернення переплати орендної плати всього за звітний період, грн. (без ПДВ)">
+                                                                <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
+                                                            </dx:ASPxSpinEdit>
+                                                        </td>
                                                     </tr>
 
                                                 </table>
