@@ -490,6 +490,8 @@
 
 
         function CheckReturnOrendPayed() {
+			return true;
+            /*
             var v1 = clEditPaymentSaldo_orndpymnt.GetValue();
             var v2 = edit_return_orend_payed.GetValue();
             if (v1 == null) v1 = 0;
@@ -500,6 +502,7 @@
                 return false;
             }
 			return true;
+            */
         }
 
 		function CheckReceivedLessNarazh() {
