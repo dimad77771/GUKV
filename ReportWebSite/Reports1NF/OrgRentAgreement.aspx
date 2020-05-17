@@ -100,9 +100,9 @@
         }
 
         function CalcCollectionDebtZvit() {
-            var v1 = clEditPaymentNarah_orndpymnt.GetValue();
-            var v2 = Zvit_orndpymnt.GetValue();
-			var v3 = clEditPaymentSaldo_orndpymnt.GetValue();
+			var v1 = clEditPaymentNarah_orndpymnt.GetValue();   //"Нараховано орендної плати за звітний період, грн. (без ПДВ)"
+			var v2 = Zvit_orndpymnt.GetValue();                 //"Надходження орендної плати з нарахованої за звітний період"
+			var v3 = clEditPaymentSaldo_orndpymnt.GetValue();   //"Сальдо (переплата) на початок року (незмінна впродовж року величина), грн. (без ПДВ)"	
             if (v1 == null) v1 = 0;
             if (v2 == null) v2 = 0;
 			if (v3 == null) v3 = 0;
