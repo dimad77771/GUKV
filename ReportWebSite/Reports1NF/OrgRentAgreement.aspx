@@ -27,11 +27,17 @@
     // <![CDATA[
         var period;
         document.addEventListener("DOMContentLoaded", ready);
+
+        var IsReadOnlyForm = <%=IsReadOnlyForm.ToString().ToLower() %>;
+        console.log("IsReadOnlyForm", IsReadOnlyForm);
        
 
         function ready(event) {
             HidePnl();
             setTimeout(CalcCollectionDebtZvit, 100);
+            if (IsReadOnlyForm) {
+                clientBtnAddPaymentDocument.SetEnabled(false);
+            }
         }
 
         function HidePnl() {
@@ -100,33 +106,60 @@
         }
 
         function CalcCollectionDebtZvit() {
-			var v1 = clEditPaymentNarah_orndpymnt.GetValue();   //"Нараховано орендної плати за звітний період, грн. (без ПДВ)"
-			var v2 = Zvit_orndpymnt.GetValue();                 //"Надходження орендної плати з нарахованої за звітний період"
-			var v3 = clEditPaymentSaldo_orndpymnt.GetValue();   //"Сальдо (переплата) на початок року (незмінна впродовж року величина), грн. (без ПДВ)"	
-            if (v1 == null) v1 = 0;
-            if (v2 == null) v2 = 0;
-			if (v3 == null) v3 = 0;
+            var use_calc_debt = edit_use_calc_debt.GetChecked();
+			EditCollectionDebtZvit.SetEnabled(!use_calc_debt);
+			EditCollectionDebt3Month.SetEnabled(!use_calc_debt);
+            EditCollectionDebt12Month.SetEnabled(!use_calc_debt);
+            //EditCollectionDebtZvit.readOnly = use_calc_debt;
+			//EditCollectionDebt3Month.readOnly = use_calc_debt;
+			//EditCollectionDebt12Month.readOnly = use_calc_debt;
 
-            var rez = v1 - v2 - v3;
-            rez = Math.round(rez * 100) / 100;
-            if (rez <= 0) rez = null;
-            EditCollectionDebtZvit.SetValue(rez);
+			
+            //var el = EditCollectionDebt3Month.GetInputElement();
+			//console.log("el", el);
+            //EditCollectionDebt3Month.ChangeInputEnabled(el, true, true);
+            //EditCollectionDebt3Month.readOnly = true;
 
-			var reportingPeriodInfo = ReportingPeriodCombo.GetItem(ReportingPeriodCombo.GetSelectedIndex());
-            if (reportingPeriodInfo != null) {
-                var reportingPeriodText = reportingPeriodInfo.text;
-                var s1 = "3 місяці ";
-                if (reportingPeriodText.substring(0, s1.length) == s1) {
-                    EditCollectionDebt3Month.SetValue(rez);
-                    EditCollectionDebt12Month.SetValue(null);
-                } else {
-                    EditCollectionDebt3Month.SetValue(null);
-                    EditCollectionDebt12Month.SetValue(rez);
+			//console.log("a11", $(EditCollectionDebt3Month).prop('disabled'));
+			//EditCollectionDebt3Month.SetEnabled(false);
+            //$(EditCollectionDebt3Month).prop('readonly', true);
+			//$(EditCollectionDebt12Month).prop('readonly', true);
+
+			//console.log("a12", $(EditCollectionDebt3Month).prop('disabled'));
+            //console.log("a2", $(EditCollectionDebt3Month).prop('readonly'));
+			//console.log("a3", $(EditCollectionDebt12Month).prop('readonly'));
+
+			if (use_calc_debt) {
+                var v1 = clEditPaymentNarah_orndpymnt.GetValue();   //"Нараховано орендної плати за звітний період, грн. (без ПДВ)"
+                var v2 = Zvit_orndpymnt.GetValue();                 //"Надходження орендної плати з нарахованої за звітний період"
+                var v3 = clEditPaymentSaldo_orndpymnt.GetValue();   //"Сальдо (переплата) на початок року (незмінна впродовж року величина), грн. (без ПДВ)"	
+                if (v1 == null) v1 = 0;
+                if (v2 == null) v2 = 0;
+                if (v3 == null) v3 = 0;
+
+                var rez = v1 - v2 - v3;
+                rez = Math.round(rez * 100) / 100;
+                if (rez <= 0) rez = null;
+                EditCollectionDebtZvit.SetValue(rez);
+
+                var reportingPeriodInfo = ReportingPeriodCombo.GetItem(ReportingPeriodCombo.GetSelectedIndex());
+                if (reportingPeriodInfo != null) {
+                    var reportingPeriodText = reportingPeriodInfo.text;
+                    var s1 = "3 місяці ";
+                    if (reportingPeriodText.substring(0, s1.length) == s1) {
+                        EditCollectionDebt3Month.SetValue(rez);
+                        EditCollectionDebt12Month.SetValue(null);
+                    } else {
+                        EditCollectionDebt3Month.SetValue(null);
+                        EditCollectionDebt12Month.SetValue(rez);
+                    }
                 }
-            }
 
-            CalcDebt();
-            CalcEditReturnOrendPayed();
+                CalcDebt();
+                CalcEditReturnOrendPayed();
+            } else {
+				CalcDebt();
+			}
         }
 
 
@@ -300,6 +333,10 @@
         }
 
         function ReportingPeriodCombovalidate() {
+            if (IsReadOnlyForm) {
+                return true;
+            }
+
             var cdate = new Date();
 //////////            if ((cdate.getMonth() == 0 || cdate.getMonth() == 3 || cdate.getMonth() == 6 || cdate.getMonth() == 9) && (cdate.getDate() >= 1 && cdate.getDate() <= 20)) 
             //////////	{
@@ -1929,7 +1966,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                     <tr>
                                                         <td></td>
                                                         <td>
-                                                            <dx:ASPxButton ID="BtnAddPaymentDocument" runat="server" Text="Розрахувати" AutoPostBack="false" Width="150px">
+                                                            <dx:ASPxButton ID="BtnAddPaymentDocument" ClientInstanceName="clientBtnAddPaymentDocument" runat="server" Text="Розрахувати" AutoPostBack="false" Width="150px">
                                                                 <ClientSideEvents Click="function (s,e) { CPRentPayment.PerformCallback('calc:');  }" />
                                                             </dx:ASPxButton>
                                                         </td>
@@ -1971,6 +2008,13 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                             Title="Повернення переплати орендної плати всього за звітний період, грн. (без ПДВ)">
                                                                 <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                             </dx:ASPxSpinEdit>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><dx:ASPxLabel ID="ASPxLabel64" runat="server" Text="Розраховувати заборгованість з орендної плати"></dx:ASPxLabel></td>
+                                                        <td><dx:ASPxCheckBox ID="edit_use_calc_debt" ClientInstanceName="edit_use_calc_debt" runat="server" Text="" Checked='<%# 1.Equals(Eval("use_calc_debt")) %>' Title="Розраховувати заборгованість з орендної плати">
+                                                                <ClientSideEvents CheckedChanged="CalcCollectionDebtZvit" />
+                                                            </dx:ASPxCheckBox>
                                                         </td>
                                                     </tr>
 
@@ -2078,18 +2122,18 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                     </dx:ASPxSpinEdit></td>
                                                 <td><div style="width:30px;"></div></td>
                                                 <td><dx:ASPxLabel ID="ASPxLabel25" runat="server" Text="- за звітний період" Width="280px"></dx:ASPxLabel></td>
-                                                <td><dx:ASPxSpinEdit ID="EditCollectionDebtZvit" ClientInstanceName="EditCollectionDebtZvit" runat="server" NumberType="Float" Value='<%# Eval("debt_zvit") %>' Width="100px" ReadOnly = "true"
+                                                <td><dx:ASPxSpinEdit ID="EditCollectionDebtZvit" ClientInstanceName="EditCollectionDebtZvit" runat="server" NumberType="Float" Value='<%# Eval("debt_zvit") %>' Width="100px" ReadOnly="true"
                                                     Title="Заборгованість по орендній платі за звітний період"/></td>
                                             </tr>
                                             <tr>
                                                 <td><dx:ASPxLabel ID="ASPxLabel26" runat="server" Text="- поточна до 3-х місяців"></dx:ASPxLabel></td>
-                                                <td><dx:ASPxSpinEdit ID="EditCollectionDebt3Month" ClientInstanceName="EditCollectionDebt3Month" runat="server" NumberType="Float" Value='<%# Eval("debt_3_month") %>' Width="100px" ReadOnly = "true"
+                                                <td><dx:ASPxSpinEdit ID="EditCollectionDebt3Month" ClientInstanceName="EditCollectionDebt3Month" runat="server" NumberType="Float" Value='<%# Eval("debt_3_month") %>' Width="100px" 
                                                     Title="Заборгованість по орендній платі поточна до 3-х місяців">
                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                 </dx:ASPxSpinEdit></td>
                                                 <td></td>
                                                 <td><dx:ASPxLabel ID="ASPxLabel27" runat="server" Text="- прострочена від 3 до 12 місяців"></dx:ASPxLabel></td>
-                                                <td><dx:ASPxSpinEdit ID="EditCollectionDebt12Month" ClientInstanceName="EditCollectionDebt12Month" runat="server" NumberType="Float" Value='<%# Eval("debt_12_month") %>' Width="100px" ReadOnly = "true"
+                                                <td><dx:ASPxSpinEdit ID="EditCollectionDebt12Month" ClientInstanceName="EditCollectionDebt12Month" runat="server" NumberType="Float" Value='<%# Eval("debt_12_month") %>' Width="100px" 
                                                     Title="Заборгованість по орендній платі прострочена від 3 до 12 місяців">
                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                 </dx:ASPxSpinEdit></td>
@@ -2528,11 +2572,22 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                 <AdvancedModeSettings EnableMultiSelect="True" />
                                             </dx:ASPxUploadControl>
 
-                                            <dx:ASPxButton ID="btnUpload" runat="server" AutoPostBack="False" Visible ="true"
-                                                ClientInstanceName="btnUpload" Text="Завантажити" 
-                                            onclick="btnUpload_Click">
-                                                <ClientSideEvents Click="function(s, e) { uploader.Upload(); }" />
-                                            </dx:ASPxButton>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <dx:ASPxButton ID="btnUpload" runat="server" AutoPostBack="False" Visible ="true"
+                                                            ClientInstanceName="btnUpload" Text="Завантажити" onclick="btnUpload_Click">
+                                                            <ClientSideEvents Click="function(s, e) { uploader.Upload(); }" />
+                                                        </dx:ASPxButton>
+                                                   </td>
+                                                   <td>
+                                                        <dx:ASPxButton ID="btnBuildPdf" runat="server" OnClick="PdfImageBuild_Click"
+                                                            ClientInstanceName="btnBuildPdf" Text="Друк" >
+                                                            
+                                                        </dx:ASPxButton>
+                                                    </td>
+                                                </tr>
+                                             </table>
 
                                         </dx:PanelContent>
                                     </PanelCollection>

@@ -199,6 +199,7 @@
 ,p.old_debts_payed
 ,p.return_orend_payed
 ,p.return_all_orend_payed
+,p.use_calc_debt
 ,p.debt_total
 ,p.debt_zvit
 ,p.debt_3_month
@@ -518,6 +519,9 @@
             VisibleIndex="86" Visible="True" Caption="Переплата орендної плати всього, грн. (без ПДВ)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="return_all_orend_payed" ReadOnly="True"
             VisibleIndex="86" Visible="True" Caption="Повернення переплати орендної плати всього за звітний період, грн. (без ПДВ)"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataCheckColumn FieldName="use_calc_debt" ReadOnly="True"
+            VisibleIndex="86" Visible="True" Caption="Розраховувати заборгованість з орендної плати"></dx:GridViewDataCheckColumn>
+
 
         <dx:GridViewDataTextColumn FieldName="debt_total" ReadOnly="True"
             VisibleIndex="86" Visible="True" Caption="Загальна заборгованість по орендній платі - всього"></dx:GridViewDataTextColumn>
@@ -627,7 +631,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_9" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_10" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

@@ -19,6 +19,12 @@ using System.IO;
 using DevExpress.Web.ASPxImageGallery;
 using ExtDataEntry.Models;
 using DevExpress.Web.ASPxCallback;
+using Syncfusion.Pdf;
+using System.Drawing;
+using Syncfusion.Pdf.Graphics;
+using Syncfusion.Pdf.Parsing;
+using Syncfusion.DocToPDFConverter;
+using Syncfusion.DocIO.DLS;
 
 public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 {
@@ -218,6 +224,10 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		//!!!! ButtonAddSublease.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
 		ButtonAddNote.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
 
+        //BtnRecalcPaymentDocument.Visible = reportBelongsToUser && userIsReportSubmitter;
+
+        IsReadOnlyForm = !(reportBelongsToUser && userIsReportSubmitter);
+
         // Enable or disable 'special payments' field
         /*
         Control panelAdditionalInfo = PaymentForm.FindControl("AdditionalInfoPanel");
@@ -250,6 +260,8 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
     //{
     //    
     //}
+
+    protected bool IsReadOnlyForm { get; set; }
 
     protected string GetPageUniqueKey()
     {
@@ -1761,6 +1773,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         AddQueryParameter(ref fieldList, "old_debts_payed", "odbtp", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentOldDebtsPayed_orndpymnt"), parameters);
         AddQueryParameter(ref fieldList, "return_orend_payed", "returnorendpayed", Reports1NFUtils.GetEditNumeric(controls, "edit_return_orend_payed"), parameters);
         AddQueryParameter(ref fieldList, "return_all_orend_payed", "returnallorendpayed", Reports1NFUtils.GetEditNumeric(controls, "edit_return_all_orend_payed"), parameters);
+        AddQueryParameter(ref fieldList, "use_calc_debt", "usecalcdebt", Reports1NFUtils.GetCheckBoxValue(controls, "edit_use_calc_debt") ? 1 : 0, parameters);
 
         //AddQueryParameter(ref fieldList, "budget_narah_50_uah", "budg50n", Reports1NFUtils.GetEditNumeric(controls, "EditBudgetNarah50_orndpymnt"), parameters);
         //AddQueryParameter(ref fieldList, "budget_zvit_50_uah", "budg50z", Reports1NFUtils.GetEditNumeric(controls, "EditBudgetZvit50_orndpymnt"), parameters);
@@ -2750,5 +2763,230 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		//!!!	Directory.Delete(TempPhotoFolder(), true);
 	}
 
-	#endregion
+
+    protected void PdfImageBuild_Click(object sender, EventArgs e)
+    {
+        //string templateFileName = Server.MapPath("Templates/Report.docx");
+        //var aa = e;
+
+        var reportId = Int32.Parse(Request.QueryString["rid"]);
+        var agreementId = Int32.Parse(Request.QueryString["aid"]);
+
+
+        var fname = @"фото_" + reportId + "_" + agreementId + ".pdf";
+        var bytes = new OrgRentAgreementPhotosPdfBulder().Go(reportId, agreementId, TempPhotoFolder());
+
+        Response.Clear();
+        Response.ContentType = "application/pdf";
+        Response.AddHeader("Content-Disposition", "attachment;filename=\"" + fname + "\"");
+        Response.BinaryWrite(bytes);
+
+        Response.Flush();
+        Response.End();
+    }
+
+    #endregion
+}
+
+
+
+public class OrgRentAgreementPhotosPdfBulder
+{
+    Int32 ReportId;
+    Int32 AgreementId;
+    string PhotoFolder;
+
+    SqlConnection connectionSql;
+    PdfDocument PdfDoc;
+
+    Byte[] OutputPdfBytes;
+
+
+    public Byte[] Go(int reportId, int agreementId, string photoFolder)
+    {
+        this.ReportId = reportId;
+        this.AgreementId = agreementId;
+        this.PhotoFolder = photoFolder;
+
+        PdfInit();
+        connectionSql = Utils.ConnectToDatabase();
+
+        var allfiles = GetAllFiles().ToArray();
+
+        bool ex = false;
+        foreach (var fi in allfiles)
+        {
+            if (ProcFile(fi))
+            {
+                ex = true;
+            }
+        }
+        if (!ex)
+        {
+            BuildEmptyPdf();
+        }
+
+
+        connectionSql.Close();
+        PdfSave();
+        return OutputPdfBytes;
+    }
+
+
+    IEnumerable<FileInfo> GetAllFiles()
+    {
+        string query = @"select file_name, file_ext, id from reports1nf_arendaphotos a where a.arenda_id = @arenda_id";
+        using (SqlCommand cmd = new SqlCommand(query, connectionSql))
+        {
+            cmd.Parameters.AddWithValue("arenda_id", AgreementId);
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    var file_name = reader.IsDBNull(0) ? string.Empty : (string)reader.GetValue(0);
+                    var file_ext = reader.IsDBNull(1) ? string.Empty : (string)reader.GetValue(1);
+                    var file_id = reader.GetInt32(2);
+
+                    yield return new FileInfo
+                    {
+                        file_name = file_name,
+                        file_ext = file_ext,
+                        file_id = file_id,
+                        FullFilename = Path.Combine(PhotoFolder, file_name + file_ext),
+                    };
+                }
+                reader.Close();
+            }
+        }
+    }
+
+    void PdfInit()
+    {
+        PdfDoc = new PdfDocument();
+    }
+
+    void PdfSave()
+    {
+        var outstream = new MemoryStream();
+        PdfDoc.Save(outstream);
+        outstream.Dispose();
+        OutputPdfBytes = outstream.ToArray();
+
+        //File.WriteAllBytes(@"H:\DOWNLOADS\PDFBox.NET-1.8.9\aaa" + Guid.NewGuid() + ".pdf", OutputPdfBytes);
+    }
+
+
+    bool ProcFile(FileInfo fi)
+    {
+        if (!File.Exists(fi.FullFilename)) return false;
+
+        if (ProcFileImage(fi)) return true;
+        if (ProcFilePdf(fi)) return true;
+        if (ProcFileDocx(fi)) return true;
+
+        return false;
+    }
+
+    bool ProcFileImage(FileInfo fi)
+    {
+        System.Drawing.Image image;
+        try
+        {
+            image = Bitmap.FromFile(fi.FullFilename);
+        }
+        catch (Exception ex)
+        {
+            return false;
+        }
+
+        var convertor = new PdfUnitConvertor();
+        var pdfBitmap = new PdfBitmap(image);
+
+        var width = convertor.ConvertFromPixels(image.Width, PdfGraphicsUnit.Point);
+        var height = convertor.ConvertFromPixels(image.Height, PdfGraphicsUnit.Point);
+
+        var section = PdfDoc.Sections.Add();
+        section.PageSettings.Size = new SizeF(width, height);
+        section.PageSettings.Orientation = (width > height ? PdfPageOrientation.Landscape : PdfPageOrientation.Portrait);
+        section.PageSettings.Margins.Bottom = 0;
+        section.PageSettings.Margins.Top = 0;
+        section.PageSettings.Margins.Left = 0;
+        section.PageSettings.Margins.Right = 0;
+        var page = section.Pages.Add();
+
+        var graphics = page.Graphics;
+        graphics.DrawImage(pdfBitmap, new RectangleF(0, 0, width, height));
+
+        image.Dispose();
+        return true;
+    }
+
+    void BuildEmptyPdf()
+    {
+        var page = PdfDoc.Pages.Add();
+        var graphics = page.Graphics;
+        //var font = new PdfStandardFont(PdfFontFamily.Helvetica, 20);
+        var font = new PdfTrueTypeFont(new System.Drawing.Font("Arial Unicode MS", 20), true);
+        graphics.DrawString("Зображення відсутні", font, PdfBrushes.Black, new PointF(10, 10));
+        //graphics.DrawString("Heloo", font, PdfBrushes.Black, new PointF(10, 10));
+    }
+
+    bool ProcFilePdf(FileInfo fi)
+    {
+        PdfLoadedDocument expdf;
+        try
+        {
+            expdf = new PdfLoadedDocument(fi.FullFilename);
+        }
+        catch (Exception ex)
+        {
+            return false;
+        }
+
+        PdfDoc.Append(expdf);
+
+        expdf.Dispose();
+        return true;
+    }
+
+    bool ProcFileDocx(FileInfo fi)
+    {
+        WordDocument docx;
+        try
+        {
+            docx = new WordDocument(fi.FullFilename);
+        }
+        catch (Exception ex)
+        {
+            return false;
+        }
+
+        var converter = new DocToPDFConverter();
+        converter.Settings.EmbedFonts = true;
+        converter.Settings.ImageQuality = 100;
+        converter.Settings.ImageResolution = 640;
+        converter.Settings.OptimizeIdenticalImages = true;
+        var expdf = converter.ConvertToPDF(docx);
+
+        var outstream = new MemoryStream();
+        expdf.Save(outstream);
+        var pdfBytes = outstream.ToArray();
+        outstream.Dispose();
+        expdf.Dispose();
+
+        var pdfdoc = new PdfLoadedDocument(pdfBytes);
+        PdfDoc.Append(pdfdoc);
+        pdfdoc.Dispose();
+
+        return true;
+    }
+
+
+    struct FileInfo
+    {
+        public string file_name;
+        public string file_ext;
+        public int file_id;
+        public string FullFilename;
+    }
 }
