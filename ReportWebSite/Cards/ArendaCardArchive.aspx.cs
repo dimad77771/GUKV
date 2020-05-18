@@ -338,8 +338,22 @@ public partial class Cards_ArendaCardArchive : System.Web.UI.Page
 		return str;
 	}
 
+    protected void PdfImageBuild_Click(object sender, EventArgs e)
+    {
+        var agreementId = Int32.Parse(Request.QueryString["arid"]);
 
+        var fname = @"фото_" + agreementId + ".pdf";
+        var bytes = new OrgRentAgreementPhotosPdfBulder().Go(agreementId, TempPhotoFolder());
 
-	#endregion
+        Response.Clear();
+        Response.ContentType = "application/pdf";
+        Response.AddHeader("Content-Disposition", "attachment;filename=\"" + fname + "\"");
+        Response.BinaryWrite(bytes);
+
+        Response.Flush();
+        Response.End();
+    }
+
+    #endregion
 
 }

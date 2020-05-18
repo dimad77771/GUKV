@@ -547,6 +547,16 @@
                                 </dx:ASPxCallbackPanel>
                                 </td>
                                 </tr>
+                                            
+                                                <tr>
+                                                   <td>
+                                                        <dx:ASPxButton ID="btnBuildPdf" runat="server" OnClick="PdfImageBuild_Click"
+                                                            ClientInstanceName="btnBuildPdf" Text="Друк" >
+                                                            
+                                                        </dx:ASPxButton>
+                                                    </td>
+                                                    </tr>
+                                             
                                 </table>
                             </dx:PanelContent>
                         </PanelCollection>
