@@ -110,6 +110,7 @@
 			EditCollectionDebtZvit.SetEnabled(!use_calc_debt);
 			EditCollectionDebt3Month.SetEnabled(!use_calc_debt);
             EditCollectionDebt12Month.SetEnabled(!use_calc_debt);
+			edit_return_orend_payed.SetEnabled(!use_calc_debt);
             //EditCollectionDebtZvit.readOnly = use_calc_debt;
 			//EditCollectionDebt3Month.readOnly = use_calc_debt;
 			//EditCollectionDebt12Month.readOnly = use_calc_debt;
@@ -129,6 +130,7 @@
             //console.log("a2", $(EditCollectionDebt3Month).prop('readonly'));
 			//console.log("a3", $(EditCollectionDebt12Month).prop('readonly'));
 
+            
 			if (use_calc_debt) {
                 var v1 = clEditPaymentNarah_orndpymnt.GetValue();   //"Нараховано орендної плати за звітний період, грн. (без ПДВ)"
                 var v2 = Zvit_orndpymnt.GetValue();                 //"Надходження орендної плати з нарахованої за звітний період"
@@ -1999,7 +2001,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                     </tr>
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel62" runat="server" Text="Переплата орендної плати всього, грн. (без ПДВ)"></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="edit_return_orend_payed" ClientInstanceName="edit_return_orend_payed" runat="server" NumberType="Float" Value='<%# Eval("return_orend_payed") %>' Width="150px" ReadOnly="true"
+                                                        <td><dx:ASPxSpinEdit ID="edit_return_orend_payed" ClientInstanceName="edit_return_orend_payed" runat="server" NumberType="Float" Value='<%# Eval("return_orend_payed") %>' Width="150px" 
                                                             Title="Переплата орендної плати всього, грн. (без ПДВ)"/></td>
                                                     </tr>
                                                     <tr>
@@ -2122,7 +2124,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                     </dx:ASPxSpinEdit></td>
                                                 <td><div style="width:30px;"></div></td>
                                                 <td><dx:ASPxLabel ID="ASPxLabel25" runat="server" Text="- за звітний період" Width="280px"></dx:ASPxLabel></td>
-                                                <td><dx:ASPxSpinEdit ID="EditCollectionDebtZvit" ClientInstanceName="EditCollectionDebtZvit" runat="server" NumberType="Float" Value='<%# Eval("debt_zvit") %>' Width="100px" ReadOnly="true"
+                                                <td><dx:ASPxSpinEdit ID="EditCollectionDebtZvit" ClientInstanceName="EditCollectionDebtZvit" runat="server" NumberType="Float" Value='<%# Eval("debt_zvit") %>' Width="100px" 
                                                     Title="Заборгованість по орендній платі за звітний період"/></td>
                                             </tr>
                                             <tr>
