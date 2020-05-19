@@ -436,14 +436,16 @@
                 if (EditPaymentNarZvit == "") EditPaymentNarZvit = "0";
                 if (EditPaymentNarah == "") EditPaymentNarah = "0";
                 if (EditPaymentSaldo == "") EditPaymentSaldo = "0";
-                
+
+                var paymentOldDebtsPayed_orndpymnt = clEditPaymentOldDebtsPayed_orndpymnt.GetValue();
+                if (paymentOldDebtsPayed_orndpymnt == null) paymentOldDebtsPayed_orndpymnt = 0;
 
                 if (EditPaymentNarah == "" && EditCollectionDebtZvit != "" && EditPaymentNarZvit != "" && EditPaymentSaldo != "")
                     EditPaymentNarah = "0";
-                if (parseFloat(EditPaymentNarah.replace(",", ".")) > Math.round(parseFloat(parseFloat(EditCollectionDebtZvit.replace(",", ".")) + parseFloat(EditPaymentNarZvit.replace(",", ".")) + parseFloat(EditPaymentSaldo.replace(",", "."))) * 1000) / 1000) {
+				if (parseFloat(EditPaymentNarah.replace(",", ".")) > Math.round(parseFloat(parseFloat(EditCollectionDebtZvit.replace(",", ".")) + parseFloat(EditPaymentNarZvit.replace(",", ".")) + parseFloat(EditPaymentSaldo.replace(",", ".")) + paymentOldDebtsPayed_orndpymnt) * 1000) / 1000) {
                     document.getElementById('valError').style.display = '';
 //                    document.getElementById('valError').innerHTML = "По договору, що має статус «Договір діє» та «Вид оплати»-«ГРОШОВА ОПЛАТА», значення поля «Нараховано орендної плати за звітний період, грн. (без ПДВ)» повинно дорівнювати сумі значень полів «у тому числі, з нарахованої за звітний період (без боргів та переплат)» та «Заборгованість по орендній платі, грн. - (без ПДВ): - за звітний період» та «Сальдо на початок року (незмінна впродовж року величина)».";
-                    document.getElementById('valError').innerHTML = "По договору, що має статус «Договір діє» та «Вид оплати»-«ГРОШОВА ОПЛАТА», «ПОГОДИННО», значення поля «Нараховано орендної плати за звітний період, грн. (без ПДВ)» не повинно перевищувати суму значень полів «у тому числі, з нарахованої за звітний період (без боргів та переплат)» та «Заборгованість по орендній платі, грн. - (без ПДВ): - за звітний період» та «Сальдо на початок року (незмінна впродовж року величина)».";
+					document.getElementById('valError').innerHTML = "По договору, що має статус «Договір діє» та «Вид оплати»-«ГРОШОВА ОПЛАТА», «ПОГОДИННО», значення поля «Нараховано орендної плати за звітний період, грн. (без ПДВ)» не повинно перевищувати суму значень полів «у тому числі, з нарахованої за звітний період (без боргів та переплат)» та «Заборгованість по орендній платі, грн. - (без ПДВ): - за звітний період», «Погашення заборгованості минулих періодів, грн.» та «Сальдо на початок року (незмінна впродовж року величина)».";
                     return false;
                 }
             }
