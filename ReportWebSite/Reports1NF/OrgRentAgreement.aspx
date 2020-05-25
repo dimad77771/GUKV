@@ -503,7 +503,8 @@
 									var v3 = Received_orndpymnt.GetValue();
 									var v4 = Zvit_orndpymnt.GetValue();
                                     var v5 = clEditPaymentOldDebtsPayed_orndpymnt.GetValue();
-                                    if (v1 > 0 || v2 > 0 || v3 > 0 || v4 > 0 || v5 > 0) {
+                                    //if (v1 > 0 || v2 > 0 || v3 > 0 || v4 > 0 || v5 > 0) {
+									if (v1 > 0 || v3 > 0 || v4 > 0 || v5 > 0) {
 										document.getElementById('valError').style.display = '';
 										document.getElementById('valError').innerHTML = 'Надходження по цьому договору за звітний період НЕ можливі. Потрібно очистить поля блока "Надходження орендної плати" закладки "Плата за використання"';
 										return false;
