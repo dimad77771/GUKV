@@ -227,6 +227,7 @@
            ,ISNULL(org.konkurs_payments, 0) + ISNULL(org.unknown_payments, 0) AS 'PAY_RECV_OTHER'
            ,[org].[report_id]
            ,[dict_otdel_gukv].name as 'otdel_gukv'
+           ,[org].[prim_balanc]
         FROM
             reports1nf_org_info org
             LEFT OUTER JOIN dict_otdel_gukv ON org.otdel_gukv_id = dict_otdel_gukv.id
@@ -519,6 +520,12 @@ WHERE id = @report_id"
         </dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn FieldName="stan_recieve_description" ReadOnly="False" ShowInCustomizationForm="True" VisibleIndex="5" Visible="True" Caption="Примітки" Width="150px">
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="prim_balanc" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="5" Visible="True" Caption="Примітки балансоутримувача" Width="120px">
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("prim_balanc") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
         <dx:GridViewDataDateColumn FieldName="stan_recieve_date" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="5" Caption="Дата останнього прийому">
@@ -889,7 +896,7 @@ WHERE id = @report_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A2_19" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A2_20" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

@@ -448,7 +448,12 @@
                                     IncrementalFilteringMode="StartsWith" DataSourceID="SqlDataSourceOtdelDKV" Value='<%# Eval("otdel_gukv_id") %>'
                                     Title="Стан юр.особи" />
                             </td>
-
+                            <td width="8px">&nbsp;</td>
+                            <td width="100px"><dx:ASPxLabel ID="ASPxLabel37" runat="server" Text="Примітки балансоутримувача"></dx:ASPxLabel></td>
+                            <td width="8px">&nbsp;</td>
+                            <td>
+                                <dx:ASPxTextBox ID="edit_prim_balanc" runat="server" Text='<%# Eval("prim_balanc") %>' Width="100%" Title="Примітки балансоутримувача" MaxLength="255" />
+                           </td>
                         </tr>
                     </table>
                 </dx:PanelContent>

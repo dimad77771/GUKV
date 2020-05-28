@@ -422,10 +422,11 @@ public partial class Reports1NF_OrgInfo : System.Web.UI.Page
 			int oldOrganId = GetDropDownValue("PanelInfo", "ComboOldOrgan");
 			int gospstructid = GetDropDownValue("PanelInfo", "ComboStructType");
 			int otdelgukvid = GetDropDownValue("PanelInfo", "ComboOtdelType");
+            string prim_balanc = GetEditText("PanelInfo", "edit_prim_balanc");
 
 
-			//AddQueryParameter(ref fieldList, "zkpo_code", "zkpo", zkpo, parameters);
-			AddQueryParameter(ref fieldList, "full_name", "fname", fullName, parameters);
+            //AddQueryParameter(ref fieldList, "zkpo_code", "zkpo", zkpo, parameters);
+            AddQueryParameter(ref fieldList, "full_name", "fname", fullName, parameters);
 			AddQueryParameter(ref fieldList, "short_name", "sname", shortName, parameters);
 
 			AddQueryParameter(ref fieldList, "addr_distr_new_id", "distr", addrDistrictId, parameters);
@@ -450,8 +451,10 @@ public partial class Reports1NF_OrgInfo : System.Web.UI.Page
 			AddQueryParameter(ref fieldList, "vedomstvo_id", "ved", vedomstvoId, parameters);
 			AddQueryParameter(ref fieldList, "gosp_struct_id", "strtype", gospstructid, parameters);
 			AddQueryParameter(ref fieldList, "otdel_gukv_id", "otdeltype", otdelgukvid, parameters);
+            AddQueryParameter(ref fieldList, "prim_balanc", "primbalanc", prim_balanc, parameters);
 
-			AddQueryParameter(ref fieldList, "old_organ_id", "oorg", oldOrganId, parameters);
+
+            AddQueryParameter(ref fieldList, "old_organ_id", "oorg", oldOrganId, parameters);
 
 			int physAddrDistrictId = GetDropDownValue("PanelPhysAddr", "ComboPhysAddrDistrict");
 			int physAddrStreetId = GetDropDownValue("PanelPhysAddr", "ComboPhysAddrStreet");
