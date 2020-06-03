@@ -226,7 +226,14 @@
 ,dpt.name AS 'payment_type'
       ,[org].[zkpo_code] AS 'org_renter_zkpo'
       ,[org_giver].[zkpo_code] AS 'org_giver_zkpo'
-    ,isnull(ad.pidstava+' ','')+ isnull(ad.doc_num+' ','')+ isnull('від '+ad.doc_date+' ','')+ad.purpose_str as priznachennya
+    ,isnull(ad.pidstava+' ','')+ isnull(ad.doc_num+' ','')+ isnull('від '+ad.doc_date+' ','')+ad.purpose_str as priznachennya,
+
+zvilneno_percent,zvilneno_date1,zvilneno_date2,
+zvilbykmp_percent,zvilbykmp_date1,zvilbykmp_date2,
+povidoleno1_date,povidoleno1_num,
+povidoleno2_date,povidoleno2_num,
+povidoleno3_date,povidoleno3_num,
+povidoleno4_date,povidoleno4_num
 
 FROM reports1nf_arenda ar
         INNER JOIN reports1nf rep ON rep.id = ar.report_id
@@ -931,6 +938,26 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
         <dx:GridViewDataTextColumn FieldName="org_giver_zkpo" VisibleIndex="45" Caption="Код ЄДРПОУ Орендодавця" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_spysano" VisibleIndex="46" Caption="Списано заборгованості з орендної плати у звітному періоді, грн. (без ПДВ)" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
 
+        <dx:GridViewDataTextColumn FieldName="zvilneno_percent" VisibleIndex="101" Caption="Звільнено від сплати орендної плати на, %" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataDateColumn FieldName="zvilneno_date1" VisibleIndex="102" Caption="Звільнено від сплати орендної плати на, з" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
+        <dx:GridViewDataDateColumn FieldName="zvilneno_date2" VisibleIndex="103" Caption="Звільнено від сплати орендної плати на, по" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
+
+        <dx:GridViewDataTextColumn FieldName="zvilbykmp_percent" VisibleIndex="111" Caption="Звільнено від сплати згідно абзац 3 пукнт 2 рішення КМР 903/9073, %" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataDateColumn FieldName="zvilbykmp_date1" VisibleIndex="112" Caption="Звільнено від сплати згідно абзац 3 пукнт 2 рішення КМР 903/9073, з" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
+        <dx:GridViewDataDateColumn FieldName="zvilbykmp_date2" VisibleIndex="113" Caption="Звільнено від сплати згідно абзац 3 пукнт 2 рішення КМР 903/9073, по" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
+
+        <dx:GridViewDataDateColumn FieldName="povidoleno1_date" VisibleIndex="121" Caption="Повідомлення орендаря до балансоутримувача про неможлівість використання, дата" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
+        <dx:GridViewDataTextColumn FieldName="povidoleno1_num" VisibleIndex="122" Caption="Повідомлення орендаря до балансоутримувача про неможлівість використання, №" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataDateColumn FieldName="povidoleno2_date" VisibleIndex="131" Caption="Повідомлення орендаря до орендодавця про неможлівість використання, дата" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
+        <dx:GridViewDataTextColumn FieldName="povidoleno2_num" VisibleIndex="132" Caption="Повідомлення орендаря до орендодавця про неможлівість використання, №" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataDateColumn FieldName="povidoleno3_date" VisibleIndex="141" Caption="Повідомлення орендаря до балансоутримувача про намір використовувати об'єкт, дата" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
+        <dx:GridViewDataTextColumn FieldName="povidoleno3_num" VisibleIndex="142" Caption="Повідомлення орендаря до балансоутримувача про намір використовувати об'єкт, №" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataDateColumn FieldName="povidoleno4_date" VisibleIndex="151" Caption="Повідомлення орендаря до орендодавця про намір використовувати об'єкт, дата" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
+        <dx:GridViewDataTextColumn FieldName="povidoleno4_num" VisibleIndex="152" Caption="Повідомлення орендаря до орендодавця про намір використовувати об'єкт, №" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+
     </Columns>
 
     <TotalSummary>
@@ -978,7 +1005,7 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
     <SettingsPager PageSize="10" AlwaysShowPager="true" />
     <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
     <Styles Header-Wrap="True" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaList" Enabled="True" Version="A2" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaList" Enabled="True" Version="A36" />
 
     <ClientSideEvents
         Init="function (s,e) { PrimaryGridView.PerformCallback('init:'); }"
