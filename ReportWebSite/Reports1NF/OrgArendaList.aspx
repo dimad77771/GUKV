@@ -263,9 +263,9 @@ FROM reports1nf_arenda ar
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDictStreets" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="/* select s.id, s.name as sname, r.name as rname,  s.name as name from dict_streets s left join dict_regions r on r.id = s.region_id where (not s.name is null) and (RTRIM(LTRIM(s.name)) <> '') */
+    SelectCommand="select s.id, s.name as sname, r.name as rname,  s.name as name from dict_streets s left join dict_regions r on r.id = s.region_id where (not s.name is null) and (RTRIM(LTRIM(s.name)) <> '')">
 
-select distinct s.id, s.name 
+<%--select distinct s.id, s.name 
 from dict_streets s
 join reports1nf_buildings b on b.addr_street_id = s.id
 join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
@@ -274,7 +274,7 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
        /* (b.master_building_id IS NULL) AND*/
        bal.organization_id = @org_id AND
         (RTRIM(LTRIM(b.addr_nomer)) <> '') 
-        ORDER BY s.name">
+        ORDER BY s.name">--%>
 <%--    SelectCommand="select s.id, s.name as sname, r.name as rname, ISNULL(r.name + ' - ', '') + s.name as name from dict_streets s left join dict_regions r on r.id = s.region_id where (not s.name is null) and (RTRIM(LTRIM(s.name)) <> '')">	--%>
 
 <%--    SelectCommand="select id, name from dict_streets where (not name is null) and (RTRIM(LTRIM(name)) <> '')">	--%>
@@ -298,7 +298,7 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
         where 
         isnull(b.is_deleted, 0) = 0 AND isnull(bal.is_deleted, 0) = 0 AND 
        /* (b.master_building_id IS NULL) AND*/
-        b.addr_street_id = @street_id AND bal.organization_id = @org_id AND
+        b.addr_street_id = @street_id AND
         (RTRIM(LTRIM(b.addr_nomer)) <> '') 
         ORDER BY RTRIM(LTRIM(b.addr_nomer))"
     OnSelecting="SqlDataSourceDictBuildings_Selecting" >
@@ -457,7 +457,11 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
                                                     TextField="name" ValueField="id" Width="250px" IncrementalFilteringMode="StartsWith"
                                                     FilterMinLength="3" EnableCallbackMode="True" CallbackPageSize="50" EnableViewState="False"
                                                     EnableSynchronization="False">
-                                                    <ClientSideEvents SelectedIndexChanged="function(s, e) { ComboBuilding.PerformCallback(ComboStreet.GetValue().toString()); }" />
+                                                    <ClientSideEvents SelectedIndexChanged="function(s, e) { 
+                                                        var val = ComboStreet.GetValue();
+                                                        val = (val == null ? '' : val.toString());
+                                                        ComboBuilding.PerformCallback(val);
+                                                        }" />
                                                 </dx:ASPxComboBox>
                                             </td>
                                             <td> <dx:ASPxLabel ID="LabelAddrPickerNumber" runat="server" Text="Номер будинку:" Width="95px" /> </td>
