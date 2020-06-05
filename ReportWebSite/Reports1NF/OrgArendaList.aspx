@@ -1,5 +1,5 @@
-п»ї<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OrgArendaList.aspx.cs" Inherits="Reports1NF_OrgArendaList"
-    MasterPageFile="~/NoMenu.master" Title="Р”РѕРіРѕРІРѕСЂРё РћСЂРµРЅРґРё" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OrgArendaList.aspx.cs" Inherits="Reports1NF_OrgArendaList"
+    MasterPageFile="~/NoMenu.master" Title="Договори Оренди" %>
 
 <%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
 <%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
@@ -21,7 +21,6 @@
 </style>
 
 <script type="text/javascript" src="../Scripts/PageScript.js"></script>
-
 <script type="text/javascript" language="javascript">
 
     document.addEventListener("DOMContentLoaded", ready);
@@ -58,7 +57,7 @@
 
         if (e.buttonID == 'btnDeleteAgreement') {
 
-            if (confirm("Р’РёРґР°Р»РёС‚Рё Р”РѕРіРѕРІС–СЂ РћСЂРµРЅРґРё?")) {
+            if (confirm("Видалити Договір Оренди?")) {
                 PrimaryGridView.PerformCallback(JSON.stringify({ AgreementToDeleteID: PrimaryGridView.GetRowKey(e.visibleIndex) }));
             }
         }
@@ -71,44 +70,43 @@
         var agreementNum = EditAgreementNum.GetText();
         var agreementDate = EditAgreementDate.GetValue();
         var buildingId = ComboBuilding.GetValue();
-//        var orgBalansId = ComboBalansOrg.GetValue();
-        var orgBalansId = ValBalansOrgId.GetValue();
+        var orgBalansId = ComboBalansOrg.GetValue();
         var orgGiverId = ComboGiverOrg.GetValue();
         var orgRenterId = ComboRenterOrg.GetValue();
         var giverComment = EditGiverComment.GetText();
 
         if (agreementNum == "") {
-            alert("Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРІРµРґС–С‚СЊ РЅРѕРјРµСЂ Р”РѕРіРѕРІРѕСЂСѓ РѕСЂРµРЅРґРё.");
+            alert("Будь ласка, введіть номер Договору оренди.");
             return;
         }
 
         if (agreementDate == null || agreementDate == undefined) {
-            alert("Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРІРµРґС–С‚СЊ РґР°С‚Сѓ Р”РѕРіРѕРІРѕСЂСѓ РѕСЂРµРЅРґРё.");
+            alert("Будь ласка, введіть дату Договору оренди.");
             return;
         }
 
         if (buildingId == null || buildingId == undefined) {
-            alert("Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРёР±РµСЂС–С‚СЊ Р°РґСЂРµСЃСѓ, Р·Р° СЏРєРѕСЋ СЂРѕР·С‚Р°С€РѕРІР°РЅРѕ РѕСЂРµРЅРґРѕРІР°РЅРµ РїСЂРёРјС–С‰РµРЅРЅСЏ.");
+            alert("Будь ласка, виберіть адресу, за якою розташовано орендоване приміщення.");
             return;
         }
 
         if (orgBalansId == null || orgBalansId == undefined) {
-            alert("Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРёР±РµСЂС–С‚СЊ РѕСЂРіР°РЅС–Р·Р°С†С–СЋ-Р±Р°Р»Р°РЅСЃРѕСѓС‚СЂРёРјСѓРІР°С‡Р° РїСЂРёРјС–С‰РµРЅРЅСЏ, С‰Рѕ РЅР°РґР°С”С‚СЊСЃСЏ РІ РѕСЂРµРЅРґСѓ.");
+            alert("Будь ласка, виберіть організацію-балансоутримувача приміщення, що надається в оренду.");
             return;
         }
 
         if (orgGiverId == null || orgGiverId == undefined) {
-            alert("Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРёР±РµСЂС–С‚СЊ РѕСЂРіР°РЅС–Р·Р°С†С–СЋ-РѕСЂРµРЅРґРѕРґР°РІС†СЏ.");
+            alert("Будь ласка, виберіть організацію-орендодавця.");
             return;
         }
 
         if (orgRenterId == null || orgRenterId == undefined) {
-            alert("Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРёР±РµСЂС–С‚СЊ РѕСЂРіР°РЅС–Р·Р°С†С–СЋ-РѕСЂРµРЅРґР°СЂСЏ.");
+            alert("Будь ласка, виберіть організацію-орендаря.");
             return;
         }
 
         if (orgGiverId != 27065 && giverComment == "") {
-            alert("Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРІРµРґС–С‚СЊ РєРѕРјРµРЅС‚Р°СЂ Р· РїСЂРёРІРѕРґСѓ С‚РѕРіРѕ, С‡РѕРјСѓ РѕСЂРµРЅРґРѕРґР°РІС†РµРј Р·Р° РґРѕРіРѕРІРѕСЂРѕРј РЅРµ С” Р”РµРїР°СЂС‚Р°РјРµРЅС‚ РљРѕРјСѓРЅР°Р»СЊРЅРѕС— Р’Р»Р°СЃРЅРѕСЃС‚С– Рј. РљРёС”РІР°.");
+            alert("Будь ласка, введіть коментар з приводу того, чому орендодавцем за договором не є Департамент Комунальної Власності м. Києва.");
             return;
         }
 
@@ -127,7 +125,7 @@
         }));
     }
 
-    // TODO!!! - РЈР‘Р РђРўР¬ Р—РќРђР§Р•РќРРЇ РР”Р•РќРўРР¤РРљРђРўРћР Рђ РР— РљРћР”Рђ
+    // TODO!!! - УБРАТЬ ЗНАЧЕНИЯ ИДЕНТИФИКАТОРА ИЗ КОДА
     function OnComboGiverOrgSelIndexChanged(s, e) {
 
         var orgGiverId = ComboGiverOrg.GetValue();
@@ -190,10 +188,10 @@
 , a.is_deleted AS 'is_deleted_in_eis'
 , org_giver.full_name AS 'giver_name'
 
---, CASE WHEN ((ar.submit_date IS NULL OR ar.modify_date > ar.submit_date)) THEN N'РќР†' ELSE N'РўРђРљ' END AS 'is_submitted'
-, CASE WHEN (ap.rent_period_id <> apd.period_id or (ar.submit_date IS NULL OR ar.modify_date > ar.submit_date)) THEN N'РќР†' ELSE N'РўРђРљ' END AS 'is_submitted'
+--, CASE WHEN ((ar.submit_date IS NULL OR ar.modify_date > ar.submit_date)) THEN N'НІ' ELSE N'ТАК' END AS 'is_submitted'
+, CASE WHEN (ap.rent_period_id <> apd.period_id or (ar.submit_date IS NULL OR ar.modify_date > ar.submit_date)) THEN N'НІ' ELSE N'ТАК' END AS 'is_submitted'
 
-,(CASE WHEN ar.agreement_state = 1 THEN 'Р”РѕРіРѕРІС–СЂ РґС–С”' ELSE CASE WHEN ar.agreement_state = 2 THEN 'Р”РѕРіРѕРІС–СЂ Р·Р°РєС–РЅС‡РёРІСЃСЏ, Р°Р»Рµ Р·Р°Р±РѕСЂРіРѕРІР°РЅРЅС–СЃС‚СЊ РЅРµ РїРѕРіР°С€РµРЅРѕ' ELSE CASE WHEN ar.agreement_state = 3 THEN 'Р”РѕРіРѕРІС–СЂ Р·Р°РєС–РЅС‡РёРІСЃСЏ, РѕСЂРµРЅРґР° РїСЂРѕРґРѕРІР¶РµРЅР° С–РЅС€РёРј РґРѕРіРѕРІРѕСЂРѕРј' ELSE '' END END END) AS 'agreement_state'
+,(CASE WHEN ar.agreement_state = 1 THEN 'Договір діє' ELSE CASE WHEN ar.agreement_state = 2 THEN 'Договір закінчився, але заборгованність не погашено' ELSE CASE WHEN ar.agreement_state = 3 THEN 'Договір закінчився, оренда продовжена іншим договором' ELSE '' END END END) AS 'agreement_state'
 , ar.modified_by
 
 ,ap.sqr_payed_by_percent	
@@ -226,7 +224,10 @@
 ,dpt.name AS 'payment_type'
       ,[org].[zkpo_code] AS 'org_renter_zkpo'
       ,[org_giver].[zkpo_code] AS 'org_giver_zkpo'
-    ,isnull(ad.pidstava+' ','')+ isnull(ad.doc_num+' ','')+ isnull('РІС–Рґ '+ad.doc_date+' ','')+ad.purpose_str as priznachennya,
+    ,isnull(ad.pidstava+' ','')+ isnull(ad.doc_num+' ','')+ isnull('від '+ad.doc_date+' ','')+ad.purpose_str as priznachennya
+,ar.insurance_sum
+,ar.insurance_start
+,ar.insurance_end,
 
 zvilneno_percent,zvilneno_date1,zvilneno_date2,
 zvilbykmp_percent,zvilbykmp_date1,zvilbykmp_date2,
@@ -234,6 +235,7 @@ povidoleno1_date,povidoleno1_num,
 povidoleno2_date,povidoleno2_num,
 povidoleno3_date,povidoleno3_num,
 povidoleno4_date,povidoleno4_num
+
 
 FROM reports1nf_arenda ar
         INNER JOIN reports1nf rep ON rep.id = ar.report_id
@@ -251,8 +253,9 @@ FROM reports1nf_arenda ar
 
         LEFT JOIN dict_arenda_payment_type dpt ON a.payment_type_id = dpt.id
 
-/*        left join (select report_id,arenda_id,purpose_str, pidstava, doc_num, doc_date=convert(varchar(10),doc_date, 104)  from dbo.reports1nf_arenda_decisions t1 where id = (select top 1 id from dbo.reports1nf_arenda_decisions t2 where t2.arenda_id = t1.arenda_id order by id)) ad on ad.arenda_id = ar.id and ad.report_id = rep.id */
+/*        left join (select report_id,arenda_id,purpose_str, pidstava, doc_num  from dbo.reports1nf_arenda_decisions t1 where id = (select top 1 id from dbo.reports1nf_arenda_decisions t2 where t2.arenda_id = t1.arenda_id)) ad on ad.arenda_id = ar.id and ad.report_id = rep.id */
         outer apply (select top 1 report_id,arenda_id,purpose_str, pidstava, doc_num, doc_date=convert(varchar(10),doc_date, 104)  from dbo.reports1nf_arenda_decisions t1 where t1.arenda_id = ar.id and t1.report_id = rep.id order by t1.id) ad 
+
 		outer apply (select top 1 id as period_id from dict_rent_period per where per.is_active = 1) apd
 
         WHERE ar.report_id = @rep_id AND isnull(a.is_deleted, 0) = 0 ORDER BY ar.modify_date DESC" >
@@ -264,47 +267,24 @@ FROM reports1nf_arenda ar
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDictStreets" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="select s.id, s.name as sname, r.name as rname,  s.name as name from dict_streets s left join dict_regions r on r.id = s.region_id where (not s.name is null) and (RTRIM(LTRIM(s.name)) <> '')">
-
-<%--select distinct s.id, s.name 
-from dict_streets s
-join reports1nf_buildings b on b.addr_street_id = s.id
-join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
- where 
-        isnull(b.is_deleted, 0) = 0 AND isnull(bal.is_deleted, 0) = 0 AND
-       /* (b.master_building_id IS NULL) AND*/
-       bal.organization_id = @org_id AND
-        (RTRIM(LTRIM(b.addr_nomer)) <> '') 
-        ORDER BY s.name">--%>
 <%--    SelectCommand="select s.id, s.name as sname, r.name as rname, ISNULL(r.name + ' - ', '') + s.name as name from dict_streets s left join dict_regions r on r.id = s.region_id where (not s.name is null) and (RTRIM(LTRIM(s.name)) <> '')">	--%>
 
 <%--    SelectCommand="select id, name from dict_streets where (not name is null) and (RTRIM(LTRIM(name)) <> '')">	--%>
-    <SelectParameters>
-        <asp:Parameter DbType="Int32" DefaultValue="0" Name="org_id" />
-    </SelectParameters>
+
 </mini:ProfiledSqlDataSource>
 
 
-<%-- СѓР±СЂР°РЅРѕ СѓСЃР»РѕРІРёРµ РїРѕСЃР»Рµ where (id < 100000) AND--%>
+<%-- убрано условие после where (id < 100000) AND--%>
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDictBuildings" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="/*select id, LTRIM(RTRIM(addr_nomer)) AS 'nomer' from buildings where 
+    SelectCommand="select id, LTRIM(RTRIM(addr_nomer)) AS 'nomer' from buildings where 
         (is_deleted IS NULL OR is_deleted = 0) AND
        /* (master_building_id IS NULL) AND*/
         addr_street_id = @street_id AND
-        (RTRIM(LTRIM(addr_nomer)) <> '') ORDER BY RTRIM(LTRIM(addr_nomer))*/
-    select b.id, LTRIM(RTRIM(b.addr_nomer)) AS 'nomer', LTRIM(RTRIM(b.addr_nomer)) + ' ('+ isnull(bal.reestr_no, '-')+ ')' AS 'nomer1' 
-        /* from buildings b join balans bal on b.id = bal.building_id */
-        from reports1nf_buildings b join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
-        where 
-        isnull(b.is_deleted, 0) = 0 AND isnull(bal.is_deleted, 0) = 0 AND 
-       /* (b.master_building_id IS NULL) AND*/
-        b.addr_street_id = @street_id AND
-        (RTRIM(LTRIM(b.addr_nomer)) <> '') 
-        ORDER BY RTRIM(LTRIM(b.addr_nomer))"
+        (RTRIM(LTRIM(addr_nomer)) <> '') ORDER BY RTRIM(LTRIM(addr_nomer))"
     OnSelecting="SqlDataSourceDictBuildings_Selecting" >
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="street_id" />
-        <asp:Parameter DbType="Int32" DefaultValue="0" Name="org_id" />
     </SelectParameters>
 </mini:ProfiledSqlDataSource>
 
@@ -316,15 +296,6 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
     <SelectParameters>
         <asp:Parameter DbType="String" DefaultValue="%" Name="zkpo" />
         <asp:Parameter DbType="String" DefaultValue="%" Name="fname" />
-    </SelectParameters>
-
-</mini:ProfiledSqlDataSource>
-
-<mini:ProfiledSqlDataSource ID="SqlDataSourceOrgBalans" runat="server" 
-    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT id, zkpo_code, full_name as org_name FROM organizations WHERE id = @org_id">
-    <SelectParameters>
-        <asp:Parameter DbType="Int32" DefaultValue="0" Name="org_id" />
     </SelectParameters>
 </mini:ProfiledSqlDataSource>
 
@@ -392,15 +363,15 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
 
 <dx:ASPxMenu ID="SectionMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
     <Items>
-        <dx:MenuItem NavigateUrl="../Reports1NF/Cabinet.aspx" Text="РЎС‚Р°РЅ"></dx:MenuItem>
-        <dx:MenuItem NavigateUrl="../Reports1NF/OrgInfo.aspx" Text="Р—Р°РіР°Р»СЊРЅР° Р†РЅС„РѕСЂРјР°С†С–СЏ"></dx:MenuItem>
-        <dx:MenuItem NavigateUrl="../Reports1NF/OrgBalansList.aspx" Text="РћР±'С”РєС‚Рё РЅР° Р‘Р°Р»Р°РЅСЃС–"></dx:MenuItem>
-        <dx:MenuItem NavigateUrl="../Reports1NF/OrgBalansDeletedList.aspx" Text="Р’С–РґС‡СѓР¶РµРЅС– РћР±'С”РєС‚Рё"></dx:MenuItem>
-        <dx:MenuItem NavigateUrl="../Reports1NF/OrgArendaList.aspx" Text="Р”РѕРіРѕРІРѕСЂРё РІРёРєРѕСЂРёСЃС‚Р°РЅРЅСЏ РїСЂРёРјС–С‰РµРЅСЊ "></dx:MenuItem>
-        <dx:MenuItem NavigateUrl="../Reports1NF/OrgRentedList.aspx" Text="Р”РѕРіРѕРІРѕСЂРё РћСЂРµРЅРґСѓРІР°РЅРЅСЏ"></dx:MenuItem>
-        <dx:MenuItem NavigateUrl="../Reports1NF/ConveyancingRequestsList.aspx" Text="Р—РјС–РЅР° Р±Р°Р»Р°РЅСЃРѕСѓС‚СЂРёРјСѓРІР°С‡С–РІ РѕР±'С”РєС‚С–РІ"></dx:MenuItem>
-        <dx:MenuItem NavigateUrl="../Account/Logout.aspx" Text="Р’РёР№С‚Рё"></dx:MenuItem>
-        <dx:MenuItem NavigateUrl="../Account/ChangePasswordNoMenu.aspx" Text="РџР°СЂРѕР»СЊ"></dx:MenuItem>
+        <dx:MenuItem NavigateUrl="../Reports1NF/Cabinet.aspx" Text="Стан"></dx:MenuItem>
+        <dx:MenuItem NavigateUrl="../Reports1NF/OrgInfo.aspx" Text="Загальна Інформація"></dx:MenuItem>
+        <dx:MenuItem NavigateUrl="../Reports1NF/OrgBalansList.aspx" Text="Об'єкти на Балансі"></dx:MenuItem>
+        <dx:MenuItem NavigateUrl="../Reports1NF/OrgBalansDeletedList.aspx" Text="Відчужені Об'єкти"></dx:MenuItem>
+        <dx:MenuItem NavigateUrl="../Reports1NF/OrgArendaList.aspx" Text="Договори використання приміщень "></dx:MenuItem>
+        <dx:MenuItem NavigateUrl="../Reports1NF/OrgRentedList.aspx" Text="Договори Орендування"></dx:MenuItem>
+        <dx:MenuItem NavigateUrl="../Reports1NF/ConveyancingRequestsList.aspx" Text="Зміна балансоутримувачів об'єктів"></dx:MenuItem>
+        <dx:MenuItem NavigateUrl="../Account/Logout.aspx" Text="Вийти"></dx:MenuItem>
+        <dx:MenuItem NavigateUrl="../Account/ChangePasswordNoMenu.aspx" Text="Пароль"></dx:MenuItem>
         <dx:MenuItem NavigateUrl="../Reports1NF/Help.aspx" Text="?"></dx:MenuItem>
     </Items>
 </dx:ASPxMenu>
@@ -408,32 +379,32 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
 <p class="SpacingPara"/>
 
 <p style="font-size: 1.4em; margin: 0 0 0 0; padding: 0 0 0 0; border-bottom: 1px solid #D0D0D0;">
-    <asp:Label runat="server" ID="ASPxLabel19" Text="РџРµСЂРµР»С–Рє РґРѕРіРѕРІРѕСЂС–РІ  РЅР°РґР°РЅРЅСЏ РѕР±'С”РєС‚С–РІ С–РЅС€РёРј РѕСЂРіР°РЅС–Р·Р°С†С–СЏРј" CssClass="pagetitle"/>
+    <asp:Label runat="server" ID="ASPxLabel19" Text="Перелік договорів  надання об'єктів іншим організаціям" CssClass="pagetitle"/>
 </p>
 
 <table border="0" cellspacing="0" cellpadding="2">
     <tr>
         <td>
-            <dx:ASPxButton ID="ButtonAddAgreement" runat="server" Text="Р”РѕРґР°С‚Рё РќРѕРІРёР№ Р”РѕРіРѕРІС–СЂ" AutoPostBack="false"></dx:ASPxButton>
+            <dx:ASPxButton ID="ButtonAddAgreement" runat="server" Text="Додати Новий Договір" AutoPostBack="false"></dx:ASPxButton>
 
-            <dx:ASPxPopupControl ID="PopupAddAgreement" runat="server" ClientInstanceName="PopupAddAgreement" AllowDragging ="true"
-                HeaderText="Р’РІРµРґРµРЅРЅСЏ РЅРѕРІРѕРіРѕ Р”РѕРіРѕРІРѕСЂСѓ РЅР°РґР°РЅРЅСЏ РІ РѕСЂРµРЅРґСѓ" PopupElementID="ButtonAddAgreement">
+            <dx:ASPxPopupControl ID="PopupAddAgreement" runat="server" ClientInstanceName="PopupAddAgreement"
+                HeaderText="Введення нового Договору надання в оренду" PopupElementID="ButtonAddAgreement">
                 <ContentCollection>
                     <dx:PopupControlContentControl ID="PopupControlContentControl5" runat="server">
 
-                        <dx:ASPxRoundPanel ID="ASPxRoundPanel3" runat="server" HeaderText="Р РµРєРІС–Р·РёС‚Рё Р”РѕРіРѕРІРѕСЂСѓ РћСЂРµРЅРґРё" Width="100%">
+                        <dx:ASPxRoundPanel ID="ASPxRoundPanel3" runat="server" HeaderText="Реквізити Договору Оренди" Width="100%">
                             <ContentPaddings PaddingTop="4px" PaddingLeft="2px" PaddingRight="2px" PaddingBottom="2px" />
                             <PanelCollection>
                                 <dx:PanelContent ID="PanelContent3" runat="server">
 
-                                    <table border="0" cellspacing="0" cellpadding="2" >
+                                    <table border="0" cellspacing="0" cellpadding="2" width="100%">
                                         <tr>
-                                            <td> <dx:ASPxLabel ID="ASPxLabel5" runat="server" Text="РќРѕРјРµСЂ Р”РѕРіРѕРІРѕСЂСѓ:" Width="120px" /> </td>
-                                            <td> <dx:ASPxTextBox ID="EditAgreementNum" ClientInstanceName="EditAgreementNum" runat="server" Width="160px" MaxLength ="18" /> </td>
+                                            <td> <dx:ASPxLabel ID="ASPxLabel5" runat="server" Text="Номер Договору:" /> </td>
+                                            <td> <dx:ASPxTextBox ID="EditAgreementNum" ClientInstanceName="EditAgreementNum" runat="server" Width="100%" MaxLength ="18"/> </td>
                                         </tr>
                                         <tr>
-                                            <td> <dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Р”Р°С‚Р° Р”РѕРіРѕРІРѕСЂСѓ:" Width="120px" /> </td>
-                                            <td> <dx:ASPxDateEdit ID="EditAgreementDate" ClientInstanceName="EditAgreementDate" runat="server" Width="100px" /> </td>
+                                            <td> <dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Дата Договору:" /> </td>
+                                            <td> <dx:ASPxDateEdit ID="EditAgreementDate" ClientInstanceName="EditAgreementDate" runat="server" Width="100%" /> </td>
                                         </tr>
                                     </table>
 
@@ -443,32 +414,28 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
 
                         <p class="SpacingPara"/>
 
-                        <dx:ASPxRoundPanel ID="ASPxRoundPanel4" runat="server" HeaderText="РђРґСЂРµСЃР° РџСЂРёРјС–С‰РµРЅРЅСЏ">
+                        <dx:ASPxRoundPanel ID="ASPxRoundPanel4" runat="server" HeaderText="Адреса Приміщення">
                             <ContentPaddings PaddingTop="4px" PaddingLeft="2px" PaddingRight="2px" PaddingBottom="2px" />
                             <PanelCollection>
                                 <dx:PanelContent ID="PanelContent5" runat="server">
 
                                     <table border="0" cellspacing="0" cellpadding="2">
                                         <tr>
-                                            <td> <dx:ASPxLabel ID="LabelAddrStreet" runat="server" Text="РќР°Р·РІР° РІСѓР»РёС†С–:" Width="90px" /> </td>
+                                            <td> <dx:ASPxLabel ID="LabelAddrStreet" runat="server" Text="Назва вулиці:" Width="90px" /> </td>
                                             <td>
                                                 <dx:ASPxComboBox ID="ComboStreet" runat="server" ClientInstanceName="ComboStreet"
                                                     DataSourceID="SqlDataSourceDictStreets" DropDownStyle="DropDownList" ValueType="System.Int32"
-                                                    TextField="name" ValueField="id" Width="250px" IncrementalFilteringMode="StartsWith"
+                                                    TextField="name" ValueField="id" Width="220px" IncrementalFilteringMode="StartsWith"
                                                     FilterMinLength="3" EnableCallbackMode="True" CallbackPageSize="50" EnableViewState="False"
                                                     EnableSynchronization="False">
-                                                    <ClientSideEvents SelectedIndexChanged="function(s, e) { 
-                                                        var val = ComboStreet.GetValue();
-                                                        val = (val == null ? '' : val.toString());
-                                                        ComboBuilding.PerformCallback(val);
-                                                        }" />
+                                                    <ClientSideEvents SelectedIndexChanged="function(s, e) { ComboBuilding.PerformCallback(ComboStreet.GetValue().toString()); }" />
                                                 </dx:ASPxComboBox>
                                             </td>
-                                            <td> <dx:ASPxLabel ID="LabelAddrPickerNumber" runat="server" Text="РќРѕРјРµСЂ Р±СѓРґРёРЅРєСѓ:" Width="95px" /> </td>
+                                            <td> <dx:ASPxLabel ID="LabelAddrPickerNumber" runat="server" Text="Номер будинку:" Width="95px" /> </td>
                                             <td>
                                                 <dx:ASPxComboBox runat="server" ID="ComboBuilding" ClientInstanceName="ComboBuilding"
-                                                    DataSourceID="SqlDataSourceDictBuildings" DropDownStyle="DropDownList" TextField="nomer1"
-                                                    ValueField="id" ValueType="System.Int32" Width="100px" IncrementalFilteringMode="Contains"
+                                                    DataSourceID="SqlDataSourceDictBuildings" DropDownStyle="DropDownList" TextField="nomer"
+                                                    ValueField="id" ValueType="System.Int32" Width="100px" IncrementalFilteringMode="StartsWith"
                                                     EnableSynchronization="False" OnCallback="ComboBuilding_Callback">
                                                 </dx:ASPxComboBox>
                                             </td>
@@ -481,30 +448,22 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
 
                         <p class="SpacingPara"/>
 
-                       <asp:FormView runat="server" BorderStyle="None" ID="BalansForm" DataSourceID="SqlDataSourceOrgBalans" EnableViewState="False">
-                        <ItemTemplate>
-
-                        <dx:ASPxRoundPanel ID="PanelOrgBalans" runat="server" HeaderText="Р‘Р°Р»Р°РЅСЃРѕСѓС‚СЂРёРјСѓРІР°С‡">
+                        <dx:ASPxRoundPanel ID="PanelOrgBalans" runat="server" HeaderText="Балансоутримувач">
                             <ContentPaddings PaddingTop="4px" PaddingLeft="2px" PaddingRight="2px" PaddingBottom="2px" />
                             <PanelCollection>
                                 <dx:PanelContent ID="PanelContent4" runat="server">
 
                                     <table border="0" cellspacing="0" cellpadding="2">
                                         <tr>
-                                            <td> <dx:ASPxLabel ID="ASPxLabel88" runat="server" Text="РљРѕРґ Р„Р”Р РџРћРЈ:" Width="90px" /> </td>
-                                            <td> <dx:ASPxTextBox ID="EditBalansOrgZKPO" ClientInstanceName="EditBalansOrgZKPO" runat="server" Text = '<%# Eval("zkpo_code") %>' Width="120px" ReadOnly ="true" /> </td>
-                                            <td> <dx:ASPxTextBox ID="ValBalansOrgId" ClientInstanceName="ValBalansOrgId" runat="server" Text = '<%# Eval("id") %>' Width="20px" ClientVisible ="false" /> </td>
-                                        <tr>
-                                            <td> <dx:ASPxLabel ID="ASPxLabel4" runat="server" Text="РќР°Р·РІР°:" Width="50px" /> </td>
-                                            <td> <dx:ASPxTextBox ID="EditBalansOrgName" ClientInstanceName="EditBalansOrgName" runat="server" Text = '<%# Eval("org_name") %>' Width="450px" ReadOnly ="true" /> </td>
-                                        </tr>
-<%--                                             <td> <dx:ASPxLabel ID="ASPxLabel4" runat="server" Text="РќР°Р·РІР°:" Width="50px" /> </td>
-                                            <td> <dx:ASPxTextBox ID="EditBalansOrgName" ClientInstanceName="EditBalansOrgName" runat="server" Text = '<%# Eval("org_name") %>' Width="200px" /> </td>
+                                            <td> <dx:ASPxLabel ID="ASPxLabel88" runat="server" Text="Код ЄДРПОУ:" Width="90px" /> </td>
+                                            <td> <dx:ASPxTextBox ID="EditBalansOrgZKPO" ClientInstanceName="EditBalansOrgZKPO" runat="server" Width="120px" /> </td>
+                                            <td> <dx:ASPxLabel ID="ASPxLabel4" runat="server" Text="Назва:" Width="50px" /> </td>
+                                            <td> <dx:ASPxTextBox ID="EditBalansOrgName" ClientInstanceName="EditBalansOrgName" runat="server" Width="180px" /> </td>
                                             <td>
-                                                <dx:ASPxButton ID="BtnFindBalansOrg" ClientInstanceName="BtnFindBalansOrg" runat="server" AutoPostBack="False" Text="Р—РЅР°Р№С‚Рё">
+                                                <dx:ASPxButton ID="BtnFindBalansOrg" ClientInstanceName="BtnFindBalansOrg" runat="server" AutoPostBack="False" Text="Знайти">
                                                     <ClientSideEvents Click="function (s, e) { ComboBalansOrg.PerformCallback(EditBalansOrgZKPO.GetText() + '|' + EditBalansOrgName.GetText()); }" />
                                                 </dx:ASPxButton>
-                                            </td>      
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td colspan="5">
@@ -513,30 +472,28 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
                                                     TextField="search_name" EnableSynchronization="True" OnCallback="ComboBalansOrg_Callback">
                                                 </dx:ASPxComboBox>
                                             </td>
-                                        </tr>      --%>
+                                        </tr>
                                     </table>
 
                                 </dx:PanelContent>
                             </PanelCollection>
                         </dx:ASPxRoundPanel>
-                        </ItemTemplate>
-                    </asp:FormView>
 
                         <p class="SpacingPara"/>
 
-                        <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" HeaderText="РћСЂРµРЅРґРѕРґР°РІРµС†СЊ">
+                        <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" HeaderText="Орендодавець">
                             <ContentPaddings PaddingTop="4px" PaddingLeft="2px" PaddingRight="2px" PaddingBottom="2px" />
                             <PanelCollection>
                                 <dx:PanelContent ID="PanelContent1" runat="server">
 
                                     <table border="0" cellspacing="0" cellpadding="2">
                                         <tr>
-                                            <td> <dx:ASPxLabel ID="ASPxLabel6" runat="server" Text="РљРѕРґ Р„Р”Р РџРћРЈ:" Width="90px" /> </td>
+                                            <td> <dx:ASPxLabel ID="ASPxLabel6" runat="server" Text="Код ЄДРПОУ:" Width="90px" /> </td>
                                             <td> <dx:ASPxTextBox ID="EditGiverOrgZKPO" ClientInstanceName="EditGiverOrgZKPO" runat="server" Width="120px" /> </td>
-                                            <td> <dx:ASPxLabel ID="ASPxLabel7" runat="server" Text="РќР°Р·РІР°:" Width="50px" /> </td>
+                                            <td> <dx:ASPxLabel ID="ASPxLabel7" runat="server" Text="Назва:" Width="50px" /> </td>
                                             <td> <dx:ASPxTextBox ID="EditGiverOrgName" ClientInstanceName="EditGiverOrgName" runat="server" Width="180px" /> </td>
                                             <td>
-                                                <dx:ASPxButton ID="BtnFindGiverOrg" ClientInstanceName="BtnFindGiverOrg" runat="server" AutoPostBack="False" Text="Р—РЅР°Р№С‚Рё">
+                                                <dx:ASPxButton ID="BtnFindGiverOrg" ClientInstanceName="BtnFindGiverOrg" runat="server" AutoPostBack="False" Text="Знайти">
                                                     <ClientSideEvents Click="function (s, e) { ComboGiverOrg.PerformCallback(EditGiverOrgZKPO.GetText() + '|' + EditGiverOrgName.GetText()); }" />
                                                 </dx:ASPxButton>
                                             </td>
@@ -552,7 +509,7 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
                                         </tr>
                                         <tr>
                                             <td colspan="5">
-                                                <dx:ASPxLabel ID="LabelGiverComment" ClientInstanceName="LabelGiverComment" runat="server" Text="Р‘СѓРґСЊ Р»Р°СЃРєР°, РїСЂРѕРєРѕРјРµРЅС‚СѓР№С‚Рµ РїСЂРёС‡РёРЅСѓ РІРёР±РѕСЂСѓ С–РЅС€РѕРіРѕ РѕСЂРµРЅРґРѕРґР°РІС†СЏ:" Width="100%" ClientVisible="false" />
+                                                <dx:ASPxLabel ID="LabelGiverComment" ClientInstanceName="LabelGiverComment" runat="server" Text="Будь ласка, прокоментуйте причину вибору іншого орендодавця:" Width="100%" ClientVisible="false" />
                                             </td>
                                         </tr>
                                         <tr>
@@ -562,11 +519,11 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
                                         </tr>
                                         <tr>
                                             <td colspan="5">
-Р’ РґРѕРіРѕРІРѕСЂР°С… РѕСЂРµРЅРґРё СѓРєР»Р°РґРµРЅРёС… РїС–СЃР»СЏ 01.10.2011 Р·РіС–РґРЅРѕ Р· Р С–С€РµРЅРЅСЏРј в„–34/6250 РѕСЂРµРЅРґРѕРґР°РІС†РµРј РІРёСЃС‚СѓРїР°С”: <br/>
+В договорах оренди укладених після 01.10.2011 згідно з Рішенням №34/6250 орендодавцем виступає: <br/>
 <br/>
-Р°) Р”РљР’ (РґР»СЏ РјР°Р№РЅР°, С‰Рѕ РїРµСЂРµР±СѓРІР°С” РІ СЃС„РµСЂС– СѓРїСЂР°РІР»С–РЅРЅСЏ РјС–СЃС‚Р°),<br/>
-Р±) Р Р”Рђ (РґР»СЏ РјР°Р№РЅР°, С‰Рѕ РїРµСЂРµР±СѓРІР°С” РІ СЃС„РµСЂС– СѓРїСЂР°РІР»С–РЅРЅСЏ СЂР°Р№РѕРЅСѓ),<br/>
-РІ) Р‘Р°Р»Р°РЅСЃРѕСѓС‚СЂРёРјСѓРІР°С‡, Р·Р° СѓРјРѕРІРё, С‰Рѕ РїР»РѕС‰Р° РЅР° Р±Р°Р»Р°РЅСЃС– РЅРµ РїРµСЂРµРІРёС‰СѓС” 200 РєРІ.Рј.
+а) ДКВ (для майна, що перебуває в сфері управління міста),<br/>
+б) РДА (для майна, що перебуває в сфері управління району),<br/>
+в) Балансоутримувач, за умови, що площа на балансі не перевищує 200 кв.м.
                                             </td>
                                         </tr>
                                     </table>
@@ -577,7 +534,7 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
 
                         <p class="SpacingPara"/>
 
-                        <dx:ASPxRoundPanel ID="ASPxRoundPanel2" runat="server" HeaderText="РћСЂРµРЅРґР°СЂ">
+                        <dx:ASPxRoundPanel ID="ASPxRoundPanel2" runat="server" HeaderText="Орендар">
                             <ContentPaddings PaddingTop="4px" PaddingLeft="2px" PaddingRight="2px" PaddingBottom="2px" />
                             <PanelCollection>
                                 <dx:PanelContent ID="PanelContent2" runat="server">
@@ -586,12 +543,12 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
                                                     <dx:panelcontent ID="Panelcontent8" runat="server">
                                     <table border="0" cellspacing="0" cellpadding="2">
                                         <tr>
-                                            <td> <dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="РљРѕРґ Р„Р”Р РџРћРЈ:" Width="90px" /> </td>
+                                            <td> <dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="Код ЄДРПОУ:" Width="90px" /> </td>
                                             <td> <dx:ASPxTextBox ID="EditRenterOrgZKPO" ClientInstanceName="EditRenterOrgZKPO" runat="server" Width="120px" /> </td>
-                                            <td> <dx:ASPxLabel ID="ASPxLabel3" runat="server" Text="РќР°Р·РІР°:" Width="50px" /> </td>
+                                            <td> <dx:ASPxLabel ID="ASPxLabel3" runat="server" Text="Назва:" Width="50px" /> </td>
                                             <td> <dx:ASPxTextBox ID="EditRenterOrgName" ClientInstanceName="EditRenterOrgName" runat="server" Width="180px" ReadOnly="true" /> </td>
                                             <td align="right">
-                                                <dx:ASPxButton ID="BtnFindRenterOrg" ClientInstanceName="BtnFindRenterOrg" runat="server" AutoPostBack="False" Text="Р—РЅР°Р№С‚Рё">
+                                                <dx:ASPxButton ID="BtnFindRenterOrg" ClientInstanceName="BtnFindRenterOrg" runat="server" AutoPostBack="False" Text="Знайти">
                                                     <ClientSideEvents Click="function (s, e) { ComboRenterOrg.PerformCallback(EditRenterOrgZKPO.GetText() + '|' + EditRenterOrgName.GetText()); }" />
                                                 </dx:ASPxButton>
                                             </td>
@@ -600,22 +557,22 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
                                             <td colspan="5" align="right">
                                                 
                                                         <dx:ASPxPopupControl ID="PopupAddRenterOrg" runat="server" ClientInstanceName="PopupAddRenterOrg"
-                                                        HeaderText="РЎС‚РІРѕСЂРµРЅРЅСЏ РћСЂРіР°РЅС–Р·Р°С†С–С—" PopupElementID="BtnCreateRenterOrg">
+                                                        HeaderText="Створення Організації" PopupElementID="BtnCreateRenterOrg">
                                                         <ContentCollection>
                                                             <dx:PopupControlContentControl ID="PopupControlContentControl3" runat="server">     
                                                             
-                                                                <dx:ASPxRoundPanel ID="ASPxRoundPanel5" runat="server" HeaderText="РћСЃРЅРѕРІРЅС– РІС–РґРѕРјРѕСЃС‚С–" Width="100%">
+                                                                <dx:ASPxRoundPanel ID="ASPxRoundPanel5" runat="server" HeaderText="Основні відомості" Width="100%">
                                                                 <PanelCollection>
                                                                     <dx:PanelContent ID="PanelContent9" runat="server">
                                                                         <table border="0" cellspacing="0" cellpadding="2">
                                                                             <tr>
-                                                                                <td> <dx:ASPxLabel ID="ASPxLabel9" runat="server" Text="РџРѕРІРЅР° РќР°Р·РІР°:" Width="85px" /> </td>
+                                                                                <td> <dx:ASPxLabel ID="ASPxLabel9" runat="server" Text="Повна Назва:" Width="85px" /> </td>
                                                                                 <td colspan="3"> <dx:ASPxTextBox ID="TextBoxFullNameOrg" ClientInstanceName="TextBoxFullNameOrg" runat="server" Width="100%" /> </td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td> <dx:ASPxLabel ID="ASPxLabel10" runat="server" Text="РљРѕРґ Р„Р”Р РџРћРЈ:" Width="85px" /> </td>
+                                                                                <td> <dx:ASPxLabel ID="ASPxLabel10" runat="server" Text="Код ЄДРПОУ:" Width="85px" /> </td>
                                                                                 <td> <dx:ASPxTextBox ID="TextBoxZkpoCodeOrg" ClientInstanceName="TextBoxZkpoCodeOrg" runat="server" Width="90px" /> </td>
-                                                                                <td> <dx:ASPxLabel ID="ASPxLabel11" runat="server" Text="РљРѕСЂРѕС‚РєР° РќР°Р·РІР°" Width="85px" /> </td>
+                                                                                <td> <dx:ASPxLabel ID="ASPxLabel11" runat="server" Text="Коротка Назва" Width="85px" /> </td>
                                                                                 <td> <dx:ASPxTextBox ID="TextBoxShortNameOrg" runat="server" Width="290px" ClientInstanceName="TextBoxShortNameOrg" /> </td>
                                                                             </tr>
                                                                         </table>                                                                    
@@ -623,28 +580,28 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
                                                                 </PanelCollection>                                                        
                                                                 </dx:ASPxRoundPanel>
                                                                 <p class="SpacingPara"/>
-                                                                <dx:ASPxRoundPanel ID="ASPxRoundPanel6" runat="server" HeaderText="Р®СЂРёРґРёС‡РЅР° Р°РґСЂРµСЃР°" Width="100%">
+                                                                <dx:ASPxRoundPanel ID="ASPxRoundPanel6" runat="server" HeaderText="Юридична адреса" Width="100%">
                                                                 <PanelCollection>
                                                                     <dx:PanelContent ID="PanelContent10" runat="server">
                                                                         <table border="0" cellspacing="0" cellpadding="2">
                                                                             <tr>
-                                                                                <td> <dx:ASPxLabel ID="ASPxLabel20" runat="server" Text="Р Р°Р№РѕРЅ" Width="95px" /> </td>
+                                                                                <td> <dx:ASPxLabel ID="ASPxLabel20" runat="server" Text="Район" Width="95px" /> </td>
                                                                                 <td> <dx:ASPxComboBox ID="ComboBoxDistrictOrg" runat="server" ClientInstanceName="ComboBoxDistrictOrg" 
                                                                                     ValueType="System.Int32" TextField="name" ValueField="id" Width="120px" 
                                                                                         IncrementalFilteringMode="StartsWith" 
                                                                                         DataSourceID="SqlDataSourceDictDistricts2" /> </td>
-                                                                                <td> <dx:ASPxLabel ID="ASPxLabel21" runat="server" Text="РќР°Р·РІР° Р’СѓР»РёС†С–" Width="84px" /> </td>
+                                                                                <td> <dx:ASPxLabel ID="ASPxLabel21" runat="server" Text="Назва Вулиці" Width="84px" /> </td>
                                                                                 <td colspan="3"> 
                                                                                     <dx:ASPxTextBox ID="TextBoxStreetNameOrg" runat="server" ClientInstanceName="TextBoxStreetNameOrg"
                                                                                         Width="100%" Title="" Value='<%# Eval("addr_street_name") %>' />
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td> <dx:ASPxLabel ID="ASPxLabel22" runat="server" Text="РќРѕРјРµСЂ Р‘СѓРґРёРЅРєСѓ" /> </td>
+                                                                                <td> <dx:ASPxLabel ID="ASPxLabel22" runat="server" Text="Номер Будинку" /> </td>
                                                                                 <td> <dx:ASPxTextBox ID="TextBoxAddrNomerOrg" runat="server" Text="" Width="120px" ClientInstanceName="TextBoxAddrNomerOrg" /> </td>
-                                                                                <td> <dx:ASPxLabel ID="ASPxLabelCorp" runat="server" Text="РљРѕСЂРїСѓСЃ" /> </td>
+                                                                                <td> <dx:ASPxLabel ID="ASPxLabelCorp" runat="server" Text="Корпус" /> </td>
                                                                                 <td> <dx:ASPxTextBox ID="TextBoxAddrKorpusFrom" runat="server" Text="" Width="80px" ClientInstanceName="TextBoxAddrKorpusFrom" /> </td>
-                                                                                <td> <dx:ASPxLabel ID="ASPxLabelZip" runat="server" Text="РџРѕС€С‚. Р†РЅРґРµРєСЃ" Width="85px" /> </td>
+                                                                                <td> <dx:ASPxLabel ID="ASPxLabelZip" runat="server" Text="Пошт. Індекс" Width="85px" /> </td>
                                                                                 <td> <dx:ASPxTextBox ID="TextBoxAddrZipCodeOrg" runat="server" Width="80px" ClientInstanceName="TextBoxAddrZipCodeOrg" /> </td>
                                                                             </tr>
                                                                         </table>                                                                    
@@ -652,33 +609,33 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
                                                                 </PanelCollection>                                                        
                                                                 </dx:ASPxRoundPanel>
                                                                 <p class="SpacingPara"/>
-                                                                <dx:ASPxRoundPanel ID="ASPxRoundPanel7" runat="server" HeaderText="Р”РѕРґР°С‚РєРѕРІС– РІС–РґРѕРјРѕСЃС‚С–" Width="100%">
+                                                                <dx:ASPxRoundPanel ID="ASPxRoundPanel7" runat="server" HeaderText="Додаткові відомості" Width="100%">
                                                                 <PanelCollection>
                                                                     <dx:PanelContent ID="PanelContent11" runat="server">
                                                                         <table border="0" cellspacing="0" cellpadding="2">
                                                                             <tr>
-                                                                                <td> <dx:ASPxLabel ID="ASPxLabel12" runat="server" Text="РЎС‚Р°С‚СѓСЃ (С„С–Р·./СЋСЂ. РѕСЃРѕР±Р°)" Width="160px"/> </td>
+                                                                                <td> <dx:ASPxLabel ID="ASPxLabel12" runat="server" Text="Статус (фіз./юр. особа)" Width="160px"/> </td>
                                                                                 <td> <dx:ASPxComboBox ID="ComboBoxStatusOrg" runat="server" ClientInstanceName="ComboBoxStatusOrg" 
                                                                                     ValueType="System.Int32" TextField="name" ValueField="id" Width="400px" 
                                                                                         IncrementalFilteringMode="StartsWith" 
                                                                                         DataSourceID="SqlDataSourceDictOrgStatus" /> </td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td> <dx:ASPxLabel ID="ASPxLabel23" runat="server" Text="Р¤РѕСЂРјР° Р’Р»Р°СЃРЅРѕСЃС‚С–" Width="160px" /> </td>
+                                                                                <td> <dx:ASPxLabel ID="ASPxLabel23" runat="server" Text="Форма Власності" Width="160px" /> </td>
                                                                                 <td> <dx:ASPxComboBox ID="ComboBoxFormVlasnOrg" runat="server" ClientInstanceName="ComboBoxFormVlasnOrg" 
                                                                                     ValueType="System.Int32" TextField="name" ValueField="id" Width="400px" 
                                                                                         IncrementalFilteringMode="StartsWith" 
                                                                                         DataSourceID="SqlDataSourceDictOrgOwnership" /></td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td> <dx:ASPxLabel ID="ASPxLabel14" runat="server" Text="Р“Р°Р»СѓР·СЊ" Width="160px" /> </td>
+                                                                                <td> <dx:ASPxLabel ID="ASPxLabel14" runat="server" Text="Галузь" Width="160px" /> </td>
                                                                                 <td> <dx:ASPxComboBox ID="ComboBoxIndustryFrom" runat="server" ClientInstanceName="ComboBoxIndustryFrom" 
                                                                                     ValueType="System.Int32" TextField="name" ValueField="id" Width="400px" 
                                                                                         IncrementalFilteringMode="StartsWith" 
                                                                                         DataSourceID="SqlDataSourceDictOrgIndustry" /> </td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td> <dx:ASPxLabel ID="ASPxLabel8" runat="server" Text="Р’РёРґ Р”С–СЏР»СЊРЅРѕСЃС‚С–" Width="160px" /> </td>
+                                                                                <td> <dx:ASPxLabel ID="ASPxLabel8" runat="server" Text="Вид Діяльності" Width="160px" /> </td>
                                                                                 <td> <dx:ASPxComboBox ID="ComboBoxOccupationFrom" runat="server" ClientInstanceName="ComboBoxOccupationFrom" 
                                                                                     ValueType="System.Int32" TextField="name" ValueField="id" Width="400px" 
                                                                                         IncrementalFilteringMode="StartsWith" 
@@ -689,31 +646,31 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
                                                                 </PanelCollection>                                                        
                                                                 </dx:ASPxRoundPanel>
                                                                 <p class="SpacingPara"/>
-                                                                <dx:ASPxRoundPanel ID="ASPxRoundPanel8" runat="server" HeaderText="РљРѕРЅС‚Р°РєС‚РЅР° С–РЅС„РѕСЂРјР°С†С–СЏ" Width="100%">
+                                                                <dx:ASPxRoundPanel ID="ASPxRoundPanel8" runat="server" HeaderText="Контактна інформація" Width="100%">
                                                                 <PanelCollection>
                                                                     <dx:PanelContent ID="PanelContent12" runat="server">
                                                                         <table border="0" cellspacing="0" cellpadding="2">
                                                                             <tr>
-                                                                                <td> <dx:ASPxLabel ID="ASPxLabel16" runat="server" Text="РџР†Р‘ Р”РёСЂРµРєС‚РѕСЂР°" Width="95px" /> </td>
+                                                                                <td> <dx:ASPxLabel ID="ASPxLabel16" runat="server" Text="ПІБ Директора" Width="95px" /> </td>
                                                                                 <td> <dx:ASPxTextBox ID="TextBoxDirectorFioOrg" runat="server" ClientInstanceName="TextBoxDirectorFioOrg" Width="250px" /> </td>
                                                                                 <td> &nbsp; </td>
-                                                                                <td> <dx:ASPxLabel ID="ASPxLabel17" runat="server" Text="РўРµР». Р”РёСЂРµРєС‚РѕСЂР°" Width="100px" /> </td>
+                                                                                <td> <dx:ASPxLabel ID="ASPxLabel17" runat="server" Text="Тел. Директора" Width="100px" /> </td>
                                                                                 <td> <dx:ASPxTextBox ID="TextBoxDirectorPhoneOrg" runat="server" ClientInstanceName="TextBoxDirectorPhoneOrg" Width="100px" /> </td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td> <dx:ASPxLabel ID="ASPxLabel13" runat="server" Text="Email Р”РёСЂРµРєС‚РѕСЂР°" Width="95px" /> </td>
+                                                                                <td> <dx:ASPxLabel ID="ASPxLabel13" runat="server" Text="Email Директора" Width="95px" /> </td>
                                                                                 <td> <dx:ASPxTextBox ID="TextBoxDirectorEmailOrg" runat="server" ClientInstanceName="TextBoxDirectorEmailOrg" Width="250px" /> </td>
                                                                                 <td colspan="3"> &nbsp; </td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td> <dx:ASPxLabel ID="ASPxLabel24" runat="server" Text="РџР†Р‘ Р‘СѓС…РіР°Р»С‚РµСЂР°" Width="95px" /> </td>
+                                                                                <td> <dx:ASPxLabel ID="ASPxLabel24" runat="server" Text="ПІБ Бухгалтера" Width="95px" /> </td>
                                                                                 <td> <dx:ASPxTextBox ID="TextBoxBuhgalterFioFrom" runat="server" ClientInstanceName="TextBoxBuhgalterFioFrom" Width="250px" /> </td>
                                                                                 <td> &nbsp; </td>
-                                                                                <td> <dx:ASPxLabel ID="ASPxLabel25" runat="server" Text="РўРµР». Р‘СѓС…РіР°Р»С‚РµСЂР°" Width="100px" /> </td>
+                                                                                <td> <dx:ASPxLabel ID="ASPxLabel25" runat="server" Text="Тел. Бухгалтера" Width="100px" /> </td>
                                                                                 <td> <dx:ASPxTextBox ID="TextBoxBuhgalterPhoneFrom" runat="server" ClientInstanceName="TextBoxBuhgalterPhoneFrom" Width="100px" /> </td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td> <dx:ASPxLabel ID="ASPxLabel18" runat="server" Text="Р¤Р°РєСЃ" Width="95px" /> </td>
+                                                                                <td> <dx:ASPxLabel ID="ASPxLabel18" runat="server" Text="Факс" Width="95px" /> </td>
                                                                                 <td> <dx:ASPxTextBox ID="TextBoxFax" runat="server" ClientInstanceName="TextBoxFax" Width="250px" /> </td>
                                                                                 <td colspan="3"> &nbsp; </td>
                                                                             </tr>
@@ -724,7 +681,7 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
                                                                 <p class="SpacingPara"/>
                                                                 <dx:ASPxLabel ID="LabelOrgCreationError" ClientInstanceName="LabelOrgCreationError" runat="server" Text="" ClientVisible="false" ForeColor="Red" />
                                                                 <p class="SpacingPara"/>
-                                                                <dx:ASPxButton ID="ButtonDoAddOrgFrom" ClientInstanceName="ButtonDoAddOrgFrom" runat="server" AutoPostBack="False" Text="РЎС‚РІРѕСЂРёС‚Рё">
+                                                                <dx:ASPxButton ID="ButtonDoAddOrgFrom" ClientInstanceName="ButtonDoAddOrgFrom" runat="server" AutoPostBack="False" Text="Створити">
                                                                     <ClientSideEvents Click="function (s, e) { CPOrgEditor.PerformCallback('create_org:'); }" />
                                                                 </dx:ASPxButton>
 
@@ -743,7 +700,7 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
                                                 </dx:ASPxComboBox>
                                             </td>
                                             <td>
-                                                <dx:ASPxButton ID="BtnCreateRenterOrg" ClientInstanceName="BtnCreateRenterOrg" runat="server" AutoPostBack="False" Text="РЎС‚РІРѕСЂРёС‚Рё">
+                                                <dx:ASPxButton ID="BtnCreateRenterOrg" ClientInstanceName="BtnCreateRenterOrg" runat="server" AutoPostBack="False" Text="Створити">
                                                 </dx:ASPxButton>
                                             </td>
                                         </tr>
@@ -758,7 +715,7 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
 
                         <p class="SpacingPara"/>
 
-                        <dx:ASPxButton ID="ButtonDoAddAgreement" ClientInstanceName="ButtonDoAddAgreement" runat="server" AutoPostBack="False" Text="РЎС‚РІРѕСЂРёС‚Рё">
+                        <dx:ASPxButton ID="ButtonDoAddAgreement" ClientInstanceName="ButtonDoAddAgreement" runat="server" AutoPostBack="False" Text="Створити">
                             <ClientSideEvents Click="OnAddNewAgreement" />                            
                         </dx:ASPxButton>
 
@@ -769,15 +726,15 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
             </dx:ASPxPopupControl>
         </td>
         <td>
-            <dx:ASPxButton ID="ButtonSendAll_Doble" runat="server" Text="РќР°РґС–СЃР»Р°С‚Рё РІСЃС– Р·РјС–РЅРё РІ Р”РљР’" AutoPostBack="false" ClientSideEvents-Click="ButtonSendAllClick" Visible="false"></dx:ASPxButton>
-            <dx:ASPxButton ID="ButtonSendAll" runat="server" Text="РќР°РґС–СЃР»Р°С‚Рё РІСЃС– Р·РјС–РЅРё РІ Р”РљР’" AutoPostBack="false"></dx:ASPxButton>
+            <dx:ASPxButton ID="ButtonSendAll_Doble" runat="server" Text="Надіслати всі зміни в ДКВ" AutoPostBack="false" ClientSideEvents-Click="ButtonSendAllClick" Visible="false"></dx:ASPxButton>
+            <dx:ASPxButton ID="ButtonSendAll" runat="server" Text="Надіслати всі зміни в ДКВ" AutoPostBack="false"></dx:ASPxButton>
 
             <dx:ASPxTimer ID="ProgressTimer" runat="server" ClientInstanceName="ProgressTimer" Enabled="False" Interval="3000">
                 <ClientSideEvents Tick="function(s, e) { CPProgress.PerformCallback('timer:'); }" />
             </dx:ASPxTimer>
 
             <dx:ASPxPopupControl ID="PopupSendAll" runat="server" ClientInstanceName="PopupSendAll"
-                HeaderText="РќР°РґСЃРёР»Р°РЅРЅСЏ РґРѕ Р”РљР’ СѓСЃС–С… Р·РјС–РЅРµРЅРёС… РґРѕРіРѕРІРѕСЂС–РІ РЅР°РґР°РЅРЅСЏ РІ РѕСЂРµРЅРґСѓ" PopupElementID="ButtonSendAll">
+                HeaderText="Надсилання до ДКВ усіх змінених договорів надання в оренду" PopupElementID="ButtonSendAll">
                 <ContentCollection>
                     <dx:PopupControlContentControl ID="PopupControlContentControl1" runat="server">
 
@@ -802,7 +759,7 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
                                         {
                                         
                                             ProgressTimer.SetEnabled(false);
-                                            alert('РћР±СЂРѕР±РєСѓ Р·Р°РІРµСЂС€РµРЅРѕ.');
+                                            alert('Обробку завершено.');
                                             PopupSendAll.Hide();
                                             PrimaryGridView.PerformCallback('init:');
                                             
@@ -818,7 +775,7 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
         </td>
         <td>
             <dx:ASPxPopupControl ID="ASPxPopupControl2" runat="server" 
-                HeaderText="Р—Р±РµСЂРµР¶РµРЅРЅСЏ Сѓ Р¤Р°Р№Р»С–" 
+                HeaderText="Збереження у Файлі" 
                 ClientInstanceName="ASPxPopupControl_ArendaObjects_SaveAs" 
                 PopupElementID="ASPxButton_ArendaObjects_SaveAs">
                 <ContentCollection>
@@ -836,7 +793,7 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
                 </ContentCollection>
             </dx:ASPxPopupControl>
             <dx:ASPxButton ID="ASPxButton_ArendaObjects_SaveAs" runat="server" AutoPostBack="False" 
-                Text="Р—Р±РµСЂРµРіС‚Рё Сѓ Р¤Р°Р№Р»С–" Width="148px">
+                Text="Зберегти у Файлі" Width="148px">
             </dx:ASPxButton>
         </td>
         <td>
@@ -847,8 +804,8 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
                         <asp:FormView runat="server" BorderStyle="None" ID="ArendaStatusForm" DataSourceID="SqlDataSourceArendaStatus" EnableViewState="False">
                             <ItemTemplate>
 
-                                <dx:ASPxLabel ID="ASPxLabel5" runat="server" Text="РќРµРѕР±С…С–РґРЅРѕ РЅР°РґС–СЃР»Р°С‚Рё РІРЅРµСЃРµРЅС– Р·РјС–РЅРё РґРѕ Р”РљР’" ClientVisible='<%# 0.Equals(Eval("report_arenda_status")) %>' ForeColor="Red" />
-                                <dx:ASPxLabel ID="ASPxLabel8" runat="server" Text="РЈСЃС– Р·РјС–РЅРё РЅР°РґС–СЃР»Р°РЅРѕ РґРѕ Р”РљР’" ClientVisible='<%# 1.Equals(Eval("report_arenda_status")) %>' />
+                                <dx:ASPxLabel ID="ASPxLabel5" runat="server" Text="Необхідно надіслати внесені зміни до ДКВ" ClientVisible='<%# 0.Equals(Eval("report_arenda_status")) %>' ForeColor="Red" />
+                                <dx:ASPxLabel ID="ASPxLabel8" runat="server" Text="Усі зміни надіслано до ДКВ" ClientVisible='<%# 1.Equals(Eval("report_arenda_status")) %>' />
 
                             </ItemTemplate>
                         </asp:FormView>
@@ -860,7 +817,7 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
         <td>
         </td>    
         <td width = "500" align ="right">
-            <dx:ASPxButton ID="ASPxButton3" runat="server" AutoPostBack="False" Text="Р”РѕРґР°С‚РєРѕРІС– РљРѕР»РѕРЅРєРё" Width="160px">
+            <dx:ASPxButton ID="ASPxButton3" runat="server" AutoPostBack="False" Text="Додаткові Колонки" Width="160px">
                 <ClientSideEvents Click="function (s,e) { PopupFieldChooser.Show(); }" />
             </dx:ASPxButton>
         </td>    
@@ -889,78 +846,82 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
     <Columns>
         <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" Name="CmdColumn">
             <CustomButtons>                
-                <dx:GridViewCommandColumnCustomButton ID="btnEditAgreement"><Image  Url="../Styles/EditIcon.png" ToolTip="Р РµРґР°РіСѓРІР°С‚Рё Р”РѕРіРѕРІС–СЂ РћСЂРµРЅРґРё" /></dx:GridViewCommandColumnCustomButton>
-                <dx:GridViewCommandColumnCustomButton ID="btnDeleteAgreement"><Image  Url="../Styles/DeleteIcon.png" ToolTip="Р’РёРґР°Р»РёС‚Рё Р”РѕРіРѕРІС–СЂ РћСЂРµРЅРґРё" /></dx:GridViewCommandColumnCustomButton>
+                <dx:GridViewCommandColumnCustomButton ID="btnEditAgreement"><Image  Url="../Styles/EditIcon.png" ToolTip="Редагувати Договір Оренди" /></dx:GridViewCommandColumnCustomButton>
+                <dx:GridViewCommandColumnCustomButton ID="btnDeleteAgreement"><Image  Url="../Styles/DeleteIcon.png" ToolTip="Видалити Договір Оренди" /></dx:GridViewCommandColumnCustomButton>
             </CustomButtons>
             <FooterCellStyle HorizontalAlign="Right"></FooterCellStyle>
         </dx:GridViewCommandColumn>
-        <dx:GridViewDataTextColumn FieldName="agreement_num" VisibleIndex="1" Caption="РќРѕРјРµСЂ Р”РѕРіРѕРІРѕСЂСѓ"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataDateColumn FieldName="agreement_date" VisibleIndex="2" Caption="Р”Р°С‚Р° Р”РѕРіРѕРІРѕСЂСѓ"></dx:GridViewDataDateColumn>
-        <dx:GridViewDataDateColumn FieldName="rent_start_date" VisibleIndex="3" Caption="РџРѕС‡Р°С‚РѕРє Р’РёРєРѕСЂРёСЃС‚Р°РЅРЅСЏ"></dx:GridViewDataDateColumn>
-        <dx:GridViewDataDateColumn FieldName="rent_finish_date" VisibleIndex="4" Caption="Р—Р°РєС–РЅС‡РµРЅРЅСЏ Р’РёРєРѕСЂРёСЃС‚Р°РЅРЅСЏ"></dx:GridViewDataDateColumn>
-        <dx:GridViewDataTextColumn FieldName="renter_name" VisibleIndex="5" Caption="РћСЂРµРЅРґР°СЂ" Width="220px"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="giver_name" VisibleIndex="6" Caption="РћСЂРµРЅРґРѕРґР°РІРµС†СЊ" ShowInCustomizationForm="True" Visible="False" Width="220px"></dx:GridViewDataTextColumn>        
-        <dx:GridViewDataTextColumn FieldName="district" VisibleIndex="7" Caption="Р Р°Р№РѕРЅ" Width="120px"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="addr_street_name" VisibleIndex="8" Caption="РќР°Р·РІР° РІСѓР»РёС†С–" Width="150px"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="addr_nomer" VisibleIndex="9" Caption="РќРѕРјРµСЂ Р±СѓРґРёРЅРєСѓ"><Settings SortMode="Custom" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="rent_square" VisibleIndex="10" Caption="РџР»РѕС‰Р°"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataDateColumn FieldName="modify_date" VisibleIndex="11" Caption="РљРѕР»Рё Р—РјС–РЅРµРЅРѕ"></dx:GridViewDataDateColumn>
-        <dx:GridViewDataDateColumn FieldName="submit_date" VisibleIndex="12" Caption="РљРѕР»Рё РќР°РґС–СЃР»Р°РЅРѕ РІ Р”РљР’"></dx:GridViewDataDateColumn>
-        <dx:GridViewDataTextColumn FieldName="is_submitted" VisibleIndex="13" Caption="РќР°РґС–СЃР»Р°РЅРѕ РІ Р”РљР’"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="agreement_state" VisibleIndex="14" Caption="РЎС‚Р°РЅ РґРѕРіРѕРІРѕСЂСѓ"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="modified_by" VisibleIndex="15" Caption="РљРѕСЂРёСЃС‚СѓРІР°С‡"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="agreement_num" VisibleIndex="1" Caption="Номер Договору"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataDateColumn FieldName="agreement_date" VisibleIndex="2" Caption="Дата Договору"></dx:GridViewDataDateColumn>
+        <dx:GridViewDataDateColumn FieldName="rent_start_date" VisibleIndex="3" Caption="Початок Використання"></dx:GridViewDataDateColumn>
+        <dx:GridViewDataDateColumn FieldName="rent_finish_date" VisibleIndex="4" Caption="Закінчення Використання"></dx:GridViewDataDateColumn>
+        <dx:GridViewDataTextColumn FieldName="renter_name" VisibleIndex="5" Caption="Орендар" Width="220px"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="giver_name" VisibleIndex="6" Caption="Орендодавець" ShowInCustomizationForm="True" Visible="False" Width="220px"></dx:GridViewDataTextColumn>        
+        <dx:GridViewDataTextColumn FieldName="district" VisibleIndex="7" Caption="Район" Width="120px"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="addr_street_name" VisibleIndex="8" Caption="Назва вулиці" Width="150px"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="addr_nomer" VisibleIndex="9" Caption="Номер будинку"><Settings SortMode="Custom" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="rent_square" VisibleIndex="10" Caption="Площа"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataDateColumn FieldName="modify_date" VisibleIndex="11" Caption="Коли Змінено"></dx:GridViewDataDateColumn>
+        <dx:GridViewDataDateColumn FieldName="submit_date" VisibleIndex="12" Caption="Коли Надіслано в ДКВ"></dx:GridViewDataDateColumn>
+        <dx:GridViewDataTextColumn FieldName="is_submitted" VisibleIndex="13" Caption="Надіслано в ДКВ"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="agreement_state" VisibleIndex="14" Caption="Стан договору"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="modified_by" VisibleIndex="15" Caption="Користувач"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn FieldName="sqr_payed_by_percent" VisibleIndex="16" Caption="РЅР° СЏРєСѓ РЅР°СЂР°С…РѕРІСѓС”С‚СЊСЃСЏ РїР»Р°С‚Р° Р·Р° РІРёРєРѕСЂРёСЃС‚Р°РЅРЅСЏ Сѓ РІС–РґСЃРѕС‚РєР°С… РІС–Рґ РІР°СЂС‚РѕСЃС‚С–" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="sqr_payed_by_1uah" VisibleIndex="17" Caption="РЅР° СЏРєСѓ РЅР°СЂР°С…РѕРІСѓС”С‚СЊСЃСЏ РїР»Р°С‚Р° Р·Р° РІРёРєРѕСЂРёСЃС‚Р°РЅРЅСЏ РІ СЂРѕР·РјС–СЂС– 1 РіСЂРЅ" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="sqr_payed_hourly" VisibleIndex="18" Caption="РЅР°РґР°РЅР° РІ РїРѕРіРѕРґРёРЅРЅСѓ РѕСЂРµРЅРґСѓ, С‡Рё РІС–РґРїРѕРІС–РґРЅРѕ РґРѕ СѓРіРѕРґ РїСЂРѕ СЃРїС–РІРїСЂР°С†СЋ" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="payment_narah" VisibleIndex="19" Caption="РќР°СЂР°С…РѕРІР°РЅРѕ РѕСЂРµРЅРґРЅРѕС— РїР»Р°С‚Рё" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="last_year_saldo" VisibleIndex="20" Caption="РЎР°Р»СЊРґРѕ РЅР° РїРѕС‡Р°С‚РѕРє СЂРѕРєСѓ" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="payment_received" VisibleIndex="21" Caption="РќР°РґС…РѕРґР¶РµРЅРЅСЏ РѕСЂРµРЅРґРЅРѕС— РїР»Р°С‚Рё Р·Р° Р·РІС–С‚РЅРёР№ РїРµСЂС–РѕРґ, РІСЃСЊРѕРіРѕ" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="payment_nar_zvit" VisibleIndex="22" Caption="РќР°РґС…РѕРґР¶РµРЅРЅСЏ РѕСЂРµРЅРґРЅРѕС— РїР»Р°С‚Рё, Сѓ С‚РѕРјСѓ С‡РёСЃР»С– Р·Р° Р·РІС–С‚РЅРёР№ РїРµСЂС–РѕРґ Р±РµР· Р±РѕСЂРіС–РІ С‚Р° РїРµСЂРµРїР»Р°С‚" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="debt_total" VisibleIndex="23" Caption="Р—Р°Р±РѕСЂРіРѕРІР°РЅС–СЃС‚СЊ РїРѕ РѕСЂРµРЅРґРЅС–Р№ РїР»Р°С‚С–" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="debt_zvit" VisibleIndex="24" Caption="Сѓ С‚.С‡. Р· РЅР°СЂР°С…РѕРІР°РЅРѕС— Сѓ Р·РІС–С‚РЅРѕРјСѓ РїРµСЂС–РѕРґС–" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="debt_3_month" VisibleIndex="25" Caption="Р—Р°Р±РѕСЂРіРѕРІР°РЅС–СЃС‚СЊ Р· РѕСЂРµРЅРґРЅРѕС— РїР»Р°С‚Рё РїРѕС‚РѕС‡РЅР° РґРѕ 3-С… РјС–СЃСЏС†С–РІ" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="debt_12_month" VisibleIndex="26" Caption="Р—Р°Р±РѕСЂРіРѕРІР°РЅС–СЃС‚СЊ Р· РѕСЂРµРЅРґРЅРѕС— РїР»Р°С‚Рё РїРѕС‚РѕС‡РЅР° РґРѕ 12-С… РјС–СЃСЏС†С–РІ"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="debt_3_years" VisibleIndex="27" Caption="Р—Р°Р±РѕСЂРіРѕРІР°РЅС–СЃС‚СЊ Р· РѕСЂРµРЅРґРЅРѕС— РїР»Р°С‚Рё РїРѕС‚РѕС‡РЅР° РґРѕ 3-С… СЂРѕРєС–РІ" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="debt_v_mezhah_vitrat" VisibleIndex="28" Caption="Р—Р°Р±РѕСЂРіРѕРІР°РЅС–СЃС‚СЊ Р· РѕСЂРµРЅРґРЅРѕС— РїР»Р°С‚Рё (С–Р· Р·Р°РіР°Р»СЊРЅРѕС— Р·Р°Р±РѕСЂРіРѕРІР°РЅРѕСЃС‚С–), СЂРѕР·РјС–СЂ СЏРєРѕС— РІСЃС‚Р°РЅРѕРІР»РµРЅРѕ РІ РјРµР¶Р°С… РІРёС‚СЂР°С‚ РЅР° СѓС‚СЂРёРјР°РЅРЅСЏ" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="debt_over_3_years" VisibleIndex="29" Caption="Р—Р°Р±РѕСЂРіРѕРІР°РЅС–СЃС‚СЊ Р· РѕСЂРµРЅРґРЅРѕС— РїР»Р°С‚Рё Р±РµР·РЅР°РґС–Р№РЅР° Р±С–Р»СЊС€Рµ 3-С… СЂРѕРєС–РІ" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="num_zahodiv_total" VisibleIndex="30" Caption="РљС–Р»СЊРєС–СЃС‚СЊ Р·Р°С…РѕРґС–РІ (РїРѕРїРµСЂРµРґР¶РµРЅСЊ, РїСЂРёРїРёСЃС–РІ С– С‚.Рї.)"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="num_zahodiv_zvit" VisibleIndex="31" Caption="РљС–Р»СЊРєС–СЃС‚СЊ Р·Р°С…РѕРґС–РІ (РїРѕРїРµСЂРµРґР¶РµРЅСЊ, РїСЂРёРїРёСЃС–РІ С– С‚.Рї.), Р·Р° Р·РІС–С‚РЅРёР№ РїРµСЂС–РѕРґ" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="num_pozov_total" VisibleIndex="32" Caption="РєС–Р»СЊРєС–СЃС‚СЊ РїРѕР·РѕРІС–РІ РґРѕ СЃСѓРґСѓ, РІСЃСЊРѕРіРѕ"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="num_pozov_zvit" VisibleIndex="33" Caption="РєС–Р»СЊРєС–СЃС‚СЊ РїРѕР·РѕРІС–РІ РґРѕ СЃСѓРґСѓ, Р·Р° Р·РІС–С‚РЅРёР№ РїРµСЂС–РѕРґ" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="num_pozov_zadov_total" VisibleIndex="34" Caption="Р·Р°РґРѕРІРѕР»РµРЅРѕ РїРѕР·РѕРІС–РІ, РІСЃСЊРѕРіРѕ" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="num_pozov_zadov_zvit" VisibleIndex="35" Caption="Р·Р°РґРѕРІРѕР»РµРЅРѕ РїРѕР·РѕРІС–РІ, Р·Р° Р·РІС–С‚РЅРёР№ РїРµСЂС–РѕРґ" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="num_pozov_vikon_total" VisibleIndex="36" Caption="РІС–РґРєСЂРёС‚Рѕ РІРёРєРѕРЅР°РІС‡РёС… РІРїСЂРѕРІР°РґР¶РµРЅСЊ, РІСЃСЊРѕРіРѕ" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="num_pozov_vikon_zvit" VisibleIndex="37" Caption="РІС–РґРєСЂРёС‚Рѕ РІРёРєРѕРЅР°РІС‡РёС… РІРїСЂРѕРІР°РґР¶РµРЅСЊ, Р·Р° Р·РІС–С‚РЅРёР№ РїРµСЂС–РѕРґ" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="debt_pogasheno_total" VisibleIndex="38" Caption="РїРѕРіР°С€РµРЅРѕ Р·Р°Р±РѕСЂРіРѕРІР°РЅРѕСЃС‚С– Р·Р° СЂРµР·СѓР»СЊС‚Р°С‚Р°РјРё РІР¶РёС‚РёС… Р·Р°С…РѕРґС–РІ Р·Р° Р·РІС–С‚РЅРёР№ РїРµСЂС–РѕРґ, РІСЃСЊРѕРіРѕ" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="debt_pogasheno_zvit" VisibleIndex="39" Caption="РїРѕРіР°С€РµРЅРѕ Р·Р°Р±РѕСЂРіРѕРІР°РЅРѕСЃС‚С– Р·Р° СЂРµР·СѓР»СЊС‚Р°С‚Р°РјРё РІР¶РёС‚РёС… Р·Р°С…РѕРґС–РІ Р·Р° Р·РІС–С‚РЅРёР№ РїРµСЂС–РѕРґ, Р·Р° Р·РІС–С‚РЅРёР№ РїРµСЂС–РѕРґ" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="old_debts_payed" VisibleIndex="40" Caption="РџРѕРіР°С€РµРЅРЅСЏ Р·Р°Р±РѕСЂРіРѕРІР°РЅРѕСЃС‚С– РјРёРЅСѓР»РёС… РїРµСЂС–РѕРґС–РІ" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="payment_type" VisibleIndex="41" Caption="Р’РёРґ РѕРїР»Р°С‚Рё"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="priznachennya" VisibleIndex="42" Caption="РџСЂРёР·РЅР°С‡РµРЅРЅСЏ Р·Р° Р”РѕРєСѓРјРµРЅС‚РѕРј" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="purpose" VisibleIndex="43" Caption="Р’РёРєРѕСЂРёСЃС‚Р°РЅРЅСЏ Р·РіС–РґРЅРѕ Р· РґРѕРіРѕРІРѕСЂРѕРј" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="org_renter_zkpo" VisibleIndex="44" Caption="РљРѕРґ Р„Р”Р РџРћРЈ РћСЂРµРЅРґР°СЂСЏ" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="org_giver_zkpo" VisibleIndex="45" Caption="РљРѕРґ Р„Р”Р РџРћРЈ РћСЂРµРЅРґРѕРґР°РІС†СЏ" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="debt_spysano" VisibleIndex="46" Caption="РЎРїРёСЃР°РЅРѕ Р·Р°Р±РѕСЂРіРѕРІР°РЅРѕСЃС‚С– Р· РѕСЂРµРЅРґРЅРѕС— РїР»Р°С‚Рё Сѓ Р·РІС–С‚РЅРѕРјСѓ РїРµСЂС–РѕРґС–, РіСЂРЅ. (Р±РµР· РџР”Р’)" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="sqr_payed_by_percent" VisibleIndex="16" Caption="на яку нараховується плата за використання у відсотках від вартості" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="sqr_payed_by_1uah" VisibleIndex="17" Caption="на яку нараховується плата за використання в розмірі 1 грн" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="sqr_payed_hourly" VisibleIndex="18" Caption="надана в погодинну оренду, чи відповідно до угод про співпрацю" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="payment_narah" VisibleIndex="19" Caption="Нараховано орендної плати" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="last_year_saldo" VisibleIndex="20" Caption="Сальдо на початок року" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="payment_received" VisibleIndex="21" Caption="Надходження орендної плати за звітний період, всього" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="payment_nar_zvit" VisibleIndex="22" Caption="Надходження орендної плати, у тому числі за звітний період без боргів та переплат" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="debt_total" VisibleIndex="23" Caption="Заборгованість по орендній платі" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="debt_zvit" VisibleIndex="24" Caption="у т.ч. з нарахованої у звітному періоді" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="debt_3_month" VisibleIndex="25" Caption="Заборгованість з орендної плати поточна до 3-х місяців" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="debt_12_month" VisibleIndex="26" Caption="Заборгованість з орендної плати поточна до 12-х місяців"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="debt_3_years" VisibleIndex="27" Caption="Заборгованість з орендної плати поточна до 3-х років" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="debt_v_mezhah_vitrat" VisibleIndex="28" Caption="Заборгованість з орендної плати (із загальної заборгованості), розмір якої встановлено в межах витрат на утримання" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="debt_over_3_years" VisibleIndex="29" Caption="Заборгованість з орендної плати безнадійна більше 3-х років" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="num_zahodiv_total" VisibleIndex="30" Caption="Кількість заходів (попереджень, приписів і т.п.)"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="num_zahodiv_zvit" VisibleIndex="31" Caption="Кількість заходів (попереджень, приписів і т.п.), за звітний період" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="num_pozov_total" VisibleIndex="32" Caption="кількість позовів до суду, всього"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="num_pozov_zvit" VisibleIndex="33" Caption="кількість позовів до суду, за звітний період" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="num_pozov_zadov_total" VisibleIndex="34" Caption="задоволено позовів, всього" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="num_pozov_zadov_zvit" VisibleIndex="35" Caption="задоволено позовів, за звітний період" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="num_pozov_vikon_total" VisibleIndex="36" Caption="відкрито виконавчих впроваджень, всього" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="num_pozov_vikon_zvit" VisibleIndex="37" Caption="відкрито виконавчих впроваджень, за звітний період" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="debt_pogasheno_total" VisibleIndex="38" Caption="погашено заборгованості за результатами вжитих заходів за звітний період, всього" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="debt_pogasheno_zvit" VisibleIndex="39" Caption="погашено заборгованості за результатами вжитих заходів за звітний період, за звітний період" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="old_debts_payed" VisibleIndex="40" Caption="Погашення заборгованості минулих періодів" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="payment_type" VisibleIndex="41" Caption="Вид оплати"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="priznachennya" VisibleIndex="42" Caption="Призначення за Документом" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="purpose" VisibleIndex="43" Caption="Використання згідно з договором" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="org_renter_zkpo" VisibleIndex="44" Caption="Код ЄДРПОУ Орендаря" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="org_giver_zkpo" VisibleIndex="45" Caption="Код ЄДРПОУ Орендодавця" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="debt_spysano" VisibleIndex="46" Caption="Списано заборгованості з орендної плати у звітному періоді, грн. (без ПДВ)" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="insurance_sum" VisibleIndex="47" Caption="Вартість об'єкту страхування" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataDateColumn FieldName="insurance_start" VisibleIndex="48" Caption="Дата початку періоду страхування" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
+        <dx:GridViewDataDateColumn FieldName="insurance_end" VisibleIndex="49" Caption="Дата закінчення періоду страхування" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
 
-        <dx:GridViewDataTextColumn FieldName="zvilneno_percent" VisibleIndex="101" Caption="Р—РІС–Р»СЊРЅРµРЅРѕ РІС–Рґ СЃРїР»Р°С‚Рё РѕСЂРµРЅРґРЅРѕС— РїР»Р°С‚Рё РЅР°, %" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataDateColumn FieldName="zvilneno_date1" VisibleIndex="102" Caption="Р—РІС–Р»СЊРЅРµРЅРѕ РІС–Рґ СЃРїР»Р°С‚Рё РѕСЂРµРЅРґРЅРѕС— РїР»Р°С‚Рё РЅР°, Р·" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
-        <dx:GridViewDataDateColumn FieldName="zvilneno_date2" VisibleIndex="103" Caption="Р—РІС–Р»СЊРЅРµРЅРѕ РІС–Рґ СЃРїР»Р°С‚Рё РѕСЂРµРЅРґРЅРѕС— РїР»Р°С‚Рё РЅР°, РїРѕ" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
+        <dx:GridViewDataTextColumn FieldName="zvilneno_percent" VisibleIndex="101" Caption="Звільнено від сплати орендної плати на, %" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataDateColumn FieldName="zvilneno_date1" VisibleIndex="102" Caption="Звільнено від сплати орендної плати на, з" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
+        <dx:GridViewDataDateColumn FieldName="zvilneno_date2" VisibleIndex="103" Caption="Звільнено від сплати орендної плати на, по" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
 
-        <dx:GridViewDataTextColumn FieldName="zvilbykmp_percent" VisibleIndex="111" Caption="Р—РІС–Р»СЊРЅРµРЅРѕ РІС–Рґ СЃРїР»Р°С‚Рё Р·РіС–РґРЅРѕ Р°Р±Р·Р°С† 3 РїСѓРєРЅС‚ 2 СЂС–С€РµРЅРЅСЏ РљРњР  903/9073, %" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-        <dx:GridViewDataDateColumn FieldName="zvilbykmp_date1" VisibleIndex="112" Caption="Р—РІС–Р»СЊРЅРµРЅРѕ РІС–Рґ СЃРїР»Р°С‚Рё Р·РіС–РґРЅРѕ Р°Р±Р·Р°С† 3 РїСѓРєРЅС‚ 2 СЂС–С€РµРЅРЅСЏ РљРњР  903/9073, Р·" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
-        <dx:GridViewDataDateColumn FieldName="zvilbykmp_date2" VisibleIndex="113" Caption="Р—РІС–Р»СЊРЅРµРЅРѕ РІС–Рґ СЃРїР»Р°С‚Рё Р·РіС–РґРЅРѕ Р°Р±Р·Р°С† 3 РїСѓРєРЅС‚ 2 СЂС–С€РµРЅРЅСЏ РљРњР  903/9073, РїРѕ" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
+        <dx:GridViewDataTextColumn FieldName="zvilbykmp_percent" VisibleIndex="111" Caption="Звільнено від сплати згідно абзац 3 пукнт 2 рішення КМР 903/9073, %" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataDateColumn FieldName="zvilbykmp_date1" VisibleIndex="112" Caption="Звільнено від сплати згідно абзац 3 пукнт 2 рішення КМР 903/9073, з" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
+        <dx:GridViewDataDateColumn FieldName="zvilbykmp_date2" VisibleIndex="113" Caption="Звільнено від сплати згідно абзац 3 пукнт 2 рішення КМР 903/9073, по" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
 
-        <dx:GridViewDataDateColumn FieldName="povidoleno1_date" VisibleIndex="121" Caption="РџРѕРІС–РґРѕРјР»РµРЅРЅСЏ РѕСЂРµРЅРґР°СЂСЏ РґРѕ Р±Р°Р»Р°РЅСЃРѕСѓС‚СЂРёРјСѓРІР°С‡Р° РїСЂРѕ РЅРµРјРѕР¶Р»С–РІС–СЃС‚СЊ РІРёРєРѕСЂРёСЃС‚Р°РЅРЅСЏ, РґР°С‚Р°" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
-        <dx:GridViewDataTextColumn FieldName="povidoleno1_num" VisibleIndex="122" Caption="РџРѕРІС–РґРѕРјР»РµРЅРЅСЏ РѕСЂРµРЅРґР°СЂСЏ РґРѕ Р±Р°Р»Р°РЅСЃРѕСѓС‚СЂРёРјСѓРІР°С‡Р° РїСЂРѕ РЅРµРјРѕР¶Р»С–РІС–СЃС‚СЊ РІРёРєРѕСЂРёСЃС‚Р°РЅРЅСЏ, в„–" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataDateColumn FieldName="povidoleno1_date" VisibleIndex="121" Caption="Повідомлення орендаря до балансоутримувача про неможлівість використання, дата" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
+        <dx:GridViewDataTextColumn FieldName="povidoleno1_num" VisibleIndex="122" Caption="Повідомлення орендаря до балансоутримувача про неможлівість використання, №" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataDateColumn FieldName="povidoleno2_date" VisibleIndex="131" Caption="РџРѕРІС–РґРѕРјР»РµРЅРЅСЏ РѕСЂРµРЅРґР°СЂСЏ РґРѕ РѕСЂРµРЅРґРѕРґР°РІС†СЏ РїСЂРѕ РЅРµРјРѕР¶Р»С–РІС–СЃС‚СЊ РІРёРєРѕСЂРёСЃС‚Р°РЅРЅСЏ, РґР°С‚Р°" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
-        <dx:GridViewDataTextColumn FieldName="povidoleno2_num" VisibleIndex="132" Caption="РџРѕРІС–РґРѕРјР»РµРЅРЅСЏ РѕСЂРµРЅРґР°СЂСЏ РґРѕ РѕСЂРµРЅРґРѕРґР°РІС†СЏ РїСЂРѕ РЅРµРјРѕР¶Р»С–РІС–СЃС‚СЊ РІРёРєРѕСЂРёСЃС‚Р°РЅРЅСЏ, в„–" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataDateColumn FieldName="povidoleno2_date" VisibleIndex="131" Caption="Повідомлення орендаря до орендодавця про неможлівість використання, дата" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
+        <dx:GridViewDataTextColumn FieldName="povidoleno2_num" VisibleIndex="132" Caption="Повідомлення орендаря до орендодавця про неможлівість використання, №" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataDateColumn FieldName="povidoleno3_date" VisibleIndex="141" Caption="РџРѕРІС–РґРѕРјР»РµРЅРЅСЏ РѕСЂРµРЅРґР°СЂСЏ РґРѕ Р±Р°Р»Р°РЅСЃРѕСѓС‚СЂРёРјСѓРІР°С‡Р° РїСЂРѕ РЅР°РјС–СЂ РІРёРєРѕСЂРёСЃС‚РѕРІСѓРІР°С‚Рё РѕР±'С”РєС‚, РґР°С‚Р°" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
-        <dx:GridViewDataTextColumn FieldName="povidoleno3_num" VisibleIndex="142" Caption="РџРѕРІС–РґРѕРјР»РµРЅРЅСЏ РѕСЂРµРЅРґР°СЂСЏ РґРѕ Р±Р°Р»Р°РЅСЃРѕСѓС‚СЂРёРјСѓРІР°С‡Р° РїСЂРѕ РЅР°РјС–СЂ РІРёРєРѕСЂРёСЃС‚РѕРІСѓРІР°С‚Рё РѕР±'С”РєС‚, в„–" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataDateColumn FieldName="povidoleno3_date" VisibleIndex="141" Caption="Повідомлення орендаря до балансоутримувача про намір використовувати об'єкт, дата" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
+        <dx:GridViewDataTextColumn FieldName="povidoleno3_num" VisibleIndex="142" Caption="Повідомлення орендаря до балансоутримувача про намір використовувати об'єкт, №" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataDateColumn FieldName="povidoleno4_date" VisibleIndex="151" Caption="РџРѕРІС–РґРѕРјР»РµРЅРЅСЏ РѕСЂРµРЅРґР°СЂСЏ РґРѕ РѕСЂРµРЅРґРѕРґР°РІС†СЏ РїСЂРѕ РЅР°РјС–СЂ РІРёРєРѕСЂРёСЃС‚РѕРІСѓРІР°С‚Рё РѕР±'С”РєС‚, РґР°С‚Р°" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
-        <dx:GridViewDataTextColumn FieldName="povidoleno4_num" VisibleIndex="152" Caption="РџРѕРІС–РґРѕРјР»РµРЅРЅСЏ РѕСЂРµРЅРґР°СЂСЏ РґРѕ РѕСЂРµРЅРґРѕРґР°РІС†СЏ РїСЂРѕ РЅР°РјС–СЂ РІРёРєРѕСЂРёСЃС‚РѕРІСѓРІР°С‚Рё РѕР±'С”РєС‚, в„–" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataDateColumn FieldName="povidoleno4_date" VisibleIndex="151" Caption="Повідомлення орендаря до орендодавця про намір використовувати об'єкт, дата" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
+        <dx:GridViewDataTextColumn FieldName="povidoleno4_num" VisibleIndex="152" Caption="Повідомлення орендаря до орендодавця про намір використовувати об'єкт, №" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+
 
     </Columns>
 
@@ -994,6 +955,7 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
         <dx:ASPxSummaryItem FieldName="debt_pogasheno_zvit" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="old_debts_payed" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="debt_spysano" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="insurance_sum" SummaryType="Sum" DisplayFormat="{0}" />
 
     </TotalSummary>
 
@@ -1009,7 +971,7 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
     <SettingsPager PageSize="10" AlwaysShowPager="true" />
     <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
     <Styles Header-Wrap="True" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaList" Enabled="True" Version="A36" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaList" Enabled="True" Version="B1" />
 
     <ClientSideEvents
         Init="function (s,e) { PrimaryGridView.PerformCallback('init:'); }"
@@ -1018,7 +980,7 @@ join dbo.reports1nf_balans bal on b.unique_id = bal.building_1nf_unique_id
 </dx:ASPxGridView>
 
 <dx:ASPxPopupControl ID="PopupFieldChooser" runat="server" 
-    HeaderText="Р”РѕРґР°С‚РєРѕРІС– РљРѕР»РѕРЅРєРё" 
+    HeaderText="Додаткові Колонки" 
     ClientInstanceName="PopupFieldChooser" 
     PopupElementID="PrimaryGridView"
     PopupAction="None"
