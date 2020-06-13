@@ -62,6 +62,14 @@ function ShowOrganizationCard(orgId) {
     window.open(cardUrl);
 }
 
+function ShowOrgInfo(orgId) {
+
+    var cardUrl = "../Reports1NF/OrgInfo.aspx?rid=" + orgId;
+
+    window.open(cardUrl);
+}
+
+
 function ShowDocumentCard(docId) {
 
     var cardUrl = "../Cards/DocCard.aspx?docid=" + docId;

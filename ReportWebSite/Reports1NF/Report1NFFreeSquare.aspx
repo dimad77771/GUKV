@@ -133,6 +133,7 @@
 ,fs.id
 ,org.short_name as org_name
 ,org.zkpo_code
+,org.report_id
 ,org.director_title as vidpov_osoba
 
 ,b.district
@@ -429,6 +430,9 @@ WHERE id = @id"
 
 
         <dx:GridViewDataTextColumn FieldName="org_name" Caption="Балансоутримувач" VisibleIndex="0"  Width="300px" ReadOnly="true" >
+            <DataItemTemplate>
+                <%# "<a href=\"javascript:ShowOrgInfo(" + Eval("report_id") + ")\">" + Eval("org_name") + "</a>"%>
+            </DataItemTemplate>
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("org_name") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
