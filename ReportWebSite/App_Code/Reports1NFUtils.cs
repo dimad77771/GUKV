@@ -4404,4 +4404,6 @@ public static class Reports1NFUtils
     }
 
     #endregion (Multithreading support for lengthy operations)
+
+    public static int DEBTKVART_COUNT = 16;
 }
