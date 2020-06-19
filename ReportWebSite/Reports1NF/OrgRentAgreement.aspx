@@ -45,6 +45,10 @@
             }
         }
 
+		function afterCPMainPanelCallback(event) {
+			setTimeout(CalcCollectionDebtZvit, 100);
+		}
+
         function HidePnl() {
             if (document.getElementById('<%=PaymentForm.ClientID %>' + '_NeededPeriodCombo').innerHTML != "") {
                 period = document.getElementById('<%=PaymentForm.ClientID %>' + '_NeededPeriodCombo').innerHTML;
@@ -143,6 +147,8 @@
 		}
 
         function CalcCollectionDebtZvit() {
+            console.log("run CalcCollectionDebtZvit()");
+
             var use_calc_debt = edit_use_calc_debt.GetChecked();
 			//EditCollectionDebtZvit.SetEnabled(!use_calc_debt);
 			//EditCollectionDebt3Month.SetEnabled(!use_calc_debt);
@@ -632,7 +638,7 @@
 
      // ]]>
 
-    </script>
+	</script>
 
 	<script type="text/javascript" language="javascript">
         var imageIndex = 0;
@@ -965,6 +971,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
 </p>
 
 <dx:ASPxCallbackPanel ID="CPMainPanel" ClientInstanceName="CPMainPanel" runat="server" OnCallback="CPMainPanel_Callback">
+    <ClientSideEvents EndCallback="afterCPMainPanelCallback" />
     <PanelCollection>
         <dx:panelcontent ID="Panelcontent5" runat="server">
 

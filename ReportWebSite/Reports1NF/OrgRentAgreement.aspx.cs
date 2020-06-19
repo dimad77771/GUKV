@@ -1776,7 +1776,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         AddQueryParameter(ref fieldList, "use_calc_debt", "usecalcdebt", Reports1NFUtils.GetCheckBoxValue(controls, "edit_use_calc_debt") ? 1 : 0, parameters);
         AddQueryParameter(ref fieldList, "avance_plat", "avanceplat", Reports1NFUtils.GetEditNumeric(controls, "edit_avance_plat"), parameters);
 
-        for(int k = 1; k <= Reports1NFUtils.DEBTKVART_COUNT; k++)
+        for(int k = 0; k <= 13; k++)
         {
             AddQueryParameter(ref fieldList, "debtkvart_" + k, "vdebtkvart_" + k, Reports1NFUtils.GetEditNumeric(controls, "edit_debtkvart_" + k), parameters);
         }
