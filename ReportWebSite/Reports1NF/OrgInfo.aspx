@@ -316,6 +316,11 @@
                         </tr>
                         <tr><td colspan="7" height="4px"/></tr>
                         <tr>
+                            <td width="100px"><dx:ASPxLabel ID="ASPxLabel38" runat="server" Text="Поточні рахунки у відділеннях банку"></dx:ASPxLabel></td>
+                            <td width="8px">&nbsp;</td>
+                            <td colspan="5"><dx:ASPxTextBox ID="EditBankRahunok" runat="server" Text='<%# Eval("bank_rahunok") %>' Width="100%" Title="Поточні рахунки у відділеннях банку" MaxLength="255" /></td>
+                        </tr>
+                        <tr>
                             <td width="100px"><dx:ASPxLabel ID="ASPxLabel12" runat="server" Text="Відповідальна особа"></dx:ASPxLabel></td>
                             <td width="8px">&nbsp;</td>
                             <td colspan="5"><dx:ASPxTextBox ID="EditDirectorTitle" runat="server" Text='<%# Eval("director_title") %>' Width="100%" Title="ПІБ та телефон відповідальної особи" MaxLength="70" /></td>

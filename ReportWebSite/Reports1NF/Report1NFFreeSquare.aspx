@@ -3,6 +3,8 @@
 
 <%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
 <%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView.Export" tagprefix="dx" %>
+<%@ Register src="../UserControls/FieldChooser.ascx" tagname="FieldChooser" tagprefix="uc3" %>
+<%@ Register src="../UserControls/FieldFixxer.ascx" tagname="FieldFixxer" tagprefix="uc3" %>
 <%@ Register Namespace="MiniProfilerHelpers" TagPrefix="mini" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
@@ -29,7 +31,14 @@
     function GridViewFreeSquareEndCallback(s, e) {
 
         AdjustGridSizes();
-    }
+	}
+
+	function ShowFieldChooserPopupControl(s, e) {
+
+        PrimaryGridView = FreeSquareGridView;
+		PopupFieldChooser.Show();
+	}
+
 
 	function ShowPhoto(s, e) {
 		console.log(e.buttonID);
@@ -129,6 +138,14 @@
 	fs.current_stage_docnum,
 	fs.modify_date2,
 	fs.modified_by2,
+    fs.zal_balans_vartist,
+    fs.perv_balans_vartist,
+    fs.punkt_metod_rozrahunok,
+    fs.prop_srok_orands,
+    fs.nomer_derzh_reestr_neruh,
+    fs.reenum_derzh_reestr_neruh,
+    fs.info_priznach_nouse,
+    fs.info_rahunok_postach,
  row_number() over (order by org.short_name, b.street_full_name, b.addr_nomer, fs.total_free_sqr) as npp     
 ,fs.id
 ,org.short_name as org_name
@@ -277,6 +294,12 @@ WHERE id = @id"
     <tr>
         <td style="width: 100%;">
             <asp:Label ID="LabelReportTitle1" runat="server" Text="Перелік вільних приміщень" CssClass="reporttitle"></asp:Label>
+        </td>
+        <td>
+            <dx:ASPxButton ID="ASPxButton1" runat="server" AutoPostBack="False" 
+                Text="Додаткові Колонки" Width="148px">
+                <ClientSideEvents Click="ShowFieldChooserPopupControl" />
+            </dx:ASPxButton>
         </td>
         <td>
 			<dx:ASPxPopupControl
@@ -682,6 +705,61 @@ WHERE id = @id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
+        <dx:GridViewDataTextColumn FieldName="zal_balans_vartist" Caption="Залишкова балансова вартість" VisibleIndex="1110" Visible="false" >
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("zal_balans_vartist") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="perv_balans_vartist" Caption="Первісна балансова вартість" VisibleIndex="1120" Visible="false" >
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("perv_balans_vartist") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="punkt_metod_rozrahunok" Caption="Посилання на пункт Методики розрахунку орендної плати, яким встановлена орендна ставка для запропонованого цільового призначення" VisibleIndex="1130" Visible="false" Width="230px" >
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("punkt_metod_rozrahunok") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="prop_srok_orands" Caption="Пропонований строк оренди (у роках)" VisibleIndex="1140" Visible="false" >
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("prop_srok_orands") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="nomer_derzh_reestr_neruh" Caption="Номер запису про право власності у Реєстрація у Державному реєстрі речових прав на нерухоме майно" VisibleIndex="1150" Visible="false" Width="280px" >
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("nomer_derzh_reestr_neruh") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="reenum_derzh_reestr_neruh" Caption="Реєстраційний номер об'єкту нерухомого майна у Реєстрація у Державному реєстрі речових прав на нерухоме майно" VisibleIndex="1160" Visible="false" Width="280px" >
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("reenum_derzh_reestr_neruh") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="info_priznach_nouse" Caption="Інформація про цільове призначення об’єкта оренди у випадках неможливості використання об’єкта за будь-яким цільовим призначенням, якщо об’єкт розташований у приміщеннях, які мають відповідне соціально-економічне призначення" VisibleIndex="1170" Visible="false" Width="350px"  >
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("info_priznach_nouse") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="info_rahunok_postach" Caption="Інформація про наявність окремих особових рахунків на об'єкт оренди, відкритих постачальниками комунальних послуг, або інформація про порядок участі орендаря у компенсації балансоутримувачу витрат на оплату комунальних послуг, якщо об'єкт оренди не має окремих особових рахунків, відкритих для нього відповідними постачальниками комунальних послуг" VisibleIndex="1180" Visible="false" Width="380px"  >
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("info_rahunok_postach") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
 
     </Columns>
 
@@ -703,13 +781,29 @@ WHERE id = @id"
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A2_38" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A2_45" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
 
     <ClientSideEvents Init="GridViewFreeSquareInit" EndCallback="GridViewFreeSquareEndCallback" />
 </dx:ASPxGridView>
+
+<dx:ASPxPopupControl ID="PopupFieldChooser" runat="server" 
+    HeaderText="Додаткові Колонки" 
+    ClientInstanceName="PopupFieldChooser" 
+    PopupElementID="PrimaryGridView"
+    PopupAction="None"
+    PopupHorizontalAlign="Center"
+    PopupVerticalAlign="Middle"
+    PopupAnimationType="Slide" >
+    <ContentCollection>
+        <dx:PopupControlContentControl ID="PopupControlContentControl3" runat="server" >
+            <uc3:FieldChooser ID="FieldChooser1" runat="server"/>
+        </dx:PopupControlContentControl>
+    </ContentCollection>
+    <ClientSideEvents PopUp="function (s, e) { EditColumnNamePattern.SetText(''); CPGridColumns.PerformCallback(); }" />
+</dx:ASPxPopupControl>
 
 
 </asp:Content>

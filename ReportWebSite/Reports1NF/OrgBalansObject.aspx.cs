@@ -36,6 +36,18 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
     public Control FindControlRecursive(Control control, string id)
     {
+        //GridViewDataTextColumn aa;
+        //aa.EditFormSettings
+
+        //ASPxGridView aa;
+        //aa.ClientSideEvents.RowExpanding
+
+        //GridViewDataTextColumn a;
+        //a.EditFormSettings
+
+        //GridViewDataTextColumn a;
+        //a.PropertiesEdit.ClientInstanceName
+
         if (control == null) return null;
         //try to find the control at the current level
         Control ctrl = control.FindControl(id);
@@ -178,10 +190,19 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
         PrepareTempPhotoFolder();
 
-		if (!IsPostBack)
+
+        if (!IsPostBack)
 		{
 			ASPxGridViewFreeSquare.FilterExpression = "[is_included] = True";
-		}
+            foreach (var col in ASPxGridViewFreeSquare.Columns)
+            {
+                var vcol = col as GridViewEditDataColumn;
+                if (vcol != null)
+                {
+                    vcol.PropertiesEdit.ClientInstanceName = "felm__" + (!string.IsNullOrEmpty(vcol.FieldName) ? vcol.FieldName : vcol.Name);
+                }
+            }
+        }
 			//////
 		}
         catch (Exception ex)

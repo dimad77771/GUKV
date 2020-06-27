@@ -22,6 +22,11 @@
         padding-top: 0px;
         padding-bottom: 0px;
     }
+
+    .editForm999 .dxgvEditFormTable_DevEx 
+    {
+         width:1400px !important;
+    }
 </style>
 
 <script type="text/javascript" language="javascript">
@@ -417,7 +422,71 @@
         }
         function OnEndCallback(s, e) {
             AdjustSize();
+
+            if (grid.IsEditing()) {
+				var popup = s.GetEditFormTable();
+                //console.log("popup", popup);
+				//console.log("felm__total_free_sqr", felm__total_free_sqr.GetValue());
+                $(felm__tmp1.mainElement).hide();
+                $(felm__tmp2.mainElement).hide();
+				$(felm__tmp3.mainElement).hide();
+                $(popup).find(".dxgvCommandColumn_DevEx").attr("align", "left");
+
+				console.log("felm__prop_srok_orands", felm__prop_srok_orands);
+				felm__include_in_perelik.ValueChanged.AddHandler(OnEditFormTableItemChange);
+				felm__prop_srok_orands.LostFocus.AddHandler(OnEditFormTableItemChange);
+                
+
+                CustomizeEditFormTable();
+			}  
         }
+
+		function OnEditFormTableItemChange() {
+            CustomizeEditFormTable();
+        }
+
+        function CustomizeEditFormTable() {
+            var include_in_perelik = felm__include_in_perelik.GetValue();
+            var showrow1 = false;
+			var showrow2 = false;
+            if (include_in_perelik == "1") {
+                showrow1 = true;
+			} else if (include_in_perelik == "2") {
+				showrow2 = true;
+            }
+
+			var popup = grid.GetEditFormTable();
+            var tbody = $(popup).children('tbody');
+            var rows = $(tbody).children('tr');
+            var r1 = 9;
+            var r2 = r1 + 1;
+            if (showrow1) {
+				$(rows.get(r1)).show();
+            } else {
+				$(rows.get(r1)).hide();
+            }
+			if (showrow2) {
+				$(rows.get(r2)).show();
+			} else {
+				$(rows.get(r2)).hide();
+            }
+
+
+            var prop_srok_orands = felm__prop_srok_orands.GetValue();
+            var prop = parseInt(prop_srok_orands, 10);
+			var showrow1 = false;
+            if (prop > 5) {
+                showrow1 = true;
+            }
+            var r1 = 12;
+			if (showrow1) {
+				$(rows.get(r1)).show();
+			} else {
+				$(rows.get(r1)).hide();
+			}
+			console.log("prop_srok_orands", prop);
+		}
+
         function OnControlsInitialized(s, e) {
             ASPxClientUtils.AttachEventToElement(window, "resize", function (evt) {
                 AdjustSize();
@@ -455,12 +524,11 @@
 				'FreeCycle.aspx?free_square_id=' + id,
 				'_blank',
 			);
-		}
-
+        }
 
 		var paramRid = <%= ParamRid %>;
 		var paramBid = <%= ParamBid %>;
-    </script>
+	</script>
 
 
 
@@ -607,6 +675,12 @@
     SelectCommand="SELECT id, name FROM dict_zgoda_renter ORDER BY id">
 </mini:ProfiledSqlDataSource>
 
+<mini:ProfiledSqlDataSource ID="SqlDataSourceIncludeInPerelik" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT '1' id, '1' name, 1 as ordrow union SELECT '2' id, '2' name, 1 as ordrow union select null, '',  2 as ordrow ORDER BY ordrow, name">
+</mini:ProfiledSqlDataSource>
+
+
 <asp:ObjectDataSource ID="ObjectDataSourceBalansPhoto" runat="server" SelectMethod="SelectFromTempFolder" 
     TypeName="ExtDataEntry.Models.FileAttachment">
     <SelectParameters>
@@ -643,6 +717,15 @@
       ,[zgoda_renter_id] 
 	  ,[is_included] 	
 	  ,[komis_protocol] 	
+      ,[include_in_perelik]
+      ,[zal_balans_vartist]
+      ,[perv_balans_vartist]  
+      ,[punkt_metod_rozrahunok] 
+      ,[prop_srok_orands] 
+      ,[nomer_derzh_reestr_neruh] 
+      ,[reenum_derzh_reestr_neruh] 
+      ,[info_priznach_nouse] 
+      ,[info_rahunok_postach] 
     FROM [reports1nf_balans_free_square] WHERE [balans_id] = @balans_id and [report_id] = @report_id" 
     DeleteCommand="EXEC [delete_reports1nf_balans_free_square] @id" 
     InsertCommand="INSERT INTO [reports1nf_balans_free_square]
@@ -667,7 +750,17 @@
       ,[initiator] 
       ,[zgoda_control_id] 
       ,[zgoda_renter_id]
-	  ,[is_included]) 
+	  ,[is_included]
+      ,[include_in_perelik]
+      ,[zal_balans_vartist]
+      ,[perv_balans_vartist]  
+      ,[punkt_metod_rozrahunok] 
+      ,[prop_srok_orands] 
+      ,[nomer_derzh_reestr_neruh] 
+      ,[reenum_derzh_reestr_neruh] 
+      ,[info_priznach_nouse] 
+      ,[info_rahunok_postach]   
+    ) 
     VALUES
     (@balans_id
       ,@total_free_sqr
@@ -690,7 +783,17 @@
       ,@initiator
       ,@zgoda_control_id
       ,@zgoda_renter_id
-	  ,@is_included);
+	  ,@is_included
+      ,@include_in_perelik
+      ,@zal_balans_vartist
+      ,@perv_balans_vartist  
+      ,@punkt_metod_rozrahunok 
+      ,@prop_srok_orands 
+      ,@nomer_derzh_reestr_neruh 
+      ,@reenum_derzh_reestr_neruh 
+      ,@info_priznach_nouse 
+      ,@info_rahunok_postach       
+    );
 SELECT SCOPE_IDENTITY()" 
     UpdateCommand="UPDATE [reports1nf_balans_free_square]
 SET
@@ -716,6 +819,15 @@ SET
       ,[zgoda_control_id] = @zgoda_control_id
       ,[zgoda_renter_id] = @zgoda_renter_id 
 	  ,[is_included] = @is_included 
+      ,[include_in_perelik] = @include_in_perelik 
+        ,[zal_balans_vartist]		  = @zal_balans_vartist
+        ,[perv_balans_vartist]  	  = @perv_balans_vartist  
+        ,[punkt_metod_rozrahunok] 	  = @punkt_metod_rozrahunok 
+        ,[prop_srok_orands] 		  = @prop_srok_orands 
+        ,[nomer_derzh_reestr_neruh] 	  = @nomer_derzh_reestr_neruh 
+        ,[reenum_derzh_reestr_neruh] 	  = @reenum_derzh_reestr_neruh 
+        ,[info_priznach_nouse] 		  = @info_priznach_nouse 
+        ,[info_rahunok_postach]  	  = @info_rahunok_postach   
 WHERE id = @id" 
         oninserting="SqlDataSourceFreeSquare_Inserting" 
         onupdating="SqlDataSourceFreeSquare_Updating" ProviderName="System.Data.SqlClient">
@@ -749,6 +861,15 @@ WHERE id = @id"
         <asp:Parameter Name="zgoda_control_id" />
         <asp:Parameter Name="zgoda_renter_id" />
 		<asp:Parameter Name="is_included" />		
+        <asp:Parameter Name="include_in_perelik" />
+        <asp:Parameter Name="zal_balans_vartist" />
+        <asp:Parameter Name="perv_balans_vartist" />
+        <asp:Parameter Name="punkt_metod_rozrahunok" />
+        <asp:Parameter Name="prop_srok_orands" />
+        <asp:Parameter Name="nomer_derzh_reestr_neruh" />
+        <asp:Parameter Name="reenum_derzh_reestr_neruh" />
+        <asp:Parameter Name="info_priznach_nouse" />
+        <asp:Parameter Name="info_rahunok_postach" />
     </InsertParameters>
     <UpdateParameters>
         <asp:Parameter Name="balans_id" />
@@ -773,6 +894,15 @@ WHERE id = @id"
         <asp:Parameter Name="zgoda_control_id" />
         <asp:Parameter Name="zgoda_renter_id" />
 		<asp:Parameter Name="is_included" />	
+        <asp:Parameter Name="include_in_perelik" />	
+        <asp:Parameter Name="zal_balans_vartist" />
+        <asp:Parameter Name="perv_balans_vartist" />
+        <asp:Parameter Name="punkt_metod_rozrahunok" />
+        <asp:Parameter Name="prop_srok_orands" />
+        <asp:Parameter Name="nomer_derzh_reestr_neruh" />
+        <asp:Parameter Name="reenum_derzh_reestr_neruh" />
+        <asp:Parameter Name="info_priznach_nouse" />
+        <asp:Parameter Name="info_rahunok_postach" />
         <asp:Parameter Name="id" />
     </UpdateParameters>
 </mini:ProfiledSqlDataSource>
@@ -1570,8 +1700,11 @@ WHERE id = @id"
 
     <dx:ASPxGridView ID="ASPxGridViewFreeSquare" runat="server" AutoGenerateColumns="False" 
         DataSourceID="SqlDataSourceFreeSquare" KeyFieldName="id" OnRowValidating="ASPxGridViewFreeSquare_RowValidating" OnStartRowEditing="ASPxGridViewFreeSquare_StartRowEditing"
-            ClientInstanceName="grid" oninitnewrow="ASPxGridViewFreeSquare_InitNewRow">
+            ClientInstanceName="grid" oninitnewrow="ASPxGridViewFreeSquare_InitNewRow" >
             <ClientSideEvents CustomButtonClick="ShowPhoto" Init="OnInit" EndCallback="OnEndCallback" />
+        <Styles>  
+            <EditForm CssClass="editForm999" ></EditForm>  
+        </Styles>  
         <Columns>
 
             <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" ShowInCustomizationForm="True" CellStyle-Wrap="False">
@@ -1735,6 +1868,77 @@ WHERE id = @id"
                 <HeaderStyle Wrap="True" />
 				<EditFormSettings Visible="False" />
             </dx:GridViewDataTextColumn>
+
+		    <dx:GridViewDataComboBoxColumn FieldName="include_in_perelik" VisibleIndex="50" Width = "50px" Visible="True" Caption="Включено до переліку №">
+			    <HeaderStyle Wrap="True" />
+			    <PropertiesComboBox DataSourceID="SqlDataSourceIncludeInPerelik" ValueField="id" TextField="name" ValueType="System.String" />
+                <EditFormSettings ColumnSpan="1" />
+		    </dx:GridViewDataComboBoxColumn>
+
+            <dx:GridViewDataTextColumn Name="tmp1" Caption="" VisibleIndex="55" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="zal_balans_vartist" Caption="Залишкова балансова вартість" VisibleIndex="110" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="perv_balans_vartist" Caption="Первісна балансова вартість" VisibleIndex="120" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="punkt_metod_rozrahunok" Caption="Посилання на пункт Методики розрахунку орендної плати, яким встановлена орендна ставка для запропонованого цільового призначення" VisibleIndex="130" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn Name="tmp2" Caption="" VisibleIndex="135" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="prop_srok_orands" Caption="Пропонований строк оренди (у роках)" VisibleIndex="140" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn Name="tmp3" Caption="" VisibleIndex="145" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="nomer_derzh_reestr_neruh" Caption="Номер запису про право власності у Реєстрація у Державному реєстрі речових прав на нерухоме майно" VisibleIndex="150" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="reenum_derzh_reestr_neruh" Caption="Реєстраційний номер об'єкту нерухомого майна у Реєстрація у Державному реєстрі речових прав на нерухоме майно" VisibleIndex="155" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="info_priznach_nouse" Caption="Інформація про цільове призначення об’єкта оренди у випадках неможливості використання об’єкта за будь-яким цільовим призначенням, якщо об’єкт розташований у приміщеннях, які мають відповідне соціально-економічне призначення" VisibleIndex="160" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="info_rahunok_postach" Caption="Інформація про наявність окремих особових рахунків на об'єкт оренди, відкритих постачальниками комунальних послуг, або інформація про порядок участі орендаря у компенсації балансоутримувачу витрат на оплату комунальних послуг, якщо об'єкт оренди не має окремих особових рахунків, відкритих для нього відповідними постачальниками комунальних послуг" VisibleIndex="165" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+
 
         </Columns>
         <SettingsBehavior ConfirmDelete="True" />

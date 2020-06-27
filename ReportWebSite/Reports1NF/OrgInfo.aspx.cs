@@ -411,8 +411,9 @@ public partial class Reports1NF_OrgInfo : System.Web.UI.Page
 
 			string buhgalterName = GetEditText("PanelContacts", "EditBuhgalterName");
 			string buhgalterPhone = GetEditText("PanelContacts", "EditBuhgalterPhone");
+            string bankRahunok = GetEditText("PanelContacts", "EditBankRahunok");
 
-			int ownershipId = GetDropDownValue("PanelInfo", "ComboOwnership");
+            int ownershipId = GetDropDownValue("PanelInfo", "ComboOwnership");
 			int formGospId = GetDropDownValue("PanelInfo", "ComboFormGosp");
 			int industryId = GetDropDownValue("PanelInfo", "ComboIndustry");
 			int occupationId = GetDropDownValue("PanelInfo", "ComboOccupation");
@@ -441,8 +442,9 @@ public partial class Reports1NF_OrgInfo : System.Web.UI.Page
 
 			AddQueryParameter(ref fieldList, "buhgalter_fio", "bfio", buhgalterName, parameters);
 			AddQueryParameter(ref fieldList, "buhgalter_phone", "bphone", buhgalterPhone, parameters);
+            AddQueryParameter(ref fieldList, "bank_rahunok", "brahunok", bankRahunok, parameters);
 
-			AddQueryParameter(ref fieldList, "form_ownership_id", "fown", ownershipId, parameters);
+            AddQueryParameter(ref fieldList, "form_ownership_id", "fown", ownershipId, parameters);
 			AddQueryParameter(ref fieldList, "form_gosp_id", "fgosp", formGospId, parameters);
 			AddQueryParameter(ref fieldList, "industry_id", "ind", industryId, parameters);
 			AddQueryParameter(ref fieldList, "occupation_id", "occ", occupationId, parameters);
