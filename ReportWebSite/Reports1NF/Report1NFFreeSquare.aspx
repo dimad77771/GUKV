@@ -781,7 +781,7 @@ WHERE id = @id"
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A2_45" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A2_46" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
