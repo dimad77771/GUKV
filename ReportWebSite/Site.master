@@ -20,8 +20,8 @@
                 <dx:ThemeSelector ID="ThemeSelector" runat="server" />
             </div>
             <div style="float:right;color:white">
-                    <strong>Технічна підтримка <a style="color:white" href="mailto:seic@gukv.gov.ua" title="Написати лист">seic@gukv.gov.ua</a> </strong><br />
-                    (044) 202 61 00
+                    <strong>Технічна підтримка <a style="color:white" href="mailto:seic@gukv.gov.ua" title="Написати лист">seic@gukv.gov.ua</a> </strong>
+                    0931605647 – процедура прийому звітів; <br />0672605106 – реєстрація, об’єкти, договори, вільні; 0979065119 - плата за використання
             </div>
 
         </div>

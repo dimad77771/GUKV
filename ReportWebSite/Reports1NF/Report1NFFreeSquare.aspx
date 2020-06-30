@@ -174,7 +174,7 @@
 ,fs.floor
 ,fs.water
 ,fs.heating
-,fs.power
+,fs.power_text
 ,fs.gas
 
 ,(select left(qq.full_name, 150) as name from view_dict_rental_rate qq where qq.id = fs.using_possible_id) as possible_using
@@ -553,11 +553,14 @@ WHERE id = @id"
 							<dx:ASPxLabel runat="server" Text='<%# Eval("heating") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 						</EditItemTemplate>--%>
                     </dx:GridViewDataCheckColumn>
-                    <dx:GridViewDataCheckColumn FieldName="power" Caption="Електропостачання" VisibleIndex="11" Width="50px" ReadOnly="true">
-						<%--<EditItemTemplate>
-							<dx:ASPxLabel runat="server" Text='<%# Eval("power") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
-						</EditItemTemplate>--%>
-                    </dx:GridViewDataCheckColumn>
+
+                    <dx:GridViewDataTextColumn FieldName="power_text" Caption="Електропостачання" VisibleIndex="11" Width="70px" ReadOnly="true" >
+                        <HeaderStyle Wrap="True" />
+			            <EditItemTemplate>
+				            <dx:ASPxLabel runat="server" Text='<%# Eval("power_text") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			            </EditItemTemplate>
+                    </dx:GridViewDataTextColumn>
+
                     <dx:GridViewDataCheckColumn FieldName="gas" Caption="Газопостачання" VisibleIndex="12" Width="50px" ReadOnly="true">
 						<%--<EditItemTemplate>
 							<dx:ASPxLabel runat="server" Text='<%# Eval("gas") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
@@ -781,7 +784,7 @@ WHERE id = @id"
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A2_46" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A2_48" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

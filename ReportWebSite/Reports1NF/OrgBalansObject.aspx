@@ -704,7 +704,7 @@
 	  ,[using_possible_id]
       ,[water]
 	  ,[heating]
-      ,[power]
+      ,[power_text]
       ,[gas]
       ,[note]
       ,[modify_date]
@@ -739,7 +739,7 @@
 	  ,[using_possible_id]
       ,[water]
       ,[heating]
-      ,[power]
+      ,[power_text]
       ,[gas]
       ,[note]
       ,[modify_date]
@@ -772,7 +772,7 @@
 	  ,@using_possible_id
       ,@water
       ,@heating
-      ,@power
+      ,@power_text
       ,@gas
       ,@note
       ,@modify_date
@@ -807,7 +807,7 @@ SET
 	[using_possible_id] = @using_possible_id,  
     [water] = @water,
     [heating] = @heating,
-    [power] = @power,
+    [power_text] = @power_text,
     [gas] = @gas,
     [note] = @note,
     [modify_date] = @modify_date,
@@ -849,7 +849,7 @@ WHERE id = @id"
 		<asp:Parameter Name="using_possible_id" />
         <asp:Parameter Name="water" />
         <asp:Parameter Name="heating" />
-        <asp:Parameter Name="power" />
+        <asp:Parameter Name="power_text" />
         <asp:Parameter Name="gas" />
         <asp:Parameter Name="note" />
         <asp:Parameter Name="modify_date" />
@@ -882,7 +882,7 @@ WHERE id = @id"
 		<asp:Parameter Name="using_possible_id" />
         <asp:Parameter Name="water" />
         <asp:Parameter Name="heating" />
-        <asp:Parameter Name="power" />
+        <asp:Parameter Name="power_text" />
         <asp:Parameter Name="gas" />
         <asp:Parameter Name="note" />
         <asp:Parameter Name="modify_date" />
@@ -1784,10 +1784,15 @@ WHERE id = @id"
 						<EditFormSettings Caption="Теплопостачання" />
                     </dx:GridViewDataCheckColumn>
 
-                    <dx:GridViewDataCheckColumn FieldName="power" Caption="Електро-постача-ння" VisibleIndex="9">
+<%--                    <dx:GridViewDataCheckColumn FieldName="power" Caption="Електро-постача-ння" VisibleIndex="9">
 						<EditFormSettings Caption="Електропостачання" />
                         <HeaderStyle Wrap="True" />
-                    </dx:GridViewDataCheckColumn>
+                    </dx:GridViewDataCheckColumn>--%>
+
+                    <dx:GridViewDataTextColumn FieldName="power_text" Caption="Електро-постача-ння" Width="120px" VisibleIndex="9">
+                        <EditFormSettings Caption="Електропостачання (кВт)" />
+                        <HeaderStyle Wrap="True" />
+                    </dx:GridViewDataTextColumn>
 
                     <dx:GridViewDataCheckColumn FieldName="gas" Caption="Газо-постача-ння" VisibleIndex="10">
 						<EditFormSettings Caption="Газопостачання" />

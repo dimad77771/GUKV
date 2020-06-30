@@ -19,11 +19,35 @@
             <div style="float: right; padding-top: 2px;">
                 <dx:ThemeSelector ID="ThemeSelector" runat="server" />
             </div>
-            <div style="float:right;color:white">
-                    <strong>Технічна підтримка <a style="color:white" href="mailto:seic@gukv.gov.ua" title="Написати лист">seic@gukv.gov.ua</a> </strong><br />
-                    (044) 202 61 00
-            </div>
 
+            <script type="text/javascript">
+				document.addEventListener("DOMContentLoaded", function (event) {
+					MainHelperPanelInt();
+				});
+				function MainHelperPanelInt() {
+					$(PhoneText_1.mainElement).on('click', OnMainHelperPanelClick);
+					$(PhoneText_2.mainElement).on('click', OnMainHelperPanelClick);
+					$(PhoneText_3.mainElement).on('click', OnMainHelperPanelClick);
+				}
+				function OnMainHelperPanelClick() {
+					MainHelperPanel.PerformCallback(this.id);
+				}
+			</script>
+            <dx:ASPxCallbackPanel ID="MainHelperPanel" runat="server" 
+                    ClientInstanceName="MainHelperPanel" OnCallback="MainHelperPanel_Callback" >
+                    <ClientSideEvents EndCallback="MainHelperPanelInt" />
+                    <PanelCollection>
+                        <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
+                            <div style="float:right;color:white">
+                                <strong>Технічна підтримка <a style="color:white" href="mailto:seic@gukv.gov.ua" title="Написати лист">seic@gukv.gov.ua</a> </strong>
+                                <dx:ASPxLabel Text="0931605647" runat="server" ID="PhoneText_1" ClientInstanceName="PhoneText_1" /> – процедура прийому звітів; 
+                                <br />
+                                <dx:ASPxLabel Text="0672605106" runat="server" ID="PhoneText_2" ClientInstanceName="PhoneText_2" /> – реєстрація, об’єкти, договори, вільні; 
+                                <dx:ASPxLabel Text="0979065119" runat="server" ID="PhoneText_3" ClientInstanceName="PhoneText_3" /> - плата за використання
+                            </div>
+                    </dx:PanelContent>
+                </PanelCollection>
+            </dx:ASPxCallbackPanel>
 
         </div>
         <div class="main">

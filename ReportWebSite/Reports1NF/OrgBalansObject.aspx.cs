@@ -1114,8 +1114,8 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
         if (e.Command.Parameters["@heating"].Value == null)
             e.Command.Parameters["@heating"].Value = 0;
 
-        if (e.Command.Parameters["@power"].Value == null)
-            e.Command.Parameters["@power"].Value = 0;
+        //if (e.Command.Parameters["@power"].Value == null)
+            //e.Command.Parameters["@power"].Value = 0;
 
         if (e.Command.Parameters["@gas"].Value == null)
             e.Command.Parameters["@gas"].Value = 0;
