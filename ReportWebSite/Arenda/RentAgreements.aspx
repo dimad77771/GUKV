@@ -511,7 +511,7 @@
         <dx:GridViewDataTextColumn FieldName="last_year_saldo" ReadOnly="True"
             VisibleIndex="82" Visible="True" Caption="Сальдо (переплата) на початок року (незмінна впродовж року величина), грн. (без ПДВ)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="avance_plat" ReadOnly="True"
-            VisibleIndex="82" Visible="True" Caption="Переплата орендної плати всього, грн. (без ПДВ)"></dx:GridViewDataTextColumn>
+            VisibleIndex="82" Visible="True" Caption="Авансова орендна плата, грн."></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="payment_received" ReadOnly="True"
             VisibleIndex="83" Visible="True" Caption="Надходження орендної плати за звітний період, всього, грн. (без ПДВ)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="payment_nar_zvit" ReadOnly="True"
@@ -634,7 +634,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_11" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_12" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
