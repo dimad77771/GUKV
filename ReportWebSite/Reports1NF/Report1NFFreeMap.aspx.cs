@@ -224,8 +224,8 @@ SELECT
 	(COALESCE(LTRIM(RTRIM(b.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer2)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer3)), '')) as addr_nomer,
 	b.sqr_for_rent,
 
-	(select qq.name2 from view_dict_rental_rate qq where qq.id = fs.using_possible_id) as possible_using,
-	--fs.possible_using,
+	--(select qq.name2 from view_dict_rental_rate qq where qq.id = fs.using_possible_id) as possible_using,
+	fs.possible_using,
 
 	fs.total_free_sqr,
 	fs.free_sqr_korysna as free_sql_usefull,

@@ -124,7 +124,7 @@
                 );
             EditCollectionDebt3Years.SetValue(vv3);
 
-			var vv4 = round(nn(edit_debtkvart_12.GetValue()) + nn(edit_debtkvart_13.GetValue()));
+			var vv4 = round(nn(edit_debtkvart_13.GetValue()));
 			EditCollectionDebtOver3Years.SetValue(vv4);
 
 			var sval = round(vv1 + vv2 + vv3 + vv4);
@@ -144,6 +144,14 @@
         function nn(arg) {
             if (arg == null) return 0;
             return arg;
+        }
+
+		function getPaymentNarah() {
+            var v1 = clEditPaymentNarah_orndpymnt.GetValue();
+			var v2 = edit_znyato_nadmirno_narah.GetValue();
+            if (v1 == null) v1 = 0;
+            if (v2 == null) v2 = 0;
+            return v1 - v2;
 		}
 
         function CalcCollectionDebtZvit() {
@@ -157,7 +165,7 @@
 			edit_debtkvart_0.SetEnabled(!use_calc_debt);
 
 			if (use_calc_debt) {
-                var v1 = clEditPaymentNarah_orndpymnt.GetValue();   //"Нараховано орендної плати за звітний період, грн. (без ПДВ)"
+				var v1 = getPaymentNarah();                         //"Нараховано орендної плати за звітний період, грн. (без ПДВ)"
                 var v2 = Zvit_orndpymnt.GetValue();                 //"Надходження орендної плати з нарахованої за звітний період"
                 var v3 = clEditPaymentSaldo_orndpymnt.GetValue();   //"Сальдо (переплата) на початок року (незмінна впродовж року величина), грн. (без ПДВ)"
 				var v4 = edit_debtkvart_1.GetValue();               //"2020, 1кв.:"
@@ -193,11 +201,11 @@
 
 
 		function CalcEditReturnOrendPayed() {
-			var v1 = clEditPaymentNarah_orndpymnt.GetValue();   //"Нараховано орендної плати за звітний період, грн. (без ПДВ)"
+			var v1 = getPaymentNarah();                         //"Нараховано орендної плати за звітний період, грн. (без ПДВ)"
 			var v2 = clEditPaymentSaldo_orndpymnt.GetValue();   //"Сальдо (переплата) на початок року (незмінна впродовж року величина), грн. (без ПДВ)"	
 			var v3 = Received_orndpymnt.GetValue();             //"Надходження орендної плати за звітний період"	
             var v4 = EditCollectionDebtTotal.GetValue();        //"Загальна заборгованість по орендній платі"
-			var v5 = edit_return_all_orend_payed.GetValue();    //"Повернення переплати орендної плати всього за звітний період, грн. (без ПДВ)"
+			var v5 = clEditPaymentOldDebtsPayed_orndpymnt.GetValue();    //"Погашення заборгованості минулих періодів, грн."
 			if (v1 == null) v1 = 0;
 			if (v2 == null) v2 = 0;
             if (v3 == null) v3 = 0;
@@ -425,16 +433,13 @@
         }
         
         function ComboPaymentTypeValidate() {
-            //ctl00_MainContent_CPMainPanel_CardPageControl_OrganizationsForm_PanelAgreement_ComboPaymentType_I
             if ((document.getElementById('<%=OrganizationsForm.ClientID %>' + '_PanelAgreement_ComboPaymentType_I').value.toLowerCase() == "грошова оплата" || (document.getElementById('<%=OrganizationsForm.ClientID %>' + '_PanelAgreement_ComboPaymentType_I').value.toLowerCase() == "погодинно") &&
                 document.getElementById('<%=OrganizationsForm.ClientID %>' + '_PanelAgreement_RadioAgreementActive_S').value == "C")) {
 
-                var EditPaymentNarah = document.getElementById('<%=PaymentForm.ClientID %>' + '_PanelRentPaymentDocuments_CPRentPayment_EditPaymentNarah_orndpymnt_I').value; //ctl00_MainContent_CPMainPanel_CardPageControl_PaymentForm_PanelRentPaymentDocuments_CPRentPayment_EditPaymentNarah_orndpymnt
+				var EditPaymentNarah = getPaymentNarah();
                 var EditPaymentNarZvit = document.getElementById('<%=PaymentForm.ClientID %>' + '_PanelRentPaymentDocuments_CPRentPayment_EditPaymentNarZvit_orndpymnt_I').value;
-                //                if (EditPaymentNarah < EditPaymentNarZvit) {
-                console.log(111);
-                if (parseFloat(EditPaymentNarah.replace(",", ".")) <  parseFloat(EditPaymentNarZvit.replace(",", ".")) ) {
-
+				console.log("EditPaymentNarah(1)=", EditPaymentNarah);
+				if (EditPaymentNarah <  parseFloat(EditPaymentNarZvit.replace(",", ".")) ) {
                     document.getElementById('valError').style.display = '';
                     document.getElementById('valError').innerHTML = "По договору, що має статус «Договір діє» та “Вид оплати”-«ГРОШОВА ОПЛАТА», «ПОГОДИННО», значення поля «Нараховано орендної плати за звітний період, грн. (без ПДВ)» повинно бути більше, або дорівнювати значенню поля «у тому числі, з нарахованої за звітний період (без боргів та переплат)»";
                     return false;
@@ -457,19 +462,22 @@
                 var EditCollectionDebtZvit = document.getElementById('<%=CollectionForm.ClientID %>' + '_PanelCollection_EditCollectionDebtZvit_I').value; //- за звітний період 
                 var EditPaymentNarZvit = document.getElementById('<%=PaymentForm.ClientID %>' + '_PanelRentPaymentDocuments_CPRentPayment_EditPaymentNarZvit_orndpymnt_I').value;
                 var EditPaymentSaldo = document.getElementById('<%=PaymentForm.ClientID %>' + '_PanelRentPaymentDocuments_CPRentPayment_EditPaymentSaldo_orndpymnt_I').value; //Сальдо на початок року 
-                var EditPaymentNarah = document.getElementById('<%=PaymentForm.ClientID %>' + '_PanelRentPaymentDocuments_CPRentPayment_EditPaymentNarah_orndpymnt_I').value; //Нараховано орендної плати за звітний період, грн. (без ПДВ)
+				var EditPaymentNarah = getPaymentNarah();
+				console.log("EditPaymentNarah(2)=", EditPaymentNarah);
 
                 if (EditCollectionDebtZvit == "") EditCollectionDebtZvit = "0";
                 if (EditPaymentNarZvit == "") EditPaymentNarZvit = "0";
-                if (EditPaymentNarah == "") EditPaymentNarah = "0";
+                //if (EditPaymentNarah == "") EditPaymentNarah = "0";
                 if (EditPaymentSaldo == "") EditPaymentSaldo = "0";
 
                 var paymentOldDebtsPayed_orndpymnt = clEditPaymentOldDebtsPayed_orndpymnt.GetValue();
                 if (paymentOldDebtsPayed_orndpymnt == null) paymentOldDebtsPayed_orndpymnt = 0;
 
-                if (EditPaymentNarah == "" && EditCollectionDebtZvit != "" && EditPaymentNarZvit != "" && EditPaymentSaldo != "")
-                    EditPaymentNarah = "0";
-				if (parseFloat(EditPaymentNarah.replace(",", ".")) > Math.round(parseFloat(parseFloat(EditCollectionDebtZvit.replace(",", ".")) + parseFloat(EditPaymentNarZvit.replace(",", ".")) + parseFloat(EditPaymentSaldo.replace(",", ".")) + paymentOldDebtsPayed_orndpymnt) * 1000) / 1000) {
+                //if (EditPaymentNarah == "" && EditCollectionDebtZvit != "" && EditPaymentNarZvit != "" && EditPaymentSaldo != "")
+                //    EditPaymentNarah = "0";
+				console.log( 11, EditPaymentNarah );
+				console.log( 31, Math.round(parseFloat(parseFloat(EditCollectionDebtZvit.replace(",", ".")) + parseFloat(EditPaymentNarZvit.replace(",", ".")) + parseFloat(EditPaymentSaldo.replace(",", ".")) + paymentOldDebtsPayed_orndpymnt) * 1000) / 1000 );
+				if (EditPaymentNarah > Math.round(parseFloat(parseFloat(EditCollectionDebtZvit.replace(",", ".")) + parseFloat(EditPaymentNarZvit.replace(",", ".")) + parseFloat(EditPaymentSaldo.replace(",", ".")) + paymentOldDebtsPayed_orndpymnt) * 1000) / 1000) {
                     document.getElementById('valError').style.display = '';
 //                    document.getElementById('valError').innerHTML = "По договору, що має статус «Договір діє» та «Вид оплати»-«ГРОШОВА ОПЛАТА», значення поля «Нараховано орендної плати за звітний період, грн. (без ПДВ)» повинно дорівнювати сумі значень полів «у тому числі, з нарахованої за звітний період (без боргів та переплат)» та «Заборгованість по орендній платі, грн. - (без ПДВ): - за звітний період» та «Сальдо на початок року (незмінна впродовж року величина)».";
 					document.getElementById('valError').innerHTML = "По договору, що має статус «Договір діє» та «Вид оплати»-«ГРОШОВА ОПЛАТА», «ПОГОДИННО», значення поля «Нараховано орендної плати за звітний період, грн. (без ПДВ)» не повинно перевищувати суму значень полів «у тому числі, з нарахованої за звітний період (без боргів та переплат)» та «Заборгованість по орендній платі, грн. - (без ПДВ): - за звітний період», «Погашення заборгованості минулих періодів, грн.» та «Сальдо на початок року (незмінна впродовж року величина)».";
@@ -478,6 +486,7 @@
             }
             return true;
         }
+
 
         function CheckRadioAgreementActiveValidate() {
             if (document.getElementById('<%=OrganizationsForm.ClientID %>' + '_PanelAgreement_RadioAgreementActive_S').value == "C" && 
@@ -525,7 +534,7 @@
                             if (radioAgreementToxic == true) {
                                 var editCollectionDebtTotal = EditCollectionDebtTotal.GetValue();
                                 if (editCollectionDebtTotal == 0 || editCollectionDebtTotal == null) {
-                                    var v1 = clEditPaymentNarah_orndpymnt.GetValue();
+									var v1 = getPaymentNarah();
 									var v2 = clEditPaymentSaldo_orndpymnt.GetValue();
 									var v3 = Received_orndpymnt.GetValue();
 									var v4 = Zvit_orndpymnt.GetValue();
@@ -548,7 +557,7 @@
 
         function CheckZaborgMensheNadzhodg() {
             var v1 = Received_orndpymnt.GetValue();
-            var v2 = clEditPaymentNarah_orndpymnt.GetValue();
+			var v2 = getPaymentNarah();
             var v3 = EditCollectionDebtZvit.GetValue();
             if (v1 == null) v1 = 0;
             if (v2 == null) v2 = 0;
@@ -594,7 +603,7 @@
 
 			var v1 = Received_orndpymnt.GetValue();
             var v2 = EditCollectionDebtZvit.GetValue();
-            var v3 = clEditPaymentNarah_orndpymnt.GetValue();
+			var v3 = getPaymentNarah();
 			var v4 = clEditPaymentSaldo_orndpymnt.GetValue();
             if (v1 == null) v1 = 0;
             if (v2 == null) v2 = 0;
@@ -1979,6 +1988,15 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                             </dx:ASPxSpinEdit></td>
                                                     </tr>
                                                     <tr>
+                                                        <td><dx:ASPxLabel ID="ASPxLabel66" runat="server" Text="- у тому числі, знято надмірно нарахованої за звітний період"></dx:ASPxLabel></td>
+                                                        <td><dx:ASPxSpinEdit ID="edit_znyato_nadmirno_narah" ClientInstanceName="edit_znyato_nadmirno_narah" runat="server" NumberType="Float" Value='<%# Eval("znyato_nadmirno_narah") %>' Width="150px"
+                                                            Title="- у тому числі, знято надмірно нарахованої за звітний період">
+                                                            <ClientSideEvents 
+                                                                LostFocus="CalcCollectionDebtZvit" />                                                            
+                                                            </dx:ASPxSpinEdit>
+                                                            </td>
+                                                    </tr>
+                                                    <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel28" runat="server" Text="Сальдо (переплата) на початок року (незмінна впродовж року величина), грн. (без ПДВ)"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="EditPaymentSaldo_orndpymnt" ClientInstanceName="clEditPaymentSaldo_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("last_year_saldo") %>' Width="150px"
                                                             Title="Сальдо (переплата) на початок року (незмінна впродовж року величина), грн. (без ПДВ)">
@@ -2198,7 +2216,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                         </tr>
                                                         <tr>
                                                             <td colspan="4"><dx:ASPxLabel ID="ASPxLabel30" runat="server" Text="Заборгованість з орендної плати (із загальної заборгованості), розмір якої встановлено в межах витрат на утримання, грн. (без ПДВ)"></dx:ASPxLabel></td>
-                                                            <td><dx:ASPxSpinEdit ID="EditCollectionDebtVMezhahVitrat" ClientInstanceName="EditCollectionDebtVMezhahVitrat" runat="server" NumberType="Float" Value='<%# Eval("debt_v_mezhah_vitrat") %>' Width="100px" ReadOnly = "true"
+                                                            <td><dx:ASPxSpinEdit ID="EditCollectionDebtVMezhahVitrat" ClientInstanceName="EditCollectionDebtVMezhahVitrat" runat="server" NumberType="Float" Value='<%# Eval("debt_v_mezhah_vitrat") %>' Width="100px" 
                                                                 Title="Заборгованість з орендної плати, розмір якої встановлено в межах витрат на утримання">
                                                                 <ClientSideEvents LostFocus="CalcDebt" />
                                                             </dx:ASPxSpinEdit></td>
@@ -2361,13 +2379,6 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                             <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_11" runat="server" Text="2017, 3кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_11" ClientInstanceName="edit_debtkvart_11" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_11") %>' Width="100px" Title="2017, 3кв.">
-                                                                    <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
-                                                               </dx:ASPxSpinEdit>
-                                                            </td>
-                                                        </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_12" runat="server" Text="2017, 2кв.:"></dx:ASPxLabel></td>
-                                                            <td>
-                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_12" ClientInstanceName="edit_debtkvart_12" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_12") %>' Width="100px" Title="2017, 2кв.">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>

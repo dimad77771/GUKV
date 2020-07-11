@@ -1232,15 +1232,15 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
                 e.Errors[dataColumn] = "Заповніть місце розташування вільного приміщення (поверх)";
             }
 
-            //if (fieldName == "possible_using" && e.NewValues[dataColumn.FieldName] == null)
-            //{
-            //    e.Errors[dataColumn] = "Заповніть можливе використання вільного приміщення";
-            //}
+            if (fieldName == "possible_using" && e.NewValues[dataColumn.FieldName] == null)
+            {
+                e.Errors[dataColumn] = "Заповніть можливе використання вільного приміщення";
+            }
 
-			if (fieldName == "using_possible_id" && e.NewValues[dataColumn.FieldName] == null)
-			{
-				e.Errors[dataColumn] = "Заповніть можливе використання вільного приміщення";
-			}
+			//if (fieldName == "using_possible_id" && e.NewValues[dataColumn.FieldName] == null)
+			//{
+			//	e.Errors[dataColumn] = "Заповніть можливе використання вільного приміщення";
+			//}
 		}
 
 		if (e.Errors.Count > 0) 

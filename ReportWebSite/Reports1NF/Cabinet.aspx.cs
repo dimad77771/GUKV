@@ -886,6 +886,8 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
             properties.Add("{PAY_PEREPLATA}", "");
             properties.Add("{PAY_RECV_ZVIT}", "");
             properties.Add("{PAY_RECV_NARAH}", "");
+            properties.Add("{PAY_RET_OREND}", "");
+            properties.Add("{PAY_RET_AOREND}", "");
             properties.Add("{PAY_LAST_PER}", "");            
             properties.Add("{PAY_DEBT_TOTAL}", "");
             properties.Add("{PAY_DEBT_ZVIT}", "");

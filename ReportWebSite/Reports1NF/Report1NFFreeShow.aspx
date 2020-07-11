@@ -108,8 +108,8 @@
 ,fs.power
 ,fs.gas
 
-,(select qq.name2 from view_dict_rental_rate qq where qq.id = fs.using_possible_id) as possible_using
---,fs.possible_using
+--,(select qq.name2 from view_dict_rental_rate qq where qq.id = fs.using_possible_id) as possible_using
+,fs.possible_using
 
 ,fs.modify_date
 ,fs.note

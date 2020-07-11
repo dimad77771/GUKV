@@ -177,8 +177,8 @@
 ,fs.power_text
 ,fs.gas
 
-,(select left(qq.full_name, 150) as name from view_dict_rental_rate qq where qq.id = fs.using_possible_id) as possible_using
---,fs.possible_using
+--,(select left(qq.full_name, 150) as name from view_dict_rental_rate qq where qq.id = fs.using_possible_id) as possible_using
+,fs.possible_using
 
 
 ,fs.modify_date
@@ -582,17 +582,16 @@ WHERE id = @id"
 					</EditItemTemplate>
                 </dx:GridViewDataTextColumn>
 
-<%--                
 				<dx:GridViewDataTextColumn FieldName="possible_using" Caption="Можливе використання вільного приміщення" VisibleIndex="15" Width="300px">
 					<EditItemTemplate>
 						<dx:ASPxLabel runat="server" Text='<%# Eval("possible_using") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 					</EditItemTemplate>
                 </dx:GridViewDataTextColumn>
---%>
-				<dx:GridViewDataComboBoxColumn FieldName="using_possible_id" VisibleIndex="15" Width = "320px" Visible="True" Caption="Можливе використання вільного приміщення">
+
+<%--				<dx:GridViewDataComboBoxColumn FieldName="using_possible_id" VisibleIndex="15" Width = "320px" Visible="True" Caption="Можливе використання вільного приміщення">
 					<HeaderStyle Wrap="True" />
 					<PropertiesComboBox DataSourceID="SqlDataSourceUsingPossible" ValueField="id" TextField="name" ValueType="System.Int32" />
-				</dx:GridViewDataComboBoxColumn>
+				</dx:GridViewDataComboBoxColumn>--%>
 
             </Columns>
          </dx:GridViewBandColumn>
@@ -784,7 +783,7 @@ WHERE id = @id"
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A2_48" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A2_50" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

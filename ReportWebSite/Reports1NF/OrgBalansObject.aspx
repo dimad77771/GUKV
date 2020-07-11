@@ -1820,9 +1820,13 @@ WHERE id = @id"
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>--%>
 
-            <dx:GridViewDataComboBoxColumn FieldName="using_possible_id" VisibleIndex="16" Width = "320px" Visible="True" Caption="Можливе використання вільного приміщення">
+<%--            <dx:GridViewDataComboBoxColumn FieldName="using_possible_id" VisibleIndex="16" Width = "320px" Visible="True" Caption="Можливе використання вільного приміщення">
 				<HeaderStyle Wrap="True" />
                 <PropertiesComboBox DataSourceID="SqlDataSourceUsingPossible" ValueField="id" TextField="name" ValueType="System.Int32" />
+            </dx:GridViewDataComboBoxColumn>--%>
+            <dx:GridViewDataComboBoxColumn FieldName="possible_using" VisibleIndex="16" Width = "320px" Visible="True" Caption="Можливе використання вільного приміщення" >
+				<HeaderStyle Wrap="True" />
+                <PropertiesComboBox DataSourceID="SqlDataSourceUsingPossible" DropDownStyle="DropDown" AllowMouseWheel="true" ValueField="name" TextField="name" ValueType="System.String" EnableSynchronization="False" />
             </dx:GridViewDataComboBoxColumn>
 
 
