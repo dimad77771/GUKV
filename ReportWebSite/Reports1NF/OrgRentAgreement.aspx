@@ -35,11 +35,14 @@
 
         var IsReadOnlyForm = <%=IsReadOnlyForm.ToString().ToLower() %>;
         console.log("IsReadOnlyForm", IsReadOnlyForm);
-       
 
+        var avance_plat_0 = 0;
         function ready(event) {
             HidePnl();
-            setTimeout(CalcCollectionDebtZvit, 100);
+            setTimeout(function () {
+				avance_plat_0 = round(nn(edit_avance_plat.GetValue()));
+                CalcCollectionDebtZvit();
+            }, 100);
             if (IsReadOnlyForm) {
                 clientBtnAddPaymentDocument.SetEnabled(false);
             }
@@ -196,9 +199,22 @@
                 CalcEditReturnOrendPayed();
             } else {
 				CalcDebt();
-			}
+            }
+
+            Calc_tr_alert_edit_avance_plat();
         }
 
+        function Calc_tr_alert_edit_avance_plat() {
+            var avance_plat_now = round(nn(edit_avance_plat.GetValue()));
+			console.log("avance_plat_0", avance_plat_0);
+            console.log("avance_plat_now", avance_plat_now);
+            if (avance_plat_now > 0 && avance_plat_0 == 0) {
+                console.log($("#tr_alert_edit_avance_plat"));
+				$("#tr_alert_edit_avance_plat").show();
+            } else {
+				$("#tr_alert_edit_avance_plat").hide();
+			}
+		}
 
 		function CalcEditReturnOrendPayed() {
 			var v1 = getPaymentNarah();                         //"Нараховано орендної плати за звітний період, грн. (без ПДВ)"
@@ -369,6 +385,14 @@
             HideValidator();
         }
 
+        function useValidationRules() {
+            var val_znyato_nadmirno_narah = nn(edit_znyato_nadmirno_narah.GetValue());
+			if (val_znyato_nadmirno_narah > 0) {
+                return false;
+            }
+            return true;
+		}
+
         function ReportingPeriodCombovalidate() {
             if (IsReadOnlyForm) {
                 return true;
@@ -385,9 +409,11 @@
 
                 var rbt1 = document.getElementById('<%=OrganizationsForm.ClientID %>' + '_PanelAgreement_RadioAgreementActive_S');//ctl00_MainContent_CPMainPanel_CardPageControl_OrganizationsForm_PanelAgreement
             if ((rbt1.value == "C") && (document.getElementById('<%=OrganizationsForm.ClientID %>' + '_PanelAgreement_ComboPaymentType_I').value.toLowerCase() == "грошова оплата" || document.getElementById('<%=OrganizationsForm.ClientID %>' + '_PanelAgreement_ComboPaymentType_I').value.toLowerCase() == "погодинно") && error == true) {
+                if (useValidationRules()) {
                     document.getElementById('valError').style.display = '';
                     document.getElementById('valError').innerHTML = "По договору, що має статус «Договір діє» та “Вид оплати”-«ГРОШОВА ОПЛАТА», «ПОГОДИННО», повинен бути встановлений діючий Звітний період";
                     return false;
+                }
             }
 
 
@@ -439,10 +465,12 @@
 				var EditPaymentNarah = getPaymentNarah();
                 var EditPaymentNarZvit = document.getElementById('<%=PaymentForm.ClientID %>' + '_PanelRentPaymentDocuments_CPRentPayment_EditPaymentNarZvit_orndpymnt_I').value;
 				console.log("EditPaymentNarah(1)=", EditPaymentNarah);
-				if (EditPaymentNarah <  parseFloat(EditPaymentNarZvit.replace(",", ".")) ) {
-                    document.getElementById('valError').style.display = '';
-                    document.getElementById('valError').innerHTML = "По договору, що має статус «Договір діє» та “Вид оплати”-«ГРОШОВА ОПЛАТА», «ПОГОДИННО», значення поля «Нараховано орендної плати за звітний період, грн. (без ПДВ)» повинно бути більше, або дорівнювати значенню поля «у тому числі, з нарахованої за звітний період (без боргів та переплат)»";
-                    return false;
+                if (EditPaymentNarah < parseFloat(EditPaymentNarZvit.replace(",", "."))) {
+                    if (useValidationRules()) {
+                        document.getElementById('valError').style.display = '';
+                        document.getElementById('valError').innerHTML = "По договору, що має статус «Договір діє» та “Вид оплати”-«ГРОШОВА ОПЛАТА», «ПОГОДИННО», значення поля «Нараховано орендної плати за звітний період, грн. (без ПДВ)» повинно бути більше, або дорівнювати значенню поля «у тому числі, з нарахованої за звітний період (без боргів та переплат)»";
+                        return false;
+                    }
                 }
                 
             }
@@ -477,11 +505,12 @@
                 //    EditPaymentNarah = "0";
 				console.log( 11, EditPaymentNarah );
 				console.log( 31, Math.round(parseFloat(parseFloat(EditCollectionDebtZvit.replace(",", ".")) + parseFloat(EditPaymentNarZvit.replace(",", ".")) + parseFloat(EditPaymentSaldo.replace(",", ".")) + paymentOldDebtsPayed_orndpymnt) * 1000) / 1000 );
-				if (EditPaymentNarah > Math.round(parseFloat(parseFloat(EditCollectionDebtZvit.replace(",", ".")) + parseFloat(EditPaymentNarZvit.replace(",", ".")) + parseFloat(EditPaymentSaldo.replace(",", ".")) + paymentOldDebtsPayed_orndpymnt) * 1000) / 1000) {
-                    document.getElementById('valError').style.display = '';
-//                    document.getElementById('valError').innerHTML = "По договору, що має статус «Договір діє» та «Вид оплати»-«ГРОШОВА ОПЛАТА», значення поля «Нараховано орендної плати за звітний період, грн. (без ПДВ)» повинно дорівнювати сумі значень полів «у тому числі, з нарахованої за звітний період (без боргів та переплат)» та «Заборгованість по орендній платі, грн. - (без ПДВ): - за звітний період» та «Сальдо на початок року (незмінна впродовж року величина)».";
-					document.getElementById('valError').innerHTML = "По договору, що має статус «Договір діє» та «Вид оплати»-«ГРОШОВА ОПЛАТА», «ПОГОДИННО», значення поля «Нараховано орендної плати за звітний період, грн. (без ПДВ)» не повинно перевищувати суму значень полів «у тому числі, з нарахованої за звітний період (без боргів та переплат)» та «Заборгованість по орендній платі, грн. - (без ПДВ): - за звітний період», «Погашення заборгованості минулих періодів, грн.» та «Сальдо на початок року (незмінна впродовж року величина)».";
-                    return false;
+                if (EditPaymentNarah > Math.round(parseFloat(parseFloat(EditCollectionDebtZvit.replace(",", ".")) + parseFloat(EditPaymentNarZvit.replace(",", ".")) + parseFloat(EditPaymentSaldo.replace(",", ".")) + paymentOldDebtsPayed_orndpymnt) * 1000) / 1000) {
+                    if (useValidationRules()) {
+                        document.getElementById('valError').style.display = '';
+                        document.getElementById('valError').innerHTML = "По договору, що має статус «Договір діє» та «Вид оплати»-«ГРОШОВА ОПЛАТА», «ПОГОДИННО», значення поля «Нараховано орендної плати за звітний період, грн. (без ПДВ)» не повинно перевищувати суму значень полів «у тому числі, з нарахованої за звітний період (без боргів та переплат)» та «Заборгованість по орендній платі, грн. - (без ПДВ): - за звітний період», «Погашення заборгованості минулих періодів, грн.» та «Сальдо на початок року (незмінна впродовж року величина)».";
+                        return false;
+                    }
                 }
             }
             return true;
@@ -491,15 +520,19 @@
         function CheckRadioAgreementActiveValidate() {
             if (document.getElementById('<%=OrganizationsForm.ClientID %>' + '_PanelAgreement_RadioAgreementActive_S').value == "C" && 
                 document.getElementById('<%=OrganizationsForm.ClientID %>' + '_PanelAgreement_EditActualFinishDate_I').value != "") {
-                document.getElementById('valError').style.display = '';
-                document.getElementById('valError').innerHTML = "По договору, що має статус «Договір діє» значення поля «Фактична дата закінчення договору» повинно бути порожнім";
+                if (useValidationRules()) {
+                    document.getElementById('valError').style.display = '';
+                    document.getElementById('valError').innerHTML = "По договору, що має статус «Договір діє» значення поля «Фактична дата закінчення договору» повинно бути порожнім";
                     return false;
+                }
              }
             if ((document.getElementById('<%=OrganizationsForm.ClientID %>' + '_PanelAgreement_RadioAgreementToxic_S').value == "C" || (document.getElementById('<%=OrganizationsForm.ClientID %>' + '_PanelAgreement_RadioAgreementContinuedByAnother_S').value == "C"))&&
-               document.getElementById('<%=OrganizationsForm.ClientID %>' + '_PanelAgreement_EditActualFinishDate_I').value == "") {
-                document.getElementById('valError').style.display = '';
-               document.getElementById('valError').innerHTML = "По договору, що має статус «Договір закінчився» значення поля «Фактична дата закінчення договору» не повинно бути порожнім";
-                 return false;
+                document.getElementById('<%=OrganizationsForm.ClientID %>' + '_PanelAgreement_EditActualFinishDate_I').value == "") {
+                    if (useValidationRules()) {
+                        document.getElementById('valError').style.display = '';
+                        document.getElementById('valError').innerHTML = "По договору, що має статус «Договір закінчився» значення поля «Фактична дата закінчення договору» не повинно бути порожнім";
+                        return false;
+                    }
              }
             return true;
         }
@@ -510,9 +543,11 @@
 
             if (document.getElementById('<%=OrganizationsForm.ClientID %>' + '_PanelAgreement_RadioAgreementActive_S').value == "C" &&
                 parseFloat(square.replace(",", ".")) == 0) {
-                 document.getElementById('valError').style.display = '';
-                 document.getElementById('valError').innerHTML = "По договору, що має статус «Договір діє» значення поля «Площа що використовується всього, кв. м» не повинно дорівнювати 0 ";
-                 return false;
+                if (useValidationRules()) {
+                    document.getElementById('valError').style.display = '';
+                    document.getElementById('valError').innerHTML = "По договору, що має статус «Договір діє» значення поля «Площа що використовується всього, кв. м» не повинно дорівнювати 0 ";
+                    return false;
+                }
             }
             return true;
         }
@@ -540,10 +575,12 @@
 									var v4 = Zvit_orndpymnt.GetValue();
                                     var v5 = clEditPaymentOldDebtsPayed_orndpymnt.GetValue();
                                     //if (v1 > 0 || v2 > 0 || v3 > 0 || v4 > 0 || v5 > 0) {
-									if (v1 > 0 || v3 > 0 || v4 > 0 || v5 > 0) {
-										document.getElementById('valError').style.display = '';
-										document.getElementById('valError').innerHTML = 'Надходження по цьому договору за звітний період НЕ можливі. Потрібно очистить поля блока "Надходження орендної плати" закладки "Плата за використання"';
-										return false;
+                                    if (v1 > 0 || v3 > 0 || v4 > 0 || v5 > 0) {
+                                        if (useValidationRules()) {
+                                            document.getElementById('valError').style.display = '';
+                                            document.getElementById('valError').innerHTML = 'Надходження по цьому договору за звітний період НЕ можливі. Потрібно очистить поля блока "Надходження орендної плати" закладки "Плата за використання"';
+                                            return false;
+                                        }
 									}
 								}
 							}
@@ -563,9 +600,11 @@
             if (v2 == null) v2 = 0;
             if (v3 == null) v3 = 0;
             if (v3 > v2) {
-			   document.getElementById('valError').style.display = '';
-               document.getElementById('valError').innerHTML = 'Значення показника  "Заборгованість по орендній платі, грн. (без ПДВ): - за звітний період",  перевищує  значення показника: "Нараховано орендної плати за звітний період, грн. (без ПДВ)"';
-               return false;
+                if (useValidationRules()) {
+                    document.getElementById('valError').style.display = '';
+                    document.getElementById('valError').innerHTML = 'Значення показника  "Заборгованість по орендній платі, грн. (без ПДВ): - за звітний період",  перевищує  значення показника: "Нараховано орендної плати за звітний період, грн. (без ПДВ)"';
+                    return false;
+                }
             }
 			return true;
         }
@@ -579,9 +618,11 @@
             if (v1 == null) v1 = 0;
 			if (v2 == null) v2 = 0;
             if (v1 - v2 < 0) {
-                document.getElementById('valError').style.display = '';
-			    document.getElementById('valError').innerHTML = 'Повернення більше переплати неможливо';
-                return false;
+                if (useValidationRules()) {
+                    document.getElementById('valError').style.display = '';
+			        document.getElementById('valError').innerHTML = 'Повернення більше переплати неможливо';
+                    return false;
+                }
             }
 			return true;
             */
@@ -590,10 +631,12 @@
 		function CheckReceivedLessNarazh() {
             var v1 = Received_orndpymnt.GetValue();
 			var v2 = Zvit_orndpymnt.GetValue();
-			if (v1 < v2) {
-				document.getElementById('valError').style.display = '';
-				document.getElementById('valError').innerHTML = 'Надходження орендної плати за звітний період, всього, не може бути меньше ніж   - у тому числі, з нарахованої за звітний період';
-				return false;
+            if (v1 < v2) {
+                if (useValidationRules()) {
+                    document.getElementById('valError').style.display = '';
+                    document.getElementById('valError').innerHTML = 'Надходження орендної плати за звітний період, всього, не може бути меньше ніж   - у тому числі, з нарахованої за звітний період';
+                    return false;
+                }
 			}
 			return true;
 		}
@@ -610,10 +653,12 @@
             if (v3 == null) v3 = 0;
 			if (v4 == null) v4 = 0;
 			//alert(v1); alert(v2); alert(v3);
-			if (v1 + v2 + v4 != v3) {
-				document.getElementById('valError').style.display = '';
-				document.getElementById('valError').innerHTML = 'Надходження + заборгованість + Сальдо на початок року не дорівнюють Нарахуванню';
-				return false;
+            if (v1 + v2 + v4 != v3) {
+                if (useValidationRules()) {
+                    document.getElementById('valError').style.display = '';
+                    document.getElementById('valError').innerHTML = 'Надходження + заборгованість + Сальдо на початок року не дорівнюють Нарахуванню';
+                    return false;
+                }
 			}
 			return true;
         }
@@ -623,10 +668,12 @@
 			var v2 = edit_return_orend_payed.GetValue();
 			if (v1 == null) v1 = 0;
 			if (v2 == null) v2 = 0;
-			if (v1 > v2) {
-				document.getElementById('valError').style.display = '';
-				document.getElementById('valError').innerHTML = 'Сума повернення більше наявної суми переплати';
-				return false;
+            if (v1 > v2) {
+                if (useValidationRules()) {
+                    document.getElementById('valError').style.display = '';
+                    document.getElementById('valError').innerHTML = 'Сума повернення більше наявної суми переплати';
+                    return false;
+                }
 			}
 			return true;
 		}
@@ -2013,6 +2060,9 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                                 LostFocus="CalcCollectionDebtZvit" />                                                            
                                                             </dx:ASPxSpinEdit>
                                                             </td>
+                                                    </tr>
+                                                    <tr style="display:none" id="tr_alert_edit_avance_plat">
+                                                        <td colspan="2" align="right" style="padding-right:20px"><dx:ASPxLabel ID="ASPxLabel67" ForeColor="Red" runat="server" Text="Внесення авансової орендної плати одноразова операція, Ви повинні вирахувати її з поля «Надходження орендної плати за звітний період, всього, грн.»"></dx:ASPxLabel></td>
                                                     </tr>
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel29" runat="server" Text="Надходження орендної плати за звітний період, всього, грн. (без ПДВ)"></dx:ASPxLabel></td>

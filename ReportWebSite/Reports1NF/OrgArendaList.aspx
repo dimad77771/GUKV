@@ -220,6 +220,11 @@
 ,ap.debt_pogasheno_total	
 ,ap.debt_pogasheno_zvit
 ,ap.old_debts_payed
+,ap.znyato_nadmirno_narah
+,ap.avance_plat
+,ap.use_calc_debt
+,ap.return_all_orend_payed
+,ap.return_orend_payed
 
 ,dpt.name AS 'payment_type'
       ,[org].[zkpo_code] AS 'org_renter_zkpo'
@@ -902,6 +907,12 @@ FROM reports1nf_arenda ar
         <dx:GridViewDataDateColumn FieldName="insurance_start" VisibleIndex="48" Caption="Дата початку періоду страхування" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
         <dx:GridViewDataDateColumn FieldName="insurance_end" VisibleIndex="49" Caption="Дата закінчення періоду страхування" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
 
+        <dx:GridViewDataTextColumn FieldName="znyato_nadmirno_narah" VisibleIndex="50" Caption="- у тому числі, знято надмірно нарахованої за звітний період" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="avance_plat" VisibleIndex="51" Caption="Авансова орендна плата, грн." ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataCheckColumn FieldName="use_calc_debt" VisibleIndex="52" Caption="Розраховувати заборгованість з орендної плати" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataCheckColumn>
+        <dx:GridViewDataTextColumn FieldName="return_all_orend_payed" VisibleIndex="53" Caption="Повернення переплати орендної плати всього за звітний період, грн. (без ПДВ)" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="return_orend_payed" VisibleIndex="54" Caption="Переплата орендної плати всього, грн. (без ПДВ)" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+
         <dx:GridViewDataTextColumn FieldName="zvilneno_percent" VisibleIndex="101" Caption="Звільнено від сплати орендної плати на, %" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataDateColumn FieldName="zvilneno_date1" VisibleIndex="102" Caption="Звільнено від сплати орендної плати на, з" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
         <dx:GridViewDataDateColumn FieldName="zvilneno_date2" VisibleIndex="103" Caption="Звільнено від сплати орендної плати на, по" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
@@ -971,7 +982,7 @@ FROM reports1nf_arenda ar
     <SettingsPager PageSize="10" AlwaysShowPager="true" />
     <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
     <Styles Header-Wrap="True" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaList" Enabled="True" Version="B1" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaList" Enabled="True" Version="B2" />
 
     <ClientSideEvents
         Init="function (s,e) { PrimaryGridView.PerformCallback('init:'); }"

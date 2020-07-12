@@ -3717,7 +3717,7 @@ public static class Reports1NFUtils
         {
             if (userIsReportSubmitter)
             {
-                // - закомментировано по указанию Синенко от 11.07.2020
+                // - закомментировано по указанию Синенко от 11.07.2020 
                 //Reports1NFUtils.SendNewOrgCommentNotification(connection, reportId, Utils.UserOrganizationID, comment, controlTitle, controlId, username,
                 //    organizationId > 0, balansId, balansDeletedId, rentAgreementId, rentedObjectId);
             }
