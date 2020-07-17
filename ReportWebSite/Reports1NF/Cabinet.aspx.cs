@@ -854,8 +854,10 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
                     if (reader.Read())
                     {
                         decimal payRecvZvit = reader.IsDBNull(6) ? 0m : reader.GetDecimal(6);
+                        var payReturnAorend = reader.IsDBNull(24) ? 0m : reader.GetDecimal(24);
 
                         payRecvZvit += otherRentPayments;
+                        payRecvZvit -= payReturnAorend;
 
                         properties.Add("{PAY_NARAH_ZVIT}", reader.IsDBNull(25) ? "" : reader.GetDecimal(25).ToString("F2"));
                         properties.Add("{PAY_PEREPLATA}", reader.IsDBNull(5) ? "" : reader.GetDecimal(5).ToString("F2"));

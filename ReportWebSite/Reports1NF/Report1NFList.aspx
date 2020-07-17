@@ -272,6 +272,8 @@
                 --,SUM(budget_debt_50_uah) as 'budget_debt_50_uah' -- 20
                 --,SUM(budget_debt_30_50_uah) as 'budget_debt_30_50_uah' -- 21
                 ,SUM(pay.old_debts_payed) as 'PAY_LAST_PER' -- 22
+                ,SUM( isnull(pay.payment_narah,0) - isnull(pay.znyato_nadmirno_narah,0) ) as 'PAY_NARAH_ZVIT_NORMAL' -- 23
+                ,SUM(pay.znyato_nadmirno_narah) as 'PAY_ZNYATO_NADMIRNO_NARAH' -- 24
 				,report_id
 				,rent_period_id
             FROM reports1nf_arenda_payments pay
@@ -756,6 +758,20 @@ WHERE id = @report_id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_NARAH_ZVIT") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn Caption="Нараховано орендної плати без урахування надмірно нарахованої плати, грн. (без ПДВ)" FieldName="PAY_NARAH_ZVIT_NORMAL" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_NARAH_ZVIT_NORMAL") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn Caption="- у тому числі, знято надмірно нарахованої за звітний період, грн." FieldName="PAY_ZNYATO_NADMIRNO_NARAH" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_ZNYATO_NADMIRNO_NARAH") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+
         <dx:GridViewDataTextColumn Caption="Сальдо на початок року (не змінна впродовж року величина) грн.(без ПДВ)" FieldName="PAY_PEREPLATA" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="57"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_PEREPLATA") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
@@ -863,6 +879,8 @@ WHERE id = @report_id"
         <dx:ASPxSummaryItem FieldName="NUM_RENTED" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="SQR_FREE" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_NARAH_ZVIT" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="PAY_NARAH_ZVIT_NORMAL" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="PAY_ZNYATO_NADMIRNO_NARAH" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_PEREPLATA" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_RECV_ZVIT" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_RECV_NARAH" SummaryType="Sum" DisplayFormat="{0}" />
@@ -896,7 +914,7 @@ WHERE id = @report_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A2_20" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A2_22" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
