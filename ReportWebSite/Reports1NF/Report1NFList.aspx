@@ -223,11 +223,12 @@
            --,org.konkurs_payments -- 34
            --,org.unknown_payments -- 35
            --,CASE WHEN (ISNULL(org.budget_narah_50_uah, 0) - ISNULL(org.budget_zvit_50_uah, 0)) > 0 THEN (ISNULL(org.budget_narah_50_uah, 0) - ISNULL(org.budget_zvit_50_uah, 0)) ELSE 0 END AS 'PAY_50_DEBT_CUR'
-           ,CASE WHEN (ISNULL(org.budget_narah_50_uah, 0) - ISNULL(org.budget_zvit_50_uah, 0) + ISNULL(org.budget_prev_50_uah, 0)) < 0 THEN 0 Else (ISNULL(org.budget_narah_50_uah, 0) - ISNULL(org.budget_zvit_50_uah, 0) + ISNULL(org.budget_prev_50_uah, 0)) END AS 'PAY_50_DEBT_CUR'
-           ,ISNULL(org.konkurs_payments, 0) + ISNULL(org.unknown_payments, 0) AS 'PAY_RECV_OTHER'
+           ,CASE WHEN (ISNULL(org.budget_narah_50_uah, 0) - ISNULL(org.budget_zvit_50_uah, 0) + ISNULL(org.budget_prev_50_uah, 0)) - ISNULL(org.unknown_payments,0) < 0 THEN 0 Else (ISNULL(org.budget_narah_50_uah, 0) - ISNULL(org.budget_zvit_50_uah, 0) + ISNULL(org.budget_prev_50_uah, 0)) - ISNULL(org.unknown_payments,0) END AS 'PAY_50_DEBT_CUR'
+           ,org.konkurs_payments AS 'PAY_RECV_OTHER'
            ,[org].[report_id]
            ,[dict_otdel_gukv].name as 'otdel_gukv'
            ,[org].[prim_balanc]
+           ,org.unknown_payments AS 'PAY_UNKNOWN_PAYMENTS'
         FROM
             reports1nf_org_info org
             LEFT OUTER JOIN dict_otdel_gukv ON org.otdel_gukv_id = dict_otdel_gukv.id
@@ -818,6 +819,14 @@ WHERE id = @report_id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_50_NARAH") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn Caption="Сальдо платежів до бюджету (переплата на початок року), грн." FieldName="PAY_UNKNOWN_PAYMENTS" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="65"  >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_UNKNOWN_PAYMENTS") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+
         <dx:GridViewDataTextColumn Caption="Перераховано до бюджету % за звітний період всього з 1 січня поточного року, грн. (без ПДВ)" FieldName="PAY_50_PAYED" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="66"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_50_PAYED") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
@@ -899,6 +908,7 @@ WHERE id = @report_id"
         <dx:ASPxSummaryItem FieldName="PAY_CMK_BUDGET" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_CMK_DEBT" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_SPECIAL" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="PAY_UNKNOWN_PAYMENTS" SummaryType="Sum" DisplayFormat="{0}" />
     </TotalSummary>
 
     <SettingsBehavior EnableCustomizationWindow="True" AutoFilterRowInputDelay="2500" ColumnResizeMode="Control" />
@@ -914,7 +924,7 @@ WHERE id = @report_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A2_22" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A2_23" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
