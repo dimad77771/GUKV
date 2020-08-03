@@ -9,6 +9,12 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 
+<style>
+    .command-column-class {
+        white-space:normal !important;
+    }
+</style>
+
 <script type="text/javascript" src="../Scripts/PageScript.js"></script>
 
 <script type="text/javascript" language="javascript">
@@ -48,14 +54,80 @@
 			$.cookie('RecordID', s.GetRowKey(e.visibleIndex));
 			ASPxFileManagerPhotoFiles.Refresh();
 			PopupObjectPhotos.Show();
-			//console.log("PopupObjectPhotos", PopupObjectPhotos);
-			//console.log("PopupObjectPhotos.SetHeaderText", PopupObjectPhotos.SetHeaderText);
 		} else if (e.buttonID == 'btnMapShow') {
 			FreeSquareGridView.GetRowValues(e.visibleIndex, 'id', OnMapShowGetRowValues);
 		} else if (e.buttonID == 'btnFreeCycle') {
 			FreeSquareGridView.GetRowValues(e.visibleIndex, 'id', OnFreeCycleGetRowValues);
+		} else if (e.buttonID == 'btnOrgBalansObject') {
+			FreeSquareGridView.GetRowValues(e.visibleIndex, 'id;balans_id;report_id', OnClickOrgBalansObject);
+        } else if (e.buttonID == 'btnCopyFullDescription') {
+            var cols = "include_in_perelik;zal_balans_vartist;perv_balans_vartist;vydbudynku;prop_srok_orands;punkt_metod_rozrahunok;invest_solution;";
+            cols += "komis_protocol;district;street_name;addr_nomer;sqr_for_rent;free_sql_usefull;";
+			cols += "floor;condition;water;heating;gas;power_text;history;zgoda_renter;nomer_derzh_reestr_neruh;reenum_derzh_reestr_neruh;info_priznach_nouse;info_rahunok_postach;priznach_before;period_nouse;osoba_use_before"
+			FreeSquareGridView.GetRowValues(e.visibleIndex, cols, OnCopyFullDescription);
 		}
+    }
+
+	function OnCopyFullDescription(values) {
+        var headers = [
+            "Пропонується до переліку № - ",
+            "Залишкова балансова вартість – ",
+            "Первісна балансова вартість - ",
+            "Тип об’єкта - ",
+            "Пропонований строк оренди (у роках) – ",
+            "Пункт Методики розрахунку орендної плати (якщо об’єкт пропонується для включення до Переліку другого типу) - ",
+            "Наявність рішень про проведення інвестиційного конкурсу або про включення об’єкта до переліку майна, що підлягає приватизації - ",
+                
+            "Погодження органу управління балансоутримувача – ",
+            "Район – ",
+            "Назва Вулиці - ",
+            "Номер Будинку - ",
+            "Загальна площа об’єкта - ",
+			"Корисна площа об’єкта – ",
+			"Характеристика об’єкта оренди(будівлі в цілому або частини будівлі із зазначенням місця розташування об’єкта в будівлі(надземний, цокольний, підвальний, технічний або мансардний поверх, номер поверху або поверхів) – ",
+			"Технічний стан – ",
+			"Водопостачання – ",
+			"Теплопостачання – ",
+			"Газопостачання – ",
+			"Електропостачання – ", 
+			"Пам’ятка культурної спадщини - Пам'ятка історії - ",
+			"Погодження органу охорони культурної спадщини - ",
+			"Номер запису про право власності у Реєстрація у Державному реєстрі речових прав на нерухоме майно – ",
+			"Реєстраційний номер об'єкту нерухомого майна у Реєстрація у Державному реєстрі речових прав на нерухоме майно – ",
+			"Інформація про цільове призначення об’єкта оренди – ",
+			"Інформація про наявність окремих особових рахунків на об'єкт оренди, відкритих постачальниками комунальних послуг - ",
+			"Цільове призначення об’єкта, за яким об’єкт використовувався перед тим, як він став вакантним – ",
+			"Період часу, протягом якого об’єкт не використовується – ",
+			"Інформацію про особу, яка використовувала об’єкт перед тим, як він став вакантним – ",
+        ];
+
+        var txt = "";
+        for (var i = 0; i < headers.length; i++) {
+            var vv = values[i];
+            if (vv == null) {
+                vv = "";
+            } else if (vv == true) {
+                vv = "так";
+			} else if (vv == false) {
+				vv = "ні";
+            }
+
+			txt += (i == 0 ? "" : "\n") + headers[i] +  vv;
+		}
+        
+        console.log("txt", txt);
+
+        //$("#inpit-for-copy-clipboard").text(txt);
+        //$("#inpit-for-copy-clipboard").select();
+		//document.execCommand("copy");
+		//document.body.style.cursor = 'cursorurl';
+        navigator.clipboard.writeText(txt).then(function () {
+			alert("Опис скопійовано в буфер обміну");
+		}, function () {
+		    alert("Не можу записати буфер обміну");
+		});
 	}
+
 
 	function OnMapShowGetRowValues(values) {
 		var id = values;
@@ -71,6 +143,10 @@
 			'FreeCycle.aspx?free_square_id=' + id,
 			'_blank',
 		);
+    }
+
+    function OnClickOrgBalansObject(values) {
+		window.location = 'OrgBalansObject.aspx?rid=' + values[2] + '&bid=' + values[1] + '&edit_free_square_id=' + values[0];
 	}
 
 
@@ -100,6 +176,7 @@
         var popupControl = comboBox.GetPopupControl();
         //popupControl.SetSize("0", "0");
 	}
+
 
     function _aspxMakeScollableArea(comboBox) {  
         var listBox = comboBox.GetListBoxControl();  
@@ -146,8 +223,12 @@
     fs.reenum_derzh_reestr_neruh,
     fs.info_priznach_nouse,
     fs.info_rahunok_postach,
+    fs.priznach_before,
+    fs.period_nouse,
+    fs.osoba_use_before,
  row_number() over (order by org.short_name, b.street_full_name, b.addr_nomer, fs.total_free_sqr) as npp     
 ,fs.id
+,fs.balans_id
 ,org.short_name as org_name
 ,org.zkpo_code
 ,org.report_id
@@ -157,7 +238,7 @@
 ,b.street_full_name as street_name
 ,(COALESCE(LTRIM(RTRIM(b.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer2)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer3)), '')) as addr_nomer
 
-,b.condition 
+,(select q.name from dict_1nf_tech_stane q where q.id = fs.free_sqr_condition_id) as condition 
 ,b.object_type 
 ,b.object_kind
 ,b.sqr_total
@@ -174,7 +255,7 @@
 ,fs.floor
 ,fs.water
 ,fs.heating
-,fs.power_text
+,(select q.name from dict_1nf_power_info q where q.id = fs.power_info_id) as power_text
 ,fs.gas
 
 --,(select left(qq.full_name, 150) as name from view_dict_rental_rate qq where qq.id = fs.using_possible_id) as possible_using
@@ -272,6 +353,7 @@ WHERE id = @id"
     SelectCommand="SELECT '1' id, '1' name, 1 as ordrow union SELECT '2' id, '2' name, 1 as ordrow union select null, '',  2 as ordrow ORDER BY ordrow, name">
 </mini:ProfiledSqlDataSource>
 
+<input id="inpit-for-copy-clipboard" style="display:none" />
 
 <dx:ASPxMenu ID="SectionMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
     <Items>
@@ -426,7 +508,7 @@ WHERE id = @id"
 	   <ClientSideEvents CustomButtonClick="ShowPhoto" />
     <Columns>
 
-        <dx:GridViewCommandColumn VisibleIndex="0" Width="80px" ButtonType="Image" CellStyle-Wrap="False" FixedStyle="Left" >
+        <dx:GridViewCommandColumn VisibleIndex="0" Width="70px" ButtonType="Image" CellStyle-Wrap="True" FixedStyle="Left" CellStyle-CssClass="command-column-class" >
              <EditButton Visible="True">
 				<Image Url="~/Styles/EditIcon.png" />
              </EditButton>
@@ -443,8 +525,14 @@ WHERE id = @id"
                 <dx:GridViewCommandColumnCustomButton ID="btnMapShow" Text="Показати на мапі"> 
 					<Image Url="~/Styles/MapShowIcon.png"/>
                 </dx:GridViewCommandColumnCustomButton>
+                <dx:GridViewCommandColumnCustomButton ID="btnOrgBalansObject" Text="Змінити картку"> 
+					<Image Url="~/Styles/EditTextIcon.png"/>
+                </dx:GridViewCommandColumnCustomButton>
                 <dx:GridViewCommandColumnCustomButton ID="btnFreeCycle" Text="Картка процесу передачі в оренду вільного приміщення"> 
 					<Image Url="~/Styles/ReportDocument18.png"/>
+                </dx:GridViewCommandColumnCustomButton>
+                <dx:GridViewCommandColumnCustomButton ID="btnCopyFullDescription" Text="Опис об'єкта до буфера обміну"> 
+					<Image Url="~/Styles/CopyIcon.png"/>
                 </dx:GridViewCommandColumnCustomButton>
             </CustomButtons>
             <CellStyle Wrap="False"></CellStyle>
@@ -499,15 +587,15 @@ WHERE id = @id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
-        <%--<dx:GridViewDataTextColumn FieldName="include_in_perelik" Caption="Включено до переліку №" VisibleIndex="4" Width="50px">
+        <%--<dx:GridViewDataTextColumn FieldName="include_in_perelik" Caption="Пропонується до переліку №" VisibleIndex="4" Width="50px">
         </dx:GridViewDataTextColumn>--%>
-		<dx:GridViewDataComboBoxColumn FieldName="include_in_perelik" VisibleIndex="4" Width = "50px" Visible="True" Caption="Включено до переліку №">
+		<dx:GridViewDataComboBoxColumn FieldName="include_in_perelik" VisibleIndex="4" Width = "50px" Visible="True" Caption="Пропонується до переліку №">
 			<HeaderStyle Wrap="True" />
 			<PropertiesComboBox DataSourceID="SqlDataSourceIncludeInPerelik" ValueField="id" TextField="name" ValueType="System.String" />
 		</dx:GridViewDataComboBoxColumn>
 
 
-        <dx:GridViewDataTextColumn FieldName="komis_protocol" Caption="Рішення орендодавця" VisibleIndex="4" Width="100px">
+        <dx:GridViewDataTextColumn FieldName="komis_protocol" Caption="Погодження органу управління балансоутримувача" VisibleIndex="4" Width="100px">
 			<%--<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("komis_protocol") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>--%>
@@ -518,7 +606,7 @@ WHERE id = @id"
 
         <dx:GridViewBandColumn Caption="Вільні приміщення"  HeaderStyle-HorizontalAlign="Center" > 
            <Columns>
-                <dx:GridViewDataTextColumn FieldName="floor" Caption="Місце розташування вільного приміщення (поверх)" VisibleIndex="5" Width="80px" ReadOnly="true">
+                <dx:GridViewDataTextColumn FieldName="floor" Caption="Характеристика об’єкта оренди" VisibleIndex="5" Width="80px" ReadOnly="true" ToolTip="Характеристика об’єкта оренди (будівлі в цілому або частини будівлі із зазначенням місця розташування об’єкта в будівлі (надземний, цокольний, підвальний, технічний або мансардний поверх, номер поверху або поверхів)">
 					<EditItemTemplate>
 						<dx:ASPxLabel runat="server" Text='<%# Eval("floor") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 					</EditItemTemplate>
@@ -528,12 +616,12 @@ WHERE id = @id"
 						<dx:ASPxLabel runat="server" Text='<%# Eval("sqr_for_rent") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 					</EditItemTemplate>
                 </dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="total_free_sqr" Caption="Загальна площа вільних приміщень, кв.м."  VisibleIndex="7" Width="80px" ReadOnly="true">
+                <dx:GridViewDataTextColumn FieldName="total_free_sqr" Caption="Загальна площа об’єкта"  VisibleIndex="7" Width="80px" ReadOnly="true">
 					<EditItemTemplate>
 						<dx:ASPxLabel runat="server" Text='<%# Eval("total_free_sqr") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 					</EditItemTemplate>
                 </dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="free_sql_usefull" Caption="Корисна площа вільних приміщень, кв.м." VisibleIndex="8" Width="80px" ReadOnly="true">
+                <dx:GridViewDataTextColumn FieldName="free_sql_usefull" Caption="Корисна площа об’єкта" VisibleIndex="8" Width="80px" ReadOnly="true">
 					<EditItemTemplate>
 						<dx:ASPxLabel runat="server" Text='<%# Eval("free_sql_usefull") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 					</EditItemTemplate>
@@ -554,7 +642,7 @@ WHERE id = @id"
 						</EditItemTemplate>--%>
                     </dx:GridViewDataCheckColumn>
 
-                    <dx:GridViewDataTextColumn FieldName="power_text" Caption="Електропостачання" VisibleIndex="11" Width="70px" ReadOnly="true" >
+                    <dx:GridViewDataTextColumn FieldName="power_text" Caption="Потужність електромережі" VisibleIndex="11" Width="70px" ReadOnly="true" >
                         <HeaderStyle Wrap="True" />
 			            <EditItemTemplate>
 				            <dx:ASPxLabel runat="server" Text='<%# Eval("power_text") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
@@ -576,7 +664,7 @@ WHERE id = @id"
 						<dx:ASPxLabel runat="server" Text='<%# Eval("modify_date", "{0:dd.MM.yyyy}") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 					</EditItemTemplate>
                 </dx:GridViewDataDateColumn>
-                <dx:GridViewDataTextColumn FieldName="condition" Caption="Технічний стан" VisibleIndex="14" Width="80px">
+                <dx:GridViewDataTextColumn FieldName="condition" Caption="Технічний стан об’єкта" VisibleIndex="14" Width="80px">
 					<EditItemTemplate>
 						<dx:ASPxLabel runat="server" Text='<%# Eval("condition") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 					</EditItemTemplate>
@@ -629,12 +717,12 @@ WHERE id = @id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("zgoda_renter") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="vydbudynku" Caption="Вид будинку" VisibleIndex="22" Width="100px">
+        <dx:GridViewDataTextColumn FieldName="vydbudynku" Caption="Тип об’єкта" VisibleIndex="22" Width="100px">
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("vydbudynku") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="history" Caption="Пам'ятка історії" VisibleIndex="23" Width="100px">
+        <dx:GridViewDataTextColumn FieldName="history" Caption="Пам’ятка культурної спадщини" VisibleIndex="23" Width="100px">
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("history") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
@@ -763,6 +851,28 @@ WHERE id = @id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
+        <dx:GridViewDataTextColumn FieldName="priznach_before" Caption="Цільове призначення об’єкта, за яким об’єкт використовувався перед тим, як він став вакантним" VisibleIndex="1310" Visible="false" Width="380px"  >
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("priznach_before") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="period_nouse" Caption="Період часу, протягом якого об’єкт не використовується" VisibleIndex="1320" Visible="false" Width="380px"  >
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("period_nouse") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="osoba_use_before" Caption="Інформацію про особу, яка використовувала об’єкт перед тим, як він став вакантним (якщо такою особою був балансоутримувач, проставляється позначка “об’єкт використовувався балансоутримувачем”)" VisibleIndex="1330" Visible="false" Width="380px"  >
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("osoba_use_before") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+
     </Columns>
 
     <TotalSummary>
@@ -783,7 +893,7 @@ WHERE id = @id"
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A2_50" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A2_55" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

@@ -344,12 +344,12 @@ WHERE id = @id"
 						<dx:ASPxLabel runat="server" Text='<%# Eval("sqr_for_rent") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 					</EditItemTemplate>
                 </dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="total_free_sqr" Caption="Загальна площа вільних приміщень, кв.м."  VisibleIndex="7" Width="80px" ReadOnly="true">
+                <dx:GridViewDataTextColumn FieldName="total_free_sqr" Caption="Загальна площа об’єкта"  VisibleIndex="7" Width="80px" ReadOnly="true">
 					<EditItemTemplate>
 						<dx:ASPxLabel runat="server" Text='<%# Eval("total_free_sqr") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 					</EditItemTemplate>
                 </dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="free_sql_usefull" Caption="Корисна площа вільних приміщень, кв.м." VisibleIndex="8" Width="80px" ReadOnly="true">
+                <dx:GridViewDataTextColumn FieldName="free_sql_usefull" Caption="Корисна площа об’єкта" VisibleIndex="8" Width="80px" ReadOnly="true">
 					<EditItemTemplate>
 						<dx:ASPxLabel runat="server" Text='<%# Eval("free_sql_usefull") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 					</EditItemTemplate>
@@ -436,7 +436,7 @@ WHERE id = @id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("vydbudynku") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="history" Caption="Пам'ятка історії" VisibleIndex="23" Width="100px">
+        <dx:GridViewDataTextColumn FieldName="history" Caption="Пам’ятка культурної спадщини" VisibleIndex="23" Width="100px">
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("history") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>

@@ -86,7 +86,7 @@
 ,b.street_full_name as street_name
 ,(COALESCE(LTRIM(RTRIM(b.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer2)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer3)), '')) as addr_nomer
 
-,b.condition 
+,(select q.name from dict_1nf_tech_stane q where q.id = fs.free_sqr_condition_id) as condition
 ,b.object_type 
 ,b.object_kind
 ,b.sqr_total
@@ -318,7 +318,7 @@ WHERE id = @id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
-		<dx:GridViewDataComboBoxColumn FieldName="include_in_perelik" VisibleIndex="4" Width = "50px" Visible="True" Caption="Включено до переліку №">
+		<dx:GridViewDataComboBoxColumn FieldName="include_in_perelik" VisibleIndex="4" Width = "50px" Visible="True" Caption="Пропонується до переліку №">
 			<HeaderStyle Wrap="True" />
 		</dx:GridViewDataComboBoxColumn>
 
@@ -329,7 +329,7 @@ WHERE id = @id"
 
         <dx:GridViewBandColumn Caption="Вільні приміщення"  HeaderStyle-HorizontalAlign="Center" > 
            <Columns>
-                <dx:GridViewDataTextColumn FieldName="floor" Caption="Місце розташування вільного приміщення (поверх)" VisibleIndex="5" Width="80px" ReadOnly="true">
+                <dx:GridViewDataTextColumn FieldName="floor" Caption="Характеристика об’єкта оренди" VisibleIndex="5" Width="80px" ReadOnly="true" ToolTip="Характеристика об’єкта оренди (будівлі в цілому або частини будівлі із зазначенням місця розташування об’єкта в будівлі (надземний, цокольний, підвальний, технічний або мансардний поверх, номер поверху або поверхів)">
 					<EditItemTemplate>
 						<dx:ASPxLabel runat="server" Text='<%# Eval("floor") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 					</EditItemTemplate>
@@ -339,12 +339,12 @@ WHERE id = @id"
 						<dx:ASPxLabel runat="server" Text='<%# Eval("sqr_for_rent") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 					</EditItemTemplate>
                 </dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="total_free_sqr" Caption="Загальна площа вільних приміщень, кв.м."  VisibleIndex="7" Width="80px" ReadOnly="true">
+                <dx:GridViewDataTextColumn FieldName="total_free_sqr" Caption="Загальна площа об’єкта"  VisibleIndex="7" Width="80px" ReadOnly="true">
 					<EditItemTemplate>
 						<dx:ASPxLabel runat="server" Text='<%# Eval("total_free_sqr") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 					</EditItemTemplate>
                 </dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="free_sql_usefull" Caption="Корисна площа вільних приміщень, кв.м." VisibleIndex="8" Width="80px" ReadOnly="true">
+                <dx:GridViewDataTextColumn FieldName="free_sql_usefull" Caption="Корисна площа об’єкта" VisibleIndex="8" Width="80px" ReadOnly="true">
 					<EditItemTemplate>
 						<dx:ASPxLabel runat="server" Text='<%# Eval("free_sql_usefull") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 					</EditItemTemplate>
@@ -364,7 +364,7 @@ WHERE id = @id"
 							<dx:ASPxLabel runat="server" Text='<%# Eval("heating") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 						</EditItemTemplate>--%>
                     </dx:GridViewDataCheckColumn>
-                    <dx:GridViewDataCheckColumn FieldName="power" Caption="Електропостачання" VisibleIndex="11" Width="50px" ReadOnly="true">
+                    <dx:GridViewDataCheckColumn FieldName="power" Caption="Потужність електромережі" VisibleIndex="11" Width="50px" ReadOnly="true">
 						<%--<EditItemTemplate>
 							<dx:ASPxLabel runat="server" Text='<%# Eval("power") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 						</EditItemTemplate>--%>
@@ -384,7 +384,7 @@ WHERE id = @id"
 						<dx:ASPxLabel runat="server" Text='<%# Eval("modify_date", "{0:dd.MM.yyyy}") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 					</EditItemTemplate>
                 </dx:GridViewDataDateColumn>--%>
-                <dx:GridViewDataTextColumn FieldName="condition" Caption="Технічний стан" VisibleIndex="14" Width="80px">
+                <dx:GridViewDataTextColumn FieldName="condition" Caption="Технічний стан об’єкта" VisibleIndex="14" Width="80px">
 					<EditItemTemplate>
 						<dx:ASPxLabel runat="server" Text='<%# Eval("condition") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 					</EditItemTemplate>
@@ -431,12 +431,12 @@ WHERE id = @id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("orandodatel") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="vydbudynku" Caption="Вид будинку" VisibleIndex="22" Width="180px">
+        <dx:GridViewDataTextColumn FieldName="vydbudynku" Caption="Тип об’єкта" VisibleIndex="22" Width="180px">
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("vydbudynku") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="history" Caption="Пам'ятка історії" VisibleIndex="23" Width="70px">
+        <dx:GridViewDataTextColumn FieldName="history" Caption="Пам’ятка культурної спадщини" VisibleIndex="23" Width="70px">
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("history") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>

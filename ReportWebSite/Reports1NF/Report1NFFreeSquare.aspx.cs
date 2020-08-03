@@ -193,5 +193,4 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 		//    e.InputParameters["balans_id"] = int.Parse(Request.QueryString["bid"]);
 	}
 
-
 }

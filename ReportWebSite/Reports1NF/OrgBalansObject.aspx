@@ -27,6 +27,7 @@
     {
          width:1400px !important;
     }
+
 </style>
 
 <script type="text/javascript" language="javascript">
@@ -425,7 +426,7 @@
 
             if (grid.IsEditing()) {
 				var popup = s.GetEditFormTable();
-                //console.log("popup", popup);
+                console.log("popup", popup);
 				//console.log("felm__total_free_sqr", felm__total_free_sqr.GetValue());
                 $(felm__tmp1.mainElement).hide();
                 $(felm__tmp2.mainElement).hide();
@@ -434,11 +435,24 @@
 
 				console.log("felm__prop_srok_orands", felm__prop_srok_orands);
 				felm__include_in_perelik.ValueChanged.AddHandler(OnEditFormTableItemChange);
-				felm__prop_srok_orands.LostFocus.AddHandler(OnEditFormTableItemChange);
-                
+                felm__prop_srok_orands.LostFocus.AddHandler(OnEditFormTableItemChange);
+
+                felm__floor.tooltip = "Характеристика об’єкта оренди (будівлі в цілому або частини будівлі із зазначенням місця розташування об’єкта в будівлі (надземний, цокольний, підвальний, технічний або мансардний поверх, номер поверху або поверхів)";
+                $(felm__floor.GetInputElement()).attr('title', "Характеристика об’єкта оренди (будівлі в цілому або частини будівлі із зазначенням місця розташування об’єкта в будівлі (надземний, цокольний, підвальний, технічний або мансардний поверх, номер поверху або поверхів)");
+                $(popup).find("label").each(function (index) {
+                    if ($(this).text() == "Характеристика об’єкта оренди") {
+						$(this).attr('title', "Характеристика об’єкта оренди (будівлі в цілому або частини будівлі із зазначенням місця розташування об’єкта в будівлі (надземний, цокольний, підвальний, технічний або мансардний поверх, номер поверху або поверхів)");
+					}
+				});
 
                 CustomizeEditFormTable();
-			}  
+            } 
+
+            if (editFreeSquareMode) {
+                if (!grid.IsEditing()) {
+					window.location = "Report1NFFreeSquare.aspx";
+                }
+			}
         }
 
 		function OnEditFormTableItemChange() {
@@ -527,7 +541,8 @@
         }
 
 		var paramRid = <%= ParamRid %>;
-		var paramBid = <%= ParamBid %>;
+        var paramBid = <%= ParamBid %>;
+        var editFreeSquareMode = <%= EditFreeSquareMode.ToString().ToLower() %>;
 	</script>
 
 
@@ -599,10 +614,22 @@
     SelectCommand="SELECT id, name FROM dict_1nf_tech_state">
 </mini:ProfiledSqlDataSource>
 
+<mini:ProfiledSqlDataSource ID="SqlDataSourceTechStane" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_1nf_tech_stane">
+</mini:ProfiledSqlDataSource>
+
+
 <mini:ProfiledSqlDataSource ID="SqlDataSourcePeriodUsed" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT id, name FROM dict_1nf_period_used">
 </mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourcePowerInfo" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_1nf_power_info union select null, ''">
+</mini:ProfiledSqlDataSource>
+
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceUsingPossible" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
@@ -704,7 +731,7 @@
 	  ,[using_possible_id]
       ,[water]
 	  ,[heating]
-      ,[power_text]
+      ,[power_info_id]
       ,[gas]
       ,[note]
       ,[modify_date]
@@ -726,7 +753,10 @@
       ,[reenum_derzh_reestr_neruh] 
       ,[info_priznach_nouse] 
       ,[info_rahunok_postach] 
-    FROM [reports1nf_balans_free_square] WHERE [balans_id] = @balans_id and [report_id] = @report_id" 
+      ,[priznach_before] 
+      ,[period_nouse] 
+      ,[osoba_use_before]
+    FROM [reports1nf_balans_free_square] WHERE [balans_id] = @balans_id and [report_id] = @report_id and ([id] = @free_square_id or @free_square_id = -1)" 
     DeleteCommand="EXEC [delete_reports1nf_balans_free_square] @id" 
     InsertCommand="INSERT INTO [reports1nf_balans_free_square]
     ([balans_id]
@@ -739,7 +769,7 @@
 	  ,[using_possible_id]
       ,[water]
       ,[heating]
-      ,[power_text]
+      ,[power_info_id]
       ,[gas]
       ,[note]
       ,[modify_date]
@@ -760,6 +790,9 @@
       ,[reenum_derzh_reestr_neruh] 
       ,[info_priznach_nouse] 
       ,[info_rahunok_postach]   
+      ,[priznach_before]   
+      ,[period_nouse]
+      ,[osoba_use_before]
     ) 
     VALUES
     (@balans_id
@@ -772,7 +805,7 @@
 	  ,@using_possible_id
       ,@water
       ,@heating
-      ,@power_text
+      ,@power_info_id
       ,@gas
       ,@note
       ,@modify_date
@@ -793,6 +826,9 @@
       ,@reenum_derzh_reestr_neruh 
       ,@info_priznach_nouse 
       ,@info_rahunok_postach       
+      ,@priznach_before       
+      ,@period_nouse
+      ,@osoba_use_before
     );
 SELECT SCOPE_IDENTITY()" 
     UpdateCommand="UPDATE [reports1nf_balans_free_square]
@@ -807,7 +843,7 @@ SET
 	[using_possible_id] = @using_possible_id,  
     [water] = @water,
     [heating] = @heating,
-    [power_text] = @power_text,
+    [power_info_id] = @power_info_id,
     [gas] = @gas,
     [note] = @note,
     [modify_date] = @modify_date,
@@ -828,12 +864,16 @@ SET
         ,[reenum_derzh_reestr_neruh] 	  = @reenum_derzh_reestr_neruh 
         ,[info_priznach_nouse] 		  = @info_priznach_nouse 
         ,[info_rahunok_postach]  	  = @info_rahunok_postach   
+        ,[priznach_before]  	  = @priznach_before   
+        ,[period_nouse]  	  = @period_nouse   
+        ,[osoba_use_before]  	  = @osoba_use_before   
 WHERE id = @id" 
         oninserting="SqlDataSourceFreeSquare_Inserting" 
         onupdating="SqlDataSourceFreeSquare_Updating" ProviderName="System.Data.SqlClient">
     <SelectParameters>
         <asp:Parameter Name="balans_id" />
         <asp:Parameter Name="report_id" />
+        <asp:Parameter Name="free_square_id" />
     </SelectParameters>
     <DeleteParameters>
         <asp:Parameter Name="id" />
@@ -849,7 +889,7 @@ WHERE id = @id"
 		<asp:Parameter Name="using_possible_id" />
         <asp:Parameter Name="water" />
         <asp:Parameter Name="heating" />
-        <asp:Parameter Name="power_text" />
+        <asp:Parameter Name="power_info_id" />
         <asp:Parameter Name="gas" />
         <asp:Parameter Name="note" />
         <asp:Parameter Name="modify_date" />
@@ -870,6 +910,9 @@ WHERE id = @id"
         <asp:Parameter Name="reenum_derzh_reestr_neruh" />
         <asp:Parameter Name="info_priznach_nouse" />
         <asp:Parameter Name="info_rahunok_postach" />
+        <asp:Parameter Name="priznach_before" />
+        <asp:Parameter Name="period_nouse" />
+        <asp:Parameter Name="osoba_use_before" />
     </InsertParameters>
     <UpdateParameters>
         <asp:Parameter Name="balans_id" />
@@ -882,7 +925,7 @@ WHERE id = @id"
 		<asp:Parameter Name="using_possible_id" />
         <asp:Parameter Name="water" />
         <asp:Parameter Name="heating" />
-        <asp:Parameter Name="power_text" />
+        <asp:Parameter Name="power_info_id" />
         <asp:Parameter Name="gas" />
         <asp:Parameter Name="note" />
         <asp:Parameter Name="modify_date" />
@@ -903,6 +946,9 @@ WHERE id = @id"
         <asp:Parameter Name="reenum_derzh_reestr_neruh" />
         <asp:Parameter Name="info_priznach_nouse" />
         <asp:Parameter Name="info_rahunok_postach" />
+        <asp:Parameter Name="priznach_before" />
+        <asp:Parameter Name="period_nouse" />
+        <asp:Parameter Name="osoba_use_before" />
         <asp:Parameter Name="id" />
     </UpdateParameters>
 </mini:ProfiledSqlDataSource>
@@ -1744,17 +1790,17 @@ WHERE id = @id"
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>
 
-            <dx:GridViewDataTextColumn FieldName="total_free_sqr" Caption="Загальна площа вільного приміщення" VisibleIndex="3" >
+            <dx:GridViewDataTextColumn FieldName="total_free_sqr" Caption="Загальна площа об’єкта" VisibleIndex="3" >
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>
 
-            <dx:GridViewDataTextColumn FieldName="free_sqr_korysna" Caption="Корисна площа вільного приміщення" VisibleIndex="4" >
+            <dx:GridViewDataTextColumn FieldName="free_sqr_korysna" Caption="Корисна площа об’єкта" VisibleIndex="4" >
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>
 
             <dx:GridViewDataComboBoxColumn FieldName="free_sqr_condition_id" VisibleIndex="5" 
-                Visible="True" Caption="Стан">
-                <PropertiesComboBox DataSourceID="SqlDataSourceTechState" ValueField="id" TextField="name" ValueType="System.Int32" />
+                Visible="True" Caption="Технічний стан об’єкта">
+                <PropertiesComboBox DataSourceID="SqlDataSourceTechStane" ValueField="id" TextField="name" ValueType="System.Int32" />
             </dx:GridViewDataComboBoxColumn>
 
             <dx:GridViewDataComboBoxColumn FieldName="period_used_id" VisibleIndex="5" 
@@ -1784,15 +1830,12 @@ WHERE id = @id"
 						<EditFormSettings Caption="Теплопостачання" />
                     </dx:GridViewDataCheckColumn>
 
-<%--                    <dx:GridViewDataCheckColumn FieldName="power" Caption="Електро-постача-ння" VisibleIndex="9">
-						<EditFormSettings Caption="Електропостачання" />
+                    <dx:GridViewDataComboBoxColumn FieldName="power_info_id" Width="120px" VisibleIndex="9" 
+                        Visible="True" Caption="Потужність електромережі">
                         <HeaderStyle Wrap="True" />
-                    </dx:GridViewDataCheckColumn>--%>
+                        <PropertiesComboBox DataSourceID="SqlDataSourcePowerInfo" ValueField="id" TextField="name" ValueType="System.Int32" />
+                    </dx:GridViewDataComboBoxColumn>
 
-                    <dx:GridViewDataTextColumn FieldName="power_text" Caption="Електро-постача-ння" Width="120px" VisibleIndex="9">
-                        <EditFormSettings Caption="Електропостачання (кВт)" />
-                        <HeaderStyle Wrap="True" />
-                    </dx:GridViewDataTextColumn>
 
                     <dx:GridViewDataCheckColumn FieldName="gas" Caption="Газо-постача-ння" VisibleIndex="10">
 						<EditFormSettings Caption="Газопостачання" />
@@ -1812,8 +1855,9 @@ WHERE id = @id"
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>
 
-            <dx:GridViewDataTextColumn FieldName="floor" Caption="Місце розташування вільного приміщення (поверх)" VisibleIndex="15">
+            <dx:GridViewDataTextColumn FieldName="floor" Caption="Характеристика об’єкта оренди" ToolTip="Характеристика об’єкта оренди (будівлі в цілому або частини будівлі із зазначенням місця розташування об’єкта в будівлі (надземний, цокольний, підвальний, технічний або мансардний поверх, номер поверху або поверхів)" VisibleIndex="15">
                 <HeaderStyle Wrap="True" />
+                
             </dx:GridViewDataTextColumn>
 
             <%--<dx:GridViewDataTextColumn FieldName="possible_using" Caption="Можливе використання вільного приміщення" VisibleIndex="16" Width ="100px">
@@ -1878,7 +1922,7 @@ WHERE id = @id"
 				<EditFormSettings Visible="False" />
             </dx:GridViewDataTextColumn>
 
-		    <dx:GridViewDataComboBoxColumn FieldName="include_in_perelik" VisibleIndex="50" Width = "50px" Visible="True" Caption="Включено до переліку №">
+		    <dx:GridViewDataComboBoxColumn FieldName="include_in_perelik" VisibleIndex="50" Width = "50px" Visible="True" Caption="Пропонується до переліку №">
 			    <HeaderStyle Wrap="True" />
 			    <PropertiesComboBox DataSourceID="SqlDataSourceIncludeInPerelik" ValueField="id" TextField="name" ValueType="System.String" />
                 <EditFormSettings ColumnSpan="1" />
@@ -1947,6 +1991,23 @@ WHERE id = @id"
                 <EditFormCaptionStyle Wrap="True"/>
             </dx:GridViewDataTextColumn>
 
+            <dx:GridViewDataTextColumn FieldName="priznach_before" Caption="Цільове призначення об’єкта, за яким об’єкт використовувався перед тим, як він став вакантним" VisibleIndex="205" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="period_nouse" Caption="Період часу, протягом якого об’єкт не використовується" VisibleIndex="215" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="osoba_use_before" Caption="Інформацію про особу, яка використовувала об’єкт перед тим, як він став вакантним (якщо такою особою був балансоутримувач, проставляється позначка “об’єкт використовувався балансоутримувачем”)" VisibleIndex="225" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
 
 
         </Columns>

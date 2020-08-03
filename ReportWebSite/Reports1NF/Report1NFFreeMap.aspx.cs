@@ -235,7 +235,7 @@ SELECT
 	fs.power,
 	fs.gas,
 	org.short_name as org_name,
-	b.condition,
+	(select q.name from dict_1nf_tech_stane q where q.id = fs.free_sqr_condition_id) as condition,
 	org.director_title as vidpov_osoba,
 	(select qq.step_name from freecycle_step_dict qq where qq.step_id = fs.freecycle_step_dict_id) as current_stage_name,
 	fs.current_stage_docdate,

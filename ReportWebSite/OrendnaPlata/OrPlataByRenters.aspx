@@ -192,7 +192,7 @@
         <dx:GridViewDataTextColumn FieldName="payment_budget_50_uah" VisibleIndex="13" Visible="False" Caption="Відрахування 50% До Бюджету (грн.)"/>
         <dx:GridViewDataTextColumn FieldName="debt_total" VisibleIndex="14" Visible="True" Caption="Заборгованість, всього (грн.)"/>
         <dx:GridViewDataTextColumn FieldName="debt_3_month" VisibleIndex="15" Visible="False" Caption="Заборгованість Поточна До 3 Місяців (грн.)"/>
-        <dx:GridViewDataTextColumn FieldName="debt_12_month" VisibleIndex="16" Visible="False" Caption="Заборгованість Прострочена Від 3 До 12 Місяців (грн.)"/>
+        <dx:GridViewDataTextColumn FieldName="debt_12_month" VisibleIndex="16" Visible="False" Caption="Заборгованість прострочена від 4 до 12 місяців (грн.)"/>
         <dx:GridViewDataTextColumn FieldName="debt_3_years" VisibleIndex="17" Visible="False" Caption="Заборгованість Прострочена Від 1 До 3 Років (грн.)"/>
         <dx:GridViewDataTextColumn FieldName="debt_over_3_years" VisibleIndex="18" Visible="False" Caption="Заборгованість Безнадійна (Більше 3 Років) (грн.)"/>
         <dx:GridViewDataTextColumn FieldName="debt_spysano" VisibleIndex="19" Visible="False" Caption="Списано Заборгованості (грн.)"/>

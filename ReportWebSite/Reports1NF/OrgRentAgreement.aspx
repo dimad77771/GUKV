@@ -2245,9 +2245,9 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                                 <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                             </dx:ASPxSpinEdit></td>
                                                             <td></td>
-                                                            <td><dx:ASPxLabel ID="ASPxLabel27" runat="server" Text="- прострочена від 3 до 12 місяців"></dx:ASPxLabel></td>
+                                                            <td><dx:ASPxLabel ID="ASPxLabel27" runat="server" Text="- прострочена від 4 до 12 місяців"></dx:ASPxLabel></td>
                                                             <td><dx:ASPxSpinEdit ID="EditCollectionDebt12Month" ClientInstanceName="EditCollectionDebt12Month" runat="server" NumberType="Float" Value='<%# Eval("debt_12_month") %>' Width="100px" ReadOnly = "true"
-                                                                Title="Заборгованість по орендній платі прострочена від 3 до 12 місяців">
+                                                                Title="Заборгованість по орендній платі прострочена від 4 до 12 місяців">
                                                                 <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                             </dx:ASPxSpinEdit></td>
                                                         </tr>

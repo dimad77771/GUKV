@@ -23,6 +23,7 @@ using System.Web.Configuration;
 using System.IO;
 using System.Security.Principal;
 using System.Security.AccessControl;
+using DevExpress.Web.ASPxTabControl;
 
 public partial class Reports1NF_OrgBalansObject : PhotoPage
 {
@@ -84,8 +85,30 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 			return Request.QueryString["bid"];
 		}
 	}
+    protected int? ParamEditFreeSquareId
+    {
+        get
+        {
+            var val = Request.QueryString["edit_free_square_id"];
+            if (string.IsNullOrEmpty(val))
+			{
+                return null;
+			}
+            else
+			{
+                return int.Parse(val);
+			}
+        }
+    }
+    protected bool EditFreeSquareMode
+    {
+        get
+        {
+            return (ParamEditFreeSquareId != null);
+        }
+    }
 
-	protected void ASPxButton_ArendaObjects_ExportPDF_Click(object sender, EventArgs e)
+    protected void ASPxButton_ArendaObjects_ExportPDF_Click(object sender, EventArgs e)
 	{
 		//this.ExportGridToPDF(ASPxGridViewExporterArendaObjects, PrimaryGridView, LabelReportTitle1.Text, ViewState["PrimaryGridView.DataSourceID"] as string);
 		var b = 100;
@@ -128,6 +151,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
             SqlDataSourceFreeSquare.SelectParameters["balans_id"].DefaultValue = BalansObjectID.ToString();
             SqlDataSourceFreeSquare.SelectParameters["report_id"].DefaultValue = ReportID.ToString();
+            SqlDataSourceFreeSquare.SelectParameters["free_square_id"].DefaultValue = (EditFreeSquareMode ? ParamEditFreeSquareId : - 1).ToString();
         }
 
         // Check if report belongs to this user
@@ -193,7 +217,10 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
         if (!IsPostBack)
 		{
-			ASPxGridViewFreeSquare.FilterExpression = "[is_included] = True";
+            if (!EditFreeSquareMode)
+            {
+                ASPxGridViewFreeSquare.FilterExpression = "[is_included] = True";
+            }
             foreach (var col in ASPxGridViewFreeSquare.Columns)
             {
                 var vcol = col as GridViewEditDataColumn;
@@ -202,9 +229,22 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
                     vcol.PropertiesEdit.ClientInstanceName = "felm__" + (!string.IsNullOrEmpty(vcol.FieldName) ? vcol.FieldName : vcol.Name);
                 }
             }
+
+            if (EditFreeSquareMode)
+			{
+                foreach(TabPage tabpage in CardPageControl.TabPages)
+				{
+                    if (tabpage.Text != "Вільні приміщення")
+					{
+                        tabpage.Visible = false;
+                    }
+                }
+
+                ASPxGridViewFreeSquare.StartEdit(0);
+            }
         }
-			//////
-		}
+            //////
+        }
         catch (Exception ex)
         {
             var lognet = log4net.LogManager.GetLogger("ReportWebSite");
@@ -247,8 +287,18 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
 		//pgv
 		var enabledFreeSquare = reportBelongsToUser && userIsReportSubmitter;
-		//ASPxGridViewFreeSquare.Enabled = enabledFreeSquare;
-		if (!enabledFreeSquare)
+        if (EditFreeSquareMode)
+        {
+            enabledFreeSquare = true;
+            var col0 = ASPxGridViewFreeSquare.AllColumns[0] as GridViewCommandColumn;
+            col0.NewButton.Visible = false;
+            col0.DeleteButton.Visible = false;
+            (col0.CustomButtons["btnPhoto"] as GridViewCommandColumnCustomButton).Visibility = GridViewCustomButtonVisibility.Invisible;
+            (col0.CustomButtons["btnPdfBuild"] as GridViewCommandColumnCustomButton).Visibility = GridViewCustomButtonVisibility.Invisible;
+            (col0.CustomButtons["btnFreeCycle"] as GridViewCommandColumnCustomButton).Visibility = GridViewCustomButtonVisibility.Invisible;
+        }
+        //ASPxGridViewFreeSquare.Enabled = enabledFreeSquare;
+        if (!enabledFreeSquare)
 		{
 			var col0 = ASPxGridViewFreeSquare.AllColumns[0] as GridViewCommandColumn;
 			col0.EditButton.Visible = false;
@@ -1203,7 +1253,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 					var val = (decimal)svalue;
 					if (val < 2.0M)
 					{
-						e.Errors[dataColumn] = "Загальна площа вільного приміщення не може бути менше 2 кв.м.";
+						e.Errors[dataColumn] = "Загальна площа об’єкта не може бути менше 2 кв.м.";
 					}
 				}
 			}
@@ -1213,18 +1263,18 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
                 e.Errors[dataColumn] = "Вкажіть стан вільного приміщення";
             }
 
-			if (fieldName == "free_sqr_condition_id")
-			{
-				var svalue = e.NewValues[dataColumn.FieldName];
-				if (svalue != null)
-				{
-					var val = (int)svalue;
-					if (!(new[] { 2, 7, 11 }.Contains(val)))
-					{
-						e.Errors[dataColumn] = "Стан вільного приміщення може мати тільки значення: ЗАДОВІЛЬНИЙ, ДОБРИЙ, ПОТРЕБУЄ РЕМОНТУ";
-					}
-				}
-			}
+			//if (fieldName == "free_sqr_condition_id")
+			//{
+			//	var svalue = e.NewValues[dataColumn.FieldName];
+			//	if (svalue != null)
+			//	{
+			//		var val = (int)svalue;
+			//		if (!(new[] { 2, 7, 11 }.Contains(val)))
+			//		{
+			//			e.Errors[dataColumn] = "Стан вільного приміщення може мати тільки значення: ЗАДОВІЛЬНИЙ, ДОБРИЙ, ПОТРЕБУЄ РЕМОНТУ";
+			//		}
+			//	}
+			//}
 
 
 			if (fieldName == "floor" && e.NewValues[dataColumn.FieldName] == null)
@@ -1462,5 +1512,4 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
         //        throw new NotImplementedException();
         throw new Exception(p);
     }
-
 }

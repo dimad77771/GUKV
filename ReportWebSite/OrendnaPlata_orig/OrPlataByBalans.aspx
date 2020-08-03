@@ -263,7 +263,7 @@
             Caption="Заборгованість Орендарів, поточна до 3 місяців (грн.)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_12_month" ReadOnly="True" 
             VisibleIndex="34" Visible="False" 
-            Caption="Заборгованість Орендарів, прострочена від 3 до 12 місяців (грн.)"></dx:GridViewDataTextColumn>
+            Caption="Заборгованість Орендарів, прострочена від 4 до 12 місяців (грн.)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_3_years" ReadOnly="True" 
             VisibleIndex="35" Visible="False" 
             Caption="Заборгованість Орендарів, прострочена від 1 до 3 років (грн.)"></dx:GridViewDataTextColumn>

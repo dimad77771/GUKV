@@ -533,7 +533,7 @@
         <dx:GridViewDataTextColumn FieldName="debt_3_month" ReadOnly="True"
             VisibleIndex="88" Visible="True" Caption="Заборгованість по орендній платі поточна до 3-х місяців"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_12_month" ReadOnly="True"
-            VisibleIndex="89" Visible="True" Caption="Заборгованість по орендній платі прострочена від 3 до 12 місяців"></dx:GridViewDataTextColumn>
+            VisibleIndex="89" Visible="True" Caption="Заборгованість по орендній платі прострочена від 4 до 12 місяців"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_3_years" ReadOnly="True"
             VisibleIndex="90" Visible="True" Caption="Заборгованість по орендній платі прострочена від 1 до 3 років"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_over_3_years" ReadOnly="True"

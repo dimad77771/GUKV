@@ -1555,11 +1555,11 @@ WHERE id = @id"
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>
 
-            <dx:GridViewDataTextColumn FieldName="total_free_sqr" Caption="Загальна площа вільного приміщення" VisibleIndex="3" >
+            <dx:GridViewDataTextColumn FieldName="total_free_sqr" Caption="Загальна площа об’єкта" VisibleIndex="3" >
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>
 
-            <dx:GridViewDataTextColumn FieldName="free_sqr_korysna" Caption="Корисна площа вільного приміщення" VisibleIndex="4" >
+            <dx:GridViewDataTextColumn FieldName="free_sqr_korysna" Caption="Корисна площа об’єкта" VisibleIndex="4" >
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>
 
@@ -1587,7 +1587,7 @@ WHERE id = @id"
                         <HeaderStyle Wrap="True" />
                     </dx:GridViewDataCheckColumn>
 
-                    <dx:GridViewDataCheckColumn FieldName="power" Caption="Електропостачання" VisibleIndex="9">
+                    <dx:GridViewDataCheckColumn FieldName="power" Caption="Потужність електромережі" VisibleIndex="9">
                         <HeaderStyle Wrap="True" />
                     </dx:GridViewDataCheckColumn>
 

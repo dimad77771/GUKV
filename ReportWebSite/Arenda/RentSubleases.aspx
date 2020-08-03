@@ -538,7 +538,7 @@ t.report_id as sublease_report_id,
         <dx:GridViewDataTextColumn FieldName="debt_3_month" ReadOnly="True"
             VisibleIndex="10088" Visible="False" Caption="Заборгованість по орендній платі поточна до 3-х місяців"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_12_month" ReadOnly="True"
-            VisibleIndex="10089" Visible="False" Caption="Заборгованість по орендній платі прострочена від 3 до 12 місяців"></dx:GridViewDataTextColumn>
+            VisibleIndex="10089" Visible="False" Caption="Заборгованість по орендній платі прострочена від 4 до 12 місяців"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_3_years" ReadOnly="True"
             VisibleIndex="10090" Visible="False" Caption="Заборгованість по орендній платі прострочена від 1 до 3 років"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_over_3_years" ReadOnly="True"

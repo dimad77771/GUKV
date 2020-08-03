@@ -796,7 +796,7 @@
         <dx:GridViewDataTextColumn FieldName="debt_v_mezhah_vitrat" VisibleIndex="14" Caption="Заборгованість Орендарів В Межах Витрат На Утримання (грн.)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_total" VisibleIndex="15" Caption="Заборгованість Орендарів, всього (грн.)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_3_month" VisibleIndex="16" Caption="Заборгованість Орендарів, поточна до 3 місяців (грн.)"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="debt_12_month" VisibleIndex="17" Caption="Заборгованість Орендарів, прострочена від 3 до 12 місяців (грн.)"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="debt_12_month" VisibleIndex="17" Caption="Заборгованість Орендарів, прострочена від 4 до 12 місяців (грн.)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_3_years" VisibleIndex="18" Caption="Заборгованість Орендарів, прострочена від 1 до 3 років (грн.)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_over_3_years" VisibleIndex="19" Caption="Заборгованість Орендарів, безнадійна (більше 3 років) (грн.)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_spysano" VisibleIndex="20" Caption="Списано Заборгованості Орендарів (грн.)"></dx:GridViewDataTextColumn>
@@ -887,7 +887,7 @@
         <dx:GridViewDataTextColumn FieldName="payment_budget_50_uah" VisibleIndex="10" Caption="Відрахування 50% До Бюджету (грн.)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_total" VisibleIndex="11" Caption="Заборгованість, всього (грн.)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_3_month" VisibleIndex="12" Caption="Заборгованість Поточна До 3 Місяців (грн.)"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="debt_12_month" VisibleIndex="13" Caption="Заборгованість Прострочена Від 3 До 12 Місяців (грн.)"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="debt_12_month" VisibleIndex="13" Caption="Заборгованість прострочена від 4 до 12 місяців (грн.)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_3_years" VisibleIndex="14" Caption="Заборгованість Прострочена Від 1 До 3 Років (грн.)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_over_3_years" VisibleIndex="15" Caption="Заборгованість Безнадійна (Більше 3 Років) (грн.)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_spysano" VisibleIndex="16" Caption="Списано Заборгованості (грн.)"></dx:GridViewDataTextColumn>

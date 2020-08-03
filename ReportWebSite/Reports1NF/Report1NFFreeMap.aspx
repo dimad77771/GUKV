@@ -197,12 +197,12 @@
 							'</tr>' +
 
 							'<tr>' +
-							'<td style="text-align:left; border:1px solid; padding:5px">Загальна площа вільних приміщень, кв.м.</td>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">Загальна площа об’єкта</td>' +
 							'<td style="text-align:left; border:1px solid; padding:5px">' + formatNumber(apoint.total_free_sqr) + '</td>' +
 							'</tr>' +
 
 							'<tr>' +
-							'<td style="text-align:left; border:1px solid; padding:5px">Технічний стан</td>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">Технічний стан об’єкта</td>' +
 							'<td style="text-align:left; border:1px solid; padding:5px">' + apoint.condition + '</td>' +
 							'</tr>' +
 
@@ -222,7 +222,7 @@
 							'</tr>' +
 
 							'<tr>' +
-							'<td style="text-align:left; border:1px solid; padding:5px">Включено до переліку №</td>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">Пропонується до переліку №</td>' +
 							'<td style="text-align:left; border:1px solid; padding:5px">' + apoint.include_in_perelik + '</td>' +
 							'</tr>' +
 

@@ -221,7 +221,7 @@
         <dx:GridViewDataTextColumn FieldName="debt_total" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="9" Visible="True" Caption="Заборгованість, всього (грн.)"></dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn FieldName="debt_3_month" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="10" Visible="False" Caption="Заборгованість Поточна До 3 Місяців (грн.)"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="debt_12_month" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="11" Visible="False" Caption="Заборгованість Прострочена Від 3 До 12 Місяців (грн.)"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="debt_12_month" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="11" Visible="False" Caption="Заборгованість прострочена від 4 до 12 місяців (грн.)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_3_years" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="12" Visible="False" Caption="Заборгованість Прострочена Від 1 До 3 Років (грн.)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_over_3_years" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="13" Visible="False" Caption="Заборгованість Безнадійна (Більше 3 Років) (грн.)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_spysano" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="14" Visible="False" Caption="Списано Заборгованості (грн.)"></dx:GridViewDataTextColumn>
