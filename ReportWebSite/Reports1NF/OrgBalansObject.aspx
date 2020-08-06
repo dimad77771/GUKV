@@ -1891,7 +1891,7 @@ WHERE id = @id"
             </dx:GridViewDataTextColumn>
 
             <dx:GridViewDataComboBoxColumn FieldName="zgoda_control_id" VisibleIndex="20" Width ="80px"
-                Visible="True" Caption="Погодження органу управління (освіта, охорона здоров'я)">
+                Visible="True" Caption="Погодження органу управління балансоутримувача">
                 <HeaderStyle Wrap="True" />
                 <PropertiesComboBox DataSourceID="SqlDataSourceZgodaRenter" ValueField="id" TextField="name" ValueType="System.Int32" />
             </dx:GridViewDataComboBoxColumn>

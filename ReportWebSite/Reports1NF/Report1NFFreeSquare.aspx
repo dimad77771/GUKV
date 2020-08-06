@@ -62,7 +62,7 @@
 			FreeSquareGridView.GetRowValues(e.visibleIndex, 'id;balans_id;report_id', OnClickOrgBalansObject);
         } else if (e.buttonID == 'btnCopyFullDescription') {
             var cols = "include_in_perelik;zal_balans_vartist;perv_balans_vartist;vydbudynku;prop_srok_orands;punkt_metod_rozrahunok;invest_solution;";
-            cols += "komis_protocol;district;street_name;addr_nomer;sqr_for_rent;free_sql_usefull;";
+			cols += "zgoda_control;district;street_name;addr_nomer;sqr_for_rent;free_sql_usefull;";
 			cols += "floor;condition;water;heating;gas;power_text;history;zgoda_renter;nomer_derzh_reestr_neruh;reenum_derzh_reestr_neruh;info_priznach_nouse;info_rahunok_postach;priznach_before;period_nouse;osoba_use_before"
 			FreeSquareGridView.GetRowValues(e.visibleIndex, cols, OnCopyFullDescription);
 		}
@@ -315,7 +315,6 @@ LEFT JOIN (
 UpdateCommand="UPDATE [reports1nf_balans_free_square]
 SET
     [komis_protocol] = @komis_protocol,
-	[using_possible_id] = @using_possible_id,
 	[geodata_map_points] = @geodata_map_points,
 	[include_in_perelik] = @include_in_perelik,
 	[freecycle_step_dict_id] = @freecycle_step_dict_id,
@@ -596,7 +595,7 @@ WHERE id = @id"
 		</dx:GridViewDataComboBoxColumn>
 
 
-        <dx:GridViewDataTextColumn FieldName="komis_protocol" Caption="Погодження органу управління балансоутримувача" VisibleIndex="4" Width="100px">
+        <dx:GridViewDataTextColumn FieldName="komis_protocol" Caption="Погодження орендодавця" VisibleIndex="4" Width="100px">
 			<%--<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("komis_protocol") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>--%>
@@ -708,7 +707,7 @@ WHERE id = @id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("initiator") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="zgoda_control" Caption="Погодження органу управління (освіта, охорона здоров'я)" VisibleIndex="20" Width="100px">
+        <dx:GridViewDataTextColumn FieldName="zgoda_control" Caption="Погодження органу управління балансоутримувача" VisibleIndex="20" Width="100px">
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("zgoda_control") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
