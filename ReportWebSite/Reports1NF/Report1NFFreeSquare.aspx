@@ -117,10 +117,11 @@
         
         console.log("txt", txt);
 
-        //$("#inpit-for-copy-clipboard").text(txt);
-        //$("#inpit-for-copy-clipboard").select();
-		//document.execCommand("copy");
-		//document.body.style.cursor = 'cursorurl';
+        $("#inpit-for-copy-clipboard").val(txt);
+        $("#inpit-for-copy-clipboard").select();
+        document.execCommand("copy");
+        return;
+
         navigator.clipboard.writeText(txt).then(function () {
 			alert("Опис скопійовано в буфер обміну");
 		}, function () {
@@ -353,7 +354,7 @@ WHERE id = @id"
     SelectCommand="SELECT '1' id, '1' name, 1 as ordrow union SELECT '2' id, '2' name, 1 as ordrow union select null, '',  2 as ordrow ORDER BY ordrow, name">
 </mini:ProfiledSqlDataSource>
 
-<input id="inpit-for-copy-clipboard" style="display:none" />
+<textarea rows="2" cols="2" id="inpit-for-copy-clipboard" style="display:none2;width:1px;height:1px;position:absolute;top:1px;right:1px;z-index:-1" ></textarea>
 
 <dx:ASPxMenu ID="SectionMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
     <Items>
