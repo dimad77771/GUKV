@@ -62,7 +62,7 @@
 			FreeSquareGridView.GetRowValues(e.visibleIndex, 'id;balans_id;report_id', OnClickOrgBalansObject);
         } else if (e.buttonID == 'btnCopyFullDescription') {
             var cols = "include_in_perelik;zal_balans_vartist;perv_balans_vartist;vydbudynku;prop_srok_orands;punkt_metod_rozrahunok;invest_solution;";
-			cols += "zgoda_control;district;street_name;addr_nomer;sqr_for_rent;free_sql_usefull;";
+			cols += "zgoda_control;district;street_name;addr_nomer;total_free_sqr;free_sql_usefull;";
 			cols += "floor;condition;water;heating;gas;power_text;history;zgoda_renter;nomer_derzh_reestr_neruh;reenum_derzh_reestr_neruh;info_priznach_nouse;info_rahunok_postach;priznach_before;period_nouse;osoba_use_before"
 			FreeSquareGridView.GetRowValues(e.visibleIndex, cols, OnCopyFullDescription);
 		}
@@ -90,7 +90,7 @@
 			"Теплопостачання – ",
 			"Газопостачання – ",
 			"Електропостачання – ", 
-			"Пам’ятка культурної спадщини - Пам'ятка історії - ",
+			"Пам’ятка культурної спадщини - ",
 			"Погодження органу охорони культурної спадщини - ",
 			"Номер запису про право власності у Реєстрація у Державному реєстрі речових прав на нерухоме майно – ",
 			"Реєстраційний номер об'єкту нерухомого майна у Реєстрація у Державному реєстрі речових прав на нерухоме майно – ",
@@ -101,21 +101,23 @@
 			"Інформацію про особу, яка використовувала об’єкт перед тим, як він став вакантним – ",
         ];
 
+		console.log("values", values);
+
         var txt = "";
         for (var i = 0; i < headers.length; i++) {
             var vv = values[i];
-            if (vv == null) {
+			if (vv === null) {
                 vv = "";
-            } else if (vv == true) {
+            } else if (vv === true) {
                 vv = "так";
-			} else if (vv == false) {
+			} else if (vv === false) {
 				vv = "ні";
             }
 
 			txt += (i == 0 ? "" : "\n") + headers[i] +  vv;
 		}
         
-        console.log("txt", txt);
+        //console.log("txt", txt);
 
         $("#inpit-for-copy-clipboard").val(txt);
         $("#inpit-for-copy-clipboard").select();
