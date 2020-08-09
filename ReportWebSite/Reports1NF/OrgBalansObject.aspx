@@ -707,6 +707,11 @@
     SelectCommand="SELECT '1' id, '1' name, 1 as ordrow union SELECT '2' id, '2' name, 1 as ordrow union select null, '',  2 as ordrow ORDER BY ordrow, name">
 </mini:ProfiledSqlDataSource>
 
+<mini:ProfiledSqlDataSource ID="SqlDataSourceFreeObjectType" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_free_object_type ORDER BY id">
+</mini:ProfiledSqlDataSource>
+
 
 <asp:ObjectDataSource ID="ObjectDataSourceBalansPhoto" runat="server" SelectMethod="SelectFromTempFolder" 
     TypeName="ExtDataEntry.Models.FileAttachment">
@@ -741,6 +746,7 @@
 	  ,[invest_solution_id] 
       ,[initiator] 
       ,[zgoda_control_id] 
+      ,[free_object_type_id] 
       ,[zgoda_renter_id] 
 	  ,[is_included] 	
 	  ,[komis_protocol] 	
@@ -779,6 +785,7 @@
 	  ,[invest_solution_id]  
       ,[initiator] 
       ,[zgoda_control_id] 
+      ,[free_object_type_id] 
       ,[zgoda_renter_id]
 	  ,[is_included]
       ,[include_in_perelik]
@@ -815,6 +822,7 @@
 	  ,@invest_solution_id
       ,@initiator
       ,@zgoda_control_id
+      ,@free_object_type_id
       ,@zgoda_renter_id
 	  ,@is_included
       ,@include_in_perelik
@@ -853,6 +861,7 @@ SET
 	  ,[invest_solution_id] = @invest_solution_id
       ,[initiator] = @initiator
       ,[zgoda_control_id] = @zgoda_control_id
+      ,[free_object_type_id] = @free_object_type_id
       ,[zgoda_renter_id] = @zgoda_renter_id 
 	  ,[is_included] = @is_included 
       ,[include_in_perelik] = @include_in_perelik 
@@ -899,6 +908,7 @@ WHERE id = @id"
 		<asp:Parameter Name="invest_solution_id" />
         <asp:Parameter Name="initiator" />
         <asp:Parameter Name="zgoda_control_id" />
+        <asp:Parameter Name="free_object_type_id" />
         <asp:Parameter Name="zgoda_renter_id" />
 		<asp:Parameter Name="is_included" />		
         <asp:Parameter Name="include_in_perelik" />
@@ -935,6 +945,7 @@ WHERE id = @id"
 		<asp:Parameter Name="invest_solution_id" />
         <asp:Parameter Name="initiator" />
         <asp:Parameter Name="zgoda_control_id" />
+        <asp:Parameter Name="free_object_type_id" />
         <asp:Parameter Name="zgoda_renter_id" />
 		<asp:Parameter Name="is_included" />	
         <asp:Parameter Name="include_in_perelik" />	
@@ -1902,9 +1913,15 @@ WHERE id = @id"
                 <PropertiesComboBox DataSourceID="SqlDataSourceZgodaRenter" ValueField="id" TextField="name" ValueType="System.Int32" />
             </dx:GridViewDataComboBoxColumn>
 
-            <dx:GridViewDataTextColumn FieldName="note" Caption="Примітка" VisibleIndex="22" Width ="100px" >
+            <%--<dx:GridViewDataTextColumn FieldName="note" Caption="Примітка" VisibleIndex="22" Width ="100px" >
                 <HeaderStyle Wrap="True" />
-            </dx:GridViewDataTextColumn>
+            </dx:GridViewDataTextColumn>--%>
+            <dx:GridViewDataComboBoxColumn FieldName="free_object_type_id" VisibleIndex="22" Width ="100px"
+                Visible="True" Caption="Тип об’єкта">
+                <HeaderStyle Wrap="True" />
+                <PropertiesComboBox DataSourceID="SqlDataSourceFreeObjectType" ValueField="id" TextField="name" ValueType="System.Int32" />
+            </dx:GridViewDataComboBoxColumn>
+
 
             <dx:GridViewDataCheckColumn FieldName="is_included" Caption="Включено до переліку вільних приміщень" VisibleIndex="30">
                 <HeaderStyle Wrap="True" />
@@ -2008,6 +2025,8 @@ WHERE id = @id"
                 <EditFormSettings Visible="True" />
                 <EditFormCaptionStyle Wrap="True"/>
             </dx:GridViewDataTextColumn>
+
+
 
 
         </Columns>

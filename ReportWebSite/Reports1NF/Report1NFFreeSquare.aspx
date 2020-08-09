@@ -61,7 +61,7 @@
 		} else if (e.buttonID == 'btnOrgBalansObject') {
 			FreeSquareGridView.GetRowValues(e.visibleIndex, 'id;balans_id;report_id', OnClickOrgBalansObject);
         } else if (e.buttonID == 'btnCopyFullDescription') {
-            var cols = "include_in_perelik;zal_balans_vartist;perv_balans_vartist;vydbudynku;prop_srok_orands;punkt_metod_rozrahunok;invest_solution;";
+			var cols = "include_in_perelik;zal_balans_vartist;perv_balans_vartist;free_object_type_name;prop_srok_orands;punkt_metod_rozrahunok;invest_solution;";
 			cols += "zgoda_control;district;street_name;addr_nomer;total_free_sqr;free_sql_usefull;";
 			cols += "floor;condition;water;heating;gas;power_text;history;zgoda_renter;nomer_derzh_reestr_neruh;reenum_derzh_reestr_neruh;info_priznach_nouse;info_rahunok_postach;priznach_before;period_nouse;osoba_use_before"
 			FreeSquareGridView.GetRowValues(e.visibleIndex, cols, OnCopyFullDescription);
@@ -264,6 +264,8 @@
 --,(select left(qq.full_name, 150) as name from view_dict_rental_rate qq where qq.id = fs.using_possible_id) as possible_using
 ,fs.possible_using
 
+,(select qq.name from dict_free_object_type qq where qq.id = fs.free_object_type_id) as free_object_type_name
+
 
 ,fs.modify_date
 ,fs.note
@@ -279,7 +281,7 @@
 ,rep.form_of_ownership
 ,rep.old_organ
 
-,b.object_kind as vydbudynku
+--,b.object_kind as vydbudynku
 ,history = case when isnull(b.history, 'НІ') = 'НІ' then '' else 'ТАК' end 
 , isnull(ddd.name, 'Невизначені') as sf_upr
 , @baseurl + '/Reports1NF/BalansFreeSquarePhotosPdf.aspx?id=' + cast(fs.id as varchar(100)) as pdfurl
@@ -719,9 +721,9 @@ WHERE id = @id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("zgoda_renter") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="vydbudynku" Caption="Тип об’єкта" VisibleIndex="22" Width="100px">
+        <dx:GridViewDataTextColumn FieldName="free_object_type_name" Caption="Тип об’єкта" VisibleIndex="22" Width="100px">
 			<EditItemTemplate>
-				<dx:ASPxLabel runat="server" Text='<%# Eval("vydbudynku") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("free_object_type_name") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="history" Caption="Пам’ятка культурної спадщини" VisibleIndex="23" Width="100px">

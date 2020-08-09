@@ -111,6 +111,8 @@
 --,(select qq.name2 from view_dict_rental_rate qq where qq.id = fs.using_possible_id) as possible_using
 ,fs.possible_using
 
+,(select qq.name from dict_free_object_type qq where qq.id = fs.free_object_type_id) as free_object_type_name
+
 ,fs.modify_date
 ,fs.note
 , solution = fs.is_solution
@@ -123,7 +125,7 @@
 ,dbo.get_reports1NF_orandodatel(b.district, rep.form_of_ownership) as orandodatel
 ,rep.old_organ
 
-,b.object_kind as vydbudynku
+--,b.object_kind as vydbudynku
 ,history = case when isnull(b.history, 'НІ') = 'НІ' then '' else 'ТАК' end 
 , isnull(ddd.name, 'Невизначені') as sf_upr
 , @baseurl + '/Reports1NF/BalansFreeSquarePhotosPdf.aspx?id=' + cast(fs.id as varchar(100)) as pdfurl
@@ -431,9 +433,9 @@ WHERE id = @id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("orandodatel") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="vydbudynku" Caption="Тип об’єкта" VisibleIndex="22" Width="180px">
+        <dx:GridViewDataTextColumn FieldName="free_object_type_name" Caption="Тип об’єкта" VisibleIndex="22" Width="180px">
 			<EditItemTemplate>
-				<dx:ASPxLabel runat="server" Text='<%# Eval("vydbudynku") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("free_object_type_name") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="history" Caption="Пам’ятка культурної спадщини" VisibleIndex="23" Width="70px">
