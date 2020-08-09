@@ -216,7 +216,7 @@
            ,org.buhgalter_phone AS 'USER_TEL' -- 27
            ,org.buhgalter_email AS 'USER_EMAIL' -- 28
            ,org.budget_narah_50_uah AS 'PAY_50_NARAH' -- 29
-           ,isnull(org.budget_zvit_50_uah, 0) + isnull(org.unknown_payments, 0) AS 'PAY_50_PAYED'-- 30
+           ,org.budget_zvit_50_uah AS 'PAY_50_PAYED'-- 30
            ,org.budget_prev_50_uah AS 'PAY_50_DEBT'-- 31
            ,org.budget_debt_30_50_uah AS 'PAY_50_DEBT_OLD' -- 32
            ,org.payment_budget_special AS 'PAY_SPECIAL'-- 33
