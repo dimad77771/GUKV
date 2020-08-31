@@ -1939,7 +1939,7 @@ WHERE id = @id"
 				<EditFormSettings Visible="False" />
             </dx:GridViewDataTextColumn>
 
-		    <dx:GridViewDataComboBoxColumn FieldName="include_in_perelik" VisibleIndex="50" Width = "50px" Visible="True" Caption="Пропонується до переліку №">
+		    <dx:GridViewDataComboBoxColumn FieldName="include_in_perelik" VisibleIndex="50" Width = "50px" Visible="True" Caption="Включено до переліку №">
 			    <HeaderStyle Wrap="True" />
 			    <PropertiesComboBox DataSourceID="SqlDataSourceIncludeInPerelik" ValueField="id" TextField="name" ValueType="System.String" />
                 <EditFormSettings ColumnSpan="1" />

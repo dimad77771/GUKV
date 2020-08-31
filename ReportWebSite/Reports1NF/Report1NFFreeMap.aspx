@@ -222,7 +222,7 @@
 							'</tr>' +
 
 							'<tr>' +
-							'<td style="text-align:left; border:1px solid; padding:5px">Пропонується до переліку №</td>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">Включено до переліку №</td>' +
 							'<td style="text-align:left; border:1px solid; padding:5px">' + apoint.include_in_perelik + '</td>' +
 							'</tr>' +
 

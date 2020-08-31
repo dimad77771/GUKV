@@ -320,7 +320,7 @@ WHERE id = @id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
-		<dx:GridViewDataComboBoxColumn FieldName="include_in_perelik" VisibleIndex="4" Width = "50px" Visible="True" Caption="Пропонується до переліку №">
+		<dx:GridViewDataComboBoxColumn FieldName="include_in_perelik" VisibleIndex="4" Width = "50px" Visible="True" Caption="Включено до переліку №">
 			<HeaderStyle Wrap="True" />
 		</dx:GridViewDataComboBoxColumn>
 

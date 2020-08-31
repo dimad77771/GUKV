@@ -70,7 +70,7 @@
 
 	function OnCopyFullDescription(values) {
         var headers = [
-            "Пропонується до переліку № - ",
+            "Включено до переліку № - ",
             "Залишкова балансова вартість – ",
             "Первісна балансова вартість - ",
             "Тип об’єкта - ",
@@ -591,9 +591,9 @@ WHERE id = @id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
-        <%--<dx:GridViewDataTextColumn FieldName="include_in_perelik" Caption="Пропонується до переліку №" VisibleIndex="4" Width="50px">
+        <%--<dx:GridViewDataTextColumn FieldName="include_in_perelik" Caption="Включено до переліку №" VisibleIndex="4" Width="50px">
         </dx:GridViewDataTextColumn>--%>
-		<dx:GridViewDataComboBoxColumn FieldName="include_in_perelik" VisibleIndex="4" Width = "50px" Visible="True" Caption="Пропонується до переліку №">
+		<dx:GridViewDataComboBoxColumn FieldName="include_in_perelik" VisibleIndex="4" Width = "50px" Visible="True" Caption="Включено до переліку №">
 			<HeaderStyle Wrap="True" />
 			<PropertiesComboBox DataSourceID="SqlDataSourceIncludeInPerelik" ValueField="id" TextField="name" ValueType="System.String" />
 		</dx:GridViewDataComboBoxColumn>
