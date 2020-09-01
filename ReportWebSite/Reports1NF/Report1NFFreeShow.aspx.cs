@@ -30,6 +30,18 @@ public partial class Reports1NF_Report1NFFreeShow : System.Web.UI.Page
 	   */
 		FreeSquareGridView.SettingsEditing.Mode = GridViewEditingMode.Inline;
 
+		if (HasFsid)
+		{
+			FreeSquareGridView.SettingsDetail.ShowDetailRow = true;
+			FreeSquareGridView.TotalSummary.Clear();
+			FreeSquareGridView.Settings.ShowFilterRow = false;
+			FreeSquareGridView.Settings.ShowFilterRowMenu = false;
+			FreeSquareGridView.Settings.ShowGroupPanel = false;
+			FreeSquareGridView.Settings.ShowFooter = false;
+			FreeSquareGridView.Settings.ShowHeaderFilterButton = false;
+			FreeSquareGridView.Settings.ShowFilterBar = GridViewStatusBarMode.Hidden;
+		}
+
 		//DevExpress.Web.ASPxFileManager.ASPxFileManager a;
 		//a.SettingsUpload
 		//a.SettingsToolbar
@@ -137,6 +149,15 @@ public partial class Reports1NF_Report1NFFreeShow : System.Web.UI.Page
 		}
 	}
 
+	protected bool HasFsid
+	{
+		get
+		{
+			return !string.IsNullOrEmpty(Request.QueryString["fs_id"]);
+		}
+	}
+
+
 	protected string ParamMode50
 	{
 		get
@@ -145,4 +166,13 @@ public partial class Reports1NF_Report1NFFreeShow : System.Web.UI.Page
 		}
 	}
 
+
+	protected void FreeSquareGridView_DataBound(object sender, EventArgs e)
+	{
+		if (HasFsid)
+		{ 
+			FreeSquareGridView.DetailRows.ExpandAllRows();
+			FreeSquareGridView.SettingsDetail.ShowDetailButtons = false;
+		}
+	}
 }

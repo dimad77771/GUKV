@@ -101,12 +101,24 @@
 
 ,(SELECT Q.step_name FROM freecycle_step_dict Q where Q.step_id = fs.freecycle_step_dict_id) freecycle_step_name
 
-
+,fs.zal_balans_vartist
+,fs.perv_balans_vartist
+,fs.prop_srok_orands
+,fs.punkt_metod_rozrahunok
+,invest_solution = (select qq.name from dict_1nf_invest_solution qq where qq.id = fs.invest_solution_id)
+,(select q.name from dict_1nf_power_info q where q.id = fs.power_info_id) as power_text
+,fs.nomer_derzh_reestr_neruh
+,fs.reenum_derzh_reestr_neruh
+,fs.info_priznach_nouse
+,fs.info_rahunok_postach
+,fs.priznach_before
+,fs.period_nouse
+,fs.osoba_use_before
 ,fs.floor
-,fs.water
-,fs.heating
-,fs.power
-,fs.gas
+,water = case when fs.water = 1 then 'ТАК' when fs.water = 0 then 'НІ' end
+,heating = case when fs.heating = 1 then 'ТАК' when fs.heating = 0 then 'НІ' end
+,power = case when fs.power = 1 then 'ТАК' when fs.power = 0 then 'НІ' end
+,gas = case when fs.gas = 1 then 'ТАК' when fs.gas = 0 then 'НІ' end
 
 --,(select qq.name2 from view_dict_rental_rate qq where qq.id = fs.using_possible_id) as possible_using
 ,fs.possible_using
@@ -253,10 +265,215 @@ WHERE id = @id"
    <dx:ASPxGridView ID="FreeSquareGridView" runat="server" AutoGenerateColumns="False" 
         DataSourceID="SqlDataSourceFreeSquare" KeyFieldName="id" Width="100%" 
         ClientInstanceName="FreeSquareGridView" 
+        OnDataBound="FreeSquareGridView_DataBound"
         OnCustomCallback="GridViewFreeSquare_CustomCallback"
         OnCustomFilterExpressionDisplayText="GridViewFreeSquare_CustomFilterExpressionDisplayText"
         OnProcessColumnAutoFilter="GridViewFreeSquare_ProcessColumnAutoFilter" >
 	   <ClientSideEvents CustomButtonClick="ShowPhoto" />
+    <Templates>
+        <DetailRow>
+            <div style="margin-left:5px">
+                <table style="border:1px solid; margin-top:6px; border-collapse:collapse; width:1700px">
+                    <tr>
+                        <td style="text-align:left; border:1px solid; padding:3px; width:200px">
+                            Включено до переліку №
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px; width:200px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("include_in_perelik") %>' Font-Bold="true" />
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px; width:200px">
+                            Залишкова балансова вартість, тис. грн.
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px; width:200px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("zal_balans_vartist") %>' Font-Bold="true" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Первісна балансова вартість, тис. грн.
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("perv_balans_vartist") %>' Font-Bold="true" />
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Тип об’єкта
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("free_object_type_name") %>' Font-Bold="true" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Пропонований строк оренди (у роках)
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("prop_srok_orands") %>' Font-Bold="true" />
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Пункт Методики розрахунку орендної плати (якщо об’єкт пропонується для включення до Переліку другого типу)
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("punkt_metod_rozrahunok") %>' Font-Bold="true" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Наявність рішень про проведення інвестиційного конкурсу або про включення об’єкта до переліку майна, що підлягає приватизації
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("invest_solution") %>' Font-Bold="true" />
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Погодження органу управління балансоутримувача
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("zgoda_control") %>' Font-Bold="true" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Район
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("district") %>' Font-Bold="true" />
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Назва Вулиці
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("street_name") %>' Font-Bold="true" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Номер Будинку
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("addr_nomer") %>' Font-Bold="true" />
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Загальна площа об’єкта, кв.м
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("total_free_sqr") %>' Font-Bold="true" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Корисна площа об’єкта, кв.м
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("free_sql_usefull") %>' Font-Bold="true" />
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Характеристика об’єкта оренди(будівлі в цілому або частини будівлі із зазначенням місця розташування об’єкта в будівлі(надземний, цокольний, підвальний, технічний або мансардний поверх, номер поверху або поверхів)
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("floor") %>' Font-Bold="true" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Технічний стан
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("condition") %>' Font-Bold="true" />
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Водопостачання
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("water") %>' Font-Bold="true" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Теплопостачання
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("heating") %>' Font-Bold="true" />
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Газопостачання
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("gas") %>' Font-Bold="true" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Електропостачання
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("power_text") %>' Font-Bold="true" />
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Пам’ятка культурної спадщини
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("history") %>' Font-Bold="true" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Погодження органу охорони культурної спадщини
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("zgoda_renter") %>' Font-Bold="true" />
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Номер запису про право власності у Реєстрація у Державному реєстрі речових прав на нерухоме майно
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("nomer_derzh_reestr_neruh") %>' Font-Bold="true" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Реєстраційний номер об'єкту нерухомого майна у Реєстрація у Державному реєстрі речових прав на нерухоме майно
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("reenum_derzh_reestr_neruh") %>' Font-Bold="true" />
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Інформація про цільове призначення об’єкта оренди
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("info_priznach_nouse") %>' Font-Bold="true" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Інформація про наявність окремих особових рахунків на об'єкт оренди, відкритих постачальниками комунальних послуг
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("info_rahunok_postach") %>' Font-Bold="true" />
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Цільове призначення об’єкта, за яким об’єкт використовувався перед тим, як він став вакантним
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("priznach_before") %>' Font-Bold="true" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Період часу, протягом якого об’єкт не використовується (у місяцях)
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("period_nouse") %>' Font-Bold="true" />
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            Інформацію про особу, яка використовувала об’єкт перед тим, як він став вакантним
+                        </td>
+                        <td style="text-align:left; border:1px solid; padding:3px">
+                            <dx:ASPxLabel runat="server" Text='<%# Eval("osoba_use_before") %>' Font-Bold="true" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </DetailRow>
+    </Templates>
     <Columns>
 
         <dx:GridViewCommandColumn VisibleIndex="0" Width="50px" ButtonType="Image" CellStyle-Wrap="False" >
