@@ -1234,6 +1234,15 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
     protected void ASPxGridViewFreeSquare_RowValidating(object sender, ASPxDataValidationEventArgs e)
     {
+        var komis_protocol = (e.OldValues["komis_protocol"] == null ? "" : e.OldValues["komis_protocol"].ToString().Trim());
+        if (komis_protocol != "" && !komis_protocol.StartsWith("0"))
+		{
+            e.RowError = "Об'єкт погоджено орендодавцем! Усі зміни ТІЛЬКИ з його дозволу за тел: 202-61-76, 202-61-77, 202-61-96 !";
+            //e.Errors.Add(ASPxGridViewFreeSquare.Columns["total_free_sqr"], "AAAAAAAAA");
+            //var ggg = e.HasErrors;
+            return;
+        }
+
         foreach (GridViewColumn column in ASPxGridViewFreeSquare.Columns)
         {
             GridViewDataColumn dataColumn = column as GridViewDataColumn;

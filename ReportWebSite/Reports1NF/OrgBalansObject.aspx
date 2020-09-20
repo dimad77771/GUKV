@@ -430,8 +430,20 @@
 				//console.log("felm__total_free_sqr", felm__total_free_sqr.GetValue());
                 $(felm__tmp1.mainElement).hide();
                 $(felm__tmp2.mainElement).hide();
-				$(felm__tmp3.mainElement).hide();
+                $(felm__tmp3.mainElement).hide();
+
                 $(popup).find(".dxgvCommandColumn_DevEx").attr("align", "left");
+                var err_object = $("#MainContent_CPMainPanel_CardPageControl_ASPxRoundPanel1_ASPxGridViewFreeSquare_DXEditingErrorRow");
+                if (err_object.length > 0) {
+                    var err_text = err_object.text();
+                    if (err_text == null) err_text = "";
+					if (err_text.indexOf("Об'єкт погоджено орендодавцем! Усі зміни ТІЛЬКИ з його дозволу за тел: 202-61-76, 202-61-77, 202-61-96 !") >= 0) {
+                        console.log("err_object.text", err_text);
+                        var save_image = $(popup).find(".dxgvCommandColumn_DevEx").find("img").first();
+                        save_image.hide();
+                    }
+				}
+				
 
 				console.log("felm__prop_srok_orands", felm__prop_srok_orands);
 				felm__include_in_perelik.ValueChanged.AddHandler(OnEditFormTableItemChange);
@@ -1928,7 +1940,7 @@ WHERE id = @id"
 				<EditFormSettings Caption="Включено до переліку вільних приміщень" />
             </dx:GridViewDataCheckColumn>
 
-            <dx:GridViewDataTextColumn FieldName="komis_protocol" Caption="Рішення орендо- давця" VisibleIndex="32" Width ="80px" >
+            <dx:GridViewDataTextColumn FieldName="komis_protocol" Caption="Погодження орендодавця" VisibleIndex="32" Width ="80px" >
                 <HeaderStyle Wrap="True" />
 				<EditFormSettings Visible="False" />
             </dx:GridViewDataTextColumn>
