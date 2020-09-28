@@ -724,7 +724,7 @@ WHERE id = @id"
                 SelectMethod="Select" 
                 TypeName="ExtDataEntry.Models.FileAttachment">
                 <SelectParameters>
-                    <asp:Parameter DefaultValue="free_square_current_stage_documents" Name="scope" Type="String" />
+                    <asp:Parameter DefaultValue="1NF" Name="scope" Type="String" />
                     <asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
                 </SelectParameters>
             </asp:ObjectDataSource>

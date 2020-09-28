@@ -71,23 +71,24 @@
 			if (apoint.fs_id == fs_id) break;
 		}
 
-		var adoctext = '';
-		if (isNotEmpty(apoint.current_stage_docnum)) {
-			adoctext += "№ " + apoint.current_stage_docnum;
-		}
-		if (isNotEmpty(apoint.current_stage_docdate)) {
-			if (adoctext != '') {
-				adoctext += ' від ';
-			}
-			adoctext += formatDate(apoint.current_stage_docdate);
-		}
+		//var adoctext = '';
+		//if (isNotEmpty(apoint.current_stage_docnum)) {
+		//	adoctext += "№ " + apoint.current_stage_docnum;
+		//}
+		//if (isNotEmpty(apoint.current_stage_docdate)) {
+		//	if (adoctext != '') {
+		//		adoctext += ' від ';
+		//	}
+		//	adoctext += formatDate(apoint.current_stage_docdate);
+		//}
+		var adoctext = "Документи по об'єкту приватизації";
 
 		//map.closePopupOnClick = false;
-		console.log("map.closePopupOnClick", map.closePopupOnClick);
+		//console.log("map.closePopupOnClick", map.closePopupOnClick);
 		$.cookie('RecordID', apoint.fs_id);
 		ASPxFileManagerPhotoFiles.Refresh();
 		//console.log("PopupObjectPhotos.ShowAtPos", PopupObjectPhotos.ShowAtPos);
-		PopupObjectPhotos.SetHeaderText("Документ " + adoctext);
+		PopupObjectPhotos.SetHeaderText(adoctext);
 		PopupObjectPhotos.ShowAtPos(50, 100);
         //PopupObjectPhotos.Show();
 	}
@@ -174,9 +175,11 @@
 						//apoint.full_address = "ГІДРОПАРК/ДОЛОБЕЦЬКИЙ ОСТРІВ 50 -МАЙ ГІДРОПАРК/ДОЛОБЕЦЬКИЙ ОСТРІВ 50 -МАЙ ГІДРОПАРК/ДОЛОБЕЦЬКИЙ ОСТРІВ 50 -МАЙ END";
 						var html =
 							//'<a href="Report1NFFreeShow.aspx?fs_id=' + apoint.fs_id + '" target="_blank"><p style="text-align:center; font-size:large; color:white">'
-							'<a onclick="openLink(' + apoint.fs_id + ')" style="cursor:pointer"><table style="width:100%"><tr><td><p style="text-align:center; font-size:large; color:white">'
+							//'<a onclick="openLink(' + apoint.fs_id + ')" style="cursor:pointer"><table style="width:100%"><tr><td><p style="text-align:center; font-size:large; color:white">'
+							'<a onclick="openDocument(' + apoint.fs_id + ')" style="cursor:pointer"><table style="width:100%"><tr><td><p style="text-align:center; font-size:large; color:white">'
 							+ apoint.full_address + '</p></td>' +
-							'<td style="text-align:right; display:none"><span style="margin-left:40px; vertical-align:super; text-align:center; font-size:small; color:white">Додаткова інформація</span><img src="../Styles/ExternalLinkIcon.png" height="18" width="18" style="margin-left:5px"/></td><td style="width:20px"></td></tr></table></a>' +
+							//'<td style="text-align:right; display:none"><span style="margin-left:40px; vertical-align:super; text-align:center; font-size:small; color:white">Додаткова інформація</span><img src="../Styles/ExternalLinkIcon.png" height="18" width="18" style="margin-left:5px"/></td><td style="width:20px"></td></tr></table></a>' +
+							'<td style="text-align:right; ' + (apoint.has_documents == '+' ? '' : 'visibility:hidden')  + '"><span style="margin-left:40px; vertical-align:super; text-align:center; font-size:small; color:white">Документи</span><img src="../Styles/ExternalLinkIcon.png" height="18" width="18" style="margin-left:5px"/></td><td style="width:20px"></td></tr></table></a>' +
 							'<table style="border:1px solid; width:580px; margin-top:6px">' +
 
 							html_need_zgoda +
@@ -287,7 +290,7 @@
 				SelectMethod="Select" 
 				TypeName="ExtDataEntry.Models.FileAttachment">
 				<SelectParameters>
-					<asp:Parameter DefaultValue="free_square_current_stage_documents" Name="scope" Type="String" />
+					<asp:Parameter DefaultValue="privatisat_documents" Name="scope" Type="String" />
 					<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
 				</SelectParameters>
 			</asp:ObjectDataSource>

@@ -436,19 +436,19 @@ WHERE id = @id"
         <dx:GridViewDataTextColumn FieldName="sposib_privat" Caption="Спосіб приватизації"  Width="100px">
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn FieldName="document_privat" Caption="Документи щодо приватизації об’єкта"  Width="250px">
+        <dx:GridViewDataTextColumn FieldName="document_privat" Caption="Документи щодо приватизації об’єкта"  Width="300px">
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataSpinEditColumn FieldName="obj_price" Caption="Ціна продажу, грн." Width="75px">
+        <dx:GridViewDataSpinEditColumn FieldName="obj_price" Caption="Ціна продажу, грн." Width="95px">
             <PropertiesSpinEdit NumberType="Float" NumberFormat="Number">
                 <SpinButtons Enabled="true" ></SpinButtons>
             </PropertiesSpinEdit>
         </dx:GridViewDataSpinEditColumn>
 
-        <dx:GridViewDataTextColumn FieldName="buyer_name" Caption="Покупець (назва)"  Width="100px">
+        <dx:GridViewDataTextColumn FieldName="buyer_name" Caption="Покупець (назва)"  Width="200px">
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn FieldName="buyer_adr_street" Caption="Покупець (Назва вулиці)"  Width="100px">
+        <dx:GridViewDataTextColumn FieldName="buyer_adr_street" Caption="Покупець (Назва вулиці)"  Width="200px">
         </dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn FieldName="buyer_adr_nomer" Caption="Покупець (Номер будинку, літери, корпус)"  Width="80px">
@@ -493,7 +493,7 @@ WHERE id = @id"
 
 <dx:ASPxPopupControl ID="ASPxPopupControlFreeSquare" runat="server" AllowDragging="True" 
     ClientInstanceName="PopupObjectPhotos" EnableClientSideAPI="True" 
-    HeaderText="Фотографії об'єкту з вільним приміщенням" Modal="True" 
+    HeaderText="Документи по об'єкту приватизації" Modal="True" 
     PopupHorizontalAlign="Center" PopupVerticalAlign="Middle" RenderMode="Lightweight" 
     PopupAction="None" PopupElementID="ASPxGridViewFreeSquare" Width="700px" >
     <ContentCollection>
