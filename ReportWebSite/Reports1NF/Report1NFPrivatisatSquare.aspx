@@ -173,7 +173,7 @@
 		console.log(values);
 		var id = values;
 		window.open(
-			'BalansFreeSquarePhotosPdf.aspx?id=' + id,
+			'BalansPrivatisatPhotosPdf.aspx?id=' + id,
 			'_blank',
 		);
 	}

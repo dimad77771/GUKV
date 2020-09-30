@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Report1NFPrivatisatShow.aspx.cs" Inherits="Reports1NF_Report1NFPrivatisatShow"
-    MasterPageFile="~/FreeShowPublic.master" Title="Перелік об'єктів приватизації" %>
+    MasterPageFile="~/PrivatisatShowPublic.master" Title="Перелік об'єктів приватизації" %>
 
 <%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
 <%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView.Export" tagprefix="dx" %>
@@ -59,7 +59,17 @@
 			'Report1NFPrivatisatMap.aspx?fs_id=' + id,
 			'_blank',
 		);
-	}
+    }
+
+    window.onload = function () {
+        jQuery(document).ready(function () {
+            setTimeout(function () {
+                AdjustGridSizes();
+				$("#MainContent_ASPxPopupControlFreeSquare_ASPxFileManagerPhotoFiles_Splitter_Toolbar_DXI0_").hide();
+				$("#MainContent_ASPxPopupControlFreeSquare_ASPxFileManagerPhotoFiles_Splitter_Toolbar_DXI5_IS").hide();
+            })
+        });
+    };
 
 
     // ]]>
@@ -516,7 +526,7 @@ WHERE id = @id"
                 </SettingsFileList>
                     <SettingsEditing AllowDelete="false" AllowCreate="false" AllowDownload="true" AllowMove="false" AllowRename="false" />
                     <SettingsFolders Visible="False" />
-                    <SettingsToolbar ShowDownloadButton="true" ShowPath="False" ShowFilterBox="false" />
+                    <SettingsToolbar ShowDownloadButton="true" ShowPath="true" ShowFilterBox="false" />
                     <SettingsUpload UseAdvancedUploadMode="True" Enabled="false" >
                         <AdvancedModeSettings EnableMultiSelect="True" />
                     </SettingsUpload>

@@ -1,5 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Report1NFPrivatisatMap.aspx.cs" Inherits="Reports1NF_Report1NFPrivatisatMap"
-    MasterPageFile="~/PrivatisatShowPublic.master" Title="Мапа вільних приміщень" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Report1NFProdlenMap.aspx.cs" Inherits="Reports1NF_Report1NFProdlenMap"
+    MasterPageFile="~/ProdlenShowPublic.master" Title="Мапа вільних приміщень" %>
 
 <%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
 <%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView.Export" tagprefix="dx" %>
@@ -34,13 +34,6 @@
 		//console.log($("#map"));
 		//alert(reportId);
 		//; height:600px
-
-		//var gg = $("#MainContent_ASPxPopupControlFreeSquare_ASPxFileManagerPhotoFiles_Splitter_Toolbar").children("ul.dxm-gutter");
-		//gg.css("width", "200px");
-		//console.log(gg);
-
-		$("#MainContent_ASPxPopupControlFreeSquare_ASPxFileManagerPhotoFiles_Splitter_Toolbar_DXI0_").hide();
-		$("#MainContent_ASPxPopupControlFreeSquare_ASPxFileManagerPhotoFiles_Splitter_Toolbar_DXI5_IS").hide();
 	}
 
 	function formatNumber(arg) {
@@ -78,29 +71,24 @@
 			if (apoint.fs_id == fs_id) break;
 		}
 
-		//var adoctext = '';
-		//if (isNotEmpty(apoint.current_stage_docnum)) {
-		//	adoctext += "№ " + apoint.current_stage_docnum;
-		//}
-		//if (isNotEmpty(apoint.current_stage_docdate)) {
-		//	if (adoctext != '') {
-		//		adoctext += ' від ';
-		//	}
-		//	adoctext += formatDate(apoint.current_stage_docdate);
-		//}
-		var adoctext = "Документи по об'єкту приватизації";
+		var adoctext = '';
+		if (isNotEmpty(apoint.current_stage_docnum)) {
+			adoctext += "№ " + apoint.current_stage_docnum;
+		}
+		if (isNotEmpty(apoint.current_stage_docdate)) {
+			if (adoctext != '') {
+				adoctext += ' від ';
+			}
+			adoctext += formatDate(apoint.current_stage_docdate);
+		}
 
 		//map.closePopupOnClick = false;
-		//console.log("map.closePopupOnClick", map.closePopupOnClick);
+		console.log("map.closePopupOnClick", map.closePopupOnClick);
 		$.cookie('RecordID', apoint.fs_id);
 		ASPxFileManagerPhotoFiles.Refresh();
 		//console.log("PopupObjectPhotos.ShowAtPos", PopupObjectPhotos.ShowAtPos);
-		PopupObjectPhotos.SetHeaderText(adoctext);
+		PopupObjectPhotos.SetHeaderText("Документ " + adoctext);
 		PopupObjectPhotos.ShowAtPos(50, 100);
-
-		//var gg = $("#MainContent_ASPxPopupControlFreeSquare_ASPxFileManagerPhotoFiles_Splitter_Toolbar").children("ul.dxm-gutter");
-		//gg.css("width", "250px");
-
         //PopupObjectPhotos.Show();
 	}
 
@@ -186,18 +174,16 @@
 						//apoint.full_address = "ГІДРОПАРК/ДОЛОБЕЦЬКИЙ ОСТРІВ 50 -МАЙ ГІДРОПАРК/ДОЛОБЕЦЬКИЙ ОСТРІВ 50 -МАЙ ГІДРОПАРК/ДОЛОБЕЦЬКИЙ ОСТРІВ 50 -МАЙ END";
 						var html =
 							//'<a href="Report1NFFreeShow.aspx?fs_id=' + apoint.fs_id + '" target="_blank"><p style="text-align:center; font-size:large; color:white">'
-							//'<a onclick="openLink(' + apoint.fs_id + ')" style="cursor:pointer"><table style="width:100%"><tr><td><p style="text-align:center; font-size:large; color:white">'
-							'<a onclick="openDocument(' + apoint.fs_id + ')" style="cursor:pointer"><table style="width:100%"><tr><td><p style="text-align:center; font-size:large; color:white">'
+							'<a onclick="openLink(' + apoint.fs_id + ')" style="cursor:pointer"><table style="width:100%"><tr><td><p style="text-align:center; font-size:large; color:white">'
 							+ apoint.full_address + '</p></td>' +
-							//'<td style="text-align:right; display:none"><span style="margin-left:40px; vertical-align:super; text-align:center; font-size:small; color:white">Додаткова інформація</span><img src="../Styles/ExternalLinkIcon.png" height="18" width="18" style="margin-left:5px"/></td><td style="width:20px"></td></tr></table></a>' +
-							'<td style="text-align:right; ' + (apoint.has_documents == '+' ? '' : 'visibility:hidden')  + '"><span style="margin-left:40px; vertical-align:super; text-align:center; font-size:small; color:white">Документи</span><img src="../Styles/ExternalLinkIcon.png" height="18" width="18" style="margin-left:5px"/></td><td style="width:20px"></td></tr></table></a>' +
+							'<td style="text-align:right"><span style="margin-left:40px; vertical-align:super; text-align:center; font-size:small; color:white">Додаткова інформація</span><img src="../Styles/ExternalLinkIcon.png" height="18" width="18" style="margin-left:5px"/></td><td style="width:20px"></td></tr></table></a>' +
 							'<table style="border:1px solid; width:580px; margin-top:6px">' +
 
 							html_need_zgoda +
 
 							'<tr>' +
-							'<td style="text-align:left; border:1px solid; padding:5px">Організатор продажу</td>' +
-							'<td style="text-align:left; border:1px solid; padding:5px">' + apoint.organizator + '</td>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">Орендодавець</td>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">' + apoint.orandodatel + '</td>' +
 							'</tr>' +
 
 							'<tr>' +
@@ -216,22 +202,71 @@
 							'</tr>' +
 
 							'<tr>' +
-							'<td style="text-align:left; border:1px solid; padding:5px">Орендар</td>' +
-							'<td style="text-align:left; border:1px solid; padding:5px">' + apoint.orendar + '</td>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">Технічний стан об’єкта</td>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">' + apoint.condition + '</td>' +
 							'</tr>' +
 
 							'<tr>' +
-							'<td style="text-align:left; border:1px solid; padding:5px">Ціна продажу</td>' +
-							'<td style="text-align:left; border:1px solid; padding:5px">' + formatNumber(apoint.obj_price) + '</td>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">Можливе використання вільного приміщення</td>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">' + apoint.possible_using + '</td>' +
 							'</tr>' +
 
 							'<tr>' +
-							'<td style="text-align:left; border:1px solid; padding:5px">Покупець</td>' +
-							'<td style="text-align:left; border:1px solid; padding:5px">' + apoint.buyer + '</td>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">Період використання</td>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">' + apoint.period_used_name + '</td>' +
+							'</tr>' +
+
+							'<tr>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">Наявність рішень про проведення інвестиційного конкурсу</td>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">' + apoint.invest_solution + '</td>' +
+							'</tr>' +
+
+							'<tr>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">Включено до переліку №</td>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">' + apoint.include_in_perelik + '</td>' +
 							'</tr>' +
 
 							'';
 
+						//if (isNotEmpty(apoint.current_stage_name)) {
+						if (true) {
+							html +=
+								'<tr>' +
+								'<td style="text-align:left; border:1px solid; padding:5px">Стан процесу передачі</td>' +
+								'<td style="text-align:left; border:1px solid; padding:5px">' + apoint.current_stage_name + '</td>' +
+								'</tr>';
+							if (isNotEmpty(apoint.current_stage_docnum) || isNotEmpty(apoint.current_stage_docdate)) {
+								var adoctext = '';
+								if (isNotEmpty(apoint.current_stage_docnum)) {
+									adoctext += "№ " + apoint.current_stage_docnum;
+								}
+								if (isNotEmpty(apoint.current_stage_docdate)) {
+									if (adoctext != '') {
+										adoctext += ' від ';
+									}
+									adoctext += formatDate(apoint.current_stage_docdate);
+								}
+								if (apoint.current_stage_has_documents == '+') {
+									adoctext += '<a onclick="openDocument(' + apoint.fs_id + ')" style="cursor:pointer">'
+										+ '<span style="margin-left:20px; vertical-align:super; text-align:center; font-size:small; color:white">документ</span><img src="../Styles/ExternalLinkIcon.png" height="18" width="18" style="margin-left:2px"/>'
+										+ '</a>';
+								}
+								html +=
+									'<tr>' +
+									'<td style="text-align:left; border:1px solid; padding:5px">№ та дата документа</td>' +
+									'<td style="text-align:left; border:1px solid; padding:5px">' + adoctext + '</td>' +
+									'</tr>';
+								//console.log("apoint", apoint);
+								//console.log("apoint.current_stage_has_documents", apoint.current_stage_has_documents);
+							}
+							//if (apoint.current_stage_has_documents == '+') {
+							//	html +=
+							//		'<tr>' +
+							//		'<td style="text-align:left; border:1px solid; padding:5px">Документ</td>' +
+							//		'<td style="text-align:left; border:1px solid; padding:5px">' + apoint.current_stage_name + '</td>' +
+							//		'</tr>';
+							//}
+						}
 
 						html += '</table>';
 
@@ -245,7 +280,7 @@
 
 						DG.marker([apoint.point1, apoint.point2], {
 							//title: "aaaa\njjj",
-							icon: (apoint.has_buyer ? myIcon_2 : myIcon_1),
+							icon: (apoint.need_zgoda == '+' ? myIcon_2 : myIcon_1),
 						})
 						.addTo(map)
 						//.bindPopup('Вы кликнули по мне!')
@@ -301,7 +336,7 @@
 				SelectMethod="Select" 
 				TypeName="ExtDataEntry.Models.FileAttachment">
 				<SelectParameters>
-					<asp:Parameter DefaultValue="privatisat_documents" Name="scope" Type="String" />
+					<asp:Parameter DefaultValue="free_square_current_stage_documents" Name="scope" Type="String" />
 					<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
 				</SelectParameters>
 			</asp:ObjectDataSource>
@@ -314,7 +349,7 @@
 				</SettingsFileList>
 				<SettingsEditing AllowDelete="false" AllowCreate="false" AllowDownload="true" AllowMove="false" AllowRename="false" />
 				<SettingsFolders Visible="False" />
-				<SettingsToolbar ShowDownloadButton="true" ShowPath="true" ShowFilterBox="false" />
+				<SettingsToolbar ShowDownloadButton="true" ShowPath="False" ShowFilterBox="false" />
 				<SettingsUpload UseAdvancedUploadMode="True" Enabled="false" >
 					<AdvancedModeSettings EnableMultiSelect="True" />
 				</SettingsUpload>

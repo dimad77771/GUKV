@@ -61,6 +61,16 @@
 		);
 	}
 
+	window.onload = function () {
+		jQuery(document).ready(function () {
+			setTimeout(function () {
+				AdjustGridSizes();
+				$("#MainContent_ASPxPopupControlFreeSquare_ASPxFileManagerPhotoFiles_Splitter_Toolbar_DXI0_").hide();
+				$("#MainContent_ASPxPopupControlFreeSquare_ASPxFileManagerPhotoFiles_Splitter_Toolbar_DXI5_IS").hide();
+			})
+		});
+	};
+
 
     // ]]>
 
@@ -737,7 +747,7 @@ WHERE id = @id"
                 </SettingsFileList>
                     <SettingsEditing AllowDelete="false" AllowCreate="false" AllowDownload="true" AllowMove="false" AllowRename="false" />
                     <SettingsFolders Visible="False" />
-                    <SettingsToolbar ShowDownloadButton="true" ShowPath="False" ShowFilterBox="false" />
+                    <SettingsToolbar ShowDownloadButton="true" ShowPath="true" ShowFilterBox="false" />
                     <SettingsUpload UseAdvancedUploadMode="True" Enabled="false" >
                         <AdvancedModeSettings EnableMultiSelect="True" />
                     </SettingsUpload>

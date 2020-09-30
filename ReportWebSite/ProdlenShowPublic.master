@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="FreeShowPublic.master.cs" Inherits="FreeShowPublic" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="ProdlenShowPublic.master.cs" Inherits="ProdlenShowPublic" %>
 
 <%@ Register Src="~/UserControls/ThemeSelector.ascx" TagPrefix="dx" TagName="ThemeSelector" %>
 
@@ -24,7 +24,7 @@
 					</td>
 					<td>
 						<span style="color:white; font-size:large">
-							ІАС «Управління майновим комплексом територіальної громади міста Києва». Модуль «Оренда комунального майна»
+							ІАС «Управління майновим комплексом територіальної громади міста Києва». Модуль «Продовження оренди комунального майна» (в розробці)
 						</span>
 					</td>
 					<td style="text-align:right" >
@@ -47,8 +47,8 @@
                                 <dx:ASPxMenu ID="MainMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left" >
                                     <ItemStyle Paddings-PaddingLeft="5px" Paddings-PaddingRight="5px" Font-Size="Larger" />
                                     <Items>
-										<dx:MenuItem NavigateUrl="~/Reports1NF/Report1NFFreeMap.aspx" Text="Мапа майна, що може бути передане в оренду"></dx:MenuItem>
-										<dx:MenuItem NavigateUrl="~/Reports1NF/Report1NFFreeShow.aspx" Text="Перелік майна, що може бути передане в оренду"></dx:MenuItem>
+										<dx:MenuItem Visible="false" NavigateUrl="~/Reports1NF/Report1NFFreeMap.aspx" Text="Мапа майна, що може бути передане в оренду"></dx:MenuItem>
+										<dx:MenuItem Visible="false" NavigateUrl="~/Reports1NF/Report1NFFreeShow.aspx" Text="Перелік майна, що може бути передане в оренду"></dx:MenuItem>
 										<dx:MenuItem Visible="false" NavigateUrl="~/Reports1NF/Report1NFFreeRejections.aspx" Text="Перелік відмов потенційним орендарям"></dx:MenuItem>
 										<dx:MenuItem Visible="false" NavigateUrl="~/Reports1NF/Report1NFFreeShow.aspx?mode50=1" Text="Рішення про укладання договору (площа  50 кв.м або менше, та вартість до 500 000 грн.)"></dx:MenuItem>
                                         <dx:MenuItem Visible="false" NavigateUrl="~/Reports1NF/Report1NFPrivatisatMap.aspx" Text="Мапа об'єктів приватизації"></dx:MenuItem>
