@@ -57,6 +57,7 @@ public partial class Reports1NF_Report1NFFreeMap : System.Web.UI.Page
 					var invest_solution = GetStringValue(reader, 23);
 					var orandodatel = GetStringValue(reader, 24);
 					var include_in_perelik = GetStringValue(reader, 25);
+					var prozoro_number = GetStringValue(reader, 26);
 
 					var regpoints = (new Regex(@"(\d+\.\d+)\s+(\d+\.\d+)")).Match(geodata_map_points);
 					if (regpoints.Groups.Count != 3) throw new Exception();
@@ -94,6 +95,7 @@ public partial class Reports1NF_Report1NFFreeMap : System.Web.UI.Page
 						invest_solution = invest_solution,
 						orandodatel = orandodatel,
 						include_in_perelik = include_in_perelik,
+						prozoro_number = prozoro_number,
 					};
 					AllPoints.Add(pointInfo);
 				}
@@ -210,6 +212,7 @@ public partial class Reports1NF_Report1NFFreeMap : System.Web.UI.Page
 		public string invest_solution;
 		public string orandodatel;
 		public string include_in_perelik;
+		public string prozoro_number;
 	}
 
 
@@ -246,6 +249,7 @@ SELECT
 	(select qq.name from dict_1nf_invest_solution qq where qq.id = fs.invest_solution_id) as invest_solution,
 	dbo.get_reports1NF_orandodatel(b.district, rep.form_of_ownership) as orandodatel,
 	fs.include_in_perelik,
+	fs.prozoro_number,	
 		
  row_number() over (order by org.short_name, b.street_full_name, b.addr_nomer, fs.total_free_sqr) as npp     
 ,fs.id

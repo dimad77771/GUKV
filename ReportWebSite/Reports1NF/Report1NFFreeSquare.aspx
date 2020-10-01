@@ -209,6 +209,7 @@
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT 
 	fs.komis_protocol,
+    fs.prozoro_number,
 	fs.using_possible_id,
 	fs.geodata_map_points,
 	fs.include_in_perelik,
@@ -324,6 +325,7 @@ SET
 	[freecycle_step_dict_id] = @freecycle_step_dict_id,
 	[current_stage_docdate] = @current_stage_docdate,
 	[current_stage_docnum] = @current_stage_docnum,
+    [prozoro_number] = @prozoro_number,
 	[is_included] = @is_included,
 	[modify_date2] = @modify_date2,
 	[modified_by2] = @modified_by2
@@ -738,6 +740,11 @@ WHERE id = @id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("sf_upr") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="prozoro_number" Caption="Унікальний код обєкту у ЕТС Прозорро-продажі" VisibleIndex="24" Width="150px">
+            <DataItemTemplate>
+                <%# "<a target=\"_blank\" href=\"https://prozorro.sale/auction/" + Eval("prozoro_number") + "\">" + Eval("prozoro_number") + "</a>"%>
+            </DataItemTemplate>
+        </dx:GridViewDataTextColumn>
 		<dx:GridViewDataTextColumn FieldName="pdfurl" Caption="Pdf" VisibleIndex="25" Width="100px" Visible="false">
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("pdfurl") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
@@ -899,7 +906,7 @@ WHERE id = @id"
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A2_55" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A2_60" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

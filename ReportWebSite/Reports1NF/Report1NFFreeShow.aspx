@@ -141,6 +141,7 @@
 , fs.initiator
 , zg2.name as zgoda_control
 , zg.name as zgoda_renter
+,fs.prozoro_number
 
 ,st.kind
 ,rep.form_of_ownership
@@ -674,6 +675,11 @@ WHERE id = @id"
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("freecycle_step_name") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="prozoro_number" Caption="Унікальний код обєкту у ЕТС Прозорро-продажі" VisibleIndex="24" Width="150px">
+            <DataItemTemplate>
+                <%# "<a target=\"_blank\" href=\"https://prozorro.sale/auction/" + Eval("prozoro_number") + "\">" + Eval("prozoro_number") + "</a>"%>
+            </DataItemTemplate>
         </dx:GridViewDataTextColumn>
         <%--<dx:GridViewDataTextColumn FieldName="sf_upr" Caption="Сфера управління" VisibleIndex="24" Width="100px">
 			<EditItemTemplate>

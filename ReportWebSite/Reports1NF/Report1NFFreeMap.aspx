@@ -180,7 +180,7 @@
 							'<a onclick="openLink(' + apoint.fs_id + ')" style="cursor:pointer"><table style="width:100%"><tr><td><p style="text-align:center; font-size:large; color:white">'
 							+ apoint.full_address + '</p></td>' +
 							'<td style="text-align:right"><span style="margin-left:40px; vertical-align:super; text-align:center; font-size:small; color:white">Додаткова інформація</span><img src="../Styles/ExternalLinkIcon.png" height="18" width="18" style="margin-left:5px"/></td><td style="width:20px"></td></tr></table></a>' +
-							'<table style="border:1px solid; width:580px; margin-top:6px">' +
+							'<table style="border:1px solid; width:680px; margin-top:6px">' +
 
 							html_need_zgoda +
 
@@ -271,12 +271,22 @@
 							//}
 						}
 
+						html +=
+							'<tr>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">Унікальний код обєкту у ЕТС Прозорро-продажі</td>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">' +
+							"<a target=\"_blank\" href=\"https://prozorro.sale/auction/" + apoint.prozoro_number + "\">" + apoint.prozoro_number + "</a>" +
+							'</td>' +
+							'</tr>' +
+							'';
+
+
 						html += '</table>';
 
 
 						var popup = DG.popup({
-							maxWidth: 650,
-							minWidth: 650,
+							maxWidth: 750,
+							minWidth: 750,
 							});
 						popup.setContent(html);
 
