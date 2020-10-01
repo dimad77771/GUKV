@@ -232,6 +232,15 @@
 
 							'';
 
+						html +=
+							'<tr>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">Унікальний код обєкту у ЕТС Прозорро-продажі</td>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">' +
+							"<a target=\"_blank\" href=\"https://prozorro.sale/ssp_object/" + apoint.prozoro_number + "\">" + apoint.prozoro_number + "</a>" +
+							'</td>' +
+							'</tr>' +
+							'';
+
 
 						html += '</table>';
 

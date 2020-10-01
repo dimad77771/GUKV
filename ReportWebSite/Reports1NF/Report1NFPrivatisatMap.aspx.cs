@@ -43,6 +43,7 @@ public partial class Reports1NF_Report1NFPrivatisatMap : System.Web.UI.Page
 					var buyer = GetStringValue(reader, 9);
 					var organizator = GetStringValue(reader, 10);
 					var has_documents = GetStringValue(reader, 11);
+					var prozoro_number = GetStringValue(reader, 12);
 
 					var regpoints = (new Regex(@"(\d+\.\d+)\s+(\d+\.\d+)")).Match(geodata_map_points);
 					if (regpoints.Groups.Count != 3) throw new Exception();
@@ -70,6 +71,7 @@ public partial class Reports1NF_Report1NFPrivatisatMap : System.Web.UI.Page
 						has_buyer = !string.IsNullOrEmpty(buyer),
 
 						has_documents = has_documents,
+						prozoro_number = prozoro_number,
 					};
 					AllPoints.Add(pointInfo);
 				}
@@ -167,6 +169,7 @@ public partial class Reports1NF_Report1NFPrivatisatMap : System.Web.UI.Page
 		public string buyer;
 		public bool has_buyer;
 		public string has_documents;
+		public string prozoro_number;
 	}
 
 
@@ -185,7 +188,8 @@ SELECT
 	A.orendar,
 	A.buyer_name as buyer,
 	A.organizator,
-	case when exists (select 1 from [privatisat_documents] Q where Q.free_square_id = A.id) then '+' else '-' end as has_documents
+	case when exists (select 1 from [privatisat_documents] Q where Q.free_square_id = A.id) then '+' else '-' end as has_documents,
+	A.prozoro_number
 FROM [privatisat] A
 WHERE A.geodata_map_points <> ''
 ";
