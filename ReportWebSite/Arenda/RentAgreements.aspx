@@ -569,11 +569,11 @@
             VisibleIndex="113" Visible="True" Caption="Звільнено від сплати орендної плати на (по)"></dx:GridViewDataDateColumn>
 
         <dx:GridViewDataTextColumn FieldName="zvilbykmp_percent" ReadOnly="True"
-            VisibleIndex="114" Visible="True" Caption="Звільнено від сплати згідно абзац 3 пукнт 2 рішення КМР 903/9073 (%)"></dx:GridViewDataTextColumn>
+            VisibleIndex="114" Visible="True" Caption="Звільнено від сплати згідно абзац 3 пункт 2 рішення КМР 253/9332 (%)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataDateColumn FieldName="zvilbykmp_date1" ReadOnly="True"
-            VisibleIndex="115" Visible="True" Caption="Звільнено від сплати згідно абзац 3 пукнт 2 рішення КМР 903/9073 (з)"></dx:GridViewDataDateColumn>
+            VisibleIndex="115" Visible="True" Caption="Звільнено від сплати згідно абзац 3 пункт 2 рішення КМР 253/9332 (з)"></dx:GridViewDataDateColumn>
         <dx:GridViewDataDateColumn FieldName="zvilbykmp_date2" ReadOnly="True"
-            VisibleIndex="116" Visible="True" Caption="Звільнено від сплати згідно абзац 3 пукнт 2 рішення КМР 903/9073 (по)"></dx:GridViewDataDateColumn>
+            VisibleIndex="116" Visible="True" Caption="Звільнено від сплати згідно абзац 3 пункт 2 рішення КМР 253/9332 (по)"></dx:GridViewDataDateColumn>
 
 
         <dx:GridViewDataDateColumn FieldName="povidoleno1_date" ReadOnly="True"

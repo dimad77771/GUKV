@@ -2158,7 +2158,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
 												<td align="left"><dx:ASPxDateEdit ID="edit_zvilneno_date2" runat="server" NumberType="Float" Value='<%# Eval("zvilneno_date2") %>' Width="100px" Title="по"/></td>
                                             </tr>
                                             <tr>
-                                                <td><dx:ASPxLabel runat="server" Text="Звільнено від сплати згідно абзац 3 пукнт 2 рішення КМР 903/9073"></dx:ASPxLabel></td>
+                                                <td><dx:ASPxLabel runat="server" Text="Звільнено від сплати згідно абзац 3 пункт 2 рішення КМР 253/9332"></dx:ASPxLabel></td>
 												<td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
                                                 <td align="left"><dx:ASPxSpinEdit ID="edit_zvilbykmp_percent" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp_percent") %>' Width="100px" Title="%"/></td>
 												<td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
