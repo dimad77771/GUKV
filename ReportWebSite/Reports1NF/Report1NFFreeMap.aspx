@@ -159,6 +159,17 @@
 						//shadowSize: [68, 95],
 						//shadowAnchor: [22, 94]
 					});
+					var myIcon_3 = DG.icon({
+						iconUrl: '../Styles/DGCustomization__marker_3b.png',
+						//iconRetinaUrl: '../Styles/DGCustomization__marker_2.png',
+						iconSize: [22, 68],
+						//iconAnchor: [22, 94],
+						popupAnchor: [-1, -26],
+						//shadowUrl: 'my-icon-shadow.png',
+						//shadowRetinaUrl: 'my-icon-shadow@2x.png',
+						//shadowSize: [68, 95],
+						//shadowAnchor: [22, 94]
+					});
 
 
 					for (n = 0; n < allPoints.length; n++) {
@@ -293,7 +304,7 @@
 
 						DG.marker([apoint.point1, apoint.point2], {
 							//title: "aaaa\njjj",
-							icon: (apoint.need_zgoda == '+' ? myIcon_2 : myIcon_1),
+							icon: (apoint.prozoro_number != '' ? myIcon_3 : apoint.need_zgoda == '+' ? myIcon_2 : myIcon_1),
 						})
 						.addTo(map)
 						//.bindPopup('Вы кликнули по мне!')

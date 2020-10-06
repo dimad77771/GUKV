@@ -1768,9 +1768,10 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         AddQueryParameter(ref fieldList, "payment_narah", "paynar", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentNarah_orndpymnt"), parameters);
         AddQueryParameter(ref fieldList, "znyato_nadmirno_narah", "znyatonadmir", Reports1NFUtils.GetEditNumeric(controls, "edit_znyato_nadmirno_narah"), parameters);
         AddQueryParameter(ref fieldList, "last_year_saldo", "saldo", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentSaldo_orndpymnt"), parameters);
+        AddQueryParameter(ref fieldList, "avance_saldo", "avancesaldo", Reports1NFUtils.GetEditNumeric(controls, "Edit_avance_saldo"), parameters);
         AddQueryParameter(ref fieldList, "payment_received", "payre", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentReceived_orndpymnt"), parameters);
         AddQueryParameter(ref fieldList, "payment_nar_zvit", "payzv", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentNarZvit_orndpymnt"), parameters);
-        //AddQueryParameter(ref fieldList, "payment_budget_special", "paysp", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentSpecial_orndpymnt"), parameters);
+        AddQueryParameter(ref fieldList, "avance_paymentnar", "avancepaymentnar", Reports1NFUtils.GetEditNumeric(controls, "Edit_avance_paymentnar"), parameters);
         AddQueryParameter(ref fieldList, "old_debts_payed", "odbtp", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentOldDebtsPayed_orndpymnt"), parameters);
         AddQueryParameter(ref fieldList, "return_orend_payed", "returnorendpayed", Reports1NFUtils.GetEditNumeric(controls, "edit_return_orend_payed"), parameters);
         AddQueryParameter(ref fieldList, "return_all_orend_payed", "returnallorendpayed", Reports1NFUtils.GetEditNumeric(controls, "edit_return_all_orend_payed"), parameters);
@@ -1817,6 +1818,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         AddQueryParameter(ref fieldList, "debt_over_3_years", "debtover", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebtOver3Years"), parameters);
         AddQueryParameter(ref fieldList, "debt_v_mezhah_vitrat", "debtmv", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebtVMezhahVitrat"), parameters);
         AddQueryParameter(ref fieldList, "debt_spysano", "debtsp", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebtSpysano"), parameters);
+        AddQueryParameter(ref fieldList, "avance_debt", "avancedebt", Reports1NFUtils.GetEditNumeric(controls, "Edit_avance_debt"), parameters);
 
         AddQueryParameter(ref fieldList, "num_zahodiv_total", "numzaht", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionNumZahodivTotal"), parameters);
         AddQueryParameter(ref fieldList, "num_zahodiv_zvit", "numzahz", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionNumZahodivZvit"), parameters);
