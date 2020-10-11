@@ -34,6 +34,9 @@
 		//console.log($("#map"));
 		//alert(reportId);
 		//; height:600px
+
+		$("#MainContent_ASPxPopupControlFreeSquare_ASPxFileManagerPhotoFiles_Splitter_Toolbar_DXI0_").hide();
+		$("#MainContent_ASPxPopupControlFreeSquare_ASPxFileManagerPhotoFiles_Splitter_Toolbar_DXI5_IS").hide();
 	}
 
 	function formatNumber(arg) {
@@ -61,7 +64,7 @@
 			var apoint = allPoints[n];
 			if (apoint.fs_id == fs_id) break;
 		}
-		var url = 'Report1NFFreeShow.aspx?fs_id=' + apoint.fs_id;
+		var url = 'Report1NFProdlenShow.aspx?fs_id=' + apoint.fs_id;
 		window.open(url, '_blank');
 	}
 
@@ -156,6 +159,17 @@
 						//shadowSize: [68, 95],
 						//shadowAnchor: [22, 94]
 					});
+					var myIcon_3 = DG.icon({
+						iconUrl: '../Styles/DGCustomization__marker_3b.png',
+						//iconRetinaUrl: '../Styles/DGCustomization__marker_2.png',
+						iconSize: [22, 68],
+						//iconAnchor: [22, 94],
+						popupAnchor: [-1, -26],
+						//shadowUrl: 'my-icon-shadow.png',
+						//shadowRetinaUrl: 'my-icon-shadow@2x.png',
+						//shadowSize: [68, 95],
+						//shadowAnchor: [22, 94]
+					});
 
 
 					for (n = 0; n < allPoints.length; n++) {
@@ -177,7 +191,7 @@
 							'<a onclick="openLink(' + apoint.fs_id + ')" style="cursor:pointer"><table style="width:100%"><tr><td><p style="text-align:center; font-size:large; color:white">'
 							+ apoint.full_address + '</p></td>' +
 							'<td style="text-align:right"><span style="margin-left:40px; vertical-align:super; text-align:center; font-size:small; color:white">Додаткова інформація</span><img src="../Styles/ExternalLinkIcon.png" height="18" width="18" style="margin-left:5px"/></td><td style="width:20px"></td></tr></table></a>' +
-							'<table style="border:1px solid; width:580px; margin-top:6px">' +
+							'<table style="border:1px solid; width:680px; margin-top:6px">' +
 
 							html_need_zgoda +
 
@@ -268,19 +282,29 @@
 							//}
 						}
 
+						html +=
+							'<tr>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">Унікальний код обєкту у ЕТС Прозорро-продажі</td>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">' +
+							"<a target=\"_blank\" href=\"https://prozorro.sale/auction/" + apoint.prozoro_number + "\">" + apoint.prozoro_number + "</a>" +
+							'</td>' +
+							'</tr>' +
+							'';
+
+
 						html += '</table>';
 
 
 						var popup = DG.popup({
-							maxWidth: 650,
-							minWidth: 650,
+							maxWidth: 750,
+							minWidth: 750,
 							});
 						popup.setContent(html);
 
 
 						DG.marker([apoint.point1, apoint.point2], {
 							//title: "aaaa\njjj",
-							icon: (apoint.need_zgoda == '+' ? myIcon_2 : myIcon_1),
+							icon: (apoint.prozoro_number != '' ? myIcon_3 : apoint.need_zgoda == '+' ? myIcon_2 : myIcon_1),
 						})
 						.addTo(map)
 						//.bindPopup('Вы кликнули по мне!')
@@ -349,7 +373,7 @@
 				</SettingsFileList>
 				<SettingsEditing AllowDelete="false" AllowCreate="false" AllowDownload="true" AllowMove="false" AllowRename="false" />
 				<SettingsFolders Visible="False" />
-				<SettingsToolbar ShowDownloadButton="true" ShowPath="False" ShowFilterBox="false" />
+				<SettingsToolbar ShowDownloadButton="true" ShowPath="true" ShowFilterBox="false" />
 				<SettingsUpload UseAdvancedUploadMode="True" Enabled="false" >
 					<AdvancedModeSettings EnableMultiSelect="True" />
 				</SettingsUpload>

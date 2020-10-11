@@ -19,6 +19,7 @@ using System.IO;
 using DevExpress.Web.ASPxImageGallery;
 using ExtDataEntry.Models;
 using DevExpress.Web.ASPxCallback;
+using DevExpress.Web.ASPxGridView;
 using Syncfusion.Pdf;
 using System.Drawing;
 using Syncfusion.Pdf.Graphics;
@@ -183,9 +184,26 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
             }
             ASPxLabel lbl = ((ASPxLabel)Utils.FindControlRecursive(PaymentForm, "NeededPeriodCombo"));
             lbl.Text = name;
+
+            foreach (var col in ASPxGridViewFreeSquare.Columns)
+            {
+                var vcol = col as GridViewEditDataColumn;
+                if (vcol != null)
+                {
+                    vcol.PropertiesEdit.ClientInstanceName = "felm__" + (!string.IsNullOrEmpty(vcol.FieldName) ? vcol.FieldName : vcol.Name);
+                }
+            }
+
         }
 
-//////
+        if ((!IsCallback) && (reportIdStr != null && reportIdStr.Length > 0 && agreementIdStr != null && agreementIdStr.Length > 0))
+        {
+            SqlDataSourceFreeSquare.SelectParameters["arenda_id"].DefaultValue = agreementIdStr.ToString();
+            SqlDataSourceFreeSquare.SelectParameters["report_id"].DefaultValue = ReportID.ToString();
+            SqlDataSourceFreeSquare.SelectParameters["free_square_id"].DefaultValue = (EditFreeSquareMode ? ParamEditFreeSquareId : -1).ToString();
+        }
+
+            //////
         }
         catch (Exception ex)
         {
@@ -193,8 +211,32 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
             lognet.Debug("--------------- OrgRentAgreement page load ----------------", ex);
             throw ex;
         }
-        
     }
+
+    protected bool EditFreeSquareMode
+    {
+        get
+        {
+            return (ParamEditFreeSquareId != null);
+        }
+    }
+    protected int? ParamEditFreeSquareId
+    {
+        get
+        {
+            var val = Request.QueryString["edit_free_square_id"];
+            if (string.IsNullOrEmpty(val))
+            {
+                return null;
+            }
+            else
+            {
+                return int.Parse(val);
+            }
+        }
+    }
+
+
 
     protected void EnableControlsBasingOnUserRole()
     {
@@ -2790,6 +2832,150 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
     }
 
     #endregion
+
+    protected void SqlDataSourceFreeSquare_Inserting(object sender, SqlDataSourceCommandEventArgs e)
+    {
+        if (!string.IsNullOrEmpty(Request.QueryString["rid"]))
+            e.Command.Parameters["@report_id"].Value = int.Parse(Request.QueryString["rid"]);
+
+        if (!string.IsNullOrEmpty(Request.QueryString["aid"]))
+            e.Command.Parameters["@arenda_id"].Value = int.Parse(Request.QueryString["aid"]);
+
+        e.Command.Parameters["@modify_date"].Value = DateTime.Now;
+        MembershipUser user = Membership.GetUser();
+        e.Command.Parameters["@modified_by"].Value = user == null ? String.Empty : (String)user.UserName;
+
+        if (e.Command.Parameters["@water"].Value == null)
+            e.Command.Parameters["@water"].Value = 0;
+
+        if (e.Command.Parameters["@heating"].Value == null)
+            e.Command.Parameters["@heating"].Value = 0;
+
+        //if (e.Command.Parameters["@power"].Value == null)
+        //e.Command.Parameters["@power"].Value = 0;
+
+        if (e.Command.Parameters["@gas"].Value == null)
+            e.Command.Parameters["@gas"].Value = 0;
+
+        if (e.Command.Parameters["@is_solution"].Value == null)
+            e.Command.Parameters["@is_solution"].Value = 0;
+
+        if (e.Command.Parameters["@is_included"].Value == null)
+            e.Command.Parameters["@is_included"].Value = 0;
+    }
+
+    protected void SqlDataSourceFreeSquare_Updating(object sender, SqlDataSourceCommandEventArgs e)
+    {
+        if (!string.IsNullOrEmpty(Request.QueryString["rid"]))
+            e.Command.Parameters["@report_id"].Value = int.Parse(Request.QueryString["rid"]);
+
+        if (!string.IsNullOrEmpty(Request.QueryString["aid"]))
+            e.Command.Parameters["@arenda_id"].Value = int.Parse(Request.QueryString["aid"]);
+
+        e.Command.Parameters["@modify_date"].Value = DateTime.Now;
+        MembershipUser user = Membership.GetUser();
+        e.Command.Parameters["@modified_by"].Value = user == null ? String.Empty : (String)user.UserName;
+
+        var b = 10;
+    }
+
+    protected void ASPxGridViewFreeSquare_RowValidating(object sender, ASPxDataValidationEventArgs e)
+    {
+        var komis_protocol = (e.OldValues["komis_protocol"] == null ? "" : e.OldValues["komis_protocol"].ToString().Trim());
+        if (komis_protocol != "" && !komis_protocol.StartsWith("0"))
+        {
+            e.RowError = "Об'єкт погоджено орендодавцем! Усі зміни ТІЛЬКИ з його дозволу за тел: 202-61-76, 202-61-77, 202-61-96 !";
+            //e.Errors.Add(ASPxGridViewFreeSquare.Columns["total_free_sqr"], "AAAAAAAAA");
+            //var ggg = e.HasErrors;
+            return;
+        }
+
+        foreach (GridViewColumn column in ASPxGridViewFreeSquare.Columns)
+        {
+            GridViewDataColumn dataColumn = column as GridViewDataColumn;
+            if (dataColumn == null) continue;
+            string fieldName = dataColumn.FieldName.ToLower();
+
+            if (fieldName == "total_free_sqr" && e.NewValues[dataColumn.FieldName] == null)
+            {
+                e.Errors[dataColumn] = "Заповніть загальну площу вільного приміщення";
+            }
+
+            if (fieldName == "total_free_sqr")
+            {
+                var svalue = e.NewValues[dataColumn.FieldName];
+                if (svalue != null)
+                {
+                    var val = (decimal)svalue;
+                    if (val < 2.0M)
+                    {
+                        e.Errors[dataColumn] = "Загальна площа об’єкта не може бути менше 2 кв.м.";
+                    }
+                }
+            }
+
+            if (fieldName == "free_sqr_condition_id" && e.NewValues[dataColumn.FieldName] == null)
+            {
+                e.Errors[dataColumn] = "Вкажіть стан вільного приміщення";
+            }
+
+            //if (fieldName == "free_sqr_condition_id")
+            //{
+            //	var svalue = e.NewValues[dataColumn.FieldName];
+            //	if (svalue != null)
+            //	{
+            //		var val = (int)svalue;
+            //		if (!(new[] { 2, 7, 11 }.Contains(val)))
+            //		{
+            //			e.Errors[dataColumn] = "Стан вільного приміщення може мати тільки значення: ЗАДОВІЛЬНИЙ, ДОБРИЙ, ПОТРЕБУЄ РЕМОНТУ";
+            //		}
+            //	}
+            //}
+
+
+            if (fieldName == "floor" && e.NewValues[dataColumn.FieldName] == null)
+            {
+                e.Errors[dataColumn] = "Заповніть місце розташування вільного приміщення (поверх)";
+            }
+
+            if (fieldName == "possible_using" && e.NewValues[dataColumn.FieldName] == null)
+            {
+                e.Errors[dataColumn] = "Заповніть можливе використання вільного приміщення";
+            }
+
+            //if (fieldName == "using_possible_id" && e.NewValues[dataColumn.FieldName] == null)
+            //{
+            //	e.Errors[dataColumn] = "Заповніть можливе використання вільного приміщення";
+            //}
+        }
+
+        if (e.Errors.Count > 0)
+            e.RowError = "Заповніть обов'язкові поля.";
+    }
+
+    protected void ASPxGridViewFreeSquare_StartRowEditing(object sender, DevExpress.Web.Data.ASPxStartRowEditingEventArgs e)
+    {
+        if (!ASPxGridViewFreeSquare.IsNewRowEditing)
+        {
+            ASPxGridViewFreeSquare.DoRowValidation();
+        }
+    }
+
+    protected void ASPxGridViewFreeSquare_InitNewRow(object sender, ASPxDataInitNewRowEventArgs e)
+    {
+        e.NewValues["is_included"] = true;
+    }
+
+    protected void ObjectDataSourcePhotoFiles_Inserting(object sender, ObjectDataSourceMethodEventArgs e)
+    {
+        if (Request.Cookies["RecordID"] != null)
+            e.InputParameters["RecordID"] = Request.Cookies["RecordID"].Value;
+
+        //if (Request.QueryString["bid"] != null)
+        //    e.InputParameters["balans_id"] = int.Parse(Request.QueryString["bid"]);
+    }
+
+
 }
 
 

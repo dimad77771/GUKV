@@ -57,6 +57,7 @@ public partial class Reports1NF_Report1NFProdlenMap : System.Web.UI.Page
 					var invest_solution = GetStringValue(reader, 23);
 					var orandodatel = GetStringValue(reader, 24);
 					var include_in_perelik = GetStringValue(reader, 25);
+					var prozoro_number = GetStringValue(reader, 26);
 
 					var regpoints = (new Regex(@"(\d+\.\d+)\s+(\d+\.\d+)")).Match(geodata_map_points);
 					if (regpoints.Groups.Count != 3) throw new Exception();
@@ -94,6 +95,7 @@ public partial class Reports1NF_Report1NFProdlenMap : System.Web.UI.Page
 						invest_solution = invest_solution,
 						orandodatel = orandodatel,
 						include_in_perelik = include_in_perelik,
+						prozoro_number = prozoro_number,
 					};
 					AllPoints.Add(pointInfo);
 				}
@@ -210,6 +212,7 @@ public partial class Reports1NF_Report1NFProdlenMap : System.Web.UI.Page
 		public string invest_solution;
 		public string orandodatel;
 		public string include_in_perelik;
+		public string prozoro_number;
 	}
 
 
@@ -240,12 +243,13 @@ SELECT
 	(select qq.step_name from freecycle_step_dict qq where qq.step_id = fs.freecycle_step_dict_id) as current_stage_name,
 	fs.current_stage_docdate,
 	fs.current_stage_docnum,
-	case when exists (select 1 from reports1nf_balans_free_square_current_stage_documents qq where qq.free_square_id = fs.id) then '+' else '-' end as current_stage_has_documents,
+	case when exists (select 1 from reports1nf_arenda_dogcontinue_current_stage_documents qq where qq.free_square_id = fs.id) then '+' else '-' end as current_stage_has_documents,
 	(select qq.name from dict_1nf_period_used qq where qq.id = fs.period_used_id) as period_used_name,
 	case when fs.zgoda_control_id = 100 or fs.zgoda_renter_id = 100 then '+' else '-' end as need_zgoda,
 	(select qq.name from dict_1nf_invest_solution qq where qq.id = fs.invest_solution_id) as invest_solution,
 	dbo.get_reports1NF_orandodatel(b.district, rep.form_of_ownership) as orandodatel,
 	fs.include_in_perelik,
+	fs.prozoro_number,	
 		
  row_number() over (order by org.short_name, b.street_full_name, b.addr_nomer, fs.total_free_sqr) as npp     
 ,fs.id
@@ -283,14 +287,14 @@ SELECT
 ,history = case when isnull(b.history, 'НІ') = 'НІ' then '' else 'ТАК' end 
 , isnull(ddd.name, 'Невизначені') as sf_upr
 
-, case when exists (select 1 from reports1nf_balans_free_square_photos qq where qq.free_square_id = fs.id) then 1 else 0 end as isexistsphoto
+, case when exists (select 1 from reports1nf_arenda_dogcontinue_photos qq where qq.free_square_id = fs.id) then 1 else 0 end as isexistsphoto
 
 FROM view_reports1nf rep
-join reports1nf_balans bal on bal.report_id = rep.report_id
+join reports1nf_arenda bal on bal.report_id = rep.report_id
 JOIN view_reports1nf_buildings b ON b.unique_id = bal.building_1nf_unique_id
-join dbo.reports1nf_balans_free_square fs on fs.balans_id = bal.id and fs.report_id = rep.report_id
---left join (select * from dbo.reports1nf_balans_free_square where id = (select top 1 id from dbo.reports1nf_balans_free_square where balans_id = bal.id)) fs on fs.balans_id = bal.id
-join reports1nf_org_info org on org.id = bal.organization_id
+join dbo.reports1nf_arenda_dogcontinue fs on fs.arenda_id = bal.id and fs.report_id = rep.report_id
+--left join (select * from dbo.reports1nf_arenda_dogcontinue where id = (select top 1 id from dbo.reports1nf_arenda_dogcontinue where arenda_id = bal.id)) fs on fs.arenda_id = bal.id
+join reports1nf_org_info org on org.id = bal.org_balans_id
 left join [dbo].[dict_streets] st on b.addr_street_id = st.id
 left join dbo.dict_zgoda_renter zg on fs.zgoda_renter_id = zg.id
 left join dbo.dict_zgoda_renter zg2 on fs.zgoda_control_id = zg2.id
@@ -310,7 +314,6 @@ LEFT JOIN (
 				) DDD ON DDD.org_id = rep.organization_id
 
 		WHERE (komis_protocol <> '' and komis_protocol not like '0%' and is_included = 1) and geodata_map_points <> ''
-			and (1=2)
         --WHERE (@p_rda_district_id = 0 OR (rep.org_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND rep.org_district_id = @p_rda_district_id))
 
     order by org_name, street_name, addr_nomer, total_free_sqr

@@ -11,23 +11,30 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 
-    <style type="text/css">
-        .SpacingPara
-        {
-            font-size: 10px;
-            margin-top: 4px;
-            margin-bottom: 0px;
-            padding-top: 0px;
-            padding-bottom: 0px;
-        }
+<style type="text/css">
+    .SpacingPara
+    {
+        font-size: 10px;
+        margin-top: 4px;
+        margin-bottom: 0px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
 
-        .classPanelCollectionDebitKvart
-        {
-            margin-left:4px;
-        }
-    </style>
+    .classPanelCollectionDebitKvart
+    {
+        margin-left:4px;
+    }
+
+    .editForm999 .dxgvEditFormTable_DevEx 
+    {
+         width:1400px !important;
+    }
+
+</style>
 
     <script type="text/javascript" language="javascript">
+		var editFreeSquareMode = <%= EditFreeSquareMode.ToString().ToLower() %>;
 
     // <![CDATA[
         var period;
@@ -40,13 +47,22 @@
         function ready(event) {
             HidePnl();
             setTimeout(function () {
-				avance_plat_0 = round(nn(edit_avance_plat.GetValue()));
-                CalcCollectionDebtZvit();
-            }, 500);
+				InitCalcCollectionDebtZvit();
+            }, 100);
             if (IsReadOnlyForm) {
                 clientBtnAddPaymentDocument.SetEnabled(false);
             }
         }
+
+		function InitCalcCollectionDebtZvit() {
+			console.log("InitCalcCollectionDebtZvit");
+			if (edit_debtkvart_0.validFormattedNumberRegExp != null) {
+				avance_plat_0 = round(nn(edit_avance_plat.GetValue()));
+				CalcCollectionDebtZvit();
+			} else {
+				setTimeout(InitCalcCollectionDebtZvit, 100);
+			}
+		}
 
 		function afterCPMainPanelCallback(event) {
 			setTimeout(CalcCollectionDebtZvit, 100);
@@ -781,7 +797,97 @@
         }
         function OnEndCallback(s, e) {
             AdjustSize();
+
+			if (grid.IsEditing()) {
+				var popup = s.GetEditFormTable();
+				console.log("popup", popup);
+				//console.log("felm__total_free_sqr", felm__total_free_sqr.GetValue());
+				$(felm__tmp1.mainElement).hide();
+				$(felm__tmp2.mainElement).hide();
+				$(felm__tmp3.mainElement).hide();
+
+				$(popup).find(".dxgvCommandColumn_DevEx").attr("align", "left");
+				var err_object = $("#MainContent_CPMainPanel_CardPageControl_ASPxRoundPanel1_ASPxGridViewFreeSquare_DXEditingErrorRow");
+				if (err_object.length > 0) {
+					var err_text = err_object.text();
+					if (err_text == null) err_text = "";
+					if (err_text.indexOf("Об'єкт погоджено орендодавцем! Усі зміни ТІЛЬКИ з його дозволу за тел: 202-61-76, 202-61-77, 202-61-96 !") >= 0) {
+						console.log("err_object.text", err_text);
+						var save_image = $(popup).find(".dxgvCommandColumn_DevEx").find("img").first();
+						save_image.hide();
+					}
+				}
+
+
+				console.log("felm__prop_srok_orands", felm__prop_srok_orands);
+				felm__include_in_perelik.ValueChanged.AddHandler(OnEditFormTableItemChange);
+				felm__prop_srok_orands.LostFocus.AddHandler(OnEditFormTableItemChange);
+
+				felm__floor.tooltip = "Характеристика об’єкта оренди (будівлі в цілому або частини будівлі із зазначенням місця розташування об’єкта в будівлі (надземний, цокольний, підвальний, технічний або мансардний поверх, номер поверху або поверхів)";
+				$(felm__floor.GetInputElement()).attr('title', "Характеристика об’єкта оренди (будівлі в цілому або частини будівлі із зазначенням місця розташування об’єкта в будівлі (надземний, цокольний, підвальний, технічний або мансардний поверх, номер поверху або поверхів)");
+				$(popup).find("label").each(function (index) {
+					if ($(this).text() == "Характеристика об’єкта оренди") {
+						$(this).attr('title', "Характеристика об’єкта оренди (будівлі в цілому або частини будівлі із зазначенням місця розташування об’єкта в будівлі (надземний, цокольний, підвальний, технічний або мансардний поверх, номер поверху або поверхів)");
+					}
+				});
+
+				CustomizeEditFormTable();
+			}
+
+			if (editFreeSquareMode) {
+				if (!grid.IsEditing()) {
+					window.location = "Report1NFFreeSquare.aspx";
+				}
+			}
         }
+
+		function OnEditFormTableItemChange() {
+			CustomizeEditFormTable();
+        }
+
+		function CustomizeEditFormTable() {
+			var include_in_perelik = felm__include_in_perelik.GetValue();
+			var showrow1 = false;
+			var showrow2 = false;
+			if (include_in_perelik == "1") {
+				showrow1 = true;
+			} else if (include_in_perelik == "2") {
+				showrow2 = true;
+			}
+
+			var popup = grid.GetEditFormTable();
+			var tbody = $(popup).children('tbody');
+			var rows = $(tbody).children('tr');
+			var r1 = 9;
+			var r2 = r1 + 1;
+			if (showrow1) {
+				$(rows.get(r1)).show();
+			} else {
+				$(rows.get(r1)).hide();
+			}
+			if (showrow2) {
+				$(rows.get(r2)).show();
+			} else {
+				$(rows.get(r2)).hide();
+			}
+
+
+			var prop_srok_orands = felm__prop_srok_orands.GetValue();
+			var prop = parseInt(prop_srok_orands, 10);
+			var showrow1 = false;
+			if (prop > 5) {
+				showrow1 = true;
+			}
+			var r1 = 12;
+			if (showrow1) {
+				$(rows.get(r1)).show();
+			} else {
+				$(rows.get(r1)).hide();
+			}
+			console.log("prop_srok_orands", prop);
+		}
+
+
         function OnControlsInitialized(s, e) {
             ASPxClientUtils.AttachEventToElement(window, "resize", function (evt) {
                 AdjustSize();
@@ -798,7 +904,29 @@
                 PopupObjectPhotos.Show();
             }
         }
-    </script>
+
+		function ShowDogcontinuePhoto(s, e) {
+			if (e.buttonID == 'btnPhoto') {
+				$.cookie('RecordID', s.GetRowKey(e.visibleIndex));
+				ASPxFileManagerPhotoFiles.Refresh();
+				PopupObjectPhotos.Show();
+			} else if (e.buttonID == 'btnPdfBuild') {
+				grid.GetRowValues(e.visibleIndex, 'id', OnGridPdfBuildGetRowValues);
+			} else if (e.buttonID == 'btnFreeCycle') {
+				grid.GetRowValues(e.visibleIndex, 'id', OnFreeCycleGetRowValues);
+			}
+        }
+
+		function OnGridPdfBuildGetRowValues(values) {
+			var id = values;
+			window.open(
+				'BalansDogContinuePhotosPdf.aspx?id=' + id,
+				'_blank',
+			);
+		}
+
+
+	</script>
 
 </asp:Content>
 
@@ -1027,7 +1155,6 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
     SelectCommand="SELECT id, left(full_name, 150) as name, rental_rate, 1 as ordrow FROM dict_rental_rate union select null, '<пусто>', null, 2 as ordrow ORDER BY ordrow, name">
 </mini:ProfiledSqlDataSource>
 
-
 <asp:ObjectDataSource ID="ObjectDataSourceBalansPhoto" runat="server" SelectMethod="SelectFromTempFolder" 
     TypeName="ExtDataEntry.Models.FileAttachment">
     <SelectParameters>
@@ -1036,6 +1163,301 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
         <asp:Parameter DefaultValue="" Name="tempGuid" Type="String" />
     </SelectParameters>
 </asp:ObjectDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceTechStane" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_1nf_tech_stane">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourcePeriodUsed" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_1nf_period_used">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourcePowerInfo" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_1nf_power_info union select null, ''">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceInvestSolution" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_1nf_invest_solution union select null, ''">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceZgodaRenter" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_zgoda_renter ORDER BY id">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceFreeObjectType" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_free_object_type ORDER BY id">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceIncludeInPerelik" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT '1' id, '1' name, 1 as ordrow union SELECT '2' id, '2' name, 1 as ordrow union select null, '',  2 as ordrow ORDER BY ordrow, name">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceFreeSquare" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT [id]
+      ,[arenda_id]
+      ,[total_free_sqr]
+      ,[free_sqr_korysna]
+      ,[free_sqr_condition_id]
+	  ,[period_used_id]
+      ,[floor]
+      ,[possible_using]
+	  ,[using_possible_id]
+      ,[water]
+	  ,[heating]
+      ,[power_info_id]
+      ,[gas]
+      ,[note]
+      ,[modify_date]
+      ,[modified_by]
+      ,[report_id] 
+      ,[is_solution] 
+	  ,[invest_solution_id] 
+      ,[initiator] 
+      ,[zgoda_control_id] 
+      ,[free_object_type_id] 
+      ,[zgoda_renter_id] 
+	  ,[is_included] 	
+	  ,[komis_protocol] 	
+      ,[include_in_perelik]
+      ,[zal_balans_vartist]
+      ,[perv_balans_vartist]  
+      ,[punkt_metod_rozrahunok] 
+      ,[prop_srok_orands] 
+      ,[nomer_derzh_reestr_neruh] 
+      ,[reenum_derzh_reestr_neruh] 
+      ,[info_priznach_nouse] 
+      ,[info_rahunok_postach] 
+      ,[priznach_before] 
+      ,[period_nouse] 
+      ,[osoba_use_before]
+      ,[has_perevazh_pravo]
+      ,[polipshanya_vartist]
+      ,[polipshanya_finish_date]
+    FROM [reports1nf_arenda_dogcontinue] WHERE [arenda_id] = @arenda_id and [report_id] = @report_id and ([id] = @free_square_id or @free_square_id = -1)" 
+    DeleteCommand="EXEC [delete_reports1nf_arenda_dogcontinue] @id" 
+    InsertCommand="INSERT INTO [reports1nf_arenda_dogcontinue]
+    ([arenda_id]
+      ,[total_free_sqr]
+      ,[free_sqr_korysna]
+      ,[free_sqr_condition_id]
+	  ,[period_used_id]
+      ,[floor]
+      ,[possible_using]
+	  ,[using_possible_id]
+      ,[water]
+      ,[heating]
+      ,[power_info_id]
+      ,[gas]
+      ,[note]
+      ,[modify_date]
+      ,[modified_by]
+      ,[report_id]
+      ,[is_solution] 
+	  ,[invest_solution_id]  
+      ,[initiator] 
+      ,[zgoda_control_id] 
+      ,[free_object_type_id] 
+      ,[zgoda_renter_id]
+	  ,[is_included]
+      ,[include_in_perelik]
+      ,[zal_balans_vartist]
+      ,[perv_balans_vartist]  
+      ,[punkt_metod_rozrahunok] 
+      ,[prop_srok_orands] 
+      ,[nomer_derzh_reestr_neruh] 
+      ,[reenum_derzh_reestr_neruh] 
+      ,[info_priznach_nouse] 
+      ,[info_rahunok_postach]   
+      ,[priznach_before]   
+      ,[period_nouse]
+      ,[osoba_use_before]
+      ,[has_perevazh_pravo]
+      ,[polipshanya_vartist]
+      ,[polipshanya_finish_date]
+    ) 
+    VALUES
+    (@arenda_id
+      ,@total_free_sqr
+      ,@free_sqr_korysna
+      ,@free_sqr_condition_id
+	  ,@period_used_id
+      ,@floor
+      ,@possible_using
+	  ,@using_possible_id
+      ,@water
+      ,@heating
+      ,@power_info_id
+      ,@gas
+      ,@note
+      ,@modify_date
+      ,@modified_by
+      ,@report_id
+      ,@is_solution
+	  ,@invest_solution_id
+      ,@initiator
+      ,@zgoda_control_id
+      ,@free_object_type_id
+      ,@zgoda_renter_id
+	  ,@is_included
+      ,@include_in_perelik
+      ,@zal_balans_vartist
+      ,@perv_balans_vartist  
+      ,@punkt_metod_rozrahunok 
+      ,@prop_srok_orands 
+      ,@nomer_derzh_reestr_neruh 
+      ,@reenum_derzh_reestr_neruh 
+      ,@info_priznach_nouse 
+      ,@info_rahunok_postach       
+      ,@priznach_before       
+      ,@period_nouse
+      ,@osoba_use_before
+      ,@has_perevazh_pravo
+      ,@polipshanya_vartist
+      ,@polipshanya_finish_date
+    );
+SELECT SCOPE_IDENTITY()" 
+    UpdateCommand="UPDATE [reports1nf_arenda_dogcontinue]
+SET
+    [arenda_id] = @arenda_id,
+    [total_free_sqr] = @total_free_sqr,
+    [free_sqr_korysna] = @free_sqr_korysna,
+    [free_sqr_condition_id] = @free_sqr_condition_id,
+	[period_used_id] = @period_used_id, 
+    [floor] = @floor,
+    [possible_using] = @possible_using,
+	[using_possible_id] = @using_possible_id,  
+    [water] = @water,
+    [heating] = @heating,
+    [power_info_id] = @power_info_id,
+    [gas] = @gas,
+    [note] = @note,
+    [modify_date] = @modify_date,
+    [modified_by] = @modified_by,
+    [report_id] = @report_id
+      ,[is_solution] = @is_solution
+	  ,[invest_solution_id] = @invest_solution_id
+      ,[initiator] = @initiator
+      ,[zgoda_control_id] = @zgoda_control_id
+      ,[free_object_type_id] = @free_object_type_id
+      ,[zgoda_renter_id] = @zgoda_renter_id 
+	  ,[is_included] = @is_included 
+      ,[include_in_perelik] = @include_in_perelik 
+        ,[zal_balans_vartist]		  = @zal_balans_vartist
+        ,[perv_balans_vartist]  	  = @perv_balans_vartist  
+        ,[punkt_metod_rozrahunok] 	  = @punkt_metod_rozrahunok 
+        ,[prop_srok_orands] 		  = @prop_srok_orands 
+        ,[nomer_derzh_reestr_neruh] 	  = @nomer_derzh_reestr_neruh 
+        ,[reenum_derzh_reestr_neruh] 	  = @reenum_derzh_reestr_neruh 
+        ,[info_priznach_nouse] 		  = @info_priznach_nouse 
+        ,[info_rahunok_postach]  	  = @info_rahunok_postach   
+        ,[priznach_before]  	  = @priznach_before   
+        ,[period_nouse]  	  = @period_nouse   
+        ,[osoba_use_before]  	  = @osoba_use_before   
+        ,[has_perevazh_pravo]  	  = @has_perevazh_pravo
+        ,[polipshanya_vartist]  	  = @polipshanya_vartist
+        ,[polipshanya_finish_date]  	  = @polipshanya_finish_date
+WHERE id = @id" 
+        oninserting="SqlDataSourceFreeSquare_Inserting" 
+        onupdating="SqlDataSourceFreeSquare_Updating" ProviderName="System.Data.SqlClient">
+    <SelectParameters>
+        <asp:Parameter Name="arenda_id" />
+        <asp:Parameter Name="report_id" />
+        <asp:Parameter Name="free_square_id" />
+    </SelectParameters>
+    <DeleteParameters>
+        <asp:Parameter Name="id" />
+    </DeleteParameters>
+    <InsertParameters>
+        <asp:Parameter Name="arenda_id" />
+        <asp:Parameter Name="total_free_sqr" />
+        <asp:Parameter Name="free_sqr_korysna" />
+        <asp:Parameter Name="free_sqr_condition_id" />
+		<asp:Parameter Name="period_used_id" />
+        <asp:Parameter Name="floor" />
+        <asp:Parameter Name="possible_using" />
+		<asp:Parameter Name="using_possible_id" />
+        <asp:Parameter Name="water" />
+        <asp:Parameter Name="heating" />
+        <asp:Parameter Name="power_info_id" />
+        <asp:Parameter Name="gas" />
+        <asp:Parameter Name="note" />
+        <asp:Parameter Name="modify_date" />
+        <asp:Parameter Name="modified_by" />
+        <asp:Parameter Name="report_id" />
+        <asp:Parameter Name="is_solution" />
+		<asp:Parameter Name="invest_solution_id" />
+        <asp:Parameter Name="initiator" />
+        <asp:Parameter Name="zgoda_control_id" />
+        <asp:Parameter Name="free_object_type_id" />
+        <asp:Parameter Name="zgoda_renter_id" />
+		<asp:Parameter Name="is_included" />		
+        <asp:Parameter Name="include_in_perelik" />
+        <asp:Parameter Name="zal_balans_vartist" />
+        <asp:Parameter Name="perv_balans_vartist" />
+        <asp:Parameter Name="punkt_metod_rozrahunok" />
+        <asp:Parameter Name="prop_srok_orands" />
+        <asp:Parameter Name="nomer_derzh_reestr_neruh" />
+        <asp:Parameter Name="reenum_derzh_reestr_neruh" />
+        <asp:Parameter Name="info_priznach_nouse" />
+        <asp:Parameter Name="info_rahunok_postach" />
+        <asp:Parameter Name="priznach_before" />
+        <asp:Parameter Name="period_nouse" />
+        <asp:Parameter Name="osoba_use_before" />
+        <asp:Parameter Name="has_perevazh_pravo" />
+        <asp:Parameter Name="polipshanya_vartist" />
+        <asp:Parameter Name="polipshanya_finish_date" />
+    </InsertParameters>
+    <UpdateParameters>
+        <asp:Parameter Name="arenda_id" />
+        <asp:Parameter Name="total_free_sqr" />
+        <asp:Parameter Name="free_sqr_korysna" />
+        <asp:Parameter Name="free_sqr_condition_id" />
+		<asp:Parameter Name="period_used_id" />
+        <asp:Parameter Name="floor" />
+        <asp:Parameter Name="possible_using" />
+		<asp:Parameter Name="using_possible_id" />
+        <asp:Parameter Name="water" />
+        <asp:Parameter Name="heating" />
+        <asp:Parameter Name="power_info_id" />
+        <asp:Parameter Name="gas" />
+        <asp:Parameter Name="note" />
+        <asp:Parameter Name="modify_date" />
+        <asp:Parameter Name="modified_by" />
+        <asp:Parameter Name="report_id" />
+        <asp:Parameter Name="is_solution" />
+		<asp:Parameter Name="invest_solution_id" />
+        <asp:Parameter Name="initiator" />
+        <asp:Parameter Name="zgoda_control_id" />
+        <asp:Parameter Name="free_object_type_id" />
+        <asp:Parameter Name="zgoda_renter_id" />
+		<asp:Parameter Name="is_included" />	
+        <asp:Parameter Name="include_in_perelik" />	
+        <asp:Parameter Name="zal_balans_vartist" />
+        <asp:Parameter Name="perv_balans_vartist" />
+        <asp:Parameter Name="punkt_metod_rozrahunok" />
+        <asp:Parameter Name="prop_srok_orands" />
+        <asp:Parameter Name="nomer_derzh_reestr_neruh" />
+        <asp:Parameter Name="reenum_derzh_reestr_neruh" />
+        <asp:Parameter Name="info_priznach_nouse" />
+        <asp:Parameter Name="info_rahunok_postach" />
+        <asp:Parameter Name="priznach_before" />
+        <asp:Parameter Name="period_nouse" />
+        <asp:Parameter Name="osoba_use_before" />
+        <asp:Parameter Name="has_perevazh_pravo" />
+        <asp:Parameter Name="polipshanya_vartist" />
+        <asp:Parameter Name="polipshanya_finish_date" />
+        <asp:Parameter Name="id" />
+    </UpdateParameters>
+</mini:ProfiledSqlDataSource>
+
 
 <dx:ASPxMenu ID="SectionMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
     <Items>
@@ -2005,7 +2427,8 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                 <dx:ASPxComboBox ID="ReportingPeriodCombo" runat="server" 
                                     DataSourceID="SqlDataSourceRentPeriods" TextField="name" ValueField="id" 
                                     ValueType="System.Int32" Value='<%# Eval("rent_period_id") %>'
-                                    Title="Звітний Період" ClientInstanceName="ReportingPeriodCombo">
+                                    Title="період поточного року, за який обраховується та подається квартальний звіт: 3 місяці 2020, 6 місяців 2020, 9 місяців 2020, 12 місяців 2020" 
+                                    ClientInstanceName="ReportingPeriodCombo">
                                     <ClientSideEvents 
                                         SelectedIndexChanged="function (s, e) { updateReportingPeriodComboStyles(); }"
                                     />
@@ -2056,7 +2479,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel27" runat="server" Text="Нараховано орендної плати за звітний період, грн. (без ПДВ)" Width="650px"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="EditPaymentNarah_orndpymnt" ClientInstanceName="clEditPaymentNarah_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("payment_narah") %>' Width="150px"
-                                                            Title="Нараховано орендної плати за звітний період">
+                                                            Title="нарахована орендна плата за 3,6,9,12 місяців відповідно (індексація може враховуватися)">
                                                               <ClientSideEvents 
                                                             ValueChanged ="function (s, e) { HideValidator(); }"
                                                             LostFocus="CalcCollectionDebtZvit"
@@ -2066,7 +2489,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel66" runat="server" Text="- у тому числі, знято надмірно нарахованої за звітний період"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="edit_znyato_nadmirno_narah" ClientInstanceName="edit_znyato_nadmirno_narah" runat="server" NumberType="Float" Value='<%# Eval("znyato_nadmirno_narah") %>' Width="150px"
-                                                            Title="- у тому числі, знято надмірно нарахованої за звітний період">
+                                                            Title="сума що не підлягає оплаті, відповідно до акту про неможливість використання приміщення і вираховується з [Нараховано]">
                                                             <ClientSideEvents 
                                                                 LostFocus="CalcCollectionDebtZvit" />                                                            
                                                             </dx:ASPxSpinEdit>
@@ -2075,7 +2498,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel28" runat="server" Text="Сальдо (переплата) на початок року (незмінна впродовж року величина), грн. (без ПДВ)"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="EditPaymentSaldo_orndpymnt" ClientInstanceName="clEditPaymentSaldo_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("last_year_saldo") %>' Width="150px"
-                                                            Title="Сальдо (переплата) на початок року (незмінна впродовж року величина), грн. (без ПДВ)">
+                                                            Title="переплата орендарем коштів на початок звітного року,  використовується для покриття (повністю або частково) у разі виникненню заборгованості по нарахованій орендній платі за звітний період  (НЕ ВКЛЮЧАЄ АВАНСОВІ ПЛАТЕЖІ)">
                                                             <ClientSideEvents 
                                                                 LostFocus="CalcCollectionDebtZvit" />                                                            
                                                             </dx:ASPxSpinEdit>
@@ -2084,16 +2507,16 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel69" runat="server" Text="Сальдо нарахованої авансової орендної плати на початок року (незмінна впродовж року величина), грн. (без ПДВ)"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="Edit_avance_saldo" ClientInstanceName="avance_saldo" runat="server" NumberType="Float" Value='<%# Eval("avance_saldo") %>' Width="150px"
-                                                            Title="Сальдо нарахованої авансової орендної плати на початок року (незмінна впродовж року величина), грн. (без ПДВ)">
+                                                            Title="отримана, до початку звітного періоду,  сума авансової орендної плати орендної плати за даним договором">
                                                             <ClientSideEvents 
                                                                 LostFocus="CalcCollectionDebtZvit" />                                                            
                                                             </dx:ASPxSpinEdit>
                                                             </td>
                                                     </tr>
                                                     <tr>
-                                                        <td><dx:ASPxLabel ID="ASPxLabel65" runat="server" Text="Авансова орендна плата, грн."></dx:ASPxLabel></td>
+                                                        <td><dx:ASPxLabel ID="ASPxLabel65" runat="server" Text="Авансова орендна плата (нарахована), грн."></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="edit_avance_plat" ClientInstanceName="edit_avance_plat" runat="server" NumberType="Float" Value='<%# Eval("avance_plat") %>' Width="150px"
-                                                            Title="Авансова орендна плата, грн.">
+                                                            Title="двомісячна сума орендної плати у договорі, яка може бути використана ЛИШЕ для оплати використання останніх двох місяців договору">
                                                             <ClientSideEvents 
                                                                 LostFocus="CalcCollectionDebtZvit" />                                                            
                                                             </dx:ASPxSpinEdit>
@@ -2105,7 +2528,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel29" runat="server" Text="Надходження орендної плати за звітний період, всього, грн. (без ПДВ)"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="EditPaymentReceived_orndpymnt" ClientInstanceName="Received_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("payment_received") %>' Width="150px"
-                                                            Title="Надходження орендної плати за звітний період" MinValue ="0" MaxValue="999999999">
+                                                            Title="загальна отримана протягом поточного звітного періоду сума коштів від орендаря (у т.ч. переплата протягом звітного періоду, погашення боргів, авансова плата)" MinValue ="0" MaxValue="999999999">
                                                             <ClientSideEvents 
                                                                 LostFocus="CalcCollectionDebtZvit" />   
                                                             </dx:ASPxSpinEdit>
@@ -2122,33 +2545,33 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel30" runat="server" Text="- у тому числі, з нарахованої за звітний період (без боргів та переплат)"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="EditPaymentNarZvit_orndpymnt"  ClientInstanceName="Zvit_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("payment_nar_zvit") %>' Width="150px"
-                                                            Title="Надходження орендної плати з нарахованої за звітний період" MinValue ="0" MaxValue="999999999">
+                                                            Title="отримана протягом поточного звітного періоду сума коштів від орендаря призначена  лише на оплату нарахованої за звітний період орендної плати" MinValue ="0" MaxValue="999999999">
                                                                 <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                             </dx:ASPxSpinEdit></td>
                                                     </tr>
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel68" runat="server" Text="- у тому числі, з нарахованої авансової орендної плати, грн."></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="Edit_avance_paymentnar"  ClientInstanceName="avance_paymentnar" runat="server" NumberType="Float" Value='<%# Eval("avance_paymentnar") %>' Width="150px"
-                                                            Title="- у тому числі, з нарахованої авансової орендної плати, грн." MinValue ="0" MaxValue="999999999">
+                                                            Title="отримана протягом поточного звітного періоду сума коштів від орендаря призначена  лише на оплату нарахованої авансової орендної плати" MinValue ="0" MaxValue="999999999">
                                                                 <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                             </dx:ASPxSpinEdit></td>
                                                     </tr>
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel55" runat="server" Text="- у тому числі, погашення заборгованості минулих періодів, грн."></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="EditPaymentOldDebtsPayed_orndpymnt" ClientInstanceName="clEditPaymentOldDebtsPayed_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("old_debts_payed") %>' Width="150px"
-                                                            Title="Погашення заборгованості минулих періодів">
+                                                            Title="частина коштів з надходження орендної плати за звітний період, всього, призначена на погашення заборгованості попередніх періодів">
                                                                 <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                             </dx:ASPxSpinEdit></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><dx:ASPxLabel ID="ASPxLabel62" runat="server" Text="Переплата орендної плати всього, грн. (без ПДВ)"></dx:ASPxLabel></td>
+                                                        <td><dx:ASPxLabel ID="ASPxLabel62" runat="server" Text="- у тому числі, переплата орендної плати за звітний період, грн."></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="edit_return_orend_payed" ClientInstanceName="edit_return_orend_payed" runat="server" NumberType="Float" Value='<%# Eval("return_orend_payed") %>' Width="150px" ReadOnly="true"
-                                                            Title="Переплата орендної плати всього, грн. (без ПДВ)"/></td>
+                                                            Title="залишок орендної плати після оплати нарахованої орендної плати, нарахованої авансової орендної плати,  погашення заборгованості попередніх періодів. (не включає &quot;Сальдо (переплата) на початок року&quot;)"/></td>
                                                     </tr>
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel63" runat="server" Text="Повернення переплати орендної плати всього у звітному періоді, грн. (без ПДВ)"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="edit_return_all_orend_payed" ClientInstanceName="edit_return_all_orend_payed" runat="server" NumberType="Float" Value='<%# Eval("return_all_orend_payed") %>' Width="150px" 
-                                                            Title="Повернення переплати орендної плати всього у звітному періоді, грн. (без ПДВ)">
+                                                            Title="повернення переплати орендної плати орендарю за його вимогою або по завершенні терміну договору">
                                                                 <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                             </dx:ASPxSpinEdit>
                                                         </td>
@@ -2261,39 +2684,36 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                         <tr>
                                                             <td><dx:ASPxLabel ID="ASPxLabel24" runat="server" Text="- всього" Width="280px"></dx:ASPxLabel></td>
                                                             <td><dx:ASPxSpinEdit ID="EditCollectionDebtTotal" ClientInstanceName="EditCollectionDebtTotal" runat="server" NumberType="Float" Value='<%# Eval("debt_total") %>' Width="100px" ReadOnly = "true"
-                                                                Title="Загальна заборгованість по орендній платі">
-             <%--                                                     <ClientSideEvents 
-                                                                        ValueChanged ="function (s, e) { HideValidator(); }"
-                                                                 />    --%>
+                                                                Title="є сумою всіх полів заборгованості і не підлягає редагуванню">
                                                                 </dx:ASPxSpinEdit></td>
                                                             <td><div style="width:30px;"></div></td>
                                                             <td><dx:ASPxLabel ID="ASPxLabel25" runat="server" Text="- за звітний період" Width="280px"></dx:ASPxLabel></td>
                                                             <td><dx:ASPxSpinEdit ID="EditCollectionDebtZvit" ClientInstanceName="EditCollectionDebtZvit" runat="server" NumberType="Float" Value='<%# Eval("debt_zvit") %>' Width="100px" ReadOnly = "true"
-                                                                Title="Заборгованість по орендній платі за звітний період"/></td>
+                                                                Title="заборгованість оплати нарахованої орендної плати лише за звітний період"/></td>
                                                         </tr>
                                                         <tr>
                                                             <td><dx:ASPxLabel ID="ASPxLabel26" runat="server" Text="- поточна до 3-х місяців"></dx:ASPxLabel></td>
                                                             <td><dx:ASPxSpinEdit ID="EditCollectionDebt3Month" ClientInstanceName="EditCollectionDebt3Month" runat="server" NumberType="Float" Value='<%# Eval("debt_3_month") %>' Width="100px" ReadOnly = "true"
-                                                                Title="Заборгованість по орендній платі поточна до 3-х місяців">
+                                                                Title="редагуються балансоутримувачем, тільки через корекцію відповідних показників таблиці &quot;Заборгованість по кварталах&quot; і обраховується автоматично">
                                                                 <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                             </dx:ASPxSpinEdit></td>
                                                             <td></td>
                                                             <td><dx:ASPxLabel ID="ASPxLabel27" runat="server" Text="- прострочена від 4 до 12 місяців"></dx:ASPxLabel></td>
                                                             <td><dx:ASPxSpinEdit ID="EditCollectionDebt12Month" ClientInstanceName="EditCollectionDebt12Month" runat="server" NumberType="Float" Value='<%# Eval("debt_12_month") %>' Width="100px" ReadOnly = "true"
-                                                                Title="Заборгованість по орендній платі прострочена від 4 до 12 місяців">
+                                                                Title="редагуються балансоутримувачем, тільки через корекцію відповідних показників таблиці &quot;Заборгованість по кварталах&quot; і обраховується автоматично">
                                                                 <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                             </dx:ASPxSpinEdit></td>
                                                         </tr>
                                                         <tr>
                                                             <td><dx:ASPxLabel ID="ASPxLabel28" runat="server" Text="- прострочена від 1 до 3 років"></dx:ASPxLabel></td>
                                                             <td><dx:ASPxSpinEdit ID="EditCollectionDebt3Years" ClientInstanceName="EditCollectionDebt3Years" runat="server" NumberType="Float" Value='<%# Eval("debt_3_years") %>' Width="100px" ReadOnly = "true"
-                                                                Title="Заборгованість по орендній платі прострочена від 1 до 3 років">
+                                                                Title="редагуються балансоутримувачем, тільки через корекцію відповідних показників таблиці &quot;Заборгованість по кварталах&quot; і обраховується автоматично">
                                                                 <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                             </dx:ASPxSpinEdit></td>
                                                             <td></td>                                                
                                                             <td><dx:ASPxLabel ID="ASPxLabel29" runat="server" Text="- безнадійна більше 3-х років"></dx:ASPxLabel></td>
                                                             <td><dx:ASPxSpinEdit ID="EditCollectionDebtOver3Years" ClientInstanceName="EditCollectionDebtOver3Years" runat="server" NumberType="Float" Value='<%# Eval("debt_over_3_years") %>' Width="100px" ReadOnly = "true"
-                                                                Title="Заборгованість по орендній платі безнадійна більше 3-х років">
+                                                                Title="редагуються балансоутримувачем, тільки через корекцію відповідних показників таблиці &quot;Заборгованість по кварталах&quot; і обраховується автоматично">
                                                                 <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                             </dx:ASPxSpinEdit></td>
                                                         </tr>
@@ -2314,7 +2734,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                         <tr>
                                                             <td colspan="4"><dx:ASPxLabel ID="ASPxLabel70" runat="server" Text="Заборгованість з нарахованої авансової орендної плати, грн. (без ПДВ)"></dx:ASPxLabel></td>
                                                             <td><dx:ASPxSpinEdit ID="Edit_avance_debt" ClientInstanceName="Edit_avance_debt" runat="server" NumberType="Float" Value='<%# Eval("avance_debt") %>' Width="100px" ReadOnly="true"
-                                                                Title="Заборгованість з нарахованої авансової орендної плати, грн. (без ПДВ)">
+                                                                Title="поточна різниця між нарахованою та отриманою авансовою орендною платою (включаючи Сальдо нарахованої авансової орендної плати на початок року)">
                                                                 <ClientSideEvents LostFocus="CalcDebt" />
                                                             </dx:ASPxSpinEdit></td>
                                                         </tr>                                                            
@@ -2381,7 +2801,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                             </PanelCollection>
                                         </dx:ASPxRoundPanel>
                                     </td>
-                                    <td valign="top">
+                                    <td valign="top" title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                         <dx:ASPxRoundPanel ID="PanelCollectionDebitKvart" runat="server" HeaderText="Заборгованість по кварталах" CssClass="classPanelCollectionDebitKvart">
                                             <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="4px" />
                                             <PanelCollection>
@@ -2390,7 +2810,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                         <tr>
                                                             <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_0" runat="server" Text="2020, 3кв.:"></dx:ASPxLabel></td>
                                                             <td>
-                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_0" ClientInstanceName="edit_debtkvart_0" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_0") %>' Width="100px" Title="2020, 2кв.">
+                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_0" ClientInstanceName="edit_debtkvart_0" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_0") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
@@ -2398,7 +2818,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                         <tr>
                                                             <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_1" runat="server" Text="2020, 2кв.:"></dx:ASPxLabel></td>
                                                             <td>
-                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_1" ClientInstanceName="edit_debtkvart_1" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_1") %>' Width="100px" Title="2020, 1кв.">
+                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_1" ClientInstanceName="edit_debtkvart_1" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_1") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
@@ -2406,70 +2826,70 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                         <tr>
                                                             <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_2" runat="server" Text="2020, 1кв.:"></dx:ASPxLabel></td>
                                                             <td>
-                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_2" ClientInstanceName="edit_debtkvart_2" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_2") %>' Width="100px" Title="2019, 4кв.">
+                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_2" ClientInstanceName="edit_debtkvart_2" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_2") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
                                                             <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_3" runat="server" Text="2019, 4кв.:"></dx:ASPxLabel></td>
                                                             <td>
-                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_3" ClientInstanceName="edit_debtkvart_3" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_3") %>' Width="100px" Title="2019, 3кв.">
+                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_3" ClientInstanceName="edit_debtkvart_3" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_3") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
                                                             <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_4" runat="server" Text="2019, 3кв.:"></dx:ASPxLabel></td>
                                                             <td>
-                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_4" ClientInstanceName="edit_debtkvart_4" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_4") %>' Width="100px" Title="2019, 2кв.">
+                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_4" ClientInstanceName="edit_debtkvart_4" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_4") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
                                                             <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_5" runat="server" Text="2019, 2кв.:"></dx:ASPxLabel></td>
                                                             <td>
-                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_5" ClientInstanceName="edit_debtkvart_5" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_5") %>' Width="100px" Title="2019, 1кв.">
+                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_5" ClientInstanceName="edit_debtkvart_5" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_5") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
                                                             <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_6" runat="server" Text="2019, 1кв.:"></dx:ASPxLabel></td>
                                                             <td>
-                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_6" ClientInstanceName="edit_debtkvart_6" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_6") %>' Width="100px" Title="2018, 4кв.">
+                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_6" ClientInstanceName="edit_debtkvart_6" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_6") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
                                                             <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_7" runat="server" Text="2018, 4кв.:"></dx:ASPxLabel></td>
                                                             <td>
-                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_7" ClientInstanceName="edit_debtkvart_7" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_7") %>' Width="100px" Title="2018, 3кв.">
+                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_7" ClientInstanceName="edit_debtkvart_7" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_7") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
                                                             <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_8" runat="server" Text="2018, 3кв.:"></dx:ASPxLabel></td>
                                                             <td>
-                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_8" ClientInstanceName="edit_debtkvart_8" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_8") %>' Width="100px" Title="2018, 2кв.">
+                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_8" ClientInstanceName="edit_debtkvart_8" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_8") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
                                                             <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_9" runat="server" Text="2018, 2кв.:"></dx:ASPxLabel></td>
                                                             <td>
-                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_9" ClientInstanceName="edit_debtkvart_9" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_9") %>' Width="100px" Title="2018, 1кв.">
+                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_9" ClientInstanceName="edit_debtkvart_9" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_9") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
                                                             <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_10" runat="server" Text="2018, 1кв.:"></dx:ASPxLabel></td>
                                                             <td>
-                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_10" ClientInstanceName="edit_debtkvart_10" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_10") %>' Width="100px" Title="2017, 4кв.">
+                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_10" ClientInstanceName="edit_debtkvart_10" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_10") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
                                                             <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_11" runat="server" Text="2017, 4кв.:"></dx:ASPxLabel></td>
                                                             <td>
-                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_11" ClientInstanceName="edit_debtkvart_11" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_11") %>' Width="100px" Title="2017, 3кв.">
+                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_11" ClientInstanceName="edit_debtkvart_11" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_11") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
@@ -2477,7 +2897,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                                                         <tr>
                                                             <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_13" runat="server" Text="Безнадійна:"></dx:ASPxLabel></td>
                                                             <td>
-                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_13" ClientInstanceName="edit_debtkvart_13" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_13") %>' Width="100px" Title="Безнадійна">
+                                                                <dx:ASPxSpinEdit ID="edit_debtkvart_13" ClientInstanceName="edit_debtkvart_13" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_13") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
@@ -2735,6 +3155,355 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
                         </tr>
                     </table>
 
+                </dx:ContentControl>
+            </ContentCollection>
+        </dx:TabPage>
+
+        <dx:TabPage Text="Продовження договору" Name="Tab4">
+            <ContentCollection>
+                <dx:ContentControl ID="ContentControl3a" runat="server">
+                            <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" HeaderText="Вільні приміщення">
+                                <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="4px" />
+                                <PanelCollection>
+                                    <dx:PanelContent ID="PanelContent10" runat="server">
+                                        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                            <tr>
+                                                <td>
+                                                
+
+    <dx:ASPxGridView ID="ASPxGridViewFreeSquare" runat="server" AutoGenerateColumns="False" 
+        DataSourceID="SqlDataSourceFreeSquare" KeyFieldName="id" OnRowValidating="ASPxGridViewFreeSquare_RowValidating" OnStartRowEditing="ASPxGridViewFreeSquare_StartRowEditing"
+            ClientInstanceName="grid" oninitnewrow="ASPxGridViewFreeSquare_InitNewRow" >
+            <ClientSideEvents CustomButtonClick="ShowDogcontinuePhoto" Init="OnInit" EndCallback="OnEndCallback" />
+        <Styles>  
+            <EditForm CssClass="editForm999" ></EditForm>  
+        </Styles>  
+        <Columns>
+
+            <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" ShowInCustomizationForm="True" CellStyle-Wrap="False">
+                <EditButton Visible="True"> <Image Url="~/Styles/EditIcon.png" /> </EditButton>
+                <NewButton Visible="True"> <Image Url="~/Styles/AddIcon.png" /> </NewButton>
+                <DeleteButton Visible="True"> <Image Url="~/Styles/DeleteIcon.png" /> </DeleteButton>
+                <CancelButton> <Image Url="~/Styles/CancelIcon.png" /> </CancelButton>
+                <UpdateButton> <Image Url="~/Styles/EditIcon.png" /> </UpdateButton>
+                <ClearFilterButton Visible="True"> </ClearFilterButton>
+                <CustomButtons>
+                    <dx:GridViewCommandColumnCustomButton ID="btnPhoto" Text="Фото"> 
+						<Image Url="~/Styles/PhotoIcon.png"> </Image>
+                    </dx:GridViewCommandColumnCustomButton>
+                    <dx:GridViewCommandColumnCustomButton ID="btnPdfBuild" Text="Pdf"> 
+						<Image Url="~/Styles/PdfReportIcon.png"> </Image>
+                    </dx:GridViewCommandColumnCustomButton>
+                    <dx:GridViewCommandColumnCustomButton ID="btnFreeCycle" Text="Картка процесу передачі в оренду вільного приміщення" Visibility="Invisible"> 
+						<Image Url="~/Styles/ReportDocument18.png"> </Image>
+                    </dx:GridViewCommandColumnCustomButton>
+                </CustomButtons>
+
+                <CellStyle Wrap="False"></CellStyle>
+            </dx:GridViewCommandColumn>
+
+            <dx:GridViewDataTextColumn FieldName="id" Caption="ID" VisibleIndex="1"  ReadOnly="true" Visible="false">
+                <EditFormSettings Visible="False" />
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="arenda_id" Caption="arenda_id" VisibleIndex="2" ReadOnly="true" Visible="false">
+                <EditFormSettings Visible="False" />
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="report_id" Caption="report_id" VisibleIndex="14" ReadOnly="true" Visible="false" >
+                <EditFormSettings Visible="False" />
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="total_free_sqr" Caption="Загальна площа об’єкта" VisibleIndex="3" >
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="free_sqr_korysna" Caption="Корисна площа об’єкта" VisibleIndex="4" >
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataComboBoxColumn FieldName="free_sqr_condition_id" VisibleIndex="5" 
+                Visible="True" Caption="Технічний стан об’єкта">
+                <PropertiesComboBox DataSourceID="SqlDataSourceTechStane" ValueField="id" TextField="name" ValueType="System.Int32" />
+            </dx:GridViewDataComboBoxColumn>
+
+            <dx:GridViewDataComboBoxColumn FieldName="period_used_id" VisibleIndex="5" 
+                Visible="True" Caption="Період використання">
+                <PropertiesComboBox DataSourceID="SqlDataSourcePeriodUsed" ValueField="id" TextField="name" ValueType="System.Int32" />
+            </dx:GridViewDataComboBoxColumn>
+
+            <dx:GridViewBandColumn Caption="Комунальне забезпечення">
+                <Columns>
+
+                    <dx:GridViewDataCheckColumn FieldName="water" Caption="Водо-постача-ння" VisibleIndex="7">
+                        <HeaderStyle Wrap="True" />
+						<EditFormSettings Caption="Водопостачання" />
+                    </dx:GridViewDataCheckColumn>
+
+                    <dx:GridViewDataCheckColumn FieldName="heating" Caption="Тепло-постача-ння" VisibleIndex="8">
+                        <HeaderStyle Wrap="True" />
+						<EditFormSettings Caption="Теплопостачання" />
+                    </dx:GridViewDataCheckColumn>
+
+                    <dx:GridViewDataComboBoxColumn FieldName="power_info_id" Width="120px" VisibleIndex="9" 
+                        Visible="True" Caption="Потужність електромережі">
+                        <HeaderStyle Wrap="True" />
+                        <PropertiesComboBox DataSourceID="SqlDataSourcePowerInfo" ValueField="id" TextField="name" ValueType="System.Int32" />
+                    </dx:GridViewDataComboBoxColumn>
+
+
+                    <dx:GridViewDataCheckColumn FieldName="gas" Caption="Газо-постача-ння" VisibleIndex="10">
+						<EditFormSettings Caption="Газопостачання" />
+                        <HeaderStyle Wrap="True" />
+                    </dx:GridViewDataCheckColumn>
+
+                </Columns>
+            </dx:GridViewBandColumn>
+
+            <dx:GridViewDataDateColumn FieldName="modify_date" Caption="Дата редагування" VisibleIndex="12" ReadOnly="true">
+                <EditFormSettings Visible="False" />
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataDateColumn>
+
+            <dx:GridViewDataTextColumn FieldName="modified_by" Caption="Користувач" VisibleIndex="13" ReadOnly="true">
+                <EditFormSettings Visible="False" />
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="floor" Caption="Характеристика об’єкта оренди" ToolTip="Характеристика об’єкта оренди (будівлі в цілому або частини будівлі із зазначенням місця розташування об’єкта в будівлі (надземний, цокольний, підвальний, технічний або мансардний поверх, номер поверху або поверхів)" VisibleIndex="15">
+                <HeaderStyle Wrap="True" />
+                
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataComboBoxColumn FieldName="possible_using" VisibleIndex="16" Width = "320px" Visible="True" Caption="Можливе використання вільного приміщення" >
+				<HeaderStyle Wrap="True" />
+                <PropertiesComboBox DataSourceID="SqlDataSourceUsingPossible" DropDownStyle="DropDown" AllowMouseWheel="true" ValueField="name" TextField="name" ValueType="System.String" EnableSynchronization="False" />
+            </dx:GridViewDataComboBoxColumn>
+
+
+            <dx:GridViewDataComboBoxColumn FieldName="invest_solution_id" VisibleIndex="18" Width = "100px" Visible="True" Caption="Наявність рішень про проведення інвестиційного конкурсу або про включення об’єкта до переліку майна, що підлягає приватизації">
+				<HeaderStyle Wrap="True" />
+                <PropertiesComboBox DataSourceID="SqlDataSourceInvestSolution" ValueField="id" TextField="name" ValueType="System.Int32" />
+				<EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataComboBoxColumn>
+
+            <dx:GridViewDataTextColumn FieldName="initiator" Caption="Ініціатор оренди (текстова інформація, якщо балансоутримувач - пусто)" VisibleIndex="19" Width ="100px">
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataComboBoxColumn FieldName="zgoda_control_id" VisibleIndex="20" Width ="80px"
+                Visible="True" Caption="Погодження органу управління балансоутримувача">
+                <HeaderStyle Wrap="True" />
+                <PropertiesComboBox DataSourceID="SqlDataSourceZgodaRenter" ValueField="id" TextField="name" ValueType="System.Int32" />
+            </dx:GridViewDataComboBoxColumn>
+
+            <dx:GridViewDataComboBoxColumn FieldName="zgoda_renter_id" VisibleIndex="21" Width ="80px"
+                Visible="True" Caption="Погодження органу охорони культурної спадщини">
+                <HeaderStyle Wrap="True" />
+                <PropertiesComboBox DataSourceID="SqlDataSourceZgodaRenter" ValueField="id" TextField="name" ValueType="System.Int32" />
+            </dx:GridViewDataComboBoxColumn>
+
+            <dx:GridViewDataComboBoxColumn FieldName="free_object_type_id" VisibleIndex="22" Width ="100px"
+                Visible="True" Caption="Тип об’єкта">
+                <HeaderStyle Wrap="True" />
+                <PropertiesComboBox DataSourceID="SqlDataSourceFreeObjectType" ValueField="id" TextField="name" ValueType="System.Int32" />
+            </dx:GridViewDataComboBoxColumn>
+
+
+            <dx:GridViewDataCheckColumn FieldName="is_included" Caption="Включено до переліку вільних приміщень" VisibleIndex="30">
+                <HeaderStyle Wrap="True" />
+				<EditFormSettings Caption="Включено до переліку вільних приміщень" />
+            </dx:GridViewDataCheckColumn>
+
+            <dx:GridViewDataTextColumn FieldName="komis_protocol" Caption="Погодження орендодавця" VisibleIndex="32" Width ="80px" >
+                <HeaderStyle Wrap="True" />
+				<EditFormSettings Visible="False" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="id" Caption="Реєстра-ційний №" VisibleIndex="40" Width ="50px"  >
+				<CellStyle HorizontalAlign="Center" />
+                <HeaderStyle Wrap="True" />
+				<EditFormSettings Visible="False" />
+            </dx:GridViewDataTextColumn>
+
+		    <dx:GridViewDataComboBoxColumn FieldName="include_in_perelik" VisibleIndex="50" Width = "50px" Visible="True" Caption="Включено до переліку №">
+			    <HeaderStyle Wrap="True" />
+			    <PropertiesComboBox DataSourceID="SqlDataSourceIncludeInPerelik" ValueField="id" TextField="name" ValueType="System.String" />
+                <EditFormSettings ColumnSpan="1" />
+		    </dx:GridViewDataComboBoxColumn>
+
+            <dx:GridViewDataTextColumn Name="tmp1" Caption="" VisibleIndex="55" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="zal_balans_vartist" Caption="Залишкова балансова вартість" VisibleIndex="110" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="perv_balans_vartist" Caption="Первісна балансова вартість" VisibleIndex="120" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="punkt_metod_rozrahunok" Caption="Посилання на пункт Методики розрахунку орендної плати, яким встановлена орендна ставка для запропонованого цільового призначення" VisibleIndex="130" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn Name="tmp2" Caption="" VisibleIndex="135" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="prop_srok_orands" Caption="Пропонований строк оренди (у роках)" VisibleIndex="140" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn Name="tmp3" Caption="" VisibleIndex="145" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="nomer_derzh_reestr_neruh" Caption="Номер запису про право власності у Реєстрація у Державному реєстрі речових прав на нерухоме майно" VisibleIndex="150" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="reenum_derzh_reestr_neruh" Caption="Реєстраційний номер об'єкту нерухомого майна у Реєстрація у Державному реєстрі речових прав на нерухоме майно" VisibleIndex="155" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="info_priznach_nouse" Caption="Інформація про цільове призначення об’єкта оренди у випадках неможливості використання об’єкта за будь-яким цільовим призначенням, якщо об’єкт розташований у приміщеннях, які мають відповідне соціально-економічне призначення" VisibleIndex="160" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="info_rahunok_postach" Caption="Інформація про наявність окремих особових рахунків на об'єкт оренди, відкритих постачальниками комунальних послуг, або інформація про порядок участі орендаря у компенсації балансоутримувачу витрат на оплату комунальних послуг, якщо об'єкт оренди не має окремих особових рахунків, відкритих для нього відповідними постачальниками комунальних послуг" VisibleIndex="165" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="priznach_before" Caption="Цільове призначення об’єкта, за яким об’єкт використовувався перед тим, як він став вакантним" VisibleIndex="205" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="period_nouse" Caption="Період часу, протягом якого об’єкт не використовується" VisibleIndex="215" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="osoba_use_before" Caption="Інформацію про особу, яка використовувала об’єкт перед тим, як він став вакантним (якщо такою особою був балансоутримувач, проставляється позначка “об’єкт використовувався балансоутримувачем”)" VisibleIndex="225" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataCheckColumn FieldName="has_perevazh_pravo" Caption="Має переважне право на продовження" VisibleIndex="300">
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataCheckColumn>
+
+            <dx:GridViewDataTextColumn FieldName="polipshanya_vartist" Caption="Вартість здійснених чинним орендарем невід'ємних поліпшень" VisibleIndex="310" >
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataDateColumn FieldName="polipshanya_finish_date" Caption="Дата завершення здійснених чинним орендарем невід'ємних поліпшень" VisibleIndex="320" >
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataDateColumn>
+
+
+        </Columns>
+        <SettingsBehavior ConfirmDelete="True" />
+        <SettingsPager PageSize="10" />
+        <SettingsEditing NewItemRowPosition="Bottom" />
+        <Settings ShowFilterRow="True" ShowFilterBar="Auto" ShowFilterRowMenu="True" VerticalScrollableHeight="0" VerticalScrollBarMode="Hidden" VerticalScrollBarStyle="Standard"/>
+    </dx:ASPxGridView>
+
+    <dx:ASPxPopupControl ID="ASPxPopupControlFreeSquare" runat="server" AllowDragging="True" 
+        ClientInstanceName="PopupObjectPhotos" EnableClientSideAPI="True" 
+        HeaderText="Фотографії об'єкту з вільним приміщенням" Modal="True" 
+        PopupHorizontalAlign="Center" PopupVerticalAlign="Middle" RenderMode="Lightweight" 
+        PopupAction="None" PopupElementID="ASPxGridViewFreeSquare" Width="700px" >
+        <ContentCollection>
+            <dx:PopupControlContentControl ID="PopupControlContentControl1" runat="server" SupportsDisabledAttribute="True">
+
+                <asp:ObjectDataSource ID="ObjectDataSourcePhotoFiles" runat="server" 
+                    DeleteMethod="Delete" InsertMethod="Insert" 
+                    OnInserting="ObjectDataSourcePhotoFiles_Inserting" 
+                    SelectMethod="Select" 
+                    TypeName="ExtDataEntry.Models.FileAttachment">
+                    <DeleteParameters>
+                        <asp:Parameter DefaultValue="reports1nf_arenda_dogcontinue_photos" Name="scope" Type="String" />
+                        <asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+                        <asp:Parameter Name="id" Type="String" />
+                    </DeleteParameters>
+                    <InsertParameters>
+                        <asp:Parameter DefaultValue="reports1nf_arenda_dogcontinue_photos" Name="scope" Type="String" />
+                        <asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+                        <asp:Parameter Name="Name" Type="String" />
+                        <asp:Parameter Name="Image" Type="Object" />
+                    </InsertParameters>
+                    <SelectParameters>
+                        <asp:Parameter DefaultValue="reports1nf_arenda_dogcontinue_photos" Name="scope" Type="String" />
+                        <asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
+
+                <dx:ASPxFileManager ID="ASPxFileManagerPhotoFiles" runat="server" 
+                    ClientInstanceName="ASPxFileManagerPhotoFiles" DataSourceID="ObjectDataSourcePhotoFiles">
+                    <Settings RootFolder="~\" ThumbnailFolder="~\Thumb\" />
+                    <SettingsFileList>
+                        <ThumbnailsViewSettings ThumbnailSize="180px" />
+                    </SettingsFileList>
+                    <SettingsEditing AllowDelete="True" />
+                    <SettingsFolders Visible="False" />
+                    <SettingsToolbar ShowDownloadButton="True" ShowPath="False" />
+                    <SettingsUpload UseAdvancedUploadMode="True">
+                        <AdvancedModeSettings EnableMultiSelect="True" />
+                    </SettingsUpload>
+
+                    <SettingsDataSource FileBinaryContentFieldName="Image" 
+                        IsFolderFieldName="IsFolder" KeyFieldName="ID" 
+                        LastWriteTimeFieldName="LastModified" NameFieldName="Name" 
+                        ParentKeyFieldName="ParentID" />
+                </dx:ASPxFileManager>
+
+                <br />
+
+                <dx:ASPxButton ID="ASPxButtonClose" runat="server" AutoPostBack="False" Text="Закрити" HorizontalAlign="Center">
+                    <ClientSideEvents Click="function(s, e) { PopupObjectPhotos.Hide(); }" />
+                </dx:ASPxButton>
+
+            </dx:PopupControlContentControl>
+        </ContentCollection>
+    </dx:ASPxPopupControl>
+
+
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </dx:PanelContent>
+                                </PanelCollection>
+                            </dx:ASPxRoundPanel>
+<%--                        </ItemTemplate>
+                    </asp:FormView>--%>
                 </dx:ContentControl>
             </ContentCollection>
         </dx:TabPage>

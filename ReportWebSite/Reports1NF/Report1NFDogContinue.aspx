@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Report1NFFreeSquare.aspx.cs" Inherits="Reports1NF_Report1NFFreeSquare"
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Report1NFDogContinue.aspx.cs" Inherits="Reports1NF_Report1NFDogContinue"
     MasterPageFile="~/NoHeader.master" Title="Перелік вільних приміщень" %>
 
 <%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
@@ -24,9 +24,7 @@
     window.onresize = function () { AdjustGridSizes(); };
 
     function AdjustGridSizes() {
-
 		FreeSquareGridView.SetHeight(window.innerHeight - 180);
-		console.log("AAAa");
     }
 
     function GridViewFreeSquareInit(s, e) {
@@ -59,17 +57,33 @@
 		} else if (e.buttonID == 'btnFreeCycle') {
 			FreeSquareGridView.GetRowValues(e.visibleIndex, 'id', OnFreeCycleGetRowValues);
 		} else if (e.buttonID == 'btnOrgBalansObject') {
-			FreeSquareGridView.GetRowValues(e.visibleIndex, 'id;balans_id;report_id', OnClickOrgBalansObject);
+			FreeSquareGridView.GetRowValues(e.visibleIndex, 'id;arenda_id;report_id', OnClickOrgBalansObject);
         } else if (e.buttonID == 'btnCopyFullDescription') {
-			var cols = "include_in_perelik;zal_balans_vartist;perv_balans_vartist;free_object_type_name;prop_srok_orands;punkt_metod_rozrahunok;invest_solution;";
+            var cols = "orendar_name;orendar_zkpo;org_name;zkpo_code;balanutr_addr_street;balanutr_addr_nomer;giver_name;giver_zkpo;giver_addr_street;giver_addr_nomer;agreement_date;rent_finish_date;srok_dog;";
+            cols += "include_in_perelik;zal_balans_vartist;perv_balans_vartist;free_object_type_name;prop_srok_orands;punkt_metod_rozrahunok;invest_solution;";
 			cols += "zgoda_control;district;street_name;addr_nomer;total_free_sqr;free_sql_usefull;";
-			cols += "floor;condition;water;heating;gas;power_text;history;zgoda_renter;nomer_derzh_reestr_neruh;reenum_derzh_reestr_neruh;info_priznach_nouse;info_rahunok_postach;priznach_before;period_nouse;osoba_use_before"
+            cols += "floor;condition;water;heating;gas;power_text;history;zgoda_renter;nomer_derzh_reestr_neruh;reenum_derzh_reestr_neruh;info_priznach_nouse;info_rahunok_postach;priznach_before;period_nouse;osoba_use_before;";
+            cols += "has_perevazh_pravo;polipshanya_vartist;polipshanya_finish_date";
 			FreeSquareGridView.GetRowValues(e.visibleIndex, cols, OnCopyFullDescription);
 		}
     }
 
 	function OnCopyFullDescription(values) {
         var headers = [
+			"Найменування орендаря - ",
+			"Код ЕДРПОУ орендаря - ",
+			"Найменування балансоутримувача - ",
+			"Код ЕДРПОУ балансоутримувача - ",
+			"Адреса балансоутримувача(вулиця) - ",
+			"Адреса балансоутримувача(номер дому) - ",
+			"Найменування орендодавця - ",
+			"Код ЕДРПОУ орендодавця - ",
+			"Адреса орендодавця(вулиця) - ",
+			"Адреса орендодавця(номер дому) - ",
+			"Дата укладання договору - ",
+			"Дата закінчення договору - ",
+			"Строк оренди(роки) - ",
+
             "Включено до переліку № - ",
             "Залишкова балансова вартість, тис. грн. – ",
             "Первісна балансова вартість, тис. грн. - ",
@@ -98,7 +112,11 @@
 			"Інформація про наявність окремих особових рахунків на об'єкт оренди, відкритих постачальниками комунальних послуг - ",
 			"Цільове призначення об’єкта, за яким об’єкт використовувався перед тим, як він став вакантним – ",
 			"Період часу, протягом якого об’єкт не використовується – ",
-			"Інформацію про особу, яка використовувала об’єкт перед тим, як він став вакантним – ",
+            "Інформацію про особу, яка використовувала об’єкт перед тим, як він став вакантним – ",
+
+			"Має переважне право на продовження – ",
+			"Вартість здійснених чинним орендарем невід’ємних поліпшень – ",
+			"Дата завершення здійснених чинним орендарем невід’ємних поліпшень – ",
         ];
 
 		console.log("values", values);
@@ -106,13 +124,15 @@
         var txt = "";
         for (var i = 0; i < headers.length; i++) {
             var vv = values[i];
-			if (vv === null) {
+            if (vv === null) {
                 vv = "";
             } else if (vv === true) {
                 vv = "так";
-			} else if (vv === false) {
-				vv = "ні";
-            }
+            } else if (vv === false) {
+                vv = "ні";
+            } else if (Object.prototype.toString.call(vv) === '[object Date]') {
+				vv = formatDate(vv);
+			}
 
 			txt += (i == 0 ? "" : "\n") + headers[i] +  vv;
 		}
@@ -129,13 +149,21 @@
 		}, function () {
 		    alert("Не можу записати буфер обміну");
 		});
+    }
+
+	function formatDate(date) {
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+
+        return (day < 10 ? "0" : "") + day + "." + (month < 10 ? "0" : "") + month + "." + year;
 	}
 
 
 	function OnMapShowGetRowValues(values) {
 		var id = values;
 		window.open(
-			'Report1NFFreeMap.aspx?fs_id=' + id,
+			'Report1NFProdlenMap.aspx?fs_id=' + id,
 			'_blank',
 		);
 	}
@@ -157,7 +185,7 @@
 		console.log(values);
 		var id = values;
 		window.open(
-			'BalansFreeSquarePhotosPdf.aspx?id=' + id,
+			'BalansDogContinuePhotosPdf.aspx?id=' + id,
 			'_blank',
 		);
 	}
@@ -232,11 +260,13 @@
     fs.osoba_use_before,
  row_number() over (order by org.short_name, b.street_full_name, b.addr_nomer, fs.total_free_sqr) as npp     
 ,fs.id
-,fs.balans_id
+,fs.arenda_id
 ,org.short_name as org_name
 ,org.zkpo_code
 ,org.report_id
 ,org.director_title as vidpov_osoba
+,(select Q.name from dict_streets Q where Q.id = org.addr_street_id) as balanutr_addr_street
+,org.addr_nomer as balanutr_addr_nomer
 
 ,b.district
 ,b.street_full_name as street_name
@@ -286,17 +316,35 @@
 ,history = case when isnull(b.history, 'НІ') = 'НІ' then '' else 'ТАК' end 
 , isnull(ddd.name, 'Невизначені') as sf_upr
 , @baseurl + '/Reports1NF/BalansFreeSquarePhotosPdf.aspx?id=' + cast(fs.id as varchar(100)) as pdfurl
-, case when exists (select 1 from reports1nf_balans_free_square_photos qq where qq.free_square_id = fs.id) then 1 else 0 end as isexistsphoto
+, case when exists (select 1 from reports1nf_arenda_dogcontinue_photos qq where qq.free_square_id = fs.id) then 1 else 0 end as isexistsphoto
+
+,org_renter.zkpo_code as orendar_zkpo
+,org_renter.full_name as orendar_name
+
+,org_giver.zkpo_code as giver_zkpo
+,org_giver.full_name as giver_name
+,(select Q.name from dict_streets Q where Q.id = org_giver.addr_street_id) as giver_addr_street
+,org_giver.addr_nomer as giver_addr_nomer
+
+,bal.agreement_date
+,bal.rent_finish_date
+,cast(round(DATEDIFF ( month, bal.agreement_date, bal.rent_finish_date ) / 12.0, 0) as int) as srok_dog
+
+,fs.has_perevazh_pravo
+,fs.polipshanya_vartist
+,fs.polipshanya_finish_date
 
 FROM view_reports1nf rep
-join reports1nf_balans bal on bal.report_id = rep.report_id
+join reports1nf_arenda bal on bal.report_id = rep.report_id
 JOIN view_reports1nf_buildings b ON b.unique_id = bal.building_1nf_unique_id
-join dbo.reports1nf_balans_free_square fs on fs.balans_id = bal.id and fs.report_id = rep.report_id
---left join (select * from dbo.reports1nf_balans_free_square where id = (select top 1 id from dbo.reports1nf_balans_free_square where balans_id = bal.id)) fs on fs.balans_id = bal.id
-join reports1nf_org_info org on org.id = bal.organization_id
+join dbo.reports1nf_arenda_dogcontinue fs on fs.arenda_id = bal.id and fs.report_id = rep.report_id
+--left join (select * from dbo.reports1nf_arenda_dogcontinue where id = (select top 1 id from dbo.reports1nf_arenda_dogcontinue where arenda_id = bal.id)) fs on fs.arenda_id = bal.id
+join reports1nf_org_info org on org.id = bal.org_balans_id
 left join [dbo].[dict_streets] st on b.addr_street_id = st.id
 left join dbo.dict_zgoda_renter zg on fs.zgoda_renter_id = zg.id
 left join dbo.dict_zgoda_renter zg2 on fs.zgoda_control_id = zg2.id
+left join organizations org_renter on org_renter.id = bal.org_renter_id
+left outer join organizations org_giver ON org_giver.id = bal.org_giver_id and (org_giver.is_deleted is null or org_giver.is_deleted = 0)
 
 --OUTER APPLY (SELECT TOP 1 * FROM rent_free_square rfs
 --		WHERE rfs.building_id = bal.building_id AND
@@ -317,7 +365,7 @@ LEFT JOIN (
     order by org_name, street_name, addr_nomer, total_free_sqr   "
     OnSelecting="SqlDataSourceFreeSquare_Selecting"
 
-UpdateCommand="UPDATE [reports1nf_balans_free_square]
+UpdateCommand="UPDATE [reports1nf_arenda_dogcontinue]
 SET
     [komis_protocol] = @komis_protocol,
 	[geodata_map_points] = @geodata_map_points,
@@ -437,18 +485,18 @@ WHERE id = @id"
 							SelectMethod="Select" 
 							TypeName="ExtDataEntry.Models.FileAttachment">
 							<DeleteParameters>
-								<asp:Parameter DefaultValue="free_square_current_stage_documents" Name="scope" Type="String" />
+								<asp:Parameter DefaultValue="reports1nf_arenda_dogcontinue_current_stage_documents" Name="scope" Type="String" />
 								<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
 								<asp:Parameter Name="id" Type="String" />
 							</DeleteParameters>
 							<InsertParameters>
-								<asp:Parameter DefaultValue="free_square_current_stage_documents" Name="scope" Type="String" />
+								<asp:Parameter DefaultValue="reports1nf_arenda_dogcontinue_current_stage_documents" Name="scope" Type="String" />
 								<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
 								<asp:Parameter Name="Name" Type="String" />
 								<asp:Parameter Name="Image" Type="Object" />
 							</InsertParameters>
 							<SelectParameters>
-								<asp:Parameter DefaultValue="free_square_current_stage_documents" Name="scope" Type="String" />
+								<asp:Parameter DefaultValue="reports1nf_arenda_dogcontinue_current_stage_documents" Name="scope" Type="String" />
 								<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
 							</SelectParameters>
 						</asp:ObjectDataSource>
@@ -518,7 +566,7 @@ WHERE id = @id"
 	   <ClientSideEvents CustomButtonClick="ShowPhoto" />
     <Columns>
 
-        <dx:GridViewCommandColumn VisibleIndex="0" Width="70px" ButtonType="Image" CellStyle-Wrap="True" FixedStyle="Left" CellStyle-CssClass="command-column-class" >
+        <dx:GridViewCommandColumn VisibleIndex="0" Width="50px" ButtonType="Image" CellStyle-Wrap="True" FixedStyle="Left" CellStyle-CssClass="command-column-class" >
              <EditButton Visible="True">
 				<Image Url="~/Styles/EditIcon.png" />
              </EditButton>
@@ -535,10 +583,10 @@ WHERE id = @id"
                 <dx:GridViewCommandColumnCustomButton ID="btnMapShow" Text="Показати на мапі"> 
 					<Image Url="~/Styles/MapShowIcon.png"/>
                 </dx:GridViewCommandColumnCustomButton>
-                <dx:GridViewCommandColumnCustomButton ID="btnOrgBalansObject" Text="Змінити картку"> 
+                <dx:GridViewCommandColumnCustomButton ID="btnOrgBalansObject" Text="Змінити картку"  Visibility="Invisible"> 
 					<Image Url="~/Styles/EditTextIcon.png"/>
                 </dx:GridViewCommandColumnCustomButton>
-                <dx:GridViewCommandColumnCustomButton ID="btnFreeCycle" Text="Картка процесу передачі в оренду вільного приміщення"> 
+                <dx:GridViewCommandColumnCustomButton ID="btnFreeCycle" Text="Картка процесу передачі в оренду вільного приміщення" Visibility="Invisible"> 
 					<Image Url="~/Styles/ReportDocument18.png"/>
                 </dx:GridViewCommandColumnCustomButton>
                 <dx:GridViewCommandColumnCustomButton ID="btnCopyFullDescription" Text="Опис об'єкта до буфера обміну"> 
@@ -548,9 +596,22 @@ WHERE id = @id"
             <CellStyle Wrap="False"></CellStyle>
         </dx:GridViewCommandColumn>
 
+        <dx:GridViewDataTextColumn FieldName="orendar_name" Caption="Найменування орендаря" VisibleIndex="0" Width="300px" ReadOnly="true">
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("orendar_name") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="orendar_zkpo" Caption="Код ЕДРПОУ орендаря" VisibleIndex="0" Width="100px" ReadOnly="true" CellStyle-HorizontalAlign="Center">
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("orendar_zkpo") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
 
 
-        <dx:GridViewDataTextColumn FieldName="org_name" Caption="Балансоутримувач" VisibleIndex="0"  Width="300px" ReadOnly="true" >
+        <dx:GridViewDataTextColumn FieldName="org_name" Caption="Найменування балансоутримувача" VisibleIndex="0"  Width="300px" ReadOnly="true" >
             <DataItemTemplate>
                 <%# "<a href=\"javascript:ShowOrgInfo(" + Eval("report_id") + ")\">" + Eval("org_name") + "</a>"%>
             </DataItemTemplate>
@@ -558,15 +619,79 @@ WHERE id = @id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("org_name") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="zkpo_code" Caption="Код ЄДРПОУ" VisibleIndex="1" ReadOnly="true">
+
+        <dx:GridViewDataTextColumn FieldName="zkpo_code" Caption="Код ЕДРПОУ балансоутримувача" VisibleIndex="1" Width="100px" ReadOnly="true" CellStyle-HorizontalAlign="Center">
+            <HeaderStyle Wrap="True" />
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("zkpo_code") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="balanutr_addr_street" Caption="Адреса балансоутримувача (вулиця)" VisibleIndex="1" Width="120px" ReadOnly="true">
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("balanutr_addr_street") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="balanutr_addr_nomer" Caption="Адреса балансоутримувача (номер дому)" VisibleIndex="1" Width="50px" ReadOnly="true" CellStyle-HorizontalAlign="Left">
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("balanutr_addr_nomer") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="giver_name" Caption="Найменування орендодавця" VisibleIndex="1" Width="300px" ReadOnly="true">
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("giver_name") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="giver_zkpo" Caption="Код ЕДРПОУ орендодавця" VisibleIndex="1" Width="100px" ReadOnly="true" CellStyle-HorizontalAlign="Center">
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("giver_zkpo") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="giver_addr_street" Caption="Адреса орендодавця (вулиця)" VisibleIndex="1" Width="120px" ReadOnly="true">
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("giver_addr_street") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="giver_addr_nomer" Caption="Адреса орендодавця (номер дому)" VisibleIndex="1" Width="50px" ReadOnly="true" CellStyle-HorizontalAlign="Left">
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("giver_addr_nomer") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataColumn FieldName="agreement_date" Caption="Дата укладання договору" VisibleIndex="1" Width="80px" ReadOnly="true" CellStyle-HorizontalAlign="Center">
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+                <dx:ASPxLabel runat="server" Text='<%# Eval("agreement_date", "{0:dd.MM.yyyy}") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataColumn>
+
+        <dx:GridViewDataColumn FieldName="rent_finish_date" Caption="Дата закінчення договору" VisibleIndex="1" Width="80px" ReadOnly="true" CellStyle-HorizontalAlign="Center">
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+                <dx:ASPxLabel runat="server" Text='<%# Eval("rent_finish_date", "{0:dd.MM.yyyy}") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataColumn>
+
+        <dx:GridViewDataTextColumn FieldName="srok_dog" Caption="Строк оренди (роки)" VisibleIndex="1" Width="50px" ReadOnly="true" CellStyle-HorizontalAlign="Center">
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("srok_dog") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+
 		<dx:GridViewDataCheckColumn FieldName="isexistsphoto" Caption="Наявність фото" VisibleIndex="1" Width="30px" ReadOnly="true">
-<%--			<EditItemTemplate>
-				<dx:ASPxLabel runat="server" Text='<%# Eval("isexistsphoto") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
-			</EditItemTemplate>--%>
 		</dx:GridViewDataCheckColumn>
         <dx:GridViewDataTextColumn FieldName="district" Caption="Район" VisibleIndex="2" Width="120px" ReadOnly="true">
 			<EditItemTemplate>
@@ -737,11 +862,30 @@ WHERE id = @id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("history") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
+
         <dx:GridViewDataTextColumn FieldName="sf_upr" Caption="Сфера управління" VisibleIndex="24" Width="100px">
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("sf_upr") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
+
+		<dx:GridViewDataCheckColumn FieldName="has_perevazh_pravo" Caption="Має переважне право на продовження" VisibleIndex="24" Width="60px" ReadOnly="true">
+		</dx:GridViewDataCheckColumn>
+
+        <dx:GridViewDataTextColumn FieldName="polipshanya_vartist" Caption="Вартість здійснених чинним орендарем невід’ємних поліпшень" VisibleIndex="24" Width="100px">
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("polipshanya_vartist") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataColumn FieldName="polipshanya_finish_date" Caption="Дата завершення здійснених чинним орендарем невід’ємних поліпшень" VisibleIndex="24" Width="80px" ReadOnly="true" CellStyle-HorizontalAlign="Center">
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+                <dx:ASPxLabel runat="server" Text='<%# Eval("polipshanya_finish_date", "{0:dd.MM.yyyy}") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataColumn>
+
+
         <dx:GridViewDataTextColumn FieldName="prozoro_number" Caption="Унікальний код обєкту у ЕТС Прозорро-продажі" VisibleIndex="24" Width="150px">
             <DataItemTemplate>
                 <%# "<a target=\"_blank\" href=\"https://prozorro.sale/auction/" + Eval("prozoro_number") + "\">" + Eval("prozoro_number") + "</a>"%>
@@ -908,7 +1052,7 @@ WHERE id = @id"
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A2_60" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFDogContinue" Version="A3_12" Enabled="False" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

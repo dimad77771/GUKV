@@ -49,10 +49,14 @@ namespace ExtDataEntry.Models
             string query = "";
             if (scope.ToLower() == "1nf")
                 query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [reports1nf_balans_free_square_photos] WHERE [free_square_id] = @free_square_id";
-			if (scope.ToLower() == "reports1nf_report_documents")
+            if (scope.ToLower() == "reports1nf_arenda_dogcontinue_photos")
+                query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [reports1nf_arenda_dogcontinue_photos] WHERE [free_square_id] = @free_square_id";
+            if (scope.ToLower() == "reports1nf_report_documents")
 				query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [reports1nf_report_documents] WHERE [report_id] = @free_square_id";
 			if (scope.ToLower() == "free_square_current_stage_documents")
 				query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [reports1nf_balans_free_square_current_stage_documents] WHERE [free_square_id] = @free_square_id";
+            if (scope.ToLower() == "reports1nf_arenda_dogcontinue_current_stage_documents")
+                query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [reports1nf_arenda_dogcontinue_current_stage_documents] WHERE [free_square_id] = @free_square_id";
             if (scope.ToLower() == "privatisat_documents")
                 query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [privatisat_documents] WHERE [free_square_id] = @free_square_id";
             if (scope.ToLower() == "freecycle_step_documents")
@@ -169,6 +173,10 @@ namespace ExtDataEntry.Models
 			{
 				table = "reports1nf_balans_free_square_current_stage_documents";
 			}
+            else if (scope == "reports1nf_arenda_dogcontinue_current_stage_documents")
+            {
+                table = "reports1nf_arenda_dogcontinue_current_stage_documents";
+            }
             else if (scope == "privatisat_documents")
             {
                 table = "privatisat_documents";
@@ -182,8 +190,12 @@ namespace ExtDataEntry.Models
 			{
 				table = "freecycle_step_documents";
 			}
-			else
-			{
+            else if (scope == "reports1nf_arenda_dogcontinue_photos")
+            {
+                table = "reports1nf_arenda_dogcontinue_photos";
+            }
+            else
+            {
 				table = "reports1nf_balans_free_square_photos";
 			}
 			if (query == "")
@@ -226,7 +238,11 @@ namespace ExtDataEntry.Models
 			{
 				table = "reports1nf_balans_free_square_current_stage_documents";
 			}
-            if (scope == "privatisat_documents")
+            else if (scope == "reports1nf_arenda_dogcontinue_current_stage_documents")
+            {
+                table = "reports1nf_arenda_dogcontinue_current_stage_documents";
+            }
+            else if (scope == "privatisat_documents")
             {
                 table = "privatisat_documents";
             }
@@ -238,8 +254,12 @@ namespace ExtDataEntry.Models
 			{
 				table = "freecycle_step_documents";
 			}
-			else
-			{
+            else if (scope == "reports1nf_arenda_dogcontinue_photos")
+            {
+                table = "reports1nf_arenda_dogcontinue_photos";
+            }
+            else
+            {
 				table = "reports1nf_balans_free_square_photos";
 			}
 
