@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Report1NFProdlenMap.aspx.cs" Inherits="Reports1NF_Report1NFProdlenMap"
-    MasterPageFile="~/ProdlenShowPublic.master" Title="Мапа вільних приміщень" %>
+    MasterPageFile="~/ProdlenShowPublic.master" Title="Мапа оголошених аукціонів для оренди" %>
 
 <%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
 <%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView.Export" tagprefix="dx" %>
@@ -138,7 +138,7 @@
 					});
 
 					var myIcon_1 = DG.icon({
-						iconUrl: '../Styles/DGCustomization__marker_1b.png',
+						iconUrl: '../Styles/DGCustomization__marker_4b.png',
 						//iconRetinaUrl: '../Styles/DGCustomization__marker_2.png',
 						iconSize: [22, 68],
 						//iconAnchor: [22, 94],
@@ -304,7 +304,7 @@
 
 						DG.marker([apoint.point1, apoint.point2], {
 							//title: "aaaa\njjj",
-							icon: (apoint.prozoro_number != '' ? myIcon_3 : apoint.need_zgoda == '+' ? myIcon_2 : myIcon_1),
+							icon: (apoint.source == '2' ? myIcon_3 : myIcon_1),
 						})
 						.addTo(map)
 						//.bindPopup('Вы кликнули по мне!')

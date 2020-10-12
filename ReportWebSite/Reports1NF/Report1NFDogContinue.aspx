@@ -62,7 +62,7 @@
             var cols = "orendar_name;orendar_zkpo;org_name;zkpo_code;balanutr_addr_street;balanutr_addr_nomer;giver_name;giver_zkpo;giver_addr_street;giver_addr_nomer;agreement_date;rent_finish_date;srok_dog;";
             cols += "include_in_perelik;zal_balans_vartist;perv_balans_vartist;free_object_type_name;prop_srok_orands;punkt_metod_rozrahunok;invest_solution;";
 			cols += "zgoda_control;district;street_name;addr_nomer;total_free_sqr;free_sql_usefull;";
-            cols += "floor;condition;water;heating;gas;power_text;history;zgoda_renter;nomer_derzh_reestr_neruh;reenum_derzh_reestr_neruh;info_priznach_nouse;info_rahunok_postach;priznach_before;period_nouse;osoba_use_before;";
+			cols += "floor;condition;water;heating;gas;power_text;history;zgoda_renter;nomer_derzh_reestr_neruh;reenum_derzh_reestr_neruh;info_priznach_nouse;info_rahunok_postach;orend_plat_borg;stanom_na;";
             cols += "has_perevazh_pravo;polipshanya_vartist;polipshanya_finish_date";
 			FreeSquareGridView.GetRowValues(e.visibleIndex, cols, OnCopyFullDescription);
 		}
@@ -110,9 +110,8 @@
 			"Реєстраційний номер об'єкту нерухомого майна у Реєстрація у Державному реєстрі речових прав на нерухоме майно – ",
 			"Інформація про цільове призначення об’єкта оренди – ",
 			"Інформація про наявність окремих особових рахунків на об'єкт оренди, відкритих постачальниками комунальних послуг - ",
-			"Цільове призначення об’єкта, за яким об’єкт використовувався перед тим, як він став вакантним – ",
-			"Період часу, протягом якого об’єкт не використовується – ",
-            "Інформацію про особу, яка використовувала об’єкт перед тим, як він став вакантним – ",
+			"Заборгованість по орендній платі, грн. (без ПДВ) – ",
+			"Станом на – ",
 
 			"Має переважне право на продовження – ",
 			"Вартість здійснених чинним орендарем невід’ємних поліпшень – ",
@@ -256,7 +255,9 @@
     fs.info_priznach_nouse,
     fs.info_rahunok_postach,
     fs.priznach_before,
+    fs.orend_plat_borg,
     fs.period_nouse,
+    fs.stanom_na,
     fs.osoba_use_before,
  row_number() over (order by org.short_name, b.street_full_name, b.addr_nomer, fs.total_free_sqr) as npp     
 ,fs.id
@@ -330,6 +331,7 @@
 ,bal.rent_finish_date
 ,cast(round(DATEDIFF ( month, bal.agreement_date, bal.rent_finish_date ) / 12.0, 0) as int) as srok_dog
 
+,fs.orend_plat_last_month
 ,fs.has_perevazh_pravo
 ,fs.polipshanya_vartist
 ,fs.polipshanya_finish_date
@@ -869,6 +871,29 @@ WHERE id = @id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
+        <dx:GridViewDataTextColumn FieldName="orend_plat_last_month" Caption="Місячна орендна плата за останній місяць(проіндексована)" VisibleIndex="24" Width="80px"  >
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("orend_plat_last_month") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="orend_plat_borg" Caption="Заборгованість по орендній платі, грн. (без ПДВ)" VisibleIndex="24" Width="80px"  >
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("orend_plat_borg") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataColumn FieldName="stanom_na" Caption="Станом на" VisibleIndex="24" Width="80px" CellStyle-HorizontalAlign="Center"  >
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("stanom_na", "{0:dd.MM.yyyy}") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataColumn>
+
+
+
 		<dx:GridViewDataCheckColumn FieldName="has_perevazh_pravo" Caption="Має переважне право на продовження" VisibleIndex="24" Width="60px" ReadOnly="true">
 		</dx:GridViewDataCheckColumn>
 
@@ -1010,31 +1035,30 @@ WHERE id = @id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn FieldName="priznach_before" Caption="Цільове призначення об’єкта, за яким об’єкт використовувався перед тим, як він став вакантним" VisibleIndex="1310" Visible="false" Width="380px"  >
+<%--        <dx:GridViewDataTextColumn FieldName="priznach_before" Caption="Цільове призначення об’єкта, за яким об’єкт використовувався перед тим, як він став вакантним" VisibleIndex="1310" Visible="false" Width="380px"  >
             <HeaderStyle Wrap="True" />
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("priznach_before") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
-        </dx:GridViewDataTextColumn>
+        </dx:GridViewDataTextColumn>--%>
 
-        <dx:GridViewDataTextColumn FieldName="period_nouse" Caption="Період часу, протягом якого об’єкт не використовується" VisibleIndex="1320" Visible="false" Width="380px"  >
+
+<%--        <dx:GridViewDataTextColumn FieldName="period_nouse" Caption="Період часу, протягом якого об’єкт не використовується" VisibleIndex="1320" Visible="false" Width="380px"  >
             <HeaderStyle Wrap="True" />
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("period_nouse") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
-        </dx:GridViewDataTextColumn>
+        </dx:GridViewDataTextColumn>--%>
 
-        <dx:GridViewDataTextColumn FieldName="osoba_use_before" Caption="Інформацію про особу, яка використовувала об’єкт перед тим, як він став вакантним (якщо такою особою був балансоутримувач, проставляється позначка “об’єкт використовувався балансоутримувачем”)" VisibleIndex="1330" Visible="false" Width="380px"  >
-            <HeaderStyle Wrap="True" />
-			<EditItemTemplate>
-				<dx:ASPxLabel runat="server" Text='<%# Eval("osoba_use_before") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
-			</EditItemTemplate>
-        </dx:GridViewDataTextColumn>
+
+
 
 
     </Columns>
 
     <TotalSummary>
+        <dx:ASPxSummaryItem FieldName="orend_plat_last_month" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="orend_plat_borg" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="total_free_sqr" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="free_sql_usefull" SummaryType="Sum" DisplayFormat="{0}" />
     </TotalSummary>
@@ -1052,7 +1076,7 @@ WHERE id = @id"
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFDogContinue" Version="A3_12" Enabled="False" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFDogContinue" Version="A3_18" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

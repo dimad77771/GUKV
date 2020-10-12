@@ -51,8 +51,8 @@
 										<dx:MenuItem Visible="false" NavigateUrl="~/Reports1NF/Report1NFFreeShow.aspx" Text="Перелік майна, що може бути передане в оренду"></dx:MenuItem>
 										<dx:MenuItem Visible="false" NavigateUrl="~/Reports1NF/Report1NFFreeRejections.aspx" Text="Перелік відмов потенційним орендарям"></dx:MenuItem>
 										<dx:MenuItem Visible="false" NavigateUrl="~/Reports1NF/Report1NFFreeShow.aspx?mode50=1" Text="Рішення про укладання договору (площа  50 кв.м або менше, та вартість до 500 000 грн.)"></dx:MenuItem>
-                                        <dx:MenuItem Visible="true" NavigateUrl="~/Reports1NF/Report1NFProdlenMap.aspx" Text="Мапа продовження договорів оренди"></dx:MenuItem>
-                                        <dx:MenuItem Visible="true" NavigateUrl="~/Reports1NF/Report1NFProdlenShow.aspx" Text="Перелік продовження договорів оренди"></dx:MenuItem>
+                                        <dx:MenuItem Visible="true" NavigateUrl="~/Reports1NF/Report1NFProdlenMap.aspx" Text="Мапа оголошених аукціонів для оренди"></dx:MenuItem>
+                                        <dx:MenuItem Visible="true" NavigateUrl="~/Reports1NF/Report1NFProdlenShow.aspx" Text="Перелік оголошених аукціонів для оренди"></dx:MenuItem>
                                     </Items>
                                 </dx:ASPxMenu>
                             </asp:Panel>

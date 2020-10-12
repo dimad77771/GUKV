@@ -2964,6 +2964,9 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
     protected void ASPxGridViewFreeSquare_InitNewRow(object sender, ASPxDataInitNewRowEventArgs e)
     {
         e.NewValues["is_included"] = true;
+        
+        //var edit = CollectionForm.FindControl("EditCollectionDebtTotal") as ASPxSpinEdit;
+        //e.NewValues["orend_plat_borg"] = edit.Value;
     }
 
     protected void ObjectDataSourcePhotoFiles_Inserting(object sender, ObjectDataSourceMethodEventArgs e)

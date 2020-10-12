@@ -47,9 +47,22 @@ public partial class Reports1NF_Report1NFProdlenShow : System.Web.UI.Page
 		//a.SettingsToolbar
 		//a.SettingsEditing
 		//a.SettingsUpload
+
+		//var div = FreeSquareGridView.FindControlRecursive("DivDetailRow");
+		//var gg = FreeSquareGridView.FindControlRecursive("PanelContent51");
+		//gg.Visible = false;
+		//var b = 10;
+		//div.Attributes.CssStyle.Add("display", "none");
+		//div.Visible = false;
+		//var attr = div.Attributes.CssStyle;
+		//div.Attributes.CssStyle.Remove(HtmlTextWriterStyle.Display);
+
+		//var gg = FreeSquareGridView.FindDetailRowTemplateControl(0, "DivDetailRow");
+		//var div = gg.FindControlRecursive("PanelContent51");
+		//div.Visible = false;
 	}
 
-    protected void ASPxButton_FreeSquare_ExportXLS_Click(object sender, EventArgs e)
+	protected void ASPxButton_FreeSquare_ExportXLS_Click(object sender, EventArgs e)
     {
 		this.ExportGridToXLS(GridViewFreeSquareExporter, FreeSquareGridView, LabelReportTitle1.Text, "",
 			exportHiddenColumnCallback: q => (q.FieldName == "pdfurl"),
@@ -174,5 +187,16 @@ public partial class Reports1NF_Report1NFProdlenShow : System.Web.UI.Page
 			FreeSquareGridView.DetailRows.ExpandAllRows();
 			FreeSquareGridView.SettingsDetail.ShowDetailButtons = false;
 		}
+	}
+
+
+	protected void FreeSquareGridView_DetailsChanged(object sender, EventArgs e)
+	{
+		//FreeSquareGridView.FindDetailRowTemplateControl
+	}
+
+	protected void FreeSquareGridView_DetailRowExpandedChanged(object sender, ASPxGridViewDetailRowEventArgs e)
+	{
+		var f = 1;
 	}
 }

@@ -23,6 +23,8 @@ public partial class Reports1NF_Report1NFProdlenMap : System.Web.UI.Page
     {
 		selected_fs_id = (Request.QueryString["fs_id"] != null ? Request.QueryString["fs_id"] : "null");
 
+		var SqlQuery = SqlQuery_1 + "\n\n UNION ALL \n\n" + SqlQuery_2;
+
 		var connection = Utils.ConnectToDatabase();
 		using (var cmd = new SqlCommand(SqlQuery, connection))
 		{
@@ -58,6 +60,7 @@ public partial class Reports1NF_Report1NFProdlenMap : System.Web.UI.Page
 					var orandodatel = GetStringValue(reader, 24);
 					var include_in_perelik = GetStringValue(reader, 25);
 					var prozoro_number = GetStringValue(reader, 26);
+					var source = GetStringValue(reader, 27);
 
 					var regpoints = (new Regex(@"(\d+\.\d+)\s+(\d+\.\d+)")).Match(geodata_map_points);
 					if (regpoints.Groups.Count != 3) throw new Exception();
@@ -96,6 +99,7 @@ public partial class Reports1NF_Report1NFProdlenMap : System.Web.UI.Page
 						orandodatel = orandodatel,
 						include_in_perelik = include_in_perelik,
 						prozoro_number = prozoro_number,
+						source = source,
 					};
 					AllPoints.Add(pointInfo);
 				}
@@ -213,12 +217,13 @@ public partial class Reports1NF_Report1NFProdlenMap : System.Web.UI.Page
 		public string orandodatel;
 		public string include_in_perelik;
 		public string prozoro_number;
+		public string source;
 	}
 
 
 
 
-	string SqlQuery = @"
+	string SqlQuery_1 = @"
 SELECT 
 	fs.id,
 	fs.komis_protocol,
@@ -250,6 +255,7 @@ SELECT
 	dbo.get_reports1NF_orandodatel(b.district, rep.form_of_ownership) as orandodatel,
 	fs.include_in_perelik,
 	fs.prozoro_number,	
+	'1' as source,
 		
  row_number() over (order by org.short_name, b.street_full_name, b.addr_nomer, fs.total_free_sqr) as npp     
 ,fs.id
@@ -316,7 +322,113 @@ LEFT JOIN (
 		WHERE (komis_protocol <> '' and komis_protocol not like '0%' and is_included = 1) and geodata_map_points <> ''
         --WHERE (@p_rda_district_id = 0 OR (rep.org_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND rep.org_district_id = @p_rda_district_id))
 
+    --order by org_name, street_name, addr_nomer, total_free_sqr
+";
+
+	string SqlQuery_2 = @"
+SELECT 
+	fs.id,
+	fs.komis_protocol,
+	fs.geodata_map_points,
+	b.street_full_name as street_name,
+	(COALESCE(LTRIM(RTRIM(b.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer2)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer3)), '')) as addr_nomer,
+	b.sqr_for_rent,
+
+	--(select qq.name2 from view_dict_rental_rate qq where qq.id = fs.using_possible_id) as possible_using,
+	fs.possible_using,
+
+	fs.total_free_sqr,
+	fs.free_sqr_korysna as free_sql_usefull,
+	fs.floor,
+	fs.water,
+	fs.heating,
+	fs.power,
+	fs.gas,
+	org.short_name as org_name,
+	(select q.name from dict_1nf_tech_stane q where q.id = fs.free_sqr_condition_id) as condition,
+	org.director_title as vidpov_osoba,
+	(select qq.step_name from freecycle_step_dict qq where qq.step_id = fs.freecycle_step_dict_id) as current_stage_name,
+	fs.current_stage_docdate,
+	fs.current_stage_docnum,
+	case when exists (select 1 from reports1nf_balans_free_square_current_stage_documents qq where qq.free_square_id = fs.id) then '+' else '-' end as current_stage_has_documents,
+	(select qq.name from dict_1nf_period_used qq where qq.id = fs.period_used_id) as period_used_name,
+	case when fs.zgoda_control_id = 100 or fs.zgoda_renter_id = 100 then '+' else '-' end as need_zgoda,
+	(select qq.name from dict_1nf_invest_solution qq where qq.id = fs.invest_solution_id) as invest_solution,
+	dbo.get_reports1NF_orandodatel(b.district, rep.form_of_ownership) as orandodatel,
+	fs.include_in_perelik,
+	fs.prozoro_number,	
+	'2' as source,
+		
+ row_number() over (order by org.short_name, b.street_full_name, b.addr_nomer, fs.total_free_sqr) as npp     
+,fs.id
+,org.zkpo_code
+
+
+,b.district
+
+,b.object_type 
+,b.object_kind
+,b.sqr_total
+
+
+
+--,null as free_sql_usefull
+--,null as mzk
+--,rfs.sqr_free_korysna as free_sql_usefull
+--,rfs.sqr_free_mzk as mzk
+
+
+
+
+,fs.modify_date
+,fs.note
+, solution = fs.is_solution
+, fs.initiator
+, zg2.name as zgoda_control
+, zg.name as zgoda_renter
+
+,st.kind
+,rep.form_of_ownership
+,rep.old_organ
+
+,b.object_kind as vydbudynku
+,history = case when isnull(b.history, 'НІ') = 'НІ' then '' else 'ТАК' end 
+, isnull(ddd.name, 'Невизначені') as sf_upr
+
+, case when exists (select 1 from reports1nf_balans_free_square_photos qq where qq.free_square_id = fs.id) then 1 else 0 end as isexistsphoto
+
+FROM view_reports1nf rep
+join reports1nf_balans bal on bal.report_id = rep.report_id
+JOIN view_reports1nf_buildings b ON b.unique_id = bal.building_1nf_unique_id
+join dbo.reports1nf_balans_free_square fs on fs.balans_id = bal.id and fs.report_id = rep.report_id
+--left join (select * from dbo.reports1nf_balans_free_square where id = (select top 1 id from dbo.reports1nf_balans_free_square where balans_id = bal.id)) fs on fs.balans_id = bal.id
+join reports1nf_org_info org on org.id = bal.organization_id
+left join [dbo].[dict_streets] st on b.addr_street_id = st.id
+left join dbo.dict_zgoda_renter zg on fs.zgoda_renter_id = zg.id
+left join dbo.dict_zgoda_renter zg2 on fs.zgoda_control_id = zg2.id
+
+--OUTER APPLY (SELECT TOP 1 * FROM rent_free_square rfs
+--		WHERE rfs.building_id = bal.building_id AND
+--		      rfs.organization_id = bal.organization_id order by rfs.rent_period_id DESC) rfs
+
+LEFT JOIN (
+			select obp.org_id
+			, occ.name
+			, occ.id
+			, per.name as period 
+			from org_by_period obp
+			join dict_rent_period per on per.id = obp.period_id and per.is_active = 1
+			join dict_rent_occupation occ on occ.id = obp.org_occupation_id
+				) DDD ON DDD.org_id = rep.organization_id
+
+		WHERE (komis_protocol <> '' and komis_protocol not like '0%' and is_included = 1) and geodata_map_points <> ''
+				and prozoro_number <> ''
+				
+        --WHERE (@p_rda_district_id = 0 OR (rep.org_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND rep.org_district_id = @p_rda_district_id))
+
     order by org_name, street_name, addr_nomer, total_free_sqr
 ";
+
+	
 
 }

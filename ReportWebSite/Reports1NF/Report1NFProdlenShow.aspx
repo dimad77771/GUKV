@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Report1NFProdlenShow.aspx.cs" Inherits="Reports1NF_Report1NFProdlenShow"
-    MasterPageFile="~/ProdlenShowPublic.master" Title="Перелік вільних приміщень" %>
+    MasterPageFile="~/ProdlenShowPublic.master" Title="Перелік оголошених аукціонів для оренди" %>
 
 <%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
 <%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView.Export" tagprefix="dx" %>
@@ -154,6 +154,8 @@
 , @baseurl + '/Reports1NF/BalansFreeSquarePhotosPdf.aspx?id=' + cast(fs.id as varchar(100)) as pdfurl
 , case when exists (select 1 from reports1nf_arenda_dogcontinue_photos qq where qq.free_square_id = fs.id) then 1 else 0 end as isexistsphoto
 
+, '1' as source
+
 FROM view_reports1nf rep
 join reports1nf_arenda bal on bal.report_id = rep.report_id
 JOIN view_reports1nf_buildings b ON b.unique_id = bal.building_1nf_unique_id
@@ -183,7 +185,120 @@ LEFT JOIN (
 				and (@fs_id = -1 OR fs.id = @fs_id)
 				and (@mode50 = 0 OR fs.freecycle_step_dict_id = 31)
 
-    order by org_name, street_name, addr_nomer, total_free_sqr   "
+          --order by org_name, street_name, addr_nomer, total_free_sqr   
+
+UNION ALL
+
+
+SELECT 
+	fs.komis_protocol,
+	fs.geodata_map_url,
+ row_number() over (order by org.short_name, b.street_full_name, b.addr_nomer, fs.total_free_sqr) as npp     
+,fs.id
+,fs.include_in_perelik
+,org.short_name as org_name
+,org.zkpo_code
+,org.director_title as vidpov_osoba
+
+,b.district
+,b.street_full_name as street_name
+,(COALESCE(LTRIM(RTRIM(b.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer2)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer3)), '')) as addr_nomer
+
+,(select q.name from dict_1nf_tech_stane q where q.id = fs.free_sqr_condition_id) as condition
+,b.object_type 
+,b.object_kind
+,b.sqr_total
+,b.sqr_for_rent
+
+,fs.total_free_sqr 
+--,null as free_sql_usefull
+--,null as mzk
+--,rfs.sqr_free_korysna as free_sql_usefull
+--,rfs.sqr_free_mzk as mzk
+,fs.free_sqr_korysna as free_sql_usefull
+
+,(SELECT Q.step_name FROM freecycle_step_dict Q where Q.step_id = fs.freecycle_step_dict_id) freecycle_step_name
+
+,fs.zal_balans_vartist
+,fs.perv_balans_vartist
+,fs.prop_srok_orands
+,fs.punkt_metod_rozrahunok
+,invest_solution = (select qq.name from dict_1nf_invest_solution qq where qq.id = fs.invest_solution_id)
+,(select q.name from dict_1nf_power_info q where q.id = fs.power_info_id) as power_text
+,fs.nomer_derzh_reestr_neruh
+,fs.reenum_derzh_reestr_neruh
+,fs.info_priznach_nouse
+,fs.info_rahunok_postach
+,fs.priznach_before
+,fs.period_nouse
+,fs.osoba_use_before
+,fs.floor
+,water = case when fs.water = 1 then 'ТАК' when fs.water = 0 then 'НІ' end
+,heating = case when fs.heating = 1 then 'ТАК' when fs.heating = 0 then 'НІ' end
+,power = case when fs.power = 1 then 'ТАК' when fs.power = 0 then 'НІ' end
+,gas = case when fs.gas = 1 then 'ТАК' when fs.gas = 0 then 'НІ' end
+
+--,(select qq.name2 from view_dict_rental_rate qq where qq.id = fs.using_possible_id) as possible_using
+,fs.possible_using
+
+,(select qq.name from dict_free_object_type qq where qq.id = fs.free_object_type_id) as free_object_type_name
+
+,fs.modify_date
+,fs.note
+, solution = fs.is_solution
+, fs.initiator
+, zg2.name as zgoda_control
+, zg.name as zgoda_renter
+,fs.prozoro_number
+
+,st.kind
+,rep.form_of_ownership
+,dbo.get_reports1NF_orandodatel(b.district, rep.form_of_ownership) as orandodatel
+,rep.old_organ
+
+--,b.object_kind as vydbudynku
+,history = case when isnull(b.history, 'НІ') = 'НІ' then '' else 'ТАК' end 
+, isnull(ddd.name, 'Невизначені') as sf_upr
+, @baseurl + '/Reports1NF/BalansFreeSquarePhotosPdf.aspx?id=' + cast(fs.id as varchar(100)) as pdfurl
+, case when exists (select 1 from reports1nf_balans_free_square_photos qq where qq.free_square_id = fs.id) then 1 else 0 end as isexistsphoto
+
+, '2' as source
+
+FROM view_reports1nf rep
+join reports1nf_balans bal on bal.report_id = rep.report_id
+JOIN view_reports1nf_buildings b ON b.unique_id = bal.building_1nf_unique_id
+join dbo.reports1nf_balans_free_square fs on fs.balans_id = bal.id and fs.report_id = rep.report_id
+--left join (select * from dbo.reports1nf_balans_free_square where id = (select top 1 id from dbo.reports1nf_balans_free_square where balans_id = bal.id)) fs on fs.balans_id = bal.id
+join reports1nf_org_info org on org.id = bal.organization_id
+left join [dbo].[dict_streets] st on b.addr_street_id = st.id
+left join dbo.dict_zgoda_renter zg on fs.zgoda_renter_id = zg.id
+left join dbo.dict_zgoda_renter zg2 on fs.zgoda_control_id = zg2.id
+
+--OUTER APPLY (SELECT TOP 1 * FROM rent_free_square rfs
+--		WHERE rfs.building_id = bal.building_id AND
+--		      rfs.organization_id = bal.organization_id order by rfs.rent_period_id DESC) rfs
+
+LEFT JOIN (
+			select obp.org_id
+			, occ.name
+			, occ.id
+			, per.name as period 
+			from org_by_period obp
+			join dict_rent_period per on per.id = obp.period_id and per.is_active = 1
+			join dict_rent_occupation occ on occ.id = obp.org_occupation_id
+				) DDD ON DDD.org_id = rep.organization_id
+
+        WHERE (@p_rda_district_id = 0 OR (rep.org_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND rep.org_district_id = @p_rda_district_id))
+				and (komis_protocol <> '' and komis_protocol not like '0%' and geodata_map_points <> '' and is_included = 1)
+				and (@fs_id = -1 OR fs.id = @fs_id)
+				and (@mode50 = 0 OR fs.freecycle_step_dict_id = 31)
+
+                    and prozoro_number <> ''
+
+    order by org_name, street_name, addr_nomer, total_free_sqr
+    
+    
+    "
     OnSelecting="SqlDataSourceFreeSquare_Selecting"
 
 UpdateCommand="UPDATE [reports1nf_arenda_dogcontinue]
@@ -277,13 +392,18 @@ WHERE id = @id"
         DataSourceID="SqlDataSourceFreeSquare" KeyFieldName="id" Width="100%" 
         ClientInstanceName="FreeSquareGridView" 
         OnDataBound="FreeSquareGridView_DataBound"
+        OnDetailsChanged="FreeSquareGridView_DetailsChanged"
+        OnDetailRowExpandedChanged="FreeSquareGridView_DetailRowExpandedChanged"
         OnCustomCallback="GridViewFreeSquare_CustomCallback"
         OnCustomFilterExpressionDisplayText="GridViewFreeSquare_CustomFilterExpressionDisplayText"
         OnProcessColumnAutoFilter="GridViewFreeSquare_ProcessColumnAutoFilter" >
 	   <ClientSideEvents CustomButtonClick="ShowPhoto" />
     <Templates>
         <DetailRow>
-            <div style="margin-left:5px">
+            <dx:ASPxPanel runat="server" id="DivDetailRow">
+                <PanelCollection>
+                    <dx:PanelContent ID="PanelContent51" runat="server">
+                        <div style="margin-left:5px">
                 <table style="border:1px solid; margin-top:6px; border-collapse:collapse; width:1700px">
                     <tr>
                         <td style="text-align:left; border:1px solid; padding:3px; width:200px">
@@ -483,6 +603,9 @@ WHERE id = @id"
                     </tr>
                 </table>
             </div>
+                        </dx:PanelContent>
+                    </PanelCollection>
+            </dx:ASPxPanel>
         </DetailRow>
     </Templates>
     <Columns>

@@ -434,6 +434,7 @@
 
                 $(popup).find(".dxgvCommandColumn_DevEx").attr("align", "left");
                 var err_object = $("#MainContent_CPMainPanel_CardPageControl_ASPxRoundPanel1_ASPxGridViewFreeSquare_DXEditingErrorRow");
+                console.log("err_object", err_object);
                 if (err_object.length > 0) {
                     var err_text = err_object.text();
                     if (err_text == null) err_text = "";
@@ -774,6 +775,7 @@
       ,[priznach_before] 
       ,[period_nouse] 
       ,[osoba_use_before]
+      ,(select Q.form_of_ownership from view_reports1nf Q where Q.report_id = [reports1nf_balans_free_square].report_id) as form_of_ownership 
     FROM [reports1nf_balans_free_square] WHERE [balans_id] = @balans_id and [report_id] = @report_id and ([id] = @free_square_id or @free_square_id = -1)" 
     DeleteCommand="EXEC [delete_reports1nf_balans_free_square] @id" 
     InsertCommand="INSERT INTO [reports1nf_balans_free_square]
@@ -2036,6 +2038,11 @@ WHERE id = @id"
                 <HeaderStyle Wrap="True" />
                 <EditFormSettings Visible="True" />
                 <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="form_of_ownership" Caption="-" VisibleIndex="10000" Width ="80px" Visible="false" >
+                <HeaderStyle Wrap="True" />
+				<EditFormSettings Visible="False" />
             </dx:GridViewDataTextColumn>
 
 

@@ -829,7 +829,15 @@
 					if ($(this).text() == "Характеристика об’єкта оренди") {
 						$(this).attr('title', "Характеристика об’єкта оренди (будівлі в цілому або частини будівлі із зазначенням місця розташування об’єкта в будівлі (надземний, цокольний, підвальний, технічний або мансардний поверх, номер поверху або поверхів)");
 					}
-				});
+                });
+
+
+                var orend_plat_borg = felm__orend_plat_borg.GetValue();
+                if (orend_plat_borg == null) {
+					var debtTotal = EditCollectionDebtTotal.GetValue();
+					felm__orend_plat_borg.SetValue(debtTotal);
+				}
+
 
 				CustomizeEditFormTable();
 			}
@@ -848,12 +856,14 @@
 		function CustomizeEditFormTable() {
 			var include_in_perelik = felm__include_in_perelik.GetValue();
 			var showrow1 = false;
-			var showrow2 = false;
-			if (include_in_perelik == "1") {
-				showrow1 = true;
-			} else if (include_in_perelik == "2") {
-				showrow2 = true;
-			}
+            var showrow2 = false;
+
+			showrow1 = true;
+			//if (include_in_perelik == "1") {
+			//	showrow1 = true;
+			//} else if (include_in_perelik == "2") {
+            //	showrow2 = true;
+			//}
 
 			var popup = grid.GetEditFormTable();
 			var tbody = $(popup).children('tbody');
@@ -883,8 +893,7 @@
 				$(rows.get(r1)).show();
 			} else {
 				$(rows.get(r1)).hide();
-			}
-			console.log("prop_srok_orands", prop);
+            }
 		}
 
 
@@ -1241,6 +1250,9 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
       ,[has_perevazh_pravo]
       ,[polipshanya_vartist]
       ,[polipshanya_finish_date]
+      ,[orend_plat_last_month]
+      ,[orend_plat_borg]
+      ,[stanom_na]
     FROM [reports1nf_arenda_dogcontinue] WHERE [arenda_id] = @arenda_id and [report_id] = @report_id and ([id] = @free_square_id or @free_square_id = -1)" 
     DeleteCommand="EXEC [delete_reports1nf_arenda_dogcontinue] @id" 
     InsertCommand="INSERT INTO [reports1nf_arenda_dogcontinue]
@@ -1282,6 +1294,9 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
       ,[has_perevazh_pravo]
       ,[polipshanya_vartist]
       ,[polipshanya_finish_date]
+      ,[orend_plat_last_month]
+      ,[orend_plat_borg]
+      ,[stanom_na]
     ) 
     VALUES
     (@arenda_id
@@ -1322,6 +1337,9 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
       ,@has_perevazh_pravo
       ,@polipshanya_vartist
       ,@polipshanya_finish_date
+      ,@orend_plat_last_month
+      ,@orend_plat_borg
+      ,@stanom_na
     );
 SELECT SCOPE_IDENTITY()" 
     UpdateCommand="UPDATE [reports1nf_arenda_dogcontinue]
@@ -1364,6 +1382,9 @@ SET
         ,[has_perevazh_pravo]  	  = @has_perevazh_pravo
         ,[polipshanya_vartist]  	  = @polipshanya_vartist
         ,[polipshanya_finish_date]  	  = @polipshanya_finish_date
+        ,[orend_plat_last_month]  	  = @orend_plat_last_month
+        ,[orend_plat_borg]  	  = @orend_plat_borg
+        ,[stanom_na]  	  = @stanom_na
 WHERE id = @id" 
         oninserting="SqlDataSourceFreeSquare_Inserting" 
         onupdating="SqlDataSourceFreeSquare_Updating" ProviderName="System.Data.SqlClient">
@@ -1414,6 +1435,9 @@ WHERE id = @id"
         <asp:Parameter Name="has_perevazh_pravo" />
         <asp:Parameter Name="polipshanya_vartist" />
         <asp:Parameter Name="polipshanya_finish_date" />
+        <asp:Parameter Name="orend_plat_last_month" />
+        <asp:Parameter Name="orend_plat_borg" />
+        <asp:Parameter Name="stanom_na" />
     </InsertParameters>
     <UpdateParameters>
         <asp:Parameter Name="arenda_id" />
@@ -1454,6 +1478,9 @@ WHERE id = @id"
         <asp:Parameter Name="has_perevazh_pravo" />
         <asp:Parameter Name="polipshanya_vartist" />
         <asp:Parameter Name="polipshanya_finish_date" />
+        <asp:Parameter Name="orend_plat_last_month" />
+        <asp:Parameter Name="orend_plat_borg" />
+        <asp:Parameter Name="stanom_na" />
         <asp:Parameter Name="id" />
     </UpdateParameters>
 </mini:ProfiledSqlDataSource>
@@ -3329,7 +3356,7 @@ WHERE id = @id"
 				<EditFormSettings Visible="False" />
             </dx:GridViewDataTextColumn>
 
-		    <dx:GridViewDataComboBoxColumn FieldName="include_in_perelik" VisibleIndex="50" Width = "50px" Visible="True" Caption="Включено до переліку №">
+		    <dx:GridViewDataComboBoxColumn FieldName="include_in_perelik" VisibleIndex="50" Width = "50px" Visible="True" Caption="Включено до переліку №" ReadOnly="true">
 			    <HeaderStyle Wrap="True" />
 			    <PropertiesComboBox DataSourceID="SqlDataSourceIncludeInPerelik" ValueField="id" TextField="name" ValueType="System.String" />
                 <EditFormSettings ColumnSpan="1" />
@@ -3398,19 +3425,37 @@ WHERE id = @id"
                 <EditFormCaptionStyle Wrap="True"/>
             </dx:GridViewDataTextColumn>
 
-            <dx:GridViewDataTextColumn FieldName="priznach_before" Caption="Цільове призначення об’єкта, за яким об’єкт використовувався перед тим, як він став вакантним" VisibleIndex="205" Visible="false" >
+<%--            <dx:GridViewDataTextColumn FieldName="priznach_before" Caption="Цільове призначення об’єкта, за яким об’єкт використовувався перед тим, як він став вакантним" VisibleIndex="205" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>--%>
+            <dx:GridViewDataTextColumn FieldName="orend_plat_borg" Caption="Заборгованість по орендній платі, грн. (без ПДВ)" VisibleIndex="205" Visible="false" >
                 <HeaderStyle Wrap="True" />
                 <EditFormSettings Visible="True" />
                 <EditFormCaptionStyle Wrap="True"/>
             </dx:GridViewDataTextColumn>
 
-            <dx:GridViewDataTextColumn FieldName="period_nouse" Caption="Період часу, протягом якого об’єкт не використовується" VisibleIndex="215" Visible="false" >
+
+<%--            <dx:GridViewDataTextColumn FieldName="period_nouse" Caption="Період часу, протягом якого об’єкт не використовується" VisibleIndex="215" Visible="false" >
                 <HeaderStyle Wrap="True" />
                 <EditFormSettings Visible="True" />
                 <EditFormCaptionStyle Wrap="True"/>
-            </dx:GridViewDataTextColumn>
+            </dx:GridViewDataTextColumn>--%>
+            <dx:GridViewDataDateColumn FieldName="stanom_na" Caption="Станом на" VisibleIndex="215" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataDateColumn>
 
-            <dx:GridViewDataTextColumn FieldName="osoba_use_before" Caption="Інформацію про особу, яка використовувала об’єкт перед тим, як він став вакантним (якщо такою особою був балансоутримувач, проставляється позначка “об’єкт використовувався балансоутримувачем”)" VisibleIndex="225" Visible="false" >
+
+<%--            <dx:GridViewDataTextColumn FieldName="osoba_use_before" Caption="Інформацію про особу, яка використовувала об’єкт перед тим, як він став вакантним (якщо такою особою був балансоутримувач, проставляється позначка “об’єкт використовувався балансоутримувачем”)" VisibleIndex="225" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>--%>
+
+            <dx:GridViewDataTextColumn FieldName="orend_plat_last_month" Caption="Місячна орендна плата за останній місяць(проіндексована)" VisibleIndex="225" Visible="false" >
                 <HeaderStyle Wrap="True" />
                 <EditFormSettings Visible="True" />
                 <EditFormCaptionStyle Wrap="True"/>
