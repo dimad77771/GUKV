@@ -145,7 +145,8 @@
 
 ,st.kind
 ,rep.form_of_ownership
-,dbo.get_reports1NF_orandodatel(b.district, rep.form_of_ownership) as orandodatel
+,(select Q.full_name from organizations Q where Q.id = bal.org_giver_id) as orandodatel
+--,dbo.get_reports1NF_orandodatel(b.district, rep.form_of_ownership) as orandodatel
 ,rep.old_organ
 
 --,b.object_kind as vydbudynku
@@ -330,7 +331,7 @@ WHERE id = @id"
 <table border="0" cellspacing="4" cellpadding="0" width="100%">
     <tr>
         <td style="width: 100%;">
-            <asp:Label ID="LabelReportTitle1" runat="server" Text="Перелік вільних приміщень" CssClass="reporttitle"></asp:Label>
+            <asp:Label ID="LabelReportTitle1" runat="server" Text="Перелік оголошених аукціонів для оренди" CssClass="reporttitle"></asp:Label>
         </td>
         <td>
             <dx:ASPxPopupControl ID="ASPxPopupControl_FreeSquare_SaveAs" runat="server" 
@@ -863,7 +864,7 @@ WHERE id = @id"
                 SelectMethod="Select" 
                 TypeName="ExtDataEntry.Models.FileAttachment">
                 <SelectParameters>
-                    <asp:Parameter DefaultValue="reports1nf_arenda_dogcontinue_current_stage_documents" Name="scope" Type="String" />
+                    <asp:Parameter DefaultValue="reports1nf_arenda_dogcontinue___all" Name="scope" Type="String" />
                     <asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
                 </SelectParameters>
             </asp:ObjectDataSource>

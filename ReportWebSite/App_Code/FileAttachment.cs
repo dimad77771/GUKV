@@ -25,7 +25,30 @@ namespace ExtDataEntry.Models
             return Path.Combine(WebConfigurationManager.AppSettings["ImgFreeSquareRootFolder"], scope, recordID.ToString());
         }
 
-        public static IEnumerable<FileAttachment> Select(string scope, int recordID)
+		public static IEnumerable<FileAttachment> Select(string scope, int recordID)
+		{
+			FileAttachment[] result;
+
+			if (scope == "reports1nf_arenda_dogcontinue___all")
+			{
+				if (recordID >= 1000000)
+				{
+					result = SelectCore("reports1nf_arenda_dogcontinue_current_stage_documents", recordID).ToArray();
+				}
+				else
+				{
+					result = SelectCore("1NF", recordID).ToArray();
+				}
+			}
+			else
+			{
+				result = SelectCore(scope, recordID).ToArray();
+			}
+
+			return result;
+		}
+
+		public static IEnumerable<FileAttachment> SelectCore(string scope, int recordID)
         {
             if (string.IsNullOrEmpty(scope))
                 throw new ArgumentException("scope must have a value");

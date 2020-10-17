@@ -1234,7 +1234,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
     protected void ASPxGridViewFreeSquare_RowValidating(object sender, ASPxDataValidationEventArgs e)
     {
-        var form_of_ownership = e.OldValues["form_of_ownership"].ToString() ?? "";
+        var form_of_ownership = (e.OldValues["form_of_ownership"] ?? "").ToString();
 
         var komis_protocol = (e.OldValues["komis_protocol"] == null ? "" : e.OldValues["komis_protocol"].ToString().Trim());
         if (komis_protocol != "" && !komis_protocol.StartsWith("0") && form_of_ownership != "КОМУНАЛЬНА (СФЕРА УПРАВЛІННЯ РДА)")

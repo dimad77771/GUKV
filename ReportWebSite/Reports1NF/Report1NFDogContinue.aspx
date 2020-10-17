@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Report1NFDogContinue.aspx.cs" Inherits="Reports1NF_Report1NFDogContinue"
-    MasterPageFile="~/NoHeader.master" Title="Перелік вільних приміщень" %>
+    MasterPageFile="~/NoHeader.master" Title="Продовження договорів" %>
 
 <%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
 <%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView.Export" tagprefix="dx" %>
@@ -62,7 +62,7 @@
             var cols = "orendar_name;orendar_zkpo;org_name;zkpo_code;balanutr_addr_street;balanutr_addr_nomer;giver_name;giver_zkpo;giver_addr_street;giver_addr_nomer;agreement_date;rent_finish_date;srok_dog;";
             cols += "include_in_perelik;zal_balans_vartist;perv_balans_vartist;free_object_type_name;prop_srok_orands;punkt_metod_rozrahunok;invest_solution;";
 			cols += "zgoda_control;district;street_name;addr_nomer;total_free_sqr;free_sql_usefull;";
-			cols += "floor;condition;water;heating;gas;power_text;history;zgoda_renter;nomer_derzh_reestr_neruh;reenum_derzh_reestr_neruh;info_priznach_nouse;info_rahunok_postach;orend_plat_borg;stanom_na;";
+			cols += "floor;condition;water;heating;gas;power_text;history;zgoda_renter;nomer_derzh_reestr_neruh;reenum_derzh_reestr_neruh;info_priznach_nouse;info_rahunok_postach;orend_plat_last_month;orend_plat_borg;stanom_na;";
             cols += "has_perevazh_pravo;polipshanya_vartist;polipshanya_finish_date";
 			FreeSquareGridView.GetRowValues(e.visibleIndex, cols, OnCopyFullDescription);
 		}
@@ -109,7 +109,8 @@
 			"Номер запису про право власності у Реєстрація у Державному реєстрі речових прав на нерухоме майно – ",
 			"Реєстраційний номер об'єкту нерухомого майна у Реєстрація у Державному реєстрі речових прав на нерухоме майно – ",
 			"Інформація про цільове призначення об’єкта оренди – ",
-			"Інформація про наявність окремих особових рахунків на об'єкт оренди, відкритих постачальниками комунальних послуг - ",
+            "Інформація про наявність окремих особових рахунків на об'єкт оренди, відкритих постачальниками комунальних послуг - ",
+			"Місячна орендна плата за останній місяць(проіндексована) – ",
 			"Заборгованість по орендній платі, грн. (без ПДВ) – ",
 			"Станом на – ",
 
@@ -435,7 +436,7 @@ WHERE id = @id"
 <table border="0" cellspacing="4" cellpadding="0" width="100%">
     <tr>
         <td style="width: 100%;">
-            <asp:Label ID="LabelReportTitle1" runat="server" Text="Перелік вільних приміщень" CssClass="reporttitle"></asp:Label>
+            <asp:Label ID="LabelReportTitle1" runat="server" Text="Продовження договорів" CssClass="reporttitle"></asp:Label>
         </td>
         <td>
             <dx:ASPxButton ID="ASPxButton1" runat="server" AutoPostBack="False" 
