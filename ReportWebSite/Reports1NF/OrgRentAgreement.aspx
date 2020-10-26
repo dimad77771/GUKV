@@ -153,10 +153,12 @@
 
 		function getPaymentNarah() {
             var v1 = clEditPaymentNarah_orndpymnt.GetValue();
-			var v2 = edit_znyato_nadmirno_narah.GetValue();
+            var v2 = edit_znyato_nadmirno_narah.GetValue();
+			var v3 = edit_znyato_from_avance.GetValue();
             if (v1 == null) v1 = 0;
             if (v2 == null) v2 = 0;
-            return v1 - v2;
+			if (v3 == null) v3 = 0;
+			return v1 - v2 - v3;
 		}
 
         function CalcCollectionDebtZvit() {
@@ -202,7 +204,8 @@
                 CalcDebt();
                 CalcEditReturnOrendPayed();
             } else {
-				CalcDebt();
+                CalcDebt();
+				CalcEditReturnOrendPayed();
             }
 
             Calc_tr_alert_edit_avance_plat();
@@ -230,7 +233,14 @@
 			var rez = v1 - v2 - v3 - v4;
             rez = Math.round(rez * 100) / 100;
 			if (rez <= 0) rez = null;
-			edit_return_orend_payed.SetValue(rez);
+            edit_return_orend_payed.SetValue(rez);
+
+
+            var v11 = round(nn(edit_return_orend_payed.GetValue()));
+			var v12 = round(nn(clEditPaymentSaldo_orndpymnt.GetValue()));
+            var rez2 = round(v11 + v12);
+            if (rez2 <= 0) rez2 = null;
+			edit_total_pereplata.SetValue(rez2);
         }
 
         function CheckTotalPaidSum() {
@@ -2516,12 +2526,23 @@ WHERE id = @id"
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel66" runat="server" Text="- у тому числі, знято надмірно нарахованої за звітний період"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="edit_znyato_nadmirno_narah" ClientInstanceName="edit_znyato_nadmirno_narah" runat="server" NumberType="Float" Value='<%# Eval("znyato_nadmirno_narah") %>' Width="150px"
+                                                            Title="якщо використовується, то до закінчення договору залишилося меньше 2-х місяців">
+                                                            <ClientSideEvents 
+                                                                LostFocus="CalcCollectionDebtZvit" />                                                            
+                                                            </dx:ASPxSpinEdit>
+                                                            </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td><dx:ASPxLabel ID="ASPxLabel71" runat="server" Text="- у тому числі, використано авансової плати"></dx:ASPxLabel></td>
+                                                        <td><dx:ASPxSpinEdit ID="edit_znyato_from_avance" ClientInstanceName="edit_znyato_from_avance" runat="server" NumberType="Float" Value='<%# Eval("znyato_from_avance") %>' Width="150px"
                                                             Title="сума що не підлягає оплаті, відповідно до акту про неможливість використання приміщення і вираховується з [Нараховано]">
                                                             <ClientSideEvents 
                                                                 LostFocus="CalcCollectionDebtZvit" />                                                            
                                                             </dx:ASPxSpinEdit>
                                                             </td>
                                                     </tr>
+
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel28" runat="server" Text="Сальдо (переплата) на початок року (незмінна впродовж року величина), грн. (без ПДВ)"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="EditPaymentSaldo_orndpymnt" ClientInstanceName="clEditPaymentSaldo_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("last_year_saldo") %>' Width="150px"
@@ -2594,6 +2615,11 @@ WHERE id = @id"
                                                         <td><dx:ASPxLabel ID="ASPxLabel62" runat="server" Text="- у тому числі, переплата орендної плати за звітний період, грн."></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="edit_return_orend_payed" ClientInstanceName="edit_return_orend_payed" runat="server" NumberType="Float" Value='<%# Eval("return_orend_payed") %>' Width="150px" ReadOnly="true"
                                                             Title="залишок орендної плати після оплати нарахованої орендної плати, нарахованої авансової орендної плати,  погашення заборгованості попередніх періодів. (не включає &quot;Сальдо (переплата) на початок року&quot;)"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><dx:ASPxLabel ID="ASPxLabel72" runat="server" Text="Переплата орендної плати всього, грн. (без ПДВ)"></dx:ASPxLabel></td>
+                                                        <td><dx:ASPxSpinEdit ID="edit_total_pereplata" ClientInstanceName="edit_total_pereplata" runat="server" NumberType="Float"  Width="150px" ReadOnly="true"
+                                                            Title="Переплата орендної плати всього, грн. (без ПДВ)"/></td>
                                                     </tr>
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel63" runat="server" Text="Повернення переплати орендної плати всього у звітному періоді, грн. (без ПДВ)"></dx:ASPxLabel></td>
