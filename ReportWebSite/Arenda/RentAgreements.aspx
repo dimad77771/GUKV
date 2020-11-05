@@ -237,6 +237,7 @@
 
 ,isnull(ddd.name, 'Невідомо') as sphera_dialnosti
 ,priznachennya = dc.doc_display_name
+,case when exists (select 1 from reports1nf_arenda q where q.id = ar.id and q.report_id = ar.org_balans_id) then 1 else 0 end as ex_reports1nf_arenda 
 
         FROM view_arenda_agreements m  /*m_view_arenda_agreements m*/
         join arenda ar on ar.id = m.arenda_id
@@ -282,7 +283,7 @@
         <dx:GridViewDataTextColumn FieldName="arenda_id" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="0" Visible="True" Caption="Картка">
             <DataItemTemplate>
-                <%# "<center><a href=\"javascript:ShowArendaCard(" + Eval("arenda_id") + ")\"><img border='0' src='../Styles/EditIcon.png'/></a></center>"%>
+                <%# "<center><a href=\"javascript:ShowArendaCardEx(" + Eval("ex_reports1nf_arenda") + "," + Eval("arenda_id") + "," + Eval("org_balans_id") + ")\"><img border='0' src='../Styles/EditIcon.png'/></a></center>"%>
             </DataItemTemplate>
             <Settings ShowInFilterControl="False"/>
         </dx:GridViewDataTextColumn>
@@ -634,7 +635,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_12" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_14" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

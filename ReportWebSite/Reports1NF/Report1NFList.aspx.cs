@@ -32,9 +32,26 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 			SectionMenuForRDARole.Visible = true;
 		}
 
+        if (IsSmallForm)
+		{
+            SectionMenuForSmallMode.Visible = true;
+            SectionMenu.Visible = false;
+            //PrimaryGridView.Set.
+            var commandColumn = PrimaryGridView.Columns.OfType<GridViewCommandColumn>().Single();
+            commandColumn.EditButton.Visible = false;
+        }
+
 		PrimaryGridView.Settings.VerticalScrollBarMode = DevExpress.Web.ASPxClasses.ScrollBarMode.Visible;
 		PrimaryGridView.SettingsEditing.Mode = GridViewEditingMode.Inline;
 	}
+
+    protected bool IsSmallForm
+    {
+        get
+        {
+            return Request.QueryString["smallform"] == null ? false : true;
+        }
+    }
 
     protected void ASPxButton_Reports1NF_ExportXLS_Click(object sender, EventArgs e)
     {

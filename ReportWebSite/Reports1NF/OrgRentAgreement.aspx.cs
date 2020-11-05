@@ -201,6 +201,8 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
             SqlDataSourceFreeSquare.SelectParameters["arenda_id"].DefaultValue = agreementIdStr.ToString();
             SqlDataSourceFreeSquare.SelectParameters["report_id"].DefaultValue = ReportID.ToString();
             SqlDataSourceFreeSquare.SelectParameters["free_square_id"].DefaultValue = (EditFreeSquareMode ? ParamEditFreeSquareId : -1).ToString();
+
+            SqlDataSourceArendaArchive.SelectParameters["arid"].DefaultValue = agreementIdStr.Trim();
         }
 
             //////
@@ -2175,6 +2177,11 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         string date = (modifyDate is DateTime) ? ((DateTime)modifyDate).ToShortDateString() + " " + ((DateTime)modifyDate).ToShortTimeString() : Resources.Strings.SignatureUnknownDate;
 
         return string.Format(Resources.Strings.SignatureObjCard, userName, date);
+    }
+
+    public bool IsHistoryButtonVisible()
+    {
+        return Request.QueryString["aid"] == null ? false : true;
     }
 
     #region Organization pickers

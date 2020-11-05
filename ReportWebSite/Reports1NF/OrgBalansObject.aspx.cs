@@ -152,6 +152,8 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
             SqlDataSourceFreeSquare.SelectParameters["balans_id"].DefaultValue = BalansObjectID.ToString();
             SqlDataSourceFreeSquare.SelectParameters["report_id"].DefaultValue = ReportID.ToString();
             SqlDataSourceFreeSquare.SelectParameters["free_square_id"].DefaultValue = (EditFreeSquareMode ? ParamEditFreeSquareId : - 1).ToString();
+
+            SqlDataSourceBalansArchive.SelectParameters["balid"].DefaultValue = balansIdStr.Trim();
         }
 
         // Check if report belongs to this user
@@ -433,6 +435,12 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
             ViewState["REPORT_BELONGS_TO_USER"] = value;
         }
     }
+
+    public bool IsHistoryButtonVisible()
+    {
+        return Request.QueryString["bid"] == null ? false : true;
+    }
+
 
     protected bool BalansObjectExistsInReport
     {

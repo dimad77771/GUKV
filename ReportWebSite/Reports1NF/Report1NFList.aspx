@@ -279,6 +279,10 @@
                 ,SUM(pay.avance_plat) as 'PAY_AVANCE_PLAT' -- 26
                 ,SUM( isnull(pay.return_orend_payed,0) + isnull(pay.last_year_saldo,0) ) as 'PAY_PEREPLATA_ALL' -- 27
                 ,SUM(pay.avance_debt) as 'PAY_AVANCE_DEBT' -- 28
+                ,SUM(pay.avance_paymentnar) as 'PAY_AVANCE_PAYMENTNAR' -- 28
+                ,SUM(pay.return_orend_payed) as 'PAY_RETURN_OREND_PAYED' -- 28
+                ,SUM(pay.znyato_from_avance) as 'PAY_ZNYATO_FROM_AVANCE' -- 28
+                ,SUM(pay.return_all_orend_payed) as 'PAY_RETURN_ALL_OREND_PAYED' -- 28
 				,report_id
 				,rent_period_id
             FROM reports1nf_arenda_payments pay
@@ -342,6 +346,16 @@ WHERE id = @report_id"
         <dx:MenuItem NavigateUrl="../Reports1NF/Report1NFFreeSquare.aspx" Text="Перелік вільних приміщень"></dx:MenuItem>
         <dx:MenuItem NavigateUrl="../Reports1NF/Report1NFPrivatisatSquare.aspx" Text="Об'єкти приватизації"></dx:MenuItem>
         <dx:MenuItem NavigateUrl="../Reports1NF/Report1NFDogContinue.aspx" Text="Продовження договорів"></dx:MenuItem>
+    </Items>
+</dx:ASPxMenu>
+
+<dx:ASPxMenu ID="SectionMenuForSmallMode" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left" Visible="false">
+    <Items>
+        <dx:MenuItem NavigateUrl="../Balans/BalansObjects.aspx" Text="Об'єкти на Балансі"></dx:MenuItem>
+        <dx:MenuItem NavigateUrl="../Balans/BalansOrgList.aspx" Text="Перелік Балансоутримувачів" Selected="true"></dx:MenuItem>
+        <dx:MenuItem NavigateUrl="../Balans/BalansOther.aspx" Text="Інші Об'єкти"></dx:MenuItem>
+        <dx:MenuItem NavigateUrl="../Balans/BalansInventarizations.aspx" Text="Об'єкти Інвентарізації"></dx:MenuItem>
+        <dx:MenuItem NavigateUrl="http://kmda.iisd.com.ua" Text="Класифікатор майна"></dx:MenuItem>
     </Items>
 </dx:ASPxMenu>
 
@@ -605,7 +619,7 @@ WHERE id = @report_id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("occupation") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="old_industry" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="14" Visible="False" Caption="Галузь (Баланс)">
+<%--        <dx:GridViewDataTextColumn FieldName="old_industry" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="14" Visible="False" Caption="Галузь (Баланс)">
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("old_industry") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
@@ -614,7 +628,7 @@ WHERE id = @report_id"
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("old_occupation") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
-        </dx:GridViewDataTextColumn>
+        </dx:GridViewDataTextColumn>--%>
         <dx:GridViewDataTextColumn FieldName="form_gosp" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="16" Visible="False" Caption="Форма фінансування">
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("form_gosp") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
@@ -762,33 +776,87 @@ WHERE id = @report_id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <%-- !!!!!! --%>
+
+        <dx:GridViewDataTextColumn Caption="Авансова орендна плата (нарахована), грн." FieldName="PAY_AVANCE_PLAT" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_AVANCE_PLAT") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
         <dx:GridViewDataTextColumn Caption="Нараховано орендної плати за звітний період, грн. (без ПДВ)" FieldName="PAY_NARAH_ZVIT" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_NARAH_ZVIT") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn Caption="Нараховано орендної плати без урахування надмірно нарахованої плати, грн. (без ПДВ)" FieldName="PAY_NARAH_ZVIT_NORMAL" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
-			<EditItemTemplate>
-				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_NARAH_ZVIT_NORMAL") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
-			</EditItemTemplate>
-        </dx:GridViewDataTextColumn>
-
-        <dx:GridViewDataTextColumn Caption="- у тому числі, знято надмірно нарахованої за звітний період, грн." FieldName="PAY_ZNYATO_NADMIRNO_NARAH" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+        <dx:GridViewDataTextColumn Caption="- у тому числі, знято надмірно нарахованої за звітний період" FieldName="PAY_ZNYATO_NADMIRNO_NARAH" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_ZNYATO_NADMIRNO_NARAH") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn Caption="Сальдо нарахованої авансової орендної плати на початок року (незмінна впродовж року величина), грн. (без ПДВ)" FieldName="PAY_AVANCE_SALDO" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+        <dx:GridViewDataTextColumn Caption="- у тому числі, використано авансової плати" FieldName="PAY_ZNYATO_FROM_AVANCE" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_ZNYATO_FROM_AVANCE") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn Caption="Сальдо на початок року (не змінна впродовж року величина) грн.(без ПДВ)" FieldName="PAY_PEREPLATA" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_PEREPLATA") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn Caption="Сальдо авансової орендної плати на початок року (незмінна впродовж року величина), грн. (без ПДВ)" FieldName="PAY_AVANCE_SALDO" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_AVANCE_SALDO") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn Caption="Авансова орендна плата (нарахована), грн." FieldName="PAY_AVANCE_PLAT" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+        <dx:GridViewDataTextColumn Caption="Надходження орендної плати за звітний період, всього, грн. (без ПДВ)" FieldName="PAY_RECV_ZVIT" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
 			<EditItemTemplate>
-				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_AVANCE_PLAT") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_RECV_ZVIT") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn Caption="- у тому числі, з нарахованої за звітний період (без боргів та переплат)" FieldName="PAY_RECV_NARAH" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_RECV_NARAH") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn Caption="- у тому числі, з нарахованої авансової орендної плати, грн." FieldName="PAY_AVANCE_PAYMENTNAR" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_AVANCE_PAYMENTNAR") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn Caption="- у тому числі, погашення заборгованості минулих періодів, грн." FieldName="PAY_LAST_PER" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_LAST_PER") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn Caption="- у тому числі, переплата орендної плати за звітний період, грн." FieldName="PAY_RETURN_OREND_PAYED" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_RETURN_OREND_PAYED") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
@@ -798,48 +866,60 @@ WHERE id = @report_id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
+        <dx:GridViewDataTextColumn Caption="Повернення переплати орендної плати всього у звітному періоді, грн. (без ПДВ)" FieldName="PAY_RETURN_ALL_OREND_PAYED" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_RETURN_ALL_OREND_PAYED") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+
+        
+
+        
+
+        
+
+
+
+
+
+
+
+
+
+        
+
+
+        <dx:GridViewDataTextColumn Caption="Нараховано орендної плати без урахування надмірно нарахованої плати, грн. (без ПДВ)" FieldName="PAY_NARAH_ZVIT_NORMAL" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_NARAH_ZVIT_NORMAL") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
         <dx:GridViewDataTextColumn Caption="Заборгованість з нарахованої авансової орендної плати, грн. (без ПДВ)" FieldName="PAY_AVANCE_DEBT" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_AVANCE_DEBT") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
-
-        <dx:GridViewDataTextColumn Caption="Сальдо на початок року (не змінна впродовж року величина) грн.(без ПДВ)" FieldName="PAY_PEREPLATA" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="57"  >
-			<EditItemTemplate>
-				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_PEREPLATA") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
-			</EditItemTemplate>
-        </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn Caption="Отримано орендної плати всього за звітний період, грн. (без ПДВ)" FieldName="PAY_RECV_ZVIT" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="58"  >
-			<EditItemTemplate>
-				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_RECV_ZVIT") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
-			</EditItemTemplate>
-        </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn Caption="Отримано орендної плати в тому числі з нарахованої за звітний період, грн. (без ПДВ)" FieldName="PAY_RECV_NARAH" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="59"  >
-			<EditItemTemplate>
-				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_RECV_NARAH") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
-			</EditItemTemplate>
-        </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn Caption="Отримано орендної плати в тому числі інші платежі" FieldName="PAY_RECV_OTHER" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="60"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_RECV_OTHER") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn Caption="Погашення заборгованості минулих періодів" FieldName="PAY_LAST_PER" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="61"  >
-			<EditItemTemplate>
-				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_LAST_PER") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
-			</EditItemTemplate>
-        </dx:GridViewDataTextColumn>
+
         <dx:GridViewDataTextColumn Caption="Загальна заборгованість по орендній платі, грн. (без ПДВ)" FieldName="PAY_DEBT_TOTAL" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="62"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_DEBT_TOTAL") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
+
         <dx:GridViewDataTextColumn Caption="- в тому числі заборгованість по орендній платі за звітний період,  грн. (без ПДВ)" FieldName="PAY_DEBT_ZVIT" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="63"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_DEBT_ZVIT") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
+
         <dx:GridViewDataTextColumn Caption="- в тому числі (із загальної заборгованості) заборгованість з орендної плати, розмір якої встановлено в межах витрат на утримання, грн. (без ПДВ)" FieldName="PAY_DEBT_V_MEZH" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="64"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_DEBT_V_MEZH") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
@@ -924,8 +1004,12 @@ WHERE id = @report_id"
         <dx:ASPxSummaryItem FieldName="PAY_ZNYATO_NADMIRNO_NARAH" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_AVANCE_SALDO" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_AVANCE_PLAT" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="PAY_AVANCE_PAYMENTNAR" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="PAY_RETURN_OREND_PAYED" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_PEREPLATA_ALL" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_AVANCE_DEBT" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="PAY_ZNYATO_FROM_AVANCE" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="PAY_RETURN_ALL_OREND_PAYED" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_PEREPLATA" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_RECV_ZVIT" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_RECV_NARAH" SummaryType="Sum" DisplayFormat="{0}" />
@@ -960,7 +1044,7 @@ WHERE id = @report_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A2_26" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A2_28" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
@@ -985,4 +1069,5 @@ WHERE id = @report_id"
 </dx:ASPxPopupControl>
 
 </asp:Content>
+
 

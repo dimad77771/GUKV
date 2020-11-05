@@ -11,6 +11,10 @@ public partial class Balans_BalansOrgList : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Response.Redirect(Page.ResolveClientUrl("~/Reports1NF/Report1NFList.aspx?smallform=1"));
+        return;
+
+
         Response.Cache.SetNoStore();
 
         bool userIsReportManager = Roles.IsUserInRole(Utils.ReportManagerRole);

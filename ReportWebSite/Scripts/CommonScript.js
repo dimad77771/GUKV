@@ -91,6 +91,21 @@ function ShowBalansCard(balansId) {
     window.open(cardUrl);
 }
 
+function ShowBalansCardEx(ex_reports1nf_balans, balansId, reportId) {
+
+    if (ex_reports1nf_balans === 1) {
+
+        var cardUrl = "../Reports1NF/OrgBalansObject.aspx?rid=" + reportId + "&bid=" + balansId;
+
+    } else {
+
+        var cardUrl = "../Cards/BalansCardArchive.aspx?balid=" + balansId;
+
+    }
+
+    window.open(cardUrl);
+}
+
 function ShowArendaCard(arendaId) {
 
     var cardUrl = "../Cards/ArendaCardArchive.aspx?arid=" + arendaId;
@@ -98,9 +113,16 @@ function ShowArendaCard(arendaId) {
     window.open(cardUrl);
 }
 
-function ShowArendaCard(arendaId) {
+function ShowArendaCardEx(ex_reports1nf_arenda, arendaId, reportId) {
 
-	var cardUrl = "../Cards/ArendaCardArchive.aspx?arid=" + arendaId;
+    if (ex_reports1nf_arenda === 1) {
+
+        var cardUrl = "../Reports1NF/OrgRentAgreement.aspx?rid=" + reportId + "&aid=" + arendaId;
+
+    } else {
+
+        var cardUrl = "../Cards/ArendaCardArchive.aspx?arid=" + arendaId;
+    }
 
 	window.open(cardUrl);
 }

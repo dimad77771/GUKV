@@ -37,6 +37,16 @@
     var lastFocusedControlId = "";
     var lastFocusedControlTitle = "";
 
+	function ShowBalansArchiveCard(archiveId) {
+
+		PopupArchiveStates.Hide();
+
+		var cardUrl = "../Cards/BalansCardArchive.aspx?arid=" + archiveId;
+
+		window.open(cardUrl);
+	}
+
+
 
     function EnableBtiDocumentationControls(s, e) {
 
@@ -725,6 +735,17 @@
     SelectCommand="SELECT id, name FROM dict_free_object_type ORDER BY id">
 </mini:ProfiledSqlDataSource>
 
+<mini:ProfiledSqlDataSource ID="SqlDataSourceBalansArchive" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>"
+    SelectCommand="SELECT archive_id, street_full_name, addr_nomer, org_full_name, sqr_total, form_ownership, modify_date, modified_by
+        FROM view_arch_balans 
+        WHERE balans_id = @balid AND (NOT modified_by IS NULL) AND (NOT modify_date IS NULL) ORDER BY modify_date, archive_id" >
+    <SelectParameters>
+        <asp:Parameter DbType="Int32" DefaultValue="0" Name="balid" />
+    </SelectParameters>
+</mini:ProfiledSqlDataSource>
+
+
 
 <asp:ObjectDataSource ID="ObjectDataSourceBalansPhoto" runat="server" SelectMethod="SelectFromTempFolder" 
     TypeName="ExtDataEntry.Models.FileAttachment">
@@ -1323,6 +1344,59 @@ WHERE id = @id"
                                         <table border="0" cellspacing="0" cellpadding="0" width="990px">
                                             <tr>
                                                 <td><dx:ASPxLabel ID="ASPxLabel34" runat="server" Text='<%# EvaluateSignature(Eval("modified_by"), Eval("modify_date")) %>'></dx:ASPxLabel></td>
+
+                                                <td align="right">
+                                                    <dx:ASPxPopupControl ID="PopupArchiveStates" runat="server" 
+                                                        HeaderText="Архівні стани" 
+                                                        ClientInstanceName="PopupArchiveStates" 
+                                                        PopupElementID="CardPageControl"
+                                                        PopupAction="None"
+                                                        PopupHorizontalAlign="Center"
+                                                        PopupVerticalAlign="Middle"
+                                                        PopupAnimationType="Slide">
+                                                        <ContentCollection>
+                                                            <dx:PopupControlContentControl ID="PopupControlContentControl1" runat="server">
+                            
+                                                                <dx:ASPxGridView ID="GridViewBalansArchiveStates" ClientInstanceName="GridViewBalansArchiveStates" runat="server"
+                                                                    AutoGenerateColumns="False" DataSourceID="SqlDataSourceBalansArchive" KeyFieldName="archive_id" Width="780px">
+
+                                                                    <Columns>
+                                                                        <dx:GridViewDataTextColumn FieldName="archive_id" VisibleIndex="0" Caption="Картка Архівного Стану">
+                                                                            <DataItemTemplate>
+                                                                                <%# "<center><a href=\"javascript:ShowBalansArchiveCard(" + Eval("archive_id") + ")\"><img border='0' src='../Styles/EditIcon.png'/></a></center>"%>
+                                                                            </DataItemTemplate>
+                                                                            <Settings ShowInFilterControl="False"/>
+                                                                        </dx:GridViewDataTextColumn>
+                                                                        <dx:GridViewDataTextColumn FieldName="street_full_name" VisibleIndex="1" Caption="Назва Вулиці" Width="120px"/>
+                                                                        <dx:GridViewDataTextColumn FieldName="addr_nomer" VisibleIndex="2" Caption="Номер Будинку"/>
+                                                                        <dx:GridViewDataTextColumn FieldName="org_full_name" VisibleIndex="3" Caption="Балансоутримувач" Width="180px"/>
+                                                                        <dx:GridViewDataTextColumn FieldName="sqr_total" VisibleIndex="4" Caption="Площа На Балансі (кв.м.)"/>
+                                                                        <dx:GridViewDataTextColumn FieldName="form_ownership" VisibleIndex="5" Caption="Форма Власності"/>
+                                                                        <dx:GridViewDataDateColumn FieldName="modify_date" VisibleIndex="6" Caption="Коли Внесені Зміни"/>
+                                                                        <dx:GridViewDataTextColumn FieldName="modified_by" VisibleIndex="7" Caption="Ким Внесені Зміни"/>
+                                                                    </Columns>
+
+                                                                    <SettingsBehavior ColumnResizeMode="Control" EnableCustomizationWindow="False" />
+                                                                    <Settings HorizontalScrollBarMode="Visible" ShowFooter="True" VerticalScrollBarMode="Hidden" VerticalScrollBarStyle="Standard" />
+                                                                    <SettingsPager PageSize="10" />
+                                                                    <Styles Header-Wrap="True" />
+                                                                    <SettingsCookies CookiesID="GUKV.BalansCard.ArchiveStates" Enabled="False" Version="A2_1" />
+
+                                                                    <ClientSideEvents EndCallback="function (s,e) { GridViewBalansArchiveStates.SetHeight(500); }"/>
+                                                                </dx:ASPxGridView>
+
+                                                            </dx:PopupControlContentControl>
+                                                        </ContentCollection>
+
+                                                        <ClientSideEvents PopUp="function (s,e) { GridViewBalansArchiveStates.SetHeight(500); }"/>
+                                                    </dx:ASPxPopupControl>
+
+                                                    <dx:ASPxButton ID="ASPxButtonArchive" ClientInstanceName="ASPxButtonArchive" runat="server" Text="Архівні Стани" AutoPostBack="false"
+                                                        ClientVisible='<%# IsHistoryButtonVisible() %>' >
+                                                        <ClientSideEvents Click="function (s,e) { PopupArchiveStates.Show(); }" />
+                                                    </dx:ASPxButton>
+                                                </td>
+
                                             </tr>
                                         </table>
                                     </dx:PanelContent>
@@ -1815,11 +1889,11 @@ WHERE id = @id"
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>
 
-            <dx:GridViewDataTextColumn FieldName="total_free_sqr" Caption="Загальна площа об’єкта" VisibleIndex="3" >
+            <dx:GridViewDataTextColumn FieldName="total_free_sqr" Caption="Загальна площа об’єкта, кв.м." VisibleIndex="3" >
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>
 
-            <dx:GridViewDataTextColumn FieldName="free_sqr_korysna" Caption="Корисна площа об’єкта" VisibleIndex="4" >
+            <dx:GridViewDataTextColumn FieldName="free_sqr_korysna" Caption="Корисна площа об’єкта, кв.м." VisibleIndex="4" >
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>
 
@@ -1964,13 +2038,13 @@ WHERE id = @id"
                 <EditFormSettings Visible="True" />
             </dx:GridViewDataTextColumn>
 
-            <dx:GridViewDataTextColumn FieldName="zal_balans_vartist" Caption="Залишкова балансова вартість" VisibleIndex="110" Visible="false" >
+            <dx:GridViewDataTextColumn FieldName="zal_balans_vartist" Caption="Залишкова балансова вартість, грн." VisibleIndex="110" Visible="false" >
                 <HeaderStyle Wrap="True" />
                 <EditFormSettings Visible="True" />
                 <EditFormCaptionStyle Wrap="True"/>
             </dx:GridViewDataTextColumn>
 
-            <dx:GridViewDataTextColumn FieldName="perv_balans_vartist" Caption="Первісна балансова вартість" VisibleIndex="120" Visible="false" >
+            <dx:GridViewDataTextColumn FieldName="perv_balans_vartist" Caption="Первісна балансова вартість, грн." VisibleIndex="120" Visible="false" >
                 <HeaderStyle Wrap="True" />
                 <EditFormSettings Visible="True" />
                 <EditFormCaptionStyle Wrap="True"/>

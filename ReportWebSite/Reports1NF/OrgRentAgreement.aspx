@@ -1081,6 +1081,15 @@
     SelectCommand="SELECT id, name FROM dict_rent_period">
 </mini:ProfiledSqlDataSource>
 
+<mini:ProfiledSqlDataSource ID="SqlDataSourceArendaArchive" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>"
+    SelectCommand="SELECT archive_id, org_renter_full_name, object_name, agreement_num, agreement_date, rent_start_date, rent_finish_date, rent_square, modified_by, modify_date
+        FROM view_arch_arenda WHERE arenda_id = @arid AND (NOT modified_by IS NULL) AND (NOT modify_date IS NULL) ORDER BY modify_date, archive_id" >
+    <SelectParameters>
+        <asp:Parameter DbType="Int32" DefaultValue="0" Name="arid" />
+    </SelectParameters>
+</mini:ProfiledSqlDataSource>
+
 <mini:ProfiledSqlDataSource ID="SqlDataSourceOrgSearchGiver" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="
@@ -2166,6 +2175,61 @@ WHERE id = @id"
                                         <table border="0" cellspacing="0" cellpadding="0" width="810px">
                                             <tr>
                                                 <td><dx:ASPxLabel ID="ASPxLabel34" runat="server" Text='<%# EvaluateSignature(Eval("modified_by"), Eval("modify_date")) %>'></dx:ASPxLabel></td>
+
+                                                <td align="right">
+                                                    <dx:ASPxPopupControl ID="PopupArchiveStates" runat="server" 
+                                                        HeaderText="Архівні стани" 
+                                                        ClientInstanceName="PopupArchiveStates" 
+                                                        PopupElementID="CardPageControl"
+                                                        PopupAction="None"
+                                                        PopupHorizontalAlign="Center"
+                                                        PopupVerticalAlign="Middle"
+                                                        PopupAnimationType="Slide">
+                                                        <ContentCollection>
+                                                            <dx:PopupControlContentControl ID="PopupControlContentControl1" runat="server">
+                            
+                                                                <dx:ASPxGridView ID="GridViewArendaArchiveStates" ClientInstanceName="GridViewArendaArchiveStates" runat="server"
+                                                                    AutoGenerateColumns="False" DataSourceID="SqlDataSourceArendaArchive" KeyFieldName="archive_id" Width="780px">
+
+                                                                    <Columns>
+                                                                        <dx:GridViewDataTextColumn FieldName="archive_id" VisibleIndex="0" Caption="Картка Архівного Стану">
+                                                                            <DataItemTemplate>
+                                                                                <%# "<center><a href=\"javascript:ShowArendaArchiveCard(" + Eval("archive_id") + ")\"><img border='0' src='../Styles/EditIcon.png'/></a></center>"%>
+                                                                            </DataItemTemplate>
+                                                                            <Settings ShowInFilterControl="False"/>
+                                                                        </dx:GridViewDataTextColumn>
+                                                                        <dx:GridViewDataTextColumn FieldName="org_renter_full_name" VisibleIndex="1" Caption="Орендар" Width="150px"/>
+                                                                        <dx:GridViewDataTextColumn FieldName="object_name" VisibleIndex="2" Caption="Використання Приміщення" Width="150px"/>
+                                                                        <dx:GridViewDataTextColumn FieldName="agreement_num" VisibleIndex="3" Caption="Номер Договору"/>
+                                                                        <dx:GridViewDataDateColumn FieldName="agreement_date" VisibleIndex="4" Caption="Дата Договору"/>
+                                                                        <dx:GridViewDataDateColumn FieldName="rent_start_date" VisibleIndex="5" Caption="Початок Оренди"/>
+                                                                        <dx:GridViewDataDateColumn FieldName="rent_finish_date" VisibleIndex="6" Caption="Закінчення Оренди"/>
+                                                                        <dx:GridViewDataTextColumn FieldName="rent_square" VisibleIndex="7" Caption="Площа (кв.м.)"/>
+                                                                        <dx:GridViewDataTextColumn FieldName="modified_by" VisibleIndex="8" Caption="Ким Внесені Зміни"></dx:GridViewDataTextColumn>
+                                                                        <dx:GridViewDataDateColumn FieldName="modify_date" VisibleIndex="9" Caption="Дата Внесення Змін"></dx:GridViewDataDateColumn>
+                                                                    </Columns>
+
+                                                                    <SettingsBehavior ColumnResizeMode="Control" EnableCustomizationWindow="False" />
+                                                                    <Settings HorizontalScrollBarMode="Visible" ShowFooter="True" VerticalScrollBarMode="Hidden" VerticalScrollBarStyle="Standard" />
+                                                                    <SettingsPager PageSize="10" />
+                                                                    <Styles Header-Wrap="True" />
+                                                                    <SettingsCookies CookiesID="GUKV.ArendaCard.ArchiveStates" Enabled="False" Version="A2_1" />
+
+                                                                    <ClientSideEvents EndCallback="function (s,e) { GridViewArendaArchiveStates.SetHeight(500); }"/>
+                                                                </dx:ASPxGridView>
+
+                                                            </dx:PopupControlContentControl>
+                                                        </ContentCollection>
+
+                                                        <ClientSideEvents PopUp="function (s,e) { GridViewArendaArchiveStates.SetHeight(500); }"/>
+                                                    </dx:ASPxPopupControl>
+
+                                                    <dx:ASPxButton ID="ASPxButtonArchive" ClientInstanceName="ASPxButtonArchive" runat="server" Text="Архівні Стани" AutoPostBack="false"
+                                                        ClientVisible='<%# IsHistoryButtonVisible() %>' >
+                                                        <ClientSideEvents Click="function (s,e) { PopupArchiveStates.Show(); }" />
+                                                    </dx:ASPxButton>
+                                                </td>
+
                                             </tr>
                                         </table>
                                     </dx:PanelContent>
@@ -2514,6 +2578,18 @@ WHERE id = @id"
                                             <dx:panelcontent ID="Panelcontent12" runat="server">
                                                 <table border="0" cellspacing="0" cellpadding="2" width="910px">
                                                     <tr>
+                                                        <td><dx:ASPxLabel ID="ASPxLabel65" runat="server" Text="Авансова орендна плата (нарахована), грн."></dx:ASPxLabel></td>
+                                                        <td><dx:ASPxSpinEdit ID="edit_avance_plat" ClientInstanceName="edit_avance_plat" runat="server" NumberType="Float" Value='<%# Eval("avance_plat") %>' Width="150px"
+                                                            Title="двомісячна сума орендної плати у договорі, яка може бути використана ЛИШЕ для оплати використання останніх двох місяців договору">
+                                                            <ClientSideEvents 
+                                                                LostFocus="CalcCollectionDebtZvit" />                                                            
+                                                            </dx:ASPxSpinEdit>
+                                                            </td>
+                                                    </tr>
+                                                    <tr style="display:none" id="tr_alert_edit_avance_plat">
+                                                        <td colspan="2" align="right" style="padding-right:20px"><dx:ASPxLabel ID="ASPxLabel67" ForeColor="Brown" runat="server" Text="Внесення авансової орендної плати одноразова операція, Ви повинні вирахувати її з поля «Надходження орендної плати за звітний період, всього, грн.»"></dx:ASPxLabel></td>
+                                                    </tr>
+                                                    <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel27" runat="server" Text="Нараховано орендної плати за звітний період, грн. (без ПДВ)" Width="650px"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="EditPaymentNarah_orndpymnt" ClientInstanceName="clEditPaymentNarah_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("payment_narah") %>' Width="150px"
                                                             Title="нарахована орендна плата за 3,6,9,12 місяців відповідно (індексація може враховуватися)">
@@ -2526,7 +2602,7 @@ WHERE id = @id"
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel66" runat="server" Text="- у тому числі, знято надмірно нарахованої за звітний період"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="edit_znyato_nadmirno_narah" ClientInstanceName="edit_znyato_nadmirno_narah" runat="server" NumberType="Float" Value='<%# Eval("znyato_nadmirno_narah") %>' Width="150px"
-                                                            Title="якщо використовується, то до закінчення договору залишилося меньше 2-х місяців">
+                                                            Title="сума що не підлягає оплаті, відповідно до акту про неможливість використання приміщення і вираховується з [Нараховано]">
                                                             <ClientSideEvents 
                                                                 LostFocus="CalcCollectionDebtZvit" />                                                            
                                                             </dx:ASPxSpinEdit>
@@ -2536,7 +2612,7 @@ WHERE id = @id"
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel71" runat="server" Text="- у тому числі, використано авансової плати"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="edit_znyato_from_avance" ClientInstanceName="edit_znyato_from_avance" runat="server" NumberType="Float" Value='<%# Eval("znyato_from_avance") %>' Width="150px"
-                                                            Title="сума що не підлягає оплаті, відповідно до акту про неможливість використання приміщення і вираховується з [Нараховано]">
+                                                            Title="якщо використовується, то до закінчення договору залишилося меньше 2-х місяців">
                                                             <ClientSideEvents 
                                                                 LostFocus="CalcCollectionDebtZvit" />                                                            
                                                             </dx:ASPxSpinEdit>
@@ -2553,25 +2629,13 @@ WHERE id = @id"
                                                             </td>
                                                     </tr>
                                                     <tr>
-                                                        <td><dx:ASPxLabel ID="ASPxLabel69" runat="server" Text="Сальдо нарахованої авансової орендної плати на початок року (незмінна впродовж року величина), грн. (без ПДВ)"></dx:ASPxLabel></td>
+                                                        <td><dx:ASPxLabel ID="ASPxLabel69" runat="server" Text="Сальдо авансової орендної плати на початок року (незмінна впродовж року величина), грн. (без ПДВ)"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="Edit_avance_saldo" ClientInstanceName="avance_saldo" runat="server" NumberType="Float" Value='<%# Eval("avance_saldo") %>' Width="150px"
-                                                            Title="отримана, до початку звітного періоду,  сума авансової орендної плати орендної плати за даним договором">
+                                                            Title="отримана, до початку звітного періоду, сума авансової орендної плати орендної плати за даним договором">
                                                             <ClientSideEvents 
                                                                 LostFocus="CalcCollectionDebtZvit" />                                                            
                                                             </dx:ASPxSpinEdit>
                                                             </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><dx:ASPxLabel ID="ASPxLabel65" runat="server" Text="Авансова орендна плата (нарахована), грн."></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="edit_avance_plat" ClientInstanceName="edit_avance_plat" runat="server" NumberType="Float" Value='<%# Eval("avance_plat") %>' Width="150px"
-                                                            Title="двомісячна сума орендної плати у договорі, яка може бути використана ЛИШЕ для оплати використання останніх двох місяців договору">
-                                                            <ClientSideEvents 
-                                                                LostFocus="CalcCollectionDebtZvit" />                                                            
-                                                            </dx:ASPxSpinEdit>
-                                                            </td>
-                                                    </tr>
-                                                    <tr style="display:none" id="tr_alert_edit_avance_plat">
-                                                        <td colspan="2" align="right" style="padding-right:20px"><dx:ASPxLabel ID="ASPxLabel67" ForeColor="Brown" runat="server" Text="Внесення авансової орендної плати одноразова операція, Ви повинні вирахувати її з поля «Надходження орендної плати за звітний період, всього, грн.»"></dx:ASPxLabel></td>
                                                     </tr>
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel29" runat="server" Text="Надходження орендної плати за звітний період, всього, грн. (без ПДВ)"></dx:ASPxLabel></td>
@@ -2787,7 +2851,7 @@ WHERE id = @id"
                                                         <tr>
                                                             <td colspan="4"><dx:ASPxLabel ID="ASPxLabel70" runat="server" Text="Заборгованість з нарахованої авансової орендної плати, грн. (без ПДВ)"></dx:ASPxLabel></td>
                                                             <td><dx:ASPxSpinEdit ID="Edit_avance_debt" ClientInstanceName="Edit_avance_debt" runat="server" NumberType="Float" Value='<%# Eval("avance_debt") %>' Width="100px" ReadOnly="true"
-                                                                Title="поточна різниця між нарахованою та отриманою авансовою орендною платою (включаючи Сальдо нарахованої авансової орендної плати на початок року)">
+                                                                Title="поточна різниця між нарахованою та отриманою авансовою орендною платою (включаючи Сальдо авансової орендної плати на початок року)">
                                                                 <ClientSideEvents LostFocus="CalcDebt" />
                                                             </dx:ASPxSpinEdit></td>
                                                         </tr>                                                            
@@ -3270,11 +3334,11 @@ WHERE id = @id"
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>
 
-            <dx:GridViewDataTextColumn FieldName="total_free_sqr" Caption="Загальна площа об’єкта" VisibleIndex="3" >
+            <dx:GridViewDataTextColumn FieldName="total_free_sqr" Caption="Загальна площа об’єкта, кв.м." VisibleIndex="3" >
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>
 
-            <dx:GridViewDataTextColumn FieldName="free_sqr_korysna" Caption="Корисна площа об’єкта" VisibleIndex="4" >
+            <dx:GridViewDataTextColumn FieldName="free_sqr_korysna" Caption="Корисна площа об’єкта, кв.м." VisibleIndex="4" >
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>
 
@@ -3393,13 +3457,13 @@ WHERE id = @id"
                 <EditFormSettings Visible="True" />
             </dx:GridViewDataTextColumn>
 
-            <dx:GridViewDataTextColumn FieldName="zal_balans_vartist" Caption="Залишкова балансова вартість" VisibleIndex="110" Visible="false" >
+            <dx:GridViewDataTextColumn FieldName="zal_balans_vartist" Caption="Залишкова балансова вартість, грн." VisibleIndex="110" Visible="false" >
                 <HeaderStyle Wrap="True" />
                 <EditFormSettings Visible="True" />
                 <EditFormCaptionStyle Wrap="True"/>
             </dx:GridViewDataTextColumn>
 
-            <dx:GridViewDataTextColumn FieldName="perv_balans_vartist" Caption="Первісна балансова вартість" VisibleIndex="120" Visible="false" >
+            <dx:GridViewDataTextColumn FieldName="perv_balans_vartist" Caption="Первісна балансова вартість, грн." VisibleIndex="120" Visible="false" >
                 <HeaderStyle Wrap="True" />
                 <EditFormSettings Visible="True" />
                 <EditFormCaptionStyle Wrap="True"/>
