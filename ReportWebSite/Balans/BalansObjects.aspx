@@ -196,7 +196,8 @@
 ,isnull(ddd.name, 'Невідомо') as sphera_dialnosti
 ,b.construct_year
 ,b.expl_enter_year
-,case when exists (select 1 from reports1nf_balans q where q.id = vb.balans_id and q.report_id = vb.organization_id) then 1 else 0 end as ex_reports1nf_balans 
+,case when exists (select 1 from reports1nf_balans q where q.id = vb.balans_id) then 1 else 0 end as ex_reports1nf_balans 
+,(select top 1 q.report_id from reports1nf_balans q where q.id = vb.balans_id) as reports1nf_report_id
 
     FROM view_balans_all vb
     LEFT JOIN reports1nf_balans bal on vb.balans_id = bal.id
@@ -239,7 +240,7 @@
         <dx:GridViewDataTextColumn FieldName="balans_id" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="0" Visible="True" Caption="Картка">
             <DataItemTemplate>
-                <%# "<center><a href=\"javascript:ShowBalansCardEx(" + Eval("ex_reports1nf_balans") + "," + Eval("balans_id") + "," + Eval("organization_id") + ")\"><img border='0' src='../Styles/EditIcon.png'/></a></center>"%>
+                <%# "<center><a href=\"javascript:ShowBalansCardEx(" + Eval("ex_reports1nf_balans") + "," + Eval("balans_id") + "," + Eval("reports1nf_report_id") + ")\"><img border='0' src='../Styles/EditIcon.png'/></a></center>"%>
             </DataItemTemplate>
             <Settings ShowInFilterControl="False"/>
         </dx:GridViewDataTextColumn>
