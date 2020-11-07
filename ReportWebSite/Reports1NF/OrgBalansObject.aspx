@@ -796,6 +796,7 @@
       ,[priznach_before] 
       ,[period_nouse] 
       ,[osoba_use_before]
+      ,[primitki]
       ,(select Q.form_of_ownership from view_reports1nf Q where Q.report_id = [reports1nf_balans_free_square].report_id) as form_of_ownership 
     FROM [reports1nf_balans_free_square] WHERE [balans_id] = @balans_id and [report_id] = @report_id and ([id] = @free_square_id or @free_square_id = -1)" 
     DeleteCommand="EXEC [delete_reports1nf_balans_free_square] @id" 
@@ -835,6 +836,7 @@
       ,[priznach_before]   
       ,[period_nouse]
       ,[osoba_use_before]
+      ,[primitki]
     ) 
     VALUES
     (@balans_id
@@ -872,6 +874,7 @@
       ,@priznach_before       
       ,@period_nouse
       ,@osoba_use_before
+      ,@primitki
     );
 SELECT SCOPE_IDENTITY()" 
     UpdateCommand="UPDATE [reports1nf_balans_free_square]
@@ -911,6 +914,7 @@ SET
         ,[priznach_before]  	  = @priznach_before   
         ,[period_nouse]  	  = @period_nouse   
         ,[osoba_use_before]  	  = @osoba_use_before   
+        ,[primitki]  	  = @primitki     
 WHERE id = @id" 
         oninserting="SqlDataSourceFreeSquare_Inserting" 
         onupdating="SqlDataSourceFreeSquare_Updating" ProviderName="System.Data.SqlClient">
@@ -958,6 +962,7 @@ WHERE id = @id"
         <asp:Parameter Name="priznach_before" />
         <asp:Parameter Name="period_nouse" />
         <asp:Parameter Name="osoba_use_before" />
+        <asp:Parameter Name="primitki" />
     </InsertParameters>
     <UpdateParameters>
         <asp:Parameter Name="balans_id" />
@@ -995,6 +1000,7 @@ WHERE id = @id"
         <asp:Parameter Name="priznach_before" />
         <asp:Parameter Name="period_nouse" />
         <asp:Parameter Name="osoba_use_before" />
+        <asp:Parameter Name="primitki" />
         <asp:Parameter Name="id" />
     </UpdateParameters>
 </mini:ProfiledSqlDataSource>
@@ -2109,6 +2115,12 @@ WHERE id = @id"
             </dx:GridViewDataTextColumn>
 
             <dx:GridViewDataTextColumn FieldName="osoba_use_before" Caption="Інформацію про особу, яка використовувала об’єкт перед тим, як він став вакантним (якщо такою особою був балансоутримувач, проставляється позначка “об’єкт використовувався балансоутримувачем”)" VisibleIndex="225" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="primitki" Caption="Примітки" VisibleIndex="230" Visible="false" >
                 <HeaderStyle Wrap="True" />
                 <EditFormSettings Visible="True" />
                 <EditFormCaptionStyle Wrap="True"/>

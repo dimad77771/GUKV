@@ -239,6 +239,7 @@
 ,priznachennya = dc.doc_display_name
 ,case when exists (select 1 from reports1nf_arenda q where q.id = ar.id) then 1 else 0 end as ex_reports1nf_arenda 
 ,(select top 1 q.report_id from reports1nf_arenda q where q.id = ar.id) as arenda_report_id
+,case when ar.id in (select b.id from dbo.reports1nf_arenda b where b.org_balans_id = ar.org_balans_id and ISNULL(b.is_deleted, 0) = 0 /*and b.agreement_state = 1*/ ) then 1 else 0 end as is_dpz_object 
 
         FROM view_arenda_agreements m  /*m_view_arenda_agreements m*/
         join arenda ar on ar.id = m.arenda_id
@@ -284,7 +285,7 @@
         <dx:GridViewDataTextColumn FieldName="arenda_id" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="0" Visible="True" Caption="Картка">
             <DataItemTemplate>
-                <%# "<center><a href=\"javascript:ShowArendaCardEx(" + Eval("ex_reports1nf_arenda") + "," + Eval("arenda_id") + "," + Eval("arenda_report_id") + ")\"><img border='0' src='../Styles/EditIcon.png'/></a></center>"%>
+                <%# "<center><a href=\"javascript:ShowArendaCardEx(" + Eval("ex_reports1nf_arenda") + "," + Eval("arenda_id") + "," + Eval("arenda_report_id") + ")\"><img border='0' src='../Styles/" + ((int)Eval("is_dpz_object") == 1 ? "EditIcon_green.png" : "EditIcon.png") + "'/></a></center>"%>
             </DataItemTemplate>
             <Settings ShowInFilterControl="False"/>
         </dx:GridViewDataTextColumn>
@@ -307,6 +308,7 @@
                 <%# "<a href=\"javascript:ShowOrganizationCard(" + Eval("org_balans_id") + ")\">" + Eval("org_balans_short_name") + "</a>"%>
             </DataItemTemplate>
         </dx:GridViewDataTextColumn>
+
         <dx:GridViewDataTextColumn FieldName="org_balans_zkpo" ReadOnly="True"
             VisibleIndex="4" Visible="False" Caption="Балансоутримувач - Код ЄДРПОУ"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_balans_industry" ReadOnly="True"
@@ -636,7 +638,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_14" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_17" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

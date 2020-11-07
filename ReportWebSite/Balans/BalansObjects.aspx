@@ -198,6 +198,7 @@
 ,b.expl_enter_year
 ,case when exists (select 1 from reports1nf_balans q where q.id = vb.balans_id) then 1 else 0 end as ex_reports1nf_balans 
 ,(select top 1 q.report_id from reports1nf_balans q where q.id = vb.balans_id) as reports1nf_report_id
+,case when vb.balans_id in (select b.id from dbo.reports1nf_balans b where b.organization_id = vb.organization_id and ISNULL(b.is_deleted, 0) = 0 ) then 1 else 0 end as is_dpz_object
 
     FROM view_balans_all vb
     LEFT JOIN reports1nf_balans bal on vb.balans_id = bal.id
@@ -240,7 +241,7 @@
         <dx:GridViewDataTextColumn FieldName="balans_id" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="0" Visible="True" Caption="Картка">
             <DataItemTemplate>
-                <%# "<center><a href=\"javascript:ShowBalansCardEx(" + Eval("ex_reports1nf_balans") + "," + Eval("balans_id") + "," + Eval("reports1nf_report_id") + ")\"><img border='0' src='../Styles/EditIcon.png'/></a></center>"%>
+                <%# "<center><a href=\"javascript:ShowBalansCardEx(" + Eval("ex_reports1nf_balans") + "," + Eval("balans_id") + "," + Eval("reports1nf_report_id") + ")\"><img border='0' src='../Styles/" + ((int)Eval("is_dpz_object") == 1 ? "EditIcon_green.png" : "EditIcon.png") + "'/></a></center>"%>
             </DataItemTemplate>
             <Settings ShowInFilterControl="False"/>
         </dx:GridViewDataTextColumn>
@@ -264,6 +265,8 @@
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_zkpo_code" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="4" Visible="False" Caption="Балансоутримувач - Код ЄДРПОУ"></dx:GridViewDataTextColumn>
+<%--        <dx:GridViewDataTextColumn FieldName="is_dpz_object" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="4" Visible="true" Caption="DPZ"></dx:GridViewDataTextColumn>--%>
         <dx:GridViewDataTextColumn FieldName="org_industry" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="5" Visible="False" Caption="Балансоутримувач - Галузь"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_occupation" ReadOnly="True" ShowInCustomizationForm="True"
@@ -491,7 +494,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A2_2" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A2_5" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

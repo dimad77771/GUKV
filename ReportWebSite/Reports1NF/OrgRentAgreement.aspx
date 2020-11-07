@@ -1263,6 +1263,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
       ,[reenum_derzh_reestr_neruh] 
       ,[info_priznach_nouse] 
       ,[info_rahunok_postach] 
+      ,[primitki] 
       ,[priznach_before] 
       ,[period_nouse] 
       ,[osoba_use_before]
@@ -1307,6 +1308,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
       ,[reenum_derzh_reestr_neruh] 
       ,[info_priznach_nouse] 
       ,[info_rahunok_postach]   
+      ,[primitki]   
       ,[priznach_before]   
       ,[period_nouse]
       ,[osoba_use_before]
@@ -1350,6 +1352,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
       ,@reenum_derzh_reestr_neruh 
       ,@info_priznach_nouse 
       ,@info_rahunok_postach       
+      ,@primitki       
       ,@priznach_before       
       ,@period_nouse
       ,@osoba_use_before
@@ -1395,6 +1398,7 @@ SET
         ,[reenum_derzh_reestr_neruh] 	  = @reenum_derzh_reestr_neruh 
         ,[info_priznach_nouse] 		  = @info_priznach_nouse 
         ,[info_rahunok_postach]  	  = @info_rahunok_postach   
+        ,[primitki]  	  = @primitki   
         ,[priznach_before]  	  = @priznach_before   
         ,[period_nouse]  	  = @period_nouse   
         ,[osoba_use_before]  	  = @osoba_use_before   
@@ -1448,6 +1452,7 @@ WHERE id = @id"
         <asp:Parameter Name="reenum_derzh_reestr_neruh" />
         <asp:Parameter Name="info_priznach_nouse" />
         <asp:Parameter Name="info_rahunok_postach" />
+        <asp:Parameter Name="primitki" />
         <asp:Parameter Name="priznach_before" />
         <asp:Parameter Name="period_nouse" />
         <asp:Parameter Name="osoba_use_before" />
@@ -1491,6 +1496,7 @@ WHERE id = @id"
         <asp:Parameter Name="reenum_derzh_reestr_neruh" />
         <asp:Parameter Name="info_priznach_nouse" />
         <asp:Parameter Name="info_rahunok_postach" />
+        <asp:Parameter Name="primitki" />
         <asp:Parameter Name="priznach_before" />
         <asp:Parameter Name="period_nouse" />
         <asp:Parameter Name="osoba_use_before" />
@@ -3562,6 +3568,13 @@ WHERE id = @id"
             <dx:GridViewDataDateColumn FieldName="polipshanya_finish_date" Caption="Дата завершення здійснених чинним орендарем невід'ємних поліпшень" VisibleIndex="320" >
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataDateColumn>
+
+            <dx:GridViewDataTextColumn FieldName="primitki" Caption="Примітки" VisibleIndex="330" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
 
 
         </Columns>
