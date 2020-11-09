@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using DevExpress.Web.ASPxClasses;
-using DevExpress.Web.ASPxEditors;
+using DevExpress.Web;
+using DevExpress.Web;
 using FirebirdSql.Data.FirebirdClient;
 
 public partial class RishProjectTableOrgFromEditor : System.Web.UI.UserControl

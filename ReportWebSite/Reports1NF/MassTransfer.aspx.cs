@@ -4,10 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using DevExpress.Web.ASPxEditors;
-using DevExpress.Web.ASPxClasses;
+using DevExpress.Web;
+using DevExpress.Web;
 using GUKV;
-using DevExpress.Web.ASPxGridView;
+using DevExpress.Web;
 using GUKV.Conveyancing;
 using System.Data.SqlClient;
 
@@ -368,13 +368,13 @@ public partial class Reports1NF_MassTransfer : System.Web.UI.Page
 
         if (e.Parameter.ToLower().StartsWith("cancel:"))
         {
-            DevExpress.Web.ASPxClasses.ASPxWebControl.RedirectOnCallback("ConveyancingRequestsList.aspx");
+            DevExpress.Web.ASPxWebControl.RedirectOnCallback("ConveyancingRequestsList.aspx");
         }
     }
 
-    private static void ColorRow(DevExpress.Web.ASPxGridView.ASPxGridViewTableRowEventArgs e, int gridOrgId)
+    private static void ColorRow(DevExpress.Web.ASPxGridViewTableRowEventArgs e, int gridOrgId)
     {
-        if (e.RowType != DevExpress.Web.ASPxGridView.GridViewRowType.Data)
+        if (e.RowType != DevExpress.Web.GridViewRowType.Data)
             return;
 
         int value = (int)e.GetValue("OrganizationId");
@@ -382,12 +382,12 @@ public partial class Reports1NF_MassTransfer : System.Web.UI.Page
             e.Row.ForeColor = System.Drawing.Color.GreenYellow;
     }
 
-    protected void gridView1_HtmlRowPrepared(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewTableRowEventArgs e)
+    protected void gridView1_HtmlRowPrepared(object sender, DevExpress.Web.ASPxGridViewTableRowEventArgs e)
     {
         ColorRow(e, OrganizationID1);
     }
 
-    protected void gridView2_HtmlRowPrepared(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewTableRowEventArgs e)
+    protected void gridView2_HtmlRowPrepared(object sender, DevExpress.Web.ASPxGridViewTableRowEventArgs e)
     {
         ColorRow(e, OrganizationID2);
     }
@@ -596,7 +596,7 @@ public partial class Reports1NF_MassTransfer : System.Web.UI.Page
                 }
             }
             BalansTransferUtils.SendBalansTransferNotifications(1, idList);
-            DevExpress.Web.ASPxClasses.ASPxWebControl.RedirectOnCallback("ConveyancingRequestsList.aspx");
+            DevExpress.Web.ASPxWebControl.RedirectOnCallback("ConveyancingRequestsList.aspx");
         }
 
         if (cntToTransfer2 > 0)
@@ -611,7 +611,7 @@ public partial class Reports1NF_MassTransfer : System.Web.UI.Page
                 }
             }
             BalansTransferUtils.SendBalansTransferNotifications(2, idList);
-            DevExpress.Web.ASPxClasses.ASPxWebControl.RedirectOnCallback("ConveyancingRequestsList.aspx");
+            DevExpress.Web.ASPxWebControl.RedirectOnCallback("ConveyancingRequestsList.aspx");
         }
     
     }

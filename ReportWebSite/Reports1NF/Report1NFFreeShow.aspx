@@ -1,8 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Report1NFFreeShow.aspx.cs" Inherits="Reports1NF_Report1NFFreeShow"
     MasterPageFile="~/FreeShowPublic.master" Title="Перелік вільних приміщень" %>
 
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView.Export" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.Export" tagprefix="dx" %>
 <%@ Register Namespace="MiniProfilerHelpers" TagPrefix="mini" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
@@ -488,17 +488,6 @@ WHERE id = @id"
     <Columns>
 
         <dx:GridViewCommandColumn VisibleIndex="0" Width="50px" ButtonType="Image" CellStyle-Wrap="False" >
-		<%--
-			<EditButton Visible="True">
-				<Image Url="~/Styles/EditIcon.png" />
-             </EditButton>
-             <CancelButton>
-				<Image Url="~/Styles/CancelIcon.png" />
-            </CancelButton>
-            <UpdateButton>
-				<Image Url="~/Styles/SaveIcon.png" />
-			</UpdateButton>
-		--%>
             <CustomButtons>
                 <dx:GridViewCommandColumnCustomButton ID="btnPhoto" Text="Фотографії об'єкту"> 
 					<Image Url="~/Styles/PhotoIcon.png"/>
@@ -731,7 +720,7 @@ WHERE id = @id"
 <dx:ASPxPopupControl ID="ASPxPopupControlFreeSquare" runat="server" AllowDragging="True" 
     ClientInstanceName="PopupObjectPhotos" EnableClientSideAPI="True" 
     HeaderText="Фотографії об'єкту з вільним приміщенням" Modal="True" 
-    PopupHorizontalAlign="Center" PopupVerticalAlign="Middle" RenderMode="Lightweight" 
+    PopupHorizontalAlign="Center" PopupVerticalAlign="Middle"  
     PopupAction="None" PopupElementID="ASPxGridViewFreeSquare" Width="700px" >
     <ContentCollection>
         <dx:PopupControlContentControl ID="PopupControlContentControl2" runat="server" SupportsDisabledAttribute="True">

@@ -11,7 +11,7 @@
         if(item != null) {
             ThemeGroupModel group = item.DataItem as ThemeGroupModel;
             foreach(ThemeModel theme in group.Themes) {
-                DevExpress.Web.ASPxMenu.MenuItem menuItem = menu.Items.Add(theme.Title, theme.Name);
+                DevExpress.Web.MenuItem menuItem = menu.Items.Add(theme.Title, theme.Name);
                 menuItem.Image.SpriteProperties.CssClass = "DemoSprite " + theme.SpriteCssClass;
                 menuItem.Selected = (theme.Name == Utils.CurrentTheme);
             }
@@ -26,8 +26,8 @@
 <dx:ASPxPopupControl ID="ThemeSelectorPopup" 
     ClientInstanceName="ThemeSelectorPopup" CssClass="ThemeSelectorPopup" runat="server"  EnableTheming="false"
     PopupElementID="ThemeSelectorButton" PopupHorizontalAlign="LeftSides" ShowShadow="true" PopupAnimationType="None"
-    PopupAction="LeftMouseClick" RenderMode="Lightweight"
-    PopupVerticalAlign="Below" PopupVerticalOffset="1" ShowHeader="False" EnableDefaultAppearance="false">
+    PopupAction="LeftMouseClick" 
+    PopupVerticalAlign="Below" PopupVerticalOffset="1" ShowHeader="False" >
     <ContentCollection>
         <dx:PopupControlContentControl runat="server">
             <div id="ThemesContainer">
@@ -35,7 +35,7 @@
                     <ItemTemplate>
                         <dx:ASPxMenu ID="ThemeGroupMenu" CssClass="ThemeGroupMenu" runat="server" EnableTheming="false"
                             EnableViewState="false"
-                            EnableDefaultAppearance="False" RenderMode="Lightweight" ItemImagePosition="Top"
+                              ItemImagePosition="Top"
                             OnDataBinding="Menu_DataBinding" >
                             <ClientSideEvents ItemClick="function(s,e){ DXTheme.SetCurrentTheme(e.item.name); }" />
                         </dx:ASPxMenu>

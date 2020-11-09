@@ -1,10 +1,10 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="BalansCardArchive.aspx.cs" Inherits="Cards_BalansCardArchive"
     MasterPageFile="~/NoMenu.master" Title="Архівний Стан Об'єкту На Балансі" %>
 
-<%@ Register Assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxImageGallery" TagPrefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView.Export" tagprefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.Export" tagprefix="dx" %>
 <%@ Register Namespace="MiniProfilerHelpers" TagPrefix="mini" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
@@ -660,19 +660,35 @@
     <dx:ASPxGridView ID="ASPxGridViewFreeSquare" runat="server" AutoGenerateColumns="False" 
         KeyFieldName="id" Width="100%" ClientInstanceName="grid">
             <ClientSideEvents CustomButtonClick="ShowPhoto" Init="OnInit" EndCallback="OnEndCallback" />
+
+	    <SettingsCommandButton>
+		    <EditButton>
+			    <Image Url="~/Styles/EditIcon.png" />
+		    </EditButton>
+		    <CancelButton>
+			    <Image Url="~/Styles/CancelIcon.png" />
+		    </CancelButton>
+		    <UpdateButton>
+			    <Image Url="~/Styles/SaveIcon.png" />
+		    </UpdateButton>
+		    <DeleteButton>
+			    <Image Url="~/Styles/DeleteIcon.png" />
+		    </DeleteButton>
+		    <NewButton>
+			    <Image Url="~/Styles/AddIcon.png" />
+		    </NewButton>
+		    <ClearFilterButton Text="Очистити" RenderMode="Link" />
+	    </SettingsCommandButton>
+
         <Columns>
-
             <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" 
-                ShowInCustomizationForm="True" CellStyle-Wrap="False">
+                ShowInCustomizationForm="True" CellStyle-Wrap="False" ShowClearFilterButton="true">
 
-                <ClearFilterButton Visible="True">
-                </ClearFilterButton>
                 <CustomButtons>
                     <dx:GridViewCommandColumnCustomButton ID="btnPhoto" Text="Фото">
                         <Image Url="~/Styles/PhotoIcon.png">
                         </Image>
                     </dx:GridViewCommandColumnCustomButton>
-
                 </CustomButtons>
 
                 <CellStyle Wrap="False"></CellStyle>
@@ -788,7 +804,7 @@
     <dx:ASPxPopupControl ID="ASPxPopupControlFreeSquare" runat="server" AllowDragging="True" 
         ClientInstanceName="PopupObjectPhotos" EnableClientSideAPI="True" 
         HeaderText="Фотографії об'єкту з вільним приміщенням" Modal="True" 
-        PopupHorizontalAlign="Center" PopupVerticalAlign="Middle" RenderMode="Lightweight" 
+        PopupHorizontalAlign="Center" PopupVerticalAlign="Middle"  
         PopupAction="None" PopupElementID="ASPxGridViewFreeSquare" Width="700px" >
         <ContentCollection>
             <dx:PopupControlContentControl ID="PopupControlContentControl1" runat="server" SupportsDisabledAttribute="True">
@@ -1060,7 +1076,7 @@
                                 <dx:PanelContent ID="PanelContent9" runat="server" SupportsDisabledAttribute="True">
 
 
-        <dx:ASPxPopupControl ID="editPopup" ClientInstanceName="editPopup" runat="server" Modal="true" RenderMode="Lightweight" PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter"                       ShowCloseButton="false" ShowHeader="false" EnableTheming="false">
+        <dx:ASPxPopupControl ID="editPopup" ClientInstanceName="editPopup" runat="server" Modal="true"  PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter"                       ShowCloseButton="false" ShowHeader="false" EnableTheming="false">
             <HeaderStyle HorizontalAlign="Center" />
             <ContentCollection>
                 <dx:PopupControlContentControl runat="server">

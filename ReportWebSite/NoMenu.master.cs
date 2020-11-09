@@ -1,4 +1,4 @@
-﻿using DevExpress.Web.ASPxClasses;
+﻿using DevExpress.Web;
 using StackExchange.Profiling.Helpers.Dapper;
 using System;
 using System.Collections.Generic;

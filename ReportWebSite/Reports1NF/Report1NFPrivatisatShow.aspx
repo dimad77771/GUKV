@@ -1,8 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Report1NFPrivatisatShow.aspx.cs" Inherits="Reports1NF_Report1NFPrivatisatShow"
     MasterPageFile="~/PrivatisatShowPublic.master" Title="Перелік об'єктів приватизації" %>
 
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView.Export" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.Export" tagprefix="dx" %>
 <%@ Register Namespace="MiniProfilerHelpers" TagPrefix="mini" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
@@ -504,7 +504,7 @@ WHERE id = @id"
 <dx:ASPxPopupControl ID="ASPxPopupControlFreeSquare" runat="server" AllowDragging="True" 
     ClientInstanceName="PopupObjectPhotos" EnableClientSideAPI="True" 
     HeaderText="Документи по об'єкту приватизації" Modal="True" 
-    PopupHorizontalAlign="Center" PopupVerticalAlign="Middle" RenderMode="Lightweight" 
+    PopupHorizontalAlign="Center" PopupVerticalAlign="Middle"  
     PopupAction="None" PopupElementID="ASPxGridViewFreeSquare" Width="700px" >
     <ContentCollection>
         <dx:PopupControlContentControl ID="PopupControlContentControl2" runat="server" SupportsDisabledAttribute="True">

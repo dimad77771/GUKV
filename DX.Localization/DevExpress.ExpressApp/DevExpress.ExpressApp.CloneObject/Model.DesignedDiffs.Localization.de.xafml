@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Application>
-  <ActionDesign>
-    <Actions>
-      <Action Id="CloneObject" Caption="Klonen…" ToolTip="Datensatz klonen" />
-    </Actions>
-  </ActionDesign>
-</Application>

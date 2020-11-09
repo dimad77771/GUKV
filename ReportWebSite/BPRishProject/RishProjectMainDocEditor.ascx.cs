@@ -4,10 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using DevExpress.Web.ASPxClasses;
-using DevExpress.Web.ASPxEditors;
+using DevExpress.Web;
+using DevExpress.Web;
 using DevExpress.Web.ASPxHtmlEditor;
-using DevExpress.Web.ASPxUploadControl;
+using DevExpress.Web;
 using System.IO;
 
 public partial class RishProjectMainDocEditor : System.Web.UI.UserControl

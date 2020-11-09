@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using DevExpress.Web.ASPxTreeView;
+using DevExpress.Web;
 
 public partial class UserControls_SaveReportCtrl : System.Web.UI.UserControl
 {
@@ -33,7 +33,7 @@ public partial class UserControls_SaveReportCtrl : System.Web.UI.UserControl
         }
     }
 
-    protected void CallbackPanelTreeViewUserFolders_Callback(object sender, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+    protected void CallbackPanelTreeViewUserFolders_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
     {
         string param = e.Parameter;
 
@@ -81,7 +81,7 @@ public partial class UserControls_SaveReportCtrl : System.Web.UI.UserControl
         }
     }
 
-    protected void TreeViewUserFolders_CustomJSProperties(object sender, DevExpress.Web.ASPxClasses.CustomJSPropertiesEventArgs e)
+    protected void TreeViewUserFolders_CustomJSProperties(object sender, DevExpress.Web.CustomJSPropertiesEventArgs e)
     {
         ASPxTreeView grid = sender as ASPxTreeView;
 

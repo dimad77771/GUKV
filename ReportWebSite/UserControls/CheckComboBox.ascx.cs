@@ -5,8 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.ComponentModel;
-using DevExpress.Web.ASPxEditors;
-using DevExpress.Web.ASPxClasses;
+using DevExpress.Web;
+using DevExpress.Web;
 
 public class CheckComboBoxClientSideEvents : ClientSideEvents
 {

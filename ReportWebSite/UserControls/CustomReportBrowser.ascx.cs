@@ -31,7 +31,7 @@ public partial class UserControls_CustomReportBrowser : System.Web.UI.UserContro
         }
     }
 
-    protected void CallbackPanelTreeViewUserReports_Callback(object sender, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+    protected void CallbackPanelTreeViewUserReports_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
     {
         /*
         string param = e.Parameter;

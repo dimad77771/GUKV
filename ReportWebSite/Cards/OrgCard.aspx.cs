@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
-using DevExpress.Web.ASPxGridView;
+using DevExpress.Web;
 
 public partial class Cards_OrgCard : System.Web.UI.Page
 {

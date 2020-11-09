@@ -1,4 +1,4 @@
-﻿using DevExpress.Web.ASPxGridView;
+﻿using DevExpress.Web;
 using DevExpress.Web.Data;
 using System;
 using System.Collections.Generic;
@@ -17,7 +17,7 @@ public partial class Admin_DicOrgOccupation : System.Web.UI.Page
         {
             string errorurl = Page.ResolveClientUrl("~/Account/Restricted.aspx");
             if (Page.IsCallback)
-                DevExpress.Web.ASPxClasses.ASPxWebControl.RedirectOnCallback(errorurl);
+                DevExpress.Web.ASPxWebControl.RedirectOnCallback(errorurl);
             else
                 Response.Redirect(errorurl);
         }

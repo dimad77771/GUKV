@@ -15,7 +15,7 @@ public partial class Admin_OrgOccupation : System.Web.UI.Page
         {
             string errorurl = Page.ResolveClientUrl("~/Account/Restricted.aspx");
             if (Page.IsCallback)
-                DevExpress.Web.ASPxClasses.ASPxWebControl.RedirectOnCallback(errorurl);
+                DevExpress.Web.ASPxWebControl.RedirectOnCallback(errorurl);
             else
                 Response.Redirect(errorurl);
         }

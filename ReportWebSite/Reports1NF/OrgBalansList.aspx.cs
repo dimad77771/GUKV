@@ -6,10 +6,10 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
-using DevExpress.Web.ASPxClasses;
+using DevExpress.Web;
 using FirebirdSql.Data.FirebirdClient;
-using DevExpress.Web.ASPxCallbackPanel;
-using DevExpress.Web.ASPxGridView;
+using DevExpress.Web;
+using DevExpress.Web;
 
 public partial class Reports1NF_OrgBalansList : System.Web.UI.Page
 {
@@ -68,7 +68,7 @@ public partial class Reports1NF_OrgBalansList : System.Web.UI.Page
 
         // Bind data to the grid dynamically
         this.ProcessGridDataFetch(ViewState, PrimaryGridView);
-        PrimaryGridView.Settings.VerticalScrollBarMode = DevExpress.Web.ASPxClasses.ScrollBarMode.Visible;
+        PrimaryGridView.Settings.VerticalScrollBarMode = DevExpress.Web.ScrollBarMode.Visible;
    }
 
     protected int ReportID
@@ -137,7 +137,7 @@ public partial class Reports1NF_OrgBalansList : System.Web.UI.Page
     }
 
     protected void PrimaryGridView_CustomColumnSort(object sender,
-        DevExpress.Web.ASPxGridView.CustomColumnSortEventArgs e)
+        DevExpress.Web.CustomColumnSortEventArgs e)
     {
         Utils.ProcessGridSortByBuildingNumber(e);
     }

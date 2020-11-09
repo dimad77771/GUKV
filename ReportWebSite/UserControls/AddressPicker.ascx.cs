@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using DevExpress.Web.ASPxClasses;
-using DevExpress.Web.ASPxEditors;
+using DevExpress.Web;
+using DevExpress.Web;
 
 public partial class UserControls_AddressPicker : System.Web.UI.UserControl
 {

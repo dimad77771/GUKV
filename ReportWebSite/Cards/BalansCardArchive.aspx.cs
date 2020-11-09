@@ -5,11 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
-using DevExpress.Web.ASPxImageGallery;
-using DevExpress.Web.ASPxCallback;
+using DevExpress.Web;
+using DevExpress.Web;
 using System.Web.Configuration;
 using System.IO;
-using DevExpress.Web.ASPxClasses;
+using DevExpress.Web;
 using GUKV.Common;
 
 public partial class Cards_BalansCardArchive : PhotoPage
@@ -210,7 +210,7 @@ public partial class Cards_BalansCardArchive : PhotoPage
         return Request.QueryString["balid"] == null ? false : true;
     }
 
-    protected void ASPxUploadPhotoControl_FileUploadComplete(object sender, DevExpress.Web.ASPxUploadControl.FileUploadCompleteEventArgs e)
+    protected void ASPxUploadPhotoControl_FileUploadComplete(object sender, DevExpress.Web.FileUploadCompleteEventArgs e)
     {
         string balansIdStr = Request.QueryString["balid"];
         Int32 newId = 0;

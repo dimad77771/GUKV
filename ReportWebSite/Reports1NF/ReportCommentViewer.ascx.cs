@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using DevExpress.Web.ASPxClasses;
+using DevExpress.Web;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -59,7 +59,7 @@ public partial class Reports1NF_ReportCommentViewer : System.Web.UI.UserControl
         set { rentedObjectId = value; }
     }
 
-    public void AddNumberOfCommentsToButton(DevExpress.Web.ASPxEditors.ASPxButton button)
+    public void AddNumberOfCommentsToButton(DevExpress.Web.ASPxButton button)
     {
         if (button != null && !button.Text.Contains('('))
         {

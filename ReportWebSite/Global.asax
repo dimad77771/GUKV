@@ -12,7 +12,7 @@
 
     void Application_PreRequestHandlerExecute(object sender, EventArgs e)
     {
-        DevExpress.Web.ASPxClasses.ASPxWebControl.GlobalTheme = Utils.CurrentTheme;
+        DevExpress.Web.ASPxWebControl.GlobalTheme = Utils.CurrentTheme;
     }
     
     void Application_BeginRequest()

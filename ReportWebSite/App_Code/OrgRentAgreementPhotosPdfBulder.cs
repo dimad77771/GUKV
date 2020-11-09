@@ -4,7 +4,7 @@ using System.Collections;
 using System.Linq;
 using System.Web;
 using DevExpress.XtraReports.UI;
-using DevExpress.Web.ASPxGridView;
+using DevExpress.Web;
 using System.Data.SqlClient;
 using Syncfusion.Pdf;
 using System.IO;

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
-using DevExpress.Web.ASPxGridView;
+using DevExpress.Web;
 
 public partial class Balans_BalansOrgList : System.Web.UI.Page
 {
@@ -46,7 +46,7 @@ public partial class Balans_BalansOrgList : System.Web.UI.Page
         // Enable advanced header filter for all grid columns
         Utils.AdjustColumnsVisibleInFilter(PrimaryGridView);
 
-	PrimaryGridView.Settings.VerticalScrollBarMode = DevExpress.Web.ASPxClasses.ScrollBarMode.Visible;
+	PrimaryGridView.Settings.VerticalScrollBarMode = DevExpress.Web.ScrollBarMode.Visible;
     }
 
     private int ExpandedBalansOrgID
@@ -91,19 +91,19 @@ public partial class Balans_BalansOrgList : System.Web.UI.Page
     }
 
     protected void GridViewBalans_CustomFilterExpressionDisplayText(object sender,
-        DevExpress.Web.ASPxEditors.CustomFilterExpressionDisplayTextEventArgs e)
+        DevExpress.Web.CustomFilterExpressionDisplayTextEventArgs e)
     {
         this.UpdateFilterDisplayTextCache(e.DisplayText, PrimaryGridView);
     }
 
     protected void GridViewBalans_ProcessColumnAutoFilter(object sender,
-        DevExpress.Web.ASPxGridView.ASPxGridViewAutoFilterEventArgs e)
+        DevExpress.Web.ASPxGridViewAutoFilterEventArgs e)
     {
         Utils.ProcessGridColumnAutoFilter(sender, e);
     }
 
     protected void GridViewBalans_CustomColumnSort(object sender,
-        DevExpress.Web.ASPxGridView.CustomColumnSortEventArgs e)
+        DevExpress.Web.CustomColumnSortEventArgs e)
     {
         Utils.ProcessGridSortByBuildingNumber(e);
     }

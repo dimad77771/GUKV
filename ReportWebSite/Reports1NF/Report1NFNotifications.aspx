@@ -1,9 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Report1NFNotifications.aspx.cs" Inherits="Reports1NF_Report1NFNotifications"
     MasterPageFile="~/NoHeader.master" Title="Налаштування повідомлень" %>
 
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView.Export" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.Export" tagprefix="dx" %>
 <%@ Register Namespace="MiniProfilerHelpers" TagPrefix="mini" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
@@ -99,6 +99,25 @@
     DataSourceID="SqlDataSourceNotifications"
     KeyFieldName="id"
     OnCustomCallback="GridViewNotifications_CustomCallback" >
+
+	<SettingsCommandButton>
+		<EditButton>
+			<Image Url="~/Styles/EditIcon.png" />
+		</EditButton>
+		<CancelButton>
+			<Image Url="~/Styles/CancelIcon.png" />
+		</CancelButton>
+		<UpdateButton>
+			<Image Url="~/Styles/SaveIcon.png" />
+		</UpdateButton>
+		<DeleteButton>
+			<Image Url="~/Styles/DeleteIcon.png" />
+		</DeleteButton>
+		<NewButton>
+			<Image Url="~/Styles/AddIcon.png" />
+		</NewButton>
+		<ClearFilterButton Text="Очистити" RenderMode="Link" />
+	</SettingsCommandButton>
 
     <Columns>
         <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" ShowSelectCheckbox="true">

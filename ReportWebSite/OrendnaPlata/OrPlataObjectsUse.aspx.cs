@@ -6,8 +6,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
-using DevExpress.Web.ASPxGridView;
-using DevExpress.Web.ASPxEditors;
+using DevExpress.Web;
+using DevExpress.Web;
 using System.Data.SqlClient;
 
 public partial class OrendnaPlata_OrPlataObjectsUse : System.Web.UI.Page
@@ -606,13 +606,13 @@ public partial class OrendnaPlata_OrPlataObjectsUse : System.Web.UI.Page
     }
 
     protected void GridViewRentObjectsUse_CustomFilterExpressionDisplayText(object sender,
-        DevExpress.Web.ASPxEditors.CustomFilterExpressionDisplayTextEventArgs e)
+        DevExpress.Web.CustomFilterExpressionDisplayTextEventArgs e)
     {
         this.UpdateFilterDisplayTextCache(e.DisplayText, PrimaryGridView);
     }
 
     protected void GridViewRentObjectsUse_ProcessColumnAutoFilter(object sender,
-        DevExpress.Web.ASPxGridView.ASPxGridViewAutoFilterEventArgs e)
+        DevExpress.Web.ASPxGridViewAutoFilterEventArgs e)
     {
         Utils.ProcessGridColumnAutoFilter(sender, e);
     }
@@ -1030,7 +1030,7 @@ public partial class OrendnaPlata_OrPlataObjectsUse : System.Web.UI.Page
         }
     }
 
-    protected void CallbackPanelObjectsUsePeriods_Callback(object sender, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+    protected void CallbackPanelObjectsUsePeriods_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
     {
         // Update ListBoxObjectsUsePeriods selection from the SelectedPeriods session variable
         List<int> selPeriods = SelectedPeriods;
@@ -1044,7 +1044,7 @@ public partial class OrendnaPlata_OrPlataObjectsUse : System.Web.UI.Page
         }
     }
 
-    protected void CallbackPanelObjectsUseFields_Callback(object sender, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+    protected void CallbackPanelObjectsUseFields_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
     {
         // Update ListBoxObjectsUseColumns selection from the selected grid columns
         for (int i = 0; i < PrimaryGridView.Columns.Count; i++)
@@ -1076,7 +1076,7 @@ public partial class OrendnaPlata_OrPlataObjectsUse : System.Web.UI.Page
         }
     }
 
-    protected void ComboCompareField_Callback(object sender, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+    protected void ComboCompareField_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
     {
         ASPxComboBox comboBox = sender as ASPxComboBox;
 

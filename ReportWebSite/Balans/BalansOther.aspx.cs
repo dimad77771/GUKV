@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Globalization;
-using DevExpress.Web.ASPxGridView;
+using DevExpress.Web;
 
 public partial class Balans_BalansOther : System.Web.UI.Page
 {

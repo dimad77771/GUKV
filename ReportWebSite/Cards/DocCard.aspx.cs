@@ -5,10 +5,10 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using DevExpress.Web.ASPxEditors;
+using DevExpress.Web;
 using DevExpress.Web.Data;
-using DevExpress.Web.ASPxClasses;
-using DevExpress.Web.ASPxRoundPanel;
+using DevExpress.Web;
+using DevExpress.Web;
 using System.Data;
 using System.Data.SqlClient;
 using FirebirdSql.Data.FirebirdClient;
@@ -16,9 +16,9 @@ using log4net;
 using GUKV;
 using System.Web.Configuration;
 using System.IO;
-using DevExpress.Web.ASPxImageGallery;
+using DevExpress.Web;
 using ExtDataEntry.Models;
-using DevExpress.Web.ASPxCallback;
+using DevExpress.Web;
 
 
 public partial class Cards_DocCard : System.Web.UI.Page
@@ -252,7 +252,7 @@ public partial class Cards_DocCard : System.Web.UI.Page
 		return imageUrl;
 	}
 
-	protected void ASPxUploadPhotoControl_FileUploadComplete(object sender, DevExpress.Web.ASPxUploadControl.FileUploadCompleteEventArgs e)
+	protected void ASPxUploadPhotoControl_FileUploadComplete(object sender, DevExpress.Web.FileUploadCompleteEventArgs e)
 	{
 		//this.LoadViewState("PageUniqueKey");
 

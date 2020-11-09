@@ -7,9 +7,9 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using DevExpress.Web.ASPxGridView;
-using DevExpress.Web.ASPxClasses;
-using DevExpress.Web.ASPxEditors;
+using DevExpress.Web;
+using DevExpress.Web;
+using DevExpress.Web;
 
 public partial class Reports1NF_Report1NFNotifications : System.Web.UI.Page
 {

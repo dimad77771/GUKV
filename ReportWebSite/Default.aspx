@@ -84,6 +84,26 @@
                                 DataSourceID="GridViewStdReports_DataSource" 
                                 KeyFieldName="id"
                                 EnableCallBacks="False" >
+
+	                            <SettingsCommandButton>
+		                            <EditButton>
+			                            <Image Url="~/Styles/EditIcon.png" />
+		                            </EditButton>
+		                            <CancelButton>
+			                            <Image Url="~/Styles/CancelIcon.png" />
+		                            </CancelButton>
+		                            <UpdateButton>
+			                            <Image Url="~/Styles/SaveIcon.png" />
+		                            </UpdateButton>
+		                            <DeleteButton>
+			                            <Image Url="~/Styles/DeleteIcon.png" />
+		                            </DeleteButton>
+		                            <NewButton>
+			                            <Image Url="~/Styles/AddIcon.png" />
+		                            </NewButton>
+		                            <ClearFilterButton Text="Очистити" RenderMode="Link" />
+	                            </SettingsCommandButton>
+
                                 <Columns>
                                     <dx:GridViewDataTextColumn FieldName="id" ReadOnly="True" Visible="False" VisibleIndex="0" SortIndex="0" SortOrder="Descending">
                                         <EditFormSettings Visible="False" />
@@ -96,9 +116,8 @@
                                         </PropertiesHyperLinkEdit>
                                         <Settings SortMode="DisplayText" />
                                     </dx:GridViewDataHyperLinkColumn>
-                                    <dx:GridViewCommandColumn ShowSelectCheckbox="True" VisibleIndex="3">
-                                        <DeleteButton Visible="True"></DeleteButton>
-                                        <ClearFilterButton Visible="True"></ClearFilterButton>
+                                    <dx:GridViewCommandColumn ShowSelectCheckbox="True" VisibleIndex="3" 
+                                        ShowDeleteButton="True" ShowClearFilterButton="true">
                                     </dx:GridViewCommandColumn>
                                 </Columns>
                                 <SettingsBehavior ConfirmDelete="True" />

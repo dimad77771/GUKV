@@ -4,17 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using DevExpress.Web.ASPxEditors;
-using DevExpress.Web.ASPxClasses;
+using DevExpress.Web;
+using DevExpress.Web;
 using System.Web.Security;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Data;
 using GUKV.Conveyancing;
-using DevExpress.Web.ASPxPopupControl;
+using DevExpress.Web;
 using FirebirdSql.Data.FirebirdClient;
 using log4net;
-using DevExpress.Web.ASPxCallbackPanel;
+using DevExpress.Web;
 using System.Web.Configuration;
 using GUKV.Common;
 
@@ -1163,7 +1163,7 @@ public partial class Reports1NF_TransferRequestAdd : System.Web.UI.Page
             }
             connection.Close();
         }
-        DevExpress.Web.ASPxClasses.ASPxWebControl.RedirectOnCallback("ConveyancingRequestsList.aspx");
+        DevExpress.Web.ASPxWebControl.RedirectOnCallback("ConveyancingRequestsList.aspx");
     }
 
     protected void AproveTransferRequest()
@@ -1177,7 +1177,7 @@ public partial class Reports1NF_TransferRequestAdd : System.Web.UI.Page
             log.Info(ex.Message);
         }
 
-        DevExpress.Web.ASPxClasses.ASPxWebControl.RedirectOnCallback("ConveyancingRequestsList.aspx");
+        DevExpress.Web.ASPxWebControl.RedirectOnCallback("ConveyancingRequestsList.aspx");
     }
 
 //    protected void CommitBalansObjectChanges(int requestId, bool notifyByEmail)

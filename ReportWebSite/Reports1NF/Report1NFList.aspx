@@ -1,9 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Report1NFList.aspx.cs" Inherits="Reports1NF_Report1NFList"
     MasterPageFile="~/NoHeader.master" Title="Перелік звітів 1НФ" %>
 
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView.Export" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.Export" tagprefix="dx" %>
 <%@ Register src="../UserControls/FieldChooser.ascx" tagname="FieldChooser" tagprefix="uc3" %>
 <%@ Register Namespace="MiniProfilerHelpers" TagPrefix="mini" %>
 
@@ -374,7 +374,7 @@ WHERE id = @report_id"
 			<dx:ASPxPopupControl ID="ASPxPopupControlFreeSquare" runat="server" AllowDragging="True" 
 				ClientInstanceName="PopupObjectPhotos" EnableClientSideAPI="True" 
 				HeaderText="Документ" Modal="True" 
-				PopupHorizontalAlign="Center" PopupVerticalAlign="Middle" RenderMode="Lightweight" 
+				PopupHorizontalAlign="Center" PopupVerticalAlign="Middle"  
 				PopupAction="None" PopupElementID="ASPxGridViewFreeSquare" Width="700px" >
 				<ContentCollection>
 					<dx:PopupControlContentControl ID="PopupControlContentControl2" runat="server" SupportsDisabledAttribute="True">
@@ -471,6 +471,25 @@ WHERE id = @report_id"
     OnCustomFilterExpressionDisplayText="GridViewReports1NF_CustomFilterExpressionDisplayText"
     OnProcessColumnAutoFilter="GridViewReports1NF_ProcessColumnAutoFilter" >
 	<ClientSideEvents CustomButtonClick="ShowPhoto" />
+
+	<SettingsCommandButton>
+		<EditButton>
+			<Image Url="~/Styles/EditIcon.png" />
+		</EditButton>
+		<CancelButton>
+			<Image Url="~/Styles/CancelIcon.png" />
+		</CancelButton>
+		<UpdateButton>
+			<Image Url="~/Styles/SaveIcon.png" />
+		</UpdateButton>
+		<DeleteButton>
+			<Image Url="~/Styles/DeleteIcon.png" />
+		</DeleteButton>
+		<NewButton>
+			<Image Url="~/Styles/AddIcon.png" />
+		</NewButton>
+		<ClearFilterButton Text="Очистити" RenderMode="Link" />
+	</SettingsCommandButton>
 	
     <Columns>
         <dx:GridViewDataTextColumn FieldName="report_id" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="0" Width="45px" Caption="Картка Звіту">
@@ -560,16 +579,8 @@ WHERE id = @report_id"
         </dx:GridViewDataDateColumn>
 
 		
-        <dx:GridViewCommandColumn Caption="#" VisibleIndex="5" Width="60px" ButtonType="Image" CellStyle-Wrap="False" >
-             <EditButton Visible="True">
-				<Image Url="~/Styles/EditIcon.png" />
-             </EditButton>
-             <CancelButton>
-				<Image Url="~/Styles/CancelIcon.png" />
-            </CancelButton>
-            <UpdateButton>
-				<Image Url="~/Styles/SaveIcon.png" />
-			</UpdateButton>
+        <dx:GridViewCommandColumn Caption="#" VisibleIndex="5" Width="60px" ButtonType="Image" CellStyle-Wrap="False" 
+            ShowCancelButton="true" ShowUpdateButton="true" ShowEditButton="true" >
 
             <CustomButtons>
                 <dx:GridViewCommandColumnCustomButton ID="bnt_show_photo" Text="Звіт"> <Image Url="~/Styles/current_stage_pdf.png"> </Image>

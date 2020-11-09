@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using DevExpress.Web.ASPxGridView;
+using DevExpress.Web;
 using Syncfusion.XlsIO;
 
 public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
@@ -94,13 +94,13 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
     }
 
     protected void GridViewFreeSquare_CustomFilterExpressionDisplayText(object sender,
-        DevExpress.Web.ASPxEditors.CustomFilterExpressionDisplayTextEventArgs e)
+        DevExpress.Web.CustomFilterExpressionDisplayTextEventArgs e)
     {
         this.UpdateFilterDisplayTextCache(e.DisplayText, FreeSquareGridView);
     }
 
     protected void GridViewFreeSquare_ProcessColumnAutoFilter(object sender,
-        DevExpress.Web.ASPxGridView.ASPxGridViewAutoFilterEventArgs e)
+        DevExpress.Web.ASPxGridViewAutoFilterEventArgs e)
     {
         Utils.ProcessGridColumnAutoFilter(sender, e);
     }
@@ -114,7 +114,7 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 
 	protected void SqlDataSourceFreeSquare_Updating(object sender, SqlDataSourceCommandEventArgs e)
 	{
-		//DevExpress.Web.ASPxEditors.ASPxComboBox nnn;
+		//DevExpress.Web.ASPxComboBox nnn;
 		//GridViewDataComboBoxColumn rrr;
 		//rrr.PropertiesComboBox.sc
 		//rrr.PropertiesComboBox.ClientSideEvents
@@ -122,7 +122,7 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 		//a.PropertiesEditType
 		//a.PropertiesEditType
 		//GridViewDataTextColumn
-		//DevExpress.Web.ASPxGridView.GridViewDataDateColumn
+		//DevExpress.Web.GridViewDataDateColumn
 
 
 		//if (!string.IsNullOrEmpty(Request.QueryString["rid"]))

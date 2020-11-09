@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Application>
-  <ActionDesign>
-    <Actions>
-      <Action Id="BindAnalysisData" Caption="Spoji analitičke podatke" />
-      <Action Id="UnbindAnalysisData" Caption="Otpoji analitičke podatke" />
-    </Actions>
-  </ActionDesign>
-</Application>

@@ -6,8 +6,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
-using DevExpress.Web.ASPxGridView;
-using DevExpress.Web.ASPxEditors;
+using DevExpress.Web;
+using DevExpress.Web;
 using System.Data.SqlClient;
 
 public partial class OrendnaPlata_OrendnaPlataByBalans : System.Web.UI.Page
@@ -84,13 +84,13 @@ public partial class OrendnaPlata_OrendnaPlataByBalans : System.Web.UI.Page
     }
 
     protected void GridViewRentByBalansOrg_CustomFilterExpressionDisplayText(object sender,
-        DevExpress.Web.ASPxEditors.CustomFilterExpressionDisplayTextEventArgs e)
+        DevExpress.Web.CustomFilterExpressionDisplayTextEventArgs e)
     {
         this.UpdateFilterDisplayTextCache(e.DisplayText, PrimaryGridView);
     }
 
     protected void GridViewRentByBalansOrg_ProcessColumnAutoFilter(object sender,
-        DevExpress.Web.ASPxGridView.ASPxGridViewAutoFilterEventArgs e)
+        DevExpress.Web.ASPxGridViewAutoFilterEventArgs e)
     {
         Utils.ProcessGridColumnAutoFilter(sender, e);
     }

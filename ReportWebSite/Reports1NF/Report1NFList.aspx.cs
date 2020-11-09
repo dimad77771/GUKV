@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using DevExpress.Web.ASPxGridView;
+using DevExpress.Web;
 
 public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 {
@@ -38,10 +38,10 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
             SectionMenu.Visible = false;
             //PrimaryGridView.Set.
             var commandColumn = PrimaryGridView.Columns.OfType<GridViewCommandColumn>().Single();
-            commandColumn.EditButton.Visible = false;
+            commandColumn.ShowEditButton = false;
         }
 
-		PrimaryGridView.Settings.VerticalScrollBarMode = DevExpress.Web.ASPxClasses.ScrollBarMode.Visible;
+		PrimaryGridView.Settings.VerticalScrollBarMode = DevExpress.Web.ScrollBarMode.Visible;
 		PrimaryGridView.SettingsEditing.Mode = GridViewEditingMode.Inline;
 	}
 
@@ -76,13 +76,13 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
     }
 
     protected void GridViewReports1NF_CustomFilterExpressionDisplayText(object sender,
-        DevExpress.Web.ASPxEditors.CustomFilterExpressionDisplayTextEventArgs e)
+        DevExpress.Web.CustomFilterExpressionDisplayTextEventArgs e)
     {
         this.UpdateFilterDisplayTextCache(e.DisplayText, PrimaryGridView);
     }
 
     protected void GridViewReports1NF_ProcessColumnAutoFilter(object sender,
-        DevExpress.Web.ASPxGridView.ASPxGridViewAutoFilterEventArgs e)
+        DevExpress.Web.ASPxGridViewAutoFilterEventArgs e)
     {
         Utils.ProcessGridColumnAutoFilter(sender, e);
     }

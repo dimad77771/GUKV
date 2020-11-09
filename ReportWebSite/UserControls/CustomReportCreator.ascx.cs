@@ -28,7 +28,7 @@ public partial class UserControls_CustomReportCreator : System.Web.UI.UserContro
         }
     }
 
-    protected void CallbackPanelUserFolders_Callback(object sender, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+    protected void CallbackPanelUserFolders_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
     {
         // This callback is always called to refresh the drop-down of folders
 

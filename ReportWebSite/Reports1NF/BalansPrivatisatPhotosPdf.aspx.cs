@@ -12,7 +12,7 @@ using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using System.Security.Cryptography;
 using System.Text;
-using DevExpress.Web.ASPxClasses;
+using DevExpress.Web;
 using System.IO;
 using Syncfusion.Pdf;
 using System.Web.Configuration;

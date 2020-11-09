@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
-using DevExpress.Web.ASPxEditors;
+using DevExpress.Web;
 using System.Data;
 
 namespace GUKV

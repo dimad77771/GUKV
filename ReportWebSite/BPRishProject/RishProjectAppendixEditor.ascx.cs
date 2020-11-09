@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using DevExpress.Web.ASPxGridView;
-using DevExpress.Web.ASPxClasses;
-using DevExpress.Web.ASPxEditors;
+using DevExpress.Web;
+using DevExpress.Web;
+using DevExpress.Web;
 using DevExpress.Web.ASPxHtmlEditor;
 using System.IO;
-using DevExpress.Web.ASPxUploadControl;
+using DevExpress.Web;
 
 public partial class RishProjectAppendixEditor : System.Web.UI.UserControl
 {

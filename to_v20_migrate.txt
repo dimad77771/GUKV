@@ -1,0 +1,412 @@
+	1) удалить каталоги:
+		_eis_dkvsourcesfinaledition_reportwebsite
+		DX.Localization 
+		DemoWebSite 
+		ExtDataEntry\bin 
+		ExtDataEntry\obj
+		ImportToolUtils\bin 
+		ImportToolUtils\obj 
+	
+				2) dir /b /s *DevExpress*.dll > _____
+
+				//create table zzzzztemp0001a(
+				//	fullfile long varchar primary key
+				//);
+				//select * from zzzzztemp0001a;
+				select 
+				'copy "C:\Program Files (x86)\DevExpress 19.1\Components\Bin\Framework\' + replace(file,'v13.1','v19.1') + '" ' + '"' + path + '"' as cmd,
+				left(fullfile,p - 1) path, substring(fullfile, p + 1) file, locate(fullfile,'\',-1) p, * 
+				from zzzzztemp0001a a;
+
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Data.v20.1.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ExtDataEntry\bin"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Office.v20.1.Core.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ExtDataEntry\bin"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Printing.v20.1.Core.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ExtDataEntry\bin"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.RichEdit.v20.1.Core.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ExtDataEntry\bin"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Web.ASPxThemes.v20.1.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ExtDataEntry\bin"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Web.v20.1.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ExtDataEntry\bin"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Data.v20.1.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Office.v20.1.Core.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Printing.v20.1.Core.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.RichEdit.v20.1.Core.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.SpellChecker.v20.1.Core.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Utils.v20.1.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Web.ASPxHtmlEditor.v20.1.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Web.ASPxSpellChecker.v20.1.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Web.ASPxThemes.v20.1.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Web.ASPxTreeList.v20.1.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Web.v20.1.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.XtraEditors.v20.1.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.XtraPrinting.v20.1.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.XtraReports.v20.1.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.XtraReports.v20.1.Web.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Data.v20.1.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Office.v20.1.Core.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Printing.v20.1.Core.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.RichEdit.v20.1.Core.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.SpellChecker.v20.1.Core.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Utils.v20.1.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Web.ASPxHtmlEditor.v20.1.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Web.ASPxSpellChecker.v20.1.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Web.ASPxThemes.v20.1.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Web.ASPxTreeList.v20.1.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Web.v20.1.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.XtraEditors.v20.1.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.XtraPrinting.v20.1.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.XtraReports.v20.1.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin"
+	copy "C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.XtraReports.v20.1.Web.dll" "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin"
+
+
+3) Удалим лишнее
+
+select 'del "' + fullfile + '"' as cmd, * from zzzzztemp0001a a;
+
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ExtDataEntry\bin\DevExpress.Data.v13.1.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ExtDataEntry\bin\DevExpress.Office.v13.1.Core.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ExtDataEntry\bin\DevExpress.Printing.v13.1.Core.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ExtDataEntry\bin\DevExpress.RichEdit.v13.1.Core.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ExtDataEntry\bin\DevExpress.Web.ASPxThemes.v13.1.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ExtDataEntry\bin\DevExpress.Web.v13.1.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress\DevExpress.Data.v13.1.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress\DevExpress.Office.v13.1.Core.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress\DevExpress.Printing.v13.1.Core.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress\DevExpress.RichEdit.v13.1.Core.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress\DevExpress.SpellChecker.v13.1.Core.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress\DevExpress.Utils.v13.1.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress\DevExpress.Web.ASPxHtmlEditor.v13.1.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress\DevExpress.Web.ASPxSpellChecker.v13.1.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress\DevExpress.Web.ASPxThemes.v13.1.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress\DevExpress.Web.ASPxTreeList.v13.1.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress\DevExpress.Web.v13.1.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress\DevExpress.XtraEditors.v13.1.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress\DevExpress.XtraPrinting.v13.1.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress\DevExpress.XtraReports.v13.1.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\Lib\DevExpress\DevExpress.XtraReports.v13.1.Web.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin\DevExpress.Data.v13.1.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin\DevExpress.Office.v13.1.Core.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin\DevExpress.Printing.v13.1.Core.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin\DevExpress.RichEdit.v13.1.Core.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin\DevExpress.SpellChecker.v13.1.Core.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin\DevExpress.Utils.v13.1.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin\DevExpress.Web.ASPxHtmlEditor.v13.1.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin\DevExpress.Web.ASPxSpellChecker.v13.1.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin\DevExpress.Web.ASPxThemes.v13.1.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin\DevExpress.Web.ASPxTreeList.v13.1.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin\DevExpress.Web.v13.1.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin\DevExpress.XtraEditors.v13.1.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin\DevExpress.XtraPrinting.v13.1.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin\DevExpress.XtraReports.v13.1.dll"
+	del "E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin\DevExpress.XtraReports.v13.1.Web.dll"
+
+
+	4) 
+	  Замена
+	assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+	  на
+	assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+
+	type="DevExpress.Web.ASPxClasses.SettingsConfigurationSection, DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+	type="DevExpress.Web.ASPxClasses.SettingsConfigurationSection, DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+
+	Assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+	Assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+
+	Version=13.1.7.0
+	Version=20.1.3.0
+
+	Version=13.1.4.0
+	Version=20.1.3.0
+
+	.v13.1
+	.v20.1
+
+	Поиск "13.1". Осталься только файл PDF-документация
+
+	------------------------------------------------------------------------------------
+	5) Удлаить все licenses.licx 
+
+
+	------------------------------------------------------------------------------------
+	В проекте ImportToolUtils 
+	удалить ссылки
+		DevExpress.Data.v13.1
+		DevExpress.Web.v13.1
+	добавить ссылки
+		C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Data.v20.1.dll
+		C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Web.v20.1.dll
+		C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Images.v20.1.dll
+
+
+
+	------------------------------------------------------------------------------------
+	Сменить "Target Framework" на 4.5.2 для проектов:
+		ImportToolUtils
+		ReportWebSite
+
+	------------------------------------------------------------------------------------
+	Переустановить nuget-пакеты (перевести на 4.5.2) для проекта ReportWebSite 
+	Пакеты:
+		ExcelDataReader	(2.1.2.3)
+		HtmlAgilityPack	(1.4.9)
+		log4net		(2.0.5)
+		Newtonsoft.Json	(8.0.2)
+	Удалить и поставить заново ту же версию
+
+	------------------------------------------------------------------------------------
+	6) Глобальные замены
+	using DevExpress.Web.ASPxGridView;
+	using DevExpress.Web;
+
+	using DevExpress.Web.ASPxEditors;
+	using DevExpress.Web;
+
+	using DevExpress.Web.ASPxCallbackPanel;
+	using DevExpress.Web;
+
+	using DevExpress.Web.ASPxClasses;
+	using DevExpress.Web;
+
+	using DevExpress.Web.ASPxTreeView;
+	using DevExpress.Web;
+
+	using DevExpress.Web.ASPxUploadControl;
+	using DevExpress.Web;
+
+	using DevExpress.Web.ASPxCallback;
+	using DevExpress.Web;
+
+	using DevExpress.Web.ASPxImageGallery;
+	using DevExpress.Web;
+
+	using DevExpress.Web.ASPxRoundPanel;
+	using DevExpress.Web;
+
+	using DevExpress.Web.ASPxPopupControl;
+	using DevExpress.Web;
+
+	DevExpress.Web.ASPxClasses.
+	DevExpress.Web.
+
+	DevExpress.Web.ASPxMenu.
+	DevExpress.Web.
+
+	DevExpress.Web.ASPxTabControl.
+	DevExpress.Web.
+
+	DevExpress.Web.ASPxEditors.
+	DevExpress.Web.
+
+	DevExpress.Web.ASPxGridView.
+	DevExpress.Web.
+
+	DevExpress.Web.ASPxUploadControl.
+	DevExpress.Web.
+
+	DevExpress.Web.Export.
+	DevExpress.Web.
+
+DevExpress.Web.ASPxHtmlEditor
+
+	RenderMode="Lightweight"
+	<пусто>
+	(смотри https://www.devexpress.com/Support/Center/Question/Details/T573457/aspxpopupcontrol-the-the-rendermode-property-cannot-be-set-declaratively-error-occurs)
+
+	EnableDefaultAppearance="false"
+	<пусто>
+	(не уверен)
+
+	<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
+	<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+
+	<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxTabControl" tagprefix="dx" %>
+	<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+
+	<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
+	<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+
+	<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView.Export" tagprefix="dx" %>
+	<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+
+	<%@ Register Assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxPanel" TagPrefix="dx" %>
+	<%@ Register Assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
+
+	Namespace="DevExpress.Web.ASPxImageGallery" TagPrefix="dx" %>
+	Namespace="DevExpress.Web" TagPrefix="dx" %>
+
+	Namespace="DevExpress.Web.ASPxImageSlider" TagPrefix="dx" %>
+	Namespace="DevExpress.Web" TagPrefix="dx" %>
+
+	Namespace="DevExpress.Web.ASPxFormLayout" TagPrefix="dx" %>
+	Namespace="DevExpress.Web" TagPrefix="dx" %>
+
+	<%@ Register TagPrefix="dx" Namespace="DevExpress.Web.ASPxRoundPanel" Assembly="DevExpress.Web.v20.1" %>
+	<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v20.1" %>
+
+	<%@ Register TagPrefix="dx" Namespace="DevExpress.Web.ASPxCallbackPanel" Assembly="DevExpress.Web.v20.1" %>
+	<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v20.1" %>
+
+	<%@ Register TagPrefix="dx" Namespace="DevExpress.Web.ASPxEditors" Assembly="DevExpress.Web.v20.1" %>
+	<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v20.1" %>
+
+	<%@ Register TagPrefix="dx" Namespace="DevExpress.Web.ASPxPopupControl" Assembly="DevExpress.Web.v20.1" %>
+	<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v20.1" %>
+
+	-----------------------------------------------------------------------------------------
+	Комментируем в web.config:
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxClasses" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxCallback" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxCallbackPanel" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxCloudControl" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxDataView" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxFileManager" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxGlobalEvents" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxHeadline" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxHiddenField" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxLoadingPanel" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxMenu" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxNavBar" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxNewsControl" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxObjectContainer" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxPager" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxPanel" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxPopupControl" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxRatingControl" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxRoundPanel" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxSplitter" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxTabControl" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxTimer" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxTitleIndex" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxTreeView" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxDocking" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxSiteMapControl" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxUploadControl" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxEditors" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxGridView" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxTreeList" assembly="DevExpress.Web.ASPxTreeList.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		<add tagPrefix="dx" namespace="DevExpress.Web.ASPxHtmlEditor" assembly="DevExpress.Web.ASPxHtmlEditor.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+
+
+		----------------------------------------------------------------------------------------------------
+		Файл web.config:
+		Выше строки
+			<add tagPrefix="dx" namespace="DevExpress.Web.ASPxClasses" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+		добавить
+			<add tagPrefix="dx" namespace="DevExpress.Web" assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+
+
+
+
+	----------------------------------------------------------------------------------------------------
+	В такой конструкции 
+		<dx:GridViewCommandColumn VisibleIndex="1">
+		    <DeleteButton visible="True"></DeleteButton>
+		</dx:GridViewCommandColumn>
+	надо менять на
+		<dx:GridViewCommandColumn VisibleIndex="1" ShowDeleteButton="True">
+		</dx:GridViewCommandColumn>
+
+	----------------------------------------------------------------------------------------------------
+	https://www.devexpress.com/Support/Center/Question/Details/T246446/how-to-update-obsolete-command-button-properties-cs0619-devexpress-web
+	вместо
+		<dx:ASPxGridView>  
+		    <Columns>  
+			<dx:GridViewCommandColumn>  
+			    <EditButton Visible="true" Text="Edit">  
+			    </EditButton>  
+			</dx:GridViewCommandColumn>  
+		    </Columns>  
+		</dx:ASPxGridView>
+	надо	
+		<dx:ASPxGridView>  
+		    <Columns>  
+			<dx:GridViewCommandColumn ShowEditButton="true">  
+			</dx:GridViewCommandColumn>  
+		    </Columns>  
+			<SettingsCommandButton>  
+				<EditButton>
+					<Image ToolTip="Редагувати Платіж" Url="../Styles/EditIcon.png" />
+				</EditButton>  
+				<DeleteButton>
+					<Image ToolTip="Видалити Платіж" Url="../Styles/DeleteIcon.png" />
+				</DeleteButton>  
+			</SettingsCommandButton>  
+		</dx:ASPxGridView>	
+
+ShowNewButton="true"
+ShowDeleteButton="True"
+ShowEditButton="true" 
+ShowCancelButton="true" 
+ShowClearFilterButton="true"		
+ShowUpdateButton="true"
+
+
+	!!!! везде вставлять внуть <dx:ASPxGridView> (там где есть <dx:GridViewCommandColumn ...)
+	    <SettingsCommandButton>
+		    <EditButton>
+			    <Image Url="~/Styles/EditIcon.png" />
+		    </EditButton>
+		    <CancelButton>
+			    <Image Url="~/Styles/CancelIcon.png" />
+		    </CancelButton>
+		    <UpdateButton>
+			    <Image Url="~/Styles/SaveIcon.png" />
+		    </UpdateButton>
+		    <DeleteButton>
+			    <Image Url="~/Styles/DeleteIcon.png" />
+		    </DeleteButton>
+		    <NewButton>
+			    <Image Url="~/Styles/AddIcon.png" />
+		    </NewButton>
+		    <ClearFilterButton Text="Очистити" RenderMode="Link" />
+	    </SettingsCommandButton>
+	 !!!
+
+	
+	
+----------------------------------------------------------------------------------------------------
+там где есть
+	<dx:ASPxHtmlEditor	
+надо добавить заголовок
+	<%@ Register assembly="DevExpress.Web.ASPxHtmlEditor.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxHtmlEditor" tagprefix="dx" %>
+
+там где есть
+	<dx:ASPxTreeListTemplateReplacement
+	<dx:ASPxTreeList
+надо добавить заголовок
+	<%@ Register assembly="DevExpress.Web.ASPxTreeList.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxTreeList" tagprefix="dx" %>
+	
+	
+E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\Reports1NF\OrgBalansObject.aspx
+
+---------------------------------------------
+копируем
+	"C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.XtraReports.v20.1.Web.WebForms.dll" 
+в 
+	E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\bin
+
+добавим DevExpress.XtraReports.v20.1.Web.WebForms.dll в ReportWebSite-REFERENCES 
+
+там где есть
+	<dx:ReportToolbar
+надо добавить заголовок
+	<%@ Register assembly="DevExpress.XtraReports.v20.1.Web.WebForms, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.XtraReports.Web" tagprefix="dx" %>
+
+
+---------------------------------------------
+вместо 
+	<dx:ASPxCallbackPanel ID="ASPxCallbackPanelImageGallery" ShowLoadingPanel="false" ....>
+	
+надо
+	<dx:ASPxCallbackPanel ID="ASPxCallbackPanelImageGallery" ...>
+		<SettingsLoadingPanel Enabled="false"/>
+		
+--------------------------------------------
+Удалить ненужные страницы:
+	OrgBalansObject_20180330.aspx
+	OrgBalansObject_201806.aspx
+	OrgBalansObject_20180614.aspx.cs
+	OrgBalansObject_20180814.aspx
+	OrgBalansObject_20180822.aspx
+	OrgBalansObject_20180903.aspx
+	OrgBalansObject_20190103.aspx
+	OrgBalansObject_20190410.aspx.cs
+	OrgBalansObject_1.aspx

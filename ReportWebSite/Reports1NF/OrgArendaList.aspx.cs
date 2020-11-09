@@ -7,11 +7,11 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using DevExpress.Web.ASPxGridView;
-using DevExpress.Web.ASPxCallbackPanel;
-using DevExpress.Web.ASPxEditors;
+using DevExpress.Web;
+using DevExpress.Web;
+using DevExpress.Web;
 using DevExpress.Web.Data;
-using DevExpress.Web.ASPxClasses;
+using DevExpress.Web;
 using FirebirdSql.Data.FirebirdClient;
 
 public partial class Reports1NF_OrgArendaList : System.Web.UI.Page
@@ -292,7 +292,7 @@ public partial class Reports1NF_OrgArendaList : System.Web.UI.Page
                 }
             }
         }
-        PrimaryGridView.Settings.VerticalScrollBarMode = DevExpress.Web.ASPxClasses.ScrollBarMode.Visible;
+        PrimaryGridView.Settings.VerticalScrollBarMode = DevExpress.Web.ScrollBarMode.Visible;
     }
 
     protected int ReportID
@@ -742,7 +742,7 @@ public partial class Reports1NF_OrgArendaList : System.Web.UI.Page
     }
 
     protected void PrimaryGridView_CustomColumnSort(object sender,
-        DevExpress.Web.ASPxGridView.CustomColumnSortEventArgs e)
+        DevExpress.Web.CustomColumnSortEventArgs e)
     {
         Utils.ProcessGridSortByBuildingNumber(e);
     }

@@ -1,9 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ManageRoles.aspx.cs" Inherits="Account_ManageRoles"
     MasterPageFile="~/Site.master" Title="Керування Правами Доступу" %>
 
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxTabControl" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
@@ -27,13 +27,30 @@
                     KeyFieldName="RoleName"
                     OnRowDeleting="GridViewRoles_RowDeleting">
 
+	                <SettingsCommandButton>
+		                <EditButton>
+			                <Image Url="~/Styles/EditIcon.png" />
+		                </EditButton>
+		                <CancelButton>
+			                <Image Url="~/Styles/CancelIcon.png" />
+		                </CancelButton>
+		                <UpdateButton>
+			                <Image Url="~/Styles/SaveIcon.png" />
+		                </UpdateButton>
+		                <DeleteButton>
+			                <Image Url="~/Styles/DeleteIcon.png" />
+		                </DeleteButton>
+		                <NewButton>
+			                <Image Url="~/Styles/AddIcon.png" />
+		                </NewButton>
+		                <ClearFilterButton Text="Очистити" RenderMode="Link" />
+	                </SettingsCommandButton>
+
                     <Columns>
                         <dx:GridViewDataTextColumn VisibleIndex="0" FieldName="RoleName" ReadOnly="True" Caption="Роль">
                         </dx:GridViewDataTextColumn>
 
-                        <dx:GridViewCommandColumn VisibleIndex="1">
-                            <DeleteButton visible="True"></DeleteButton>
-                        </dx:GridViewCommandColumn>
+                        <dx:GridViewCommandColumn VisibleIndex="1" ShowDeleteButton="True"/>
                     </Columns>
 
                     <SettingsBehavior EnableCustomizationWindow="False" ColumnResizeMode="Control" />
@@ -80,13 +97,30 @@
                     KeyFieldName="RoleName"
                     OnRowDeleting="GridViewUserRoles_RowDeleting">
 
+	                <SettingsCommandButton>
+		                <EditButton>
+			                <Image Url="~/Styles/EditIcon.png" />
+		                </EditButton>
+		                <CancelButton>
+			                <Image Url="~/Styles/CancelIcon.png" />
+		                </CancelButton>
+		                <UpdateButton>
+			                <Image Url="~/Styles/SaveIcon.png" />
+		                </UpdateButton>
+		                <DeleteButton>
+			                <Image Url="~/Styles/DeleteIcon.png" />
+		                </DeleteButton>
+		                <NewButton>
+			                <Image Url="~/Styles/AddIcon.png" />
+		                </NewButton>
+		                <ClearFilterButton Text="Очистити" RenderMode="Link" />
+	                </SettingsCommandButton>
+
                     <Columns>
                         <dx:GridViewDataTextColumn VisibleIndex="0" FieldName="RoleName" ReadOnly="True" Caption="Роль Користувача">
                         </dx:GridViewDataTextColumn>
 
-                        <dx:GridViewCommandColumn VisibleIndex="1">
-                            <DeleteButton visible="True"></DeleteButton>
-                        </dx:GridViewCommandColumn>
+                        <dx:GridViewCommandColumn VisibleIndex="1" ShowDeleteButton="True"/>
                     </Columns>
 
                     <SettingsBehavior EnableCustomizationWindow="False" ColumnResizeMode="Control" />

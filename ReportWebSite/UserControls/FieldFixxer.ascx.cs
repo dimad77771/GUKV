@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.UI;
-using DevExpress.Web.ASPxEditors;
-using DevExpress.Web.ASPxGridView;
+using DevExpress.Web;
+using DevExpress.Web;
 
 public partial class UserControls_FieldFixxer : UserControl
 {
@@ -10,7 +10,7 @@ public partial class UserControls_FieldFixxer : UserControl
 
     }
 
-    protected void CallbackPanelGridColumns_Callback(object sender, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+    protected void CallbackPanelGridColumns_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
     {
         ASPxGridView grid = FindGridRecursive(Page);
 
@@ -20,7 +20,7 @@ public partial class UserControls_FieldFixxer : UserControl
         }
         else
         {
-            DevExpress.Web.ASPxTabControl.ASPxPageControl pageControl = FindPageControl(Page.Master);
+            DevExpress.Web.ASPxPageControl pageControl = FindPageControl(Page.Master);
 
             if (pageControl != null)
             {
@@ -47,7 +47,7 @@ public partial class UserControls_FieldFixxer : UserControl
         }
         else
         {
-            DevExpress.Web.ASPxTabControl.ASPxPageControl pageControl = FindPageControl(Page.Master);
+            DevExpress.Web.ASPxPageControl pageControl = FindPageControl(Page.Master);
 
             if (pageControl != null)
             {
@@ -64,16 +64,16 @@ public partial class UserControls_FieldFixxer : UserControl
         }
     }
 
-    protected DevExpress.Web.ASPxTabControl.ASPxPageControl FindPageControl(Control c)
+    protected DevExpress.Web.ASPxPageControl FindPageControl(Control c)
     {
         foreach (Control child in c.Controls)
         {
-            if (child is DevExpress.Web.ASPxTabControl.ASPxPageControl)
+            if (child is DevExpress.Web.ASPxPageControl)
             {
-                return child as DevExpress.Web.ASPxTabControl.ASPxPageControl;
+                return child as DevExpress.Web.ASPxPageControl;
             }
 
-            DevExpress.Web.ASPxTabControl.ASPxPageControl p = FindPageControl(child);
+            DevExpress.Web.ASPxPageControl p = FindPageControl(child);
 
             if (p != null)
             {

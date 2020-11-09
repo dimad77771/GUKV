@@ -57,7 +57,7 @@
                 </PanelCollection>
             </dx:ASPxCallbackPanel>
 
-            <dx:ASPxPopupControl ID="editTextPopup" ClientInstanceName="editTextPopup" runat="server" Modal="true" RenderMode="Lightweight" PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="false" ShowHeader="false" EnableTheming="false">
+            <dx:ASPxPopupControl ID="editTextPopup" ClientInstanceName="editTextPopup" runat="server" Modal="true"  PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="false" ShowHeader="false" EnableTheming="false">
                 <HeaderStyle HorizontalAlign="Center" />
                 <ContentCollection>
                     <dx:PopupControlContentControl runat="server">

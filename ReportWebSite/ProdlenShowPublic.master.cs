@@ -18,7 +18,7 @@ public partial class ProdlenShowPublic : System.Web.UI.MasterPage
         //// If user does not belong to the role "1NFReportReviewer", hide the menu items related to 1NF reports
         //if (!userIsReportReviewer && !userIsRdaController)
         //{
-        //    foreach (DevExpress.Web.ASPxMenu.MenuItem item in MainMenu.Items)
+        //    foreach (DevExpress.Web.MenuItem item in MainMenu.Items)
         //    {
         //        if (item.NavigateUrl.Contains("Reports1NF"))
         //        {
@@ -31,7 +31,7 @@ public partial class ProdlenShowPublic : System.Web.UI.MasterPage
         //// If user belongs to the RDA role, hide some items
         //if (userIsRdaController)
         //{
-        //    foreach (DevExpress.Web.ASPxMenu.MenuItem item in MainMenu.Items)
+        //    foreach (DevExpress.Web.MenuItem item in MainMenu.Items)
         //    {
         //        if (item.NavigateUrl.Contains("/Default") ||
         //            item.NavigateUrl.Contains("/Documents") ||
@@ -47,7 +47,7 @@ public partial class ProdlenShowPublic : System.Web.UI.MasterPage
         //// If user is not authenticated, hide the main menu
         //if (Membership.GetUser() == null)
         //{
-        //    foreach (DevExpress.Web.ASPxMenu.MenuItem item in MainMenu.Items)
+        //    foreach (DevExpress.Web.MenuItem item in MainMenu.Items)
         //    {
         //        item.ClientVisible = false;
         //    }

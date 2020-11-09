@@ -7,9 +7,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
-using DevExpress.Web.ASPxEditors;
-using DevExpress.Web.ASPxRoundPanel;
-using DevExpress.Web.ASPxClasses;
+using DevExpress.Web;
+using DevExpress.Web;
+using DevExpress.Web;
 using GUKV.Common;
 
 public partial class Reports1NF_OrgInfo : System.Web.UI.Page

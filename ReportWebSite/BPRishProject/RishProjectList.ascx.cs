@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
-using DevExpress.Web.ASPxGridView;
+using DevExpress.Web;
 using System.Data.SqlClient;
-using DevExpress.Web.ASPxClasses;
+using DevExpress.Web;
 using System.IO;
 
 public partial class BPRishProject_RishProjectList : System.Web.UI.UserControl
@@ -318,7 +318,7 @@ public partial class BPRishProject_RishProjectList : System.Web.UI.UserControl
                     GridViewRishProjects.DataBind();
                 }
                 else
-                    DevExpress.Web.ASPxClasses.ASPxWebControl.RedirectOnCallback(Page.ResolveClientUrl("~/BPRishProject/RishProjectForm.aspx?projid=" + clonedProjectId.ToString()));
+                    DevExpress.Web.ASPxWebControl.RedirectOnCallback(Page.ResolveClientUrl("~/BPRishProject/RishProjectForm.aspx?projid=" + clonedProjectId.ToString()));
             }
         }
     }

@@ -1,12 +1,12 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OrgOccupation.aspx.cs" Inherits="Admin_OrgOccupation" MasterPageFile="~/NoMenu.master" Title="Сфера діяльності балансоутримувачів" EnableViewState="true" %>
 
-<%@ Register Assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
-    Namespace="DevExpress.Web.ASPxImageGallery" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web" TagPrefix="dx" %>
 
-<%@ Register Assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
-    Namespace="DevExpress.Web.ASPxImageSlider" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web" TagPrefix="dx" %>
 
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 <%@ Register Namespace="MiniProfilerHelpers" TagPrefix="mini" %>
 
 
@@ -87,21 +87,29 @@ where org_id = @org_id and period_id=@period_id"
             </EditForm>
         </Templates>
 
-        <Columns>
+	    <SettingsCommandButton>
+		    <EditButton>
+			    <Image Url="~/Styles/EditIcon.png" />
+		    </EditButton>
+		    <CancelButton>
+			    <Image Url="~/Styles/CancelIcon.png" />
+		    </CancelButton>
+		    <UpdateButton>
+			    <Image Url="~/Styles/SaveIcon.png" />
+		    </UpdateButton>
+		    <DeleteButton>
+			    <Image Url="~/Styles/DeleteIcon.png" />
+		    </DeleteButton>
+		    <NewButton>
+			    <Image Url="~/Styles/AddIcon.png" />
+		    </NewButton>
+		    <ClearFilterButton Text="Очистити" RenderMode="Link" />
+	    </SettingsCommandButton>
 
+        <Columns>
             <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" Width="50px"
-                ShowInCustomizationForm="True" CellStyle-Wrap="False">
-                <EditButton Visible="True">
-                    <Image Url="~/Styles/EditIcon.png" />
-                </EditButton>
-                <CancelButton>
-                    <Image Url="~/Styles/CancelIcon.png" />
-                </CancelButton>
-                <UpdateButton>
-                    <Image Url="~/Styles/EditIcon.png" />
-                </UpdateButton>
-                <ClearFilterButton Visible="True">
-                </ClearFilterButton>
+                ShowInCustomizationForm="True" CellStyle-Wrap="False" 
+                    ShowEditButton="true" ShowCancelButton="true" ShowUpdateButton="true" ShowClearFilterButton="true" >
                 <CellStyle Wrap="False"></CellStyle>
             </dx:GridViewCommandColumn>
 

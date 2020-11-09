@@ -7,9 +7,9 @@ using System.Web.UI.WebControls;
 using System.Web.Security;
 using System.Data;
 using System.Data.SqlClient;
-using DevExpress.Web.ASPxGridView;
-using DevExpress.Web.ASPxClasses;
-using DevExpress.Web.ASPxEditors;
+using DevExpress.Web;
+using DevExpress.Web;
+using DevExpress.Web;
 
 public partial class Finance_FinanceView : System.Web.UI.Page
 {
@@ -651,26 +651,26 @@ public partial class Finance_FinanceView : System.Web.UI.Page
     }
 
     protected void GridViewFinance_ProcessColumnAutoFilter(object sender,
-        DevExpress.Web.ASPxGridView.ASPxGridViewAutoFilterEventArgs e)
+        DevExpress.Web.ASPxGridViewAutoFilterEventArgs e)
     {
         Utils.ProcessGridColumnAutoFilter(sender, e);
     }
 
     protected void GridViewFinance_CustomFilterExpressionDisplayText(object sender,
-        DevExpress.Web.ASPxEditors.CustomFilterExpressionDisplayTextEventArgs e)
+        DevExpress.Web.CustomFilterExpressionDisplayTextEventArgs e)
     {
         this.UpdateFilterDisplayTextCache(e.DisplayText, PrimaryGridView);
     }
 
     protected void GridViewFinance_CustomColumnSort(object sender,
-        DevExpress.Web.ASPxGridView.CustomColumnSortEventArgs e)
+        DevExpress.Web.CustomColumnSortEventArgs e)
     {
         Utils.ProcessGridSortByBuildingNumber(e);
     }
 
     #region Column comparison
 
-    protected void ComboCompareField_Callback(object sender, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+    protected void ComboCompareField_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
     {
         ASPxComboBox comboBox = sender as ASPxComboBox;
 
@@ -687,7 +687,7 @@ public partial class Finance_FinanceView : System.Web.UI.Page
         }
     }
 
-    protected void ComboSumField_Callback(object sender, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+    protected void ComboSumField_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
     {
         ComboCompareField_Callback(sender, e);
     }
@@ -865,7 +865,7 @@ public partial class Finance_FinanceView : System.Web.UI.Page
         }
     }
 
-    protected void CPValueColRows_Callback(object sender, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+    protected void CPValueColRows_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
     {
         if (e.Parameter.Length > 0)
         {

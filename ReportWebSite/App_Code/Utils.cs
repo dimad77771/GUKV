@@ -8,10 +8,10 @@ using System.Reflection;
 using System.Web.UI.WebControls;
 using System.Web.Configuration;
 using System.Configuration;
-using DevExpress.Web.ASPxGridView.Export;
-using DevExpress.Web.ASPxGridView;
+using DevExpress.Web.Export;
+using DevExpress.Web;
 using DevExpress.Web.ASPxTreeList;
-using DevExpress.Web.ASPxEditors;
+using DevExpress.Web;
 using DevExpress.Web.ASPxHtmlEditor;
 using DevExpress.Data.Filtering;
 using System.IO;
@@ -252,7 +252,7 @@ public static class Utils
     }
 
     public static void ExportGridToPDF(this Page page, ASPxGridViewExporter exporter,
-        DevExpress.Web.ASPxGridView.ASPxGridView grid, string reportTitle, string gridDataSourceID = null)
+        DevExpress.Web.ASPxGridView grid, string reportTitle, string gridDataSourceID = null)
     {
         // If the data source ID is specified, bind the grid to data
         if (!string.IsNullOrEmpty(gridDataSourceID))
@@ -308,7 +308,7 @@ public static class Utils
     }
 
     public static void ExportGridToCSV(this Page page, ASPxGridViewExporter exporter,
-        DevExpress.Web.ASPxGridView.ASPxGridView grid, string reportTitle, string gridDataSourceID = null)
+        DevExpress.Web.ASPxGridView grid, string reportTitle, string gridDataSourceID = null)
     {
         // If the data source ID is specified, bind the grid to data
         if (!string.IsNullOrEmpty(gridDataSourceID))
@@ -352,7 +352,7 @@ public static class Utils
         RestoreGridCardColumns(grid, cardColumns);
     }
 
-    private static void HideGridCardColumns(DevExpress.Web.ASPxGridView.ASPxGridView grid,
+    private static void HideGridCardColumns(DevExpress.Web.ASPxGridView grid,
         Dictionary<int, bool> cardColumns, ExportGridToXLS__ExportHiddenColumn exportHiddenColumnCallback = null)
     {
         for (int i = 0; i < grid.Columns.Count; i++)
@@ -383,7 +383,7 @@ public static class Utils
         }
     }
 
-    private static void RestoreGridCardColumns(DevExpress.Web.ASPxGridView.ASPxGridView grid,
+    private static void RestoreGridCardColumns(DevExpress.Web.ASPxGridView grid,
         Dictionary<int, bool> cardColumns)
     {
         foreach (KeyValuePair<int, bool> pair in cardColumns)
@@ -939,7 +939,7 @@ public static class Utils
 
     #region Common event handlers for all data grids
 
-    public static void ProcessGridDataFetch(this Page page, StateBag viewState, DevExpress.Web.ASPxGridView.ASPxGridView grid)
+    public static void ProcessGridDataFetch(this Page page, StateBag viewState, DevExpress.Web.ASPxGridView grid)
     {
         if (!page.IsCallback && !page.IsPostBack)
         {
@@ -1161,7 +1161,7 @@ public static class Utils
         return gridId;
     }
 
-    public static void AdjustColumnsVisibleInFilter(DevExpress.Web.ASPxGridView.ASPxGridView grid)
+    public static void AdjustColumnsVisibleInFilter(DevExpress.Web.ASPxGridView grid)
     {
         foreach (GridViewDataColumn column in grid.Columns.Cast<GridViewColumn>().Where(x => x is GridViewDataColumn))
         {
@@ -1248,7 +1248,7 @@ public static class Utils
         return pageSize;
     }
 
-    public static void ProcessGridPageSizeInCallback(DevExpress.Web.ASPxGridView.ASPxGridView grid,
+    public static void ProcessGridPageSizeInCallback(DevExpress.Web.ASPxGridView grid,
         ref string gridCallbackParam, int usualRowHeight)
     {
         int clientWinHeight = ExtractBrowserWndHeight(ref gridCallbackParam);
@@ -1260,7 +1260,7 @@ public static class Utils
     }
 
     public static void ProcessGridColumnAutoFilter(object sender,
-        DevExpress.Web.ASPxGridView.ASPxGridViewAutoFilterEventArgs e)
+        DevExpress.Web.ASPxGridViewAutoFilterEventArgs e)
     {
         if (e.Kind == GridViewAutoFilterEventKind.CreateCriteria)
         {
@@ -1293,7 +1293,7 @@ public static class Utils
         }
     }
 
-    private static void AdjustGridCookieVersion(DevExpress.Web.ASPxGridView.ASPxGridView grid, ref string cookie)
+    private static void AdjustGridCookieVersion(DevExpress.Web.ASPxGridView grid, ref string cookie)
     {
         if (cookie.ToLower().StartsWith("version"))
         {
@@ -1339,7 +1339,7 @@ public static class Utils
 
 
 
-    public static void ProcessGridSortByBuildingNumber(DevExpress.Web.ASPxGridView.CustomColumnSortEventArgs e)
+    public static void ProcessGridSortByBuildingNumber(DevExpress.Web.CustomColumnSortEventArgs e)
     {
 
         string value1 = e.Value1 is string ? (string)e.Value1 : "";
@@ -1472,7 +1472,7 @@ public static class Utils
     #region Grid filter formatting
 
     public static void UpdateFilterDisplayTextCache(this Page page, string filter,
-        DevExpress.Web.ASPxGridView.ASPxGridView grid)
+        DevExpress.Web.ASPxGridView grid)
     {
         // Update the filter string in the cache
         Dictionary<string, string> filterCache = null;
@@ -1495,7 +1495,7 @@ public static class Utils
     }
 
     public static string GetFilterDisplayTextFromCache(this Page page,
-        DevExpress.Web.ASPxGridView.ASPxGridView grid)
+        DevExpress.Web.ASPxGridView grid)
     {
         Dictionary<string, string> filterCache = null;
 
@@ -1523,7 +1523,7 @@ public static class Utils
         return "";
     }
 
-    public static void AdjustGridColumnsForExport(DevExpress.Web.ASPxGridView.ASPxGridView grid)
+    public static void AdjustGridColumnsForExport(DevExpress.Web.ASPxGridView grid)
     {
         double defaultColumnWidth = 80;
 
@@ -1564,8 +1564,8 @@ public static class Utils
         }
     }
 
-    public static void SetGridExporterProps(DevExpress.Web.ASPxGridView.ASPxGridView grid,
-        DevExpress.Web.ASPxGridView.Export.ASPxGridViewExporter exporter,
+    public static void SetGridExporterProps(DevExpress.Web.ASPxGridView grid,
+        DevExpress.Web.ASPxGridViewExporter exporter,
         string reportTitle, Page page)
     {
         string strFilter = page.GetFilterDisplayTextFromCache(exporter.GridView);

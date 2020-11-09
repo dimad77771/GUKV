@@ -6,7 +6,7 @@ using FirebirdSql.Data.FirebirdClient;
 using System.IO;
 using System.Data.SqlClient;
 using System.Text;
-using DevExpress.Web.ASPxEditors;
+using DevExpress.Web;
 using GUKV.Common;
 
 namespace GUKV.ImportToolUtils
@@ -708,7 +708,7 @@ namespace GUKV.ImportToolUtils
             }
         }
 /*
-        public static void FillComboBoxFromDictionary1NF_Hierarchical(DevExpress.Web.ASPxEditors.ASPxComboBox combo,
+        public static void FillComboBoxFromDictionary1NF_Hierarchical(DevExpress.Web.ASPxComboBox combo,
             string dictionaryName, int parentKey)
         {
             combo.Items.Clear();
@@ -727,7 +727,7 @@ namespace GUKV.ImportToolUtils
             }
         }
         */
-        public static void FillComboBoxFromDictionaryNJF(DevExpress.Web.ASPxEditors.ASPxComboBox combo, string dictionaryName)
+        public static void FillComboBoxFromDictionaryNJF(DevExpress.Web.ASPxComboBox combo, string dictionaryName)
         {
             combo.Items.Clear();
 
@@ -742,7 +742,7 @@ namespace GUKV.ImportToolUtils
             }
         }
         /*
-        public static void FillComboBoxFromDictionaryNJF_Hierarchical(DevExpress.Web.ASPxEditors.ASPxComboBox combo,
+        public static void FillComboBoxFromDictionaryNJF_Hierarchical(DevExpress.Web.ASPxComboBox combo,
             string dictionaryName, int parentKey)
         {
             combo.Items.Clear();
@@ -761,7 +761,7 @@ namespace GUKV.ImportToolUtils
             }
         }
 
-        public static void RemoveComboBoxValue(DevExpress.Web.ASPxEditors.ASPxComboBox combo, int key)
+        public static void RemoveComboBoxValue(DevExpress.Web.ASPxComboBox combo, int key)
         {
             int indexToRemove = -1;
 

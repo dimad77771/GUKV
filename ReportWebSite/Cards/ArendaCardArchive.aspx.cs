@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using DevExpress.Web.ASPxGridView;
+using DevExpress.Web;
 using System.Data.SqlClient;
 using System.Web.Configuration;
 using System.IO;
-using DevExpress.Web.ASPxClasses;
+using DevExpress.Web;
 
 public partial class Cards_ArendaCardArchive : System.Web.UI.Page
 {

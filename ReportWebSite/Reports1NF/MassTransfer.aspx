@@ -322,6 +322,26 @@
                                                 <dx:ASPxGridView ID="gridView2" runat="server" AutoGenerateColumns="False" 
                                                     ClientInstanceName="gridView2" KeyFieldName="BalansId" Width="100%" 
                                                     OnHtmlRowPrepared="gridView2_HtmlRowPrepared">
+
+	                                                <SettingsCommandButton>
+		                                                <EditButton>
+			                                                <Image Url="~/Styles/EditIcon.png" />
+		                                                </EditButton>
+		                                                <CancelButton>
+			                                                <Image Url="~/Styles/CancelIcon.png" />
+		                                                </CancelButton>
+		                                                <UpdateButton>
+			                                                <Image Url="~/Styles/SaveIcon.png" />
+		                                                </UpdateButton>
+		                                                <DeleteButton>
+			                                                <Image Url="~/Styles/DeleteIcon.png" />
+		                                                </DeleteButton>
+		                                                <NewButton>
+			                                                <Image Url="~/Styles/AddIcon.png" />
+		                                                </NewButton>
+		                                                <ClearFilterButton Text="Очистити" RenderMode="Link" />
+	                                                </SettingsCommandButton>
+
                                                     <Columns>
                                                         <dx:GridViewCommandColumn ShowInCustomizationForm="True" 
                                                             ShowSelectCheckbox="True" VisibleIndex="0">

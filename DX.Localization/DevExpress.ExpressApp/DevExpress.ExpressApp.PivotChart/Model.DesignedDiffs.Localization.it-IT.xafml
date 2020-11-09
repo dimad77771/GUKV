@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Application>
-  <ActionDesign>
-    <Actions>
-      <Action Id="BindAnalysisData" Caption="Associa Dati Analisi" />
-      <Action Id="UnbindAnalysisData" Caption="Scollega Dati Analisi" />
-    </Actions>
-  </ActionDesign>
-</Application>

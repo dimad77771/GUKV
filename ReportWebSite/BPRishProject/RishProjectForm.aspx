@@ -1,10 +1,11 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="RishProjectForm.aspx.cs" Inherits="BPRishProject_RishProjectForm"
     MasterPageFile="~/NoMenu.master" Title="Розпорядчий Документ" %>
 
-<%@ Register Assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxPanel" TagPrefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView.Export" tagprefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.Export" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxTreeList.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxTreeList" tagprefix="dx" %>
 <%@ Register Namespace="MiniProfilerHelpers" TagPrefix="mini" %>
 <%@ Register src="RishProjectItemEditor.ascx" tagname="RishProjectItemEditor" tagprefix="uc4" %>
 <%@ Register src="RishProjectMainDocEditor.ascx" tagname="RishProjectMainDocEditor" tagprefix="uc5" %>
@@ -301,10 +302,29 @@ order by entered_on desc
                 AutoGenerateColumns="False" ClientInstanceName="CoverLettersGrid" 
                 KeyFieldName="id" OnRowUpdating="CoverLettersGrid_RowUpdating" 
                 OnHtmlDataCellPrepared="CoverLettersGrid_HtmlDataCellPrepared">
+
+	            <SettingsCommandButton>
+		            <EditButton>
+			            <Image Url="~/Styles/EditIcon.png" />
+		            </EditButton>
+		            <CancelButton>
+			            <Image Url="~/Styles/CancelIcon.png" />
+		            </CancelButton>
+		            <UpdateButton>
+			            <Image Url="~/Styles/SaveIcon.png" />
+		            </UpdateButton>
+		            <DeleteButton>
+			            <Image Url="~/Styles/DeleteIcon.png" />
+		            </DeleteButton>
+		            <NewButton>
+			            <Image Url="~/Styles/AddIcon.png" />
+		            </NewButton>
+		            <ClearFilterButton Text="Очистити" RenderMode="Link" />
+	            </SettingsCommandButton>
+
                 <Columns>
-                    <dx:GridViewCommandColumn ShowInCustomizationForm="True" VisibleIndex="0">
-                        <EditButton Visible="True">
-                        </EditButton>
+                    <dx:GridViewCommandColumn ShowInCustomizationForm="True" VisibleIndex="0" 
+                        ShowEditButton="true" >
                     </dx:GridViewCommandColumn>
                     <dx:GridViewDataTextColumn FieldName="id" ShowInCustomizationForm="True" 
                         Visible="False" VisibleIndex="1">

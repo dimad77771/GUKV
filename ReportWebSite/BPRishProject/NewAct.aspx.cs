@@ -4,13 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using DevExpress.Web.ASPxEditors;
-using DevExpress.Web.ASPxClasses;
+using DevExpress.Web;
+using DevExpress.Web;
 using log4net;
 using System.Data.SqlClient;
 using GUKV.Conveyancing;
 using System.Data;
-using DevExpress.Web.ASPxGridView;
+using DevExpress.Web;
 using System.Security.Principal;
 
 public partial class BPRishProject_NewAct : System.Web.UI.Page

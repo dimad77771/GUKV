@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Text;
-using DevExpress.Web.ASPxGridView;
+using DevExpress.Web;
 
 public partial class Account_Cache : System.Web.UI.Page
 {

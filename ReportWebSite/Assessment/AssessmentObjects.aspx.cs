@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
-using DevExpress.Web.ASPxGridView;
+using DevExpress.Web;
 
 public partial class Assessment_AssessmentObjects : System.Web.UI.Page
 {
@@ -75,13 +75,13 @@ public partial class Assessment_AssessmentObjects : System.Web.UI.Page
     }
 
     protected void GridViewAssessmentObjects_CustomFilterExpressionDisplayText(object sender,
-        DevExpress.Web.ASPxEditors.CustomFilterExpressionDisplayTextEventArgs e)
+        DevExpress.Web.CustomFilterExpressionDisplayTextEventArgs e)
     {
         this.UpdateFilterDisplayTextCache(e.DisplayText, PrimaryGridView);
     }
 
     protected void GridViewAssessmentObjects_ProcessColumnAutoFilter(object sender,
-        DevExpress.Web.ASPxGridView.ASPxGridViewAutoFilterEventArgs e)
+        DevExpress.Web.ASPxGridViewAutoFilterEventArgs e)
     {
         Utils.ProcessGridColumnAutoFilter(sender, e);
     }
@@ -96,7 +96,7 @@ public partial class Assessment_AssessmentObjects : System.Web.UI.Page
     }
 
     protected void GridViewAssessmentObjects_CustomColumnSort(object sender,
-        DevExpress.Web.ASPxGridView.CustomColumnSortEventArgs e)
+        DevExpress.Web.CustomColumnSortEventArgs e)
     {
         Utils.ProcessGridSortByBuildingNumber(e);
     }

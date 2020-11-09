@@ -4,14 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using DevExpress.Web.ASPxEditors;
-using DevExpress.Web.ASPxClasses;
+using DevExpress.Web;
+using DevExpress.Web;
 using System.Web.Security;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Data;
 using GUKV.Conveyancing;
-using DevExpress.Web.ASPxPopupControl;
+using DevExpress.Web;
 using log4net;
 using FirebirdSql.Data.FirebirdClient;
 using System.Web.Configuration;
@@ -69,7 +69,7 @@ public partial class Reports1NF_ConveyancingConfirmation : System.Web.UI.Page
 
 
         //SendNotifications(requestId);
-        DevExpress.Web.ASPxClasses.ASPxWebControl.RedirectOnCallback("ConveyancingList.aspx");
+        DevExpress.Web.ASPxWebControl.RedirectOnCallback("ConveyancingList.aspx");
     }
 
     protected void DiscardTransferRequest(string comment)
@@ -86,7 +86,7 @@ public partial class Reports1NF_ConveyancingConfirmation : System.Web.UI.Page
             }
             connection.Close();
         }
-        DevExpress.Web.ASPxClasses.ASPxWebControl.RedirectOnCallback("ConveyancingList.aspx");
+        DevExpress.Web.ASPxWebControl.RedirectOnCallback("ConveyancingList.aspx");
     }
 
     protected int BalansOwnershipTypeToObjRight(int balansOwnershipType)

@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Cabinet.aspx.cs" Inherits="Reports1NF_Cabinet" MasterPageFile="~/NoMenu.master" Title="Звіт з використання комунальної власності" %>
 
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 <%@ Register Namespace="MiniProfilerHelpers" TagPrefix="mini" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
@@ -170,7 +170,7 @@
 	<dx:ASPxPopupControl ID="ASPxPopupControlFreeSquare" runat="server" AllowDragging="True" 
 		ClientInstanceName="PopupObjectPhotos" EnableClientSideAPI="True" 
 		HeaderText="Документ" Modal="True" 
-		PopupHorizontalAlign="Center" PopupVerticalAlign="Middle" RenderMode="Lightweight" 
+		PopupHorizontalAlign="Center" PopupVerticalAlign="Middle"  
 		PopupAction="None" PopupElementID="ASPxGridViewFreeSquare" Width="700px" >
 		<ClientSideEvents CloseUp="function(s, e) { window.location.reload(false); }" />  
 		<ContentCollection>

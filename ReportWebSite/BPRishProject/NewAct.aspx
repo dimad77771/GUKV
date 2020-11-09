@@ -1,12 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NoMenu.master" AutoEventWireup="true" CodeFile="NewAct.aspx.cs" Inherits="BPRishProject_NewAct" %>
 
-<%@ Register Assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
-    Namespace="DevExpress.Web.ASPxFormLayout" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web" TagPrefix="dx" %>
 
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxTabControl" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView.Export" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.Export" tagprefix="dx" %>
 <%@ Register Namespace="MiniProfilerHelpers" TagPrefix="mini" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
@@ -286,6 +286,26 @@ where bp_rish_project_item.project_id = @projectID
                                             <dx:ASPxGridView ID="GridViewObjects" runat="server" ClientInstanceName="GridViewObjects"
                                                 Width="100%" DataSourceID="SqlDataSource2" KeyFieldName="id" 
                                                 OnHtmlDataCellPrepared="GridViewObjects_HtmlDataCellPrepared">
+
+	                                            <SettingsCommandButton>
+		                                            <EditButton>
+			                                            <Image Url="~/Styles/EditIcon.png" />
+		                                            </EditButton>
+		                                            <CancelButton>
+			                                            <Image Url="~/Styles/CancelIcon.png" />
+		                                            </CancelButton>
+		                                            <UpdateButton>
+			                                            <Image Url="~/Styles/SaveIcon.png" />
+		                                            </UpdateButton>
+		                                            <DeleteButton>
+			                                            <Image Url="~/Styles/DeleteIcon.png" />
+		                                            </DeleteButton>
+		                                            <NewButton>
+			                                            <Image Url="~/Styles/AddIcon.png" />
+		                                            </NewButton>
+		                                            <ClearFilterButton Text="Очистити" RenderMode="Link" />
+	                                            </SettingsCommandButton>
+
                                                 <Columns>
                                                     <dx:GridViewCommandColumn 
                                                         ShowSelectCheckbox="True" VisibleIndex="0"  />

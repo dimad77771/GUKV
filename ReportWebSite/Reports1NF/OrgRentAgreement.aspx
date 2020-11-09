@@ -1,11 +1,11 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OrgRentAgreement.aspx.cs" Inherits="Reports1NF_OrgRentAgreement"
     MasterPageFile="~/NoMenu.master" Title="Картка Договору Оренди" %>
 
-<%@ Register Assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
-    Namespace="DevExpress.Web.ASPxImageGallery" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web" TagPrefix="dx" %>
 
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 <%@ Register Namespace="MiniProfilerHelpers" TagPrefix="mini" %>
 <%@ Register src="ReportCommentViewer.ascx" tagname="ReportCommentViewer" tagprefix="uc1" %>
 
@@ -2261,10 +2261,28 @@ WHERE id = @id"
                                     OnRowDeleting="GridViewDecisions_RowDeleting"
                                     OnRowUpdating="GridViewDecisions_RowUpdating" >
 
+	                                <SettingsCommandButton>
+		                                <EditButton>
+			                                <Image Url="~/Styles/EditIcon.png" ToolTip="Редагувати Підставу" />
+		                                </EditButton>
+		                                <CancelButton>
+			                                <Image Url="~/Styles/CancelIcon.png" />
+		                                </CancelButton>
+		                                <UpdateButton>
+			                                <Image Url="~/Styles/SaveIcon.png" />
+		                                </UpdateButton>
+		                                <DeleteButton>
+			                                <Image Url="~/Styles/DeleteIcon.png" ToolTip="Видалити Підставу" />
+		                                </DeleteButton>
+		                                <NewButton>
+			                                <Image Url="~/Styles/AddIcon.png" />
+		                                </NewButton>
+		                                <ClearFilterButton Text="Очистити" RenderMode="Link" />
+	                                </SettingsCommandButton>
+
                                     <Columns>
-                                        <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image">
-                                            <EditButton visible="True"> <Image ToolTip="Редагувати Підставу" Url="../Styles/EditIcon.png" /> </EditButton>
-                                            <DeleteButton visible="True"> <Image ToolTip="Видалити Підставу" Url="../Styles/DeleteIcon.png" /> </DeleteButton>
+                                        <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" 
+                                            ShowEditButton="true" ShowDeleteButton="True" >
                                         </dx:GridViewCommandColumn>
                                         <dx:GridViewDataTextColumn FieldName="pidstava" VisibleIndex="1" Caption="Назва Документу" Width="200px"></dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="doc_num" VisibleIndex="2" Caption="Номер Документу"></dx:GridViewDataTextColumn>
@@ -2361,10 +2379,28 @@ WHERE id = @id"
                                     OnRowDeleting="GridViewNotes_RowDeleting"
                                     OnRowUpdating="GridViewNotes_RowUpdating" >
 
+	                                <SettingsCommandButton>
+		                                <EditButton>
+			                                <Image Url="~/Styles/EditIcon.png" ToolTip="Редагувати Об'єкт" />
+		                                </EditButton>
+		                                <CancelButton>
+			                                <Image Url="~/Styles/CancelIcon.png" />
+		                                </CancelButton>
+		                                <UpdateButton>
+			                                <Image Url="~/Styles/SaveIcon.png" />
+		                                </UpdateButton>
+		                                <DeleteButton>
+			                                <Image Url="~/Styles/DeleteIcon.png" ToolTip="Видалити Об'єкт" />
+		                                </DeleteButton>
+		                                <NewButton>
+			                                <Image Url="~/Styles/AddIcon.png" />
+		                                </NewButton>
+		                                <ClearFilterButton Text="Очистити" RenderMode="Link" />
+	                                </SettingsCommandButton>
+
                                     <Columns>
-                                        <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" Width="60px">
-                                            <EditButton visible="True"> <Image ToolTip="Редагувати Об'єкт" Url="../Styles/EditIcon.png" /> </EditButton>
-                                            <DeleteButton visible="True"> <Image ToolTip="Видалити Об'єкт" Url="../Styles/DeleteIcon.png" /> </DeleteButton>
+                                        <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" Width="60px"
+                                            ShowEditButton="true" ShowDeleteButton="True" >
                                         </dx:GridViewCommandColumn>
                                         <dx:GridViewDataTextColumn FieldName="rent_square" VisibleIndex="1" Caption="Площа приміщення, кв.м" Width="100px"></dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="invent_no" VisibleIndex="2" Caption="Інвентарний номер" Width="100px"></dx:GridViewDataTextColumn>
@@ -3053,10 +3089,29 @@ WHERE id = @id"
                                             <td colspan="5">
                                                 <dx:ASPxGridView ID="GridViewPaymentDocuments" ClientInstanceName="GridViewPaymentDocuments" runat="server" KeyFieldName="id" Width="810px" OnRowDeleting="GridViewPaymentDocuments_RowDeleting"
                                                     OnRowUpdating="GridViewPaymentDocuments_RowUpdating" >
+
+	                                                <SettingsCommandButton>
+		                                                <EditButton>
+			                                                <Image Url="~/Styles/EditIcon.png" ToolTip="Редагувати Платіж" />
+		                                                </EditButton>
+		                                                <CancelButton>
+			                                                <Image Url="~/Styles/CancelIcon.png" />
+		                                                </CancelButton>
+		                                                <UpdateButton>
+			                                                <Image Url="~/Styles/SaveIcon.png" />
+		                                                </UpdateButton>
+		                                                <DeleteButton>
+			                                                <Image Url="~/Styles/DeleteIcon.png" ToolTip="Видалити Платіж" />
+		                                                </DeleteButton>
+		                                                <NewButton>
+			                                                <Image Url="~/Styles/AddIcon.png" />
+		                                                </NewButton>
+		                                                <ClearFilterButton Text="Очистити" RenderMode="Link" />
+	                                                </SettingsCommandButton>
+
                                                     <Columns>
-                                                        <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" Width="60px">
-                                                            <EditButton visible="True"> <Image ToolTip="Редагувати Платіж" Url="../Styles/EditIcon.png" /> </EditButton>
-                                                            <DeleteButton visible="True"> <Image ToolTip="Видалити Платіж" Url="../Styles/DeleteIcon.png" /> </DeleteButton>
+                                                        <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" Width="60px"
+                                                            ShowEditButton="True" ShowDeleteButton="true">
                                                         </dx:GridViewCommandColumn>
                                                         <dx:GridViewDataDateColumn FieldName="payment_date" VisibleIndex="1" Caption="Дата переказу" Width="100px"></dx:GridViewDataDateColumn>
                                                         <dx:GridViewDataTextColumn FieldName="payment_number" VisibleIndex="2" Caption="Номер квитанції" Width="100px"></dx:GridViewDataTextColumn>                                        
@@ -3160,10 +3215,28 @@ WHERE id = @id"
                                     OnRowDeleting="GridViewSubleases_RowDeleting"
                                     OnRowUpdating="GridViewSubleases_RowUpdating" >
 
+	                                <SettingsCommandButton>
+		                                <EditButton>
+			                                <Image Url="~/Styles/EditIcon.png" ToolTip="Редагувати Підставу" />
+		                                </EditButton>
+		                                <CancelButton>
+			                                <Image Url="~/Styles/CancelIcon.png" />
+		                                </CancelButton>
+		                                <UpdateButton>
+			                                <Image Url="~/Styles/SaveIcon.png" />
+		                                </UpdateButton>
+		                                <DeleteButton>
+			                                <Image Url="~/Styles/DeleteIcon.png" ToolTip="Видалити Підставу" />
+		                                </DeleteButton>
+		                                <NewButton>
+			                                <Image Url="~/Styles/AddIcon.png" />
+		                                </NewButton>
+		                                <ClearFilterButton Text="Очистити" RenderMode="Link" />
+	                                </SettingsCommandButton>
+
                                     <Columns>
-                                        <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image">
-                                            <EditButton visible="True"> <Image ToolTip="Редагувати Підставу" Url="../Styles/EditIcon.png" /> </EditButton>
-                                            <DeleteButton visible="True"> <Image ToolTip="Видалити Підставу" Url="../Styles/DeleteIcon.png" /> </DeleteButton>
+                                        <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image"
+                                            ShowEditButton="true" ShowDeleteButton="true">
                                         </dx:GridViewCommandColumn>
 										<dx:GridViewDataTextColumn FieldName="agreement_num" VisibleIndex="1" Caption="Номер договору суборендування" Width="150px"></dx:GridViewDataTextColumn>
                                         <dx:GridViewDataDateColumn FieldName="agreement_date" VisibleIndex="2" Caption="Дата укладання договору" Width="100px"></dx:GridViewDataDateColumn>
@@ -3301,15 +3374,29 @@ WHERE id = @id"
         <Styles>  
             <EditForm CssClass="editForm999" ></EditForm>  
         </Styles>  
-        <Columns>
 
-            <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" ShowInCustomizationForm="True" CellStyle-Wrap="False">
-                <EditButton Visible="True"> <Image Url="~/Styles/EditIcon.png" /> </EditButton>
-                <NewButton Visible="True"> <Image Url="~/Styles/AddIcon.png" /> </NewButton>
-                <DeleteButton Visible="True"> <Image Url="~/Styles/DeleteIcon.png" /> </DeleteButton>
-                <CancelButton> <Image Url="~/Styles/CancelIcon.png" /> </CancelButton>
-                <UpdateButton> <Image Url="~/Styles/EditIcon.png" /> </UpdateButton>
-                <ClearFilterButton Visible="True"> </ClearFilterButton>
+	    <SettingsCommandButton>
+		    <EditButton>
+			    <Image Url="~/Styles/EditIcon.png" />
+		    </EditButton>
+		    <CancelButton>
+			    <Image Url="~/Styles/CancelIcon.png" />
+		    </CancelButton>
+		    <UpdateButton>
+			    <Image Url="~/Styles/SaveIcon.png" />
+		    </UpdateButton>
+		    <DeleteButton>
+			    <Image Url="~/Styles/DeleteIcon.png" />
+		    </DeleteButton>
+		    <NewButton>
+			    <Image Url="~/Styles/AddIcon.png" />
+		    </NewButton>
+		    <ClearFilterButton Text="Очистити" RenderMode="Link" />
+	    </SettingsCommandButton>
+
+        <Columns>
+            <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" ShowInCustomizationForm="True" CellStyle-Wrap="False" 
+                ShowDeleteButton="True" ShowCancelButton="true" ShowUpdateButton="true" ShowClearFilterButton="true" ShowEditButton="true" ShowNewButton="true" >
                 <CustomButtons>
                     <dx:GridViewCommandColumnCustomButton ID="btnPhoto" Text="Фото"> 
 						<Image Url="~/Styles/PhotoIcon.png"> </Image>
@@ -3587,7 +3674,7 @@ WHERE id = @id"
     <dx:ASPxPopupControl ID="ASPxPopupControlFreeSquare" runat="server" AllowDragging="True" 
         ClientInstanceName="PopupObjectPhotos" EnableClientSideAPI="True" 
         HeaderText="Фотографії об'єкту з вільним приміщенням" Modal="True" 
-        PopupHorizontalAlign="Center" PopupVerticalAlign="Middle" RenderMode="Lightweight" 
+        PopupHorizontalAlign="Center" PopupVerticalAlign="Middle"  
         PopupAction="None" PopupElementID="ASPxGridViewFreeSquare" Width="700px" >
         <ContentCollection>
             <dx:PopupControlContentControl ID="PopupControlContentControl1" runat="server" SupportsDisabledAttribute="True">
@@ -3670,9 +3757,11 @@ WHERE id = @id"
                                 <tr>
                                 <td>
 
-                                <dx:ASPxCallbackPanel ID="ASPxCallbackPanelImageGallery" ShowLoadingPanel="false" EnableViewState="true"
+                                <dx:ASPxCallbackPanel ID="ASPxCallbackPanelImageGallery" EnableViewState="true"
                                     ClientInstanceName="ASPxCallbackPanelImageGallery" runat="server" 
                                     OnCallback="ASPxCallbackPanelImageGallery_Callback">
+
+                                    <SettingsLoadingPanel Enabled="false"/>
                             
                                     <PanelCollection>
                                         <dx:PanelContent ID="PanelContent11" runat="server" SupportsDisabledAttribute="True">
