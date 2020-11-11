@@ -7,8 +7,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using DevExpress.Web;
 using DevExpress.Web.Data;
-using DevExpress.Web;
-using DevExpress.Web;
 using System.Data;
 using System.Data.SqlClient;
 using FirebirdSql.Data.FirebirdClient;
@@ -16,10 +14,7 @@ using log4net;
 using GUKV;
 using System.Web.Configuration;
 using System.IO;
-using DevExpress.Web;
 using ExtDataEntry.Models;
-using DevExpress.Web;
-using DevExpress.Web;
 using Syncfusion.Pdf;
 using System.Drawing;
 using Syncfusion.Pdf.Graphics;
@@ -2567,11 +2562,6 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 			string agreementIdStr = Request.QueryString["aid"];
 			string photoRootPath = WebConfigurationManager.AppSettings["ImgContentRootFolder"];
 			string destFolder = Path.Combine(photoRootPath, "1NF_" + agreementIdStr + "_" + PhotoFolderID.ToString()).ToLower();
-			//            string destFolder = Path.Combine(photoRootPath, "Tmp","1NF_" + agreementIdStr + "_" + PhotoFolderID.ToString()).ToLower();
-
-
-			if (!Directory.Exists(destFolder))
-				Directory.CreateDirectory(destFolder);
 			return destFolder;
 		}
 		else
@@ -2594,21 +2584,12 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 
 	private void CopySourceFiles(string agreementIdStr)
 	{
-
-
-		string photoRootPath = WebConfigurationManager.AppSettings["ImgContentRootFolder"];
-
+		string photoRootPath = PhotorowUtils.ImgContentRootFolder;
 		string destFolder = TempPhotoFolder();
 
-		if (!Directory.Exists(destFolder))
-			Directory.CreateDirectory(destFolder);
-		else
-		{
-		}
-
-
-		SqlConnection connection = Utils.ConnectToDatabase();
-		using (SqlCommand cmd = new SqlCommand("select id, file_name, file_ext from reports1nf_arendaphotos where arenda_id = @aid", connection))
+		var connection = Utils.ConnectToDatabase();
+        var transaction = connection.BeginTransaction();
+        using (var cmd = new SqlCommand("select id, file_name, file_ext from reports1nf_arendaphotos where arenda_id = @aid", connection, transaction))
 		{
 			cmd.Parameters.AddWithValue("aid", agreementIdStr);
 			using (SqlDataReader r = cmd.ExecuteReader())
@@ -2620,22 +2601,22 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 					string file_ext = r.GetString(2);
 
 					string sourceFileToCopy = Path.Combine(photoRootPath, "1NFARENDA", agreementIdStr, id.ToString() + file_ext);
-					if (File.Exists(sourceFileToCopy))
-					{
+                    if (PhotorowUtils.Exists(sourceFileToCopy, connection, transaction))
+                    {
 						string destFileToCopy = Path.Combine(destFolder, PhotoUtils.DbFilename2LocalFilename(file_name, file_ext));
-						if (File.Exists(destFileToCopy))
-							File.Delete(destFileToCopy);
-						File.Copy(sourceFileToCopy, destFileToCopy);
+                        PhotorowUtils.Delete(destFileToCopy, connection, transaction);
+                        PhotorowUtils.Copy(sourceFileToCopy, destFileToCopy, connection, transaction);
 					}
 				}
 
 				r.Close();
 			}
 		}
-		connection.Close();
-	}
+        transaction.Commit();
+        connection.Close();
+    }
 
-	private void BindImageGallery(string agreementIdStr)
+    private void BindImageGallery(string agreementIdStr)
 	{
 		ObjectDataSourceBalansPhoto.SelectParameters["recordID"].DefaultValue = agreementIdStr;
 		ObjectDataSourceBalansPhoto.SelectParameters["tempGuid"].DefaultValue = PhotoFolderID.ToString();
@@ -2703,8 +2684,9 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		if (archiveIdStr != null && archiveIdStr.Length > 0)
 			throw new Exception("Ви не можете видалити фото з архівного стану.");
 
-
-		string arendaId = Request.QueryString["aid"];
+        var connection = Utils.ConnectToDatabase();
+        var transaction = connection.BeginTransaction();
+        string arendaId = Request.QueryString["aid"];
 
 		if (imageGalleryDemo != null)
 		{
@@ -2714,45 +2696,24 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 			ImageGalleryItem item = imageGalleryDemo.Items[int.Parse(indexStr)];
 			FileAttachment drv = (FileAttachment)item.DataItem;
 			string fileExt = Path.GetExtension(drv.Name);
-
-			if (File.Exists(drv.Name))
-				File.Delete(drv.Name);
-
+            PhotorowUtils.Delete(drv.Name, connection, transaction);
 
 			imageUrl = item.ImageUrl;
-
 		}
-		return imageUrl;
+
+        transaction.Commit();
+        connection.Close();
+
+        return imageUrl;
 	}
 
 	protected void ASPxUploadPhotoControl_FileUploadComplete(object sender, DevExpress.Web.FileUploadCompleteEventArgs e)
 	{
-		//this.LoadViewState("PageUniqueKey");
-
 		string agreementIdStr = Request.QueryString["aid"];
-
 		string photoRootPath = WebConfigurationManager.AppSettings["ImgContentRootFolder"];
 		string serverLocal1NFObjectFolder = Path.Combine(photoRootPath, "1NFARENDA", agreementIdStr);
-
-
-
 		string fullPath = string.Empty;
-
-		try
-		{
-			if (!System.IO.Directory.Exists(serverLocal1NFObjectFolder))
-				System.IO.Directory.CreateDirectory(serverLocal1NFObjectFolder);
-
-			PhotoUtils.AddUploadedFile(TempPhotoFolder(), e.UploadedFile.FileName, e.UploadedFile.FileBytes);
-		}
-		catch (Exception ex)
-		{
-			if ((!string.IsNullOrEmpty(fullPath)) && (System.IO.File.Exists(fullPath)))
-				System.IO.File.Delete(fullPath);
-			throw ex;
-		}
-
-
+        PhotoUtils.AddUploadedFile(TempPhotoFolder(), e.UploadedFile.FileName, e.UploadedFile.FileBytes);
 	}
 
 
@@ -2761,32 +2722,26 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		string agreementIdStr = Request.QueryString["aid"];
 		Int32 newId = 0;
 		string photoRootPath = WebConfigurationManager.AppSettings["ImgContentRootFolder"];
-		string serverLocal1NFObjectFolder = Path.Combine(photoRootPath, "1NFARENDA", agreementIdStr);
+        string local1NFObjectFolder = Path.Combine(photoRootPath, "1NFARENDA", agreementIdStr);
 
-		//if (!Directory.Exists(TempPhotoFolder())) throw new Exception("Temp Photo Folder not found");
+        SqlConnection connection = Utils.ConnectToDatabase();
+        SqlTransaction trans = connection.BeginTransaction();
 
-		if (Directory.Exists(serverLocal1NFObjectFolder))
-		{
-			foreach (string fileToDelete in Directory.GetFiles(serverLocal1NFObjectFolder))
-			{
-				File.Delete(fileToDelete);
-			}
+        foreach (string fileToDelete in PhotorowUtils.GetFiles(local1NFObjectFolder, connection, trans))
+        {
+            PhotorowUtils.Delete(fileToDelete, connection, trans);
+        }
 
-		}
-
-		SqlConnection connection = Utils.ConnectToDatabase();
-		SqlTransaction trans = connection.BeginTransaction();
-
-		try
-		{
+        try
+        {
 			using (SqlCommand cmd = new SqlCommand("delete from reports1nf_arendaphotos where arenda_id = @aid", connection, trans))
 			{
 				cmd.Parameters.AddWithValue("aid", int.Parse(agreementIdStr));
 				cmd.ExecuteNonQuery();
 			}
 
-			var allfiles = Directory.GetFiles(TempPhotoFolder());
-			foreach (string filePath in allfiles)
+            var allfiles = PhotorowUtils.GetFiles(TempPhotoFolder(), connection, trans);
+            foreach (string filePath in allfiles)
 			{
 				var dbfile = PhotoUtils.LocalFilename2DbFilename(filePath);
 				string fullPath = string.Empty;
@@ -2799,12 +2754,8 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 				cmd.Parameters.Add(new SqlParameter("createdate", DateTime.Now));
 				newId = (Int32)cmd.ExecuteScalar();
 
-				fullPath = System.IO.Path.Combine(serverLocal1NFObjectFolder, newId.ToString() + System.IO.Path.GetExtension(filePath));
-
-				if (!System.IO.Directory.Exists(serverLocal1NFObjectFolder))
-					System.IO.Directory.CreateDirectory(serverLocal1NFObjectFolder);
-
-				File.Copy(filePath, fullPath);
+				fullPath = Path.Combine(local1NFObjectFolder, newId.ToString() + Path.GetExtension(filePath));
+                PhotorowUtils.Copy(filePath, fullPath, connection, trans);
 			}
 
 			trans.Commit();
@@ -2815,11 +2766,6 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 			trans.Rollback();
 			throw;
 		}
-
-
-		//!!! //pgv
-		//!!! if (Directory.Exists(TempPhotoFolder()))
-		//!!!	Directory.Delete(TempPhotoFolder(), true);
 	}
 
 

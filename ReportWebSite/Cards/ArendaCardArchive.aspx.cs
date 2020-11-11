@@ -253,11 +253,6 @@ public partial class Cards_ArendaCardArchive : System.Web.UI.Page
 			string agreementIdStr = Request.QueryString["arid"];
 			string photoRootPath = WebConfigurationManager.AppSettings["ImgContentRootFolder"];
 			string destFolder = Path.Combine(photoRootPath, "1NF_" + agreementIdStr + "_" + PhotoFolderID.ToString()).ToLower();
-			//            string destFolder = Path.Combine(photoRootPath, "Tmp","1NF_" + agreementIdStr + "_" + PhotoFolderID.ToString()).ToLower();
-
-
-			if (!Directory.Exists(destFolder))
-				Directory.CreateDirectory(destFolder);
 			return destFolder;
 		}
 		else
@@ -281,15 +276,7 @@ public partial class Cards_ArendaCardArchive : System.Web.UI.Page
 	private void CopySourceFiles(string agreementIdStr)
 	{
 		string photoRootPath = WebConfigurationManager.AppSettings["ImgContentRootFolder"];
-
 		string destFolder = TempPhotoFolder();
-
-		if (!Directory.Exists(destFolder))
-			Directory.CreateDirectory(destFolder);
-		else
-		{
-		}
-
 
 		SqlConnection connection = Utils.ConnectToDatabase();
 		using (SqlCommand cmd = new SqlCommand("select id, file_name, file_ext from reports1nf_arendaphotos where arenda_id = @aid", connection))

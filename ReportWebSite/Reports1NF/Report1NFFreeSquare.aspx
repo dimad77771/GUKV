@@ -13,6 +13,10 @@
     .command-column-class {
         white-space:normal !important;
     }
+
+    a.dxbButton_DevEx {
+        margin:0px !important;
+    }
 </style>
 
 <script type="text/javascript" src="../Scripts/PageScript.js"></script>
@@ -613,7 +617,7 @@ WHERE id = @id"
         </dx:GridViewDataTextColumn>--%>
 		<dx:GridViewDataComboBoxColumn FieldName="include_in_perelik" VisibleIndex="4" Width = "50px" Visible="True" Caption="Включено до переліку №">
 			<HeaderStyle Wrap="True" />
-			<PropertiesComboBox DataSourceID="SqlDataSourceIncludeInPerelik" ValueField="id" TextField="name" ValueType="System.String" />
+			<PropertiesComboBox DataSourceID="SqlDataSourceIncludeInPerelik" ValueField="id" TextField="name" ValueType="System.String" ClearButton-DisplayMode="OnHover" />
 		</dx:GridViewDataComboBoxColumn>
 
 

@@ -219,7 +219,13 @@ public static class Utils
             using (FileStream stream = File.Open(tempFile.FileName, FileMode.Create, FileAccess.ReadWrite))
             {
                 // exporter.WriteXls(stream, new XlsExportOptions { TextExportMode = TextExportMode.Text });
-                exporter.WriteXlsx(stream, new DevExpress.XtraPrinting.XlsxExportOptions { TextExportMode = DevExpress.XtraPrinting.TextExportMode.Value });
+                //exporter.WriteXlsx(stream, new DevExpress.XtraPrinting.XlsxExportOptions { TextExportMode = DevExpress.XtraPrinting.TextExportMode.Value });
+                exporter.WriteXlsx(stream, new DevExpress.XtraPrinting.XlsxExportOptionsEx
+                {
+                    TextExportMode = DevExpress.XtraPrinting.TextExportMode.Value,
+                    ExportType = DevExpress.Export.ExportType.WYSIWYG
+                });
+
 
                 // Rewind and pipe the stream contents to the output stream
                 // stream.Position = 0;
@@ -405,15 +411,22 @@ public static class Utils
                 ws.SheetProperties = sp;
 
                 ws.SheetProperties.PageSetupProperties.FitToPage = BooleanValue.FromBoolean(true);
-                var pgOr = new DocumentFormat.OpenXml.Spreadsheet.PageSetup
-                {
-                    Orientation = DocumentFormat.OpenXml.Spreadsheet.OrientationValues.Landscape,
-                    FitToHeight = 0,
-                    FitToWidth = 1,
-                    PaperSize = 9
-                };
+                //var pgOr = new DocumentFormat.OpenXml.Spreadsheet.PageSetup
+                //{
+                //    Orientation = DocumentFormat.OpenXml.Spreadsheet.OrientationValues.Landscape,
+                //    FitToHeight = 0,
+                //    FitToWidth = 1,
+                //    PaperSize = 9
+                //};
 
-                ws.AppendChild(pgOr);
+                //ws.AppendChild(pgOr);
+
+                var ggg = ws.ChildElements.OfType<DocumentFormat.OpenXml.Spreadsheet.PageSetup>().ToArray();
+                var gg1 = ggg[0];
+                gg1.Orientation = DocumentFormat.OpenXml.Spreadsheet.OrientationValues.Landscape;
+                gg1.FitToHeight = 0;
+                gg1.FitToWidth = 1;
+                gg1.PaperSize = 9;
             }
         }
     }

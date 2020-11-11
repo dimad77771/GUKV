@@ -13,6 +13,10 @@
     .command-column-class {
         white-space:normal !important;
     }
+
+    a.dxbButton_DevEx {
+        margin:0px !important;
+    }
 </style>
 
 <script type="text/javascript" src="../Scripts/PageScript.js"></script>
@@ -589,7 +593,7 @@ WHERE id = @id"
 
 
     <Columns>
-        <dx:GridViewCommandColumn VisibleIndex="0" Width="50px" ButtonType="Image" CellStyle-Wrap="True" FixedStyle="Left" CellStyle-CssClass="command-column-class" 
+        <dx:GridViewCommandColumn VisibleIndex="0" Width="60px" ButtonType="Image" CellStyle-Wrap="True" FixedStyle="Left" CellStyle-CssClass="command-column-class" 
             ShowCancelButton="true" ShowUpdateButton="true" ShowEditButton="true" >
             <CustomButtons>
                 <dx:GridViewCommandColumnCustomButton ID="btnPdfBuild" Text="Pdf"> 
@@ -1089,7 +1093,7 @@ WHERE id = @id"
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFDogContinue" Version="A3_18" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFDogContinue" Version="A3_21" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

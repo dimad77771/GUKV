@@ -13,6 +13,7 @@ using Syncfusion.Pdf.Graphics;
 using Syncfusion.Pdf.Parsing;
 using Syncfusion.DocIO.DLS;
 using Syncfusion.DocToPDFConverter;
+using ExtDataEntry.Models;
 
 public class OrgRentAgreementPhotosPdfBulder
 {
@@ -68,14 +69,20 @@ public class OrgRentAgreementPhotosPdfBulder
                     var file_name = reader.IsDBNull(0) ? string.Empty : (string)reader.GetValue(0);
                     var file_ext = reader.IsDBNull(1) ? string.Empty : (string)reader.GetValue(1);
                     var file_id = reader.GetInt32(2);
-
-                    yield return new FileInfo
+                    var fullFilename = Path.Combine(PhotoFolder, file_name + file_ext);
+                    var bytes = PhotorowUtils.Read(fullFilename, connectionSql);
+                    if (bytes != null)
                     {
-                        file_name = file_name,
-                        file_ext = file_ext,
-                        file_id = file_id,
-                        FullFilename = Path.Combine(PhotoFolder, file_name + file_ext),
-                    };
+                        var tempfile = Path.GetTempFileName();
+                        File.WriteAllBytes(tempfile, bytes);
+                        yield return new FileInfo
+                        {
+                            file_name = file_name,
+                            file_ext = file_ext,
+                            file_id = file_id,
+                            FullFilename = tempfile,
+                        };
+                    }
                 }
                 reader.Close();
             }
@@ -93,14 +100,12 @@ public class OrgRentAgreementPhotosPdfBulder
         PdfDoc.Save(outstream);
         outstream.Dispose();
         OutputPdfBytes = outstream.ToArray();
-
-        //File.WriteAllBytes(@"H:\DOWNLOADS\PDFBox.NET-1.8.9\aaa" + Guid.NewGuid() + ".pdf", OutputPdfBytes);
     }
 
 
     bool ProcFile(FileInfo fi)
     {
-        if (!File.Exists(fi.FullFilename)) return false;
+        if (!PhotorowUtils.Exists(fi.FullFilename, connectionSql)) return false;
 
         if (ProcFileImage(fi)) return true;
         if (ProcFilePdf(fi)) return true;
@@ -111,10 +116,12 @@ public class OrgRentAgreementPhotosPdfBulder
 
     bool ProcFileImage(FileInfo fi)
     {
-        System.Drawing.Image image;
+        Image image;
         try
         {
-            image = Bitmap.FromFile(fi.FullFilename);
+            var mem = new MemoryStream(PhotorowUtils.Read(fi.FullFilename, connectionSql));
+            image = Bitmap.FromStream(mem);
+            mem.Dispose();
         }
         catch (Exception ex)
         {
@@ -210,5 +217,6 @@ public class OrgRentAgreementPhotosPdfBulder
         public string file_ext;
         public int file_id;
         public string FullFilename;
+        //public byte[] Bytes;
     }
 }

@@ -221,13 +221,6 @@ public partial class Cards_BalansCardArchive : PhotoPage
         string photoRootPath = WebConfigurationManager.AppSettings["ImgContentRootFolder"];
         string serverLocalBalansObjectFolder = Path.Combine(photoRootPath, "Balans", balansIdStr);
         string serverLocal1NFObjectFolder = Path.Combine(photoRootPath, "1NF", balansIdStr);
-
-        if (!System.IO.Directory.Exists(serverLocalBalansObjectFolder))
-            System.IO.Directory.CreateDirectory(serverLocalBalansObjectFolder);
-
-        if (!System.IO.Directory.Exists(serverLocal1NFObjectFolder))
-            System.IO.Directory.CreateDirectory(serverLocal1NFObjectFolder);
-
         string fullPath1NF = string.Empty;
         string fullPathBalans = string.Empty;
 

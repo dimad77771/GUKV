@@ -14,11 +14,11 @@ using System.Data.SqlClient;
 using System.Threading;
 using FirebirdSql.Data.FirebirdClient;
 using DevExpress.Web;
-using DevExpress.Web;
 using log4net;
 using GUKV.Common;
 using GUKV;
 using GUKV.ImportToolUtils;
+using ExtDataEntry.Models;
 
 public static class StringExtensions
 {
@@ -1048,7 +1048,7 @@ public static class Reports1NFUtils
 
     private static void SendBalansObjectFreeSquare(SqlConnection connectionSql, int reportId, int balansId)
     {
-        string photoRootPath = WebConfigurationManager.AppSettings["ImgFreeSquareRootFolder"];
+        string photoRootPath = PhotorowUtils.ImgFreeSquareRootFolder;
         string photo1NFPath = Path.Combine(photoRootPath, "1NF");
         string photoBalansPath = Path.Combine(photoRootPath, "Balans");
 
@@ -1066,10 +1066,7 @@ public static class Reports1NFUtils
                     string file_ext = (string)reader.GetValue(3);
                     string photoFolder = Path.Combine(photoBalansPath, free_square_id.ToString());
                     string fileFullPath = Path.Combine(photoFolder, file_name + file_ext);
-                    if (File.Exists(fileFullPath))
-                        File.Delete(fileFullPath);
-                    if ((Directory.Exists(photoFolder)) && (Directory.GetFiles(photoFolder).Length == 0))
-                        Directory.Delete(photoFolder);
+                    PhotorowUtils.Delete(fileFullPath, connectionSql);
                 }
                 reader.Close();
             }
@@ -1205,12 +1202,8 @@ public static class Reports1NFUtils
 
                                 string sourceFile = String.Format(@"{0}\{1}\{2}", photo1NFPath, free_square_id, file_name + file_ext);
                                 string destFolder = Path.Combine(photoBalansPath, newId.ToString());
-                                if (!Directory.Exists(destFolder))
-                                    Directory.CreateDirectory(destFolder);
                                 string destFile = Path.Combine(destFolder, file_name + file_ext);
-
-                                if (File.Exists(sourceFile))
-                                    File.Copy(sourceFile, destFile, true);
+                                PhotorowUtils.Copy(sourceFile, destFile, Utils.ConnectToDatabase());
                             }
                             readerPhoto.Close();
                         }
@@ -1225,7 +1218,7 @@ public static class Reports1NFUtils
 
     private static void SendBalansObjectPhotos(SqlConnection connectionSql, int reportId, int balansId)
     {
-        string photoRootPath = WebConfigurationManager.AppSettings["ImgContentRootFolder"];
+        string photoRootPath = PhotorowUtils.ImgContentRootFolder;
         string photo1NFPath = Path.Combine(photoRootPath, "1NF", balansId.ToString());
         string photoBalansPath = Path.Combine(photoRootPath, "Balans", balansId.ToString());
 
@@ -1241,10 +1234,7 @@ public static class Reports1NFUtils
                     string file_name = (string)reader.GetValue(1);
                     string file_ext = (string)reader.GetValue(2);
                     string fileFullPath = Path.Combine(photoBalansPath, id.ToString() + file_ext);
-                    if (File.Exists(fileFullPath))
-                        File.Delete(fileFullPath);
-                    if ((Directory.Exists(photoBalansPath)) && (Directory.GetFiles(photoBalansPath).Length == 0) && (Directory.GetDirectories(photoBalansPath).Length == 0))
-                        Directory.Delete(photoBalansPath);
+                    PhotorowUtils.Delete(fileFullPath, connectionSql);
                 }
                 reader.Close();
             }
@@ -1265,21 +1255,14 @@ public static class Reports1NFUtils
             {
                 while (r.Read())
                 {
-                    if (!Directory.Exists(photoBalansPath))
-                        Directory.CreateDirectory(photoBalansPath);
-
                     int id = (int)r.GetValue(0);
                     string file_name = (string)r.GetValue(1);
                     string file_ext = (string)r.GetValue(2);
 
                     string sourceFile = Path.Combine(photo1NFPath, id.ToString() + file_ext);
                     string destFile = Path.Combine(photoBalansPath, id.ToString() + file_ext);
-
-                    if (File.Exists(destFile))
-                        File.Delete(destFile);
-                    if (File.Exists(sourceFile))
-                        File.Copy(sourceFile, destFile, true);
-                    
+                    PhotorowUtils.Delete(destFile, connectionSql);
+                    PhotorowUtils.Copy(sourceFile, destFile, connectionSql);
                 }
                 r.Close();
             }
@@ -1302,55 +1285,24 @@ public static class Reports1NFUtils
         string serverLocalBalansObjectFolder = Path.Combine(photoRootPath, "Balans", balId.ToString());
         string serverLocal1NFObjectFolder = Path.Combine(photoRootPath, "1NF", balId.ToString());
 
-        //string fileToDelete = Server.MapPath(String.Format("~/ImgContent/{3}/{0}/{1}{2}", balId, elementToDelete, fileExt, scope));
         string fileToDelete = Path.Combine(photoRootPath, scope, balId.ToString(), elementToDelete.ToString() + fileExt);
 
-        //string folderToBackup = Server.MapPath(String.Format("~/ImgContent/Backup/{0}/", balId));
-        //string folderToBackup = Path.Combine(photoRootPath, "Backup", balId.ToString());
-        //if (!System.IO.Directory.Exists(folderToBackup))
-        //    System.IO.Directory.CreateDirectory(folderToBackup);
-
-        //string fileToBackup = System.IO.Path.Combine(folderToBackup, String.Format("{0}{1}", elementToDelete, fileExt));
-
-        //string thumbFolderToDelete = Server.MapPath(String.Format("~/ImgContent/Thumb/{0}/", balId));
         string thumbFolderToDelete = Path.Combine(photoRootPath, "Thumb", balId.ToString());
-
-        //if (System.IO.File.Exists(fileToBackup))
-        //    System.IO.File.Delete(fileToBackup);
-        //System.IO.File.Copy(fileToDelete, fileToBackup);
 
         SqlConnection connection = Utils.ConnectToDatabase();
         SqlTransaction trans = connection.BeginTransaction();
         try
         {
-            //SqlCommand cmd = new SqlCommand("DELETE FROM " + tableName + " WHERE id = @elementToDelete AND bal_id = @balId", connection, trans);
             SqlCommand cmd = new SqlCommand("UPDATE " + tableName + " SET status = 2 WHERE id = @elementToDelete AND bal_id = @balId", connection, trans);
             cmd.Parameters.Add(new SqlParameter("elementToDelete", elementToDelete));
             cmd.Parameters.Add(new SqlParameter("balId", balId));
             cmd.ExecuteNonQuery();
-
-            //if (System.IO.File.Exists(fileToDelete))
-            //    System.IO.File.Delete(fileToDelete);
-
-            //if (System.IO.Directory.Exists(thumbFolderToDelete))
-            //    DeleteFolderRecursive(thumbFolderToDelete);
-
-            //if (System.IO.File.Exists(fileToBackup))
-            //    System.IO.File.Delete(fileToBackup);
-
-
 
             trans.Commit();
             connection.Close();
         }
         catch
         {
-            //if ((System.IO.File.Exists(fileToBackup)) && (!System.IO.File.Exists(fileToDelete)))
-            //{
-            //    System.IO.File.Copy(fileToBackup, fileToDelete);
-            //    System.IO.File.Delete(fileToBackup);
-            //}
-
             trans.Rollback();
             connection.Close();
         }
@@ -1360,20 +1312,14 @@ public static class Reports1NFUtils
     {
         string photoRootPath = WebConfigurationManager.AppSettings["ImgContentRootFolder"];
         string fileToDelete = Path.Combine(photoRootPath, scope, balId.ToString(), elementToDelete.ToString() + fileExt);
-
-        if (System.IO.File.Exists(fileToDelete))
-            System.IO.File.Delete(fileToDelete);
+        var conn = Utils.ConnectToDatabase();
+        PhotorowUtils.Delete(fileToDelete, conn);
     }
 
     public static void DeleteFolderRecursive(string folderToDelete)
     {
-        foreach (string dirToDelete in System.IO.Directory.GetDirectories(folderToDelete))
-            DeleteFolderRecursive(dirToDelete);
-
-        foreach (string fileToDelete in System.IO.Directory.GetFiles(folderToDelete))
-            System.IO.File.Delete(fileToDelete);
-
-        System.IO.Directory.Delete(folderToDelete);
+        var conn = Utils.ConnectToDatabase();
+        PhotorowUtils.DeleteAll(folderToDelete, conn);
     }
 
     private static int FindObjectMatchForBalansBuilding(SqlConnection connectionSql, /*FbConnection connection1NF,*/
@@ -2772,10 +2718,7 @@ public static class Reports1NFUtils
 					string file_name = (string)reader.GetValue(1);
 					string file_ext = (string)reader.GetValue(2);
 					string fileFullPath = Path.Combine(photoArendaPath, id.ToString() + file_ext);
-					if (File.Exists(fileFullPath))
-						File.Delete(fileFullPath);
-					if ((Directory.Exists(photoArendaPath)) && (Directory.GetFiles(photoArendaPath).Length == 0) && (Directory.GetDirectories(photoArendaPath).Length == 0))
-						Directory.Delete(photoArendaPath);
+                    PhotorowUtils.Delete(fileFullPath, connectionSql);
 				}
 				reader.Close();
 			}
@@ -2796,21 +2739,14 @@ public static class Reports1NFUtils
 			{
 				while (r.Read())
 				{
-					if (!Directory.Exists(photoArendaPath))
-						Directory.CreateDirectory(photoArendaPath);
-
 					int id = (int)r.GetValue(0);
 					string file_name = (string)r.GetValue(1);
 					string file_ext = (string)r.GetValue(2);
 
 					string sourceFile = Path.Combine(photo1NFARENDAPath, id.ToString() + file_ext);
 					string destFile = Path.Combine(photoArendaPath, id.ToString() + file_ext);
-
-					if (File.Exists(destFile))
-						File.Delete(destFile);
-					if (File.Exists(sourceFile))
-						File.Copy(sourceFile, destFile, true);
-
+                    PhotorowUtils.Delete(destFile, connectionSql);
+                    PhotorowUtils.Copy(sourceFile, destFile, connectionSql);
 				}
 				r.Close();
 			}

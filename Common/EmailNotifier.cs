@@ -68,8 +68,6 @@ namespace GUKV.Common
 
         public static void NotifyBalansObjectAdded(SqlConnection connectionSqlClient, SqlTransaction transactionSql, int balansId)
         {
-			return; //!!!!!!!!!!!!!!!!!!!!!! временно
-
             string query = @"SELECT org.id, org.full_name, bal.sqr_total, b.street_full_name, b.addr_nomer, dict_doc_kind.name, balans_doc_num, balans_doc_date
                 FROM balans bal
                 INNER JOIN buildings b ON b.id = bal.building_id
@@ -290,6 +288,11 @@ namespace GUKV.Common
         /// <param name="body"></param>
         public static void SendMailMessage(string from, string to, string cc, string bcc, string subject, string body)
         {
+            if (string.IsNullOrEmpty(from))
+            {
+                return;
+            }
+
             bool isTest = false;
 
             body = body.Replace("\r", "");

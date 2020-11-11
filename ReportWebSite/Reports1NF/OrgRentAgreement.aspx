@@ -28,8 +28,24 @@
 
     .editForm999 .dxgvEditFormTable_DevEx 
     {
-         width:1400px !important;
+         width:1800px !important;
     }
+
+    .dxflGroup_DevEx td.dxflCaptionCellSys
+    {
+        width: 550px !important;
+        min-width: 550px !important;
+    }
+
+    .dxflCaptionCell_DevEx
+    {
+        white-space: normal !important;
+    }
+
+    a.dxbButton_DevEx {
+        margin:0px !important;
+    }
+
 
 </style>
 
@@ -810,20 +826,19 @@
 
 			if (grid.IsEditing()) {
 				var popup = s.GetEditFormTable();
-				console.log("popup", popup);
-				//console.log("felm__total_free_sqr", felm__total_free_sqr.GetValue());
 				$(felm__tmp1.mainElement).hide();
 				$(felm__tmp2.mainElement).hide();
-				$(felm__tmp3.mainElement).hide();
+                $(felm__tmp3.mainElement).hide();
+				$(popup).find(".dxflCommandItemSys").css("margin-left", "0px");
 
-				$(popup).find(".dxgvCommandColumn_DevEx").attr("align", "left");
-				var err_object = $("#MainContent_CPMainPanel_CardPageControl_ASPxRoundPanel1_ASPxGridViewFreeSquare_DXEditingErrorRow");
+				var err_object = $("#MainContent_CPMainPanel_CardPageControl_ASPxRoundPanel1_ASPxGridViewFreeSquare_DXEditingErrorItem");
+                console.log("err_object", err_object);
 				if (err_object.length > 0) {
 					var err_text = err_object.text();
 					if (err_text == null) err_text = "";
 					if (err_text.indexOf("Об'єкт погоджено орендодавцем! Усі зміни ТІЛЬКИ з його дозволу за тел: 202-61-76, 202-61-77, 202-61-96 !") >= 0) {
 						console.log("err_object.text", err_text);
-						var save_image = $(popup).find(".dxgvCommandColumn_DevEx").find("img").first();
+						var save_image = $(popup).find(".dxflCommandItemSys").find("a").first();
 						save_image.hide();
 					}
 				}
@@ -876,7 +891,9 @@
 			//}
 
 			var popup = grid.GetEditFormTable();
-			var tbody = $(popup).children('tbody');
+			var div = $(popup).find('.dxflFormLayout_DevEx');
+			var dtable = $(div).children('table');
+			var tbody = $(dtable).children('tbody');
 			var rows = $(tbody).children('tr');
 			var r1 = 9;
 			var r2 = r1 + 1;

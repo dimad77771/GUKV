@@ -8,6 +8,7 @@
     {
         Utils.EnsureRequestValidationMode();
         log4net.Config.XmlConfigurator.Configure(new System.IO.FileInfo(Server.MapPath("~/Web.config"))); 
+        DevExpress.Web.ASPxWebControl.BackwardCompatibility.DataControlAllowReadUnlistedFieldsFromClientApiDefaultValue = true;
     }
 
     void Application_PreRequestHandlerExecute(object sender, EventArgs e)
@@ -17,9 +18,18 @@
     
     void Application_BeginRequest()
     {
+		var request = Request.QueryString;
+		var rawUrl = Request.RawUrl;
+		if (rawUrl.ToLower().StartsWith(@"/ImgContent/".ToLower()))
+		{
+			rawUrl = rawUrl.ToLower().Replace(@"/ImgContent/".ToLower(), "/Reports1NF/ImgContent.aspx?photofilename=");
+			Response.Redirect(rawUrl);
+		}
+
+
         //if (Request.IsLocal) { StackExchange.Profiling.MiniProfiler.Start(); }
   
-		var response = HttpContext.Current.Response;
+		//var response = HttpContext.Current.Response;
 
 		//var filter = new OutputFilterStream(response.Filter);
 		//filter.Id = Guid.NewGuid();

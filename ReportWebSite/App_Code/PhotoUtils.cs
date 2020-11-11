@@ -9,6 +9,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Drawing;
 using System.Drawing.Imaging;
+using ExtDataEntry.Models;
 
 public static class PhotoUtils
 {
@@ -39,6 +40,9 @@ public static class PhotoUtils
 
 	public static void AddUploadedFile(string tempPhotoFolder, string uploadedFileName, byte[] uploadedFileBytes)
 	{
+		var connectionSql = Utils.ConnectToDatabase();
+		var sqlTransaction = connectionSql.BeginTransaction();
+
 		var file_name = Path.GetFileNameWithoutExtension(uploadedFileName);
 		var file_ext = Path.GetExtension(uploadedFileName);
 		var newfilename = Path.Combine(tempPhotoFolder, DbFilename2LocalFilename(file_name, file_ext));
@@ -46,7 +50,7 @@ public static class PhotoUtils
 		var jpeginfo = ProcImage(uploadedFileBytes);
 		if (jpeginfo.IsImage)
 		{
-			File.WriteAllBytes(newfilename, jpeginfo.Jpegbytes);
+			PhotorowUtils.Write(newfilename, jpeginfo.Jpegbytes, connectionSql, sqlTransaction);
 		}
 		else
 		{
@@ -56,7 +60,7 @@ public static class PhotoUtils
 				for(int i = 0; i < pdfinfo.ListFileNames.Count; i++)
 				{
 					var pdfImageFilename = Path.Combine(tempPhotoFolder, DbFilename2LocalFilename(pdfinfo.ListFileNames[i], ".jpg"));
-					File.WriteAllBytes(pdfImageFilename, pdfinfo.ListJpegbytes[i]);
+					PhotorowUtils.Write(pdfImageFilename, pdfinfo.ListJpegbytes[i], connectionSql, sqlTransaction);
 				}
 			}
 			else
@@ -64,6 +68,9 @@ public static class PhotoUtils
 				throw new Exception("Підтримуються тільки файли зображень (jpg/jpeg/png/bmp/gif) або pdf-файли");
 			}
 		}
+
+		sqlTransaction.Commit();
+		connectionSql.Close();
 	}
 
 	struct ProcImageReturn

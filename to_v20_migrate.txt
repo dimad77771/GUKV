@@ -410,3 +410,9 @@ E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\Reports1NF\OrgBalansObject.
 	OrgBalansObject_20190103.aspx
 	OrgBalansObject_20190410.aspx.cs
 	OrgBalansObject_1.aspx
+	
+	
+Обязательно проверь в web.config верность путей и порты:
+	<add key="ImgFreeSquareRootFolder" value="E:\PROJECTS\DKVSOURCESFINALEDITION\ReportWebSite\ImgFree"/>
+	<add key="ImgContentRootFolder" value="E:\PROJECTS\DKVSOURCESFINALEDITION\ReportWebSite\ImgContent"/>
+	<add key="WebsiteBaseUrl" value="http://localhost:6670"/>

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Configuration;
 using System.Data.SqlClient;
+using ExtDataEntry.Models;
 
 /// <summary>
 /// Summary description for ArchiverSql
@@ -190,7 +191,7 @@ public static class ArchiverSql
             cmdArchBalansFreeSquare.ExecuteNonQuery();
         }
 
-        string photoRootPath = WebConfigurationManager.AppSettings["ImgFreeSquareRootFolder"];
+        string photoRootPath = PhotorowUtils.ImgFreeSquareRootFolder;
         string photo1NFPath = Path.Combine(photoRootPath, "1NF");
         string photoBalansPath = Path.Combine(photoRootPath, "Balans");
         
@@ -209,18 +210,11 @@ public static class ArchiverSql
                     string file_name = r.IsDBNull(2) ? "" : r.GetString(2);
                     string file_ext = r.IsDBNull(3) ? "" : r.GetString(3);
 
-                    //string photoArchBalansPath = Path.Combine(photoRootPath, "Balans", free_square_id.ToString(), "Arch", new_archive_link_code.ToString());
                     string photoArchBalansPath = Path.Combine(photoRootPath, "Arch", free_square_id.ToString());
-                    if (!Directory.Exists(photoArchBalansPath))
-                        Directory.CreateDirectory(photoArchBalansPath);
-
                     string sourcePath = Path.Combine(photoBalansPath, free_square_id.ToString(), file_name + file_ext);
                     string destPath = Path.Combine(photoArchBalansPath, file_name + file_ext);
-
-                    if (File.Exists(destPath))
-                        File.Delete(destPath);
-                    if (File.Exists(sourcePath))
-                        File.Copy(sourcePath, destPath, true);
+                    PhotorowUtils.Delete(destPath, connectionSql, transactionSql);
+                    PhotorowUtils.Copy(sourcePath, destPath, connectionSql, transactionSql);
                 }
                 r.Close();
             }
@@ -255,13 +249,9 @@ public static class ArchiverSql
                     string file_ext = r.IsDBNull(3) ? "" : r.GetString(3);
                     string sourceFile = Path.Combine(balansPhotoBalansPath, balansId.ToString(), id.ToString() + file_ext);
                     string destPath = Path.Combine(balansPhotoArchPath, balansId.ToString(), new_archive_link_code.ToString());
-                    if (!Directory.Exists(destPath))
-                        Directory.CreateDirectory(destPath);
                     string destFile = Path.Combine(destPath, id.ToString() + file_ext);
-                    if (File.Exists(destFile))
-                        File.Delete(destFile);
-                    if (File.Exists(sourceFile))
-                        File.Copy(sourceFile, destFile, true);
+                    PhotorowUtils.Delete(destFile, connectionSql, transactionSql);
+                    PhotorowUtils.Copy(sourceFile, destFile, connectionSql, transactionSql);
                 }
                 r.Close();
             }

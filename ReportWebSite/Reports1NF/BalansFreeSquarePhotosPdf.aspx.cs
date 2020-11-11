@@ -21,6 +21,7 @@ using System.Drawing;
 using Syncfusion.Pdf.Parsing;
 using Syncfusion.DocToPDFConverter;
 using Syncfusion.DocIO.DLS;
+using ExtDataEntry.Models;
 
 public partial class Reports1NF_Cabinet : System.Web.UI.Page
 {
@@ -137,7 +138,7 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
 
 		bool ProcFile(FileInfo fi)
 		{
-			if (!File.Exists(fi.FullFilename)) return false;
+			if (!PhotorowUtils.Exists(fi.FullFilename, connectionSql)) return false;
 
 			if (ProcFileImage(fi)) return true;
 			if (ProcFilePdf(fi)) return true;
@@ -151,7 +152,8 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
 			System.Drawing.Image image;
 			try
 			{
-				image = Bitmap.FromFile(fi.FullFilename);
+				var mem = new MemoryStream(PhotorowUtils.Read(fi.FullFilename, connectionSql));
+				image = Bitmap.FromStream(mem);
 			}
 			catch (Exception ex)
 			{
@@ -195,7 +197,8 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
 			PdfLoadedDocument expdf;
 			try
 			{
-				expdf = new PdfLoadedDocument(fi.FullFilename);
+				var bytes = PhotorowUtils.Read(fi.FullFilename, connectionSql);
+				expdf = new PdfLoadedDocument(bytes);
 			}
 			catch (Exception ex)
 			{
@@ -213,7 +216,8 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
 			WordDocument docx;
 			try
 			{
-				docx = new WordDocument(fi.FullFilename);
+				var mem = new MemoryStream(PhotorowUtils.Read(fi.FullFilename, connectionSql));
+				docx = new WordDocument(mem);
 			}
 			catch (Exception ex)
 			{

@@ -721,20 +721,8 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
     {
         string balansIdStr = Request.QueryString["bid"];
         Int32 newId = 0;
-        string photoRootPath = WebConfigurationManager.AppSettings["ImgContentRootFolder"];
-        //string serverLocalBalansObjectFolder = Path.Combine(photoRootPath, "Balans", balansIdStr);
-        string serverLocal1NFObjectFolder = Path.Combine(photoRootPath, "1NF", balansIdStr);
-
-		//if (!Directory.Exists(TempPhotoFolder())) throw new Exception("Temp Photo Folder not found");
-
-        if (Directory.Exists(serverLocal1NFObjectFolder))
-        {
-            foreach (string fileToDelete in Directory.GetFiles(serverLocal1NFObjectFolder))
-            {
-                File.Delete(fileToDelete);
-            }
-
-        }
+        string photoRootPath = PhotorowUtils.ImgContentRootFolder;
+        string local1NFObjectFolder = Path.Combine(photoRootPath, "1NF", balansIdStr);
 
         SqlConnection connection = Utils.ConnectToDatabase();
         SqlTransaction trans = connection.BeginTransaction();
@@ -747,7 +735,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
                 cmd.ExecuteNonQuery();
             }
 
-			var allfiles = Directory.GetFiles(TempPhotoFolder());
+            var allfiles = PhotorowUtils.GetFiles(TempPhotoFolder(), connection, trans);
             foreach (string filePath in allfiles)
             {
 				var dbfile = PhotoUtils.LocalFilename2DbFilename(filePath);
@@ -761,20 +749,9 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
                 cmd.Parameters.Add(new SqlParameter("createdate", DateTime.Now));
 				newId = (Int32)cmd.ExecuteScalar();
 
-                fullPath = System.IO.Path.Combine(serverLocal1NFObjectFolder, newId.ToString() + System.IO.Path.GetExtension(filePath));
-                //fullPath = Path.Combine(TempPhotoFolder(), e.UploadedFile.FileName);
+                fullPath = System.IO.Path.Combine(local1NFObjectFolder, newId.ToString() + System.IO.Path.GetExtension(filePath));
 
-                if (!System.IO.Directory.Exists(serverLocal1NFObjectFolder))
-                    System.IO.Directory.CreateDirectory(serverLocal1NFObjectFolder);
-
-                File.Copy(filePath, fullPath);
-                //File.Delete(filePath);
-
-                //System.IO.FileStream file = System.IO.File.Create(fullPath);
-                //file.Write(e.UploadedFile.FileBytes, 0, (int)e.UploadedFile.ContentLength);
-                //file.Flush();
-                //file.Close();
-
+                PhotorowUtils.Copy(filePath, fullPath, connection, trans);
             }
 
             trans.Commit();
@@ -785,10 +762,6 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
             trans.Rollback();
             throw;
         }
-
-		//pgv
-		//if (Directory.Exists(TempPhotoFolder()))
-		//	Directory.Delete(TempPhotoFolder(),true);
 	}
 
 	protected void AddQueryParameter(ref string fieldList, string fieldName, string paramName,
@@ -916,45 +889,8 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
     private void DiscardChanges(SqlConnection connectionSql)
     {
-
-        foreach (string file in Directory.GetFiles(TempPhotoFolder()))
-        {
-            if (File.Exists(file))
-                File.Delete(file);
-        }
-
+        PhotorowUtils.DeleteAll(TempPhotoFolder(), connectionSql);
         CopySourceFiles(Request.QueryString["bid"]);
-
-		//PrepareTempPhotoFolder();
-
-		//!!! if (Directory.Exists(TempPhotoFolder()))
-		//!!! Directory.Delete(TempPhotoFolder(),true);
-
-
-
-		//using (SqlCommand cmd = new SqlCommand("select id, file_ext from reports1nf_photos where status = 1 and bal_id = @bid", connectionSql))
-		//{
-		//    cmd.Parameters.AddWithValue("bid", BalansObjectID);
-		//    using (SqlDataReader r = cmd.ExecuteReader())
-		//    {
-		//        while (r.Read())
-		//            Reports1NFUtils.DeleteBalansPhotoFile(r.GetInt32(0), BalansObjectID, r.GetString(1), "1NF");
-
-		//        r.Close();
-		//    }
-		//}
-
-		//using (SqlCommand cmd = new SqlCommand("delete from reports1nf_photos where status = 1 and bal_id = @bid", connectionSql))
-		//{
-		//    cmd.Parameters.AddWithValue("bid", BalansObjectID);
-		//    cmd.ExecuteNonQuery();
-		//}
-
-		//using (SqlCommand cmd = new SqlCommand("update reports1nf_photos set status = 0 where status = 2 and bal_id = @bid", connectionSql))
-		//{
-		//    cmd.Parameters.AddWithValue("bid", BalansObjectID);
-		//    cmd.ExecuteNonQuery();
-		//}
 	}
 
 	protected void CPCommentViewerPanel_Callback(object sender, CallbackEventArgsBase e)
@@ -1012,65 +948,11 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
     protected void ASPxUploadPhotoControl_FileUploadComplete(object sender, DevExpress.Web.FileUploadCompleteEventArgs e)
     {
-        //this.LoadViewState("PageUniqueKey");
-
         string balansIdStr = Request.QueryString["bid"];
-        //Int32 newId = 0;
+        string photoRootPath = PhotorowUtils.ImgContentRootFolder;
+        string local1NFObjectFolder = Path.Combine(photoRootPath, "1NF", balansIdStr);
 
-        string photoRootPath = WebConfigurationManager.AppSettings["ImgContentRootFolder"];
-        //string serverLocalBalansObjectFolder = Path.Combine(photoRootPath, "Balans", balansIdStr);
-        string serverLocal1NFObjectFolder = Path.Combine(photoRootPath, "1NF", balansIdStr);
-
-
-        //string serverLocalBalansObjectFolder = Server.MapPath(String.Format(@"~\ImgContent\1NF\{0}\", balansIdStr));
-
-        string fullPath = string.Empty;
-
-        //SqlConnection connection = Utils.ConnectToDatabase();
-        //SqlTransaction trans = connection.BeginTransaction();
-        try
-        {
-            //SqlCommand cmd = new SqlCommand("INSERT INTO reports1nf_photos (bal_id, file_name, file_ext, user_id, create_date, status) VALUES (@balid, @filename, @fileext, @usrid, @createdate, 1); ; SELECT CAST(SCOPE_IDENTITY() AS int)", connection, trans);
-            //cmd.Parameters.Add(new SqlParameter("balid", int.Parse(balansIdStr)));
-            //cmd.Parameters.Add(new SqlParameter("filename", System.IO.Path.GetFileNameWithoutExtension(e.UploadedFile.FileName)));
-            //cmd.Parameters.Add(new SqlParameter("fileext", System.IO.Path.GetExtension(e.UploadedFile.FileName)));
-            //cmd.Parameters.Add(new SqlParameter("usrid", (Guid)System.Web.Security.Membership.GetUser().ProviderUserKey));
-            //cmd.Parameters.Add(new SqlParameter("createdate", DateTime.Now));
-            //newId = (Int32)cmd.ExecuteScalar();
-
-            //fullPath = System.IO.Path.Combine(serverLocal1NFObjectFolder, newId.ToString() + System.IO.Path.GetExtension(e.UploadedFile.FileName));
-            
-
-            if (!System.IO.Directory.Exists(serverLocal1NFObjectFolder))
-                System.IO.Directory.CreateDirectory(serverLocal1NFObjectFolder);
-
-			PhotoUtils.AddUploadedFile(TempPhotoFolder(), e.UploadedFile.FileName, e.UploadedFile.FileBytes);
-
-			/*
-			fullPath = Path.Combine(TempPhotoFolder(), e.UploadedFile.FileName);
-			System.IO.FileStream file = System.IO.File.Create(fullPath);
-            file.Write(e.UploadedFile.FileBytes, 0, (int)e.UploadedFile.ContentLength);
-            file.Flush();
-            file.Close();
-			*/
-
-			//////var fullPath2 = Path.Combine(TempPhotoFolder(), "qq" + Guid.NewGuid() + ".jpg");
-			//////File.Copy(fullPath, fullPath2, true);
-
-
-			//trans.Commit();
-			//connection.Close();
-
-		}
-		catch(Exception ex)
-        {
-            //trans.Rollback();
-            if ((!string.IsNullOrEmpty(fullPath)) && (System.IO.File.Exists(fullPath)))
-                System.IO.File.Delete(fullPath);
-			throw ex;
-        }
-
- 
+        PhotoUtils.AddUploadedFile(TempPhotoFolder(), e.UploadedFile.FileName, e.UploadedFile.FileBytes);
     }
 
     protected void delete_Callback(object source, CallbackEventArgs e)
@@ -1098,16 +980,13 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
             ImageGalleryItem item = imageGalleryDemo.Items[int.Parse(indexStr)];
             FileAttachment drv = (FileAttachment)item.DataItem;
-            //int elementToDelete = int.Parse(drv.ID);
             string fileExt = Path.GetExtension(drv.Name);
 
-            if (File.Exists(drv.Name))
-                File.Delete(drv.Name);
+            var connectionSql = Utils.ConnectToDatabase();
+            PhotorowUtils.Delete(drv.Name, connectionSql);
+            connectionSql.Close();
 
-
-            //Reports1NFUtils.DeleteBalansPhotoFileItem(elementToDelete, int.Parse(balId), fileExt, "1NF", "reports1nf_photos");
             imageUrl = item.ImageUrl;
-
         }
         return imageUrl;
     }
@@ -1419,13 +1298,8 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
         if (PhotoFolderID != Guid.Empty)
         {
             string balansIdStr = Request.QueryString["bid"];
-            string photoRootPath = WebConfigurationManager.AppSettings["ImgContentRootFolder"];
+            string photoRootPath = PhotorowUtils.ImgContentRootFolder;
             string destFolder = Path.Combine(photoRootPath, "1NF_" + balansIdStr + "_" + PhotoFolderID.ToString()).ToLower();
-//            string destFolder = Path.Combine(photoRootPath, "Tmp","1NF_" + balansIdStr + "_" + PhotoFolderID.ToString()).ToLower();
-
-
-            if (!Directory.Exists(destFolder))
-                Directory.CreateDirectory(destFolder);
             return destFolder;
         }
         else
@@ -1448,36 +1322,13 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
     private void CopySourceFiles(string balansIdStr)
     {
-
-
-        string photoRootPath = WebConfigurationManager.AppSettings["ImgContentRootFolder"];
-
+        string photoRootPath = PhotorowUtils.ImgContentRootFolder;
         string destFolder = TempPhotoFolder();
 
-        if (!Directory.Exists(destFolder))
-            Directory.CreateDirectory(destFolder);
-        else
-        {
-            //Directory.
-        }
+        var connection = Utils.ConnectToDatabase();
+        var trans = connection.BeginTransaction();
 
-        //var security = Directory.GetAccessControl(destFolder);
-        //security.AddAccessRule(
-        //    new FileSystemAccessRule(
-        //        new SecurityIdentifier(WellKnownSidType.AnonymousSid, null),
-        //        FileSystemRights.FullControl,
-        //        InheritanceFlags.ObjectInherit,
-        //        PropagationFlags.InheritOnly,
-        //        AccessControlType.Allow
-        //    )
-        //);
-        //Directory.SetAccessControl(destFolder, security);
-
-
-
-
-        SqlConnection connection = Utils.ConnectToDatabase();
-        using (SqlCommand cmd = new SqlCommand("select id, file_name, file_ext from reports1nf_photos where bal_id = @bid", connection))
+        using (SqlCommand cmd = new SqlCommand("select id, file_name, file_ext from reports1nf_photos where bal_id = @bid", connection, trans))
         {
             cmd.Parameters.AddWithValue("bid", balansIdStr);
             using (SqlDataReader r = cmd.ExecuteReader())
@@ -1489,18 +1340,18 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
                     string file_ext = r.GetString(2);
 
                     string sourceFileToCopy = Path.Combine(photoRootPath, "1NF", balansIdStr, id.ToString() + file_ext);
-                    if (File.Exists(sourceFileToCopy))
+                    if (PhotorowUtils.Exists(sourceFileToCopy, connection, trans))
                     {
                         string destFileToCopy = Path.Combine(destFolder, PhotoUtils.DbFilename2LocalFilename(file_name, file_ext));
-                        if (File.Exists(destFileToCopy))
-                            File.Delete(destFileToCopy);
-                        File.Copy(sourceFileToCopy, destFileToCopy);
+                        PhotorowUtils.Delete(destFileToCopy, connection, trans);
+                        PhotorowUtils.Copy(sourceFileToCopy, destFileToCopy, connection, trans);
                     }
                 }
 
                 r.Close();
             }
         }
+        trans.Commit();
         connection.Close();
     }
 

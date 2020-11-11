@@ -13,6 +13,10 @@
     .command-column-class {
         white-space:normal !important;
     }
+
+    a.dxbButton_DevEx {
+        margin:0px !important;
+    }
 </style>
 
 <script type="text/javascript" src="../Scripts/PageScript.js"></script>

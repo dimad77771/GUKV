@@ -22,7 +22,7 @@ namespace ExtDataEntry.Models
 
         private static string GetFolderPath(string scope, int recordID)
         {
-            return Path.Combine(WebConfigurationManager.AppSettings["ImgFreeSquareRootFolder"], scope, recordID.ToString());
+            return Path.Combine(PhotorowUtils.ImgFreeSquareRootFolder, scope, recordID.ToString());
         }
 
 		public static IEnumerable<FileAttachment> Select(string scope, int recordID)
@@ -65,8 +65,6 @@ namespace ExtDataEntry.Models
                 yield break;
 
             string path = GetFolderPath(scope, recordID);
-            if (!Directory.Exists(path))
-                yield break;
 
             SqlConnection connectionSql = Utils.ConnectToDatabase();
             string query = "";
@@ -106,14 +104,15 @@ namespace ExtDataEntry.Models
 
                         string fullPath = Path.Combine(path, file_name + file_ext);
 
-                        if (File.Exists(fullPath))
+                        var image = PhotorowUtils.Read(fullPath, connectionSql);
+                        if (image != null)
                         {
                             yield return new FileAttachment()
                             {
                                 ID = id.ToString(),
                                 ParentID = "\\ROOT",
                                 Name = file_name + file_ext,
-                                Image = File.ReadAllBytes(fullPath),
+                                Image = PhotorowUtils.Read(fullPath, connectionSql),
                                 LastModified = modify_date,
                             };
                         }
@@ -129,42 +128,36 @@ namespace ExtDataEntry.Models
             if (string.IsNullOrEmpty(scope))
                 throw new ArgumentException("scope must have a value");
 
-            //yield return new FileAttachment()
-            //{
-            //    ID = "\\ROOT",
-            //    ParentID = "\\NONE",
-            //    IsFolder = true,
-            //    Name = "~\\",
-            //};
-
             if (recordID <= 0)
                 yield break;
 
+            var fileAttachments = new List<FileAttachment>();
+            var connectionSql = Utils.ConnectToDatabase();
             string photoRootPath = WebConfigurationManager.AppSettings["ImgContentRootFolder"];
             string destFolder = Path.Combine(photoRootPath, scope + "_" + recordID.ToString() + "_" + tempGuid);
 
-            if (!Directory.Exists(destFolder))
-                yield break;
-
-            string[] files = Directory.GetFiles(destFolder);
+            string[] files = PhotorowUtils.GetFiles(destFolder, connectionSql);
             foreach (string f in files)
             {
                 string fileName = Path.GetFileNameWithoutExtension(f);
                 string fileExt = Path.GetExtension(f);
 
-                //string imageUrl = String.Format("http://192.168.10.84/ReportWebSite/ImgContent/{0}_{1}_{2}/{3}{4}", scope, recordID.ToString(), tempGuid, fileName, fileExt);
-                //string imageUrl = String.Format("http://localhost:6660/ReportWebSite/ImgContent/{0}_{1}_{2}/{3}{4}", scope, recordID.ToString(), tempGuid, fileName, fileExt);
                 string imageUrl = String.Format("~/ImgContent/{0}_{1}_{2}/{3}{4}", scope, recordID.ToString(), tempGuid, fileName, fileExt);
 
-                yield return new FileAttachment()
+                var fileAttachment = new FileAttachment()
                 {
                     ID = fileName,
                     ParentID = "\\ROOT",
                     Name = f,
-                    Image = File.ReadAllBytes(f),
+                    Image = PhotorowUtils.Read(f, connectionSql),
                     ImageUrl = imageUrl,
-                    //LastModified = Path.,
                 };
+                fileAttachments.Add(fileAttachment);
+            }
+
+            foreach (var fileAttachment in fileAttachments)
+            {
+                yield return fileAttachment;
             }
         }
 
@@ -180,16 +173,15 @@ namespace ExtDataEntry.Models
                 throw new ArgumentException("image must have a value");
 
             string path = GetFolderPath(scope, recordID);
-            if (!Directory.Exists(path))
-                Directory.CreateDirectory(path);
 
+            var connectionSql = Utils.ConnectToDatabase();
+            var sqlTransaction = connectionSql.BeginTransaction();
 
             MembershipUser user = Membership.GetUser();
             string modified_by = user == null ? String.Empty : (String)user.UserName;
 
-            File.WriteAllBytes(Path.Combine(path, Name), Image);
+            PhotorowUtils.Write(Path.Combine(path, Name), Image, connectionSql, sqlTransaction);
 
-            SqlConnection connectionSql = Utils.ConnectToDatabase();
 			string table = "";
 			string query = "";
 			if (scope == "free_square_current_stage_documents")
@@ -225,7 +217,7 @@ namespace ExtDataEntry.Models
 			{
 				query = "INSERT INTO [" + table + "] ([free_square_id],[file_name],[file_ext],[modify_date],[modified_by]) VALUES (@free_square_id,@file_name,@file_ext,@modify_date,@modified_by)";
 			}
-			using (SqlCommand cmdFiles = new SqlCommand(query, connectionSql))
+			using (SqlCommand cmdFiles = new SqlCommand(query, connectionSql, sqlTransaction))
             {
                 cmdFiles.Parameters.AddWithValue("free_square_id", recordID);
                 cmdFiles.Parameters.AddWithValue("file_name", Path.GetFileNameWithoutExtension(Name));
@@ -236,7 +228,7 @@ namespace ExtDataEntry.Models
                 cmdFiles.ExecuteNonQuery();
             }
 
-            
+            sqlTransaction.Commit();
         }
 
         public static void Delete(string scope, int recordID, string id /* attachmentID */)
@@ -253,8 +245,6 @@ namespace ExtDataEntry.Models
                 throw new ArgumentException("fileName must have a value");
 
             string path = GetFolderPath(scope, recordID);
-            if (!Directory.Exists(path))
-                return;
 
 			string table = "";
 			if (scope == "free_square_current_stage_documents")
@@ -286,9 +276,10 @@ namespace ExtDataEntry.Models
 				table = "reports1nf_balans_free_square_photos";
 			}
 
-			SqlConnection connectionSql = Utils.ConnectToDatabase();
+            var connectionSql = Utils.ConnectToDatabase();
+            var sqlTransaction = connectionSql.BeginTransaction();
             string query = "SELECT [file_name],[file_ext] FROM [" + table + "] WHERE [id] = @id";
-            using (SqlCommand cmdFiles = new SqlCommand(query, connectionSql))
+            using (SqlCommand cmdFiles = new SqlCommand(query, connectionSql, sqlTransaction))
             {
                 cmdFiles.Parameters.AddWithValue("id", id);
                 using (SqlDataReader reader = cmdFiles.ExecuteReader())
@@ -299,34 +290,18 @@ namespace ExtDataEntry.Models
                         string file_ext = reader.GetString(1);
                         string fullPath = Path.Combine(path, file_name + file_ext);
 
-                        if (Directory.Exists(path))
-                            File.Delete(fullPath);
-
+                        PhotorowUtils.Delete(fullPath, connectionSql, sqlTransaction);
                     }
                     reader.Close();
                 }
-                using (SqlCommand cmdDelete = new SqlCommand("DELETE FROM [" + table + "] WHERE [id] = @id", connectionSql))
+                using (SqlCommand cmdDelete = new SqlCommand("DELETE FROM [" + table + "] WHERE [id] = @id", connectionSql, sqlTransaction))
                 {
                     cmdDelete.Parameters.AddWithValue("id", id);
                     cmdDelete.ExecuteNonQuery();
                 }
 
-                if (Directory.GetFiles(path).Length == 0)
-                {
-                    try
-                    {
-                        Directory.Delete(path);
-                    }
-                    catch { }
-                }
+                sqlTransaction.Commit();
             }
-
-
-
-
-            //string path = GetFolderPath(scope, recordID);
-            //if (Directory.Exists(path))
-            //    File.Delete(Path.Combine(path, name));
         }
 
         public static void DeleteAll(string scope, int recordID)
@@ -337,8 +312,13 @@ namespace ExtDataEntry.Models
                 throw new ArgumentOutOfRangeException("recordID");
 
             string path = GetFolderPath(scope, recordID);
-            if (Directory.Exists(path))
-                Directory.Delete(path, true);
+
+            var connectionSql = Utils.ConnectToDatabase();
+            var sqlTransaction = connectionSql.BeginTransaction();
+
+            PhotorowUtils.DeleteAll(path, connectionSql, sqlTransaction);
+
+            sqlTransaction.Commit();
         }
 
     }
