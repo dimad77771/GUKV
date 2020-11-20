@@ -5,6 +5,7 @@ using System.Web;
 using System.Data.SqlClient;
 using log4net;
 using System.Net.Mail;
+using System.Web.Configuration;
 
 namespace GUKV.Common
 {
@@ -288,6 +289,10 @@ namespace GUKV.Common
         /// <param name="body"></param>
         public static void SendMailMessage(string from, string to, string cc, string bcc, string subject, string body)
         {
+            if (WebConfigurationManager.AppSettings["NoSendEmail"] == "1")
+			{
+                return;
+            }
             if (string.IsNullOrEmpty(from))
             {
                 return;
