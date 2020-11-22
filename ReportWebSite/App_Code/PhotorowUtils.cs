@@ -13,6 +13,8 @@ namespace ExtDataEntry.Models
     {
         public static byte[] Read(string photofilename, SqlConnection connectionSql, SqlTransaction sqlTransaction = null)
         {
+            File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "PhotorowUtils.Read: photofilename=" + photofilename + "\n");
+
             byte[] result = null;
             using (SqlCommand cmdFiles = new SqlCommand("select photofilebytes from photorow where photofilename = @photofilename", connectionSql, sqlTransaction))
             {
@@ -35,6 +37,8 @@ namespace ExtDataEntry.Models
 
         public static bool Exists(string photofilename, SqlConnection connectionSql, SqlTransaction sqlTransaction = null)
         {
+            File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "PhotorowUtils.Exists: photofilename=" + photofilename + "\n");
+
             using (SqlCommand cmdFiles = new SqlCommand("select 1 from photorow where photofilename = @photofilename", connectionSql, sqlTransaction))
             {
                 cmdFiles.Parameters.AddWithValue("photofilename", photofilename);

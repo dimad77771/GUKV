@@ -27,25 +27,37 @@ public partial class Reports1NF_Cabinet : Page
 {
 	protected void Page_Load(object sender, EventArgs e)
 	{
-		var rootFolder = PhotorowUtils.ImgContentRootFolder;
-		var photofilename = Path.Combine(rootFolder, Request.QueryString["photofilename"]);
-		photofilename = photofilename.Replace(@"/", @"\");
-		var filename = Path.GetFileName(photofilename);
-
-		SqlConnection connectionSql = Utils.ConnectToDatabase();
-		var bytes = PhotorowUtils.Read(photofilename, connectionSql);
-		connectionSql.Close();
-
-		Response.Clear();
-		Response.ContentType = "application/jpeg";
-		Response.AddHeader("Content-Disposition", "attachment;filename=\"" + filename + "\"");
-		if (bytes != null)
+		try
 		{
-			Response.BinaryWrite(bytes);
+			var rootFolder = PhotorowUtils.ImgContentRootFolder;
+			var photofilename = Path.Combine(rootFolder, Request.QueryString["photofilename"]);
+			photofilename = photofilename.Replace(@"/", @"\");
+			var filename = Path.GetFileName(photofilename);
+
+			SqlConnection connectionSql = Utils.ConnectToDatabase();
+			var bytes = PhotorowUtils.Read(photofilename, connectionSql);
+			connectionSql.Close();
+
+			Response.Clear();
+			Response.ContentType = "application/jpeg";
+			Response.AddHeader("Content-Disposition", "attachment;filename=\"" + filename + "\"");
+			if (bytes != null)
+			{
+				Response.BinaryWrite(bytes);
+			}
+
+			//Response.Flush();
+			//Response.End();
+		}
+		catch (Exception ex)
+		{
+			System.IO.File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "execption22222:   " + ex.ToString() + "\n");
+
+			var lognet = log4net.LogManager.GetLogger("ReportWebSite");
+			lognet.Debug("--------------- Orgbalansobject page load ----------------", ex);
+			throw new AggregateException(ex);
 		}
 
-		Response.Flush();
-		Response.End();
 	}
 
 }

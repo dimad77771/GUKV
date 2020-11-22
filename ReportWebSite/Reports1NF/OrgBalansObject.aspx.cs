@@ -246,7 +246,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
         {
             var lognet = log4net.LogManager.GetLogger("ReportWebSite");
             lognet.Debug("--------------- Orgbalansobject page load ----------------", ex);
-            throw ex;
+            throw new AggregateException(ex);
         }
     }
 
@@ -1322,6 +1322,8 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
     private void CopySourceFiles(string balansIdStr)
     {
+        File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "CopySourceFiles: balansIdStr=" + balansIdStr + "\n");
+
         string photoRootPath = PhotorowUtils.ImgContentRootFolder;
         string destFolder = TempPhotoFolder();
 
@@ -1340,6 +1342,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
                     string file_ext = r.GetString(2);
 
                     string sourceFileToCopy = Path.Combine(photoRootPath, "1NF", balansIdStr, id.ToString() + file_ext);
+                    File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "sourceFileToCopy: sourceFileToCopy=" + sourceFileToCopy + "\n");
                     if (PhotorowUtils.Exists(sourceFileToCopy, connection, trans))
                     {
                         string destFileToCopy = Path.Combine(destFolder, PhotoUtils.DbFilename2LocalFilename(file_name, file_ext));
