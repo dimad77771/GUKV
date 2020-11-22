@@ -47,7 +47,7 @@
                                 <dx:ASPxMenu ID="MainMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left" >
                                     <ItemStyle Paddings-PaddingLeft="5px" Paddings-PaddingRight="5px" Font-Size="Larger" />
                                     <Items>
-										<dx:MenuItem NavigateUrl="~/Reports1NF/Report1NFFreeMap.aspx" Text="Мапа майна, що може бути передане в оренду"></dx:MenuItem>
+										<dx:MenuItem NavigateUrl="~/Reports1NF/Report1NFFreeMap.aspx" Text="Мапа майна, що може бути передане в оренду" Selected="true"></dx:MenuItem>
 										<dx:MenuItem NavigateUrl="~/Reports1NF/Report1NFFreeShow.aspx" Text="Перелік майна, що може бути передане в оренду"></dx:MenuItem>
 										<dx:MenuItem Visible="false" NavigateUrl="~/Reports1NF/Report1NFFreeRejections.aspx" Text="Перелік відмов потенційним орендарям"></dx:MenuItem>
 										<dx:MenuItem Visible="false" NavigateUrl="~/Reports1NF/Report1NFFreeShow.aspx?mode50=1" Text="Рішення про укладання договору (площа  50 кв.м або менше, та вартість до 500 000 грн.)"></dx:MenuItem>
@@ -61,6 +61,11 @@
 
                     <td>
                         <div style="float: right; padding-top: 0px;">
+                            <dx:ASPxButton ID="ASPChangeMapSystem" runat="server" Text="Використовувати мапу містобудівного кадастру" OnClick="ASPChangeMapSystem_Click"  >
+                                
+                            </dx:ASPxButton>
+
+
 <%--                            <asp:LoginView ID="LoginView1" runat="server">
                                 <AnonymousTemplate>
                                     <dx:ASPxMenu ID="LoginMenu1" runat="server" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">

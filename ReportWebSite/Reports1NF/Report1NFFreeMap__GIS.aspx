@@ -1,5 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Report1NFFreeMap_new3.aspx.cs" Inherits="Reports1NF_Report1NFFreeMap"
-    MasterPageFile="~/FreeShowPublic2.master" Title="Мапа вільних приміщень" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Report1NFFreeMap__GIS.aspx.cs" Inherits="Reports1NF_Report1NFFreeMap"
+    MasterPageFile="~/FreeShowPublic.master" Title="Мапа вільних приміщень" %>
 
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.Export" tagprefix="dx" %>
@@ -7,56 +7,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 
-<link rel="stylesheet" href="https://js.arcgis.com/3.34/dijit/themes/claro/claro.css"/>
-<link rel="stylesheet" href="https://js.arcgis.com/3.34/dojox/widget/ColorPicker/ColorPicker.css"/>
-<link rel="stylesheet" href="https://js.arcgis.com/3.34/esri/css/esri.css"/>
-
-<style>
-	html, body, #ui-esri-map {
-		width:   100%;
-		height:  100%;
-		margin:  0;
-		padding: 0;
-	}
-
-	#ui-esri-dijit-geocoder {
-		top:      20px;
-		left:     70px;
-		position: absolute;
-		z-index:  3;
-	}
-
-	.esriPopup .titlePane {
-		text-shadow: none;
-	}
-
-	.esriPopup .titleButton.next {
-		right: 40px;
-	}
-
-	.esriPopup .titleButton.prev {
-		right: 53px;
-	}
-
-	.demographicInfoContent {
-		padding-top: 10px;
-	}
-
-	.demographicInnerSpacing {
-		display: inline-block;
-		width:   8px;
-	}
-
-	.demographicNumericPadding {
-		width:      90px;
-		display:    inline-block;
-		text-align: right;
-	}
-</style>
-
-
-
+<script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
 <script type="text/javascript" src="../Scripts/PageScript.js"></script>
+
 
 
 <script type="text/javascript" language="javascript">
@@ -67,37 +20,18 @@
 	//console.log("allPoints", allPoints);
 	var selected_fs_id = <%= selected_fs_id %>;
 
-	
-
-
-	var formatNumber = function (value, key, data) {
-		var searchText = "" + value;
-		var formattedString = searchText.replace(/(\d)(?=(\d\d\d)+(?!\d))/gm, "$1,");
-		return formattedString;
-	};
-
-	var getCounty = function (value, key, data) {
-		if (value.toUpperCase() !== "LOUISIANA") {
-			return "County";
-		} else {
-			return "Parish";
-		}
-	};
-
-
-
 
 	window.onresize = function () {
 		AdjustGridSizes();
 	};
 
 	function AdjustGridSizes() {
-		console.log(window.innerHeight);
+		//console.log(window.innerHeight);
 		//alert(window.innerHeight);
-		$("#ui-esri-map").height(window.innerHeight - 180);
-		$("#ui-esri-map").width(window.innerWidth - 20);
+		$("#map").height(window.innerHeight - 180);
+		$("#map").width(window.innerWidth - 20);
 		//$("#map").height(600);
-		console.log($("#ui-esri-map"));
+		//console.log($("#map"));
 		//alert(reportId);
 		//; height:600px
 
@@ -105,7 +39,7 @@
 		$("#MainContent_ASPxPopupControlFreeSquare_ASPxFileManagerPhotoFiles_Splitter_Toolbar_DXI5_IS").hide();
 	}
 
-	function formatNumber2(arg) {
+	function formatNumber(arg) {
 		if (arg != null) {
 			return arg.toFixed(2);
 		} else {
@@ -176,15 +110,10 @@
 	}
 
 	var map;
-	window.onload = function () {
+	window.onload = function() {
 		jQuery(document).ready(function () {
 			setTimeout(function () {
 				AdjustGridSizes();
-
-
-
-
-				return;
 				
 				DG.then(function () {
 					if (selected_fs_id != null) {
@@ -283,7 +212,7 @@
 
 							'<tr>' +
 							'<td style="text-align:left; border:1px solid; padding:5px">Загальна площа об’єкта</td>' +
-							'<td style="text-align:left; border:1px solid; padding:5px">' + formatNumber2(apoint.total_free_sqr) + '</td>' +
+							'<td style="text-align:left; border:1px solid; padding:5px">' + formatNumber(apoint.total_free_sqr) + '</td>' +
 							'</tr>' +
 
 							'<tr>' +
@@ -390,7 +319,7 @@
 						}
 					}
 				});
-			}, 0);
+			}, 500);
 		});
 	}
 
@@ -400,58 +329,9 @@
 	// ]]>
 </script>
 
-    <script type="text/javascript" src="https://js.arcgis.com/3.34/"></script>
-    <script type="text/javascript">
-		var map;
+<script type="text/javascript">
+</script>
 
-		require([
-			"esri/map", "esri/geometry/Point",
-			"esri/symbols/SimpleMarkerSymbol", "esri/graphic",
-			"dojo/_base/array", "dojo/dom-style", "dojox/widget/ColorPicker",
-			"dojo/domReady!"
-		], function (
-			Map, Point,
-			SimpleMarkerSymbol, Graphic,
-			arrayUtils, domStyle, ColorPicker
-		) {
-			map = new Map("map", {
-				basemap: "oceans",
-				center: [20, 44],
-				zoom: 6,
-				minZoom: 2
-			});
-
-			//map.on("load", mapLoaded);
-
-			function mapLoaded() {
-				var points = [[19.82, 41.33], [16.37, 48.21], [18.38, 43.85], [23.32, 42.7], [16, 45.8], [19.08, 47.5], [12.48, 41.9], [21.17, 42.67], [21.43, 42], [19.26, 42.44], [26.1, 44.43], [12.45, 43.93], [20.47, 44.82], [17.12, 48.15], [14.51, 46.06], [12.45, 41.9]];
-				var iconPath = "M24.0,2.199C11.9595,2.199,2.199,11.9595,2.199,24.0c0.0,12.0405,9.7605,21.801,21.801,21.801c12.0405,0.0,21.801-9.7605,21.801-21.801C45.801,11.9595,36.0405,2.199,24.0,2.199zM31.0935,11.0625c1.401,0.0,2.532,2.2245,2.532,4.968S32.4915,21.0,31.0935,21.0c-1.398,0.0-2.532-2.2245-2.532-4.968S29.697,11.0625,31.0935,11.0625zM16.656,11.0625c1.398,0.0,2.532,2.2245,2.532,4.968S18.0555,21.0,16.656,21.0s-2.532-2.2245-2.532-4.968S15.258,11.0625,16.656,11.0625zM24.0315,39.0c-4.3095,0.0-8.3445-2.6355-11.8185-7.2165c3.5955,2.346,7.5315,3.654,11.661,3.654c4.3845,0.0,8.5515-1.47,12.3225-4.101C32.649,36.198,28.485,39.0,24.0315,39.0z";
-				var initColor = "#ce641d";
-				arrayUtils.forEach(points, function (point) {
-					var graphic = new Graphic(new Point(point), createSymbol(iconPath, initColor));
-					map.graphics.add(graphic);
-				});
-
-				var colorPicker = new ColorPicker({}, "picker1");
-				colorPicker.setColor(initColor);
-				domStyle.set(colorPicker, "left", "500px");
-				colorPicker.on("change", function () {
-					var colorCode = this.hexCode.value;
-					map.graphics.graphics.forEach(function (graphic) {
-						graphic.setSymbol(createSymbol(iconPath, colorCode));
-					});
-				});
-			}
-
-			function createSymbol(path, color) {
-				var markerSymbol = new esri.symbol.SimpleMarkerSymbol();
-				markerSymbol.setPath(path);
-				markerSymbol.setColor(new dojo.Color(color));
-				markerSymbol.setOutline(null);
-				return markerSymbol;
-			}
-		});
-	</script>
 
 
 </asp:Content>
@@ -465,9 +345,7 @@
 	</style>
 
 
-<div id="ui-esri-map"></div>
-<div id="ui-esri-dijit-geocoder"></div>
-
+<div id="map" style="width:900px"/>
 
 
 <dx:ASPxPopupControl ID="ASPxPopupControlFreeSquare" runat="server" AllowDragging="True" 

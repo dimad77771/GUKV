@@ -17,13 +17,22 @@ public static class MapUtils
 		var userInfo = new HttpCookie(CookSystem);
 		userInfo["System"] = system;
 		userInfo.Expires.Add(TimeSpan.FromDays(365 * 10));
-		HttpContext.Current.Request.Cookies.Add(userInfo);
+		//HttpContext.Current.Request.Cookies.Add(userInfo);
+		HttpContext.Current.Response.Cookies.Add(userInfo);
 	}
 
-	public static string GetSystem(string system)
+	public static string GetSystem()
 	{
-		var hh = HttpContext.Current.Request.Cookies;
-		return GIS;
+		var system = GIS;
+		var userInfo = HttpContext.Current.Request.Cookies[CookSystem];
+		if (userInfo != null)
+		{
+			if (userInfo["System"] != null)
+			{
+				system = userInfo["System"].ToString();
+			}
+		}
+		return system;
 	}
 
 }
