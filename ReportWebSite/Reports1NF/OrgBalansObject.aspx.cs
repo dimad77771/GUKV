@@ -109,12 +109,14 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 		var b = 100;
 	}
 
-
+    DateTime dt__ = DateTime.Now;
 	protected void Page_Load(object sender, EventArgs e)
     {
-//////
+        //////
+        //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "001" + (DateTime.Now - dt__).TotalMilliseconds + "\n");
+
         try
-		{
+        {
         GetPageUniqueKey();
         //Page.ClientScript.RegisterClientScriptInclude("jQuery-1.4.1", Page.ResolveClientUrl("~/Scripts/jquery-1.4.1.js"));
 
@@ -209,7 +211,9 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
         validator = new BalansObjectValidator(this, "MainGroup");
 
+        //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "002" + (DateTime.Now - dt__).TotalMilliseconds + "\n");
         PrepareTempPhotoFolder();
+        //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "003" + (DateTime.Now - dt__).TotalMilliseconds + "\n");
 
 
         if (!IsPostBack)
@@ -1308,16 +1312,20 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
     private void PrepareTempPhotoFolder()
     {
+        //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "010:" + (DateTime.Now - dt__).TotalMilliseconds + "\n");
         string balansIdStr = Request.QueryString["bid"];
 
         if (PhotoFolderID == Guid.Empty)
         {
             PhotoFolderID = Guid.NewGuid();
 
+            //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "011:" + (DateTime.Now - dt__).TotalMilliseconds + "\n");
             CopySourceFiles(balansIdStr);
+            //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "012:" + (DateTime.Now - dt__).TotalMilliseconds + "\n");
         }
 
         BindImageGallery(balansIdStr);
+        //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "014:" + (DateTime.Now - dt__).TotalMilliseconds + "\n");
     }
 
     private void CopySourceFiles(string balansIdStr)
@@ -1346,7 +1354,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
                     if (PhotorowUtils.Exists(sourceFileToCopy, connection, trans))
                     {
                         string destFileToCopy = Path.Combine(destFolder, PhotoUtils.DbFilename2LocalFilename(file_name, file_ext));
-                        PhotorowUtils.Delete(destFileToCopy, connection, trans);
+                        //PhotorowUtils.Delete(destFileToCopy, connection, trans);
                         PhotorowUtils.Copy(sourceFileToCopy, destFileToCopy, connection, trans);
                     }
                 }

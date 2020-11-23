@@ -65,10 +65,11 @@ namespace ExtDataEntry.Models
             }
 
             var result = new List<string>();
-            var sql = "select photofilename from photorow where photofilename like @photofiledir + '%'";
+            //var sql = "select photofilename from photorow where photofilename like @photofiledir + '%'";
+            var sql = "select photofilename from photorow where photofilename like '" + photofiledir + "%'";
             using (SqlCommand cmdFiles = new SqlCommand(sql, connectionSql, sqlTransaction))
             {
-                cmdFiles.Parameters.AddWithValue("photofiledir", photofiledir);
+                //cmdFiles.Parameters.AddWithValue("photofiledir", photofiledir);
                 using (SqlDataReader reader = cmdFiles.ExecuteReader())
                 {
                     while (reader.Read())
@@ -101,18 +102,27 @@ namespace ExtDataEntry.Models
 
         public static void Copy(string photofilenameSrc, string photofilenameDst, SqlConnection connectionSql, SqlTransaction sqlTransaction = null)
         {
-            var sql1 = "delete from photorow where photofilename = @photofilenameDst";
-            SqlCommand cmd1 = new SqlCommand(sql1, connectionSql, sqlTransaction);
-            cmd1.Parameters.Add(new SqlParameter("photofilenameDst", photofilenameDst));
-            cmd1.ExecuteNonQuery();
-            cmd1.Dispose();
+            //var sql1 = "delete from photorow where photofilename = @photofilenameDst";
+            //SqlCommand cmd1 = new SqlCommand(sql1, connectionSql, sqlTransaction);
+            //cmd1.Parameters.Add(new SqlParameter("photofilenameDst", photofilenameDst));
+            //cmd1.ExecuteNonQuery();
+            //cmd1.Dispose();
 
-            var sql2 = "insert into photorow(photofilename, photofilebytes) select @photofilenameDst, photofilebytes from photorow where photofilename = @photofilenameSrc";
+            //var sql2 = "insert into photorow(photofilename, photofilebytes) select @photofilenameDst, photofilebytes from photorow where photofilename = @photofilenameSrc";
+            //SqlCommand cmd2 = new SqlCommand(sql2, connectionSql, sqlTransaction);
+            //cmd2.Parameters.Add(new SqlParameter("photofilenameSrc", photofilenameSrc));
+            //cmd2.Parameters.Add(new SqlParameter("photofilenameDst", photofilenameDst));
+            //cmd2.ExecuteNonQuery();
+            //cmd2.Dispose();
+
+            DateTime dt = DateTime.Now;
+            var sql2 = "exec [dbo].[photorow_copy] @photofilenameSrc, @photofilenameDst";
             SqlCommand cmd2 = new SqlCommand(sql2, connectionSql, sqlTransaction);
             cmd2.Parameters.Add(new SqlParameter("photofilenameSrc", photofilenameSrc));
             cmd2.Parameters.Add(new SqlParameter("photofilenameDst", photofilenameDst));
             cmd2.ExecuteNonQuery();
             cmd2.Dispose();
+            //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "2222222=" + (int)((DateTime.Now - dt).TotalMilliseconds) + "\n");
         }
 
         public static void Delete(string photofilename, SqlConnection connectionSql, SqlTransaction sqlTransaction = null)
