@@ -27,8 +27,8 @@ namespace ExtDataEntry.Models
 
 		public static IEnumerable<FileAttachment> Select(string scope, int recordID)
 		{
-            File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "scope=" + scope + "\n");
-            File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "recordID=" + recordID + "\n");
+            //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "scope=" + scope + "\n");
+            //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "recordID=" + recordID + "\n");
 
             FileAttachment[] result;
 
@@ -93,8 +93,8 @@ namespace ExtDataEntry.Models
             if (string.IsNullOrEmpty(query))
                 throw new ArgumentException("Unknown scope value");
 
-            File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "query=" + query + "\n");
-            File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "recordID=" + recordID + "\n");
+            //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "query=" + query + "\n");
+            //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "recordID=" + recordID + "\n");
             using (SqlCommand cmdFiles = new SqlCommand(query, connectionSql))
             {
                 cmdFiles.Parameters.AddWithValue("free_square_id", recordID);
@@ -109,7 +109,7 @@ namespace ExtDataEntry.Models
 
                         string fullPath = Path.Combine(path, file_name + file_ext);
 
-                        File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "fullPath=" + fullPath + "\n");
+                        //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "fullPath=" + fullPath + "\n");
                         var image = PhotorowUtils.Read(fullPath, connectionSql);
                         if (image != null)
                         {

@@ -20,7 +20,7 @@
     {
 		var request = Request.QueryString;
 		var rawUrl = Request.RawUrl;
-        System.IO.File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "Application_BeginRequest: rawUrl=" + rawUrl + "\n");
+        //System.IO.File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "Application_BeginRequest: rawUrl=" + rawUrl + "\n");
 		if (rawUrl.ToLower().StartsWith(@"/ImgContent/".ToLower()) || rawUrl.ToLower().StartsWith(@"/gukv/ImgContent/".ToLower()))
 		{
 			rawUrl = rawUrl.ToLower().Replace(@"/ImgContent/".ToLower(), "/Reports1NF/ImgContent.aspx?photofilename=");
