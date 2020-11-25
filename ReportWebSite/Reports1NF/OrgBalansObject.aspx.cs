@@ -725,7 +725,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
     {
         string balansIdStr = Request.QueryString["bid"];
         Int32 newId = 0;
-        string photoRootPath = PhotorowUtils.ImgContentRootFolder;
+        string photoRootPath = LLLLhotorowUtils.ImgContentRootFolder;
         string local1NFObjectFolder = Path.Combine(photoRootPath, "1NF", balansIdStr);
 
         SqlConnection connection = Utils.ConnectToDatabase();
@@ -739,7 +739,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
                 cmd.ExecuteNonQuery();
             }
 
-            var allfiles = PhotorowUtils.GetFiles(TempPhotoFolder(), connection, trans);
+            var allfiles = LLLLhotorowUtils.GetFiles(TempPhotoFolder(), connection, trans);
             foreach (string filePath in allfiles)
             {
 				var dbfile = PhotoUtils.LocalFilename2DbFilename(filePath);
@@ -755,7 +755,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
                 fullPath = System.IO.Path.Combine(local1NFObjectFolder, newId.ToString() + System.IO.Path.GetExtension(filePath));
 
-                PhotorowUtils.Copy(filePath, fullPath, connection, trans);
+                LLLLhotorowUtils.Copy(filePath, fullPath, connection, trans);
             }
 
             trans.Commit();
@@ -893,7 +893,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
     private void DiscardChanges(SqlConnection connectionSql)
     {
-        PhotorowUtils.DeleteAll(TempPhotoFolder(), connectionSql);
+        LLLLhotorowUtils.DeleteAll(TempPhotoFolder(), connectionSql);
         CopySourceFiles(Request.QueryString["bid"]);
 	}
 
@@ -953,7 +953,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
     protected void ASPxUploadPhotoControl_FileUploadComplete(object sender, DevExpress.Web.FileUploadCompleteEventArgs e)
     {
         string balansIdStr = Request.QueryString["bid"];
-        string photoRootPath = PhotorowUtils.ImgContentRootFolder;
+        string photoRootPath = LLLLhotorowUtils.ImgContentRootFolder;
         string local1NFObjectFolder = Path.Combine(photoRootPath, "1NF", balansIdStr);
 
         PhotoUtils.AddUploadedFile(TempPhotoFolder(), e.UploadedFile.FileName, e.UploadedFile.FileBytes);
@@ -987,7 +987,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
             string fileExt = Path.GetExtension(drv.Name);
 
             var connectionSql = Utils.ConnectToDatabase();
-            PhotorowUtils.Delete(drv.Name, connectionSql);
+            LLLLhotorowUtils.Delete(drv.Name, connectionSql);
             connectionSql.Close();
 
             imageUrl = item.ImageUrl;
@@ -1302,7 +1302,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
         if (PhotoFolderID != Guid.Empty)
         {
             string balansIdStr = Request.QueryString["bid"];
-            string photoRootPath = PhotorowUtils.ImgContentRootFolder;
+            string photoRootPath = LLLLhotorowUtils.ImgContentRootFolder;
             string destFolder = Path.Combine(photoRootPath, "1NF_" + balansIdStr + "_" + PhotoFolderID.ToString()).ToLower();
             return destFolder;
         }
@@ -1332,7 +1332,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
     {
         //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "CopySourceFiles: balansIdStr=" + balansIdStr + "\n");
 
-        string photoRootPath = PhotorowUtils.ImgContentRootFolder;
+        string photoRootPath = LLLLhotorowUtils.ImgContentRootFolder;
         string destFolder = TempPhotoFolder();
 
         var connection = Utils.ConnectToDatabase();
@@ -1351,11 +1351,11 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
                     string sourceFileToCopy = Path.Combine(photoRootPath, "1NF", balansIdStr, id.ToString() + file_ext);
                     //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "sourceFileToCopy: sourceFileToCopy=" + sourceFileToCopy + "\n");
-                    if (PhotorowUtils.Exists(sourceFileToCopy, connection, trans))
+                    if (LLLLhotorowUtils.Exists(sourceFileToCopy, connection, trans))
                     {
                         string destFileToCopy = Path.Combine(destFolder, PhotoUtils.DbFilename2LocalFilename(file_name, file_ext));
-                        //PhotorowUtils.Delete(destFileToCopy, connection, trans);
-                        PhotorowUtils.Copy(sourceFileToCopy, destFileToCopy, connection, trans);
+                        //LLLLhotorowUtils.Delete(destFileToCopy, connection, trans);
+                        LLLLhotorowUtils.Copy(sourceFileToCopy, destFileToCopy, connection, trans);
                     }
                 }
 

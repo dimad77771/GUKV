@@ -24,6 +24,7 @@
 		if (rawUrl.ToLower().StartsWith(@"/ImgContent/".ToLower()) || rawUrl.ToLower().StartsWith(@"/gukv/ImgContent/".ToLower()))
 		{
 			rawUrl = rawUrl.ToLower().Replace(@"/ImgContent/".ToLower(), "/Reports1NF/ImgContent.aspx?photofilename=");
+            //System.IO.File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "Application_BeginRequest: rawUrl2=" + rawUrl + "\n");
 			Response.Redirect(rawUrl);
 		}
 

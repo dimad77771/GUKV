@@ -138,7 +138,7 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
 
 		bool ProcFile(FileInfo fi)
 		{
-			if (!PhotorowUtils.Exists(fi.FullFilename, connectionSql)) return false;
+			if (!LLLLhotorowUtils.Exists(fi.FullFilename, connectionSql)) return false;
 
 			if (ProcFileImage(fi)) return true;
 			if (ProcFilePdf(fi)) return true;
@@ -152,7 +152,7 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
 			System.Drawing.Image image;
 			try
 			{
-				var mem = new MemoryStream(PhotorowUtils.Read(fi.FullFilename, connectionSql));
+				var mem = new MemoryStream(LLLLhotorowUtils.Read(fi.FullFilename, connectionSql));
 				image = Bitmap.FromStream(mem);
 			}
 			catch (Exception ex)
@@ -197,7 +197,7 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
 			PdfLoadedDocument expdf;
 			try
 			{
-				var bytes = PhotorowUtils.Read(fi.FullFilename, connectionSql);
+				var bytes = LLLLhotorowUtils.Read(fi.FullFilename, connectionSql);
 				expdf = new PdfLoadedDocument(bytes);
 			}
 			catch (Exception ex)
@@ -216,7 +216,7 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
 			WordDocument docx;
 			try
 			{
-				var mem = new MemoryStream(PhotorowUtils.Read(fi.FullFilename, connectionSql));
+				var mem = new MemoryStream(LLLLhotorowUtils.Read(fi.FullFilename, connectionSql));
 				docx = new WordDocument(mem);
 			}
 			catch (Exception ex)

@@ -191,7 +191,7 @@ public static class ArchiverSql
             cmdArchBalansFreeSquare.ExecuteNonQuery();
         }
 
-        string photoRootPath = PhotorowUtils.ImgFreeSquareRootFolder;
+        string photoRootPath = LLLLhotorowUtils.ImgFreeSquareRootFolder;
         string photo1NFPath = Path.Combine(photoRootPath, "1NF");
         string photoBalansPath = Path.Combine(photoRootPath, "Balans");
         
@@ -213,8 +213,8 @@ public static class ArchiverSql
                     string photoArchBalansPath = Path.Combine(photoRootPath, "Arch", free_square_id.ToString());
                     string sourcePath = Path.Combine(photoBalansPath, free_square_id.ToString(), file_name + file_ext);
                     string destPath = Path.Combine(photoArchBalansPath, file_name + file_ext);
-                    PhotorowUtils.Delete(destPath, connectionSql, transactionSql);
-                    PhotorowUtils.Copy(sourcePath, destPath, connectionSql, transactionSql);
+                    LLLLhotorowUtils.Delete(destPath, connectionSql, transactionSql);
+                    LLLLhotorowUtils.Copy(sourcePath, destPath, connectionSql, transactionSql);
                 }
                 r.Close();
             }
@@ -250,8 +250,8 @@ public static class ArchiverSql
                     string sourceFile = Path.Combine(balansPhotoBalansPath, balansId.ToString(), id.ToString() + file_ext);
                     string destPath = Path.Combine(balansPhotoArchPath, balansId.ToString(), new_archive_link_code.ToString());
                     string destFile = Path.Combine(destPath, id.ToString() + file_ext);
-                    PhotorowUtils.Delete(destFile, connectionSql, transactionSql);
-                    PhotorowUtils.Copy(sourceFile, destFile, connectionSql, transactionSql);
+                    LLLLhotorowUtils.Delete(destFile, connectionSql, transactionSql);
+                    LLLLhotorowUtils.Copy(sourceFile, destFile, connectionSql, transactionSql);
                 }
                 r.Close();
             }

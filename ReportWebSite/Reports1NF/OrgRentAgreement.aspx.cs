@@ -2584,7 +2584,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 
 	private void CopySourceFiles(string agreementIdStr)
 	{
-		string photoRootPath = PhotorowUtils.ImgContentRootFolder;
+		string photoRootPath = LLLLhotorowUtils.ImgContentRootFolder;
 		string destFolder = TempPhotoFolder();
 
 		var connection = Utils.ConnectToDatabase();
@@ -2601,11 +2601,11 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 					string file_ext = r.GetString(2);
 
 					string sourceFileToCopy = Path.Combine(photoRootPath, "1NFARENDA", agreementIdStr, id.ToString() + file_ext);
-                    if (PhotorowUtils.Exists(sourceFileToCopy, connection, transaction))
+                    if (LLLLhotorowUtils.Exists(sourceFileToCopy, connection, transaction))
                     {
 						string destFileToCopy = Path.Combine(destFolder, PhotoUtils.DbFilename2LocalFilename(file_name, file_ext));
-                        PhotorowUtils.Delete(destFileToCopy, connection, transaction);
-                        PhotorowUtils.Copy(sourceFileToCopy, destFileToCopy, connection, transaction);
+                        LLLLhotorowUtils.Delete(destFileToCopy, connection, transaction);
+                        LLLLhotorowUtils.Copy(sourceFileToCopy, destFileToCopy, connection, transaction);
 					}
 				}
 
@@ -2696,7 +2696,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 			ImageGalleryItem item = imageGalleryDemo.Items[int.Parse(indexStr)];
 			FileAttachment drv = (FileAttachment)item.DataItem;
 			string fileExt = Path.GetExtension(drv.Name);
-            PhotorowUtils.Delete(drv.Name, connection, transaction);
+            LLLLhotorowUtils.Delete(drv.Name, connection, transaction);
 
 			imageUrl = item.ImageUrl;
 		}
@@ -2727,9 +2727,9 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         SqlConnection connection = Utils.ConnectToDatabase();
         SqlTransaction trans = connection.BeginTransaction();
 
-        foreach (string fileToDelete in PhotorowUtils.GetFiles(local1NFObjectFolder, connection, trans))
+        foreach (string fileToDelete in LLLLhotorowUtils.GetFiles(local1NFObjectFolder, connection, trans))
         {
-            PhotorowUtils.Delete(fileToDelete, connection, trans);
+            LLLLhotorowUtils.Delete(fileToDelete, connection, trans);
         }
 
         try
@@ -2740,7 +2740,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 				cmd.ExecuteNonQuery();
 			}
 
-            var allfiles = PhotorowUtils.GetFiles(TempPhotoFolder(), connection, trans);
+            var allfiles = LLLLhotorowUtils.GetFiles(TempPhotoFolder(), connection, trans);
             foreach (string filePath in allfiles)
 			{
 				var dbfile = PhotoUtils.LocalFilename2DbFilename(filePath);
@@ -2755,7 +2755,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 				newId = (Int32)cmd.ExecuteScalar();
 
 				fullPath = Path.Combine(local1NFObjectFolder, newId.ToString() + Path.GetExtension(filePath));
-                PhotorowUtils.Copy(filePath, fullPath, connection, trans);
+                LLLLhotorowUtils.Copy(filePath, fullPath, connection, trans);
 			}
 
 			trans.Commit();

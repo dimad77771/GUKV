@@ -22,7 +22,7 @@ namespace ExtDataEntry.Models
 
         private static string GetFolderPath(string scope, int recordID)
         {
-            return Path.Combine(PhotorowUtils.ImgFreeSquareRootFolder, scope, recordID.ToString());
+            return Path.Combine(LLLLhotorowUtils.ImgFreeSquareRootFolder, scope, recordID.ToString());
         }
 
 		public static IEnumerable<FileAttachment> Select(string scope, int recordID)
@@ -110,7 +110,7 @@ namespace ExtDataEntry.Models
                         string fullPath = Path.Combine(path, file_name + file_ext);
 
                         //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "fullPath=" + fullPath + "\n");
-                        var image = PhotorowUtils.Read(fullPath, connectionSql);
+                        var image = LLLLhotorowUtils.Read(fullPath, connectionSql);
                         if (image != null)
                         {
                             yield return new FileAttachment()
@@ -118,7 +118,7 @@ namespace ExtDataEntry.Models
                                 ID = id.ToString(),
                                 ParentID = "\\ROOT",
                                 Name = file_name + file_ext,
-                                Image = PhotorowUtils.Read(fullPath, connectionSql),
+                                Image = LLLLhotorowUtils.Read(fullPath, connectionSql),
                                 LastModified = modify_date,
                             };
                         }
@@ -146,7 +146,7 @@ namespace ExtDataEntry.Models
             string destFolder = Path.Combine(photoRootPath, scope + "_" + recordID.ToString() + "_" + tempGuid);
 
             //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "SelectFromTempFolder-001a:" + (DateTime.Now - nw).TotalMilliseconds + "\n");
-            string[] files = PhotorowUtils.GetFiles(destFolder, connectionSql);
+            string[] files = LLLLhotorowUtils.GetFiles(destFolder, connectionSql);
             //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "SelectFromTempFolder-001b:" + (DateTime.Now - nw).TotalMilliseconds + "\n");
             foreach (string f in files)
             {
@@ -161,7 +161,7 @@ namespace ExtDataEntry.Models
                     ID = fileName,
                     ParentID = "\\ROOT",
                     Name = f,
-                    Image = PhotorowUtils.Read(f, connectionSql),
+                    Image = LLLLhotorowUtils.Read(f, connectionSql),
                     ImageUrl = imageUrl,
                 };
                 //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "SelectFromTempFolder-003:" + (DateTime.Now - nw).TotalMilliseconds + "\n");
@@ -194,7 +194,7 @@ namespace ExtDataEntry.Models
             MembershipUser user = Membership.GetUser();
             string modified_by = user == null ? String.Empty : (String)user.UserName;
 
-            PhotorowUtils.Write(Path.Combine(path, Name), Image, connectionSql, sqlTransaction);
+            LLLLhotorowUtils.Write(Path.Combine(path, Name), Image, connectionSql, sqlTransaction);
 
 			string table = "";
 			string query = "";
@@ -304,7 +304,7 @@ namespace ExtDataEntry.Models
                         string file_ext = reader.GetString(1);
                         string fullPath = Path.Combine(path, file_name + file_ext);
 
-                        PhotorowUtils.Delete(fullPath, connectionSql, sqlTransaction);
+                        LLLLhotorowUtils.Delete(fullPath, connectionSql, sqlTransaction);
                     }
                     reader.Close();
                 }
@@ -330,7 +330,7 @@ namespace ExtDataEntry.Models
             var connectionSql = Utils.ConnectToDatabase();
             var sqlTransaction = connectionSql.BeginTransaction();
 
-            PhotorowUtils.DeleteAll(path, connectionSql, sqlTransaction);
+            LLLLhotorowUtils.DeleteAll(path, connectionSql, sqlTransaction);
 
             sqlTransaction.Commit();
         }

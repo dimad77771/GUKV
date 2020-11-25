@@ -652,7 +652,7 @@ public partial class Reports1NF_Report1NFFreeDetails : PhotoPage
                 cmd.ExecuteNonQuery();
             }
 
-            var allfiles = PhotorowUtils.GetFiles(TempPhotoFolder(), connection, trans);
+            var allfiles = LLLLhotorowUtils.GetFiles(TempPhotoFolder(), connection, trans);
             foreach (string filePath in allfiles)
             {
 				var dbfile = PhotoUtils.LocalFilename2DbFilename(filePath);
@@ -667,7 +667,7 @@ public partial class Reports1NF_Report1NFFreeDetails : PhotoPage
 				newId = (Int32)cmd.ExecuteScalar();
 
                 fullPath = Path.Combine(local1NFObjectFolder, newId.ToString() + Path.GetExtension(filePath));
-                PhotorowUtils.Copy(filePath, fullPath, connection, trans);
+                LLLLhotorowUtils.Copy(filePath, fullPath, connection, trans);
             }
 
             trans.Commit();
@@ -805,7 +805,7 @@ public partial class Reports1NF_Report1NFFreeDetails : PhotoPage
 
     private void DiscardChanges(SqlConnection connectionSql)
     {
-        PhotorowUtils.DeleteAll(TempPhotoFolder(), connectionSql);
+        LLLLhotorowUtils.DeleteAll(TempPhotoFolder(), connectionSql);
         CopySourceFiles(Request.QueryString["bid"]);
 	}
 

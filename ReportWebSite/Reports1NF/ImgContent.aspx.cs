@@ -29,13 +29,13 @@ public partial class Reports1NF_Cabinet : Page
 	{
 		try
 		{
-			var rootFolder = PhotorowUtils.ImgContentRootFolder;
+			var rootFolder = LLLLhotorowUtils.ImgContentRootFolder;
 			var photofilename = Path.Combine(rootFolder, Request.QueryString["photofilename"]);
 			photofilename = photofilename.Replace(@"/", @"\");
 			var filename = Path.GetFileName(photofilename);
 
 			SqlConnection connectionSql = Utils.ConnectToDatabase();
-			var bytes = PhotorowUtils.Read(photofilename, connectionSql);
+			var bytes = LLLLhotorowUtils.Read(photofilename, connectionSql);
 			connectionSql.Close();
 
 			Response.Clear();

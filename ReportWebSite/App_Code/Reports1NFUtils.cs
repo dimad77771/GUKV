@@ -1048,7 +1048,7 @@ public static class Reports1NFUtils
 
     private static void SendBalansObjectFreeSquare(SqlConnection connectionSql, int reportId, int balansId)
     {
-        string photoRootPath = PhotorowUtils.ImgFreeSquareRootFolder;
+        string photoRootPath = LLLLhotorowUtils.ImgFreeSquareRootFolder;
         string photo1NFPath = Path.Combine(photoRootPath, "1NF");
         string photoBalansPath = Path.Combine(photoRootPath, "Balans");
 
@@ -1066,7 +1066,7 @@ public static class Reports1NFUtils
                     string file_ext = (string)reader.GetValue(3);
                     string photoFolder = Path.Combine(photoBalansPath, free_square_id.ToString());
                     string fileFullPath = Path.Combine(photoFolder, file_name + file_ext);
-                    PhotorowUtils.Delete(fileFullPath, connectionSql);
+                    LLLLhotorowUtils.Delete(fileFullPath, connectionSql);
                 }
                 reader.Close();
             }
@@ -1203,7 +1203,7 @@ public static class Reports1NFUtils
                                 string sourceFile = String.Format(@"{0}\{1}\{2}", photo1NFPath, free_square_id, file_name + file_ext);
                                 string destFolder = Path.Combine(photoBalansPath, newId.ToString());
                                 string destFile = Path.Combine(destFolder, file_name + file_ext);
-                                PhotorowUtils.Copy(sourceFile, destFile, Utils.ConnectToDatabase());
+                                LLLLhotorowUtils.Copy(sourceFile, destFile, Utils.ConnectToDatabase());
                             }
                             readerPhoto.Close();
                         }
@@ -1218,7 +1218,7 @@ public static class Reports1NFUtils
 
     private static void SendBalansObjectPhotos(SqlConnection connectionSql, int reportId, int balansId)
     {
-        string photoRootPath = PhotorowUtils.ImgContentRootFolder;
+        string photoRootPath = LLLLhotorowUtils.ImgContentRootFolder;
         string photo1NFPath = Path.Combine(photoRootPath, "1NF", balansId.ToString());
         string photoBalansPath = Path.Combine(photoRootPath, "Balans", balansId.ToString());
 
@@ -1234,7 +1234,7 @@ public static class Reports1NFUtils
                     string file_name = (string)reader.GetValue(1);
                     string file_ext = (string)reader.GetValue(2);
                     string fileFullPath = Path.Combine(photoBalansPath, id.ToString() + file_ext);
-                    PhotorowUtils.Delete(fileFullPath, connectionSql);
+                    LLLLhotorowUtils.Delete(fileFullPath, connectionSql);
                 }
                 reader.Close();
             }
@@ -1261,8 +1261,8 @@ public static class Reports1NFUtils
 
                     string sourceFile = Path.Combine(photo1NFPath, id.ToString() + file_ext);
                     string destFile = Path.Combine(photoBalansPath, id.ToString() + file_ext);
-                    PhotorowUtils.Delete(destFile, connectionSql);
-                    PhotorowUtils.Copy(sourceFile, destFile, connectionSql);
+                    LLLLhotorowUtils.Delete(destFile, connectionSql);
+                    LLLLhotorowUtils.Copy(sourceFile, destFile, connectionSql);
                 }
                 r.Close();
             }
@@ -1313,13 +1313,13 @@ public static class Reports1NFUtils
         string photoRootPath = WebConfigurationManager.AppSettings["ImgContentRootFolder"];
         string fileToDelete = Path.Combine(photoRootPath, scope, balId.ToString(), elementToDelete.ToString() + fileExt);
         var conn = Utils.ConnectToDatabase();
-        PhotorowUtils.Delete(fileToDelete, conn);
+        LLLLhotorowUtils.Delete(fileToDelete, conn);
     }
 
     public static void DeleteFolderRecursive(string folderToDelete)
     {
         var conn = Utils.ConnectToDatabase();
-        PhotorowUtils.DeleteAll(folderToDelete, conn);
+        LLLLhotorowUtils.DeleteAll(folderToDelete, conn);
     }
 
     private static int FindObjectMatchForBalansBuilding(SqlConnection connectionSql, /*FbConnection connection1NF,*/
@@ -2718,7 +2718,7 @@ public static class Reports1NFUtils
 					string file_name = (string)reader.GetValue(1);
 					string file_ext = (string)reader.GetValue(2);
 					string fileFullPath = Path.Combine(photoArendaPath, id.ToString() + file_ext);
-                    PhotorowUtils.Delete(fileFullPath, connectionSql);
+                    LLLLhotorowUtils.Delete(fileFullPath, connectionSql);
 				}
 				reader.Close();
 			}
@@ -2745,8 +2745,8 @@ public static class Reports1NFUtils
 
 					string sourceFile = Path.Combine(photo1NFARENDAPath, id.ToString() + file_ext);
 					string destFile = Path.Combine(photoArendaPath, id.ToString() + file_ext);
-                    PhotorowUtils.Delete(destFile, connectionSql);
-                    PhotorowUtils.Copy(sourceFile, destFile, connectionSql);
+                    LLLLhotorowUtils.Delete(destFile, connectionSql);
+                    LLLLhotorowUtils.Copy(sourceFile, destFile, connectionSql);
 				}
 				r.Close();
 			}

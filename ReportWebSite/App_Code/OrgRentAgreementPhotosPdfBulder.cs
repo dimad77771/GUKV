@@ -70,7 +70,7 @@ public class OrgRentAgreementPhotosPdfBulder
                     var file_ext = reader.IsDBNull(1) ? string.Empty : (string)reader.GetValue(1);
                     var file_id = reader.GetInt32(2);
                     var fullFilename = Path.Combine(PhotoFolder, file_name + file_ext);
-                    var bytes = PhotorowUtils.Read(fullFilename, connectionSql);
+                    var bytes = LLLLhotorowUtils.Read(fullFilename, connectionSql);
                     if (bytes != null)
                     {
                         var tempfile = Path.GetTempFileName();
@@ -105,7 +105,7 @@ public class OrgRentAgreementPhotosPdfBulder
 
     bool ProcFile(FileInfo fi)
     {
-        if (!PhotorowUtils.Exists(fi.FullFilename, connectionSql)) return false;
+        if (!LLLLhotorowUtils.Exists(fi.FullFilename, connectionSql)) return false;
 
         if (ProcFileImage(fi)) return true;
         if (ProcFilePdf(fi)) return true;
@@ -119,7 +119,7 @@ public class OrgRentAgreementPhotosPdfBulder
         Image image;
         try
         {
-            var mem = new MemoryStream(PhotorowUtils.Read(fi.FullFilename, connectionSql));
+            var mem = new MemoryStream(LLLLhotorowUtils.Read(fi.FullFilename, connectionSql));
             image = Bitmap.FromStream(mem);
             mem.Dispose();
         }

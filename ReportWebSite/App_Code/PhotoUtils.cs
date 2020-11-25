@@ -50,7 +50,7 @@ public static class PhotoUtils
 		var jpeginfo = ProcImage(uploadedFileBytes);
 		if (jpeginfo.IsImage)
 		{
-			PhotorowUtils.Write(newfilename, jpeginfo.Jpegbytes, connectionSql, sqlTransaction);
+			LLLLhotorowUtils.Write(newfilename, jpeginfo.Jpegbytes, connectionSql, sqlTransaction);
 		}
 		else
 		{
@@ -60,7 +60,7 @@ public static class PhotoUtils
 				for(int i = 0; i < pdfinfo.ListFileNames.Count; i++)
 				{
 					var pdfImageFilename = Path.Combine(tempPhotoFolder, DbFilename2LocalFilename(pdfinfo.ListFileNames[i], ".jpg"));
-					PhotorowUtils.Write(pdfImageFilename, pdfinfo.ListJpegbytes[i], connectionSql, sqlTransaction);
+					LLLLhotorowUtils.Write(pdfImageFilename, pdfinfo.ListJpegbytes[i], connectionSql, sqlTransaction);
 				}
 			}
 			else
