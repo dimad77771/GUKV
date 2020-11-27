@@ -293,7 +293,7 @@ WHERE id = @id"
                             <dx:ASPxLabel runat="server" Text='<%# Eval("include_in_perelik") %>' Font-Bold="true" />
                         </td>
                         <td style="text-align:left; border:1px solid; padding:3px; width:200px">
-                            Залишкова балансова вартість, тис. грн.
+                            Залишкова балансова вартість, грн.
                         </td>
                         <td style="text-align:left; border:1px solid; padding:3px; width:200px">
                             <dx:ASPxLabel runat="server" Text='<%# Eval("zal_balans_vartist") %>' Font-Bold="true" />
@@ -301,7 +301,7 @@ WHERE id = @id"
                     </tr>
                     <tr>
                         <td style="text-align:left; border:1px solid; padding:3px">
-                            Первісна балансова вартість, тис. грн.
+                            Первісна балансова вартість, грн.
                         </td>
                         <td style="text-align:left; border:1px solid; padding:3px">
                             <dx:ASPxLabel runat="server" Text='<%# Eval("perv_balans_vartist") %>' Font-Bold="true" />

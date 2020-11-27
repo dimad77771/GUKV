@@ -75,8 +75,8 @@
 	function OnCopyFullDescription(values) {
         var headers = [
             "Включено до переліку № - ",
-            "Залишкова балансова вартість, тис. грн. – ",
-            "Первісна балансова вартість, тис. грн. - ",
+            "Залишкова балансова вартість, грн. – ",
+            "Первісна балансова вартість, грн. - ",
             "Тип об’єкта - ",
             "Пропонований строк оренди (у роках) – ",
             "Пункт Методики розрахунку орендної плати (якщо об’єкт пропонується для включення до Переліку другого типу) - ",
@@ -826,14 +826,14 @@ WHERE id = @id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn FieldName="zal_balans_vartist" Caption="Залишкова балансова вартість" VisibleIndex="1110" Visible="false" >
+        <dx:GridViewDataTextColumn FieldName="zal_balans_vartist" Caption="Залишкова балансова вартість, грн." VisibleIndex="1110" Visible="false" >
             <HeaderStyle Wrap="True" />
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("zal_balans_vartist") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn FieldName="perv_balans_vartist" Caption="Первісна балансова вартість" VisibleIndex="1120" Visible="false" >
+        <dx:GridViewDataTextColumn FieldName="perv_balans_vartist" Caption="Первісна балансова вартість, грн." VisibleIndex="1120" Visible="false" >
             <HeaderStyle Wrap="True" />
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("perv_balans_vartist") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
