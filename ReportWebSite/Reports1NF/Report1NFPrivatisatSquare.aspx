@@ -236,7 +236,9 @@ SELECT
       ,(select Q.name from dict_1nf_districts2 Q where Q.id = A.addr_distr_new_id) as addr_distr
       ,@baseurl + '/Reports1NF/BalansFreeSquarePhotosPdf.aspx?id=' + cast(A.[id] as varchar(100)) as pdfurl
   FROM [privatisat] A
-    order by 1, [addr_nomer]"
+    order by 
+    case when sposib_privat = 'ВИКУП' and document_privat <> '' then 999 else 1 end,
+    1, [addr_nomer]"
     OnSelecting="SqlDataSourcePrivatisat_Selecting"
 
 DeleteCommand="DELETE FROM [privatisat] WHERE id = @id" 
@@ -693,7 +695,7 @@ SELECT SCOPE_IDENTITY()"
         ShowFooter="false"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.PrivatisatSquare" Version="A1_16" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.PrivatisatSquare" Version="A1_17" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

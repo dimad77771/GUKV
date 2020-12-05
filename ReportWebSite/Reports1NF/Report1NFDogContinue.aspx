@@ -728,7 +728,7 @@ WHERE id = @id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataCheckColumn FieldName="is_included" Caption="Включено до переліку вільних приміщень" VisibleIndex="4" Width ="40px">
+        <dx:GridViewDataCheckColumn FieldName="is_included" Caption="Включено до переліку продовження договорів" VisibleIndex="4" Width ="40px">
             <HeaderStyle Wrap="True" />
         </dx:GridViewDataCheckColumn>
 

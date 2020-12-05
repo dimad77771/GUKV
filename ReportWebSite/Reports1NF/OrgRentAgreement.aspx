@@ -3540,9 +3540,9 @@ WHERE id = @id"
             </dx:GridViewDataComboBoxColumn>
 
 
-            <dx:GridViewDataCheckColumn FieldName="is_included" Caption="Включено до переліку вільних приміщень" VisibleIndex="30">
+            <dx:GridViewDataCheckColumn FieldName="is_included" Caption="Включено до переліку продовження договорів" VisibleIndex="30">
                 <HeaderStyle Wrap="True" />
-				<EditFormSettings Caption="Включено до переліку вільних приміщень" />
+				<EditFormSettings Caption="Включено до переліку продовження договорів" />
             </dx:GridViewDataCheckColumn>
 
             <dx:GridViewDataTextColumn FieldName="komis_protocol" Caption="Погодження орендодавця" VisibleIndex="32" Width ="80px" >
