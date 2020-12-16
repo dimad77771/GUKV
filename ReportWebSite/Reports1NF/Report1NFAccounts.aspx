@@ -89,6 +89,37 @@
         CPAddRdaAcc.PerformCallback('');
     }
 
+	function OnAddNewMistoAccount(s, e) {
+
+		var fisrtName = EditFirstNameMisto.GetText();
+		var lastName = EditLastNameMisto.GetText();
+		var email = EditEmailMisto.GetText();
+		var organizationId = ComboMistoOrg.GetValue();
+
+		if (fisrtName == "") {
+			alert("Будь ласка, введіть ім'я нового користувача.");
+			return;
+		}
+
+		if (lastName == "") {
+			alert("Будь ласка, введіть прізвище нового користувача.");
+			return;
+		}
+
+		if (email == "") {
+			alert("Будь ласка, вкажіть електронну адресу користувача.");
+			return;
+		}
+
+		if (organizationId == null || organizationId == undefined) {
+			alert("Будь ласка, виберіть департамент, до якого належить користувач.");
+			return;
+		}
+
+		CPAddRdaAcc.PerformCallback('');
+	}
+
+
     function CustomButtonClick(s, e) {
 
         if (e.buttonID == 'btnDeleteAcc') {
@@ -119,12 +150,15 @@
        org.full_name,
        org.zkpo_code,
        CASE WHEN rda.name IS NULL THEN N'НІ' ELSE N'ТАК' END AS 'is_rda',
-       rda.name AS 'rda_district'
+       rda.name AS 'rda_district',
+       CASE WHEN misto.name IS NULL THEN N'НІ' ELSE N'ТАК' END AS 'is_misto',
+       misto.name AS 'misto_district' 
     FROM reports1nf_accounts acc
     INNER JOIN aspnet_Users usr ON usr.UserId = acc.UserId
     INNER JOIN aspnet_Membership mem ON mem.UserId = acc.UserId
-    INNER JOIN organizations org ON org.id = acc.organization_id
-    LEFT OUTER JOIN dict_districts2 rda ON rda.id = rda_district_id">
+    LEFT OUTER JOIN organizations org ON org.id = acc.organization_id
+    LEFT OUTER JOIN dict_districts2 rda ON rda.id = rda_district_id
+    LEFT OUTER JOIN dict_org_old_organ misto ON misto.id = misto_district_id">
 </mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceOrgSearchBalans" runat="server" 
@@ -142,6 +176,12 @@
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="select id, full_name from organizations where id IN (8515,8400,1728,9826,15130,141824,137676,8566,308543,99405315) order by full_name">
 </mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceMisto" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name as full_name FROM dict_org_old_organ where use_for_user = 1 ORDER BY name">
+</mini:ProfiledSqlDataSource>
+
 
 <dx:ASPxMenu ID="SectionMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
     <Items>
@@ -294,7 +334,7 @@
                 <ContentCollection>
                     <dx:PopupControlContentControl ID="PopupControlContentControl1" runat="server">
 
-                        <dx:ASPxCallbackPanel ID="CPAddRdaAcc" ClientInstanceName="CPAddRdaAcc" runat="server" OnCallback="CPAddRdaAcc_Callback">
+                        <dx:ASPxCallbackPanel ID="CPAddRdaAcc" ClientInstanceName="CPAddRdaAcc" runat="server" OnCallback="CPAddMistoAcc_Callback">
                             <PanelCollection>
                                 <dx:panelcontent ID="Panelcontent1" runat="server">
 
@@ -342,6 +382,63 @@
                 </ContentCollection>
             </dx:ASPxPopupControl>
         </td>
+        <td>
+            <dx:ASPxButton ID="ButtonAddMistoAccount" runat="server" Text="Додати Користувача Місто" AutoPostBack="false" Width="180px"></dx:ASPxButton>
+
+            <dx:ASPxPopupControl ID="PopupAddMistoAccount" runat="server" ClientInstanceName="PopupAddMistoAccount"
+                HeaderText="Додати Користувача Місто" PopupElementID="ButtonAddMistoAccount">
+                <ContentCollection>
+                    <dx:PopupControlContentControl ID="PopupControlContentControl3" runat="server">
+
+                        <dx:ASPxCallbackPanel ID="ASPxCallbackPanel1" ClientInstanceName="CPAddMistoAcc" runat="server" OnCallback="CPAddMistoAcc_Callback">
+                            <PanelCollection>
+                                <dx:panelcontent ID="Panelcontent4" runat="server">
+
+                                    <table border="0" cellspacing="0" cellpadding="2">
+                                        <tr>
+                                            <td> <dx:ASPxLabel ID="ASPxLabel9" runat="server" Text="Прізвище Користувача:" Width="150px" /> </td>
+                                            <td> <dx:ASPxTextBox ID="EditLastNameMisto" ClientInstanceName="EditLastNameMisto" runat="server" Width="300px" /> </td>
+                                        </tr>
+                                        <tr>
+                                            <td> <dx:ASPxLabel ID="ASPxLabel10" runat="server" Text="Ім'я Користувача:" Width="150px" /> </td>
+                                            <td> <dx:ASPxTextBox ID="EditFirstNameMisto" ClientInstanceName="EditFirstNameMisto" runat="server" Width="300px" /> </td>
+                                        </tr>
+                                        <tr>
+                                            <td> <dx:ASPxLabel ID="ASPxLabel11" runat="server" Text="Електронна Адреса:" Width="150px" /> </td>
+                                            <td> <dx:ASPxTextBox ID="EditEmailMisto" ClientInstanceName="EditEmailMisto" runat="server" Width="300px" /> </td>
+                                        </tr>
+                                        <tr>
+                                            <td> <dx:ASPxLabel ID="ASPxLabel12" runat="server" Text="Департамент:" Width="150px" /> </td>
+                                            <td>
+                                                <dx:ASPxComboBox ID="ComboMistoOrg" ClientInstanceName="ComboMistoOrg" runat="server"
+                                                    Width="300px" DataSourceID="SqlDataSourceMisto" ValueField="id" ValueType="System.Int32"
+                                                    TextField="full_name" EnableSynchronization="True">
+                                                </dx:ASPxComboBox>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"> <p/> </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" align="right">
+                                                <dx:ASPxButton ID="ASPxButton2" ClientInstanceName="ButtonAddMistoAcc" runat="server" AutoPostBack="False" Text="Створити">
+                                                    <ClientSideEvents Click="OnAddNewMistoAccount" />
+                                                </dx:ASPxButton>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </dx:panelcontent>
+                            </PanelCollection>
+
+                            <ClientSideEvents EndCallback="function (s,e) { alert('Реєстрацію користувача виконано. На електронну адресу користувача надіслані його реквізити для входу на веб-сайт ДКВ.'); PopupAddMistoAccount.Hide(); }" />
+                        </dx:ASPxCallbackPanel>
+
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+            </dx:ASPxPopupControl>
+        </td>
+
     </tr>
 </table>
 
@@ -392,6 +489,8 @@
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="is_rda" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="5" Caption="Користувач Належить до РДА" />
         <dx:GridViewDataDateColumn FieldName="rda_district" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="6" Caption="Район РДА Користувача" />
+        <dx:GridViewDataTextColumn FieldName="is_misto" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="7" Caption="Користувач Місто" />
+        <dx:GridViewDataDateColumn FieldName="misto_district" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="8" Caption="Департамент користувача Місто" />
     </Columns>
 
     <SettingsBehavior EnableCustomizationWindow="True" AutoFilterRowInputDelay="2500" ColumnResizeMode="Control" />

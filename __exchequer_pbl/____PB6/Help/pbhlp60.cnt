@@ -1,0 +1,314 @@
+:Base pbhlp60.hlp>main
+:Title PowerBuilder Help
+:Index DataDirect ODBC Btrieve Driver=Pbbtr09.hlp
+:Index DataDirect ODBC dBASE Driver=Pbdbf09.hlp
+:Index DataDirect ODBC Excel 4 Driver=pbxls09.hlp
+:Index DataDirect ODBC Excel 5 Driver Help=pbxls509.hlp
+:Index DataDirect ODBC Paradox Driver=Pbidp09.hlp
+:Index DataDirect ODBC Text Driver=Pbtxt09.hlp
+:Index PowerBuilder COM Generator=pbcom60.hlp
+:Index PowerBuilder JavaBean Proxy Generator=pbjpx60.hlp
+:Index Powersoft Answer Page=pbans60.hlp
+:Link pbusr60.hlp
+:Link pbapu60.hlp            ; Advanced PB Utilities
+:Link pbint60.hlp
+:Link pbpfc60.hlp
+:Link dwsyn60.hlp
+:Link pbjpx60.hlp
+:Link pbcom60.hlp
+1 What's New
+2 What's new in PowerBuilder 6.0=contents_60
+2 What's new in PowerBuilder 6.5=new_601
+1 Powersoft Online Books
+2 About the Powersoft Online Books=about_pob
+2 What's in the Online Books versus Online Help=books_versus_help
+2 Making the best use of Online Books and Online Help=best_online
+1 PowerBuilder AnswerPage
+2 Overview=contents@pbans60.hlp
+1 Getting Started
+2 Introduction to PowerBuilder=gts_introduction
+2 PowerBuilder Library painter objects=gts_pbobjects
+2 PowerBuilder environment=gts_pbenvironment
+2 PowerBuilder painters and tools
+3 Application painter=application_painter
+3 Database painter=database_painter
+3 Database Administration painter=database_administration_painter
+3 Data Manipulation painter=data_manipulation_painter
+3 Data Pipeline painter=data_pipeline_painter
+3 DataWindow painter=datawindow_painter
+3 DataWindow preview painter=datawindow_preview_painter
+3 Debugger painter=debug_painter
+3 File editor=file_editor
+3 Function painter=function_painter
+3 Library painter=library_painter
+3 Menu painter=menu_painter
+3 PowerScript painter=powerscript_painter
+3 Project painter=project_painter
+3 Query painter=query_painter
+3 Report painter=report_painter
+3 SQL Select painter=sqlselect_painter
+3 Structure painter=structure_painter
+3 Table painter=table_painter
+3 User Object painter=User_Object_painter
+3 View painter=view_painter
+3 Window painter=window_painter
+2 PowerBuilder Library for Lotus Notes
+3 About the Library for Lotus Notes=PB_lib_for_notes
+1 Powersoft Component Gallery
+2 Component Gallery for Powersoft Tools=Component_Gallery
+1 Controls
+2 CheckBox=CheckBox_control
+2 CommandButton=CommandButton_control
+2 DataWindow=DataWindow_control
+2 DropDownListBox=DropDownListBox_control
+2 DropDownPictureListBox=DropDownPictureListBox_control
+2 EditMask=EditMask_control
+2 Graph=Graph_control
+2 GroupBox=GroupBox_control
+2 HScrollBar=HScrollBar_control
+2 Line=Line_control
+2 ListBox=ListBox_control
+2 ListView=ListView_control
+2 MultiLineEdit=MultiLineEdit_control
+2 OLEcontrol=OLEcontrol_control
+2 OLECustomControl=OLECustomControl_control
+2 Oval=Oval_control
+2 Picture=Picture_control
+2 PictureButton=PictureButton_control
+2 PictureListBox=PictureListBox_control
+2 RadioButton=RadioButton_control
+2 Rectangle=Rectangle_control
+2 RichTextEdit=richtextedit_control
+2 RoundRectangle=RoundRectangle_control
+2 SingleLineEdit=SingleLineEdit_control
+2 StaticText=StaticText_control
+2 Tab=Tab_control
+2 TreeView=TreeView_control
+2 UserObject=UserObject_object
+2 VScrollBar=VScrollBar_control
+1 System objects
+2 Application=Application_object
+2 ArrayBounds=ArrayBounds_object
+2 ClassDefinition=ClassDefinition_object
+2 ContextInformation=ContextInformation_object
+2 ContextKeyword=ContextKeyword_object
+2 CPlusPlus=CPlusPlus_object
+2 DataStore=DataStore_object
+2 DataWindowChild=DataWindowChild_object
+2 DynamicDescriptionArea=DynamicDescriptionArea_object
+2 DynamicStagingArea=DynamicStagingArea_object
+2 EnumerationDefinition=EnumerationDefinition_object
+2 EnumerationItemDefinition=EnumerationItemDefinition_object
+2 Environment=Environment_object
+2 Error=Error_object
+2 grAxis=grAxis_object
+2 grDispAttr=grDispAttr_object
+2 ListViewItem=ListViewItem_object
+2 Inet=Inet_object
+2 InternetResult=InternetResult_object
+2 MailFileDescription=MailFileDescription_object
+2 MailMessage=MailMessage_object
+2 MailRecipient=MailRecipient_object
+2 MailSession=MailSession_object
+2 MDIClient=MDIClient_object
+2 Menu=Menu_object
+2 MenuCascade=MenuCascade_object
+2 Message=Message_object
+2 OLEObject=OLEObject_object
+2 OLEStorage=OLEStorage_object
+2 OLEStream=OLEStream_object
+2 Pipeline=Pipeline_object
+2 ProfileCall=ProfileCall_object
+2 ProfileClass=ProfileClass_object
+2 ProfileLine=ProfileLine_object
+2 ProfileRoutine=ProfileRoutine_object
+2 Profiling=Profiling_object
+2 ScriptDefinition=ScriptDefinition_object
+2 SimpleTypeDefinition=SimpleTypeDefinition_object
+2 Timing=Timing_object
+2 TraceActivityNode=TraceActivityNode_object
+2 TraceBeginEnd=TraceBeginEnd_object
+2 TraceError=TraceError_object
+2 TraceESQL=TraceESQL_object
+2 TraceFile=TraceFile_object
+2 TraceGarbageCollect=TraceGarbageCollect_object
+2 TraceLine=TraceLine_object
+2 TraceObject=TraceObject_object
+2 TraceRoutine=TraceRoutine_object
+2 TraceTree=TraceTree_object
+2 TraceTreeError=TraceTreeError_object
+2 TraceTreeESQL=TraceTreeESQL_object
+2 TraceTreeGarbageCollect=TraceTreeGarbageCollect_object
+2 TraceTreeLine=TraceTreeLine_object
+2 TraceTreeNode=TraceTreeNode_object
+2 TraceTreeObject=TraceTreeObject_object
+2 TraceTreeRoutine=TraceTreeRoutine_object
+2 TraceTreeUser=TraceTreeUser_object
+2 TraceUser=TraceUser_object
+2 Transaction=Transaction_object
+2 TreeViewItem=TreeViewItem_object
+2 TypeDefinition=TypeDefinition_object
+2 VariableCardinalityDefinition=VariableCardinalityDefinition_object
+2 VariableDefinition=VariableDefinition_object
+2 Window=Window_object
+1 PowerScript language
+2 Identifiers=cbbbdijd
+2 Pronouns=ccjcebaj
+2 Reserved words=biibfdch
+2 Comments=ccjbhhjj
+2 Operators and expressions=ccjccgcf
+2 Statements=statements
+2 Functions and events=ccjbddic
+2 Data types
+3 Standard data types=ccjcidhf
+3 Any data type=ccjeahic
+2 Declarations
+3 Variables=ccjbjjaa
+3 Constants=ccjddbij
+3 Arrays=ccjchiig
+3 External functions=ccjbaeef
+3 DBMS stored procedures=ccjecbfc
+1 Functions
+2 System functions by category
+3 Arrays=arrayfuncs_func
+3 Blob functions=blobfuncs_func
+3 Data type checking and conversion functions=dataconv_funcs_func
+3 Date, day, and time functions=date_day_time_funcs
+3 DDE client functions=ddeclient_intro
+3 DDE server functions=ddeserver_intro
+3 File functions=dos_func
+3 International=Internationalfuncs_func
+3 Library functions=libraryfuncs_func
+3 MAPI functions=mapi_func
+3 Miscellaneous=miscfuncs_func
+3 Numeric functions=numeric_func
+3 Print functions=printfunc_func
+3 Registry functions=Registryfuncs_func
+3 String functions=stringf_func
+3 System and environment=sysenvfuncs_func
+3 Timing=Timingfuncs_func
+3 Window=windowfuncs_func
+2 Functions for controls
+3 Checkbox Functions=checkbox_functions
+3 CommandButton Functions=commandbutton_functions
+3 DataWindow Functions=datawindow_functions
+3 DropDownListBox Functions=DropDownListBox_functions
+3 DropDownPictureListBox Functions=DropDownPictureListBox_functions
+3 EditMask Functions=EditMask_functions
+3 Graph Functions=Graph_functions
+3 GroupBox Functions=GroupBox_functions
+3 HScrollBar Functions=HScrollBar_functions
+3 Line Functions=Line_functions
+3 ListBox Functions=ListBox_functions
+3 ListView Functions=ListView_functions
+3 MultiLineEdit Functions=MultiLineEdit_functions
+3 OLEControl Functions=OLEControl_functions
+3 OLECustomControl Functions=OLECustomControl_functions
+3 Oval Functions=Oval_functions
+3 Picture Functions=Picture_functions
+3 PictureButton Functions=PictureButton_functions
+3 PictureListBox Functions=PictureListBox_functions
+3 RadioButton Functions=RadioButton_functions
+3 Rectangle Functions=Rectangle_functions
+3 RichTextEdit Functions=RichTextEdit_functions
+3 RoundRectangle Functions=RoundRectangle_functions
+3 SingleLineEdit Functions=SingleLineEdit_functions
+3 StaticText Functions=StaticText_functions
+3 Tab Functions=Tab_functions
+3 TreeView Functions=TreeView_functions
+3 UserObject Functions=UserObject_functions
+3 VScrollBar Functions=VScrollBar_functions
+2 Functions for system objects
+3 Application object=Application_functions
+3 ArrayBounds object=ArrayBounds_functions
+3 ClassDefinition object=ClassDefinition_functions
+3 ContextInformation object=ContextInformation_functions
+3 ContextKeyword object=ContextKeyword_functions
+3 CPlusPlus object=CPlusPlus_functions
+3 DataStore object=DataStore_functions
+3 DataWindowChild object=DataWindowChild_functions
+3 DynamicDescriptionArea object=DynamicDescriptionArea_functions
+3 DynamicStagingArea object=DynamicStagingArea_functions
+3 EnumerationDefinition object=EnumerationDefinition_functions
+3 EnumerationItemDefinition object=EnumerationItemDefinition_functions
+3 Environment object=Environment_functions
+3 Error object=Error_functions
+3 Inet object=Inet_functions
+3 InternetResult object=InternetResult_functions
+3 ListViewItem object=ListViewItem_functions
+3 MailFileDescription object=MailFileDescription_functions
+3 MailMessage object=MailMessage_functions
+3 MailRecipient object=MailRecipient_functions
+3 MailSession object=MailSession_functions
+3 MDIClient object=MDIClient_functions
+3 Menu object=Menu_functions
+3 MenuCascade object=MenuCascade_functions
+3 Message object=Message_functions
+3 OLEObject object=OLEObject_functions
+3 OLEStorage object=OLEStorage_functions
+3 OLEStream object=OLEStream_functions
+3 Pipeline object=Pipeline_functions
+3 ProfileCall object=ProfileCall_functions
+3 ProfileClass object=ProfileClass_functions
+3 ProfileLine object=ProfileLine_functions
+3 Profiling object=Profiling_functions
+3 ProfileRoutine object=ProfileRoutine_functions
+3 ScriptDefinition object=ScriptDefinition_functions
+3 Timing object=Timing_functions
+3 TraceActivityNode object=TraceActivityNode_functions
+3 TraceBeginEnd object=TraceBeginEnd_functions
+3 TraceESQL object=TraceESQL_functions
+3 TraceError object=TraceError_functions
+3 TraceFile object=TraceFile_functions
+3 TraceGarbageCollect object=TraceGarbageCollect_functions
+3 TraceLine object=TraceLine_functions
+3 TraceObject object=TraceObject_functions
+3 TraceRoutine object=TraceRoutine_functions
+3 TraceTree object=TraceTree_functions
+3 TraceTreeError object=TraceTreeError_functions
+3 TraceTreeESQL object=TraceTreeESQL_functions
+3 TraceTreeGarbageCollect object=TraceTreeGarbageCollect_functions
+3 TraceTreeLine object=TraceTreeLine_functions
+3 TraceTreeNode object=TraceTreeNode_functions
+3 TraceTreeObject object=TraceTreeObject_functions
+3 TraceTreeRoutine object=TraceTreeRoutine_functions
+3 TraceTreeUser object=TraceTreeUser_functions
+3 Transaction object=Transaction_functions
+3 TreeViewItem object=TreeViewItem_functions
+3 TypeDefinition object=TypeDefinition_functions
+3 VariableCardinalityDefinition object=VariableCardinalityDefinition_functions
+3 VariableDefinition object=VariableDefinition_functions
+3 Window object=Window_functions
+1 DataWindow objects
+2 DataWindow painter functions=DataWindow_Painter_Funcs_by_cat
+2 Data expressions=ccjbbhcd
+2 Property expressions=ccjcbhfe
+2 DataWindow object properties=DataWindow_object_properties
+1 Database interfaces
+2 The Powersoft ODBC interface=powersoft_ODBC
+2 Powersoft database interfaces=powersoft_database_interfaces
+2 DBParm Parameters Listed by Powersoft Database Interface=parsupportedparms
+2 Database Preferences Listed by Powersoft Database Interface=presupportedprefs
+2 Using Embedded SQL=using_embedded_sql
+2 Using Embedded SQL with IBM Databases=using_embedded_sql_with_IBM
+2 Using Embedded SQL with Informix=using_embedded_sql_with_Informix
+2 Using Embedded SQL with the MDI Database Gateway  Interface=using_embedded_sql_with_MDI_gateway
+2 Using Embedded SQL with Oracle=using_embedded_sql_with_oracle
+2 Using Embedded SQL with ODBC=using_embedded_sql_with_odbc
+2 Using Embedded SQL with SQL Server=using_embedded_sql_with_sql_server
+2 Using Embedded SQL with the Sybase Net-Gateway Interface=using_embedded_sql_with_Sybase_Net_Gateway
+2 Using Embedded SQL with Sybase SQL Server System 10 and System 11=using_embedded_sql_with_sybase_system_10_11
+2 Connecting to your database
+3 About connecting to your database=about_database_connections
+2 DBParm parameters and database preferences
+3 DBParm parameters
+4 DBParm Parameters Listed by Powersoft Database Interface=parsupportedparms
+3 Database preferences
+4 Database Preferences Listed by Powersoft Database Interface=presupportedprefs
+:include pbusr60.cnt
+:include pbapu60.cnt
+:include pbpfc60.cnt
+:include pbint60.cnt
+:include pbcom60.cnt
+:include pbjpx60.cnt
+:include how12.cnt

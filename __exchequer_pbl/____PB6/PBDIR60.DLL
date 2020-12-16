@@ -1,0 +1,10 @@
+
+DirectConnect Support
+PBDIR60.DLL will not connect due to problems that were identified 
+after the final build for PB 6.5. The fixes for the Direct Connect 
+driver will be posted on http://support.sybase.com. To install the 
+fix, rename the file installed with PB 6.5, download the file 
+PBDIR60.DLL and replace the one installed with PB 6.5.
+
+
+

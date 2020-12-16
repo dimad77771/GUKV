@@ -1,0 +1,37 @@
+REGEDIT
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; PBAPPL.REG
+;
+; Registration information for PowerBuilder.Application.6
+;
+; All rights reserved.  No portion of this material may be copied in any way
+; without prior written consent from Powersoft Corporation.
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Version independent ProgID entries
+HKEY_CLASSES_ROOT\PowerBuilder.Application = PowerBuilder Automation
+HKEY_CLASSES_ROOT\PowerBuilder.Application\CLSID = {A4C60480-868B-11d0-B538-00805F8AB104}
+HKEY_CLASSES_ROOT\PowerBuilder.Application\CurVer = PowerBuilder.Application.6
+HKEY_CLASSES_ROOT\PowerBuilder.Application\NotInsertable
+
+; Version specific ProgID entries
+HKEY_CLASSES_ROOT\PowerBuilder.Application.6 = PowerBuilder 6.0 Automation
+HKEY_CLASSES_ROOT\PowerBuilder.Application.6\CLSID = {A4C60480-868B-11d0-B538-00805F8AB104}
+HKEY_CLASSES_ROOT\PowerBuilder.Application.6\NotInsertable
+
+; CLSID entries
+HKEY_CLASSES_ROOT\CLSID\{A4C60480-868B-11d0-B538-00805F8AB104} = PowerBuilder Automation 
+HKEY_CLASSES_ROOT\CLSID\{A4C60480-868B-11d0-B538-00805F8AB104}\ProgID = PowerBuilder.Application.6
+HKEY_CLASSES_ROOT\CLSID\{A4C60480-868B-11d0-B538-00805F8AB104}\VersionIndependentProgID = PowerBuilder.Application
+HKEY_CLASSES_ROOT\CLSID\{A4C60480-868B-11d0-B538-00805F8AB104}\InProcServer32 = PBVM60.DLL
+HKEY_CLASSES_ROOT\CLSID\{A4C60480-868B-11d0-B538-00805F8AB104}\NotInsertable
+HKEY_CLASSES_ROOT\CLSID\{A4C60480-868B-11d0-B538-00805F8AB104}\Programmable
+HKEY_CLASSES_ROOT\CLSID\{A4C60480-868B-11d0-B538-00805F8AB104}\TypeLib = {A4C60485-868B-11d0-B538-00805F8AB104}
+
+; Type library registration entries
+HKEY_CLASSES_ROOT\TYPELIB\{A4C60485-868B-11d0-B538-00805F8AB104}\1.0 = PowerBuilder Automation Type Library
+HKEY_CLASSES_ROOT\TYPELIB\{A4C60485-868B-11d0-B538-00805F8AB104}\1.0\9\Win32 = PBAEN60.TLB
+

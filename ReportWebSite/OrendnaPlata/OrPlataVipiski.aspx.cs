@@ -37,6 +37,10 @@ public partial class OrendnaPlata_OrPlataVipiski : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        Response.Redirect(@"eisexchequer://start");
+        return;
+
+
         Response.Cache.SetNoStore();
 
         // Generate a unique key for this instance of the page

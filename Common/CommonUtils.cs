@@ -35,5 +35,29 @@ namespace GUKV.Common
 
             return null;
         }
+
+
+        public static SqlConnection ConnectToDatabase2016()
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["GUKV2016ConnectionString"].ConnectionString;
+
+            if (connectionString != null && connectionString.Length > 0)
+            {
+                SqlConnection connection = new SqlConnection(connectionString);
+
+                try
+                {
+                    connection.Open();
+
+                    return connection;
+                }
+                catch
+                {
+                    //
+                }
+            }
+
+            return null;
+        }
     }
 }

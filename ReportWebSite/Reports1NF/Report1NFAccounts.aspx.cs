@@ -372,6 +372,59 @@ public partial class Reports1NF_Report1NFAccounts : System.Web.UI.Page
         }
     }
 
+    protected void CPAddMistoAcc_Callback(object sender, CallbackEventArgsBase e)
+    {
+        string firstName = EditFirstNameMisto.Text.Trim();
+        string lastName = EditLastNameMisto.Text.Trim();
+        string userName = firstName + "." + lastName;
+        string email = EditEmailMisto.Text.Trim();
+
+        object orgId = ComboMistoOrg.Value;
+
+        SqlConnection connection = Utils.ConnectToDatabase();
+
+        if (orgId is int)
+        {
+            int organizationId = (int)orgId;
+            //int districtId = GetDistrictIdByMistoId(connection, organizationId);
+
+            // Generate password for the new user
+            string password = System.Web.Security.Membership.GeneratePassword(10, 0);
+
+            System.Web.Security.MembershipUser user = System.Web.Security.Membership.CreateUser(userName, password, email);
+
+            if (user != null)
+            {
+                // Add the user to the 'report submitter' role
+                System.Web.Security.Roles.AddUserToRole(user.UserName, Utils.MISTOControllerRole);
+
+                // Relate the user to organization
+
+
+                if (connection != null)
+                {
+                    using (SqlCommand cmd = new SqlCommand("INSERT INTO reports1nf_accounts (UserId, organization_id, misto_district_id) VALUES (@usr, @org, @misto)", connection))
+                    {
+                        cmd.Parameters.Add(new SqlParameter("usr", user.ProviderUserKey));
+                        cmd.Parameters.Add(new SqlParameter("org", -1));
+                        cmd.Parameters.Add(new SqlParameter("misto", organizationId));
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Send a notification to the user
+                    string messageBody = string.Format(Resources.Strings.Report1NFMistoNewPasswordBody,
+                        new object[] { firstName + " " + lastName, Resources.Strings.GlobalWebSiteURL, userName, password });
+
+                    EmailNotifier.SendEmailToUser(connection, null, userName, WebConfigurationManager.AppSettings["EmailFrom"], Resources.Strings.Report1NFMistoNewPasswordTitle, messageBody);
+
+                    connection.Close();
+                }
+            }
+        }
+    }
+
+
     protected int GetDistrictIdByRdaId(SqlConnection connection, int organizationRdaId)
     {
         int[] allid = new int[]
@@ -410,6 +463,29 @@ public partial class Reports1NF_Report1NFAccounts : System.Web.UI.Page
 
         if (res == 0)
             throw new ArgumentException("У вибраної РДА відсутній код addr_distr_new_id");
+
+        return res;
+    }
+
+    protected int GetDistrictIdByMistoId(SqlConnection connection, int organizationRdaId)
+    {
+        int res = 0;
+        using (SqlCommand cmd = new SqlCommand("select addr_distr_new_id from organizations where id = @orgid", connection))
+        {
+            cmd.Parameters.Add(new SqlParameter("orgid", organizationRdaId));
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    if (!reader.IsDBNull(0))
+                        res = reader.GetInt32(0);
+                }
+                reader.Close();
+            }
+        }
+
+        if (res == 0)
+            throw new ArgumentException();
 
         return res;
     }

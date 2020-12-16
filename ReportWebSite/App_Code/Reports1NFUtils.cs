@@ -404,13 +404,16 @@ public static class Reports1NFUtils
 
                 object title = (parent as ASPxTextEdit).Attributes["Title"];
 
-                if (title is string)
+                if (title != null)
                 {
-                    (parent as ASPxTextEdit).JSProperties["cp_ControlTitle"] = (string)title;
-                }
-                else
-                {
-                    throw new InvalidOperationException("Title is not defined for the control: " + parent.ID);
+                    if (title is string)
+                    {
+                        (parent as ASPxTextEdit).JSProperties["cp_ControlTitle"] = (string)title;
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException("Title is not defined for the control: " + parent.ID);
+                    }
                 }
             }
             if (parent is ASPxSpinEdit)

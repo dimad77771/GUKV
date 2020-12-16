@@ -307,7 +307,10 @@ join dict_rent_occupation occ on occ.id = obp.org_occupation_id
 		) DDD ON DDD.org_id = rep.organization_id
 
 
-        WHERE (@p_rda_district_id = 0 OR (rep.org_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND rep.org_district_id = @p_rda_district_id))"
+        WHERE 
+            (@p_rda_district_id = 0 OR (rep.org_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND rep.org_district_id = @p_rda_district_id))
+                AND
+            (@p_misto_id = 0 OR rep.old_organ_id = @p_misto_id)"
     OnSelecting="SqlDataSourceReports_Selecting"
 
 UpdateCommand="UPDATE [reports1nf]
@@ -322,6 +325,7 @@ WHERE id = @report_id"
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_rda_district_id" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="period_year" />
+        <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_misto_id" />
     </SelectParameters>
 
 
@@ -443,6 +447,10 @@ WHERE id = @report_id"
 
             <dx:ASPxButton ID="ASPxButton_Reports1NF_SaveAs" runat="server" AutoPostBack="False" 
                 Text="Зберегти у Файлі" Width="148px">
+            </dx:ASPxButton>
+        </td>
+        <td>
+            <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Зведений Звіт" Width="148px" OnClick="ASPxButton_Zvedeniy_Build">
             </dx:ASPxButton>
         </td>
     </tr>

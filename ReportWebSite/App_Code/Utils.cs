@@ -55,6 +55,7 @@ public static class Utils
     public const string DKVArendaControllerRole = "DKVArendaController";
     public const string DKVArendaPaymentsControllerRole = "DKVArendaPaymentsController";
     public const string RDAControllerRole = "RDAController";
+    public const string MISTOControllerRole = "MISTOController";
     public const string DictionartyAdmin = "DictionartyAdmin";
     public const string OrgOccupationAdmin = "OrgOccupationAdmin";
     public const string UsersAdmin = "UsersAdmin";
@@ -2887,6 +2888,53 @@ public static class Utils
             }
         }
     }
+
+    public static int GetUserMistoId(string userName)
+    {
+        int misto_district_id = -1;
+        //if (UserOrganizationID <= 0)
+        {
+            if (string.IsNullOrEmpty(userName))
+            {
+                MembershipUser user = Membership.GetUser();
+
+                if (user != null)
+                    userName = user.UserName;
+            }
+
+            if (!string.IsNullOrEmpty(userName))
+            {
+                userName = userName.ToLower();
+                SqlConnection connection = Utils.ConnectToDatabase();
+
+                if (connection != null)
+                {
+                    string query = @"SELECT acc.organization_id, acc.misto_district_id
+                        FROM reports1nf_accounts acc INNER JOIN aspnet_Users usr ON usr.UserId = acc.UserId
+                        WHERE RTRIM(LTRIM(usr.LoweredUserName)) = @usrname";
+
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.Add(new SqlParameter("usrname", userName));
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                misto_district_id = reader.IsDBNull(1) ? 0 : reader.GetInt32(1);
+                            }
+
+                            reader.Close();
+                        }
+                    }
+
+                    connection.Close();
+                }
+            }
+        }
+        return misto_district_id;
+    }
+
 
     #endregion (Authentication)
 

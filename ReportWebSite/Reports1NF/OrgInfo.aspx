@@ -100,6 +100,124 @@
     SelectCommand="SELECT id, name FROM dbo.dict_otdel_gukv ORDER BY name">
 </mini:ProfiledSqlDataSource>
 
+<mini:ProfiledSqlDataSource ID="SqlDataSourceFreeSquare" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT [id]
+        ,[report_id]
+        ,[vlasn_name]
+        ,[vlasn_inn]
+        ,[vlasn_zkpo]
+        ,[vlasn_kopfg]
+        ,[vlasn_uradr]
+        ,[is_zasnobn]
+        ,[kol_akcia]
+        ,[total_price]
+        ,[part_price]
+        ,[stat_found]
+        ,[form_akcia]
+        ,[nominal_vart]
+        ,[stan_vlasn]
+        ,[primitki]
+    FROM [reports1nf_org_corprava] WHERE [report_id] = @report_id" 
+    DeleteCommand="DELETE FROM [reports1nf_org_corprava] where [id] = @id" 
+    InsertCommand="INSERT INTO [reports1nf_org_corprava]
+        ([report_id]
+        ,[vlasn_name]
+        ,[vlasn_inn]
+        ,[vlasn_zkpo]
+        ,[vlasn_kopfg]
+        ,[vlasn_uradr]
+        ,[is_zasnobn]
+        ,[kol_akcia]
+        ,[total_price]
+        ,[part_price]
+        ,[stat_found]
+        ,[form_akcia]
+        ,[nominal_vart]
+        ,[stan_vlasn]
+        ,[primitki]
+    ) 
+    VALUES
+        (@report_id
+        ,@vlasn_name
+        ,@vlasn_inn
+        ,@vlasn_zkpo
+        ,@vlasn_kopfg
+        ,@vlasn_uradr
+        ,@is_zasnobn
+        ,@kol_akcia
+        ,@total_price
+        ,@part_price
+        ,@stat_found
+        ,@form_akcia
+        ,@nominal_vart
+        ,@stan_vlasn
+        ,@primitki
+    );
+SELECT SCOPE_IDENTITY()" 
+    UpdateCommand="UPDATE [reports1nf_org_corprava]
+SET
+    [report_id] = @report_id,
+    [vlasn_name] = @vlasn_name,
+    [vlasn_inn] = @vlasn_inn,
+    [vlasn_zkpo] = @vlasn_zkpo,
+    [vlasn_kopfg] = @vlasn_kopfg,
+    [vlasn_uradr] = @vlasn_uradr,
+    [is_zasnobn] = @is_zasnobn,
+    [kol_akcia] = @kol_akcia,
+    [total_price] = @total_price,
+    [part_price] = @part_price,
+    [stat_found] = @stat_found,
+    [form_akcia] = @form_akcia,
+    [nominal_vart] = @nominal_vart,
+    [stan_vlasn] = @stan_vlasn,
+    [primitki] = @primitki 
+WHERE id = @id" 
+        oninserting="SqlDataSourceFreeSquare_Inserting" 
+        onupdating="SqlDataSourceFreeSquare_Updating" ProviderName="System.Data.SqlClient">
+    <SelectParameters>
+        <asp:Parameter Name="report_id" />
+    </SelectParameters>
+    <DeleteParameters>
+        <asp:Parameter Name="id" />
+    </DeleteParameters>
+    <InsertParameters>
+        <asp:Parameter Name="report_id" />
+        <asp:Parameter Name="vlasn_name" />
+        <asp:Parameter Name="vlasn_inn" />
+        <asp:Parameter Name="vlasn_zkpo" />
+        <asp:Parameter Name="vlasn_kopfg" />
+        <asp:Parameter Name="vlasn_uradr" />
+        <asp:Parameter Name="is_zasnobn" />
+        <asp:Parameter Name="kol_akcia" />
+        <asp:Parameter Name="total_price" />
+        <asp:Parameter Name="part_price" />
+        <asp:Parameter Name="stat_found" />
+        <asp:Parameter Name="form_akcia" />
+        <asp:Parameter Name="nominal_vart" />
+        <asp:Parameter Name="stan_vlasn" />
+        <asp:Parameter Name="primitki" />
+    </InsertParameters>
+    <UpdateParameters>
+        <asp:Parameter Name="report_id" />
+        <asp:Parameter Name="vlasn_name" />
+        <asp:Parameter Name="vlasn_inn" />
+        <asp:Parameter Name="vlasn_zkpo" />
+        <asp:Parameter Name="vlasn_kopfg" />
+        <asp:Parameter Name="vlasn_uradr" />
+        <asp:Parameter Name="is_zasnobn" />
+        <asp:Parameter Name="kol_akcia" />
+        <asp:Parameter Name="total_price" />
+        <asp:Parameter Name="part_price" />
+        <asp:Parameter Name="stat_found" />
+        <asp:Parameter Name="form_akcia" />
+        <asp:Parameter Name="nominal_vart" />
+        <asp:Parameter Name="stan_vlasn" />
+        <asp:Parameter Name="primitki" />
+        <asp:Parameter Name="id" />
+    </UpdateParameters>
+</mini:ProfiledSqlDataSource>
+
 <dx:ASPxMenu ID="SectionMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
     <Items>
         <dx:MenuItem NavigateUrl="../Reports1NF/Cabinet.aspx" Text="Стан"></dx:MenuItem>
@@ -550,6 +668,134 @@
             </PanelCollection>                                
         </dx:ASPxRoundPanel>
 
+                </dx:ContentControl>
+            </ContentCollection>
+        </dx:TabPage>
+
+        <dx:TabPage Text="Відомості про корпоративні права" Name="Tab4" Visible="false">
+            <ContentCollection>
+                <dx:ContentControl ID="ContentControl3a" runat="server">
+                            <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" HeaderText="Відомості про корпоративні права">
+                                <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="4px" />
+                                <PanelCollection>
+                                    <dx:PanelContent ID="PanelContent8" runat="server">
+                                        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                            <tr>
+                                                <td>
+                                                
+
+    <dx:ASPxGridView ID="ASPxGridViewFreeSquare" runat="server" AutoGenerateColumns="False" 
+        DataSourceID="SqlDataSourceFreeSquare" KeyFieldName="id" OnRowValidating="ASPxGridViewFreeSquare_RowValidating" OnStartRowEditing="ASPxGridViewFreeSquare_StartRowEditing"
+            ClientInstanceName="grid" oninitnewrow="ASPxGridViewFreeSquare_InitNewRow" >
+        <Styles>  
+            <EditForm CssClass="editForm999" ></EditForm>  
+        </Styles>  
+
+	    <SettingsCommandButton>
+		    <EditButton>
+			    <Image Url="~/Styles/EditIcon.png" />
+		    </EditButton>
+		    <CancelButton>
+			    <Image Url="~/Styles/CancelIcon.png" />
+		    </CancelButton>
+		    <UpdateButton>
+			    <Image Url="~/Styles/SaveIcon.png" />
+		    </UpdateButton>
+		    <DeleteButton>
+			    <Image Url="~/Styles/DeleteIcon.png" />
+		    </DeleteButton>
+		    <NewButton>
+			    <Image Url="~/Styles/AddIcon.png" />
+		    </NewButton>
+		    <ClearFilterButton Text="Очистити" RenderMode="Link" />
+	    </SettingsCommandButton>
+
+        <Columns>
+            <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" ShowInCustomizationForm="True" CellStyle-Wrap="True" Width="70px" 
+                ShowDeleteButton="True" ShowCancelButton="true" ShowUpdateButton="true" ShowClearFilterButton="true" ShowEditButton="true" ShowNewButton="true" >
+                <CustomButtons>
+                </CustomButtons>
+                <CellStyle Wrap="False"></CellStyle>
+            </dx:GridViewCommandColumn>
+
+            <dx:GridViewDataTextColumn FieldName="id" Caption="ID" VisibleIndex="1"  ReadOnly="true" Visible="false">
+                <EditFormSettings Visible="False" />
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="report_id" Caption="report_id" VisibleIndex="2" ReadOnly="true" Visible="false">
+                <EditFormSettings Visible="False" />
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="primitki" Caption="primitki" VisibleIndex="2" ReadOnly="true" Visible="false">
+                <EditFormSettings Visible="False" />
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+
+            <dx:GridViewDataTextColumn FieldName="vlasn_name" Caption="Назва/ФІО власника корпправа" VisibleIndex="3" Width="250" >
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="vlasn_zkpo" Caption="ЕДРПОУ/ІНН власника корпправа" VisibleIndex="3" Width="85" >
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="vlasn_kopfg" Caption="КОПФГ власника корпправа" VisibleIndex="3" Width="70" >
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="vlasn_uradr" Caption="Юр. Адреса власника корпправа" VisibleIndex="3" Width="250" >
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataCheckColumn FieldName="is_zasnobn" Caption="Є засновником" VisibleIndex="3" Width="40">
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataCheckColumn>
+
+            <dx:GridViewDataTextColumn FieldName="kol_akcia" Caption="Кількість акцій у власника, шт." VisibleIndex="3" Width="100" >
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="total_price" Caption="Частка власника, грн." VisibleIndex="3" Width="100" >
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="part_price" Caption="Частка власника, %" VisibleIndex="3" Width="80" >
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="stat_found" Caption="СК юр. особи, грн." VisibleIndex="3" Width="100" >
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="form_akcia" Caption="Форма існування акцій" VisibleIndex="3" Width="100" >
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="nominal_vart" Caption="Номінальна вартість акцій, грн." VisibleIndex="3" >
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="stan_vlasn" Caption="Стан реєстрації об'єкту корпоративної власності" VisibleIndex="3" >
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+        </Columns>
+        <SettingsBehavior ConfirmDelete="True" />
+        <SettingsPager PageSize="10" />
+        <SettingsEditing NewItemRowPosition="Bottom" />
+        <Settings ShowFilterRow="True" ShowFilterBar="Auto" ShowFilterRowMenu="True" VerticalScrollableHeight="0" VerticalScrollBarMode="Hidden" VerticalScrollBarStyle="Standard"/>
+    </dx:ASPxGridView>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </dx:PanelContent>
+                                </PanelCollection>
+                            </dx:ASPxRoundPanel>
+<%--                        </ItemTemplate>
+                    </asp:FormView>--%>
                 </dx:ContentControl>
             </ContentCollection>
         </dx:TabPage>

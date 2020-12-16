@@ -49,7 +49,7 @@ public partial class Balans_BalansObjects : System.Web.UI.Page
         // Enable advanced header filter for all grid columns
         Utils.AdjustColumnsVisibleInFilter(PrimaryGridView);
 
-	PrimaryGridView.Settings.VerticalScrollBarMode = DevExpress.Web.ScrollBarMode.Visible;	
+	    PrimaryGridView.Settings.VerticalScrollBarMode = DevExpress.Web.ScrollBarMode.Visible;	
     }
 
     protected void ASPxButton_BalansObjects_ExportXLS_Click(object sender, EventArgs e)

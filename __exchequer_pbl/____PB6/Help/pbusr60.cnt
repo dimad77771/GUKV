@@ -1,0 +1,10 @@
+:Base pbusr60.HLP>main
+:Title PowerBuilder User Defined Help
+1 User-defined help
+2 About user-defined help=index_user_help
+2 Creating a Help File for Online Reference=help_for_online_reference
+2 Providing Context-Sensitive Help=help_for_uf
+2 uf_Calculate Function=sample_userfunction
+2 Sample Help Project File=sample_project_file
+2 The UserHelpFile Variable in PB.INI=userhelpfile_var
+2 The UserHelpPrefix Variable in PB.INI=userhelpprefix_var

@@ -14,9 +14,10 @@ public partial class NoHeader : System.Web.UI.MasterPage
 
         bool userIsReportReviewer = Roles.IsUserInRole(Utils.Report1NFReviewerRole);
         bool userIsRdaController = Roles.IsUserInRole(Utils.RDAControllerRole);
+        bool userIsMistoController = Roles.IsUserInRole(Utils.MISTOControllerRole);
 
         // If user does not belong to the role "1NFReportReviewer", hide the menu items related to 1NF reports
-        if (!userIsReportReviewer && !userIsRdaController)
+        if (!userIsReportReviewer && !userIsRdaController && !userIsMistoController)
         {
             foreach (DevExpress.Web.MenuItem item in MainMenu.Items)
             {
@@ -38,6 +39,27 @@ public partial class NoHeader : System.Web.UI.MasterPage
                     item.NavigateUrl.Contains("/Finance") ||
                     item.NavigateUrl.Contains("/Privatization") ||
                     item.NavigateUrl.Contains("/Assessment"))
+                {
+                    item.ClientVisible = false;
+                }
+            }
+        }
+
+        // If user belongs to the RDA role, hide some items
+        if (userIsMistoController)
+        {
+            foreach (DevExpress.Web.MenuItem item in MainMenu.Items)
+            {
+                if (item.NavigateUrl.Contains("/Default") ||
+                    item.NavigateUrl.Contains("/Documents") ||
+                    item.NavigateUrl.Contains("/Finance") ||
+                    item.NavigateUrl.Contains("/Privatization") ||
+                    item.NavigateUrl.Contains("/Assessment") ||
+                    item.NavigateUrl.Contains("/OrPlataByBalans") ||
+                    item.NavigateUrl.Contains("/RentAgreements") ||
+                    item.NavigateUrl.Contains("/RishProjects") ||
+                    item.NavigateUrl.Contains("/BalansObjects") ||
+                    item.NavigateUrl.Contains("/AddrCatalogue"))
                 {
                     item.ClientVisible = false;
                 }

@@ -69,7 +69,7 @@
         <dx:MenuItem NavigateUrl="../OrendnaPlata/SummaryReport.aspx" Text="Зведений Звіт"></dx:MenuItem>
         <dx:MenuItem NavigateUrl="../OrendnaPlata/OrPlataNotSubmitted.aspx" Text="Організації, Що Не Подали Звіт"></dx:MenuItem>
         <dx:MenuItem NavigateUrl="../OrendnaPlata/OrPlataObjectsUse.aspx" Text="Використання Неж. Фонду"></dx:MenuItem>
-        <dx:MenuItem NavigateUrl="../OrendnaPlata/OrPlataVipiski.aspx" Text="Виписки"></dx:MenuItem>
+        <dx:MenuItem NavigateUrl="../OrendnaPlata/OrPlataVipiski.aspx" Text="Бюджет"></dx:MenuItem>
     </Items>
 </dx:ASPxMenu>
 

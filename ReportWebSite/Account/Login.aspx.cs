@@ -13,7 +13,7 @@ public partial class Account_Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //var user = Membership.GetUser("А.О26199097");
+        //var user = Membership.GetUser("misto3.misto3");
         //var password = user.ResetPassword();
         //user.ChangePassword(password, "fq,jkbn66+++");
 
@@ -41,8 +41,13 @@ public partial class Account_Login : System.Web.UI.Page
         }
         */
 
+        if (Roles.IsUserInRole(username, Utils.MISTOControllerRole))
+		{
+            Response.Redirect(Page.ResolveClientUrl("~/Reports1NF/Report1NFList.aspx"));
+        }
+
         // If user belongs to "1NFReportSubmitter" role, redirect him to the Cabinet
-        if (Roles.IsUserInRole(username, Utils.Report1NFSubmitterRole))
+        else if (Roles.IsUserInRole(username, Utils.Report1NFSubmitterRole))
         {
             var user = Membership.GetUser(username);
             var userId = user.ProviderUserKey;

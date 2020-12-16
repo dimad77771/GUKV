@@ -861,4 +861,18 @@
   <data name="Report1NFCommentSubjectRdaOrgArendaPayment" xml:space="preserve">
     <value>Новий коментар від співробітника РДА щодо відомостей про надходження від орендної плати</value>
   </data>
+  <data name="Report1NFMistoNewPasswordBody" xml:space="preserve">
+    <value>
+Вітаємо, {0}.
+
+Адреса веб-сайту ДКВ, який Ви можете використовувати для звітування з використання комунальної власності: {1}
+
+Ваш обліковий запис (ім'я користувача) для входу на веб-сайт ДКВ: {2}
+Ваш пароль для входу на веб-сайт ДКВ: {3}
+</value>
+
+  </data>
+  <data name="Report1NFMistoNewPasswordTitle" xml:space="preserve">
+    <value>Реєстрація на веб-сайті ДКВ для подання звітності щодо використання комунальної власності</value>
+  </data>
 </root>

@@ -458,11 +458,11 @@ WHERE id = @id"
         <dx:GridViewDataTextColumn FieldName="buyer_name" Caption="Покупець (назва)"  Width="200px">
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn FieldName="buyer_adr_street" Caption="Покупець (Назва вулиці)"  Width="200px">
+        <%--<dx:GridViewDataTextColumn FieldName="buyer_adr_street" Caption="Покупець (Назва вулиці)"  Width="200px">
         </dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn FieldName="buyer_adr_nomer" Caption="Покупець (Номер будинку, літери, корпус)"  Width="80px">
-        </dx:GridViewDataTextColumn>
+        </dx:GridViewDataTextColumn>--%>
 
         <dx:GridViewDataTextColumn FieldName="prozoro_number" Caption="Унікальний код обєкту у ЕТС Прозорро-продажі"  Width="150px">
             <DataItemTemplate>
