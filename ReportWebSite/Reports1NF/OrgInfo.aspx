@@ -35,7 +35,13 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceOrgProperties" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT TOP 1 info.*, CASE WHEN info.submit_date IS NULL OR info.modify_date IS NULL OR info.modify_date > info.submit_date THEN 0 ELSE 1 END AS 'report_org_info_status'
+    SelectCommand="SELECT TOP 1 info.*
+        ,CASE WHEN info.submit_date IS NULL OR info.modify_date IS NULL OR info.modify_date > info.submit_date THEN 0 ELSE 1 END AS 'report_org_info_status'
+        ,dbo.[get_kazna_total](
+	        (select Q.zkpo_code from reports1nf_org_info Q where report_id = info.report_id), 
+	        (SELECT top 1 cast(cast(Q.period_year as varchar(10)) + '0101' as date) FROM dict_rent_period Q order by id desc), 
+	        (SELECT top 1 Q.period_end FROM dict_rent_period Q order by id desc) 
+         ) AS 'kazna_total' 
         FROM reports1nf_org_info info WHERE info.report_id = @rep_id">
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="rep_id" />
@@ -601,6 +607,13 @@ WHERE id = @id"
                             <td><dx:ASPxSpinEdit ID="EditBudgetNarah50_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("budget_narah_50_uah") %>' Width="150px"
                                 Title="Нарахована сума до бюджету 50% від загальної суми надходжень орендної плати"/></td>
                         </tr>
+
+                        <tr>
+                            <td><dx:ASPxLabel ID="LabelKaznaNarah50UAH" runat="server" Text="Перераховано коштів до бюджету, у звітному періоді ″КАЗНАЧЕЙСТВО″, грн. (без ПДВ)" Width="650px" ForeColor="Blue"></dx:ASPxLabel></td>
+                            <td><dx:ASPxSpinEdit ID="EditBudgetKazna50_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("kazna_total") %>' Width="150px" ReadOnly="true"
+                                Title="Перераховано коштів до бюджету, у звітному періоді ″КАЗНАЧЕЙСТВО″"/></td>
+                        </tr>
+
                         <tr>
                             <td><dx:ASPxLabel ID="LabelZvitNarah50UAH" runat="server" Text="Перераховано до бюджету 50% за звітний період всього з 1 січня поточного року, без переплат, грн. (без ПДВ)"></dx:ASPxLabel></td>
                             <td><dx:ASPxSpinEdit ID="EditBudgetZvit50_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("budget_zvit_50_uah") %>' Width="150px"
