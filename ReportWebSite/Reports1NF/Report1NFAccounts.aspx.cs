@@ -8,8 +8,6 @@ using System.Web.Security;
 using System.Data;
 using System.Data.SqlClient;
 using DevExpress.Web;
-using DevExpress.Web;
-using DevExpress.Web;
 using System.Text.RegularExpressions;
 using System.Web.Configuration;
 using GUKV.Common;

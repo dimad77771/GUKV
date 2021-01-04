@@ -110,7 +110,7 @@
     LEFT OUTER JOIN (select obp.org_id,occ.name from org_by_period obp
          join dict_rent_occupation occ on occ.id = obp.org_occupation_id
           where obp.period_id = (select top 1 id from dict_rent_period order by id desc)) DDD ON DDD.org_id = vb.organization_id
-    WHERE
+    WHERE ( isnull(ddd.name,'') not in ('НЕВИЗНАЧЕНІ') ) and
  	 ((@p_dpz_filter = 0) OR (@p_dpz_filter <> 0 AND vb.balans_id in (select b.id from dbo.reports1nf_balans b where b.organization_id = vb.organization_id and ISNULL(b.is_deleted, 0) = 0 ) )) AND
         ((@p_com_filter = 0) OR (@p_com_filter <> 0 AND (vb.org_ownership_int IN (32,33,34) OR vb.form_ownership_int IN (32,33,34)))) AND
         ((@p_show_deleted = 1) OR (@p_show_deleted = 0 AND (vb.is_deleted IS NULL OR vb.is_deleted = 0 OR vb.is_not_accepted = 1))) AND
@@ -205,15 +205,15 @@
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_full_name" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="2" Visible="True" Caption="Балансоутримувач - Повна Назва" Width="180px">
-            <DataItemTemplate>
+<%--            <DataItemTemplate>
                 <%# "<a href=\"javascript:ShowOrganizationCard(" + Eval("organization_id") + ")\">" + Eval("org_full_name") + "</a>"%>
-            </DataItemTemplate>
+            </DataItemTemplate>--%>
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_short_name" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="3" Visible="False" Caption="Балансоутримувач - Коротка Назва">
-            <DataItemTemplate>
+<%--            <DataItemTemplate>
                 <%# "<a href=\"javascript:ShowOrganizationCard(" + Eval("organization_id") + ")\">" + Eval("org_short_name") + "</a>"%>
-            </DataItemTemplate>
+            </DataItemTemplate>--%>
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_zkpo_code" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="4" Visible="True" Caption="Балансоутримувач - Код ЄДРПОУ"></dx:GridViewDataTextColumn>
@@ -227,15 +227,15 @@
             VisibleIndex="7" Visible="True" Caption="Район"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="street_full_name" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="8" Visible="True" Caption="Назва Вулиці" Width="120px">
-            <DataItemTemplate>
+<%--            <DataItemTemplate>
                 <%# "<a href=\"javascript:ShowObjectCard(" + Eval("balans_id") + "," + Eval("building_id") + ")\">" + Eval("street_full_name") + "</a>"%>
-            </DataItemTemplate>
+            </DataItemTemplate>--%>
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="addr_nomer" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="9" Visible="True" Caption="Номер Будинку">
-            <DataItemTemplate>
+<%--            <DataItemTemplate>
                 <%# "<a href=\"javascript:ShowObjectCard(" + Eval("balans_id") + "," + Eval("building_id") + ")\">" + Eval("addr_nomer") + "</a>"%>
-            </DataItemTemplate>
+            </DataItemTemplate>--%>
             <Settings SortMode="Custom" />
         </dx:GridViewDataTextColumn>
 <%-- --%>
@@ -284,11 +284,11 @@
         <dx:GridViewDataDateColumn FieldName="date_bti" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="30" Visible="False" Caption="Дата виготовлення технічного паспорту"></dx:GridViewDataDateColumn>
         <dx:GridViewDataTextColumn FieldName="realestateobj" ReadOnly="True" ShowInCustomizationForm="True"
-            VisibleIndex="31" Visible="True" Caption="Реєстрація у Державному реєстрі (Об'єкт нерухомого майна)"></dx:GridViewDataTextColumn>
+            VisibleIndex="31" Visible="False" Caption="Реєстрація у Державному реєстрі (Об'єкт нерухомого майна)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="privacynote" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="32" Visible="True" Caption="Реєстрація у Державному реєстрі (Номер запису про право власності)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="bti_condition" ReadOnly="True" ShowInCustomizationForm="True"
-            VisibleIndex="33" Visible="True" Caption="Реєстрація у Державному реєстрі (Реєстраційний номер об'єкту нерухомого майна)"></dx:GridViewDataTextColumn>
+            VisibleIndex="33" Visible="False" Caption="Реєстрація у Державному реєстрі (Реєстраційний номер об'єкту нерухомого майна)"></dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn FieldName="invent_no_bti" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="34" Visible="False" Caption="Інвентарний номер об'єкту"></dx:GridViewDataTextColumn>

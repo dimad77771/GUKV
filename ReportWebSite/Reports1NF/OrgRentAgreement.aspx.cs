@@ -39,6 +39,12 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 	{
         string reportIdStr = Request.QueryString["rid"];
         string agreementIdStr = Request.QueryString["aid"];
+        string copyIdStr = Request.QueryString["copyid"];
+
+        if (!string.IsNullOrEmpty(copyIdStr))
+        {
+            CopyCard(Int32.Parse(copyIdStr), Int32.Parse(reportIdStr));
+        }
 
         GetPageUniqueKey();
 
@@ -1687,6 +1693,99 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 
     #endregion (Collection tab)
 
+    void AddressChange(SqlConnection connection)
+    {
+        using (var transaction = connection.BeginTransaction())
+        {
+            Dictionary<string, Control> allcontrols = new Dictionary<string, Control>();
+            Reports1NFUtils.GetAllControls(AddressForm, allcontrols);
+            var combostreet = (ASPxComboBox)allcontrols["combostreet"];
+            var addr_street_id = (int?)combostreet.Value;
+            if (addr_street_id == null) throw new Exception("Внутрішня помилка 1001.4");
+
+            var new_building_id = (int?)null;
+            var combobuilding = (ASPxComboBox)allcontrols["combobuilding"];
+            var nomer = (combobuilding.Text ?? "").Trim();
+            using (SqlCommand cmd = new SqlCommand(
+                    @"select id from buildings where 
+                        (is_deleted IS NULL OR is_deleted = 0) AND
+                        (master_building_id IS NULL) AND
+                        (addr_street_id = @street_id) AND
+                        (RTRIM(LTRIM(addr_nomer)) = @nomer)", connection, transaction))
+            {
+                cmd.Parameters.Add(new SqlParameter("street_id", addr_street_id));
+                cmd.Parameters.Add(new SqlParameter("nomer", nomer));
+                new_building_id = (int?)cmd.ExecuteScalar();
+            }
+            if (new_building_id == null)
+            {
+                throw new Exception("Номер будинку повинен бути заповнений");
+            }
+
+            var cntrow = 0;
+            int? building_id = null;
+            int? building_1nf_unique_id = null;
+            using (SqlCommand cmd = new SqlCommand(
+                    @"SELECT ar.building_id, ar.building_1nf_unique_id FROM reports1nf_arenda ar INNER JOIN reports1nf_buildings b 
+                        ON b.unique_id = ar.building_1nf_unique_id WHERE ar.id = @id AND ar.report_id = @report_id and ar.building_id = b.id", connection, transaction))
+            {
+                cmd.Parameters.Add(new SqlParameter("report_id", ReportID));
+                cmd.Parameters.Add(new SqlParameter("id", RentAgreementID));
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        cntrow++;
+                        if (!reader.IsDBNull(0)) building_id = reader.GetInt32(0);
+                        if (!reader.IsDBNull(1)) building_1nf_unique_id = reader.GetInt32(1);
+                    }
+                    reader.Close();
+                }
+            }
+
+            if (cntrow != 1) throw new Exception("Внутрішня помилка 1001.1");
+            if (building_id == null) throw new Exception("Внутрішня помилка 1001.2");
+            if (building_1nf_unique_id == null) throw new Exception("Внутрішня помилка 1001.3");
+
+            //если поменяли адрес
+            if (new_building_id != building_id)
+            {
+                var sql = "UPDATE reports1nf_arenda SET building_id = @building_id WHERE id = @id AND report_id = @report_id";
+                using (SqlCommand cmd = new SqlCommand(sql, connection, transaction))
+                {
+                    cmd.Parameters.Add(new SqlParameter("building_id", new_building_id));
+                    cmd.Parameters.Add(new SqlParameter("report_id", ReportID));
+                    cmd.Parameters.Add(new SqlParameter("id", RentAgreementID));
+                    cmd.ExecuteNonQuery();
+                }
+
+                sql = @"DELETE FROM reports1nf_buildings WHERE unique_id = @unique_id";
+                using (SqlCommand cmd = new SqlCommand(sql, connection, transaction))
+                {
+                    cmd.Parameters.Add(new SqlParameter("unique_id", building_1nf_unique_id));
+                    cmd.ExecuteNonQuery();
+                }
+
+                sql = @"SET IDENTITY_INSERT dbo.reports1nf_buildings ON;  
+                        INSERT INTO reports1nf_buildings(id,master_building_id,addr_street_name,addr_street_id,addr_street_name2,addr_street_id2,street_full_name,addr_distr_old_id,addr_distr_new_id,addr_nomer1,addr_nomer2,addr_nomer3,addr_nomer,addr_misc,addr_korpus_flag,addr_korpus,addr_zip_code,addr_address,tech_condition_id,date_begin,date_end,num_floors,construct_year,condition_year,is_condition_valid,bti_code,history_id,object_type_id,object_kind_id,is_land,modify_date,modified_by,kadastr_code,cost_balans,sqr_total,sqr_pidval,sqr_mk,sqr_dk,sqr_rk,sqr_other,sqr_rented,sqr_zagal,sqr_for_rent,sqr_habit,sqr_non_habit,additional_info,is_deleted,del_date,oatuu_id,updpr,arch_id,arch_flag,facade_id,nomer_int,characteristics,expl_enter_year,is_basement_exists,is_loft_exists,sqr_loft,unique_id,report_id)
+                        SELECT id,master_building_id,addr_street_name,addr_street_id,addr_street_name2,addr_street_id2,street_full_name,addr_distr_old_id,addr_distr_new_id,addr_nomer1,addr_nomer2,addr_nomer3,addr_nomer,addr_misc,addr_korpus_flag,addr_korpus,addr_zip_code,addr_address,tech_condition_id,date_begin,date_end,num_floors,construct_year,condition_year,is_condition_valid,bti_code,history_id,object_type_id,object_kind_id,is_land,modify_date,modified_by,kadastr_code,cost_balans,sqr_total,sqr_pidval,sqr_mk,sqr_dk,sqr_rk,sqr_other,sqr_rented,sqr_zagal,sqr_for_rent,sqr_habit,sqr_non_habit,additional_info,is_deleted,del_date,oatuu_id,updpr,arch_id,arch_flag,facade_id,nomer_int,characteristics,expl_enter_year,is_basement_exists,is_loft_exists,sqr_loft,
+                                    @unique_id, @report_id FROM buildings b WHERE b.id = @new_building_id;
+                        SET IDENTITY_INSERT dbo.reports1nf_buildings OFF";
+                using (SqlCommand cmd = new SqlCommand(sql, connection, transaction))
+                {
+                    cmd.Parameters.Add(new SqlParameter("new_building_id", new_building_id));
+                    cmd.Parameters.Add(new SqlParameter("unique_id", building_1nf_unique_id));
+                    cmd.Parameters.Add(new SqlParameter("report_id", ReportID));
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
+
+            transaction.Commit();
+            //transaction.Rollback();
+        }
+    }
+
     protected void SaveChanges(SqlConnection connection)
     {
 //////
@@ -1703,14 +1802,17 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         Reports1NFUtils.GetAllControls(CollectionForm, controls);
         Reports1NFUtils.GetAllControls(InsuranceForm, controls);
 
-//////
-	var rent_start_date = Reports1NFUtils.GetDateValue(controls, "EditStartDate");
-	if (rent_start_date == null)
-	{
-		var lognet = log4net.LogManager.GetLogger("ReportWebSite");
-		lognet.Debug("--------------- SaveChanges Error 77777 ----------------");
-		throw new ArgumentException("Помилка збереження даних. Спробуйте пізніше.");
-	}
+
+
+
+            //////
+        var rent_start_date = Reports1NFUtils.GetDateValue(controls, "EditStartDate");
+	    if (rent_start_date == null)
+	    {
+		    var lognet = log4net.LogManager.GetLogger("ReportWebSite");
+		    lognet.Debug("--------------- SaveChanges Error 77777 ----------------");
+		    throw new ArgumentException("Помилка збереження даних. Спробуйте пізніше.");
+	    }
 
         // Update the rent decisions
         SaveDecisions(connection);
@@ -2035,6 +2137,8 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 
             if (connection != null)
             {
+                AddressChange(connection);
+
                 SaveChanges(connection);
 
                 connection.Close();
@@ -2051,6 +2155,8 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
             SqlConnection connection = Utils.ConnectToDatabase();
             if (connection != null)
             {
+                AddressChange(connection);
+
                 // Save the form before sending it to DKV
                 SaveChanges(connection);
 
@@ -2932,8 +3038,77 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         //    e.InputParameters["balans_id"] = int.Parse(Request.QueryString["bid"]);
     }
 
+    private int AddressStreetID
+    {
+        get
+        {
+            object streetId = Session["OrgArendaList_AddressStreetID"];
+            return (streetId is int) ? (int)streetId : 0;
+        }
+
+        set
+        {
+            Session["OrgArendaList_AddressStreetID"] = value;
+        }
+    }
+
+    protected void SqlDataSourceDictBuildings_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+    {
+        System.Diagnostics.Debug.WriteLine("SqlDataSourceDictBuildings_Selecting=" + AddressStreetID);
+		e.Command.Parameters["@street_id"].Value = AddressStreetID;
+    }
+
+    protected void ComboBuilding_Callback(object source, CallbackEventArgsBase e)
+    {
+        try
+        {
+            int streetId = int.Parse(e.Parameter);
+
+            AddressStreetID = streetId;
+
+            (source as ASPxComboBox).DataBind();
+        }
+        finally
+        {
+        }
+    }
+
+    void CopyCard(int copyId, int reportId)
+	{
+        var connection = Utils.ConnectToDatabase();
+        var transaction = connection.BeginTransaction();
+
+        SqlParameter outputParam = new SqlParameter("new_arenda_id", SqlDbType.Int)
+        {
+            Direction = ParameterDirection.Output
+        };
+
+        using (SqlCommand cmd = new SqlCommand("dbo.fnArendaClone", connection, transaction))
+        {
+            var user = Membership.GetUser();
+            var username = (user == null ? String.Empty : (String)user.UserName);
+
+            cmd.Parameters.Add(new SqlParameter("arenda_id", copyId));
+            cmd.Parameters.Add(new SqlParameter("report_id", reportId));
+            cmd.Parameters.Add(new SqlParameter("modified_by", username));
+            cmd.Parameters.Add(new SqlParameter("modify_date", DateTime.Now));
+            cmd.Parameters.Add(outputParam);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.ExecuteNonQuery();
+        }
+
+        var new_arenda_id = (int)outputParam.Value;
+
+        //transaction.Rollback();
+        transaction.Commit();
+
+        var url = "~/Reports1NF/OrgRentAgreement.aspx?rid=" + reportId + "&aid=" + new_arenda_id;
+        Response.Redirect(Page.ResolveClientUrl(url));
+    }
 
 }
+
 
 
 

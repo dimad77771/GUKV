@@ -59,6 +59,11 @@
         var IsReadOnlyForm = <%=IsReadOnlyForm.ToString().ToLower() %>;
         console.log("IsReadOnlyForm", IsReadOnlyForm);
 
+        var argReportID = <%=ReportID.ToString()%>;
+        var argRentAgreementID = <%=RentAgreementID.ToString()%>;
+        console.log("argReportID", argReportID);
+		console.log("argRentAgreementID", argRentAgreementID);
+
         var avance_plat_0 = 0;
         function ready(event) {
             HidePnl();
@@ -1021,6 +1026,25 @@
     </SelectParameters>
 </mini:ProfiledSqlDataSource>
 
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictStreets" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="select id, name from dict_streets where (not name is null) and (RTRIM(LTRIM(name)) <> '')">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictBuildings" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="select id, LTRIM(RTRIM(addr_nomer)) AS 'nomer' from buildings where 
+        (is_deleted IS NULL OR is_deleted = 0) AND
+        (master_building_id IS NULL) AND
+        addr_street_id = @street_id AND
+        (RTRIM(LTRIM(addr_nomer)) <> '') ORDER BY RTRIM(LTRIM(addr_nomer))"
+    OnSelecting="SqlDataSourceDictBuildings_Selecting" >
+    <SelectParameters>
+        <asp:Parameter DbType="Int32" DefaultValue="0" Name="street_id" />
+    </SelectParameters>
+</mini:ProfiledSqlDataSource>
+
+
 <mini:ProfiledSqlDataSource ID="SqlDataSourceSubleases" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT id, arenda_id, payment_type_id, agreement_date, agreement_num, rent_start_date, rent_finish_date, rent_square, rent_payment_month, using_possible_id
@@ -1290,6 +1314,8 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
       ,[orend_plat_last_month]
       ,[orend_plat_borg]
       ,[stanom_na]
+      ,[zalbalansvartist_date]
+      ,[osoba_oznakoml]
     FROM [reports1nf_arenda_dogcontinue] WHERE [arenda_id] = @arenda_id and [report_id] = @report_id and ([id] = @free_square_id or @free_square_id = -1)" 
     DeleteCommand="EXEC [delete_reports1nf_arenda_dogcontinue] @id" 
     InsertCommand="INSERT INTO [reports1nf_arenda_dogcontinue]
@@ -1335,6 +1361,8 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
       ,[orend_plat_last_month]
       ,[orend_plat_borg]
       ,[stanom_na]
+      ,[zalbalansvartist_date]
+      ,[osoba_oznakoml]
     ) 
     VALUES
     (@arenda_id
@@ -1379,6 +1407,8 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
       ,@orend_plat_last_month
       ,@orend_plat_borg
       ,@stanom_na
+      ,@zalbalansvartist_date
+      ,@osoba_oznakoml
     );
 SELECT SCOPE_IDENTITY()" 
     UpdateCommand="UPDATE [reports1nf_arenda_dogcontinue]
@@ -1425,6 +1455,8 @@ SET
         ,[orend_plat_last_month]  	  = @orend_plat_last_month
         ,[orend_plat_borg]  	  = @orend_plat_borg
         ,[stanom_na]  	  = @stanom_na
+        ,[zalbalansvartist_date]  	  = @zalbalansvartist_date
+        ,[osoba_oznakoml]  	  = @osoba_oznakoml
 WHERE id = @id" 
         oninserting="SqlDataSourceFreeSquare_Inserting" 
         onupdating="SqlDataSourceFreeSquare_Updating" ProviderName="System.Data.SqlClient">
@@ -1479,6 +1511,8 @@ WHERE id = @id"
         <asp:Parameter Name="orend_plat_last_month" />
         <asp:Parameter Name="orend_plat_borg" />
         <asp:Parameter Name="stanom_na" />
+        <asp:Parameter Name="zalbalansvartist_date" />
+        <asp:Parameter Name="osoba_oznakoml" />
     </InsertParameters>
     <UpdateParameters>
         <asp:Parameter Name="arenda_id" />
@@ -1523,6 +1557,8 @@ WHERE id = @id"
         <asp:Parameter Name="orend_plat_last_month" />
         <asp:Parameter Name="orend_plat_borg" />
         <asp:Parameter Name="stanom_na" />
+        <asp:Parameter Name="zalbalansvartist_date" />
+        <asp:Parameter Name="osoba_oznakoml" />
         <asp:Parameter Name="id" />
     </UpdateParameters>
 </mini:ProfiledSqlDataSource>
@@ -1592,14 +1628,30 @@ WHERE id = @id"
                                                 <td width="120px"><dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Назва вулиці"></dx:ASPxLabel></td>
                                                 <td width="8px">&nbsp;</td>
                                                 <td>
-                                                    <dx:ASPxTextBox ID="EditRentAddrStreet" runat="server" ReadOnly="true" Text='<%# Eval("addr_street_name") %>' Width="270px"  Title="Адреса будинку - Назва вулиці" />
+                                                    <%--<dx:ASPxTextBox ID="EditRentAddrStreet" runat="server" ReadOnly="true" Text='<%# Eval("addr_street_name") %>' Width="270px"  Title="Адреса будинку - Назва вулиці" />--%>
+                                                    <dx:ASPxComboBox ID="ComboStreet" runat="server" ClientInstanceName="ComboStreet"
+                                                        Value='<%# Bind("addr_street_id") %>'
+                                                        DataSourceID="SqlDataSourceDictStreets" DropDownStyle="DropDownList" ValueType="System.Int32"
+                                                        TextField="name" ValueField="id" Width="270px" IncrementalFilteringMode="StartsWith"
+                                                        FilterMinLength="3" EnableCallbackMode="True" CallbackPageSize="50" EnableViewState="False"
+                                                        EnableSynchronization="False">
+                                                        <ClientSideEvents SelectedIndexChanged="function(s, e) { ComboBuilding.PerformCallback(ComboStreet.GetValue().toString()); }" />
+                                                    </dx:ASPxComboBox>
                                                 </td>
                                             </tr>
                                             <tr><td colspan="7" height="4px"/></tr>
                                             <tr>
                                                 <td width="120px"><dx:ASPxLabel ID="ASPxLabel3" runat="server" Text="Номер будинку"></dx:ASPxLabel></td>
                                                 <td width="8px">&nbsp;</td>
-                                                <td><dx:ASPxTextBox ID="EditRentBuildingNum" runat="server" ReadOnly="true" Text='<%# Eval("addr_nomer") %>' Width="270px" Title="Адреса - номер будинку" /></td>
+                                                <td>
+                                                    <%--<dx:ASPxTextBox ID="EditRentBuildingNum" runat="server" ReadOnly="true" Text='<%# Eval("addr_nomer") %>' Width="270px" Title="Адреса - номер будинку" />--%>
+                                                    <dx:ASPxComboBox runat="server" ID="ComboBuilding" ClientInstanceName="ComboBuilding"
+                                                        Value='<%# Bind("addr_nomer") %>'
+                                                        DataSourceID="SqlDataSourceDictBuildings" DropDownStyle="DropDownList" TextField="nomer"
+                                                        ValueField="id" Width="270px" IncrementalFilteringMode="StartsWith"
+                                                        EnableSynchronization="False" OnCallback="ComboBuilding_Callback">
+                                                    </dx:ASPxComboBox>
+                                                </td>
                                                 <td width="8px">&nbsp;</td>
                                                 <td width="120px"><dx:ASPxLabel ID="ASPxLabel4" runat="server" Text="Поштовий індекс"></dx:ASPxLabel></td>
                                                 <td width="8px">&nbsp;</td>
@@ -2392,7 +2444,7 @@ WHERE id = @id"
                             <dx:panelcontent ID="Panelcontent3" runat="server">
 
                                 <dx:ASPxGridView ID="GridViewNotes" ClientInstanceName="GridViewNotes" runat="server" AutoGenerateColumns="False" 
-                                    KeyFieldName="id" Width="810px"
+                                    KeyFieldName="id" Width="1410px"
                                     OnRowDeleting="GridViewNotes_RowDeleting"
                                     OnRowUpdating="GridViewNotes_RowUpdating" >
 
@@ -2440,6 +2492,9 @@ WHERE id = @id"
                                         <dx:GridViewDataTextColumn FieldName="cost_agreement" VisibleIndex="12" Caption="Місячна орендна плата, грн." Width="85px"></dx:GridViewDataTextColumn>
                                         <dx:GridViewDataComboBoxColumn FieldName="note_status_id" VisibleIndex="13" Caption="Стан використання приміщення" Width="140px">
                                             <PropertiesComboBox DataSourceID="SqlDataSourceArendaNoteStatus" ValueField="id" TextField="name" ValueType="System.Int32" />
+                                        </dx:GridViewDataComboBoxColumn>
+                                        <dx:GridViewDataComboBoxColumn FieldName="payment_type_id" VisibleIndex="14" Caption="Цільове використання майна" Width="140px">
+                                            <PropertiesComboBox DataSourceID="SqlDataSourceDictRentalRate" ValueField="id" TextField="short_name" ValueType="System.Int32" />
                                         </dx:GridViewDataComboBoxColumn>
                                     </Columns>
 
@@ -3679,6 +3734,19 @@ WHERE id = @id"
                 <EditFormCaptionStyle Wrap="True"/>
             </dx:GridViewDataTextColumn>
 
+            <dx:GridViewDataDateColumn FieldName="zalbalansvartist_date" Caption="Дата формування залишкової вартості" VisibleIndex="340" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataDateColumn>
+
+            <dx:GridViewDataTextColumn FieldName="osoba_oznakoml" Caption="Особа відповідальна за ознайомлення з об’єктом" VisibleIndex="350" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+
 
 
         </Columns>
@@ -3965,6 +4033,15 @@ WHERE id = @id"
                     CloseUp="function (s,e) { CPMainPanel.PerformCallback('clear:'); }" />
             </dx:ASPxPopupControl>
         </td>
+        <td style="width:200px"> &nbsp; </td>
+        <td>
+            <dx:ASPxButton ID="ButtonCopyCard" runat="server" Text="Скопіювати картку договору" AutoPostBack="false" CausesValidation="false">
+                <ClientSideEvents Click="function (s,e) { 
+                    if (confirm('Скопіювати картку договору в новий договір ?')) 
+                        window.location = 'OrgRentAgreement.aspx?rid=' + argReportID + '&copyid=' + argRentAgreementID;
+                }" />
+            </dx:ASPxButton>
+        </td>
     </tr>
 </table>
 
@@ -3987,3 +4064,4 @@ WHERE id = @id"
 </table>
 
 </asp:Content>
+

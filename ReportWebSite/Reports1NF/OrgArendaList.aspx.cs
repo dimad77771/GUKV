@@ -8,10 +8,7 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DevExpress.Web;
-using DevExpress.Web;
-using DevExpress.Web;
 using DevExpress.Web.Data;
-using DevExpress.Web;
 using FirebirdSql.Data.FirebirdClient;
 
 public partial class Reports1NF_OrgArendaList : System.Web.UI.Page

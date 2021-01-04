@@ -261,7 +261,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 		bool reportBelongsToUser = ReportBelongsToThisUser.HasValue ? ReportBelongsToThisUser.Value : false;
 
 		bool userIsReportReportCenterSubmit = Roles.IsUserInRole(Utils.Report1NFReportCenterSubmitRole);
-		if (userIsReportReportCenterSubmit)
+        if (userIsReportReportCenterSubmit)
 		{
 			userIsReportSubmitter = true;
 			reportBelongsToUser = true;

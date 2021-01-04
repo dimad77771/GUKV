@@ -26,78 +26,86 @@ public partial class Reports1NF_Report1NFFreeMap : System.Web.UI.Page
 		var connection = Utils.ConnectToDatabase();
 		using (var cmd = new SqlCommand(SqlQuery, connection))
 		{
+			var npp = 0;
 			//cmd.Parameters.Add(new SqlParameter("rep_id", ReportID));
 			using (var reader = cmd.ExecuteReader())
 			{
 				while (reader.Read())
 				{
-					var fs_id = reader.GetInt32(0);
-					var komis_protocol = GetStringValue(reader, 1);
-					var geodata_map_points = GetStringValue(reader, 2);
-					var street_name = GetStringValue(reader, 3); ;
-					var addr_nomer = GetStringValue(reader, 4); ;
-					var sqr_for_rent = GetDecimalValue(reader, 5);
-					var possible_using = GetStringValue(reader, 6); ;
-					var total_free_sqr = GetDecimalValue(reader, 7);
-					var free_sql_usefull = GetDecimalValue(reader, 8);
-					var floor = GetStringValue(reader, 9); ;
-					var water = GetBoolValue(reader, 10);
-					var heating = GetBoolValue(reader, 11);
-					var power = GetBoolValue(reader, 12);
-					var gas = GetBoolValue(reader, 13);
-					var org_name = GetStringValue(reader, 14);
-					var condition = GetStringValue(reader, 15);
-					var vidpov_osoba = GetStringValue(reader, 16);
-					var current_stage_name = GetStringValue(reader, 17);
-					var current_stage_docdate = GetDateTimeValue(reader, 18);
-					var current_stage_docnum = GetStringValue(reader, 19);
-					var current_stage_has_documents = GetStringValue(reader, 20);
-					var period_used_name = GetStringValue(reader, 21);
-					var need_zgoda = GetStringValue(reader, 22);
-					var invest_solution = GetStringValue(reader, 23);
-					var orandodatel = GetStringValue(reader, 24);
-					var include_in_perelik = GetStringValue(reader, 25);
-					var prozoro_number = GetStringValue(reader, 26);
-
-					var regpoints = (new Regex(@"(\d+\.\d+)\s+(\d+\.\d+)")).Match(geodata_map_points);
-					if (regpoints.Groups.Count != 3) throw new Exception();
-					var point1 = Decimal.Parse(regpoints.Groups[1].Value, CultureInfo.InvariantCulture);
-					var point2 = Decimal.Parse(regpoints.Groups[2].Value, CultureInfo.InvariantCulture);
-
-					var pointInfo = new PointInfo
+					for (int m = 0; m < 1; m++)
 					{
-						fs_id = fs_id,
-						komis_protocol = komis_protocol,
-						geodata_map_points = geodata_map_points,
-						point1 = point1,
-						point2 = point2,
-						sqr_for_rent = sqr_for_rent,
-						street_name = street_name,
-						addr_nomer = addr_nomer,
-						full_address = ((street_name ?? "").Trim() + " " + (addr_nomer ?? "").Trim()).Trim(),
-						possible_using = possible_using,
-						total_free_sqr = total_free_sqr,
-						free_sql_usefull = free_sql_usefull,
-						floor = floor,
-						water = water,
-						heating = heating,
-						power = power,
-						gas = gas,
-						org_name = org_name,
-						condition = condition,
-						vidpov_osoba = vidpov_osoba,
-						current_stage_name = current_stage_name,
-						current_stage_docdate = current_stage_docdate,
-						current_stage_docnum = current_stage_docnum,
-						current_stage_has_documents = current_stage_has_documents,
-						period_used_name = period_used_name,
-						need_zgoda = need_zgoda,
-						invest_solution = invest_solution,
-						orandodatel = orandodatel,
-						include_in_perelik = include_in_perelik,
-						prozoro_number = prozoro_number,
-					};
-					AllPoints.Add(pointInfo);
+						var fs_id = reader.GetInt32(0);
+						var komis_protocol = GetStringValue(reader, 1);
+						var geodata_map_points = GetStringValue(reader, 2);
+						var street_name = GetStringValue(reader, 3); ;
+						var addr_nomer = GetStringValue(reader, 4); ;
+						var sqr_for_rent = GetDecimalValue(reader, 5);
+						var possible_using = GetStringValue(reader, 6); ;
+						var total_free_sqr = GetDecimalValue(reader, 7);
+						var free_sql_usefull = GetDecimalValue(reader, 8);
+						var floor = GetStringValue(reader, 9); ;
+						var water = GetBoolValue(reader, 10);
+						var heating = GetBoolValue(reader, 11);
+						var power = GetBoolValue(reader, 12);
+						var gas = GetBoolValue(reader, 13);
+						var org_name = GetStringValue(reader, 14);
+						var condition = GetStringValue(reader, 15);
+						var vidpov_osoba = GetStringValue(reader, 16);
+						var current_stage_name = GetStringValue(reader, 17);
+						var current_stage_docdate = GetDateTimeValue(reader, 18);
+						var current_stage_docnum = GetStringValue(reader, 19);
+						var current_stage_has_documents = GetStringValue(reader, 20);
+						var period_used_name = GetStringValue(reader, 21);
+						var need_zgoda = GetStringValue(reader, 22);
+						var invest_solution = GetStringValue(reader, 23);
+						var orandodatel = GetStringValue(reader, 24);
+						var include_in_perelik = GetStringValue(reader, 25);
+						var prozoro_number = GetStringValue(reader, 26);
+
+						var regpoints = (new Regex(@"(\d+\.\d+)\s+(\d+\.\d+)")).Match(geodata_map_points);
+						if (regpoints.Groups.Count != 3) throw new Exception();
+						var point1 = Decimal.Parse(regpoints.Groups[1].Value, CultureInfo.InvariantCulture);
+						var point2 = Decimal.Parse(regpoints.Groups[2].Value, CultureInfo.InvariantCulture);
+
+						point1 += m * 0.001M;
+						point2 += m * 0.001M;
+						npp++;
+						System.Diagnostics.Debug.WriteLine("npp=" + npp + "; point1=" + point1 + "; point2=" + point2);
+						var pointInfo = new PointInfo
+						{
+							fs_id = fs_id,
+							komis_protocol = komis_protocol,
+							geodata_map_points = geodata_map_points,
+							point1 = point1,
+							point2 = point2,
+							sqr_for_rent = sqr_for_rent,
+							street_name = street_name,
+							addr_nomer = addr_nomer,
+							full_address = ((street_name ?? "").Trim() + " " + (addr_nomer ?? "").Trim()).Trim(),
+							possible_using = possible_using,
+							total_free_sqr = total_free_sqr,
+							free_sql_usefull = free_sql_usefull,
+							floor = floor,
+							water = water,
+							heating = heating,
+							power = power,
+							gas = gas,
+							org_name = org_name,
+							condition = condition,
+							vidpov_osoba = vidpov_osoba,
+							current_stage_name = current_stage_name,
+							current_stage_docdate = current_stage_docdate,
+							current_stage_docnum = current_stage_docnum,
+							current_stage_has_documents = current_stage_has_documents,
+							period_used_name = period_used_name,
+							need_zgoda = need_zgoda,
+							invest_solution = invest_solution,
+							orandodatel = orandodatel,
+							include_in_perelik = include_in_perelik,
+							prozoro_number = prozoro_number,
+						};
+						AllPoints.Add(pointInfo);
+					}
 				}
 
 				reader.Close();

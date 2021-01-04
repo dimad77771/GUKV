@@ -334,7 +334,7 @@
                 <ContentCollection>
                     <dx:PopupControlContentControl ID="PopupControlContentControl1" runat="server">
 
-                        <dx:ASPxCallbackPanel ID="CPAddRdaAcc" ClientInstanceName="CPAddRdaAcc" runat="server" OnCallback="CPAddMistoAcc_Callback">
+                        <dx:ASPxCallbackPanel ID="CPAddRdaAcc" ClientInstanceName="CPAddRdaAcc" runat="server" OnCallback="CPAddRdaAcc_Callback">
                             <PanelCollection>
                                 <dx:panelcontent ID="Panelcontent1" runat="server">
 

@@ -340,6 +340,8 @@
 ,fs.has_perevazh_pravo
 ,fs.polipshanya_vartist
 ,fs.polipshanya_finish_date
+,fs.zalbalansvartist_date
+,fs.osoba_oznakoml
 
 FROM view_reports1nf rep
 join reports1nf_arenda bal on bal.report_id = rep.report_id
@@ -1067,7 +1069,19 @@ WHERE id = @id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>--%>
 
+        <dx:GridViewDataDateColumn FieldName="zalbalansvartist_date" Caption="Дата формування залишкової вартості" VisibleIndex="1340" Visible="false" Width="100px"  >
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("zalbalansvartist_date") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataDateColumn>
 
+        <dx:GridViewDataTextColumn FieldName="osoba_oznakoml" Caption="Особа відповідальна за ознайомлення з об’єктом" VisibleIndex="1350" Visible="false" Width="220px"  >
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("osoba_oznakoml") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
 
 
 
@@ -1093,7 +1107,7 @@ WHERE id = @id"
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFDogContinue" Version="A3_22" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFDogContinue" Version="A3_23" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
