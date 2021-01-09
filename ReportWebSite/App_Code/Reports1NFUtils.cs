@@ -1206,6 +1206,7 @@ public static class Reports1NFUtils
                                 string sourceFile = String.Format(@"{0}\{1}\{2}", photo1NFPath, free_square_id, file_name + file_ext);
                                 string destFolder = Path.Combine(photoBalansPath, newId.ToString());
                                 string destFile = Path.Combine(destFolder, file_name + file_ext);
+                                LLLLhotorowUtils.Delete(destFile, Utils.ConnectToDatabase());
                                 LLLLhotorowUtils.Copy(sourceFile, destFile, Utils.ConnectToDatabase());
                             }
                             readerPhoto.Close();
