@@ -1920,7 +1920,14 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         AddQueryParameter(ref fieldList, "use_calc_debt", "usecalcdebt", Reports1NFUtils.GetCheckBoxValue(controls, "edit_use_calc_debt") ? 1 : 0, parameters);
         AddQueryParameter(ref fieldList, "avance_plat", "avanceplat", Reports1NFUtils.GetEditNumeric(controls, "edit_avance_plat"), parameters);
 
-        for(int k = 0; k <= 13; k++)
+        AddQueryParameter(ref fieldList, "zabezdepoz_narah", "zabezdepoznarah", Reports1NFUtils.GetEditNumeric(controls, "edit_zabezdepoz_narah"), parameters);
+        AddQueryParameter(ref fieldList, "zabezdepoz_saldo", "zabezdepozsaldo", Reports1NFUtils.GetEditNumeric(controls, "edit_zabezdepoz_saldo"), parameters);
+        AddQueryParameter(ref fieldList, "zabezdepoz_nadhod", "zabezdepoznadhod", Reports1NFUtils.GetEditNumeric(controls, "edit_zabezdepoz_nadhod"), parameters);
+        AddQueryParameter(ref fieldList, "use_zabezdepoz", "usezabezdepoz", Reports1NFUtils.GetCheckBoxValue(controls, "edit_use_zabezdepoz") ? 1 : 0, parameters);
+        AddQueryParameter(ref fieldList, "zabezdepoz_debt", "zabezdepozdebt", Reports1NFUtils.GetEditNumeric(controls, "edit_zabezdepoz_debt"), parameters);
+        AddQueryParameter(ref fieldList, "total_pereplata", "totalpereplata", Reports1NFUtils.GetEditNumeric(controls, "edit_total_pereplata"), parameters);
+
+        for (   int k = 0; k <= 13; k++)
         {
             AddQueryParameter(ref fieldList, "debtkvart_" + k, "vdebtkvart_" + k, Reports1NFUtils.GetEditNumeric(controls, "edit_debtkvart_" + k), parameters);
         }

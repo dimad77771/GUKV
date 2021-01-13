@@ -75,7 +75,7 @@
             }
         }
 
-		function InitCalcCollectionDebtZvit() {
+        function InitCalcCollectionDebtZvit() {
 			console.log("InitCalcCollectionDebtZvit");
 			if (edit_debtkvart_0.validFormattedNumberRegExp != null) {
 				avance_plat_0 = round(nn(edit_avance_plat.GetValue()));
@@ -130,13 +130,14 @@
 		}
 
         function CalcDebt() {
-			var vv1 = round(nn(edit_debtkvart_0.GetValue()));
+			var vv1 = round( nn(edit_debtkvart_0.GetValue()) );
             EditCollectionDebt3Month.SetValue(vv1);
 
-			var vvz = round( nn(edit_debtkvart_0.GetValue()) + nn(edit_debtkvart_1.GetValue()) + nn(edit_debtkvart_2.GetValue()) );
+			//var vvz = round( nn(edit_debtkvart_0.GetValue()) + nn(edit_debtkvart_1.GetValue()) + nn(edit_debtkvart_2.GetValue()) );
+			var vvz = round( nn(edit_debtkvart_0.GetValue()) + nn(edit_debtkvart_1.GetValue()) + nn(edit_debtkvart_2.GetValue()) + nn(edit_debtkvart_3.GetValue()) );
 			EditCollectionDebtZvit.SetValue(vvz);
 
-			var vv2 = round(nn(edit_debtkvart_1.GetValue()) + nn(edit_debtkvart_2.GetValue()) + nn(edit_debtkvart_3.GetValue()));
+			var vv2 = round( nn(edit_debtkvart_1.GetValue()) + nn(edit_debtkvart_2.GetValue()) + nn(edit_debtkvart_3.GetValue()) );
 			EditCollectionDebt12Month.SetValue(vv2);
 
             var vv3 =
@@ -152,19 +153,10 @@
 			var sval = round(vv1 + vv2 + vv3 + vv4);
             EditCollectionDebtTotal.SetValue(sval);
 
-			var vv99 = round(nn(edit_avance_plat.GetValue()) - nn(avance_saldo.GetValue()) - nn(avance_paymentnar.GetValue()));
-            if (vv99 <= 0) vv99 = null;
-			Edit_avance_debt.SetValue(vv99);
-
-            /*
-            var DebtZvit = EditCollectionDebtZvit.GetValue();
-            var D3Month = EditCollectionDebt3Month.GetValue();
-            var D12Month = EditCollectionDebt12Month.GetValue();
-            var D3Years = EditCollectionDebt3Years.GetValue();
-            var DO3Years = EditCollectionDebtOver3Years.GetValue();
-            var sval = D3Month + D12Month + D3Years + DO3Years;
-            EditCollectionDebtTotal.SetValue(sval);
-            */
+            //по указанию СиненкоАИ от 11.01.2021 поле "Edit_avance_debt" теперь пишем вручную
+			//var vv99 = round(nn(edit_avance_plat.GetValue()) - nn(avance_saldo.GetValue()) - nn(avance_paymentnar.GetValue()));
+            //if (vv99 <= 0) vv99 = null;
+			//Edit_avance_debt.SetValue(vv99);
         }
 
         function nn(arg) {
@@ -175,14 +167,65 @@
 		function getPaymentNarah() {
             var v1 = clEditPaymentNarah_orndpymnt.GetValue();
             var v2 = edit_znyato_nadmirno_narah.GetValue();
-			var v3 = edit_znyato_from_avance.GetValue();
+			//var v3 = edit_znyato_from_avance.GetValue();
             if (v1 == null) v1 = 0;
             if (v2 == null) v2 = 0;
-			if (v3 == null) v3 = 0;
-			return v1 - v2 - v3;
-		}
+			//if (v3 == null) v3 = 0;
+            return v1 - v2;// - v3;
+        }
 
         function CalcCollectionDebtZvit() {
+            var use_calc_debt = edit_use_calc_debt.GetChecked();
+            edit_debtkvart_0.SetEnabled(!use_calc_debt);
+
+			var use_zabezdepoz = edit_use_zabezdepoz.GetChecked();
+			var w1 = nn(Zvit_orndpymnt.GetValue());             //- у тому числі, з нарахованої за звітний період (без боргів та переплат)
+			var w2 = nn(avance_paymentnar.GetValue());          //- у тому числі, з нарахованої авансової орендної плати, грн.
+			var w3 = use_zabezdepoz ? nn(edit_zabezdepoz_nadhod.GetValue()) : 0;    //- у тому числі, з отриманої плати забезпечувального депозиту, грн. (як що Дозволено включено)
+            var w4 = nn(clEditPaymentOldDebtsPayed_orndpymnt.GetValue());   //- у тому числі, погашення заборгованості минулих періодів, грн.
+			var w5 = nn(edit_return_orend_payed.GetValue());   //- у тому числі, погашення заборгованості минулих періодів, грн.
+			var wa = round(w1 + w2 + w3 + w4 + w5);
+			Received_orndpymnt.SetValue(wa);            //Надходження орендної плати за звітний період, всього, грн. (без ПДВ)
+            
+			
+            var v1 = nn(clEditPaymentNarah_orndpymnt.GetValue());	        //Нараховано орендної плати за звітний період, грн. (без ПДВ)
+			var v7 = nn(clEditPaymentOldDebtsPayed_orndpymnt.GetValue())    //- у тому числі, погашення заборгованості минулих періодів, грн.
+			var v2 = nn(edit_znyato_nadmirno_narah.GetValue());	    //- у тому числі, знято надмірно нарахованої за звітний період
+			var v3 = nn(avance_saldo.GetValue());		            //Сальдо авансової орендної плати/внеску, грн. (без ПДВ)
+			var v4 = nn(edit_zabezdepoz_saldo.GetValue());		    //Сальдо забезпечувального депозиту, грн. (без ПДВ)
+			var v5 = nn(clEditPaymentSaldo_orndpymnt.GetValue());	//Сальдо (переплата) на початок року (незмінна впродовж року величина), грн. (без ПДВ)
+			var v6 = nn(Received_orndpymnt.GetValue());		        //Надходження орендної плати за звітний період, всього, грн. (без ПДВ)
+
+            
+            var zv = round(v1 + v7 - v2 - v3 - v4 - v5 - v6);
+			console.log("zv", zv);
+            if (zv < 0) {
+                edit_total_pereplata.SetValue(-zv);
+				set_edit_debtkvart_0(null);
+            } else if (zv > 0) {
+                edit_total_pereplata.SetValue(null);
+				set_edit_debtkvart_0(zv);
+            } else {
+				edit_total_pereplata.SetValue(null);
+				set_edit_debtkvart_0(null);
+            }
+
+			CalcDebt();
+        }
+
+		function set_edit_debtkvart_0(val) {
+            var use_calc_debt = edit_use_calc_debt.GetChecked();
+            if (use_calc_debt) {
+				var v4 = nn(edit_debtkvart_1.GetValue());
+				var v5 = nn(edit_debtkvart_2.GetValue());
+				var v6 = nn(edit_debtkvart_3.GetValue());
+                val = round(nn(val) - v4 - v5 - v6);
+                if (val <= 0) val = null;
+				edit_debtkvart_0.SetValue(val);
+            }
+		}
+
+        function CalcCollectionDebtZvit___old() {
             console.log("run CalcCollectionDebtZvit()");
 
             var use_calc_debt = edit_use_calc_debt.GetChecked();
@@ -192,29 +235,32 @@
 			//edit_return_orend_payed.SetEnabled(!use_calc_debt);
 			edit_debtkvart_0.SetEnabled(!use_calc_debt);
 
-			if (use_calc_debt) {
+            if (use_calc_debt) {
+                    // ### Вычисление заборговоннасти
 				var v1 = getPaymentNarah();                         //"Нараховано орендної плати за звітний період, грн. (без ПДВ)"
                 var v2 = Zvit_orndpymnt.GetValue();                 //"Надходження орендної плати з нарахованої за звітний період"
                 var v3 = clEditPaymentSaldo_orndpymnt.GetValue();   //"Сальдо (переплата) на початок року (незмінна впродовж року величина), грн. (без ПДВ)"
                 var v4 = edit_debtkvart_1.GetValue();               //"2020, 1кв.:"
-				var v5 = edit_debtkvart_2.GetValue();               //"2020, 2кв.:"
+                var v5 = edit_debtkvart_2.GetValue();               //"2020, 2кв.:"
+				var v6 = edit_debtkvart_3.GetValue();               //"2020, 3кв.:"
                 if (v1 == null) v1 = 0;
                 if (v2 == null) v2 = 0;
                 if (v3 == null) v3 = 0;
                 if (v4 == null) v4 = 0;
-				if (v5 == null) v5 = 0;
+                if (v5 == null) v5 = 0;
+				if (v6 == null) v6 = 0;
 
-				var rez = v1 - v2 - v3 - v4 - v5;
+				var rez = v1 - v2 - v3 - v4 - v5 - v6;
                 rez = Math.round(rez * 100) / 100;
                 if (rez <= 0) rez = null;
-				edit_debtkvart_0.SetValue(rez);
+				edit_debtkvart_0.SetValue(rez); // ### Выставляем заборгованнисть
 
                 var reportingPeriodInfo = ReportingPeriodCombo.GetItem(ReportingPeriodCombo.GetSelectedIndex());
                 if (reportingPeriodInfo != null) {
                     var reportingPeriodText = reportingPeriodInfo.text;
                     var s1 = "3 місяці ";
                     if (reportingPeriodText.substring(0, s1.length) == s1) {
-                        EditCollectionDebt3Month.SetValue(rez);
+                        EditCollectionDebt3Month.SetValue(rez); // ++++
                         EditCollectionDebt12Month.SetValue(null);
                     } else {
                         EditCollectionDebt3Month.SetValue(null);
@@ -223,16 +269,16 @@
                 }
 
                 CalcDebt();
-                CalcEditReturnOrendPayed();
+                CalcEditReturnOrendPayed___old();
             } else {
                 CalcDebt();
-				CalcEditReturnOrendPayed();
+				CalcEditReturnOrendPayed___old();
             }
 
-            Calc_tr_alert_edit_avance_plat();
+			Calc_tr_alert_edit_avance_plat___old();
         }
 
-        function Calc_tr_alert_edit_avance_plat() {
+		function Calc_tr_alert_edit_avance_plat___old() {
             //var avance_plat_now = round(nn(edit_avance_plat.GetValue()));
             //if (avance_plat_now > 0 && avance_plat_0 == 0) {
 			//	$("#tr_alert_edit_avance_plat").show();
@@ -241,7 +287,7 @@
 			//}
         }
 
-		function CalcEditReturnOrendPayed() {
+		function CalcEditReturnOrendPayed___old() {
 			var v1 = Received_orndpymnt.GetValue();                     //"Надходження орендної плати за звітний період, всього, грн. (без ПДВ)"
             var v2 = Zvit_orndpymnt.GetValue();                         //"- у тому числі, з нарахованої за звітний період (без боргів та переплат)"	
             var v3 = avance_paymentnar.GetValue();                      //"- у тому числі, з нарахованої авансової орендної плати, грн."
@@ -283,30 +329,6 @@
             }
 			return true;
 		}
-
-
-        
-		function CalcEditReturnOrendPayed__old() {
-			var v1 = getPaymentNarah();                                  //"Нараховано орендної плати за звітний період, грн. (без ПДВ)"
-			var v2 = clEditPaymentSaldo_orndpymnt.GetValue();            //"Сальдо (переплата) на початок року (незмінна впродовж року величина), грн. (без ПДВ)"	
-			//var v3 = Zvit_orndpymnt.GetValue();                          //"- у тому числі, з нарахованої за звітний період (без боргів та переплат)"	
-			var v3 = Received_orndpymnt.GetValue();                          //"Надходження орендної плати за звітний період, всього, грн. (без ПДВ)"	
-            var v4 = EditCollectionDebtTotal.GetValue();                 //"Загальна заборгованість по орендній платі"
-            var v5 = clEditPaymentOldDebtsPayed_orndpymnt.GetValue();    //"Погашення заборгованості минулих періодів, грн."
-			var v6 = avance_paymentnar.GetValue();    //"- у тому числі, з нарахованої авансової орендної плати, грн."
-			if (v1 == null) v1 = 0;
-			if (v2 == null) v2 = 0;
-            if (v3 == null) v3 = 0;
-            if (v4 == null) v4 = 0;
-            if (v5 == null) v5 = 0;
-			if (v6 == null) v6 = 0;
-
-			var rez = v2 + v3 - v1 - v4 - v5 - v6;
-			rez = Math.round(rez * 100) / 100;
-			if (rez <= 0) rez = null;
-			edit_return_orend_payed.SetValue(rez);
-		}
-
 
 
         function PerformAllValidations(s, e) {
@@ -2704,6 +2726,15 @@ WHERE id = @id"
                                                         <td colspan="2" align="right" style="padding-right:20px"><dx:ASPxLabel ID="ASPxLabel67" ForeColor="Brown" runat="server" Text="Внесення авансової орендної плати одноразова операція, Ви повинні вирахувати її з поля «Надходження орендної плати за звітний період, всього, грн.»"></dx:ASPxLabel></td>
                                                     </tr>
                                                     <tr>
+                                                        <td><dx:ASPxLabel ID="ASPxLabel73" runat="server" Text="Забезпечувальний депозит(нарахований), грн"></dx:ASPxLabel></td>
+                                                        <td><dx:ASPxSpinEdit ID="edit_zabezdepoz_narah" ClientInstanceName="edit_zabezdepoz_narah" runat="server" NumberType="Float" Value='<%# Eval("zabezdepoz_narah") %>' Width="150px"
+                                                            Title="Забезпечувальний депозит(нарахований), грн">
+                                                            <ClientSideEvents 
+                                                                LostFocus="CalcCollectionDebtZvit" />                                                            
+                                                            </dx:ASPxSpinEdit>
+                                                            </td>
+                                                    </tr>
+                                                    <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel27" runat="server" Text="Нараховано орендної плати за звітний період, грн. (без ПДВ)" Width="650px"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="EditPaymentNarah_orndpymnt" ClientInstanceName="clEditPaymentNarah_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("payment_narah") %>' Width="150px"
                                                             Title="нарахована орендна плата за 3,6,9,12 місяців відповідно (індексація може враховуватися)">
@@ -2723,10 +2754,20 @@ WHERE id = @id"
                                                             </td>
                                                     </tr>
 
-                                                    <tr>
-                                                        <td><dx:ASPxLabel ID="ASPxLabel71" runat="server" Text="- у тому числі, використано авансової плати"></dx:ASPxLabel></td>
+                                                    <%--<tr>
+                                                        <td><dx:ASPxLabel BackColor="Red" ID="ASPxLabel711" runat="server" Text="- у тому числі, використано авансової плати"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="edit_znyato_from_avance" ClientInstanceName="edit_znyato_from_avance" runat="server" NumberType="Float" Value='<%# Eval("znyato_from_avance") %>' Width="150px"
                                                             Title="якщо використовується, то до закінчення договору залишилося меньше 2-х місяців">
+                                                            <ClientSideEvents 
+                                                                LostFocus="CalcCollectionDebtZvit" />                                                            
+                                                            </dx:ASPxSpinEdit>
+                                                            </td>
+                                                    </tr>--%>
+
+                                                    <tr>
+                                                        <td><dx:ASPxLabel ID="ASPxLabel74" runat="server" Text="Сальдо забезпечувального депозиту, грн. (без ПДВ)"></dx:ASPxLabel></td>
+                                                        <td><dx:ASPxSpinEdit ID="edit_zabezdepoz_saldo" ClientInstanceName="edit_zabezdepoz_saldo" runat="server" NumberType="Float" Value='<%# Eval("zabezdepoz_saldo") %>' Width="150px"
+                                                            Title="Сальдо забезпечувального депозиту, грн. (без ПДВ)">
                                                             <ClientSideEvents 
                                                                 LostFocus="CalcCollectionDebtZvit" />                                                            
                                                             </dx:ASPxSpinEdit>
@@ -2742,19 +2783,21 @@ WHERE id = @id"
                                                             </dx:ASPxSpinEdit>
                                                             </td>
                                                     </tr>
+
                                                     <tr>
-                                                        <td><dx:ASPxLabel ID="ASPxLabel69" runat="server" Text="Сальдо авансової орендної плати на початок року (незмінна впродовж року величина), грн. (без ПДВ)"></dx:ASPxLabel></td>
+                                                        <td><dx:ASPxLabel ID="ASPxLabel69" runat="server" Text="Сальдо авансової орендної плати/внеску, грн. (без ПДВ)"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="Edit_avance_saldo" ClientInstanceName="avance_saldo" runat="server" NumberType="Float" Value='<%# Eval("avance_saldo") %>' Width="150px"
-                                                            Title="отримана, до початку звітного періоду, сума авансової орендної плати орендної плати за даним договором">
+                                                            Title="Сальдо авансової орендної плати/внеску, грн. (без ПДВ)">
                                                             <ClientSideEvents 
                                                                 LostFocus="CalcCollectionDebtZvit" />                                                            
                                                             </dx:ASPxSpinEdit>
                                                             </td>
                                                     </tr>
+
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel29" runat="server" Text="Надходження орендної плати за звітний період, всього, грн. (без ПДВ)"></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="EditPaymentReceived_orndpymnt" ClientInstanceName="Received_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("payment_received") %>' Width="150px"
-                                                            Title="загальна отримана протягом поточного звітного періоду сума коштів від орендаря (у т.ч. переплата протягом звітного періоду, погашення боргів, авансова плата)" MinValue ="0" MaxValue="999999999">
+                                                        <td><dx:ASPxSpinEdit ID="EditPaymentReceived_orndpymnt" ClientInstanceName="Received_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("payment_received") %>' Width="150px" ReadOnly="true" Font-Italic="true"
+                                                            Title="загальна отримана протягом поточного звітного періоду сума коштів від орендаря (у т.ч. переплата протягом звітного періоду, погашення боргів, авансова плата)" MinValue ="0" MaxValue="999999999" >
                                                             <ClientSideEvents 
                                                                 LostFocus="CalcCollectionDebtZvit" />   
                                                             </dx:ASPxSpinEdit>
@@ -2783,20 +2826,31 @@ WHERE id = @id"
                                                             </dx:ASPxSpinEdit></td>
                                                     </tr>
                                                     <tr>
+                                                        <td><dx:ASPxLabel ID="ASPxLabel75" runat="server" Text="- у тому числі, з отриманої плати забезпечувального депозиту, грн. (як що Дозволено включено)"></dx:ASPxLabel></td>
+                                                        <td><dx:ASPxSpinEdit ID="edit_zabezdepoz_nadhod"  ClientInstanceName="edit_zabezdepoz_nadhod" runat="server" NumberType="Float" Value='<%# Eval("zabezdepoz_nadhod") %>' Width="150px"
+                                                            Title="- у тому числі, з отриманої плати забезпечувального депозиту, грн. (як що Дозволено включено)" MinValue ="0" MaxValue="999999999">
+                                                                <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
+                                                            </dx:ASPxSpinEdit></td>
+                                                    </tr>
+                                                    <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel55" runat="server" Text="- у тому числі, погашення заборгованості минулих періодів, грн."></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="EditPaymentOldDebtsPayed_orndpymnt" ClientInstanceName="clEditPaymentOldDebtsPayed_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("old_debts_payed") %>' Width="150px"
                                                             Title="частина коштів з надходження орендної плати за звітний період, всього, призначена на погашення заборгованості попередніх періодів">
                                                                 <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                             </dx:ASPxSpinEdit></td>
                                                     </tr>
+
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel62" runat="server" Text="- у тому числі, переплата орендної плати за звітний період, грн."></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="edit_return_orend_payed" ClientInstanceName="edit_return_orend_payed" runat="server" NumberType="Float" Value='<%# Eval("return_orend_payed") %>' Width="150px" ReadOnly="true"
-                                                            Title="залишок орендної плати після оплати нарахованої орендної плати, нарахованої авансової орендної плати,  погашення заборгованості попередніх періодів. (не включає &quot;Сальдо (переплата) на початок року&quot;)"/></td>
+                                                        <td><dx:ASPxSpinEdit ID="edit_return_orend_payed" ClientInstanceName="edit_return_orend_payed" runat="server" NumberType="Float" Value='<%# Eval("return_orend_payed") %>' Width="150px" 
+                                                            Title="залишок орендної плати після оплати нарахованої орендної плати, нарахованої авансової орендної плати,  погашення заборгованості попередніх періодів. (не включає &quot;Сальдо (переплата) на початок року&quot;)">
+                                                            <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
+                                                            </dx:ASPxSpinEdit></td>
                                                     </tr>
+
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel72" runat="server" Text="Переплата орендної плати всього, грн. (без ПДВ)"></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="edit_total_pereplata" ClientInstanceName="edit_total_pereplata" runat="server" NumberType="Float"  Width="150px" ReadOnly="true"
+                                                        <td><dx:ASPxSpinEdit ID="edit_total_pereplata" ClientInstanceName="edit_total_pereplata" runat="server" NumberType="Float" Value='<%# Eval("total_pereplata") %>'  Width="150px" ReadOnly="true" Font-Italic="true"
                                                             Title="Переплата орендної плати всього, грн. (без ПДВ)"/></td>
                                                     </tr>
                                                     <tr>
@@ -2810,6 +2864,13 @@ WHERE id = @id"
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel64" runat="server" Text="Розраховувати заборгованість з орендної плати"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxCheckBox ID="edit_use_calc_debt" ClientInstanceName="edit_use_calc_debt" runat="server" Text="" Checked='<%# 1.Equals(Eval("use_calc_debt")) %>' Title="Розраховувати заборгованість з орендної плати">
+                                                                <ClientSideEvents CheckedChanged="CalcCollectionDebtZvit" />
+                                                            </dx:ASPxCheckBox>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><dx:ASPxLabel ID="ASPxLabel76" runat="server" Text="Дозволити використати забезпечувальний депозит"></dx:ASPxLabel></td>
+                                                        <td><dx:ASPxCheckBox ID="edit_use_zabezdepoz" ClientInstanceName="edit_use_zabezdepoz" runat="server" Text="" Checked='<%# 1.Equals(Eval("use_zabezdepoz")) %>' Title="Дозволити використати забезпечувальний депозит">
                                                                 <ClientSideEvents CheckedChanged="CalcCollectionDebtZvit" />
                                                             </dx:ASPxCheckBox>
                                                         </td>
@@ -2964,8 +3025,15 @@ WHERE id = @id"
                                                         </tr>       
                                                         <tr>
                                                             <td colspan="4"><dx:ASPxLabel ID="ASPxLabel70" runat="server" Text="Заборгованість з нарахованої авансової орендної плати, грн. (без ПДВ)"></dx:ASPxLabel></td>
-                                                            <td><dx:ASPxSpinEdit ID="Edit_avance_debt" ClientInstanceName="Edit_avance_debt" runat="server" NumberType="Float" Value='<%# Eval("avance_debt") %>' Width="100px" ReadOnly="true"
+                                                            <td><dx:ASPxSpinEdit ID="Edit_avance_debt" ClientInstanceName="Edit_avance_debt" runat="server" NumberType="Float" Value='<%# Eval("avance_debt") %>' Width="100px" 
                                                                 Title="поточна різниця між нарахованою та отриманою авансовою орендною платою (включаючи Сальдо авансової орендної плати на початок року)">
+                                                                <ClientSideEvents LostFocus="CalcDebt" />
+                                                            </dx:ASPxSpinEdit></td>
+                                                        </tr>                                                            
+                                                        <tr>
+                                                            <td colspan="4"><dx:ASPxLabel ID="ASPxLabel77" runat="server" Text="Заборгованість з нарахованої суми забезпечувального депозиту, грн. (без ПДВ)"></dx:ASPxLabel></td>
+                                                            <td><dx:ASPxSpinEdit ID="Edit_zabezdepoz_debt" ClientInstanceName="Edit_zabezdepoz_debt" runat="server" NumberType="Float" Value='<%# Eval("zabezdepoz_debt") %>' Width="100px" ReadOnly="true"
+                                                                Title="Заборгованість з нарахованої суми забезпечувального депозиту, грн. (без ПДВ)">
                                                                 <ClientSideEvents LostFocus="CalcDebt" />
                                                             </dx:ASPxSpinEdit></td>
                                                         </tr>                                                            
@@ -3039,7 +3107,7 @@ WHERE id = @id"
                                                 <dx:PanelContent ID="PanelContent18" runat="server">
                                                     <table border="0" cellspacing="0" cellpadding="2" width="200px">
                                                         <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_0" runat="server" Text="2020, 3кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_0" runat="server" Text="2020, 4кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_0" ClientInstanceName="edit_debtkvart_0" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_0") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
@@ -3047,7 +3115,7 @@ WHERE id = @id"
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_1" runat="server" Text="2020, 2кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_1" runat="server" Text="2020, 3кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_1" ClientInstanceName="edit_debtkvart_1" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_1") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
@@ -3055,70 +3123,70 @@ WHERE id = @id"
                                                             </td>
                                                         </tr>                                                  
                                                         <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_2" runat="server" Text="2020, 1кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_2" runat="server" Text="2020, 2кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_2" ClientInstanceName="edit_debtkvart_2" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_2") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_3" runat="server" Text="2019, 4кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_3" runat="server" Text="2020, 1кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_3" ClientInstanceName="edit_debtkvart_3" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_3") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_4" runat="server" Text="2019, 3кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_4" runat="server" Text="2019, 4кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_4" ClientInstanceName="edit_debtkvart_4" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_4") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_5" runat="server" Text="2019, 2кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_5" runat="server" Text="2019, 3кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_5" ClientInstanceName="edit_debtkvart_5" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_5") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_6" runat="server" Text="2019, 1кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_6" runat="server" Text="2019, 2кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_6" ClientInstanceName="edit_debtkvart_6" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_6") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_7" runat="server" Text="2018, 4кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_7" runat="server" Text="2019, 1кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_7" ClientInstanceName="edit_debtkvart_7" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_7") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_8" runat="server" Text="2018, 3кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_8" runat="server" Text="2018, 4кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_8" ClientInstanceName="edit_debtkvart_8" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_8") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_9" runat="server" Text="2018, 2кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_9" runat="server" Text="2018, 3кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_9" ClientInstanceName="edit_debtkvart_9" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_9") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_10" runat="server" Text="2018, 1кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_10" runat="server" Text="2018, 2кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_10" ClientInstanceName="edit_debtkvart_10" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_10") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_11" runat="server" Text="2017, 4кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_11" runat="server" Text="2018, 1кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_11" ClientInstanceName="edit_debtkvart_11" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_11") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
