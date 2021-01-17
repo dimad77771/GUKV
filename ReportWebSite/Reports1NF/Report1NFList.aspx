@@ -216,7 +216,10 @@
            ,org.buhgalter_phone AS 'USER_TEL' -- 27
            ,org.buhgalter_email AS 'USER_EMAIL' -- 28
            ,org.budget_narah_50_uah AS 'PAY_50_NARAH' -- 29
-           ,org.budget_zvit_50_uah AS 'PAY_50_PAYED'-- 30
+
+           --,org.budget_zvit_50_uah AS 'PAY_50_PAYED'-- 30
+           ,dbo.[get_kazna_total](org.zkpo_code,null,null) AS 'PAY_50_PAYED'-- 30 
+
            ,org.budget_prev_50_uah AS 'PAY_50_DEBT'-- 31
            ,org.budget_debt_30_50_uah AS 'PAY_50_DEBT_OLD' -- 32
            ,org.payment_budget_special AS 'PAY_SPECIAL'-- 33
@@ -275,9 +278,9 @@
                 ,SUM(pay.old_debts_payed) as 'PAY_LAST_PER' -- 22
                 ,SUM( isnull(pay.payment_narah,0) - isnull(pay.znyato_nadmirno_narah,0) ) as 'PAY_NARAH_ZVIT_NORMAL' -- 23
                 ,SUM(pay.znyato_nadmirno_narah) as 'PAY_ZNYATO_NADMIRNO_NARAH' -- 24
-                ,SUM(pay.avance_saldo) as 'PAY_AVANCE_SALDO' -- 25
+                ,SUM(pay.zabezdepoz_saldo) as 'PAY_AVANCE_SALDO' -- 25
                 ,SUM(pay.avance_plat) as 'PAY_AVANCE_PLAT' -- 26
-                ,SUM( isnull(pay.return_orend_payed,0) + isnull(pay.last_year_saldo,0) ) as 'PAY_PEREPLATA_ALL' -- 27
+                ,SUM(pay.total_pereplata) as 'PAY_PEREPLATA_ALL' -- 27
                 ,SUM(pay.avance_debt) as 'PAY_AVANCE_DEBT' -- 28
                 ,SUM(pay.avance_paymentnar) as 'PAY_AVANCE_PAYMENTNAR' -- 28
                 ,SUM(pay.return_orend_payed) as 'PAY_RETURN_OREND_PAYED' -- 28
@@ -813,7 +816,7 @@ WHERE id = @report_id"
 
     <%-- !!!!!! --%>
 
-        <dx:GridViewDataTextColumn Caption="Авансова орендна плата (нарахована), грн." FieldName="PAY_AVANCE_PLAT" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+        <dx:GridViewDataTextColumn Caption="Авансова орендна плата / Забезпечувальний депозит (нараховано), грн." FieldName="PAY_AVANCE_PLAT" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_AVANCE_PLAT") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
@@ -831,11 +834,11 @@ WHERE id = @report_id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn Caption="- у тому числі, використано авансової плати" FieldName="PAY_ZNYATO_FROM_AVANCE" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+        <%--<dx:GridViewDataTextColumn Caption="- у тому числі, використано авансової плати" FieldName="PAY_ZNYATO_FROM_AVANCE" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_ZNYATO_FROM_AVANCE") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
-        </dx:GridViewDataTextColumn>
+        </dx:GridViewDataTextColumn>--%>
 
         <dx:GridViewDataTextColumn Caption="Сальдо на початок року (не змінна впродовж року величина) грн.(без ПДВ)" FieldName="PAY_PEREPLATA" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
 			<EditItemTemplate>
@@ -843,7 +846,7 @@ WHERE id = @report_id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn Caption="Сальдо авансової орендної плати на початок року (незмінна впродовж року величина), грн. (без ПДВ)" FieldName="PAY_AVANCE_SALDO" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+        <dx:GridViewDataTextColumn Caption="Сальдо авансової орендної плати / забезпечувального депозиту на кінець звітного періоду, грн. (без ПДВ)" FieldName="PAY_AVANCE_SALDO" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_AVANCE_SALDO") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
@@ -861,7 +864,7 @@ WHERE id = @report_id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn Caption="- у тому числі, з нарахованої авансової орендної плати, грн." FieldName="PAY_AVANCE_PAYMENTNAR" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+        <dx:GridViewDataTextColumn Caption="- у тому числі, з нарахованої авансової орендної плати / забезпечувального депозиту, грн." FieldName="PAY_AVANCE_PAYMENTNAR" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_AVANCE_PAYMENTNAR") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
@@ -958,7 +961,7 @@ WHERE id = @report_id"
         </dx:GridViewDataTextColumn>
 
 
-        <dx:GridViewDataTextColumn Caption="Перераховано до бюджету % за звітний період всього з 1 січня поточного року, грн. (без ПДВ)" FieldName="PAY_50_PAYED" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="66"  >
+        <dx:GridViewDataTextColumn Caption="Перераховано коштів до бюджету, у звітному періоді ″КАЗНАЧЕЙСТВО″, грн. (без ПДВ)" FieldName="PAY_50_PAYED" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="66"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_50_PAYED") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
@@ -1063,7 +1066,7 @@ WHERE id = @report_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A2_28" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A2_29" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

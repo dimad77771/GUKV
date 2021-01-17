@@ -39,8 +39,7 @@
         ,CASE WHEN info.submit_date IS NULL OR info.modify_date IS NULL OR info.modify_date > info.submit_date THEN 0 ELSE 1 END AS 'report_org_info_status'
         ,dbo.[get_kazna_total](
 	        (select Q.zkpo_code from reports1nf_org_info Q where report_id = info.report_id), 
-	        (SELECT top 1 cast(cast(Q.period_year as varchar(10)) + '0101' as date) FROM dict_rent_period Q order by id desc), 
-	        (SELECT top 1 Q.period_end FROM dict_rent_period Q order by id desc) 
+	        null, null 
          ) AS 'kazna_total' 
         FROM reports1nf_org_info info WHERE info.report_id = @rep_id">
     <SelectParameters>
@@ -614,11 +613,11 @@ WHERE id = @id"
                                 Title="Перераховано коштів до бюджету, у звітному періоді ″КАЗНАЧЕЙСТВО″"/></td>
                         </tr>
 
-                        <tr>
+                        <%--<tr>
                             <td><dx:ASPxLabel ID="LabelZvitNarah50UAH" runat="server" Text="Перераховано до бюджету 50% за звітний період всього з 1 січня поточного року, без переплат, грн. (без ПДВ)"></dx:ASPxLabel></td>
                             <td><dx:ASPxSpinEdit ID="EditBudgetZvit50_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("budget_zvit_50_uah") %>' Width="150px"
                                 Title="Перераховано до бюджету 50% за звітний період всього з 1 січня поточного року"/></td>
-                        </tr>
+                        </tr>--%>
                         <tr>
                             <td><dx:ASPxLabel ID="LabelBudgetPrev50UAH" runat="server" Text="- в тому числі перераховано до бюджету 50% боргів у звітному періоді з 1 січня поточного року за попередні роки, грн. (без ПДВ)"></dx:ASPxLabel></td>
                             <td><dx:ASPxSpinEdit ID="EditBudgetPrev50_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("budget_prev_50_uah") %>' Width="150px"

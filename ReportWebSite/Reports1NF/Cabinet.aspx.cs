@@ -488,7 +488,10 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
            ,org.buhgalter_phone
            ,org.buhgalter_email
            ,org.budget_narah_50_uah
-           ,org.budget_zvit_50_uah
+
+           --,org.budget_zvit_50_uah
+           ,dbo.[get_kazna_total]([org].[zkpo_code],null,null)
+
            ,org.budget_prev_50_uah
            ,org.budget_debt_30_50_uah
            ,org.payment_budget_special
@@ -838,7 +841,7 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
                 ,SUM(pay.return_all_orend_payed)
                 ,isnull(SUM(pay.payment_narah),0) - isnull(SUM(pay.znyato_nadmirno_narah),0) as payment_narah_normal
                 ,SUM(znyato_nadmirno_narah)
-                ,SUM(avance_plat)
+                ,SUM(zabezdepoz_saldo)
                 ,SUM(avance_saldo)
                 ,SUM(avance_debt)
             FROM reports1nf_arenda_payments pay

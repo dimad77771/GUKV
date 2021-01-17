@@ -1926,6 +1926,8 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         AddQueryParameter(ref fieldList, "use_zabezdepoz", "usezabezdepoz", Reports1NFUtils.GetCheckBoxValue(controls, "edit_use_zabezdepoz") ? 1 : 0, parameters);
         AddQueryParameter(ref fieldList, "zabezdepoz_debt", "zabezdepozdebt", Reports1NFUtils.GetEditNumeric(controls, "edit_zabezdepoz_debt"), parameters);
         AddQueryParameter(ref fieldList, "total_pereplata", "totalpereplata", Reports1NFUtils.GetEditNumeric(controls, "edit_total_pereplata"), parameters);
+        AddQueryParameter(ref fieldList, "zabezd_usesum", "zabezdusesum", Reports1NFUtils.GetEditNumeric(controls, "edit_zabezd_usesum"), parameters);
+        AddQueryParameter(ref fieldList, "avance_usesum", "avanceusesum", Reports1NFUtils.GetEditNumeric(controls, "edit_avance_usesum"), parameters);
 
         for (   int k = 0; k <= 13; k++)
         {
