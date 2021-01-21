@@ -837,12 +837,12 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
                 ,SUM(budget_debt_50_uah)
                 ,SUM(budget_debt_30_50_uah)
                 ,SUM(pay.old_debts_payed)
-                ,SUM( isnull(pay.return_orend_payed,0) + isnull(pay.last_year_saldo,0) )
+                ,SUM(pay.total_pereplata)
                 ,SUM(pay.return_all_orend_payed)
                 ,isnull(SUM(pay.payment_narah),0) - isnull(SUM(pay.znyato_nadmirno_narah),0) as payment_narah_normal
                 ,SUM(znyato_nadmirno_narah)
                 ,SUM(zabezdepoz_saldo)
-                ,SUM(avance_saldo)
+                ,SUM(zabezdepoz_saldo)
                 ,SUM(avance_debt)
             FROM reports1nf_arenda_payments pay
             WHERE pay.report_id = @rep AND pay.rent_period_id = @per
@@ -908,6 +908,8 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
             properties.Add("{PAY_DEBT_V_MEZH}", "");
             properties.Add("{ZNYATO_NADM}", "");
             properties.Add("{AVANCE_PLAT}", "");
+            properties.Add("{AVANCE_SALDO}", "");
+            properties.Add("{AVANCE_DEBT}", "");
             // properties.Add("{PAY_SPECIAL}", "");
             // properties.Add("{PAY_50_NARAH}", "");
             // properties.Add("{PAY_50_PAYED}", "");
