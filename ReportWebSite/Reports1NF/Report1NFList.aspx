@@ -218,7 +218,8 @@
            ,org.budget_narah_50_uah AS 'PAY_50_NARAH' -- 29
 
            --,org.budget_zvit_50_uah AS 'PAY_50_PAYED'-- 30
-           ,dbo.[get_kazna_total](org.zkpo_code,null,null) AS 'PAY_50_PAYED'-- 30 
+           --,dbo.[get_kazna_total](org.zkpo_code,null,null) AS 'PAY_50_PAYED'-- 30 
+           ,kazna.pay_sum AS 'PAY_50_PAYED'
 
            ,org.budget_prev_50_uah AS 'PAY_50_DEBT'-- 31
            ,org.budget_debt_30_50_uah AS 'PAY_50_DEBT_OLD' -- 32
@@ -234,6 +235,7 @@
            ,org.unknown_payments AS 'PAY_UNKNOWN_PAYMENTS'
         FROM
             reports1nf_org_info org
+            LEFT OUTER JOIN kazna_total_info(null, null) kazna on kazna.ident_bal_zkpo = org.zkpo_code
             LEFT OUTER JOIN dict_otdel_gukv ON org.otdel_gukv_id = dict_otdel_gukv.id
             LEFT OUTER JOIN dict_org_industry ON org.industry_id = dict_org_industry.id
             LEFT OUTER JOIN dict_org_occupation ON org.occupation_id = dict_org_occupation.id

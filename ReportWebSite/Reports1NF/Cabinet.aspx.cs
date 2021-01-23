@@ -841,7 +841,7 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
                 ,SUM(pay.return_all_orend_payed)
                 ,isnull(SUM(pay.payment_narah),0) - isnull(SUM(pay.znyato_nadmirno_narah),0) as payment_narah_normal
                 ,SUM(znyato_nadmirno_narah)
-                ,SUM(zabezdepoz_saldo)
+                ,SUM(avance_plat)
                 ,SUM(zabezdepoz_saldo)
                 ,SUM(avance_debt)
             FROM reports1nf_arenda_payments pay

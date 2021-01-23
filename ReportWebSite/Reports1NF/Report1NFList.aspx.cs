@@ -84,8 +84,7 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
     protected void GridViewReports1NF_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
     {
         Utils.ProcessDataGridSaveLayoutCallback(e.Parameters, PrimaryGridView, Utils.GridIDReports1NF_ReportList, "");
-
-        PrimaryGridView.DataBind();
+        //PrimaryGridView.DataBind();
     }
 
     protected void GridViewReports1NF_CustomFilterExpressionDisplayText(object sender,

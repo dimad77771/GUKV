@@ -222,6 +222,7 @@
 ,ap.old_debts_payed
 ,ap.znyato_nadmirno_narah
 ,ap.avance_plat
+,ap.zabezdepoz_saldo
 ,ap.use_calc_debt
 ,ap.return_all_orend_payed
 ,ap.return_orend_payed
@@ -910,7 +911,8 @@ FROM reports1nf_arenda ar
         <dx:GridViewDataDateColumn FieldName="insurance_start" VisibleIndex="48" Caption="Дата початку періоду страхування" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
         <dx:GridViewDataDateColumn FieldName="insurance_end" VisibleIndex="49" Caption="Дата закінчення періоду страхування" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
 
-        <dx:GridViewDataTextColumn FieldName="avance_plat" VisibleIndex="51" Caption="Авансова орендна плата, грн." ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="avance_plat" VisibleIndex="51" Caption="Авансова орендна плата / Забезпечувальний депозит (нараховано), грн." ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="zabezdepoz_saldo" VisibleIndex="51" Caption="Сальдо авансової орендної плати / забезпечувального депозиту на кінець звітного періоду, грн. (без ПДВ)" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataCheckColumn FieldName="use_calc_debt" VisibleIndex="52" Caption="Розраховувати заборгованість з орендної плати" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataCheckColumn>
         <dx:GridViewDataTextColumn FieldName="return_all_orend_payed" VisibleIndex="53" Caption="Повернення переплати орендної плати всього за звітний період, грн. (без ПДВ)" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="return_orend_payed" VisibleIndex="54" Caption="Переплата орендної плати всього, грн. (без ПДВ)" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
