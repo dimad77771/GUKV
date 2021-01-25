@@ -1922,6 +1922,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 
         AddQueryParameter(ref fieldList, "zabezdepoz_narah", "zabezdepoznarah", Reports1NFUtils.GetEditNumeric(controls, "edit_zabezdepoz_narah"), parameters);
         AddQueryParameter(ref fieldList, "zabezdepoz_saldo", "zabezdepozsaldo", Reports1NFUtils.GetEditNumeric(controls, "edit_zabezdepoz_saldo"), parameters);
+        AddQueryParameter(ref fieldList, "zabezdepoz_prishlo", "zabezdepozprishlo", Reports1NFUtils.GetEditNumeric(controls, "edit_zabezdepoz_prishlo"), parameters);
         AddQueryParameter(ref fieldList, "zabezdepoz_nadhod", "zabezdepoznadhod", Reports1NFUtils.GetEditNumeric(controls, "edit_zabezdepoz_nadhod"), parameters);
         AddQueryParameter(ref fieldList, "use_zabezdepoz", "usezabezdepoz", Reports1NFUtils.GetCheckBoxValue(controls, "edit_use_zabezdepoz") ? 1 : 0, parameters);
         AddQueryParameter(ref fieldList, "zabezdepoz_debt", "zabezdepozdebt", Reports1NFUtils.GetEditNumeric(controls, "edit_zabezdepoz_debt"), parameters);

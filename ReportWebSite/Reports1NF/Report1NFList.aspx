@@ -261,6 +261,7 @@
                 --,SUM(pay.sqr_payed_hourly) as 'sqr_payed_hourly' -- 3
                 SUM(pay.payment_narah) as 'PAY_NARAH_ZVIT' -- 4
                 ,SUM(pay.last_year_saldo) as 'PAY_PEREPLATA' -- 5
+                ,SUM(pay.zabezdepoz_prishlo) as 'PAY_ZABEZDEPOZ_PRISHLO' -- 5
                 ,SUM(pay.payment_received) as 'PAY_RECV_ZVIT' -- 6
                 ,SUM(pay.payment_nar_zvit) as 'PAY_RECV_NARAH' -- 7
                 --,SUM(pay.payment_budget_special) as 'payment_budget_special' -- 8
@@ -400,15 +401,20 @@ WHERE id = @report_id"
 						<dx:ASPxFileManager ID="ASPxFileManagerPhotoFiles" runat="server" 
 							ClientInstanceName="ASPxFileManagerPhotoFiles" DataSourceID="ObjectDataSourcePhotoFiles">
 							<Settings RootFolder="~\" ThumbnailFolder="~\Thumb\" />
-							<SettingsFileList>
+<%--							<SettingsFileList>
 								<ThumbnailsViewSettings ThumbnailSize="180px" />
-							</SettingsFileList>
+							</SettingsFileList>--%>
+                            <SettingsFileList View="Details">
+                                <DetailsViewSettings AllowColumnResize="true" AllowColumnDragDrop="true" AllowColumnSort="true" ShowHeaderFilterButton="false"/>
+                            </SettingsFileList>
 							<SettingsEditing AllowDelete="false" AllowCreate="false" AllowDownload="true" AllowMove="false" AllowRename="false" />
 							<SettingsFolders Visible="False" />
 							<SettingsToolbar ShowDownloadButton="True" ShowPath="False" />
 							<SettingsUpload UseAdvancedUploadMode="True" Enabled="false">
 								<AdvancedModeSettings EnableMultiSelect="True" />
 							</SettingsUpload>
+
+
 
 							<SettingsDataSource FileBinaryContentFieldName="Image" 
 								IsFolderFieldName="IsFolder" KeyFieldName="ID" 
@@ -848,11 +854,18 @@ WHERE id = @report_id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
+        <dx:GridViewDataTextColumn Caption="Надходження авансової орендної плати / забезпечувального депозиту у звітному періоді, грн. (без ПДВ)" FieldName="PAY_ZABEZDEPOZ_PRISHLO" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_ZABEZDEPOZ_PRISHLO") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
         <dx:GridViewDataTextColumn Caption="Сальдо авансової орендної плати / забезпечувального депозиту на кінець звітного періоду, грн. (без ПДВ)" FieldName="PAY_AVANCE_SALDO" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_AVANCE_SALDO") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
+
 
         <dx:GridViewDataTextColumn Caption="Надходження орендної плати за звітний період, всього, грн. (без ПДВ)" FieldName="PAY_RECV_ZVIT" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
 			<EditItemTemplate>
@@ -1035,6 +1048,7 @@ WHERE id = @report_id"
         <dx:ASPxSummaryItem FieldName="PAY_ZNYATO_FROM_AVANCE" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_RETURN_ALL_OREND_PAYED" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_PEREPLATA" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="PAY_ZABEZDEPOZ_PRISHLO" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_RECV_ZVIT" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_RECV_NARAH" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_RECV_OTHER" SummaryType="Sum" DisplayFormat="{0}" />

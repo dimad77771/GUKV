@@ -67,7 +67,10 @@ public partial class UserControls_FieldChooser : System.Web.UI.UserControl
     {
         if (root is ASPxGridView)
         {
-            return root as ASPxGridView;
+            if (!(root is DevExpress.Web.Internal.FileManagerGridView))
+            {
+                return root as ASPxGridView;
+            }
         }
 
         foreach (Control c in root.Controls)

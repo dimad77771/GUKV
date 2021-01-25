@@ -844,6 +844,7 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
                 ,SUM(avance_plat)
                 ,SUM(zabezdepoz_saldo)
                 ,SUM(avance_debt)
+                ,SUM(zabezdepoz_prishlo)
             FROM reports1nf_arenda_payments pay
             WHERE pay.report_id = @rep AND pay.rent_period_id = @per
                 AND NOT EXISTS(SELECT id FROM arenda a WHERE a.id = pay.arenda_id AND ISNULL(a.is_deleted, 1) = 1) and pay.arenda_id > 0
@@ -878,6 +879,7 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
                         properties.Add("{AVANCE_PLAT}", reader.IsDBNull(27) ? "" : reader.GetDecimal(27).ToString("F2"));
                         properties.Add("{AVANCE_SALDO}", reader.IsDBNull(28) ? "" : reader.GetDecimal(28).ToString("F2"));
                         properties.Add("{AVANCE_DEBT}", reader.IsDBNull(29) ? "" : reader.GetDecimal(29).ToString("F2"));
+                        properties.Add("{PAY_ZA_NADHOD}", reader.IsDBNull(30) ? "" : reader.GetDecimal(30).ToString("F2"));
                         // properties.Add("{PAY_SPECIAL}", reader.IsDBNull(8) ? "" : reader.GetDecimal(8).ToString("F2"));
                         // properties.Add("{PAY_50_NARAH}", reader.IsDBNull(17) ? "" : reader.GetDecimal(17).ToString("F2"));
                         // properties.Add("{PAY_50_PAYED}", reader.IsDBNull(18) ? "" : reader.GetDecimal(18).ToString("F2"));
@@ -910,6 +912,7 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
             properties.Add("{AVANCE_PLAT}", "");
             properties.Add("{AVANCE_SALDO}", "");
             properties.Add("{AVANCE_DEBT}", "");
+            properties.Add("{PAY_ZA_NADHOD}", "");
             // properties.Add("{PAY_SPECIAL}", "");
             // properties.Add("{PAY_50_NARAH}", "");
             // properties.Add("{PAY_50_PAYED}", "");

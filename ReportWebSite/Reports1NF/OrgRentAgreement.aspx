@@ -2788,6 +2788,16 @@ WHERE id = @id"
                                                             </td>
                                                     </tr>
 
+                                                    <tr>
+                                                        <td><dx:ASPxLabel ID="ASPxLabel69" runat="server" Text="Надходження авансової орендної плати / забезпечувального депозиту у звітному періоді, грн. (без ПДВ)"></dx:ASPxLabel></td>
+                                                        <td><dx:ASPxSpinEdit ID="edit_zabezdepoz_prishlo" ClientInstanceName="edit_zabezdepoz_prishlo" runat="server" NumberType="Float" Value='<%# Eval("zabezdepoz_prishlo") %>' Width="150px"
+                                                            Title="">
+                                                            <ClientSideEvents 
+                                                                LostFocus="CalcCollectionDebtZvit" />                                                            
+                                                            </dx:ASPxSpinEdit>
+                                                            </td>
+                                                    </tr>
+
                                                     <%--<tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel74" runat="server" Text="Використано забезпечувального депозиту за звітний період, грн. (без ПДВ)"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="edit_zabezd_usesum" ClientInstanceName="edit_zabezd_usesum" runat="server" NumberType="Float" Value='<%# Eval("zabezd_usesum") %>' Width="150px"

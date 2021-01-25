@@ -207,6 +207,7 @@
 ,ap.debt_12_month	
 ,ap.debt_3_years	
 ,ap.debt_over_3_years	
+,ap.avance_debt
 ,ap.debt_v_mezhah_vitrat	
 ,ap.debt_spysano	
 ,ap.num_zahodiv_total	
@@ -223,6 +224,7 @@
 ,ap.znyato_nadmirno_narah
 ,ap.avance_plat
 ,ap.zabezdepoz_saldo
+,ap.zabezdepoz_prishlo
 ,ap.use_calc_debt
 ,ap.return_all_orend_payed
 ,ap.return_orend_payed
@@ -890,6 +892,7 @@ FROM reports1nf_arenda ar
         <dx:GridViewDataTextColumn FieldName="debt_3_years" VisibleIndex="27" Caption="Заборгованість з орендної плати поточна до 3-х років" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_v_mezhah_vitrat" VisibleIndex="28" Caption="Заборгованість з орендної плати (із загальної заборгованості), розмір якої встановлено в межах витрат на утримання" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_over_3_years" VisibleIndex="29" Caption="Заборгованість з орендної плати безнадійна більше 3-х років" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="avance_debt" VisibleIndex="29" Caption="Заборгованість з нарахованої авансової орендної плати / забезпечувального депозиту, грн. (без ПДВ)" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="num_zahodiv_total" VisibleIndex="30" Caption="Кількість заходів (попереджень, приписів і т.п.)"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="num_zahodiv_zvit" VisibleIndex="31" Caption="Кількість заходів (попереджень, приписів і т.п.), за звітний період" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="num_pozov_total" VisibleIndex="32" Caption="кількість позовів до суду, всього"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
@@ -913,6 +916,7 @@ FROM reports1nf_arenda ar
 
         <dx:GridViewDataTextColumn FieldName="avance_plat" VisibleIndex="51" Caption="Авансова орендна плата / Забезпечувальний депозит (нараховано), грн." ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="zabezdepoz_saldo" VisibleIndex="51" Caption="Сальдо авансової орендної плати / забезпечувального депозиту на кінець звітного періоду, грн. (без ПДВ)" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="zabezdepoz_prishlo" VisibleIndex="52" Caption="Надходження авансової орендної плати / забезпечувального депозиту у звітному періоді, грн. (без ПДВ)" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataCheckColumn FieldName="use_calc_debt" VisibleIndex="52" Caption="Розраховувати заборгованість з орендної плати" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataCheckColumn>
         <dx:GridViewDataTextColumn FieldName="return_all_orend_payed" VisibleIndex="53" Caption="Повернення переплати орендної плати всього за звітний період, грн. (без ПДВ)" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="return_orend_payed" VisibleIndex="54" Caption="Переплата орендної плати всього, грн. (без ПДВ)" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
@@ -958,6 +962,8 @@ FROM reports1nf_arenda ar
         <dx:ASPxSummaryItem FieldName="debt_3_years" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="debt_v_mezhah_vitrat" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="debt_over_3_years" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="avance_debt" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="zabezdepoz_prishlo" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="num_zahodiv_total" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="num_zahodiv_zvit" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="num_pozov_total" SummaryType="Sum" DisplayFormat="{0}" />
