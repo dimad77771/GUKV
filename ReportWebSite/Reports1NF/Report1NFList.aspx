@@ -996,6 +996,14 @@ WHERE id = @report_id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_50_DEBT_OLD") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn Caption="Списано заборгованості з орендної плати у звітному періоді, грн. (без ПДВ)" FieldName="debt_spysano" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="69" Visible="false"  >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("debt_spysano") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+
         <dx:GridViewDataTextColumn Caption="ЦМК Площа в оренді, кв.м." FieldName="PAY_CMK_SQR" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="70"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_CMK_SQR") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
@@ -1067,6 +1075,7 @@ WHERE id = @report_id"
         <dx:ASPxSummaryItem FieldName="PAY_CMK_DEBT" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_SPECIAL" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_UNKNOWN_PAYMENTS" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="debt_spysano" SummaryType="Sum" DisplayFormat="{0}" />
     </TotalSummary>
 
     <SettingsBehavior EnableCustomizationWindow="True" AutoFilterRowInputDelay="2500" ColumnResizeMode="Control" />
