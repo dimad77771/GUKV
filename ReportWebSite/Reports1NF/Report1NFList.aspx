@@ -227,7 +227,7 @@
            --,org.konkurs_payments -- 34
            --,org.unknown_payments -- 35
            --,CASE WHEN (ISNULL(org.budget_narah_50_uah, 0) - ISNULL(org.budget_zvit_50_uah, 0)) > 0 THEN (ISNULL(org.budget_narah_50_uah, 0) - ISNULL(org.budget_zvit_50_uah, 0)) ELSE 0 END AS 'PAY_50_DEBT_CUR'
-           ,CASE WHEN (ISNULL(org.budget_narah_50_uah, 0) - ISNULL(org.budget_zvit_50_uah, 0) + ISNULL(org.budget_prev_50_uah, 0)) - ISNULL(org.unknown_payments,0) < 0 THEN 0 Else (ISNULL(org.budget_narah_50_uah, 0) - ISNULL(org.budget_zvit_50_uah, 0) + ISNULL(org.budget_prev_50_uah, 0)) - ISNULL(org.unknown_payments,0) END AS 'PAY_50_DEBT_CUR'
+           ,CASE WHEN (ISNULL(org.budget_narah_50_uah, 0) - ISNULL(kazna.pay_sum, 0) + ISNULL(org.budget_prev_50_uah, 0)) - ISNULL(org.unknown_payments,0) < 0 THEN 0 Else (ISNULL(org.budget_narah_50_uah, 0) - ISNULL(org.budget_zvit_50_uah, 0) + ISNULL(org.budget_prev_50_uah, 0)) - ISNULL(org.unknown_payments,0) END AS 'PAY_50_DEBT_CUR'
            ,org.konkurs_payments AS 'PAY_RECV_OTHER'
            ,[org].[report_id]
            ,[dict_otdel_gukv].name as 'otdel_gukv'
@@ -699,9 +699,9 @@ WHERE id = @report_id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("director_fio") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="director_phone" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="24" Visible="False" Caption="Відповідальна особа">
+        <dx:GridViewDataTextColumn FieldName="director_title" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="24" Visible="False" Width="300" Caption="Відповідальна особа">
 			<EditItemTemplate>
-				<dx:ASPxLabel runat="server" Text='<%# Eval("director_phone") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("director_title") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="buhgalter_fio" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="25" Visible="False" Caption="ФІО Бухгалтера">
@@ -1091,7 +1091,7 @@ WHERE id = @report_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A2_29" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A2_31" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
