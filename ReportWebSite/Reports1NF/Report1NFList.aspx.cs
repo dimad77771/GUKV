@@ -192,7 +192,37 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
                     var column = dataTable.Columns[cnum];
                     var vnum = Int32.Parse(column.ColumnName.Replace("v", ""));
                     var dval = dataTable.Rows[r][cnum];
-                    var val = (dval as decimal?) ?? 0M;
+
+					var val = default(decimal);
+					if (dval is DBNull)
+					{
+						val = 0;
+					}
+					else if (dval is decimal?)
+					{
+						val = (decimal?)dval ?? 0;
+					}
+					else if (dval is int?)
+					{
+						val = (int?)dval ?? 0;
+					}
+					else
+					{
+						throw new Exception("dval=" + dval);
+					}
+
+
+
+					if (new[] { 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 23, 24, 25 }.Contains(vnum))
+					{
+						val = val / 1000M;
+					}
+
+					if (new[] { 18, 19, 20, 21 }.Contains(vnum))
+					{
+						Debug.WriteLine("vnum=" + vnum + "; val=" + val);
+					}
+
                     wsheet[erow, vnum - 1].Value = val;
                 }
             }
@@ -268,8 +298,8 @@ sum(PAY_DEBT_12_MONTH) as v12,
 sum(PAY_50_NARAH) as v13,
 sum(PAY_50_PAYED) as v14,
 sum(PAY_50_DEBT) as v15,
-sum(PAY_50_DEBT_CUR) as v16,
-sum(PAY_50_DEBT_CUR) as v17,
+sum(PAY_50_DEBT_CUR_v16) as v16,
+sum(PAY_50_DEBT_CUR_v17) as v17,
 sum(PAY_NUM_ZAHODIV_TOTAL) as v18,	
 sum(PAY_NUM_POZOV_TOTAL) as v19,		
 sum(PAY_NUM_POZOV_ZADOV_TOTAL) as v20,		
@@ -298,7 +328,10 @@ SELECT
         (rep.org_max_submit_date)) AS AllMaxSubmitDates(sdt)) AS 'max_submit_date',
         CASE WHEN rep.is_reviewed = 0 THEN N'НI' ELSE N'ТАК' END AS 'review_performed',
 
-		SQR_TOTAL_BAL,SQR_GIVEN,NUM_RENTER,PAY_NARAH_ZVIT,PAY_DEBT_TOTAL,PAY_DEBT_ZVIT,PAY_50_NARAH,PAY_50_PAYED,PAY_50_DEBT,PAY_50_DEBT_CUR,PAY_50_DEBT_OLD,PAY_RECV_ZVIT,
+		SQR_TOTAL_BAL,SQR_GIVEN,NUM_RENTER,PAY_NARAH_ZVIT,PAY_DEBT_TOTAL,PAY_DEBT_ZVIT,PAY_50_NARAH,PAY_50_PAYED,PAY_50_DEBT,
+		case when PAY_50_DEBT_CUR_v16b > 0 then PAY_50_DEBT_CUR_v16b else 0 end as PAY_50_DEBT_CUR_v16,
+		case when PAY_50_DEBT_CUR_v17b > 0 then PAY_50_DEBT_CUR_v17b else 0 end as PAY_50_DEBT_CUR_v17,
+		PAY_50_DEBT_OLD,PAY_RECV_ZVIT,
 		PAY_DEBT_OVER_3_YEARS,PAY_DEBT_3_YEARS,PAY_DEBT_12_MONTH,PAY_NUM_ZAHODIV_TOTAL,PAY_NUM_POZOV_TOTAL,PAY_NUM_POZOV_ZADOV_TOTAL,PAY_NUM_POZOV_VIKON_TOTAL,PAY_DEBT_POGASHENO_TOTAL,debt_spysano
 
 
@@ -421,14 +454,20 @@ SELECT
            ,org.buhgalter_phone AS 'USER_TEL' -- 27
            ,org.buhgalter_email AS 'USER_EMAIL' -- 28
            ,org.budget_narah_50_uah AS 'PAY_50_NARAH' -- 29
-           ,org.budget_zvit_50_uah AS 'PAY_50_PAYED'-- 30
+           ,kazna.pay_sum AS 'PAY_50_PAYED'-- 30
            ,org.budget_prev_50_uah AS 'PAY_50_DEBT'-- 31
            ,org.budget_debt_30_50_uah AS 'PAY_50_DEBT_OLD' -- 32
            ,org.payment_budget_special AS 'PAY_SPECIAL'-- 33
            --,org.konkurs_payments -- 34
            --,org.unknown_payments -- 35
-           --,CASE WHEN (ISNULL(org.budget_narah_50_uah, 0) - ISNULL(org.budget_zvit_50_uah, 0)) > 0 THEN (ISNULL(org.budget_narah_50_uah, 0) - ISNULL(org.budget_zvit_50_uah, 0)) ELSE 0 END AS 'PAY_50_DEBT_CUR'
-           ,CASE WHEN (ISNULL(org.budget_narah_50_uah, 0) - ISNULL(org.budget_zvit_50_uah, 0) + ISNULL(org.budget_prev_50_uah, 0)) - ISNULL(org.unknown_payments,0) < 0 THEN 0 Else (ISNULL(org.budget_narah_50_uah, 0) - ISNULL(org.budget_zvit_50_uah, 0) + ISNULL(org.budget_prev_50_uah, 0)) - ISNULL(org.unknown_payments,0) END AS 'PAY_50_DEBT_CUR'
+
+           --,CASE WHEN (ISNULL(org.budget_narah_50_uah, 0) - ISNULL(kazna.pay_sum, 0)) > 0 THEN (ISNULL(org.budget_narah_50_uah, 0) - ISNULL(kazna.pay_sum, 0)) ELSE 0 END AS 'PAY_50_DEBT_CUR'
+           --,CASE WHEN (ISNULL(org.budget_narah_50_uah, 0) - ISNULL(kazna.pay_sum, 0) + ISNULL(org.budget_prev_50_uah, 0)) - ISNULL(org.unknown_payments,0) < 0 THEN 0 Else (ISNULL(org.budget_narah_50_uah, 0) - ISNULL(kazna.pay_sum, 0) + ISNULL(org.budget_prev_50_uah, 0)) - ISNULL(org.unknown_payments,0) END AS 'PAY_50_DEBT_CUR'
+
+			,isnull(org.budget_narah_50_uah,0) - isnull(kazna.pay_sum,0) + isnull(org.budget_narah_50_uah,0) + isnull(org.budget_debt_30_50_uah,0)	as PAY_50_DEBT_CUR_v16b
+			,isnull(org.budget_narah_50_uah,0) - isnull(kazna.pay_sum,0) + isnull(org.budget_narah_50_uah,0)										as PAY_50_DEBT_CUR_v17b
+			
+
            ,org.konkurs_payments AS 'PAY_RECV_OTHER'
            ,[org].[report_id]
            ,[dict_otdel_gukv].name as 'otdel_gukv'
@@ -436,6 +475,7 @@ SELECT
            ,org.unknown_payments AS 'PAY_UNKNOWN_PAYMENTS'
         FROM
             reports1nf_org_info org
+			LEFT OUTER JOIN kazna_total_info(null, null) kazna on kazna.ident_bal_zkpo = org.zkpo_code
             LEFT OUTER JOIN dict_otdel_gukv ON org.otdel_gukv_id = dict_otdel_gukv.id
             LEFT OUTER JOIN dict_org_industry ON org.industry_id = dict_org_industry.id
             LEFT OUTER JOIN dict_org_occupation ON org.occupation_id = dict_org_occupation.id
@@ -473,7 +513,6 @@ SELECT
                 ,SUM(pay.debt_v_mezhah_vitrat) as 'PAY_DEBT_V_MEZH' -- 15
                 ,SUM(pay.debt_spysano) as 'debt_spysano' -- 16
                 --,SUM(budget_narah_50_uah) as 'budget_narah_50_uah' -- 17
-                --,SUM(budget_zvit_50_uah) as 'budget_zvit_50_uah' -- 18
                 --,SUM(budget_prev_50_uah) as 'budget_prev_50_uah' -- 19
                 --,SUM(budget_debt_50_uah) as 'budget_debt_50_uah' -- 20
                 --,SUM(budget_debt_30_50_uah) as 'budget_debt_30_50_uah' -- 21
