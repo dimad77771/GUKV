@@ -83,6 +83,7 @@
 		,arenda.rent_start_date
 		,arenda.rent_finish_date
 		,arenda.agreement_num
+		,(select sum(rent_square) from reports1nf_arenda_notes Q WHERE (Q.is_deleted IS NULL OR Q.is_deleted = 0) AND Q.report_id = bal.report_id AND Q.arenda_id = arenda.id) as rent_square
 	
         ,bal.id AS 'balans_id'
         ,dict_districts2.name AS 'district'
@@ -288,6 +289,7 @@
 		<dx:GridViewDataTextColumn FieldName="sqr_non_habit" VisibleIndex="3" Caption="Площа, що перебуває в комунальній власності територіальної громади міста Києва, кв. м"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="sqr_total" VisibleIndex="3" Caption="Загальна площа об'єкта, кв. м"></dx:GridViewDataTextColumn>
 		<dx:GridViewDataTextColumn FieldName="sqr_vlas_potreb" VisibleIndex="3" Caption="Площа, що використвує-ться для власних потреб, кв. м" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>		
+		<dx:GridViewDataTextColumn FieldName="rent_square" VisibleIndex="3" Caption="Площа в орендному користуванні, кв. м"></dx:GridViewDataTextColumn>
 		<dx:GridViewDataTextColumn FieldName="total_free_sqr" VisibleIndex="3" Caption="Площа, що тимчасово не використовується та може бути передана в орендне користвання, кв. м"></dx:GridViewDataTextColumn>
 		<dx:GridViewDataTextColumn FieldName="renter_name" VisibleIndex="3" Caption="Назва суб'єкта господарювання, який є користувачем (орендарем) об'єкта" Width="270px"></dx:GridViewDataTextColumn>
 		<dx:GridViewDataDateColumn FieldName="rent_start_date" VisibleIndex="3" Caption="Початок оренди"></dx:GridViewDataDateColumn>
@@ -316,7 +318,7 @@
     <SettingsPager PageSize="20" />
     <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
     <Styles Header-Wrap="True" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.BalansList" Enabled="true" Version="A4" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.BalansList" Enabled="true" Version="A5" />
 
     <ClientSideEvents
         Init="function (s,e) { PrimaryGridView.PerformCallback('init:'); }"

@@ -90,6 +90,11 @@
          , ag.total_rent_sqr
          , inv_num = bal.reestr_no
 
+		 ,bal.cost_balans
+		 ,bal.cost_zalishkova 	
+		 ,bal.znos
+		 ,bal.znos_date
+
         FROM reports1nf_balans bal
         INNER JOIN reports1nf rep ON rep.id = bal.report_id
         LEFT OUTER JOIN reports1nf_buildings bld ON bld.unique_id = bal.building_1nf_unique_id
@@ -116,7 +121,11 @@
        , bal.reestr_no
         ,COALESCE(bal.purpose_str, dict_balans_purpose.name), bal.is_deleted, bal.modify_date, bal.submit_date, dict_own.name,
         CASE WHEN (((bal.is_valid = 0) OR (bal.is_valid IS NULL)) OR ((bal.submit_date IS NULL OR bal.modify_date > bal.submit_date))) THEN N'НІ' ELSE N'ТАК' END,
-        bal.modified_by" >
+        bal.modified_by
+	    ,bal.cost_balans
+		,bal.cost_zalishkova 	
+		,bal.znos
+		,bal.znos_date" >
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="rep_id" />
     </SelectParameters>
@@ -286,6 +295,11 @@
         <dx:GridViewDataTextColumn FieldName="sqr_vlas_potreb" VisibleIndex="14" Caption="Площа об'єкту для власних потреб" ShowInCustomizationForm="True" Visible="False"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="inv_num" VisibleIndex="15" Caption="Інвентарний номер" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
 
+		<dx:GridViewDataTextColumn FieldName="cost_balans" VisibleIndex="16" Caption="Первісна (переоцінена) вартість, тис. грн." ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataTextColumn>
+		<dx:GridViewDataTextColumn FieldName="cost_zalishkova" VisibleIndex="17" Caption="Залишкова вартість, тис. грн." ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataTextColumn>
+		<dx:GridViewDataTextColumn FieldName="znos" VisibleIndex="18" Caption="Знос, тис. грн." ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataTextColumn>
+		<dx:GridViewDataDateColumn FieldName="znos_date" VisibleIndex="19" Caption="станом на" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataDateColumn>
+
 
     </Columns>
 
@@ -296,6 +310,9 @@
         <dx:ASPxSummaryItem FieldName="num_rent_agr" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="total_rent_sqr" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="sqr_vlas_potreb" SummaryType="Sum" DisplayFormat="{0}" />
+		<dx:ASPxSummaryItem FieldName="cost_balans" SummaryType="Sum" DisplayFormat="{0}" />
+		<dx:ASPxSummaryItem FieldName="cost_zalishkova" SummaryType="Sum" DisplayFormat="{0}" />
+		<dx:ASPxSummaryItem FieldName="znos" SummaryType="Sum" DisplayFormat="{0}" />
     </TotalSummary>
 
     <SettingsBehavior AutoFilterRowInputDelay="2500" ColumnResizeMode="Control" EnableCustomizationWindow="True" />
@@ -310,7 +327,7 @@
     <SettingsPager PageSize="20" />
     <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
     <Styles Header-Wrap="True" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.BalansList" Enabled="True" Version="A2" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.BalansList" Enabled="True" Version="A3" />
 
     <ClientSideEvents
         Init="function (s,e) { PrimaryGridView.PerformCallback('init:'); }"

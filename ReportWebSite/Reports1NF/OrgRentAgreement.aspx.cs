@@ -1949,9 +1949,13 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		AddQueryParameter(ref fieldList, "zvilneno_date1", "zvilnenodate1", Reports1NFUtils.GetDateValue(controls, "edit_zvilneno_date1"), parameters);
 		AddQueryParameter(ref fieldList, "zvilneno_date2", "zvilnenodate2", Reports1NFUtils.GetDateValue(controls, "edit_zvilneno_date2"), parameters);
 
-		AddQueryParameter(ref fieldList, "zvilbykmp_percent", "zvilbykmppercent", Reports1NFUtils.GetEditNumeric(controls, "edit_zvilbykmp_percent"), parameters);
-		AddQueryParameter(ref fieldList, "zvilbykmp_date1", "zvilbykmpdate1", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp_date1"), parameters);
-		AddQueryParameter(ref fieldList, "zvilbykmp_date2", "zvilbykmpdate2", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp_date2"), parameters);
+		AddQueryParameter(ref fieldList, "zvilbykmp2_percent", "zvilbykmp2percent", Reports1NFUtils.GetEditNumeric(controls, "edit_zvilbykmp2_percent"), parameters);
+		AddQueryParameter(ref fieldList, "zvilbykmp2_date1", "zvilbykmp2date1", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp2_date1"), parameters);
+		AddQueryParameter(ref fieldList, "zvilbykmp2_date2", "zvilbykmp2date2", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp2_date2"), parameters);
+
+		AddQueryParameter(ref fieldList, "zvilbykmp3_percent", "zvilbykmp3percent", Reports1NFUtils.GetEditNumeric(controls, "edit_zvilbykmp3_percent"), parameters);
+		AddQueryParameter(ref fieldList, "zvilbykmp3_date1", "zvilbykmp3date1", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp3_date1"), parameters);
+		AddQueryParameter(ref fieldList, "zvilbykmp3_date2", "zvilbykmp3date2", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp3_date2"), parameters);
 
         AddQueryParameter(ref fieldList, "povidoleno1_date", "povidoleno1date", Reports1NFUtils.GetDateValue(controls, "edit_povidoleno1_date"), parameters);
         AddQueryParameter(ref fieldList, "povidoleno1_num", "povidoleno1num", Reports1NFUtils.GetEditText(controls, "edit_povidoleno1_num"), parameters);

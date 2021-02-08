@@ -91,7 +91,7 @@
         ,an1.n_rent_rate
         ,an1.n_rent_rate_uah
         ,an1.n_cost_expert_total
-        ,an1.n_cost_agreement
+        ,cast(case when cast(an1.n_cost_agreement as decimal(18,2)) in (0, 1.2, 1, 0.08) then 0.08 else an1.n_cost_agreement end as decimal(18,2)) as n_cost_agreement2
         ,an1.n_rent_square
         ,an2.cost_agreement as cost_agreement_max
         ,an2.cost_narah as cost_narah_max
@@ -200,7 +200,7 @@
 <table border="0" cellspacing="4" cellpadding="0" width="100%">
     <tr>
         <td style="width: 100%;">
-            <asp:Label ID="LabelReportTitle1" runat="server" Text="Перелік об'єктів на балансі" CssClass="reporttitle"></asp:Label>
+            <asp:Label ID="LabelReportTitle1" runat="server" Text="Перелік договорів оренди" CssClass="reporttitle"></asp:Label>
         </td>
         <td>
             <dx:ASPxPopupControl ID="ASPxPopupControl_FreeSquare_SaveAs" runat="server" 
@@ -272,14 +272,14 @@
             </DataItemTemplate>
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_balans_full_name" ReadOnly="True"
-            VisibleIndex="2" Visible="true" Caption="Балансоутримувач - Повна Назва">
+            VisibleIndex="2" Visible="true" Caption="Балансоутримувач - Повна Назва" Width="250px">
             <%--<DataItemTemplate>
                 <%# "<a href=\"javascript:ShowOrganizationCard(" + Eval("org_balans_id") + ")\">" + Eval("org_balans_full_name") + "</a>"%>
             </DataItemTemplate>--%>
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_balans_short_name" ReadOnly="True"
             VisibleIndex="3" Visible="False" 
-            Caption="Балансоутримувач - Коротка Назва" Width="200px">
+            Caption="Балансоутримувач - Коротка Назва" Width="250px">
             <%--<DataItemTemplate>
                 <%# "<a href=\"javascript:ShowOrganizationCard(" + Eval("org_balans_id") + ")\">" + Eval("org_balans_short_name") + "</a>"%>
             </DataItemTemplate>--%>
@@ -306,7 +306,7 @@
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_renter_short_name" ReadOnly="True"
             VisibleIndex="9" Visible="True" Caption="Орендар - Коротка Назва" 
-            Width="200px">
+            Width="250px">
             <%--<DataItemTemplate>
                 <%# "<a href=\"javascript:ShowOrganizationCard(" + Eval("org_renter_id") + ")\">" + Eval("org_renter_short_name") + "</a>"%>
             </DataItemTemplate>--%>
@@ -387,7 +387,7 @@
             VisibleIndex="34" Visible="False" Caption="Сплачена Вартість (грн.)"></dx:GridViewDataTextColumn>
 <%--        <dx:GridViewDataTextColumn FieldName="cost_debt" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="35" Visible="False" Caption="Борг (грн.)"></dx:GridViewDataTextColumn>       --%>
-        <dx:GridViewDataTextColumn FieldName="n_cost_agreement" ReadOnly="True"
+        <dx:GridViewDataTextColumn FieldName="n_cost_agreement2" ReadOnly="True"
             VisibleIndex="36" Visible="True" Caption="Плата за використання, грн."></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="cost_agreement_max" ReadOnly="True"
             VisibleIndex="37" Visible="false" Caption="Максимальна Орендна Плата за об'єкт договору (грн.)"></dx:GridViewDataTextColumn>
@@ -435,10 +435,10 @@
             VisibleIndex="56" Visible="False" Caption="Дата Акту"></dx:GridViewDataDateColumn>      --%>
         <dx:GridViewDataTextColumn FieldName="is_subarenda" ReadOnly="True"
             VisibleIndex="57" Visible="False" Caption="Суборенда"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="payment_type" ReadOnly="True"
-            VisibleIndex="58" Visible="true" Caption="Вид Розрахунків"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="agreement_active_s" ReadOnly="True"
-            VisibleIndex="59" Visible="true" Caption="Стан договору"></dx:GridViewDataTextColumn>
+        <%--<dx:GridViewDataTextColumn FieldName="payment_type" ReadOnly="True"
+            VisibleIndex="58" Visible="true" Caption="Вид Розрахунків"></dx:GridViewDataTextColumn>--%>
+        <%--<dx:GridViewDataTextColumn FieldName="agreement_active_s" ReadOnly="True"
+            VisibleIndex="59" Visible="true" Caption="Стан договору"></dx:GridViewDataTextColumn>--%>
         <dx:GridViewDataTextColumn FieldName="org_balans_vedomstvo" ReadOnly="True"
             VisibleIndex="60" Visible="False" Caption="Балансоутримувач - Орган Управління" Width="180px"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_renter_vedomstvo" ReadOnly="True"
@@ -484,8 +484,8 @@
         <dx:GridViewDataTextColumn FieldName="contribution_rate" ReadOnly="True"
             VisibleIndex="79" Visible="False" Caption="Ставка відрахувань до бюджету (%)"></dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataDateColumn FieldName="modify_date" ReadOnly="True"
-            VisibleIndex="80" Visible="true" Caption="Дата Актуальності"></dx:GridViewDataDateColumn>
+        <%--<dx:GridViewDataDateColumn FieldName="modify_date" ReadOnly="True"
+            VisibleIndex="80" Visible="true" Caption="Дата Актуальності"></dx:GridViewDataDateColumn>--%>
         <dx:GridViewDataTextColumn FieldName="payment_narah" ReadOnly="True"
             VisibleIndex="81" Visible="False" Caption="Нараховано орендної плати за звітний період, грн. (без ПДВ)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="last_year_saldo" ReadOnly="True"
