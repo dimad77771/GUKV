@@ -87,10 +87,10 @@ public static class ArchiverSql
         }
 
         sql = @"insert into arch_arenda_notes (
-            arenda_id,purpose_group_id,purpose_id,purpose_str,rent_square,modify_date,modified_by,note,rent_rate,rent_rate_uah,cost_narah,cost_agreement,is_deleted,del_date,cost_expert_total,date_expert,payment_type_id,invent_no,note_status_id,
+            arenda_id,purpose_group_id,purpose_id,purpose_str,rent_square,modify_date,modified_by,note,rent_rate,rent_rate_uah,cost_narah,cost_agreement,is_deleted,del_date,cost_expert_total,date_expert,payment_type_id,invent_no,note_status_id,zapezh_deposit,
             archive_arenda_link_code)
             select 
-            arenda_id,purpose_group_id,purpose_id,purpose_str,rent_square,modify_date,modified_by,note,rent_rate,rent_rate_uah,cost_narah,cost_agreement,is_deleted,del_date,cost_expert_total,date_expert,payment_type_id,invent_no,note_status_id,
+            arenda_id,purpose_group_id,purpose_id,purpose_str,rent_square,modify_date,modified_by,note,rent_rate,rent_rate_uah,cost_narah,cost_agreement,is_deleted,del_date,cost_expert_total,date_expert,payment_type_id,invent_no,note_status_id,zapezh_deposit,
             @archive_arenda_link_code
             from arenda_notes
             where arenda_id = @arendaId";

@@ -1098,13 +1098,14 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         ASPxTextBox editNoteCostNarah = GridViewNotes.FindEditFormTemplateControl("EditNoteCostNarah") as ASPxTextBox;
         ASPxTextBox editNoteRentRate = GridViewNotes.FindEditFormTemplateControl("EditNoteRentRate") as ASPxTextBox;
         ASPxTextBox editNoteCostAgreement = GridViewNotes.FindEditFormTemplateControl("EditNoteCostAgreement") as ASPxTextBox;
-        ASPxComboBox comboNotePaymentType = GridViewNotes.FindEditFormTemplateControl("ComboNotePaymentType1") as ASPxComboBox;
+		ASPxTextBox editNoteZapezhDeposit = GridViewNotes.FindEditFormTemplateControl("EditNoteZapezhDeposit") as ASPxTextBox;
+		ASPxComboBox comboNotePaymentType = GridViewNotes.FindEditFormTemplateControl("ComboNotePaymentType1") as ASPxComboBox;
 
         if (editNoteSquare != null && editNoteFloor != null && editNoteInventNo != null &&
             comboNoteCurState != null && comboNotePurposeGroup != null &&
             comboNotePurpose != null && editNotePurposeStr != null && editNoteCostExpert != null &&
             editNoteDateExpert != null && editNoteCostNarah != null && editNoteRentRate != null &&
-            editNoteCostAgreement != null && comboNotePaymentType != null)
+            editNoteCostAgreement != null && editNoteZapezhDeposit != null && comboNotePaymentType != null)
         {
             object rowKey = e.Keys[GridViewNotes.KeyFieldName];
 
@@ -1140,8 +1141,9 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
                             values[11] = comboNotePaymentType.Value is int ? comboNotePaymentType.Value : null;
                             values[12] = editNoteInventNo.Text.Trim().ToUpper().Left(128);
                             values[13] = comboNoteCurState.Value is int ? comboNoteCurState.Value : null;
+							values[14] = Utils.ConvertStrToDecimal(editNoteZapezhDeposit.Text);
 
-                            table.Rows[row].ItemArray = values;
+							table.Rows[row].ItemArray = values;
                             break;
                         }
                     }
@@ -1298,7 +1300,14 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
                     parameters.Add("stid", values[13]);
                 }
 
-                using (SqlCommand cmdInsert = new SqlCommand("INSERT INTO reports1nf_arenda_notes (" + fieldList + ") VALUES (" + paramList + ")", connection))
+				if (values[14] is decimal)
+				{
+					fieldList += ", zapezh_deposit";
+					paramList += ", @zapezhdeposit";
+					parameters.Add("zapezhdeposit", values[14]);
+				}
+
+				using (SqlCommand cmdInsert = new SqlCommand("INSERT INTO reports1nf_arenda_notes (" + fieldList + ") VALUES (" + paramList + ")", connection))
                 {
                     foreach (KeyValuePair<string, object> param in parameters)
                     {
@@ -1952,6 +1961,14 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		AddQueryParameter(ref fieldList, "zvilbykmp2_percent", "zvilbykmp2percent", Reports1NFUtils.GetEditNumeric(controls, "edit_zvilbykmp2_percent"), parameters);
 		AddQueryParameter(ref fieldList, "zvilbykmp2_date1", "zvilbykmp2date1", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp2_date1"), parameters);
 		AddQueryParameter(ref fieldList, "zvilbykmp2_date2", "zvilbykmp2date2", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp2_date2"), parameters);
+
+		AddQueryParameter(ref fieldList, "zvilbykmp6_percent", "zvilbykmp6percent", Reports1NFUtils.GetEditNumeric(controls, "edit_zvilbykmp6_percent"), parameters);
+		AddQueryParameter(ref fieldList, "zvilbykmp6_date1", "zvilbykmp6date1", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp6_date1"), parameters);
+		AddQueryParameter(ref fieldList, "zvilbykmp6_date2", "zvilbykmp6date2", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp6_date2"), parameters);
+
+		AddQueryParameter(ref fieldList, "zvilbykmp7_percent", "zvilbykmp7percent", Reports1NFUtils.GetEditNumeric(controls, "edit_zvilbykmp7_percent"), parameters);
+		AddQueryParameter(ref fieldList, "zvilbykmp7_date1", "zvilbykmp7date1", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp7_date1"), parameters);
+		AddQueryParameter(ref fieldList, "zvilbykmp7_date2", "zvilbykmp7date2", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp7_date2"), parameters);
 
 		AddQueryParameter(ref fieldList, "zvilbykmp3_percent", "zvilbykmp3percent", Reports1NFUtils.GetEditNumeric(controls, "edit_zvilbykmp3_percent"), parameters);
 		AddQueryParameter(ref fieldList, "zvilbykmp3_date1", "zvilbykmp3date1", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp3_date1"), parameters);

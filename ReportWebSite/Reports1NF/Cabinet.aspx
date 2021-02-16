@@ -134,10 +134,15 @@
             <dx:ASPxButton ID="ButtonPrint" runat="server" Text="Сформувати звіт" OnClick="ButtonPrint_Click" CausesValidation="false">
 				<ClientSideEvents Click="function (s,e) 
 					{ 
-						if (LinkReportState.GetText() == 'Не надісланий')
+						var mm = (new Date()).getMonth() + 1;
+						var dd = (new Date()).getDate();
+						if ((mm == 1 || mm == 4 || mm == 7 || mm == 10 ) && (dd >= 1 && dd <= 20))
 						{
-							alert('Поточний стан актуалізації даних \'Не надісланий\'. Звіт не може бути сформований');
-							e.processOnServer = false;
+							if (LinkReportState.GetText() == 'Не надісланий')
+							{
+								alert('Поточний стан актуалізації даних \'Не надісланий\'. Звіт не може бути сформований');
+								e.processOnServer = false;
+							}
 						}
 					}" />
             </dx:ASPxButton>

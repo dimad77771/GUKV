@@ -121,7 +121,7 @@ public class OrgRentAgreementPhotosPdfBulder
         {
             var mem = new MemoryStream(LLLLhotorowUtils.Read(fi.FullFilename, connectionSql));
             image = Bitmap.FromStream(mem);
-            mem.Dispose();
+            //mem.Dispose();
         }
         catch (Exception ex)
         {
@@ -129,14 +129,16 @@ public class OrgRentAgreementPhotosPdfBulder
         }
 
         var convertor = new PdfUnitConvertor();
-        var pdfBitmap = new PdfBitmap(image);
+		var pdfBitmap = new PdfBitmap(image);
+		//var pdfBitmap = new PdfBitmap(@"C:\Users\dima7777\Pictures\cat1.jpg");
 
-        var width = convertor.ConvertFromPixels(image.Width, PdfGraphicsUnit.Point);
+
+		var width = convertor.ConvertFromPixels(image.Width, PdfGraphicsUnit.Point);
         var height = convertor.ConvertFromPixels(image.Height, PdfGraphicsUnit.Point);
 
         var section = PdfDoc.Sections.Add();
-        section.PageSettings.Size = new SizeF(width, height);
-        section.PageSettings.Orientation = (width > height ? PdfPageOrientation.Landscape : PdfPageOrientation.Portrait);
+		section.PageSettings.Size = new SizeF(width, height);
+		section.PageSettings.Orientation = (width > height ? PdfPageOrientation.Landscape : PdfPageOrientation.Portrait);
         section.PageSettings.Margins.Bottom = 0;
         section.PageSettings.Margins.Top = 0;
         section.PageSettings.Margins.Left = 0;

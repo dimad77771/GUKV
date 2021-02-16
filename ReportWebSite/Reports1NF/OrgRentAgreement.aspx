@@ -1007,7 +1007,7 @@
 <mini:ProfiledSqlDataSource ID="SqlDataSourceNotes" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT id, purpose_group_id, purpose_id, purpose_str, rent_square, note, rent_rate, cost_narah, cost_agreement,
-        cost_expert_total, date_expert, payment_type_id, invent_no, note_status_id FROM reports1nf_arenda_notes WHERE (is_deleted IS NULL OR is_deleted = 0) AND report_id = @rep_id AND arenda_id = @aid"
+        cost_expert_total, date_expert, payment_type_id, invent_no, note_status_id, zapezh_deposit FROM reports1nf_arenda_notes WHERE (is_deleted IS NULL OR is_deleted = 0) AND report_id = @rep_id AND arenda_id = @aid"
     OnSelecting="SqlDataSource_Selecting">
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="aid" />
@@ -2438,10 +2438,11 @@ WHERE id = @id"
                                         <dx:GridViewDataTextColumn FieldName="cost_narah" VisibleIndex="10" Caption="Ставка за використання, %" Width="85px"></dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="rent_rate" VisibleIndex="11" Caption="Орендна плата за 1 кв.м, грн." Width="90px"></dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="cost_agreement" VisibleIndex="12" Caption="Місячна орендна плата, грн." Width="85px"></dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataComboBoxColumn FieldName="note_status_id" VisibleIndex="13" Caption="Стан використання приміщення" Width="140px">
+										<dx:GridViewDataTextColumn FieldName="zapezh_deposit" VisibleIndex="13" Caption="Забезпечувальний депозит, грн." Width="85px"></dx:GridViewDataTextColumn>
+                                        <dx:GridViewDataComboBoxColumn FieldName="note_status_id" VisibleIndex="14" Caption="Стан використання приміщення" Width="140px">
                                             <PropertiesComboBox DataSourceID="SqlDataSourceArendaNoteStatus" ValueField="id" TextField="name" ValueType="System.Int32" />
                                         </dx:GridViewDataComboBoxColumn>
-                                        <dx:GridViewDataComboBoxColumn FieldName="payment_type_id" VisibleIndex="14" Caption="Цільове використання майна" Width="140px">
+                                        <dx:GridViewDataComboBoxColumn FieldName="payment_type_id" VisibleIndex="15" Caption="Цільове використання майна" Width="140px">
                                             <PropertiesComboBox DataSourceID="SqlDataSourceDictRentalRate" ValueField="id" TextField="short_name" ValueType="System.Int32" />
                                         </dx:GridViewDataComboBoxColumn>
                                     </Columns>
@@ -2451,6 +2452,7 @@ WHERE id = @id"
                                         <dx:ASPxSummaryItem FieldName="cost_expert_total" SummaryType="Sum" DisplayFormat="{0}" />
                                         <dx:ASPxSummaryItem FieldName="rent_rate" SummaryType="Sum" DisplayFormat="{0}" />
                                         <dx:ASPxSummaryItem FieldName="cost_agreement" SummaryType="Sum" DisplayFormat="{0}" />
+										<dx:ASPxSummaryItem FieldName="zapezh_deposit" SummaryType="Sum" DisplayFormat="{0}" />
                                     </TotalSummary>
 
                                     <SettingsBehavior AutoFilterRowInputDelay="2500" ColumnResizeMode="Control" EnableCustomizationWindow="True" />
@@ -2527,6 +2529,10 @@ WHERE id = @id"
                                                 <tr>
                                                     <td> <dx:ASPxLabel ID="ASPxLabel22" runat="server" Text="Місячна орендна плата, грн." Width="150px" /> </td>
                                                     <td> <dx:ASPxTextBox ID="EditNoteCostAgreement" runat="server" Width="200px" Text='<%# Eval("cost_agreement")%>' /> </td>
+
+													<td> <dx:ASPxLabel ID="ASPxLabel73" runat="server" Text="Забезпечувальний депозит, грн." Width="150px" /> </td>
+                                                    <td> <dx:ASPxTextBox ID="EditNoteZapezhDeposit" runat="server" Width="200px" Text='<%# Eval("zapezh_deposit")%>' /> </td>
+
 <%--                                                    <td> <dx:ASPxLabel ID="ASPxLabel23" runat="server" Text="Вид оплати" Width="150px" /> </td>
                                                     <td> 
                                                         <dx:ASPxComboBox ID="ComboNotePaymentType" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="200px" 
@@ -2642,7 +2648,7 @@ WHERE id = @id"
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel65" runat="server" Text="Авансова орендна плата (нараховано), грн."></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="edit_avance_plat" ClientInstanceName="edit_avance_plat" runat="server" NumberType="Float" Value='<%# Eval("avance_plat") %>' Width="150px"
-                                                            Title="двомісячна сума орендної плати у договорі, яка може бути використана ЛИШЕ для оплати використання останніх двох місяців договору">
+                                                            Title="ОБОВЯЗКОВО заноситься нарахована двомісячна сума орендної плати відповідно до п.3.10 договору, яка може бути на поточний момент не сплачена, або сплачена частково">
                                                             <ClientSideEvents 
                                                                 LostFocus="CalcCollectionDebtZvit" />                                                            
                                                             </dx:ASPxSpinEdit>
@@ -2654,7 +2660,7 @@ WHERE id = @id"
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel27" runat="server" Text="Нараховано орендної плати за звітний період, грн. (без ПДВ)" Width="650px"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="EditPaymentNarah_orndpymnt" ClientInstanceName="clEditPaymentNarah_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("payment_narah") %>' Width="150px"
-                                                            Title="нарахована орендна плата за 3,6,9,12 місяців відповідно (індексація може враховуватися)">
+                                                            Title="нарахована орендна плата за 3,6,9,12 місяців відповідно (індексація може враховуватися) і підлягає оплаті або зарахуванню в борг">
                                                               <ClientSideEvents 
                                                             ValueChanged ="function (s, e) { HideValidator(); }"
                                                             LostFocus="CalcCollectionDebtZvit"
@@ -2664,7 +2670,7 @@ WHERE id = @id"
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel66" runat="server" Text="- у тому числі, знято надмірно нарахованої за звітний період"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="edit_znyato_nadmirno_narah" ClientInstanceName="edit_znyato_nadmirno_narah" runat="server" NumberType="Float" Value='<%# Eval("znyato_nadmirno_narah") %>' Width="150px"
-                                                            Title="сума що не підлягає оплаті, відповідно до акту про неможливість використання приміщення і вираховується з [Нараховано]">
+                                                            Title="сума що не підлягає оплаті, відповідно до акту про неможливість використання приміщення і вираховується з нарахованої">
                                                             <ClientSideEvents 
                                                                 LostFocus="CalcCollectionDebtZvit" />                                                            
                                                             </dx:ASPxSpinEdit>
@@ -2674,7 +2680,7 @@ WHERE id = @id"
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel71" runat="server" Text="Переплата орендної плати, всього, грн. (без ПДВ)"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="edit_total_year_saldo" ClientInstanceName="edit_total_year_saldo" runat="server" NumberType="Float" Value='<%# Eval("total_year_saldo") %>' Width="150px" ReadOnly="true" Font-Italic="true"
-                                                            Title="Переплата орендної плати, всього, грн. (без ПДВ)">
+                                                            Title="сума полів «у т.ч. Сальдо (переплата) на початок року (незмінна впродовж року величина), грн. (без ПДВ)» та «у т.ч. Сальдо авансової орендної плати на кінець звітного періоду, грн. (без ПДВ)»">
                                                             <ClientSideEvents 
                                                                 LostFocus="CalcCollectionDebtZvit" />                                                            
                                                             </dx:ASPxSpinEdit>
@@ -2685,7 +2691,7 @@ WHERE id = @id"
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel28" runat="server" Text="Сальдо (переплата) на початок року (незмінна впродовж року величина), грн. (без ПДВ)"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="EditPaymentSaldo_orndpymnt" ClientInstanceName="clEditPaymentSaldo_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("last_year_saldo") %>' Width="150px"
-                                                            Title="переплата орендарем коштів на початок звітного року,  використовується для покриття (повністю або частково) у разі виникненню заборгованості по нарахованій орендній платі за звітний період  (НЕ ВКЛЮЧАЄ АВАНСОВІ ПЛАТЕЖІ)">
+                                                            Title="переплата орендарем коштів на початок звітного року и використовується безумовно для покриття (повністю або частково) у разі виникненню заборгованості з нарахованій орендній платі за звітний період.">
                                                             <ClientSideEvents 
                                                                 LostFocus="CalcCollectionDebtZvit" />                                                            
                                                             </dx:ASPxSpinEdit>
@@ -2695,7 +2701,7 @@ WHERE id = @id"
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel74" runat="server" Text="Сальдо авансової орендної плати на початок року (незмінна впродовж року величина), грн. (без ПДВ)"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="edit_zabezdepoz_saldo" ClientInstanceName="edit_zabezdepoz_saldo" runat="server" NumberType="Float" Value='<%# Eval("zabezdepoz_saldo") %>' Width="150px"
-                                                            Title="">
+                                                            Title="сума коштів отримана від орендаря, (бажано що б вона дорівнювала нарахованій авансовій орендній платі)">
                                                             <ClientSideEvents 
                                                                 LostFocus="CalcCollectionDebtZvit" />                                                            
                                                             </dx:ASPxSpinEdit>
@@ -2705,7 +2711,7 @@ WHERE id = @id"
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel69" runat="server" Text="Надходження авансової орендної плати у звітному періоді, грн. (без ПДВ)"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="edit_zabezdepoz_prishlo" ClientInstanceName="edit_zabezdepoz_prishlo" runat="server" NumberType="Float" Value='<%# Eval("zabezdepoz_prishlo") %>' Width="150px"
-                                                            Title="">
+                                                            Title="показуємо яка частина поля «у т.ч. Сальдо авансової орендної плати на кінець звітного періоду, грн. (без ПДВ)» отримана у звітному періоді">
                                                             <ClientSideEvents 
                                                                 LostFocus="CalcCollectionDebtZvit" />                                                            
                                                             </dx:ASPxSpinEdit>
@@ -2715,7 +2721,7 @@ WHERE id = @id"
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel29" runat="server" Text="Надходження орендної плати за звітний період, всього, грн. (без ПДВ)"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="EditPaymentReceived_orndpymnt" ClientInstanceName="Received_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("payment_received") %>' Width="150px" ReadOnly="true" Font-Italic="true"
-                                                            Title="загальна отримана протягом поточного звітного періоду сума коштів від орендаря (у т.ч. переплата протягом звітного періоду, погашення боргів, авансова плата)" MinValue ="0" MaxValue="999999999" >
+                                                            Title="отримана протягом поточного звітного періоду сума коштів від орендаря:" MinValue ="0" MaxValue="999999999" >
                                                             <ClientSideEvents 
                                                                 LostFocus="CalcCollectionDebtZvit" />   
                                                             </dx:ASPxSpinEdit>
@@ -2732,21 +2738,21 @@ WHERE id = @id"
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel30" runat="server" Text="- у тому числі, з нарахованої за звітний період (без боргів та переплат)"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="EditPaymentNarZvit_orndpymnt"  ClientInstanceName="Zvit_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("payment_nar_zvit") %>' Width="150px"
-                                                            Title="отримана протягом поточного звітного періоду сума коштів від орендаря призначена  лише на оплату нарахованої за звітний період орендної плати" MinValue ="0" MaxValue="999999999">
+                                                            Title="отримана протягом поточного звітного періоду сума коштів від орендаря призначена  лише на оплату нарахованої за звітний період орендної плати." MinValue ="0" MaxValue="999999999">
                                                                 <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                             </dx:ASPxSpinEdit></td>
                                                     </tr>
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel68" runat="server" Text="- у тому числі, з нарахованої авансової орендної плати, грн."></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="Edit_avance_paymentnar"  ClientInstanceName="avance_paymentnar" runat="server" NumberType="Float" Value='<%# Eval("avance_paymentnar") %>' Width="150px"
-                                                            Title="отримана протягом поточного звітного періоду сума коштів від орендаря призначена  лише на оплату нарахованої авансової орендної плати" MinValue ="0" MaxValue="999999999">
+                                                            Title="використовується повністю або частково сума отриманих коштів авансової орендної плати з поля «у т.ч. Сальдо авансової орендної плати на кінець звітного періоду, грн. (без ПДВ)», ЛИШЕ для оплати орендної плати  за останні два місяці дії договору." MinValue ="0" MaxValue="999999999">
                                                                 <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                             </dx:ASPxSpinEdit></td>
                                                     </tr>
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel55" runat="server" Text="- у тому числі, погашення заборгованості минулих періодів, грн."></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="EditPaymentOldDebtsPayed_orndpymnt" ClientInstanceName="clEditPaymentOldDebtsPayed_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("old_debts_payed") %>' Width="150px"
-                                                            Title="частина коштів з надходження орендної плати за звітний період, всього, призначена на погашення заборгованості попередніх періодів">
+                                                            Title="частина коштів з надходження орендної плати за звітний період, всього, призначена на погашення заборгованості попередніх періодів.">
                                                                 <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                             </dx:ASPxSpinEdit></td>
                                                     </tr>
@@ -2754,20 +2760,20 @@ WHERE id = @id"
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel62" runat="server" Text="- у тому числі, переплата орендної плати за звітний період, грн."></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="edit_return_orend_payed" ClientInstanceName="edit_return_orend_payed" runat="server" NumberType="Float" Value='<%# Eval("return_orend_payed") %>' Width="150px" 
-                                                            Title="залишок орендної плати після оплати нарахованої орендної плати, нарахованої авансової орендної плати,  погашення заборгованості попередніх періодів. (не включає &quot;Сальдо (переплата) на початок року&quot;)">
+                                                            Title="переплата поточної орендної плати у звітному періоді (не включає Сальдо (переплата) на початок року)">
                                                             <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                             </dx:ASPxSpinEdit></td>
                                                     </tr>
 
                                                     <tr>
-                                                        <td><dx:ASPxLabel ID="ASPxLabel72" runat="server" Text="Переплата орендної плати всього, грн. (без ПДВ)"></dx:ASPxLabel></td>
+                                                        <td><dx:ASPxLabel ID="ASPxLabel72" runat="server" Text="Переплата орендної плати на кінець звітного періоду, грн. (без ПДВ)"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="edit_total_pereplata" ClientInstanceName="edit_total_pereplata" runat="server" NumberType="Float" Value='<%# Eval("total_pereplata") %>'  Width="150px" ReadOnly="true" Font-Italic="true"
-                                                            Title="Переплата орендної плати всього, грн. (без ПДВ)"/></td>
+                                                            Title="перевищення значення поля «Надходження орендної плати за звітний період» над значенням поля «Нарахована  орендної плати за звітний період, грн. (без ПДВ)»"/></td>
                                                     </tr>
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel63" runat="server" Text="Повернення переплати орендної плати всього у звітному періоді, грн. (без ПДВ)"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="edit_return_all_orend_payed" ClientInstanceName="edit_return_all_orend_payed" runat="server" NumberType="Float" Value='<%# Eval("return_all_orend_payed") %>' Width="150px" 
-                                                            Title="повернення переплати орендної плати орендарю за його вимогою або по завершенні терміну договору">
+                                                            Title="повернення переплати орендної плати орендарю за його вимогою або по завершенні терміну договору. Заповнюється та редагується балансоутримувачем, лише за умові що договір має статус «Договір закінчився».">
                                                                 <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                             </dx:ASPxSpinEdit>
                                                         </td>
@@ -2809,13 +2815,22 @@ WHERE id = @id"
 												<td align="left"><dx:ASPxDateEdit ID="edit_zvilneno_date2" runat="server" NumberType="Float" Value='<%# Eval("zvilneno_date2") %>' Width="100px" Title="по"/></td>
                                             </tr>
                                             <tr>
-                                                <td><dx:ASPxLabel runat="server" Text="Звільнено від сплати згідно п.6,7 рішення КМР №25/25"></dx:ASPxLabel></td>
+                                                <td><dx:ASPxLabel runat="server" Text="Звільнено від сплати згідно п.6 рішення КМР №25/25"></dx:ASPxLabel></td>
 												<td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
-                                                <td align="left"><dx:ASPxSpinEdit ID="edit_zvilbykmp2_percent" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp2_percent") %>' Width="100px" Title="%"/></td>
+                                                <td align="left"><dx:ASPxSpinEdit ID="edit_zvilbykmp6_percent" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp6_percent") %>' Width="100px" Title="%"/></td>
 												<td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
-												<td align="left"><dx:ASPxDateEdit ID="edit_zvilbykmp2_date1" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp2_date1") %>' Width="100px" Title="з"/></td>
+												<td align="left"><dx:ASPxDateEdit ID="edit_zvilbykmp6_date1" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp6_date1") %>' Width="100px" Title="з"/></td>
 												<td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
-												<td align="left"><dx:ASPxDateEdit ID="edit_zvilbykmp2_date2" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp2_date2") %>' Width="100px" Title="по"/></td>
+												<td align="left"><dx:ASPxDateEdit ID="edit_zvilbykmp6_date2" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp6_date2") %>' Width="100px" Title="по"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td><dx:ASPxLabel runat="server" Text="Звільнено від сплати згідно п.7 рішення КМР №25/25"></dx:ASPxLabel></td>
+												<td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
+                                                <td align="left"><dx:ASPxSpinEdit ID="edit_zvilbykmp7_percent" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp7_percent") %>' Width="100px" Title="%"/></td>
+												<td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
+												<td align="left"><dx:ASPxDateEdit ID="edit_zvilbykmp7_date1" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp7_date1") %>' Width="100px" Title="з"/></td>
+												<td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
+												<td align="left"><dx:ASPxDateEdit ID="edit_zvilbykmp7_date2" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp7_date2") %>' Width="100px" Title="по"/></td>
                                             </tr>
                                             <tr>
                                                 <td><dx:ASPxLabel runat="server" Text="Звільнено від сплати згідно п.3 ПКМУ №1236"></dx:ASPxLabel></td>
@@ -2938,7 +2953,7 @@ WHERE id = @id"
                                                         <tr>
                                                             <td colspan="4"><dx:ASPxLabel ID="ASPxLabel70" runat="server" Text="Заборгованість з нарахованої авансової орендної плати, грн. (без ПДВ)"></dx:ASPxLabel></td>
                                                             <td><dx:ASPxSpinEdit ID="Edit_avance_debt" ClientInstanceName="Edit_avance_debt" runat="server" NumberType="Float" Value='<%# Eval("avance_debt") %>' Width="100px" 
-                                                                Title="поточна різниця між нарахованою та отриманою авансовою орендною платою (включаючи Сальдо авансової орендної плати на початок року)">
+                                                                Title="різниця значень полів «Авансова орендна плата (нарахована), грн.» та «у т.ч. Сальдо авансової орендної плати на кінець звітного періоду, грн. (без ПДВ)» заповнюється  балансоутримувачем у разі наявності">
                                                                 <ClientSideEvents LostFocus="CalcDebt" />
                                                             </dx:ASPxSpinEdit></td>
                                                         </tr>  

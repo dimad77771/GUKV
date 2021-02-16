@@ -2168,7 +2168,7 @@ public static class Reports1NFUtils
         string query = @"INSERT INTO arenda_notes
             SELECT arenda_id, purpose_group_id, purpose_id, purpose_str, rent_square, modify_date, modified_by, note,
             rent_rate, rent_rate_uah, cost_narah, cost_agreement, COALESCE(is_deleted, 0), del_date, cost_expert_total,
-            date_expert, payment_type_id, invent_no, note_status_id FROM reports1nf_arenda_notes WHERE arenda_id = @aid AND report_id = @rid";
+            date_expert, payment_type_id, invent_no, note_status_id, zapezh_deposit FROM reports1nf_arenda_notes WHERE arenda_id = @aid AND report_id = @rid";
 
         using (SqlCommand cmd = new SqlCommand(query, connectionSql))
         {
