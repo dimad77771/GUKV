@@ -107,14 +107,15 @@
         LEFT OUTER JOIN dict_districts2 ON dict_districts2.id = bld.addr_distr_new_id
         LEFT OUTER JOIN dict_org_ownership dict_own ON bal.form_ownership_id = dict_own.id
 		LEFT OUTER JOIN reports1nf_org_info org on org.id = bal.organization_id
-		outer apply (select ar.* from reports1nf_arenda ar left join reports1nf_arenda_notes an on ar.id = an.arenda_id and isnull(an.is_deleted,0) = 0 where bal.report_id = ar.report_id and bal.organization_id = ar.org_balans_id and bal.building_id = ar.building_id and isnull(ar.is_deleted,0)=0 and ar.agreement_state = 1) arenda 
+		--outer apply (select ar.* from reports1nf_arenda ar left join reports1nf_arenda_notes an on ar.id = an.arenda_id and isnull(an.is_deleted,0) = 0 where bal.report_id = ar.report_id    and bal.organization_id = ar.org_balans_id   and bal.building_id = ar.building_id and isnull(ar.is_deleted,0)=0 and ar.agreement_state = 1) arenda 
+	      outer apply (select ar.* from reports1nf_arenda ar left join reports1nf_arenda_notes an on ar.id = an.arenda_id and isnull(an.is_deleted,0) = 0 where bal.report_id = ar.report_id    and an.ref_balans_id = bal.id                and bal.building_id = ar.building_id and isnull(ar.is_deleted,0)=0 and ar.agreement_state = 1) arenda 
 
         outer apply (select sum(case when fs.is_included = 1 then fs.total_free_sqr else 0 end) as total_free_sqr from reports1nf_balans_free_square fs where fs.balans_id = bal.id and fs.report_id = bal.report_id /*and fs.is_included = 1*/) bfs 
-        outer apply (select COUNT(distinct ar.id) as num_rent_agr, sum(an.rent_square) as total_rent_sqr from reports1nf_arenda ar left join reports1nf_arenda_notes an on ar.id = an.arenda_id and isnull(an.is_deleted,0) = 0 where bal.report_id = ar.report_id and bal.organization_id = ar.org_balans_id and bal.building_id = ar.building_id and isnull(ar.is_deleted,0)=0 and ar.agreement_state = 1) ag 
-        --left join reports1nf_balans_free_square fs on fs.balans_id = bal.id and fs.report_id = bal.report_id
-        --LEFT JOIN reports1nf_arenda ar ON bal.report_id = ar.report_id and bal.organization_id = ar.org_balans_id and bal.building_id = ar.building_id and isnull(ar.is_deleted,0)=0 and ar.agreement_state = 1
-        --LEFT JOIN reports1nf_arenda_notes an on ar.id = an.arenda_id and isnull(an.is_deleted,0) = 0 
-        WHERE (bal.report_id = @rep_id or @rep_id = -1) and ISNULL(bal.is_deleted,0) = 0
+        
+		--outer apply (select COUNT(distinct ar.id) as num_rent_agr, sum(an.rent_square) as total_rent_sqr from reports1nf_arenda ar left join reports1nf_arenda_notes an on ar.id = an.arenda_id and isnull(an.is_deleted,0) = 0 where bal.report_id = ar.report_id and bal.organization_id = ar.org_balans_id          and bal.building_id = ar.building_id          and isnull(ar.is_deleted,0)=0 and ar.agreement_state = 1) ag 
+		  outer apply (select COUNT(distinct ar.id) as num_rent_agr, sum(an.rent_square) as total_rent_sqr from reports1nf_arenda ar left join reports1nf_arenda_notes an on ar.id = an.arenda_id and isnull(an.is_deleted,0) = 0 where bal.report_id = ar.report_id and bal.organization_id = ar.org_balans_id          and an.ref_balans_id = bal.id                 and isnull(ar.is_deleted,0)=0 and ar.agreement_state = 1) ag 
+        
+		WHERE (bal.report_id = @rep_id or @rep_id = -1) and ISNULL(bal.is_deleted,0) = 0
 		order by 2, addr_nomer 
 	" >
     <SelectParameters>
@@ -202,16 +203,16 @@
                             Text="XLS - Microsoft Excel&reg;" 
                             OnClick="ASPxButton_BalansObjects_ExportXLS_Click" Width="180px">
                         </dx:ASPxButton>
-                        <br />
+                        <%--<br />
                         <dx:ASPxButton ID="ASPxButton4" runat="server" 
                             Text="PDF - Adobe Acrobat&reg;" 
                             OnClick="ASPxButton_BalansObjects_ExportPDF_Click" Width="180px">
-                        </dx:ASPxButton>
+                        </dx:ASPxButton>--%>
                     </dx:PopupControlContentControl>
                 </ContentCollection>
             </dx:ASPxPopupControl>
             <dx:ASPxButton ID="ASPxButton_BalansObjects_SaveAs" runat="server" AutoPostBack="False" 
-                Text="Зберегти у Файлі" Width="148px" Visible="false">
+                Text="Зберегти у Файлі" Width="148px" Visible="true">
             </dx:ASPxButton>
         </td>        
         <td>
@@ -242,7 +243,7 @@
 
 
 <dx:ASPxGridViewExporter ID="ASPxGridViewExporterBalansObjects" runat="server" 
-    FileName="Balance" GridViewID="PrimaryGridView" PaperKind="A4" 
+    FileName="Inventory" GridViewID="PrimaryGridView" PaperKind="A4" 
     BottomMargin="20" LeftMargin="10" RightMargin="10" TopMargin="20">
     <Styles>
         <Default Font-Names="Calibri,Verdana,Sans Serif">

@@ -1007,7 +1007,7 @@
 <mini:ProfiledSqlDataSource ID="SqlDataSourceNotes" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT id, purpose_group_id, purpose_id, purpose_str, rent_square, note, rent_rate, cost_narah, cost_agreement,
-        cost_expert_total, date_expert, payment_type_id, invent_no, note_status_id, zapezh_deposit FROM reports1nf_arenda_notes WHERE (is_deleted IS NULL OR is_deleted = 0) AND report_id = @rep_id AND arenda_id = @aid"
+        cost_expert_total, date_expert, payment_type_id, invent_no, note_status_id, zapezh_deposit, ref_balans_id FROM reports1nf_arenda_notes WHERE (is_deleted IS NULL OR is_deleted = 0) AND report_id = @rep_id AND arenda_id = @aid"
     OnSelecting="SqlDataSource_Selecting">
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="aid" />
@@ -2445,6 +2445,7 @@ WHERE id = @id"
                                         <dx:GridViewDataComboBoxColumn FieldName="payment_type_id" VisibleIndex="15" Caption="Цільове використання майна" Width="140px">
                                             <PropertiesComboBox DataSourceID="SqlDataSourceDictRentalRate" ValueField="id" TextField="short_name" ValueType="System.Int32" />
                                         </dx:GridViewDataComboBoxColumn>
+										<dx:GridViewDataTextColumn FieldName="ref_balans_id" VisibleIndex="20" Caption="ID об'єкту оренди" Width="85px"></dx:GridViewDataTextColumn>
                                     </Columns>
 
                                     <TotalSummary>
@@ -2532,14 +2533,16 @@ WHERE id = @id"
 
 													<td> <dx:ASPxLabel ID="ASPxLabel73" runat="server" Text="Забезпечувальний депозит, грн." Width="150px" /> </td>
                                                     <td> <dx:ASPxTextBox ID="EditNoteZapezhDeposit" runat="server" Width="200px" Text='<%# Eval("zapezh_deposit")%>' /> </td>
-
-<%--                                                    <td> <dx:ASPxLabel ID="ASPxLabel23" runat="server" Text="Вид оплати" Width="150px" /> </td>
-                                                    <td> 
-                                                        <dx:ASPxComboBox ID="ComboNotePaymentType" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="200px" 
-                                                            IncrementalFilteringMode="StartsWith" DataSourceID="SqlDataSourcePaymentType" Value='<%# Eval("payment_type_id") %>' />
-                                                    </td>
---%>
                                                 </tr>
+
+                                                <tr>
+                                                    <td> <dx:ASPxLabel ID="ASPxLabel75" runat="server" Text="ID об'єкту оренди" Width="150px" /> </td>
+                                                    <td> <dx:ASPxTextBox ID="EditRefBalansId" runat="server" Width="200px" Text='<%# Eval("ref_balans_id")%>' /> </td>
+
+													<td> </td>
+                                                    <td> </td>
+                                                </tr>
+
                                             </table>
 
                                             <br/>

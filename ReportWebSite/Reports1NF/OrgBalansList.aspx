@@ -73,6 +73,7 @@
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT 
         bal.id AS 'balans_id', 
+		bal.id AS 'balans_id_', 
         dict_districts2.name AS 'district', 
         bld.addr_street_name,
         (COALESCE(LTRIM(RTRIM(bld.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer2)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer3)), '')) AS 'addr_nomer',
@@ -300,7 +301,7 @@
 		<dx:GridViewDataTextColumn FieldName="znos" VisibleIndex="18" Caption="Знос, тис. грн." ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataTextColumn>
 		<dx:GridViewDataDateColumn FieldName="znos_date" VisibleIndex="19" Caption="станом на" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataDateColumn>
 
-
+		<dx:GridViewDataTextColumn FieldName="balans_id_" VisibleIndex="20" Caption="ID об'єкту" Visible="false"></dx:GridViewDataTextColumn>
     </Columns>
 
     <TotalSummary>
@@ -327,7 +328,7 @@
     <SettingsPager PageSize="20" />
     <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
     <Styles Header-Wrap="True" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.BalansList" Enabled="True" Version="A3" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.BalansList" Enabled="True" Version="A4" />
 
     <ClientSideEvents
         Init="function (s,e) { PrimaryGridView.PerformCallback('init:'); }"

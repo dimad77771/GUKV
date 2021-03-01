@@ -1099,13 +1099,14 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         ASPxTextBox editNoteRentRate = GridViewNotes.FindEditFormTemplateControl("EditNoteRentRate") as ASPxTextBox;
         ASPxTextBox editNoteCostAgreement = GridViewNotes.FindEditFormTemplateControl("EditNoteCostAgreement") as ASPxTextBox;
 		ASPxTextBox editNoteZapezhDeposit = GridViewNotes.FindEditFormTemplateControl("EditNoteZapezhDeposit") as ASPxTextBox;
+		ASPxTextBox editRefBalansId = GridViewNotes.FindEditFormTemplateControl("EditRefBalansId") as ASPxTextBox;
 		ASPxComboBox comboNotePaymentType = GridViewNotes.FindEditFormTemplateControl("ComboNotePaymentType1") as ASPxComboBox;
 
         if (editNoteSquare != null && editNoteFloor != null && editNoteInventNo != null &&
             comboNoteCurState != null && comboNotePurposeGroup != null &&
             comboNotePurpose != null && editNotePurposeStr != null && editNoteCostExpert != null &&
             editNoteDateExpert != null && editNoteCostNarah != null && editNoteRentRate != null &&
-            editNoteCostAgreement != null && editNoteZapezhDeposit != null && comboNotePaymentType != null)
+            editNoteCostAgreement != null && editNoteZapezhDeposit != null && comboNotePaymentType != null && editRefBalansId != null)
         {
             object rowKey = e.Keys[GridViewNotes.KeyFieldName];
 
@@ -1142,6 +1143,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
                             values[12] = editNoteInventNo.Text.Trim().ToUpper().Left(128);
                             values[13] = comboNoteCurState.Value is int ? comboNoteCurState.Value : null;
 							values[14] = Utils.ConvertStrToDecimal(editNoteZapezhDeposit.Text);
+							values[15] = Utils.ConvertStrToInt(editRefBalansId.Text);
 
 							table.Rows[row].ItemArray = values;
                             break;
@@ -1306,6 +1308,14 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 					paramList += ", @zapezhdeposit";
 					parameters.Add("zapezhdeposit", values[14]);
 				}
+
+				if (values[15] is int)
+				{
+					fieldList += ", ref_balans_id";
+					paramList += ", @refbalansid";
+					parameters.Add("refbalansid", values[15]);
+				}
+
 
 				using (SqlCommand cmdInsert = new SqlCommand("INSERT INTO reports1nf_arenda_notes (" + fieldList + ") VALUES (" + paramList + ")", connection))
                 {
