@@ -72,6 +72,9 @@
 <mini:ProfiledSqlDataSource ID="SqlDataSourceReportBalans" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT 
+
+	distinct
+
 		(SELECT Q.name FROM dict_org_ownership Q where Q.id = org.form_ownership_id) as form_ownership_name
 		,org.short_name as org_name
 		,org.zkpo_code
@@ -290,22 +293,22 @@
 		<dx:GridViewDataTextColumn FieldName="sqr_non_habit" VisibleIndex="3" Caption="Площа, що перебуває в комунальній власності територіальної громади міста Києва, кв. м"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="sqr_total" VisibleIndex="3" Caption="Загальна площа об'єкта, кв. м"></dx:GridViewDataTextColumn>
 		<dx:GridViewDataTextColumn FieldName="sqr_vlas_potreb" VisibleIndex="3" Caption="Площа, що використвує-ться для власних потреб, кв. м" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>		
-		<dx:GridViewDataTextColumn FieldName="rent_square" VisibleIndex="3" Caption="Площа в орендному користуванні, кв. м"></dx:GridViewDataTextColumn>
 		<dx:GridViewDataTextColumn FieldName="total_free_sqr" VisibleIndex="3" Caption="Площа, що тимчасово не використовується та може бути передана в орендне користвання, кв. м"></dx:GridViewDataTextColumn>
+		<dx:GridViewDataTextColumn FieldName="rent_square" VisibleIndex="3" Caption="Площа в орендному користуванні, кв. м"></dx:GridViewDataTextColumn>
 		<dx:GridViewDataTextColumn FieldName="renter_name" VisibleIndex="3" Caption="Назва суб'єкта господарювання, який є користувачем (орендарем) об'єкта" Width="270px"></dx:GridViewDataTextColumn>
 		<dx:GridViewDataDateColumn FieldName="rent_start_date" VisibleIndex="3" Caption="Початок оренди"></dx:GridViewDataDateColumn>
 		<dx:GridViewDataDateColumn FieldName="rent_finish_date" VisibleIndex="3" Caption="Закінчення оренди"></dx:GridViewDataDateColumn>
-		<dx:GridViewDataDateColumn FieldName="agreement_num" VisibleIndex="3" Caption="Номер Договору Оренди"></dx:GridViewDataDateColumn>
+		<dx:GridViewDataTextColumn FieldName="agreement_num" VisibleIndex="3" Caption="Номер Договору Оренди"></dx:GridViewDataTextColumn>
     </Columns>
 
-    <TotalSummary>
+<%--    <TotalSummary>
         <dx:ASPxSummaryItem FieldName="balans_id" SummaryType="Count" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="sqr_total" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="total_free_sqr" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="num_rent_agr" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="total_rent_sqr" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="sqr_vlas_potreb" SummaryType="Sum" DisplayFormat="{0}" />
-    </TotalSummary>
+    </TotalSummary>--%>
 
     <SettingsBehavior AutoFilterRowInputDelay="2500" ColumnResizeMode="Control" EnableCustomizationWindow="True" />
     <Settings
@@ -319,7 +322,7 @@
     <SettingsPager PageSize="20" />
     <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
     <Styles Header-Wrap="True" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.BalansList" Enabled="true" Version="A5" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.BalansList" Enabled="true" Version="A6" />
 
     <ClientSideEvents
         Init="function (s,e) { PrimaryGridView.PerformCallback('init:'); }"

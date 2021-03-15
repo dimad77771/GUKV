@@ -142,7 +142,7 @@ public partial class Reports1NF_OrgArendaList : System.Web.UI.Page
                     query = @"SELECT 
                                 dbo.efn_concat_string(ar.agreement_num, ', ', ar.agreement_num, 1) as [Договір]
                                 FROM reports1nf_arenda ar
-                                join dbo.reports1nf_arenda_payments ap on ap.arenda_id = ar.id and ap.id = (select id from dbo.reports1nf_arenda_payments t1 where t1.arenda_id = ap.arenda_id and t1.rent_period_id = (select MAX(rent_period_id) from dbo.reports1nf_arenda_payments t2 where t2.arenda_id = ap.arenda_id))
+                                join dbo.reports1nf_arenda_payments ap on ap.arenda_id = ar.id and ap.id in (select id from dbo.reports1nf_arenda_payments t1 where t1.arenda_id = ap.arenda_id and t1.rent_period_id = (select MAX(rent_period_id) from dbo.reports1nf_arenda_payments t2 where t2.arenda_id = ap.arenda_id))
 --                                join dbo.organizations o on ar.org_balans_id = o.id
                                 left join [dbo].[dict_rent_period] p on ap.rent_period_id = p.id
                                 LEFT JOIN arenda a ON a.id = ar.id
