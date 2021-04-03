@@ -54,6 +54,8 @@
 		console.log(e.buttonID);
 		if (e.buttonID == 'btnPdfBuild') {
 			PrivatisatGridView.GetRowValues(e.visibleIndex, 'id', OnGridPdfBuildGetRowValues);
+		} else if (e.buttonID == 'btnJpegBuild') {
+			PrivatisatGridView.GetRowValues(e.visibleIndex, 'id', OnGridJpegBuildGetRowValues);
 		} else if (e.buttonID == 'bnt_current_stage_pdf') {
 			$.cookie('RecordID', s.GetRowKey(e.visibleIndex));
 			ASPxFileManagerPhotoFiles.Refresh();
@@ -181,6 +183,16 @@
 			'_blank',
 		);
 	}
+
+	function OnGridJpegBuildGetRowValues(values) {
+		console.log(values);
+		var id = values;
+		window.open(
+			'BalansPrivatisatPhotosPdf.aspx?id=' + id + '&jpeg=1',
+			'_blank',
+		);
+	}
+
 
     function OnDropDown(comboBox){
 		//SetDropDownWidth(comboBox, "368px");
@@ -527,6 +539,9 @@ SELECT SCOPE_IDENTITY()"
             <CustomButtons>
                 <dx:GridViewCommandColumnCustomButton ID="btnPdfBuild" Text="Pdf"> 
 					<Image Url="~/Styles/PdfReportIcon.png"/>
+                </dx:GridViewCommandColumnCustomButton>
+                <dx:GridViewCommandColumnCustomButton ID="btnJpegBuild" Text="Jpeg"> 
+					<Image Url="~/Styles/PhotoIcon.png"/>
                 </dx:GridViewCommandColumnCustomButton>
                 <dx:GridViewCommandColumnCustomButton ID="btnMapShow" Text="Показати на мапі"> 
 					<Image Url="~/Styles/MapShowIcon.png"/>
