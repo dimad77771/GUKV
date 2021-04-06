@@ -267,8 +267,9 @@
                 </dx:PanelContent>
             </PanelCollection>
         </dx:ASPxRoundPanel>
-        <br/>
-        <dx:ASPxRoundPanel ID="ASPxRoundPanel2" runat="server" HeaderText="Експлуатаційні Характеристики">
+
+        <%--<br/>--%>
+        <dx:ASPxRoundPanel ID="ASPxRoundPanel2" runat="server" HeaderText="Експлуатаційні Характеристики" Visible="false">
             <PanelCollection>
                 <dx:PanelContent ID="PanelContent2" runat="server" SupportsDisabledAttribute="True">
                     <table border="0" cellspacing="0" cellpadding="0" width="810px">

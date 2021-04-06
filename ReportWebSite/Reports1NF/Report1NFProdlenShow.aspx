@@ -48,7 +48,7 @@
 		//console.log(values);
 		var id = values;
 		window.open(
-			'BalansDogContinuePhotosPdf.aspx?id=' + id,
+			'Report1NFProdlenShowPhotosPdf.aspx?id=' + id + '&jpeg=1',
 			'_blank',
 		);
 	}
@@ -613,7 +613,10 @@ WHERE id = @id"
 
         <dx:GridViewCommandColumn VisibleIndex="0" Width="50px" ButtonType="Image" CellStyle-Wrap="False" >
             <CustomButtons>
-                <dx:GridViewCommandColumnCustomButton ID="btnPhoto" Text="Фотографії об'єкту"> 
+                <%--<dx:GridViewCommandColumnCustomButton ID="btnPhoto" Text="Фотографії об'єкту"> 
+					<Image Url="~/Styles/PhotoIcon.png"/>
+                </dx:GridViewCommandColumnCustomButton>--%>
+				<dx:GridViewCommandColumnCustomButton ID="btnPdfBuild" Text="Фотографії об'єкту"> 
 					<Image Url="~/Styles/PhotoIcon.png"/>
                 </dx:GridViewCommandColumnCustomButton>
                 <dx:GridViewCommandColumnCustomButton ID="btnMapShow" Text="Показати на мапі"> 

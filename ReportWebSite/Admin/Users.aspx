@@ -39,13 +39,15 @@ m.Email,
 m.IsLockedOut,
 u.LastActivityDate,
 m.CreateDate,
-m.LastLoginDate
+m.LastLoginDate,
+m.IsIncludedToEmail 
 from aspnet_Users u
 join aspnet_Membership m on m.UserId = u.UserId" 
     UpdateCommand="
 update aspnet_Membership set 
 Email = @Email,
-IsLockedOut = @IsLockedOut
+IsLockedOut = @IsLockedOut,
+IsIncludedToEmail = @IsIncludedToEmail 
 where UserId = @UserId
 update aspnet_Users set 
 UserName = @UserName
@@ -54,14 +56,27 @@ where UserId = @UserId"
     <UpdateParameters>
         <asp:Parameter Name="Email" />
         <asp:Parameter Name="IsLockedOut" />
+		<asp:Parameter Name="IsIncludedToEmail" />
         <asp:Parameter Name="UserName" />
         <asp:Parameter Name="UserId" />
     </UpdateParameters>
 </mini:ProfiledSqlDataSource>
 
-<p style="font-size: 1.4em; margin: 0 0 0 0; padding: 0 0 0 0; border-bottom: 1px solid #D0D0D0;">
-    <asp:Label runat="server" ID="ASPxLabel19" Text="Довідник користувачів" CssClass="pagetitle"/>
-</p>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+	<tr>
+		<td style="width: 100%;">
+			<p style="font-size: 1.4em; margin: 0 0 0 0; padding: 0 0 0 0; border-bottom: 1px solid #D0D0D0;">
+				<asp:Label runat="server" ID="ASPxLabel19" Text="Довідник користувачів" CssClass="pagetitle"/>
+			</p>
+		</td>
+		<td>
+			<dx:ASPxButton ID="ASPxButton5" runat="server" 
+				Text="Сформувати розсилку" 
+                OnClick="ASPxButton_AllBuildings_ExportCSV_Click" Width="180px">
+            </dx:ASPxButton>
+		</td>
+	</tr>
+</table>
 
 <dx:ASPxGridView ID="ASPxGridViewFreeSquare" runat="server" AutoGenerateColumns="False" 
         DataSourceID="SqlDataSourceFreeSquare" KeyFieldName="UserId" Width="100%" 
@@ -99,6 +114,7 @@ where UserId = @UserId"
 <dx:GridViewDataTextColumn FieldName="UserName" Caption="ПІБ користувача" VisibleIndex="1"><HeaderStyle Wrap="True" /></dx:GridViewDataTextColumn>
 <dx:GridViewDataTextColumn FieldName="Email" Caption="Електронна пошта" VisibleIndex="2"><HeaderStyle Wrap="True" /></dx:GridViewDataTextColumn>
 <dx:GridViewDataCheckColumn FieldName="IsLockedOut" Caption="Заблоковано" VisibleIndex="3"><HeaderStyle Wrap="True" /></dx:GridViewDataCheckColumn>
+<dx:GridViewDataCheckColumn FieldName="IsIncludedToEmail" Caption="Включено в розсилку" VisibleIndex="3"><HeaderStyle Wrap="True" /></dx:GridViewDataCheckColumn>
 <dx:GridViewDataDateColumn FieldName="LastActivityDate" Caption="Остання активність" VisibleIndex="4" ReadOnly="true"><EditFormSettings Visible="False" /><HeaderStyle Wrap="True" /></dx:GridViewDataDateColumn>
 <dx:GridViewDataDateColumn FieldName="CreateDate" Caption="Дата створення" VisibleIndex="5" ReadOnly="true"><EditFormSettings Visible="False" /><HeaderStyle Wrap="True" /></dx:GridViewDataDateColumn>
 <dx:GridViewDataDateColumn FieldName="LastLoginDate" Caption="Останній вхід" VisibleIndex="6" ReadOnly="true"><EditFormSettings Visible="False" /><HeaderStyle Wrap="True" /></dx:GridViewDataDateColumn>

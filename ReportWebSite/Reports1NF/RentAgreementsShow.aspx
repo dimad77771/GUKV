@@ -331,7 +331,7 @@
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_giver_short_name" ReadOnly="True"
             VisibleIndex="15" Visible="True" Caption="Орендодавець - Коротка Назва" 
-            Width="200px">
+            Width="280px">
             <%--<DataItemTemplate>
                 <%# "<a href=\"javascript:ShowOrganizationCard(" + Eval("org_giver_id") + ")\">" + Eval("org_giver_short_name") + "</a>"%>
             </DataItemTemplate>--%>
@@ -449,8 +449,8 @@
             VisibleIndex="63" Visible="False" Caption="Балансоутримувач - Загальна Площа На Балансі (кв.м.)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="balans_num_rent_agr" ReadOnly="True"
             VisibleIndex="64" Visible="False" Caption="Балансоутримувач - Кількість Договорів Оренди"></dx:GridViewDataTextColumn>      --%>
-        <dx:GridViewDataTextColumn FieldName="stanjuro" ReadOnly="True"
-            VisibleIndex="64" Visible="True" Caption="Балансоутримувач - стан юр. особи"></dx:GridViewDataTextColumn> 
+        <%--<dx:GridViewDataTextColumn FieldName="stanjuro" ReadOnly="True"
+            VisibleIndex="64" Visible="True" Caption="Балансоутримувач - стан юр. особи"></dx:GridViewDataTextColumn> --%>
 
         <dx:GridViewDataTextColumn FieldName="balans_sqr_in_rent" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="65" Visible="False" Caption="Балансоутримувач - Загальна Площа Надана В Оренду (кв.м.)"></dx:GridViewDataTextColumn>
@@ -614,7 +614,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.RentAgreementsShow" Version="A2_1" Enabled="false" />
+    <SettingsCookies CookiesID="GUKV.RentAgreementsShow" Version="A2_2" Enabled="false" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
