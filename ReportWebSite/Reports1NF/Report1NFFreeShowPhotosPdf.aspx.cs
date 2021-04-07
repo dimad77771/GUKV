@@ -103,7 +103,7 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
 		void ConfigInit()
 		{
 			photoRootPath = WebConfigurationManager.AppSettings["ImgFreeSquareRootFolder"];
-			photo1NFPath = Path.Combine(photoRootPath, "privatisat_documents");
+			photo1NFPath = Path.Combine(photoRootPath, "1nf");
 		}
 
 		IEnumerable<FileInfo> GetAllFiles()
@@ -300,7 +300,7 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
 		void ConfigInit()
 		{
 			photoRootPath = WebConfigurationManager.AppSettings["ImgFreeSquareRootFolder"];
-			photo1NFPath = Path.Combine(photoRootPath, "privatisat_documents");
+			photo1NFPath = Path.Combine(photoRootPath, "1nf");
 		}
 
 		IEnumerable<FileInfo> GetAllFiles()
