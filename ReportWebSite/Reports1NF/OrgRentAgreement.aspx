@@ -501,7 +501,9 @@
             return true;
         }
 
-        function EditCollectionDebtTotalValidate() {
+		function EditCollectionDebtTotalValidate() {
+			return true;	// решили, что это уже не надо 07.04.2021
+
 
 //            if (document.getElementById('<%=OrganizationsForm.ClientID %>' + '_PanelAgreement_ComboPaymentType_I').value.toLowerCase() == "грошова оплата" &&
 //              document.getElementById('<%=OrganizationsForm.ClientID %>' + '_PanelAgreement_RadioAgreementActive_S').value == "C") {
@@ -2702,7 +2704,7 @@ WHERE id = @id"
                                                     </tr>
 
                                                     <tr>
-                                                        <td><dx:ASPxLabel ID="ASPxLabel74" runat="server" Text="Сальдо авансової орендної плати на початок року (незмінна впродовж року величина), грн. (без ПДВ)"></dx:ASPxLabel></td>
+                                                        <td><dx:ASPxLabel ID="ASPxLabel74" runat="server" Text="Сальдо авансової орендної плати на початок звітного періоду, грн. (без ПДВ)"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="edit_zabezdepoz_saldo" ClientInstanceName="edit_zabezdepoz_saldo" runat="server" NumberType="Float" Value='<%# Eval("zabezdepoz_saldo") %>' Width="150px"
                                                             Title="сума коштів отримана від орендаря, (бажано що б вона дорівнювала нарахованій авансовій орендній платі)">
                                                             <ClientSideEvents 
