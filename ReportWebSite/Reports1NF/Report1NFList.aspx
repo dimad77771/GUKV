@@ -407,7 +407,7 @@ WHERE id = @report_id"
                             <SettingsFileList View="Details">
                                 <DetailsViewSettings AllowColumnResize="true" AllowColumnDragDrop="true" AllowColumnSort="true" ShowHeaderFilterButton="false"/>
                             </SettingsFileList>
-							<SettingsEditing AllowDelete="false" AllowCreate="false" AllowDownload="true" AllowMove="false" AllowRename="false" />
+							<SettingsEditing AllowDelete="true" AllowCreate="false" AllowDownload="true" AllowMove="false" AllowRename="false" />
 							<SettingsFolders Visible="False" />
 							<SettingsToolbar ShowDownloadButton="True" ShowPath="False" />
 							<SettingsUpload UseAdvancedUploadMode="True" Enabled="false">
@@ -824,7 +824,7 @@ WHERE id = @report_id"
 
     <%-- !!!!!! --%>
 
-        <dx:GridViewDataTextColumn Caption="Авансова орендна плата / Забезпечувальний депозит (нараховано), грн." FieldName="PAY_AVANCE_PLAT" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+        <dx:GridViewDataTextColumn Caption="Авансова орендна плата (нараховано), грн." FieldName="PAY_AVANCE_PLAT" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_AVANCE_PLAT") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
@@ -854,13 +854,13 @@ WHERE id = @report_id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn Caption="Надходження авансової орендної плати / забезпечувального депозиту у звітному періоді, грн. (без ПДВ)" FieldName="PAY_ZABEZDEPOZ_PRISHLO" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+        <dx:GridViewDataTextColumn Caption="Надходження авансової орендної плати у звітному періоді, грн. (без ПДВ)" FieldName="PAY_ZABEZDEPOZ_PRISHLO" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_ZABEZDEPOZ_PRISHLO") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn Caption="Сальдо авансової орендної плати / забезпечувального депозиту на кінець звітного періоду, грн. (без ПДВ)" FieldName="PAY_AVANCE_SALDO" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+        <dx:GridViewDataTextColumn Caption="Сальдо авансової орендної плати на початок звітного періоду, грн. (без ПДВ)" FieldName="PAY_AVANCE_SALDO" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_AVANCE_SALDO") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
@@ -879,7 +879,7 @@ WHERE id = @report_id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn Caption="- у тому числі, з нарахованої авансової орендної плати / забезпечувального депозиту, грн." FieldName="PAY_AVANCE_PAYMENTNAR" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+        <dx:GridViewDataTextColumn Caption="- у тому числі, з нарахованої авансової орендної плати, грн." FieldName="PAY_AVANCE_PAYMENTNAR" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_AVANCE_PAYMENTNAR") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>

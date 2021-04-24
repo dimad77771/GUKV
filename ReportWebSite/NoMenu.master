@@ -16,7 +16,7 @@
     <form id="Form1" runat="server">
     <div class="page">
         <div class="narrowheader">
-            <div style="float: right; padding-top: 2px;">
+            <div style="float: right; padding-top: 2px; display:none">
                 <dx:ThemeSelector ID="ThemeSelector" runat="server" />
             </div>
 
@@ -41,13 +41,15 @@
                             <div style="float:right;color:white">
                                 <strong>Технічна підтримка <a style="color:white" href="mailto:seic@gukv.gov.ua" title="Написати лист">seic@gukv.gov.ua</a> </strong>
 
-                                <dx:ASPxLabel Visible="false" Text="0931605647" runat="server" ID="PhoneText_1" ClientInstanceName="PhoneText_1" /> – процедура прийому звітів; 
-                                <dx:ASPxLabel Visible="false" Text="з 9-00 до 12-00" runat="server" ID="TimeText_1" ClientInstanceName="TimeText_1" />
+                                <dx:ASPxLabel Visible="true" Text="0931605647" runat="server" ID="PhoneText_1" ClientInstanceName="PhoneText_1" /> – процедура прийому звітів; 
+                                <dx:ASPxLabel Visible="true" Text="з 9-00 до 12-00" runat="server" ID="TimeText_1" ClientInstanceName="TimeText_1" />
                                 
                                 <br />
 
                                 <dx:ASPxLabel Text="0672605106" runat="server" ID="PhoneText_2" ClientInstanceName="PhoneText_2" /> – реєстрація, об’єкти, договори, вільні; 
                                 <dx:ASPxLabel Text="з 10-00 до 12-00" runat="server" ID="TimeText_2" ClientInstanceName="TimeText_2" />
+
+								<br />
 
                                 <dx:ASPxLabel Text="0979065119" runat="server" ID="PhoneText_3" ClientInstanceName="PhoneText_3" /> - плата за використання
                                 <dx:ASPxLabel Text="з 10-00 до 12-00" runat="server" ID="TimeText_3" ClientInstanceName="TimeText_3" />
@@ -57,7 +59,7 @@
                 </PanelCollection>
             </dx:ASPxCallbackPanel>
 
-            <dx:ASPxPopupControl ID="editTextPopup" ClientInstanceName="editTextPopup" runat="server" Modal="true"  PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="false" ShowHeader="false" EnableTheming="false">
+            <dx:ASPxPopupControl  ID="editTextPopup" ClientInstanceName="editTextPopup" runat="server" Modal="true"  PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="false" ShowHeader="false" EnableTheming="false">
                 <HeaderStyle HorizontalAlign="Center" />
                 <ContentCollection>
                     <dx:PopupControlContentControl runat="server">

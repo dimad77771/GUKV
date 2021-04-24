@@ -136,7 +136,8 @@
             EditCollectionDebt3Month.SetValue(vv1);
 
 			// - менять каждый квартал
-			var vvz = round( nn(edit_debtkvart_0.GetValue()) );																											//1кв.
+			//var vvz = round(nn(edit_debtkvart_0.GetValue()));																											//1кв.
+			var vvz = round( nn(edit_debtkvart_0.GetValue()) + nn(edit_debtkvart_1.GetValue()) );																		//2кв.
 			//var vvz = round( nn(edit_debtkvart_0.GetValue()) + nn(edit_debtkvart_1.GetValue()) + nn(edit_debtkvart_2.GetValue()) + nn(edit_debtkvart_3.GetValue()) );	//4кв.
 			EditCollectionDebtZvit.SetValue(vvz);
 
@@ -227,7 +228,9 @@
 				var v5 = nn(edit_debtkvart_2.GetValue());
 				var v6 = nn(edit_debtkvart_3.GetValue());
 
-				val = round(nn(val));						// 1кв.
+				// - менять каждый квартал (2)
+				//val = round(nn(val));						// 1кв.
+				val = round(nn(val) - v4);		// 2кв.
                 //val = round(nn(val) - v4 - v5 - v6);		// 4кв.
 				
 
@@ -1164,6 +1167,20 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
     EnableCaching="true">
 </mini:ProfiledSqlDataSource>
 
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictOrgOuprav" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_1nf_org_ouprav ORDER BY name"
+    EnableCaching="true">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictOrgPravform" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_1nf_org_pravform ORDER BY name"
+    EnableCaching="true">
+</mini:ProfiledSqlDataSource>
+
+
+
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDictRentalRate" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT id, short_name = left(full_name, 150), rental_rate FROM dict_rental_rate ORDER BY short_name">
@@ -1745,9 +1762,26 @@ WHERE id = @id"
                                                         <td> <dx:ASPxLabel ID="ASPxLabel51" runat="server" Text="Вид Діяльності" Width="160px" /> </td>
                                                         <td> <dx:ASPxComboBox ID="ComboBoxOccupationFrom" runat="server" ClientInstanceName="ComboBoxOccupationFrom" 
                                                             ValueType="System.Int32" TextField="name" ValueField="id" Width="400px" Title="" 
-                                                                IncrementalFilteringMode="StartsWith" 
+                                                                IncrementalFilteringMode="Contains" 
                                                                 DataSourceID="SqlDataSourceDictOrgOccupation" /> </td>
                                                     </tr>
+													<tr>
+                                                        <td> <dx:ASPxLabel ID="ASPxLabel77" runat="server" Text="Організаційно-правова Форма" Width="160px"/> </td>
+                                                        <td> <dx:ASPxComboBox ID="ComboBoxOrgPravform" runat="server" ClientInstanceName="ComboBoxOrgPravform" 
+                                                            ValueType="System.Int32" TextField="name" ValueField="id" Width="400px" Title=""
+																DropDownWidth="800px"
+                                                                IncrementalFilteringMode="Contains" 
+                                                                DataSourceID="SqlDataSourceDictOrgPravform" /> </td>
+                                                    </tr>
+													<tr>
+                                                        <td> <dx:ASPxLabel ID="ASPxLabel76" runat="server" Text="Орган Управління" Width="160px"/> </td>
+                                                        <td> <dx:ASPxComboBox ID="ComboBoxOrgOuprav" runat="server" ClientInstanceName="ComboBoxOrgOuprav" 
+                                                            ValueType="System.Int32" TextField="name" ValueField="id" Width="400px" Title=""
+																DropDownWidth="800px"
+                                                                IncrementalFilteringMode="Contains" 
+                                                                DataSourceID="SqlDataSourceDictOrgOuprav" /> </td>
+                                                    </tr>
+
                                                 </table>                                                                    
                                             </dx:PanelContent>
                                         </PanelCollection>                                                        
@@ -1886,9 +1920,26 @@ WHERE id = @id"
                                                         <td> <dx:ASPxLabel ID="ASPxLabel51" runat="server" Text="Вид Діяльності" Width="160px" /> </td>
                                                         <td> <dx:ASPxComboBox ID="ComboBoxOccupationFrom" runat="server" ClientInstanceName="ComboBoxOccupationFrom" 
                                                             ValueType="System.Int32" TextField="name" ValueField="id" Width="400px" Title="" 
-                                                                IncrementalFilteringMode="StartsWith" 
+                                                                IncrementalFilteringMode="Contains" 
                                                                 DataSourceID="SqlDataSourceDictOrgOccupation" Value='<%# Eval("occupation_id") %>' /> </td>
                                                     </tr>
+													<tr>
+                                                        <td> <dx:ASPxLabel ID="ASPxLabel77" runat="server" Text="Організаційно-правова Форма" Width="160px"/> </td>
+                                                        <td> <dx:ASPxComboBox ID="ComboBoxOrgPravform" runat="server" ClientInstanceName="ComboBoxOrgPravform" 
+                                                            ValueType="System.Int32" TextField="name" ValueField="id" Width="400px" Title=""
+																DropDownWidth="800px"
+                                                                IncrementalFilteringMode="Contains" 
+                                                                DataSourceID="SqlDataSourceDictOrgPravform" Value='<%# Eval("pravform_id") %>' /> </td>
+                                                    </tr>
+													<tr>
+                                                        <td> <dx:ASPxLabel ID="ASPxLabel76" runat="server" Text="Орган Управління" Width="160px"/> </td>
+                                                        <td> <dx:ASPxComboBox ID="ComboBoxOrgOuprav" runat="server" ClientInstanceName="ComboBoxOrgOuprav" 
+                                                            ValueType="System.Int32" TextField="name" ValueField="id" Width="400px" Title=""
+																DropDownWidth="800px"
+                                                                IncrementalFilteringMode="Contains" 
+                                                                DataSourceID="SqlDataSourceDictOrgOuprav" Value='<%# Eval("ouprav_id") %>' /> </td>
+                                                    </tr>
+
                                                 </table>                                                                    
                                             </dx:PanelContent>
                                         </PanelCollection>                                                        
@@ -3033,7 +3084,8 @@ WHERE id = @id"
                                                 <dx:PanelContent ID="PanelContent18" runat="server">
                                                     <table border="0" cellspacing="0" cellpadding="2" width="200px">
                                                         <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_0" runat="server" Text="2021, 1кв.:"></dx:ASPxLabel></td>
+															<%--- менять каждый квартал (3)--%>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_0" runat="server" Text="2021, 2кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_0" ClientInstanceName="edit_debtkvart_0" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_0") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
@@ -3041,7 +3093,7 @@ WHERE id = @id"
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_1" runat="server" Text="2020, 4кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_1" runat="server" Text="2021, 1кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_1" ClientInstanceName="edit_debtkvart_1" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_1") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
@@ -3049,70 +3101,70 @@ WHERE id = @id"
                                                             </td>
                                                         </tr>                                                  
                                                         <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_2" runat="server" Text="2020, 3кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_2" runat="server" Text="2020, 4кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_2" ClientInstanceName="edit_debtkvart_2" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_2") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_3" runat="server" Text="2020, 2кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_3" runat="server" Text="2020, 3кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_3" ClientInstanceName="edit_debtkvart_3" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_3") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_4" runat="server" Text="2020, 1кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_4" runat="server" Text="2020, 2кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_4" ClientInstanceName="edit_debtkvart_4" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_4") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_5" runat="server" Text="2019, 4кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_5" runat="server" Text="2020, 1кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_5" ClientInstanceName="edit_debtkvart_5" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_5") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_6" runat="server" Text="2019, 3кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_6" runat="server" Text="2019, 4кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_6" ClientInstanceName="edit_debtkvart_6" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_6") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_7" runat="server" Text="2019, 2кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_7" runat="server" Text="2019, 3кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_7" ClientInstanceName="edit_debtkvart_7" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_7") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_8" runat="server" Text="2019, 1кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_8" runat="server" Text="2019, 2кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_8" ClientInstanceName="edit_debtkvart_8" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_8") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_9" runat="server" Text="2018, 4кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_9" runat="server" Text="2019, 1кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_9" ClientInstanceName="edit_debtkvart_9" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_9") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_10" runat="server" Text="2018, 3кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_10" runat="server" Text="2018, 4кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_10" ClientInstanceName="edit_debtkvart_10" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_10") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_11" runat="server" Text="2018, 2кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_11" runat="server" Text="2018, 3кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_11" ClientInstanceName="edit_debtkvart_11" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_11") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />

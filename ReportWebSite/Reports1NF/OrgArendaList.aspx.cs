@@ -863,6 +863,8 @@ public partial class Reports1NF_OrgArendaList : System.Web.UI.Page
                         zkpo,
                         ComboBoxIndustryFrom.Value is int ? (int)ComboBoxIndustryFrom.Value : -1,
                         ComboBoxOccupationFrom.Value is int ? (int)ComboBoxOccupationFrom.Value : -1,
+						-1,
+						-1,
                         ComboBoxFormVlasnOrg.Value is int ? (int)ComboBoxFormVlasnOrg.Value : -1,
                         ComboBoxStatusOrg.Value is int ? (int)ComboBoxStatusOrg.Value : -1,
                         -1,

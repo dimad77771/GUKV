@@ -176,6 +176,7 @@
 
         WHERE 1=1
 
+		and d.name = 'ДІЮЧЕ'
         and m.modify_date >= '20200101'
 		and (CASE WHEN ar.agreement_state = 1 THEN 'Договір діє' ELSE CASE WHEN ar.agreement_state = 2 THEN 'Договір закінчився, але заборгованність не погашено' ELSE CASE WHEN ar.agreement_state = 3 THEN 'Договір закінчився, оренда продовжена іншим договором' ELSE '' END END END)
 				= 'Договір діє'

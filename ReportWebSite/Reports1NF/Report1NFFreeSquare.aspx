@@ -587,6 +587,7 @@ WHERE id = @id"
 			</EditItemTemplate>--%>
 		</dx:GridViewDataCheckColumn>
         <dx:GridViewDataTextColumn FieldName="district" Caption="Район" VisibleIndex="2" Width="120px" ReadOnly="true">
+			<SettingsHeaderFilter Mode="CheckedList"/>
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("district") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>

@@ -185,6 +185,8 @@ public partial class RishProjectTableOrgFromEditor : System.Web.UI.UserControl
                     zkpo,
                     ComboBoxIndustryFrom.Value is int ? (int)ComboBoxIndustryFrom.Value : -1,
                     ComboBoxOccupationFrom.Value is int ? (int)ComboBoxOccupationFrom.Value : -1,
+					-1,
+					-1,
                     ComboBoxFormVlasnFrom.Value is int ? (int)ComboBoxFormVlasnFrom.Value : -1,
                     ComboBoxStatusFrom.Value is int ? (int)ComboBoxStatusFrom.Value : -1,
                     ComboBoxFormGospFrom.Value is int ? (int)ComboBoxFormGospFrom.Value : -1,

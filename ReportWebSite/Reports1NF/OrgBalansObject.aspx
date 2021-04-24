@@ -123,7 +123,15 @@
         }
 
         return res;
-    }
+	}
+
+	function validate_edit_mode() {
+		if (grid.IsEditing()) {
+			alert("Увага, Ви не коректно завершили роботу у вхідній формі !");
+			return false;
+		}
+		return true;
+	}
 
     function IsLiteraPresent(s) {
 
@@ -2479,6 +2487,7 @@ WHERE id = @id"
             <dx:ASPxButton ID="ButtonSave" runat="server" Text="Зберегти" AutoPostBack="false" CausesValidation="false">
                 <ClientSideEvents Click="function (s,e) 
                 { 
+					if (!validate_edit_mode()) return;
                     var objSqrTotal = EditObjSqrTotal.GetValue();
                     if (objSqrTotal == -1)  //pgv
                     {
@@ -2494,7 +2503,11 @@ WHERE id = @id"
         <td> &nbsp; </td>
         <td>
             <dx:ASPxButton ID="ButtonSend" runat="server" Text="Надіслати" AutoPostBack="false" ValidationGroup="MainGroup" CausesValidation="false">
-                <ClientSideEvents Click="function (s,e) { CPMainPanel.PerformCallback('send:'); }" />
+                <ClientSideEvents Click="function (s,e) 
+				{ 
+					if (!validate_edit_mode()) return;
+					CPMainPanel.PerformCallback('send:'); 
+				}" />
             </dx:ASPxButton>
         </td>
         <td> &nbsp; </td>

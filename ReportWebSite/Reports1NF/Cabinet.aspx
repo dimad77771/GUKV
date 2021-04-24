@@ -210,7 +210,7 @@
 					<SettingsFileList>
 						<ThumbnailsViewSettings ThumbnailSize="180px" />
 					</SettingsFileList>
-					<SettingsEditing AllowDelete="True" />
+					<SettingsEditing AllowDelete="false" />
 					<SettingsFolders Visible="False" />
 					<SettingsToolbar ShowDownloadButton="True" ShowPath="False" />
 					<SettingsUpload UseAdvancedUploadMode="True">

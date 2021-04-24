@@ -20,7 +20,9 @@ public static class RishProjectExport
         string zkpo,
         int industryId,
         int occupationId,
-        int formVlasnId,
+		int pravformId,
+		int oupravId,
+		int formVlasnId,
         int statusId,
         int finFormId,
         int orgFormId,
@@ -146,7 +148,9 @@ public static class RishProjectExport
                     using (SqlCommand cmd = new SqlCommand("UPDATE organizations SET full_name = @fname, short_name = @sname, zkpo_code = @zkpo, modified_by = @isp, modify_date = @dt, is_deleted = 0, " +
                         (industryId == -1 ? "" : "industry_id = @industry_id, ") +
                         (occupationId == -1 ? "" : "occupation_id = @occupation_id, ") +
-                        (finFormId == -1 ? "" : "form_gosp_id = @form_gosp_id, ") +
+						(pravformId == -1 ? "" : "pravform_id = @pravform_id, ") +
+						(oupravId == -1 ? "" : "ouprav_id = @ouprav_id, ") +
+						(finFormId == -1 ? "" : "form_gosp_id = @form_gosp_id, ") +
                         (vedomstvoId == -1 ? "" : "vedomstvo_id = @vedomstvo_id,") +
                         (orgFormId == -1 ? "" : "form_id = @form_id, ") +
                         "form_ownership_id = @form_ownership_id, status_id = @status_id, " +
@@ -166,7 +170,11 @@ public static class RishProjectExport
                             cmd.Parameters.Add(new SqlParameter("industry_id", industryId));
                         if (occupationId != -1)
                             cmd.Parameters.Add(new SqlParameter("occupation_id", occupationId));
-                        if (finFormId != -1)
+						if (pravformId != -1)
+							cmd.Parameters.Add(new SqlParameter("pravform_id", pravformId));
+						if (oupravId != -1)
+							cmd.Parameters.Add(new SqlParameter("ouprav_id", oupravId));
+						if (finFormId != -1)
                             cmd.Parameters.Add(new SqlParameter("form_gosp_id", finFormId));
                         if (vedomstvoId!= -1)
                             cmd.Parameters.Add(new SqlParameter("vedomstvo_id", vedomstvoId));
@@ -219,7 +227,9 @@ public static class RishProjectExport
         string zkpo,
         int industryId,
         int occupationId,
-        int formVlasnId,
+		int pravformId,
+		int oupravId,
+		int formVlasnId,
         int statusId,
         int finFormId,
         int orgFormId,
@@ -363,7 +373,9 @@ public static class RishProjectExport
 
                 AddQueryParam("gal", "industry_id", industryId, ref fieldList, ref paramList, parameters, -1);
                 AddQueryParam("viddial", "occupation_id", occupationId, ref fieldList, ref paramList, parameters, -1);
-                AddQueryParam("fvl", "form_ownership_id", formVlasnId, ref fieldList, ref paramList, parameters, -1);
+				AddQueryParam("vidpform", "pravform_id", pravformId, ref fieldList, ref paramList, parameters, -1);
+				AddQueryParam("oupform", "ouprav_id", oupravId, ref fieldList, ref paramList, parameters, -1);
+				AddQueryParam("fvl", "form_ownership_id", formVlasnId, ref fieldList, ref paramList, parameters, -1);
                 AddQueryParam("sta", "status_id", statusId, ref fieldList, ref paramList, parameters, -1);
                 AddQueryParam("gosp", "form_gosp_id", finFormId, ref fieldList, ref paramList, parameters, -1);
                 AddQueryParam("orgf", "form_id", orgFormId, ref fieldList, ref paramList, parameters, -1);
@@ -428,6 +440,8 @@ public static class RishProjectExport
 			string zkpo,
 			int industryId,
 			int occupationId,
+			int pravformId,
+			int oupravId,
 			int formVlasnId,
 			int statusId,
 			int finFormId,
@@ -591,6 +605,8 @@ public static class RishProjectExport
 
 				AddQueryParam("gal", "industry_id", industryId, ref fieldList, ref paramList, parameters, -1);
 				AddQueryParam("viddial", "occupation_id", occupationId, ref fieldList, ref paramList, parameters, -1);
+				AddQueryParam("vidpform", "pravform_id", pravformId, ref fieldList, ref paramList, parameters, -1);
+				AddQueryParam("oupform", "ouprav_id", oupravId, ref fieldList, ref paramList, parameters, -1);
 				AddQueryParam("fvl", "form_ownership_id", formVlasnId, ref fieldList, ref paramList, parameters, -1);
 				AddQueryParam("sta", "status_id", statusId, ref fieldList, ref paramList, parameters, -1);
 				AddQueryParam("gosp", "form_gosp_id", finFormId, ref fieldList, ref paramList, parameters, -1);

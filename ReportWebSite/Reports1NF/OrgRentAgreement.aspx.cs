@@ -1714,6 +1714,8 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 
     void AddressChange(SqlConnection connection)
     {
+		return;
+
         using (var transaction = connection.BeginTransaction())
         {
             Dictionary<string, Control> allcontrols = new Dictionary<string, Control>();
@@ -2536,7 +2538,10 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
             int industry = ((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxIndustryOrg")).Value is int ? (int)((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxIndustryOrg")).Value : -1;
             int occupation = ((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOccupationFrom")).Value is int ? (int)((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOccupationFrom")).Value : -1;
 
-            string directorFio = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxDirectorFioOrg")).Text;
+			int pravform = ((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOrgPravform")).Value is int ? (int)((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOrgPravform")).Value : -1;
+			int ouprav = ((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOrgOuprav")).Value is int ? (int)((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOrgOuprav")).Value : -1;
+
+			string directorFio = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxDirectorFioOrg")).Text;
             string directorPhone = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxDirectorPhoneOrg")).Text;
             string directorEmail = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxDirectorEmailOrg")).Text;
             string buhgalterFio = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxBuhgalterFioOrg")).Text;
@@ -2590,7 +2595,9 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
                             zkpo,
                             industry,
                             occupation,
-                            formVlasn,
+							pravform,
+							ouprav,
+							formVlasn,
                             status,
                             -1,
                             -1,
@@ -2619,7 +2626,9 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
                             zkpo,
                             industry,
                             occupation,
-                            formVlasn,
+							pravform,
+							ouprav,
+							formVlasn,
                             status,
                             -1,
                             -1,
