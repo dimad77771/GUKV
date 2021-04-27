@@ -7,8 +7,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using DevExpress.Web;
 using DevExpress.Web.Data;
-using DevExpress.Web;
-using DevExpress.Web;
 using System.Data;
 using System.Data.SqlClient;
 using FirebirdSql.Data.FirebirdClient;
@@ -16,9 +14,7 @@ using log4net;
 using GUKV;
 using System.Web.Configuration;
 using System.IO;
-using DevExpress.Web;
 using ExtDataEntry.Models;
-using DevExpress.Web;
 
 public partial class Reports1NF_FreeCyclePopupEditRenterOrg : System.Web.UI.Page
 {
@@ -133,6 +129,9 @@ public partial class Reports1NF_FreeCyclePopupEditRenterOrg : System.Web.UI.Page
 			int industry = ((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxIndustryOrg")).Value is int ? (int)((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxIndustryOrg")).Value : -1;
 			int occupation = ((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOccupationFrom")).Value is int ? (int)((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOccupationFrom")).Value : -1;
 
+			int pravform = ((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOrgPravform")).Value is int ? (int)((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOrgPravform")).Value : -1;
+			int ouprav = ((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOrgOuprav")).Value is int ? (int)((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOrgOuprav")).Value : -1;
+
 			string directorFio = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxDirectorFioOrg")).Text;
 			string directorPhone = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxDirectorPhoneOrg")).Text;
 			string directorEmail = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxDirectorEmailOrg")).Text;
@@ -192,8 +191,8 @@ public partial class Reports1NF_FreeCyclePopupEditRenterOrg : System.Web.UI.Page
 						zkpo,
 						industry,
 						occupation,
-						-1,
-						-1,
+						pravform,
+						ouprav,
 						formVlasn,
 						status,
 						-1,
@@ -243,8 +242,8 @@ public partial class Reports1NF_FreeCyclePopupEditRenterOrg : System.Web.UI.Page
 							zkpo,
 							industry,
 							occupation,
-							-1,
-							-1,
+							pravform,
+							ouprav,
 							formVlasn,
 							status,
 							-1,

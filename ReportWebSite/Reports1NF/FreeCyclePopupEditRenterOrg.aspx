@@ -103,6 +103,18 @@
     EnableCaching="true">
 </mini:ProfiledSqlDataSource>
 
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictOrgOuprav" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_1nf_org_ouprav ORDER BY name"
+    EnableCaching="true">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictOrgPravform" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_1nf_org_pravform ORDER BY name"
+    EnableCaching="true">
+</mini:ProfiledSqlDataSource>
+
 
 <dx:PopupControlContentControl ID="PopupControlContentControl1" runat="server" >
 	<dx:ASPxCallbackPanel ID="CPPopUp" ClientInstanceName="CPPopUp" runat="server" OnCallback="CPPopUp_Callback">
@@ -197,6 +209,21 @@
 												IncrementalFilteringMode="StartsWith" 
 												DataSourceID="SqlDataSourceDictOrgOccupation" Value='<%# Eval("occupation_id") %>' /> </td>
 									</tr>
+									<tr>
+                                        <td> <dx:ASPxLabel ID="ASPxLabel77" runat="server" Text="Організаційно-правова Форма" Width="160px"/> </td>
+                                        <td> <dx:ASPxComboBox ID="ComboBoxOrgPravform" runat="server" ClientInstanceName="ComboBoxOrgPravform" 
+                                            ValueType="System.Int32" TextField="name" ValueField="id" Width="400px" Title=""
+                                                IncrementalFilteringMode="Contains" 
+                                                DataSourceID="SqlDataSourceDictOrgPravform" Value='<%# Eval("pravform_id") %>' /> </td>
+                                    </tr>
+									<tr>
+                                        <td> <dx:ASPxLabel ID="ASPxLabel76" runat="server" Text="Орган Управління" Width="160px"/> </td>
+                                        <td> <dx:ASPxComboBox ID="ComboBoxOrgOuprav" runat="server" ClientInstanceName="ComboBoxOrgOuprav" 
+                                            ValueType="System.Int32" TextField="name" ValueField="id" Width="400px" Title=""
+                                                IncrementalFilteringMode="Contains" 
+                                                DataSourceID="SqlDataSourceDictOrgOuprav" Value='<%# Eval("ouprav_id") %>' /> </td>
+                                    </tr>
+
 								</table>                                                                    
 							</dx:PanelContent>
 						</PanelCollection>                                                        

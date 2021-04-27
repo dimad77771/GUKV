@@ -403,7 +403,7 @@ order by T.cycle_num desc
 
 			<dx:ASPxPopupControl ID="PopupEditRenterOrg" runat="server" ClientInstanceName="PopupEditRenterOrg" Modal="true"
 				HeaderText="Створення Організації" PopupElementID="BtnEditRenterOrg"  CloseAction="CloseButton" PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter"
-				Width="673" Height="650" ScrollBars="None" >
+				Width="673" Height="720" ScrollBars="None" >
     
 			</dx:ASPxPopupControl>
 

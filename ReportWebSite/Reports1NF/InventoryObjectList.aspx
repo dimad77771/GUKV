@@ -80,6 +80,8 @@
 		,org.zkpo_code
 		,(SELECT Q.name FROM dict_1nf_object_kind Q where Q.id = bal.object_kind_id) as object_kind_name
 		,(SELECT Q.name FROM dict_1nf_tech_state Q where Q.id = bal.tech_condition_id) as tech_condition_name
+		,(SELECT Q.name FROM dict_1nf_object_type Q where Q.id = bal.object_type_id) as object_type_name
+		,bal.cost_zalishkova
 		,bld.sqr_non_habit
 		,bal.purpose_str
 		,(select Q.full_name from organizations Q where Q.id = arenda.org_renter_id and (Q.is_deleted is null or Q.is_deleted = 0)) as renter_name
@@ -87,6 +89,7 @@
 		,arenda.rent_finish_date
 		,arenda.agreement_num
 		,(select sum(rent_square) from reports1nf_arenda_notes Q WHERE (Q.is_deleted IS NULL OR Q.is_deleted = 0) AND Q.report_id = bal.report_id AND Q.arenda_id = arenda.id) as rent_square
+		,(select sum(cost_agreement) from reports1nf_arenda_notes Q WHERE (Q.is_deleted IS NULL OR Q.is_deleted = 0) AND Q.report_id = bal.report_id AND Q.arenda_id = arenda.id) as cost_agreement
 	
         ,bal.id AS 'balans_id'
         ,dict_districts2.name AS 'district'
@@ -101,6 +104,8 @@
         ,ag.num_rent_agr
         ,ag.total_rent_sqr
         ,inv_num = bal.reestr_no
+		,arenda_payments.debt_total
+		
 
 
         FROM reports1nf_balans bal
@@ -111,12 +116,14 @@
         LEFT OUTER JOIN dict_org_ownership dict_own ON bal.form_ownership_id = dict_own.id
 		LEFT OUTER JOIN reports1nf_org_info org on org.id = bal.organization_id
 		--outer apply (select ar.* from reports1nf_arenda ar left join reports1nf_arenda_notes an on ar.id = an.arenda_id and isnull(an.is_deleted,0) = 0 where bal.report_id = ar.report_id    and bal.organization_id = ar.org_balans_id   and bal.building_id = ar.building_id and isnull(ar.is_deleted,0)=0 and ar.agreement_state = 1) arenda 
-	      outer apply (select ar.* from reports1nf_arenda ar left join reports1nf_arenda_notes an on ar.id = an.arenda_id and isnull(an.is_deleted,0) = 0 where bal.report_id = ar.report_id    and an.ref_balans_id = bal.id                /* and bal.building_id = ar.building_id -- 2021-04-16 адреса не учитываем */ and isnull(ar.is_deleted,0)=0 and ar.agreement_state = 1) arenda 
+	    outer apply (select ar.* from reports1nf_arenda ar left join reports1nf_arenda_notes an on ar.id = an.arenda_id and isnull(an.is_deleted,0) = 0 where bal.report_id = ar.report_id    and an.ref_balans_id = bal.id                /* and bal.building_id = ar.building_id -- 2021-04-16 адреса не учитываем */ and isnull(ar.is_deleted,0)=0 and ar.agreement_state = 1) arenda 
 
         outer apply (select sum(case when fs.is_included = 1 then fs.total_free_sqr else 0 end) as total_free_sqr from reports1nf_balans_free_square fs where fs.balans_id = bal.id and fs.report_id = bal.report_id /*and fs.is_included = 1*/) bfs 
         
 		--outer apply (select COUNT(distinct ar.id) as num_rent_agr, sum(an.rent_square) as total_rent_sqr from reports1nf_arenda ar left join reports1nf_arenda_notes an on ar.id = an.arenda_id and isnull(an.is_deleted,0) = 0 where bal.report_id = ar.report_id and bal.organization_id = ar.org_balans_id          and bal.building_id = ar.building_id          and isnull(ar.is_deleted,0)=0 and ar.agreement_state = 1) ag 
-		  outer apply (select COUNT(distinct ar.id) as num_rent_agr, sum(an.rent_square) as total_rent_sqr from reports1nf_arenda ar left join reports1nf_arenda_notes an on ar.id = an.arenda_id and isnull(an.is_deleted,0) = 0 where bal.report_id = ar.report_id and bal.organization_id = ar.org_balans_id          and an.ref_balans_id = bal.id                 and isnull(ar.is_deleted,0)=0 and ar.agreement_state = 1) ag 
+		outer apply (select COUNT(distinct ar.id) as num_rent_agr, sum(an.rent_square) as total_rent_sqr from reports1nf_arenda ar left join reports1nf_arenda_notes an on ar.id = an.arenda_id and isnull(an.is_deleted,0) = 0 where bal.report_id = ar.report_id and bal.organization_id = ar.org_balans_id          and an.ref_balans_id = bal.id                 and isnull(ar.is_deleted,0)=0 and ar.agreement_state = 1) ag 
+
+		outer apply (select top 1 q.* from reports1nf_arenda_payments q where q.arenda_id = arenda.id and q.report_id = arenda.report_id order by q.id desc) arenda_payments
         
 		WHERE (bal.report_id = @rep_id or @rep_id = -1) and ISNULL(bal.is_deleted,0) = 0
 			and org.otdel_gukv_id = 1 /* указание Синенко от 19.04.2021 */
@@ -290,9 +297,11 @@
         <dx:GridViewDataTextColumn FieldName="addr_nomer" VisibleIndex="3" Caption="Номер"><Settings SortMode="Custom" /></dx:GridViewDataTextColumn>
 		<dx:GridViewDataTextColumn FieldName="purpose_str" VisibleIndex="3" Width="250" Caption="Назва Об'єкту"></dx:GridViewDataTextColumn>
 		<dx:GridViewDataTextColumn FieldName="object_kind_name" VisibleIndex="3" Width="250" Caption="Короткий опис об'єкта (адміністративне, виробниче, навчальний заклад, заклад охорони здоров'я тощо)"></dx:GridViewDataTextColumn>
-		<dx:GridViewDataTextColumn FieldName="tech_condition_name" VisibleIndex="3" Width="150" Caption="Загальний технічний стан (задовільний, потребує проведення ремонтних робіт, аварійний)"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+		<dx:GridViewDataTextColumn FieldName="object_type_name" VisibleIndex="3" Width="150" Caption="Тип об'єкту"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+		<dx:GridViewDataTextColumn FieldName="tech_condition_name" VisibleIndex="3" Width="180" Caption="Загальний технічний стан (задовільний, потребує проведення ремонтних робіт, аварійний)"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
 		<dx:GridViewDataTextColumn FieldName="sqr_non_habit" VisibleIndex="3" Caption="Площа, що перебуває в комунальній власності територіальної громади міста Києва, кв. м"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="sqr_total" VisibleIndex="3" Caption="Загальна площа об'єкта, кв. м"></dx:GridViewDataTextColumn>
+		<dx:GridViewDataTextColumn FieldName="cost_zalishkova" VisibleIndex="3" Caption="Залишкова вартість, тис. грн."></dx:GridViewDataTextColumn>
 		<dx:GridViewDataTextColumn FieldName="sqr_vlas_potreb" VisibleIndex="3" Caption="Площа, що використвує-ться для власних потреб, кв. м" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>		
 		<dx:GridViewDataTextColumn FieldName="total_free_sqr" VisibleIndex="3" Caption="Площа, що тимчасово не використовується та може бути передана в орендне користвання, кв. м"></dx:GridViewDataTextColumn>
 		<dx:GridViewDataTextColumn FieldName="rent_square" VisibleIndex="3" Caption="Площа в орендному користуванні, кв. м"></dx:GridViewDataTextColumn>
@@ -300,6 +309,10 @@
 		<dx:GridViewDataDateColumn FieldName="rent_start_date" VisibleIndex="3" Caption="Початок оренди"></dx:GridViewDataDateColumn>
 		<dx:GridViewDataDateColumn FieldName="rent_finish_date" VisibleIndex="3" Caption="Закінчення оренди"></dx:GridViewDataDateColumn>
 		<dx:GridViewDataTextColumn FieldName="agreement_num" VisibleIndex="3" Caption="Номер Договору Оренди"></dx:GridViewDataTextColumn>
+		<dx:GridViewDataTextColumn FieldName="cost_agreement" VisibleIndex="3" Caption="Місячна орендна плата, грн."></dx:GridViewDataTextColumn>
+		<dx:GridViewDataTextColumn FieldName="debt_total" VisibleIndex="3" Caption="Загальна заборгованість по орендній платі, грн."></dx:GridViewDataTextColumn>
+		
+		
     </Columns>
 
 <%--    <TotalSummary>
@@ -323,7 +336,7 @@
     <SettingsPager PageSize="20" />
     <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
     <Styles Header-Wrap="True" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.BalansList" Enabled="true" Version="A6" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.BalansList" Enabled="true" Version="A9" />
 
     <ClientSideEvents
         Init="function (s,e) { PrimaryGridView.PerformCallback('init:'); }"
