@@ -148,6 +148,15 @@ public partial class Reports1NF_InventoryObjectList : System.Web.UI.Page
 			"Площа, що використвує-ться для власних потреб, кв. м",
 			"Площа, що тимчасово не використовується та може бути передана в орендне користвання, кв. м",
 		};
+		var sumcols = new[]
+		{
+			"Площа, що перебуває в комунальній власності територіальної громади міста Києва, кв. м",
+			"Загальна площа об'єкта, кв. м",
+			"Залишкова вартість, тис. грн.",
+			"Площа, що використвує-ться для власних потреб, кв. м",
+			"Площа, що тимчасово не використовується та може бути передана в орендне користвання, кв. м",
+			"Площа в орендному користуванні, кв. м",
+		};
 		var last_colnum = -1;
 		for(int i = 0; i < row.Cells.Length; i++)
 		{
@@ -156,6 +165,16 @@ public partial class Reports1NF_InventoryObjectList : System.Web.UI.Page
 			{
 				last_colnum = i;
 				break;
+			}
+		}
+
+		var sumcolnums = new Dictionary<int, bool>();
+		for (int i = 0; i < row.Cells.Length; i++)
+		{
+			var text = row.Cells[i].DisplayText;
+			if (sumcols.Contains(text))
+			{
+				sumcolnums.Add(i, dcols.Contains(text));
 			}
 		}
 
@@ -197,26 +216,29 @@ public partial class Reports1NF_InventoryObjectList : System.Web.UI.Page
 
 		worksheet.UsedRange.BorderInside();
 
-		//var gg = string.Join("\n", row.Cells.Select(q => q.DisplayText).ToArray());
 
-		//var style = workbook.Styles.Add("HrefNewStyle");
-		//style.Color = Color.FromArgb(0, 0, 255);
-		//style.Font.Underline = ExcelUnderline.Single;
+		var last_rownum = worksheet.UsedRange.Rows.Length;
+		var allNotFirstGroupingRows = new HashSet<int>(groups_rows.Select(q => q.Skip(1)).SelectMany(q => q));
+		foreach (var sumcolinfo in sumcolnums)
+		{
+			double sumval = 0;
+			var colnum = sumcolinfo.Key;
+			var in_dcol = sumcolinfo.Value;
+			for (int r = 2; r < worksheet.Rows.Length; r++)
+			{
+				if (in_dcol && allNotFirstGroupingRows.Contains(r))
+				{
+					continue;
+				}
 
-		//var coln = 26;
-		//var allrows = worksheet.Rows.Length;
-		//for (int rown = 1; rown <= allrows; rown++)
-		//{
-		//	var cell = worksheet.Range[rown, coln];
-		//	var text = cell.Text ?? "";
-		//	if (text.ToLower().StartsWith("http"))
-		//	{
-		//		worksheet.HyperLinks.Add(cell, ExcelHyperLinkType.Url, text, "Відкрити фото/плани");
-		//		//cell.CellStyle = style;
-		//		cell.CellStyle.Font.Underline = ExcelUnderline.Single;
-		//		cell.CellStyle.Font.Color = ExcelKnownColors.Blue;
-		//	}
-		//}
+				var val2 = worksheet.Rows[r].Cells[colnum].Value2;
+				var val = val2 as Double?;
+				sumval += (val ?? 0);
+			}
+
+			var srange = worksheet.Range[last_rownum + 1, colnum + 1];
+			srange.Value2 = sumval;
+		}
 
 		workbook.Save();
 		workbook.Close();
