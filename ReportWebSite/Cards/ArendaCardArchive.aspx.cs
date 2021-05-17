@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Web.Configuration;
 using System.IO;
 using DevExpress.Web;
+using ExtDataEntry.Models;
 
 public partial class Cards_ArendaCardArchive : System.Web.UI.Page
 {
@@ -294,9 +295,10 @@ public partial class Cards_ArendaCardArchive : System.Web.UI.Page
 					if (File.Exists(sourceFileToCopy))
 					{
 						string destFileToCopy = Path.Combine(destFolder, PhotoUtils.DbFilename2LocalFilename(file_name, file_ext));
-						if (File.Exists(destFileToCopy))
-							File.Delete(destFileToCopy);
-						File.Copy(sourceFileToCopy, destFileToCopy);
+						LLLLhotorowUtils.Copy(sourceFileToCopy, destFileToCopy, connection);
+						//if (File.Exists(destFileToCopy))
+						//	File.Delete(destFileToCopy);
+						//File.Copy(sourceFileToCopy, destFileToCopy);
 					}
 				}
 
