@@ -42,16 +42,15 @@
 			PopupObjectPhotos.Show();
 		} else if (e.buttonID == 'btnMapShow') {
 			FreeSquareGridView.GetRowValues(e.visibleIndex, 'id', OnMapShowGetRowValues);
-		} else if (e.buttonID == 'btnPdfBuild') {
-			FreeSquareGridView.GetRowValues(e.visibleIndex, 'id', OnGridPdfBuildGetRowValues);
-        }
+		} else if (e.buttonID == 'btnJpegBuild') {
+			FreeSquareGridView.GetRowValues(e.visibleIndex, 'arenda_id', OnGridJpegBuildGetRowValues);
+		}
 	}
 
-	function OnGridPdfBuildGetRowValues(values) {
-		//console.log(values);
+	function OnGridJpegBuildGetRowValues(values) {
 		var id = values;
 		window.open(
-			'BalansFreeSquarePhotosPdf.aspx?id=' + id,
+			'OrgRentAgreementPhotosPdfRun.aspx?arid=' + id,
 			'_blank',
 		);
 	}
@@ -257,8 +256,19 @@
     OnCustomSummaryCalculate="GridViewArendaObjects_CustomSummaryCalculate"
     OnProcessColumnAutoFilter = "GridViewArendaObjects_ProcessColumnAutoFilter"
     OnCustomColumnSort="GridViewArendaObjects_CustomColumnSort" >
+	<ClientSideEvents CustomButtonClick="ShowPhoto" />
 
     <Columns>
+		<dx:GridViewCommandColumn Width="30px" ButtonType="Image" CellStyle-Wrap="True" FixedStyle="Left" CellStyle-CssClass="command-column-class" 
+            ShowDeleteButton="False" ShowCancelButton="False" ShowUpdateButton="False" ShowEditButton="False" ShowNewButton="False" >
+            <CustomButtons>
+                <dx:GridViewCommandColumnCustomButton ID="btnJpegBuild" Text="Фото/плани"> 
+					<Image Url="~/Styles/PhotoIcon.png"/>
+                </dx:GridViewCommandColumnCustomButton>
+            </CustomButtons>
+            <CellStyle Wrap="False"></CellStyle>
+        </dx:GridViewCommandColumn>
+
         <dx:GridViewDataTextColumn FieldName="arenda_id" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="0" Visible="false" Caption="Картка">
             <DataItemTemplate>

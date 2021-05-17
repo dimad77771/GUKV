@@ -19,19 +19,22 @@ public class OrgRentAgreementPhotosPdfBulder
 {
     Int32 AgreementId;
     string PhotoFolder;
+	bool UseIdFileNames;
 
-    SqlConnection connectionSql;
+
+	SqlConnection connectionSql;
     PdfDocument PdfDoc;
 
     Byte[] OutputPdfBytes;
 
 
-    public Byte[] Go(int agreementId, string photoFolder)
+    public Byte[] Go(int agreementId, string photoFolder, bool useIdFileNames = false)
     {
         this.AgreementId = agreementId;
         this.PhotoFolder = photoFolder;
+		this.UseIdFileNames = useIdFileNames;
 
-        PdfInit();
+		PdfInit();
         connectionSql = Utils.ConnectToDatabase();
 
         var allfiles = GetAllFiles().ToArray();
@@ -69,7 +72,7 @@ public class OrgRentAgreementPhotosPdfBulder
                     var file_name = reader.IsDBNull(0) ? string.Empty : (string)reader.GetValue(0);
                     var file_ext = reader.IsDBNull(1) ? string.Empty : (string)reader.GetValue(1);
                     var file_id = reader.GetInt32(2);
-                    var fullFilename = Path.Combine(PhotoFolder, file_name + file_ext);
+                    var fullFilename = Path.Combine(PhotoFolder, (UseIdFileNames ? file_id.ToString() : file_name) + file_ext);
                     var bytes = LLLLhotorowUtils.Read(fullFilename, connectionSql);
                     if (bytes != null)
                     {
