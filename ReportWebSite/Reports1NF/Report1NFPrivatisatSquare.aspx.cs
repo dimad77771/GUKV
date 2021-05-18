@@ -36,7 +36,17 @@ public partial class Reports1NF_Report1NFPrivatisatSquare : System.Web.UI.Page
 		}
 
 		PrivatisatGridView.SettingsEditing.Mode = GridViewEditingMode.Inline;
-		
+
+		if (Utils.IsBigBossUser())
+		{
+			var col = PrivatisatGridView.Columns.OfType<GridViewCommandColumn>().First();
+			col.ShowEditButton = false;
+			col.ShowUpdateButton = false;
+			col.ShowCancelButton = false;
+			col.ShowNewButton = false;
+			col.ShowDeleteButton = false;
+		}
+
 		//((GridViewDataSpinEditColumn)FreeSquareGridView.Columns["privat_year"]).PropertiesSpinEdit.SpinButtons.Visible = false;
 	}
 

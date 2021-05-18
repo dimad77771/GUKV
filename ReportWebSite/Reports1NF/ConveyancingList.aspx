@@ -5,11 +5,25 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
     <script type="text/javascript">
-        function OnInit(s, e) {
-            AdjustSize();
-        }
-        function OnEndCallback(s, e) {
-            AdjustSize();
+		var isBigBossUser = <%=IsBigBossUser%>
+
+		function CustomizeBigBoss() {
+			if (isBigBossUser) {
+				console.log("PrimaryGridView", PrimaryGridView.GetMainElement());
+				console.log("PrimaryGridView2", $(PrimaryGridView.GetMainElement()));
+				$(PrimaryGridView.GetMainElement()).find('td.bigBossUserStyle').css('display', 'none');
+			}
+		}
+
+		function OnInit(s, e) {
+			console.log("isBigBossUser", isBigBossUser);
+			AdjustSize();
+			CustomizeBigBoss();
+		}
+
+		function OnEndCallback(s, e) {
+			AdjustSize();
+			CustomizeBigBoss();
         }
         function OnControlsInitialized(s, e) {
             ASPxClientUtils.AttachEventToElement(window, "resize", function (evt) {
@@ -20,7 +34,7 @@
             var height = Math.max(0, document.documentElement.clientHeight - 170);
             PrimaryGridView.SetHeight(height);
         }
-    </script>  
+	</script>  
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
@@ -152,7 +166,7 @@
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ConveyancingList" Enabled="True" Version="A2" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ConveyancingList" Enabled="True" Version="A4" />
 </dx:ASPxGridView>
 
 <dx:ASPxGlobalEvents ID="ge" runat="server">

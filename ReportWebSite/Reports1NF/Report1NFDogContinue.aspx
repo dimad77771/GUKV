@@ -403,7 +403,7 @@ WHERE id = @id"
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceFreecycleStepDict" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT step_id, step_name, step_cod, step_ord, istitle FROM freecycle_step_dict union select null, '<пусто>', '00', -1, 0 ORDER BY step_ord">
+    SelectCommand="SELECT step_id, lookup_name as step_name, step_ord FROM dogcontinue_proc_step_dict union select null, '<пусто>', 0 ORDER BY step_ord">
 </mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceUsingPossible" runat="server" 

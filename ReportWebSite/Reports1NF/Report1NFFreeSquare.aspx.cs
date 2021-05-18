@@ -36,6 +36,16 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 		}
 
 		FreeSquareGridView.SettingsEditing.Mode = GridViewEditingMode.Inline;
+
+		if (Utils.IsBigBossUser())
+		{
+			var col = FreeSquareGridView.Columns.OfType<GridViewCommandColumn>().First();
+			col.ShowEditButton = false;
+			col.ShowUpdateButton = false;
+			col.ShowCancelButton = false;
+			col.ShowNewButton = false;
+			col.ShowDeleteButton = false;
+		}
 	}
 
     protected void ASPxButton_FreeSquare_ExportXLS_Click(object sender, EventArgs e)

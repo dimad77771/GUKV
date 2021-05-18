@@ -248,7 +248,7 @@ SELECT
 	org.short_name as org_name,
 	(select q.name from dict_1nf_tech_stane q where q.id = fs.free_sqr_condition_id) as condition,
 	org.director_title as vidpov_osoba,
-	(select qq.step_name from freecycle_step_dict qq where qq.step_id = fs.freecycle_step_dict_id) as current_stage_name,
+	(select qq.public_name from free_proc_step_dict qq where qq.step_id = fs.freecycle_step_dict_id) as current_stage_name,
 	fs.current_stage_docdate,
 	fs.current_stage_docnum,
 	case when exists (select 1 from reports1nf_balans_free_square_current_stage_documents qq where qq.free_square_id = fs.id) then '+' else '-' end as current_stage_has_documents,

@@ -40,14 +40,16 @@ m.IsLockedOut,
 u.LastActivityDate,
 m.CreateDate,
 m.LastLoginDate,
-m.IsIncludedToEmail 
+m.IsIncludedToEmail,
+m.IsBigBossUser 
 from aspnet_Users u
 join aspnet_Membership m on m.UserId = u.UserId" 
     UpdateCommand="
 update aspnet_Membership set 
 Email = @Email,
 IsLockedOut = @IsLockedOut,
-IsIncludedToEmail = @IsIncludedToEmail 
+IsIncludedToEmail = @IsIncludedToEmail,
+IsBigBossUser = @IsBigBossUser
 where UserId = @UserId
 update aspnet_Users set 
 UserName = @UserName
@@ -57,6 +59,7 @@ where UserId = @UserId"
         <asp:Parameter Name="Email" />
         <asp:Parameter Name="IsLockedOut" />
 		<asp:Parameter Name="IsIncludedToEmail" />
+		<asp:Parameter Name="IsBigBossUser" />
         <asp:Parameter Name="UserName" />
         <asp:Parameter Name="UserId" />
     </UpdateParameters>
@@ -115,9 +118,10 @@ where UserId = @UserId"
 <dx:GridViewDataTextColumn FieldName="Email" Caption="Електронна пошта" VisibleIndex="2"><HeaderStyle Wrap="True" /></dx:GridViewDataTextColumn>
 <dx:GridViewDataCheckColumn FieldName="IsLockedOut" Caption="Заблоковано" VisibleIndex="3"><HeaderStyle Wrap="True" /></dx:GridViewDataCheckColumn>
 <dx:GridViewDataCheckColumn FieldName="IsIncludedToEmail" Caption="Включено в розсилку" VisibleIndex="3"><HeaderStyle Wrap="True" /></dx:GridViewDataCheckColumn>
-<dx:GridViewDataDateColumn FieldName="LastActivityDate" Caption="Остання активність" VisibleIndex="4" ReadOnly="true"><EditFormSettings Visible="False" /><HeaderStyle Wrap="True" /></dx:GridViewDataDateColumn>
-<dx:GridViewDataDateColumn FieldName="CreateDate" Caption="Дата створення" VisibleIndex="5" ReadOnly="true"><EditFormSettings Visible="False" /><HeaderStyle Wrap="True" /></dx:GridViewDataDateColumn>
-<dx:GridViewDataDateColumn FieldName="LastLoginDate" Caption="Останній вхід" VisibleIndex="6" ReadOnly="true"><EditFormSettings Visible="False" /><HeaderStyle Wrap="True" /></dx:GridViewDataDateColumn>
+<dx:GridViewDataCheckColumn FieldName="IsBigBossUser" Caption="Оглядач" VisibleIndex="4"><HeaderStyle Wrap="True" /></dx:GridViewDataCheckColumn>
+<dx:GridViewDataDateColumn FieldName="LastActivityDate" Caption="Остання активність" VisibleIndex="5" ReadOnly="true"><EditFormSettings Visible="False" /><HeaderStyle Wrap="True" /></dx:GridViewDataDateColumn>
+<dx:GridViewDataDateColumn FieldName="CreateDate" Caption="Дата створення" VisibleIndex="6" ReadOnly="true"><EditFormSettings Visible="False" /><HeaderStyle Wrap="True" /></dx:GridViewDataDateColumn>
+<dx:GridViewDataDateColumn FieldName="LastLoginDate" Caption="Останній вхід" VisibleIndex="7" ReadOnly="true"><EditFormSettings Visible="False" /><HeaderStyle Wrap="True" /></dx:GridViewDataDateColumn>
 
         </Columns>
         <SettingsBehavior ConfirmDelete="True" />

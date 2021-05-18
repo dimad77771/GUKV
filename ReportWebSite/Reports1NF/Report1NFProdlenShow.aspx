@@ -109,7 +109,7 @@
 --,rfs.sqr_free_mzk as mzk
 ,fs.free_sqr_korysna as free_sql_usefull
 
-,(SELECT Q.step_name FROM freecycle_step_dict Q where Q.step_id = fs.freecycle_step_dict_id) freecycle_step_name
+,(SELECT Q.lookup_name FROM dogcontinue_proc_step_dict Q where Q.step_id = fs.freecycle_step_dict_id) freecycle_step_name
 
 ,fs.zal_balans_vartist
 ,fs.perv_balans_vartist
@@ -218,7 +218,7 @@ SELECT
 --,rfs.sqr_free_mzk as mzk
 ,fs.free_sqr_korysna as free_sql_usefull
 
-,(SELECT Q.step_name FROM freecycle_step_dict Q where Q.step_id = fs.freecycle_step_dict_id) freecycle_step_name
+,(SELECT Q.lookup_name FROM free_proc_step_dict Q where Q.step_id = fs.freecycle_step_dict_id) freecycle_step_name
 
 ,fs.zal_balans_vartist
 ,fs.perv_balans_vartist

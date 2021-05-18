@@ -355,7 +355,7 @@ WHERE id = @id"
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceFreecycleStepDict" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT step_id, step_name, step_cod, step_ord, istitle FROM freecycle_step_dict union select null, '<пусто>', '00', -1, 0 ORDER BY step_ord">
+    SelectCommand="SELECT step_id, lookup_name as step_name, step_ord FROM free_proc_step_dict union select null, '<пусто>', 0 ORDER BY step_ord">
 </mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceUsingPossible" runat="server" 
@@ -790,6 +790,8 @@ WHERE id = @id"
 				}" />
             </PropertiesComboBox>  
         </dx:GridViewDataComboBoxColumn>--%>
+
+		<%--dx:<dx:GridViewDataDropDownEditColumn--%>
 
         <dx:GridViewDataComboBoxColumn FieldName="freecycle_step_dict_id" Caption="Стан процесу передачі" VisibleIndex="50" Width="300px">
             <PropertiesComboBox 

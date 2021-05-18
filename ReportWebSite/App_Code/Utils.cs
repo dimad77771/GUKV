@@ -11,7 +11,6 @@ using System.Configuration;
 using DevExpress.Web.Export;
 using DevExpress.Web;
 using DevExpress.Web.ASPxTreeList;
-using DevExpress.Web;
 using DevExpress.Web.ASPxHtmlEditor;
 using DevExpress.Data.Filtering;
 using System.IO;
@@ -3041,6 +3040,51 @@ public static class Utils
 		var user = Membership.GetUser();
 		var username = (user == null ? "System" : user.UserName);
 		return username;
+	}
+
+	public static bool IsBigBossUser()
+	{
+		var user = Membership.GetUser();
+		var connection = Utils.ConnectToDatabase();
+
+		var isBigBossUser = false;
+
+		using (SqlCommand cmd = new SqlCommand("select m.IsBigBossUser from aspnet_Users u join aspnet_Membership m on m.UserId = u.UserId where u.UserName = @UserName and m.IsBigBossUser = 1", connection))
+		{
+			cmd.Parameters.AddWithValue("UserName", user.UserName);
+			using (SqlDataReader r = cmd.ExecuteReader())
+			{
+				while (r.Read())
+				{
+					isBigBossUser = true;
+				}
+				r.Close();
+			}
+		}
+
+
+		connection.Close();
+		connection.Dispose();
+
+		return isBigBossUser;
+	}
+
+	public static string IsBigBossUserToString()
+	{
+		return IsBigBossUser().ToString().ToLower();
+	}
+
+	public static void SetGridViewColumnCssClass(this GridViewColumn col, string cssClass)
+	{
+		col.HeaderStyle.CssClass = cssClass;
+		col.CellStyle.CssClass = cssClass;
+		col.FooterCellStyle.CssClass = cssClass;
+		col.GroupFooterCellStyle.CssClass = cssClass;
+		if (col is GridViewDataColumn)
+		{
+			(col as GridViewDataColumn).EditCellStyle.CssClass = cssClass;
+			(col as GridViewDataColumn).FilterCellStyle.CssClass = cssClass;
+		}
 	}
 
 }
