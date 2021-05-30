@@ -229,7 +229,7 @@
         <dx:GridViewDataTextColumn FieldName="koatuu" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="29" Visible="False" Caption="ОАТУУ"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="otdel_gukv" ReadOnly="True" ShowInCustomizationForm="True"
-            VisibleIndex="30" Visible="False" Caption="Відділ ДКВ"></dx:GridViewDataTextColumn>
+            VisibleIndex="30" Visible="False" Caption="Стан юр.особи"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="mayno" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="31" Visible="False" Caption="Правовий режим майна"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="is_liquidated" ReadOnly="True" ShowInCustomizationForm="True"
