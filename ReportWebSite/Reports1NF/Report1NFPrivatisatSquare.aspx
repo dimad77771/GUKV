@@ -66,10 +66,13 @@
 			PrivatisatGridView.GetRowValues(e.visibleIndex, 'id', OnFreeCycleGetRowValues);
 		} else if (e.buttonID == 'btnOrgBalansObject') {
 			PrivatisatGridView.GetRowValues(e.visibleIndex, 'id;balans_id;report_id', OnClickOrgBalansObject);
-        } else if (e.buttonID == 'btnCopyFullDescription') {
+        } else if (e.buttonID == 'btnCopyFullDescription2') {
 			var cols = "include_in_perelik;zal_balans_vartist;perv_balans_vartist;free_object_type_name;prop_srok_orands;punkt_metod_rozrahunok;invest_solution;";
 			cols += "zgoda_control;district;street_name;addr_nomer;total_free_sqr;free_sql_usefull;";
 			cols += "floor;condition;water;heating;gas;power_text;history;zgoda_renter;nomer_derzh_reestr_neruh;reenum_derzh_reestr_neruh;info_priznach_nouse;info_rahunok_postach;priznach_before;period_nouse;osoba_use_before"
+			PrivatisatGridView.GetRowValues(e.visibleIndex, cols, OnCopyFullDescription2);
+		} else if (e.buttonID == 'btnCopyFullDescription') {
+			var cols = "id";
 			PrivatisatGridView.GetRowValues(e.visibleIndex, cols, OnCopyFullDescription);
 		}
     }
@@ -91,6 +94,73 @@
 	}
 
 	function OnCopyFullDescription(values) {
+		var headers = [
+			"Включено до переліку № - ",
+			"Залишкова балансова вартість – ",
+			"Первісна балансова вартість - ",
+			"Тип об’єкта - ",
+			"Пропонований строк оренди (у роках) – ",
+			"Пункт Методики розрахунку орендної плати (якщо об’єкт пропонується для включення до Переліку другого типу) - ",
+			"Наявність рішень про проведення інвестиційного конкурсу або про включення об’єкта до переліку майна, що підлягає приватизації - ",
+
+			"Погодження органу управління балансоутримувача – ",
+			"Район – ",
+			"Назва Вулиці - ",
+			"Номер Будинку - ",
+			"Загальна площа об’єкта - ",
+			"Корисна площа об’єкта – ",
+			"Характеристика об’єкта оренди(будівлі в цілому або частини будівлі із зазначенням місця розташування об’єкта в будівлі(надземний, цокольний, підвальний, технічний або мансардний поверх, номер поверху або поверхів) – ",
+			"Технічний стан – ",
+			"Водопостачання – ",
+			"Теплопостачання – ",
+			"Газопостачання – ",
+			"Електропостачання – ",
+			"Пам’ятка культурної спадщини - ",
+			"Погодження органу охорони культурної спадщини - ",
+			"Номер запису про право власності у Реєстрація у Державному реєстрі речових прав на нерухоме майно – ",
+			"Реєстраційний номер об'єкту нерухомого майна у Реєстрація у Державному реєстрі речових прав на нерухоме майно – ",
+			"Інформація про цільове призначення об’єкта оренди – ",
+			"Інформація про наявність окремих особових рахунків на об'єкт оренди, відкритих постачальниками комунальних послуг - ",
+			"Цільове призначення об’єкта, за яким об’єкт використовувався перед тим, як він став вакантним – ",
+			"Період часу, протягом якого об’єкт не використовується – ",
+			"Інформацію про особу, яка використовувала об’єкт перед тим, як він став вакантним – ",
+		];
+
+		console.log("values", values);
+
+		var txt = "";
+		//for (var i = 0; i < headers.length; i++) {
+		//	var vv = values[i];
+		//	if (vv === null) {
+		//		vv = "";
+		//	} else if (vv === true) {
+		//		vv = "так";
+		//	} else if (vv === false) {
+		//		vv = "ні";
+		//	}
+
+		//	txt += (i == 0 ? "" : "\n") + headers[i] + vv;
+		//}
+
+		//var id = values[values.length - 1];
+		var id = values;
+		txt += "Фото - http://eis.gukv.gov.ua/gukv/Reports1NF/BalansPrivatisatPhotosPdf.aspx?id=" + id + '&jpeg=1';
+
+		//console.log("txt", txt);
+
+		$("#inpit-for-copy-clipboard").val(txt);
+		$("#inpit-for-copy-clipboard").select();
+		document.execCommand("copy");
+		return;
+
+		navigator.clipboard.writeText(txt).then(function () {
+			alert("Опис скопійовано в буфер обміну");
+		}, function () {
+			alert("Не можу записати буфер обміну");
+		});
+	}
+
+	function OnCopyFullDescription2(values) {
         var headers = [
             "Включено до переліку № - ",
             "Залишкова балансова вартість – ",
@@ -540,11 +610,14 @@ SELECT SCOPE_IDENTITY()"
                 <dx:GridViewCommandColumnCustomButton ID="btnPdfBuild" Text="Pdf"> 
 					<Image Url="~/Styles/PdfReportIcon.png"/>
                 </dx:GridViewCommandColumnCustomButton>
-                <dx:GridViewCommandColumnCustomButton ID="btnJpegBuild" Text="Jpeg"> 
+                <dx:GridViewCommandColumnCustomButton ID="btnJpegBuild" Text="Jpeg" Visibility="Invisible"> 
 					<Image Url="~/Styles/PhotoIcon.png"/>
                 </dx:GridViewCommandColumnCustomButton>
                 <dx:GridViewCommandColumnCustomButton ID="btnMapShow" Text="Показати на мапі"> 
 					<Image Url="~/Styles/MapShowIcon.png"/>
+                </dx:GridViewCommandColumnCustomButton>
+				<dx:GridViewCommandColumnCustomButton ID="btnCopyFullDescription" Text="Опис об'єкта до буфера обміну"> 
+					<Image Url="~/Styles/CopyIcon.png"/>
                 </dx:GridViewCommandColumnCustomButton>
             </CustomButtons>
             <CellStyle Wrap="False"></CellStyle>
