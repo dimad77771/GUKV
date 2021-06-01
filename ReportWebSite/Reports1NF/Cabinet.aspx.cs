@@ -629,6 +629,7 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
             ,SUM(bal.sqr_kor) AS 'sqr_kor'
             ,sum(fs.sqr_free) as sqr_free
             ,COUNT(*) AS 'obj_count'
+			,SUM(bal.sqr_vlas_potreb) AS sqr_vlas_potreb 
         FROM reports1nf_balans bal
 	outer apply (select sum(fs.total_free_sqr) as 'sqr_free' from reports1nf_balans_free_square fs where fs.balans_id = bal.id and fs.report_id = bal.report_id and fs.is_included = 1) fs
         WHERE bal.report_id = @rep AND (bal.is_deleted IS NULL OR bal.is_deleted = 0)
@@ -647,14 +648,16 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
                     properties.Add("{SQR_KOR}", reader.IsDBNull(1) ? "0.00" : reader.GetDecimal(1).ToString("F2"));
                     properties.Add("{SQR_FREE}", reader.IsDBNull(2) ? "0.00" : reader.GetDecimal(2).ToString("F2"));
                     properties.Add("{NUM_BALANS}", reader.IsDBNull(3) ? "0" : reader.GetInt32(3).ToString());
-                }
+					properties.Add("{SQR_VLAS_POTREB}", reader.IsDBNull(4) ? "0.00" : reader.GetDecimal(4).ToString("F2"));
+				}
                 else
                 {
                     properties.Add("{SQR_TOTAL}", "0.00");
                     properties.Add("{SQR_KOR}", "0.00");
                     properties.Add("{SQR_FREE}", "0.00");
                     properties.Add("{NUM_BALANS}", "0");
-                }
+					properties.Add("{SQR_VLAS_POTREB}", "0.00");
+				}
 
                 reader.Close();
             }

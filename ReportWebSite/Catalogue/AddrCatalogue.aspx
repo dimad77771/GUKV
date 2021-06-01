@@ -201,6 +201,10 @@
             VisibleIndex="11" Visible="False" Caption="Нежитлова Площа"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="is_in_privat" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="12" Visible="False" Caption="Будинок В Програмі Приватизації"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataDateColumn FieldName="modify_date" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="13" Visible="False" Caption="Дата редагування"></dx:GridViewDataDateColumn>
+        <dx:GridViewDataTextColumn FieldName="modified_by" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="14" Visible="False" Caption="Ким змінено"></dx:GridViewDataTextColumn>
     </Columns>
 
     <GroupSummary>

@@ -242,6 +242,11 @@
             VisibleIndex="35" Visible="False" Caption="Контактна Особа"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="sfera_upr" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="36" Visible="False" Caption="Сфера Управління"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataDateColumn FieldName="modify_date" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="41" Visible="False" Caption="Дата редагування"></dx:GridViewDataDateColumn>
+        <dx:GridViewDataTextColumn FieldName="modified_by" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="42" Visible="False" Caption="Ким змінено"></dx:GridViewDataTextColumn>
+
     </Columns>
 
     <SettingsBehavior EnableCustomizationWindow="True" AutoFilterRowInputDelay="2500" ColumnResizeMode="Control" />
