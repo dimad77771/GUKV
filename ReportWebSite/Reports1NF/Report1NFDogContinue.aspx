@@ -335,6 +335,7 @@
 ,(select Q.name from dict_streets Q where Q.id = org_giver.addr_street_id) as giver_addr_street
 ,org_giver.addr_nomer as giver_addr_nomer
 
+,bal.agreement_num
 ,bal.agreement_date
 ,bal.rent_finish_date
 ,cast(round(DATEDIFF ( month, bal.agreement_date, bal.rent_finish_date ) / 12.0, 0) as int) as srok_dog
@@ -690,6 +691,13 @@ WHERE id = @id"
             <HeaderStyle Wrap="True" />
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("giver_addr_nomer") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="agreement_num" Caption="Номер договору" VisibleIndex="1" Width="80px" ReadOnly="true" CellStyle-HorizontalAlign="Left">
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("agreement_num") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
@@ -1110,7 +1118,7 @@ WHERE id = @id"
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFDogContinue" Version="A3_23" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFDogContinue" Version="A3_26" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
