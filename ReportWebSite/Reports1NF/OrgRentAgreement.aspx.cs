@@ -40,8 +40,9 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         string reportIdStr = Request.QueryString["rid"];
         string agreementIdStr = Request.QueryString["aid"];
         string copyIdStr = Request.QueryString["copyid"];
+		IsAdmin = Request.QueryString["admin"];
 
-        if (!string.IsNullOrEmpty(copyIdStr))
+		if (!string.IsNullOrEmpty(copyIdStr))
         {
             CopyCard(Int32.Parse(copyIdStr), Int32.Parse(reportIdStr));
         }
@@ -347,7 +348,25 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         }
     }
 
-    protected int RentAgreementID
+	protected string IsAdmin
+	{
+		get
+		{
+			object reportId = ViewState["ISADMIN"];
+			if (reportId != null)
+			{
+				return reportId.ToString();
+			}
+			return "";
+		}
+
+		set
+		{
+			ViewState["ISADMIN"] = value;
+		}
+	}
+
+	protected int RentAgreementID
     {
         get
         {
@@ -1714,7 +1733,10 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 
     void AddressChange(SqlConnection connection)
     {
-		return;
+		if (IsAdmin != "1")
+		{
+			return;
+		}
 
         using (var transaction = connection.BeginTransaction())
         {

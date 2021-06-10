@@ -152,6 +152,7 @@
 ,history = case when isnull(b.history, 'НІ') = 'НІ' then '' else 'ТАК' end 
 , isnull(ddd.name, 'Невизначені') as sf_upr
 , @baseurl + '/Reports1NF/BalansFreeSquarePhotosPdf.aspx?id=' + cast(fs.id as varchar(100)) as pdfurl
+, @baseurl + '/Reports1NF/Report1NFFreeShowPhotosPdf.aspx?id=' + cast(fs.id as varchar(100)) + '&jpeg=1' as jpegurl
 , case when exists (select 1 from reports1nf_balans_free_square_photos qq where qq.free_square_id = fs.id) then 1 else 0 end as isexistsphoto
 
 FROM view_reports1nf rep
@@ -683,6 +684,13 @@ WHERE id = @id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("pdfurl") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
 		</dx:GridViewDataTextColumn>
+
+		<dx:GridViewDataTextColumn FieldName="jpegurl" Caption="Фото-архів" VisibleIndex="25" Width="150px" Visible="true">
+			<DataItemTemplate>
+                <%# "<a target=\"_blank\" href=\"" + Eval("jpegurl") + "\">" + Eval("jpegurl") + "</a>"%>
+            </DataItemTemplate>
+		</dx:GridViewDataTextColumn>
+
 
 
         <%--<dx:GridViewDataTextColumn FieldName="komis_protocol" Caption="Протокол комісії" VisibleIndex="40" Width="100px">--%>
