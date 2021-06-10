@@ -89,6 +89,7 @@
       ,(select Q.short_name from reports1nf_org_info Q where Q.report_id = A.org_info_id) as org_name
       ,(select Q.name from dict_1nf_districts2 Q where Q.id = A.addr_distr_new_id) as addr_distr
       ,@baseurl + '/Reports1NF/BalansFreeSquarePhotosPdf.aspx?id=' + cast(A.[id] as varchar(100)) as pdfurl
+	  ,@baseurl + '/Reports1NF/Report1NFPrivatisatShowPhotosPdf.aspx?id=' + cast(A.[id] as varchar(100)) + '&jpeg=1' as jpegurl
   FROM [privatisat] A
     order by 1, [addr_nomer]   "
     OnSelecting="SqlDataSourceFreeSquare_Selecting"
@@ -473,6 +474,11 @@ WHERE id = @id"
             </DataItemTemplate>
         </dx:GridViewDataTextColumn>
 
+		<dx:GridViewDataTextColumn FieldName="jpegurl" Caption="Фото-архів" VisibleIndex="25" Width="150px" Visible="true">
+			<DataItemTemplate>
+                <%# "<a target=\"_blank\" href=\"" + Eval("jpegurl") + "\">" + Eval("jpegurl") + "</a>"%>
+            </DataItemTemplate>
+		</dx:GridViewDataTextColumn>
 
 
 
