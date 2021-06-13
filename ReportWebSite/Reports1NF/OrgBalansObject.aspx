@@ -14,6 +14,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 
 <style type="text/css">
+    .command-column-class {
+        white-space:normal !important;
+    }
+
     .SpacingPara
     {
         font-size: 10px;
@@ -565,6 +569,8 @@
 				grid.GetRowValues(e.visibleIndex, 'id', OnGridPdfBuildGetRowValues);
 			} else if (e.buttonID == 'btnFreeCycle') {
 				grid.GetRowValues(e.visibleIndex, 'id', OnFreeCycleGetRowValues);
+			} else if (e.buttonID == 'btnFreeProzoro') {
+				grid.GetRowValues(e.visibleIndex, 'id', OnFreeProzoroGetRowValues);
 			}
 		}
 
@@ -582,7 +588,16 @@
 				'FreeCycle.aspx?free_square_id=' + id,
 				'_blank',
 			);
-        }
+		}
+
+		function OnFreeProzoroGetRowValues(values) {
+			var id = values;
+			window.open(
+				'FreeProzoro.aspx?id=' + id,
+				'_blank',
+			);
+		}
+
 
 		var paramRid = <%= ParamRid %>;
         var paramBid = <%= ParamBid %>;
@@ -1906,11 +1921,11 @@ WHERE id = @id"
 		    <NewButton>
 			    <Image Url="~/Styles/AddIcon.png" />
 		    </NewButton>
-		    <ClearFilterButton Text="Очистити" RenderMode="Link" />
+		    <ClearFilterButton Text="&#160;&#160;&#160;&#160;Очистити&#160;&#160;&#160;&#160;" RenderMode="Link" />
 	    </SettingsCommandButton>
 
         <Columns>
-            <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" ShowInCustomizationForm="True" CellStyle-Wrap="True" Width="70px" 
+            <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" ShowInCustomizationForm="True" CellStyle-Wrap="True" Width="70px" CellStyle-CssClass="command-column-class" 
                 ShowDeleteButton="True" ShowCancelButton="true" ShowUpdateButton="true" ShowClearFilterButton="true" ShowEditButton="true" ShowNewButton="true" >
                 <CustomButtons>
                     <dx:GridViewCommandColumnCustomButton ID="btnPhoto" Text="Фото"> 
@@ -1922,6 +1937,10 @@ WHERE id = @id"
                     <dx:GridViewCommandColumnCustomButton ID="btnFreeCycle" Text="Картка процесу передачі в оренду вільного приміщення"> 
 						<Image Url="~/Styles/ReportDocument18.png"> </Image>
                     </dx:GridViewCommandColumnCustomButton>
+                    <dx:GridViewCommandColumnCustomButton ID="btnFreeProzoro" Text="Картка вільного приміщення для Prozorro"> 
+						<Image Url="~/Styles/prozorro18.png"> </Image>
+                    </dx:GridViewCommandColumnCustomButton>
+
                 </CustomButtons>
 
                 <CellStyle Wrap="False"></CellStyle>
@@ -1942,7 +1961,7 @@ WHERE id = @id"
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>
 
-            <dx:GridViewDataTextColumn FieldName="total_free_sqr" Caption="Загальна площа об’єкта, кв.м." VisibleIndex="3" >
+            <dx:GridViewDataTextColumn FieldName="total_free_sqr" Caption="Загальна площа об’єкта, кв.м." VisibleIndex="3" Width="200px" >
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>
 
