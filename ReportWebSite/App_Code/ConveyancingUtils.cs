@@ -601,7 +601,7 @@ public static class ConveyancingUtils
         number3 = number3.Trim().ToUpper();
         addrMisc = addrMisc.Trim().ToUpper();
 
-        PreProcessBuildingNumbers(ref number1, ref number2, ref number3);
+        //!!! PreProcessBuildingNumbers(ref number1, ref number2, ref number3);	//указание Синенко 14.06.2021
 
         // Make all changes to the Firebird database in a transaction
         //FbTransaction transaction = null;
