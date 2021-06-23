@@ -188,7 +188,9 @@
         (   (@p_rda_district_id = 0) OR
             (m.org_balans_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND m.org_balans_district_id = @p_rda_district_id) OR
             (m.org_giver_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND m.org_giver_district_id = @p_rda_district_id) OR
-            (m.org_renter_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND m.org_renter_district_id = @p_rda_district_id))"
+            (m.org_renter_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND m.org_renter_district_id = @p_rda_district_id))
+	order by case when org_balans_zkpo = '03366500' then 2 else 1 end
+	"
     OnSelecting="SqlDataSourceArendaObjects_Selecting" >
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="1" Name="p_dpz_filter" />
@@ -625,7 +627,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.RentAgreementsShow" Version="A2_2" Enabled="false" />
+    <SettingsCookies CookiesID="GUKV.RentAgreementsShow" Version="A2_3" Enabled="false" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

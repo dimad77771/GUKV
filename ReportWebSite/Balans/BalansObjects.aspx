@@ -199,6 +199,7 @@
 ,case when exists (select 1 from reports1nf_balans q where q.id = vb.balans_id) then 1 else 0 end as ex_reports1nf_balans 
 ,(select top 1 q.report_id from reports1nf_balans q where q.id = vb.balans_id) as reports1nf_report_id
 ,case when vb.balans_id in (select b.id from dbo.reports1nf_balans b where b.organization_id = vb.organization_id and ISNULL(b.is_deleted, 0) = 0 ) then 1 else 0 end as is_dpz_object
+,(select sum(case when fs.is_included = 1 then fs.total_free_sqr else 0 end) as total_free_sqr from reports1nf_balans_free_square fs where fs.balans_id = bal.id and fs.report_id = bal.report_id) as total_free_sqr 
 
     FROM view_balans_all vb
     LEFT JOIN reports1nf_balans bal on vb.balans_id = bal.id
@@ -291,6 +292,9 @@
             VisibleIndex="10" Visible="True" Caption="Загальна Площа будинку (кв.м.)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="sqr_non_habit_bld" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="11" Visible="True" Caption="Площа нежилих приміщень будинку (кв.м.)"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="total_free_sqr" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="11" Visible="True" Caption="Площа вільних приміщень (кв.м.)"></dx:GridViewDataTextColumn>
+
         <dx:GridViewDataTextColumn FieldName="sqr_habit_bld" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="12" Visible="True" Caption="Площа житлового фонду будинку (кв.м.)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="sqr_pidval_bld" ReadOnly="True" ShowInCustomizationForm="True"
@@ -452,6 +456,7 @@
         <dx:ASPxSummaryItem FieldName="sqr_pidval_bld" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="sqr_loft_bld" SummaryType="Sum" DisplayFormat="{0}" />
 
+		<dx:ASPxSummaryItem FieldName="total_free_sqr" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="sqr_total" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="sqr_pidval" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="sqr_vlas_potreb" SummaryType="Sum" DisplayFormat="{0}" />
@@ -463,6 +468,7 @@
         <dx:ASPxSummaryItem FieldName="sqr_gurtoj" SummaryType="Sum" DisplayFormat="{0}" />
 <%--        <dx:ASPxSummaryItem FieldName="sqr_non_habit" SummaryType="Sum" DisplayFormat="{0}" />      --%>
         <dx:ASPxSummaryItem FieldName="sqr_engineering" SummaryType="Sum" DisplayFormat="{0}" />
+		<dx:ASPxSummaryItem FieldName="num_rent_agr" SummaryType="Sum" DisplayFormat="{0}" />
 
         <dx:ASPxSummaryItem FieldName="cost_balans" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="cost_expert_1m" SummaryType="Sum" DisplayFormat="{0}" />
@@ -494,7 +500,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A2_5" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A2_6" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

@@ -169,6 +169,47 @@ public partial class Reports1NF_FreeProzoro : System.Web.UI.Page
         AddressForm.DataBind();
     }
 
+	protected void CallbackCopyPaste_Callback(object sender, CallbackEventArgsBase e)
+	{
+		CallbackCopyPaste.JSProperties["cp_clipborddata"] = "";
+		var clipborddata = e.Parameter;
+
+		SqlConnection connection = Utils.ConnectToDatabase();
+
+		var user = Membership.GetUser();
+		var username = (string.IsNullOrEmpty(user.UserName) ? "System" : user.UserName);
+
+		if (clipborddata == "paste")
+		{
+			clipborddata = "";
+			var command = connection.CreateCommand();
+			command.CommandText = "select clipborddata from ClipbordForUsers where username = @username";
+			command.Parameters.Add(new SqlParameter("username", username));
+			using (SqlDataReader reader = command.ExecuteReader())
+			{
+				while (reader.Read())
+				{
+					clipborddata = reader.GetString(0);
+				}
+			}
+			command.Dispose();
+
+			CallbackCopyPaste.JSProperties["cp_clipborddata"] = clipborddata;
+		}
+		else
+		{
+			var command = connection.CreateCommand();
+			command.CommandText = "delete from ClipbordForUsers where username = @username; insert into ClipbordForUsers(username,clipborddata) values (@username,@clipborddata)";
+			command.Parameters.Add(new SqlParameter("username", username));
+			command.Parameters.Add(new SqlParameter("clipborddata", clipborddata));
+			command.ExecuteNonQuery();
+			command.Dispose();
+		}
+
+		connection.Close();
+
+	}
+
 	void CreateNewRow()
 	{
 		var connection = Utils.ConnectToDatabase();
