@@ -125,6 +125,9 @@ public partial class Reports1NF_InventoryObjectList : System.Web.UI.Page
 	{
 		//return;
 
+		//var dfile = @"c:\tmp\debug2.txt";
+		//System.IO.File.AppendAllText(dfile, "start" + "\n");
+
 		var excelEngineMain = new ExcelEngine();
 		var workbook = excelEngineMain.Excel.Workbooks.Open(excelfilename);
 		var worksheet = workbook.Worksheets[0];
@@ -182,6 +185,8 @@ public partial class Reports1NF_InventoryObjectList : System.Web.UI.Page
 		var last_dtext = "";
 		for(int r = 2; r < worksheet.Rows.Length; r++)
 		{
+			//if (r % 10 == 0) System.IO.File.AppendAllText(dfile, "r1=" + r + " / " + worksheet.Rows.Length + "\n");
+
 			var erow = worksheet.Rows[r];
 			var this_dtext = string.Join(" *** ", Enumerable.Range(0, last_colnum).Select(q => erow.Cells[q].DisplayText));
 			if (!string.IsNullOrEmpty(this_dtext) && this_dtext == last_dtext)
@@ -201,8 +206,12 @@ public partial class Reports1NF_InventoryObjectList : System.Web.UI.Page
 			last_dtext = this_dtext;
 		}
 
+		int gg = 0;
 		foreach(var grows in groups_rows)
 		{
+			gg++;
+			//if (gg % 10 == 0) System.IO.File.AppendAllText(dfile, "gg=" + gg + " / " + groups_rows.Count + "\n");
+
 			for (int colnum = 0; colnum < last_colnum; colnum++)
 			{
 				var r1 = grows.First();
@@ -214,24 +223,32 @@ public partial class Reports1NF_InventoryObjectList : System.Web.UI.Page
 			}
 		}
 
+		//System.IO.File.AppendAllText(dfile, "hhh 1" + "\n");
+
 		worksheet.UsedRange.BorderInside();
 
+		//System.IO.File.AppendAllText(dfile, "hhh 2" + "\n");
 
 		var last_rownum = worksheet.UsedRange.Rows.Length;
 		var allNotFirstGroupingRows = new HashSet<int>(groups_rows.Select(q => q.Skip(1)).SelectMany(q => q));
+		int nnn = 0;
 		foreach (var sumcolinfo in sumcolnums)
 		{
+			nnn++;
 			double sumval = 0;
 			var colnum = sumcolinfo.Key;
 			var in_dcol = sumcolinfo.Value;
 			for (int r = 2; r < worksheet.Rows.Length; r++)
 			{
+				//if (r % 10 == 0) System.IO.File.AppendAllText(dfile, "ee=" + nnn + "; r1=" + r + " / " + worksheet.Rows.Length + "\n");
+
 				if (in_dcol && allNotFirstGroupingRows.Contains(r))
 				{
 					continue;
 				}
 
-				var val2 = worksheet.Rows[r].Cells[colnum].Value2;
+				var val2 = worksheet[r, colnum].Value2;
+				//var val2 = worksheet.Rows[r].Cells[colnum].Value2;
 				var val = val2 as Double?;
 				sumval += (val ?? 0);
 			}
@@ -240,8 +257,12 @@ public partial class Reports1NF_InventoryObjectList : System.Web.UI.Page
 			srange.Value2 = sumval;
 		}
 
+		//System.IO.File.AppendAllText(dfile, "hhh 3" + "\n");
+
 		workbook.Save();
+		//System.IO.File.AppendAllText(dfile, "hhh 4" + "\n");
 		workbook.Close();
 		excelEngineMain.Dispose();
+		//System.IO.File.AppendAllText(dfile, "hhh 5" + "\n");
 	}
 }
