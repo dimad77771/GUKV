@@ -136,6 +136,7 @@
         SELECT
              SUM(bal.sqr_total) AS 'SQR_TOTAL_BAL'
             ,SUM(bal.sqr_kor) AS 'SQR_KOR'
+			,SUM(bal.sqr_vlas_potreb) AS 'SQR_VLAS_POTREB'
 --            ,SUM(CASE WHEN bal.is_free_sqr = 1 THEN bal.free_sqr_useful ELSE 0 END) AS 'SQR_FREE'
 --            ,SUM(bal.free_sqr_useful) AS 'SQR_FREE'
               ,sum(fs.sqr_free) AS 'SQR_FREE'
@@ -764,6 +765,13 @@ WHERE id = @report_id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("SQR_KOR") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="SQR_VLAS_POTREB" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="47" Caption="Площа об'єкту для власних потреб, кв.м." >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("SQR_VLAS_POTREB") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
         <dx:GridViewDataTextColumn FieldName="SQR_VIDCH" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="48" Caption="Загальна площа, що знята з балансу, кв.м." >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("SQR_VIDCH") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
@@ -1043,6 +1051,7 @@ WHERE id = @report_id"
         <dx:ASPxSummaryItem FieldName="NUM_GIVEN" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="NUM_RENTER" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="NUM_RENTED" SummaryType="Sum" DisplayFormat="{0}" />
+		<dx:ASPxSummaryItem FieldName="SQR_VLAS_POTREB" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="SQR_FREE" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_NARAH_ZVIT" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_NARAH_ZVIT_NORMAL" SummaryType="Sum" DisplayFormat="{0}" />
@@ -1091,7 +1100,7 @@ WHERE id = @report_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A2_31" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A2_32" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

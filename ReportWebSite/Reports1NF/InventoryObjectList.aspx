@@ -71,7 +71,12 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceReportBalans" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT 
+    SelectCommand="
+select
+*
+from
+(
+	SELECT 
 
 	distinct
 
@@ -127,7 +132,8 @@
         
 		WHERE (bal.report_id = @rep_id or @rep_id = -1) and ISNULL(bal.is_deleted,0) = 0
 			and org.otdel_gukv_id = 1 /* указание Синенко от 19.04.2021 */
-		order by 2, addr_nomer 
+) TT
+order by org_name, zkpo_code, district, addr_street_name, addr_nomer, renter_name, purpose_str, balans_id
 	" >
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="rep_id" />

@@ -117,7 +117,7 @@ public partial class Reports1NF_InventoryObjectList : System.Web.UI.Page
     protected void PrimaryGridView_CustomColumnSort(object sender,
         DevExpress.Web.CustomColumnSortEventArgs e)
     {
-        Utils.ProcessGridSortByBuildingNumber(e);
+        //Utils.ProcessGridSortByBuildingNumber(e);
     }
 
 

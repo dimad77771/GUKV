@@ -1148,9 +1148,9 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 				if (svalue != null)
 				{
 					var val = (decimal)svalue;
-					if (val < 2.0M)
+					if (val < 1.0M)
 					{
-						e.Errors[dataColumn] = "Загальна площа об’єкта не може бути менше 2 кв.м.";
+						e.Errors[dataColumn] = "Загальна площа об’єкта не може бути менше 1 кв.м.";
 					}
 				}
 			}
