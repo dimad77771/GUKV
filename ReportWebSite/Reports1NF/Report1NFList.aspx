@@ -377,7 +377,7 @@ WHERE id = @report_id"
             <asp:Label ID="LabelReportTitle1" runat="server" Text="Звіти Балансоутримувачів" CssClass="reporttitle"></asp:Label>
         </td>
         <td>
-            <dx:ASPxButton ID="ASPxButton2" runat="server" AutoPostBack="False" Text="Додаткові Колонки" Width="148px">
+            <dx:ASPxButton ID="ASPxButtonEditColumnList" runat="server" AutoPostBack="False" Text="Додаткові Колонки" Width="148px">
                 <ClientSideEvents Click="function (s,e) { PopupFieldChooser.Show(); }" />
             </dx:ASPxButton>
         </td>
@@ -462,7 +462,7 @@ WHERE id = @report_id"
             </dx:ASPxButton>
         </td>
         <td>
-            <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Зведений Звіт" Width="148px" OnClick="ASPxButton_Zvedeniy_Build">
+            <dx:ASPxButton ID="ASPxButtonZvedeniyBuild" runat="server" Text="Зведений Звіт" Width="148px" OnClick="ASPxButton_Zvedeniy_Build">
             </dx:ASPxButton>
         </td>
     </tr>

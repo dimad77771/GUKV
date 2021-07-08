@@ -50,8 +50,12 @@
 
                 <table border="0" cellspacing="0" cellpadding="0" width="97%">
                 <tr>
-                    <td valign="top" style="width: 350px;">
-                        <div style="display: inline-block; border-right: 2px solid #DAE5F2; vertical-align: top; width: 350px;">
+                    <td valign="top" style="width: 550px; padding: 10px">
+						<a href="Reports1NF/Report1NFList.aspx?reportform=1" target="_blank">Звіти Балансоутримувачів</a>
+						<br /><br />
+						<a href="Balans/BalansObjects.aspx?reportform=1" target="_blank">Об'єкти на балансі</a>
+
+                        <div style="display: inline-block; border-right: 2px solid #DAE5F2; vertical-align: top; width: 550px; display:none">
                             <dx:ASPxTreeView ID="TreeViewStdReports"
                                 ClientInstanceName="TreeViewStdReports"
                                 runat="server"
@@ -68,7 +72,7 @@
                             </dx:ASPxTreeView>
                         </div>
                     </td>
-                    <td align="left" valign="top" style="width: 100%;">
+                    <td align="left" valign="top" style="width: 100%; display:none">
                         <div style="margin-left: 10px; display: inline-block; vertical-align: top;">
                             <div style="padding-bottom: 20px;">
                                 <dx:ASPxLabel ID="LabelAktRequestsInfo" Text="" runat="server" Height="20px"></dx:ASPxLabel>

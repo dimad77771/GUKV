@@ -3087,4 +3087,11 @@ public static class Utils
 		}
 	}
 
+	public static bool EqualColumnTitle(this GridViewColumn column, string caption)
+	{
+		var columnCaption = (column.Caption ?? "").Replace("\n","").Replace("\r", "").Replace("\t", "").Replace(" ", "").Trim().ToLower();
+		caption = caption.Replace("\n", "").Replace("\r", "").Replace("\t", "").Replace(" ", "").Trim().ToLower();
+		return (caption == columnCaption);
+	}
+
 }

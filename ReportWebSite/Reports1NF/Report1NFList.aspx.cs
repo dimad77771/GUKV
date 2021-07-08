@@ -65,7 +65,86 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 
 		PrimaryGridView.Settings.VerticalScrollBarMode = DevExpress.Web.ScrollBarMode.Visible;
 		PrimaryGridView.SettingsEditing.Mode = GridViewEditingMode.Inline;
+
+		if (IsReportForm)
+		{
+			CustomizeReportForm();
+		}
 	}
+
+
+	void CustomizeReportForm()
+	{
+		if (!IsPostBack)
+		{
+			PrimaryGridView.FilterExpression = @"[dict_rent_occupation_name] <> 'Невизначені' And [dict_rent_occupation_name] <> 'Невідомо' And [NumOfObj] > 1";
+		}
+
+		PrimaryGridView.SettingsCookies.Enabled = false;
+		ASPxButtonEditColumnList.Visible = false;
+		ASPxPopupControl_Reports1NF_SaveAs.Visible = false;
+		ASPxButton_Reports1NF_SaveAs.Visible = false;
+		ASPxButtonZvedeniyBuild.Visible = false;
+		SectionMenu.Visible = false;
+
+		//PrimaryGridView.Columns["zkpo_code"].fi
+
+		var visibleColumns = new[]
+		{
+			@"Назва Організації",
+			@"Коротка Назва Організації",
+			@"Код ЄДРПОУ",
+			@"Сфера діяльності",
+			@"Район",
+			@"Назва Вулиці",
+			@"Номер Будинку",
+			@"Поштовий Індекс",
+			@"Галузь",
+			@"Вид Діяльності",
+			@"Форма фінансування",
+			@"Форма Власності",
+			@"Госп. Структура",
+			@"Орг.-правова форма госп.",
+			@"Орган госп. упр.",
+			@"ФІО Директора",
+			@"Відповідальна особа",
+			@"ФІО Бухгалтера",
+			@"Тел. Бухгалтера",
+			@"Реєстраційний Орган",
+			@"Номер Запису про Реєстрацію",
+			@"Дата Реєстрації",
+			@"Номер Свідоцтва про Реєстрацію",
+			@"КВЕД",
+			@"Ел. Адреса",
+			@"Кількість об'єктів на балансі",
+			@"Ставка відрахувань до бюджету (%)",
+			@"Загальна площа, що знаходиться на балансі, кв.м.",
+			@"Площа, що орендується, кв.м.",
+			@"Загальна площа, що надається в оренду, кв.м.",
+			@"Кількість договорів оренди",
+			@"Кількість орендарів",
+			@"Кількість договорів орендування",
+			@"Загальна вільна площа, що може бути надана в оренду, кв.м.",
+			@"Нараховано орендної плати за звітний період, грн. (без ПДВ)",
+			@"Надходження орендної плати за звітний період, всього, грн. (без ПДВ)",
+			@"Переплата орендної плати всього, грн. (без ПДВ)",
+			@"Отримано орендної плати в тому числі інші платежі",
+			@"Загальна заборгованість по орендній платі, грн. (без ПДВ)",
+			@"Нарахована сума до бюджету % від загальної суми надходжень орендної плати за звітний період, грн. (без ПДВ)",
+			@"Перераховано коштів до бюджету, у звітному періоді ″КАЗНАЧЕЙСТВО″, грн. (без ПДВ)",
+			@"Заборгованість зі сплати % до бюджету від оренди майна за  звітний період, грн. (без ПДВ)",
+			@"Перераховано до бюджету за користування індивідуально визначеним майном ('Київенерго' та 'Водоканал')",
+		};
+		int npp = 0;
+		foreach (GridViewColumn column in PrimaryGridView.Columns)
+		{
+			var visible = visibleColumns.Any(colnam => Utils.EqualColumnTitle(column, colnam));
+			column.Visible = visible;
+			if (column.Visible) npp++;
+		}
+		npp = npp;
+	}
+
 
     protected bool IsSmallForm
     {
@@ -75,7 +154,15 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
         }
     }
 
-    protected void ASPxButton_Reports1NF_ExportXLS_Click(object sender, EventArgs e)
+	protected bool IsReportForm
+	{
+		get
+		{
+			return Request.QueryString["reportform"] == null ? false : true;
+		}
+	}
+
+	protected void ASPxButton_Reports1NF_ExportXLS_Click(object sender, EventArgs e)
     {
         this.ExportGridToXLS(GridViewReports1NFExporter, PrimaryGridView, LabelReportTitle1.Text, "");
     }

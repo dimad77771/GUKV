@@ -125,12 +125,12 @@
             </dx:ASPxButton>
         </td>
 		<td>
-			<dx:ASPxButton ID="ASPxButton6" runat="server" AutoPostBack="False" Text="Закріпити Колонки" Width="148px">
+			<dx:ASPxButton ID="ASPxButtonEditColumnList2" runat="server" AutoPostBack="False" Text="Закріпити Колонки" Width="148px">
 				<ClientSideEvents Click="ShowFieldFixxerPopupControl" />
 			</dx:ASPxButton>
 		</td>
         <td>
-            <dx:ASPxButton ID="ASPxButton1" runat="server" AutoPostBack="False" 
+            <dx:ASPxButton ID="ASPxButtonEditColumnList" runat="server" AutoPostBack="False" 
                 Text="Додаткові Колонки" Width="148px">
                 <ClientSideEvents Click="ShowFieldChooserPopupControl" />
             </dx:ASPxButton>
@@ -271,7 +271,7 @@
         <dx:GridViewDataTextColumn FieldName="org_industry" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="5" Visible="False" Caption="Балансоутримувач - Галузь"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_occupation" ReadOnly="True" ShowInCustomizationForm="True"
-            VisibleIndex="6" Visible="False" Caption="Балансоутримувач - Вид Діяльності"></dx:GridViewDataTextColumn>
+            VisibleIndex="6" Visible="False" Caption="Балансоутримувач - Вид Діяльності" Width="200"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="district" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="7" Visible="True" Caption="Район"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="street_full_name" ReadOnly="True" ShowInCustomizationForm="True"

@@ -49,10 +49,91 @@ public partial class Balans_BalansObjects : System.Web.UI.Page
         // Enable advanced header filter for all grid columns
         Utils.AdjustColumnsVisibleInFilter(PrimaryGridView);
 
-	    PrimaryGridView.Settings.VerticalScrollBarMode = DevExpress.Web.ScrollBarMode.Visible;	
-    }
+	    PrimaryGridView.Settings.VerticalScrollBarMode = DevExpress.Web.ScrollBarMode.Visible;
 
-    protected void ASPxButton_BalansObjects_ExportXLS_Click(object sender, EventArgs e)
+		if (IsReportForm)
+		{
+			CustomizeReportForm();
+		}
+	}
+
+	void CustomizeReportForm()
+	{
+		if (!IsPostBack)
+		{
+			PrimaryGridView.FilterExpression = @"[sphera_dialnosti] <> 'Невизначені' And [sphera_dialnosti] <> 'Невідомо'";
+		}
+
+		PrimaryGridView.SettingsCookies.Enabled = false;
+		ASPxButtonEditColumnList.Visible = false;
+		ASPxButtonEditColumnList2.Visible = false;
+		ASPxButton_BalansObjects_SaveAs.Visible = false;
+		CheckBoxBalansObjectsShowDeleted.Visible = false;
+		CheckBoxBalansObjectsComVlasn.Visible = false;
+		CheckBoxBalansObjectsDPZ.Visible = false;
+		ButtonQuickSearchAddr1.Visible = false;
+		SectionMenu.Visible = false;
+
+		//PrimaryGridView.Columns["zkpo_code"].fi
+
+		var visibleColumns = new[]
+		{
+			@"Балансоутримувач - Повна Назва",
+			@"Балансоутримувач - Коротка Назва",
+			@"Балансоутримувач - Код ЄДРПОУ",
+			@"Балансоутримувач - Вид Діяльності",
+			@"Район",
+			@"Назва Вулиці",
+			@"Номер Будинку",
+			@"Площа вільних приміщень (кв.м.)",
+			@"Площа нежилих приміщень об'єкту (кв.м.)",
+			@"Площа об'єкту Для Власних Потреб (кв.м.)",
+			@"Корисна площа об'єкту (кв.м.)",
+			@"Залишкова Вартість, тис.грн.",
+			@"Інвентаризаційний № справи",
+			@"Дата виготовлення технічного паспорту",
+			@"Реєстрація у Державному реєстрі (Об'єкт нерухомого майна)",
+			@"Реєстрація у Державному реєстрі (Номер запису про право власності)",
+			@"Реєстрація у Державному реєстрі (Реєстраційний номер об'єкту нерухомого майна)",
+			@"Інвентарний номер об'єкту",
+			@"Рік будівництва",
+			@"Рік здачі в експлуатацію",
+			@"Форма Власності Об'єкту",
+			@"Вид Об'єкту",
+			@"Тип Об'єкту",
+			@"Стан Об'єкту",
+			@"Група Призначення",
+			@"Призначення",
+			@"Історична Цінність",
+			@"Розташування приміщення (поверх)",
+			@"Балансоутримувач - Форма Власності",
+			@"Назва Об'єкту",
+			@"Дата Актуальності",
+			@"Сфера діяльності",
+			@"Госп. Структура",
+			@"Контактні телефони",
+		};
+		int npp = 0;
+		foreach (GridViewColumn column in PrimaryGridView.Columns)
+		{
+			var visible = visibleColumns.Any(colnam => Utils.EqualColumnTitle(column, colnam));
+			column.Visible = visible;
+			if (column.Visible) npp++;
+		}
+		npp = npp;
+	}
+
+
+	protected bool IsReportForm
+	{
+		get
+		{
+			return Request.QueryString["reportform"] == null ? false : true;
+		}
+	}
+
+
+	protected void ASPxButton_BalansObjects_ExportXLS_Click(object sender, EventArgs e)
     {
         this.ExportGridToXLS(ASPxGridViewExporterBalansObjects, PrimaryGridView, LabelReportTitle1.Text, ViewState["PrimaryGridView.DataSourceID"] as string);
     }
