@@ -54,6 +54,14 @@
 						<a href="Reports1NF/Report1NFList.aspx?reportform=1" target="_blank">Звіти Балансоутримувачів</a>
 						<br /><br />
 						<a href="Balans/BalansObjects.aspx?reportform=1" target="_blank">Об'єкти на балансі</a>
+						<br /><br />
+						<a href="Arenda/RentAgreements.aspx?reportform=1" target="_blank">Договори Оренди</a>
+						<br /><br />
+						<a href="Reports1NF/Report1NFFreeSquare.aspx?reportform=1" target="_blank">Перелік вільних приміщень</a>
+						<br /><br />
+						<a href="Reports1NF/ZvedZvitBuild.aspx" target="_blank">Зведений Звіт</a>
+
+						
 
                         <div style="display: inline-block; border-right: 2px solid #DAE5F2; vertical-align: top; width: 550px; display:none">
                             <dx:ASPxTreeView ID="TreeViewStdReports"

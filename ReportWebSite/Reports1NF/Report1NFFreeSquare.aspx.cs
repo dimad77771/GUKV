@@ -46,9 +46,104 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 			col.ShowNewButton = false;
 			col.ShowDeleteButton = false;
 		}
+
+		if (IsReportForm)
+		{
+			CustomizeReportForm();
+		}
 	}
 
-    protected void ASPxButton_FreeSquare_ExportXLS_Click(object sender, EventArgs e)
+	void CustomizeReportForm()
+	{
+		if (!IsPostBack)
+		{
+			//var ggg = FreeSquareGridView.FilterExpression;
+			FreeSquareGridView.FilterExpression = @"[komis_protocol] <> '0' And [komis_protocol] Is Not Null And [is_included] = True And [geodata_map_points] Is Not Null";
+		}
+
+		FreeSquareGridView.SettingsCookies.Enabled = false;
+		ASPxButtonEditColumnList.Visible = false;
+		//ASPxButton_FreeSquare_SaveAs.Visible = false;
+		SectionMenu.Visible = false;
+
+
+		var visibleColumns = new[]
+		{
+			@"Балансоутримувач",
+			@"Код ЄДРПОУ",
+			@"Район",
+			@"Назва Вулиці",
+			@"Номер Будинку",
+			@"Включено до переліку вільних приміщень",
+			@"Включено до переліку №",
+			@"Погодження орендодавця",
+			@"Координати на мапі",
+			@"Форма Власності",
+			@"Орган госп. упр.",
+			@"Наявність рішень про проведення інвестиційного конкурсу",
+			@"Ініціатор оренди",
+			@"Погодження органу управління балансоутримувача",
+			@"Погодження органу охорони культурної спадщини",
+			@"Тип об’єкта",
+			@"Пам’ятка культурної спадщини",
+			@"Унікальний код обєкту у ЕТС Прозорро-продажі",
+			@"Pdf",
+			@"Залишкова балансова вартість, грн.",
+			@"Первісна балансова вартість, грн.",
+			@"Пропонований строк оренди (у роках)",
+			@"Номер запису про право власності у Реєстрація у Державному реєстрі речових прав на нерухоме майно",
+			@"Реєстраційний номер об'єкту нерухомого майна у Реєстрація у Державному реєстрі речових прав на нерухоме майно",
+			@"Період часу, протягом якого об’єкт не використовується",
+			@"Інформацію про особу, яка використовувала об’єкт перед тим, як він став вакантним (якщо такою особою був балансоутримувач, проставляється позначка “об’єкт використовувався балансоутримувачем”)",
+			@"Дата формування залишкової вартості",
+			@"Особа відповідальна за ознайомлення з об’єктом",
+			@"Характеристика об’єкта оренди",
+			@"Загальна площа об’єкта",
+			@"Технічний стан об’єкта",
+			@"Можливе використання вільного приміщення",
+		};
+		int npp = 0;
+		foreach (GridViewColumn column in FreeSquareGridView.Columns)
+		{
+			if (column is GridViewCommandColumn)
+			{
+				column.Visible = false;
+			}
+			else if (column is GridViewBandColumn)
+			{
+				var col_visible = false;
+				foreach(GridViewColumn dcolumn in (column as GridViewBandColumn).Columns)
+				{
+					var visible = visibleColumns.Any(colnam => Utils.EqualColumnTitle(dcolumn, colnam));
+					dcolumn.Visible = visible;
+					if (visible)
+					{
+						col_visible = true;
+					}
+					if (dcolumn.Visible) npp++;
+				}
+				column.Visible = col_visible;
+			}
+			else
+			{
+				var visible = visibleColumns.Any(colnam => Utils.EqualColumnTitle(column, colnam));
+				column.Visible = visible;
+				if (column.Visible) npp++;
+			}
+		}
+		npp = npp;
+	}
+
+
+	protected bool IsReportForm
+	{
+		get
+		{
+			return Request.QueryString["reportform"] == null ? false : true;
+		}
+	}
+
+	protected void ASPxButton_FreeSquare_ExportXLS_Click(object sender, EventArgs e)
     {
 		this.ExportGridToXLS(GridViewFreeSquareExporter, FreeSquareGridView, LabelReportTitle1.Text, "",
 			exportHiddenColumnCallback: q => (q.FieldName == "pdfurl"),

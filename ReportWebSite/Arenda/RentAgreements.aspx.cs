@@ -49,10 +49,91 @@ public partial class Arenda_RentAgreements : System.Web.UI.Page
         // Enable advanced header filter for all grid columns
         Utils.AdjustColumnsVisibleInFilter(PrimaryGridView);
 
-	PrimaryGridView.Settings.VerticalScrollBarMode = DevExpress.Web.ScrollBarMode.Visible;
-    }
+		PrimaryGridView.Settings.VerticalScrollBarMode = DevExpress.Web.ScrollBarMode.Visible;
 
-    protected void ASPxButton_ArendaObjects_ExportXLS_Click(object sender, EventArgs e)
+		if (IsReportForm)
+		{
+			CustomizeReportForm();
+		}
+	}
+
+	void CustomizeReportForm()
+	{
+		if (!IsPostBack)
+		{
+			PrimaryGridView.FilterExpression = @"[agreement_active_s] = 'Договір діє'";
+		}
+
+		PrimaryGridView.SettingsCookies.Enabled = false;
+		ASPxButtonEditColumnList.Visible = false;
+		ASPxButtonEditColumnList2.Visible = false;
+		//ASPxButton_ArendaObjects_SaveAs.Visible = false;
+		CheckBoxRentedObjectsDPZ.Visible = false;
+		CheckBoxRentedObjectsComVlasn.Visible = false;
+		//CheckBoxBalansObjectsDPZ.Visible = false;
+		ButtonQuickSearchAddr1.Visible = false;
+		SectionMenu.Visible = false;
+
+		//PrimaryGridView.Columns["zkpo_code"].fi
+
+		var visibleColumns = new[]
+		{
+			@"Балансоутримувач - Повна Назва",
+			@"Балансоутримувач - Код ЄДРПОУ",
+			@"Балансоутримувач - Вид Діяльності",
+			@"Орендар - Повна Назва",
+			@"Орендар - Код ЄДРПОУ",
+			@"Орендар - Вид Діяльності",
+			@"Орендодавець - Повна Назва",
+			@"Орендодавець - Код ЄДРПОУ",
+			@"Район",
+			@"Назва Вулиці",
+			@"Номер Будинку",
+			@"Дата укладання договору",
+			@"Номер Договору Оренди",
+			@"Призначення за Документом",
+			@"Плата за використання, грн.",
+			@"Оціночна вартість приміщень за договором, грн",
+			@"Початок Оренди",
+			@"Закінчення Оренди",
+			@"Площа (кв.м.)",
+			@"Вид Розрахунків",
+			@"Стан договору",
+			@"Балансоутримувач - Форма Власності",
+			@"Ставка відрахувань до бюджету (%)",
+			@"Дата Актуальності",
+			@"Нараховано орендної плати за звітний період, грн. (без ПДВ)",
+			@"Надходження орендної плати за звітний період, всього, грн. (без ПДВ)",
+			@"Переплата орендної плати всього, грн. (без ПДВ)",
+			@"Загальна заборгованість по орендній платі - всього",
+			@"Заборгованість по орендній платі поточна до 3-х місяців",
+			@"Заборгованість по орендній платі прострочена від 4 до 12 місяців",
+			@"Заборгованість по орендній платі прострочена від 1 до 3 років",
+			@"Заборгованість по орендній платі безнадійна більше 3-х років",
+			@"Сфера діяльності",
+			@"Орендар - Форма власності",
+		};
+		int npp = 0;
+		foreach (GridViewColumn column in PrimaryGridView.Columns)
+		{
+			var visible = visibleColumns.Any(colnam => Utils.EqualColumnTitle(column, colnam));
+			column.Visible = visible;
+			if (column.Visible) npp++;
+		}
+		npp = npp;
+	}
+
+
+	protected bool IsReportForm
+	{
+		get
+		{
+			return Request.QueryString["reportform"] == null ? false : true;
+		}
+	}
+
+
+	protected void ASPxButton_ArendaObjects_ExportXLS_Click(object sender, EventArgs e)
     {
         this.ExportGridToXLS(ASPxGridViewExporterArendaObjects, PrimaryGridView, LabelReportTitle1.Text, ViewState["PrimaryGridView.DataSourceID"] as string);
     }

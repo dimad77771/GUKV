@@ -397,7 +397,7 @@ WHERE id = @id"
             <asp:Label ID="LabelReportTitle1" runat="server" Text="Перелік вільних приміщень" CssClass="reporttitle"></asp:Label>
         </td>
         <td>
-            <dx:ASPxButton ID="ASPxButton1" runat="server" AutoPostBack="False" 
+            <dx:ASPxButton ID="ASPxButtonEditColumnList" runat="server" AutoPostBack="False" 
                 Text="Додаткові Колонки" Width="148px">
                 <ClientSideEvents Click="ShowFieldChooserPopupControl" />
             </dx:ASPxButton>

@@ -67,7 +67,7 @@ public partial class Balans_BalansObjects : System.Web.UI.Page
 		PrimaryGridView.SettingsCookies.Enabled = false;
 		ASPxButtonEditColumnList.Visible = false;
 		ASPxButtonEditColumnList2.Visible = false;
-		ASPxButton_BalansObjects_SaveAs.Visible = false;
+		//ASPxButton_BalansObjects_SaveAs.Visible = false;
 		CheckBoxBalansObjectsShowDeleted.Visible = false;
 		CheckBoxBalansObjectsComVlasn.Visible = false;
 		CheckBoxBalansObjectsDPZ.Visible = false;

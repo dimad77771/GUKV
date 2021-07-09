@@ -110,12 +110,12 @@
             </dx:ASPxButton>
         </td>
         <td>
-	        <dx:ASPxButton ID="ASPxButton6" runat="server" AutoPostBack="False" Text="Закріпити Колонки" Width="148px">
+	        <dx:ASPxButton ID="ASPxButtonEditColumnList" runat="server" AutoPostBack="False" Text="Закріпити Колонки" Width="148px">
 		        <ClientSideEvents Click="ShowFieldFixxerPopupControl" />
 	        </dx:ASPxButton>
         </td>
         <td>
-            <dx:ASPxButton ID="ASPxButton1" runat="server" AutoPostBack="False" 
+            <dx:ASPxButton ID="ASPxButtonEditColumnList2" runat="server" AutoPostBack="False" 
                 Text="Додаткові Колонки" Width="148px">
                 <ClientSideEvents Click="ShowFieldChooserPopupControl" />
             </dx:ASPxButton>
@@ -315,7 +315,7 @@
             VisibleIndex="5" Visible="False" Caption="Балансоутримувач - Галузь"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_balans_occupation" ReadOnly="True"
             VisibleIndex="6" Visible="False" 
-            Caption="Балансоутримувач - Вид Діяльності"></dx:GridViewDataTextColumn>
+            Caption="Балансоутримувач - Вид Діяльності" Width="200"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_renter_id" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="7" Visible="False" Caption="ID Орендаря">
             <DataItemTemplate>
@@ -323,7 +323,7 @@
             </DataItemTemplate>
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_renter_full_name" ReadOnly="True"
-            VisibleIndex="8" Visible="False" Caption="Орендар - Повна Назва">
+            VisibleIndex="8" Visible="False" Caption="Орендар - Повна Назва" Width="200">
             <DataItemTemplate>
                 <%# "<a href=\"javascript:ShowOrganizationCard(" + Eval("org_renter_id") + ")\">" + Eval("org_renter_full_name") + "</a>"%>
             </DataItemTemplate>
@@ -340,7 +340,7 @@
         <dx:GridViewDataTextColumn FieldName="org_renter_industry" ReadOnly="True"
             VisibleIndex="11" Visible="False" Caption="Орендар - Галузь"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_renter_occupation" ReadOnly="True"
-            VisibleIndex="12" Visible="False" Caption="Орендар - Вид Діяльності"></dx:GridViewDataTextColumn>
+            VisibleIndex="12" Visible="False" Caption="Орендар - Вид Діяльності" Width="200"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_giver_id" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="13" Visible="False" Caption="ID Орендодавця">
             <DataItemTemplate>
@@ -348,7 +348,7 @@
             </DataItemTemplate>
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_giver_full_name" ReadOnly="True"
-            VisibleIndex="14" Visible="False" Caption="Орендодавець - Повна Назва">
+            VisibleIndex="14" Visible="False" Caption="Орендодавець - Повна Назва" Width="200">
             <DataItemTemplate>
                 <%# "<a href=\"javascript:ShowOrganizationCard(" + Eval("org_giver_id") + ")\">" + Eval("org_giver_full_name") + "</a>"%>
             </DataItemTemplate>
@@ -405,7 +405,7 @@
             VisibleIndex="32" Visible="False" Caption="Поверх"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="cost_narah" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="33" Visible="True" Caption="Середня Ставка за використання (%)"></dx:GridViewDataTextColumn>      --%>
-        <dx:GridViewDataTextColumn FieldName="priznachennya" VisibleIndex="33" Caption="Призначення за Документом" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="priznachennya" VisibleIndex="33" Caption="Призначення за Документом" ShowInCustomizationForm="True" Visible="False" Width="150"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn FieldName="cost_payed" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="34" Visible="False" Caption="Сплачена Вартість (грн.)"></dx:GridViewDataTextColumn>
