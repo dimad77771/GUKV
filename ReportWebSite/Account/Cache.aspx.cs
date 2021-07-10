@@ -87,7 +87,7 @@ public partial class Account_Cache : System.Web.UI.Page
                                 }
 
                                 if (dataset.Tables.Count > 0)
-                                    DataSourceCache.Put(command, dataset.Tables[0], false);
+                                    DataSourceCache.Put(command, "", dataset.Tables[0], false);
                             }
                         }
                     }

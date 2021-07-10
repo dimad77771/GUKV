@@ -107,7 +107,17 @@ namespace Cache
                 set { Query = value; }
             }
 
-            [DataMember]
+			public string PageId { get; set; }
+
+			[DataMember(Name = "PageId", EmitDefaultValue = false)]
+			public CDataWrapper PageIdCData
+			{
+				get { return PageId; }
+				set { PageId = value; }
+			}
+
+
+			[DataMember]
             public List<Tuple<string, object>> Params { get; set; }
 
             public SerializableCacheKey()
@@ -117,12 +127,12 @@ namespace Cache
 
             public static implicit operator CacheKey(SerializableCacheKey value)
             {
-                return value == null ? null : new CacheKey(value.Query, value.Params.ToArray());
+                return value == null ? null : new CacheKey(value.Query, value.Params.ToArray(), value.PageId);
             }
 
             public static implicit operator SerializableCacheKey(CacheKey value)
             {
-                return value == null ? null : new SerializableCacheKey() { Query = value.Query, Params = value.Params.ToList() };
+                return value == null ? null : new SerializableCacheKey() { Query = value.Query, Params = value.Params.ToList(), PageId = value.PageId };
             }
         }
         #endregion Serialization
@@ -133,26 +143,30 @@ namespace Cache
             private readonly string _query;
             private readonly Tuple<string, object>[] _params;
             private readonly string _uniqueID;
+			private readonly string _pageID;
 
-            public string Query { get { return _query; } }
+			public string Query { get { return _query; } }
             public Tuple<string, object>[] Params { get { return _params; } }
-            public string UniqueID { get { return _uniqueID; } }
+			public string PageId { get { return _pageID; } }
+			public string UniqueID { get { return _uniqueID; } }
 
-            public CacheKey(DbCommand command)
+            public CacheKey(DbCommand command, string pageId)
             {
                 _query = command.CommandText;
                 _params = command.Parameters.Cast<DbParameter>()
                     .Select(x => new Tuple<string, object>(x.ParameterName, x.Value)).ToArray();
+				_pageID = pageId;
 
                 _uniqueID = ComputeUniqueID();
             }
 
-            public CacheKey(string query, Tuple<string, object>[] parameters)
+            public CacheKey(string query, Tuple<string, object>[] parameters, string pageId)
             {
                 _query = query;
                 _params = (parameters ?? new Tuple<string, object>[0]);
+				_pageID = pageId;
 
-                _uniqueID = ComputeUniqueID();
+				_uniqueID = ComputeUniqueID();
             }
 
             private string ComputeUniqueID()
@@ -194,6 +208,9 @@ namespace Cache
 
                 if (this._params.Length != other._params.Length)
                     return false;
+
+				if (this._pageID != other.PageId)
+					return false;
 
                 for (int index = 0; index < this._params.Length; index++)
                 {
@@ -395,13 +412,13 @@ namespace Cache
             }
         }
 
-        public static bool TryGet(DbCommand command, out DataTable data)
+        public static bool TryGet(DbCommand command, string pageId, out DataTable data)
         {
             _cacheLock.EnterReadLock();
             try
             {
                 CacheValue value;
-                if (_cache.TryGetValue(new CacheKey(command), out value)
+                if (_cache.TryGetValue(new CacheKey(command, pageId), out value)
                     && (data = value.GetValue()) != null)
                 {
                     return true;
@@ -415,9 +432,9 @@ namespace Cache
             }
         }
 
-        public static void Put(DbCommand command, DataTable data, bool initializeLastAccess = true)
+        public static void Put(DbCommand command, string pageId, DataTable data, bool initializeLastAccess = true)
         {
-            CacheKey key = new CacheKey(command);
+            CacheKey key = new CacheKey(command, pageId);
 
             _cacheLock.EnterWriteLock();
             try

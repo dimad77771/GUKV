@@ -6,8 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
 using DevExpress.Web;
+using Cache;
 
-public partial class Arenda_RentAgreements : System.Web.UI.Page
+public partial class Arenda_RentAgreements : System.Web.UI.Page, CachingPageIdSupport
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -224,4 +225,8 @@ public partial class Arenda_RentAgreements : System.Web.UI.Page
         return str;
     }
 
+	public string GetCachingPageId()
+	{
+		return GetPageUniqueKey();
+	}
 }

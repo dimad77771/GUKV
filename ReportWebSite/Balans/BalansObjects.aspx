@@ -178,7 +178,7 @@
     </Styles>
 </dx:ASPxGridViewExporter>
 
-<mini:ProfiledSqlDataSource ID="SqlDataSourceBalansObjects" runat="server" EnableCaching="false"
+<mini:ProfiledSqlDataSource ID="SqlDataSourceBalansObjects" runat="server" EnableCaching="true"
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT vb.* 
 ,b.sqr_total as sqr_total_bld

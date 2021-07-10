@@ -23,16 +23,18 @@ namespace Cache
 
         private readonly CachingDataSource _owner;
         private readonly HttpContext _context;
-        private readonly SqlDataSourceView _view;
+		private readonly Page _page;
+		private readonly SqlDataSourceView _view;
         private readonly DataTable _data;
 
-        public CachingDataSourceView(CachingDataSource owner, HttpContext context, SqlDataSourceView view)
+        public CachingDataSourceView(CachingDataSource owner, HttpContext context, Page page, SqlDataSourceView view)
             : base(owner, view.Name)
         {
             _owner = owner;
             _context = context;
             _view = view;
-        }
+			_page = page;
+		}
 
         public CachingDataSourceView(CachingDataSource owner, string viewName, DataTable data)
             : base(owner, viewName)
@@ -40,6 +42,18 @@ namespace Cache
             _owner = owner;
             _data = data;
         }
+
+		private string GetPageId()
+		{
+			if (_page is CachingPageIdSupport)
+			{
+				return (_page as CachingPageIdSupport).GetCachingPageId();
+			}
+			else
+			{
+				return "";
+			}
+		}
 
         private void InitializeParameters(DbCommand command, ParameterCollection parameters, IDictionary exclusionList)
         {
@@ -228,7 +242,7 @@ namespace Cache
             }
 
             DataTable data;
-            if (DataSourceCache.TryGet(command, out data))
+            if (DataSourceCache.TryGet(command, GetPageId(), out data))
                 return new DataView(data);
 
             DbDataAdapter adapter = this._owner.CreateDataAdapter(command);
@@ -269,9 +283,14 @@ namespace Cache
                 }
             }
             DataTable table = (dataSet.Tables.Count > 0) ? dataSet.Tables[0] : null;
-            DataSourceCache.Put(command, table);
+            DataSourceCache.Put(command, GetPageId(), table);
             return new DataView(table);
         }
     }
 
+
+	public interface CachingPageIdSupport
+	{
+		string GetCachingPageId();
+	}
 }

@@ -124,7 +124,7 @@ namespace Cache
         {
             SqlDataSourceView view = (SqlDataSourceView)base.GetView(viewName);
             if (EnableCaching)
-                return new CachingDataSourceView(this, this.Context, view);
+                return new CachingDataSourceView(this, this.Context, this.Page, view);
             return view;
         }
     }
