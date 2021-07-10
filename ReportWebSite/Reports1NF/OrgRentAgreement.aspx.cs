@@ -185,7 +185,10 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
                 }
             }
             ASPxLabel lbl = ((ASPxLabel)Utils.FindControlRecursive(PaymentForm, "NeededPeriodCombo"));
-            lbl.Text = name;
+			if (lbl != null)
+			{ 
+				lbl.Text = name;
+			}
 
             foreach (var col in ASPxGridViewFreeSquare.Columns)
             {
@@ -296,7 +299,14 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
             "edit_povidoleno2_date", "edit_povidoleno2_num",
             //"edit_povidoleno3_date", "edit_povidoleno3_num",
             "edit_povidoleno4_date", "edit_povidoleno4_num"
-        }.ToList().ForEach(q => (PaymentForm.FindControlRecursive(q) as ASPxEdit).ReadOnly = false);
+        }.ToList().ForEach(q =>
+		{
+			var element = (PaymentForm.FindControlRecursive(q) as ASPxEdit);
+			if (element != null)
+			{
+				element.ReadOnly = false;
+			}
+		});
 
 //        EnableCollectionControls();
         EnableInsuranceControls();
