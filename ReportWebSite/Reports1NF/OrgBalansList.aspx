@@ -63,7 +63,7 @@
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT CASE WHEN COUNT(*) > 0 THEN 0 ELSE 1 END AS 'report_balans_status'
         FROM reports1nf_balans bal INNER JOIN reports1nf rep ON rep.id = bal.report_id
-        WHERE bal.report_id = @rep_id AND ((bal.submit_date IS NULL OR bal.modify_date > bal.submit_date))">
+        WHERE bal.report_id = @rep_id AND isnull(bal.is_deleted,0) = 0 AND ((bal.submit_date IS NULL OR bal.modify_date > bal.submit_date))">
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="rep_id" />
     </SelectParameters>
