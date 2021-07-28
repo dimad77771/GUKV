@@ -392,7 +392,7 @@
         <dx:GridViewDataTextColumn FieldName="ownership_type" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="42" Visible="False" Caption="Право"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="object_kind" ReadOnly="True" ShowInCustomizationForm="True"
-            VisibleIndex="43" Visible="True" Caption="Вид Об'єкту"></dx:GridViewDataTextColumn>
+            VisibleIndex="43" Visible="True" Caption="Вид Об'єкту відповідно Класифікатора майна"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="object_type" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="44" Visible="True" Caption="Тип Об'єкту"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="condition" ReadOnly="True" ShowInCustomizationForm="True"

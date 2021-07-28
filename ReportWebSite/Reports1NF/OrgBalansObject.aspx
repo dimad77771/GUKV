@@ -1478,11 +1478,11 @@ WHERE id = @id"
 
                                         <table border="0" cellspacing="0" cellpadding="2" width="990px">
                                             <tr>
-                                                <td><dx:ASPxLabel ID="ASPxLabel19" runat="server" Text="Вид об'єкту"></dx:ASPxLabel></td>
+                                                <td><dx:ASPxLabel ID="ASPxLabel19" runat="server" Text="Вид об'єкту відповідно Класифікатора майна"></dx:ASPxLabel></td>
                                                 <td>
                                                     <dx:ASPxComboBox ID="ComboObjKind" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="250px" 
                                                         IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceObjKind" Value='<%# Eval("object_kind_id") %>'
-                                                        Title="Вид об'єкту" >
+                                                        Title="Вид об'єкту відповідно Класифікатора майна" >
                                                         <ValidationSettings Display="None"> <RequiredField IsRequired="True" ErrorText="Характеристики об'єкту: необхідно вибрати вид об'єкту" /> </ValidationSettings>
                                                     </dx:ASPxComboBox>
                                                 </td>
