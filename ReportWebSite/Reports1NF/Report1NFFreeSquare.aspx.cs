@@ -58,7 +58,7 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 		if (!IsPostBack)
 		{
 			//var ggg = FreeSquareGridView.FilterExpression;
-			FreeSquareGridView.FilterExpression = @"[komis_protocol] <> '0' And [komis_protocol] Is Not Null And [is_included] = True And [geodata_map_points] Is Not Null";
+			FreeSquareGridView.FilterExpression = @"[komis_protocol] Not Like '0%' And [komis_protocol] Is Not Null And [is_included] = True And [geodata_map_points] Is Not Null";
 		}
 
 		FreeSquareGridView.SettingsCookies.Enabled = false;
