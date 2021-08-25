@@ -447,7 +447,7 @@ join dict_rent_occupation occ on occ.id = obp.org_occupation_id
 ) as T
 where 1=1
 and cur_state = 'Надісланий'
-and max_submit_date >= '20201001'
+and max_submit_date >= (select DATEADD(day, 1, Q.period_end) FROM dict_rent_period Q where Q.is_active = 1)
 group by dict_rent_occupation_name
 ";
 		var period_year = DateTime.Now.Date.Month == 1 ? DateTime.Now.Date.Year - 1 : DateTime.Now.Date.Year;
