@@ -15,7 +15,8 @@ public partial class Reports1NF_Report1NFPrivatisatSquare : System.Web.UI.Page
 {
 	protected void Page_Load(object sender, EventArgs e)
 	{
-		SectionMenu.Visible = Roles.IsUserInRole(Utils.Report1NFReviewerRole);
+		//SectionMenu.Visible = Roles.IsUserInRole(Utils.Report1NFReviewerRole);
+		SectionMenu.Visible = false;
 
 		// The 'Notifications' page must be visible only to users that can receive some notifications
 		if (Roles.IsUserInRole(Utils.DKVOrganizationControllerRole) ||

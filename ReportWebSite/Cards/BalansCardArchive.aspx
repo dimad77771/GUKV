@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="BalansCardArchive.aspx.cs" Inherits="Cards_BalansCardArchive"
-    MasterPageFile="~/NoMenu.master" Title="Архівний Стан Об'єкту На Балансі" %>
+    MasterPageFile="~/NoHeader.master" Title="Архівний Стан Об'єкту На Балансі" %>
 
 <%@ Register Assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>

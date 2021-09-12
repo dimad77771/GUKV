@@ -13,7 +13,11 @@
 
     void Application_PreRequestHandlerExecute(object sender, EventArgs e)
     {
-        DevExpress.Web.ASPxWebControl.GlobalTheme = Utils.CurrentTheme;
+        //DevExpress.Web.ASPxWebControl.GlobalTheme = Utils.CurrentTheme;
+		DevExpress.Web.ASPxWebControl.GlobalTheme = "DevEx";
+		//DevExpress.Web.ASPxWebControl.GlobalTheme = "Default";
+		//DevExpress.Web.ASPxWebControl.GlobalTheme = "Aqua";
+		//DevExpress.Web.ASPxWebControl.GlobalTheme = "MetropolisBlue";	//https://docs.devexpress.com/AspNet/6655/common-concepts/appearance-customization-theming/available-themes
     }
     
     void Application_BeginRequest()

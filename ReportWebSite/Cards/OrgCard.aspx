@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OrgCard.aspx.cs" Inherits="Cards_OrgCard"
-    MasterPageFile="~/NoMenu.master" Title="Картка Організації" ValidateRequest="false" %>
+    MasterPageFile="~/NoHeader.master" Title="Картка Організації" ValidateRequest="false" %>
 
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>

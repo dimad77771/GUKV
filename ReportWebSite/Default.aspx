@@ -1,4 +1,4 @@
-﻿<%@ Page Title="База даних ДКВ м. Києва" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="База даних ДКВ м. Києва" Language="C#" MasterPageFile="~/NoHeader.master" AutoEventWireup="true"
     CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
 <%@ Register Namespace="MiniProfilerHelpers" TagPrefix="mini" %>

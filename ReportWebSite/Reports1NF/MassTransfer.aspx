@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MassTransfer.aspx.cs" Inherits="Reports1NF_MassTransfer" MasterPageFile="~/NoMenu.master" Title="Массова зміна балансоутримувачів об'єктів" EnableSessionState="True" EnableViewState="true" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MassTransfer.aspx.cs" Inherits="Reports1NF_MassTransfer" MasterPageFile="~/NoHeader.master" Title="Массова зміна балансоутримувачів об'єктів" EnableSessionState="True" EnableViewState="true" %>
 
 <%@ Register Namespace="MiniProfilerHelpers" TagPrefix="mini" %>
 

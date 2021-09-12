@@ -17,9 +17,17 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        SectionMenu.Visible = Roles.IsUserInRole(Utils.Report1NFReviewerRole);
+		//var gg = this.Master;
+		//var ribbon = ((ASPxRibbon)Utils.FindControlRecursive(this.Master, "MainRibbon"));
+		//var tabs = ribbon.Tabs;
+		//ribbon.ActiveTabIndex = 2;
+		//var ritem = ribbon.Tabs[2].Groups[0].Items[0] as RibbonButtonItem;
+		//ritem.ItemStyle.ForeColor = System.Drawing.Color.Blue;
 
-        var cols = ASPxFileManagerPhotoFiles.SettingsFileList.DetailsViewSettings.Columns;
+		//SectionMenu.Visible = Roles.IsUserInRole(Utils.Report1NFReviewerRole);
+		SectionMenu.Visible = false;
+
+		var cols = ASPxFileManagerPhotoFiles.SettingsFileList.DetailsViewSettings.Columns;
         cols.Add(FileInfoType.Thumbnail, " ");
         var col1 = cols.Add(FileInfoType.FileName, "Файл");
         col1.Width = 430;
@@ -70,6 +78,8 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 		{
 			CustomizeReportForm();
 		}
+
+		SectionMenuForSmallMode.Visible = false;
 	}
 
 

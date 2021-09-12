@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DicOrgOccupation.aspx.cs" Inherits="Admin_DicOrgOccupation" MasterPageFile="~/NoMenu.master" Title="Довідник видів діяльності" EnableViewState="true" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DicOrgOccupation.aspx.cs" Inherits="Admin_DicOrgOccupation" MasterPageFile="~/NoHeader.master" Title="Довідник видів діяльності" EnableViewState="true" %>
 
 <%@ Register Assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web" TagPrefix="dx" %>

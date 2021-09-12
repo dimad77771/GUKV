@@ -19,7 +19,7 @@
 
     function AdjustGridSizes() {
 
-        PrimaryGridView.SetHeight(window.innerHeight - 180);
+        PrimaryGridView.SetHeight(window.innerHeight - 140);
     }
 
     function GridViewReports1NFInit(s, e) {
@@ -339,7 +339,7 @@ WHERE id = @report_id"
 
 </mini:ProfiledSqlDataSource>
 
-<dx:ASPxMenu ID="SectionMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
+<dx:ASPxMenu ID="SectionMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left" Visible="false">
     <Items>
         <dx:MenuItem NavigateUrl="../Reports1NF/Report1NFList.aspx" Text="Звіти Балансоутримувачів"></dx:MenuItem>
         <dx:MenuItem NavigateUrl="../Reports1NF/Report1NFAccounts.aspx" Text="Облікові Записи"></dx:MenuItem>

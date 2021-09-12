@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TransferRequestAdd.aspx.cs" Inherits="Reports1NF_TransferRequestAdd" MasterPageFile="~/NoMenu.master" Title="Зміна балансоутримувачів об'єктів - Новий запрос" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TransferRequestAdd.aspx.cs" Inherits="Reports1NF_TransferRequestAdd" MasterPageFile="~/NoHeader.master" Title="Зміна балансоутримувачів об'єктів - Новий запрос" %>
 
 <%@ Register src="ObjectPicker.ascx" tagname="ObjectPicker" tagprefix="uctl1" %>
 <%@ Register Namespace="MiniProfilerHelpers" TagPrefix="mini" %>

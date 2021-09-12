@@ -15,7 +15,7 @@
     <form id="Form1" runat="server">
     <div class="page">
         <div class="narrowheader">
-            <div style="float: right; padding-top: 2px;">
+            <div style="float: right; padding-top: 2px; display:none">
                 <dx:ThemeSelector ID="ThemeSelector" runat="server" />
             </div>
             <div style="float:right;color:white">
@@ -26,10 +26,270 @@
         <div class="clear hideSkiplink">
             <table border="0" cellspacing="0" cellpadding="0" width="100%">
                 <tr>
-                    <td>
-                        <div style="float: left; padding-top: 0px; width:inherit; ">
+                    <td style="width:1600px">
+                        <div style="margin-right:30px">
                             <asp:Panel ID="PanelNavigation" runat="server" Width="100%">
-                                <dx:ASPxMenu ID="MainMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left" >
+								<dx:ASPxRibbon ID="MainRibbon" runat="server" ClientInstanceName="MainRibbon" ShowFileTab="false" Styles-TabContent-Height="100px" Width="100%" BackColor="White" AllowMinimize="true" Minimized="true">
+									<Tabs>
+
+										<dx:RibbonTab Text="Головна">
+											<Groups>
+												<dx:RibbonGroup Text="Звіти">
+													<Items>
+														<dx:RibbonButtonItem Text="Звіти Балансоутримувачів" NavigateUrl="Reports1NF/Report1NFList.aspx?reportform=1">
+															<SmallImage Url="Styles/ribbonicon_5.png"/>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Об'єкти на балансі" NavigateUrl="Balans/BalansObjects.aspx?reportform=1">
+															<SmallImage Url="Styles/ribbonicon_4.png"/>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Договори Оренди" NavigateUrl="Arenda/RentAgreements.aspx?reportform=1">
+															<SmallImage Url="Styles/ribbonicon_6.png"/>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Перелік вільних приміщень" NavigateUrl="Reports1NF/Report1NFFreeSquare.aspx?reportform=1">
+															<SmallImage Url="Styles/ribbonicon_8.png"/>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Зведений Звіт" NavigateUrl="">
+															<SmallImage Url="Styles/ribbonicon_3.png"/>
+														</dx:RibbonButtonItem>
+													</Items>
+												</dx:RibbonGroup>
+											</Groups>
+										</dx:RibbonTab>
+
+										<dx:RibbonTab Text="Користувачі майна">
+											<Groups>
+												<dx:RibbonGroup Text="Перелік Балансоутримувачів">
+													<Items>
+														<dx:RibbonButtonItem Text="Перелік Балансоутримувачів" NavigateUrl="Reports1NF/Report1NFList.aspx?smallform=1">
+															<SmallImage Url="Styles/ribbonicon_5.png"/>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Роздрукувати картку організації" NavigateUrl="Cards/PrintOrgCard.aspx?orgid=305033">
+															<SmallImage Url="Styles/ribbonicon_print.png"/>
+														</dx:RibbonButtonItem>
+													</Items>
+												</dx:RibbonGroup>
+											</Groups>
+										</dx:RibbonTab>
+
+										<dx:RibbonTab Text="Майно (Об'єкти)" >
+											<Groups>
+												<dx:RibbonGroup Text="Об'єкти на Балансі">
+													<Items>
+														<dx:RibbonButtonItem Text="Об'єкти на Балансі" NavigateUrl="Balans/BalansObjects.aspx">
+															<SmallImage Url="Styles/ribbonicon_4a.png">
+															</SmallImage>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Об'єкти Інвентарізації" NavigateUrl="Balans/BalansInventarizations.aspx">
+															<SmallImage Url="Styles/ribbonicon_4b.png">
+															</SmallImage>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Інші Об'єкти" NavigateUrl="Balans/BalansOther.aspx">
+															<SmallImage Url="Styles/ribbonicon_4c.png">
+															</SmallImage>
+														</dx:RibbonButtonItem>
+													</Items>
+												</dx:RibbonGroup>
+											</Groups>
+										</dx:RibbonTab>
+
+										<dx:RibbonTab Text="Оренда" >
+											<Groups>
+												<dx:RibbonGroup Text="Договори Оренди">
+													<Items>
+														<dx:RibbonButtonItem Text="Договори Оренди" NavigateUrl="Arenda/RentAgreements.aspx">
+															<SmallImage Url="Styles/ribbonicon_6.png" />
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Орендовані Об'єкти" NavigateUrl="Arenda/RentedObjects.aspx">
+															<SmallImage Url="Styles/ribbonicon_9.png" />
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Перелік Орендарів" NavigateUrl="Arenda/RentOrgList.aspx">
+															<SmallImage Url="Styles/ribbonicon_5.png" />
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Договори Суборенди" NavigateUrl="Arenda/RentSubleases.aspx">
+															<SmallImage Url="Styles/ribbonicon_6b.png" />
+														</dx:RibbonButtonItem>
+													</Items>
+												</dx:RibbonGroup>
+											</Groups>
+										</dx:RibbonTab>
+
+										<dx:RibbonTab Text="Оцінка" >
+											<Groups>
+												<dx:RibbonGroup Text="Оцінка">
+													<Items>
+														<dx:RibbonButtonItem Text="Перелік об'єктів оцінки" NavigateUrl="Assessment/AssessmentObjects.aspx" >
+															<SmallImage Url="Styles/ribbonicon_5.png"/>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Перелік СОД" NavigateUrl="">
+															<SmallImage Url="Styles/ribbonicon_10.png"/>
+														</dx:RibbonButtonItem>
+													</Items>
+												</dx:RibbonGroup>
+											</Groups>
+										</dx:RibbonTab>
+
+										<dx:RibbonTab Text="Процеси" >
+											<Groups>
+												<dx:RibbonGroup Text="Початок та продовження оренди">
+													<Items>
+														<dx:RibbonButtonItem Text="Перелік вільних приміщень" NavigateUrl="Reports1NF/Report1NFFreeSquare.aspx">
+															<SmallImage Url="Styles/ribbonicon_4d.png"/>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Продовження договорів" NavigateUrl="Reports1NF/Report1NFDogContinue.aspx">
+															<SmallImage Url="Styles/AddIcon.png"/>
+														</dx:RibbonButtonItem>
+													</Items>
+												</dx:RibbonGroup>
+											</Groups>
+										</dx:RibbonTab>
+
+										<dx:RibbonTab Text="Приватизація" >
+											<Groups>
+												<dx:RibbonGroup Text="Приватизація">
+													<Items>
+														<dx:RibbonButtonItem Text="Об'єкти приватизації" NavigateUrl="Reports1NF/Report1NFPrivatisatSquare.aspx">
+															<SmallImage Url="Styles/ribbonicon_14.png" />
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Програма приватизації" NavigateUrl="Privatization/PrivatObjects.aspx">
+															<SmallImage Url="Styles/ribbonicon_12.png" />
+														</dx:RibbonButtonItem>
+													</Items>
+												</dx:RibbonGroup>
+											</Groups>
+										</dx:RibbonTab>
+
+										<dx:RibbonTab Text="Контроль використання" >
+											<Groups>
+												<dx:RibbonGroup Text="Орендна плата">
+													<Items>
+														<dx:RibbonButtonItem Text="Орендна плата" NavigateUrl="OrendnaPlata/OrendnaPlataByBalans.aspx">
+															<SmallImage Url="Styles/ribbonicon_15.png" />
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Надходження до бюджету">
+															<SmallImage Url="Styles/ribbonicon_16.png" />
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Зведений звіт">
+															<SmallImage Url="Styles/ribbonicon_3.png" />
+														</dx:RibbonButtonItem>
+													</Items>
+												</dx:RibbonGroup>
+											</Groups>
+										</dx:RibbonTab>
+
+										<dx:RibbonTab Text="Корпоративні права" >
+											<Groups>
+												<dx:RibbonGroup Text="Корпоративні права">
+													<Items>
+														<dx:RibbonButtonItem Text="Перелік корпоративних прав">
+															<SmallImage Url="Styles/ribbonicon_5.png"/>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Реєстр руху корпоративних прав">
+															<SmallImage Url="Styles/ribbonicon_17.png"/>
+														</dx:RibbonButtonItem>
+													</Items>
+												</dx:RibbonGroup>
+											</Groups>
+										</dx:RibbonTab>
+
+										<dx:RibbonTab Text="Юридичні справи" >
+											<Groups>
+												<dx:RibbonGroup Text="">
+													<Items>
+														<dx:RibbonButtonItem Text="Юридичні справи" NavigateUrl="Yurdep/YurdepStart.aspx">
+															<SmallImage Url="Styles/ribbonicon_18.png"/>
+														</dx:RibbonButtonItem>
+													</Items>
+												</dx:RibbonGroup>
+											</Groups>
+										</dx:RibbonTab>
+
+										<dx:RibbonTab Text="Каталог" >
+											<Groups>
+												<dx:RibbonGroup Text="Каталог">
+													<Items>
+														<dx:RibbonButtonItem Text="Каталог Адрес" NavigateUrl="Catalogue/AddrCatalogue.aspx">
+															<SmallImage Url="Styles/ribbonicon_19.png"/>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Каталог Організацій" NavigateUrl="Catalogue/OrgCatalogue.aspx">
+															<SmallImage Url="Styles/ribbonicon_20.png"/>
+														</dx:RibbonButtonItem>
+													</Items>
+												</dx:RibbonGroup>
+											</Groups>
+										</dx:RibbonTab>
+
+										<dx:RibbonTab Text="Адміністрування" >
+											<Groups>
+												<dx:RibbonGroup Text="Адміністрування користувачів">
+													<Items>
+														<dx:RibbonButtonItem Text="Реєстрація нового користувача" NavigateUrl="Account/Register.aspx">
+															<SmallImage Url="Styles/AddIcon.png"/>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Керування правами доступу" NavigateUrl="Account/ManageRoles.aspx">
+															<SmallImage Url="Styles/ribbonicon_21.png"/>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Облікові Записи" NavigateUrl="Reports1NF/Report1NFAccounts.aspx">
+															<SmallImage Url="Styles/ribbonicon_5.png"/>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Зміна балансоутримувачів об'єктів" NavigateUrl="Reports1NF/ConveyancingList.aspx">
+															<SmallImage Url="Styles/ribbonicon_22.png"/>
+														</dx:RibbonButtonItem>
+													</Items>
+												</dx:RibbonGroup>
+											</Groups>
+										</dx:RibbonTab>
+
+										<dx:RibbonTab Text="Довідка" >
+											<Groups>
+												<dx:RibbonGroup Text="Довідка">
+													<Items>
+														<dx:RibbonButtonItem Text="Аналітик ДКВ (орендодавець)" NavigateUrl="UserGuide/UserGuide.aspx">
+															<SmallImage Url="Styles/ribbonicon_help_1.png"/>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Аналітик РДА (орендодавець)" NavigateUrl="UserGuide/%D0%86%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D1%96%D1%8F%20%D0%BF%D0%BE%20%D0%B2%D0%B8%D0%BA%D0%BE%D1%80%D0%B8%D1%81%D1%82%D0%B0%D0%BD%D0%BD%D1%8E%20%D0">
+															<SmallImage Url="Styles/ribbonicon_help_2.png"/>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Аналітик підрозділу КМДА" NavigateUrl="UserGuide/%D0%86%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D1%96%D1%8F%20%D0%BF%D0%BE%20%D0%B2%D0%B8%D0%BA%D0%BE%D1%80%D0%B8%D1%81%D1%82%D0%B0%D0%BD%D0%BD%D1%8E%20%D0">
+															<SmallImage Url="Styles/ribbonicon_help_3.png"/>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Суб’єкти актуалізації даних" NavigateUrl="UserGuide/%D0%86%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D1%96%D1%8F%20%D0%B4%D0%BB%D1%8F%20%D0%B1%D0%B0%D0%BB%D0%B0%D0%BD%D1%81%D0%BE%D1%83%D1%82%D1%80%D0%B8%D0%BC">
+															<SmallImage Url="Styles/ribbonicon_help_4.png"/>
+														</dx:RibbonButtonItem>
+													</Items>
+												</dx:RibbonGroup>
+											</Groups>
+										</dx:RibbonTab>
+
+										<dx:RibbonTab Text="Фін. Аналіз" >
+											<Groups>
+												<dx:RibbonGroup Text="Фінансова звітність підприємств">
+													<Items>
+														<dx:RibbonButtonItem Text="Показники підприємств" NavigateUrl="Finance/FinanceView.aspx">
+															<SmallImage Url="Styles/ribbonicon_23.png"/>
+														</dx:RibbonButtonItem>
+													</Items>
+												</dx:RibbonGroup>
+											</Groups>
+										</dx:RibbonTab>
+
+
+
+									</Tabs>
+								</dx:ASPxRibbon>
+
+								<dx:ASPxMenu ID="MainMenuRDA" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left" Visible="false" >
+									<Items>
+										<dx:MenuItem NavigateUrl="Reports1NF/Cabinet.aspx" Text="Стан"></dx:MenuItem>
+										<dx:MenuItem NavigateUrl="Reports1NF/OrgInfo.aspx" Text="Загальна Інформація"></dx:MenuItem>
+										<dx:MenuItem NavigateUrl="Reports1NF/OrgBalansList.aspx" Text="Об'єкти на Балансі"></dx:MenuItem>
+										<dx:MenuItem NavigateUrl="Reports1NF/OrgBalansDeletedList.aspx" Text="Відчужені Об'єкти"></dx:MenuItem>
+										<dx:MenuItem NavigateUrl="Reports1NF/OrgArendaList.aspx" Text="Договори використання приміщень "></dx:MenuItem>
+										<dx:MenuItem NavigateUrl="Reports1NF/OrgRentedList.aspx" Text="Договори Орендування"></dx:MenuItem>
+										<dx:MenuItem NavigateUrl="Reports1NF/ConveyancingRequestsList.aspx" Text="Зміна балансоутримувачів об'єктів"></dx:MenuItem>
+									</Items>
+								</dx:ASPxMenu>
+
+                                <dx:ASPxMenu ID="MainMenu" Visible="false" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left" >
                                     <ItemStyle Paddings-PaddingLeft="5px" Paddings-PaddingRight="5px" />
                                     <Items>
                                         <dx:MenuItem NavigateUrl="~/Default.aspx" Text="Звіти"></dx:MenuItem>
@@ -49,8 +309,8 @@
                             </asp:Panel>
                         </div>
                     </td>
-
-                    <td>
+                    
+					<td>
                         <div style="float: right; padding-top: 0px;">
                             <asp:LoginView ID="LoginView1" runat="server">
                                 <AnonymousTemplate>
@@ -110,6 +370,7 @@
                             </asp:LoginView>
                         </div>
                     </td>
+
                 </tr>
             </table>
         </div>
@@ -124,5 +385,8 @@
     <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jquery-1.8.3.js") %>"></script>
 	<script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jquery.cookie.js") %>"></script>
     <%= StackExchange.Profiling.MiniProfiler.RenderIncludes() %> 
+
+	<asp:ContentPlaceHolder ID="FooterContent" runat="server">
+    </asp:ContentPlaceHolder>
 </body>
 </html>

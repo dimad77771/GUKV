@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OrgInfo.aspx.cs" Inherits="Reports1NF_OrgInfo"
-    MasterPageFile="~/NoMenu.master" Title="Інформація про Організацію" %>
+    MasterPageFile="~/NoHeader.master" Title="Інформація про Організацію" %>
 
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 <%@ Register Namespace="MiniProfilerHelpers" TagPrefix="mini" %>
@@ -223,7 +223,7 @@ WHERE id = @id"
     </UpdateParameters>
 </mini:ProfiledSqlDataSource>
 
-<dx:ASPxMenu ID="SectionMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
+<dx:ASPxMenu ID="SectionMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left" Visible="false">
     <Items>
         <dx:MenuItem NavigateUrl="../Reports1NF/Cabinet.aspx" Text="Стан"></dx:MenuItem>
         <dx:MenuItem NavigateUrl="../Reports1NF/OrgInfo.aspx" Text="Загальна Інформація"></dx:MenuItem>

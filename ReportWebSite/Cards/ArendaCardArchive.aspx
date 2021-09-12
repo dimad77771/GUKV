@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ArendaCardArchive.aspx.cs" Inherits="Cards_ArendaCardArchive"
-    MasterPageFile="~/NoMenu.master" Title="Архівний Стан Договору Оренди" %>
+    MasterPageFile="~/NoHeader.master" Title="Архівний Стан Договору Оренди" %>
 
 <%@ Register Assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web" TagPrefix="dx" %>

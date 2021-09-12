@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OrgOccupation.aspx.cs" Inherits="Admin_OrgOccupation" MasterPageFile="~/NoMenu.master" Title="Сфера діяльності балансоутримувачів" EnableViewState="true" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OrgOccupation.aspx.cs" Inherits="Admin_OrgOccupation" MasterPageFile="~/NoHeader.master" Title="Сфера діяльності балансоутримувачів" EnableViewState="true" %>
 
 <%@ Register Assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web" TagPrefix="dx" %>

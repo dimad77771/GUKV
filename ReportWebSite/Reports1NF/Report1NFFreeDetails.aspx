@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Report1NFFreeDetails.aspx.cs" Inherits="Reports1NF_Report1NFFreeDetails"
-    MasterPageFile="~/NoMenu.master" Title="Картка Об'єкту на Балансі" EnableViewState="true" %>
+    MasterPageFile="~/NoHeader.master" Title="Картка Об'єкту на Балансі" EnableViewState="true" %>
 
 <%@ Register Assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web" TagPrefix="dx" %>

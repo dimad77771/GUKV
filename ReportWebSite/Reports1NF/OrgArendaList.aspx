@@ -1,5 +1,5 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="OrgArendaList.aspx.cs" Inherits="Reports1NF_OrgArendaList"
-    MasterPageFile="~/NoMenu.master" Title="Договори Оренди" %>
+    MasterPageFile="~/NoHeader.master" Title="Договори Оренди" %>
 
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
@@ -371,7 +371,7 @@ FROM reports1nf_arenda ar
     EnableCaching="true">
 </mini:ProfiledSqlDataSource>
 
-<dx:ASPxMenu ID="SectionMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
+<dx:ASPxMenu ID="SectionMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left" Visible="false">
     <Items>
         <dx:MenuItem NavigateUrl="../Reports1NF/Cabinet.aspx" Text="Стан"></dx:MenuItem>
         <dx:MenuItem NavigateUrl="../Reports1NF/OrgInfo.aspx" Text="Загальна Інформація"></dx:MenuItem>

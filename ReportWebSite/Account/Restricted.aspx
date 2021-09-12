@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Restricted.aspx.cs" Inherits="Account_Restricted"
-    MasterPageFile="~/NoMenu.master" Title="Доступ обмежено" %>
+    MasterPageFile="~/NoHeader.master" Title="Доступ обмежено" %>
 
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 

@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ObjCard.aspx.cs" Inherits="Cards_ObjCard"
-    MasterPageFile="~/NoMenu.master" Title="Картка Об'єкту" ValidateRequest="false" %>
+    MasterPageFile="~/NoHeader.master" Title="Картка Об'єкту" ValidateRequest="false" %>
 
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>

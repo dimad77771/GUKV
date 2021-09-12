@@ -3094,4 +3094,78 @@ public static class Utils
 		return (caption == columnCaption);
 	}
 
+	#region Report initialization
+
+	public static int GetLastReportId()
+	{
+		int userOrganizationId = Utils.UserOrganizationID;
+
+		if (userOrganizationId > 0)
+		{
+			SqlConnection connection = Utils.ConnectToDatabase();
+
+			if (connection != null)
+			{
+				// Get the maximum report ID for this organization
+				int reportId = -1;
+
+				using (SqlCommand cmd = new SqlCommand("SELECT MAX(id) FROM reports1nf WHERE organization_id = @org_id", connection))
+				{
+					cmd.Parameters.Add(new SqlParameter("org_id", userOrganizationId));
+
+					using (SqlDataReader reader = cmd.ExecuteReader())
+					{
+						if (reader.Read())
+						{
+							if (!reader.IsDBNull(0))
+							{
+								reportId = reader.GetInt32(0);
+							}
+						}
+
+						reader.Close();
+					}
+				}
+
+				// If no report exists, create it
+				if (reportId < 0)
+				{
+					reportId = GenerateDefaultReport(connection, userOrganizationId);
+				}
+
+				connection.Close();
+
+				return reportId;
+			}
+		}
+
+		return -1;
+	}
+
+	public static int GenerateDefaultReport(SqlConnection connection, int organizationId)
+	{
+		// Generate the first report for this organization by executing the stored procedure
+		SqlParameter outputIdParam = new SqlParameter("REPORT_ID", SqlDbType.Int)
+		{
+			Direction = ParameterDirection.Output
+		};
+
+		using (SqlCommand cmd = new SqlCommand("fnGenerateInitial1NFReport", connection))
+		{
+			cmd.Parameters.Add(new SqlParameter("ORG_ID", organizationId));
+			cmd.Parameters.Add(outputIdParam);
+
+			cmd.CommandType = CommandType.StoredProcedure;
+			cmd.ExecuteNonQuery();
+		}
+
+		if (outputIdParam.Value is int)
+		{
+			return (int)outputIdParam.Value;
+		}
+
+		return -1;
+	}
+
+	#endregion (Report initialization)
 }

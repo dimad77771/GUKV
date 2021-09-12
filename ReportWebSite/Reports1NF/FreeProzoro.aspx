@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FreeProzoro.aspx.cs" Inherits="Reports1NF_FreeProzoro"
-    MasterPageFile="~/NoMenu.master" Title="Картка вільного приміщення для Prozorro" %>
+    MasterPageFile="~/NoHeader.master" Title="Картка вільного приміщення для Prozorro" %>
 
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 <%@ Register Namespace="MiniProfilerHelpers" TagPrefix="mini" %>

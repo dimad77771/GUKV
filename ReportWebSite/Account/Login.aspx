@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Log In" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="Log In" Language="C#" MasterPageFile="~/NoHeader.master" AutoEventWireup="true"
     CodeFile="Login.aspx.cs" Inherits="Account_Login" %>
 
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>

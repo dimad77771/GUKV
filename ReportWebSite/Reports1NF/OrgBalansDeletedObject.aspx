@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OrgBalansDeletedObject.aspx.cs" Inherits="Reports1NF_OrgBalansDeletedObject"
-    MasterPageFile="~/NoMenu.master" Title="Картка Відчуженого Об'єкту" %>
+    MasterPageFile="~/NoHeader.master" Title="Картка Відчуженого Об'єкту" %>
 
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 <%@ Register Namespace="MiniProfilerHelpers" TagPrefix="mini" %>
@@ -89,7 +89,7 @@
     </SelectParameters>
 </mini:ProfiledSqlDataSource>
 
-<dx:ASPxMenu ID="SectionMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
+<dx:ASPxMenu ID="SectionMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left" Visible="false">
     <Items>
         <dx:MenuItem NavigateUrl="../Reports1NF/Cabinet.aspx" Text="Стан"></dx:MenuItem>
         <dx:MenuItem NavigateUrl="../Reports1NF/OrgInfo.aspx" Text="Загальна Інформація"></dx:MenuItem>

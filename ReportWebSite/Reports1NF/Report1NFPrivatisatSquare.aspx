@@ -29,7 +29,7 @@
 
     function AdjustGridSizes() {
 
-		PrivatisatGridView.SetHeight(window.innerHeight - 180);
+		PrivatisatGridView.SetHeight(window.innerHeight - 140);
 		console.log("AAAa");
     }
 
@@ -441,7 +441,7 @@ SELECT SCOPE_IDENTITY()"
 
 <textarea rows="2" cols="2" id="inpit-for-copy-clipboard" style="display:none2;width:1px;height:1px;position:absolute;top:1px;right:1px;z-index:-1" ></textarea>
 
-<dx:ASPxMenu ID="SectionMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
+<dx:ASPxMenu ID="SectionMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left" Visible="false">
     <Items>
         <dx:MenuItem NavigateUrl="../Reports1NF/Report1NFList.aspx" Text="Звіти Балансоутримувачів"></dx:MenuItem>
         <dx:MenuItem NavigateUrl="../Reports1NF/Report1NFAccounts.aspx" Text="Облікові Записи"></dx:MenuItem>

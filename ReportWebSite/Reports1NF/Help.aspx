@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Help.aspx.cs" Inherits="Reports1NF_Help" MasterPageFile="~/NoMenu.master" Title="Довідка" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Help.aspx.cs" Inherits="Reports1NF_Help" MasterPageFile="~/NoHeader.master" Title="Довідка" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">

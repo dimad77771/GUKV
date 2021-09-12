@@ -16,6 +16,7 @@ public partial class NoHeader : System.Web.UI.MasterPage
         bool userIsRdaController = Roles.IsUserInRole(Utils.RDAControllerRole);
         bool userIsMistoController = Roles.IsUserInRole(Utils.MISTOControllerRole);
 
+		/*
         // If user does not belong to the role "1NFReportReviewer", hide the menu items related to 1NF reports
         if (!userIsReportReviewer && !userIsRdaController && !userIsMistoController)
         {
@@ -65,14 +66,29 @@ public partial class NoHeader : System.Web.UI.MasterPage
                 }
             }
         }
+		*/
 
-        // If user is not authenticated, hide the main menu
-        if (Membership.GetUser() == null)
+		// If user is not authenticated, hide the main menu
+		if (Membership.GetUser() == null)
         {
-            foreach (DevExpress.Web.MenuItem item in MainMenu.Items)
-            {
-                item.ClientVisible = false;
-            }
+			MainRibbon.Visible = false;
+
+			//foreach (DevExpress.Web.MenuItem item in MainMenu.Items)
+   //         {
+   //             item.ClientVisible = false;
+   //         }
         }
-    }
+
+		var reportID = Utils.GetLastReportId();
+
+		if (reportID > 0)
+		{
+			MainMenuRDA.Visible = true;
+			MainRibbon.Visible = false;
+			for (int i = 0; i < MainMenuRDA.Items.Count; i++)
+			{
+				MainMenuRDA.Items[i].NavigateUrl += "?rid=" + reportID;
+			}
+		}
+	}
 }
