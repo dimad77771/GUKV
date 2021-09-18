@@ -72,7 +72,7 @@
             <asp:Label ID="LabelReportTitle1" runat="server" Text="Оцінка Об'єктів" CssClass="reporttitle"></asp:Label>
         </td>
         <td>
-            <dx:ASPxButton ID="ButtonQuickSearchAddr" runat="server" AutoPostBack="False" Text="" ImageSpacing="0px" AllowFocus="false"
+            <dx:ASPxButton ID="ButtonQuickSearchAddr" runat="server" AutoPostBack="False" Text="" ImageSpacing="0px" AllowFocus="false" Visible="false"
                 ToolTip="Щвидкий пошук за адресою">
                 <Image Url="../Styles/HouseIcon.png" />
                 <FocusRectPaddings Padding="1px" />

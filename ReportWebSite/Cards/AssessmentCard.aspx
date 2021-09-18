@@ -13,7 +13,7 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceAssessmentProperties" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>"
-    SelectCommand="SELECT * FROM view_assessment WHERE valuation_id = @vid" >
+    SelectCommand="SELECT * FROM expert_note WHERE id = @vid" >
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="vid" />
     </SelectParameters>
@@ -41,17 +41,57 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceAssessmentDetails" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>"
-    SelectCommand="SELECT d.id AS 'detail_id', d.obj_square, d.cost_1_usd, d.valuation_date, d.floors, d.purpose, d.note
+    SelectCommand="SELECT d.id AS 'detail_id', d.obj_square, d.cost_1_usd, d.valuation_date, d.floors, d.purpose, d.note 
         FROM expert_note_detail d WHERE d.expert_note_id = @vid AND d.is_deleted <> 1" >
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="vid" />
     </SelectParameters>
 </mini:ProfiledSqlDataSource>
 
+<mini:ProfiledSqlDataSource ID="SqlDataSourceOrganizations" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="select id, CONCAT(zkpo_code, ' - ', full_name) name from organizations order by case when zkpo_code <> '' then 1 else 2 end, 2">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceStreets" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="select id,name from [dict_streets] order by name">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictExpertObjType" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="select id, name from dict_expert_obj_type order by 2">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictExpertValuationKind" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="select id, name from dict_expert_valuation_kind order by 1">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictExpertRezenz" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="select id, name from dict_expert_rezenz order by 2">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictExpert" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="select id, full_name as name from dict_expert where full_name <> '' order by 2">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDistrict" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_districts2 WHERE id < 900 ORDER BY name">
+</mini:ProfiledSqlDataSource>
+
+
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td>
 
+<dx:ASPxCallbackPanel ID="CPMainPanel" ClientInstanceName="CPMainPanel" 
+        runat="server" OnCallback="CPMainPanel_Callback" onunload="CPMainPanel_Unload">
+<PanelCollection>
+<dx:PanelContent ID="Panelcontent2" runat="server">
 <dx:ASPxPageControl ID="CardPageControl" ClientInstanceName="CardPageControl" runat="server" ActiveTabIndex="0">
     <TabPages>
 
@@ -66,24 +106,48 @@
             <PanelCollection>
                 <dx:PanelContent ID="PanelContent4" runat="server" SupportsDisabledAttribute="True">
                     <table border="0" cellspacing="0" cellpadding="0" width="810px">
-                        <tr>
-                            <td width="100px"><dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="Район"></dx:ASPxLabel></td>
-                            <td width="8px">&nbsp;</td>
-                            <td><dx:ASPxTextBox ID="EditOrgId" runat="server" ReadOnly="True" Text='<%# Eval("district") %>' Width="290px" /></td>
-                            <td width="8px">&nbsp;</td>
-                            <td width="100px"><dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Вид Об'єкту"></dx:ASPxLabel></td>
-                            <td width="8px">&nbsp;</td>
-                            <td><dx:ASPxTextBox ID="ASPxTextBox23" runat="server" ReadOnly="True" Text='<%# Eval("expert_obj_type") %>' Width="290px" /></td>
-                        </tr>
+						<tr>
+							<td width="100px">
+								<dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="Район"></dx:ASPxLabel>
+							</td>
+							<td width="8px">&nbsp;</td>
+							<td>
+								<%--<dx:ASPxTextBox ID="addr_district_id" runat="server" Text='<%# Eval("addr_district_id") %>' Width="290px" />--%>
+								<dx:ASPxComboBox ID="addr_district_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="290px"
+									IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceDistrict" Value='<%# Eval("addr_district_id") %>'
+									Title="Район"
+									DropDownStyle="DropDown" />
+							</td>
+							<td width="8px">&nbsp;</td>
+							<td width="100px">
+								<dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Вид Об'єкту"></dx:ASPxLabel>
+							</td>
+							<td width="8px">&nbsp;</td>
+							<td>
+								<dx:ASPxComboBox ID="expert_obj_type_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="290px"
+									IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceDictExpertObjType" Value='<%# Eval("expert_obj_type_id") %>'
+									Title="Вид Об'єкту"
+									DropDownStyle="DropDown" />
+							</td>
+						</tr>
                         <tr><td colspan="7" height="4px"/></tr>
                         <tr>
                             <td width="100px"><dx:ASPxLabel ID="ASPxLabel4" runat="server" Text="Назва Вулиці"></dx:ASPxLabel></td>
                             <td width="8px">&nbsp;</td>
-                            <td><dx:ASPxTextBox ID="ASPxTextBox3" runat="server" ReadOnly="True" Text='<%# Eval("street_full_name") %>' Width="290px" /></td>
+                            <td>
+								<dx:ASPxComboBox ID="addr_street_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="290px"
+                                IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceStreets" Value='<%# Eval("addr_street_id") %>'
+                                Title="Назва Вулиці"
+								DropDownStyle="DropDown"
+								EnableCallbackMode="True"
+								CallbackPageSize="100" />
+                            </td>
                             <td width="8px">&nbsp;</td>
                             <td width="100px"><dx:ASPxLabel ID="ASPxLabel23" runat="server" Text="Номер Будинку"></dx:ASPxLabel></td>
                             <td width="8px">&nbsp;</td>
-                            <td><dx:ASPxTextBox ID="ASPxTextBox22" runat="server" ReadOnly="True" Text='<%# Eval("addr_nomer") %>' Width="290px" /></td>
+                            <td>
+								<dx:ASPxTextBox ID="ASPxTextBox22" runat="server" Text='<%# Eval("addr_nomer") %>' Width="290px" />
+                            </td>
                         </tr>
                     </table>
                 </dx:PanelContent>
@@ -95,19 +159,39 @@
         <dx:ASPxRoundPanel ID="ASPxRoundPanel2" runat="server" HeaderText="Організації">
             <PanelCollection>
                 <dx:PanelContent ID="PanelContent2" runat="server" SupportsDisabledAttribute="True">
-                    <table border="0" cellspacing="0" cellpadding="0" width="810px">
-                        <tr>
-                            <td width="100px"><dx:ASPxLabel ID="ASPxLabel3" runat="server" Text="Балансоутримувач"></dx:ASPxLabel></td>
-                            <td width="8px">&nbsp;</td>
-                            <td colspan="5"><dx:ASPxTextBox ID="ASPxTextBox2" runat="server" ReadOnly="True" Text='<%# Eval("balans_org_name") %>' Width="700px" /></td>
-                        </tr>
-                        <tr><td colspan="7" height="4px"/></tr>
-                        <tr>
-                            <td width="100px"><dx:ASPxLabel ID="ASPxLabel5" runat="server" Text="Орендар"></dx:ASPxLabel></td>
-                            <td width="8px">&nbsp;</td>
-                            <td colspan="5"><dx:ASPxTextBox ID="ASPxTextBox1" runat="server" ReadOnly="True" Text='<%# Eval("renter_name") %>' Width="700px" /></td>
-                        </tr>
-                    </table>
+					<table border="0" cellspacing="0" cellpadding="0" width="810px">
+						<tr>
+							<td width="100px">
+								<dx:ASPxLabel ID="ASPxLabel3" runat="server" Text="Балансоутримувач"></dx:ASPxLabel>
+							</td>
+							<td width="8px">&nbsp;</td>
+							<td colspan="5">
+								<dx:ASPxComboBox ID="org_balans_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="700px"
+									IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceOrganizations" Value='<%# Eval("org_balans_id") %>'
+									Title="Балансоутримувач"
+									DropDownStyle="DropDown"
+									EnableCallbackMode="True"
+									CallbackPageSize="100" />
+							</td>
+						</tr>
+						<tr>
+							<td colspan="7" height="4px" />
+						</tr>
+						<tr>
+							<td width="100px">
+								<dx:ASPxLabel ID="ASPxLabel5" runat="server" Text="Орендар"></dx:ASPxLabel>
+							</td>
+							<td width="8px">&nbsp;</td>
+							<td colspan="5">
+								<dx:ASPxComboBox ID="org_renter_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="700px"
+									IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceOrganizations" Value='<%# Eval("org_renter_id") %>'
+									Title="Орендар"
+									DropDownStyle="DropDown"
+									EnableCallbackMode="True"
+									CallbackPageSize="100" />
+							</td>
+						</tr>
+					</table>
                 </dx:PanelContent>
             </PanelCollection>
         </dx:ASPxRoundPanel>
@@ -121,33 +205,51 @@
                         <tr>
                             <td width="100px"><dx:ASPxLabel ID="ASPxLabel8" runat="server" Text="СОД"></dx:ASPxLabel></td>
                             <td width="8px">&nbsp;</td>
-                            <td colspan="5"><dx:ASPxTextBox ID="ASPxTextBox5" runat="server" ReadOnly="True" Text='<%# Eval("expert_name") %>' Width="700px" /></td>
+                            <td colspan="5">
+								<%--<dx:ASPxTextBox ID="ASPxTextBox5" runat="server" Text='<%# Eval("expert_id") %>' Width="700px" />--%>
+								<dx:ASPxComboBox ID="expert_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="700px"
+									IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceDictExpert" Value='<%# Eval("expert_id") %>'
+									Title="Рецензент"
+									DropDownStyle="DropDown" />
+                            </td>
                         </tr>
                         <tr><td colspan="7" height="4px"/></tr>
                         <tr>
                             <td width="100px"><dx:ASPxLabel ID="ASPxLabel9" runat="server" Text="Рецензент"></dx:ASPxLabel></td>
                             <td width="8px">&nbsp;</td>
-                            <td colspan="5"><dx:ASPxTextBox ID="ASPxTextBox6" runat="server" ReadOnly="True" Text='<%# Eval("rezenz_name") %>' Width="700px" /></td>
+                            <td colspan="5">
+								<dx:ASPxComboBox ID="rezenz_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="700px"
+									IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceDictExpertRezenz" Value='<%# Eval("rezenz_id") %>'
+									Title="Рецензент"
+									DropDownStyle="DropDown" />
+                            </td>
                         </tr>
                         <tr><td colspan="7" height="4px"/></tr>
                         <tr>
                             <td width="100px"><dx:ASPxLabel ID="ASPxLabel10" runat="server" Text="Вид оцінки"></dx:ASPxLabel></td>
                             <td width="8px">&nbsp;</td>
-                            <td><dx:ASPxTextBox ID="ASPxTextBox7" runat="server" ReadOnly="True" Text='<%# Eval("valuation_kind") %>' Width="290px" /></td>
+                            <td>
+								<dx:ASPxComboBox ID="valuation_kind_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="290px"
+									IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceDictExpertValuationKind" Value='<%# Eval("valuation_kind_id") %>'
+									Title="Вид оцінки"
+									DropDownStyle="DropDown" />
+                            </td>
                             <td width="8px">&nbsp;</td>
                             <td width="100px"><dx:ASPxLabel ID="ASPxLabel11" runat="server" Text="Дата Проведення Оцінки"></dx:ASPxLabel></td>
                             <td width="8px">&nbsp;</td>
-                            <td><dx:ASPxDateEdit ID="ASPxDateEdit2" runat="server" ReadOnly="True" Value='<%# Eval("valuation_date") %>' Width="290px" /></td>
+                            <td>
+								<dx:ASPxDateEdit ID="ASPxDateEdit2" runat="server" Value='<%# Eval("valuation_date") %>' Width="290px" />
+                            </td>
                         </tr>
                         <tr><td colspan="7" height="4px"/></tr>
                         <tr>
                             <td width="100px"><dx:ASPxLabel ID="ASPxLabel12" runat="server" Text="Площа Об'єкту"></dx:ASPxLabel></td>
                             <td width="8px">&nbsp;</td>
-                            <td><dx:ASPxTextBox ID="ASPxTextBox8" runat="server" ReadOnly="True" Text='<%# Eval("obj_square") %>' Width="290px" /></td>
+                            <td><dx:ASPxTextBox ID="ASPxTextBox8" runat="server" Text='<%# Eval("obj_square") %>' Width="290px" /></td>
                             <td width="8px">&nbsp;</td>
                             <td width="100px"><dx:ASPxLabel ID="ASPxLabel13" runat="server" Text="Вартість Об'єкту (грн.)"></dx:ASPxLabel></td>
                             <td width="8px">&nbsp;</td>
-                            <td><dx:ASPxTextBox ID="ASPxTextBox9" runat="server" ReadOnly="True" Text='<%# Eval("cost_prim") %>' Width="290px" /></td>
+                            <td><dx:ASPxTextBox ID="ASPxTextBox9" runat="server" Text='<%# Eval("cost_prim") %>' Width="290px" /></td>
                         </tr>
                     </table>
                 </dx:PanelContent>
@@ -162,23 +264,38 @@
                     <table border="0" cellspacing="0" cellpadding="0" width="810px">
                         <tr>
                             <td colspan="7" align="left">
-                                <dx:ASPxCheckBox ID="ASPxCheckBox1" runat="server" ReadOnly="True" Checked='<%# (1.Equals(Eval("is_archived"))) ? true : false %>' Text="Переміщено в Архів" />
+                                <dx:ASPxCheckBox ID="ASPxCheckBox1" runat="server" Checked='<%# (1.Equals(Eval("is_archived"))) ? true : false %>' Text="Переміщено в Архів" />
                             </td>
                         </tr>
                         <tr><td colspan="7" height="4px"/></tr>
                         <tr>
                             <td width="100px"><dx:ASPxLabel ID="ASPxLabel6" runat="server" Text="Архівний Номер"></dx:ASPxLabel></td>
                             <td width="8px">&nbsp;</td>
-                            <td><dx:ASPxTextBox ID="ASPxTextBox4" runat="server" ReadOnly="True" Text='<%# Eval("arch_num") %>' Width="290px" /></td>
+                            <td><dx:ASPxTextBox ID="ASPxTextBox4" runat="server" Text='<%# Eval("arch_num") %>' Width="290px" /></td>
                             <td width="8px">&nbsp;</td>
                             <td width="100px"><dx:ASPxLabel ID="ASPxLabel7" runat="server" Text="Дата Затвердження"></dx:ASPxLabel></td>
                             <td width="8px">&nbsp;</td>
-                            <td><dx:ASPxDateEdit ID="ASPxDateEdit1" runat="server" ReadOnly="True" Value='<%# Eval("final_date") %>' Width="290px" /></td>
+                            <td><dx:ASPxDateEdit ID="ASPxDateEdit1" runat="server" Value='<%# Eval("final_date") %>' Width="290px" /></td>
                         </tr>
                     </table>
                 </dx:PanelContent>
             </PanelCollection>
         </dx:ASPxRoundPanel>
+
+		<p class="SpacingPara"/>
+
+		<table border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td>
+					<dx:ASPxButton ID="ButtonSave" runat="server" Text="Зберегти" AutoPostBack="false" CausesValidation="false">
+						<ClientSideEvents Click="function (s,e) 
+						{ 
+							CPMainPanel.PerformCallback('save:'); 
+						}" />
+					</dx:ASPxButton>
+				</td>
+			</tr>
+		</table>
 
     </ItemTemplate>
 </asp:FormView>
@@ -247,7 +364,7 @@
                             <dx:GridViewDataTextColumn FieldName="floors" VisibleIndex="0" Caption="Поверх"></dx:GridViewDataTextColumn>
                             <dx:GridViewDataTextColumn FieldName="obj_square" VisibleIndex="1" Caption="Площа"></dx:GridViewDataTextColumn>
                             <dx:GridViewDataTextColumn FieldName="purpose" VisibleIndex="2" Caption="НЕВ"></dx:GridViewDataTextColumn>
-                            <dx:GridViewDataTextColumn FieldName="cost_1_usd" VisibleIndex="3" Caption="Вартість 1 кв.м., $" Visible="false"></dx:GridViewDataTextColumn>
+                            <dx:GridViewDataTextColumn FieldName="cost_1_usd" VisibleIndex="3" Caption="Вартість 1 кв.м., $" Visible="true"></dx:GridViewDataTextColumn>
                             <dx:GridViewDataDateColumn FieldName="valuation_date" VisibleIndex="4" Caption="Дата Оцінки"></dx:GridViewDataDateColumn>
                             <dx:GridViewDataTextColumn FieldName="note" VisibleIndex="5" Caption="Примітка"></dx:GridViewDataTextColumn>
                         </Columns>
@@ -330,6 +447,9 @@
 
     </TabPages>
 </dx:ASPxPageControl>
+</dx:PanelContent>
+</PanelCollection>
+</dx:ASPxCallbackPanel>
 
 </td>
 </tr>

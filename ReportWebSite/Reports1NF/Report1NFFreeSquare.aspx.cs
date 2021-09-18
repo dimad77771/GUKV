@@ -51,6 +51,8 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 		{
 			CustomizeReportForm();
 		}
+
+		SectionMenu.Visible = false;
 	}
 
 	void CustomizeReportForm()

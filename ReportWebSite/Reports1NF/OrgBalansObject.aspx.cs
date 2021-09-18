@@ -1388,4 +1388,84 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
         //        throw new NotImplementedException();
         throw new Exception(p);
     }
+
+	protected void ComboRozpDoc_OnItemsRequestedByFilterCondition(object source, ListEditItemsRequestedByFilterConditionEventArgs e)
+	{
+		log.InfoFormat("ComboRozpDoc_OnItemsRequestedByFilterCondition (e.Filter={0}, e.BeginIndex={1}, e.EndIndex={2})", e.Filter, e.BeginIndex, e.EndIndex);
+
+		/*
+		ASPxComboBox comboBox = (ASPxComboBox)source;
+
+		SqlDataSourceObjKind.SelectParameters.Clear();
+
+		string filterParam = string.Empty;
+		string likeQuery = string.Empty;
+		if ((!string.IsNullOrEmpty(e.Filter)) && (e.Filter.Length > 0))
+		{
+			if (e.Filter.Length >= 3)
+			{
+				SqlDataSourceObjKind.SelectCommand =
+					   @"SELECT st.id, doc_num, st.kind_id, k.name doc_kind, CONVERT(VARCHAR, doc_date, 104) doc_date, topic 
+                                 FROM (select id, t.kind_id, doc_num, doc_date, topic, row_number() over(order by t.doc_num)
+                	             AS rn from documents t 
+                                 INNER JOIN rozp_doc_kinds r ON t.kind_id = r.kind_id
+                                 WHERE doc_num like @filter) as st                 
+                                 LEFT JOIN dict_doc_kind k ON st.kind_id = k.id
+                	             WHERE doc_num <> ''  AND st.rn between @startIndex and @endIndex";
+				SqlDataSourceObjKind.SelectParameters.Add("filter", TypeCode.String, string.Format("%{0}%", e.Filter));
+			}
+			else
+			{
+				SqlDataSourceObjKind.SelectCommand =
+					@"SELECT st.id, doc_num, st.kind_id, k.name doc_kind, CONVERT(VARCHAR, doc_date, 104) doc_date, topic 
+                    FROM (select id, t.kind_id, doc_num, doc_date, topic, row_number() over(order by t.doc_num)
+	                AS rn from documents t 
+                    INNER JOIN rozp_doc_kinds r ON t.kind_id = r.kind_id
+                    WHERE doc_num = @filter) as st                 
+                    LEFT JOIN dict_doc_kind k ON st.kind_id = k.id
+	                WHERE doc_num <> ''  AND st.rn between @startIndex and @endIndex";
+				SqlDataSourceObjKind.SelectParameters.Add("filter", TypeCode.String, e.Filter);
+			}
+		}
+		else
+		{
+			SqlDataSourceObjKind.SelectCommand =
+				@"SELECT st.id, doc_num, st.kind_id, k.name doc_kind, CONVERT(VARCHAR, doc_date, 104) doc_date, topic 
+                    FROM (select id, t.kind_id, doc_num, doc_date, topic, row_number() over(order by t.doc_num)
+                    AS rn from documents t 
+                    INNER JOIN rozp_doc_kinds r ON t.kind_id = r.kind_id) as st                 
+                    LEFT JOIN dict_doc_kind k ON st.kind_id = k.id
+                    WHERE doc_num <> ''  AND st.rn between @startIndex and @endIndex";
+		}
+
+
+		SqlDataSourceObjKind.SelectParameters.Add("startIndex", TypeCode.Int32, (e.BeginIndex + 1).ToString());
+		SqlDataSourceObjKind.SelectParameters.Add("endIndex", TypeCode.Int32, (e.EndIndex + 1).ToString());
+		comboBox.DataSource = SqlDataSourceObjKind;
+		comboBox.DataBindItems();
+		*/
+	}
+
+	protected void ComboRozpDoc_OnItemRequestedByValue2(object source, ListEditItemRequestedByValueEventArgs e)
+	{
+		log.InfoFormat("ComboRozpDoc_OnItemRequestedByValue (e.Value={0})", e.Value);
+
+		/*
+
+		ASPxComboBox comboBox = (ASPxComboBox)source;
+		SqlDataSourceObjKind.SelectCommand = @"SELECT d.id, doc_num, d.kind_id, k.name doc_kind, CONVERT(VARCHAR, doc_date, 104) doc_date, topic FROM documents d
+                                         LEFT JOIN dict_doc_kind k ON d.kind_id = k.id
+                                         WHERE d.id = @id";
+
+		int value = 0;
+		if (e.Value != null)
+			int.TryParse(e.Value.ToString(), out value);
+
+		SqlDataSourceObjKind.SelectParameters.Clear();
+		SqlDataSourceObjKind.SelectParameters.Add("id", TypeCode.Int32, value.ToString());
+		comboBox.DataSource = SqlDataSourceObjKind;
+		comboBox.DataBindItems();
+
+		*/
+	}
 }

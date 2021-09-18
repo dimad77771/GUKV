@@ -660,7 +660,7 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceObjKind" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT id, LEFT(code + '-'+name, 100) as name FROM dict_1nf_object_kind order by code">
+    SelectCommand="SELECT id, LEFT(code + '-'+name, 100) as name FROM dict_1nf_object_kind order by ord">
 </mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceObjType" runat="server" 
@@ -1192,7 +1192,12 @@ WHERE id = @id"
                                                 <td>
                                                     <dx:ASPxComboBox ID="ComboBuildingKind" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="270px" 
                                                         IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceObjKind" Value='<%# Eval("object_kind_id") %>'
-                                                        Title="Вид будинку" />
+                                                        Title="Вид будинку"
+														DropDownStyle="DropDown"
+														EnableCallbackMode="True"
+														CallbackPageSize="100" 
+														 />
+<%--OnItemRequestedByValue="ComboRozpDoc_OnItemRequestedByValue" OnItemsRequestedByFilterCondition="ComboRozpDoc_OnItemsRequestedByFilterCondition"--%>
                                                 </td>
                                                 <td><dx:ASPxLabel ID="ASPxLabel20" runat="server" Text="Тип будинку"></dx:ASPxLabel></td>
                                                 <td>
@@ -1482,6 +1487,8 @@ WHERE id = @id"
                                                 <td>
                                                     <dx:ASPxComboBox ID="ComboObjKind" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="250px" 
                                                         IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceObjKind" Value='<%# Eval("object_kind_id") %>'
+														EnableCallbackMode="True"
+														CallbackPageSize="100" 
                                                         Title="Вид об'єкту відповідно Класифікатора майна" >
                                                         <ValidationSettings Display="None"> <RequiredField IsRequired="True" ErrorText="Характеристики об'єкту: необхідно вибрати вид об'єкту" /> </ValidationSettings>
                                                     </dx:ASPxComboBox>

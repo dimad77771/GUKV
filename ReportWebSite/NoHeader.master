@@ -34,7 +34,7 @@
 
 										<dx:RibbonTab Text="Головна">
 											<Groups>
-												<dx:RibbonGroup Text="Звіти">
+												<dx:RibbonGroup Text="">
 													<Items>
 														<dx:RibbonButtonItem Text="Звіти Балансоутримувачів" NavigateUrl="Reports1NF/Report1NFList.aspx?reportform=1">
 															<SmallImage Url="Styles/ribbonicon_5.png"/>
@@ -58,14 +58,14 @@
 
 										<dx:RibbonTab Text="Користувачі майна">
 											<Groups>
-												<dx:RibbonGroup Text="Перелік Балансоутримувачів">
+												<dx:RibbonGroup Text="">
 													<Items>
 														<dx:RibbonButtonItem Text="Перелік Балансоутримувачів" NavigateUrl="Reports1NF/Report1NFList.aspx?smallform=1">
 															<SmallImage Url="Styles/ribbonicon_5.png"/>
 														</dx:RibbonButtonItem>
-														<dx:RibbonButtonItem Text="Роздрукувати картку організації" NavigateUrl="Cards/PrintOrgCard.aspx?orgid=305033">
+														<%--<dx:RibbonButtonItem Text="Роздрукувати картку організації" NavigateUrl="Cards/PrintOrgCard.aspx?orgid=305033">
 															<SmallImage Url="Styles/ribbonicon_print.png"/>
-														</dx:RibbonButtonItem>
+														</dx:RibbonButtonItem>--%>
 													</Items>
 												</dx:RibbonGroup>
 											</Groups>
@@ -73,7 +73,7 @@
 
 										<dx:RibbonTab Text="Майно (Об'єкти)" >
 											<Groups>
-												<dx:RibbonGroup Text="Об'єкти на Балансі">
+												<dx:RibbonGroup Text="">
 													<Items>
 														<dx:RibbonButtonItem Text="Об'єкти на Балансі" NavigateUrl="Balans/BalansObjects.aspx">
 															<SmallImage Url="Styles/ribbonicon_4a.png">
@@ -94,7 +94,7 @@
 
 										<dx:RibbonTab Text="Оренда" >
 											<Groups>
-												<dx:RibbonGroup Text="Договори Оренди">
+												<dx:RibbonGroup Text="">
 													<Items>
 														<dx:RibbonButtonItem Text="Договори Оренди" NavigateUrl="Arenda/RentAgreements.aspx">
 															<SmallImage Url="Styles/ribbonicon_6.png" />
@@ -115,7 +115,7 @@
 
 										<dx:RibbonTab Text="Оцінка" >
 											<Groups>
-												<dx:RibbonGroup Text="Оцінка">
+												<dx:RibbonGroup Text="">
 													<Items>
 														<dx:RibbonButtonItem Text="Перелік об'єктів оцінки" NavigateUrl="Assessment/AssessmentObjects.aspx" >
 															<SmallImage Url="Styles/ribbonicon_5.png"/>
@@ -130,7 +130,7 @@
 
 										<dx:RibbonTab Text="Процеси" >
 											<Groups>
-												<dx:RibbonGroup Text="Початок та продовження оренди">
+												<dx:RibbonGroup Text="">
 													<Items>
 														<dx:RibbonButtonItem Text="Перелік вільних приміщень" NavigateUrl="Reports1NF/Report1NFFreeSquare.aspx">
 															<SmallImage Url="Styles/ribbonicon_4d.png"/>
@@ -145,7 +145,7 @@
 
 										<dx:RibbonTab Text="Приватизація" >
 											<Groups>
-												<dx:RibbonGroup Text="Приватизація">
+												<dx:RibbonGroup Text="">
 													<Items>
 														<dx:RibbonButtonItem Text="Об'єкти приватизації" NavigateUrl="Reports1NF/Report1NFPrivatisatSquare.aspx">
 															<SmallImage Url="Styles/ribbonicon_14.png" />
@@ -160,12 +160,12 @@
 
 										<dx:RibbonTab Text="Контроль використання" >
 											<Groups>
-												<dx:RibbonGroup Text="Орендна плата">
+												<dx:RibbonGroup Text="">
 													<Items>
 														<dx:RibbonButtonItem Text="Орендна плата" NavigateUrl="OrendnaPlata/OrendnaPlataByBalans.aspx">
 															<SmallImage Url="Styles/ribbonicon_15.png" />
 														</dx:RibbonButtonItem>
-														<dx:RibbonButtonItem Text="Надходження до бюджету">
+														<dx:RibbonButtonItem Text="Надходження до бюджету" NavigateUrl="OrendnaPlata/OrPlataVipiski.aspx">
 															<SmallImage Url="Styles/ribbonicon_16.png" />
 														</dx:RibbonButtonItem>
 														<dx:RibbonButtonItem Text="Зведений звіт">
@@ -178,12 +178,12 @@
 
 										<dx:RibbonTab Text="Корпоративні права" >
 											<Groups>
-												<dx:RibbonGroup Text="Корпоративні права">
+												<dx:RibbonGroup Text="">
 													<Items>
-														<dx:RibbonButtonItem Text="Перелік корпоративних прав">
+														<dx:RibbonButtonItem Text="Перелік корпоративних прав" NavigateUrl="Reports1NF/Report1NFCorporprav.aspx">
 															<SmallImage Url="Styles/ribbonicon_5.png"/>
 														</dx:RibbonButtonItem>
-														<dx:RibbonButtonItem Text="Реєстр руху корпоративних прав">
+														<dx:RibbonButtonItem Text="Реєстр руху корпоративних прав" NavigateUrl="Reports1NF/Report1NFCorpordvig.aspx">
 															<SmallImage Url="Styles/ribbonicon_17.png"/>
 														</dx:RibbonButtonItem>
 													</Items>
@@ -205,7 +205,7 @@
 
 										<dx:RibbonTab Text="Каталог" >
 											<Groups>
-												<dx:RibbonGroup Text="Каталог">
+												<dx:RibbonGroup Text="">
 													<Items>
 														<dx:RibbonButtonItem Text="Каталог Адрес" NavigateUrl="Catalogue/AddrCatalogue.aspx">
 															<SmallImage Url="Styles/ribbonicon_19.png"/>
@@ -220,7 +220,7 @@
 
 										<dx:RibbonTab Text="Адміністрування" >
 											<Groups>
-												<dx:RibbonGroup Text="Адміністрування користувачів">
+												<dx:RibbonGroup Text="">
 													<Items>
 														<dx:RibbonButtonItem Text="Реєстрація нового користувача" NavigateUrl="Account/Register.aspx">
 															<SmallImage Url="Styles/AddIcon.png"/>
@@ -241,7 +241,7 @@
 
 										<dx:RibbonTab Text="Довідка" >
 											<Groups>
-												<dx:RibbonGroup Text="Довідка">
+												<dx:RibbonGroup Text="">
 													<Items>
 														<dx:RibbonButtonItem Text="Аналітик ДКВ (орендодавець)" NavigateUrl="UserGuide/UserGuide.aspx">
 															<SmallImage Url="Styles/ribbonicon_help_1.png"/>
@@ -262,7 +262,7 @@
 
 										<dx:RibbonTab Text="Фін. Аналіз" >
 											<Groups>
-												<dx:RibbonGroup Text="Фінансова звітність підприємств">
+												<dx:RibbonGroup Text="">
 													<Items>
 														<dx:RibbonButtonItem Text="Показники підприємств" NavigateUrl="Finance/FinanceView.aspx">
 															<SmallImage Url="Styles/ribbonicon_23.png"/>
