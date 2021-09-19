@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
 using DevExpress.Web;
+using System.Data.SqlClient;
 
 public partial class Assessment_AssessmentObjects : System.Web.UI.Page
 {
@@ -65,9 +66,41 @@ public partial class Assessment_AssessmentObjects : System.Web.UI.Page
         this.ExportGridToXLS(GridViewAssessmentObjectsExporter, PrimaryGridView, LabelReportTitle1.Text, ViewState["PrimaryGridView.DataSourceID"] as string);
     }
 
-    protected void GridViewAssessmentObjects_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
+	private class GridCallbackData
+	{
+		public int AgreementToDeleteID { get; set; }
+	}
+	protected void GridViewAssessmentObjects_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
     {
-        string param = e.Parameters;
+		if (e.Parameters != null && e.Parameters.Contains("AgreementToDeleteID"))
+		{ 
+			var data = e.Parameters.FromJSON<GridCallbackData>();
+			var user = Membership.GetUser();
+			var username = (user == null ? "System" : user.UserName);
+
+			SqlConnection connection = Utils.ConnectToDatabase();
+
+			if (connection != null)
+			{
+				using (SqlCommand cmd = new SqlCommand("UPDATE expert_note SET is_deleted = 1, modified_by = @usr, modify_date = @dt WHERE id = @id", connection))
+				{
+					cmd.Parameters.Add(new SqlParameter("id", data.AgreementToDeleteID));
+					cmd.Parameters.Add(new SqlParameter("usr", username));
+					cmd.Parameters.Add(new SqlParameter("dt", DateTime.Now));
+
+					cmd.ExecuteNonQuery();
+				}
+
+				connection.Close();
+			}
+
+			PrimaryGridView.DataSourceID = "SqlDataSourceAssessmentObjects";
+			PrimaryGridView.DataBind();
+
+			return;
+		}
+
+		string param = e.Parameters;
 
         Utils.ProcessGridPageSizeInCallback(PrimaryGridView, ref param, 35);
 

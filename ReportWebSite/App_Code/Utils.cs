@@ -3168,4 +3168,25 @@ public static class Utils
 	}
 
 	#endregion (Report initialization)
+
+
+	public static long GetNextSequenceValue(string sequence)
+	{
+		long next;
+		var connection = Utils.ConnectToDatabase();
+
+		using (SqlCommand cmd = new SqlCommand("SELECT NEXT VALUE FOR [" + sequence + "]", connection))
+		{
+			using (SqlDataReader reader = cmd.ExecuteReader())
+			{
+				reader.Read();
+				next = reader.GetInt64(0);
+				reader.Close();
+			}
+		}
+
+		connection.Close();
+
+		return next;
+	}
 }

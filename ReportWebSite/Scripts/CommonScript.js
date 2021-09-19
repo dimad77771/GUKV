@@ -79,9 +79,10 @@ function ShowDocumentCard(docId) {
 
 function ShowAssessmentCard(orgId) {
 
-    var cardUrl = "../Cards/AssessmentCard.aspx?vid=" + orgId;
+	var cardUrl = "../Cards/AssessmentCard.aspx?vid=" + orgId;
 
-    window.open(cardUrl);
+	window.location = cardUrl;
+    //window.open(cardUrl);
 }
 
 function ShowBalansCard(balansId) {

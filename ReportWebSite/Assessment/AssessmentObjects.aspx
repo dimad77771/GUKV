@@ -53,13 +53,32 @@
     function ShowFieldChooserPopupControl(s, e) {
 
         PopupFieldChooser.Show();
-    }
+	}
+
+	function CustomButtonClick(s, e) {
+
+		if (e.buttonID == 'btnEditAgreement') {
+			var cardUrl = "../Cards/AssessmentCard.aspx?vid=" + PrimaryGridView.GetRowKey(e.visibleIndex);
+			//alert(cardUrl);
+			<%--var cardUrl = "../Reports1NF/OrgRentAgreement.aspx?rid=" + <%= Request.QueryString["rid"] %> + "&aid=" + PrimaryGridView.GetRowKey(e.visibleIndex);--%>
+			window.location = cardUrl;
+		}
+
+		if (e.buttonID == 'btnDeleteAgreement') {
+
+			if (confirm("Видалити Оцінку ?")) {
+				PrimaryGridView.PerformCallback(JSON.stringify({ AgreementToDeleteID: PrimaryGridView.GetRowKey(e.visibleIndex) }));
+			}
+		}
+
+		e.processOnServer = false;
+	}
 
     // ]]>
 
 </script>
 
-<mini:ProfiledSqlDataSource ID="SqlDataSourceAssessmentObjects" runat="server" EnableCaching="true"
+<mini:ProfiledSqlDataSource ID="SqlDataSourceAssessmentObjects" runat="server" EnableCaching="false"
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT * FROM view_assessment">
 </mini:ProfiledSqlDataSource>
@@ -70,6 +89,14 @@
     <tr>
         <td style="width: 100%;">
             <asp:Label ID="LabelReportTitle1" runat="server" Text="Оцінка Об'єктів" CssClass="reporttitle"></asp:Label>
+			<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<dx:ASPxButton ID="ButtonAddAgreement" runat="server" Text="Додати Нову Оцінку" AutoPostBack="false">
+				<ClientSideEvents Click="function(s, e) {
+					var cardUrl = '../Cards/AssessmentCard.aspx?isnew=1';
+					window.location = cardUrl;
+					e.processOnServer = false;
+				}" />
+			</dx:ASPxButton>
         </td>
         <td>
             <dx:ASPxButton ID="ButtonQuickSearchAddr" runat="server" AutoPostBack="False" Text="" ImageSpacing="0px" AllowFocus="false" Visible="false"
@@ -85,13 +112,13 @@
             </dx:ASPxButton>
         </td>
 		<td>
-			<dx:ASPxButton ID="ASPxButton6" runat="server" AutoPostBack="False" Text="Закріпити Колонки" Width="148px">
+			<dx:ASPxButton ID="ASPxButton6" runat="server" AutoPostBack="False" Text="Закріпити Колонки" Width="148px" Visible="false">
 				<ClientSideEvents Click="ShowFieldFixxerPopupControl" />
 			</dx:ASPxButton>
 		</td>
         <td>
             <dx:ASPxButton ID="ASPxButton1" runat="server" AutoPostBack="False" 
-                Text="Додаткові Колонки" Width="148px">
+                Text="Додаткові Колонки" Width="148px" Visible="false">
                 <ClientSideEvents Click="ShowFieldChooserPopupControl" />
             </dx:ASPxButton>
         </td>
@@ -120,7 +147,7 @@
                 </ContentCollection>
             </dx:ASPxPopupControl>
 
-            <dx:ASPxButton ID="ASPxButton_AssessmentObjects_SaveAs" runat="server" AutoPostBack="False" 
+            <dx:ASPxButton ID="ASPxButton_AssessmentObjects_SaveAs" runat="server" AutoPostBack="False" Visible="false" 
                 Text="Зберегти у Файлі" Width="148px">
             </dx:ASPxButton>
         </td>
@@ -145,7 +172,7 @@
     AutoGenerateColumns="False"
     Width="100%"
     DataSourceID="SqlDataSourceAssessmentObjects"
-    KeyFieldName="valuation_id"
+    KeyFieldName="id"
     OnCustomCallback="GridViewAssessmentObjects_CustomCallback"
     OnCustomFilterExpressionDisplayText = "GridViewAssessmentObjects_CustomFilterExpressionDisplayText"
     OnProcessColumnAutoFilter = "GridViewAssessmentObjects_ProcessColumnAutoFilter"
@@ -153,49 +180,57 @@
     OnCustomColumnSort="GridViewAssessmentObjects_CustomColumnSort" >
 
     <Columns>
-        <dx:GridViewDataTextColumn FieldName="renter_name" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="0" Visible="True" Caption="Картка" Width="65px">
+		<dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" Name="CmdColumn" Width="60px">
+            <CustomButtons>                
+                <dx:GridViewCommandColumnCustomButton ID="btnEditAgreement"><Image  Url="../Styles/EditIcon.png" ToolTip="Редагувати оцінку" /></dx:GridViewCommandColumnCustomButton>
+                <dx:GridViewCommandColumnCustomButton ID="btnDeleteAgreement"><Image  Url="../Styles/DeleteIcon.png" ToolTip="Видалити оцінку" /></dx:GridViewCommandColumnCustomButton>
+            </CustomButtons>
+            <FooterCellStyle HorizontalAlign="Right"></FooterCellStyle>
+        </dx:GridViewCommandColumn>
+        <%--<dx:GridViewDataTextColumn FieldName="renter_name" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="0" Visible="True" Caption="Картка" Width="65px">
             <DataItemTemplate>
-                <%# "<center><a href=\"javascript:ShowAssessmentCard(" + Eval("valuation_id") + ")\"><img border='0' src='../Styles/EditIcon.png'/></a></center>"%>
+                <%# "<center><a href=\"javascript:ShowAssessmentCard(" + Eval("id") + ")\"><img border='0' src='../Styles/EditIcon.png'/></a></center>"%>
             </DataItemTemplate>
             <Settings ShowInFilterControl="False"/>
-        </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="renter_name" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="1" Visible="True" Caption="Орендар" Width="150px">
+        </dx:GridViewDataTextColumn>--%>
+        <dx:GridViewDataTextColumn FieldName="renter_name" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="1" Visible="True" Caption="Орендар" Width="160px">
             <DataItemTemplate>
                 <%# EvaluateOrganizationLink(Eval("org_renter_id"), Eval("renter_name"))%>
             </DataItemTemplate>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="balans_org_name" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="2" Visible="False" Caption="Балансоутримувач" Width="150px">
+        <dx:GridViewDataTextColumn FieldName="balans_org_name" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="2" Visible="true" Caption="Балансоутримувач" Width="220px">
             <DataItemTemplate>
                 <%# EvaluateOrganizationLink(Eval("org_balans_id"), Eval("balans_org_name"))%>
             </DataItemTemplate>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="district" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="3" Visible="True" Caption="Район"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="street_full_name" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="4" Visible="True" Caption="Назва Вулиці">
-            <DataItemTemplate>
+        <dx:GridViewDataTextColumn FieldName="district" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="3" Visible="True" Caption="Район" Width="120px"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="street_full_name" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="4" Visible="True" Caption="Назва Вулиці" Width="140px">
+            <%--<DataItemTemplate>
                 <%# EvaluateObjectLink(Eval("building_id"), Eval("street_full_name"))%>
-            </DataItemTemplate>
+            </DataItemTemplate>--%>
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="addr_nomer" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="5" Visible="True" Caption="Номер Будинку">
-            <DataItemTemplate>
+            <%--<DataItemTemplate>
                 <%# EvaluateObjectLink(Eval("building_id"), Eval("addr_nomer"))%>
-            </DataItemTemplate>
-            <Settings SortMode="Custom" />
+            </DataItemTemplate>--%>
+            <%--<Settings SortMode="Custom" />--%>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="in_doc_dates" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="6" Visible="False" Caption="Дата Вхідного Документу"></dx:GridViewDataTextColumn>
+        
+<%--		<dx:GridViewDataTextColumn FieldName="in_doc_dates" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="6" Visible="False" Caption="Дата Вхідного Документу"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="in_doc_numbers" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="7" Visible="False" Caption="Номер Вхідного Документу"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="in_doc_korr" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="9" Visible="False" Caption="Кореспондент"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="in_doc_korr" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="9" Visible="False" Caption="Кореспондент"></dx:GridViewDataTextColumn>--%>
 
-        <dx:GridViewDataTextColumn FieldName="out_doc_dates" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="11" Visible="False" Caption="Дата Вихідного Документу"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="out_doc_numbers" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="12" Visible="False" Caption="Номер Вихідного Документу"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="expert_obj_type" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="14" Visible="False" Caption="Вид Об’єкта"></dx:GridViewDataTextColumn>
+<%--        <dx:GridViewDataTextColumn FieldName="out_doc_dates" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="11" Visible="False" Caption="Дата Вихідного Документу"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="out_doc_numbers" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="12" Visible="False" Caption="Номер Вихідного Документу"></dx:GridViewDataTextColumn>--%>
+
+        <dx:GridViewDataTextColumn FieldName="expert_obj_type" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="14" Visible="true" Caption="Вид Об’єкта"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="obj_square" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="15" Visible="True" Caption="Площа" Width="70px"></dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn FieldName="cost_prim" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="19" Visible="True" Caption="Вартість Об’єкта (грн.)"></dx:GridViewDataTextColumn>
     
         <dx:GridViewDataDateColumn FieldName="final_date" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="21" Visible="True" Caption="Дата Затвердження Оцінки"></dx:GridViewDataDateColumn>
         
-        
-        <dx:GridViewDataTextColumn FieldName="valuation_kind" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="25" Visible="False" Caption="Вид Оцінки"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="valuation_kind" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="25" Visible="True" Caption="Вид Оцінки"></dx:GridViewDataTextColumn>
     </Columns>
 
     <GroupSummary>
@@ -221,12 +256,12 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Assessment.Objects" Version="A2" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Assessment.Objects" Version="A6" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
 
-    <ClientSideEvents Init="GridViewAssessmentObjectsInit" EndCallback="GridViewAssessmentObjectsEndCallback" />
+    <ClientSideEvents Init="GridViewAssessmentObjectsInit" EndCallback="GridViewAssessmentObjectsEndCallback" CustomButtonClick="CustomButtonClick" />
 </dx:ASPxGridView>
 
 </center>
