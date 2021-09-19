@@ -92,9 +92,11 @@
 			<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 			<dx:ASPxButton ID="ButtonAddAgreement" runat="server" Text="Додати Нову Оцінку" AutoPostBack="false">
 				<ClientSideEvents Click="function(s, e) {
-					var cardUrl = '../Cards/AssessmentCard.aspx?isnew=1';
-					window.location = cardUrl;
-					e.processOnServer = false;
+					if (confirm('Додати нову оцінку ?')) {
+						var cardUrl = '../Cards/AssessmentCard.aspx?isnew=1';
+						window.location = cardUrl;
+						e.processOnServer = false;
+					}
 				}" />
 			</dx:ASPxButton>
         </td>
