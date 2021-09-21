@@ -92,6 +92,8 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
                 SectionMenu.Items[6].ClientVisible = false;
             }
         }
+
+		SectionMenu.Visible = (Utils.GetLastReportId() <= 0);
     }
 
     protected void SqlDataSourceReport_Selecting(object sender, SqlDataSourceSelectingEventArgs e)

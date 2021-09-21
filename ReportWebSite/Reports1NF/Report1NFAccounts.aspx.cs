@@ -32,7 +32,10 @@ public partial class Reports1NF_Report1NFAccounts : System.Web.UI.Page
         {
             SectionMenu.Items[2].Visible = false;
         }
-    }
+
+		SectionMenu.Visible = false;
+
+	}
 
     protected void GridViewAccounts_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
     {

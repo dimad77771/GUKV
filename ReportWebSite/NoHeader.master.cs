@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
+using DevExpress.Web;
 
 public partial class NoHeader : System.Web.UI.MasterPage
 {
@@ -88,6 +89,15 @@ public partial class NoHeader : System.Web.UI.MasterPage
 			for (int i = 0; i < MainMenuRDA.Items.Count; i++)
 			{
 				MainMenuRDA.Items[i].NavigateUrl += "?rid=" + reportID;
+			}
+		}
+
+		if (!Roles.IsUserInRole(Utils.AdministratorRole))
+		{
+			foreach(var mitem in MainRibbon.Tabs.Single(q => q.Text == "Адміністрування").Groups.Single().Items.Cast<RibbonButtonItem>()
+				.Where(q => q.NavigateUrl.Contains("Register.aspx") || q.NavigateUrl.Contains("ManageRoles.aspx")))
+			{
+				mitem.Visible = false;
 			}
 		}
 	}

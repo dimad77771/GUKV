@@ -8,8 +8,7 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using DevExpress.Web;
 using FirebirdSql.Data.FirebirdClient;
-using DevExpress.Web;
-using DevExpress.Web;
+
 
 public partial class Reports1NF_OrgBalansList : System.Web.UI.Page
 {
@@ -69,7 +68,9 @@ public partial class Reports1NF_OrgBalansList : System.Web.UI.Page
         // Bind data to the grid dynamically
         this.ProcessGridDataFetch(ViewState, PrimaryGridView);
         PrimaryGridView.Settings.VerticalScrollBarMode = DevExpress.Web.ScrollBarMode.Visible;
-   }
+
+		SectionMenu.Visible = (Utils.GetLastReportId() <= 0);
+	}
 
     protected int ReportID
     {
