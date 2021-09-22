@@ -616,7 +616,7 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceBuilding" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT TOP 1 b.*, bal.geodata_map_points FROM reports1nf_balans bal INNER JOIN reports1nf_buildings b ON b.unique_id = bal.building_1nf_unique_id
+    SelectCommand="SELECT TOP 1 b.*, bal.geodata_map_opoints FROM reports1nf_balans bal INNER JOIN reports1nf_buildings b ON b.unique_id = bal.building_1nf_unique_id
         WHERE bal.id = @bal_id AND bal.report_id = @rep_id">
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="bal_id" />
@@ -1160,12 +1160,12 @@ WHERE id = @id"
 											<tr>
                                                 <td> <dx:ASPxLabel ID="ASPxLabel16" runat="server" Text="Координати на мапі"/> </td>
                                                 <td>
-													<dx:ASPxTextBox ID="ASPxTextBox1" runat="server" Text='<%# EvaluateTrimStr(Eval("geodata_map_points")) %>' Width="270px" Title="Координати на мапі" MaxLength="100">
+													<dx:ASPxTextBox ID="EditGeodataMapPoints" runat="server" Text='<%# EvaluateTrimStr(Eval("geodata_map_opoints")) %>' Width="270px" Title="Координати на мапі" MaxLength="100">
 													</dx:ASPxTextBox> 
 													<%--<table>
 														<tr>
 															<td>
-																<dx:ASPxTextBox ID="EditGeodataMapPoints" runat="server" Text='<%# EvaluateTrimStr(Eval("geodata_map_points")) %>' Width="200px" Title="Координати на мапі" MaxLength="100">
+																<dx:ASPxTextBox ID="EditGeodataMapPoints" runat="server" Text='<%# EvaluateTrimStr(Eval("geodata_map_opoints")) %>' Width="200px" Title="Координати на мапі" MaxLength="100">
 																</dx:ASPxTextBox> 
 															</td>
 															<td>

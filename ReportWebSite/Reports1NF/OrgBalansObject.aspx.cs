@@ -594,7 +594,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
         AddQueryParameter(ref fieldList, "date_expert", "dtexp", Reports1NFUtils.GetDateValue(controls, "EditDateExpert"), parameters);
         AddQueryParameter(ref fieldList, "history_id", "hist", Reports1NFUtils.GetDropDownValue(controls, "ComboBuildingHistory"), parameters);
 
-		AddQueryParameter(ref fieldList, "geodata_map_points", "geodatamappoints", Reports1NFUtils.GetEditText(controls, "EditGeodataMapPoints"), parameters);
+		AddQueryParameter(ref fieldList, "geodata_map_opoints", "geodatamappoints", Reports1NFUtils.GetEditText(controls, "EditGeodataMapPoints"), parameters);
 
 		// System parameters
 		AddQueryParameter(ref fieldList, "modify_date", "mdt", DateTime.Now, parameters);
@@ -1482,15 +1482,15 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 		Reports1NFUtils.GetAllControls(BalansObjForm, controls);
 		Reports1NFUtils.GetAllControls(BalansDocsForm, controls);
 		Reports1NFUtils.GetAllControls(BalansCostForm, controls);
-		var geodata_map_points = Reports1NFUtils.GetEditText(controls, "EditGeodataMapPoints");
+		var geodata_map_opoints = Reports1NFUtils.GetEditText(controls, "EditGeodataMapPoints");
 
-		if (string.IsNullOrEmpty(geodata_map_points))
+		if (string.IsNullOrEmpty(geodata_map_opoints))
 		{
 			return true;
 		}
 
 		var is_good = false;
-		var regpoints = (new Regex(@"^(\d+\.\d+)\s+(\d+\.\d+)$")).Match(geodata_map_points);
+		var regpoints = (new Regex(@"^(\d+\.\d+)\s+(\d+\.\d+)$")).Match(geodata_map_opoints);
 		if (regpoints.Groups.Count == 3)
 		{
 			try
