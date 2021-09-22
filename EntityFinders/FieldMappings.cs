@@ -313,7 +313,9 @@ namespace GUKV.ImportToolUtils
             fields.Add("IN_ARCH", "arch_flag");
             fields.Add("RINK_VART_DT", "date_cost_rinkova");
 
-            if (!testOnly)
+			fields.Add("GEODATA_MAP_POINTS", "geodata_map_points");
+
+			if (!testOnly)
             {
                 fields.Add("MEMO", "memo");
                 fields.Add("PRYMITKA", "note");

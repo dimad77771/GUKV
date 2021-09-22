@@ -18,7 +18,8 @@ using System.Web.Configuration;
 using System.IO;
 using System.Security.Principal;
 using System.Security.AccessControl;
-
+using System.Globalization;
+using System.Text.RegularExpressions;
 
 public partial class Reports1NF_OrgBalansObject : PhotoPage
 {
@@ -503,7 +504,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
             AddQueryParameter(ref fieldList, "addr_misc", "amsc", Reports1NFUtils.GetEditText(controls, "EditMiscAddr"), parameters);
             AddQueryParameter(ref fieldList, "addr_zip_code", "azip", Reports1NFUtils.GetEditText(controls, "EditZipCode"), parameters);
 
-            AddQueryParameter(ref fieldList, "construct_year", "cy", Reports1NFUtils.GetEditNumeric(controls, "EditBuildYear"), parameters);
+			AddQueryParameter(ref fieldList, "construct_year", "cy", Reports1NFUtils.GetEditNumeric(controls, "EditBuildYear"), parameters);
             AddQueryParameter(ref fieldList, "expl_enter_year", "eey", Reports1NFUtils.GetEditNumeric(controls, "EditExplYear"), parameters);
             AddQueryParameter(ref fieldList, "is_basement_exists", "ibe", Reports1NFUtils.GetCheckBoxValue(controls, "CheckBasementExists") ? 1 : 0, parameters);
             AddQueryParameter(ref fieldList, "is_loft_exists", "ile", Reports1NFUtils.GetCheckBoxValue(controls, "CheckLoftExists") ? 1 : 0, parameters);
@@ -593,8 +594,10 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
         AddQueryParameter(ref fieldList, "date_expert", "dtexp", Reports1NFUtils.GetDateValue(controls, "EditDateExpert"), parameters);
         AddQueryParameter(ref fieldList, "history_id", "hist", Reports1NFUtils.GetDropDownValue(controls, "ComboBuildingHistory"), parameters);
 
-        // System parameters
-        AddQueryParameter(ref fieldList, "modify_date", "mdt", DateTime.Now, parameters);
+		AddQueryParameter(ref fieldList, "geodata_map_points", "geodatamappoints", Reports1NFUtils.GetEditText(controls, "EditGeodataMapPoints"), parameters);
+
+		// System parameters
+		AddQueryParameter(ref fieldList, "modify_date", "mdt", DateTime.Now, parameters);
         AddQueryParameter(ref fieldList, "modified_by", "mby", username.Left(64), parameters);
 
         decimal totalFreeSquare = decimal.MinValue;
@@ -813,6 +816,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
         {
 			if (e.Parameter.StartsWith("save:"))
 			{
+				Validate_geodata_map_points();
 				SqlConnection connectionSql = Utils.ConnectToDatabase();
 
 				if (connectionSql != null)
@@ -825,6 +829,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 			else if (e.Parameter.StartsWith("send:"))
 			{
 				//mode = "send";
+				Validate_geodata_map_points();
 				validator.ValidateUI();
 				this.errorForm.DataSource = validator.FormatErrorDataSource();
 				this.errorForm.DataBind();
@@ -1467,5 +1472,43 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 		comboBox.DataBindItems();
 
 		*/
+	}
+
+	bool Validate_geodata_map_points()
+	{
+		Dictionary<string, Control> controls = new Dictionary<string, Control>();
+
+		Reports1NFUtils.GetAllControls(AddressForm, controls);
+		Reports1NFUtils.GetAllControls(BalansObjForm, controls);
+		Reports1NFUtils.GetAllControls(BalansDocsForm, controls);
+		Reports1NFUtils.GetAllControls(BalansCostForm, controls);
+		var geodata_map_points = Reports1NFUtils.GetEditText(controls, "EditGeodataMapPoints");
+
+		if (string.IsNullOrEmpty(geodata_map_points))
+		{
+			return true;
+		}
+
+		var is_good = false;
+		var regpoints = (new Regex(@"^(\d+\.\d+)\s+(\d+\.\d+)$")).Match(geodata_map_points);
+		if (regpoints.Groups.Count == 3)
+		{
+			try
+			{
+				var point1 = Decimal.Parse(regpoints.Groups[1].Value, CultureInfo.InvariantCulture);
+				var point2 = Decimal.Parse(regpoints.Groups[2].Value, CultureInfo.InvariantCulture);
+				is_good = true;
+			}
+			catch (Exception ex)
+			{
+				is_good = false;
+			}
+		}
+
+		if (!is_good)
+		{
+			throw new Exception("Невірно заповнене поле \"Координати на мапі\". Приклад вірно заповненого поля (широта довгота) \"50.509205 30.426741\"");
+		}
+		return is_good;
 	}
 }
