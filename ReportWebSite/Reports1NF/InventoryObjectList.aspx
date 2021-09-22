@@ -110,6 +110,7 @@ from
         ,ag.total_rent_sqr
         ,inv_num = bal.reestr_no
 		,arenda_payments.debt_total
+		,(select Q.name FROM dict_org_old_organ Q where Q.id = org.old_organ_id) as old_organ_name
 		
 
 
@@ -292,11 +293,14 @@ order by org_name, zkpo_code, district, addr_street_name, addr_nomer, renter_nam
 				<dx:ASPxLabel runat="server" Text='<%# Eval("org_name") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="zkpo_code" Caption="Код ЄДРПОУ" VisibleIndex="0" Visible="false" ReadOnly="true">
+        <dx:GridViewDataTextColumn FieldName="zkpo_code" Caption="Код ЄДРПОУ" VisibleIndex="0" Visible="false" ReadOnly="true" Width="100px">
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("zkpo_code") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
+		<dx:GridViewDataTextColumn FieldName="old_organ_name" VisibleIndex="0" Caption="Орган госп. упр." Visible="false" Width="200px">
+			<Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" />
+		</dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn FieldName="district" VisibleIndex="1" Caption="Район" Width="120px"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="addr_street_name" VisibleIndex="2" Caption="Вулиця" Width="150px"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
@@ -317,6 +321,7 @@ order by org_name, zkpo_code, district, addr_street_name, addr_nomer, renter_nam
 		<dx:GridViewDataTextColumn FieldName="agreement_num" VisibleIndex="3" Caption="Номер Договору Оренди"></dx:GridViewDataTextColumn>
 		<dx:GridViewDataTextColumn FieldName="cost_agreement" VisibleIndex="3" Caption="Місячна орендна плата, грн."></dx:GridViewDataTextColumn>
 		<dx:GridViewDataTextColumn FieldName="debt_total" VisibleIndex="3" Caption="Загальна заборгованість по орендній платі, грн."></dx:GridViewDataTextColumn>
+		
 		
 		
     </Columns>
@@ -342,7 +347,7 @@ order by org_name, zkpo_code, district, addr_street_name, addr_nomer, renter_nam
     <SettingsPager PageSize="20" />
     <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
     <Styles Header-Wrap="True" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.BalansList" Enabled="true" Version="A9" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.BalansList" Enabled="true" Version="A12" />
 
     <ClientSideEvents
         Init="function (s,e) { PrimaryGridView.PerformCallback('init:'); }"
