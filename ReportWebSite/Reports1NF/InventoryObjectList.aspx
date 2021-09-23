@@ -89,6 +89,7 @@ from
 		,bal.cost_zalishkova
 		,bld.sqr_non_habit
 		,bal.purpose_str
+		,(select Q.name from dict_1nf_balans_purpose Q where Q.id = bal.purpose_id) as purpose_name
 		,(select Q.full_name from organizations Q where Q.id = arenda.org_renter_id and (Q.is_deleted is null or Q.is_deleted = 0)) as renter_name
 		,arenda.rent_start_date
 		,arenda.rent_finish_date
@@ -306,6 +307,7 @@ order by org_name, zkpo_code, district, addr_street_name, addr_nomer, renter_nam
         <dx:GridViewDataTextColumn FieldName="addr_street_name" VisibleIndex="2" Caption="Вулиця" Width="150px"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="addr_nomer" VisibleIndex="3" Caption="Номер"><Settings SortMode="Custom" /></dx:GridViewDataTextColumn>
 		<dx:GridViewDataTextColumn FieldName="purpose_str" VisibleIndex="3" Width="250" Caption="Назва Об'єкту"></dx:GridViewDataTextColumn>
+		<dx:GridViewDataTextColumn FieldName="purpose_name" VisibleIndex="3" Width="250" Caption="Призначення"></dx:GridViewDataTextColumn>
 		<dx:GridViewDataTextColumn FieldName="object_kind_name" VisibleIndex="3" Width="250" Caption="Короткий опис об'єкта (адміністративне, виробниче, навчальний заклад, заклад охорони здоров'я тощо)"></dx:GridViewDataTextColumn>
 		<dx:GridViewDataTextColumn FieldName="object_type_name" VisibleIndex="3" Width="150" Caption="Тип об'єкту"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
 		<dx:GridViewDataTextColumn FieldName="tech_condition_name" VisibleIndex="3" Width="180" Caption="Загальний технічний стан (задовільний, потребує проведення ремонтних робіт, аварійний)"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
@@ -347,7 +349,7 @@ order by org_name, zkpo_code, district, addr_street_name, addr_nomer, renter_nam
     <SettingsPager PageSize="20" />
     <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
     <Styles Header-Wrap="True" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.BalansList" Enabled="true" Version="A12" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.BalansList" Enabled="true" Version="A14" />
 
     <ClientSideEvents
         Init="function (s,e) { PrimaryGridView.PerformCallback('init:'); }"
