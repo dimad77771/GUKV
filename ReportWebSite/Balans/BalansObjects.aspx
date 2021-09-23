@@ -242,7 +242,10 @@
         <dx:GridViewDataTextColumn FieldName="balans_id" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="0" Visible="True" Caption="Картка">
             <DataItemTemplate>
-                <%# "<center><a href=\"javascript:ShowBalansCardEx(" + Eval("ex_reports1nf_balans") + "," + Eval("balans_id") + "," + Eval("reports1nf_report_id") + ")\"><img border='0' src='../Styles/" + ((int)Eval("is_dpz_object") == 1 ? "EditIcon_green.png" : "EditIcon.png") + "'/></a></center>"%>
+                <%# "<center>" +
+				"<a href=\"javascript:ShowBalansCardEx(" + Eval("ex_reports1nf_balans") + "," + Eval("balans_id") + "," + Eval("reports1nf_report_id") + ")\"><img border='0' src='../Styles/" + ((int)Eval("is_dpz_object") == 1 ? "EditIcon_green.png" : "EditIcon.png") + "'/></a>" +
+				"<a href=\"../Reports1NF/Report1NFBalansMap.aspx?fs_id=" + Eval("balans_id")+ "\" target=\"_blank\" style=\"margin-left:5px\"><img border='0' src='../Styles/MapShowIcon.png'/></a>" +
+				"</center>"%>
             </DataItemTemplate>
             <Settings ShowInFilterControl="False"/>
         </dx:GridViewDataTextColumn>
