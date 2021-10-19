@@ -84,11 +84,21 @@ public partial class NoHeader : System.Web.UI.MasterPage
 
 		if (reportID > 0)
 		{
-			MainMenuRDA.Visible = true;
-			MainRibbon.Visible = false;
-			for (int i = 0; i < MainMenuRDA.Items.Count; i++)
+			if (userIsRdaController)
 			{
-				MainMenuRDA.Items[i].NavigateUrl += "?rid=" + reportID;
+				foreach(var tab in MainRibbon.Tabs.Where(q => !new[] { "Користувачі майна", "Майно (Об'єкти)", "Оренда", "Каталог", "Контроль використання" }.Contains(q.Text)))
+				{
+					tab.Visible = false;
+				}
+			}
+			else
+			{
+				MainMenuRDA.Visible = true;
+				MainRibbon.Visible = false;
+				for (int i = 0; i < MainMenuRDA.Items.Count; i++)
+				{
+					MainMenuRDA.Items[i].NavigateUrl += "?rid=" + reportID;
+				}
 			}
 		}
 
@@ -100,5 +110,10 @@ public partial class NoHeader : System.Web.UI.MasterPage
 				mitem.Visible = false;
 			}
 		}
+	}
+
+	RibbonTab MainMenuTab(string text)
+	{
+		return MainRibbon.Tabs.Single(q => q.Text == text);
 	}
 }
