@@ -247,8 +247,8 @@ public partial class Reports1NF_InventoryObjectList : System.Web.UI.Page
 					continue;
 				}
 
-				var val2 = worksheet[r, colnum].Value2;
-				//var val2 = worksheet.Rows[r].Cells[colnum].Value2;
+				var val2 = worksheet[r + 1, colnum + 1].Value2;
+				//var val222 = worksheet.Rows[r].Cells[colnum].Value2;
 				var val = val2 as Double?;
 				sumval += (val ?? 0);
 			}
