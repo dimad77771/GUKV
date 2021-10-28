@@ -69,6 +69,11 @@ public partial class Cards_ObjCard : System.Web.UI.Page
         {
             Response.Redirect(Page.ResolveClientUrl("~/Account/RestrictedObject.aspx"));
         }
+
+		if (!Utils.IsSinenko())
+		{
+			ASPxButtonDelete.Visible = false;
+		}
     }
 
     protected int PermissionGranted
@@ -96,7 +101,30 @@ public partial class Cards_ObjCard : System.Web.UI.Page
         Response.Redirect(Page.ResolveClientUrl("~/Cards/PrintObjCard.aspx" + Request.Url.Query));
     }
 
-    public string EvaluateSignature(object modifiedBy, object modifyDate)
+	protected void ASPxButtonPrint_Delete(object sender, EventArgs e)
+	{
+		SqlConnection connection = Utils.ConnectToDatabase();
+
+		using (SqlCommand command = new SqlCommand("DELETE FROM buildings WHERE id = @id", connection))
+		{
+			var bid = Int32.Parse(Request.QueryString["bid"]);
+			command.Parameters.Add(new SqlParameter("@id", bid));
+			try
+			{
+				command.ExecuteNonQuery();
+			}
+			catch (Exception ex)
+			{
+				if (ex.Message.StartsWith(@"The DELETE statement conflicted with the REFERENCE constraint"))
+				{
+					throw new Exception("Адреса має зв'язок із об'єктом чи договором. Вилучення неможливе");
+				}
+				throw ex;
+			}
+		}
+	}
+
+	public string EvaluateSignature(object modifiedBy, object modifyDate)
     {
         string userName = (modifiedBy is string) ? (string)modifiedBy : Resources.Strings.SignatureUnknownUser;
         string date = (modifyDate is DateTime) ? ((DateTime)modifyDate).ToShortDateString() : Resources.Strings.SignatureUnknownDate;

@@ -3094,6 +3094,12 @@ public static class Utils
 		return (caption == columnCaption);
 	}
 
+	public static bool IsSinenko()
+	{
+		var user = Utils.GetUser();
+		return (user == @"О.Синенко");
+	}
+
 	#region Report initialization
 
 	public static int GetLastReportId()

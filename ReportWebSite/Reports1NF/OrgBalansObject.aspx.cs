@@ -20,6 +20,7 @@ using System.Security.Principal;
 using System.Security.AccessControl;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using GUKV.Conveyancing;
 
 public partial class Reports1NF_OrgBalansObject : PhotoPage
 {
@@ -33,19 +34,25 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
     public Control FindControlRecursive(Control control, string id)
     {
-        //GridViewDataTextColumn aa;
-        //aa.EditFormSettings
+		//ASPxRoundPanel aaa;
+		//aaa.ContentPaddings
+		//ASPxCallbackPanel bbb;
+		//bbb.Paddings
 
-        //ASPxGridView aa;
-        //aa.ClientSideEvents.RowExpanding
 
-        //GridViewDataTextColumn a;
-        //a.EditFormSettings
+		//GridViewDataTextColumn aa;
+		//aa.EditFormSettings
 
-        //GridViewDataTextColumn a;
-        //a.PropertiesEdit.ClientInstanceName
+		//ASPxGridView aa;
+		//aa.ClientSideEvents.RowExpanding
 
-        if (control == null) return null;
+		//GridViewDataTextColumn a;
+		//a.EditFormSettings
+
+		//GridViewDataTextColumn a;
+		//a.PropertiesEdit.ClientInstanceName
+
+		if (control == null) return null;
         //try to find the control at the current level
         Control ctrl = control.FindControl(id);
 
@@ -495,7 +502,9 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
         Dictionary<string, object> parameters = new Dictionary<string, object>();
         string fieldList = "";
 
-        if (buildingUniqueId > 0)
+		var building_id = Reports1NFUtils.GetEditNumeric(controls, "AddrBuildingId");
+
+		if (buildingUniqueId > 0)
         {
             // Update the building properties
             AddQueryParameter(ref fieldList, "addr_nomer1", "an1", Reports1NFUtils.GetEditText(controls, "EditBuildingNum1"), parameters);
@@ -530,7 +539,9 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
             AddQueryParameter(ref fieldList, "street_full_name", "strfm", Reports1NFUtils.GetDropDownText(controls, "ComboAddrStreet"), parameters);
             AddQueryParameter(ref fieldList, "addr_korpus", "adkorp", Reports1NFUtils.GetDropDownText(controls, "ComboAddrStreet")+" "+Reports1NFUtils.GetEditText(controls, "EditBuildingNum1")+Reports1NFUtils.GetEditText(controls, "EditBuildingNum2")+Reports1NFUtils.GetEditText(controls, "EditBuildingNum3"), parameters);
 
-            using (SqlCommand cmd = new SqlCommand("UPDATE reports1nf_buildings SET " + fieldList + " WHERE unique_id = @uid", connection))
+			AddQueryParameter(ref fieldList, "id", "buildingid", building_id, parameters);
+
+			using (SqlCommand cmd = new SqlCommand("UPDATE reports1nf_buildings SET " + fieldList + " WHERE unique_id = @uid", connection))
             {
                 cmd.Parameters.Add(new SqlParameter("uid", buildingUniqueId));
 
@@ -595,6 +606,8 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
         AddQueryParameter(ref fieldList, "history_id", "hist", Reports1NFUtils.GetDropDownValue(controls, "ComboBuildingHistory"), parameters);
 
 		AddQueryParameter(ref fieldList, "geodata_map_opoints", "geodatamappoints", Reports1NFUtils.GetEditText(controls, "EditGeodataMapPoints"), parameters);
+
+		AddQueryParameter(ref fieldList, "building_id", "buildingid", building_id, parameters);
 
 		// System parameters
 		AddQueryParameter(ref fieldList, "modify_date", "mdt", DateTime.Now, parameters);
@@ -1275,8 +1288,9 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
         string str = guid.ToString();
 
         ViewState[keyName] = str;
+		ViewState["PageUniqueKey"] = str;
 
-        return str;
+		return str;
     }
 
     protected Guid PhotoFolderID
@@ -1511,4 +1525,216 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 		}
 		return is_good;
 	}
+
+
+
+
+	#region PickAddressBuilding
+
+	Control ConveyancingForm
+	{
+		get
+		{
+			return AddressForm;
+		}
+	}
+
+
+	protected int AddressStreetID
+	{
+		get;
+		set;
+	}
+
+	protected void ComboAddressBuilding_Callback(object source, CallbackEventArgsBase e)
+	{
+		try
+		{
+			int streetId = int.Parse(e.Parameter);
+			AddressStreetID = streetId;
+			var gg2 = ConveyancingForm;
+			var gg1 = Utils.FindControlRecursive(ConveyancingForm, "ComboBalansStreetNewObj");
+			((ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBalansStreetNewObj")).Value = streetId;
+
+
+			(source as ASPxComboBox).DataBind();
+		}
+		finally
+		{
+		}
+	}
+
+	protected void SqlDataSourceDictBuildings_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+	{
+		e.Command.Parameters["@street_id"].Value = ((ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBalansStreetNewObj")).Value;//AddressStreetID; 
+	}
+
+	protected void CPObjSel_Callback(object sender, CallbackEventArgsBase e)
+	{
+		var cp_status = "";
+
+		if (e.Parameter.StartsWith("sel_obj:"))
+		{
+			string strObjectID = e.Parameter.Substring(8);
+
+			int objectID = int.Parse(strObjectID);
+
+
+			SqlConnection connection = Utils.ConnectToDatabase();
+
+			if (connection != null)
+			{
+				string query = @"SELECT top 1 B.*
+									FROM buildings B 
+                                    WHERE B.id = @objId";
+
+				using (SqlCommand cmd = new SqlCommand(query, connection))
+				{
+					cmd.Parameters.Add(new SqlParameter("objId", objectID));
+
+					using (SqlDataReader reader = cmd.ExecuteReader())
+					{
+						if (reader.Read())
+						{
+							var building_id = (reader.IsDBNull(reader.GetOrdinal("id")) ? null : (int?)reader["id"]);
+							if (building_id == null) throw new ArgumentException("building_id is null");
+							var addr_distr_new_id = (reader.IsDBNull(reader.GetOrdinal("addr_distr_new_id")) ? null : (int?)reader["addr_distr_new_id"]);
+							var addr_street_id = (reader.IsDBNull(reader.GetOrdinal("addr_street_id")) ? null : (int?)reader["addr_street_id"]);
+							var addr_nomer1 = (reader.IsDBNull(reader.GetOrdinal("addr_nomer1")) ? null : (string)reader["addr_nomer1"]);
+							var addr_nomer2 = (reader.IsDBNull(reader.GetOrdinal("addr_nomer2")) ? null : (string)reader["addr_nomer2"]);
+							var addr_nomer3 = (reader.IsDBNull(reader.GetOrdinal("addr_nomer3")) ? null : (string)reader["addr_nomer3"]);
+							var addr_misc = (reader.IsDBNull(reader.GetOrdinal("addr_misc")) ? null : (string)reader["addr_misc"]);
+							var addr_zip_code = (reader.IsDBNull(reader.GetOrdinal("addr_zip_code")) ? null : (string)reader["addr_zip_code"]);
+
+							((HiddenField)Utils.FindControlRecursive(ConveyancingForm, "AddrBuildingId")).Value = building_id.ToString();
+							((ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboAddrDistrict")).Value = addr_distr_new_id;
+							((ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboAddrStreet")).Value = addr_street_id;
+							((ASPxTextBox)Utils.FindControlRecursive(ConveyancingForm, "EditBuildingNum1")).Value = addr_nomer1;
+							((ASPxTextBox)Utils.FindControlRecursive(ConveyancingForm, "EditBuildingNum2")).Value = addr_nomer2;
+							((ASPxTextBox)Utils.FindControlRecursive(ConveyancingForm, "EditBuildingNum3")).Value = addr_nomer3;
+							((ASPxTextBox)Utils.FindControlRecursive(ConveyancingForm, "EditMiscAddr")).Value = addr_misc;
+							((ASPxTextBox)Utils.FindControlRecursive(ConveyancingForm, "EditZipCode")).Value = addr_zip_code;
+						}
+						else
+						{
+							throw new ArgumentException("Address not found");
+						}
+						reader.Close();
+					}
+				}
+				connection.Close();
+			}
+
+			cp_status = "selobjok";
+		}
+		else if (e.Parameter.StartsWith("createbalans:"))
+		{
+			var ComboBalansStreetNewObj = (ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBalansStreetNewObj");
+			var ComboBalansBuildingNewObj = (ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBalansBuildingNewObj");
+			var EditBalansObjSquare = (ASPxEdit)Utils.FindControlRecursive(ConveyancingForm, "EditBalansObjSquare");
+			var EditBalansObjCost = (ASPxEdit)Utils.FindControlRecursive(ConveyancingForm, "EditBalansObjCost");
+			var ComboBoxBalansOwnership = (ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBoxBalansOwnership");
+			var ComboBoxBalansObjKind = (ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBoxBalansObjKind");
+			var ComboBoxBalansObjType = (ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBoxBalansObjType");
+			var ComboBoxBalansPurposeGroup = (ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBoxBalansPurposeGroup");
+			var ComboBoxBalansPurpose = (ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBoxBalansPurpose");
+
+			var newBalansId = ConveyancingUtils.CreateUnverifiedBalansObject(
+				ComboBalansBuildingNewObj.Value is int ? (int)ComboBalansBuildingNewObj.Value : -1,
+				(decimal)EditBalansObjSquare.Value,
+				EditBalansObjCost.Value is decimal ? (decimal)EditBalansObjCost.Value : 0,
+				ComboBoxBalansOwnership.Value is int ? (int)ComboBoxBalansOwnership.Value : -1,
+				ComboBoxBalansObjKind.Value is int ? (int)ComboBoxBalansObjKind.Value : -1,
+				ComboBoxBalansObjType.Value is int ? (int)ComboBoxBalansObjType.Value : -1,
+				ComboBoxBalansPurposeGroup.Value is int ? (int)ComboBoxBalansPurposeGroup.Value : -1,
+				ComboBoxBalansPurpose.Value is int ? (int)ComboBoxBalansPurpose.Value : -1,
+				"");
+
+			((ASPxLabel)Utils.FindControlRecursive(ConveyancingForm, "ASPxLabelObjAddress")).Text = ComboBalansStreetNewObj.Text + ", " + ComboBalansBuildingNewObj.Text;
+			((ASPxLabel)Utils.FindControlRecursive(ConveyancingForm, "ASPxLabelObjPurpose")).Text = ComboBoxBalansPurpose.Text;
+			((ASPxLabel)Utils.FindControlRecursive(ConveyancingForm, "ASPxLabelObjTotalArea")).Text = EditBalansObjSquare.Value.ToString();
+			((ASPxSpinEdit)Utils.FindControlRecursive(ConveyancingForm, "AreaForTransfer")).Value = EditBalansObjSquare.Value;
+			((HiddenField)Utils.FindControlRecursive(ConveyancingForm, "HdnObjectId")).Value = newBalansId.ToString();
+			((HiddenField)Utils.FindControlRecursive(ConveyancingForm, "IsExistingObject")).Value = "0";
+
+			cp_status = "createbalansok";
+		}
+		else if (e.Parameter.StartsWith("createbuilding:"))
+		{
+			//FbConnection connection = Utils.ConnectTo1NF();
+
+			var LabelBuildingCreationError = (ASPxLabel)Utils.FindControlRecursive(ConveyancingForm, "LabelBuildingCreationError");
+
+			//if (connection != null)
+			{
+				string errorMessage = "";
+
+				var ComboBalansStreetNewObj = (ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBalansStreetNewObj");
+				var ComboBoxDistrict = (ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBoxDistrict");
+				var ComboBoxBuildingKind = (ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBoxBuildingKind");
+				var ComboBoxBuildingType = (ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBoxBuildingType");
+				var TextBoxNumber1 = (ASPxTextEdit)Utils.FindControlRecursive(ConveyancingForm, "TextBoxNumber1");
+				var TextBoxNumber2 = (ASPxTextEdit)Utils.FindControlRecursive(ConveyancingForm, "TextBoxNumber2");
+				var TextBoxNumber3 = (ASPxTextEdit)Utils.FindControlRecursive(ConveyancingForm, "TextBoxNumber3");
+				var TextBoxMiscAddr = (ASPxTextEdit)Utils.FindControlRecursive(ConveyancingForm, "TextBoxMiscAddr");
+				var ComboBalansBuildingNewObj = (ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBalansBuildingNewObj");
+
+
+				int newBuildingId = ConveyancingUtils.CreateNew1NFBuilding(
+					//connection,
+					ComboBalansStreetNewObj.Value is int ? (int)ComboBalansStreetNewObj.Value : -1,
+					ComboBoxDistrict.Value is int ? (int)ComboBoxDistrict.Value : -1,
+					ComboBoxBuildingKind.Value is int ? (int)ComboBoxBuildingKind.Value : -1,
+					ComboBoxBuildingType.Value is int ? (int)ComboBoxBuildingType.Value : -1,
+					TextBoxNumber1.Text,
+					TextBoxNumber2.Text,
+					TextBoxNumber3.Text,
+					TextBoxMiscAddr.Text,
+					//true,
+					out errorMessage);
+
+				//connection.Close();
+
+				if (newBuildingId > 0)
+				{
+					AddressStreetID = ComboBalansStreetNewObj.Value is int ? (int)ComboBalansStreetNewObj.Value : -1;
+					ComboBalansBuildingNewObj.DataBind();
+					ComboBalansBuildingNewObj.SelectedItem = ComboBalansBuildingNewObj.Items.FindByValue(newBuildingId);
+				}
+
+				LabelBuildingCreationError.Text = errorMessage;
+				LabelBuildingCreationError.ClientVisible = (errorMessage.Length > 0);
+			}
+			//else
+			//{
+			//    LabelBuildingCreationError.Text = "Неможливо установити зв'язок з базою 1НФ.";
+			//    LabelBuildingCreationError.ClientVisible = true;
+			//}
+			cp_status = "createbuildingok";
+		}
+		var CPObjSel = (ASPxCallbackPanel)Utils.FindControlRecursive(ConveyancingForm, "CPObjSel");
+		CPObjSel.JSProperties["cp_status"] = cp_status;
+	}
+
+	protected void ComboRozpDoc_OnItemRequestedByValue(object source, ListEditItemRequestedByValueEventArgs e)
+	{
+		log.InfoFormat("ComboRozpDoc_OnItemRequestedByValue (e.Value={0})", e.Value);
+
+		ASPxComboBox comboBox = (ASPxComboBox)source;
+		SqlDataSource1.SelectCommand = @"SELECT d.id, doc_num, d.kind_id, k.name doc_kind, CONVERT(VARCHAR, doc_date, 104) doc_date, topic FROM documents d
+                                         LEFT JOIN dict_doc_kind k ON d.kind_id = k.id
+                                         WHERE d.id = @id";
+
+		int value = 0;
+		if (e.Value != null)
+			int.TryParse(e.Value.ToString(), out value);
+
+		SqlDataSource1.SelectParameters.Clear();
+		SqlDataSource1.SelectParameters.Add("id", TypeCode.Int32, value.ToString());
+		comboBox.DataSource = SqlDataSource1;
+		comboBox.DataBindItems();
+	}
+
+	#endregion
+
 }

@@ -118,7 +118,7 @@
     SelectCommand="SELECT arenda_id, org_renter_full_name, org_renter_id, org_giver_full_name, org_giver_id, rent_square, agreement_num,
         rent_start_date, rent_finish_date, is_subarenda, purpose, object_name, agreement_active_int
     ,(CASE WHEN agreement_state = 1 THEN 'Договір діє' ELSE CASE WHEN agreement_state = 2 THEN 'Договір закінчився, але заборгованність не погашено' ELSE CASE WHEN agreement_state = 3 THEN 'Договір закінчився, оренда продовжена іншим договором' ELSE '' END END END) AS 'agreement_state'
-    FROM m_view_arenda_agreements
+    FROM view_arenda_agreements
         WHERE building_id = @bid AND (@show_del = 1 OR (@show_del = 0 AND agreement_active_int = 1))"
     OnSelecting="SqlDataSourceObjCardArenda_Selecting" >
     <SelectParameters>
@@ -753,7 +753,28 @@
 
 <tr>
 <td>
-    <dx:ASPxButton ID="ASPxButtonPrint" runat="server" Text="Роздрукувати" onclick="ASPxButtonPrint_Click"></dx:ASPxButton>
+	<table cellspacing="0" cellpadding="0" width="810px">
+		<tr>
+			<td>
+				<dx:ASPxButton ID="ASPxButtonPrint" runat="server" Text="Роздрукувати" onclick="ASPxButtonPrint_Click"></dx:ASPxButton>
+			</td>
+			<td align="right">
+				<dx:ASPxButton ID="ASPxButtonDelete" runat="server" Text="Вилучити" onclick="ASPxButtonPrint_Delete" Visible="true">
+					<ClientSideEvents Click="function(s, e) {
+							var r = confirm('Ви дійсно хочете вилучити адресу ?');
+							if (r == true)
+							{
+								e.processOnServer = true;
+							}
+							else
+							{
+								e.processOnServer = false;
+							}
+						 }" />
+				</dx:ASPxButton>
+			</td>
+		</tr>
+	</table>
 </td>
 </tr>
 

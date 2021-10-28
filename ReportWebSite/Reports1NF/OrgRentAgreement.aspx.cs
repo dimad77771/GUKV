@@ -1741,104 +1741,6 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 
     #endregion (Collection tab)
 
-    void AddressChange(SqlConnection connection)
-    {
-		if (IsAdmin != "1")
-		{
-			return;
-		}
-
-        using (var transaction = connection.BeginTransaction())
-        {
-            Dictionary<string, Control> allcontrols = new Dictionary<string, Control>();
-            Reports1NFUtils.GetAllControls(AddressForm, allcontrols);
-            var combostreet = (ASPxComboBox)allcontrols["combostreet"];
-            var addr_street_id = (int?)combostreet.Value;
-            if (addr_street_id == null) throw new Exception("Внутрішня помилка 1001.4");
-
-            var new_building_id = (int?)null;
-            var combobuilding = (ASPxComboBox)allcontrols["combobuilding"];
-            var nomer = (combobuilding.Text ?? "").Trim();
-            using (SqlCommand cmd = new SqlCommand(
-                    @"select id from buildings where 
-                        (is_deleted IS NULL OR is_deleted = 0) AND
-                        (master_building_id IS NULL) AND
-                        (addr_street_id = @street_id) AND
-                        (RTRIM(LTRIM(addr_nomer)) = @nomer)", connection, transaction))
-            {
-                cmd.Parameters.Add(new SqlParameter("street_id", addr_street_id));
-                cmd.Parameters.Add(new SqlParameter("nomer", nomer));
-                new_building_id = (int?)cmd.ExecuteScalar();
-            }
-            if (new_building_id == null)
-            {
-                throw new Exception("Номер будинку повинен бути заповнений");
-            }
-
-            var cntrow = 0;
-            int? building_id = null;
-            int? building_1nf_unique_id = null;
-            using (SqlCommand cmd = new SqlCommand(
-                    @"SELECT ar.building_id, ar.building_1nf_unique_id FROM reports1nf_arenda ar INNER JOIN reports1nf_buildings b 
-                        ON b.unique_id = ar.building_1nf_unique_id WHERE ar.id = @id AND ar.report_id = @report_id and ar.building_id = b.id", connection, transaction))
-            {
-                cmd.Parameters.Add(new SqlParameter("report_id", ReportID));
-                cmd.Parameters.Add(new SqlParameter("id", RentAgreementID));
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        cntrow++;
-                        if (!reader.IsDBNull(0)) building_id = reader.GetInt32(0);
-                        if (!reader.IsDBNull(1)) building_1nf_unique_id = reader.GetInt32(1);
-                    }
-                    reader.Close();
-                }
-            }
-
-            if (cntrow != 1) throw new Exception("Внутрішня помилка 1001.1");
-            if (building_id == null) throw new Exception("Внутрішня помилка 1001.2");
-            if (building_1nf_unique_id == null) throw new Exception("Внутрішня помилка 1001.3");
-
-            //если поменяли адрес
-            if (new_building_id != building_id)
-            {
-                var sql = "UPDATE reports1nf_arenda SET building_id = @building_id WHERE id = @id AND report_id = @report_id";
-                using (SqlCommand cmd = new SqlCommand(sql, connection, transaction))
-                {
-                    cmd.Parameters.Add(new SqlParameter("building_id", new_building_id));
-                    cmd.Parameters.Add(new SqlParameter("report_id", ReportID));
-                    cmd.Parameters.Add(new SqlParameter("id", RentAgreementID));
-                    cmd.ExecuteNonQuery();
-                }
-
-                sql = @"DELETE FROM reports1nf_buildings WHERE unique_id = @unique_id";
-                using (SqlCommand cmd = new SqlCommand(sql, connection, transaction))
-                {
-                    cmd.Parameters.Add(new SqlParameter("unique_id", building_1nf_unique_id));
-                    cmd.ExecuteNonQuery();
-                }
-
-                sql = @"SET IDENTITY_INSERT dbo.reports1nf_buildings ON;  
-                        INSERT INTO reports1nf_buildings(id,master_building_id,addr_street_name,addr_street_id,addr_street_name2,addr_street_id2,street_full_name,addr_distr_old_id,addr_distr_new_id,addr_nomer1,addr_nomer2,addr_nomer3,addr_nomer,addr_misc,addr_korpus_flag,addr_korpus,addr_zip_code,addr_address,tech_condition_id,date_begin,date_end,num_floors,construct_year,condition_year,is_condition_valid,bti_code,history_id,object_type_id,object_kind_id,is_land,modify_date,modified_by,kadastr_code,cost_balans,sqr_total,sqr_pidval,sqr_mk,sqr_dk,sqr_rk,sqr_other,sqr_rented,sqr_zagal,sqr_for_rent,sqr_habit,sqr_non_habit,additional_info,is_deleted,del_date,oatuu_id,updpr,arch_id,arch_flag,facade_id,nomer_int,characteristics,expl_enter_year,is_basement_exists,is_loft_exists,sqr_loft,unique_id,report_id)
-                        SELECT id,master_building_id,addr_street_name,addr_street_id,addr_street_name2,addr_street_id2,street_full_name,addr_distr_old_id,addr_distr_new_id,addr_nomer1,addr_nomer2,addr_nomer3,addr_nomer,addr_misc,addr_korpus_flag,addr_korpus,addr_zip_code,addr_address,tech_condition_id,date_begin,date_end,num_floors,construct_year,condition_year,is_condition_valid,bti_code,history_id,object_type_id,object_kind_id,is_land,modify_date,modified_by,kadastr_code,cost_balans,sqr_total,sqr_pidval,sqr_mk,sqr_dk,sqr_rk,sqr_other,sqr_rented,sqr_zagal,sqr_for_rent,sqr_habit,sqr_non_habit,additional_info,is_deleted,del_date,oatuu_id,updpr,arch_id,arch_flag,facade_id,nomer_int,characteristics,expl_enter_year,is_basement_exists,is_loft_exists,sqr_loft,
-                                    @unique_id, @report_id FROM buildings b WHERE b.id = @new_building_id;
-                        SET IDENTITY_INSERT dbo.reports1nf_buildings OFF";
-                using (SqlCommand cmd = new SqlCommand(sql, connection, transaction))
-                {
-                    cmd.Parameters.Add(new SqlParameter("new_building_id", new_building_id));
-                    cmd.Parameters.Add(new SqlParameter("unique_id", building_1nf_unique_id));
-                    cmd.Parameters.Add(new SqlParameter("report_id", ReportID));
-                    cmd.ExecuteNonQuery();
-                }
-
-            }
-
-            transaction.Commit();
-            //transaction.Rollback();
-        }
-    }
-
     protected void SaveChanges(SqlConnection connection)
     {
 //////
@@ -1854,6 +1756,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         Reports1NFUtils.GetAllControls(PaymentForm, controls);
         Reports1NFUtils.GetAllControls(CollectionForm, controls);
         Reports1NFUtils.GetAllControls(InsuranceForm, controls);
+		Reports1NFUtils.GetAllControls(AddressForm, controls);
 
 
 
@@ -1923,6 +1826,9 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         AddQueryParameter(ref fieldList, "insurance_end", "insurance_end", Reports1NFUtils.GetDateValue(controls, "insurance_end"), parameters);
         AddQueryParameter(ref fieldList, "insurance_sum", "insurance_sum", Reports1NFUtils.GetEditNumeric(controls, "insurance_sum"), parameters);
 
+		var building_id = Reports1NFUtils.GetEditNumeric(controls, "AddrBuildingId");
+		AddQueryParameter(ref fieldList, "building_id", "buildingid", building_id, parameters);
+
         using (SqlCommand cmd = new SqlCommand("UPDATE reports1nf_arenda SET " + fieldList + ", is_valid = @isValid, validation_errors = @errMsgs WHERE report_id = @rid AND id = @aid", connection))
         {
             cmd.Parameters.Add(new SqlParameter("rid", ReportID));
@@ -1937,6 +1843,8 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 
             cmd.ExecuteNonQuery();
         }
+
+		UpdateReports1nfBuildings(connection);
 
         // If comment is specified, add the default comment
         int newGiverId = Reports1NFUtils.GetDropDownValue(controls, "ComboGiverOrg");
@@ -2140,6 +2048,81 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 
     }
 
+
+	void UpdateReports1nfBuildings(SqlConnection connection)
+	{
+		var sql = @"update reports1nf_buildings set
+						id = b.id,
+						master_building_id = b.master_building_id,
+						addr_street_name = b.addr_street_name,
+						addr_street_id = b.addr_street_id,
+						addr_street_name2 = b.addr_street_name2,
+						addr_street_id2 = b.addr_street_id2,
+						street_full_name = b.street_full_name,
+						addr_distr_old_id = b.addr_distr_old_id,
+						addr_distr_new_id = b.addr_distr_new_id,
+						addr_nomer1 = b.addr_nomer1,
+						addr_nomer2 = b.addr_nomer2,
+						addr_nomer3 = b.addr_nomer3,
+						addr_nomer = b.addr_nomer,
+						addr_misc = b.addr_misc,
+						addr_korpus_flag = b.addr_korpus_flag,
+						addr_korpus = b.addr_korpus,
+						addr_zip_code = b.addr_zip_code,
+						addr_address = b.addr_address,
+						tech_condition_id = b.tech_condition_id,
+						date_begin = b.date_begin,
+						date_end = b.date_end,
+						num_floors = b.num_floors,
+						construct_year = b.construct_year,
+						condition_year = b.condition_year,
+						is_condition_valid = b.is_condition_valid,
+						bti_code = b.bti_code,
+						history_id = b.history_id,
+						object_type_id = b.object_type_id,
+						object_kind_id = b.object_kind_id,
+						is_land = b.is_land,
+						modify_date = b.modify_date,
+						modified_by = b.modified_by,
+						kadastr_code = b.kadastr_code,
+						cost_balans = b.cost_balans,
+						sqr_total = b.sqr_total,
+						sqr_pidval = b.sqr_pidval,
+						sqr_mk = b.sqr_mk,
+						sqr_dk = b.sqr_dk,
+						sqr_rk = b.sqr_rk,
+						sqr_other = b.sqr_other,
+						sqr_rented = b.sqr_rented,
+						sqr_zagal = b.sqr_zagal,
+						sqr_for_rent = b.sqr_for_rent,
+						sqr_habit = b.sqr_habit,
+						sqr_non_habit = b.sqr_non_habit,
+						additional_info = b.additional_info,
+						is_deleted = b.is_deleted,
+						del_date = b.del_date,
+						oatuu_id = b.oatuu_id,
+						updpr = b.updpr,
+						arch_id = b.arch_id,
+						arch_flag = b.arch_flag,
+						facade_id = b.facade_id,
+						nomer_int = b.nomer_int,
+						characteristics = b.characteristics,
+						expl_enter_year = b.expl_enter_year,
+						is_basement_exists = b.is_basement_exists,
+						is_loft_exists = b.is_loft_exists,
+						sqr_loft = b.sqr_loft
+					from reports1nf_arenda C
+					join reports1nf_buildings A on A.unique_id = C.building_1nf_unique_id
+					join buildings B on B.id = C.building_id
+					where C.report_id = @rid and C.id = @aid";
+		using (SqlCommand cmd = new SqlCommand(sql, connection))
+		{
+			cmd.Parameters.Add(new SqlParameter("rid", ReportID));
+			cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
+			cmd.ExecuteNonQuery();
+		}
+	}
+
     protected void AddQueryParameter(ref string fieldList, string fieldName, string paramName,
         object value, Dictionary<string, object> parameters)
     {
@@ -2212,8 +2195,6 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 
             if (connection != null)
             {
-                AddressChange(connection);
-
                 SaveChanges(connection);
 
                 connection.Close();
@@ -2230,8 +2211,6 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
             SqlConnection connection = Utils.ConnectToDatabase();
             if (connection != null)
             {
-                AddressChange(connection);
-
                 // Save the form before sending it to DKV
                 SaveChanges(connection);
 
@@ -3120,25 +3099,6 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         //    e.InputParameters["balans_id"] = int.Parse(Request.QueryString["bid"]);
     }
 
-    private int AddressStreetID
-    {
-        get
-        {
-            object streetId = Session["OrgArendaList_AddressStreetID"];
-            return (streetId is int) ? (int)streetId : 0;
-        }
-
-        set
-        {
-            Session["OrgArendaList_AddressStreetID"] = value;
-        }
-    }
-
-    protected void SqlDataSourceDictBuildings_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
-    {
-        System.Diagnostics.Debug.WriteLine("SqlDataSourceDictBuildings_Selecting=" + AddressStreetID);
-		e.Command.Parameters["@street_id"].Value = AddressStreetID;
-    }
 
     protected void ComboBuilding_Callback(object source, CallbackEventArgsBase e)
     {
@@ -3189,6 +3149,224 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         Response.Redirect(Page.ResolveClientUrl(url));
     }
 
+	public string EvaluateTrimStr(object str)
+	{
+		if (str is string)
+		{
+			return ((string)str).Trim();
+		}
+
+		return "";
+	}
+
+
+	#region PickAddressBuilding
+
+	Control ConveyancingForm
+	{
+		get
+		{
+			return AddressForm;
+		}
+	}
+
+
+	protected int AddressStreetID
+	{
+		get;
+		set;
+	}
+
+	protected void ComboAddressBuilding_Callback(object source, CallbackEventArgsBase e)
+	{
+		try
+		{
+			int streetId = int.Parse(e.Parameter);
+			AddressStreetID = streetId;
+			var gg2 = ConveyancingForm;
+			var gg1 = Utils.FindControlRecursive(ConveyancingForm, "ComboBalansStreetNewObj");
+			((ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBalansStreetNewObj")).Value = streetId;
+
+
+			(source as ASPxComboBox).DataBind();
+		}
+		finally
+		{
+		}
+	}
+
+	protected void SqlDataSourceDictBuildings_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+	{
+		e.Command.Parameters["@street_id"].Value = ((ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBalansStreetNewObj")).Value;//AddressStreetID; 
+	}
+
+	protected void CPObjSel_Callback(object sender, CallbackEventArgsBase e)
+	{
+		var cp_status = "";
+
+		if (e.Parameter.StartsWith("sel_obj:"))
+		{
+			string strObjectID = e.Parameter.Substring(8);
+
+			int objectID = int.Parse(strObjectID);
+
+
+			SqlConnection connection = Utils.ConnectToDatabase();
+
+			if (connection != null)
+			{
+				string query = @"SELECT top 1 B.*
+									FROM buildings B 
+                                    WHERE B.id = @objId";
+
+				using (SqlCommand cmd = new SqlCommand(query, connection))
+				{
+					cmd.Parameters.Add(new SqlParameter("objId", objectID));
+
+					using (SqlDataReader reader = cmd.ExecuteReader())
+					{
+						if (reader.Read())
+						{
+							var building_id = (reader.IsDBNull(reader.GetOrdinal("id")) ? null : (int?)reader["id"]);
+							if (building_id == null) throw new ArgumentException("building_id is null");
+							var addr_distr_new_id = (reader.IsDBNull(reader.GetOrdinal("addr_distr_new_id")) ? null : (int?)reader["addr_distr_new_id"]);
+							var addr_street_id = (reader.IsDBNull(reader.GetOrdinal("addr_street_id")) ? null : (int?)reader["addr_street_id"]);
+							var addr_nomer1 = (reader.IsDBNull(reader.GetOrdinal("addr_nomer1")) ? null : (string)reader["addr_nomer1"]);
+							var addr_nomer2 = (reader.IsDBNull(reader.GetOrdinal("addr_nomer2")) ? null : (string)reader["addr_nomer2"]);
+							var addr_nomer3 = (reader.IsDBNull(reader.GetOrdinal("addr_nomer3")) ? null : (string)reader["addr_nomer3"]);
+							var addr_misc = (reader.IsDBNull(reader.GetOrdinal("addr_misc")) ? null : (string)reader["addr_misc"]);
+							var addr_zip_code = (reader.IsDBNull(reader.GetOrdinal("addr_zip_code")) ? null : (string)reader["addr_zip_code"]);
+
+							((HiddenField)Utils.FindControlRecursive(ConveyancingForm, "AddrBuildingId")).Value = building_id.ToString();
+							((ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboAddrDistrict")).Value = addr_distr_new_id;
+							((ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboAddrStreet")).Value = addr_street_id;
+							((ASPxTextBox)Utils.FindControlRecursive(ConveyancingForm, "EditBuildingNum1")).Value = addr_nomer1;
+							((ASPxTextBox)Utils.FindControlRecursive(ConveyancingForm, "EditBuildingNum2")).Value = addr_nomer2;
+							((ASPxTextBox)Utils.FindControlRecursive(ConveyancingForm, "EditBuildingNum3")).Value = addr_nomer3;
+							((ASPxTextBox)Utils.FindControlRecursive(ConveyancingForm, "EditMiscAddr")).Value = addr_misc;
+							((ASPxTextBox)Utils.FindControlRecursive(ConveyancingForm, "EditZipCode")).Value = addr_zip_code;
+						}
+						else
+						{
+							throw new ArgumentException("Address not found");
+						}
+						reader.Close();
+					}
+				}
+				connection.Close();
+			}
+
+			cp_status = "selobjok";
+		}
+		else if (e.Parameter.StartsWith("createbalans:"))
+		{
+			var ComboBalansStreetNewObj = (ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBalansStreetNewObj");
+			var ComboBalansBuildingNewObj = (ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBalansBuildingNewObj");
+			var EditBalansObjSquare = (ASPxEdit)Utils.FindControlRecursive(ConveyancingForm, "EditBalansObjSquare");
+			var EditBalansObjCost = (ASPxEdit)Utils.FindControlRecursive(ConveyancingForm, "EditBalansObjCost");
+			var ComboBoxBalansOwnership = (ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBoxBalansOwnership");
+			var ComboBoxBalansObjKind = (ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBoxBalansObjKind");
+			var ComboBoxBalansObjType = (ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBoxBalansObjType");
+			var ComboBoxBalansPurposeGroup = (ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBoxBalansPurposeGroup");
+			var ComboBoxBalansPurpose = (ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBoxBalansPurpose");
+
+			var newBalansId = ConveyancingUtils.CreateUnverifiedBalansObject(
+				ComboBalansBuildingNewObj.Value is int ? (int)ComboBalansBuildingNewObj.Value : -1,
+				(decimal)EditBalansObjSquare.Value,
+				EditBalansObjCost.Value is decimal ? (decimal)EditBalansObjCost.Value : 0,
+				ComboBoxBalansOwnership.Value is int ? (int)ComboBoxBalansOwnership.Value : -1,
+				ComboBoxBalansObjKind.Value is int ? (int)ComboBoxBalansObjKind.Value : -1,
+				ComboBoxBalansObjType.Value is int ? (int)ComboBoxBalansObjType.Value : -1,
+				ComboBoxBalansPurposeGroup.Value is int ? (int)ComboBoxBalansPurposeGroup.Value : -1,
+				ComboBoxBalansPurpose.Value is int ? (int)ComboBoxBalansPurpose.Value : -1,
+				"");
+
+			((ASPxLabel)Utils.FindControlRecursive(ConveyancingForm, "ASPxLabelObjAddress")).Text = ComboBalansStreetNewObj.Text + ", " + ComboBalansBuildingNewObj.Text;
+			((ASPxLabel)Utils.FindControlRecursive(ConveyancingForm, "ASPxLabelObjPurpose")).Text = ComboBoxBalansPurpose.Text;
+			((ASPxLabel)Utils.FindControlRecursive(ConveyancingForm, "ASPxLabelObjTotalArea")).Text = EditBalansObjSquare.Value.ToString();
+			((ASPxSpinEdit)Utils.FindControlRecursive(ConveyancingForm, "AreaForTransfer")).Value = EditBalansObjSquare.Value;
+			((HiddenField)Utils.FindControlRecursive(ConveyancingForm, "HdnObjectId")).Value = newBalansId.ToString();
+			((HiddenField)Utils.FindControlRecursive(ConveyancingForm, "IsExistingObject")).Value = "0";
+
+			cp_status = "createbalansok";
+		}
+		else if (e.Parameter.StartsWith("createbuilding:"))
+		{
+			//FbConnection connection = Utils.ConnectTo1NF();
+
+			var LabelBuildingCreationError = (ASPxLabel)Utils.FindControlRecursive(ConveyancingForm, "LabelBuildingCreationError");
+
+			//if (connection != null)
+			{
+				string errorMessage = "";
+
+				var ComboBalansStreetNewObj = (ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBalansStreetNewObj");
+				var ComboBoxDistrict = (ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBoxDistrict");
+				var ComboBoxBuildingKind = (ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBoxBuildingKind");
+				var ComboBoxBuildingType = (ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBoxBuildingType");
+				var TextBoxNumber1 = (ASPxTextEdit)Utils.FindControlRecursive(ConveyancingForm, "TextBoxNumber1");
+				var TextBoxNumber2 = (ASPxTextEdit)Utils.FindControlRecursive(ConveyancingForm, "TextBoxNumber2");
+				var TextBoxNumber3 = (ASPxTextEdit)Utils.FindControlRecursive(ConveyancingForm, "TextBoxNumber3");
+				var TextBoxMiscAddr = (ASPxTextEdit)Utils.FindControlRecursive(ConveyancingForm, "TextBoxMiscAddr");
+				var ComboBalansBuildingNewObj = (ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBalansBuildingNewObj");
+
+
+				int newBuildingId = ConveyancingUtils.CreateNew1NFBuilding(
+					//connection,
+					ComboBalansStreetNewObj.Value is int ? (int)ComboBalansStreetNewObj.Value : -1,
+					ComboBoxDistrict.Value is int ? (int)ComboBoxDistrict.Value : -1,
+					ComboBoxBuildingKind.Value is int ? (int)ComboBoxBuildingKind.Value : -1,
+					ComboBoxBuildingType.Value is int ? (int)ComboBoxBuildingType.Value : -1,
+					TextBoxNumber1.Text,
+					TextBoxNumber2.Text,
+					TextBoxNumber3.Text,
+					TextBoxMiscAddr.Text,
+					//true,
+					out errorMessage);
+
+				//connection.Close();
+
+				if (newBuildingId > 0)
+				{
+					AddressStreetID = ComboBalansStreetNewObj.Value is int ? (int)ComboBalansStreetNewObj.Value : -1;
+					ComboBalansBuildingNewObj.DataBind();
+					ComboBalansBuildingNewObj.SelectedItem = ComboBalansBuildingNewObj.Items.FindByValue(newBuildingId);
+				}
+
+				LabelBuildingCreationError.Text = errorMessage;
+				LabelBuildingCreationError.ClientVisible = (errorMessage.Length > 0);
+			}
+			//else
+			//{
+			//    LabelBuildingCreationError.Text = "Неможливо установити зв'язок з базою 1НФ.";
+			//    LabelBuildingCreationError.ClientVisible = true;
+			//}
+			cp_status = "createbuildingok";
+		}
+		var CPObjSel = (ASPxCallbackPanel)Utils.FindControlRecursive(ConveyancingForm, "CPObjSel");
+		CPObjSel.JSProperties["cp_status"] = cp_status;
+	}
+
+	protected void ComboRozpDoc_OnItemRequestedByValue(object source, ListEditItemRequestedByValueEventArgs e)
+	{
+		log.InfoFormat("ComboRozpDoc_OnItemRequestedByValue (e.Value={0})", e.Value);
+
+		ASPxComboBox comboBox = (ASPxComboBox)source;
+		SqlDataSource1.SelectCommand = @"SELECT d.id, doc_num, d.kind_id, k.name doc_kind, CONVERT(VARCHAR, doc_date, 104) doc_date, topic FROM documents d
+                                         LEFT JOIN dict_doc_kind k ON d.kind_id = k.id
+                                         WHERE d.id = @id";
+
+		int value = 0;
+		if (e.Value != null)
+			int.TryParse(e.Value.ToString(), out value);
+
+		SqlDataSource1.SelectParameters.Clear();
+		SqlDataSource1.SelectParameters.Add("id", TypeCode.Int32, value.ToString());
+		comboBox.DataSource = SqlDataSource1;
+		comboBox.DataBindItems();
+	}
+
+	#endregion
 }
 
 

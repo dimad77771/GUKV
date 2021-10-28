@@ -19,6 +19,7 @@ using GUKV.Common;
 using GUKV;
 using GUKV.ImportToolUtils;
 using ExtDataEntry.Models;
+using System.Web.UI.WebControls;
 
 public static class StringExtensions
 {
@@ -252,7 +253,12 @@ public static class Reports1NFUtils
                     return val;
                 }
             }
-        }
+			else if (ctl is HiddenField)
+			{
+				HiddenField spin = ctl as HiddenField;
+				return int.Parse(spin.Value);
+			}
+		}
 
         return null;
     }
@@ -1688,19 +1694,19 @@ public static class Reports1NFUtils
         else
         {
             // Perform address matching
-            if (uniqueBuildingId > 0)
-            {
-                int newBuildingId = FindObjectMatch(connectionSql, /*connection1NF,*/ uniqueBuildingId, reportId, false, username);
+            //if (uniqueBuildingId > 0)
+            //{
+            //    int newBuildingId = FindObjectMatch(connectionSql, /*connection1NF,*/ uniqueBuildingId, reportId, false, username);
 
-                using (SqlCommand cmd = new SqlCommand("UPDATE reports1nf_arenda SET building_id = @bid WHERE id = @aid AND report_id = @rid", connectionSql))
-                {
-                    cmd.Parameters.Add(new SqlParameter("aid", agreementId));
-                    cmd.Parameters.Add(new SqlParameter("rid", reportId));
-                    cmd.Parameters.Add(new SqlParameter("bid", newBuildingId));
+            //    using (SqlCommand cmd = new SqlCommand("UPDATE reports1nf_arenda SET building_id = @bid WHERE id = @aid AND report_id = @rid", connectionSql))
+            //    {
+            //        cmd.Parameters.Add(new SqlParameter("aid", agreementId));
+            //        cmd.Parameters.Add(new SqlParameter("rid", reportId));
+            //        cmd.Parameters.Add(new SqlParameter("bid", newBuildingId));
 
-                    cmd.ExecuteNonQuery();
-                }
-            }
+            //        cmd.ExecuteNonQuery();
+            //    }
+            //}
 
             // Check if we need to create a new agreement
             bool created = false;

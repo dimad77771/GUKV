@@ -6,6 +6,7 @@
 
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+<%@ Register src="BuildingPicker.ascx" tagname="BuildingPicker" tagprefix="uctl1" %>
 <%@ Register Namespace="MiniProfilerHelpers" TagPrefix="mini" %>
 <%@ Register src="ReportCommentViewer.ascx" tagname="ReportCommentViewer" tagprefix="uc1" %>
 
@@ -137,9 +138,9 @@
 
 			// - менять каждый квартал
 			//var vvz = round(nn(edit_debtkvart_0.GetValue()));																											//1кв.
-			//var vvz = round(nn(edit_debtkvart_0.GetValue()) + nn(edit_debtkvart_1.GetValue()));																			//2кв.
-			var vvz = round( nn(edit_debtkvart_0.GetValue()) + nn(edit_debtkvart_1.GetValue()) + nn(edit_debtkvart_2.GetValue()) );									//3кв.
-			//var vvz = round( nn(edit_debtkvart_0.GetValue()) + nn(edit_debtkvart_1.GetValue()) + nn(edit_debtkvart_2.GetValue()) + nn(edit_debtkvart_3.GetValue()) );	//4кв.
+			//var vvz = round(nn(edit_debtkvart_0.GetValue()) + nn(edit_debtkvart_1.GetValue()));																		//2кв.
+			//var vvz = round( nn(edit_debtkvart_0.GetValue()) + nn(edit_debtkvart_1.GetValue()) + nn(edit_debtkvart_2.GetValue()) );									//3кв.
+			var vvz = round( nn(edit_debtkvart_0.GetValue()) + nn(edit_debtkvart_1.GetValue()) + nn(edit_debtkvart_2.GetValue()) + nn(edit_debtkvart_3.GetValue()) );	//4кв.
 			EditCollectionDebtZvit.SetValue(vvz);
 
 			var vv2 = round( nn(edit_debtkvart_1.GetValue()) + nn(edit_debtkvart_2.GetValue()) + nn(edit_debtkvart_3.GetValue()) );
@@ -231,9 +232,9 @@
 
 				// - менять каждый квартал (2)
 				//val = round(nn(val));						// 1кв.
-				//val = round(nn(val) - v4);					// 2кв.
-				val = round(nn(val) - v4 - v5 );			// 3кв.
-                //val = round(nn(val) - v4 - v5 - v6);		// 4кв.
+				//val = round(nn(val) - v4);				// 2кв.
+				//val = round(nn(val) - v4 - v5 );			// 3кв.
+                val = round(nn(val) - v4 - v5 - v6);		// 4кв.
 				
 
                 if (val <= 0) val = null;
@@ -720,7 +721,20 @@
                 EditNoteCostNarah.SetValue(ComboRentalRate.GetText());
 
             }
-            }
+		}
+
+		function OnEditMiscAddrTextChanged(e, z) {
+			console.log("OnEditMiscAddrTextChanged");
+			console.log(e);
+			console.log(z);
+        <%--<%= EditMiscAddr.ClientID %>.UnselectAll();--%>
+		}
+
+		function OnEditMiscAddrValueChanged(e, z) {
+			console.log("OnEditMiscAddrValueChanged");
+			console.log(e);
+			console.log(z);
+		}
 
 
      // ]]>
@@ -928,9 +942,11 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
 
+<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" />
+
 <mini:ProfiledSqlDataSource ID="SqlDataSourceBuilding" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT TOP 1 b.* FROM reports1nf_arenda ar INNER JOIN reports1nf_buildings b ON b.unique_id = ar.building_1nf_unique_id
+    SelectCommand="SELECT TOP 1 b.*, ar.building_id FROM reports1nf_arenda ar INNER JOIN reports1nf_buildings b ON b.unique_id = ar.building_1nf_unique_id
         WHERE ar.id = @aid AND ar.report_id = @rep_id"
     OnSelecting="SqlDataSource_Selecting">
     <SelectParameters>
@@ -1142,6 +1158,37 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDictDistricts2" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT id, name FROM dict_1nf_districts2 ORDER BY name"
+    EnableCaching="true">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictObjectKind" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_1nf_object_kind WHERE len(name) > 0 ORDER BY name"
+    EnableCaching="True">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictObjectType" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_1nf_object_type WHERE len(name) > 0 ORDER BY name"
+    EnableCaching="True">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictBalansPurposeGroup" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_1nf_balans_purpose_group WHERE len(name) > 0 ORDER BY name"
+    EnableCaching="true">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceStreet" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="select id, name from dict_streets where (name is not null) and (RTRIM(LTRIM(name)) <> '') order by name">
+<%--    SelectCommand="select s.id, s.name as sname, r.name as rname, ISNULL(r.name + ' - ', '') + s.name as name from dict_streets s left join dict_regions r on r.id = s.region_id where (not s.name is null) and (RTRIM(LTRIM(s.name)) <> '')">    --%>
+</mini:ProfiledSqlDataSource>
+
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictBalansPurpose" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_1nf_balans_purpose WHERE len(name) > 0 ORDER BY name"
     EnableCaching="true">
 </mini:ProfiledSqlDataSource>
 
@@ -1563,6 +1610,8 @@ WHERE id = @id"
     </ItemTemplate>
 </asp:FormView>
 
+<asp:HiddenField ID="ConveyancingType" runat="server" />
+
 <dx:ASPxPageControl ID="CardPageControl" ClientInstanceName="CardPageControl" 
                 runat="server" ActiveTabIndex="0">
     <TabPages>
@@ -1576,66 +1625,381 @@ WHERE id = @id"
 
                             <dx:ASPxRoundPanel ID="PanelAddress" runat="server" HeaderText="Адреса будинку">
                                 <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="4px" />
+
+								<PanelCollection>
+								<dx:PanelContent>
+                                <dx:ASPxCallbackPanel ID="CPObjSel" ClientInstanceName="CPObjSel" runat="server" OnCallback="CPObjSel_Callback">
+                                        <ClientSideEvents EndCallback="function (s, e) { 
+                                            console.log(s.cp_status);
+
+                                            if (s.cp_status == 'createbuildingok') {
+                                                ButtonDoAddBuilding.SetEnabled(true);
+                                                PopupAddBuilding.Hide();
+                                                if ($('#LabelBuildingCreationError').text() == '') {
+                                                } else {
+                                                    PopupAddBuilding.ShowAtElement(ButtonAddBuilding.GetMainElement());
+                                                }
+                                                //ComboBalansBuildingNewObj.PerformCallback(ComboBalansStreetNewObj.GetValue().toString());
+												var new_building_id = ComboBalansBuildingNewObj.GetValue();
+												console.log('new_building_id2', new_building_id);	
+												PopupAddBalansObj.Hide();
+												CPObjSel.PerformCallback('sel_obj:'+new_building_id);
+                                            } 
+                                            else if(s.cp_status == 'selobjok') {
+                                                PopupSelectBalansObject.Hide();
+                                            }
+                                            else if (s.cp_status == 'createbalansok')
+                                            {
+                                                PopupAddBalansObj.Hide();
+                                            }                                       
+                                        }" />
+
                                 <PanelCollection>
                                     <dx:PanelContent ID="PanelContent4" runat="server">
 
-                                        <table border="0" cellspacing="0" cellpadding="0" width="810px">
+                                        <table border="0" cellspacing="0" cellpadding="2" width="810px">
+                                            <tr>
+                                                <td> <dx:ASPxLabel ID="ASPxLabel40" runat="server" Text="Район" Width="125px"/> </td>
+                                                <td>
+													<asp:HiddenField ID="AddrBuildingId" Value='<%# Eval("building_id") %>' runat="server" />
+                                                    <dx:ASPxComboBox ID="ComboAddrDistrict" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="270px" 
+                                                        IncrementalFilteringMode="StartsWith" DataSourceID="SqlDataSourceDistrict" Value='<%# Eval("addr_distr_new_id") %>' 
+                                                        Title="Адреса будинку - Район" ReadOnly="true" />
+                                                </td>
+                                                <td> <dx:ASPxLabel ID="ASPxLabel41" runat="server" Text="Назва вулиці" Width="125px" /> </td>
+                                                <td>
+                                                    <dx:ASPxComboBox ID="ComboAddrStreet" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="270px" 
+                                                        IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceStreet" Value='<%# Eval("addr_street_id") %>'
+                                                        Title="Адреса будинку - Назва вулиці" ReadOnly="true" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td> <dx:ASPxLabel ID="ASPxLabel37" runat="server" Text="Номер будинку, літери" Width="125px"/> </td>
+                                                <td>
+                                                    <table border="0" cellspacing="0" cellpadding="0" width="270px">
+                                                        <tr>
+                                                            <td>
+                                                                <dx:ASPxTextBox ID="EditBuildingNum1" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_nomer1")) %>' Width="70px" 
+                                                                    Title="Адреса - Номер будинку" MaxLength="9" ReadOnly="true" />
+                                                            </td>
+                                                            <td>
+                                                                <dx:ASPxTextBox ID="EditBuildingNum2" ClientInstanceName="EditBuildingNum2" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_nomer2")) %>' Width="200px"
+                                                                    Title="Адреса - Номер будинку (літери)" MaxLength="18" ReadOnly="true" />
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td> <dx:ASPxLabel ID="ASPxLabel38" runat="server" Text="Корпус"/> </td>
+                                                <td> <dx:ASPxTextBox ID="EditBuildingNum3" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_nomer3")) %>' Width="270px" Title="Адреса - Номер будинку (корпус)" MaxLength="10" ReadOnly="true" /> </td>
+                                            </tr>
+                                            <tr>
+                                                <td> <dx:ASPxLabel ID="ASPxLabel42" runat="server" Text="Додаткова адреса"/> </td>
+                                                <td> 
+													<dx:ASPxTextBox ID="EditMiscAddr" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_misc")) %>' Width="270px" Title="Адреса будинку - Додаткова адреса" MaxLength="100" ReadOnly="true">
+														<ClientSideEvents TextChanged="OnEditMiscAddrTextChanged" ValueChanged="OnEditMiscAddrValueChanged" />
+													</dx:ASPxTextBox> 
+                                                </td>
+                                                <td> <dx:ASPxLabel ID="ASPxLabel43" runat="server" Text="Поштовий індекс"/> </td>
+                                                <td> <dx:ASPxTextBox ID="EditZipCode" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_zip_code")) %>' Width="270px" Title="Адреса будинку - Поштовий індекс" MaxLength="10" ReadOnly="true" /> </td>
+                                            </tr>
+											<tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+												<td>&nbsp;</td>
+                                                <td>
+                                                    <table>
+                                                    <tr>
+                                                        <td>
+                                                            <dx:ASPxButton ID="ButtonSelectBalansObj" ClientInstanceName="ButtonSelectBalansObj" runat="server" Text="Вибрати" CausesValidation="False" AutoPostBack="false" />
+                                                        </td>
+                                                        <td>   
+                                                            <dx:ASPxButton ID="ButtonCreateBalansObj" ClientInstanceName="ButtonCreateBalansObj" runat="server" Text="Створити" CausesValidation="False" AutoPostBack="false" />
+                                                        </td>
+                                                        <td>
+                                                            <div id="objerr" style="width: 300px; color: #FF0000; font-weight: bold; display: none;" >Необхідно вказати об'єкт</div>     
+                                                        </td>
+                                                    </tr>
+                                                    </table>
 
-                                            <tr>
-                                                <td width="120px"><dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="Район"></dx:ASPxLabel></td>
-                                                <td width="8px">&nbsp;</td>
-                                                <td>
-                                                    <dx:ASPxComboBox ID="ComboRentAddrDistrict" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="270px" 
-                                                        IncrementalFilteringMode="StartsWith" DataSourceID="SqlDataSourceDistrict" ReadOnly="true" Enabled="false" Value='<%# Eval("addr_distr_new_id") %>'
-                                                         Title="Адреса будинку - район" />
-<%-- 
-                                                    <dx:ASPxTextBox ID="TextRentAddrDistrict" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" 
-                                                        DataSourceID="SqlDataSourceDistrict" Enabled="false" ReadOnly="true" Text='<%# Eval("addr_distr_new_id") %>' Width="270px"  Title="Адреса будинку - район" />
---%>
-                                                </td>
-                                                <td width="8px">&nbsp;</td>
-                                                <td width="120px"><dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Назва вулиці"></dx:ASPxLabel></td>
-                                                <td width="8px">&nbsp;</td>
-                                                <td>
-                                                    <%--<dx:ASPxTextBox ID="EditRentAddrStreet" runat="server" ReadOnly="true" Text='<%# Eval("addr_street_name") %>' Width="270px"  Title="Адреса будинку - Назва вулиці" />--%>
-                                                    <dx:ASPxComboBox ID="ComboStreet" runat="server" ClientInstanceName="ComboStreet"
-                                                        Value='<%# Bind("addr_street_id") %>'
-                                                        DataSourceID="SqlDataSourceDictStreets" DropDownStyle="DropDownList" ValueType="System.Int32"
-                                                        TextField="name" ValueField="id" Width="270px" IncrementalFilteringMode="StartsWith"
-                                                        FilterMinLength="3" EnableCallbackMode="True" CallbackPageSize="50" EnableViewState="False"
-                                                        EnableSynchronization="False">
-                                                        <ClientSideEvents SelectedIndexChanged="function(s, e) { ComboBuilding.PerformCallback(ComboStreet.GetValue().toString()); }" />
-                                                    </dx:ASPxComboBox>
-                                                </td>
+													<dx:ASPxPopupControl ID="PopupSelectBalansObject" runat="server" ClientInstanceName="PopupSelectBalansObject"
+														HeaderText="Вибір адреси" PopupElementID="ButtonSelectBalansObj" AllowDragging="True" Width="500px" ShowPageScrollbarWhenModal="true">
+														<ContentCollection>
+															<dx:PopupControlContentControl ID="PopupControlContentControl2" runat="server">
+																<uctl1:BuildingPicker ID="ObjectPicker" runat="server" />
+																<dx:ASPxButton ID="ButtonChooseBalansObj" ClientInstanceName="ButtonChooseBalansObj"
+																	runat="server" Text="Вибрати" Width="148px" AutoPostBack="False" CausesValidation="False">
+																	<ClientSideEvents Click="function(s, e) {
+																		var building_id = ComboBalansBuilding.GetValue();
+																		console.log('building_id', building_id);
+																		if (building_id != null) {
+																			CPObjSel.PerformCallback('sel_obj:'+building_id);
+																		}
+																		return;
+
+
+                                                                        var selectedBalansObjId = GridViewBalansObjects.GetRowKey(GridViewBalansObjects.GetFocusedRowIndex());
+                                                                        if (selectedBalansObjId == null
+                                                                            || (typeof selectedBalansObjId == 'string' &amp;&amp; selectedBalansObjId.length == 0) 
+                                                                            || (typeof selectedBalansObjId == 'number' &amp;&amp; selectedBalansObjId &lt; 0)) {
+                                                                            selectedBalansObjId = 0;
+                                                                        }
+                                                                        //PopupSelectBalansObject.Hide();
+                                                                        CPObjSel.PerformCallback('sel_obj:'+selectedBalansObjId);
+                                                                        }" />
+																</dx:ASPxButton>
+															</dx:PopupControlContentControl>
+														</ContentCollection>
+													</dx:ASPxPopupControl>
+													<dx:ASPxPopupControl ID="PopupAddBalansObj" runat="server" ClientInstanceName="PopupAddBalansObj" Modal="True" CloseAction="CloseButton" ShowPageScrollbarWhenModal="true"
+														HeaderText="Створення нової адреси" PopupElementID="ButtonCreateBalansObj" AllowDragging="True">
+														<ContentCollection>
+															<dx:PopupControlContentControl ID="PopupControlContentControl3" runat="server">
+
+																<table border="0" cellspacing="0" cellpadding="2">
+																	<tr>
+																		<td>
+																			<dx:ASPxLabel ID="LabelAddrStreet" runat="server" Text="Назва вулиці:" Width="80px" />
+																		</td>
+																		<%-- --%>
+																		<td>
+																			<dx:ASPxComboBox ID="ComboBalansStreetNewObj" runat="server" ClientInstanceName="ComboBalansStreetNewObj"
+																				DataSourceID="SqlDataSourceDictStreets" DropDownStyle="DropDownList" ValueType="System.Int32"
+																				TextField="name" ValueField="id" Width="220px" IncrementalFilteringMode="StartsWith"
+																				FilterMinLength="3" EnableCallbackMode="True" CallbackPageSize="50" EnableViewState="False"
+																				EnableSynchronization="False">
+																				<ClientSideEvents
+																					Init="function (s, e) {
+                            var value = ComboBalansStreetNewObj.GetValue();
+                            ButtonAddBuilding.SetEnabled(value != null);
+                        }"
+																					SelectedIndexChanged="function(s, e) { 
+                            var value = ComboBalansStreetNewObj.GetValue();
+                            ButtonAddBuilding.SetEnabled(value != null);
+                            ComboBalansBuildingNewObj.PerformCallback((value == null ? '' : value).toString()); 
+                        }" />
+																			</dx:ASPxComboBox>
+																		</td>
+																		<td style="display:none">
+																			<dx:ASPxLabel ID="LabelAddrPickerNumber" runat="server" Text="Номер будинку:" Width="95px" />
+																		</td>
+																		<td style="display:none">
+																			<dx:ASPxComboBox runat="server" ID="ComboBalansBuildingNewObj" ClientInstanceName="ComboBalansBuildingNewObj"
+																				DataSourceID="SqlDataSourceDictBuildings" DropDownStyle="DropDownList" TextField="nomer"
+																				ValueField="id" ValueType="System.Int32" Width="100px" IncrementalFilteringMode="StartsWith"
+																				EnableSynchronization="False" OnCallback="ComboAddressBuilding_Callback">
+																				<ClientSideEvents SelectedIndexChanged="function (s,e) { console.log('ComboBalansBuildingNewObj SelectedIndexChanged'); }" />
+																				<ValidationSettings SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip" ValidationGroup="popupCreateBalObject">
+																					<RequiredField IsRequired="true" ErrorText="Адреса має бути заповнена" />
+																				</ValidationSettings>
+																			</dx:ASPxComboBox>
+																		</td>
+																		<td>
+																			<dx:ASPxPopupControl ID="PopupAddBuilding" runat="server" ClientInstanceName="PopupAddBuilding" ShowPageScrollbarWhenModal="true"
+																				HeaderText="Створення нової адреси" Modal="true">
+																				<ContentCollection>
+																					<dx:PopupControlContentControl ID="PopupControlContentControl5" runat="server">
+
+																						<table border="0" cellspacing="0" cellpadding="2">
+																							<tr>
+																								<td>
+																									<dx:ASPxLabel ID="ASPxLabel14" runat="server" Text="Район:" Width="110px" />
+																								</td>
+																								<td colspan="3">
+																									<dx:ASPxComboBox ID="ComboBoxDistrict" runat="server" ClientInstanceName="ComboBoxDistrict"
+																										ValueType="System.Int32" TextField="name" ValueField="id" Width="100%"
+																										IncrementalFilteringMode="StartsWith"
+																										DataSourceID="SqlDataSourceDictDistricts2" />
+																								</td>
+																							</tr>
+																							<tr>
+																								<td>
+																									<dx:ASPxLabel ID="ASPxLabel15" runat="server" Text="Номер Будинку:" Width="110px" />
+																								</td>
+																								<td>
+																									<dx:ASPxTextBox ID="TextBoxNumber1" ClientInstanceName="TextBoxNumber1" runat="server" Width="100px" />
+																								</td>
+																								<td>
+																									<dx:ASPxTextBox ID="TextBoxNumber2" ClientInstanceName="TextBoxNumber2" runat="server" Width="100px" />
+																								</td>
+																								<td>
+																									<dx:ASPxTextBox ID="TextBoxNumber3" ClientInstanceName="TextBoxNumber3" runat="server" Width="100px" />
+																								</td>
+																							</tr>
+																							<tr>
+																								<td>
+																									<dx:ASPxLabel ID="ASPxLabel18" runat="server" Text="Додаткова Адреса:" Width="110px" />
+																								</td>
+																								<td colspan="3">
+																									<dx:ASPxTextBox ID="TextBoxMiscAddr" ClientInstanceName="TextBoxMiscAddr" runat="server" Width="100%" />
+																								</td>
+																							</tr>
+																							<tr>
+																								<td>
+																									<dx:ASPxLabel ID="ASPxLabel27" runat="server" Text="Вид Об'єкту:" Width="110px" />
+																								</td>
+																								<td colspan="3">
+																									<dx:ASPxComboBox ID="ComboBoxBuildingKind" runat="server" ClientInstanceName="ComboBoxBuildingKind"
+																										ValueType="System.Int32" TextField="name" ValueField="id" Width="100%"
+																										IncrementalFilteringMode="StartsWith"
+																										DataSourceID="SqlDataSourceDictObjectKind" />
+																								</td>
+																							</tr>
+																							<tr>
+																								<td>
+																									<dx:ASPxLabel ID="ASPxLabel28" runat="server" Text="Тип Об'єкту:" Width="110px" />
+																								</td>
+																								<td colspan="3">
+																									<dx:ASPxComboBox ID="ComboBoxBuildingType" runat="server" ClientInstanceName="ComboBoxBuildingType"
+																										ValueType="System.Int32" TextField="name" ValueField="id" Width="100%"
+																										IncrementalFilteringMode="StartsWith"
+																										DataSourceID="SqlDataSourceDictObjectType" />
+																								</td>
+																							</tr>
+																						</table>
+
+																						<br />
+																						<dx:ASPxLabel ID="LabelBuildingCreationError" ClientInstanceName="LabelBuildingCreationError" runat="server" Text="" ClientVisible="false" ForeColor="Red" />
+																						<br />
+
+																						<dx:ASPxButton ID="ButtonDoAddBuilding" ClientInstanceName="ButtonDoAddBuilding" runat="server" AutoPostBack="False" Text="Створити">
+																							<ClientSideEvents Click="function (s, e) {
+    //window.CPObjectEditorCallbackType = 'createbuilding';
+    e.performOnServer = false;
+    s.SetEnabled(false);
+    CPObjSel.PerformCallback('createbuilding:');
+}" />
+																						</dx:ASPxButton>
+
+																					</dx:PopupControlContentControl>
+																				</ContentCollection>
+																			</dx:ASPxPopupControl>
+
+																			<dx:ASPxButton ID="ButtonAddBuilding" ClientInstanceName="ButtonAddBuilding" runat="server"
+																				AutoPostBack="False" Text="Створити" ClientEnabled="false">
+																				<ClientSideEvents Click="function (s, e) {
+                        PopupAddBuilding.ShowAtElement(ButtonAddBuilding.GetMainElement());
+                    }" />
+																			</dx:ASPxButton>
+																		</td>
+																	</tr>
+
+																</table>
+
+																<br />
+
+																<table border="0" cellspacing="0" cellpadding="2" style="display:none">
+																	<tr>
+																		<td>
+																			<dx:ASPxLabel ID="ASPxLabel17" runat="server" Text="Площа Об'єкту:" Width="120px" />
+																		</td>
+																		<td>
+																			<dx:ASPxSpinEdit ID="EditBalansObjSquare" ClientInstanceName="EditBalansObjSquare" runat="server" Width="380px">
+																				<ValidationSettings SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip" ValidationGroup="popupCreateBalObject">
+																					<RequiredField IsRequired="true" ErrorText="Площа має бути заповнена" />
+																				</ValidationSettings>
+																			</dx:ASPxSpinEdit>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<dx:ASPxLabel ID="ASPxLabelBalValue" runat="server" Text="Балансова Вартість:" Width="120px" />
+																		</td>
+																		<td>
+																			<dx:ASPxSpinEdit ID="EditBalansObjCost" ClientInstanceName="EditBalansObjCost" runat="server" Width="380px" />
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<dx:ASPxLabel ID="ASPxLabel33" runat="server" Text="Форма Власності:" Width="120px" />
+																		</td>
+																		<td>
+																			<dx:ASPxComboBox ID="ComboBoxBalansOwnership" runat="server" ClientInstanceName="ComboBoxBalansOwnership"
+																				ValueType="System.Int32" TextField="name" ValueField="id" Width="380px"
+																				IncrementalFilteringMode="StartsWith"
+																				DataSourceID="SqlDataSourceDictOrgOwnership" />
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<dx:ASPxLabel ID="ASPxLabel44" runat="server" Text="Вид Об'єкту:" Width="120px" />
+																		</td>
+																		<td>
+																			<dx:ASPxComboBox ID="ComboBoxBalansObjKind" runat="server" ClientInstanceName="ComboBoxBalansObjKind"
+																				ValueType="System.Int32" TextField="name" ValueField="id" Width="380px"
+																				IncrementalFilteringMode="StartsWith"
+																				DataSourceID="SqlDataSourceDictObjectKind" />
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<dx:ASPxLabel ID="ASPxLabel23" runat="server" Text="Тип Об'єкту:" Width="120px" />
+																		</td>
+																		<td>
+																			<dx:ASPxComboBox ID="ComboBoxBalansObjType" runat="server" ClientInstanceName="ComboBoxBalansObjType"
+																				ValueType="System.Int32" TextField="name" ValueField="id" Width="380px"
+																				IncrementalFilteringMode="StartsWith"
+																				DataSourceID="SqlDataSourceDictObjectType" />
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<dx:ASPxLabel ID="ASPxLabel24" runat="server" Text="Група Призначення:" Width="120px" />
+																		</td>
+																		<td>
+																			<dx:ASPxComboBox ID="ComboBoxBalansPurposeGroup" runat="server" ClientInstanceName="ComboBoxBalansPurposeGroup"
+																				ValueType="System.Int32" TextField="name" ValueField="id" Width="380px"
+																				IncrementalFilteringMode="StartsWith"
+																				DataSourceID="SqlDataSourceDictBalansPurposeGroup" />
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<dx:ASPxLabel ID="ASPxLabel78" runat="server" Text="Призначення:" Width="120px" />
+																		</td>
+																		<td>
+																			<dx:ASPxComboBox ID="ComboBoxBalansPurpose" runat="server" ClientInstanceName="ComboBoxBalansPurpose"
+																				ValueType="System.Int32" TextField="name" ValueField="id" Width="380px"
+																				IncrementalFilteringMode="StartsWith"
+																				DataSourceID="SqlDataSourceDictBalansPurpose" />
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<dx:ASPxLabel ID="ASPxLabel26" runat="server" Text="Використання:" Width="120px" />
+																		</td>
+																		<td>
+																			<dx:ASPxTextBox ID="EditBalansObjUse" ClientInstanceName="EditBalansObjUse" runat="server" Width="380px" />
+																		</td>
+																	</tr>
+																</table>
+
+																<br />
+																<dx:ASPxLabel ID="LabelBalansCreationError" ClientInstanceName="LabelBalansCreationError" runat="server" Text="" ClientVisible="false" ForeColor="Red" />
+																<br />
+
+																<dx:ASPxButton ID="ButtonDoAddBalansObj" ClientInstanceName="ButtonDoAddBalansObj" runat="server" AutoPostBack="False" Text="Створити" CausesValidation="false" Visible="false">
+																	<ClientSideEvents Click="function (s, e) {
+                                                                        if(ASPxClientEdit.ValidateGroup('popupCreateBalObject'))
+                                                                        CPObjSel.PerformCallback('createbalans:');
+                                                                        return false;
+                                                }" />
+																</dx:ASPxButton>
+
+															</dx:PopupControlContentControl>
+														</ContentCollection>
+													</dx:ASPxPopupControl>
+
+												</td>
                                             </tr>
-                                            <tr><td colspan="7" height="4px"/></tr>
-                                            <tr>
-                                                <td width="120px"><dx:ASPxLabel ID="ASPxLabel3" runat="server" Text="Номер будинку"></dx:ASPxLabel></td>
-                                                <td width="8px">&nbsp;</td>
-                                                <td>
-                                                    <%--<dx:ASPxTextBox ID="EditRentBuildingNum" runat="server" ReadOnly="true" Text='<%# Eval("addr_nomer") %>' Width="270px" Title="Адреса - номер будинку" />--%>
-                                                    <dx:ASPxComboBox runat="server" ID="ComboBuilding" ClientInstanceName="ComboBuilding"
-                                                        Value='<%# Bind("addr_nomer") %>'
-                                                        DataSourceID="SqlDataSourceDictBuildings" DropDownStyle="DropDownList" TextField="nomer"
-                                                        ValueField="id" Width="270px" IncrementalFilteringMode="StartsWith"
-                                                        EnableSynchronization="False" OnCallback="ComboBuilding_Callback">
-                                                    </dx:ASPxComboBox>
-                                                </td>
-                                                <td width="8px">&nbsp;</td>
-                                                <td width="120px"><dx:ASPxLabel ID="ASPxLabel4" runat="server" Text="Поштовий індекс"></dx:ASPxLabel></td>
-                                                <td width="8px">&nbsp;</td>
-                                                <td><dx:ASPxTextBox ID="EditRentZipCode" runat="server" ReadOnly="true" Text='<%# Eval("addr_zip_code") %>' Width="270px" Title="Адреса будинку - Поштовий індекс" /></td>
-                                            </tr>
-                                            <tr><td colspan="7" height="4px"/></tr>
-                                            <tr>
-                                                <td width="120px"><dx:ASPxLabel ID="ASPxLabel25" runat="server" Text="Додаткова адреса"></dx:ASPxLabel></td>
-                                                <td width="8px">&nbsp;</td>
-                                                <td colspan="5"><dx:ASPxTextBox ID="EditRentMiscAddr" ReadOnly="true" runat="server" Text='<%# Eval("addr_misc") %>' Width="680px" Title="Адреса будинку - Додаткова адреса" /></td>
-                                            </tr>
+
                                         </table>
 
                                     </dx:PanelContent>
                                 </PanelCollection>
+
+							</dx:ASPxCallbackPanel>
+							</dx:PanelContent>
+							</PanelCollection>
                             </dx:ASPxRoundPanel>
 
                         </ItemTemplate>
@@ -3087,7 +3451,7 @@ WHERE id = @id"
                                                     <table border="0" cellspacing="0" cellpadding="2" width="200px">
                                                         <tr>
 															<%--- менять каждый квартал (3)--%>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_0" runat="server" Text="2021, 3кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_0" runat="server" Text="2021, 4кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_0" ClientInstanceName="edit_debtkvart_0" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_0") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
@@ -3095,7 +3459,7 @@ WHERE id = @id"
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_1" runat="server" Text="2021, 2кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_1" runat="server" Text="2021, 3кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_1" ClientInstanceName="edit_debtkvart_1" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_1") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
@@ -3103,70 +3467,70 @@ WHERE id = @id"
                                                             </td>
                                                         </tr>                                                  
                                                         <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_2" runat="server" Text="2021, 1кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_2" runat="server" Text="2021, 2кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_2" ClientInstanceName="edit_debtkvart_2" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_2") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_3" runat="server" Text="2020, 4кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_3" runat="server" Text="2021, 1кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_3" ClientInstanceName="edit_debtkvart_3" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_3") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_4" runat="server" Text="2020, 3кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_4" runat="server" Text="2020, 4кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_4" ClientInstanceName="edit_debtkvart_4" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_4") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_5" runat="server" Text="2020, 2кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_5" runat="server" Text="2020, 3кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_5" ClientInstanceName="edit_debtkvart_5" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_5") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_6" runat="server" Text="2020, 1кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_6" runat="server" Text="2020, 2кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_6" ClientInstanceName="edit_debtkvart_6" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_6") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_7" runat="server" Text="2019, 4кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_7" runat="server" Text="2020, 1кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_7" ClientInstanceName="edit_debtkvart_7" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_7") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_8" runat="server" Text="2019, 3кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_8" runat="server" Text="2019, 4кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_8" ClientInstanceName="edit_debtkvart_8" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_8") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_9" runat="server" Text="2019, 2кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_9" runat="server" Text="2019, 3кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_9" ClientInstanceName="edit_debtkvart_9" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_9") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_10" runat="server" Text="2019, 1кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_10" runat="server" Text="2019, 2кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_10" ClientInstanceName="edit_debtkvart_10" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_10") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_11" runat="server" Text="2018, 4кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_11" runat="server" Text="2019, 1кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_11" ClientInstanceName="edit_debtkvart_11" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_11") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
