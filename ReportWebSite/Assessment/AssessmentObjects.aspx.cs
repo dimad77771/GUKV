@@ -123,10 +123,10 @@ public partial class Assessment_AssessmentObjects : System.Web.UI.Page
     {
         if (e.Column.FieldName.StartsWith("in_") ||
             e.Column.FieldName.StartsWith("out_"))
-        {
-            e.DisplayText = e.Value.ToString().Replace("\n", "<br />");
-        }
-    }
+		{
+			e.DisplayText = e.Value.ToString().Replace("\n", "<br />");
+		}
+	}
 
     protected void GridViewAssessmentObjects_CustomColumnSort(object sender,
         DevExpress.Web.CustomColumnSortEventArgs e)
@@ -185,5 +185,15 @@ public partial class Assessment_AssessmentObjects : System.Web.UI.Page
         return "<a href=\"javascript:ShowOrganizationCard(" + organizationId.ToString() + ")\">" + name.ToString() + "</a>";
     }
 
-    #endregion (Data binding support)
+	public string EvaluateMultiLineValue(object value)
+	{
+		if (string.IsNullOrEmpty("" + value))
+		{
+			return "";
+		}
+
+		return value.ToString().Replace("\n", "<br />");
+	}
+
+	#endregion (Data binding support)
 }

@@ -419,7 +419,7 @@
 							</td>
 							<td width="8px">&nbsp;</td>
 							<td width="100px">
-								<dx:ASPxLabel ID="ASPxLabel13" runat="server" Text="Вартість Об'єкту (грн.)"></dx:ASPxLabel>
+								<dx:ASPxLabel ID="ASPxLabel13" runat="server" Text="Вартість Об'єкту без ПДВ (грн.)"></dx:ASPxLabel>
 							</td>
 							<td width="8px">&nbsp;</td>
 							<td>
@@ -601,7 +601,7 @@
 
                         <TotalSummary>
                             <dx:ASPxSummaryItem FieldName="obj_square" SummaryType="Sum" DisplayFormat="{0}" />
-                            <dx:ASPxSummaryItem FieldName="cost_1_usd" SummaryType="Sum" DisplayFormat="{0}" />
+                            <%--<dx:ASPxSummaryItem FieldName="cost_1_usd" SummaryType="Sum" DisplayFormat="{0}" />--%>
                         </TotalSummary>
 
 						<SettingsBehavior ConfirmDelete="True" />
@@ -663,7 +663,7 @@
 							</dx:GridViewCommandColumn>
                             <dx:GridViewDataDateColumn FieldName="doc_date" Caption="Дата Документа" Width="80px"></dx:GridViewDataDateColumn>
                             <dx:GridViewDataTextColumn FieldName="doc_num" Caption="Номер Документа" Width="160px"></dx:GridViewDataTextColumn>
-							<dx:GridViewDataComboBoxColumn Caption="Вид Рецензії" Width="280px" FieldName="rezenz_type_id"  >
+							<dx:GridViewDataComboBoxColumn Caption="Категорія рецензії" Width="280px" FieldName="rezenz_type_id"  >
 								<PropertiesComboBox DataSourceID="SqlDataSourceDictExpertRezenzType" ValueField="id" TextField="name" ValueType="System.Int32" />
 							</dx:GridViewDataComboBoxColumn>
 

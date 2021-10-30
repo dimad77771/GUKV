@@ -149,7 +149,7 @@
                 </ContentCollection>
             </dx:ASPxPopupControl>
 
-            <dx:ASPxButton ID="ASPxButton_AssessmentObjects_SaveAs" runat="server" AutoPostBack="False" Visible="false" 
+            <dx:ASPxButton ID="ASPxButton_AssessmentObjects_SaveAs" runat="server" AutoPostBack="False" Visible="true" 
                 Text="Зберегти у Файлі" Width="148px">
             </dx:ASPxButton>
         </td>
@@ -182,57 +182,179 @@
     OnCustomColumnSort="GridViewAssessmentObjects_CustomColumnSort" >
 
     <Columns>
-		<dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" Name="CmdColumn" Width="60px">
+		<dx:GridViewCommandColumn ButtonType="Image" Name="CmdColumn" Width="60px">
             <CustomButtons>                
                 <dx:GridViewCommandColumnCustomButton ID="btnEditAgreement"><Image  Url="../Styles/EditIcon.png" ToolTip="Редагувати оцінку" /></dx:GridViewCommandColumnCustomButton>
                 <dx:GridViewCommandColumnCustomButton ID="btnDeleteAgreement"><Image  Url="../Styles/DeleteIcon.png" ToolTip="Видалити оцінку" /></dx:GridViewCommandColumnCustomButton>
             </CustomButtons>
             <FooterCellStyle HorizontalAlign="Right"></FooterCellStyle>
         </dx:GridViewCommandColumn>
-        <%--<dx:GridViewDataTextColumn FieldName="renter_name" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="0" Visible="True" Caption="Картка" Width="65px">
-            <DataItemTemplate>
-                <%# "<center><a href=\"javascript:ShowAssessmentCard(" + Eval("id") + ")\"><img border='0' src='../Styles/EditIcon.png'/></a></center>"%>
-            </DataItemTemplate>
-            <Settings ShowInFilterControl="False"/>
-        </dx:GridViewDataTextColumn>--%>
-        <dx:GridViewDataTextColumn FieldName="renter_name" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="1" Visible="True" Caption="Орендар" Width="160px">
-            <DataItemTemplate>
-                <%# EvaluateOrganizationLink(Eval("org_renter_id"), Eval("renter_name"))%>
-            </DataItemTemplate>
-        </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="balans_org_name" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="2" Visible="true" Caption="Балансоутримувач" Width="220px">
-            <DataItemTemplate>
-                <%# EvaluateOrganizationLink(Eval("org_balans_id"), Eval("balans_org_name"))%>
-            </DataItemTemplate>
-        </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="district" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="3" Visible="True" Caption="Район" Width="120px"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="street_full_name" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="4" Visible="True" Caption="Назва Вулиці" Width="140px">
+
+        <dx:GridViewDataTextColumn FieldName="street_full_name" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Вулиця" Width="180px">
             <%--<DataItemTemplate>
                 <%# EvaluateObjectLink(Eval("building_id"), Eval("street_full_name"))%>
             </DataItemTemplate>--%>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="addr_nomer" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="5" Visible="True" Caption="Номер Будинку">
+
+        <dx:GridViewDataTextColumn FieldName="addr_nomer" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Номер Будинку" Width="60px">
             <%--<DataItemTemplate>
                 <%# EvaluateObjectLink(Eval("building_id"), Eval("addr_nomer"))%>
             </DataItemTemplate>--%>
             <%--<Settings SortMode="Custom" />--%>
         </dx:GridViewDataTextColumn>
+
+		<dx:GridViewDataTextColumn FieldName="obj_square" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Площа" Width="70px">
+		</dx:GridViewDataTextColumn>
+
+		<dx:GridViewDataTextColumn FieldName="inputdoc_doc_num" ReadOnly="True" ShowInCustomizationForm="True" Caption="Вхідний номер" Width="90px" >
+			<DataItemTemplate>
+                <%# EvaluateMultiLineValue(Eval("inputdoc_doc_num")) %>
+            </DataItemTemplate>
+			<Settings AutoFilterCondition="Contains" />
+		</dx:GridViewDataTextColumn>
+		<dx:GridViewDataTextColumn FieldName="inputdoc_doc_date" ReadOnly="True" ShowInCustomizationForm="True" Caption="Дата документа" Width="90px">
+			<DataItemTemplate>
+                <%# EvaluateMultiLineValue(Eval("inputdoc_doc_date")) %>
+            </DataItemTemplate>
+			<Settings AutoFilterCondition="Contains" />
+		</dx:GridViewDataTextColumn>
+		<dx:GridViewDataTextColumn FieldName="inputdoc_control_date" ReadOnly="True" ShowInCustomizationForm="True" Caption="Контрольна дата" Width="90px">
+			<DataItemTemplate>
+                <%# EvaluateMultiLineValue(Eval("inputdoc_control_date")) %>
+            </DataItemTemplate>
+			<Settings AutoFilterCondition="Contains" />
+		</dx:GridViewDataTextColumn>
+		<dx:GridViewDataTextColumn FieldName="inputdoc_rezenz_name" ReadOnly="True" ShowInCustomizationForm="True" Caption="Рецензент" Width="140px">
+			<DataItemTemplate>
+                <%# EvaluateMultiLineValue(Eval("inputdoc_rezenz_name")) %>
+            </DataItemTemplate>
+			<Settings AutoFilterCondition="Contains" />
+		</dx:GridViewDataTextColumn>
+		<dx:GridViewDataTextColumn FieldName="inputdoc_korrespondent" ReadOnly="True" ShowInCustomizationForm="True" Caption="Кореспондент" Width="140px">
+			<DataItemTemplate>
+                <%# EvaluateMultiLineValue(Eval("inputdoc_korrespondent")) %>
+            </DataItemTemplate>
+			<Settings AutoFilterCondition="Contains" />
+		</dx:GridViewDataTextColumn>
+
+
+
+        <%--<dx:GridViewDataTextColumn FieldName="renter_name" ReadOnly="True" ShowInCustomizationForm="False" Visible="True" Caption="Картка" Width="65px">
+            <DataItemTemplate>
+                <%# "<center><a href=\"javascript:ShowAssessmentCard(" + Eval("id") + ")\"><img border='0' src='../Styles/EditIcon.png'/></a></center>"%>
+            </DataItemTemplate>
+            <Settings ShowInFilterControl="False"/>
+        </dx:GridViewDataTextColumn>--%>
+        <dx:GridViewDataTextColumn FieldName="renter_name" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Орендар" Width="160px">
+            <DataItemTemplate>
+                <%# EvaluateOrganizationLink(Eval("org_renter_id"), Eval("renter_name"))%>
+            </DataItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="dict_expert_name" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="СОД" Width="180px">
+            <%--<DataItemTemplate>
+                <%# EvaluateObjectLink(Eval("building_id"), Eval("street_full_name"))%>
+            </DataItemTemplate>--%>
+        </dx:GridViewDataTextColumn>
+
+		<dx:GridViewDataTextColumn FieldName="expert_obj_type" ReadOnly="True" ShowInCustomizationForm="True" Visible="true" Caption="Вид Об’єкта" Width="120px">
+		</dx:GridViewDataTextColumn>
+
+
+		<dx:GridViewDataTextColumn FieldName="outputdoc_doc_num" ReadOnly="True" ShowInCustomizationForm="True" Caption="Вихідний номер" Width="90px" >
+			<DataItemTemplate>
+                <%# EvaluateMultiLineValue(Eval("outputdoc_doc_num")) %>
+            </DataItemTemplate>
+			<Settings AutoFilterCondition="Contains" />
+		</dx:GridViewDataTextColumn>
+		<dx:GridViewDataTextColumn FieldName="outputdoc_doc_date" ReadOnly="True" ShowInCustomizationForm="True" Caption="Дата документа" Width="90px">
+			<DataItemTemplate>
+                <%# EvaluateMultiLineValue(Eval("outputdoc_doc_date")) %>
+            </DataItemTemplate>
+			<Settings AutoFilterCondition="Contains" />
+		</dx:GridViewDataTextColumn>
+		<dx:GridViewDataTextColumn FieldName="outputdoc_rezenz" ReadOnly="True" ShowInCustomizationForm="True" Caption="Категорія рецензії" Width="140px">
+			<DataItemTemplate>
+                <%# EvaluateMultiLineValue(Eval("outputdoc_rezenz")) %>
+            </DataItemTemplate>
+			<Settings AutoFilterCondition="Contains" />
+		</dx:GridViewDataTextColumn>
+
+
+
+		<dx:GridViewDataTextColumn FieldName="balans_org_name" ReadOnly="True" ShowInCustomizationForm="True" Visible="true" Caption="Балансоутримувач" Width="220px">
+            <DataItemTemplate>
+                <%# EvaluateOrganizationLink(Eval("org_balans_id"), Eval("balans_org_name"))%>
+            </DataItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataDateColumn FieldName="valuation_date" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Дата оцінки" Width="80px">
+        </dx:GridViewDataDateColumn>
+
+		<%--<dx:GridViewDataTextColumn FieldName="obj_square" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Площа Об'єкту" Width="80px">
+		</dx:GridViewDataTextColumn>--%>
+
+
+		<dx:GridViewDataTextColumn FieldName="details_obj_square" ReadOnly="True" ShowInCustomizationForm="True" Caption="Розбивка площі" Width="90px">
+			<DataItemTemplate>
+                <%# EvaluateMultiLineValue(Eval("details_obj_square")) %>
+            </DataItemTemplate>
+			<Settings AutoFilterCondition="Contains" />
+		</dx:GridViewDataTextColumn>
+		<dx:GridViewDataTextColumn FieldName="details_floors" ReadOnly="True" ShowInCustomizationForm="True" Caption="Поверх" Width="110px">
+			<DataItemTemplate>
+                <%# EvaluateMultiLineValue(Eval("details_floors")) %>
+            </DataItemTemplate>
+			<Settings AutoFilterCondition="Contains" />
+		</dx:GridViewDataTextColumn>
+		<dx:GridViewDataTextColumn FieldName="details_purpose" ReadOnly="True" ShowInCustomizationForm="True" Caption="НЕВ за звітом" Width="130px">
+			<DataItemTemplate>
+                <%# EvaluateMultiLineValue(Eval("details_purpose")) %>
+            </DataItemTemplate>
+			<Settings AutoFilterCondition="Contains" />
+		</dx:GridViewDataTextColumn>
+		<dx:GridViewDataTextColumn FieldName="details_cost_1_usd" ReadOnly="True" ShowInCustomizationForm="True" Caption="Вартість кв.м., $" Width="90px">
+			<DataItemTemplate>
+                <%# EvaluateMultiLineValue(Eval("details_cost_1_usd")) %>
+            </DataItemTemplate>
+			<Settings AutoFilterCondition="Contains" />
+		</dx:GridViewDataTextColumn>
+
+		<dx:GridViewDataTextColumn FieldName="cost_prim" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Вартість об’єкту без ПДВ (грн.)" Width="100px">
+		</dx:GridViewDataTextColumn>
+
+		<dx:GridViewDataDateColumn FieldName="final_date" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Дата затвердження" Width="80px">
+		</dx:GridViewDataDateColumn>
+
+		<dx:GridViewDataTextColumn FieldName="arch_num" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Архівний номер" Width="80px">
+		</dx:GridViewDataTextColumn>
+
+		<dx:GridViewDataTextColumn FieldName="note_text" ReadOnly="True" ShowInCustomizationForm="True" Caption="Примітка" Width="200px">
+			<DataItemTemplate>
+                <%# EvaluateMultiLineValue(Eval("note_text")) %>
+            </DataItemTemplate>
+			<Settings AutoFilterCondition="Contains" />
+		</dx:GridViewDataTextColumn>
+
+
         
-<%--		<dx:GridViewDataTextColumn FieldName="in_doc_dates" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="6" Visible="False" Caption="Дата Вхідного Документу"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="in_doc_numbers" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="7" Visible="False" Caption="Номер Вхідного Документу"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="in_doc_korr" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="9" Visible="False" Caption="Кореспондент"></dx:GridViewDataTextColumn>--%>
+        <%--<dx:GridViewDataTextColumn FieldName="district" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Район" Width="120px"></dx:GridViewDataTextColumn>--%>
+        
+<%--		<dx:GridViewDataTextColumn FieldName="in_doc_dates" ReadOnly="True" ShowInCustomizationForm="True" Visible="False" Caption="Дата Вхідного Документу"></dx:GridViewDataTextColumn>
+        
+        <dx:GridViewDataTextColumn FieldName="in_doc_korr" ReadOnly="True" ShowInCustomizationForm="True" Visible="False" Caption="Кореспондент"></dx:GridViewDataTextColumn>--%>
 
-<%--        <dx:GridViewDataTextColumn FieldName="out_doc_dates" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="11" Visible="False" Caption="Дата Вихідного Документу"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="out_doc_numbers" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="12" Visible="False" Caption="Номер Вихідного Документу"></dx:GridViewDataTextColumn>--%>
+<%--        <dx:GridViewDataTextColumn FieldName="out_doc_dates" ReadOnly="True" ShowInCustomizationForm="True" Visible="False" Caption="Дата Вихідного Документу"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="out_doc_numbers" ReadOnly="True" ShowInCustomizationForm="True" Visible="False" Caption="Номер Вихідного Документу"></dx:GridViewDataTextColumn>--%>
 
-        <dx:GridViewDataTextColumn FieldName="expert_obj_type" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="14" Visible="true" Caption="Вид Об’єкта"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="obj_square" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="15" Visible="True" Caption="Площа" Width="70px"></dx:GridViewDataTextColumn>
+        
+        
 
-        <dx:GridViewDataTextColumn FieldName="cost_prim" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="19" Visible="True" Caption="Вартість Об’єкта (грн.)"></dx:GridViewDataTextColumn>
+<%--        <dx:GridViewDataTextColumn FieldName="cost_prim" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Вартість Об’єкта (грн.)"></dx:GridViewDataTextColumn>
     
-        <dx:GridViewDataDateColumn FieldName="final_date" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="21" Visible="True" Caption="Дата Затвердження Оцінки"></dx:GridViewDataDateColumn>
+        <dx:GridViewDataDateColumn FieldName="final_date" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Дата Затвердження Оцінки"></dx:GridViewDataDateColumn>
         
-        <dx:GridViewDataTextColumn FieldName="valuation_kind" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="25" Visible="True" Caption="Вид Оцінки"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="valuation_kind" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Вид Оцінки"></dx:GridViewDataTextColumn>--%>
     </Columns>
 
     <GroupSummary>
@@ -256,9 +378,9 @@
         ShowHeaderFilterButton="True"
         HorizontalScrollBarMode="Visible"
         ShowFooter="True"
-        VerticalScrollBarMode="Hidden"
+        VerticalScrollBarMode="Visible"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Assessment.Objects" Version="A6" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.Assessment.Objects" Version="A8" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
