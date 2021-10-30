@@ -304,7 +304,7 @@
             ,SUM(pay.cmk_rent_debt) as 'PAY_CMK_DEBT'
             ,pay.report_id
         FROM reports1nf_arenda_rented pay
-        WHERE pay.is_cmk > 0
+		WHERE pay.is_cmk > 0 and ISNULL(pay.is_deleted, 0) = 0
         GROUP BY pay.report_id) RentPaymentProperties2 ON RentPaymentProperties2.report_id = rep.report_id
 
 		LEFT OUTER JOIN (

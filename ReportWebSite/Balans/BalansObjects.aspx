@@ -201,6 +201,8 @@
 ,case when vb.balans_id in (select b.id from dbo.reports1nf_balans b where b.organization_id = vb.organization_id and ISNULL(b.is_deleted, 0) = 0 ) then 1 else 0 end as is_dpz_object
 ,(select sum(case when fs.is_included = 1 then fs.total_free_sqr else 0 end) as total_free_sqr from reports1nf_balans_free_square fs where fs.balans_id = bal.id and fs.report_id = bal.report_id) as total_free_sqr 
 
+, orggospupr = (select old_organ from view_organizations WHERE organization_id =  vb.organization_id)
+
     FROM view_balans_all vb
     LEFT JOIN reports1nf_balans bal on vb.balans_id = bal.id
     LEFT JOIN reports1nf_buildings b on bal.building_1nf_unique_id = b.unique_id
@@ -275,6 +277,15 @@
             VisibleIndex="5" Visible="False" Caption="Балансоутримувач - Галузь"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_occupation" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="6" Visible="False" Caption="Балансоутримувач - Вид Діяльності" Width="200"></dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="org_street_name" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="6" Visible="False" Caption="Балансоутримувач - Вулиця" Width="120"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="org_street_nomer" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="6" Visible="False" Caption="Балансоутримувач - Номер будинку" Width="30"></dx:GridViewDataTextColumn>
+
+
+
+
         <dx:GridViewDataTextColumn FieldName="district" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="7" Visible="True" Caption="Район"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="street_full_name" ReadOnly="True" ShowInCustomizationForm="True"
@@ -291,6 +302,10 @@
             <Settings SortMode="Custom" />
         </dx:GridViewDataTextColumn>
 <%-- --%>
+
+    <dx:GridViewDataTextColumn FieldName="orggospupr" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="9" Visible="True" Caption="Орган госп. упр."></dx:GridViewDataTextColumn>
+
              <dx:GridViewDataTextColumn FieldName="sqr_total_bld" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="10" Visible="True" Caption="Загальна Площа будинку (кв.м.)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="sqr_non_habit_bld" ReadOnly="True" ShowInCustomizationForm="True"
