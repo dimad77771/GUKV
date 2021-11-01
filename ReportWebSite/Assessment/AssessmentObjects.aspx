@@ -288,7 +288,7 @@
             </DataItemTemplate>
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataDateColumn FieldName="valuation_date" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Дата оцінки" Width="80px">
+        <dx:GridViewDataDateColumn FieldName="valuation_date" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Дата рецензування" Width="80px">
         </dx:GridViewDataDateColumn>
 
 		<%--<dx:GridViewDataTextColumn FieldName="obj_square" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Площа Об'єкту" Width="80px">

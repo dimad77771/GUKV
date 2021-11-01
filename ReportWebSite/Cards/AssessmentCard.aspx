@@ -392,16 +392,16 @@
                         </tr>
                         <tr><td colspan="7" height="4px"/></tr>
                         <tr>
-                            <td width="100px"><dx:ASPxLabel ID="ASPxLabel10" runat="server" Text="Вид оцінки"></dx:ASPxLabel></td>
+                            <td width="100px"><dx:ASPxLabel ID="ASPxLabel10" runat="server" Text="Вид рецензії"></dx:ASPxLabel></td>
                             <td width="8px">&nbsp;</td>
                             <td>
 								<dx:ASPxComboBox ID="valuation_kind_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="290px"
 									IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceDictExpertValuationKind" Value='<%# Eval("valuation_kind_id") %>'
-									Title="Вид оцінки"
+									Title="Вид рецензії"
 									DropDownStyle="DropDown" />
                             </td>
                             <td width="8px">&nbsp;</td>
-                            <td width="100px"><dx:ASPxLabel ID="ASPxLabel11" runat="server" Text="Дата Проведення Оцінки"></dx:ASPxLabel></td>
+                            <td width="100px"><dx:ASPxLabel ID="ASPxLabel11" runat="server" Text="Дата рецензування"></dx:ASPxLabel></td>
                             <td width="8px">&nbsp;</td>
                             <td>
 								<dx:ASPxDateEdit ID="valuation_date" runat="server" Value='<%# Eval("valuation_date") %>' Width="290px" />
