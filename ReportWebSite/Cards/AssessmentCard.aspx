@@ -216,6 +216,16 @@
     SelectCommand="select id, name from dict_expert_korr order by 2">
 </mini:ProfiledSqlDataSource>
 
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictExpertPurpose" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="select id, name from dict_expert_detail_purpose order by 2">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictExpertFloors" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="select id, name from dict_expert_detail_floors order by 2">
+</mini:ProfiledSqlDataSource>
+
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDictExpertRezenzType" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="select id, name from dict_expert_rezenz_type order by 2">
@@ -375,7 +385,7 @@
                             <td colspan="5">
 								<dx:ASPxComboBox ID="expert_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="700px"
 									IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceDictExpert" Value='<%# Eval("expert_id") %>'
-									Title="Рецензент"
+									Title="СОД"
 									DropDownStyle="DropDown" />
                             </td>
                         </tr>
@@ -415,7 +425,7 @@
 							<td width="8px">&nbsp;</td>
 							<td>
 								<dx:ASPxSpinEdit ID="obj_square" runat="server" NumberType="Float" Value='<%# Eval("obj_square") %>' Width="290px"
-									Title="Площа Об'єкту" />
+									Title="Площа Об'єкту" SpinButtons-ShowIncrementButtons="false" />
 							</td>
 							<td width="8px">&nbsp;</td>
 							<td width="100px">
@@ -424,7 +434,7 @@
 							<td width="8px">&nbsp;</td>
 							<td>
 								<dx:ASPxSpinEdit ID="cost_prim" runat="server" NumberType="Float" Value='<%# Eval("cost_prim") %>' Width="290px"
-									Title="Вартість Об'єкту (грн.)" />
+									Title="Вартість Об'єкту (грн.)" SpinButtons-ShowIncrementButtons="false" />
 							</td>
 						</tr>
                     </table>
@@ -591,10 +601,21 @@
 								ShowDeleteButton="True" ShowCancelButton="true" ShowUpdateButton="true" ShowClearFilterButton="true" ShowEditButton="true" ShowNewButton="true">
 								<CellStyle Wrap="False"></CellStyle>
 							</dx:GridViewCommandColumn>
-                            <dx:GridViewDataTextColumn FieldName="floors" Caption="Поверх" Width="80px" ></dx:GridViewDataTextColumn>
-                            <dx:GridViewDataSpinEditColumn FieldName="obj_square" Caption="Площа" Width="80px"></dx:GridViewDataSpinEditColumn>
-                            <dx:GridViewDataTextColumn FieldName="purpose" Caption="НЕВ" Width="200px"></dx:GridViewDataTextColumn>
-                            <dx:GridViewDataSpinEditColumn FieldName="cost_1_usd" Caption="Вартість 1 кв.м., $" Width="80px"></dx:GridViewDataSpinEditColumn>
+                            
+							<%--<dx:GridViewDataTextColumn FieldName="floors" Caption="Поверх" Width="80px" ></dx:GridViewDataTextColumn>--%>
+
+							<dx:GridViewDataComboBoxColumn Caption="Поверх" Width="80px" FieldName="floors" PropertiesComboBox-DropDownStyle="DropDown" >
+								<PropertiesComboBox DataSourceID="SqlDataSourceDictExpertFloors" ValueField="name" TextField="name" ValueType="System.String" />
+							</dx:GridViewDataComboBoxColumn>
+
+                            <dx:GridViewDataSpinEditColumn FieldName="obj_square" Caption="Площа" Width="80px" PropertiesSpinEdit-SpinButtons-ShowIncrementButtons="false"></dx:GridViewDataSpinEditColumn>
+                            
+							<dx:GridViewDataComboBoxColumn Caption="НЕВ" Width="200px" FieldName="purpose" PropertiesComboBox-DropDownStyle="DropDown" >
+								<PropertiesComboBox DataSourceID="SqlDataSourceDictExpertPurpose" ValueField="name" TextField="name" ValueType="System.String" />
+							</dx:GridViewDataComboBoxColumn>
+
+
+                            <dx:GridViewDataSpinEditColumn FieldName="cost_1_usd" Caption="Вартість 1 кв.м., $" Width="80px" PropertiesSpinEdit-SpinButtons-ShowIncrementButtons="false"></dx:GridViewDataSpinEditColumn>
                             <dx:GridViewDataDateColumn FieldName="valuation_date" Caption="Дата Оцінки" Width="80px"></dx:GridViewDataDateColumn>
                             <dx:GridViewDataTextColumn FieldName="note" Caption="Примітка" Width="130px"></dx:GridViewDataTextColumn>
                         </Columns>

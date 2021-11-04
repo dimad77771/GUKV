@@ -120,9 +120,21 @@
 														<dx:RibbonButtonItem Text="Перелік об'єктів оцінки" NavigateUrl="Assessment/AssessmentObjects.aspx" >
 															<SmallImage Url="Styles/ribbonicon_5.png"/>
 														</dx:RibbonButtonItem>
-														<dx:RibbonButtonItem Text="Перелік СОД" NavigateUrl="">
+														<dx:RibbonButtonItem Text="Перелік СОД" NavigateUrl="Assessment/SODList.aspx">
 															<SmallImage Url="Styles/ribbonicon_10.png"/>
 														</dx:RibbonButtonItem>
+														<dx:RibbonDropDownButtonItem Text="Довідники" >
+															<SmallImage Url="Styles/ribbonicon_19.png"/>
+															<Items>
+																<dx:RibbonDropDownButtonItem Text="НЕВ" NavigateUrl="Assessment/dict_expert_detail_purpose.aspx"/>
+																<dx:RibbonDropDownButtonItem Text="Види об'єкту" NavigateUrl="Assessment/dict_expert_obj_type.aspx"/>
+																<dx:RibbonDropDownButtonItem Text="Поверхи" NavigateUrl="Assessment/dict_expert_detail_floors.aspx"/>
+																<dx:RibbonDropDownButtonItem Text="Рецензенти" NavigateUrl="Assessment/dict_expert_rezenz.aspx"/>
+																<dx:RibbonDropDownButtonItem Text="Кореспонденти" NavigateUrl="Assessment/dict_expert_korr.aspx"/>
+																<dx:RibbonDropDownButtonItem Text="Категорії рецензії" NavigateUrl="Assessment/dict_expert_rezenz_type.aspx"/>
+																<dx:RibbonDropDownButtonItem Text="Види рецензії" NavigateUrl="Assessment/dict_expert_valuation_kind.aspx"/>
+															</Items>
+														</dx:RibbonDropDownButtonItem>
 													</Items>
 												</dx:RibbonGroup>
 											</Groups>

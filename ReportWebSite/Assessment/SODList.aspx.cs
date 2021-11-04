@@ -65,23 +65,23 @@ public partial class Assessment_SODList : System.Web.UI.Page
 
     protected void GridViewAssessmentExperts_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
     {
-        string param = e.Parameters;
+        //string param = e.Parameters;
 
-        Utils.ProcessGridPageSizeInCallback(PrimaryGridView, ref param, 35);
+        //Utils.ProcessGridPageSizeInCallback(PrimaryGridView, ref param, 35);
 
-        Utils.ProcessDataGridSaveLayoutCallback(param, PrimaryGridView, Utils.GridIDAssessment_Experts, "");
+        //Utils.ProcessDataGridSaveLayoutCallback(param, PrimaryGridView, Utils.GridIDAssessment_Experts, "");
     }
 
     protected void GridViewAssessmentExperts_CustomFilterExpressionDisplayText(object sender,
         DevExpress.Web.CustomFilterExpressionDisplayTextEventArgs e)
     {
-        this.UpdateFilterDisplayTextCache(e.DisplayText, PrimaryGridView);
+        //this.UpdateFilterDisplayTextCache(e.DisplayText, PrimaryGridView);
     }
 
     protected void GridViewAssessmentExperts_ProcessColumnAutoFilter(object sender,
         DevExpress.Web.ASPxGridViewAutoFilterEventArgs e)
     {
-        Utils.ProcessGridColumnAutoFilter(sender, e);
+        //Utils.ProcessGridColumnAutoFilter(sender, e);
     }
 
     protected string GetPageUniqueKey()

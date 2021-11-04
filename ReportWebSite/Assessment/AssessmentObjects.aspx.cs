@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using System.Web.Security;
 using DevExpress.Web;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Globalization;
 
 public partial class Assessment_AssessmentObjects : System.Web.UI.Page
 {
@@ -195,5 +197,59 @@ public partial class Assessment_AssessmentObjects : System.Web.UI.Page
 		return value.ToString().Replace("\n", "<br />");
 	}
 
+	public string EvaluateСontrolDate(object value)
+	{
+		if (string.IsNullOrEmpty("" + value))
+		{
+			return "";
+		}
+
+		var result = "";
+		var lines = ("" + value).Split('\n');
+		foreach(var line in lines)
+		{
+			if (result != "")
+			{
+				result += "<br />";
+			}
+
+			var color = "";
+			DateTime date;
+			if (DateTime.TryParseExact(line, @"dd.MM.yyyy", null, DateTimeStyles.None, out date))
+			{
+				if (date.Date <= DateTime.Today)
+				{
+					color = "red";
+				}
+			}
+
+			result += @"<span style='color:" + color + "'>" + line + @"</span>";
+		}
+
+		return result;
+		//return value.ToString().Replace("\n", "<br />");
+	}
+
 	#endregion (Data binding support)
+
+	protected void PrimaryGridView_HtmlRowPrepared(object sender, ASPxGridViewTableRowEventArgs e)
+	{
+		if (e.RowType == GridViewRowType.Data)
+		{
+			var value = e.GetValue("background_color_rgb");
+			if (value != System.DBNull.Value)
+			{ 
+				var vv = Convert.ToInt32(value);
+				if (vv != 0)
+				{
+					e.Row.BackColor = Color.FromArgb(vv);
+				}
+			}
+		}
+	}
+
+	protected void PrimaryGridView_HtmlDataCellPrepared(object sender, ASPxGridViewTableDataCellEventArgs e)
+	{
+		var hh = 10;
+	}
 }

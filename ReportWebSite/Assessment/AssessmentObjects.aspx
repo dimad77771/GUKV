@@ -175,6 +175,8 @@
     Width="100%"
     DataSourceID="SqlDataSourceAssessmentObjects"
     KeyFieldName="id"
+	OnHtmlRowPrepared="PrimaryGridView_HtmlRowPrepared"
+	OnHtmlDataCellPrepared="PrimaryGridView_HtmlDataCellPrepared"
     OnCustomCallback="GridViewAssessmentObjects_CustomCallback"
     OnCustomFilterExpressionDisplayText = "GridViewAssessmentObjects_CustomFilterExpressionDisplayText"
     OnProcessColumnAutoFilter = "GridViewAssessmentObjects_ProcessColumnAutoFilter"
@@ -220,7 +222,7 @@
 		</dx:GridViewDataTextColumn>
 		<dx:GridViewDataTextColumn FieldName="inputdoc_control_date" ReadOnly="True" ShowInCustomizationForm="True" Caption="Контрольна дата" Width="90px">
 			<DataItemTemplate>
-                <%# EvaluateMultiLineValue(Eval("inputdoc_control_date")) %>
+                <%# EvaluateСontrolDate(Eval("inputdoc_control_date")) %>
             </DataItemTemplate>
 			<Settings AutoFilterCondition="Contains" />
 		</dx:GridViewDataTextColumn>
