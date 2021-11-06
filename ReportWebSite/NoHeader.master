@@ -48,7 +48,7 @@
 														<dx:RibbonButtonItem Text="Перелік вільних приміщень" NavigateUrl="Reports1NF/Report1NFFreeSquare.aspx?reportform=1">
 															<SmallImage Url="Styles/ribbonicon_8.png"/>
 														</dx:RibbonButtonItem>
-														<dx:RibbonButtonItem Text="Зведений Звіт" NavigateUrl="">
+														<dx:RibbonButtonItem Text="Зведений Звіт" NavigateUrl="Reports1NF/ZvedZvitBuild.aspx">
 															<SmallImage Url="Styles/ribbonicon_3.png"/>
 														</dx:RibbonButtonItem>
 													</Items>
@@ -183,7 +183,7 @@
 														<dx:RibbonButtonItem Text="Надходження до бюджету" NavigateUrl="OrendnaPlata/OrPlataVipiski.aspx">
 															<SmallImage Url="Styles/ribbonicon_16.png" />
 														</dx:RibbonButtonItem>
-														<dx:RibbonButtonItem Text="Зведений звіт">
+														<dx:RibbonButtonItem Text="Зведений звіт" NavigateUrl="Reports1NF/ZvedZvitBuild.aspx">
 															<SmallImage Url="Styles/ribbonicon_3.png" />
 														</dx:RibbonButtonItem>
 													</Items>
