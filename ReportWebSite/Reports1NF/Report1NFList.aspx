@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Report1NFList.aspx.cs" Inherits="Reports1NF_Report1NFList"
-    MasterPageFile="~/NoHeader.master" Title="Перелік звітів 1НФ" %>
+    MasterPageFile="~/NoHeader.master" Title="Перелік балансоутримувачів" %>
 
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
@@ -317,7 +317,9 @@ join dict_rent_occupation occ on occ.id = obp.org_occupation_id
         WHERE 
             (@p_rda_district_id = 0 OR (rep.org_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND rep.org_district_id = @p_rda_district_id))
                 AND
-            (@p_misto_id = 0 OR rep.old_organ_id = @p_misto_id)"
+            (@p_misto_id = 0 OR rep.old_organ_id = @p_misto_id)
+				AND
+			(@smode = 1 and obj.NumOfObj > 0 OR @smode = 2 and isnull(obj.NumOfObj,0) <= 0)"
     OnSelecting="SqlDataSourceReports_Selecting"
 
 UpdateCommand="UPDATE [reports1nf]
@@ -333,6 +335,7 @@ WHERE id = @report_id"
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_rda_district_id" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="period_year" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_misto_id" />
+		<asp:Parameter DbType="Int32" DefaultValue="0" Name="smode" />
     </SelectParameters>
 
 
@@ -374,7 +377,7 @@ WHERE id = @report_id"
 <table border="0" cellspacing="4" cellpadding="0" width="100%">
     <tr>
         <td style="width: 100%;">
-            <asp:Label ID="LabelReportTitle1" runat="server" Text="Звіти Балансоутримувачів" CssClass="reporttitle"></asp:Label>
+            <asp:Label ID="LabelReportTitle1" runat="server" Text="Перелік балансоутримувачів" CssClass="reporttitle"></asp:Label>
         </td>
         <td>
             <dx:ASPxButton ID="ASPxButtonEditColumnList" runat="server" AutoPostBack="False" Text="Додаткові Колонки" Width="148px">

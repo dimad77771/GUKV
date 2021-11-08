@@ -60,8 +60,11 @@
 											<Groups>
 												<dx:RibbonGroup Text="">
 													<Items>
-														<dx:RibbonButtonItem Text="Перелік Балансоутримувачів" NavigateUrl="Reports1NF/Report1NFList.aspx?smallform=1">
+														<dx:RibbonButtonItem Text="Перелік Балансоутримувачів" NavigateUrl="Reports1NF/Report1NFList.aspx?smallform=1&smode=1">
 															<SmallImage Url="Styles/ribbonicon_5.png"/>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Інші суб'єкти використання" NavigateUrl="Reports1NF/Report1NFList.aspx?smallform=1&smode=2">
+															<SmallImage Url="Styles/ribbonicon_17.png"/>
 														</dx:RibbonButtonItem>
 														<%--<dx:RibbonButtonItem Text="Роздрукувати картку організації" NavigateUrl="Cards/PrintOrgCard.aspx?orgid=305033">
 															<SmallImage Url="Styles/ribbonicon_print.png"/>
@@ -83,7 +86,7 @@
 															<SmallImage Url="Styles/ribbonicon_4b.png">
 															</SmallImage>
 														</dx:RibbonButtonItem>
-														<dx:RibbonButtonItem Text="Інші Об'єкти" NavigateUrl="Balans/BalansOther.aspx">
+														<dx:RibbonButtonItem Text="Інші Об'єкти" NavigateUrl="Balans/BalansOther.aspx" Visible="false">
 															<SmallImage Url="Styles/ribbonicon_4c.png">
 															</SmallImage>
 														</dx:RibbonButtonItem>
@@ -144,10 +147,10 @@
 											<Groups>
 												<dx:RibbonGroup Text="">
 													<Items>
-														<dx:RibbonButtonItem Text="Перелік вільних приміщень" NavigateUrl="Reports1NF/Report1NFFreeSquare.aspx">
+														<dx:RibbonButtonItem Text="Реєстр вільних приміщень" NavigateUrl="Reports1NF/Report1NFFreeSquare.aspx">
 															<SmallImage Url="Styles/ribbonicon_4d.png"/>
 														</dx:RibbonButtonItem>
-														<dx:RibbonButtonItem Text="Продовження договорів" NavigateUrl="Reports1NF/Report1NFDogContinue.aspx">
+														<dx:RibbonButtonItem Text="Реєстр продовження договорів" NavigateUrl="Reports1NF/Report1NFDogContinue.aspx">
 															<SmallImage Url="Styles/AddIcon.png"/>
 														</dx:RibbonButtonItem>
 													</Items>

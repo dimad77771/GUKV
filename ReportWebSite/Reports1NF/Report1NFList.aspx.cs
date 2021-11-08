@@ -60,6 +60,8 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
             ParmMistoId = Utils.GetUserMistoId("");
         }
 
+
+
             
 
         if (IsSmallForm)
@@ -77,6 +79,17 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 		if (IsReportForm)
 		{
 			CustomizeReportForm();
+		}
+
+		if (SMode == 2)
+		{
+			LabelReportTitle1.Text = @"Інші суб'єкти використання";
+			this.Title = LabelReportTitle1.Text;
+		}
+		else
+		{
+			LabelReportTitle1.Text = @"Перелік балансоутримувачів";
+			this.Title = LabelReportTitle1.Text;
 		}
 
 		SectionMenuForSmallMode.Visible = false;
@@ -164,6 +177,14 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
         }
     }
 
+	protected int SMode
+	{
+		get
+		{
+			return Request.QueryString["smode"] == null ? 1 : Int32.Parse(Request.QueryString["smode"]);
+		}
+	}
+
 	protected bool IsReportForm
 	{
 		get
@@ -210,7 +231,8 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
         e.Command.Parameters["@p_rda_district_id"].Value = Utils.RdaDistrictID;
         e.Command.Parameters["@period_year"].Value = DateTime.Now.Date.Month == 1 ? DateTime.Now.Date.Year - 1 : DateTime.Now.Date.Year;
         e.Command.Parameters["@p_misto_id"].Value = ParmMistoId;
-    }
+		e.Command.Parameters["@smode"].Value = SMode;
+	}
 
 	protected void SqlDataSourceReports_Updating(object sender, SqlDataSourceCommandEventArgs e)
 	{
@@ -232,7 +254,8 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
     }
 
     int ParmMistoId;
+	
 
-    
+
 
 }

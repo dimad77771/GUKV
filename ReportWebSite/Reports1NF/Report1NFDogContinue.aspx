@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Report1NFDogContinue.aspx.cs" Inherits="Reports1NF_Report1NFDogContinue"
-    MasterPageFile="~/NoHeader.master" Title="Продовження договорів" %>
+    MasterPageFile="~/NoHeader.master" Title="Реєстр продовження договорів" %>
 
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.Export" tagprefix="dx" %>
@@ -308,6 +308,7 @@
 
 
 ,fs.modify_date
+,fs.modified_by
 ,fs.note
 
 ,invest_solution = (select qq.name from dict_1nf_invest_solution qq where qq.id = fs.invest_solution_id)
@@ -446,7 +447,7 @@ WHERE id = @id"
 <table border="0" cellspacing="4" cellpadding="0" width="100%">
     <tr>
         <td style="width: 100%;">
-            <asp:Label ID="LabelReportTitle1" runat="server" Text="Продовження договорів" CssClass="reporttitle"></asp:Label>
+            <asp:Label ID="LabelReportTitle1" runat="server" Text="Реєстр продовження договорів" CssClass="reporttitle"></asp:Label>
         </td>
         <td>
             <dx:ASPxButton ID="ASPxButton1" runat="server" AutoPostBack="False" 
@@ -826,11 +827,16 @@ WHERE id = @id"
 
         <dx:GridViewBandColumn Caption="Додаткові"  HeaderStyle-HorizontalAlign="Center"> 
             <Columns>
-                <dx:GridViewDataDateColumn FieldName="modify_date" Caption="Дата редагування" VisibleIndex="13" Width="80px" ReadOnly="true">
+                <dx:GridViewDataDateColumn FieldName="modify_date" Caption="Дата редагування Б" VisibleIndex="13" Width="80px" ReadOnly="true">
 					<EditItemTemplate>
 						<dx:ASPxLabel runat="server" Text='<%# Eval("modify_date", "{0:dd.MM.yyyy}") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 					</EditItemTemplate>
                 </dx:GridViewDataDateColumn>
+				<dx:GridViewDataTextColumn FieldName="modified_by" Caption="Користувач Б" VisibleIndex="13" Width="80px" ReadOnly="true">
+					<EditItemTemplate>
+						<dx:ASPxLabel runat="server" Text='<%# Eval("modified_by") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+					</EditItemTemplate>
+                </dx:GridViewDataTextColumn>
                 <dx:GridViewDataTextColumn FieldName="condition" Caption="Технічний стан об’єкта" VisibleIndex="14" Width="80px">
 					<EditItemTemplate>
 						<dx:ASPxLabel runat="server" Text='<%# Eval("condition") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
@@ -1003,7 +1009,7 @@ WHERE id = @id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("modify_date2") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="modified_by2" Caption="Користувач" VisibleIndex="510" Width="100px">
+        <dx:GridViewDataTextColumn FieldName="modified_by2" Caption="Користувач О" VisibleIndex="510" Width="100px">
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("modified_by2") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
@@ -1118,7 +1124,7 @@ WHERE id = @id"
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFDogContinue" Version="A3_26" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFDogContinue" Version="A3_27" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

@@ -157,6 +157,7 @@
 , case when exists (select 1 from reports1nf_arenda_dogcontinue_photos qq where qq.free_square_id = fs.id) then 1 else 0 end as isexistsphoto
 
 , '1' as source
+,  1 as is_dogcontinue
 
 FROM view_reports1nf rep
 join reports1nf_arenda bal on bal.report_id = rep.report_id
@@ -266,6 +267,7 @@ SELECT
 , case when exists (select 1 from reports1nf_balans_free_square_photos qq where qq.free_square_id = fs.id) then 1 else 0 end as isexistsphoto
 
 , '2' as source
+,  0 as is_dogcontinue
 
 FROM view_reports1nf rep
 join reports1nf_balans bal on bal.report_id = rep.report_id
@@ -794,6 +796,7 @@ WHERE id = @id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("freecycle_step_name") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
+		<dx:GridViewDataCheckColumn FieldName="is_dogcontinue" Caption="Продовження" VisibleIndex="24" Width="50px" ReadOnly="true"/>
         <dx:GridViewDataTextColumn FieldName="prozoro_number" Caption="Унікальний код обєкту у ЕТС Прозорро-продажі" VisibleIndex="24" Width="150px">
             <DataItemTemplate>
                 <%# "<a target=\"_blank\" href=\"https://prozorro.sale/auction/" + Eval("prozoro_number") + "\">" + Eval("prozoro_number") + "</a>"%>
