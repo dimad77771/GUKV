@@ -262,6 +262,8 @@
 		<dx:GridViewDataTextColumn FieldName="expert_obj_type" ReadOnly="True" ShowInCustomizationForm="True" Visible="true" Caption="Вид Об’єкта" Width="120px">
 		</dx:GridViewDataTextColumn>
 
+		<dx:GridViewDataTextColumn FieldName="stan_name" ReadOnly="True" ShowInCustomizationForm="True" Visible="true" Caption="Стан рецензії" Width="110px">
+		</dx:GridViewDataTextColumn>
 
 		<dx:GridViewDataTextColumn FieldName="outputdoc_doc_num" ReadOnly="True" ShowInCustomizationForm="True" Caption="Вихідний номер" Width="90px" >
 			<DataItemTemplate>
@@ -281,6 +283,12 @@
             </DataItemTemplate>
 			<Settings AutoFilterCondition="Contains" />
 		</dx:GridViewDataTextColumn>
+		<dx:GridViewDataTextColumn FieldName="outputdoc_rezenz_date" ReadOnly="True" ShowInCustomizationForm="True" Caption="Дата рецензування" Width="90px">
+			<DataItemTemplate>
+                <%# EvaluateMultiLineValue(Eval("outputdoc_rezenz_date")) %>
+            </DataItemTemplate>
+			<Settings AutoFilterCondition="Contains" />
+		</dx:GridViewDataTextColumn>
 
 
 
@@ -290,8 +298,8 @@
             </DataItemTemplate>
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataDateColumn FieldName="valuation_date" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Дата рецензування" Width="80px">
-        </dx:GridViewDataDateColumn>
+        <%--<dx:GridViewDataDateColumn FieldName="valuation_date" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Дата рецензування" Width="80px">
+        </dx:GridViewDataDateColumn>--%>
 
 		<%--<dx:GridViewDataTextColumn FieldName="obj_square" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Площа Об'єкту" Width="80px">
 		</dx:GridViewDataTextColumn>--%>
@@ -315,7 +323,7 @@
             </DataItemTemplate>
 			<Settings AutoFilterCondition="Contains" />
 		</dx:GridViewDataTextColumn>
-		<dx:GridViewDataTextColumn FieldName="details_cost_1_usd" ReadOnly="True" ShowInCustomizationForm="True" Caption="Вартість кв.м., $" Width="90px">
+		<dx:GridViewDataTextColumn FieldName="details_cost_1_usd" ReadOnly="True" ShowInCustomizationForm="True" Caption="Вартість 1 кв.м. без ПДВ, $" Width="90px">
 			<DataItemTemplate>
                 <%# EvaluateMultiLineValue(Eval("details_cost_1_usd")) %>
             </DataItemTemplate>
@@ -382,7 +390,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Visible"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Assessment.Objects" Version="A8" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.Assessment.Objects" Version="A12" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

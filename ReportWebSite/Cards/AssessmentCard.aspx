@@ -29,6 +29,7 @@
 		[korrespondent_id] = @korrespondent_id,
 		[control_date] = @control_date,
 		[rezenz_name] = @rezenz_name, 
+		[rezenz_id] = @rezenz_id,
 		[modify_date] = @modify_date,
 		[modified_by] = @modified_by
 		WHERE id = @id" 	
@@ -39,6 +40,7 @@
 		,korrespondent_id
 		,control_date
 		,rezenz_name
+		,rezenz_id
 		,modify_date
 		,modified_by)
 		values(@expert_note_id
@@ -47,6 +49,7 @@
 		,@korrespondent_id
 		,@control_date
 		,@rezenz_name
+		,@rezenz_id
 		,@modify_date
 		,@modified_by)"
 	onupdating="SqlDataSourceFreeSquare_Updating"
@@ -61,6 +64,7 @@
 		<asp:Parameter Name="korrespondent_id" />
 		<asp:Parameter Name="control_date" />
 		<asp:Parameter Name="rezenz_name" />
+		<asp:Parameter Name="rezenz_id" />
 		<asp:Parameter Name="modify_date" />
         <asp:Parameter Name="modified_by" />
 	</UpdateParameters>
@@ -71,6 +75,7 @@
 		<asp:Parameter Name="korrespondent_id" />
 		<asp:Parameter Name="control_date" />
 		<asp:Parameter Name="rezenz_name" />
+		<asp:Parameter Name="rezenz_id" />
 		<asp:Parameter Name="modify_date" />
         <asp:Parameter Name="modified_by" />
 	</InsertParameters>
@@ -84,6 +89,7 @@
 		[doc_date] = @doc_date,
 		[doc_num] = @doc_num,
 		[rezenz_type_id] = @rezenz_type_id,
+	    [rezenz_date] = @rezenz_date,
 		[modify_date] = @modify_date,
 		[modified_by] = @modified_by
 		WHERE id = @id" 	
@@ -92,12 +98,14 @@
 		,doc_date
 		,doc_num
 		,rezenz_type_id
+	    ,rezenz_date
 		,modify_date
 		,modified_by)
 		values(@expert_note_id
 		,@doc_date
 		,@doc_num
 		,@rezenz_type_id
+	    ,@rezenz_date
 		,@modify_date
 		,@modified_by)"
 	onupdating="SqlDataSourceAssessmentOutputDoc_Updating"
@@ -109,6 +117,7 @@
 		<asp:Parameter Name="doc_date" />
 		<asp:Parameter Name="doc_num" />
 		<asp:Parameter Name="rezenz_type_id" />
+		<asp:Parameter Name="rezenz_date" />
 		<asp:Parameter Name="modify_date" />
         <asp:Parameter Name="modified_by" />
 	</UpdateParameters>
@@ -117,6 +126,7 @@
 		<asp:Parameter Name="doc_date" />
 		<asp:Parameter Name="doc_num" />
 		<asp:Parameter Name="rezenz_type_id" />
+		<asp:Parameter Name="rezenz_date" />
 		<asp:Parameter Name="modify_date" />
         <asp:Parameter Name="modified_by" />
 	</InsertParameters>
@@ -204,6 +214,11 @@
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDictExpertValuationKind" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="select id, name from dict_expert_valuation_kind order by 1">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictExpertStan" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="select id, name from dict_expert_stan order by 1">
 </mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDictExpertRezenz" runat="server" 
@@ -390,7 +405,7 @@
                             </td>
                         </tr>
                         <tr><td colspan="7" height="4px"/></tr>
-                        <tr>
+                        <%--<tr>
                             <td width="100px"><dx:ASPxLabel ID="ASPxLabel9" runat="server" Text="Рецензент"></dx:ASPxLabel></td>
                             <td width="8px">&nbsp;</td>
                             <td colspan="5">
@@ -399,7 +414,7 @@
 									Title="Рецензент"
 									DropDownStyle="DropDown" />
                             </td>
-                        </tr>
+                        </tr>--%>
                         <tr><td colspan="7" height="4px"/></tr>
                         <tr>
                             <td width="100px"><dx:ASPxLabel ID="ASPxLabel10" runat="server" Text="Вид рецензії"></dx:ASPxLabel></td>
@@ -411,10 +426,13 @@
 									DropDownStyle="DropDown" />
                             </td>
                             <td width="8px">&nbsp;</td>
-                            <td width="100px"><dx:ASPxLabel ID="ASPxLabel11" runat="server" Text="Дата рецензування"></dx:ASPxLabel></td>
+                            <td width="100px"><dx:ASPxLabel ID="ASPxLabel11" runat="server" Text="Стан рецензії"></dx:ASPxLabel></td>
                             <td width="8px">&nbsp;</td>
                             <td>
-								<dx:ASPxDateEdit ID="valuation_date" runat="server" Value='<%# Eval("valuation_date") %>' Width="290px" />
+								<dx:ASPxComboBox ID="stan_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="290px"
+									IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceDictExpertStan" Value='<%# Eval("stan_id") %>'
+									Title="Стан рецензії"
+									DropDownStyle="DropDown" />
                             </td>
                         </tr>
                         <tr><td colspan="7" height="4px"/></tr>
@@ -428,14 +446,14 @@
 									Title="Площа Об'єкту" SpinButtons-ShowIncrementButtons="false" />
 							</td>
 							<td width="8px">&nbsp;</td>
-							<td width="100px">
+							<%--<td width="100px">
 								<dx:ASPxLabel ID="ASPxLabel13" runat="server" Text="Вартість Об'єкту без ПДВ (грн.)"></dx:ASPxLabel>
 							</td>
 							<td width="8px">&nbsp;</td>
 							<td>
 								<dx:ASPxSpinEdit ID="cost_prim" runat="server" NumberType="Float" Value='<%# Eval("cost_prim") %>' Width="290px"
 									Title="Вартість Об'єкту (грн.)" SpinButtons-ShowIncrementButtons="false" />
-							</td>
+							</td>--%>
 						</tr>
                     </table>
                 </dx:PanelContent>
@@ -454,6 +472,20 @@
                             </td>
                         </tr>
                         <tr><td colspan="7" height="4px"/></tr>
+						<tr>
+                            <td width="100px"><dx:ASPxLabel ID="ASPxLabel9" runat="server" Text="Вартість Об'єкту без ПДВ (грн.)"></dx:ASPxLabel></td>
+                            <td width="8px">&nbsp;</td>
+                            <td>
+								<dx:ASPxSpinEdit ID="cost_prim" runat="server" NumberType="Float" Value='<%# Eval("cost_prim") %>' Width="290px"
+									Title="Вартість Об'єкту (грн.)" SpinButtons-ShowIncrementButtons="false" />
+                            </td>
+                            <td width="8px">&nbsp;</td>
+                            <%--<td width="100px"><dx:ASPxLabel ID="ASPxLabel11" runat="server" Text="Дата Затвердження"></dx:ASPxLabel></td>
+                            <td width="8px">&nbsp;</td>
+                            <td>
+								<dx:ASPxDateEdit ID="ASPxDateEdit1" runat="server" Value='<%# Eval("final_date") %>' Width="290px" />
+                            </td>--%>
+                        </tr>
                         <tr>
                             <td width="100px"><dx:ASPxLabel ID="ASPxLabel6" runat="server" Text="Архівний Номер"></dx:ASPxLabel></td>
                             <td width="8px">&nbsp;</td>
@@ -541,7 +573,13 @@
 							</dx:GridViewDataComboBoxColumn>
 
 							<dx:GridViewDataDateColumn FieldName="control_date" Caption="Контрольна Дата" Width="100px"></dx:GridViewDataDateColumn>
-							<dx:GridViewDataTextColumn FieldName="rezenz_name" Caption="Рецензент" Width="250px"></dx:GridViewDataTextColumn>
+
+							<%--<dx:GridViewDataTextColumn FieldName="rezenz_name" Caption="Рецензент" Width="250px"></dx:GridViewDataTextColumn>--%>
+							<dx:GridViewDataComboBoxColumn Caption="Рецензент" Width="250px" FieldName="rezenz_id"  >
+								<PropertiesComboBox DataSourceID="SqlDataSourceDictExpertRezenz" ValueField="id" TextField="name" ValueType="System.Int32" />
+							</dx:GridViewDataComboBoxColumn>
+
+
 						</Columns>
 
 						<SettingsBehavior ConfirmDelete="True" />
@@ -615,7 +653,7 @@
 							</dx:GridViewDataComboBoxColumn>
 
 
-                            <dx:GridViewDataSpinEditColumn FieldName="cost_1_usd" Caption="Вартість 1 кв.м., $" Width="80px" PropertiesSpinEdit-SpinButtons-ShowIncrementButtons="false"></dx:GridViewDataSpinEditColumn>
+                            <dx:GridViewDataSpinEditColumn FieldName="cost_1_usd" Caption="Вартість 1 кв.м. без ПДВ, $" Width="80px" PropertiesSpinEdit-SpinButtons-ShowIncrementButtons="false"></dx:GridViewDataSpinEditColumn>
                             <dx:GridViewDataDateColumn FieldName="valuation_date" Caption="Дата Оцінки" Width="80px"></dx:GridViewDataDateColumn>
                             <dx:GridViewDataTextColumn FieldName="note" Caption="Примітка" Width="130px"></dx:GridViewDataTextColumn>
                         </Columns>
@@ -687,6 +725,7 @@
 							<dx:GridViewDataComboBoxColumn Caption="Категорія рецензії" Width="280px" FieldName="rezenz_type_id"  >
 								<PropertiesComboBox DataSourceID="SqlDataSourceDictExpertRezenzType" ValueField="id" TextField="name" ValueType="System.Int32" />
 							</dx:GridViewDataComboBoxColumn>
+							<dx:GridViewDataDateColumn FieldName="rezenz_date" Caption="Дата рецензування" Width="80px"></dx:GridViewDataDateColumn>
 
                         </Columns>
 

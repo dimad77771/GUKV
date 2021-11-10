@@ -136,6 +136,7 @@
 																<dx:RibbonDropDownButtonItem Text="Кореспонденти" NavigateUrl="Assessment/dict_expert_korr.aspx"/>
 																<dx:RibbonDropDownButtonItem Text="Категорії рецензії" NavigateUrl="Assessment/dict_expert_rezenz_type.aspx"/>
 																<dx:RibbonDropDownButtonItem Text="Види рецензії" NavigateUrl="Assessment/dict_expert_valuation_kind.aspx"/>
+																<dx:RibbonDropDownButtonItem Text="Стани рецензії" NavigateUrl="Assessment/dict_expert_stan.aspx"/>
 															</Items>
 														</dx:RibbonDropDownButtonItem>
 													</Items>

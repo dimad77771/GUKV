@@ -134,6 +134,7 @@ public partial class Cards_AssessmentCard : System.Web.UI.Page
 		AddQueryParameter(ref fieldList, "expert_id", "expert_id", Reports1NFUtils.GetDropDownValue(controls, "expert_id"), parameters);
 		AddQueryParameter(ref fieldList, "rezenz_id", "rezenz_id", Reports1NFUtils.GetDropDownValue(controls, "rezenz_id"), parameters);
 		AddQueryParameter(ref fieldList, "valuation_kind_id", "valuation_kind_id", Reports1NFUtils.GetDropDownValue(controls, "valuation_kind_id"), parameters);
+		AddQueryParameter(ref fieldList, "stan_id", "stan_id", Reports1NFUtils.GetDropDownValue(controls, "stan_id"), parameters);
 		AddQueryParameter(ref fieldList, "valuation_date", "valuation_date", Reports1NFUtils.GetDateValue(controls, "valuation_date"), parameters);
 		AddQueryParameter(ref fieldList, "obj_square", "obj_square", Reports1NFUtils.GetEditNumeric(controls, "obj_square"), parameters);
 		AddQueryParameter(ref fieldList, "cost_prim", "cost_prim", Reports1NFUtils.GetEditNumeric(controls, "cost_prim"), parameters);
