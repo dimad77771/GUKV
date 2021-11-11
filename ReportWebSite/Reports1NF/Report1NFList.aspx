@@ -137,13 +137,15 @@
              SUM(bal.sqr_total) AS 'SQR_TOTAL_BAL'
             ,SUM(bal.sqr_kor) AS 'SQR_KOR'
 			,SUM(bal.sqr_vlas_potreb) AS 'SQR_VLAS_POTREB'
+	        ,SUM(case when bal.sqr_vlas_potreb > 0 then 1 else 0 end) AS 'SQR_VLAS_POTREB_COUNT'
 --            ,SUM(CASE WHEN bal.is_free_sqr = 1 THEN bal.free_sqr_useful ELSE 0 END) AS 'SQR_FREE'
 --            ,SUM(bal.free_sqr_useful) AS 'SQR_FREE'
               ,sum(fs.sqr_free) AS 'SQR_FREE'
+			  ,sum(fs.sqr_free_count) AS 'SQR_FREE_COUNT'
             ,COUNT(*) AS 'NUM_BALANS'
             ,bal.report_id
         FROM reports1nf_balans bal
-        outer apply (select sum(fs.total_free_sqr) as sqr_free from reports1nf_balans_free_square fs where fs.balans_id = bal.id and fs.report_id = bal.report_id and fs.is_included = 1) fs  
+        outer apply (select sum(fs.total_free_sqr) as sqr_free, count(*) as sqr_free_count from reports1nf_balans_free_square fs where fs.balans_id = bal.id and fs.report_id = bal.report_id and fs.is_included = 1 and fs.total_free_sqr > 0) fs  
         WHERE (bal.is_deleted IS NULL OR bal.is_deleted = 0)
         GROUP BY bal.report_id) ObjectAndRentTotals1 ON ObjectAndRentTotals1.report_id = rep.report_id
         
@@ -769,9 +771,15 @@ WHERE id = @report_id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn FieldName="SQR_VLAS_POTREB" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="47" Caption="Площа об'єкту для власних потреб, кв.м." >
+        <dx:GridViewDataTextColumn FieldName="SQR_VLAS_POTREB" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="47" Caption="Загальна площа об'єктів для власних потреб, кв.м." >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("SQR_VLAS_POTREB") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+		<dx:GridViewDataTextColumn FieldName="SQR_VLAS_POTREB_COUNT" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="47" Caption="Кількість об'єктів що мають площу для власних потреб" >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("SQR_VLAS_POTREB_COUNT") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
@@ -811,12 +819,17 @@ WHERE id = @report_id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("NUM_RENTED") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
+
         <dx:GridViewDataTextColumn FieldName="SQR_FREE" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="55" Caption="Загальна вільна площа, що може бути надана в оренду, кв.м." >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("SQR_FREE") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
-
+		<dx:GridViewDataTextColumn FieldName="SQR_FREE_COUNT" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="55" Caption="Кількість об'єктів що мають вільну площу" >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("SQR_FREE_COUNT") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
 
 
 
@@ -1055,7 +1068,9 @@ WHERE id = @report_id"
         <dx:ASPxSummaryItem FieldName="NUM_RENTER" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="NUM_RENTED" SummaryType="Sum" DisplayFormat="{0}" />
 		<dx:ASPxSummaryItem FieldName="SQR_VLAS_POTREB" SummaryType="Sum" DisplayFormat="{0}" />
+		<dx:ASPxSummaryItem FieldName="SQR_VLAS_POTREB_COUNT" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="SQR_FREE" SummaryType="Sum" DisplayFormat="{0}" />
+		<dx:ASPxSummaryItem FieldName="SQR_FREE_COUNT" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_NARAH_ZVIT" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_NARAH_ZVIT_NORMAL" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_ZNYATO_NADMIRNO_NARAH" SummaryType="Sum" DisplayFormat="{0}" />
@@ -1103,7 +1118,7 @@ WHERE id = @report_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A2_32" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A2_34" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
