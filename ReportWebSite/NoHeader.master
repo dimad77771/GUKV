@@ -144,7 +144,7 @@
 											</Groups>
 										</dx:RibbonTab>
 
-										<dx:RibbonTab Text="Процеси" >
+										<dx:RibbonTab Text="Реєстри" >
 											<Groups>
 												<dx:RibbonGroup Text="">
 													<Items>

@@ -271,7 +271,7 @@
     <value>НОРМАТИВ ВІДРАХУВАН</value>
   </data>
   <data name="GlobalWebSiteURL" xml:space="preserve">
-    <value>http://eis.gukv.gov.ua/gukv</value>
+    <value>https://eis.gukv.gov.ua/gukv</value>
   </data>
   <data name="GridFilterExportPrefixFiltered" xml:space="preserve">
     <value>Звіт згенеровано {0:g} з наступними показниками: {1}</value>
