@@ -119,7 +119,8 @@
         rent_start_date, rent_finish_date, is_subarenda, purpose, object_name, agreement_active_int
     ,(CASE WHEN agreement_state = 1 THEN 'Договір діє' ELSE CASE WHEN agreement_state = 2 THEN 'Договір закінчився, але заборгованність не погашено' ELSE CASE WHEN agreement_state = 3 THEN 'Договір закінчився, оренда продовжена іншим договором' ELSE '' END END END) AS 'agreement_state'
     FROM view_arenda_agreements
-        WHERE building_id = @bid AND (@show_del = 1 OR (@show_del = 0 AND agreement_active_int = 1))"
+        WHERE building_id = @bid AND (@show_del = 1 OR (@show_del = 0 AND agreement_active_int = 1))
+			AND view_arenda_agreements.arenda_id in (select b.id from dbo.reports1nf_arenda b where b.org_balans_id = view_arenda_agreements.org_balans_id and ISNULL(b.is_deleted, 0) = 0) /* указание Синенко от 22.11.2021 */"
     OnSelecting="SqlDataSourceObjCardArenda_Selecting" >
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="bid" />
