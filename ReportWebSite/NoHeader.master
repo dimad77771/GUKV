@@ -20,7 +20,7 @@
             </div>
             <div style="float:right;color:white">
                     <strong>Технічна підтримка <a style="color:white" href="mailto:seic@gukv.gov.ua" title="Написати лист">seic@gukv.gov.ua</a> </strong>
-                    0931605647 – процедура прийому звітів; <br />0672605106 – реєстрація, об’єкти, договори, вільні; 0979065119 - плата за використання
+                    0971986730 – (Катерина)консультує з 10-00 до 15-00; <br />0672605106 – тимчасово не косультує; 0979065119 - плата за використання
             </div>
         </div>
         <div class="clear hideSkiplink">
@@ -134,9 +134,9 @@
 																<dx:RibbonDropDownButtonItem Text="Поверхи" NavigateUrl="Assessment/dict_expert_detail_floors.aspx"/>
 																<dx:RibbonDropDownButtonItem Text="Рецензенти" NavigateUrl="Assessment/dict_expert_rezenz.aspx"/>
 																<dx:RibbonDropDownButtonItem Text="Кореспонденти" NavigateUrl="Assessment/dict_expert_korr.aspx"/>
-																<dx:RibbonDropDownButtonItem Text="Категорії рецензії" NavigateUrl="Assessment/dict_expert_rezenz_type.aspx"/>
+																<dx:RibbonDropDownButtonItem Text="Стани/категорії рецензування" NavigateUrl="Assessment/dict_expert_rezenz_type.aspx"/>
 																<dx:RibbonDropDownButtonItem Text="Види рецензії" NavigateUrl="Assessment/dict_expert_valuation_kind.aspx"/>
-																<dx:RibbonDropDownButtonItem Text="Стани рецензії" NavigateUrl="Assessment/dict_expert_stan.aspx"/>
+																<%--<dx:RibbonDropDownButtonItem Text="Стани рецензії" NavigateUrl="Assessment/dict_expert_stan.aspx"/>--%>
 															</Items>
 														</dx:RibbonDropDownButtonItem>
 													</Items>

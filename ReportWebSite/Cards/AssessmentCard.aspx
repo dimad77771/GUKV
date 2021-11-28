@@ -221,9 +221,25 @@
     SelectCommand="select id, name from dict_expert_stan order by 1">
 </mini:ProfiledSqlDataSource>
 
+<%--<mini:ProfiledSqlDataSource ID="SqlDataSourceDictExpertRezenz" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="select id, name, 1 src from dict_expert_rezenz where isnull(is_deleted,0) <> 1 
+			union all
+		select -9999 as id, '--- Архів ----------------' as name, 2 src
+			union all
+		select id, name, 3 src from dict_expert_rezenz where isnull(is_deleted,0) = 1
+		order by 3,2">
+</mini:ProfiledSqlDataSource>--%>
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDictExpertRezenz" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="select id, name from dict_expert_rezenz order by 2">
+    SelectCommand="select A.id, A.name from dict_expert_rezenz A 
+		where isnull(A.is_deleted,0) = 0 
+			or A.id in (SELECT Q.rezenz_id FROM expert_input_doc Q WHERE Q.expert_note_id = @vid)
+		order by 2" 
+	OnSelecting="SqlDataSourceDictExpertRezenz_Selecting">
+    <SelectParameters>
+        <asp:Parameter DbType="Int32" DefaultValue="0" Name="vid" />
+    </SelectParameters>
 </mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDictExpertKorr" runat="server" 
@@ -425,15 +441,15 @@
 									Title="Вид рецензії"
 									DropDownStyle="DropDown" />
                             </td>--%>
-                            <td width="100px"><dx:ASPxLabel ID="ASPxLabel10" runat="server" Text="Стан рецензування"></dx:ASPxLabel></td>
-                            <td width="8px">&nbsp;</td>
-                            <td>
+                            <%--<td width="100px"><dx:ASPxLabel ID="ASPxLabel10" runat="server" Text="Стан рецензування"></dx:ASPxLabel></td>--%>
+                            <%--<td width="8px">&nbsp;</td>--%>
+                            <%--<td>
 								<dx:ASPxComboBox ID="stan_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="290px"
 									IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceDictExpertStan" Value='<%# Eval("stan_id") %>'
 									Title="Стан рецензії"
 									DropDownStyle="DropDown" />
-                            </td>
-                            <td width="8px">&nbsp;</td>
+                            </td>--%>
+                            <%--<td width="8px">&nbsp;</td>--%>
                             <td width="100px"><dx:ASPxLabel ID="ASPxLabel11" runat="server" Text="Площа Об'єкту"></dx:ASPxLabel></td>
                             <td width="8px">&nbsp;</td>
                             <td>
@@ -708,7 +724,7 @@
 							</dx:GridViewCommandColumn>
                             <dx:GridViewDataDateColumn FieldName="doc_date" Caption="Дата Документа" Width="80px"></dx:GridViewDataDateColumn>
                             <dx:GridViewDataTextColumn FieldName="doc_num" Caption="Номер Документа" Width="160px"></dx:GridViewDataTextColumn>
-							<dx:GridViewDataComboBoxColumn Caption="Категорія рецензії" Width="280px" FieldName="rezenz_type_id"  >
+							<dx:GridViewDataComboBoxColumn Caption="Стан/категорія рецензування" Width="280px" FieldName="rezenz_type_id"  >
 								<PropertiesComboBox DataSourceID="SqlDataSourceDictExpertRezenzType" ValueField="id" TextField="name" ValueType="System.Int32" />
 							</dx:GridViewDataComboBoxColumn>
 							<dx:GridViewDataDateColumn FieldName="rezenz_date" Caption="Дата рецензування" Width="80px"></dx:GridViewDataDateColumn>

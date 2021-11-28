@@ -120,7 +120,7 @@
 		</td>
         <td>
             <dx:ASPxButton ID="ASPxButton1" runat="server" AutoPostBack="False" 
-                Text="Додаткові Колонки" Width="148px" Visible="false">
+                Text="Додаткові Колонки" Width="148px" Visible="true">
                 <ClientSideEvents Click="ShowFieldChooserPopupControl" />
             </dx:ASPxButton>
         </td>
@@ -262,8 +262,8 @@
 		<dx:GridViewDataTextColumn FieldName="expert_obj_type" ReadOnly="True" ShowInCustomizationForm="True" Visible="true" Caption="Вид Об’єкта" Width="120px">
 		</dx:GridViewDataTextColumn>
 
-		<dx:GridViewDataTextColumn FieldName="stan_name" ReadOnly="True" ShowInCustomizationForm="True" Visible="true" Caption="Стан рецензії" Width="110px">
-		</dx:GridViewDataTextColumn>
+		<%--<dx:GridViewDataTextColumn FieldName="stan_name" ReadOnly="True" ShowInCustomizationForm="True" Visible="true" Caption="Стан рецензії" Width="110px">
+		</dx:GridViewDataTextColumn>--%>
 
 		<dx:GridViewDataTextColumn FieldName="outputdoc_doc_num" ReadOnly="True" ShowInCustomizationForm="True" Caption="Вихідний номер" Width="90px" >
 			<DataItemTemplate>
@@ -271,13 +271,13 @@
             </DataItemTemplate>
 			<Settings AutoFilterCondition="Contains" />
 		</dx:GridViewDataTextColumn>
-		<dx:GridViewDataTextColumn FieldName="outputdoc_doc_date" ReadOnly="True" ShowInCustomizationForm="True" Caption="Дата документа" Width="90px">
+		<dx:GridViewDataTextColumn FieldName="outputdoc_doc_date" ReadOnly="True" ShowInCustomizationForm="True" Caption="Дата вих. документа" Width="90px">
 			<DataItemTemplate>
                 <%# EvaluateMultiLineValue(Eval("outputdoc_doc_date")) %>
             </DataItemTemplate>
 			<Settings AutoFilterCondition="Contains" />
 		</dx:GridViewDataTextColumn>
-		<dx:GridViewDataTextColumn FieldName="outputdoc_rezenz" ReadOnly="True" ShowInCustomizationForm="True" Caption="Категорія рецензії" Width="140px">
+		<dx:GridViewDataTextColumn FieldName="outputdoc_rezenz" ReadOnly="True" ShowInCustomizationForm="True" Caption="Стан/категорія рецензування" Width="140px">
 			<DataItemTemplate>
                 <%# EvaluateMultiLineValue(Eval("outputdoc_rezenz")) %>
             </DataItemTemplate>
@@ -390,7 +390,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Visible"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Assessment.Objects" Version="A12" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.Assessment.Objects" Version="A14" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

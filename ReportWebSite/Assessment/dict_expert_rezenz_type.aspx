@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="dict_expert_rezenz_type.aspx.cs" Inherits="Catalogue_OrgCatalogue" MasterPageFile="~/NoHeader.master" 
-	Title="Довідник 'Категорія рецензії'" %>
+	Title="Довідник 'Стан/категорія рецензування'" %>
 
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
@@ -94,7 +94,7 @@
 <table border="0" cellspacing="4" cellpadding="0" width="100%">
     <tr>
         <td style="width: 100%;">
-            <asp:Label ID="LabelReportTitle2" runat="server" Text="Довідник 'Категорія рецензії'" CssClass="reporttitle"></asp:Label>
+            <asp:Label ID="LabelReportTitle2" runat="server" Text="Довідник 'Стан/категорія рецензування'" CssClass="reporttitle"></asp:Label>
         </td>
         <td>
             <dx:ASPxButton ID="ButtonShowFoldersPopup2" runat="server" AutoPostBack="False" Text="Зберегти звіт" Width="148px" Visible="false">
@@ -191,7 +191,7 @@
 
     <Columns>
 		<dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" ShowEditButton="true" ShowDeleteButton="True" ShowNewButton="true" />
-        <dx:GridViewDataTextColumn FieldName="name" Caption="Категорія рецензії" Width="900px"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="name" Caption="Стан/категорія рецензування" Width="900px"></dx:GridViewDataTextColumn>
 		<dx:GridViewDataTextColumn FieldName="color_rgb" Caption="Колір" >  
 		  <EditItemTemplate>  
 				 <dx:ASPxColorEdit ID="ASPxColorEdit1" runat="server" EnableCustomColors="true" CustomButtonsPosition="Near" OnInit="ASPxColorEdit1_Init">  

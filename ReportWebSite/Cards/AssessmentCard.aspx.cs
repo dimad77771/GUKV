@@ -209,6 +209,11 @@ public partial class Cards_AssessmentCard : System.Web.UI.Page
 		e.Command.Parameters["@street_id"].Value = AddressStreetID;
 	}
 
+	protected void SqlDataSourceDictExpertRezenz_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+	{
+		e.Command.Parameters["@vid"].Value = VID;
+	}
+
 	private int AddressStreetID
 	{
 		get

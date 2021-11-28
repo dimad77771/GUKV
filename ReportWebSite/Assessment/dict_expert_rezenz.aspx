@@ -62,16 +62,18 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceAllOrganizations" runat="server" EnableCaching="false"
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="select name, id from [dict_expert_rezenz] order by 1"
-	UpdateCommand="UPDATE [dict_expert_rezenz] SET [name] = @name WHERE id = @id"
-	InsertCommand="INSERT INTO [dict_expert_rezenz]([id],[name]) VALUES( isnull((select max(id) + 1 from dict_expert_rezenz), 1), @name)"
+    SelectCommand="select name, id, is_deleted from [dict_expert_rezenz] order by 1"
+	UpdateCommand="UPDATE [dict_expert_rezenz] SET [name] = @name, [is_deleted] = @is_deleted WHERE id = @id"
+	InsertCommand="INSERT INTO [dict_expert_rezenz]([id],[name],[is_deleted]) VALUES( isnull((select max(id) + 1 from dict_expert_rezenz), 1), @name, @is_deleted)"
 	DeleteCommand="DELETE FROM [dict_expert_rezenz] WHERE id = @id">
     <UpdateParameters>
         <asp:Parameter Name="name" />
 		<asp:Parameter Name="id" />
+		<asp:Parameter Name="is_deleted" />
 	</UpdateParameters>
 	<InsertParameters>
         <asp:Parameter Name="name" />
+		<asp:Parameter Name="is_deleted" />
 	</InsertParameters>
 	<DeleteParameters>
         <asp:Parameter Name="id" />
@@ -185,6 +187,7 @@
     <Columns>
 		<dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" ShowEditButton="true" ShowDeleteButton="True" ShowNewButton="true" />
         <dx:GridViewDataTextColumn FieldName="name" Caption="Рецензент" Width="900px"></dx:GridViewDataTextColumn>
+		<dx:GridViewDataCheckColumn FieldName="is_deleted" Caption="Архів" Width="80px"></dx:GridViewDataCheckColumn>
     </Columns>
 
     <SettingsBehavior EnableCustomizationWindow="True" ConfirmDelete="true" AutoFilterRowInputDelay="1000" ColumnResizeMode="Control" />
