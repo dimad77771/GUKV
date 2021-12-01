@@ -65,7 +65,7 @@
 		} else if (e.buttonID == 'btnOrgBalansObject') {
 			FreeSquareGridView.GetRowValues(e.visibleIndex, 'id;balans_id;report_id', OnClickOrgBalansObject);
         } else if (e.buttonID == 'btnCopyFullDescription') {
-			var cols = "include_in_perelik;zal_balans_vartist;perv_balans_vartist;free_object_type_name;prop_srok_orands;punkt_metod_rozrahunok;invest_solution;";
+			var cols = "zkpo_code;org_name;include_in_perelik;zal_balans_vartist;perv_balans_vartist;free_object_type_name;prop_srok_orands;punkt_metod_rozrahunok;invest_solution;";
 			cols += "zgoda_control;district;street_name;addr_nomer;total_free_sqr;free_sql_usefull;";
 			cols += "floor;condition;water;heating;gas;power_text;history;zgoda_renter;nomer_derzh_reestr_neruh;reenum_derzh_reestr_neruh;possible_using;info_rahunok_postach;priznach_before;period_nouse;osoba_use_before;id"
 			FreeSquareGridView.GetRowValues(e.visibleIndex, cols, OnCopyFullDescription);
@@ -73,7 +73,10 @@
     }
 
 	function OnCopyFullDescription(values) {
-        var headers = [
+		var headers = [
+			"Балансоутримувач (код ЄДРПОУ) - ",
+			"Балансоутримувач (повна назва) - ",
+
             "Включено до переліку № - ",
             "Залишкова балансова вартість, грн. – ",
             "Первісна балансова вартість, грн. - ",
