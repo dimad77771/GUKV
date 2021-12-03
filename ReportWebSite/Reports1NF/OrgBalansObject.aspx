@@ -893,6 +893,7 @@
       ,[primitki]
       ,[zalbalansvartist_date]
       ,[osoba_oznakoml]
+	  ,[rozmir_vidshkoduv]
       ,(select Q.form_of_ownership from view_reports1nf Q where Q.report_id = [reports1nf_balans_free_square].report_id) as form_of_ownership 
     FROM [reports1nf_balans_free_square] WHERE [balans_id] = @balans_id and [report_id] = @report_id and ([id] = @free_square_id or @free_square_id = -1)" 
     DeleteCommand="EXEC [delete_reports1nf_balans_free_square] @id" 
@@ -935,6 +936,7 @@
       ,[primitki]
       ,[zalbalansvartist_date]
       ,[osoba_oznakoml]
+	  ,[rozmir_vidshkoduv]
     ) 
     VALUES
     (@balans_id
@@ -975,6 +977,7 @@
       ,@primitki
       ,@zalbalansvartist_date
       ,@osoba_oznakoml
+	  ,@rozmir_vidshkoduv
     );
 SELECT SCOPE_IDENTITY()" 
     UpdateCommand="UPDATE [reports1nf_balans_free_square]
@@ -1017,6 +1020,7 @@ SET
         ,[primitki]  	  = @primitki     
         ,[zalbalansvartist_date]  	  = @zalbalansvartist_date     
         ,[osoba_oznakoml]  	  = @osoba_oznakoml     
+        ,[rozmir_vidshkoduv]  	  = @rozmir_vidshkoduv     
 WHERE id = @id" 
         oninserting="SqlDataSourceFreeSquare_Inserting" 
         onupdating="SqlDataSourceFreeSquare_Updating" ProviderName="System.Data.SqlClient">
@@ -1067,6 +1071,7 @@ WHERE id = @id"
         <asp:Parameter Name="primitki" />
         <asp:Parameter Name="zalbalansvartist_date" />
         <asp:Parameter Name="osoba_oznakoml" />
+        <asp:Parameter Name="rozmir_vidshkoduv" />
     </InsertParameters>
     <UpdateParameters>
         <asp:Parameter Name="balans_id" />
@@ -1107,6 +1112,7 @@ WHERE id = @id"
         <asp:Parameter Name="primitki" />
         <asp:Parameter Name="zalbalansvartist_date" />
         <asp:Parameter Name="osoba_oznakoml" />
+        <asp:Parameter Name="rozmir_vidshkoduv" />
         <asp:Parameter Name="id" />
     </UpdateParameters>
 </mini:ProfiledSqlDataSource>
@@ -2594,6 +2600,13 @@ WHERE id = @id"
                 <EditFormSettings Visible="True" />
                 <EditFormCaptionStyle Wrap="True"/>
             </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="rozmir_vidshkoduv" Caption="Розмір відшкодування земельного податку та інших" VisibleIndex="260" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
 
 
             <dx:GridViewDataTextColumn FieldName="form_of_ownership" Caption="-" VisibleIndex="10000" Width ="80px" Visible="false" >

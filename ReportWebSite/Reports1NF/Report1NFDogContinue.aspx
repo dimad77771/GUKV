@@ -347,6 +347,7 @@
 ,fs.polipshanya_finish_date
 ,fs.zalbalansvartist_date
 ,fs.osoba_oznakoml
+,fs.rozmir_vidshkoduv
 
 FROM view_reports1nf rep
 join reports1nf_arenda bal on bal.report_id = rep.report_id
@@ -939,6 +940,14 @@ WHERE id = @id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
+        <dx:GridViewDataTextColumn FieldName="rozmir_vidshkoduv" Caption="Розмір відшкодування земельного податку та інших" VisibleIndex="24" Width="100px"  >
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("rozmir_vidshkoduv") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+
         <dx:GridViewDataColumn FieldName="polipshanya_finish_date" Caption="Дата завершення здійснених чинним орендарем невід’ємних поліпшень" VisibleIndex="24" Width="80px" ReadOnly="true" CellStyle-HorizontalAlign="Center">
             <HeaderStyle Wrap="True" />
 			<EditItemTemplate>
@@ -1071,6 +1080,7 @@ WHERE id = @id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
+
 <%--        <dx:GridViewDataTextColumn FieldName="priznach_before" Caption="Цільове призначення об’єкта, за яким об’єкт використовувався перед тим, як він став вакантним" VisibleIndex="1310" Visible="false" Width="380px"  >
             <HeaderStyle Wrap="True" />
 			<EditItemTemplate>
@@ -1102,6 +1112,7 @@ WHERE id = @id"
 
 
 
+
     </Columns>
 
     <TotalSummary>
@@ -1124,7 +1135,7 @@ WHERE id = @id"
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFDogContinue" Version="A3_27" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFDogContinue" Version="A3_31" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

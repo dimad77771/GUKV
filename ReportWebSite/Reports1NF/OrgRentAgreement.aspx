@@ -1332,6 +1332,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
       ,[stanom_na]
       ,[zalbalansvartist_date]
       ,[osoba_oznakoml]
+      ,[rozmir_vidshkoduv]
     FROM [reports1nf_arenda_dogcontinue] WHERE [arenda_id] = @arenda_id and [report_id] = @report_id and ([id] = @free_square_id or @free_square_id = -1)" 
     DeleteCommand="EXEC [delete_reports1nf_arenda_dogcontinue] @id" 
     InsertCommand="INSERT INTO [reports1nf_arenda_dogcontinue]
@@ -1379,6 +1380,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
       ,[stanom_na]
       ,[zalbalansvartist_date]
       ,[osoba_oznakoml]
+      ,[rozmir_vidshkoduv]
     ) 
     VALUES
     (@arenda_id
@@ -1425,6 +1427,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
       ,@stanom_na
       ,@zalbalansvartist_date
       ,@osoba_oznakoml
+      ,@rozmir_vidshkoduv
     );
 SELECT SCOPE_IDENTITY()" 
     UpdateCommand="UPDATE [reports1nf_arenda_dogcontinue]
@@ -1473,6 +1476,7 @@ SET
         ,[stanom_na]  	  = @stanom_na
         ,[zalbalansvartist_date]  	  = @zalbalansvartist_date
         ,[osoba_oznakoml]  	  = @osoba_oznakoml
+        ,[rozmir_vidshkoduv]  	  = @rozmir_vidshkoduv
 WHERE id = @id" 
         oninserting="SqlDataSourceFreeSquare_Inserting" 
         onupdating="SqlDataSourceFreeSquare_Updating" ProviderName="System.Data.SqlClient">
@@ -1529,6 +1533,7 @@ WHERE id = @id"
         <asp:Parameter Name="stanom_na" />
         <asp:Parameter Name="zalbalansvartist_date" />
         <asp:Parameter Name="osoba_oznakoml" />
+        <asp:Parameter Name="rozmir_vidshkoduv" />
     </InsertParameters>
     <UpdateParameters>
         <asp:Parameter Name="arenda_id" />
@@ -1575,6 +1580,7 @@ WHERE id = @id"
         <asp:Parameter Name="stanom_na" />
         <asp:Parameter Name="zalbalansvartist_date" />
         <asp:Parameter Name="osoba_oznakoml" />
+        <asp:Parameter Name="rozmir_vidshkoduv" />
         <asp:Parameter Name="id" />
     </UpdateParameters>
 </mini:ProfiledSqlDataSource>
@@ -4158,6 +4164,11 @@ WHERE id = @id"
                 <EditFormCaptionStyle Wrap="True"/>
             </dx:GridViewDataTextColumn>
 
+            <dx:GridViewDataTextColumn FieldName="rozmir_vidshkoduv" Caption="Розмір відшкодування земельного податку та інших" VisibleIndex="360" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
 
 
 
