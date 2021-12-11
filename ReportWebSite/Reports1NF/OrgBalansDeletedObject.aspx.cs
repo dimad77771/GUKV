@@ -254,7 +254,27 @@ public partial class Reports1NF_OrgBalansDeletedObject : System.Web.UI.Page
         }
     }
 
-    protected void AddQueryParameter(ref string fieldList, string fieldName, string paramName,
+	bool DeleteObject(SqlConnection connection)
+	{
+		Dictionary<string, Control> controls = new Dictionary<string, Control>();
+		Reports1NFUtils.GetAllControls(DelObjectForm, controls);
+
+		var editVidchSquare = Reports1NFUtils.GetEditNumeric(controls, "EditVidchSquare");
+		if (Object.Equals(editVidchSquare, -1M))
+		{
+			using (SqlCommand cmd = new SqlCommand("DELETE reports1nf_balans_deleted WHERE report_id = @rid AND id = @bid", connection))
+			{
+				cmd.Parameters.Add(new SqlParameter("rid", ReportID));
+				cmd.Parameters.Add(new SqlParameter("bid", BalansObjectID));
+				cmd.ExecuteNonQuery();
+			}
+			return true;
+		}
+
+		return false;
+	}
+
+	protected void AddQueryParameter(ref string fieldList, string fieldName, string paramName,
         object value, Dictionary<string, object> parameters)
     {
         bool valueExists = false;
@@ -300,6 +320,8 @@ public partial class Reports1NF_OrgBalansDeletedObject : System.Web.UI.Page
 
             if (connection != null)
             {
+				if (DeleteObject(connection)) return;
+
                 SaveChanges(connection);
 
                 connection.Close();
@@ -315,8 +337,10 @@ public partial class Reports1NF_OrgBalansDeletedObject : System.Web.UI.Page
 
             if (connectionSql != null)
             {
-                // Save the form before sending it to DKV
-                SaveChanges(connectionSql);
+				if (DeleteObject(connectionSql)) return;
+
+				// Save the form before sending it to DKV
+				SaveChanges(connectionSql);
 
                 validator.ValidateDB(connectionSql, "reports1nf_balans_deleted", string.Format("report_id = {0} and id = {1}", ReportID, BalansObjectID), true);
                 if (validator.IsValid)
