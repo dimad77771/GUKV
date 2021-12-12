@@ -57,7 +57,7 @@
         CrosshairEnabled="False" ToolTipEnabled="true" RenderFormat="Svg">
 
         <Titles>
-            <dx:ChartTitle Text="???" Font="Tahoma, 14pt"></dx:ChartTitle>
+            <dx:ChartTitle Text="Заборгованість по орендній платі (по роках)" Font="Tahoma, 14pt"></dx:ChartTitle>
         </Titles>
 		
         <DiagramSerializable>

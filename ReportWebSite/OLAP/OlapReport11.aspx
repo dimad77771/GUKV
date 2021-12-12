@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OlapReport4.aspx.cs" Inherits="Assessment_AssessmentObjects" MasterPageFile="~/NoHeader.master" Title="Оцінка Об'єктів"%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OlapReport11.aspx.cs" Inherits="Assessment_AssessmentObjects" MasterPageFile="~/NoHeader.master" Title="Оцінка Об'єктів"%>
 
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
@@ -52,24 +52,26 @@
 <table>
 	<tr>
 		<td>
-<dx:WebChartControl ID="WebChartControl1" runat="server" Height="800px"
-        Width="1800px" ClientInstanceName="chart"
+<dx:WebChartControl ID="WebChartControl1" runat="server" Height="400px"
+        Width="700px" ClientInstanceName="chart"
         CrosshairEnabled="False" ToolTipEnabled="true" RenderFormat="Svg">
 
         <Titles>
-            <dx:ChartTitle Text="Кількість об'єктів на балансі (за сферами діяльності)" Font="Tahoma, 14pt"></dx:ChartTitle>
+            <dx:ChartTitle Text="Загальна площа що знаходиться на балансі кв.м." Font="Tahoma, 14pt"></dx:ChartTitle>
         </Titles>
-		<Legend AlignmentHorizontal="Right" MarkerMode="CheckBox"/>
-        <DiagramSerializable>
+		<DiagramSerializable>
             <dx:XYDiagram>
                 <AxisX VisibleInPanesSerializable="-1">
                 </AxisX>
-                <AxisY Title-Text="кількість об'єктів" Title-Visibility="True" VisibleInPanesSerializable="-1" Interlaced="True">
+                <AxisY Title-Text="кв.м." Title-Visibility="True" VisibleInPanesSerializable="-1" Interlaced="True">
                     <NumericScaleOptions AutoGrid="False" GridSpacing="1"/>
                 </AxisY>
             </dx:XYDiagram>
         </DiagramSerializable>
     </dx:WebChartControl>
+
+			<br />
+			<div>(*) Без врахування земельних ділянок, що знаходиться на балансі КП «Плесо»</div>
 
 		</td>
 

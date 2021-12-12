@@ -57,7 +57,7 @@
         CrosshairEnabled="False" ToolTipEnabled="true" RenderFormat="Svg">
 
         <Titles>
-            <dx:ChartTitle Text="DevAV Sales Mix by Region" Font="Tahoma, 14pt"></dx:ChartTitle>
+            <dx:ChartTitle Text="Використання площ териториальної громади (у відсотках)" Font="Tahoma, 14pt"></dx:ChartTitle>
         </Titles>
         <DiagramSerializable>
             <dx:XYDiagram>

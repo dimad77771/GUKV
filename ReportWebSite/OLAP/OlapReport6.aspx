@@ -57,7 +57,7 @@
         CrosshairEnabled="False" ToolTipEnabled="true" RenderFormat="Svg">
 
         <Titles>
-            <dx:ChartTitle Text="???" Font="Tahoma, 14pt"></dx:ChartTitle>
+            <dx:ChartTitle Text="Перерахування коштів до бюджету від оренди (по роках)" Font="Tahoma, 14pt"></dx:ChartTitle>
         </Titles>
 		
 		<DiagramSerializable>

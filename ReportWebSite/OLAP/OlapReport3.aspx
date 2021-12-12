@@ -57,7 +57,7 @@
         CrosshairEnabled="False" ToolTipEnabled="true" RenderFormat="Svg">
 
         <Titles>
-            <dx:ChartTitle Text="Загальна площа що знаходиться на балансі" Font="Tahoma, 14pt"></dx:ChartTitle>
+            <dx:ChartTitle Text="Площа що знаходиться на балансі (за сферами діяльності)" Font="Tahoma, 14pt"></dx:ChartTitle>
         </Titles>
 		<Legend AlignmentHorizontal="Right" MarkerMode="CheckBox"/>
         <DiagramSerializable>

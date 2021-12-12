@@ -294,12 +294,46 @@
 											</Groups>
 										</dx:RibbonTab>
 
-										<dx:RibbonTab Text="Фін. Аналіз" >
+										<dx:RibbonTab Text="Динаміка процесів" >
 											<Groups>
-												<dx:RibbonGroup Text="">
+												<%--<dx:RibbonGroup Text="">
 													<Items>
 														<dx:RibbonButtonItem Text="Показники підприємств" NavigateUrl="Finance/FinanceView.aspx">
 															<SmallImage Url="Styles/ribbonicon_23.png"/>
+														</dx:RibbonButtonItem>
+													</Items>
+												</dx:RibbonGroup>--%>
+												<dx:RibbonGroup Text="">
+													<Items>
+														<dx:RibbonButtonItem Text="Використання площ териториальної громади (у відсотках)" NavigateUrl="OLAP/OlapReport2.aspx">
+															<SmallImage Url="Styles/ribbonicon_25.png"/>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Площа що знаходиться на балансі (за сферами діяльності)" NavigateUrl="OLAP/OlapReport3.aspx">
+															<SmallImage Url="Styles/ribbonicon_25.png"/>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Кількість об'єктів на балансі (за сферами діяльності)" NavigateUrl="OLAP/OlapReport4.aspx">
+															<SmallImage Url="Styles/ribbonicon_25.png"/>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Надходження орендної плати у звітних періодах (по роках)" NavigateUrl="OLAP/OlapReport5.aspx">
+															<SmallImage Url="Styles/ribbonicon_25.png"/>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Перерахування коштів до бюджету від оренди (по роках)" NavigateUrl="OLAP/OlapReport6.aspx">
+															<SmallImage Url="Styles/ribbonicon_25.png"/>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Заборгованість по орендній платі (по роках)" NavigateUrl="OLAP/OlapReport7.aspx">
+															<SmallImage Url="Styles/ribbonicon_25.png"/>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Заборгованість зі сплати % до бюджету від оренди майна (по роках)" NavigateUrl="OLAP/OlapReport8.aspx">
+															<SmallImage Url="Styles/ribbonicon_25.png"/>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Заборгованість по орендній платі ( 10 найбільших боржників , по роках)" NavigateUrl="OLAP/OlapReport9.aspx">
+															<SmallImage Url="Styles/ribbonicon_25.png"/>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Кількість об'єктів на балансі" NavigateUrl="OLAP/OlapReport10.aspx">
+															<SmallImage Url="Styles/ribbonicon_25.png"/>
+														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Загальна площа що знаходиться на балансі кв.м." NavigateUrl="OLAP/OlapReport11.aspx">
+															<SmallImage Url="Styles/ribbonicon_25.png"/>
 														</dx:RibbonButtonItem>
 													</Items>
 												</dx:RibbonGroup>

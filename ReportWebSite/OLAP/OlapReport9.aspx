@@ -57,7 +57,7 @@
         CrosshairEnabled="False" ToolTipEnabled="true" RenderFormat="Svg">
 
         <Titles>
-            <dx:ChartTitle Text="2020" Font="Tahoma, 14pt"></dx:ChartTitle>
+            <dx:ChartTitle Text="Заборгованість по орендній платі (10 найбільших боржників) за 2020 рік" Font="Tahoma, 14pt"></dx:ChartTitle>
         </Titles>
 		
         <DiagramSerializable>
@@ -90,7 +90,7 @@
         CrosshairEnabled="False" ToolTipEnabled="true" RenderFormat="Svg">
 
         <Titles>
-            <dx:ChartTitle Text="2019" Font="Tahoma, 14pt"></dx:ChartTitle>
+            <dx:ChartTitle Text="Заборгованість по орендній платі (10 найбільших боржників) за 2019 рік" Font="Tahoma, 14pt"></dx:ChartTitle>
         </Titles>
 		
         <DiagramSerializable>
@@ -123,7 +123,7 @@
         CrosshairEnabled="False" ToolTipEnabled="true" RenderFormat="Svg">
 
         <Titles>
-            <dx:ChartTitle Text="2018" Font="Tahoma, 14pt"></dx:ChartTitle>
+            <dx:ChartTitle Text="Заборгованість по орендній платі (10 найбільших боржників) за 2018 рік" Font="Tahoma, 14pt"></dx:ChartTitle>
         </Titles>
 		
         <DiagramSerializable>
@@ -156,7 +156,7 @@
         CrosshairEnabled="False" ToolTipEnabled="true" RenderFormat="Svg">
 
         <Titles>
-            <dx:ChartTitle Text="2017" Font="Tahoma, 14pt"></dx:ChartTitle>
+            <dx:ChartTitle Text="Заборгованість по орендній платі (10 найбільших боржників) за 2017 рік" Font="Tahoma, 14pt"></dx:ChartTitle>
         </Titles>
 		
         <DiagramSerializable>
