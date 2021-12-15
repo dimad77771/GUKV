@@ -17,6 +17,10 @@ public partial class Account_Login : System.Web.UI.Page
 		//var password = user.ResetPassword();
 		//user.ChangePassword(password, "fq,jkbn66+++");
 
+		//var user = Membership.GetUser("А.Г.Кузьменко");
+		//var password = user.ResetPassword();
+		//user.ChangePassword(password, "fq,jkbn66+++");
+
 		//var user = Membership.GetUser("О.Синенко");
 		//var password = user.ResetPassword();
 		//user.ChangePassword(password, "fq,jkbn66+++");

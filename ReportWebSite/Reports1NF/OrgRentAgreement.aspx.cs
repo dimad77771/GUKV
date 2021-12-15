@@ -272,10 +272,11 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         ButtonAddDecision.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
 		//!!!! ButtonAddSublease.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
 		ButtonAddNote.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
+		ButtonCopyCard.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
 
-        //BtnRecalcPaymentDocument.Visible = reportBelongsToUser && userIsReportSubmitter;
+		//BtnRecalcPaymentDocument.Visible = reportBelongsToUser && userIsReportSubmitter;
 
-        IsReadOnlyForm = !(reportBelongsToUser && userIsReportSubmitter);
+		IsReadOnlyForm = !(reportBelongsToUser && userIsReportSubmitter);
 
         // Enable or disable 'special payments' field
         /*
