@@ -205,6 +205,8 @@
             VisibleIndex="13" Visible="False" Caption="Дата редагування"></dx:GridViewDataDateColumn>
         <dx:GridViewDataTextColumn FieldName="modified_by" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="14" Visible="False" Caption="Ким змінено"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="building_id" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="15" Visible="False" Caption="ID"></dx:GridViewDataTextColumn>
     </Columns>
 
     <GroupSummary>
@@ -232,7 +234,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Catalogue.Buildings" Version="A2" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Catalogue.Buildings" Version="A3" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
