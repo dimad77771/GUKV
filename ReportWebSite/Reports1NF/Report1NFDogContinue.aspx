@@ -67,7 +67,7 @@
             cols += "include_in_perelik;zal_balans_vartist;perv_balans_vartist;free_object_type_name;prop_srok_orands;punkt_metod_rozrahunok;invest_solution;";
 			cols += "zgoda_control;district;street_name;addr_nomer;total_free_sqr;free_sql_usefull;";
 			cols += "floor;condition;water;heating;gas;power_text;history;zgoda_renter;nomer_derzh_reestr_neruh;reenum_derzh_reestr_neruh;possible_using;info_rahunok_postach;orend_plat_last_month;orend_plat_borg;stanom_na;";
-			cols += "has_perevazh_pravo;polipshanya_vartist;polipshanya_finish_date;id";
+			cols += "has_perevazh_pravo;polipshanya_vartist;polipshanya_finish_date;primitki;id";
 			FreeSquareGridView.GetRowValues(e.visibleIndex, cols, OnCopyFullDescription);
 		}
     }
@@ -121,6 +121,7 @@
 			"Має переважне право на продовження – ",
 			"Вартість здійснених чинним орендарем невід’ємних поліпшень – ",
 			"Дата завершення здійснених чинним орендарем невід’ємних поліпшень – ",
+			"Примітки – ",
         ];
 
 		console.log("values", values);
@@ -345,6 +346,7 @@
 ,fs.has_perevazh_pravo
 ,fs.polipshanya_vartist
 ,fs.polipshanya_finish_date
+,fs.primitki
 ,fs.zalbalansvartist_date
 ,fs.osoba_oznakoml
 ,fs.rozmir_vidshkoduv
@@ -955,6 +957,13 @@ WHERE id = @id"
 			</EditItemTemplate>
         </dx:GridViewDataColumn>
 
+		<dx:GridViewDataTextColumn FieldName="primitki" Caption="Примітки" VisibleIndex="24" Width="120px" ReadOnly="true" >
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("primitki") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
 
         <dx:GridViewDataTextColumn FieldName="prozoro_number" Caption="Унікальний код обєкту у ЕТС Прозорро-продажі" VisibleIndex="24" Width="150px">
             <DataItemTemplate>
@@ -1135,7 +1144,7 @@ WHERE id = @id"
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFDogContinue" Version="A3_31" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFDogContinue" Version="A3_32" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

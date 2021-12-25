@@ -2876,7 +2876,7 @@ WHERE id = @id"
                                     <TotalSummary>
                                         <dx:ASPxSummaryItem FieldName="rent_square" SummaryType="Sum" DisplayFormat="{0}" />
                                         <dx:ASPxSummaryItem FieldName="cost_expert_total" SummaryType="Sum" DisplayFormat="{0}" />
-                                        <dx:ASPxSummaryItem FieldName="rent_rate" SummaryType="Sum" DisplayFormat="{0}" />
+                                        <%--<dx:ASPxSummaryItem FieldName="rent_rate" SummaryType="Sum" DisplayFormat="{0}" />--%>
                                         <dx:ASPxSummaryItem FieldName="cost_agreement" SummaryType="Sum" DisplayFormat="{0}" />
 										<dx:ASPxSummaryItem FieldName="zapezh_deposit" SummaryType="Sum" DisplayFormat="{0}" />
                                     </TotalSummary>
