@@ -1065,12 +1065,12 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourcePaymentType" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT id, name FROM dict_arenda_payment_type WHERE id IN (11, 8, 3, 7, 10) ORDER BY name">
+    SelectCommand="SELECT id, name FROM dict_arenda_payment_type WHERE id IN (11, 8, 3, 7) ORDER BY name">
 </mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDocKind" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT id, name FROM dict_1nf_doc_kind ORDER BY name">
+    SelectCommand="SELECT id, name FROM dict_1nf_doc_kind ORDER BY case when name = 'НАКАЗ ДКВ' then 1 else 2 end, name">
 </mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourcePurpose" runat="server" 

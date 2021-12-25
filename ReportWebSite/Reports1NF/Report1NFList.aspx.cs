@@ -86,9 +86,14 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 			LabelReportTitle1.Text = @"Інші суб'єкти використання";
 			this.Title = LabelReportTitle1.Text;
 		}
-		else
+		else if (SMode == 1)
 		{
 			LabelReportTitle1.Text = @"Перелік балансоутримувачів";
+			this.Title = LabelReportTitle1.Text;
+		}
+		else if (SMode == 0)
+		{
+			LabelReportTitle1.Text = @"Реєстр користувачів майна";
 			this.Title = LabelReportTitle1.Text;
 		}
 
@@ -181,7 +186,7 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 	{
 		get
 		{
-			return Request.QueryString["smode"] == null ? 1 : Int32.Parse(Request.QueryString["smode"]);
+			return Request.QueryString["smode"] == null ? 0 : Int32.Parse(Request.QueryString["smode"]);
 		}
 	}
 

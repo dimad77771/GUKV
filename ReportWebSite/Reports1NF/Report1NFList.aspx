@@ -321,7 +321,7 @@ join dict_rent_occupation occ on occ.id = obp.org_occupation_id
                 AND
             (@p_misto_id = 0 OR rep.old_organ_id = @p_misto_id)
 				AND
-			(@smode = 1 and obj.NumOfObj > 0 OR @smode = 2 and isnull(obj.NumOfObj,0) <= 0)"
+			( (@smode = 0) OR (@smode = 1 and obj.NumOfObj > 0) OR (@smode = 2 and isnull(obj.NumOfObj,0) <= 0) )"
     OnSelecting="SqlDataSourceReports_Selecting"
 
 UpdateCommand="UPDATE [reports1nf]

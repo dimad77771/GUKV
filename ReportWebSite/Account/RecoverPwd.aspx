@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="RecoverPwd.aspx.cs" Inherits="Account_RecoverPwd" MasterPageFile="~/Site.master" Title="Відновлення паролю" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="RecoverPwd.aspx.cs" Inherits="Account_RecoverPwd" MasterPageFile="~/NoHeader.master" Title="Відновлення паролю" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>

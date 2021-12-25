@@ -155,7 +155,7 @@
 <mini:ProfiledSqlDataSource ID="SqlDataSourceProjectTypes" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT id, name FROM dict_doc_kind d
-        INNER JOIN rozp_doc_kinds r ON d.id = r.kind_id">
+        INNER JOIN rozp_doc_kinds r ON d.id = r.kind_id order by case when name = 'НАКАЗ ДКВ' then 1 else 2 end, name">
 </mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="ProfiledSqlDataSource1" runat="server" 
