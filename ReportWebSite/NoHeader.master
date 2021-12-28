@@ -218,6 +218,11 @@
 															<SmallImage Url="Styles/ribbonicon_18.png"/>
 														</dx:RibbonButtonItem>
 													</Items>
+													<Items>
+														<dx:RibbonButtonItem Text="Судовий реєстр" NavigateUrl="Reports1NF/YurdepInfo.aspx">
+															<SmallImage Url="Styles/ribbonicon_5.png"/>
+														</dx:RibbonButtonItem>
+													</Items>
 												</dx:RibbonGroup>
 											</Groups>
 										</dx:RibbonTab>
