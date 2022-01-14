@@ -824,7 +824,7 @@ WHERE id = @report_id"
 
     <%-- !!!!!! --%>
 
-        <dx:GridViewDataTextColumn Caption="Авансова орендна плата / Забезпечувальний депозит (нараховано), грн." FieldName="PAY_AVANCE_PLAT" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+        <dx:GridViewDataTextColumn Caption="Авансова орендна плата, грн." FieldName="PAY_AVANCE_PLAT" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_AVANCE_PLAT") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
