@@ -5,18 +5,17 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DevExpress.Web;
-using DevExpress.Web;
 using System.Web.Security;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Data;
 using GUKV.Conveyancing;
-using DevExpress.Web;
 using FirebirdSql.Data.FirebirdClient;
 using log4net;
-using DevExpress.Web;
 using System.Web.Configuration;
 using GUKV.Common;
+using ExtDataEntry.Models;
+using System.IO;
 
 public partial class Reports1NF_TransferRequestAdd : System.Web.UI.Page
 {
@@ -87,10 +86,9 @@ public partial class Reports1NF_TransferRequestAdd : System.Web.UI.Page
 
         if (orgIdForConfirm != userOrgId)
             ASPxPanelApplyButtons.Visible = false;
+	}
 
-    }
-
-    /*
+	/*
     protected void FillObjectInfo()
     {
         SqlConnection connectionSql = Utils.ConnectToDatabase();
@@ -134,7 +132,7 @@ public partial class Reports1NF_TransferRequestAdd : System.Web.UI.Page
 
     }*/
 
-    protected void CPCreateRozpDoc_Callback(object sender, CallbackEventArgsBase e)
+	protected void CPCreateRozpDoc_Callback(object sender, CallbackEventArgsBase e)
     {
         try
         {
@@ -633,9 +631,12 @@ public partial class Reports1NF_TransferRequestAdd : System.Web.UI.Page
                     }
 
                     requestId = Convert.ToInt32(cmdInsert.ExecuteScalar());
-                }
+					SavePhotoChanges(requestId, connectionSql, transaction);
+				}
 
-                transaction.Commit();
+				
+
+				transaction.Commit();
 
                 SendBalansTransferNotifications(requestId);
             }
@@ -875,9 +876,28 @@ public partial class Reports1NF_TransferRequestAdd : System.Web.UI.Page
     protected void ConveyancingForm_OnItemCreated(object sender, EventArgs e)
     {
         log.Info("ConveyancingForm_OnItemCreated");
-    }
 
-    protected void CreateRozpDoc(int requestId)
+		//var gg = ConveyancingType;
+		//var gg2 = ASPxLabel19;
+
+		var cardPageControl = ((ASPxPageControl)Utils.FindControlRecursive(ConveyancingForm, "CardPageControl"));
+		if (cardPageControl != null)
+		{
+			var tabnum = cardPageControl.TabPages.IndexOfName("TabPhotos");
+			if (tabnum >= 0)
+			{
+				var tabPhotos = cardPageControl.TabPages[tabnum];
+				tabPhotos.Visible = (ConveyancingType.Value == "5");
+			}
+
+			imageGalleryDemo = ((ASPxImageGallery)Utils.FindControlRecursive(ConveyancingForm, "imageGalleryDemo"));
+
+			PrepareTempPhotoFolder();
+		}
+
+	}
+
+	protected void CreateRozpDoc(int requestId)
     {
         SqlConnection connection = Utils.ConnectToDatabase();
         if (connection != null)
@@ -1180,379 +1200,596 @@ public partial class Reports1NF_TransferRequestAdd : System.Web.UI.Page
         DevExpress.Web.ASPxWebControl.RedirectOnCallback("ConveyancingRequestsList.aspx");
     }
 
-//    protected void CommitBalansObjectChanges(int requestId, bool notifyByEmail)
-//    {
-//        SqlConnection connectionSql = Utils.ConnectToDatabase();
+	//    protected void CommitBalansObjectChanges(int requestId, bool notifyByEmail)
+	//    {
+	//        SqlConnection connectionSql = Utils.ConnectToDatabase();
 
-//        if (connectionSql != null)
-//        {
-//            SqlTransaction transactionSql = connectionSql.BeginTransaction();
-//            try
-//            {
-//                string query = @"SELECT req.*, doc.doc_num rozp_doc_num, doc.doc_date rozp_doc_date, doc.topic rozp_doc_name,ub.form_ownership_id,
-//                                CASE WHEN is_object_exists = 1 THEN bal.sqr_total ELSE ub.sqr_total END AS sqr_total, 
-//                                CASE WHEN is_object_exists = 1 THEN bal.building_id ELSE ub.building_id END AS building_id,
-//                                CASE WHEN is_object_exists = 1 THEN bal.purpose_group_id ELSE ub.purpose_group_id END AS purpose_group_id,
-//                                CASE WHEN is_object_exists = 1 THEN bal.purpose_id ELSE ub.purpose_id END AS purpose_id,
-//                                CASE WHEN is_object_exists = 1 THEN bal.object_type_id ELSE ub.object_type_id END AS object_type_id,
-//                                CASE WHEN is_object_exists = 1 THEN bal.object_kind_id ELSE ub.object_kind_id END AS object_kind_id
-//                                FROM transfer_requests req 
-//                                LEFT JOIN unverified_balans ub ON req.balans_id = ub.id
-//                                LEFT JOIN balans bal ON req.balans_id = bal.id
-//                                LEFT JOIN documents doc ON req.rishrozp_doc_id = doc.id
-//                                WHERE request_id = @request_id";
+	//        if (connectionSql != null)
+	//        {
+	//            SqlTransaction transactionSql = connectionSql.BeginTransaction();
+	//            try
+	//            {
+	//                string query = @"SELECT req.*, doc.doc_num rozp_doc_num, doc.doc_date rozp_doc_date, doc.topic rozp_doc_name,ub.form_ownership_id,
+	//                                CASE WHEN is_object_exists = 1 THEN bal.sqr_total ELSE ub.sqr_total END AS sqr_total, 
+	//                                CASE WHEN is_object_exists = 1 THEN bal.building_id ELSE ub.building_id END AS building_id,
+	//                                CASE WHEN is_object_exists = 1 THEN bal.purpose_group_id ELSE ub.purpose_group_id END AS purpose_group_id,
+	//                                CASE WHEN is_object_exists = 1 THEN bal.purpose_id ELSE ub.purpose_id END AS purpose_id,
+	//                                CASE WHEN is_object_exists = 1 THEN bal.object_type_id ELSE ub.object_type_id END AS object_type_id,
+	//                                CASE WHEN is_object_exists = 1 THEN bal.object_kind_id ELSE ub.object_kind_id END AS object_kind_id
+	//                                FROM transfer_requests req 
+	//                                LEFT JOIN unverified_balans ub ON req.balans_id = ub.id
+	//                                LEFT JOIN balans bal ON req.balans_id = bal.id
+	//                                LEFT JOIN documents doc ON req.rishrozp_doc_id = doc.id
+	//                                WHERE request_id = @request_id";
 
-//                using (SqlCommand cmd = new SqlCommand(query, connectionSql, transactionSql))
-//                {
-//                    cmd.Parameters.Add(new SqlParameter("request_id", requestId));
+	//                using (SqlCommand cmd = new SqlCommand(query, connectionSql, transactionSql))
+	//                {
+	//                    cmd.Parameters.Add(new SqlParameter("request_id", requestId));
 
-//                    using (SqlDataReader reader = cmd.ExecuteReader())
-//                    {
-//                        if (reader.Read())
-//                        {
-//                            int conveyancing_type = (int)reader["conveyancing_type"];
+	//                    using (SqlDataReader reader = cmd.ExecuteReader())
+	//                    {
+	//                        if (reader.Read())
+	//                        {
+	//                            int conveyancing_type = (int)reader["conveyancing_type"];
 
-//                            var balans_id = (int)reader["balans_id"];
-//                            var building_id = (int)reader["building_id"];
-//                            var is_object_exists = (bool)reader["is_object_exists"];
-//                            var org_to_id = reader["org_to_id"] is int ? (int)reader["org_to_id"] : -1;
-//                            var org_from_id = reader["org_from_id"] is int ? (int)reader["org_from_id"] : -1;
-//                            var conveyancing_area = (decimal)reader["conveyancing_area"];
-//                            var sqr_total = (decimal)reader["sqr_total"];
-//                            var new_akt_num = (string)reader["new_akt_num"];
-//                            var new_akt_date = (DateTime)reader["new_akt_date"];
-//                            var new_akt_summa = (decimal)reader["new_akt_summa"];
-//                            var new_akt_summa_zalishkova = (decimal)reader["new_akt_summa_zalishkova"];
-//                            var rozp_doc_num = (string)reader["rozp_doc_num"];
-//                            var rozp_doc_date = (DateTime)reader["rozp_doc_date"];
-//                            var rishrozp_doc_id = (int)reader["rishrozp_doc_id"];
-//                            var rish_doc_kind_id = (int)reader["rish_doc_kind_id"];
-//                            var ownership_type_id = reader["obj_right_id"] is int ? (int)reader["obj_right_id"] : -1;
-//                            var form_ownership_id = reader["form_ownership_id"] is int ? (int)reader["form_ownership_id"] : -1;
-//                            var purpose_group_id = reader["purpose_group_id"] is int ? (int)reader["purpose_group_id"] : -1;
-//                            var purpose_id = reader["purpose_id"] is int ? (int)reader["purpose_id"] : -1;
-//                            var object_type_id = reader["object_type_id"] is int ? (int)reader["object_type_id"] : -1;
-//                            var object_kind_id = reader["object_kind_id"] is int ? (int)reader["object_kind_id"] : -1;
+	//                            var balans_id = (int)reader["balans_id"];
+	//                            var building_id = (int)reader["building_id"];
+	//                            var is_object_exists = (bool)reader["is_object_exists"];
+	//                            var org_to_id = reader["org_to_id"] is int ? (int)reader["org_to_id"] : -1;
+	//                            var org_from_id = reader["org_from_id"] is int ? (int)reader["org_from_id"] : -1;
+	//                            var conveyancing_area = (decimal)reader["conveyancing_area"];
+	//                            var sqr_total = (decimal)reader["sqr_total"];
+	//                            var new_akt_num = (string)reader["new_akt_num"];
+	//                            var new_akt_date = (DateTime)reader["new_akt_date"];
+	//                            var new_akt_summa = (decimal)reader["new_akt_summa"];
+	//                            var new_akt_summa_zalishkova = (decimal)reader["new_akt_summa_zalishkova"];
+	//                            var rozp_doc_num = (string)reader["rozp_doc_num"];
+	//                            var rozp_doc_date = (DateTime)reader["rozp_doc_date"];
+	//                            var rishrozp_doc_id = (int)reader["rishrozp_doc_id"];
+	//                            var rish_doc_kind_id = (int)reader["rish_doc_kind_id"];
+	//                            var ownership_type_id = reader["obj_right_id"] is int ? (int)reader["obj_right_id"] : -1;
+	//                            var form_ownership_id = reader["form_ownership_id"] is int ? (int)reader["form_ownership_id"] : -1;
+	//                            var purpose_group_id = reader["purpose_group_id"] is int ? (int)reader["purpose_group_id"] : -1;
+	//                            var purpose_id = reader["purpose_id"] is int ? (int)reader["purpose_id"] : -1;
+	//                            var object_type_id = reader["object_type_id"] is int ? (int)reader["object_type_id"] : -1;
+	//                            var object_kind_id = reader["object_kind_id"] is int ? (int)reader["object_kind_id"] : -1;
 
-//                            reader.Close();
+	//                            reader.Close();
 
-//                            if (conveyancing_type == 1 || conveyancing_type == 2) // Прийняти об'єкт на баланс / Передати об'єкт з балансу
-//                            {
-//                                var balansTransfer = new BalansTransfer();
-//                                balansTransfer.transferType = ObjectTransferType.Transfer;
-//                                balansTransfer.objectId = building_id;
-//                                balansTransfer.sqr = conveyancing_area;
-//                                balansTransfer.organizationFromId = org_from_id;
-//                                balansTransfer.organizationToId = org_to_id;
-//                                balansTransfer.balansId = balans_id;
+	//                            if (conveyancing_type == 1 || conveyancing_type == 2) // Прийняти об'єкт на баланс / Передати об'єкт з балансу
+	//                            {
+	//                                var balansTransfer = new BalansTransfer();
+	//                                balansTransfer.transferType = ObjectTransferType.Transfer;
+	//                                balansTransfer.objectId = building_id;
+	//                                balansTransfer.sqr = conveyancing_area;
+	//                                balansTransfer.organizationFromId = org_from_id;
+	//                                balansTransfer.organizationToId = org_to_id;
+	//                                balansTransfer.balansId = balans_id;
 
-//                                var actObject = new ActObject();
-//                                actObject.makeChangesIn1NF = true;
-//                                //actObject.objectId = 22930; // FAKE!!!
-//                                actObject.balansTransfers.Add(balansTransfer);
+	//                                var actObject = new ActObject();
+	//                                actObject.makeChangesIn1NF = true;
+	//                                //actObject.objectId = 22930; // FAKE!!!
+	//                                actObject.balansTransfers.Add(balansTransfer);
 
-//                                var importedAct = new ImportedAct();
-//                                importedAct.docTitle = "АКТ ПРИЙМАННЯ-ПЕРЕДАВАННЯ";
-//                                importedAct.docDate = new_akt_date;
-//                                importedAct.docNum = new_akt_num;
-//                                importedAct.docSum = new_akt_summa;
-//                                importedAct.docFinalSum = new_akt_summa_zalishkova;
-//                                importedAct.masterDocDate = rozp_doc_date;
-//                                importedAct.masterDocNum = rozp_doc_num;
-//                                importedAct.actObjects.Add(actObject);
+	//                                var importedAct = new ImportedAct();
+	//                                importedAct.docTitle = "АКТ ПРИЙМАННЯ-ПЕРЕДАВАННЯ";
+	//                                importedAct.docDate = new_akt_date;
+	//                                importedAct.docNum = new_akt_num;
+	//                                importedAct.docSum = new_akt_summa;
+	//                                importedAct.docFinalSum = new_akt_summa_zalishkova;
+	//                                importedAct.masterDocDate = rozp_doc_date;
+	//                                importedAct.masterDocNum = rozp_doc_num;
+	//                                importedAct.actObjects.Add(actObject);
 
-//                                var rish = new Document();
-//                                rish.documentKind = rish_doc_kind_id;
-//                                rish.documentDate = DateTime.Now;
-//                                rish.documentNumber = rozp_doc_num;
-//                                rish.documentDate = rozp_doc_date;
-//                                rish.modify_by = User.Identity.Name;
-//                                rish.ownership_type_id = ownership_type_id;
+	//                                var rish = new Document();
+	//                                rish.documentKind = rish_doc_kind_id;
+	//                                rish.documentDate = DateTime.Now;
+	//                                rish.documentNumber = rozp_doc_num;
+	//                                rish.documentDate = rozp_doc_date;
+	//                                rish.modify_by = User.Identity.Name;
+	//                                rish.ownership_type_id = ownership_type_id;
 
-//                                if (GUKV.Conveyancing.DB.ExportAct(importedAct, rish))
-//                                {
-//                                    if (GUKV.Conveyancing.DB.TransferBalansObjects(connectionSql, transactionSql, importedAct, rish, notifyByEmail, 3))
-//                                    {
-//                                        foreach (ActObject act in importedAct.actObjects)
-//                                        {
-//                                            foreach (BalansTransfer bt in act.balansTransfers)
-//                                            {
-//                                                CreateAktNew(connectionSql, transactionSql, bt.balansId, bt.objectId, importedAct.docDate, importedAct.docNum, importedAct.docSum, importedAct.docFinalSum, rishrozp_doc_id);
-//                                            }
-//                                        }
-//                                    }
-//                                }
-//                            }
-//                            else if (conveyancing_type == 3 || conveyancing_type == 4) // Списати об'єкту з балансу шляхом зносу / Списати об'єкту з балансу шляхом приватизації
-//                            {
-//                                var balansTransfer = new BalansTransfer();
-//                                balansTransfer.transferType = ObjectTransferType.Destroy;
-//                                balansTransfer.objectId = building_id;
-//                                balansTransfer.sqr = conveyancing_area;
-//                                balansTransfer.organizationFromId = org_from_id;
-//                                balansTransfer.organizationToId = org_to_id;
-//                                balansTransfer.balansId = balans_id;
+	//                                if (GUKV.Conveyancing.DB.ExportAct(importedAct, rish))
+	//                                {
+	//                                    if (GUKV.Conveyancing.DB.TransferBalansObjects(connectionSql, transactionSql, importedAct, rish, notifyByEmail, 3))
+	//                                    {
+	//                                        foreach (ActObject act in importedAct.actObjects)
+	//                                        {
+	//                                            foreach (BalansTransfer bt in act.balansTransfers)
+	//                                            {
+	//                                                CreateAktNew(connectionSql, transactionSql, bt.balansId, bt.objectId, importedAct.docDate, importedAct.docNum, importedAct.docSum, importedAct.docFinalSum, rishrozp_doc_id);
+	//                                            }
+	//                                        }
+	//                                    }
+	//                                }
+	//                            }
+	//                            else if (conveyancing_type == 3 || conveyancing_type == 4) // Списати об'єкту з балансу шляхом зносу / Списати об'єкту з балансу шляхом приватизації
+	//                            {
+	//                                var balansTransfer = new BalansTransfer();
+	//                                balansTransfer.transferType = ObjectTransferType.Destroy;
+	//                                balansTransfer.objectId = building_id;
+	//                                balansTransfer.sqr = conveyancing_area;
+	//                                balansTransfer.organizationFromId = org_from_id;
+	//                                balansTransfer.organizationToId = org_to_id;
+	//                                balansTransfer.balansId = balans_id;
 
-//                                var actObject = new ActObject();
-//                                actObject.makeChangesIn1NF = true;
-//                                //actObject.objectId = 22930; // FAKE!!!
-//                                actObject.balansTransfers.Add(balansTransfer);
+	//                                var actObject = new ActObject();
+	//                                actObject.makeChangesIn1NF = true;
+	//                                //actObject.objectId = 22930; // FAKE!!!
+	//                                actObject.balansTransfers.Add(balansTransfer);
 
-//                                var importedAct = new ImportedAct();
-//                                importedAct.docTitle = "АКТ ПРИЙМАННЯ-ПЕРЕДАВАННЯ";
-//                                importedAct.docDate = new_akt_date;
-//                                importedAct.docNum = new_akt_num;
-//                                importedAct.docSum = new_akt_summa;
-//                                importedAct.docFinalSum = new_akt_summa_zalishkova;
-//                                importedAct.masterDocDate = rozp_doc_date;
-//                                importedAct.masterDocNum = rozp_doc_num;
-//                                importedAct.actObjects.Add(actObject);
+	//                                var importedAct = new ImportedAct();
+	//                                importedAct.docTitle = "АКТ ПРИЙМАННЯ-ПЕРЕДАВАННЯ";
+	//                                importedAct.docDate = new_akt_date;
+	//                                importedAct.docNum = new_akt_num;
+	//                                importedAct.docSum = new_akt_summa;
+	//                                importedAct.docFinalSum = new_akt_summa_zalishkova;
+	//                                importedAct.masterDocDate = rozp_doc_date;
+	//                                importedAct.masterDocNum = rozp_doc_num;
+	//                                importedAct.actObjects.Add(actObject);
 
-//                                var rish = new Document();
-//                                rish.documentDate = DateTime.Now;
-//                                rish.documentNumber = rozp_doc_num;
-//                                rish.documentDate = rozp_doc_date;
-//                                rish.modify_by = User.Identity.Name;
-//                                rish.ownership_type_id = ownership_type_id;
+	//                                var rish = new Document();
+	//                                rish.documentDate = DateTime.Now;
+	//                                rish.documentNumber = rozp_doc_num;
+	//                                rish.documentDate = rozp_doc_date;
+	//                                rish.modify_by = User.Identity.Name;
+	//                                rish.ownership_type_id = ownership_type_id;
 
-//                                var vidch_type_id = 0;
-//                                if (conveyancing_type == 3)
-//                                    vidch_type_id = 2;
-//                                if (conveyancing_type == 4)
-//                                    vidch_type_id = 1;
+	//                                var vidch_type_id = 0;
+	//                                if (conveyancing_type == 3)
+	//                                    vidch_type_id = 2;
+	//                                if (conveyancing_type == 4)
+	//                                    vidch_type_id = 1;
 
-//                                if (GUKV.Conveyancing.DB.ExportAct(importedAct, rish))
-//                                {
-//                                    if (GUKV.Conveyancing.DB.TransferBalansObjects(connectionSql, transactionSql, importedAct, rish, notifyByEmail, vidch_type_id))
-//                                    {
-//                                        foreach (ActObject act in importedAct.actObjects)
-//                                        {
-//                                            foreach (BalansTransfer bt in act.balansTransfers)
-//                                            {
-//                                                CreateAktNew(connectionSql, transactionSql, bt.balansId, bt.objectId, importedAct.docDate, importedAct.docNum, importedAct.docSum, importedAct.docFinalSum, rishrozp_doc_id);
-//                                            }
-//                                        }
-//                                    }
-//                                }
+	//                                if (GUKV.Conveyancing.DB.ExportAct(importedAct, rish))
+	//                                {
+	//                                    if (GUKV.Conveyancing.DB.TransferBalansObjects(connectionSql, transactionSql, importedAct, rish, notifyByEmail, vidch_type_id))
+	//                                    {
+	//                                        foreach (ActObject act in importedAct.actObjects)
+	//                                        {
+	//                                            foreach (BalansTransfer bt in act.balansTransfers)
+	//                                            {
+	//                                                CreateAktNew(connectionSql, transactionSql, bt.balansId, bt.objectId, importedAct.docDate, importedAct.docNum, importedAct.docSum, importedAct.docFinalSum, rishrozp_doc_id);
+	//                                            }
+	//                                        }
+	//                                    }
+	//                                }
 
-//                                //ConveyancingUtils.DestroyBalansObj(balans_id, org_from_id, building_id);
-//                                //if (conveyancing_type == 3)
-//                                ModifyTechCondition(connectionSql, transactionSql, balans_id, 3); // make this balans object 'ЗНЕСЕНИЙ'
-//                            }
-//                            else if (conveyancing_type == 5)
-//                            {
-//                                var balansTransfer = new BalansTransfer();
-//                                balansTransfer.transferType = ObjectTransferType.Create;
-//                                balansTransfer.objectId = building_id;
-//                                balansTransfer.sqr = conveyancing_area;
-//                                balansTransfer.organizationFromId = org_from_id;
-//                                balansTransfer.organizationToId = org_to_id;
-//                                balansTransfer.balansId = balans_id;
-//                                balansTransfer.form_ownership_id = form_ownership_id;
+	//                                //ConveyancingUtils.DestroyBalansObj(balans_id, org_from_id, building_id);
+	//                                //if (conveyancing_type == 3)
+	//                                ModifyTechCondition(connectionSql, transactionSql, balans_id, 3); // make this balans object 'ЗНЕСЕНИЙ'
+	//                            }
+	//                            else if (conveyancing_type == 5)
+	//                            {
+	//                                var balansTransfer = new BalansTransfer();
+	//                                balansTransfer.transferType = ObjectTransferType.Create;
+	//                                balansTransfer.objectId = building_id;
+	//                                balansTransfer.sqr = conveyancing_area;
+	//                                balansTransfer.organizationFromId = org_from_id;
+	//                                balansTransfer.organizationToId = org_to_id;
+	//                                balansTransfer.balansId = balans_id;
+	//                                balansTransfer.form_ownership_id = form_ownership_id;
 
-//                                var actObject = new ActObject();
-//                                actObject.makeChangesIn1NF = true;
-//                                //actObject.objectId = 22930; // FAKE!!!
-//                                actObject.balansTransfers.Add(balansTransfer);
-//                                actObject.purposeGroupId = purpose_group_id;
-//                                actObject.purposeId = purpose_id;
-//                                actObject.objectTypeId = object_type_id;
-//                                actObject.objectKindId = object_kind_id;
-//                                actObject.objectId = building_id;
-//                                actObject.objectFinalCost = new_akt_summa_zalishkova;
-//                                actObject.objectBalansCost = new_akt_summa;
+	//                                var actObject = new ActObject();
+	//                                actObject.makeChangesIn1NF = true;
+	//                                //actObject.objectId = 22930; // FAKE!!!
+	//                                actObject.balansTransfers.Add(balansTransfer);
+	//                                actObject.purposeGroupId = purpose_group_id;
+	//                                actObject.purposeId = purpose_id;
+	//                                actObject.objectTypeId = object_type_id;
+	//                                actObject.objectKindId = object_kind_id;
+	//                                actObject.objectId = building_id;
+	//                                actObject.objectFinalCost = new_akt_summa_zalishkova;
+	//                                actObject.objectBalansCost = new_akt_summa;
 
-//                                var importedAct = new ImportedAct();
-//                                importedAct.docTitle = "АКТ ПРИЙМАННЯ-ПЕРЕДАВАННЯ";
-//                                importedAct.docDate = new_akt_date;
-//                                importedAct.docNum = new_akt_num;
-//                                importedAct.docSum = new_akt_summa;
-//                                importedAct.docFinalSum = new_akt_summa_zalishkova;
-//                                importedAct.masterDocDate = rozp_doc_date;
-//                                importedAct.masterDocNum = rozp_doc_num;
-//                                importedAct.actObjects.Add(actObject);
+	//                                var importedAct = new ImportedAct();
+	//                                importedAct.docTitle = "АКТ ПРИЙМАННЯ-ПЕРЕДАВАННЯ";
+	//                                importedAct.docDate = new_akt_date;
+	//                                importedAct.docNum = new_akt_num;
+	//                                importedAct.docSum = new_akt_summa;
+	//                                importedAct.docFinalSum = new_akt_summa_zalishkova;
+	//                                importedAct.masterDocDate = rozp_doc_date;
+	//                                importedAct.masterDocNum = rozp_doc_num;
+	//                                importedAct.actObjects.Add(actObject);
 
-//                                var rish = new Document();
-//                                rish.documentDate = DateTime.Now;
-//                                rish.documentNumber = rozp_doc_num;
-//                                rish.documentDate = rozp_doc_date;
-//                                rish.modify_by = User.Identity.Name;
-//                                rish.ownership_type_id = ownership_type_id;
+	//                                var rish = new Document();
+	//                                rish.documentDate = DateTime.Now;
+	//                                rish.documentNumber = rozp_doc_num;
+	//                                rish.documentDate = rozp_doc_date;
+	//                                rish.modify_by = User.Identity.Name;
+	//                                rish.ownership_type_id = ownership_type_id;
 
-//                                if (GUKV.Conveyancing.DB.ExportAct(importedAct, rish))
-//                                {
-//                                    if (GUKV.Conveyancing.DB.TransferBalansObjects(connectionSql, transactionSql, importedAct, rish, notifyByEmail, 0))
-//                                    {
-//                                        foreach (ActObject act in importedAct.actObjects)
-//                                        {
-//                                            foreach (BalansTransfer bt in act.balansTransfers)
-//                                            {
-//                                                CreateAktNew(connectionSql, transactionSql, bt.balansId, bt.objectId, importedAct.docDate, importedAct.docNum, importedAct.docSum, importedAct.docFinalSum, rishrozp_doc_id);
-//                                            }
-//                                        }
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
+	//                                if (GUKV.Conveyancing.DB.ExportAct(importedAct, rish))
+	//                                {
+	//                                    if (GUKV.Conveyancing.DB.TransferBalansObjects(connectionSql, transactionSql, importedAct, rish, notifyByEmail, 0))
+	//                                    {
+	//                                        foreach (ActObject act in importedAct.actObjects)
+	//                                        {
+	//                                            foreach (BalansTransfer bt in act.balansTransfers)
+	//                                            {
+	//                                                CreateAktNew(connectionSql, transactionSql, bt.balansId, bt.objectId, importedAct.docDate, importedAct.docNum, importedAct.docSum, importedAct.docFinalSum, rishrozp_doc_id);
+	//                                            }
+	//                                        }
+	//                                    }
+	//                                }
+	//                            }
+	//                        }
+	//                    }
+	//                }
 
-//                transactionSql.Commit();
-//                transactionSql.Dispose();
-//                transactionSql = null;
-//            }
-//            catch (Exception ex)
-//            {
-//                log.Error("General failure", ex);
+	//                transactionSql.Commit();
+	//                transactionSql.Dispose();
+	//                transactionSql = null;
+	//            }
+	//            catch (Exception ex)
+	//            {
+	//                log.Error("General failure", ex);
 
-//                if (transactionSql != null)
-//                {
-//                    try { transactionSql.Rollback(); }
-//                    catch { }
-//                    transactionSql.Dispose();
-//                }
-//                throw;
-//            }
+	//                if (transactionSql != null)
+	//                {
+	//                    try { transactionSql.Rollback(); }
+	//                    catch { }
+	//                    transactionSql.Dispose();
+	//                }
+	//                throw;
+	//            }
 
-//            if (connectionSql.State == ConnectionState.Open)
-//                connectionSql.Close();
+	//            if (connectionSql.State == ConnectionState.Open)
+	//                connectionSql.Close();
 
-//        }
-
-
-//        Utils.ReloadCacheForBalans();
-//    }
+	//        }
 
 
-//    protected void CreateAktNew(SqlConnection connectionSql, SqlTransaction transactionSql, int balansId, int buildingId, DateTime aktDate, string aktNum, decimal aktSum,
-//        decimal aktSumFinal, int rozpDocId)
-//    {
-//        //SqlConnection connection = Utils.ConnectToDatabase();
-//        if (connectionSql != null)
-//        {
-//            var query = @"INSERT INTO documents (id, kind_id, general_kind_id, doc_date, doc_num, topic, summa, summa_zalishkova, modified_by, modify_date) OUTPUT INSERTED.ID
-//                                  VALUES (@id, @kind_id, @general_kind_id, @doc_date, @doc_num, @topic, @summa, @summa_zalishkova, @modified_by, @modify_date)";
+	//        Utils.ReloadCacheForBalans();
+	//    }
 
-//            Int32 slave_doc_id = 0;
 
-//            using (SqlCommand cmdInsert = new SqlCommand(query, connectionSql, transactionSql))
-//            {
-//                try
-//                {
-//                    cmdInsert.Parameters.Add("id", GetNewAktID(connectionSql, transactionSql));
-//                    cmdInsert.Parameters.Add("kind_id", 3); // АКТ ПРИЙМАННЯ-ПЕРЕДАЧІ
-//                    cmdInsert.Parameters.Add("general_kind_id", 7); // закріплення майна
-//                    cmdInsert.Parameters.Add("doc_date", aktDate);
-//                    cmdInsert.Parameters.Add("doc_num", aktNum);
-//                    cmdInsert.Parameters.Add("topic", "АКТ ПРИЙМАННЯ-ПЕРЕДАВАННЯ"); // Андрей сказал так делать
-//                    cmdInsert.Parameters.Add("summa", aktSum);
-//                    cmdInsert.Parameters.Add("summa_zalishkova", aktSumFinal);
-//                    cmdInsert.Parameters.Add("modified_by", ""); // выяснить, кто тут должен быть 
-//                    cmdInsert.Parameters.Add("modify_date", DateTime.Now);
-//                    slave_doc_id = (Int32)cmdInsert.ExecuteScalar();
-//                }
-//                catch (Exception ex)
-//                {
-//                    log.Info(ex.Message);
-//                    throw;
-//                }
-//            }
+	//    protected void CreateAktNew(SqlConnection connectionSql, SqlTransaction transactionSql, int balansId, int buildingId, DateTime aktDate, string aktNum, decimal aktSum,
+	//        decimal aktSumFinal, int rozpDocId)
+	//    {
+	//        //SqlConnection connection = Utils.ConnectToDatabase();
+	//        if (connectionSql != null)
+	//        {
+	//            var query = @"INSERT INTO documents (id, kind_id, general_kind_id, doc_date, doc_num, topic, summa, summa_zalishkova, modified_by, modify_date) OUTPUT INSERTED.ID
+	//                                  VALUES (@id, @kind_id, @general_kind_id, @doc_date, @doc_num, @topic, @summa, @summa_zalishkova, @modified_by, @modify_date)";
 
-//            query = @"INSERT INTO doc_dependencies (master_doc_id, slave_doc_id, depend_kind_id) VALUES (@master_doc_id, @slave_doc_id, @depend_kind_id)";
+	//            Int32 slave_doc_id = 0;
 
-//            using (SqlCommand cmdInsert = new SqlCommand(query, connectionSql, transactionSql))
-//            {
-//                try
-//                {
-//                    cmdInsert.Parameters.Add("master_doc_id", rozpDocId);
-//                    cmdInsert.Parameters.Add("slave_doc_id", slave_doc_id);
-//                    cmdInsert.Parameters.Add("depend_kind_id", 1); // 1 = ПІДПОРЯДКОВАНИЙ ДОКУМЕНТ
-//                    cmdInsert.ExecuteNonQuery();
-//                }
-//                catch (Exception ex)
-//                {
-//                    log.Info(ex.Message);
-//                    throw;
-//                }
-//            }
+	//            using (SqlCommand cmdInsert = new SqlCommand(query, connectionSql, transactionSql))
+	//            {
+	//                try
+	//                {
+	//                    cmdInsert.Parameters.Add("id", GetNewAktID(connectionSql, transactionSql));
+	//                    cmdInsert.Parameters.Add("kind_id", 3); // АКТ ПРИЙМАННЯ-ПЕРЕДАЧІ
+	//                    cmdInsert.Parameters.Add("general_kind_id", 7); // закріплення майна
+	//                    cmdInsert.Parameters.Add("doc_date", aktDate);
+	//                    cmdInsert.Parameters.Add("doc_num", aktNum);
+	//                    cmdInsert.Parameters.Add("topic", "АКТ ПРИЙМАННЯ-ПЕРЕДАВАННЯ"); // Андрей сказал так делать
+	//                    cmdInsert.Parameters.Add("summa", aktSum);
+	//                    cmdInsert.Parameters.Add("summa_zalishkova", aktSumFinal);
+	//                    cmdInsert.Parameters.Add("modified_by", ""); // выяснить, кто тут должен быть 
+	//                    cmdInsert.Parameters.Add("modify_date", DateTime.Now);
+	//                    slave_doc_id = (Int32)cmdInsert.ExecuteScalar();
+	//                }
+	//                catch (Exception ex)
+	//                {
+	//                    log.Info(ex.Message);
+	//                    throw;
+	//                }
+	//            }
 
-//            Int32 building_docs_id = 0;
+	//            query = @"INSERT INTO doc_dependencies (master_doc_id, slave_doc_id, depend_kind_id) VALUES (@master_doc_id, @slave_doc_id, @depend_kind_id)";
 
-//            query = @"INSERT INTO building_docs (building_id, document_id) OUTPUT INSERTED.ID VALUES (@building_id, @document_id)";
-//            using (SqlCommand cmdInsert = new SqlCommand(query, connectionSql, transactionSql))
-//            {
-//                try
-//                {
-//                    cmdInsert.Parameters.Add("building_id", buildingId);
-//                    cmdInsert.Parameters.Add("document_id", rozpDocId);
-//                    building_docs_id = (Int32)cmdInsert.ExecuteScalar();
-//                }
-//                catch (Exception ex)
-//                {
-//                    log.Info(ex.Message);
-//                    throw;
-//                }
+	//            using (SqlCommand cmdInsert = new SqlCommand(query, connectionSql, transactionSql))
+	//            {
+	//                try
+	//                {
+	//                    cmdInsert.Parameters.Add("master_doc_id", rozpDocId);
+	//                    cmdInsert.Parameters.Add("slave_doc_id", slave_doc_id);
+	//                    cmdInsert.Parameters.Add("depend_kind_id", 1); // 1 = ПІДПОРЯДКОВАНИЙ ДОКУМЕНТ
+	//                    cmdInsert.ExecuteNonQuery();
+	//                }
+	//                catch (Exception ex)
+	//                {
+	//                    log.Info(ex.Message);
+	//                    throw;
+	//                }
+	//            }
 
-//            }
+	//            Int32 building_docs_id = 0;
 
-//            query = @"INSERT INTO balans_docs (balans_id, building_id, building_docs_id) VALUES (@balans_id, @building_id, @building_docs_id)";
-//            using (SqlCommand cmdInsert = new SqlCommand(query, connectionSql, transactionSql))
-//            {
-//                try
-//                {
-//                    cmdInsert.Parameters.Add("balans_id", balansId);
-//                    cmdInsert.Parameters.Add("building_id", buildingId);
-//                    cmdInsert.Parameters.Add("building_docs_id", building_docs_id);
-//                    cmdInsert.ExecuteNonQuery();
-//                }
-//                catch (Exception ex)
-//                {
-//                    log.Info(ex.Message + " " + balansId.ToString() + " " + buildingId.ToString() + " " + building_docs_id.ToString());
-//                    throw;
-//                }
-//            }
+	//            query = @"INSERT INTO building_docs (building_id, document_id) OUTPUT INSERTED.ID VALUES (@building_id, @document_id)";
+	//            using (SqlCommand cmdInsert = new SqlCommand(query, connectionSql, transactionSql))
+	//            {
+	//                try
+	//                {
+	//                    cmdInsert.Parameters.Add("building_id", buildingId);
+	//                    cmdInsert.Parameters.Add("document_id", rozpDocId);
+	//                    building_docs_id = (Int32)cmdInsert.ExecuteScalar();
+	//                }
+	//                catch (Exception ex)
+	//                {
+	//                    log.Info(ex.Message);
+	//                    throw;
+	//                }
 
-//            //connection.Close();
-//        }
+	//            }
 
-//    }
+	//            query = @"INSERT INTO balans_docs (balans_id, building_id, building_docs_id) VALUES (@balans_id, @building_id, @building_docs_id)";
+	//            using (SqlCommand cmdInsert = new SqlCommand(query, connectionSql, transactionSql))
+	//            {
+	//                try
+	//                {
+	//                    cmdInsert.Parameters.Add("balans_id", balansId);
+	//                    cmdInsert.Parameters.Add("building_id", buildingId);
+	//                    cmdInsert.Parameters.Add("building_docs_id", building_docs_id);
+	//                    cmdInsert.ExecuteNonQuery();
+	//                }
+	//                catch (Exception ex)
+	//                {
+	//                    log.Info(ex.Message + " " + balansId.ToString() + " " + buildingId.ToString() + " " + building_docs_id.ToString());
+	//                    throw;
+	//                }
+	//            }
 
-    //protected void ModifyTechCondition(SqlConnection connectionSql, SqlTransaction transactionSql, int balansId, int techConditionId)
-    //{
-    //    if (connectionSql != null)
-    //    {
-    //        string query = "UPDATE balans SET tech_condition_id = @tech_condition_id WHERE id = @balans_id";
-    //        using (SqlCommand cmd = new SqlCommand(query, connectionSql, transactionSql))
-    //        {
-    //            cmd.Parameters.Add("@balans_id", balansId);
-    //            cmd.Parameters.Add("@tech_condition_id", techConditionId);
-    //            cmd.ExecuteNonQuery();
-    //        }
-    //    }
-    //}
+	//            //connection.Close();
+	//        }
 
-    //protected int GetNewAktID(SqlConnection connectionSql, SqlTransaction transactionSql)
-    //{
-    //    var max_id = 0;
+	//    }
 
-    //    if (connectionSql != null)
-    //    {
-    //        string query = @"SELECT Max(id) AS max_id FROM documents --WHERE id > 20000 AND id < 40000";
+	//protected void ModifyTechCondition(SqlConnection connectionSql, SqlTransaction transactionSql, int balansId, int techConditionId)
+	//{
+	//    if (connectionSql != null)
+	//    {
+	//        string query = "UPDATE balans SET tech_condition_id = @tech_condition_id WHERE id = @balans_id";
+	//        using (SqlCommand cmd = new SqlCommand(query, connectionSql, transactionSql))
+	//        {
+	//            cmd.Parameters.Add("@balans_id", balansId);
+	//            cmd.Parameters.Add("@tech_condition_id", techConditionId);
+	//            cmd.ExecuteNonQuery();
+	//        }
+	//    }
+	//}
 
-    //        using (SqlCommand cmd = new SqlCommand(query, connectionSql, transactionSql))
-    //        {
-    //            using (SqlDataReader reader = cmd.ExecuteReader())
-    //            {
-    //                if (reader.Read())
-    //                {
-    //                    max_id = (int)reader["max_id"] + 1;
-    //                }
-    //                reader.Close();
-    //            }
-    //        }
-    //    }
+	//protected int GetNewAktID(SqlConnection connectionSql, SqlTransaction transactionSql)
+	//{
+	//    var max_id = 0;
 
-    //    return max_id;
-    //}
+	//    if (connectionSql != null)
+	//    {
+	//        string query = @"SELECT Max(id) AS max_id FROM documents --WHERE id > 20000 AND id < 40000";
+
+	//        using (SqlCommand cmd = new SqlCommand(query, connectionSql, transactionSql))
+	//        {
+	//            using (SqlDataReader reader = cmd.ExecuteReader())
+	//            {
+	//                if (reader.Read())
+	//                {
+	//                    max_id = (int)reader["max_id"] + 1;
+	//                }
+	//                reader.Close();
+	//            }
+	//        }
+	//    }
+
+	//    return max_id;
+	//}
+
+
+	#region Photos
+
+	ASPxImageGallery imageGalleryDemo;
+
+	protected void ContentCallback_Callback(object sender, CallbackEventArgsBase e)
+	{
+
+
+		if (e.Parameter.ToLower().StartsWith("deleteimage:"))
+		{
+			DeleteImage(e.Parameter.Split(':')[1], string.Empty);
+			BindImageGallery();
+			//imageGalleryDemo.DataBind();
+			//ASPxFileManagerPhotoFiles.Refresh();
+		}
+	}
+	protected void imageGalleryDemo_DataBound(object sender, EventArgs e)
+	{
+		if ((imageGalleryDemo.PageIndex > imageGalleryDemo.PageCount) && (IsCallback))
+			imageGalleryDemo.PageIndex = 0;
+	}
+
+	protected void imageGalleryDemo_CustomCallback(object sender, CallbackEventArgsBase e)
+	{
+		ContentCallback_Callback(sender, e);
+	}
+
+	protected void ASPxCallbackPanelImageGallery_Callback(object sender, CallbackEventArgsBase e)
+	{
+		//if (!IsCallback)
+		{
+			if (e.Parameter.ToLower() == "refreshphoto:")
+			{
+				BindImageGallery();
+			}
+		}
+	}
+
+	protected void ASPxUploadPhotoControl_FileUploadComplete(object sender, DevExpress.Web.FileUploadCompleteEventArgs e)
+	{
+		string photoRootPath = LLLLhotorowUtils.ImgContentRootFolder;
+		PhotoUtils.AddUploadedFile(TempPhotoFolder(), e.UploadedFile.FileName, e.UploadedFile.FileBytes);
+	}
+
+	protected void delete_Callback(object source, CallbackEventArgs e)
+	{
+		string indexStr = e.Parameter;
+		string imageUrl = string.Empty;
+
+		imageUrl = DeleteImage(indexStr, imageUrl);
+		e.Result = imageUrl;
+	}
+
+	private string DeleteImage(string indexStr, string imageUrl)
+	{
+		if (imageGalleryDemo != null)
+		{
+			if (imageGalleryDemo.Items.Count == 0)
+				BindImageGallery();
+
+			ImageGalleryItem item = imageGalleryDemo.Items[int.Parse(indexStr)];
+			FileAttachment drv = (FileAttachment)item.DataItem;
+			string fileExt = Path.GetExtension(drv.Name);
+
+			var connectionSql = Utils.ConnectToDatabase();
+			LLLLhotorowUtils.Delete(drv.Name, connectionSql);
+			connectionSql.Close();
+
+			imageUrl = item.ImageUrl;
+		}
+		return imageUrl;
+	}
+
+
+	private string TempPhotoFolder()
+	{
+		if (PhotoFolderID != Guid.Empty)
+		{
+			string photoRootPath = LLLLhotorowUtils.ImgContentRootFolder;
+			string destFolder = Path.Combine(photoRootPath, "TransferRequest_" + PhotoFolderID.ToString()).ToLower();
+			return destFolder;
+		}
+		else
+			return string.Empty;
+	}
+
+	private void PrepareTempPhotoFolder()
+	{
+		string reqidStr = Request.QueryString["reqid"];
+
+		if (PhotoFolderID == Guid.Empty)
+		{
+			PhotoFolderID = Guid.NewGuid();
+			CopySourceFiles(reqidStr);
+		}
+
+		BindImageGallery();
+	}
+
+	private void CopySourceFiles(string reqidStr)
+	{
+		if (string.IsNullOrEmpty(reqidStr))
+		{
+			return;
+		}
+
+		string photoRootPath = LLLLhotorowUtils.ImgContentRootFolder;
+		string destFolder = TempPhotoFolder();
+
+		var connection = Utils.ConnectToDatabase();
+		var trans = connection.BeginTransaction();
+
+		using (SqlCommand cmd = new SqlCommand("select id, file_name, file_ext from transfer_requests_photos where request_id = @reqid", connection, trans))
+		{
+			cmd.Parameters.AddWithValue("reqid", reqidStr);
+			using (SqlDataReader r = cmd.ExecuteReader())
+			{
+				while (r.Read())
+				{
+					int id = r.GetInt32(0);
+					string file_name = r.GetString(1);
+					string file_ext = r.GetString(2);
+
+					string sourceFileToCopy = Path.Combine(photoRootPath, "TransferRequest", reqidStr, id.ToString() + file_ext);
+					if (LLLLhotorowUtils.Exists(sourceFileToCopy, connection, trans))
+					{
+						string destFileToCopy = Path.Combine(destFolder, PhotoUtils.DbFilename2LocalFilename(file_name, file_ext));
+						LLLLhotorowUtils.Copy(sourceFileToCopy, destFileToCopy, connection, trans);
+					}
+				}
+
+				r.Close();
+			}
+		}
+		trans.Commit();
+		connection.Close();
+	}
+
+	private void BindImageGallery()
+	{
+		if (imageGalleryDemo != null)
+		{
+			ObjectDataSourceBalansPhoto.SelectParameters["tempGuid"].DefaultValue = PhotoFolderID.ToString();
+			imageGalleryDemo.DataSourceID = "ObjectDataSourceBalansPhoto";
+			imageGalleryDemo.DataBind();
+		}
+	}
+
+	protected void TempFolderIDField_ValueChanged(object sender, EventArgs e)
+	{
+		//PhotoFolderID = new Guid(TempFolderIDField.Value);
+	}
+	protected void btnUpload_Click(object sender, EventArgs e)
+	{
+
+	}
+
+	protected Guid PhotoFolderID
+	{
+		get
+		{
+			//return string.IsNullOrEmpty(TempFolderIDField.Value) ? Guid.Empty : new Guid(TempFolderIDField.Value);
+
+			object val = Session[GetPageUniqueKey() + "_PHOTO_GUID"];
+
+			if (val is Guid)
+			{
+				return (Guid)val;
+			}
+
+			return Guid.Empty;
+		}
+
+		set
+		{
+			Session[GetPageUniqueKey() + "_PHOTO_GUID"] = value;
+			//TempFolderIDField.Value = value.ToString(); ;
+		}
+	}
+
+	private void SavePhotoChanges(int requestId, SqlConnection connection, SqlTransaction trans)
+	{
+		Int32 newId = 0;
+		string photoRootPath = LLLLhotorowUtils.ImgContentRootFolder;
+		string local1NFObjectFolder = Path.Combine(photoRootPath, "TransferRequest", requestId.ToString());
+
+		using (SqlCommand cmd = new SqlCommand("delete from transfer_requests_photos where request_id = @reqid", connection, trans))
+		{
+			cmd.Parameters.AddWithValue("reqid", requestId);
+			cmd.ExecuteNonQuery();
+		}
+
+		var allfiles = LLLLhotorowUtils.GetFiles(TempPhotoFolder(), connection, trans);
+		foreach (string filePath in allfiles)
+		{
+			var dbfile = PhotoUtils.LocalFilename2DbFilename(filePath);
+			string fullPath = string.Empty;
+
+			SqlCommand cmd = new SqlCommand("INSERT INTO transfer_requests_photos (request_id, file_name, file_ext, user_id, create_date) VALUES (@reqid, @filename, @fileext, @usrid, @createdate); ; SELECT CAST(SCOPE_IDENTITY() AS int)", connection, trans);
+			cmd.Parameters.Add(new SqlParameter("reqid", requestId));
+			cmd.Parameters.Add(new SqlParameter("filename", dbfile.file_name));
+			cmd.Parameters.Add(new SqlParameter("fileext", dbfile.file_ext));
+			cmd.Parameters.Add(new SqlParameter("usrid", (Guid)System.Web.Security.Membership.GetUser().ProviderUserKey));
+			cmd.Parameters.Add(new SqlParameter("createdate", DateTime.Now));
+			newId = (Int32)cmd.ExecuteScalar();
+
+			fullPath = Path.Combine(local1NFObjectFolder, newId.ToString() + Path.GetExtension(filePath));
+
+			LLLLhotorowUtils.Copy(filePath, fullPath, connection, trans);
+		}
+	}
+
+
+
+	#endregion
 
 }

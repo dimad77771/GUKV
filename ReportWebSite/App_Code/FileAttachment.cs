@@ -175,7 +175,42 @@ namespace ExtDataEntry.Models
             //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "SelectFromTempFolder-010:" + (DateTime.Now - nw).TotalMilliseconds + "\n");
         }
 
-        public static void Insert(string scope, int recordID, string Name, byte[] Image)
+		public static IEnumerable<FileAttachment> SelectFromTransferRequestFolder(string scope, string tempGuid)
+		{
+			if (string.IsNullOrEmpty(scope))
+				throw new ArgumentException("scope must have a value");
+
+			var fileAttachments = new List<FileAttachment>();
+			var connectionSql = Utils.ConnectToDatabase();
+			string photoRootPath = WebConfigurationManager.AppSettings["ImgContentRootFolder"];
+			string destFolder = Path.Combine(photoRootPath, scope + "_" + tempGuid);
+
+			string[] files = LLLLhotorowUtils.GetFiles(destFolder, connectionSql);
+			foreach (string f in files)
+			{
+				string fileName = Path.GetFileNameWithoutExtension(f);
+				string fileExt = Path.GetExtension(f);
+
+				string imageUrl = String.Format("~/ImgContent/{0}_{1}/{2}{3}", scope, tempGuid, fileName, fileExt);
+
+				var fileAttachment = new FileAttachment()
+				{
+					ID = fileName,
+					ParentID = "\\ROOT",
+					Name = f,
+					Image = LLLLhotorowUtils.Read(f, connectionSql),
+					ImageUrl = imageUrl,
+				};
+				fileAttachments.Add(fileAttachment);
+			}
+
+			foreach (var fileAttachment in fileAttachments)
+			{
+				yield return fileAttachment;
+			}
+		}
+
+		public static void Insert(string scope, int recordID, string Name, byte[] Image)
         {
             if (string.IsNullOrEmpty(scope))
                 throw new ArgumentException("scope must have a value");

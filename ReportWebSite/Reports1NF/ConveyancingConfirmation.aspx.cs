@@ -5,17 +5,17 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DevExpress.Web;
-using DevExpress.Web;
 using System.Web.Security;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Data;
 using GUKV.Conveyancing;
-using DevExpress.Web;
 using log4net;
 using FirebirdSql.Data.FirebirdClient;
 using System.Web.Configuration;
 using GUKV.Common;
+using ExtDataEntry.Models;
+using System.IO;
 
 public partial class Reports1NF_ConveyancingConfirmation : System.Web.UI.Page
 {
@@ -34,7 +34,26 @@ public partial class Reports1NF_ConveyancingConfirmation : System.Web.UI.Page
             Response.Redirect("ConveyancingList.aspx");
     }
 
-    protected void CPApply_Callback(object sender, CallbackEventArgsBase e)
+	protected string GetPageUniqueKey()
+	{
+		object key = ViewState["PageUniqueKey"];
+
+		if (key is string)
+		{
+			return (string)key;
+		}
+
+		// Generate unique key
+		Guid guid = Guid.NewGuid();
+
+		string str = guid.ToString();
+
+		ViewState["PageUniqueKey"] = str;
+
+		return str;
+	}
+
+	protected void CPApply_Callback(object sender, CallbackEventArgsBase e)
     {
         if (e.Parameter.StartsWith("approve:"))
         {
@@ -72,7 +91,32 @@ public partial class Reports1NF_ConveyancingConfirmation : System.Web.UI.Page
         DevExpress.Web.ASPxWebControl.RedirectOnCallback("ConveyancingList.aspx");
     }
 
-    protected void DiscardTransferRequest(string comment)
+	protected void ConveyancingForm_OnItemCreated(object sender, EventArgs e)
+	{
+		log.Info("ConveyancingForm_OnItemCreated");
+
+		//var gg = ConveyancingType;
+		//var gg2 = ASPxLabel19;
+
+		var cardPageControl = ((ASPxPageControl)Utils.FindControlRecursive(ConveyancingForm, "CardPageControl"));
+		if (cardPageControl != null)
+		{
+			var tabnum = cardPageControl.TabPages.IndexOfName("TabPhotos");
+			if (tabnum >= 0)
+			{
+				var tabPhotos = cardPageControl.TabPages[tabnum];
+				//tabPhotos.Visible = (ConveyancingType.Value == "5");
+			}
+
+			imageGalleryDemo = ((ASPxImageGallery)Utils.FindControlRecursive(ConveyancingForm, "imageGalleryDemo"));
+
+			PrepareTempPhotoFolder();
+		}
+
+	}
+
+
+	protected void DiscardTransferRequest(string comment)
     {
         SqlConnection connection = Utils.ConnectToDatabase();
         if (connection != null)
@@ -346,7 +390,7 @@ public partial class Reports1NF_ConveyancingConfirmation : System.Web.UI.Page
                                     doc.appendices.Add(app);
                                     //GUKV.Conveyancing.DB.ExportDocument(preferences, doc);
 
-                                    if (GUKV.Conveyancing.DB.TransferBalansObjects(connectionSql, transactionSql, importedAct, rish, true, 0))
+                                    if (GUKV.Conveyancing.DB.TransferBalansObjects(connectionSql, transactionSql, importedAct, rish, true, 0, request_id: requestId))
                                     {
                                         foreach (ActObject act in importedAct.actObjects)
                                         {
@@ -653,4 +697,224 @@ public partial class Reports1NF_ConveyancingConfirmation : System.Web.UI.Page
             cmd.ExecuteNonQuery();
         }
     }
+
+
+
+	#region Photos
+
+	ASPxImageGallery imageGalleryDemo;
+
+	protected void ContentCallback_Callback(object sender, CallbackEventArgsBase e)
+	{
+
+
+		if (e.Parameter.ToLower().StartsWith("deleteimage:"))
+		{
+			DeleteImage(e.Parameter.Split(':')[1], string.Empty);
+			BindImageGallery();
+			//imageGalleryDemo.DataBind();
+			//ASPxFileManagerPhotoFiles.Refresh();
+		}
+	}
+	protected void imageGalleryDemo_DataBound(object sender, EventArgs e)
+	{
+		if ((imageGalleryDemo.PageIndex > imageGalleryDemo.PageCount) && (IsCallback))
+			imageGalleryDemo.PageIndex = 0;
+	}
+
+	protected void imageGalleryDemo_CustomCallback(object sender, CallbackEventArgsBase e)
+	{
+		ContentCallback_Callback(sender, e);
+	}
+
+	protected void ASPxCallbackPanelImageGallery_Callback(object sender, CallbackEventArgsBase e)
+	{
+		//if (!IsCallback)
+		{
+			if (e.Parameter.ToLower() == "refreshphoto:")
+			{
+				BindImageGallery();
+			}
+		}
+	}
+
+	protected void ASPxUploadPhotoControl_FileUploadComplete(object sender, DevExpress.Web.FileUploadCompleteEventArgs e)
+	{
+		string photoRootPath = LLLLhotorowUtils.ImgContentRootFolder;
+		PhotoUtils.AddUploadedFile(TempPhotoFolder(), e.UploadedFile.FileName, e.UploadedFile.FileBytes);
+	}
+
+	protected void delete_Callback(object source, CallbackEventArgs e)
+	{
+		string indexStr = e.Parameter;
+		string imageUrl = string.Empty;
+
+		imageUrl = DeleteImage(indexStr, imageUrl);
+		e.Result = imageUrl;
+	}
+
+	private string DeleteImage(string indexStr, string imageUrl)
+	{
+		if (imageGalleryDemo != null)
+		{
+			if (imageGalleryDemo.Items.Count == 0)
+				BindImageGallery();
+
+			ImageGalleryItem item = imageGalleryDemo.Items[int.Parse(indexStr)];
+			FileAttachment drv = (FileAttachment)item.DataItem;
+			string fileExt = Path.GetExtension(drv.Name);
+
+			var connectionSql = Utils.ConnectToDatabase();
+			LLLLhotorowUtils.Delete(drv.Name, connectionSql);
+			connectionSql.Close();
+
+			imageUrl = item.ImageUrl;
+		}
+		return imageUrl;
+	}
+
+
+	private string TempPhotoFolder()
+	{
+		if (PhotoFolderID != Guid.Empty)
+		{
+			string photoRootPath = LLLLhotorowUtils.ImgContentRootFolder;
+			string destFolder = Path.Combine(photoRootPath, "TransferRequest_" + PhotoFolderID.ToString()).ToLower();
+			return destFolder;
+		}
+		else
+			return string.Empty;
+	}
+
+	private void PrepareTempPhotoFolder()
+	{
+		string reqidStr = Request.QueryString["reqid"];
+
+		if (PhotoFolderID == Guid.Empty)
+		{
+			PhotoFolderID = Guid.NewGuid();
+			CopySourceFiles(reqidStr);
+		}
+
+		BindImageGallery();
+	}
+
+	private void CopySourceFiles(string reqidStr)
+	{
+		if (string.IsNullOrEmpty(reqidStr))
+		{
+			return;
+		}
+
+		string photoRootPath = LLLLhotorowUtils.ImgContentRootFolder;
+		string destFolder = TempPhotoFolder();
+
+		var connection = Utils.ConnectToDatabase();
+		var trans = connection.BeginTransaction();
+
+		using (SqlCommand cmd = new SqlCommand("select id, file_name, file_ext from transfer_requests_photos where request_id = @reqid", connection, trans))
+		{
+			cmd.Parameters.AddWithValue("reqid", reqidStr);
+			using (SqlDataReader r = cmd.ExecuteReader())
+			{
+				while (r.Read())
+				{
+					int id = r.GetInt32(0);
+					string file_name = r.GetString(1);
+					string file_ext = r.GetString(2);
+
+					string sourceFileToCopy = Path.Combine(photoRootPath, "TransferRequest", reqidStr, id.ToString() + file_ext);
+					if (LLLLhotorowUtils.Exists(sourceFileToCopy, connection, trans))
+					{
+						string destFileToCopy = Path.Combine(destFolder, PhotoUtils.DbFilename2LocalFilename(file_name, file_ext));
+						LLLLhotorowUtils.Copy(sourceFileToCopy, destFileToCopy, connection, trans);
+					}
+				}
+
+				r.Close();
+			}
+		}
+		trans.Commit();
+		connection.Close();
+	}
+
+	private void BindImageGallery()
+	{
+		if (imageGalleryDemo != null)
+		{
+			ObjectDataSourceBalansPhoto.SelectParameters["tempGuid"].DefaultValue = PhotoFolderID.ToString();
+			imageGalleryDemo.DataSourceID = "ObjectDataSourceBalansPhoto";
+			imageGalleryDemo.DataBind();
+		}
+	}
+
+	protected void TempFolderIDField_ValueChanged(object sender, EventArgs e)
+	{
+		//PhotoFolderID = new Guid(TempFolderIDField.Value);
+	}
+	protected void btnUpload_Click(object sender, EventArgs e)
+	{
+
+	}
+
+	protected Guid PhotoFolderID
+	{
+		get
+		{
+			//return string.IsNullOrEmpty(TempFolderIDField.Value) ? Guid.Empty : new Guid(TempFolderIDField.Value);
+
+			object val = Session[GetPageUniqueKey() + "_PHOTO_GUID"];
+
+			if (val is Guid)
+			{
+				return (Guid)val;
+			}
+
+			return Guid.Empty;
+		}
+
+		set
+		{
+			Session[GetPageUniqueKey() + "_PHOTO_GUID"] = value;
+			//TempFolderIDField.Value = value.ToString(); ;
+		}
+	}
+
+	private void SavePhotoChanges(int requestId, SqlConnection connection, SqlTransaction trans)
+	{
+		Int32 newId = 0;
+		string photoRootPath = LLLLhotorowUtils.ImgContentRootFolder;
+		string local1NFObjectFolder = Path.Combine(photoRootPath, "TransferRequest", requestId.ToString());
+
+		using (SqlCommand cmd = new SqlCommand("delete from transfer_requests_photos where request_id = @reqid", connection, trans))
+		{
+			cmd.Parameters.AddWithValue("reqid", requestId);
+			cmd.ExecuteNonQuery();
+		}
+
+		var allfiles = LLLLhotorowUtils.GetFiles(TempPhotoFolder(), connection, trans);
+		foreach (string filePath in allfiles)
+		{
+			var dbfile = PhotoUtils.LocalFilename2DbFilename(filePath);
+			string fullPath = string.Empty;
+
+			SqlCommand cmd = new SqlCommand("INSERT INTO transfer_requests_photos (request_id, file_name, file_ext, user_id, create_date) VALUES (@reqid, @filename, @fileext, @usrid, @createdate); ; SELECT CAST(SCOPE_IDENTITY() AS int)", connection, trans);
+			cmd.Parameters.Add(new SqlParameter("reqid", requestId));
+			cmd.Parameters.Add(new SqlParameter("filename", dbfile.file_name));
+			cmd.Parameters.Add(new SqlParameter("fileext", dbfile.file_ext));
+			cmd.Parameters.Add(new SqlParameter("usrid", (Guid)System.Web.Security.Membership.GetUser().ProviderUserKey));
+			cmd.Parameters.Add(new SqlParameter("createdate", DateTime.Now));
+			newId = (Int32)cmd.ExecuteScalar();
+
+			fullPath = Path.Combine(local1NFObjectFolder, newId.ToString() + Path.GetExtension(filePath));
+
+			LLLLhotorowUtils.Copy(filePath, fullPath, connection, trans);
+		}
+	}
+
+
+
+	#endregion
+
+
 }

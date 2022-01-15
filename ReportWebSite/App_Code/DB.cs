@@ -11,6 +11,7 @@ using log4net;
 using System.Configuration;
 using GUKV.Common;
 using System.Data;
+using ExtDataEntry.Models;
 
 namespace GUKV.Conveyancing
 {
@@ -3012,7 +3013,7 @@ namespace GUKV.Conveyancing
         //    }
         //}
 
-        public static bool TransferBalansObjects(SqlConnection connectionSql, SqlTransaction transactionSql, ImportedAct act, Document rishennya, bool notifyByEmail, int vidch_type_id)
+        public static bool TransferBalansObjects(SqlConnection connectionSql, SqlTransaction transactionSql, ImportedAct act, Document rishennya, bool notifyByEmail, int vidch_type_id, int? request_id = null)
         {
             bool result = false;
 
@@ -3036,7 +3037,7 @@ namespace GUKV.Conveyancing
 
                                         case ObjectTransferType.Create:
                                             
-                                            bt.balansId = CreateBalansObject(connectionSql, transactionSql, obj, bt, rishennya, act, notifyByEmail);
+                                            bt.balansId = CreateBalansObject(connectionSql, transactionSql, obj, bt, rishennya, act, notifyByEmail, request_id);
                                             break;
 
                                         case ObjectTransferType.Destroy:
@@ -4043,7 +4044,7 @@ namespace GUKV.Conveyancing
         }
 
         private static int CreateBalansObject(/*FbConnection connection1NF, FbTransaction transaction,*/ SqlConnection connectionSql, SqlTransaction transactionSql,
-            ActObject actObj, BalansTransfer bt, Document rishennya, ImportedAct act, bool notifyByEmail)
+            ActObject actObj, BalansTransfer bt, Document rishennya, ImportedAct act, bool notifyByEmail, int? request_id = null)
         {
             Dictionary<string, object> values = new Dictionary<string, object>();
             Dictionary<string, string> mapping = new Dictionary<string, string>();
@@ -4280,7 +4281,13 @@ namespace GUKV.Conveyancing
                             }
 
                             cmd.ExecuteNonQuery();
-                            insertedOK = true;
+
+							if (request_id != null)
+							{
+								CopyTransferRequestPhoto(request_id.Value, newBalansId, connectionSql, transactionSql);
+							}
+
+							insertedOK = true;
                         }
                         catch (Exception ex)
                         {
@@ -4319,7 +4326,45 @@ namespace GUKV.Conveyancing
             return newBalansId;
         }
 
-        private static int CutBalansObject(/*FbConnection connection1NF, FbTransaction transaction,*/ SqlConnection connectionSql, SqlTransaction transactionSql, BalansTransfer bt,
+		private static void CopyTransferRequestPhoto(int request_id, int newBalansId, SqlConnection connectionSql, SqlTransaction transactionSql)
+		{
+			string photoRootPath = LLLLhotorowUtils.ImgContentRootFolder;
+
+			using (SqlCommand cmd = new SqlCommand("select id, file_name, file_ext, user_id, create_date from transfer_requests_photos where request_id = @reqid", connectionSql, transactionSql))
+			{
+				cmd.Parameters.AddWithValue("reqid", request_id);
+				using (SqlDataReader r = cmd.ExecuteReader())
+				{
+					while (r.Read())
+					{
+						var id = r.GetInt32(0);
+						var file_name = r.GetString(1);
+						var file_ext = r.GetString(2);
+						var user_id = r.GetGuid(3);
+						var create_date = r.GetDateTime(4);
+
+						var icmd = new SqlCommand("INSERT INTO reports1nf_photos (bal_id, file_name, file_ext, user_id, create_date) VALUES (@balid, @filename, @fileext, @usrid, @createdate); ; SELECT CAST(SCOPE_IDENTITY() AS int)", connectionSql, transactionSql);
+						icmd.Parameters.Add(new SqlParameter("balid", newBalansId));
+						icmd.Parameters.Add(new SqlParameter("filename", file_name));
+						icmd.Parameters.Add(new SqlParameter("fileext", file_ext));
+						icmd.Parameters.Add(new SqlParameter("usrid", user_id));
+						icmd.Parameters.Add(new SqlParameter("createdate", create_date));
+						var newId = (Int32)icmd.ExecuteScalar();
+
+						var sourceFileToCopy = Path.Combine(photoRootPath, "TransferRequest", request_id.ToString(), id.ToString() + file_ext);
+						var destFileToCopy = Path.Combine(photoRootPath, "1NF", newBalansId.ToString(), newId.ToString() + file_ext);
+						if (LLLLhotorowUtils.Exists(sourceFileToCopy, connectionSql, transactionSql))
+						{
+							LLLLhotorowUtils.Copy(sourceFileToCopy, destFileToCopy, connectionSql, transactionSql);
+						}
+					}
+
+					r.Close();
+				}
+			}
+		}
+
+		private static int CutBalansObject(/*FbConnection connection1NF, FbTransaction transaction,*/ SqlConnection connectionSql, SqlTransaction transactionSql, BalansTransfer bt,
             /*int balansId, decimal cutSquare, int newOwnerOrgId,*/ Document rishennya, ImportedAct act, bool notifyByEmail)
         {
             int balansId = bt.balansId;
