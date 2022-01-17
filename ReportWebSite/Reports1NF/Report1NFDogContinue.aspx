@@ -67,7 +67,7 @@
             cols += "include_in_perelik;zal_balans_vartist;perv_balans_vartist;free_object_type_name;prop_srok_orands;punkt_metod_rozrahunok;invest_solution;";
 			cols += "zgoda_control;district;street_name;addr_nomer;total_free_sqr;free_sql_usefull;";
 			cols += "floor;condition;water;heating;gas;power_text;history;zgoda_renter;nomer_derzh_reestr_neruh;reenum_derzh_reestr_neruh;possible_using;info_rahunok_postach;orend_plat_last_month;orend_plat_borg;stanom_na;";
-			cols += "has_perevazh_pravo;polipshanya_vartist;polipshanya_finish_date;primitki;id";
+			cols += "has_perevazh_pravo;polipshanya_vartist;polipshanya_finish_date;rozmir_vidshkoduv;zalbalansvartist_date;primitki;id";
 			FreeSquareGridView.GetRowValues(e.visibleIndex, cols, OnCopyFullDescription);
 		}
     }
@@ -121,6 +121,8 @@
 			"Має переважне право на продовження – ",
 			"Вартість здійснених чинним орендарем невід’ємних поліпшень – ",
 			"Дата завершення здійснених чинним орендарем невід’ємних поліпшень – ",
+			"Розмір відшкодування земельного податку та інших - ",
+			"Дата формування залишкової вартості - ",
 			"Примітки – ",
         ];
 

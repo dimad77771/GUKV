@@ -397,11 +397,17 @@ WHERE id = @report_id"
 
 						<asp:ObjectDataSource ID="ObjectDataSourcePhotoFiles" runat="server" 
 							SelectMethod="Select" 
+							DeleteMethod="Delete"
 							TypeName="ExtDataEntry.Models.FileAttachment">
 							<SelectParameters>
 								<asp:Parameter DefaultValue="reports1nf_report_documents" Name="scope" Type="String" />
 								<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
 							</SelectParameters>
+							<DeleteParameters>
+								<asp:Parameter DefaultValue="reports1nf_report_documents" Name="scope" Type="String" />
+								<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+								<asp:Parameter Name="id" Type="String" />
+							</DeleteParameters>
 						</asp:ObjectDataSource>
 
 						<dx:ASPxFileManager ID="ASPxFileManagerPhotoFiles" runat="server" 

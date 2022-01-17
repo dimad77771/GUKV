@@ -90,6 +90,10 @@
 															<SmallImage Url="Styles/ribbonicon_4c.png">
 															</SmallImage>
 														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Класифікатор об'єктів комунальної власности міста Києва" NavigateUrl="http://kmda.iisd.com.ua" >
+															<SmallImage Url="Styles/ribbonicon_help_4.png">
+															</SmallImage>
+														</dx:RibbonButtonItem>
 													</Items>
 												</dx:RibbonGroup>
 											</Groups>

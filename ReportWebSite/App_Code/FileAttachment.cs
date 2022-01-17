@@ -280,7 +280,7 @@ namespace ExtDataEntry.Models
             sqlTransaction.Commit();
         }
 
-        public static void Delete(string scope, int recordID, string id /* attachmentID */)
+		public static void Delete(string scope, int recordID, string id /* attachmentID */)
         {
             if (string.IsNullOrEmpty(scope))
                 throw new ArgumentException("scope must have a value");

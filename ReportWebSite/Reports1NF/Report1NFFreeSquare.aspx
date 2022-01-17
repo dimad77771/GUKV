@@ -67,7 +67,7 @@
         } else if (e.buttonID == 'btnCopyFullDescription') {
 			var cols = "zkpo_code;org_name;include_in_perelik;zal_balans_vartist;perv_balans_vartist;free_object_type_name;prop_srok_orands;punkt_metod_rozrahunok;invest_solution;";
 			cols += "zgoda_control;district;street_name;addr_nomer;total_free_sqr;free_sql_usefull;";
-			cols += "floor;condition;water;heating;gas;power_text;history;zgoda_renter;nomer_derzh_reestr_neruh;reenum_derzh_reestr_neruh;possible_using;info_rahunok_postach;priznach_before;period_nouse;osoba_use_before;id"
+			cols += "floor;condition;water;heating;gas;power_text;history;zgoda_renter;nomer_derzh_reestr_neruh;reenum_derzh_reestr_neruh;possible_using;info_rahunok_postach;priznach_before;period_nouse;osoba_use_before;rozmir_vidshkoduv;zalbalansvartist_date;id"
 			FreeSquareGridView.GetRowValues(e.visibleIndex, cols, OnCopyFullDescription);
 		}
     }
@@ -106,6 +106,8 @@
 			"Цільове призначення об’єкта, за яким об’єкт використовувався перед тим, як він став вакантним – ",
 			"Період часу, протягом якого об’єкт не використовується – ",
 			"Інформацію про особу, яка використовувала об’єкт перед тим, як він став вакантним – ",
+			"Розмір відшкодування земельного податку та інших - ",
+			"Дата формування залишкової вартості - ",
         ];
 
 		console.log("values", values);
@@ -119,7 +121,9 @@
                 vv = "так";
 			} else if (vv === false) {
 				vv = "ні";
-            }
+			} else if (Object.prototype.toString.call(vv) === '[object Date]') {
+				vv = formatDate(vv);
+			}
 
 			txt += (i == 0 ? "" : "\n") + headers[i] +  vv;
 		}
@@ -141,6 +145,13 @@
 		});
 	}
 
+	function formatDate(date) {
+		var year = date.getFullYear();
+		var month = date.getMonth() + 1;
+		var day = date.getDate();
+
+		return (day < 10 ? "0" : "") + day + "." + (month < 10 ? "0" : "") + month + "." + year;
+	}
 
 	function OnMapShowGetRowValues(values) {
 		var id = values;

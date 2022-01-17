@@ -2968,6 +2968,12 @@ WHERE id = @id"
                     CloseUp="function (s,e) { CPMainPanel.PerformCallback('clear:'); }" />
             </dx:ASPxPopupControl>
         </td>
+		<td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+        <td>
+            <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Класифікатор майна" CausesValidation="false" AutoPostBack="false">
+                <ClientSideEvents Click="function (s,e) { window.open('http://kmda.iisd.com.ua', '_blank') }" />
+            </dx:ASPxButton>
+        </td>
     </tr>
 </table>
 
