@@ -198,8 +198,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
                     vcol.PropertiesEdit.ClientInstanceName = "felm__" + (!string.IsNullOrEmpty(vcol.FieldName) ? vcol.FieldName : vcol.Name);
                 }
             }
-
-        }
+		}
 
         if ((!IsCallback) && (reportIdStr != null && reportIdStr.Length > 0 && agreementIdStr != null && agreementIdStr.Length > 0))
         {
@@ -210,8 +209,26 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
             SqlDataSourceArendaArchive.SelectParameters["arid"].DefaultValue = agreementIdStr.Trim();
         }
 
-            //////
-        }
+
+		if (!IsPostBack)
+		{
+			if (EditFreeSquareMode)
+			{
+				foreach (TabPage tabpage in CardPageControl.TabPages)
+				{
+					if (tabpage.Text != "Продовження договору")
+					{
+						tabpage.Visible = false;
+					}
+				}
+
+				//var col = ASPxGridViewFreeSquare.Columns;
+				ASPxGridViewFreeSquare.StartEdit(0);
+			}
+		}
+
+			//////
+		}
         catch (Exception ex)
         {
             var lognet = log4net.LogManager.GetLogger("ReportWebSite");

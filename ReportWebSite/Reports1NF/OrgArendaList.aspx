@@ -268,7 +268,7 @@ FROM reports1nf_arenda ar
 
 		outer apply (select top 1 id as period_id from dict_rent_period per where per.is_active = 1) apd
 
-        WHERE ar.report_id = @rep_id AND isnull(a.is_deleted, 0) = 0 ORDER BY ar.modify_date DESC" >
+        WHERE ar.report_id = @rep_id AND exists (select id from arenda t1 where t1.id = ar.id and isnull(t1.is_deleted, 0) = 0) ORDER BY ar.modify_date DESC" >
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="rep_id" />
     </SelectParameters>

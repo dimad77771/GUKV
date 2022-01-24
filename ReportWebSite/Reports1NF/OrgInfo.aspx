@@ -549,6 +549,7 @@ WHERE id = @id"
                                             <dx:ListEditItem Value="25" Text="25" />
                                             <dx:ListEditItem Value="30" Text="30" />
                                             <dx:ListEditItem Value="50" Text="50" />
+											<dx:ListEditItem Value="100" Text="100" />
                                         </Items>                                        
                                     </dx:ASPxComboBox>
                             </td>

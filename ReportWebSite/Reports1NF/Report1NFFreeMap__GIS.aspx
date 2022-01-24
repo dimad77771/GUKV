@@ -86,7 +86,7 @@
 		}
 
 		//map.closePopupOnClick = false;
-		console.log("map.closePopupOnClick", map.closePopupOnClick);
+		//console.log("map.closePopupOnClick", map.closePopupOnClick);
 		$.cookie('RecordID', apoint.fs_id);
 		ASPxFileManagerPhotoFiles.Refresh();
 		//console.log("PopupObjectPhotos.ShowAtPos", PopupObjectPhotos.ShowAtPos);
@@ -103,7 +103,7 @@
 		if (!isNotEmpty(date)) {
 			return '';
 		} else {
-			console.log(date);
+			//console.log(date);
 			var str = date.substring(8, 10) + "." + date.substring(5, 7) + "." + date.substring(0, 4);
 			return str;
 		}
@@ -345,7 +345,30 @@
 	</style>
 
 
-<div id="map" style="width:900px"/>
+<div id="map" style="width:900px"></div>
+<table style="margin:0px 5px 0px 5px; height:34px">
+	<tr>
+		<td>
+			<img src="../Styles/Map__marker_2b.png" />
+		</td>
+		<td>
+			<span style="font-size:Larger;padding-left:5px;padding-right:75px;text-align:left;">не всі погодження (органу управління або культурної спадщини) отримано</span>
+		</td>
+		<td>
+			<img src="../Styles/Map__marker_1b.png" />
+		</td>
+		<td>
+			<span style="font-size:Larger;padding-left:5px;padding-right:75px;text-align:left;">всі погодження отримано</span>
+		</td>
+		<td>
+			<img src="../Styles/Map__marker_3b.png" />
+		</td>
+		<td>
+			<span style="font-size:Larger;padding-left:5px;padding-right:5px;text-align:left;">виставлено на ПРОЗОРРО</span>
+		</td>
+	</tr>
+</table>
+
 
 
 <dx:ASPxPopupControl ID="ASPxPopupControlFreeSquare" runat="server" AllowDragging="True" 

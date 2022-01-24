@@ -187,7 +187,7 @@
     }
 
     function OnClickOrgBalansObject(values) {
-		window.location = 'OrgBalansObject.aspx?rid=' + values[2] + '&bid=' + values[1] + '&edit_free_square_id=' + values[0];
+		window.location = 'OrgRentAgreement.aspx?rid=' + values[2] + '&aid=' + values[1] + '&edit_free_square_id=' + values[0];
 	}
 
 
@@ -428,7 +428,7 @@ WHERE id = @id"
 
 <textarea rows="2" cols="2" id="inpit-for-copy-clipboard" style="display:none2;width:1px;height:1px;position:absolute;top:1px;right:1px;z-index:-1" ></textarea>
 
-<dx:ASPxMenu ID="SectionMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
+<dx:ASPxMenu ID="SectionMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left" Visible="false">
     <Items>
         <dx:MenuItem NavigateUrl="../Reports1NF/Report1NFList.aspx" Text="Звіти Балансоутримувачів"></dx:MenuItem>
         <dx:MenuItem NavigateUrl="../Reports1NF/Report1NFAccounts.aspx" Text="Облікові Записи"></dx:MenuItem>
@@ -605,7 +605,7 @@ WHERE id = @id"
 
 
     <Columns>
-        <dx:GridViewCommandColumn VisibleIndex="0" Width="60px" ButtonType="Image" CellStyle-Wrap="True" FixedStyle="Left" CellStyle-CssClass="command-column-class" 
+        <dx:GridViewCommandColumn VisibleIndex="0" Width="70px" ButtonType="Image" CellStyle-Wrap="True" FixedStyle="Left" CellStyle-CssClass="command-column-class" 
             ShowCancelButton="true" ShowUpdateButton="true" ShowEditButton="true" >
             <CustomButtons>
                 <dx:GridViewCommandColumnCustomButton ID="btnPdfBuild" Text="Pdf"> 
@@ -614,7 +614,7 @@ WHERE id = @id"
                 <dx:GridViewCommandColumnCustomButton ID="btnMapShow" Text="Показати на мапі"> 
 					<Image Url="~/Styles/MapShowIcon.png"/>
                 </dx:GridViewCommandColumnCustomButton>
-                <dx:GridViewCommandColumnCustomButton ID="btnOrgBalansObject" Text="Змінити картку"  Visibility="Invisible"> 
+                <dx:GridViewCommandColumnCustomButton ID="btnOrgBalansObject" Text="Змінити картку"> 
 					<Image Url="~/Styles/EditTextIcon.png"/>
                 </dx:GridViewCommandColumnCustomButton>
                 <dx:GridViewCommandColumnCustomButton ID="btnFreeCycle" Text="Картка процесу передачі в оренду вільного приміщення" Visibility="Invisible"> 
@@ -1146,7 +1146,7 @@ WHERE id = @id"
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFDogContinue" Version="A3_32" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFDogContinue" Version="A3_33" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

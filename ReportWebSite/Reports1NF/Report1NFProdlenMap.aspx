@@ -345,7 +345,24 @@
 	</style>
 
 
-<div id="map" style="width:900px"/>
+<div id="map" style="width:900px"></div>
+<table style="margin:0px 5px 0px 5px; height:34px">
+	<tr>
+		<td>
+			<img src="../Styles/Map__marker_3b.png" />
+		</td>
+		<td>
+			<span style="font-size:Larger;padding-left:5px;padding-right:75px;text-align:left;">об'єкт виставлено на аукціон из перелику вільних</span>
+		</td>
+		<td>
+			<img src="../Styles/Map__marker_4b.png" />
+		</td>
+		<td>
+			<span style="font-size:Larger;padding-left:5px;padding-right:75px;text-align:left;">об'єкт виставлено на аукціон аукціон із переліку на продовження </span>
+		</td>
+	</tr>
+</table>
+
 
 
 <dx:ASPxPopupControl ID="ASPxPopupControlFreeSquare" runat="server" AllowDragging="True" 

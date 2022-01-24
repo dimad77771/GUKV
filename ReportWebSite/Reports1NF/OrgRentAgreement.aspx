@@ -843,7 +843,7 @@
 
 			if (editFreeSquareMode) {
 				if (!grid.IsEditing()) {
-					window.location = "Report1NFFreeSquare.aspx";
+					window.location = "Report1NFDogContinue.aspx";
 				}
 			}
         }

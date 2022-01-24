@@ -542,6 +542,29 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server" class="claro">
     <div id="map"></div>
+	<table style="margin:0px 5px 0px 5px; height:34px">
+		<tr>
+			<td>
+				<img src="../Styles/Map__marker_2b.png" />
+			</td>
+			<td>
+				<span style="font-size:Larger;padding-left:5px;padding-right:75px;text-align:left;">не всі погодження (органу управління або культурної спадщини) отримано</span>
+			</td>
+			<td>
+				<img src="../Styles/Map__marker_1b.png" />
+			</td>
+			<td>
+				<span style="font-size:Larger;padding-left:5px;padding-right:75px;text-align:left;">всі погодження отримано</span>
+			</td>
+			<td>
+				<img src="../Styles/Map__marker_3b.png" />
+			</td>
+			<td>
+				<span style="font-size:Larger;padding-left:5px;padding-right:5px;text-align:left;">виставлено на ПРОЗОРРО</span>
+			</td>
+		</tr>
+	</table>
+
 
 	<div id="dialog" title="Basic dialog" style="background-color:#696969">
 		<p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the &apos;x&apos; icon.</p>

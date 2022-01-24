@@ -44,6 +44,8 @@ public partial class Reports1NF_Report1NFDogContinue : System.Web.UI.Page
 			col.ShowUpdateButton = false;
 			col.ShowCancelButton = false;
 		}
+
+		SectionMenu.Visible = false;
 	}
 
     protected void ASPxButton_FreeSquare_ExportXLS_Click(object sender, EventArgs e)
