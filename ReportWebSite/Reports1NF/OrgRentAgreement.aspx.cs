@@ -3023,7 +3023,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         var komis_protocol = (e.OldValues["komis_protocol"] == null ? "" : e.OldValues["komis_protocol"].ToString().Trim());
         if (komis_protocol != "" && !komis_protocol.StartsWith("0"))
         {
-            e.RowError = "Об'єкт погоджено орендодавцем! Усі зміни ТІЛЬКИ з його дозволу за тел: 202-61-76, 202-61-77, 202-61-96 !";
+            e.RowError = "Об'єкт погоджено орендодавцем! Усі зміни ТІЛЬКИ з його дозволу";
             //e.Errors.Add(ASPxGridViewFreeSquare.Columns["total_free_sqr"], "AAAAAAAAA");
             //var ggg = e.HasErrors;
             return;

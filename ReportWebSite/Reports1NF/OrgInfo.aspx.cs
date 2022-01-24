@@ -592,81 +592,81 @@ public partial class Reports1NF_OrgInfo : System.Web.UI.Page
 
     protected void ASPxGridViewFreeSquare_RowValidating(object sender, ASPxDataValidationEventArgs e)
     {
-        //var form_of_ownership = (e.OldValues["form_of_ownership"] ?? "").ToString();
+		//var form_of_ownership = (e.OldValues["form_of_ownership"] ?? "").ToString();
 
-        //var komis_protocol = (e.OldValues["komis_protocol"] == null ? "" : e.OldValues["komis_protocol"].ToString().Trim());
-        //if (komis_protocol != "" && !komis_protocol.StartsWith("0") && form_of_ownership != "КОМУНАЛЬНА (СФЕРА УПРАВЛІННЯ РДА)")
-        //{
-        //    e.RowError = "Об'єкт погоджено орендодавцем! Усі зміни ТІЛЬКИ з його дозволу за тел: 202-61-76, 202-61-77, 202-61-96 !";
-        //    //e.Errors.Add(ASPxGridViewFreeSquare.Columns["total_free_sqr"], "AAAAAAAAA");
-        //    //var ggg = e.HasErrors;
-        //    return;
-        //}
+		//var komis_protocol = (e.OldValues["komis_protocol"] == null ? "" : e.OldValues["komis_protocol"].ToString().Trim());
+		//if (komis_protocol != "" && !komis_protocol.StartsWith("0") && form_of_ownership != "КОМУНАЛЬНА (СФЕРА УПРАВЛІННЯ РДА)")
+		//{
+		//    e.RowError = "Об'єкт погоджено орендодавцем! Усі зміни ТІЛЬКИ з його дозволу";
+		//    //e.Errors.Add(ASPxGridViewFreeSquare.Columns["total_free_sqr"], "AAAAAAAAA");
+		//    //var ggg = e.HasErrors;
+		//    return;
+		//}
 
-        //foreach (GridViewColumn column in ASPxGridViewFreeSquare.Columns)
-        //{
-        //    GridViewDataColumn dataColumn = column as GridViewDataColumn;
-        //    if (dataColumn == null) continue;
-        //    string fieldName = dataColumn.FieldName.ToLower();
+		//foreach (GridViewColumn column in ASPxGridViewFreeSquare.Columns)
+		//{
+		//    GridViewDataColumn dataColumn = column as GridViewDataColumn;
+		//    if (dataColumn == null) continue;
+		//    string fieldName = dataColumn.FieldName.ToLower();
 
-        //    if (fieldName == "total_free_sqr" && e.NewValues[dataColumn.FieldName] == null)
-        //    {
-        //        e.Errors[dataColumn] = "Заповніть загальну площу вільного приміщення";
-        //    }
+		//    if (fieldName == "total_free_sqr" && e.NewValues[dataColumn.FieldName] == null)
+		//    {
+		//        e.Errors[dataColumn] = "Заповніть загальну площу вільного приміщення";
+		//    }
 
-        //    if (fieldName == "total_free_sqr")
-        //    {
-        //        var svalue = e.NewValues[dataColumn.FieldName];
-        //        if (svalue != null)
-        //        {
-        //            var val = (decimal)svalue;
-        //            if (val < 2.0M)
-        //            {
-        //                e.Errors[dataColumn] = "Загальна площа об’єкта не може бути менше 2 кв.м.";
-        //            }
-        //        }
-        //    }
+		//    if (fieldName == "total_free_sqr")
+		//    {
+		//        var svalue = e.NewValues[dataColumn.FieldName];
+		//        if (svalue != null)
+		//        {
+		//            var val = (decimal)svalue;
+		//            if (val < 2.0M)
+		//            {
+		//                e.Errors[dataColumn] = "Загальна площа об’єкта не може бути менше 2 кв.м.";
+		//            }
+		//        }
+		//    }
 
-        //    if (fieldName == "free_sqr_condition_id" && e.NewValues[dataColumn.FieldName] == null)
-        //    {
-        //        e.Errors[dataColumn] = "Вкажіть стан вільного приміщення";
-        //    }
+		//    if (fieldName == "free_sqr_condition_id" && e.NewValues[dataColumn.FieldName] == null)
+		//    {
+		//        e.Errors[dataColumn] = "Вкажіть стан вільного приміщення";
+		//    }
 
-        //    //if (fieldName == "free_sqr_condition_id")
-        //    //{
-        //    //	var svalue = e.NewValues[dataColumn.FieldName];
-        //    //	if (svalue != null)
-        //    //	{
-        //    //		var val = (int)svalue;
-        //    //		if (!(new[] { 2, 7, 11 }.Contains(val)))
-        //    //		{
-        //    //			e.Errors[dataColumn] = "Стан вільного приміщення може мати тільки значення: ЗАДОВІЛЬНИЙ, ДОБРИЙ, ПОТРЕБУЄ РЕМОНТУ";
-        //    //		}
-        //    //	}
-        //    //}
+		//    //if (fieldName == "free_sqr_condition_id")
+		//    //{
+		//    //	var svalue = e.NewValues[dataColumn.FieldName];
+		//    //	if (svalue != null)
+		//    //	{
+		//    //		var val = (int)svalue;
+		//    //		if (!(new[] { 2, 7, 11 }.Contains(val)))
+		//    //		{
+		//    //			e.Errors[dataColumn] = "Стан вільного приміщення може мати тільки значення: ЗАДОВІЛЬНИЙ, ДОБРИЙ, ПОТРЕБУЄ РЕМОНТУ";
+		//    //		}
+		//    //	}
+		//    //}
 
 
-        //    if (fieldName == "floor" && e.NewValues[dataColumn.FieldName] == null)
-        //    {
-        //        e.Errors[dataColumn] = "Заповніть місце розташування вільного приміщення (поверх)";
-        //    }
+		//    if (fieldName == "floor" && e.NewValues[dataColumn.FieldName] == null)
+		//    {
+		//        e.Errors[dataColumn] = "Заповніть місце розташування вільного приміщення (поверх)";
+		//    }
 
-        //    if (fieldName == "possible_using" && e.NewValues[dataColumn.FieldName] == null)
-        //    {
-        //        e.Errors[dataColumn] = "Заповніть можливе використання вільного приміщення";
-        //    }
+		//    if (fieldName == "possible_using" && e.NewValues[dataColumn.FieldName] == null)
+		//    {
+		//        e.Errors[dataColumn] = "Заповніть можливе використання вільного приміщення";
+		//    }
 
-        //    //if (fieldName == "using_possible_id" && e.NewValues[dataColumn.FieldName] == null)
-        //    //{
-        //    //	e.Errors[dataColumn] = "Заповніть можливе використання вільного приміщення";
-        //    //}
-        //}
+		//    //if (fieldName == "using_possible_id" && e.NewValues[dataColumn.FieldName] == null)
+		//    //{
+		//    //	e.Errors[dataColumn] = "Заповніть можливе використання вільного приміщення";
+		//    //}
+		//}
 
-        //if (e.Errors.Count > 0)
-        //    e.RowError = "Заповніть обов'язкові поля.";
-    }
+		//if (e.Errors.Count > 0)
+		//    e.RowError = "Заповніть обов'язкові поля.";
+	}
 
-    protected void ASPxGridViewFreeSquare_StartRowEditing(object sender, DevExpress.Web.Data.ASPxStartRowEditingEventArgs e)
+	protected void ASPxGridViewFreeSquare_StartRowEditing(object sender, DevExpress.Web.Data.ASPxStartRowEditingEventArgs e)
     {
         //if (!ASPxGridViewFreeSquare.IsNewRowEditing)
         //{

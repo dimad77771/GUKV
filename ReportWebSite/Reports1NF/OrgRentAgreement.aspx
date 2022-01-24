@@ -810,7 +810,7 @@
 				if (err_object.length > 0) {
 					var err_text = err_object.text();
 					if (err_text == null) err_text = "";
-					if (err_text.indexOf("Об'єкт погоджено орендодавцем! Усі зміни ТІЛЬКИ з його дозволу за тел: 202-61-76, 202-61-77, 202-61-96 !") >= 0) {
+					if (err_text.indexOf("Об'єкт погоджено орендодавцем! Усі зміни ТІЛЬКИ з його дозволу") >= 0) {
 						console.log("err_object.text", err_text);
 						var save_image = $(popup).find(".dxflCommandItemSys").find("a").first();
 						save_image.hide();
