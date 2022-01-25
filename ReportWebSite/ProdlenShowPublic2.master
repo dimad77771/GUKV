@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="ProdlenShowPublic.master.cs" Inherits="ProdlenShowPublic" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="ProdlenShowPublic2.master.cs" Inherits="ProdlenShowPublic" %>
 
 <%@ Register Src="~/UserControls/ThemeSelector.ascx" TagPrefix="dx" TagName="ThemeSelector" %>
 
@@ -7,6 +7,9 @@
 <head id="Head1" runat="server">
     <title>Єдина Інформаційна Система ДКВ м. Києва</title>
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -61,7 +64,7 @@
 
                     <td>
                         <div style="float: right; padding-top: 0px;">
-                            <dx:ASPxButton ID="ASPChangeMapSystem" runat="server" Text="Використовувати мапу містобудівного кадастру" OnClick="ASPChangeMapSystem_Click"  >
+                            <dx:ASPxButton ID="ASPChangeMapSystem" runat="server" Text="Використовувати GIS-мапу" OnClick="ASPChangeMapSystem_Click"  >
                                 
                             </dx:ASPxButton>
 
@@ -134,10 +137,6 @@
     </div>
     </form>
     <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/CommonScript.js") %>"></script>
-    <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jquery-1.8.3.js") %>"></script>
     <%= StackExchange.Profiling.MiniProfiler.RenderIncludes() %> 
-
-    <script type="text/javascript" src="<%= ResolveUrl("~/Scripts/jquery-2.1.4.min.js") %>"></script>
-    <script type="text/javascript" src="<%= ResolveUrl("~/Scripts/jquery.cookie.js") %>"></script>
 </body>
 </html>

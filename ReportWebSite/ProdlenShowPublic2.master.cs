@@ -14,7 +14,7 @@ public partial class ProdlenShowPublic : System.Web.UI.MasterPage
 
 	protected void ASPChangeMapSystem_Click(object sender, EventArgs e)
 	{
-		MapUtils.SetSystem(MapUtils.MBK);
+		MapUtils.SetSystem(MapUtils.GIS);
 		Response.Redirect("Report1NFProdlenMap.aspx" + Request.Url.Query);
 	}
 }
