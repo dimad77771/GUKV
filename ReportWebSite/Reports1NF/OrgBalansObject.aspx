@@ -1255,7 +1255,7 @@ WHERE id = @id"
 											<tr>
                                                 <td> <dx:ASPxLabel ID="ASPxLabel16" runat="server" Text="Координати на мапі"/> </td>
                                                 <td>
-													<dx:ASPxTextBox ID="EditGeodataMapPoints" runat="server" Text='<%# EvaluateTrimStr(Eval("geodata_map_opoints")) %>' Width="270px" Title="Координати на мапі" MaxLength="100">
+													<dx:ASPxTextBox ID="EditGeodataMapPoints" runat="server" Text='<%# EvaluateTrimStr(Eval("geodata_map_opoints")) %>' Width="270px" Title="Координати на мапі" MaxLength="2000">
 													</dx:ASPxTextBox> 
                                                 </td>
                                                 <td></td>

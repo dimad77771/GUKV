@@ -1490,6 +1490,8 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
 	bool Validate_geodata_map_points()
 	{
+		return true;
+
 		Dictionary<string, Control> controls = new Dictionary<string, Control>();
 
 		Reports1NFUtils.GetAllControls(AddressForm, controls);

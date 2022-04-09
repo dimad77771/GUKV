@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Report1NFFreeMap__GIS.aspx.cs" Inherits="Reports1NF_Report1NFFreeMap"
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Report1NFFreeMap__OPN.aspx.cs" Inherits="Reports1NF_Report1NFFreeMap"
     MasterPageFile="~/FreeShowPublic.master" Title="Мапа вільних приміщень" %>
 
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
@@ -7,7 +7,10 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 
-<script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
+<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+<%--<script type="text/javascript" src="http://maplib.khtml.org/khtml.maplib/khtml_all.js"> </script>--%>
+<%--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.12.0/css/ol.css" type="text/css">
+<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.12.0/build/ol.js"></script>--%>
 <script type="text/javascript" src="../Scripts/PageScript.js"></script>
 
 
@@ -114,8 +117,55 @@
 		jQuery(document).ready(function () {
 			setTimeout(function () {
 				AdjustGridSizes();
+
+
+
+				/*
+				const iconFeature = new ol.Feature({
+					geometry: new ol.geom.Point([0, 0]),
+					name: 'Null Island',
+					population: 4000,
+					rainfall: 500,
+				});
+				const iconStyle = new ol.style.Style({
+					image: new ol.style.Icon({
+						anchor: [0.5, 46],
+						anchorXUnits: 'fraction',
+						anchorYUnits: 'pixels',
+						src: '../Styles/DGCustomization__marker_2b.png',
+					}),
+				});
+				iconFeature.setStyle(iconStyle);
+
+				const vectorSource = new ol.source.Vector({
+					features: [iconFeature],
+				});
+				const vectorLayer = new ol.source.Vector({
+					source: vectorSource,
+				});
+
+				const rasterLayer = new ol.source.Tile({
+					source: new ol.source.TileJSON({
+						url: 'https://a.tiles.mapbox.com/v3/aj.1x1-degrees.json?secure=1',
+						crossOrigin: '',
+					}),
+				});
+
+				const target = document.getElementById('map');
+				const map = new ol.Map({
+					layers: [rasterLayer, vectorLayer],
+					target: target,
+					view: new ol.View({
+						center: [0, 0],
+						zoom: 3,
+					}),
+				});
+
+				return;
+				*/
+
 				
-				DG.then(function () {
+				//DG.then(function () {
 					if (selected_fs_id != null) {
 						for (n = 0; n < allPoints.length; n++) {
 							if (allPoints[n].fs_id == selected_fs_id) {
@@ -124,19 +174,73 @@
 						}
 					}
 
-					var center_point = [50.402866, 30.655109];
-					var zoom = 10.5;
-					if (selected_apoint != null) {
-						center_point = [selected_apoint.point1, selected_apoint.point2];
-						zoom = 18;
-					}
+					//var center_point = [50.402866, 30.655109];
+					//var center_point = [30.655109, 50.402866];
+					//var zoom = 10.5;
+					//if (selected_apoint != null) {
+					//	center_point = [selected_apoint.point1, selected_apoint.point2];
+					//	zoom = 18;
+					//}
 
+					/*
 					map = DG.map('map', {
 						center: center_point,
 						zoom: zoom,
 						closePopupOnClick: false,
 					});
+					*/
 
+					var AutoSizeFramedCloud = OpenLayers.Class(OpenLayers.Popup.FramedCloud, {
+						'autoSize': true,
+						'panMapIfOutOfView': true,
+					});
+					
+					var map = new OpenLayers.Map("map", {
+						scrollWheelZoom: false,
+					});
+					map.addLayer(new OpenLayers.Layer.OSM());
+
+					var center_point = new OpenLayers.LonLat(30.655109,50.402866)
+						.transform(
+							new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+							map.getProjectionObject() // to Spherical Mercator Projection
+					);	
+					var zoom = 10.5;
+					map.setCenter(center_point, zoom);
+
+					var markers = new OpenLayers.Layer.Markers("Markers");
+					map.addLayer(markers);
+
+					map.addControls([
+						//new OpenLayers.Control.MousePosition(),
+						//new OpenLayers.Control.ScaleLine(),
+						//new OpenLayers.Control.LayerSwitcher(),
+						//new OpenLayers.Control.Permalink({ anchor: true })
+					]);
+
+					console.log("OpenLayers", OpenLayers);
+					
+
+
+					/*
+					var map = new ol.Map({
+						target: 'map',
+						layers: [
+							new ol.layer.Tile({
+								source: new ol.source.OSM()
+							})
+						],
+						view: new ol.View({
+							center: ol.proj.fromLonLat([30.655109, 50.402866]),
+							zoom: 10.5
+						})
+					});
+					var markers = new ol.layer.markers("Markers");
+						map.addLayer(markers);
+					return;
+					*/
+
+					/*
 					map.on('popupopen', function (e) {
 						console.log('popupopen', e.popup);
 						var html = e.popup.getContent();
@@ -160,42 +264,27 @@
 							}
 						}
 					});
+					*/
 
+					/****
 					var myIcon_1 = DG.icon({
 						iconUrl: '../Styles/DGCustomization__marker_1b.png',
-						//iconRetinaUrl: '../Styles/DGCustomization__marker_2.png',
 						iconSize: [22, 68],
-						//iconAnchor: [22, 94],
 						popupAnchor: [-1, -26],
-						//shadowUrl: 'my-icon-shadow.png',
-						//shadowRetinaUrl: 'my-icon-shadow@2x.png',
-						//shadowSize: [68, 95],
-						//shadowAnchor: [22, 94]
 					});
 					var myIcon_2 = DG.icon({
 						iconUrl: '../Styles/DGCustomization__marker_2b.png',
-						//iconRetinaUrl: '../Styles/DGCustomization__marker_2.png',
 						iconSize: [22, 68],
-						//iconAnchor: [22, 94],
 						popupAnchor: [-1, -26],
-						//shadowUrl: 'my-icon-shadow.png',
-						//shadowRetinaUrl: 'my-icon-shadow@2x.png',
-						//shadowSize: [68, 95],
-						//shadowAnchor: [22, 94]
 					});
 					var myIcon_3 = DG.icon({
 						iconUrl: '../Styles/DGCustomization__marker_3b.png',
-						//iconRetinaUrl: '../Styles/DGCustomization__marker_2.png',
 						iconSize: [22, 68],
-						//iconAnchor: [22, 94],
 						popupAnchor: [-1, -26],
-						//shadowUrl: 'my-icon-shadow.png',
-						//shadowRetinaUrl: 'my-icon-shadow@2x.png',
-						//shadowSize: [68, 95],
-						//shadowAnchor: [22, 94]
 					});
+					****/
 
-
+					
 					for (n = 0; n < allPoints.length; n++) {
 						var apoint = allPoints[n];
 						//console.log("apoint", apoint);
@@ -212,9 +301,9 @@
 						//apoint.full_address = "ГІДРОПАРК/ДОЛОБЕЦЬКИЙ ОСТРІВ 50 -МАЙ ГІДРОПАРК/ДОЛОБЕЦЬКИЙ ОСТРІВ 50 -МАЙ ГІДРОПАРК/ДОЛОБЕЦЬКИЙ ОСТРІВ 50 -МАЙ END";
 						var html =
 							//'<a href="Report1NFFreeShow.aspx?fs_id=' + apoint.fs_id + '" target="_blank"><p style="text-align:center; font-size:large; color:white">'
-							'<a onclick="openLink(' + apoint.fs_id + ')" style="cursor:pointer"><table style="width:100%"><tr><td><p style="text-align:center; font-size:large; color:white">'
+							'<a onclick="openLink(' + apoint.fs_id + ')" style="cursor:pointer"><table style="width:100%"><tr><td><p style="text-align:center; font-size:large; color:blue">'
 							+ apoint.full_address + '</p></td>' +
-							'<td style="text-align:right"><span style="margin-left:40px; vertical-align:super; text-align:center; font-size:small; color:white">Додаткова інформація</span><img src="../Styles/ExternalLinkIcon.png" height="18" width="18" style="margin-left:5px"/></td><td style="width:20px"></td></tr></table></a>' +
+							'<td style="text-align:right"><span style="margin-left:40px; vertical-align:super; text-align:center; font-size:small; color:blue">Додаткова інформація</span><img src="../Styles/ExternalLinkIcon.png" height="18" width="18" style="margin-left:5px"/></td><td style="width:20px"></td></tr></table></a>' +
 							'<table style="border:1px solid; width:680px; margin-top:6px">' +
 
 							html_need_zgoda +
@@ -321,33 +410,128 @@
 						var imgdiv = '<span id="spanwait" style="display:none">...</span>';
 						html = '<table><tr><td>' + html + '</td>' + '<td>' + imgdiv + '</td>' + '</tr></table>';
 
-
+						/*
 						var popup = DG.popup({
 							maxWidth: 750,// + 300,
 							minWidth: 750,
 						});
 						popup.setContent(html);
+						*/
 
-
+						/*
 						DG.marker([apoint.point1, apoint.point2], {
-							//title: "aaaa\njjj",
 							icon: (apoint.prozoro_number != '' ? myIcon_3 : apoint.need_zgoda == '+' ? myIcon_2 : myIcon_1),
 						})
 						.addTo(map)
-						//.bindPopup('Вы кликнули по мне!')
 						.bindPopup(popup);
 
 						if (apoint == selected_apoint) {
-							//console.log("popup", popup);
-							//console.log("popup.setContent", popup.setContent);
-							//console.log("popup.openOn", popup.openOn);
 							popup.setLatLng([apoint.point1, apoint.point2]).openOn(map);
-							//map.openPopup(popup);
 						}
+						*/
+
+						//const iconStyle = new OpenLayers.Style({
+						//	image: new Icon({
+						//		anchor: [0.5, 46],
+						//		anchorXUnits: 'fraction',
+						//		anchorYUnits: 'pixels',
+						//		src: '../Styles/DGCustomization__marker_2b.png',
+						//	}),
+						//});
+
+						//let customIcon = {
+						//	iconUrl: '../Styles/DGCustomization__marker_2b.png',
+						//	iconSize: [40, 40]
+						//};
+
+						//let myIcon = new OpenLayers.Icon({
+						//	url: '../Styles/DGCustomization__marker_2b.png',
+						//	//iconSize: [40, 40],
+						//});
+						//myIcon.setSize([40, 40]);
+						//console.log("myIcon", myIcon);
+
+						//var lonLat = new OpenLayers.LonLat(apoint.point2, apoint.point1)
+						//	.transform(
+						//		new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+						//		map.getProjectionObject() // to Spherical Mercator Projection
+						//);
+						//let iconOptions = {
+						//	title: 'company name',
+						//	draggable: true,
+						//}
+						//markers.addMarker(new OpenLayers.Marker(lonLat, myIcon ));
+
+						//iconSize: [22, 68],
+						//	popupAnchor: [-1, -26],
+
+						var size = new OpenLayers.Size([22, 68]);
+						var offset = new OpenLayers.Pixel(0, 0);
+						var myIcon_1 = '../Styles/DGCustomization__marker_1b.png';
+						var myIcon_2 = '../Styles/DGCustomization__marker_2b.png';
+						var myIcon_3 = '../Styles/DGCustomization__marker_3b.png';
+						var myIcon = (apoint.prozoro_number != '' ? myIcon_3 : apoint.need_zgoda == '+' ? myIcon_2 : myIcon_1);
+						var icon = new OpenLayers.Icon(myIcon, size, offset);
+
+						var lonLat = new OpenLayers.LonLat(apoint.point2, apoint.point1)
+							.transform(
+								new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+								map.getProjectionObject() // to Spherical Mercator Projection
+						);
+
+						//markers.addMarker(new OpenLayers.Marker(lonLat, icon));
+
+						popupClass = AutoSizeFramedCloud;
+						//popupContentHTML = "<div>This popup can't be panned to fit in view, so its popup text should fit inside the map. If it doens't, instead of expaning outside, it will simply make the content scroll. Scroll scroll scroll your boat, gently down the stream! Chicken chicken says the popup text is really boring to write. Did you ever see a popup a popup a popup did you ever see a popup a popup right now. With this way and that way and this way and that way did you ever see a popup a popup right now. I wonder if this is long enough. it might be, but maybe i should throw in some other content. <ul><li>one</li><li>two</li><li>three</li><li>four</li></ul>(get your booty on the floor) </div>";
+						popupContentHTML = html;
+						addMarker(map, markers, lonLat, popupClass, popupContentHTML, true, true, icon);
 					}
-				});
+				//});
 			}, 500);
 		});
+	}
+
+
+	/**
+	 * Function: addMarker
+	 * Add a new marker to the markers layer given the following lonlat, 
+	 *     popupClass, and popup contents HTML. Also allow specifying 
+	 *     whether or not to give the popup a close box.
+	 * 
+	 * Parameters:
+	 * ll - {<OpenLayers.LonLat>} Where to place the marker
+	 * popupClass - {<OpenLayers.Class>} Which class of popup to bring up 
+	 *     when the marker is clicked.
+	 * popupContentHTML - {String} What to put in the popup
+	 * closeBox - {Boolean} Should popup have a close box?
+	 * overflow - {Boolean} Let the popup overflow scrollbars?
+	 */
+	function addMarker(map, markers, ll, popupClass, popupContentHTML, closeBox, overflow, icon) {
+
+		var feature = new OpenLayers.Feature(markers, ll);
+		feature.closeBox = closeBox;
+		feature.popupClass = popupClass;
+		feature.data.popupContentHTML = popupContentHTML;
+		feature.data.overflow = (overflow) ? "auto" : "hidden";
+		feature.data.icon = icon;
+
+		var marker = feature.createMarker();
+		
+		var markerClick = function (evt) {
+			if (this.popup == null) {
+				this.popup = this.createPopup(this.closeBox);
+				map.addPopup(this.popup);
+				this.popup.show();
+			} else {
+				this.popup.toggle();
+				this.popup.updateSize();
+			}
+			currentPopup = this.popup;
+			OpenLayers.Event.stop(evt);
+		};
+		marker.events.register("mousedown", feature, markerClick);
+
+		markers.addMarker(marker);
 	}
 
 

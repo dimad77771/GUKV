@@ -48,10 +48,10 @@
 
         <td> &nbsp; </td>
 
-        <td valign="top"> <dx:ASPxHyperLink ID="LinkHelp1" runat="server" Text="Завантажити Інструкцію для балансоутримувачів" NavigateUrl="~/UserGuide/Інструкція для балансоутримувачів.docx" /> </td>
+        <td valign="top"> <dx:ASPxHyperLink ID="LinkHelp1" runat="server" Text="Інструкція балансоутримувача" NavigateUrl="~/UserGuide/Інструкція БАЛАНСОУТРИМУВАЧА.docx" /> </td>
     </tr>
 
-    <tr>
+<%--    <tr>
         <td> &nbsp; </td>
 
         <td valign="bottom"> <img src="../Styles/HelpIcon.png" alt="Довідка" /> </td>
@@ -106,7 +106,7 @@
     <tr><td colspan="4"> &nbsp; </td></tr>
 
     <tr><td colspan="4"><dx:ASPxHyperLink ID="ASPxHyperLink5" runat="server" Text="Зміни та новини проекту" NavigateUrl="~/Account/FinAdd.aspx" /></td></tr>
-    
+    --%>
 
 
 

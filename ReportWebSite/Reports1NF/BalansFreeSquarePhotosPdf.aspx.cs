@@ -27,22 +27,32 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-		//var rid = Int32.Parse(Request.QueryString["rid"]);
-		//var bid = Int32.Parse(Request.QueryString["bid"]);
 		var id = Int32.Parse(Request.QueryString["id"]);
+		var formap = (Request.QueryString["formap"] == "1");
 
+		if (formap)
+		{
+			var html = new BalansFreeSquarePhotosPdfBulder().ForMapHtml(id);
+			Response.Clear();
+			Response.ContentType = "text/html";
+			Response.Write(html);
+			Response.Flush();
+			Response.End();
 
-		//var fname = @"info_" + bid + "_" + rid + "_" + id + ".pdf";
-		var fname = @"info_" + "_" + id + ".pdf";
-		var bytes = new BalansFreeSquarePhotosPdfBulder().Go(id);
+		}
+		else
+		{
+			var fname = @"info_" + "_" + id + ".pdf";
+			var bytes = new BalansFreeSquarePhotosPdfBulder().Go(id);
 
-		Response.Clear();
-		Response.ContentType = "application/pdf";
-		Response.AddHeader("Content-Disposition", "attachment;filename=\"" + fname + "\"");
-		Response.BinaryWrite(bytes);
+			Response.Clear();
+			Response.ContentType = "application/pdf";
+			Response.AddHeader("Content-Disposition", "attachment;filename=\"" + fname + "\"");
+			Response.BinaryWrite(bytes);
 
-		Response.Flush();
-		Response.End();
+			Response.Flush();
+			Response.End();
+		}
 	}
 
 
@@ -88,6 +98,50 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
 			PdfSave();
 			return OutputPdfBytes;
 		}
+
+		public String ForMapHtml(int free_square_id)
+		{
+			Free_square_id = free_square_id;
+			ConfigInit();
+			connectionSql = Utils.ConnectToDatabase();
+			var allfiles = GetAllFiles().ToArray();
+
+
+			var imgcount = 0;
+			var imgdiv = "";
+			imgdiv += @"<div id=""imgdiv"" style =""margin: 5px; width:300px; height:500px; background-color:transparent; overflow-y: scroll"">";
+			imgdiv += "<table>";
+			for (var j = 0; j < allfiles.Length; j++)
+			{
+				var filename = allfiles[j].FullFilename;
+				if (!File.Exists(filename))
+				{
+					continue;
+				}
+				imgcount++;
+				var imageBytes = File.ReadAllBytes(filename);
+				var imageData = Convert.ToBase64String(imageBytes);
+				imageData = @"data:image/gif;base64," + imageData;
+				imgdiv += "<tr>";
+				imgdiv += "<td>";
+				imgdiv += @"<img width=270 src=""" + imageData + @""" />";
+				imgdiv += "</td>";
+				imgdiv += "</tr>";
+			}
+			imgdiv += "</table>";
+			imgdiv += "</div>";
+			//File.WriteAllText(@"E:\PROJECTS\DKVSOURCESFINALEDITION_v20\ReportWebSite\ImgFree\aa.htm", imgdiv);
+			//System.Threading.Thread.Sleep(3000);
+
+			if (imgcount == 0)
+			{
+				return "";
+			}
+
+
+			return imgdiv;
+		}
+		
 
 		void ConfigInit()
 		{

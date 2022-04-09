@@ -343,7 +343,7 @@ SELECT
            --,CASE WHEN (ISNULL(org.budget_narah_50_uah, 0) - ISNULL(kazna.pay_sum, 0) + ISNULL(org.budget_prev_50_uah, 0)) - ISNULL(org.unknown_payments,0) < 0 THEN 0 Else (ISNULL(org.budget_narah_50_uah, 0) - ISNULL(kazna.pay_sum, 0) + ISNULL(org.budget_prev_50_uah, 0)) - ISNULL(org.unknown_payments,0) END AS 'PAY_50_DEBT_CUR'
 
 			,isnull(org.budget_narah_50_uah,0) - isnull(kazna.pay_sum,0) + isnull(org.budget_prev_50_uah,0) + isnull(org.budget_debt_30_50_uah,0)	as PAY_50_DEBT_CUR_v16b
-			,isnull(org.budget_narah_50_uah,0) - isnull(kazna.pay_sum,0) + isnull(org.budget_prev_50_uah,0)											as PAY_50_DEBT_CUR_v17b
+			,isnull(org.budget_narah_50_uah,0) - isnull(kazna.pay_sum,0) + isnull(org.budget_prev_50_uah,0)	- isnull(org.unknown_payments,0)        as PAY_50_DEBT_CUR_v17b
 			
 
            ,org.konkurs_payments AS 'PAY_RECV_OTHER'

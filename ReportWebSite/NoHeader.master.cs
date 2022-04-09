@@ -86,7 +86,7 @@ public partial class NoHeader : System.Web.UI.MasterPage
 		{
 			if (userIsRdaController)
 			{
-				foreach(var tab in MainRibbon.Tabs.Where(q => !new[] { "Користувачі майна", "Майно (Об'єкти)", "Оренда", "Каталог", "Контроль використання" }.Contains(q.Text)))
+				foreach(var tab in MainRibbon.Tabs.Where(q => !new[] { "Користувачі майна", "Майно (Об'єкти)", "Оренда", "Каталог", "Контроль використання", "Довідка", "Реєстри" }.Contains(q.Text)))
 				{
 					tab.Visible = false;
 				}
