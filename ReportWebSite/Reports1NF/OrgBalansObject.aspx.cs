@@ -1141,13 +1141,15 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
         var form_of_ownership = (e.OldValues["form_of_ownership"] ?? "").ToString();
 
         var komis_protocol = (e.OldValues["komis_protocol"] == null ? "" : e.OldValues["komis_protocol"].ToString().Trim());
-        if (komis_protocol != "" && !komis_protocol.StartsWith("0") && form_of_ownership != "КОМУНАЛЬНА (СФЕРА УПРАВЛІННЯ РДА)")
+		/* -- 2022-05-22
+		if (komis_protocol != "" && !komis_protocol.StartsWith("0") && form_of_ownership != "КОМУНАЛЬНА (СФЕРА УПРАВЛІННЯ РДА)")
         {
             e.RowError = "Об'єкт погоджено орендодавцем! Усі зміни ТІЛЬКИ з його дозволу";
             //e.Errors.Add(ASPxGridViewFreeSquare.Columns["total_free_sqr"], "AAAAAAAAA");
             //var ggg = e.HasErrors;
             return;
         }
+		*/
 
         foreach (GridViewColumn column in ASPxGridViewFreeSquare.Columns)
         {

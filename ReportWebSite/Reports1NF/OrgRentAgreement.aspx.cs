@@ -3021,6 +3021,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
     protected void ASPxGridViewFreeSquare_RowValidating(object sender, ASPxDataValidationEventArgs e)
     {
         var komis_protocol = (e.OldValues["komis_protocol"] == null ? "" : e.OldValues["komis_protocol"].ToString().Trim());
+		/* -- 2022-05-22
         if (komis_protocol != "" && !komis_protocol.StartsWith("0"))
         {
             e.RowError = "Об'єкт погоджено орендодавцем! Усі зміни ТІЛЬКИ з його дозволу";
@@ -3028,6 +3029,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
             //var ggg = e.HasErrors;
             return;
         }
+		*/
 
         foreach (GridViewColumn column in ASPxGridViewFreeSquare.Columns)
         {
