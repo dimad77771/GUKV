@@ -768,7 +768,7 @@
     <value>Будь ласка, не закривайте браузер, доки виконується надсилання усіх змінених договорів орендування...</value>
   </data>
   <data name="GlobalWebSiteURL" xml:space="preserve">
-    <value>http://eis.gukv.gov.ua/gukv</value>
+    <value>https://dkv.kyivcity.gov.ua/</value>
   </data>
   <data name="Report1NFCommentBodyDkvArendaPayment" xml:space="preserve">
     <value>Співробітник ДКВ {0} залишив коментар у Вашому звіті про використання комунальної власності.

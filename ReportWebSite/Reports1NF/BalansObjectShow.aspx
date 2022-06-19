@@ -114,7 +114,8 @@
  	 ((@p_dpz_filter = 0) OR (@p_dpz_filter <> 0 AND vb.balans_id in (select b.id from dbo.reports1nf_balans b where b.organization_id = vb.organization_id and ISNULL(b.is_deleted, 0) = 0 ) )) AND
         ((@p_com_filter = 0) OR (@p_com_filter <> 0 AND (vb.org_ownership_int IN (32,33,34) OR vb.form_ownership_int IN (32,33,34)))) AND
         ((@p_show_deleted = 1) OR (@p_show_deleted = 0 AND (vb.is_deleted IS NULL OR vb.is_deleted = 0 OR vb.is_not_accepted = 1))) AND
-        ((@p_rda_district_id = 0) OR (vb.org_ownership_int in (select id from dict_org_ownership where is_rda = 1) AND vb.org_district_id = @p_rda_district_id))"
+        ((@p_rda_district_id = 0) OR (vb.org_ownership_int in (select id from dict_org_ownership where is_rda = 1) AND vb.org_district_id = @p_rda_district_id))
+			AND isnull(bal.purpose_group_id,0) <> 31"
     OnSelecting="SqlDataSourceBalansObjects_Selecting" >
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="1" Name="p_dpz_filter" />
