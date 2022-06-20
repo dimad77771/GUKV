@@ -214,7 +214,18 @@
 				_aspxSetAttribute(lsScrollableDiv.style, "overflow-y", "scroll");
             }  
         }  
-    }
+	}
+
+	function include_in_perelik_change(s, e) {
+		var include_in_perelik = FreeSquareGridView.GetEditValue("include_in_perelik");
+		var geodata_map_points = FreeSquareGridView.GetEditValue("geodata_map_points");
+		if (include_in_perelik != null) {
+			//console.log("geodata_map_points", geodata_map_points);
+			if (geodata_map_points === "" || geodata_map_points === null) {
+				FreeSquareGridView.SetEditValue("geodata_map_points", "50.00000 30.00000");
+			}
+		}
+	}
 
     // ]]>
 
@@ -639,7 +650,9 @@ WHERE id = @id"
         </dx:GridViewDataTextColumn>--%>
 		<dx:GridViewDataComboBoxColumn FieldName="include_in_perelik" VisibleIndex="4" Width = "50px" Visible="True" Caption="Включено до переліку №">
 			<HeaderStyle Wrap="True" />
-			<PropertiesComboBox DataSourceID="SqlDataSourceIncludeInPerelik" ValueField="id" TextField="name" ValueType="System.String" ClearButton-DisplayMode="OnHover" />
+			<PropertiesComboBox DataSourceID="SqlDataSourceIncludeInPerelik" ValueField="id" TextField="name" ValueType="System.String" ClearButton-DisplayMode="OnHover" >
+				<ClientSideEvents ValueChanged="include_in_perelik_change" />
+			</PropertiesComboBox>
 		</dx:GridViewDataComboBoxColumn>
 
 
