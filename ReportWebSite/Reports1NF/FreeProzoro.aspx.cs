@@ -230,7 +230,9 @@ public partial class Reports1NF_FreeProzoro : System.Web.UI.Page
 		if (!ex)
 		{
 			var transaction = connection.BeginTransaction();
-			using (SqlCommand cmd = new SqlCommand("insert into [reports1nf_balans_free_prozoro](id) values(@id)", connection, transaction))
+			using (SqlCommand cmd = new SqlCommand("" +
+				"insert into [reports1nf_balans_free_prozoro](id, v202,v203,v206,v208,v210,v220, v221,v222, v92) " +
+				"values(@id, 'Україна','Україна','Україна','Україна','Україна','Україна', '50.00000','30.00000', '04000000-8')", connection, transaction))
 			{
 				cmd.Parameters.Add(new SqlParameter("id", FreeID));
 				cmd.ExecuteNonQuery();
@@ -265,6 +267,15 @@ public partial class Reports1NF_FreeProzoro : System.Web.UI.Page
 				else if (control is ASPxTextBox)
 				{
 					val = Reports1NFUtils.GetEditText(controls, idControl);
+				}
+				else if (control is ASPxCheckBox)
+				{
+					val = Reports1NFUtils.GetCheckBoxValue(controls, idControl);
+					val = true.Equals(val) ? "Так" : "";
+				}
+				else if (control is ASPxComboBox)
+				{
+					val = Reports1NFUtils.GetDropDownText(controls, idControl);
 				}
 				else throw new Exception();
 

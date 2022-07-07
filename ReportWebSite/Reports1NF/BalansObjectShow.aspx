@@ -82,7 +82,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
 
-<mini:ProfiledSqlDataSource ID="SqlDataSourceBalansObjects" runat="server" EnableCaching="true"
+<mini:ProfiledSqlDataSource ID="SqlDataSourceBalansObjects" runat="server" EnableCaching="false"
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT vb.* 
 ,b.sqr_total as sqr_total_bld

@@ -51,7 +51,7 @@
                 </fieldset>
                 <p class="submitButton">
                     <dx:ASPxButton ID="LoginButton" runat="server" CommandName="Login" Text="Увійти" 
-                        ValidationGroup="LoginUserValidationGroup"></dx:ASPxButton>
+                        ValidationGroup="LoginUserValidationGroup3"></dx:ASPxButton>
                 </p>
             </div>
         </LayoutTemplate>
