@@ -75,7 +75,7 @@
 			}
 		}
 
-		
+
 
 		function getAllValueElements() {
 			let elements = [];
@@ -209,7 +209,8 @@ order by 1">
             </dx:ASPxButton>
 		</td>
 		<td align="center">
-			<dx:ASPxButton ID="ButtonExcel" runat="server" Text="Excel" AutoPostBack="false" CausesValidation="false">
+			<dx:ASPxButton ID="ButtonExcel" runat="server" Text="Excel" OnClick="ButtonPrint_Click">
+				
             </dx:ASPxButton>
 		</td>
 		<td align="right">
@@ -246,10 +247,10 @@ order by 1">
 							<col style="width:25%">
 						</colgroup>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Код ЄДРПОУ Орендодавця"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v46" ClientInstanceName="v46" runat="server" Text='<%# Eval("v46") %>' Width="350px" Title="Код ЄДРПОУ Орендодавця" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Повна юридична назва орендодавця"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v47" ClientInstanceName="v47" runat="server" Text='<%# Eval("v47") %>' Width="350px" Title="Повна юридична назва орендодавця" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Ідентифікатор організації"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v46" ClientInstanceName="v46" runat="server" Text='<%# Eval("v46") %>' Width="350px" Title="Ідентифікатор організації" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Повна юридична назва організації"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v47" ClientInstanceName="v47" runat="server" Text='<%# Eval("v47") %>' Width="350px" Title="Повна юридична назва організації" /></td>
                         </tr>
                         <tr>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Інформація щодо підтвердження повноважень"></dx:ASPxLabel></td>
@@ -259,32 +260,32 @@ order by 1">
                             <td><dx:ASPxTextBox ID="v202" ClientInstanceName="v202" runat="server" Text='<%# Eval("v202") %>' Width="350px" Title="Країна" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Область орендодавця"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v48" ClientInstanceName="v48" runat="server" Text='<%# Eval("v48") %>' Width="350px" Title="Область орендодавця" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Місто орендодавця"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v49" ClientInstanceName="v49" runat="server" Text='<%# Eval("v49") %>' Width="350px" Title="Місто орендодавця" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="область"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v48" ClientInstanceName="v48" runat="server" Text='<%# Eval("v48") %>' Width="350px" Title="область" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Населений пункт"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v49" ClientInstanceName="v49" runat="server" Text='<%# Eval("v49") %>' Width="350px" Title="Населений пункт" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Будинок та вулиця орендодавця"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v50" ClientInstanceName="v50" runat="server" Text='<%# Eval("v50") %>' Width="350px" Title="Будинок та вулиця орендодавця" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Індекс орендодавця"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v51" ClientInstanceName="v51" runat="server" Text='<%# Eval("v51") %>' Width="350px" Title="Індекс орендодавця" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Вулиця, будинок, квартира"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v50" ClientInstanceName="v50" runat="server" Text='<%# Eval("v50") %>' Width="350px" Title="Вулиця, будинок, квартира" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Індекс"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v51" ClientInstanceName="v51" runat="server" Text='<%# Eval("v51") %>' Width="350px" Title="Індекс" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Прізвище представника орендодавця"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v52" ClientInstanceName="v52" runat="server" Text='<%# Eval("v52") %>' Width="350px" Title="Прізвище представника орендодавця" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Ім'я представника орендодавця"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v53" ClientInstanceName="v53" runat="server" Text='<%# Eval("v53") %>' Width="350px" Title="Ім'я представника орендодавця" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Призвище"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v52" ClientInstanceName="v52" runat="server" Text='<%# Eval("v52") %>' Width="350px" Title="Призвище" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Ім'я"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v53" ClientInstanceName="v53" runat="server" Text='<%# Eval("v53") %>' Width="350px" Title="Ім'я" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="По батькові представника орендодавця"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v54" ClientInstanceName="v54" runat="server" Text='<%# Eval("v54") %>' Width="350px" Title="По батькові представника орендодавця" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="E-mail  контактної особи орендодавця"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v55" ClientInstanceName="v55" runat="server" Text='<%# Eval("v55") %>' Width="350px" Title="E-mail  контактної особи орендодавця" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="По батькові"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v54" ClientInstanceName="v54" runat="server" Text='<%# Eval("v54") %>' Width="350px" Title="По батькові" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="E-mail для повідомлень"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v55" ClientInstanceName="v55" runat="server" Text='<%# Eval("v55") %>' Width="350px" Title="E-mail для повідомлень" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Телефон орендодавця"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v56" ClientInstanceName="v56" runat="server" Text='<%# Eval("v56") %>' Width="350px" Title="Телефон орендодавця" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Телефон"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v56" ClientInstanceName="v56" runat="server" Text='<%# Eval("v56") %>' Width="350px" Title="Телефон" /></td>
 						</tr>
 
                     </table>
@@ -307,7 +308,7 @@ order by 1">
 
                         <tr>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Погодження балансоутримувача"></dx:ASPxLabel></td>
-							<td><dx:ASPxCheckBox ID="v5" runat="server" Checked='<%# ("Так".Equals(Eval("v5"))) ? true : false %>' /></td>
+							<td><dx:ASPxCheckBox ID="v5" runat="server" Checked='<%# ("Так".Equals(Eval("v5"))) ? true : false %>' ToolTip="Погодження балансоутримувача" /></td>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Реквізити підтверджуючого документу про погодження балансоутримувача (за наявності)"></dx:ASPxLabel></td>
                             <td><dx:ASPxTextBox ID="v6" ClientInstanceName="v6" runat="server" Text='<%# Eval("v6") %>' Width="350px" Title="Реквізити підтверджуючого документу про погодження балансоутримувача (за наявності)" /></td>
                         </tr>
@@ -319,7 +320,7 @@ order by 1">
                         </tr>
                         <tr>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Інформація про згоду на здійснення поточного та/або капітального ремонту орендованого майна"></dx:ASPxLabel></td>
-							<td><dx:ASPxCheckBox ID="v9" runat="server" Checked='<%# ("Так".Equals(Eval("v9"))) ? true : false %>' /></td>
+							<td><dx:ASPxCheckBox ID="v9" runat="server" Checked='<%# ("Так".Equals(Eval("v9"))) ? true : false %>' ToolTip="Інформація про згоду на здійснення поточного та/або капітального ремонту орендованого майна" /></td>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Реквізити підтверджуючого документу про згоду на здійснення ремонту (за наявності)"></dx:ASPxLabel></td>
                             <td><dx:ASPxTextBox ID="v10" ClientInstanceName="v10" runat="server" Text='<%# Eval("v10") %>' Width="350px" Title="Реквізити підтверджуючого документу про згоду на здійснення ремонту (за наявності)" /></td>
                         </tr>
@@ -330,16 +331,16 @@ order by 1">
                             <td><dx:ASPxTextBox ID="v16" ClientInstanceName="v16" runat="server" Text='<%# Eval("v16") %>' Width="350px" Title="Реквізити підтверджуючого документу про погодження органу управління (за наявності)" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Погодження органу управління ( органу охорони культ. спадищин)"></dx:ASPxLabel></td>
-							<td><dx:ASPxComboBox ID="v17" runat="server" ValueType="System.String" TextField="name" ValueField="name" Width="350px" DataSourceID="SqlDataSourceYesNoNone" Value='<%# Eval("v17") %>' Title="Погодження органу управління ( органу охорони культ. спадищин)" DropDownStyle="DropDown" IncrementalFilteringMode="Contains" AllowNull="true" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Погодження органу охорони культурної спадщини"></dx:ASPxLabel></td>
+							<td><dx:ASPxComboBox ID="v17" runat="server" ValueType="System.String" TextField="name" ValueField="name" Width="350px" DataSourceID="SqlDataSourceYesNoNone" Value='<%# Eval("v17") %>' Title="Погодження органу охорони культурної спадщини" DropDownStyle="DropDown" IncrementalFilteringMode="Contains" AllowNull="true" /></td>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Реквізити підтверджуючого документу про погодження органу охорони культ. спадищин (за наявності)"></dx:ASPxLabel></td>
                             <td><dx:ASPxTextBox ID="v18" ClientInstanceName="v18" runat="server" Text='<%# Eval("v18") %>' Width="350px" Title="Реквізити підтверджуючого документу про погодження органу охорони культ. спадищин (за наявності)" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Код ЄДРПОУ Балансоутримувача"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v57" ClientInstanceName="v57" runat="server" Text='<%# Eval("v57") %>' Width="350px" Title="Код ЄДРПОУ Балансоутримувача" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Повна юридична назва Балансоутримувача"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v58" ClientInstanceName="v58" runat="server" Text='<%# Eval("v58") %>' Width="350px" Title="Повна юридична назва Балансоутримувача" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Ідентифікатор організації"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v57" ClientInstanceName="v57" runat="server" Text='<%# Eval("v57") %>' Width="350px" Title="Ідентифікатор організації" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Повна юридична назва організації"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v58" ClientInstanceName="v58" runat="server" Text='<%# Eval("v58") %>' Width="350px" Title="Повна юридична назва організації" /></td>
                         </tr>
 						<tr>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Країна"></dx:ASPxLabel></td>
@@ -348,32 +349,32 @@ order by 1">
                             <td><dx:ASPxTextBox ID="v204" ClientInstanceName="v204" runat="server" Text='<%# Eval("v204") %>' Width="350px" Title="Інформація щодо підтвердження повноважень" /></td>
 						</tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Область Балансоутримувача"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v59" ClientInstanceName="v59" runat="server" Text='<%# Eval("v59") %>' Width="350px" Title="Область Балансоутримувача" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Місто Балансоутримувача"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v60" ClientInstanceName="v60" runat="server" Text='<%# Eval("v60") %>' Width="350px" Title="Місто Балансоутримувача" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="область"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v59" ClientInstanceName="v59" runat="server" Text='<%# Eval("v59") %>' Width="350px" Title="область" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Населений пункт"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v60" ClientInstanceName="v60" runat="server" Text='<%# Eval("v60") %>' Width="350px" Title="Населений пункт" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Будинок та вулиця Балансоутримувача"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v61" ClientInstanceName="v61" runat="server" Text='<%# Eval("v61") %>' Width="350px" Title="Будинок та вулиця Балансоутримувача" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Індекс Балансоутримувача"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v62" ClientInstanceName="v62" runat="server" Text='<%# Eval("v62") %>' Width="350px" Title="Індекс Балансоутримувача" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Вулиця, будинок, квартира"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v61" ClientInstanceName="v61" runat="server" Text='<%# Eval("v61") %>' Width="350px" Title="Вулиця, будинок, квартира" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Індекс"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v62" ClientInstanceName="v62" runat="server" Text='<%# Eval("v62") %>' Width="350px" Title="Індекс" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Прізвище представника Балансоутримувача"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v63" ClientInstanceName="v63" runat="server" Text='<%# Eval("v63") %>' Width="350px" Title="Прізвище представника Балансоутримувача" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Ім'я представника Балансоутримувача"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v64" ClientInstanceName="v64" runat="server" Text='<%# Eval("v64") %>' Width="350px" Title="Ім'я представника Балансоутримувача" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Призвище"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v63" ClientInstanceName="v63" runat="server" Text='<%# Eval("v63") %>' Width="350px" Title="Призвище" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Ім'я"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v64" ClientInstanceName="v64" runat="server" Text='<%# Eval("v64") %>' Width="350px" Title="Ім'я" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="По батькові представника Балансоутримувача"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v65" ClientInstanceName="v65" runat="server" Text='<%# Eval("v65") %>' Width="350px" Title="По батькові представника Балансоутримувача" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="E-mail  контактної особи Балансоутримувача"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v66" ClientInstanceName="v66" runat="server" Text='<%# Eval("v66") %>' Width="350px" Title="E-mail  контактної особи Балансоутримувача" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="По батькові"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v65" ClientInstanceName="v65" runat="server" Text='<%# Eval("v65") %>' Width="350px" Title="По батькові" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="E-mail для повідомлень"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v66" ClientInstanceName="v66" runat="server" Text='<%# Eval("v66") %>' Width="350px" Title="E-mail для повідомлень" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Телефон Балансоутримувача"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v67" ClientInstanceName="v67" runat="server" Text='<%# Eval("v67") %>' Width="350px" Title="Телефон Балансоутримувача" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Телефон"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v67" ClientInstanceName="v67" runat="server" Text='<%# Eval("v67") %>' Width="350px" Title="Телефон" /></td>
                         </tr>
 
 
@@ -396,10 +397,10 @@ order by 1">
 						</colgroup>
 
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Код ЄДРПОУ Органу управління"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v68" ClientInstanceName="v68" runat="server" Text='<%# Eval("v68") %>' Width="350px" Title="Код ЄДРПОУ Органу управління" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Повна юридична назва Органу управління"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v69" ClientInstanceName="v69" runat="server" Text='<%# Eval("v69") %>' Width="350px" Title="Повна юридична назва Органу управління" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Ідентифікатор організації"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v68" ClientInstanceName="v68" runat="server" Text='<%# Eval("v68") %>' Width="350px" Title="Ідентифікатор організації" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Повна юридична назва організації"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v69" ClientInstanceName="v69" runat="server" Text='<%# Eval("v69") %>' Width="350px" Title="Повна юридична назва організації" /></td>
                         </tr>
 						<tr>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Інформація щодо підтвердження повноважень"></dx:ASPxLabel></td>
@@ -408,32 +409,32 @@ order by 1">
                             <td><dx:ASPxTextBox ID="v206" ClientInstanceName="v206" runat="server" Text='<%# Eval("v206") %>' Width="350px" Title="Країна" /></td>
 						</tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Область Органу управління"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v70" ClientInstanceName="v70" runat="server" Text='<%# Eval("v70") %>' Width="350px" Title="Область Органу управління" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Місто Органу управління"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v71" ClientInstanceName="v71" runat="server" Text='<%# Eval("v71") %>' Width="350px" Title="Місто Органу управління" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Область"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v70" ClientInstanceName="v70" runat="server" Text='<%# Eval("v70") %>' Width="350px" Title="Область" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Населений пункт"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v71" ClientInstanceName="v71" runat="server" Text='<%# Eval("v71") %>' Width="350px" Title="Населений пункт" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Будинок та вулиця Органу управління"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v72" ClientInstanceName="v72" runat="server" Text='<%# Eval("v72") %>' Width="350px" Title="Будинок та вулиця Органу управління" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Індекс Органу управління"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v73" ClientInstanceName="v73" runat="server" Text='<%# Eval("v73") %>' Width="350px" Title="Індекс Органу управління" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Вулиця, будинок, квартира"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v72" ClientInstanceName="v72" runat="server" Text='<%# Eval("v72") %>' Width="350px" Title="Вулиця, будинок, квартира" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Індекс"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v73" ClientInstanceName="v73" runat="server" Text='<%# Eval("v73") %>' Width="350px" Title="Індекс" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Прізвище представника Органу управління"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v74" ClientInstanceName="v74" runat="server" Text='<%# Eval("v74") %>' Width="350px" Title="Прізвище представника Органу управління" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Ім'я представника Органу управління"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v75" ClientInstanceName="v75" runat="server" Text='<%# Eval("v75") %>' Width="350px" Title="Ім'я представника Органу управління" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Призвище"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v74" ClientInstanceName="v74" runat="server" Text='<%# Eval("v74") %>' Width="350px" Title="Призвище" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Ім'я"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v75" ClientInstanceName="v75" runat="server" Text='<%# Eval("v75") %>' Width="350px" Title="Ім'я" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="По батькові представника Органу управління"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v76" ClientInstanceName="v76" runat="server" Text='<%# Eval("v76") %>' Width="350px" Title="По батькові представника Органу управління" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="E-mail  контактної особи Органу управління"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v77" ClientInstanceName="v77" runat="server" Text='<%# Eval("v77") %>' Width="350px" Title="E-mail  контактної особи Органу управління" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="По батькові"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v76" ClientInstanceName="v76" runat="server" Text='<%# Eval("v76") %>' Width="350px" Title="По батькові" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="E-mail для повідомлень"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v77" ClientInstanceName="v77" runat="server" Text='<%# Eval("v77") %>' Width="350px" Title="E-mail для повідомлень" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Телефон Органу управління"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v78" ClientInstanceName="v78" runat="server" Text='<%# Eval("v78") %>' Width="350px" Title="Телефон Органу управління" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Телефон"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v78" ClientInstanceName="v78" runat="server" Text='<%# Eval("v78") %>' Width="350px" Title="Телефон" /></td>
                         </tr> 
 
 
@@ -457,10 +458,10 @@ order by 1">
 
 
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Код ЄДРПОУ/РНОКПП Чинного орендаря"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v79" ClientInstanceName="v79" runat="server" Text='<%# Eval("v79") %>' Width="350px" Title="Код ЄДРПОУ/РНОКПП Чинного орендаря" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Повна юридична назва Чинного орендаря"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v80" ClientInstanceName="v80" runat="server" Text='<%# Eval("v80") %>' Width="350px" Title="Повна юридична назва Чинного орендаря" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Ідентифікатор організації"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v79" ClientInstanceName="v79" runat="server" Text='<%# Eval("v79") %>' Width="350px" Title="Ідентифікатор організації" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Повна юридична назва організації"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v80" ClientInstanceName="v80" runat="server" Text='<%# Eval("v80") %>' Width="350px" Title="Повна юридична назва організації" /></td>
                         </tr>
 
                         <tr>
@@ -471,32 +472,32 @@ order by 1">
                         </tr>
 
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Область Чинного орендаря"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v81" ClientInstanceName="v81" runat="server" Text='<%# Eval("v81") %>' Width="350px" Title="Область Чинного орендаря" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Місто Чинного орендаря"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v82" ClientInstanceName="v82" runat="server" Text='<%# Eval("v82") %>' Width="350px" Title="Місто Чинного орендаря" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="область"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v81" ClientInstanceName="v81" runat="server" Text='<%# Eval("v81") %>' Width="350px" Title="область" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Населений пункт"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v82" ClientInstanceName="v82" runat="server" Text='<%# Eval("v82") %>' Width="350px" Title="Населений пункт" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Будинок та вулиця Чинного орендаря"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v83" ClientInstanceName="v83" runat="server" Text='<%# Eval("v83") %>' Width="350px" Title="Будинок та вулиця Чинного орендаря" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Індекс Чинного орендаря"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v84" ClientInstanceName="v84" runat="server" Text='<%# Eval("v84") %>' Width="350px" Title="Індекс Чинного орендаря" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Вулиця, будинок, квартира"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v83" ClientInstanceName="v83" runat="server" Text='<%# Eval("v83") %>' Width="350px" Title="Вулиця, будинок, квартира" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Індекс"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v84" ClientInstanceName="v84" runat="server" Text='<%# Eval("v84") %>' Width="350px" Title="Індекс" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Прізвище представника Чинного орендаря"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v85" ClientInstanceName="v85" runat="server" Text='<%# Eval("v85") %>' Width="350px" Title="Прізвище представника Чинного орендаря" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Ім'я представника Чинного орендаря"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v86" ClientInstanceName="v86" runat="server" Text='<%# Eval("v86") %>' Width="350px" Title="Ім'я представника Чинного орендаря" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Призвище"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v85" ClientInstanceName="v85" runat="server" Text='<%# Eval("v85") %>' Width="350px" Title="Призвище" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Ім'я"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v86" ClientInstanceName="v86" runat="server" Text='<%# Eval("v86") %>' Width="350px" Title="Ім'я" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="По батькові представника Чинного орендаря"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v87" ClientInstanceName="v87" runat="server" Text='<%# Eval("v87") %>' Width="350px" Title="По батькові представника Чинного орендаря" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="E-mail  контактної особи Чинного орендаря"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v88" ClientInstanceName="v88" runat="server" Text='<%# Eval("v88") %>' Width="350px" Title="E-mail  контактної особи Чинного орендаря" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="По батькові"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v87" ClientInstanceName="v87" runat="server" Text='<%# Eval("v87") %>' Width="350px" Title="По батькові" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="E-mail для повідомлень"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v88" ClientInstanceName="v88" runat="server" Text='<%# Eval("v88") %>' Width="350px" Title="E-mail для повідомлень" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Телефон Чинного орендаря"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v89" ClientInstanceName="v89" runat="server" Text='<%# Eval("v89") %>' Width="350px" Title="Телефон Чинного орендаря" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Телефон"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v89" ClientInstanceName="v89" runat="server" Text='<%# Eval("v89") %>' Width="350px" Title="Телефон" /></td>
                         </tr>
 
 
@@ -539,20 +540,20 @@ order by 1">
                         <tr>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Тип власності"></dx:ASPxLabel></td>
 							<td><dx:ASPxComboBox ID="v2" Value='<%# Eval("v2") %>' DataSourceID="SqlDataSourceTypeVlasn" Title="Тип власності" runat="server" ValueType="System.String" TextField="name" ValueField="name" Width="350px" DropDownStyle="DropDown" IncrementalFilteringMode="Contains" AllowNull="true" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Тип переліку до якого віднесено об'єкт"></dx:ASPxLabel></td>
-							<td><dx:ASPxComboBox ID="v3" Value='<%# Eval("v3") %>' Title="Тип переліку до якого віднесено об'єкт" DataSourceID="SqlDataSourcePerelikType" runat="server" ValueType="System.String" TextField="name" ValueField="name" Width="350px" DropDownStyle="DropDown" IncrementalFilteringMode="Contains" AllowNull="true" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Тип переліку, до якого віднесено об'єкт"></dx:ASPxLabel></td>
+							<td><dx:ASPxComboBox ID="v3" Value='<%# Eval("v3") %>' Title="Тип переліку, до якого віднесено об'єкт" DataSourceID="SqlDataSourcePerelikType" runat="server" ValueType="System.String" TextField="name" ValueField="name" Width="350px" DropDownStyle="DropDown" IncrementalFilteringMode="Contains" AllowNull="true" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Статус об'єкту в Переліку"></dx:ASPxLabel></td>
-							<td><dx:ASPxComboBox ID="v4" Value='<%# Eval("v4") %>' Title="Статус об'єкту в Переліку" DataSourceID="SqlDataSourcePerelikStatus" runat="server" ValueType="System.String" TextField="name" ValueField="name" Width="350px" DropDownStyle="DropDown" IncrementalFilteringMode="Contains" AllowNull="true" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Статус об'єкта в переліку"></dx:ASPxLabel></td>
+							<td><dx:ASPxComboBox ID="v4" Value='<%# Eval("v4") %>' Title="Статус об'єкта в переліку" DataSourceID="SqlDataSourcePerelikStatus" runat="server" ValueType="System.String" TextField="name" ValueField="name" Width="350px" DropDownStyle="DropDown" IncrementalFilteringMode="Contains" AllowNull="true" /></td>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Рішення про передачу об'єкта на приватизацію"></dx:ASPxLabel></td>
-							<td><dx:ASPxCheckBox ID="v11" runat="server" Checked='<%# ("Так".Equals(Eval("v11"))) ? true : false %>' /></td>
+							<td><dx:ASPxCheckBox ID="v11" runat="server" Checked='<%# ("Так".Equals(Eval("v11"))) ? true : false %>' ToolTip="Рішення про передачу об'єкта на приватизацію" /></td>
                         </tr>
                         <tr>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Реквізити підтверджуючого документу про передачу об'єкта на приватизацію (за наявності)"></dx:ASPxLabel></td>
                             <td><dx:ASPxTextBox ID="v12" ClientInstanceName="v12" runat="server" Text='<%# Eval("v12") %>' Width="350px" Title="Реквізити підтверджуючого документу про передачу об'єкта на приватизацію (за наявності)" /></td>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Рішення про проведення інвестиційного конкурсу"></dx:ASPxLabel></td>
-							<td><dx:ASPxCheckBox ID="v13" runat="server" Checked='<%# ("Так".Equals(Eval("v13"))) ? true : false %>' /></td>
+							<td><dx:ASPxCheckBox ID="v13" runat="server" Checked='<%# ("Так".Equals(Eval("v13"))) ? true : false %>' ToolTip="Рішення про проведення інвестиційного конкурсу" /></td>
                         </tr>
                         <tr>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Реквізити підтверджуючого документу про проведення інвестиційного конкурсу (за наявності)"></dx:ASPxLabel></td>
@@ -561,10 +562,10 @@ order by 1">
                             <td><dx:ASPxTextBox ID="v214" ClientInstanceName="v214" runat="server" Text='<%# Eval("v214") %>' Width="350px" Title="Стан пам'ятки культурної спадщини" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Стан державної реєстрації об'єкту"></dx:ASPxLabel></td>
-							<td><dx:ASPxComboBox ID="v19" Value='<%# Eval("v19") %>' Title="Стан державної реєстрації об'єкту" DataSourceID="SqlDataSourceStanReestr" runat="server" ValueType="System.String" TextField="name" ValueField="name" Width="350px" DropDownStyle="DropDown" IncrementalFilteringMode="Contains" AllowNull="true" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Реквізити державної реєстрації об'єкту"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v20" ClientInstanceName="v20" runat="server" Text='<%# Eval("v20") %>' Width="350px" Title="Реквізити державної реєстрації об'єкту" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Стан державної реєстрації об'єкта"></dx:ASPxLabel></td>
+							<td><dx:ASPxComboBox ID="v19" Value='<%# Eval("v19") %>' Title="Стан державної реєстрації об'єкта" DataSourceID="SqlDataSourceStanReestr" runat="server" ValueType="System.String" TextField="name" ValueField="name" Width="350px" DropDownStyle="DropDown" IncrementalFilteringMode="Contains" AllowNull="true" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Реквізити державної реєстрації об'єкта"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v20" ClientInstanceName="v20" runat="server" Text='<%# Eval("v20") %>' Width="350px" Title="Реквізити державної реєстрації об'єкта" /></td>
                         </tr>
                         <tr>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Первісна балансова вартість, грн"></dx:ASPxLabel></td>
@@ -579,8 +580,8 @@ order by 1">
                             <td><dx:ASPxSpinEdit ID="v36" ClientInstanceName="v36" runat="server" Text='<%# Eval("v36") %>' Width="350px" Title="Ринкова вартість, грн" NumberType="Float" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Дата визначення ринкової вартості (01/01/2021)"></dx:ASPxLabel></td>
-                            <td><dx:ASPxDateEdit ID="v37" ClientInstanceName="v37" runat="server" Value='<%# Eval("v37") %>' Width="350px" Title="Дата визначення ринкової вартості (01/01/2021)" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Дата визначення ринкової вартості"></dx:ASPxLabel></td>
+                            <td><dx:ASPxDateEdit ID="v37" ClientInstanceName="v37" runat="server" Value='<%# Eval("v37") %>' Width="350px" Title="Дата визначення ринкової вартості" /></td>
 							<td align="right"><dx:ASPxLabel runat="server" Text="Інформація про оцінювача та необхідність компенсації оцінки орендарем"></dx:ASPxLabel></td>
                             <td><dx:ASPxTextBox ID="v216" ClientInstanceName="v216" runat="server" Text='<%# Eval("v216") %>' Width="350px" Title="Інформація про оцінювача та необхідність компенсації оцінки орендарем" /></td>
                         </tr>
@@ -592,7 +593,7 @@ order by 1">
                         </tr>
                         <tr>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Рішення про затвердження переліку об’єктів, або про включення нового об’єкта до переліку"></dx:ASPxLabel></td>
-							<td><dx:ASPxCheckBox ID="v45" runat="server" Checked='<%# ("Так".Equals(Eval("v45"))) ? true : false %>' /></td>
+							<td><dx:ASPxCheckBox ID="v45" runat="server" Checked='<%# ("Так".Equals(Eval("v45"))) ? true : false %>' ToolTip="Рішення про затвердження переліку об’єктів, або про включення нового об’єкта до переліку" /></td>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Реквізити рішення про затвердження переліку об’єктів, або про включення нового об’єкта до переліку"></dx:ASPxLabel></td>
                             <td><dx:ASPxTextBox ID="v219" ClientInstanceName="v219" runat="server" Text='<%# Eval("v219") %>' Width="350px" Title="Реквізити рішення про затвердження переліку об’єктів, або про включення нового об’єкта до переліку" /></td>
                         </tr>
@@ -609,16 +610,16 @@ order by 1">
                             <td><dx:ASPxTextBox ID="v220" ClientInstanceName="v220" runat="server" Text='<%# Eval("v220") %>' Width="350px" Title="Країна" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Область Розташування об'єкта"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v93" ClientInstanceName="v93" runat="server" Text='<%# Eval("v93") %>' Width="350px" Title="Область Розташування об'єкта" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Місто розташування об'єкта"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v94" ClientInstanceName="v94" runat="server" Text='<%# Eval("v94") %>' Width="350px" Title="Місто розташування об'єкта" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="область"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v93" ClientInstanceName="v93" runat="server" Text='<%# Eval("v93") %>' Width="350px" Title="область" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Населений пункт"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v94" ClientInstanceName="v94" runat="server" Text='<%# Eval("v94") %>' Width="350px" Title="Населений пункт" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Вулиця та будинок розташування об'єкта"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v95" ClientInstanceName="v95" runat="server" Text='<%# Eval("v95") %>' Width="350px" Title="Вулиця та будинок розташування об'єкта" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Індекс розташування об'єкта"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v96" ClientInstanceName="v96" runat="server" Text='<%# Eval("v96") %>' Width="350px" Title="Індекс розташування об'єкта" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Вулиця, будинок, квартира"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v95" ClientInstanceName="v95" runat="server" Text='<%# Eval("v95") %>' Width="350px" Title="Вулиця, будинок, квартира" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Індекс"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v96" ClientInstanceName="v96" runat="server" Text='<%# Eval("v96") %>' Width="350px" Title="Індекс" /></td>
                         </tr>
                         <tr>
 							<td align="right"><dx:ASPxLabel runat="server" Text="Широта"></dx:ASPxLabel></td>
@@ -635,12 +636,12 @@ order by 1">
                         <tr>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Номер поверху або поверхів"></dx:ASPxLabel></td>
                             <td><dx:ASPxTextBox ID="v100" ClientInstanceName="v100" runat="server" Text='<%# Eval("v100") %>' Width="350px" Title="Номер поверху або поверхів" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Загальна площа об'єкту оренди, кв.м."></dx:ASPxLabel></td>
-                            <td><dx:ASPxSpinEdit ID="v102" ClientInstanceName="v102" runat="server" Text='<%# Eval("v102") %>' Width="350px" Title="Загальна площа об'єкту оренди, кв.м." NumberType="Float" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Загальна площа об'єкта в будівлі, кв.м."></dx:ASPxLabel></td>
+                            <td><dx:ASPxSpinEdit ID="v102" ClientInstanceName="v102" runat="server" Text='<%# Eval("v102") %>' Width="350px" Title="Загальна площа об'єкта в будівлі, кв.м." NumberType="Float" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Корисна площа об'єкту оренди, кв.м."></dx:ASPxLabel></td>
-                            <td><dx:ASPxSpinEdit ID="v103" ClientInstanceName="v103" runat="server" Text='<%# Eval("v103") %>' Width="350px" Title="Корисна площа об'єкту оренди, кв.м." NumberType="Float" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Корисна площа об'єкта в будівлі, кв.м."></dx:ASPxLabel></td>
+                            <td><dx:ASPxSpinEdit ID="v103" ClientInstanceName="v103" runat="server" Text='<%# Eval("v103") %>' Width="350px" Title="Корисна площа об'єкта в будівлі, кв.м." NumberType="Float" /></td>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Технічний стан об'єкта оренди"></dx:ASPxLabel></td>
                             <td><dx:ASPxTextBox ID="v107" ClientInstanceName="v107" runat="server" Text='<%# Eval("v107") %>' Width="350px" Title="Технічний стан об'єкта оренди" /></td>
                         </tr>
@@ -663,10 +664,10 @@ order by 1">
 							<td><dx:ASPxComboBox ID="v97" Value='<%# Eval("v97") %>' Title="Технологія будівництва" DataSourceID="SqlDataSourceTechnologia" runat="server" ValueType="System.String" TextField="name" ValueField="name" Width="350px" DropDownStyle="DropDown" IncrementalFilteringMode="Contains" AllowNull="true" /></td>
                         </tr>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Загальна площа будівлі, до складу якої входить об'єкт оренди, кв.м."></dx:ASPxLabel></td>
-                            <td><dx:ASPxSpinEdit ID="v101" ClientInstanceName="v101" runat="server" Text='<%# Eval("v101") %>' Width="350px" Title="Загальна площа будівлі, до складу якої входить об'єкт оренди, кв.м." NumberType="Float" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Житлова площа, кв. м."></dx:ASPxLabel></td>
-                            <td><dx:ASPxSpinEdit ID="v104" ClientInstanceName="v104" runat="server" Text='<%# Eval("v104") %>' Width="350px" Title="Житлова площа, кв. м." NumberType="Float" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Загальна площа будівлі, кв.м."></dx:ASPxLabel></td>
+                            <td><dx:ASPxSpinEdit ID="v101" ClientInstanceName="v101" runat="server" Text='<%# Eval("v101") %>' Width="350px" Title="Загальна площа будівлі, кв.м." NumberType="Float" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Житлова площа, кв. м"></dx:ASPxLabel></td>
+                            <td><dx:ASPxSpinEdit ID="v104" ClientInstanceName="v104" runat="server" Text='<%# Eval("v104") %>' Width="350px" Title="Житлова площа, кв. м" NumberType="Float" /></td>
                         </tr>
                         <tr>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Площа кухні, кв. м"></dx:ASPxLabel></td>
@@ -735,8 +736,8 @@ order by 1">
 
 
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Тривалість оренди років"></dx:ASPxLabel></td>
-                            <td><dx:ASPxSpinEdit ID="v21" ClientInstanceName="v21" runat="server" Text='<%# Eval("v21") %>' Width="350px" Title="Тривалість оренди років" NumberType="Float" /></td>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Тривалість оренди"></dx:ASPxLabel></td>
+                            <td><dx:ASPxSpinEdit ID="v21" ClientInstanceName="v21" runat="server" Text='<%# Eval("v21") %>' Width="350px" Title="Тривалість оренди" NumberType="Float" /></td>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Тривалість оренди місяців"></dx:ASPxLabel></td>
                             <td><dx:ASPxSpinEdit ID="v22" ClientInstanceName="v22" runat="server" Text='<%# Eval("v22") %>' Width="350px" Title="Тривалість оренди місяців" NumberType="Float" /></td>
                         </tr>
@@ -765,16 +766,16 @@ order by 1">
                             <td><dx:ASPxTextBox ID="v30" ClientInstanceName="v30" runat="server" Text='<%# Eval("v30") %>' Width="350px" Title="Цільове призначення об'єкта" /></td>
                         </tr>
                         <tr>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Обмеження щодо використання майна (заборонені цільові призначення)"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v31" ClientInstanceName="v31" runat="server" Text='<%# Eval("v31") %>' Width="350px" Title="Обмеження щодо використання майна (заборонені цільові призначення)" /></td>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Опис обмежень цільового призначення об'єкта"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v31" ClientInstanceName="v31" runat="server" Text='<%# Eval("v31") %>' Width="350px" Title="Опис обмежень цільового призначення об'єкта2" /></td>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Опис обмежень цільового призначення об'єкта2"></dx:ASPxLabel></td>
                             <td><dx:ASPxTextBox ID="v223" ClientInstanceName="v223" runat="server" Text='<%# Eval("v223") %>' Width="350px" Title="Опис обмежень цільового призначення об'єкта" /></td>
                         </tr>
                         <tr>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Додаткові умови оренди майна"></dx:ASPxLabel></td>
                             <td><dx:ASPxTextBox ID="v32" ClientInstanceName="v32" runat="server" Text='<%# Eval("v32") %>' Width="350px" Title="Додаткові умови оренди майна" /></td>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Можливість суборенди"></dx:ASPxLabel></td>
-							<td><dx:ASPxCheckBox ID="v33" runat="server" Checked='<%# ("Так".Equals(Eval("v33"))) ? true : false %>' /></td>
+							<td><dx:ASPxCheckBox ID="v33" runat="server" Checked='<%# ("Так".Equals(Eval("v33"))) ? true : false %>' ToolTip="Можливість суборенди" /></td>
                         </tr>
                         <tr>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Посилання на пункт Методики розрахунку орендної плати, яким встановлена орендна ставка для запропонованого цільового призначення"></dx:ASPxLabel></td>

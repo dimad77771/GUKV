@@ -11,6 +11,12 @@ using FirebirdSql.Data.FirebirdClient;
 using log4net;
 using GUKV;
 using System.Text.RegularExpressions;
+using System.Data;
+using System.Data.Common;
+using System.Diagnostics;
+using DevExpress.Spreadsheet;
+using GUKV.Common;
+
 
 public partial class Reports1NF_FreeProzoro : System.Web.UI.Page
 {
@@ -154,7 +160,7 @@ public partial class Reports1NF_FreeProzoro : System.Web.UI.Page
 
     protected void CPMainPanel_Callback(object sender, CallbackEventArgsBase e)
     {
-        if (e.Parameter.StartsWith("save:"))
+		if (e.Parameter.StartsWith("save:"))
         {
             SqlConnection connection = Utils.ConnectToDatabase();
 
@@ -287,6 +293,100 @@ public partial class Reports1NF_FreeProzoro : System.Web.UI.Page
 		return vals;
 	}
 
-  
+	protected void ButtonPrint_Click(object sender, EventArgs e)
+	{
+		var builder = new FreeProzoroZvitBuilder
+		{
+			Page = this,
+			Id = FreeID
+		};
+		builder.Go();
+	}
+
+
+
+	public class FreeProzoroZvitBuilder
+	{
+		public Page Page { get; set; }
+		public int Id { get; set; }
+
+		public void Go()
+		{
+			string templateFileName = Page.Server.MapPath("Templates/FreeProzoro.xlsx");
+			var tempFile = TempFile.FromExistingFile(templateFileName);
+
+			var connection = CommonUtils.ConnectToDatabase();
+			if (connection == null) throw new Exception("Database GUKV not found");
+			var factory = DbProviderFactories.GetFactory(connection);
+			var dataTable = new DataTable();
+			using (var cmd = factory.CreateCommand())
+			{
+				cmd.CommandText = "select * from reports1nf_balans_free_prozoro where id = " + Id;
+				cmd.CommandType = CommandType.Text;
+				cmd.Connection = connection;
+				using (var adapter = factory.CreateDataAdapter())
+				{
+					adapter.SelectCommand = cmd;
+					adapter.Fill(dataTable);
+				}
+			}
+
+			var workbook = new Workbook();
+			workbook.LoadDocument(tempFile.FileName, DevExpress.Spreadsheet.DocumentFormat.Xlsx);
+			var wsheet = workbook.Worksheets[0];
+			var usedRange = wsheet.GetUsedRange();
+			var bcolumn = wsheet.Columns["B"];
+			for (int r = 0; r < usedRange.RowCount; r++)
+			{
+				var value = bcolumn[r].Value.TextValue ?? "";
+				var reg = Regex.Match(value, @"\{(v\d{1,3})\}");
+				if (reg.Success)
+				{
+					var col = reg.Groups[1].Value;
+					var dbval = dataTable.Rows[0][col];
+					var sval = dbval.ToString();
+					if (dbval is DateTime)
+					{
+						sval = ((DateTime)dbval).ToString("dd.MM.yyyy");
+					}
+					bcolumn[r].Value = sval;
+				}
+			}
+
+			workbook.SaveDocument(tempFile.FileName);
+
+			var info = new System.IO.FileInfo(tempFile.FileName);
+			Page.Response.Clear();
+			Page.Response.ClearHeaders();
+			Page.Response.ClearContent();
+			Page.Response.ContentType = "application /vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+			Page.Response.AddHeader("content-disposition", "attachment; filename=Prozoro_" + Id + ".xlsx; size=" + info.Length.ToString());
+			using (System.IO.FileStream stream = System.IO.File.Open(tempFile.FileName, System.IO.FileMode.Open, System.IO.FileAccess.ReadWrite))
+			{
+				stream.CopyTo(Page.Response.OutputStream);
+			}
+			tempFile.Dispose();
+			Page.Response.End();
+		}
+
+		void SumBuild(int erow_total, int[] erows_sum, Worksheet wsheet)
+		{
+			for (int cnum = 3; cnum <= 25; cnum++)
+			{
+				decimal sum = 0;
+				foreach (var erow in erows_sum)
+				{
+					var value = wsheet[erow - 1, cnum - 1].Value.NumericValue;
+					sum += (decimal)value;
+				}
+				wsheet[erow_total - 1, cnum - 1].Value = sum;
+			}
+		}
+
+
+
+	}
 
 }
+
+
