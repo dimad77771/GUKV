@@ -514,6 +514,7 @@
             if (include_in_perelik == "1") {
                 showrow1 = true;
 			} else if (include_in_perelik == "2") {
+				showrow1 = true;
 				showrow2 = true;
             }
 
