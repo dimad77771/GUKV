@@ -461,7 +461,7 @@ public class BalansTransferUtils
                     catch { }
                     transactionSql.Dispose();
                 }
-                throw;
+                throw ex;
             }
 
             if (connectionSql.State == ConnectionState.Open)

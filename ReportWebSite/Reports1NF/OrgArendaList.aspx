@@ -229,6 +229,7 @@
 ,ap.use_calc_debt
 ,ap.return_all_orend_payed
 ,ap.return_orend_payed
+,ap.total_pereplata
 ,isnull(ap.payment_narah,0) - isnull(ap.znyato_nadmirno_narah,0) as payment_narah_normal
 
 ,dpt.name AS 'payment_type'
@@ -921,6 +922,8 @@ FROM reports1nf_arenda ar
         <dx:GridViewDataCheckColumn FieldName="use_calc_debt" VisibleIndex="52" Caption="Розраховувати заборгованість з орендної плати" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataCheckColumn>
         <dx:GridViewDataTextColumn FieldName="return_all_orend_payed" VisibleIndex="53" Caption="Повернення переплати орендної плати всього за звітний період, грн. (без ПДВ)" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="return_orend_payed" VisibleIndex="54" Caption="Переплата орендної плати всього, грн. (без ПДВ)" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+		<dx:GridViewDataTextColumn FieldName="total_pereplata" VisibleIndex="55" Caption="Переплата орендної плати на кінець звітного періоду, грн. (без ПДВ)" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+
 
         <dx:GridViewDataTextColumn FieldName="zvilneno_percent" VisibleIndex="101" Caption="Звільнено від сплати орендної плати на, %" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataDateColumn FieldName="zvilneno_date1" VisibleIndex="102" Caption="Звільнено від сплати орендної плати на, з" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
@@ -985,6 +988,7 @@ FROM reports1nf_arenda ar
         <dx:ASPxSummaryItem FieldName="avance_plat" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="return_all_orend_payed" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="return_orend_payed" SummaryType="Sum" DisplayFormat="{0}" />
+		<dx:ASPxSummaryItem FieldName="total_pereplata" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="payment_narah_normal" SummaryType="Sum" DisplayFormat="{0}" />
         
 
@@ -1002,7 +1006,7 @@ FROM reports1nf_arenda ar
     <SettingsPager PageSize="10" AlwaysShowPager="true" />
     <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
     <Styles Header-Wrap="True" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaList" Enabled="True" Version="B5" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaList" Enabled="True" Version="B6" />
 
     <ClientSideEvents
         Init="function (s,e) { PrimaryGridView.PerformCallback('init:'); }"

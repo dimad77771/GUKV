@@ -927,7 +927,7 @@ WHERE id = @report_id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn Caption="Переплата орендної плати всього, грн. (без ПДВ)" FieldName="PAY_PEREPLATA_ALL" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+        <dx:GridViewDataTextColumn Caption="Переплата орендної плати на кінець звітного періоду, грн. (без ПДВ)" FieldName="PAY_PEREPLATA_ALL" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_PEREPLATA_ALL") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
@@ -1124,7 +1124,7 @@ WHERE id = @report_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A2_34" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A2_35" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
