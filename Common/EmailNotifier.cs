@@ -341,8 +341,10 @@ namespace GUKV.Common
             // Set the priority of the mail message to normal
             mMailMessage.Priority = MailPriority.Normal;
 
-            // Instantiate a new instance of SmtpClient
-            SmtpClient mSmtpClient = new SmtpClient();
+			System.Net.ServicePointManager.ServerCertificateValidationCallback = (x, y, z, t) => true;
+
+			// Instantiate a new instance of SmtpClient
+			SmtpClient mSmtpClient = new SmtpClient();
 
             // Send the mail message
             mSmtpClient.Send(mMailMessage);

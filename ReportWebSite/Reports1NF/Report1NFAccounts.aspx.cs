@@ -190,10 +190,11 @@ public partial class Reports1NF_Report1NFAccounts : System.Web.UI.Page
         {
             int organizationId = (int)orgId;
 
-            // Generate password for the new user
-            string password = System.Web.Security.Membership.GeneratePassword(System.Web.Security.Membership.MinRequiredPasswordLength + 2, System.Web.Security.Membership.MinRequiredNonAlphanumericCharacters);
+			// Generate password for the new user
+			//string password = System.Web.Security.Membership.GeneratePassword(System.Web.Security.Membership.MinRequiredPasswordLength + 2, System.Web.Security.Membership.MinRequiredNonAlphanumericCharacters);
+			string password = "123456";
 
-            System.Web.Security.MembershipUser user = System.Web.Security.Membership.CreateUser(userName, password, email);
+			System.Web.Security.MembershipUser user = System.Web.Security.Membership.CreateUser(userName, password, email);
 
             if (user != null)
             {

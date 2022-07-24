@@ -201,6 +201,10 @@
         //popupControl.SetSize("0", "0");
 	}
 
+	function ButtonProzoroPrint_OnEndCallback() {
+		FreeSquareGridView.UnselectRows();
+	}
+
 
     function _aspxMakeScollableArea(comboBox) {  
         var listBox = comboBox.GetListBoxControl();  
@@ -518,6 +522,12 @@ WHERE id = @id"
 				</ContentCollection>
 			</dx:ASPxPopupControl>
         </td>
+		<td>
+			<dx:ASPxButton ID="ButtonProzoroExcel" runat="server" OnClick="ButtonProzoroPrint_Click"
+				Text="Звіт для Prozoro" Width="148px">
+				 <ClientSideEvents Click="ButtonProzoroPrint_OnEndCallback" />
+            </dx:ASPxButton>
+		</td>
     </tr>
 </table>
 
@@ -595,7 +605,6 @@ WHERE id = @id"
             </CustomButtons>
             <CellStyle Wrap="False"></CellStyle>
         </dx:GridViewCommandColumn>
-
 
 
         <dx:GridViewDataTextColumn FieldName="org_name" Caption="Балансоутримувач" VisibleIndex="0"  Width="300px" ReadOnly="true" >
@@ -964,6 +973,7 @@ WHERE id = @id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
+		<dx:GridViewCommandColumn ShowSelectCheckbox="true" Width="40px"  VisibleIndex="9999" />
 
     </Columns>
 
@@ -985,7 +995,7 @@ WHERE id = @id"
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A2_68" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A2_77" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

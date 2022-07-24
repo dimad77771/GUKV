@@ -13,8 +13,8 @@ using Syncfusion.XlsIO;
 
 public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 {
-    protected void Page_Load(object sender, EventArgs e)
-    {
+	protected void Page_Load(object sender, EventArgs e)
+	{
 		SectionMenu.Visible = Roles.IsUserInRole(Utils.Report1NFReviewerRole);
 
 		// The 'Notifications' page must be visible only to users that can receive some notifications
@@ -114,7 +114,7 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 			else if (column is GridViewBandColumn)
 			{
 				var col_visible = false;
-				foreach(GridViewColumn dcolumn in (column as GridViewBandColumn).Columns)
+				foreach (GridViewColumn dcolumn in (column as GridViewBandColumn).Columns)
 				{
 					var visible = visibleColumns.Any(colnam => Utils.EqualColumnTitle(dcolumn, colnam));
 					dcolumn.Visible = visible;
@@ -146,12 +146,12 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 	}
 
 	protected void ASPxButton_FreeSquare_ExportXLS_Click(object sender, EventArgs e)
-    {
+	{
 		this.ExportGridToXLS(GridViewFreeSquareExporter, FreeSquareGridView, LabelReportTitle1.Text, "",
 			exportHiddenColumnCallback: q => (q.FieldName == "pdfurl"),
 			afterBuildXlsx: ASPxButton_FreeSquare_ExportXLS_AfterBuildXlsx
 		);
-    }
+	}
 
 	void ASPxButton_FreeSquare_ExportXLS_AfterBuildXlsx(string excelfilename)
 	{
@@ -165,7 +165,7 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 
 		var coln = 26;
 		var allrows = worksheet.Rows.Length;
-		for(int rown = 1; rown <= allrows; rown++)
+		for (int rown = 1; rown <= allrows; rown++)
 		{
 			var cell = worksheet.Range[rown, coln];
 			var text = cell.Text ?? "";
@@ -184,38 +184,38 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 	}
 
 	protected void ASPxButton_FreeSquare_ExportPDF_Click(object sender, EventArgs e)
-    {
-        this.ExportGridToPDF(GridViewFreeSquareExporter, FreeSquareGridView, LabelReportTitle1.Text, "");
-    }
+	{
+		this.ExportGridToPDF(GridViewFreeSquareExporter, FreeSquareGridView, LabelReportTitle1.Text, "");
+	}
 
-    protected void ASPxButton_FreeSquare_ExportCSV_Click(object sender, EventArgs e)
-    {
-        this.ExportGridToCSV(GridViewFreeSquareExporter, FreeSquareGridView, LabelReportTitle1.Text, "");
-    }
+	protected void ASPxButton_FreeSquare_ExportCSV_Click(object sender, EventArgs e)
+	{
+		this.ExportGridToCSV(GridViewFreeSquareExporter, FreeSquareGridView, LabelReportTitle1.Text, "");
+	}
 
-    protected void GridViewFreeSquare_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
-    {
-        Utils.ProcessDataGridSaveLayoutCallback(e.Parameters, FreeSquareGridView, Utils.GridIDReports1NF_FreeSquare, "");
+	protected void GridViewFreeSquare_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
+	{
+		Utils.ProcessDataGridSaveLayoutCallback(e.Parameters, FreeSquareGridView, Utils.GridIDReports1NF_FreeSquare, "");
 
-        FreeSquareGridView.DataBind();
-    }
+		FreeSquareGridView.DataBind();
+	}
 
-    protected void GridViewFreeSquare_CustomFilterExpressionDisplayText(object sender,
-        DevExpress.Web.CustomFilterExpressionDisplayTextEventArgs e)
-    {
-        this.UpdateFilterDisplayTextCache(e.DisplayText, FreeSquareGridView);
-    }
+	protected void GridViewFreeSquare_CustomFilterExpressionDisplayText(object sender,
+		DevExpress.Web.CustomFilterExpressionDisplayTextEventArgs e)
+	{
+		this.UpdateFilterDisplayTextCache(e.DisplayText, FreeSquareGridView);
+	}
 
-    protected void GridViewFreeSquare_ProcessColumnAutoFilter(object sender,
-        DevExpress.Web.ASPxGridViewAutoFilterEventArgs e)
-    {
-        Utils.ProcessGridColumnAutoFilter(sender, e);
-    }
+	protected void GridViewFreeSquare_ProcessColumnAutoFilter(object sender,
+		DevExpress.Web.ASPxGridViewAutoFilterEventArgs e)
+	{
+		Utils.ProcessGridColumnAutoFilter(sender, e);
+	}
 
-    protected void SqlDataSourceFreeSquare_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
-    {
-        e.Command.Parameters["@p_rda_district_id"].Value = Utils.RdaDistrictID;
-        e.Command.Parameters["@period_year"].Value = DateTime.Now.Date.Month == 1 ? DateTime.Now.Date.Year - 1 : DateTime.Now.Date.Year;
+	protected void SqlDataSourceFreeSquare_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+	{
+		e.Command.Parameters["@p_rda_district_id"].Value = Utils.RdaDistrictID;
+		e.Command.Parameters["@period_year"].Value = DateTime.Now.Date.Month == 1 ? DateTime.Now.Date.Year - 1 : DateTime.Now.Date.Year;
 		e.Command.Parameters["@baseurl"].Value = Utils.WebsiteBaseUrl;
 	}
 
@@ -299,5 +299,22 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 		//if (Request.QueryString["bid"] != null)
 		//    e.InputParameters["balans_id"] = int.Parse(Request.QueryString["bid"]);
 	}
+
+	protected void ButtonProzoroPrint_Click(object sender, EventArgs e)
+	{
+		var ids = FreeSquareGridView.GetSelectedFieldValues("id").Select(q => (int)q).ToArray();
+		//if (!ids.Any())
+		//{
+		//	throw new Exception("Не вибрано жодного запису");
+		//}
+
+		var builder = new ZvitProzoroBuilder
+		{
+			Page = this,
+			Ids = ids,
+		};
+		builder.Go();
+	}
+
 
 }

@@ -101,7 +101,7 @@ public partial class Reports1NF_OrgArendaList : System.Web.UI.Page
                 //По кожному договору, що має статус «Договір діє» повинен бути встановлений діючий Звітний період
                 SqlConnection connection = Utils.ConnectToDatabase();
                 string query = @"SELECT 
-                dbo.efn_concat_string(ar.agreement_num, ', ', ar.agreement_num, 1) as [Договір]
+                dbo.efn_concat_string(ar.agreement_num, ', ', ar.agreement_num, 0) as [Договір]
                 FROM reports1nf rep
                 join reports1nf_arenda ar on rep.id  = ar.report_id
                 LEFT JOIN arenda a ON a.id = ar.id
