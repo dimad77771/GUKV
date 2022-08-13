@@ -107,6 +107,8 @@
 		,OrganizationProperties.*
 		,RentPaymentProperties1.*
 		,RentPaymentProperties2.*
+
+        ,isnull(PAY_RECV_ZVIT,0) + isnull(PAY_RECV_OTHER,0) - isnull(PAY_RETURN_ALL_OREND_PAYED,0) as PAY_RECV_ZVIT_new
         
         FROM view_reports1nf rep
         LEFT JOIN (SELECT sum(CASE WHEN (r1a.submit_date IS NULL OR r1a.modify_date IS NULL OR r1a.modify_date > r1a.submit_date) THEN 0 ELSE 1 END) as NumOfSubmAgr, 
@@ -262,7 +264,7 @@
                 --,SUM(pay.sqr_payed_by_percent) as 'sqr_payed_by_percent' -- 1
                 --,SUM(pay.sqr_payed_by_1uah) as 'sqr_payed_by_1uah' -- 2
                 --,SUM(pay.sqr_payed_hourly) as 'sqr_payed_hourly' -- 3
-                SUM(pay.payment_narah) as 'PAY_NARAH_ZVIT' -- 4
+                isnull(SUM(pay.payment_narah),0) - isnull(SUM(pay.znyato_nadmirno_narah),0) as 'PAY_NARAH_ZVIT' -- 4
                 ,SUM(pay.last_year_saldo) as 'PAY_PEREPLATA' -- 5
                 ,SUM(pay.zabezdepoz_prishlo) as 'PAY_ZABEZDEPOZ_PRISHLO' -- 5
                 ,SUM(pay.payment_received) as 'PAY_RECV_ZVIT' -- 6
@@ -897,9 +899,9 @@ WHERE id = @report_id"
         </dx:GridViewDataTextColumn>
 
 
-        <dx:GridViewDataTextColumn Caption="Надходження орендної плати за звітний період, всього, грн. (без ПДВ)" FieldName="PAY_RECV_ZVIT" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
+        <dx:GridViewDataTextColumn Caption="Надходження орендної плати за звітний період, всього, грн. (без ПДВ)" FieldName="PAY_RECV_ZVIT_new" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="56"  >
 			<EditItemTemplate>
-				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_RECV_ZVIT") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_RECV_ZVIT_new") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
@@ -1090,7 +1092,7 @@ WHERE id = @report_id"
         <dx:ASPxSummaryItem FieldName="PAY_RETURN_ALL_OREND_PAYED" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_PEREPLATA" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_ZABEZDEPOZ_PRISHLO" SummaryType="Sum" DisplayFormat="{0}" />
-        <dx:ASPxSummaryItem FieldName="PAY_RECV_ZVIT" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="PAY_RECV_ZVIT_new" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_RECV_NARAH" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_RECV_OTHER" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_LAST_PER" SummaryType="Sum" DisplayFormat="{0}" />

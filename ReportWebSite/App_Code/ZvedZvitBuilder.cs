@@ -167,7 +167,7 @@ sum(SQR_TOTAL_BAL) as v3,
 sum(SQR_GIVEN) as v4,
 sum(NUM_RENTER) as v5,
 sum(PAY_NARAH_ZVIT) as v6,	
-sum(PAY_RECV_ZVIT) as v7,	
+sum(isnull(PAY_RECV_ZVIT,0) + isnull(PAY_RECV_OTHER,0) - isnull(PAY_RETURN_ALL_OREND_PAYED,0)) as v7,	
 sum(PAY_DEBT_TOTAL) as v8,	
 sum(PAY_DEBT_ZVIT) as v9,	
 sum(PAY_DEBT_OVER_3_YEARS) as v10,	
@@ -210,8 +210,9 @@ SELECT
 		case when PAY_50_DEBT_CUR_v16b > 0 then PAY_50_DEBT_CUR_v16b else 0 end as PAY_50_DEBT_CUR_v16,
 		case when PAY_50_DEBT_CUR_v17b > 0 then PAY_50_DEBT_CUR_v17b else 0 end as PAY_50_DEBT_CUR_v17,
 		PAY_50_DEBT_OLD,PAY_RECV_ZVIT,
-		PAY_DEBT_OVER_3_YEARS,PAY_DEBT_3_YEARS,PAY_DEBT_12_MONTH,PAY_NUM_ZAHODIV_TOTAL,PAY_NUM_POZOV_TOTAL,PAY_NUM_POZOV_ZADOV_TOTAL,PAY_NUM_POZOV_VIKON_TOTAL,PAY_DEBT_POGASHENO_TOTAL,debt_spysano
-
+		PAY_DEBT_OVER_3_YEARS,PAY_DEBT_3_YEARS,PAY_DEBT_12_MONTH,PAY_NUM_ZAHODIV_TOTAL,PAY_NUM_POZOV_TOTAL,
+		PAY_NUM_POZOV_ZADOV_TOTAL,PAY_NUM_POZOV_VIKON_TOTAL,PAY_DEBT_POGASHENO_TOTAL,debt_spysano,
+		PAY_RECV_OTHER,PAY_RETURN_ALL_OREND_PAYED
 
         
         --,ReportDates.*
@@ -377,7 +378,7 @@ SELECT
                 --,SUM(pay.sqr_payed_by_percent) as 'sqr_payed_by_percent' -- 1
                 --,SUM(pay.sqr_payed_by_1uah) as 'sqr_payed_by_1uah' -- 2
                 --,SUM(pay.sqr_payed_hourly) as 'sqr_payed_hourly' -- 3
-                SUM(pay.payment_narah) as 'PAY_NARAH_ZVIT' -- 4
+                isnull(SUM(pay.payment_narah),0) - isnull(SUM(pay.znyato_nadmirno_narah),0) as 'PAY_NARAH_ZVIT' -- 4
                 ,SUM(pay.last_year_saldo) as 'PAY_PEREPLATA' -- 5
                 ,SUM(pay.payment_received) as 'PAY_RECV_ZVIT' -- 6
                 ,SUM(pay.payment_nar_zvit) as 'PAY_RECV_NARAH' -- 7
