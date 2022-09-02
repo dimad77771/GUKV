@@ -243,7 +243,9 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceFreeSquare" runat="server"
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT 
+    SelectCommand="
+WITH RR AS (select street_full_name,addr_nomer,rent_square, agreement_active_s from v_RentAgreements)
+SELECT 
 	fs.komis_protocol,
     fs.prozoro_number,
 	fs.using_possible_id,
@@ -327,6 +329,12 @@
 , isnull(ddd.name, 'Невизначені') as sf_upr
 , @baseurl + '/Reports1NF/BalansFreeSquarePhotosPdf.aspx?id=' + cast(fs.id as varchar(100)) as pdfurl
 , case when exists (select 1 from reports1nf_balans_free_square_photos qq where qq.free_square_id = fs.id) then 1 else 0 end as isexistsphoto
+, case when exists (select 1 from RR qq 
+	where qq.street_full_name = b.street_full_name 
+		and qq.addr_nomer = (COALESCE(LTRIM(RTRIM(b.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer2)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer3)), ''))
+		and qq.rent_square = total_free_sqr
+		and qq.agreement_active_s = 'Договір діє'
+) then 1 else 0 end as isexistsdogovor
 
 FROM view_reports1nf rep
 join reports1nf_balans bal on bal.report_id = rep.report_id
@@ -621,6 +629,11 @@ WHERE id = @id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 		<dx:GridViewDataCheckColumn FieldName="isexistsphoto" Caption="Наявність фото" VisibleIndex="1" Width="30px" ReadOnly="true">
+<%--			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("isexistsphoto") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>--%>
+		</dx:GridViewDataCheckColumn>
+		<dx:GridViewDataCheckColumn FieldName="isexistsdogovor" Caption="Наявність договору" VisibleIndex="1" Width="30px" ReadOnly="true" Visible="false">
 <%--			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("isexistsphoto") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>--%>
@@ -995,7 +1008,7 @@ WHERE id = @id"
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A2_77" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A2_78" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
