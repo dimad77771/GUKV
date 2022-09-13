@@ -166,10 +166,50 @@ select 5, 'Інше'
 order by 1">
 </mini:ProfiledSqlDataSource>
 
+<mini:ProfiledSqlDataSource ID="SqlDataObmezhena" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="
+select 1,	'Офісні приміщення, коворкінги. Об’єкти поштового зв’язку та розміщення суб’єктів господарювання, що надають послуги з перевезення та доставки (вручення) поштових відправлень. Редакції засобів масової інформації, видавництва друкованих засобів масової інформації та видавничої продукції. Ломбарди, відділення банків, інших провайдерів фінансових послу' as name union
+select 2,	'Громадські об’єднання та благодійні організації' as name union
+select 3,	'Бібліотеки. Театри. Кінотеатри, діяльність з кінопоказів' as name union
+select 4,	'Центри раннього розвитку дитини. Діяльність у сфері освіти, курси і тренінги' as name union
+select 5,	'Тренажерні зали, заклади фізичної культури і спорту, діяльність з організації та проведення занять різними видами спорту' as name union
+select 6,	'Заклади охорони здоров’я, клініки, лікарні, приватна медична практика. Аптеки. Ветеринарні лікарні (клініки), лабораторії ветеринарної медицини, ветеринарні аптеки. Медичні лабораторії' as name union
+select 7,	'Науково-дослідні установи, наукові парки' as name union
+select 8,	'Заклади харчування, кафе, бари, ресторани, які здійснюють продаж товарів підакцизної групи. Торговельні об’єкти, які здійснюють продаж товарів підакцизної групи' as name union
+select 9,	'Заклади харчування, їдальні, буфети, кафе, які не здійснюють продаж товарів підакцизної групи. Торговельні об’єкти, які не здійснюють продаж товарів підакцизної групи' as name union
+select 10,	'Склади. Камери схову, архіви' as name union
+select 11,	'Нічні клуби. Ресторани з нічним режимом роботи (після 22 год). Сауни, лазні. Організація концертів та іншої видовищно-розважальної діяльності. Готелі, хостели, турбази, мотелі, кемпінги, літні будиночки. Комп’ютерні клуби та Інтернет-кафе' as name union
+select 12,	'Проведення виставок' as name union
+select 13,	'Пункти обміну валюти, банкомати, платіжні термінали. Торговельні автомати. Розміщення технічних засобів і антен операторів телекомунікацій, суб’єктів підприємницької діяльності, які надають послуги зв’язку, послуги доступу до Інтернету, телекомунікації, передання сигналу мовлення. Розміщення зовнішньої реклами на будівлях і спорудах. Продаж книг, газет і журналів' as name union
+select 14,	'Майстерні, ательє. Салони краси, перукарні. Надання інших побутових послуг населенню' as name union
+select 15,	'Ритуальні послуги. Громадські вбиральні. Збір і сортування вторинної сировини' as name union
+select 16,	'Стоянки автомобілів. Розміщення транспортних підприємств з перевезення пасажирів і вантажів. Станції технічного обслуговування автомобілів' as name union
+select 17,	'Розміщення суб’єктів підприємницької діяльності, які здійснюють іншу виробничу діяльність' as name union
+select 18,	'Інше' as name union
+select 19,	'Органи державної влади та органи місцевого самоврядування, інші установи і організації, діяльність яких фінансується за рахунок державного або місцевих бюджетів' as name union
+select 20,	'Пенсійний фонд України та його органи' as name union
+select 21,	'Державні та комунальні підприємства, установи, організації у сфері культури і мистецтв' as name union
+select 22,	'Редакції державних і комунальних періодичних видань, державні видавництва, підприємства книгорозповсюдження, вітчизняні видавництва та підприємства книгорозповсюдження, що забезпечують підготовку, випуск та (або) розповсюдження не менш як 50 відсотків книжкової продукції державною мовою (за винятком видань рекламного та еротичного характеру)' as name union
+select 23,	'Громадська приймальня народного депутата України або депутата місцевої ради' as name union
+select 24,	'Дипломатичні представництва та консульські установи іноземних держав, представництва міжнародних міжурядових організацій в Україні' as name union
+select 25,	'Організація та проведення науково-практичних, культурних, мистецьких, громадських, суспільних та політичних заходів' as name union
+select 26,	'Проведення публічних заходів (зборів, дебатів, дискусій) під час та на період виборчої кампанії' as name 
+order by 1
+">
+</mini:ProfiledSqlDataSource>
+
+
 <mini:ProfiledSqlDataSource ID="SqlDataSourceObmezhen" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="select 1, 'Тільки зазначене' as name union select 2,'Окрім зазначеного' union select 3, 'Без обмежень' order by 1">
 </mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourcePriznacheno" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT left(full_name, 150) as name FROM dict_rental_rate ORDER BY 1">
+</mini:ProfiledSqlDataSource>
+
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceTypeObject" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
@@ -763,11 +803,12 @@ order by 1">
                             <td align="right"><dx:ASPxLabel runat="server" Text="Інший графік використання"></dx:ASPxLabel></td>
                             <td><dx:ASPxTextBox ID="v29" ClientInstanceName="v29" runat="server" Text='<%# Eval("v29") %>' Width="350px" Title="Інший графік використання" /></td>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Цільове призначення об'єкта"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v30" ClientInstanceName="v30" runat="server" Text='<%# Eval("v30") %>' Width="350px" Title="Цільове призначення об'єкта" /></td>
+                            <td><dx:ASPxComboBox ID="v30" Value='<%# Eval("v30") %>' Title="Цільове призначення об'єкта" DataSourceID="SqlDataSourcePriznacheno" runat="server" ValueType="System.String" TextField="name" ValueField="name" Width="350px" DropDownStyle="DropDown" IncrementalFilteringMode="Contains" AllowNull="true" /></td>
                         </tr>
                         <tr>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Обмеження щодо використання майна (заборонені цільові призначення)"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v31" ClientInstanceName="v31" runat="server" Text='<%# Eval("v31") %>' Width="350px" Title="Обмеження щодо використання майна (заборонені цільові призначення)" /></td>
+                            <td><dx:ASPxComboBox ID="v31" Value='<%# Eval("v31") %>' Title="Обмеження щодо використання майна (заборонені цільові призначення)" DataSourceID="SqlDataObmezhena" runat="server" ValueType="System.String" TextField="name" ValueField="name" Width="350px" DropDownStyle="DropDown" IncrementalFilteringMode="Contains" AllowNull="true" ItemStyle-Wrap="True" DropDownWidth="1100px" /></td>
+                            <%--<td><dx:ASPxTextBox ID="v31" ClientInstanceName="v31" runat="server" Text='<%# Eval("v31") %>' Width="350px" Title="Обмеження щодо використання майна (заборонені цільові призначення)" /></td>--%>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Опис обмежень цільового призначення об'єкта"></dx:ASPxLabel></td>
                             <td><dx:ASPxTextBox ID="v223" ClientInstanceName="v223" runat="server" Text='<%# Eval("v223") %>' Width="350px" Title="Опис обмежень цільового призначення об'єкта" /></td>
                         </tr>
