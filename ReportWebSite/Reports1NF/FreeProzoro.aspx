@@ -275,6 +275,27 @@ order by 1
 <asp:FormView runat="server" BorderStyle="None" ID="AddressForm" DataSourceID="SqlDataSourceMain" EnableViewState="False">
     <ItemTemplate>
 
+        <dx:ASPxRoundPanel ID="PanelIdent" runat="server" ShowHeader="false">
+            <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="4px" />
+            <PanelCollection>
+                <dx:PanelContent ID="PanelContent8" runat="server">
+                    <table border="0" cellspacing="0" cellpadding="2" width="1510px">
+						<colgroup>
+							<col style="width:300px">
+							<col style="width:25%">
+							<col style="width:300px">
+							<col style="width:25%">
+						</colgroup>
+                        <tr>
+                            <td align="right"><dx:ASPxLabel runat="server" Text="Реєстраціний номер (Реєстраційний №)"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v300" ClientInstanceName="v300" runat="server" Text='<%# Eval("v300") %>' Width="350px" Title="Реєстраціний номер (Реєстраційний №)" /></td>
+                        </tr>
+                    </table>
+                </dx:PanelContent>
+            </PanelCollection>
+        </dx:ASPxRoundPanel>
+        <p class="SpacingPara"/>
+
         <dx:ASPxRoundPanel ID="PanelAddress" runat="server" HeaderText="1. Ідентифікація орендодавця">
             <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="4px" />
             <PanelCollection>
@@ -565,17 +586,17 @@ order by 1
                             <td align="right"><dx:ASPxLabel runat="server" Text="Назва об`єкту реєстра"></dx:ASPxLabel></td>
                             <td><dx:ASPxTextBox ID="v1" ClientInstanceName="v1" runat="server" Text='<%# Eval("v1") %>' Width="350px" Title="Назва об`єкту реєстра" /></td>
                         </tr>
-                        <tr>
+                        <%--<tr>
 							<td align="right"><dx:ASPxLabel runat="server" Text="Країна об`єкту реєстра"></dx:ASPxLabel></td>
                             <td><dx:ASPxTextBox ID="v210" ClientInstanceName="v210" runat="server" Text='<%# Eval("v210") %>' Width="350px" Title="Країна об`єкту реєстра" /></td>
 							<td align="right"><dx:ASPxLabel runat="server" Text="Область об`єкту реєстра"></dx:ASPxLabel></td>
                             <td><dx:ASPxTextBox ID="v211" ClientInstanceName="v211" runat="server" Text='<%# Eval("v211") %>' Width="350px" Title="Область об`єкту реєстра" /></td>
-                        </tr>
+                        </tr>--%>
                         <tr>
-                            <td align="right"><dx:ASPxLabel runat="server" Text="Місто об`єкту реєстра"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v212" ClientInstanceName="v212" runat="server" Text='<%# Eval("v212") %>' Width="350px" Title="Місто об`єкту реєстра" /></td>
+                            <%--<td align="right"><dx:ASPxLabel runat="server" Text="Місто об`єкту реєстра"></dx:ASPxLabel></td>
+                            <td><dx:ASPxTextBox ID="v212" ClientInstanceName="v212" runat="server" Text='<%# Eval("v212") %>' Width="350px" Title="Місто об`єкту реєстра" /></td>--%>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Будинок та вулиця об`єкту реєстра"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v213" ClientInstanceName="v213" runat="server" Text='<%# Eval("v213") %>' Width="350px" Title="Будинок та вулиця об`єкту реєстра" /></td>
+                            <td ><dx:ASPxTextBox ID="v213" ClientInstanceName="v213" runat="server" Text='<%# Eval("v213") %>' Width="350px" Title="Будинок та вулиця об`єкту реєстра" /></td>
                         </tr>
                         <tr>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Тип власності"></dx:ASPxLabel></td>
