@@ -564,7 +564,7 @@ WHERE id = @id"
     OnProcessColumnAutoFilter="GridViewReports1NF_ProcessColumnAutoFilter" >
 --%>
    <dx:ASPxGridView ID="FreeSquareGridView" runat="server" AutoGenerateColumns="False" 
-        DataSourceID="SqlDataSourceFreeSquare" KeyFieldName="id" Width="100%" 
+        DataSourceID="SqlDataSourceFreeSquare" KeyFieldName="id" Width="200px" 
         ClientInstanceName="FreeSquareGridView" 
         OnCustomCallback="GridViewFreeSquare_CustomCallback"
         OnCustomFilterExpressionDisplayText="GridViewFreeSquare_CustomFilterExpressionDisplayText"
@@ -994,6 +994,13 @@ WHERE id = @id"
         <dx:ASPxSummaryItem FieldName="total_free_sqr" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="free_sql_usefull" SummaryType="Sum" DisplayFormat="{0}" />
     </TotalSummary>
+
+            <EditFormLayoutProperties>
+                <SettingsAdaptivity AdaptivityMode="SingleColumnWindowLimit" SwitchToSingleColumnAtWindowInnerWidth="600" />
+            </EditFormLayoutProperties>
+            <SettingsEditing Mode="EditForm"></SettingsEditing>
+	    <Settings VerticalScrollBarMode="Visible" VerticalScrollableHeight="500" />
+	<SettingsAdaptivity AdaptivityMode="HideDataCells" AllowOnlyOneAdaptiveDetailExpanded="true" AdaptiveDetailColumnCount="1"/>
 
     <SettingsBehavior EnableCustomizationWindow="True" AutoFilterRowInputDelay="2500" ColumnResizeMode="Control" />
     <SettingsPager AlwaysShowPager="true" PageSize="25"></SettingsPager>

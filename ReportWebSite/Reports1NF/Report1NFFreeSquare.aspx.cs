@@ -35,7 +35,7 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 			SectionMenuForRDARole.Visible = true;
 		}
 
-		FreeSquareGridView.SettingsEditing.Mode = GridViewEditingMode.Inline;
+		//FreeSquareGridView.SettingsEditing.Mode = GridViewEditingMode.Inline;
 
 		if (Utils.IsBigBossUser())
 		{
