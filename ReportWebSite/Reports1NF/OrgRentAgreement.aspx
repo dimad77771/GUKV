@@ -1030,7 +1030,23 @@
 <mini:ProfiledSqlDataSource ID="SqlDataSourceNotes" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT id, purpose_group_id, purpose_id, purpose_str, rent_square, note, rent_rate, cost_narah, cost_agreement,
-        cost_expert_total, date_expert, payment_type_id, invent_no, note_status_id, zapezh_deposit, ref_balans_id FROM reports1nf_arenda_notes WHERE (is_deleted IS NULL OR is_deleted = 0) AND report_id = @rep_id AND arenda_id = @aid"
+        cost_expert_total, date_expert, payment_type_id, invent_no, note_status_id, zapezh_deposit, ref_balans_id,
+        R.*
+        FROM reports1nf_arenda_notes
+        OUTER APPLY
+        (
+            select 
+            top 1
+            --dict_districts2.name AS district,
+            addr_street_name,
+            addr_nomer,
+            bal.sqr_total
+            FROM reports1nf_balans bal 
+            LEFT OUTER JOIN reports1nf_buildings bld ON bld.unique_id = bal.building_1nf_unique_id
+            LEFT OUTER JOIN dict_districts2 ON dict_districts2.id = bld.addr_distr_new_id
+            where bal.id = reports1nf_arenda_notes.ref_balans_id
+        ) R
+        WHERE (is_deleted IS NULL OR is_deleted = 0) AND report_id = @rep_id AND arenda_id = @aid"
     OnSelecting="SqlDataSource_Selecting">
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="aid" />
@@ -2871,6 +2887,9 @@ WHERE id = @id"
                                             <PropertiesComboBox DataSourceID="SqlDataSourceDictRentalRate" ValueField="id" TextField="short_name" ValueType="System.Int32" />
                                         </dx:GridViewDataComboBoxColumn>
 										<dx:GridViewDataTextColumn FieldName="ref_balans_id" VisibleIndex="20" Caption="ID об'єкту оренди" Width="85px"></dx:GridViewDataTextColumn>
+                                        <dx:GridViewDataTextColumn FieldName="addr_street_name" VisibleIndex="101" Caption="Вулиця" Width="170px"></dx:GridViewDataTextColumn>
+                                        <dx:GridViewDataTextColumn FieldName="addr_nomer" VisibleIndex="102" Caption="Номер" Width="100px"></dx:GridViewDataTextColumn>
+                                        <dx:GridViewDataTextColumn FieldName="sqr_total" VisibleIndex="103" Caption="Площа нежилих приміщень" Width="100px"></dx:GridViewDataTextColumn>
                                     </Columns>
 
                                     <TotalSummary>

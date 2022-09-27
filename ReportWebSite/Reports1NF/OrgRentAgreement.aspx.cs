@@ -1192,7 +1192,43 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 							values[14] = Utils.ConvertStrToDecimal(editNoteZapezhDeposit.Text);
 							values[15] = Utils.ConvertStrToInt(editRefBalansId.Text);
 
-							table.Rows[row].ItemArray = values;
+                            var refBalansId = (int)values[15];
+                            if (refBalansId != 0)
+                            {
+                                SqlConnection connection = Utils.ConnectToDatabase();
+                                string query = @"select 
+                                                    top 1
+                                                    dict_districts2.name AS district,
+                                                    addr_street_name,
+                                                    addr_nomer,
+                                                    bal.sqr_total
+                                                 FROM reports1nf_balans bal 
+                                                 LEFT OUTER JOIN reports1nf_buildings bld ON bld.unique_id = bal.building_1nf_unique_id
+                                                 LEFT OUTER JOIN dict_districts2 ON dict_districts2.id = bld.addr_distr_new_id
+                                                 WHERE bal.id = " + refBalansId;
+                                using (SqlCommand cmd = new SqlCommand(query, connection))
+                                {
+                                    using (SqlDataReader reader = cmd.ExecuteReader())
+                                    {
+                                        while (reader.Read())
+                                        {
+                                            var addr_street_name = reader.IsDBNull(1) ? null : reader.GetString(1);
+                                            var addr_nomer = reader.IsDBNull(2) ? null : reader.GetString(2);
+                                            var sqr_total = reader.IsDBNull(3) ? (decimal?)null : reader.GetDecimal(3);
+                                            values[16] = addr_street_name;
+                                            values[17] = addr_nomer;
+                                            values[18] = sqr_total;
+                                        }
+
+                                        reader.Close();
+                                    }
+                                }
+
+                            }
+
+
+
+                            table.Rows[row].ItemArray = values;
                             break;
                         }
                     }
