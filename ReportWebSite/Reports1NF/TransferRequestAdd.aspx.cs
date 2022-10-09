@@ -1194,6 +1194,7 @@ public partial class Reports1NF_TransferRequestAdd : System.Web.UI.Page
         }
         catch (Exception ex)
         {
+            //File.AppendAllText(@"c:\tmp\999.log", ex.ToString());
             log.Info(ex.Message);
         }
 

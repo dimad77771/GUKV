@@ -1200,7 +1200,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
                                                     top 1
                                                     dict_districts2.name AS district,
                                                     addr_street_name,
-                                                    addr_nomer,
+                                                    (COALESCE(LTRIM(RTRIM(bld.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer2)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer3)), '')) as addr_nomer,
                                                     bal.sqr_total
                                                  FROM reports1nf_balans bal 
                                                  LEFT OUTER JOIN reports1nf_buildings bld ON bld.unique_id = bal.building_1nf_unique_id

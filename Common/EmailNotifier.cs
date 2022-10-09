@@ -293,6 +293,8 @@ namespace GUKV.Common
 			{
                 return;
             }
+
+            from = WebConfigurationManager.AppSettings["EmailFrom"];
             if (string.IsNullOrEmpty(from))
             {
                 return;
@@ -312,7 +314,8 @@ namespace GUKV.Common
             // Set the recepient address of the mail message
             mMailMessage.To.Add(new MailAddress(to));
             //mMailMessage.To.Add(new MailAddress("ILazarieva@itgukraine.com"));
-            mMailMessage.Bcc.Add(new MailAddress("pul@ukr.net"));
+            //mMailMessage.Bcc.Add(new MailAddress("pul@ukr.net"));
+            //mMailMessage.Bcc.Add(new MailAddress("pul@yandex.com"));
 
             // Check if the cc value is null or an empty value
             if ((cc != null) && (cc != string.Empty))
