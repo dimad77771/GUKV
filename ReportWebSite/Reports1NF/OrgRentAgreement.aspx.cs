@@ -1148,6 +1148,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		ASPxTextBox editNoteZapezhDeposit = GridViewNotes.FindEditFormTemplateControl("EditNoteZapezhDeposit") as ASPxTextBox;
 		ASPxTextBox editRefBalansId = GridViewNotes.FindEditFormTemplateControl("EditRefBalansId") as ASPxTextBox;
 		ASPxComboBox comboNotePaymentType = GridViewNotes.FindEditFormTemplateControl("ComboNotePaymentType1") as ASPxComboBox;
+        ASPxComboBox comboFactichVikorist = GridViewNotes.FindEditFormTemplateControl("ComboFactichVikorist") as ASPxComboBox;
 
         if (editNoteSquare != null && editNoteFloor != null && editNoteInventNo != null &&
             comboNoteCurState != null && comboNotePurposeGroup != null &&
@@ -1191,6 +1192,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
                             values[13] = comboNoteCurState.Value is int ? comboNoteCurState.Value : null;
 							values[14] = Utils.ConvertStrToDecimal(editNoteZapezhDeposit.Text);
 							values[15] = Utils.ConvertStrToInt(editRefBalansId.Text);
+                            values[16] = comboFactichVikorist.Value is int ? comboFactichVikorist.Value : null;
 
                             var refBalansId = (int)values[15];
                             if (refBalansId != 0)
@@ -1215,9 +1217,9 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
                                             var addr_street_name = reader.IsDBNull(1) ? null : reader.GetString(1);
                                             var addr_nomer = reader.IsDBNull(2) ? null : reader.GetString(2);
                                             var sqr_total = reader.IsDBNull(3) ? (decimal?)null : reader.GetDecimal(3);
-                                            values[16] = addr_street_name;
-                                            values[17] = addr_nomer;
-                                            values[18] = sqr_total;
+                                            values[17] = addr_street_name;
+                                            values[18] = addr_nomer;
+                                            values[19] = sqr_total;
                                         }
 
                                         reader.Close();
@@ -1399,8 +1401,15 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 					parameters.Add("refbalansid", values[15]);
 				}
 
+                if (values[16] is int)
+                {
+                    fieldList += ", factich_vikorist_id";
+                    paramList += ", @factichvikoristid";
+                    parameters.Add("factichvikoristid", values[16]);
+                }
 
-				using (SqlCommand cmdInsert = new SqlCommand("INSERT INTO reports1nf_arenda_notes (" + fieldList + ") VALUES (" + paramList + ")", connection))
+
+                using (SqlCommand cmdInsert = new SqlCommand("INSERT INTO reports1nf_arenda_notes (" + fieldList + ") VALUES (" + paramList + ")", connection))
                 {
                     foreach (KeyValuePair<string, object> param in parameters)
                     {

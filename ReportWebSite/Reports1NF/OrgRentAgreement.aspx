@@ -1030,7 +1030,7 @@
 <mini:ProfiledSqlDataSource ID="SqlDataSourceNotes" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT id, purpose_group_id, purpose_id, purpose_str, rent_square, note, rent_rate, cost_narah, cost_agreement,
-        cost_expert_total, date_expert, payment_type_id, invent_no, note_status_id, zapezh_deposit, ref_balans_id,
+        cost_expert_total, date_expert, payment_type_id, invent_no, note_status_id, zapezh_deposit, ref_balans_id, factich_vikorist_id,
         R.*
         FROM reports1nf_arenda_notes
         OUTER APPLY
@@ -1250,6 +1250,12 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT id, short_name = left(full_name, 150), rental_rate FROM dict_rental_rate ORDER BY short_name">
 </mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictFactichVikorist" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, short_name = left(full_name, 150), rental_rate FROM dict_factich_vikorist ORDER BY short_name">
+</mini:ProfiledSqlDataSource>
+
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceUsingPossible" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
@@ -2883,8 +2889,11 @@ WHERE id = @id"
                                         <dx:GridViewDataComboBoxColumn FieldName="note_status_id" VisibleIndex="14" Caption="Стан використання приміщення" Width="140px">
                                             <PropertiesComboBox DataSourceID="SqlDataSourceArendaNoteStatus" ValueField="id" TextField="name" ValueType="System.Int32" />
                                         </dx:GridViewDataComboBoxColumn>
-                                        <dx:GridViewDataComboBoxColumn FieldName="payment_type_id" VisibleIndex="15" Caption="Цільове використання майна" Width="140px">
+                                        <dx:GridViewDataComboBoxColumn FieldName="payment_type_id" VisibleIndex="15" Caption="Цільове використання майна" Width="160px">
                                             <PropertiesComboBox DataSourceID="SqlDataSourceDictRentalRate" ValueField="id" TextField="short_name" ValueType="System.Int32" />
+                                        </dx:GridViewDataComboBoxColumn>
+                                        <dx:GridViewDataComboBoxColumn FieldName="factich_vikorist_id" VisibleIndex="16" Caption="Використання фактичне" Width="160px">
+                                            <PropertiesComboBox DataSourceID="SqlDataSourceDictFactichVikorist" ValueField="id" TextField="short_name" ValueType="System.Int32" />
                                         </dx:GridViewDataComboBoxColumn>
 										<dx:GridViewDataTextColumn FieldName="ref_balans_id" VisibleIndex="20" Caption="ID об'єкту оренди" Width="85px"></dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="addr_street_name" VisibleIndex="101" Caption="Вулиця" Width="170px"></dx:GridViewDataTextColumn>
@@ -2977,6 +2986,15 @@ WHERE id = @id"
 
 													<td> <dx:ASPxLabel ID="ASPxLabel73" runat="server" Text="Забезпечувальний депозит, грн." Width="150px" /> </td>
                                                     <td> <dx:ASPxTextBox ID="EditNoteZapezhDeposit" runat="server" Width="200px" Text='<%# Eval("zapezh_deposit")%>' /> </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td> <dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Використання фактичне" Width="150px" /> </td>
+                                                    <td colspan="3">
+                                                        <dx:ASPxComboBox ID="ComboFactichVikorist" ClientInstanceName="ComboFactichVikorist" runat="server" ValueType="System.Int32" TextField="short_name" ValueField="id" Width="600px" 
+                                                            IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceDictFactichVikorist" Value='<%# Eval("factich_vikorist_id") %>' >
+                                                        </dx:ASPxComboBox>
+                                                    </td>
                                                 </tr>
 
                                                 <tr>

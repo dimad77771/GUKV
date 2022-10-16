@@ -167,16 +167,22 @@
 <mini:ProfiledSqlDataSource ID="SqlDataSourceArendaObjects" runat="server" EnableCaching="false"
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT m.*
-    --, (CASE WHEN ar.agreement_state = 1 THEN 'Договір діє' ELSE CASE WHEN ar.agreement_state = 2 THEN 'Договір закінчився, але заборгованність не погашено' ELSE CASE WHEN ar.agreement_state = 3 THEN 'Договір закінчився, оренда продовжена іншим договором' ELSE '' END END END) AS 'agreement_active_s'
-/*    , pryzn4doc = (select dbo.efn_concat_string(purpose_str, '; ','', 0) FROM view_arenda_link_2_decisions WHERE arenda_id = m.arenda_id)      */
+    , substring(m.payment_type_obj, 1, 60)  as payment_type_obj_nam 
+    , substring(m.factich_vikorist, 1, 60)  as 'factich_vikorist_type'
     , pryzn4doc = (select top 1 doc_display_name from view_arenda_link_2_decisions ld where ld.arenda_id = m.arenda_id order by ld.link_id) 
-    --, prop_using_type = substring(r.short_name, 1, Charindex(' ',r.short_name)-1)
-    , prop_using_type = substring(m.payment_type_obj, 1, 60)
+    , cast(CAST(CHECKSUM(NEWID()) & 0x7fffffff AS float) / CAST (0x7fffffff AS int) as varchar(1000)) as factich_vikorist_obj2
     --, r.rental_rate
     --, ar.cost_expert_total as cost_expert_total_agr
-     , stan_prym = (select name FROM dbo.dict_arenda_note_status st where m.note_status_id = st.id)
+    , stan_prym = (select name FROM dbo.dict_arenda_note_status st where m.note_status_id = st.id)
+    , isnull(ddd.name, 'Невідомо') as sphera_dialnosti
 
     FROM view_arenda m /*m_view_arenda m */
+    left join 
+	(
+		select obp.org_id,occ.name from org_by_period obp
+		join dict_rent_occupation occ on occ.id = obp.org_occupation_id
+		where obp.period_id = (select top 1 id from dict_rent_period order by id desc)
+	) DDD on DDD.org_id = m.org_balans_id
     --join arenda ar on ar.id = m.arenda_id 
     --left join arenda_notes n on n.arenda_id = ar.id and m.arenda_note_id = n.id 
     --left join dict_rental_rate r on n.payment_type_id = r.id
@@ -398,16 +404,20 @@
             VisibleIndex="62" Visible="False" Caption="Балансоутримувач - Кількість Договорів Оренди"></dx:GridViewDataTextColumn>   
         <dx:GridViewDataTextColumn FieldName="balans_sqr_in_rent" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="63" Visible="False" Caption="Балансоутримувач - Загальна Площа Надана В Оренду (кв.м.)"></dx:GridViewDataTextColumn>   --%>
-        <dx:GridViewDataTextColumn FieldName="prop_using_type" ReadOnly="True" ShowInCustomizationForm="True"
+        <dx:GridViewDataTextColumn FieldName="payment_type_obj_nam" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="64" Visible="True" Caption="Цільове використання майна"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="factich_vikorist_type" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="65" Visible="True" Caption="Використання фактичне"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="sphera_dialnosti" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="66" Visible="True" Caption="Сфера діяльності"></dx:GridViewDataTextColumn>
 <%--        <dx:GridViewDataTextColumn FieldName="balans_org_ownership" ReadOnly="True" ShowInCustomizationForm="True" 
             VisibleIndex="65" Visible="False" Caption="Балансоутримувач - Форма Власності"></dx:GridViewDataTextColumn>    --%>
         <dx:GridViewDataTextColumn FieldName="org_balans_form_ownership" ReadOnly="True" ShowInCustomizationForm="True" 
-            VisibleIndex="65" Visible="False" Caption="Балансоутримувач - Форма Власності"></dx:GridViewDataTextColumn>
+            VisibleIndex="67" Visible="False" Caption="Балансоутримувач - Форма Власності"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="agreement_num_int" ReadOnly="True" ShowInCustomizationForm="False"
-            VisibleIndex="66" Visible="False" Caption="Номер Договору Оренди (число)"></dx:GridViewDataTextColumn>
+            VisibleIndex="68" Visible="False" Caption="Номер Договору Оренди (число)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="is_in_privat" ReadOnly="True" ShowInCustomizationForm="True"
-            VisibleIndex="67" Visible="False" Caption="Будинок в Програмі Приватизації"></dx:GridViewDataTextColumn>
+            VisibleIndex="69" Visible="False" Caption="Будинок в Програмі Приватизації"></dx:GridViewDataTextColumn>
 <%--        <dx:GridViewDataTextColumn FieldName="sqr_free_total" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="68" Visible="False" Caption="Вільні Приміщення: Загальна Площа (кв.м.)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="sqr_free_korysna" ReadOnly="True" ShowInCustomizationForm="True"
@@ -461,7 +471,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.ArendaObjects" Version="A2_3" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.ArendaObjects" Version="A2_31" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
