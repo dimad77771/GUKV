@@ -644,8 +644,9 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
         query = @"SELECT SUM(ar.rent_square) AS 'rent_square'
             ,COUNT(*) AS 'obj_count'
         FROM reports1nf_arenda ar
-        WHERE ar.report_id = @rep AND (ar.is_deleted IS NULL OR ar.is_deleted = 0)
-            --AND NOT EXISTS(SELECT id FROM arenda a WHERE a.id = ar.id AND ISNULL(a.is_deleted, 1) = 1)
+        WHERE ar.report_id = @rep 
+            AND (ar.is_deleted IS NULL OR ar.is_deleted = 0)
+            AND NOT EXISTS(SELECT id FROM arenda a WHERE a.id = ar.id AND ISNULL(a.is_deleted, 0) = 1)
             AND ar.agreement_state = 1
         GROUP BY ar.report_id, ar.id /*ar.agreement_num,ar.agreement_date,ar.rent_start_date,ar.rent_finish_date,ar.org_giver_id*/";
 
@@ -777,15 +778,14 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
                 ,SUM(zabezdepoz_prishlo)
             FROM reports1nf_arenda_payments pay
             WHERE pay.report_id = @rep AND pay.rent_period_id = @per
-                AND NOT EXISTS(SELECT id FROM arenda a WHERE a.id = pay.arenda_id AND ISNULL(a.is_deleted, 1) = 1) and pay.arenda_id > 0
+                AND NOT EXISTS(SELECT id FROM arenda a WHERE a.id = pay.arenda_id AND ISNULL(a.is_deleted, 0) = 1) and pay.arenda_id > 0
            GROUP BY pay.report_id";
 
             using (SqlCommand cmd = new SqlCommand(query, connection))
             {
                 cmd.Parameters.Add(new SqlParameter("rep", ReportID));
                 cmd.Parameters.Add(new SqlParameter("per", periodId));
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     if (reader.Read())
                     {
