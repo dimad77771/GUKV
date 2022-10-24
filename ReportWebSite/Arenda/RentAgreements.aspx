@@ -382,18 +382,6 @@
             </DataItemTemplate>
             <Settings SortMode="Custom" />
         </dx:GridViewDataTextColumn>
-<%--        <dx:GridViewDataTextColumn FieldName="object_name" ReadOnly="True"
-            VisibleIndex="22" Visible="False" Caption="Використання згідно з договором"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="object_note" ReadOnly="True"
-            VisibleIndex="23" Visible="True" Caption="Розташування приміщення (поверх)"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="purpose_group" ReadOnly="True"
-            VisibleIndex="24" Visible="False" Caption="Група Призначення"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="purpose" ReadOnly="True"
-            VisibleIndex="25" Visible="False" Caption="Призначення"></dx:GridViewDataTextColumn>        
-        <dx:GridViewDataTextColumn FieldName="is_privat" ReadOnly="True"
-            VisibleIndex="26" Visible="False" Caption="Приватизовано"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="agreement_kind" ReadOnly="True"
-            VisibleIndex="27" Visible="False" Caption="Тип Договору Оренди"></dx:GridViewDataTextColumn>    --%>
         <dx:GridViewDataDateColumn FieldName="agreement_date" ReadOnly="True"
             VisibleIndex="28" Visible="False" Caption="Дата укладання договору"></dx:GridViewDataDateColumn>
 <%--         <dx:GridViewDataTextColumn FieldName="agreement_date_year" ReadOnly="True" ShowInCustomizationForm="False"
@@ -479,8 +467,6 @@
 
         <dx:GridViewDataTextColumn FieldName="balans_sqr_in_rent" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="65" Visible="False" Caption="Балансоутримувач - Загальна Площа Надана В Оренду (кв.м.)"></dx:GridViewDataTextColumn>
-<%--        <dx:GridViewDataTextColumn FieldName="balans_form_ownership" ReadOnly="True"
-            VisibleIndex="66" Visible="False" Caption="Цільове використання майна"></dx:GridViewDataTextColumn>      --%>
         <dx:GridViewDataTextColumn FieldName="org_balans_form_ownership" ReadOnly="True"
             VisibleIndex="67" Visible="False" Caption="Балансоутримувач - Форма Власності"></dx:GridViewDataTextColumn>
 <%--        <dx:GridViewDataTextColumn FieldName="agreement_num_int" ReadOnly="True"

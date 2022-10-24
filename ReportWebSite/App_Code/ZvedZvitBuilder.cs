@@ -122,7 +122,7 @@ public class ZvedZvitBuilder
 			}
 		}
 
-
+		wsheet["W1"].Value = "Станом на:\n" + DateTime.Now.ToString("dd.MM.yyyy HH:mm");
 
 
 		workbook.SaveDocument(tempFile.FileName);

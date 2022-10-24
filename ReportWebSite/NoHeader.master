@@ -32,7 +32,7 @@
 								<dx:ASPxRibbon ID="MainRibbon" runat="server" ClientInstanceName="MainRibbon" ShowFileTab="false" Styles-TabContent-Height="100px" Width="100%" BackColor="White" AllowMinimize="true" Minimized="true">
 									<Tabs>
 
-										<dx:RibbonTab Text="Головна">
+										<dx:RibbonTab Text="Публічна">
 											<Groups>
 												<dx:RibbonGroup Text="">
 													<Items>
@@ -56,7 +56,7 @@
 											</Groups>
 										</dx:RibbonTab>
 
-										<dx:RibbonTab Text="Користувачі майна">
+										<dx:RibbonTab Text="Контрагенти">
 											<Groups>
 												<dx:RibbonGroup Text="">
 													<Items>

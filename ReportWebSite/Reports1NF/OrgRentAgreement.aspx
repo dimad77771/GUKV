@@ -721,7 +721,43 @@
                 EditNoteCostNarah.SetValue(ComboRentalRate.GetText());
 
             }
+
+			SetupNoteStatusId(false);
+        }
+
+		function OnComboFactichVikoristChanged(s, e) {
+            SetupNoteStatusId(false);
+        }
+
+		function SetupNoteStatusId(oninit) {
+            var value_1 = ComboNotePaymentType1.GetValue();
+            var value_2 = ComboFactichVikorist.GetValue();
+            console.log("value_1", value_1);
+			console.log("value_2", value_2);
+            var noteStatusId = -1;
+            if (value_1 != null && value_2 != null) {
+                var noteStatusId = value_1 == value_2 ? 0 : 1;
+            }
+            if (noteStatusId >= 0) {
+                if (oninit) {
+                    if (ID_ComboNoteCurState.GetValue() == noteStatusId) {
+						ID_ComboNoteCurState.SetEnabled(false);
+                    }
+                } else {
+                    ID_ComboNoteCurState.SetValue(noteStatusId);
+                    ID_ComboNoteCurState.SetEnabled(false);
+                }
+            } else {
+				ID_ComboNoteCurState.SetEnabled(true);
+            }
 		}
+
+		function OnEndCallbackNotes(s, e) {
+			if (GridViewNotes.IsEditing()) {
+				SetupNoteStatusId(true);
+			}
+		}
+
 
 		function OnEditMiscAddrTextChanged(e, z) {
 			console.log("OnEditMiscAddrTextChanged");
@@ -933,7 +969,8 @@
 				'BalansDogContinuePhotosPdf.aspx?id=' + id,
 				'_blank',
 			);
-		}
+        }
+
 
 
 	</script>
@@ -2843,6 +2880,8 @@ WHERE id = @id"
                                     OnRowDeleting="GridViewNotes_RowDeleting"
                                     OnRowUpdating="GridViewNotes_RowUpdating" >
 
+                                    <ClientSideEvents EndCallback="OnEndCallbackNotes" />
+
 	                                <SettingsCommandButton>
 		                                <EditButton>
 			                                <Image Url="~/Styles/EditIcon.png" ToolTip="Редагувати Об'єкт" />
@@ -2875,7 +2914,7 @@ WHERE id = @id"
                                         <dx:GridViewDataComboBoxColumn FieldName="purpose_id" VisibleIndex="5" Caption="Призначення за класифікацією" Width="140px">
                                             <PropertiesComboBox DataSourceID="SqlDataSourcePurpose" ValueField="id" TextField="name" ValueType="System.Int32" />
                                         </dx:GridViewDataComboBoxColumn>
-                                        <dx:GridViewDataTextColumn FieldName="purpose_str" VisibleIndex="6" Caption="Використання згідно з договором" Width="140px"></dx:GridViewDataTextColumn>
+                                        <dx:GridViewDataTextColumn FieldName="purpose_str" VisibleIndex="6" Caption="Цільове використання майна" Width="140px"></dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="cost_expert_total" VisibleIndex="7" Caption="Ринкова вартість приміщення, грн." Width="100px"></dx:GridViewDataTextColumn>
                                         <dx:GridViewDataDateColumn FieldName="date_expert" VisibleIndex="8" Caption="Дата оцінки"></dx:GridViewDataDateColumn>
 <%--                                        <dx:GridViewDataComboBoxColumn FieldName="payment_type_id" VisibleIndex="9" Caption="Вид оплати" Width="140px">
@@ -2889,10 +2928,10 @@ WHERE id = @id"
                                         <dx:GridViewDataComboBoxColumn FieldName="note_status_id" VisibleIndex="14" Caption="Стан використання приміщення" Width="140px">
                                             <PropertiesComboBox DataSourceID="SqlDataSourceArendaNoteStatus" ValueField="id" TextField="name" ValueType="System.Int32" />
                                         </dx:GridViewDataComboBoxColumn>
-                                        <dx:GridViewDataComboBoxColumn FieldName="payment_type_id" VisibleIndex="15" Caption="Цільове використання майна" Width="160px">
+                                        <dx:GridViewDataComboBoxColumn FieldName="payment_type_id" VisibleIndex="15" Caption="Використання фактичне" Width="160px">
                                             <PropertiesComboBox DataSourceID="SqlDataSourceDictRentalRate" ValueField="id" TextField="short_name" ValueType="System.Int32" />
                                         </dx:GridViewDataComboBoxColumn>
-                                        <dx:GridViewDataComboBoxColumn FieldName="factich_vikorist_id" VisibleIndex="16" Caption="Використання фактичне" Width="160px">
+                                        <dx:GridViewDataComboBoxColumn FieldName="factich_vikorist_id" VisibleIndex="16" Caption="Використання згідно з договором" Width="160px">
                                             <PropertiesComboBox DataSourceID="SqlDataSourceDictFactichVikorist" ValueField="id" TextField="short_name" ValueType="System.Int32" />
                                         </dx:GridViewDataComboBoxColumn>
 										<dx:GridViewDataTextColumn FieldName="ref_balans_id" VisibleIndex="20" Caption="ID об'єкту оренди" Width="85px"></dx:GridViewDataTextColumn>
@@ -2932,7 +2971,7 @@ WHERE id = @id"
                                                     <td> <dx:ASPxTextBox ID="EditNoteInventNo" runat="server" Width="200px" Text='<%# Eval("invent_no")%>' MaxLength="128" /> </td>
                                                     <td> <dx:ASPxLabel ID="ASPxLabel46" runat="server" Text="Cтан використання приміщення" Width="150px" /> </td>
                                                     <td>
-                                                        <dx:ASPxComboBox ID="ComboNoteCurState" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="200px" 
+                                                        <dx:ASPxComboBox ID="ComboNoteCurState"  ClientInstanceName="ID_ComboNoteCurState" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="200px" 
                                                             IncrementalFilteringMode="StartsWith" DataSourceID="SqlDataSourceArendaNoteStatus" Value='<%# Eval("note_status_id") %>' />
                                                     </td>
                                                 </tr>
@@ -2949,7 +2988,7 @@ WHERE id = @id"
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td> <dx:ASPxLabel ID="ASPxLabel16" runat="server" Text="Використання згідно з договором" Width="150px" /> </td>
+                                                    <td> <dx:ASPxLabel ID="ASPxLabel16" runat="server" Text="Цільове використання майна" Width="150px" /> </td>
                                                     <td colspan="3">
                                                         <dx:ASPxTextBox ID="EditNotePurposeStr" runat="server" Width="100%" Text='<%# Eval("purpose_str")%>' MaxLength="252" />
                                                     </td>
@@ -2961,7 +3000,7 @@ WHERE id = @id"
                                                     <td> <dx:ASPxDateEdit ID="EditNoteDateExpert" runat="server" Width="200px" Value='<%# Eval("date_expert")%>' /> </td>
                                                 </tr>
                                                 <tr>
-                                                    <td> <dx:ASPxLabel ID="ASPxLabel52" runat="server" Text="Цільове використання майна" Width="150px" /> </td>
+                                                    <td> <dx:ASPxLabel ID="ASPxLabel52" runat="server" Text="Використання фактичне" Width="150px" /> </td>
                                                     <td colspan="3">
                                                         <dx:ASPxComboBox ID="ComboNotePaymentType1" ClientInstanceName="ComboNotePaymentType1" runat="server" ValueType="System.Int32" TextField="short_name" ValueField="id" Width="600px" 
                                                             IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceDictRentalRate" Value='<%# Eval("payment_type_id") %>' >
@@ -2989,10 +3028,11 @@ WHERE id = @id"
                                                 </tr>
 
                                                 <tr>
-                                                    <td> <dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Використання фактичне" Width="150px" /> </td>
+                                                    <td> <dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Використання згідно з договором" Width="150px" /> </td>
                                                     <td colspan="3">
                                                         <dx:ASPxComboBox ID="ComboFactichVikorist" ClientInstanceName="ComboFactichVikorist" runat="server" ValueType="System.Int32" TextField="short_name" ValueField="id" Width="600px" 
                                                             IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceDictFactichVikorist" Value='<%# Eval("factich_vikorist_id") %>' >
+                                                            <ClientSideEvents SelectedIndexChanged="OnComboFactichVikoristChanged" />
                                                         </dx:ASPxComboBox>
                                                     </td>
                                                 </tr>

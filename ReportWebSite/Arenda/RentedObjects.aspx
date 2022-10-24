@@ -317,7 +317,7 @@
         <dx:GridViewDataTextColumn FieldName="pryzn4doc" ReadOnly="True" ShowInCustomizationForm="True" 
             VisibleIndex="25" Visible="False" Caption="Призначення за документом"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="object_name" ReadOnly="True" ShowInCustomizationForm="True" 
-            VisibleIndex="26" Visible="False" Caption="Використання згідно з договором"></dx:GridViewDataTextColumn>
+            VisibleIndex="26" Visible="False" Caption="Цільове використання майна"></dx:GridViewDataTextColumn>
 <%--         <dx:GridViewDataTextColumn FieldName="is_privat" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="26" Visible="False" Caption="Приватизовано"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="agreement_kind" ReadOnly="True" ShowInCustomizationForm="True"
@@ -405,9 +405,9 @@
         <dx:GridViewDataTextColumn FieldName="balans_sqr_in_rent" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="63" Visible="False" Caption="Балансоутримувач - Загальна Площа Надана В Оренду (кв.м.)"></dx:GridViewDataTextColumn>   --%>
         <dx:GridViewDataTextColumn FieldName="payment_type_obj_nam" ReadOnly="True" ShowInCustomizationForm="True"
-            VisibleIndex="64" Visible="True" Caption="Цільове використання майна"></dx:GridViewDataTextColumn>
+            VisibleIndex="64" Visible="True" Caption="Використання фактичне"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="factich_vikorist_type" ReadOnly="True" ShowInCustomizationForm="True"
-            VisibleIndex="65" Visible="True" Caption="Використання фактичне"></dx:GridViewDataTextColumn>
+            VisibleIndex="65" Visible="True" Caption="Використання згідно з договором"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="sphera_dialnosti" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="66" Visible="True" Caption="Сфера діяльності"></dx:GridViewDataTextColumn>
 <%--        <dx:GridViewDataTextColumn FieldName="balans_org_ownership" ReadOnly="True" ShowInCustomizationForm="True" 

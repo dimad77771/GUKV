@@ -394,27 +394,6 @@ t.report_id as sublease_report_id,
             </DataItemTemplate>
             <Settings SortMode="Custom" />
         </dx:GridViewDataTextColumn>
-<%--        <dx:GridViewDataTextColumn FieldName="object_name" ReadOnly="True"
-            VisibleIndex="10022" Visible="False" Caption="Використання згідно з договором"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="object_note" ReadOnly="True"
-            VisibleIndex="10023" Visible="False" Caption="Розташування приміщення (поверх)"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="purpose_group" ReadOnly="True"
-            VisibleIndex="10024" Visible="False" Caption="Група Призначення"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="purpose" ReadOnly="True"
-            VisibleIndex="10025" Visible="False" Caption="Призначення"></dx:GridViewDataTextColumn>        
-        <dx:GridViewDataTextColumn FieldName="is_privat" ReadOnly="True"
-            VisibleIndex="10026" Visible="False" Caption="Приватизовано"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="agreement_kind" ReadOnly="True"
-            VisibleIndex="10027" Visible="False" Caption="Тип Договору Оренди"></dx:GridViewDataTextColumn>    --%>
-<%--         <dx:GridViewDataTextColumn FieldName="agreement_date_year" ReadOnly="True" ShowInCustomizationForm="False"
-            VisibleIndex="10029" Visible="False" Caption="Дата Договору Оренди - Рік"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="agreement_date_quarter" ReadOnly="True" ShowInCustomizationForm="False"
-            VisibleIndex="10030" Visible="False" Caption="Дата Договору Оренди - Квартал"></dx:GridViewDataTextColumn>     --%>
-        
-<%--        <dx:GridViewDataTextColumn FieldName="floor_number" ReadOnly="True" ShowInCustomizationForm="False"
-            VisibleIndex="10032" Visible="False" Caption="Поверх"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="cost_narah" ReadOnly="True" ShowInCustomizationForm="True"
-            VisibleIndex="10033" Visible="False" Caption="Середня Ставка за використання (%)"></dx:GridViewDataTextColumn>      --%>
         <dx:GridViewDataTextColumn FieldName="priznachennya" VisibleIndex="10033" Caption="Призначення за Документом" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn FieldName="cost_payed" ReadOnly="True" ShowInCustomizationForm="False"
@@ -488,8 +467,6 @@ t.report_id as sublease_report_id,
 
         <dx:GridViewDataTextColumn FieldName="balans_sqr_in_rent" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="10065" Visible="False" Caption="Балансоутримувач - Загальна Площа Надана В Оренду (кв.м.)"></dx:GridViewDataTextColumn>
-<%--        <dx:GridViewDataTextColumn FieldName="balans_form_ownership" ReadOnly="True"
-            VisibleIndex="10066" Visible="False" Caption="Цільове використання майна"></dx:GridViewDataTextColumn>      --%>
         <dx:GridViewDataTextColumn FieldName="org_balans_form_ownership" ReadOnly="True"
             VisibleIndex="10067" Visible="False" Caption="Балансоутримувач - Форма Власності"></dx:GridViewDataTextColumn>
 <%--        <dx:GridViewDataTextColumn FieldName="agreement_num_int" ReadOnly="True"
