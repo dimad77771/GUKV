@@ -52,11 +52,54 @@ public partial class Balans_BalansObjects : System.Web.UI.Page, CachingPageIdSup
 
 	    PrimaryGridView.Settings.VerticalScrollBarMode = DevExpress.Web.ScrollBarMode.Visible;
 
-		if (IsReportForm)
-		{
-			CustomizeReportForm();
-		}
+        if (IsReportForm)
+        {
+            CustomizeReportForm();
+        }
+        else
+        {
+            CustomizeColumnList();
+        }
 	}
+
+    void CustomizeColumnList()
+    {
+		if (this.Request.Cookies[PrimaryGridView.SettingsCookies.CookiesID] != null)
+		{
+			return;
+		}
+
+		var visibleColumns = new[]
+		{
+            @"Балансоутримувач - Повна Назва",
+            @"Балансоутримувач - Код ЄДРПОУ",
+            @"Район",
+            @"Назва Вулиці",
+            @"Номер Будинку",
+            @"Орган госп. упр.",
+            @"Загальна Площа будинку (кв.м.)",
+            @"Площа нежилих приміщень будинку (кв.м.)",
+            @"Площа нежилих приміщень об'єкту (кв.м.)",
+            @"Площа об'єкту Для Власних Потреб (кв.м.)",
+            @"Площа вільних приміщень (кв.м.)",
+            @"Кількість Договорів Оренди",
+            @"Вид Об'єкту відповідно Класифікатора майна",
+            @"Тип Об'єкту",
+            @"Назва Об'єкту",
+            @"Дата Актуальності",
+            @"Сфера діяльності",
+            @"Контактні телефони",
+        };
+        int npp = 0;
+        foreach (GridViewColumn column in PrimaryGridView.Columns)
+        {
+            var visible = visibleColumns.Any(colnam => Utils.EqualColumnTitle(column, colnam));
+            column.Visible = visible;
+            if (column.Visible) npp++;
+        }
+        npp = npp;
+    }
+
 
 	void CustomizeReportForm()
 	{

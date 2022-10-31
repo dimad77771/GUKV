@@ -49,7 +49,50 @@ public partial class Arenda_RentedObjects : System.Web.UI.Page
         // Enable advanced header filter for all grid columns
         Utils.AdjustColumnsVisibleInFilter(PrimaryGridView);
 
-	PrimaryGridView.Settings.VerticalScrollBarMode = DevExpress.Web.ScrollBarMode.Visible;
+	    PrimaryGridView.Settings.VerticalScrollBarMode = DevExpress.Web.ScrollBarMode.Visible;
+
+        CustomizeColumnList();
+    }
+
+    void CustomizeColumnList()
+    {
+        if (this.Request.Cookies[PrimaryGridView.SettingsCookies.CookiesID] != null)
+        {
+            return;
+        }
+
+        var visibleColumns = new[]
+        {
+            @"Картка",
+            @"Балансоутримувач - Повна Назва",
+            @"Балансоутримувач - Код ЄДРПОУ",
+            @"Орендар - Коротка Назва",
+            @"Орендодавець - Коротка Назва",
+            @"Район",
+            @"Назва Вулиці",
+            @"Номер Будинку",
+            @"Дата Договору Оренди",
+            @"Номер Договору Оренди",
+            @"Плата за використання (грн.)",
+            @"Початок Оренди",
+            @"Закінчення Оренди",
+            @"Вид оплати",
+            @"Стан договору",
+            @"Використання згідно з договором: цільове",
+            @"Сфера діяльності",
+            @"Дата Актуальності",
+            @"Поточний стан використання приміщення",
+            @"Використання згідно з договором: примітки",
+            @"Використання фактичне",
+        };
+        int npp = 0;
+        foreach (GridViewColumn column in PrimaryGridView.Columns)
+        {
+            var visible = visibleColumns.Any(colnam => Utils.EqualColumnTitle(column, colnam));
+            column.Visible = visible;
+            if (column.Visible) npp++;
+        }
+        npp = npp;
     }
 
     protected void ASPxButton_ArendaObjects_ExportXLS_Click(object sender, EventArgs e)

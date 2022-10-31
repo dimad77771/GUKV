@@ -56,9 +56,53 @@ public partial class Arenda_RentAgreements : System.Web.UI.Page, CachingPageIdSu
 		{
 			CustomizeReportForm();
 		}
-	}
+        else
+        {
+            CustomizeColumnList();
+        }
+    }
 
-	void CustomizeReportForm()
+    void CustomizeColumnList()
+    {
+        if (this.Request.Cookies[PrimaryGridView.SettingsCookies.CookiesID] != null)
+        {
+            return;
+        }
+
+        var visibleColumns = new[]
+        {
+            @"Картка",
+            @"Балансоутримувач - Повна Назва",
+            @"Балансоутримувач - Код ЄДРПОУ",
+            @"Орендар - Коротка Назва",
+            @"Орендодавець - Коротка Назва",
+            @"Дата укладання договору",
+            @"Номер Договору Оренди",
+            @"Призначення за Документом",
+            @"Плата за використання, грн.",
+            @"Максимальна Орендна Плата за об'єкт договору (грн.)",
+            @"Початок Оренди",
+            @"Закінчення Оренди",
+            @"Площа (кв.м.)",
+            @"Вид Розрахунків",
+            @"Стан договору",
+            @"Дата Актуальності",
+            @"Нараховано орендної плати за звітний період, грн. (без ПДВ)",
+            @"Надходження орендної плати за звітний період, всього, грн. (без ПДВ)",
+            @"Загальна заборгованість по орендній платі - всього",
+            @"Сфера діяльності",
+        };
+        int npp = 0;
+        foreach (GridViewColumn column in PrimaryGridView.Columns)
+        {
+            var visible = visibleColumns.Any(colnam => Utils.EqualColumnTitle(column, colnam));
+            column.Visible = visible;
+            if (column.Visible) npp++;
+        }
+        npp = npp;
+    }
+
+    void CustomizeReportForm()
 	{
 		if (!IsPostBack)
 		{
