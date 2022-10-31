@@ -11,7 +11,7 @@
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDictBuildings" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="select id, LTRIM(RTRIM(addr_nomer)) AS 'nomer' from buildings where
-        (is_deleted IS NULL OR is_deleted = 0) AND
+        --(is_deleted IS NULL OR is_deleted = 0) AND
         (master_building_id IS NULL) AND
         addr_street_id = @street_id AND
         (RTRIM(LTRIM(addr_nomer)) <> '') ORDER BY RTRIM(LTRIM(addr_nomer))"
