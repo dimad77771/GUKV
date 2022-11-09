@@ -103,6 +103,7 @@
 ,case when exists (select 1 from reports1nf_balans q where q.id = vb.balans_id) then 1 else 0 end as ex_reports1nf_balans 
 ,(select top 1 q.report_id from reports1nf_balans q where q.id = vb.balans_id) as reports1nf_report_id
 ,case when vb.balans_id in (select b.id from dbo.reports1nf_balans b where b.organization_id = vb.organization_id and ISNULL(b.is_deleted, 0) = 0 ) then 1 else 0 end as is_dpz_object
+,'***' as addr_nomer___n
 
     FROM view_balans_all vb
     LEFT JOIN reports1nf_balans bal on vb.balans_id = bal.id
@@ -232,7 +233,7 @@
                 <%# "<a href=\"javascript:ShowObjectCard(" + Eval("balans_id") + "," + Eval("building_id") + ")\">" + Eval("street_full_name") + "</a>"%>
             </DataItemTemplate>--%>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="addr_nomer" ReadOnly="True" ShowInCustomizationForm="True"
+        <dx:GridViewDataTextColumn FieldName="addr_nomer___n" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="9" Visible="True" Caption="Номер Будинку">
 <%--            <DataItemTemplate>
                 <%# "<a href=\"javascript:ShowObjectCard(" + Eval("balans_id") + "," + Eval("building_id") + ")\">" + Eval("addr_nomer") + "</a>"%>

@@ -202,6 +202,7 @@
 ,(select sum(case when fs.is_included = 1 then fs.total_free_sqr else 0 end) as total_free_sqr from reports1nf_balans_free_square fs where fs.balans_id = bal.id and fs.report_id = bal.report_id) as total_free_sqr 
 
 , orggospupr = (select old_organ from view_organizations WHERE organization_id =  vb.organization_id)
+, vb.balans_id as balans_id_
 
     FROM view_balans_all vb
     LEFT JOIN reports1nf_balans bal on vb.balans_id = bal.id
@@ -464,6 +465,8 @@
             VisibleIndex="69" Visible="True" Caption="Госп. Структура"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_contacts" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="70" Visible="True" Caption="Контактні телефони" Width="160px"></dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="balans_id_" VisibleIndex="100" Caption="ID об'єкту" Visible="false"></dx:GridViewDataTextColumn>
 <%-- --%>
     </Columns>
 
@@ -518,7 +521,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A2_6" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A2_7" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
