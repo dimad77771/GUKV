@@ -3235,7 +3235,7 @@ WHERE id = @id"
                                                     <tr>
                                                         <td></td>
                                                         <td>
-                                                            <dx:ASPxButton Enabled="false" ID="BtnAddPaymentDocument" ClientInstanceName="clientBtnAddPaymentDocument" runat="server" Text="Розрахувати" AutoPostBack="false" Width="150px">
+                                                            <dx:ASPxButton Enabled="true" ID="BtnAddPaymentDocument" ClientInstanceName="clientBtnAddPaymentDocument" runat="server" Text="Розрахувати" AutoPostBack="false" Width="150px">
                                                                 <ClientSideEvents Click="function (s,e) { CPRentPayment.PerformCallback('calc:');  }" />
                                                             </dx:ASPxButton>
                                                         </td>

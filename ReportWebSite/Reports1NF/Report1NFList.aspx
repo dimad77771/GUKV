@@ -238,6 +238,13 @@
            ,[dict_otdel_gukv].name as 'otdel_gukv'
            ,[org].[prim_balanc]
            ,org.unknown_payments AS 'PAY_UNKNOWN_PAYMENTS'
+
+            ,org.planuvania_1
+            ,org.planuvania_2
+            ,org.planuvania_3
+            ,org.planuvania_4
+            ,org.planuvania_5
+
         FROM
             reports1nf_org_info org
             LEFT OUTER JOIN kazna_total_info(null, null) kazna on kazna.ident_bal_zkpo = org.zkpo_code
@@ -478,6 +485,22 @@ WHERE id = @report_id"
             <dx:ASPxButton ID="ASPxButtonZvedeniyBuild" runat="server" Text="Зведений Звіт" Width="148px" OnClick="ASPxButton_Zvedeniy_Build">
             </dx:ASPxButton>
         </td>
+        <td>
+            
+            <dx:ASPxCallbackPanel ID="CPUpdatePlanuvania" ClientInstanceName="CPUpdatePlanuvania" runat="server" OnCallback="ASPxButton_UpdatePlanuvania"
+                ClientSideEvents-EndCallback="function (s,e) { window.location.replace(window.location.href); }"    
+                >
+                
+                <PanelCollection>
+                    <dx:panelcontent ID="Panelcontent2" runat="server">
+                        <dx:ASPxButton ID="ASPxButtonUpdatePlanuvania" runat="server" Text="Оновити прогнози" Width="148px">
+                            <ClientSideEvents Click="function (s,e) { CPUpdatePlanuvania.PerformCallback(''); }" />
+                        </dx:ASPxButton>
+                    </dx:panelcontent>
+                 </PanelCollection>
+            </dx:ASPxCallbackPanel> 
+        </td>
+
     </tr>
 </table>
 
@@ -1062,6 +1085,32 @@ WHERE id = @report_id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
+        <dx:GridViewDataTextColumn Caption="Прогнозовані надходження за місяць, грн." FieldName="planuvania_1" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="101"  >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("planuvania_1") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn Caption="Прогнозовані надходження за рік, грн." FieldName="planuvania_2" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="101"  >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("planuvania_2") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn Caption="Прогнозовані надходження  до бюджету за рік, грн." FieldName="planuvania_3" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="101"  >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("planuvania_3") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn Caption="Планові надходження орендної плати за рік згідно фін. плану, грн." FieldName="planuvania_4" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="101"  >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("planuvania_4") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn Caption="Планові надходження орендної плати до бюджету за рік згідно фін. плану, грн." FieldName="planuvania_5" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="101"  >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("planuvania_5") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
     </Columns>
 
     <TotalSummary>
@@ -1126,7 +1175,7 @@ WHERE id = @report_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A2_35" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A2_36" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

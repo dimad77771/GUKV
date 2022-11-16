@@ -258,7 +258,19 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
         builder.Go();
     }
 
-    int ParmMistoId;
+	protected void ASPxButton_UpdatePlanuvania(object sender, EventArgs e)
+	{
+		var connection = Utils.ConnectToDatabase();
+		using (SqlCommand cmd = new SqlCommand("exec [update_planuvania]", connection))
+		{
+			cmd.ExecuteNonQuery();
+		}
+		//PrimaryGridView.DataBind();
+		System.Threading.Thread.Sleep(1000);
+		//gridParticipantes.DataBind();
+	}
+
+	int ParmMistoId;
 	
 
 

@@ -593,7 +593,7 @@ WHERE id = @id"
             </ContentCollection>
         </dx:TabPage>
 
-        <dx:TabPage Text="Загальна інформація щодо орендної плати" Name="Tab2">
+        <dx:TabPage Text="Перерахування  до бюджету та планування" Name="Tab2">
             <ContentCollection>
                 <dx:ContentControl ID="ContentControl2" runat="server">
 
@@ -675,6 +675,43 @@ WHERE id = @id"
                                 <dx:ASPxMemo ID="MemoUnknownPayments_orndpymnt" runat="server" Text='<%# Eval("unknown_payment_note") %>' Width="100%" Height="80px"
                                     Title="Коментар щодо сальдо платежів до бюджету" MaxLength="510" />
                             </td>
+                        </tr>
+                    </table>
+                </dx:PanelContent>
+            </PanelCollection>                                
+        </dx:ASPxRoundPanel>
+
+        <p class="SpacingPara"/>
+
+        <dx:ASPxRoundPanel ID="PanelPlanuvania" runat="server" HeaderText="Планування орендної плати">
+            <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="0px" />
+            <PanelCollection>
+                <dx:PanelContent ID="PanelContent9" runat="server">
+                    <table border="0" cellspacing="0" cellpadding="2" width="810px">
+                        <tr>
+                            <td><dx:ASPxLabel ID="ASPxLabel39" runat="server" Text="Прогнозовані надходження за місяць, грн." Width="650px"></dx:ASPxLabel></td>
+                            <td><dx:ASPxSpinEdit ID="EditPlanuvania_1" runat="server" NumberType="Float" Value='<%# Eval("planuvania_1") %>' Width="150px" ReadOnly="true"
+                                Title="Прогнозовані надходження за місяць, грн."/></td>
+                        </tr>
+                        <tr>
+                            <td><dx:ASPxLabel ID="ASPxLabel40" runat="server" Text="Прогнозовані надходження за рік, грн."></dx:ASPxLabel></td>
+                            <td><dx:ASPxSpinEdit ID="EditPlanuvania_2" runat="server" NumberType="Float" Value='<%# Eval("planuvania_2") %>' Width="150px" ReadOnly="true"
+                                Title="Прогнозовані надходження за рік, грн."/></td>
+                        </tr>
+                        <tr>
+                            <td><dx:ASPxLabel ID="ASPxLabel41" runat="server" Text="Прогнозовані надходження  до бюджету за рік, грн."></dx:ASPxLabel></td>
+                            <td><dx:ASPxSpinEdit ID="EditPlanuvania_3" runat="server" NumberType="Float" Value='<%# Eval("planuvania_3") %>' Width="150px" ReadOnly="true"
+                                Title="Прогнозовані надходження  до бюджету за рік, грн."/></td>
+                        </tr>
+                        <tr>
+                            <td><dx:ASPxLabel ID="ASPxLabel42" runat="server" Text="Планові надходження орендної плати за рік згідно фін. плану, грн."></dx:ASPxLabel></td>
+                            <td><dx:ASPxSpinEdit ID="EditPlanuvania_4" runat="server" NumberType="Float" Value='<%# Eval("planuvania_4") %>' Width="150px"
+                                Title="Планові надходження орендної плати за рік згідно фін. плану, грн."/></td>
+                        </tr>
+                        <tr>
+                            <td><dx:ASPxLabel ID="ASPxLabel43" runat="server" Text="Планові надходження орендної плати до бюджету за рік згідно фін. плану, грн."></dx:ASPxLabel></td>
+                            <td><dx:ASPxSpinEdit ID="EditPlanuvania_5" runat="server" NumberType="Float" Value='<%# Eval("planuvania_5") %>' Width="150px"
+                                Title="Планові надходження орендної плати до бюджету за рік згідно фін. плану, грн."/></td>
                         </tr>
                     </table>
                 </dx:PanelContent>

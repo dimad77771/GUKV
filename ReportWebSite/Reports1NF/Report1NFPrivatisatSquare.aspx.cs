@@ -84,6 +84,25 @@ public partial class Reports1NF_Report1NFPrivatisatSquare : System.Web.UI.Page
 			}
 		}
 
+		for(coln = 1; coln <= worksheet.Columns.Length; coln++)
+		{
+			if (worksheet.Range[2, coln].Text == "Унікальний код обєкту у ЕТС Прозорро-продажі")
+			{
+				for (int rown = 3; rown <= allrows; rown++)
+				{
+					var cell = worksheet.Range[rown, coln];
+					var text = cell.Text ?? "";
+					if (!string.IsNullOrEmpty(text))
+					{
+						var url = "https://prozorro.sale/ssp_object/" + text;
+						worksheet.HyperLinks.Add(cell, ExcelHyperLinkType.Url, url, "Відкрити обєкт у ЕТС Прозорро-продажі");
+						cell.CellStyle.Font.Underline = ExcelUnderline.Single;
+						cell.CellStyle.Font.Color = ExcelKnownColors.Blue;
+					}
+				}
+			}
+		}
+
 		workbook.Save();
 		workbook.Close();
 		excelEngineMain.Dispose();

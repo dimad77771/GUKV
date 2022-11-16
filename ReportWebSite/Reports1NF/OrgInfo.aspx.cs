@@ -492,8 +492,15 @@ public partial class Reports1NF_OrgInfo : System.Web.UI.Page
 			AddQueryParameter(ref fieldList, "unknown_payments", "payun", GetEditNumeric("PanelUnknownPayments", "EditUnknownPayments_orndpymnt"), parameters);
 			AddQueryParameter(ref fieldList, "unknown_payment_note", "payunnote", GetEditText("PanelUnknownPayments", "MemoUnknownPayments_orndpymnt"), parameters);
 
-			// System parameters
-			AddQueryParameter(ref fieldList, "modify_date", "mdt", DateTime.Now, parameters);
+
+            AddQueryParameter(ref fieldList, "planuvania_1", "planuvania1", GetEditNumeric("PanelPlanuvania", "EditPlanuvania_1"), parameters);
+            AddQueryParameter(ref fieldList, "planuvania_2", "planuvania2", GetEditNumeric("PanelPlanuvania", "EditPlanuvania_2"), parameters);
+            AddQueryParameter(ref fieldList, "planuvania_3", "planuvania3", GetEditNumeric("PanelPlanuvania", "EditPlanuvania_3"), parameters);
+            AddQueryParameter(ref fieldList, "planuvania_4", "planuvania4", GetEditNumeric("PanelPlanuvania", "EditPlanuvania_4"), parameters);
+            AddQueryParameter(ref fieldList, "planuvania_5", "planuvania5", GetEditNumeric("PanelPlanuvania", "EditPlanuvania_5"), parameters);
+
+            // System parameters
+            AddQueryParameter(ref fieldList, "modify_date", "mdt", DateTime.Now, parameters);
 			AddQueryParameter(ref fieldList, "modified_by", "mby", username.Left(64), parameters);
 
 			using (SqlCommand cmd = new SqlCommand("UPDATE reports1nf_org_info SET " + fieldList + " WHERE report_id = @rid", connection))
