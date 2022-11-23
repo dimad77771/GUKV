@@ -564,7 +564,7 @@ WHERE id = @id"
     OnProcessColumnAutoFilter="GridViewReports1NF_ProcessColumnAutoFilter" >
 --%>
    <dx:ASPxGridView ID="FreeSquareGridView" runat="server" AutoGenerateColumns="False" 
-        DataSourceID="SqlDataSourceFreeSquare" KeyFieldName="id" Width="200px" 
+        DataSourceID="SqlDataSourceFreeSquare" KeyFieldName="id" Width="100%" 
         ClientInstanceName="FreeSquareGridView" 
         OnCustomCallback="GridViewFreeSquare_CustomCallback"
         OnCustomFilterExpressionDisplayText="GridViewFreeSquare_CustomFilterExpressionDisplayText"
@@ -1015,7 +1015,7 @@ WHERE id = @id"
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A2_78" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A2_79" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

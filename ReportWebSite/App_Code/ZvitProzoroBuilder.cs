@@ -24,6 +24,11 @@ public class ZvitProzoroBuilder
 		string templateFileName = Page.Server.MapPath("Templates/FreeProzoro.xlsx");
 		var tempFile = TempFile.FromExistingFile(templateFileName);
 
+		if (!Ids.Any())
+		{
+			Ids = new[] { -99999 };
+		}
+
 		var connection = CommonUtils.ConnectToDatabase();
 		if (connection == null) throw new Exception("Database GUKV not found");
 		var factory = DbProviderFactories.GetFactory(connection);

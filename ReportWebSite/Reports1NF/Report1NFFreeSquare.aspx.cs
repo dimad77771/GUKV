@@ -305,7 +305,7 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 		var ids = FreeSquareGridView.GetSelectedFieldValues("id").Select(q => (int)q).ToArray();
 		//if (!ids.Any())
 		//{
-		//	throw new Exception("Не вибрано жодного запису");
+			//throw new Exception("Не вибрано жодного запису");
 		//}
 
 		var builder = new ZvitProzoroBuilder
