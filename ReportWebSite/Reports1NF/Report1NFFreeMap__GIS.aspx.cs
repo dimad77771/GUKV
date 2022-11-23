@@ -21,6 +21,10 @@ public partial class Reports1NF_Report1NFFreeMap : System.Web.UI.Page
 
 	protected void Page_Load(object sender, EventArgs e)
     {
+		this.Response.Redirect("Report1NFFreeShow.aspx");
+		return;
+		
+
 		selected_fs_id = (Request.QueryString["fs_id"] != null ? Request.QueryString["fs_id"] : "null");
 
 		var connection = Utils.ConnectToDatabase();

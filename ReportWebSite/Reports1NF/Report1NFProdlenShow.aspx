@@ -813,6 +813,12 @@ WHERE id = @id"
 			</EditItemTemplate>
 		</dx:GridViewDataTextColumn>
 
+        <dx:GridViewDataTextColumn FieldName="vidpov_osoba" Caption="Особа відповідальна за ознайомлення з об’єктом" VisibleIndex="25" Width="220px">
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("vidpov_osoba") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
 		<dx:GridViewDataTextColumn FieldName="jpegurl" Caption="Фото-архів" VisibleIndex="25" Width="150px" Visible="true">
 			<DataItemTemplate>
                 <%# "<a target=\"_blank\" href=\"" + Eval("jpegurl") + "\">" + Eval("jpegurl") + "</a>"%>
