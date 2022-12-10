@@ -337,6 +337,7 @@
             VisibleIndex="33" Visible="True" Caption="Інвентарний номер об'єкту"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="invent_no_agr_obj" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="34" Visible="True" Caption="Інвентарний номер об'єкту за договором"></dx:GridViewDataTextColumn>
+        
 
 <%--        
         <dx:GridViewDataTextColumn FieldName="floor_number" ReadOnly="True" ShowInCustomizationForm="False"
@@ -442,6 +443,9 @@
             VisibleIndex="77" Visible="False" Caption="Дата Актуальності"></dx:GridViewDataDateColumn>
          <dx:GridViewDataTextColumn FieldName="stan_prym" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="78" Visible="False" Caption="Поточний стан використання приміщення"></dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="arenda_id" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="101" Visible="False" Caption="ID об'єкту"></dx:GridViewDataTextColumn>
    </Columns>
 
     <TotalSummary>
@@ -471,7 +475,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.ArendaObjects" Version="A2_31" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.ArendaObjects" Version="A2_32" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

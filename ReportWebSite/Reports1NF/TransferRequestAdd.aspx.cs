@@ -16,6 +16,7 @@ using System.Web.Configuration;
 using GUKV.Common;
 using ExtDataEntry.Models;
 using System.IO;
+using Newtonsoft.Json;
 
 public partial class Reports1NF_TransferRequestAdd : System.Web.UI.Page
 {
@@ -1791,6 +1792,45 @@ public partial class Reports1NF_TransferRequestAdd : System.Web.UI.Page
 
 
 
-	#endregion
+    #endregion
 
+    protected void ObjectDataSourcePhotoFiles_Inserting(object sender, ObjectDataSourceMethodEventArgs e)
+    {
+        if (Request.Cookies["RecordID"] != null)
+            e.InputParameters["RecordID"] = Request.Cookies["RecordID"].Value;
+
+        //if (Request.QueryString["bid"] != null)
+        //    e.InputParameters["balans_id"] = int.Parse(Request.QueryString["bid"]);
+    }
+
+    protected void ComboRozpDoc_Callback(object source, CallbackEventArgsBase e)
+    {
+        var data = JsonConvert.DeserializeObject< ComboRozpDoc_Callback_Parm>(e.Parameter);
+        data.doc_date = new DateTime(data.doc_date_yy, data.doc_date_mm + 1, data.doc_date_dd);
+
+        SqlConnection connection = Utils.ConnectToDatabase();
+        if (connection != null)
+        {
+            using (SqlCommand cmd = new SqlCommand("UPDATE documents SET doc_date = @doc_date, topic = @topic, kind_id = @kind_id WHERE id = @id", connection))
+            {
+                cmd.Parameters.Add(new SqlParameter("id", data.id));
+                cmd.Parameters.Add(new SqlParameter("doc_date", data.doc_date));
+                cmd.Parameters.Add(new SqlParameter("topic", data.topic));
+                cmd.Parameters.Add(new SqlParameter("kind_id", data.kind_id));
+                cmd.ExecuteNonQuery();
+            }
+        }
+    }
+
+    class ComboRozpDoc_Callback_Parm
+    {
+        public string operation;
+        public int id;
+        public string topic;
+        public DateTime doc_date;
+        public int doc_date_yy;
+        public int doc_date_mm;
+        public int doc_date_dd;
+        public int kind_id;
+    }
 }

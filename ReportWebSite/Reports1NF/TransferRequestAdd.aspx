@@ -301,7 +301,7 @@
 </asp:ObjectDataSource>
 
 
-<dx:ASPxMenu ID="SectionMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left" >
+<dx:ASPxMenu ID="SectionMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left" Visible="false" >
     <Items>
         <dx:MenuItem NavigateUrl="../Reports1NF/Cabinet.aspx" Text="Стан"></dx:MenuItem>
         <dx:MenuItem NavigateUrl="../Reports1NF/OrgInfo.aspx" Text="Загальна Інформація"></dx:MenuItem>
@@ -659,6 +659,7 @@
                                                         TextFormatString="{0}" FilterMinLength="1"
                                                         OnItemRequestedByValue="ComboRozpDoc_OnItemRequestedByValue" 
                                                         OnItemsRequestedByFilterCondition="ComboRozpDoc_OnItemsRequestedByFilterCondition"
+                                                        OnCallback="ComboRozpDoc_Callback"
                                                         TextField="doc_num" Value='<%# Eval("rishrozp_doc_id") %>'
                                                         >      
                                                         <%--Value='<%# Eval("rishrozp_doc_id") %>'--%>
@@ -680,69 +681,167 @@
                                             <tr>
                                                 <td colspan="2"></td>
                                                 <td>
-                                                    <dx:ASPxPopupControl ID="PopupCreateRozp" runat="server" ClientInstanceName="PopupCreateRozp" CloseAction="CloseButton"
-                                                            HeaderText="Створення розпорядчого документу" PopupElementID="BtnCreateRozp" AllowDragging="True" Width="500px" Modal="true" ShowPageScrollbarWhenModal="true">
-                                                            <ContentCollection>
-                                                                <dx:PopupControlContentControl ID="PopupControlContentControl1" runat="server">
-                                                                    <table>
-                                                                        <tr>
-                                                                            <td><dx:ASPxLabel ID="ASPxLabel10" runat="server" Text="Номер документу" Width="120px"></dx:ASPxLabel></td>
-                                                                            <td>
-                                                                                <dx:ASPxTextBox ID="NewRozpNum" ClientInstanceName="NewRozpName" runat="server" Width="200px">
-                                                                                    <ValidationSettings SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip" ValidationGroup="PopupCreateRozpDoc">
-                                                                                        <RequiredField IsRequired="true" ErrorText="Номер документу має бути заповнений" />
-                                                                                    </ValidationSettings>
-                                                                                </dx:ASPxTextBox>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td><dx:ASPxLabel ID="ASPxLabel8" runat="server" Text="Назва документу"></dx:ASPxLabel></td>
-                                                                            <td>
-                                                                                <dx:ASPxMemo ID="NewRozpName" ClientInstanceName="NewRozpName" runat="server" Width="700px" Height="80px">
-                                                                                    <ValidationSettings SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip" ValidationGroup="PopupCreateRozpDoc">
-                                                                                        <RequiredField IsRequired="true" ErrorText="Назва документу має бути заповнена" />
-                                                                                    </ValidationSettings>
-                                                                                </dx:ASPxMemo>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td><dx:ASPxLabel ID="ASPxLabel9" runat="server" Text="Дата прийняття"></dx:ASPxLabel></td>
-                                                                            <td>
-                                                                                <dx:ASPxDateEdit ID="NewRozpDate" ClientInstanceName="NewRozpDate" runat="server" Width="200px">
-                                                                                    <ValidationSettings SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip" ValidationGroup="PopupCreateRozpDoc">
-                                                                                        <RequiredField IsRequired="true" ErrorText="Дата прийняття має бути заповнена" />
-                                                                                    </ValidationSettings>
-                                                                                </dx:ASPxDateEdit>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td><dx:ASPxLabel ID="ASPxLabel11" runat="server" Text="Тип документу"></dx:ASPxLabel></td>
-                                                                            <td>
-                                                                                <dx:ASPxComboBox ID="NewRozpType" runat="server"
-                                                                                    ClientInstanceName="NewRozpType" DataSourceID="SqlDataSourceProjectTypes" 
-                                                                                    TextField="name" ValueField="id" ValueType="System.Int32" Width="700px">
-                                                                                    <ValidationSettings SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip" ValidationGroup="PopupCreateRozpDoc">
-                                                                                        <RequiredField IsRequired="true" ErrorText="Тип Документу має бути заповнена" />
-                                                                                    </ValidationSettings>
-                                                                                </dx:ASPxComboBox>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
+                                                    <table>
+                                                        <tr>
+                                                            <td>
+                                                                <dx:ASPxPopupControl ID="PopupCreateRozp" runat="server" ClientInstanceName="PopupCreateRozp" CloseAction="CloseButton"
+                                                                        HeaderText="Створення розпорядчого документу" PopupElementID="BtnCreateRozp" AllowDragging="True" Width="500px" Modal="true" ShowPageScrollbarWhenModal="true">
+                                                                        <ContentCollection>
+                                                                            <dx:PopupControlContentControl ID="PopupControlContentControl1" runat="server">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td><dx:ASPxLabel ID="ASPxLabel10" runat="server" Text="Номер документу" Width="120px"></dx:ASPxLabel></td>
+                                                                                        <td>
+                                                                                            <dx:ASPxTextBox ID="NewRozpNum" ClientInstanceName="NewRozpName" runat="server" Width="200px">
+                                                                                                <ValidationSettings SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip" ValidationGroup="PopupCreateRozpDoc">
+                                                                                                    <RequiredField IsRequired="true" ErrorText="Номер документу має бути заповнений" />
+                                                                                                </ValidationSettings>
+                                                                                            </dx:ASPxTextBox>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td><dx:ASPxLabel ID="ASPxLabel8" runat="server" Text="Назва документу"></dx:ASPxLabel></td>
+                                                                                        <td>
+                                                                                            <dx:ASPxMemo ID="NewRozpName" ClientInstanceName="NewRozpName" runat="server" Width="700px" Height="80px">
+                                                                                                <ValidationSettings SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip" ValidationGroup="PopupCreateRozpDoc">
+                                                                                                    <RequiredField IsRequired="true" ErrorText="Назва документу має бути заповнена" />
+                                                                                                </ValidationSettings>
+                                                                                            </dx:ASPxMemo>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td><dx:ASPxLabel ID="ASPxLabel9" runat="server" Text="Дата прийняття"></dx:ASPxLabel></td>
+                                                                                        <td>
+                                                                                            <dx:ASPxDateEdit ID="NewRozpDate" ClientInstanceName="NewRozpDate" runat="server" Width="200px">
+                                                                                                <ValidationSettings SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip" ValidationGroup="PopupCreateRozpDoc">
+                                                                                                    <RequiredField IsRequired="true" ErrorText="Дата прийняття має бути заповнена" />
+                                                                                                </ValidationSettings>
+                                                                                            </dx:ASPxDateEdit>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td><dx:ASPxLabel ID="ASPxLabel11" runat="server" Text="Тип документу"></dx:ASPxLabel></td>
+                                                                                        <td>
+                                                                                            <dx:ASPxComboBox ID="NewRozpType" runat="server"
+                                                                                                ClientInstanceName="NewRozpType" DataSourceID="SqlDataSourceProjectTypes" 
+                                                                                                TextField="name" ValueField="id" ValueType="System.Int32" Width="700px">
+                                                                                                <ValidationSettings SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip" ValidationGroup="PopupCreateRozpDoc">
+                                                                                                    <RequiredField IsRequired="true" ErrorText="Тип Документу має бути заповнена" />
+                                                                                                </ValidationSettings>
+                                                                                            </dx:ASPxComboBox>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
 
-                                                                    <p class="SpacingPara"/>
+                                                                                <p class="SpacingPara"/>
 
-                                                                    <dx:ASPxButton ID="ASPxButton5" ClientInstanceName="ButtonChooseBalansObj"
-                                                                        runat="server" Text="Створити" Width="148px" AutoPostBack="False" CausesValidation="false">
-                                                                        <ClientSideEvents Click="function(s, e) {
-                                                                            e.performOnServer = false;
-                                                                            if(ASPxClientEdit.ValidateGroup('PopupCreateRozpDoc'))
-                                                                                CPCreateRozpDoc.PerformCallback();  
-                                                                            }" />
-                                                                    </dx:ASPxButton>
-                                                                </dx:PopupControlContentControl>
-                                                            </ContentCollection>
-                                                        </dx:ASPxPopupControl>
-                                                    <dx:ASPxButton ID="BtnCreateRozp" runat="server" Text="Створити" CausesValidation="false" AutoPostBack="false"></dx:ASPxButton>
+                                                                                <dx:ASPxButton ID="ASPxButton5" ClientInstanceName="ButtonChooseBalansObj"
+                                                                                    runat="server" Text="Створити" Width="148px" AutoPostBack="False" CausesValidation="false">
+                                                                                    <ClientSideEvents Click="function(s, e) {
+                                                                                        e.performOnServer = false;
+                                                                                        if(ASPxClientEdit.ValidateGroup('PopupCreateRozpDoc'))
+                                                                                            CPCreateRozpDoc.PerformCallback();  
+                                                                                        }" />
+                                                                                </dx:ASPxButton>
+                                                                            </dx:PopupControlContentControl>
+                                                                        </ContentCollection>
+                                                                    </dx:ASPxPopupControl>
+                                                                <dx:ASPxButton ID="BtnCreateRozp" runat="server" Text="Створити" CausesValidation="false" AutoPostBack="false"></dx:ASPxButton>
+                                                            </td>
+                                                            <td>
+                                                                <dx:ASPxButton ID="BtnDocumentRozp" runat="server" Text="Документи" CausesValidation="false" AutoPostBack="false">
+                                                                    <ClientSideEvents Click="function(s, e) { 
+                                                                        var rishrozp_doc_id = ComboRozpDoc.GetValue();
+                                                                        if (rishrozp_doc_id != null) {
+                                                                            $.cookie('RecordID', rishrozp_doc_id);
+                                                                            ASPxFileManagerPhotoFiles.Refresh(); 
+                                                                            PopupObjectPhotos.Show(); 
+                                                                        }
+                                                                     }" />
+                                                                </dx:ASPxButton>
+
+			                                                    <dx:ASPxPopupControl ID="ASPxPopupControlFreeSquare" runat="server" AllowDragging="True" 
+				                                                    ClientInstanceName="PopupObjectPhotos" EnableClientSideAPI="True" 
+				                                                    HeaderText="Документ" Modal="True" 
+				                                                    PopupHorizontalAlign="Center" PopupVerticalAlign="Middle"  
+				                                                    PopupAction="None" PopupElementID="ASPxGridViewFreeSquare" Width="700px" >
+				                                                    <ContentCollection>
+					                                                    <dx:PopupControlContentControl ID="PopupControlContentControl4" runat="server" SupportsDisabledAttribute="True">
+
+						                                                    <asp:ObjectDataSource ID="ObjectDataSourcePhotoFiles" runat="server" 
+							                                                    DeleteMethod="Delete" InsertMethod="Insert" 
+							                                                    OnInserting="ObjectDataSourcePhotoFiles_Inserting" 
+							                                                    SelectMethod="Select" 
+							                                                    TypeName="ExtDataEntry.Models.FileAttachment">
+							                                                    <DeleteParameters>
+								                                                    <asp:Parameter DefaultValue="documents_attachfiles" Name="scope" Type="String" />
+								                                                    <asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+								                                                    <asp:Parameter Name="id" Type="String" />
+							                                                    </DeleteParameters>
+							                                                    <InsertParameters>
+								                                                    <asp:Parameter DefaultValue="documents_attachfiles" Name="scope" Type="String" />
+								                                                    <asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+								                                                    <asp:Parameter Name="Name" Type="String" />
+								                                                    <asp:Parameter Name="Image" Type="Object" />
+							                                                    </InsertParameters>
+							                                                    <SelectParameters>
+								                                                    <asp:Parameter DefaultValue="documents_attachfiles" Name="scope" Type="String" />
+								                                                    <asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+							                                                    </SelectParameters>
+						                                                    </asp:ObjectDataSource>
+
+						                                                    <dx:ASPxFileManager ID="ASPxFileManagerPhotoFiles" runat="server" 
+							                                                    ClientInstanceName="ASPxFileManagerPhotoFiles" DataSourceID="ObjectDataSourcePhotoFiles">
+							                                                    <Settings RootFolder="~\" ThumbnailFolder="~\Thumb\" />
+							                                                    <SettingsFileList>
+								                                                    <ThumbnailsViewSettings ThumbnailSize="180px" />
+							                                                    </SettingsFileList>
+							                                                    <SettingsEditing AllowDelete="True" AllowDownload="true" />
+							                                                    <SettingsFolders Visible="False" />
+							                                                    <SettingsToolbar ShowDownloadButton="True" ShowPath="False" />
+							                                                    <SettingsUpload UseAdvancedUploadMode="True">
+								                                                    <AdvancedModeSettings EnableMultiSelect="True" />
+							                                                    </SettingsUpload>
+
+							                                                    <SettingsDataSource FileBinaryContentFieldName="Image" 
+								                                                    IsFolderFieldName="IsFolder" KeyFieldName="ID" 
+								                                                    LastWriteTimeFieldName="LastModified" NameFieldName="Name" 
+								                                                    ParentKeyFieldName="ParentID" />
+						                                                    </dx:ASPxFileManager>
+
+						                                                    <br />
+
+						                                                    <dx:ASPxButton ID="ASPxButtonClose" runat="server" AutoPostBack="False" Text="Закрити" HorizontalAlign="Center">
+							                                                    <ClientSideEvents Click="function(s, e) { PopupObjectPhotos.Hide(); }" />
+						                                                    </dx:ASPxButton>
+
+					                                                    </dx:PopupControlContentControl>
+				                                                    </ContentCollection>
+			                                                    </dx:ASPxPopupControl>
+                                                            </td>
+                                                            <td>
+                                                                <dx:ASPxButton ID="BtnEditRozp" runat="server" Text="Зберегти" CausesValidation="false" AutoPostBack="false">
+                                                                    <ClientSideEvents Click="function(s, e) { 
+                                                                        var rishrozp_doc_id = ComboRozpDoc.GetValue();
+                                                                        if (rishrozp_doc_id != null) {
+                                                                            var pm = {
+                                                                                operation: 'save',
+                                                                                id: rishrozp_doc_id,
+                                                                                topic: TextBoxRishName.GetValue(),
+                                                                                doc_date: DateEditRishDate.GetDate(),
+                                                                                doc_date_yy: DateEditRishDate.GetDate().getFullYear(),
+                                                                                doc_date_mm: DateEditRishDate.GetDate().getMonth(),
+                                                                                doc_date_dd: DateEditRishDate.GetDate().getDate(),
+                                                                                kind_id: ComboRishRozpType.GetValue(),
+                                                                            };
+                                                                            var json = JSON.stringify(pm);
+                                                                            ComboRozpDoc.PerformCallback(json);
+                                                                        }
+                                                                     }" />
+                                                                </dx:ASPxButton>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
                                                 </td>
                                             </tr>
                                             <tr><td colspan="3" height="4px"/></tr>                                        
@@ -750,7 +849,7 @@
                                                 <td width="100px" valign="top"><dx:ASPxLabel ID="ASPxLabel16" runat="server" Text="Назва документу"></dx:ASPxLabel></td>
                                                 <td width="8px">&nbsp;</td>
                                                 <td>
-                                                    <dx:ASPxMemo ID="TextBoxRishName" ClientInstanceName="TextBoxRishName" runat="server" Width="700px" Height="80px" Value='<%# Eval("rishrozp_name") %>' ReadOnly="true">
+                                                    <dx:ASPxMemo ID="TextBoxRishName" ClientInstanceName="TextBoxRishName" runat="server" Width="700px" Height="80px" Value='<%# Eval("rishrozp_name") %>' ReadOnly="false">
                                                         <ValidationSettings SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
                                                             <RequiredField IsRequired="true" ErrorText="Назва документу має бути заповнена" />
                                                         </ValidationSettings>
@@ -766,7 +865,7 @@
                                                 <td width="8px">
                                                     &nbsp;</td>
                                                 <td>
-                                                    <dx:ASPxDateEdit ID="DateEditRishDate" ClientInstanceName="DateEditRishDate" runat="server" Value='<%# Eval("rishrozp_date") %>' ReadOnly="true">
+                                                    <dx:ASPxDateEdit ID="DateEditRishDate" ClientInstanceName="DateEditRishDate" runat="server" Value='<%# Eval("rishrozp_date") %>' ReadOnly="false">
                                                         <ValidationSettings SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
                                                             <RequiredField IsRequired="true" ErrorText="Дата прийняття має бути заповнена" />
                                                         </ValidationSettings>
@@ -782,7 +881,7 @@
                                                 <td width="8px">
                                                     &nbsp;</td>
                                                 <td>
-                                                    <dx:ASPxComboBox ID="ComboRishRozpType" runat="server" Value='<%# Eval("rish_doc_kind_id") %>' ReadOnly="true"
+                                                    <dx:ASPxComboBox ID="ComboRishRozpType" runat="server" Value='<%# Eval("rish_doc_kind_id") %>' ReadOnly="false"
                                                         ClientInstanceName="ComboRishRozpType" DataSourceID="SqlDataSourceProjectTypes" 
                                                         TextField="name" ValueField="id" ValueType="System.Int32" Width="700px">
                                                         <ValidationSettings SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">

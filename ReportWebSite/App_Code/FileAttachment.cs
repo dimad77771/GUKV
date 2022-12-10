@@ -89,6 +89,9 @@ namespace ExtDataEntry.Models
                 query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [balans_free_square_photos] WHERE [free_square_id] = @free_square_id";
             if (scope.ToLower() == "arch")
                 query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [arch_balans_free_square_photos] WHERE [free_square_id] = @free_square_id";
+            if (scope.ToLower() == "documents_attachfiles")
+                query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [documents_attachfiles] WHERE [free_square_id] = @free_square_id";
+
 
             if (string.IsNullOrEmpty(query))
                 throw new ArgumentException("Unknown scope value");
@@ -258,6 +261,10 @@ namespace ExtDataEntry.Models
             {
                 table = "reports1nf_arenda_dogcontinue_photos";
             }
+            if (scope == "documents_attachfiles")
+            {
+                table = "documents_attachfiles";
+            }
             else
             {
 				table = "reports1nf_balans_free_square_photos";
@@ -319,6 +326,10 @@ namespace ExtDataEntry.Models
             else if (scope == "reports1nf_arenda_dogcontinue_photos")
             {
                 table = "reports1nf_arenda_dogcontinue_photos";
+            }
+            else if (scope == "documents_attachfiles")
+            {
+                table = "documents_attachfiles";
             }
             else
             {
