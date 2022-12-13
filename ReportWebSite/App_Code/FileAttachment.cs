@@ -91,6 +91,14 @@ namespace ExtDataEntry.Models
                 query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [arch_balans_free_square_photos] WHERE [free_square_id] = @free_square_id";
             if (scope.ToLower() == "documents_attachfiles")
                 query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [documents_attachfiles] WHERE [free_square_id] = @free_square_id";
+            if (scope.ToLower() == "transfer_requests_rish_attachfiles")
+                query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [transfer_requests_rish_attachfiles] WHERE [free_square_id] = @free_square_id";
+            if (scope.ToLower() == "transfer_requests_akt_attachfiles")
+                query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [transfer_requests_akt_attachfiles] WHERE [free_square_id] = @free_square_id";
+            if (scope.ToLower() == "reports1nf_balans_rish_attachfiles")
+                query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [reports1nf_balans_rish_attachfiles] WHERE [free_square_id] = @free_square_id";
+            if (scope.ToLower() == "reports1nf_balans_akt_attachfiles")
+                query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [reports1nf_balans_akt_attachfiles] WHERE [free_square_id] = @free_square_id";
 
 
             if (string.IsNullOrEmpty(query))
@@ -261,9 +269,25 @@ namespace ExtDataEntry.Models
             {
                 table = "reports1nf_arenda_dogcontinue_photos";
             }
-            if (scope == "documents_attachfiles")
+            else if (scope == "documents_attachfiles")
             {
                 table = "documents_attachfiles";
+            }
+            else if (scope == "transfer_requests_rish_attachfiles")
+            {
+                table = "transfer_requests_rish_attachfiles";
+            }
+            else if (scope == "transfer_requests_akt_attachfiles")
+            {
+                table = "transfer_requests_akt_attachfiles";
+            }
+            else if (scope == "reports1nf_balans_rish_attachfiles")
+            {
+                table = "reports1nf_balans_rish_attachfiles";
+            }
+            else if (scope == "reports1nf_balans_akt_attachfiles")
+            {
+                table = "reports1nf_balans_akt_attachfiles";
             }
             else
             {
@@ -330,6 +354,22 @@ namespace ExtDataEntry.Models
             else if (scope == "documents_attachfiles")
             {
                 table = "documents_attachfiles";
+            }
+            else if (scope == "transfer_requests_rish_attachfiles")
+            {
+                table = "transfer_requests_rish_attachfiles";
+            }
+            else if (scope == "transfer_requests_akt_attachfiles")
+            {
+                table = "transfer_requests_akt_attachfiles";
+            }
+            else if (scope == "reports1nf_balans_rish_attachfiles")
+            {
+                table = "reports1nf_balans_rish_attachfiles";
+            }
+            else if (scope == "reports1nf_balans_akt_attachfiles")
+            {
+                table = "reports1nf_balans_akt_attachfiles";
             }
             else
             {

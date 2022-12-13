@@ -749,7 +749,7 @@
                                                                 <dx:ASPxButton ID="BtnCreateRozp" runat="server" Text="Створити" CausesValidation="false" AutoPostBack="false"></dx:ASPxButton>
                                                             </td>
                                                             <td>
-                                                                <dx:ASPxButton ID="BtnDocumentRozp" runat="server" Text="Документи" CausesValidation="false" AutoPostBack="false">
+                                                                <dx:ASPxButton ID="BtnDocumentRozp" runat="server" Text="Документи" CausesValidation="false" AutoPostBack="false" Visible="false">
                                                                     <ClientSideEvents Click="function(s, e) { 
                                                                         var rishrozp_doc_id = ComboRozpDoc.GetValue();
                                                                         if (rishrozp_doc_id != null) {
@@ -774,18 +774,18 @@
 							                                                    SelectMethod="Select" 
 							                                                    TypeName="ExtDataEntry.Models.FileAttachment">
 							                                                    <DeleteParameters>
-								                                                    <asp:Parameter DefaultValue="documents_attachfiles" Name="scope" Type="String" />
+								                                                    <asp:Parameter DefaultValue="transfer_requests_rish_attachfiles" Name="scope" Type="String" />
 								                                                    <asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
 								                                                    <asp:Parameter Name="id" Type="String" />
 							                                                    </DeleteParameters>
 							                                                    <InsertParameters>
-								                                                    <asp:Parameter DefaultValue="documents_attachfiles" Name="scope" Type="String" />
+								                                                    <asp:Parameter DefaultValue="transfer_requests_rish_attachfiles" Name="scope" Type="String" />
 								                                                    <asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
 								                                                    <asp:Parameter Name="Name" Type="String" />
 								                                                    <asp:Parameter Name="Image" Type="Object" />
 							                                                    </InsertParameters>
 							                                                    <SelectParameters>
-								                                                    <asp:Parameter DefaultValue="documents_attachfiles" Name="scope" Type="String" />
+								                                                    <asp:Parameter DefaultValue="transfer_requests_rish_attachfiles" Name="scope" Type="String" />
 								                                                    <asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
 							                                                    </SelectParameters>
 						                                                    </asp:ObjectDataSource>
@@ -820,7 +820,7 @@
 			                                                    </dx:ASPxPopupControl>
                                                             </td>
                                                             <td>
-                                                                <dx:ASPxButton ID="BtnEditRozp" runat="server" Text="Зберегти" CausesValidation="false" AutoPostBack="false">
+                                                                <dx:ASPxButton ID="BtnEditRozp" runat="server" Text="Зберегти" CausesValidation="false" AutoPostBack="false" Visible="false">
                                                                     <ClientSideEvents Click="function(s, e) { 
                                                                         var rishrozp_doc_id = ComboRozpDoc.GetValue();
                                                                         if (rishrozp_doc_id != null) {

@@ -4285,7 +4285,9 @@ namespace GUKV.Conveyancing
 							if (request_id != null)
 							{
 								CopyTransferRequestPhoto(request_id.Value, newBalansId, connectionSql, transactionSql);
-							}
+                                CopyTransferRishAttachfiles(request_id.Value, newBalansId, connectionSql, transactionSql);
+                                CopyTransferAktAttachfiles(request_id.Value, newBalansId, connectionSql, transactionSql);
+                            }
 
 							insertedOK = true;
                         }
@@ -4364,7 +4366,97 @@ namespace GUKV.Conveyancing
 			}
 		}
 
-		private static int CutBalansObject(/*FbConnection connection1NF, FbTransaction transaction,*/ SqlConnection connectionSql, SqlTransaction transactionSql, BalansTransfer bt,
+        private static void CopyTransferRishAttachfiles(int request_id, int newBalansId, SqlConnection connectionSql, SqlTransaction transactionSql)
+        {
+            string photoRootPath = LLLLhotorowUtils.ImgFreeSquareRootFolder;
+
+            using (SqlCommand cmd = new SqlCommand(@"
+                select 
+                    id, file_name, file_ext, modified_by, modify_date
+                    ,(SELECT rep.id FROM reports1nf rep INNER JOIN balans bal ON bal.organization_id = rep.organization_id WHERE bal.id = @newBalansId) as report_id
+                 from transfer_requests_rish_attachfiles where free_square_id = @reqid", connectionSql, transactionSql))
+            {
+                cmd.Parameters.AddWithValue("reqid", request_id);
+                cmd.Parameters.AddWithValue("newBalansId", newBalansId);
+                using (SqlDataReader r = cmd.ExecuteReader())
+                {
+                    while (r.Read())
+                    {
+                        var id = r.GetInt32(0);
+                        var file_name = r.GetString(1);
+                        var file_ext = r.GetString(2);
+                        var modified_by = r.GetString(3);
+                        var modify_date = r.GetDateTime(4);
+                        var report_id = r.GetInt32(5);
+
+                        int codBalansId = newBalansId + report_id * 500000;
+                        var icmd = new SqlCommand("INSERT INTO reports1nf_balans_rish_attachfiles (free_square_id, file_name, file_ext, modified_by, modify_date) VALUES (@balid, @filename, @fileext, @modified_by, @modify_date); SELECT CAST(SCOPE_IDENTITY() AS int)", connectionSql, transactionSql);
+                        icmd.Parameters.Add(new SqlParameter("balid", codBalansId));
+                        icmd.Parameters.Add(new SqlParameter("filename", file_name));
+                        icmd.Parameters.Add(new SqlParameter("fileext", file_ext));
+                        icmd.Parameters.Add(new SqlParameter("modified_by", modified_by));
+                        icmd.Parameters.Add(new SqlParameter("modify_date", modify_date));
+                        var newId = (Int32)icmd.ExecuteScalar();
+
+                        var sourceFileToCopy = Path.Combine(photoRootPath, "transfer_requests_rish_attachfiles", request_id.ToString(), file_name + file_ext);
+                        var destFileToCopy = Path.Combine(photoRootPath, "reports1nf_balans_rish_attachfiles", codBalansId.ToString(), file_name + file_ext);
+                        if (LLLLhotorowUtils.Exists(sourceFileToCopy, connectionSql, transactionSql))
+                        {
+                            LLLLhotorowUtils.Copy(sourceFileToCopy, destFileToCopy, connectionSql, transactionSql);
+                        }
+                    }
+
+                    r.Close();
+                }
+            }
+        }
+
+        private static void CopyTransferAktAttachfiles(int request_id, int newBalansId, SqlConnection connectionSql, SqlTransaction transactionSql)
+        {
+            string photoRootPath = LLLLhotorowUtils.ImgFreeSquareRootFolder;
+
+            using (SqlCommand cmd = new SqlCommand(@"
+                select 
+                    id, file_name, file_ext, modified_by, modify_date
+                    ,(SELECT rep.id FROM reports1nf rep INNER JOIN balans bal ON bal.organization_id = rep.organization_id WHERE bal.id = @newBalansId) as report_id
+                 from transfer_requests_akt_attachfiles where free_square_id = @reqid", connectionSql, transactionSql))
+            {
+                cmd.Parameters.AddWithValue("reqid", request_id);
+                cmd.Parameters.AddWithValue("newBalansId", newBalansId);
+                using (SqlDataReader r = cmd.ExecuteReader())
+                {
+                    while (r.Read())
+                    {
+                        var id = r.GetInt32(0);
+                        var file_name = r.GetString(1);
+                        var file_ext = r.GetString(2);
+                        var modified_by = r.GetString(3);
+                        var modify_date = r.GetDateTime(4);
+                        var report_id = r.GetInt32(5);
+
+                        int codBalansId = newBalansId + report_id * 500000;
+                        var icmd = new SqlCommand("INSERT INTO reports1nf_balans_akt_attachfiles (free_square_id, file_name, file_ext, modified_by, modify_date) VALUES (@balid, @filename, @fileext, @modified_by, @modify_date); SELECT CAST(SCOPE_IDENTITY() AS int)", connectionSql, transactionSql);
+                        icmd.Parameters.Add(new SqlParameter("balid", codBalansId));
+                        icmd.Parameters.Add(new SqlParameter("filename", file_name));
+                        icmd.Parameters.Add(new SqlParameter("fileext", file_ext));
+                        icmd.Parameters.Add(new SqlParameter("modified_by", modified_by));
+                        icmd.Parameters.Add(new SqlParameter("modify_date", modify_date));
+                        var newId = (Int32)icmd.ExecuteScalar();
+
+                        var sourceFileToCopy = Path.Combine(photoRootPath, "transfer_requests_akt_attachfiles", request_id.ToString(), file_name + file_ext);
+                        var destFileToCopy = Path.Combine(photoRootPath, "reports1nf_balans_akt_attachfiles", codBalansId.ToString(), file_name + file_ext);
+                        if (LLLLhotorowUtils.Exists(sourceFileToCopy, connectionSql, transactionSql))
+                        {
+                            LLLLhotorowUtils.Copy(sourceFileToCopy, destFileToCopy, connectionSql, transactionSql);
+                        }
+                    }
+
+                    r.Close();
+                }
+            }
+        }
+
+        private static int CutBalansObject(/*FbConnection connection1NF, FbTransaction transaction,*/ SqlConnection connectionSql, SqlTransaction transactionSql, BalansTransfer bt,
             /*int balansId, decimal cutSquare, int newOwnerOrgId,*/ Document rishennya, ImportedAct act, bool notifyByEmail)
         {
             int balansId = bt.balansId;

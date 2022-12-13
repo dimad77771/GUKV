@@ -109,4 +109,10 @@ public partial class Reports1NF_ConveyancingRequestsList : System.Web.UI.Page
     {
         e.Command.Parameters["@our_org_id"].Value = userOrgId;
     }
+
+    protected void ObjectDataSourcePhotoFiles_Inserting(object sender, ObjectDataSourceMethodEventArgs e)
+    {
+        if (Request.Cookies["RecordID"] != null)
+            e.InputParameters["RecordID"] = Request.Cookies["RecordID"].Value;
+    }
 }

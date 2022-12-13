@@ -192,7 +192,7 @@ public partial class Reports1NF_ConveyancingConfirmation : System.Web.UI.Page
                             var new_akt_summa_zalishkova = (decimal)reader["new_akt_summa_zalishkova"];
                             var rozp_doc_num = (string)reader["rozp_doc_num"];
                             var rozp_doc_date = (DateTime)reader["rozp_doc_date"];
-                            var rozp_doc_name = (string)reader["rozp_doc_name"];
+                            var rozp_doc_name = reader["rozp_doc_name"] is DBNull ? "" : (string)reader["rozp_doc_name"];
                             var rishrozp_doc_id = (int)reader["rishrozp_doc_id"];
                             var rish_doc_kind_id = (int)reader["rish_doc_kind_id"];
                             var ownership_type_id = reader["obj_right_id"] is int ? (int)reader["obj_right_id"] : -1;

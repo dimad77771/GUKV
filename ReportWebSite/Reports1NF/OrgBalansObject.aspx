@@ -350,6 +350,20 @@
 		console.log(z);
     }
 
+    function showAttachDocuments(mode) {
+        var request_id = 500000 * paramRid + paramBid;
+        //alert(request_id);
+		//alert(mode);
+		$.cookie('RecordID', request_id);
+        if (mode == 'rish') {
+			ASPxFileManagerPhotoFiles1.Refresh();
+			PopupObjectPhotos1.Show();
+        } else if (mode == 'akt') {
+			ASPxFileManagerPhotoFiles2.Refresh();
+			PopupObjectPhotos2.Show();
+		}
+	}
+
 
     // ]]>
 
@@ -1163,6 +1177,124 @@ WHERE id = @id"
 </asp:FormView>
 
 <asp:HiddenField EnableViewState="true" ID="UniqieState" runat="server" />
+
+<dx:ASPxPopupControl ID="ASPxPopupControlFreeSquare1" runat="server" AllowDragging="True" 
+	ClientInstanceName="PopupObjectPhotos1" EnableClientSideAPI="True" 
+	HeaderText="Документ" Modal="True" 
+	PopupHorizontalAlign="Center" PopupVerticalAlign="Middle"  
+	PopupAction="None" PopupElementID="ASPxGridViewFreeSquare1" Width="700px" >
+	<ContentCollection>
+		<dx:PopupControlContentControl ID="PopupControlContentControl4" runat="server" SupportsDisabledAttribute="True">
+
+			<asp:ObjectDataSource ID="ObjectDataSourcePhotoFiles1" runat="server" 
+				DeleteMethod="Delete" InsertMethod="Insert" 
+				OnInserting="ObjectDataSourcePhotoFiles_Inserting" 
+				SelectMethod="Select" 
+				TypeName="ExtDataEntry.Models.FileAttachment">
+				<DeleteParameters>
+					<asp:Parameter DefaultValue="reports1nf_balans_rish_attachfiles" Name="scope" Type="String" />
+					<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+					<asp:Parameter Name="id" Type="String" />
+				</DeleteParameters>
+				<InsertParameters>
+					<asp:Parameter DefaultValue="reports1nf_balans_rish_attachfiles" Name="scope" Type="String" />
+					<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+					<asp:Parameter Name="Name" Type="String" />
+					<asp:Parameter Name="Image" Type="Object" />
+				</InsertParameters>
+				<SelectParameters>
+					<asp:Parameter DefaultValue="reports1nf_balans_rish_attachfiles" Name="scope" Type="String" />
+					<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+				</SelectParameters>
+			</asp:ObjectDataSource>
+
+			<dx:ASPxFileManager ID="ASPxFileManagerPhotoFiles1" runat="server" 
+				ClientInstanceName="ASPxFileManagerPhotoFiles1" DataSourceID="ObjectDataSourcePhotoFiles1">
+				<Settings RootFolder="~\" ThumbnailFolder="~\Thumb\1\" />
+				<SettingsFileList>
+					<ThumbnailsViewSettings ThumbnailSize="180px" />
+				</SettingsFileList>
+				<SettingsEditing AllowDelete="True" AllowDownload="true" />
+				<SettingsFolders Visible="False" />
+				<SettingsToolbar ShowDownloadButton="True" ShowPath="False" />
+				<SettingsUpload UseAdvancedUploadMode="True">
+					<AdvancedModeSettings EnableMultiSelect="True" />
+				</SettingsUpload>
+
+				<SettingsDataSource FileBinaryContentFieldName="Image" 
+					IsFolderFieldName="IsFolder" KeyFieldName="ID" 
+					LastWriteTimeFieldName="LastModified" NameFieldName="Name" 
+					ParentKeyFieldName="ParentID" />
+			</dx:ASPxFileManager>
+
+			<br />
+
+			<dx:ASPxButton ID="ASPxButtonClose1" runat="server" AutoPostBack="False" Text="Закрити" HorizontalAlign="Center">
+				<ClientSideEvents Click="function(s, e) { PopupObjectPhotos1.Hide(); }" />
+			</dx:ASPxButton>
+
+		</dx:PopupControlContentControl>
+	</ContentCollection>
+</dx:ASPxPopupControl>
+
+<dx:ASPxPopupControl ID="ASPxPopupControlFreeSquare2" runat="server" AllowDragging="True" 
+	ClientInstanceName="PopupObjectPhotos2" EnableClientSideAPI="True" 
+	HeaderText="Документ" Modal="True" 
+	PopupHorizontalAlign="Center" PopupVerticalAlign="Middle"  
+	PopupAction="None" PopupElementID="ASPxGridViewFreeSquare2" Width="700px" >
+	<ContentCollection>
+		<dx:PopupControlContentControl ID="PopupControlContentControl2" runat="server" SupportsDisabledAttribute="True">
+
+			<asp:ObjectDataSource ID="ObjectDataSourcePhotoFiles2" runat="server" 
+				DeleteMethod="Delete" InsertMethod="Insert" 
+				OnInserting="ObjectDataSourcePhotoFiles_Inserting" 
+				SelectMethod="Select" 
+				TypeName="ExtDataEntry.Models.FileAttachment">
+				<DeleteParameters>
+					<asp:Parameter DefaultValue="reports1nf_balans_akt_attachfiles" Name="scope" Type="String" />
+					<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+					<asp:Parameter Name="id" Type="String" />
+				</DeleteParameters>
+				<InsertParameters>
+					<asp:Parameter DefaultValue="reports1nf_balans_akt_attachfiles" Name="scope" Type="String" />
+					<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+					<asp:Parameter Name="Name" Type="String" />
+					<asp:Parameter Name="Image" Type="Object" />
+				</InsertParameters>
+				<SelectParameters>
+					<asp:Parameter DefaultValue="reports1nf_balans_akt_attachfiles" Name="scope" Type="String" />
+					<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+				</SelectParameters>
+			</asp:ObjectDataSource>
+
+			<dx:ASPxFileManager ID="ASPxFileManagerPhotoFiles2" runat="server" 
+				ClientInstanceName="ASPxFileManagerPhotoFiles2" DataSourceID="ObjectDataSourcePhotoFiles2">
+				<Settings RootFolder="~\" ThumbnailFolder="~\Thumb\2\" />
+				<SettingsFileList>
+					<ThumbnailsViewSettings ThumbnailSize="180px" />
+				</SettingsFileList>
+				<SettingsEditing AllowDelete="True" AllowDownload="true" />
+				<SettingsFolders Visible="False" />
+				<SettingsToolbar ShowDownloadButton="True" ShowPath="False" />
+				<SettingsUpload UseAdvancedUploadMode="True">
+					<AdvancedModeSettings EnableMultiSelect="True" />
+				</SettingsUpload>
+
+				<SettingsDataSource FileBinaryContentFieldName="Image" 
+					IsFolderFieldName="IsFolder" KeyFieldName="ID" 
+					LastWriteTimeFieldName="LastModified" NameFieldName="Name" 
+					ParentKeyFieldName="ParentID" />
+			</dx:ASPxFileManager>
+
+			<br />
+
+			<dx:ASPxButton ID="ASPxButtonClose2" runat="server" AutoPostBack="False" Text="Закрити" HorizontalAlign="Center">
+				<ClientSideEvents Click="function(s, e) { PopupObjectPhotos2.Hide(); }" />
+			</dx:ASPxButton>
+
+		</dx:PopupControlContentControl>
+	</ContentCollection>
+</dx:ASPxPopupControl>
 
 <dx:ASPxPageControl ID="CardPageControl" ClientInstanceName="CardPageControl" 
                 runat="server" ActiveTabIndex="0" >
@@ -2145,12 +2277,20 @@ WHERE id = @id"
                                                         <ValidationSettings Display="None"  ></ValidationSettings>
                                                     </dx:ASPxDateEdit>
                                                 </td>
+
+                                                <td>&nbsp; &nbsp; &nbsp;</td>
+                                                <td>
+                                                    <dx:ASPxButton ID="btnShowDocumentAttachmentsRish" runat="server" AutoPostBack="False" Text="Файли" Width="70px">
+                                                        <ClientSideEvents Click="function (s,e) { showAttachDocuments('akt') }" />
+	                                                </dx:ASPxButton>
+                                                </td>
                                             </tr>
                                         </table>
 
                                     </dx:PanelContent>
                                 </PanelCollection>
                             </dx:ASPxRoundPanel>
+
 
                             <p class="SpacingPara"/>
 
@@ -2185,6 +2325,13 @@ WHERE id = @id"
                                                     <dx:ASPxDateEdit ID="EditBalansDocDate" runat="server" Value='<%# Eval("balans_doc_date") %>' Width="100px" Title="Дата документу, що підтверджує передачу об’єкту на баланс" >
                                                         <ValidationSettings Display="None"  ></ValidationSettings>
                                                     </dx:ASPxDateEdit>
+                                                </td>
+
+                                                <td>&nbsp; &nbsp; &nbsp;</td>
+                                                <td>
+                                                    <dx:ASPxButton ID="btnShowDocumentAttachmentsAkt" runat="server" AutoPostBack="False" Text="Файли" Width="70px">
+		                                                <ClientSideEvents Click="function (s,e) { showAttachDocuments('rish') }" />
+	                                                </dx:ASPxButton>
                                                 </td>
                                             </tr>
                                         </table>
@@ -2883,6 +3030,8 @@ WHERE id = @id"
     </TabPages>
 </dx:ASPxPageControl>
 
+
+
 <asp:FormView ID="errorForm" runat="server" OnDataBound="errorForm_DataBound">
     <ItemTemplate>
         <div style="padding:10px;">
@@ -2902,6 +3051,7 @@ WHERE id = @id"
         </dx:PanelContent>
     </PanelCollection>
 </dx:ASPxCallbackPanel>
+
 
 <p class="SpacingPara"/>
 

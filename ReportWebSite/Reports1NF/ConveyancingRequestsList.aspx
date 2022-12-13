@@ -44,7 +44,18 @@
             var height = Math.max(0, document.documentElement.clientHeight - 170);
             PrimaryGridView.SetHeight(height);
         }
-    </script>
+
+        function showAttachDocuments(request_id, mode) {
+            $.cookie('RecordID', request_id);
+            if (mode == 'rish') {
+                ASPxFileManagerPhotoFiles1.Refresh();
+                PopupObjectPhotos1.Show();
+			} else if (mode == 'akt') {
+                ASPxFileManagerPhotoFiles2.Refresh();
+                PopupObjectPhotos2.Show();
+            }
+        }
+	</script>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceConveyancingRequests" runat="server"
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>"
@@ -169,7 +180,11 @@
                 <%# "<center>"
                 + "<a href=\"TransferRequestAdd.aspx?rid=" + ReportID + "&reqid=" + Eval("request_id") + "\"><img border='0' src='../Styles/EditIcon.png'/></a>"
                 +  " "
-                        + "<a class=\"delete-transfer-request\" href=\"ConveyancingRequestsList.aspx?rid=" + ReportID + "&reqid=" + Eval("request_id") + "&mode=delete\"><img border='0' src='../Styles/DeleteIcon.png'/></a>"
+                + "<a class=\"delete-transfer-request\" href=\"ConveyancingRequestsList.aspx?rid=" + ReportID + "&reqid=" + Eval("request_id") + "&mode=delete\"><img border='0' src='../Styles/DeleteIcon.png'/></a>"
+                +  " "
+                + "<a title=\"Файли розпорядчих документів\" href=\"#\" onClick=\"showAttachDocuments(" + Eval("request_id") + ", 'rish')\"><img border='0' src='../Styles/PdfReportIcon.png'/></a>"
+                +  " "
+                + "<a title=\"Файли акту\" href=\"#\" onClick=\"showAttachDocuments(" + Eval("request_id") + ", 'akt')\"><img border='0' src='../Styles/current_stage_pdf.png'/></a>"
                 + "</center>" %>            
 
             </DataItemTemplate>
@@ -226,6 +241,124 @@
     </Styles>
     <SettingsCookies CookiesID="GUKV.Reports1NF.ConveyancingRequestsList" Enabled="True" Version="A2" />
 </dx:ASPxGridView>
+
+<dx:ASPxPopupControl ID="ASPxPopupControlFreeSquare1" runat="server" AllowDragging="True" 
+	ClientInstanceName="PopupObjectPhotos1" EnableClientSideAPI="True" 
+	HeaderText="Документ" Modal="True" 
+	PopupHorizontalAlign="Center" PopupVerticalAlign="Middle"  
+	PopupAction="None" PopupElementID="ASPxGridViewFreeSquare" Width="700px" >
+	<ContentCollection>
+		<dx:PopupControlContentControl ID="PopupControlContentControl1" runat="server" SupportsDisabledAttribute="True">
+
+			<asp:ObjectDataSource ID="ObjectDataSourcePhotoFiles1" runat="server" 
+				DeleteMethod="Delete" InsertMethod="Insert" 
+				OnInserting="ObjectDataSourcePhotoFiles_Inserting" 
+				SelectMethod="Select" 
+				TypeName="ExtDataEntry.Models.FileAttachment">
+				<DeleteParameters>
+					<asp:Parameter DefaultValue="transfer_requests_rish_attachfiles" Name="scope" Type="String" />
+					<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+					<asp:Parameter Name="id" Type="String" />
+				</DeleteParameters>
+				<InsertParameters>
+					<asp:Parameter DefaultValue="transfer_requests_rish_attachfiles" Name="scope" Type="String" />
+					<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+					<asp:Parameter Name="Name" Type="String" />
+					<asp:Parameter Name="Image" Type="Object" />
+				</InsertParameters>
+				<SelectParameters>
+					<asp:Parameter DefaultValue="transfer_requests_rish_attachfiles" Name="scope" Type="String" />
+					<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+				</SelectParameters>
+			</asp:ObjectDataSource>
+
+			<dx:ASPxFileManager ID="ASPxFileManagerPhotoFiles1" runat="server" 
+				ClientInstanceName="ASPxFileManagerPhotoFiles1" DataSourceID="ObjectDataSourcePhotoFiles1">
+				<Settings RootFolder="~\" ThumbnailFolder="~\Thumb\a1\" />
+				<SettingsFileList>
+					<ThumbnailsViewSettings ThumbnailSize="180px" />
+				</SettingsFileList>
+				<SettingsEditing AllowDelete="True" AllowDownload="true" />
+				<SettingsFolders Visible="False" />
+				<SettingsToolbar ShowDownloadButton="True" ShowPath="False" />
+				<SettingsUpload UseAdvancedUploadMode="True">
+					<AdvancedModeSettings EnableMultiSelect="True" />
+				</SettingsUpload>
+
+				<SettingsDataSource FileBinaryContentFieldName="Image" 
+					IsFolderFieldName="IsFolder" KeyFieldName="ID" 
+					LastWriteTimeFieldName="LastModified" NameFieldName="Name" 
+					ParentKeyFieldName="ParentID" />
+			</dx:ASPxFileManager>
+
+			<br />
+
+			<dx:ASPxButton ID="ASPxButtonClose1" runat="server" AutoPostBack="False" Text="Закрити" HorizontalAlign="Center">
+				<ClientSideEvents Click="function(s, e) { PopupObjectPhotos1.Hide(); }" />
+			</dx:ASPxButton>
+
+		</dx:PopupControlContentControl>
+	</ContentCollection>
+</dx:ASPxPopupControl>
+
+<dx:ASPxPopupControl ID="ASPxPopupControlFreeSquare2" runat="server" AllowDragging="True" 
+	ClientInstanceName="PopupObjectPhotos2" EnableClientSideAPI="True" 
+	HeaderText="Документ" Modal="True" 
+	PopupHorizontalAlign="Center" PopupVerticalAlign="Middle"  
+	PopupAction="None" PopupElementID="ASPxGridViewFreeSquare" Width="700px" >
+	<ContentCollection>
+		<dx:PopupControlContentControl ID="PopupControlContentControl2" runat="server" SupportsDisabledAttribute="True">
+
+			<asp:ObjectDataSource ID="ObjectDataSourcePhotoFiles2" runat="server" 
+				DeleteMethod="Delete" InsertMethod="Insert" 
+				OnInserting="ObjectDataSourcePhotoFiles_Inserting" 
+				SelectMethod="Select" 
+				TypeName="ExtDataEntry.Models.FileAttachment">
+				<DeleteParameters>
+					<asp:Parameter DefaultValue="transfer_requests_akt_attachfiles" Name="scope" Type="String" />
+					<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+					<asp:Parameter Name="id" Type="String" />
+				</DeleteParameters>
+				<InsertParameters>
+					<asp:Parameter DefaultValue="transfer_requests_akt_attachfiles" Name="scope" Type="String" />
+					<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+					<asp:Parameter Name="Name" Type="String" />
+					<asp:Parameter Name="Image" Type="Object" />
+				</InsertParameters>
+				<SelectParameters>
+					<asp:Parameter DefaultValue="transfer_requests_akt_attachfiles" Name="scope" Type="String" />
+					<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+				</SelectParameters>
+			</asp:ObjectDataSource>
+
+			<dx:ASPxFileManager ID="ASPxFileManagerPhotoFiles2" runat="server" 
+				ClientInstanceName="ASPxFileManagerPhotoFiles2" DataSourceID="ObjectDataSourcePhotoFiles2">
+				<Settings RootFolder="~\" ThumbnailFolder="~\Thumb\a2\" />
+				<SettingsFileList>
+					<ThumbnailsViewSettings ThumbnailSize="180px" />
+				</SettingsFileList>
+				<SettingsEditing AllowDelete="True" AllowDownload="true" />
+				<SettingsFolders Visible="False" />
+				<SettingsToolbar ShowDownloadButton="True" ShowPath="False" />
+				<SettingsUpload UseAdvancedUploadMode="True">
+					<AdvancedModeSettings EnableMultiSelect="True" />
+				</SettingsUpload>
+
+				<SettingsDataSource FileBinaryContentFieldName="Image" 
+					IsFolderFieldName="IsFolder" KeyFieldName="ID" 
+					LastWriteTimeFieldName="LastModified" NameFieldName="Name" 
+					ParentKeyFieldName="ParentID" />
+			</dx:ASPxFileManager>
+
+			<br />
+
+			<dx:ASPxButton ID="ASPxButtonClose2" runat="server" AutoPostBack="False" Text="Закрити" HorizontalAlign="Center">
+				<ClientSideEvents Click="function(s, e) { PopupObjectPhotos2.Hide(); }" />
+			</dx:ASPxButton>
+
+		</dx:PopupControlContentControl>
+	</ContentCollection>
+</dx:ASPxPopupControl>
 
 <dx:ASPxGlobalEvents ID="ge" runat="server">
     <ClientSideEvents ControlsInitialized="OnControlsInitialized" />
