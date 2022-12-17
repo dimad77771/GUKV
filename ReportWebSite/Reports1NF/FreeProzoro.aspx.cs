@@ -304,6 +304,198 @@ public partial class Reports1NF_FreeProzoro : System.Web.UI.Page
 		};
 		builder.Go();
 	}
+
+	Dictionary<string, Control> GetAllControls()
+	{
+		Dictionary<string, Control> controls = new Dictionary<string, Control>();
+		Reports1NFUtils.GetAllControls(AddressForm, controls);
+		return controls;
+	}
+
+	DataTable GetReports1nfOrgInfo(string zkpo)
+	{
+		var connection = CommonUtils.ConnectToDatabase();
+		if (connection == null) throw new Exception("Database GUKV not found");
+		var factory = DbProviderFactories.GetFactory(connection);
+		var dataTable = new DataTable();
+		using (var cmd = factory.CreateCommand())
+		{
+			cmd.CommandText = @"
+select
+D.zkpo_code,
+D.full_name,
+concat((select Q.name from dict_streets Q where Q.id = D.addr_street_id), ', ', D.addr_nomer) as adr,
+D.phys_addr_zip_code, 
+D.director_email,
+(select Q.namf from zzzzz_director_title Q where Q.fio = D.director_title) namf,
+(select Q.nami from zzzzz_director_title Q where Q.fio = D.director_title) nami,
+(select Q.namo from zzzzz_director_title Q where Q.fio = D.director_title) namo,
+(select Q.tel from zzzzz_director_title Q where Q.fio = D.director_title) tel
+from reports1nf_org_info D
+where D.zkpo_code = '" + zkpo + "'";
+			cmd.CommandType = CommandType.Text;
+			cmd.Connection = connection;
+			using (var adapter = factory.CreateDataAdapter())
+			{
+				adapter.SelectCommand = cmd;
+				adapter.Fill(dataTable);
+			}
+		}
+		return dataTable;
+	}
+
+	T GetValue<T>(object value)
+	{
+		if (value is DBNull)
+			return default(T);
+		else
+			return (T)value;
+	}
+
+	protected void v46_TextChanged(object sender, EventArgs e)
+	{
+		var controls = GetAllControls();
+		var zkpo = (ASPxTextBox)controls["v46"];
+		var full_name = (ASPxTextBox)controls["v47"];
+		var adr = (ASPxTextBox)controls["v50"];
+		var phys_addr_zip_code = (ASPxTextBox)controls["v51"];
+
+		var data = GetReports1nfOrgInfo(zkpo.Text);
+		if (data.Rows.Count > 0)
+		{
+			var row = data.Rows[0];
+			full_name.Text = GetValue<string>(row["full_name"]);
+			adr.Text = GetValue<string>(row["adr"]);
+			phys_addr_zip_code.Text = GetValue<string>(row["phys_addr_zip_code"]);
+		}
+	}
+
+	protected void v57_TextChanged(object sender, EventArgs e)
+	{
+		var controls = GetAllControls();
+		var zkpo = (ASPxTextBox)controls["v57"];
+		var full_name = (ASPxTextBox)controls["v58"];
+		var adr = (ASPxTextBox)controls["v61"];
+		var phys_addr_zip_code = (ASPxTextBox)controls["v62"];
+		var director_email = (ASPxTextBox)controls["v66"];
+		var namf = (ASPxTextBox)controls["v63"];
+		var nami = (ASPxTextBox)controls["v64"];
+		var namo = (ASPxTextBox)controls["v65"];
+		var tel = (ASPxTextBox)controls["v67"];
+
+		var data = GetReports1nfOrgInfo(zkpo.Text);
+		if (data.Rows.Count > 0)
+		{
+			var row = data.Rows[0];
+			full_name.Text = GetValue<string>(row["full_name"]);
+			adr.Text = GetValue<string>(row["adr"]);
+			phys_addr_zip_code.Text = GetValue<string>(row["phys_addr_zip_code"]);
+			director_email.Text = GetValue<string>(row["director_email"]);
+			namf.Text = GetValue<string>(row["namf"]);
+			nami.Text = GetValue<string>(row["nami"]);
+			namo.Text = GetValue<string>(row["namo"]);
+			tel.Text = GetValue<string>(row["tel"]);
+		}
+	}
+	
+
+	protected void v68_TextChanged(object sender, EventArgs e)
+	{
+		var controls = GetAllControls();
+		var zkpo = (ASPxTextBox)controls["v68"];
+		var full_name = (ASPxTextBox)controls["v69"];
+		var adr = (ASPxTextBox)controls["v72"];
+		var phys_addr_zip_code = (ASPxTextBox)controls["v73"];
+		var director_email = (ASPxTextBox)controls["v77"];
+		var namf = (ASPxTextBox)controls["v74"];
+		var nami = (ASPxTextBox)controls["v75"];
+		var namo = (ASPxTextBox)controls["v76"];
+		var tel = (ASPxTextBox)controls["v78"];
+
+		var data = GetReports1nfOrgInfo(zkpo.Text);
+		if (data.Rows.Count > 0)
+		{
+			var row = data.Rows[0];
+			full_name.Text = GetValue<string>(row["full_name"]);
+			adr.Text = GetValue<string>(row["adr"]);
+			phys_addr_zip_code.Text = GetValue<string>(row["phys_addr_zip_code"]);
+			director_email.Text = GetValue<string>(row["director_email"]);
+			namf.Text = GetValue<string>(row["namf"]);
+			nami.Text = GetValue<string>(row["nami"]);
+			namo.Text = GetValue<string>(row["namo"]);
+			tel.Text = GetValue<string>(row["tel"]);
+		}
+	}
+
+	protected void v79_TextChanged(object sender, EventArgs e)
+	{
+		var controls = GetAllControls();
+		var zkpo = (ASPxTextBox)controls["v79"];
+		var full_name = (ASPxTextBox)controls["v80"];
+		var adr = (ASPxTextBox)controls["v83"];
+		var phys_addr_zip_code = (ASPxTextBox)controls["v84"];
+		var director_email = (ASPxTextBox)controls["v88"];
+		var namf = (ASPxTextBox)controls["v85"];
+		var nami = (ASPxTextBox)controls["v86"];
+		var namo = (ASPxTextBox)controls["v87"];
+		var tel = (ASPxTextBox)controls["v89"];
+
+		var data = GetReports1nfOrgInfo(zkpo.Text);
+		if (data.Rows.Count > 0)
+		{
+			var row = data.Rows[0];
+			full_name.Text = GetValue<string>(row["full_name"]);
+			adr.Text = GetValue<string>(row["adr"]);
+			phys_addr_zip_code.Text = GetValue<string>(row["phys_addr_zip_code"]);
+			director_email.Text = GetValue<string>(row["director_email"]);
+			namf.Text = GetValue<string>(row["namf"]);
+			nami.Text = GetValue<string>(row["nami"]);
+			namo.Text = GetValue<string>(row["namo"]);
+			tel.Text = GetValue<string>(row["tel"]);
+		}
+	}
+
+	DataTable GetOrandodavecUserInfo(string namf)
+	{
+		var connection = CommonUtils.ConnectToDatabase();
+		if (connection == null) throw new Exception("Database GUKV not found");
+		var factory = DbProviderFactories.GetFactory(connection);
+		var dataTable = new DataTable();
+		using (var cmd = factory.CreateCommand())
+		{
+			cmd.CommandText = @"select * from dict_orandodavec_user where namf = '" + (namf ?? "").Replace("'", "''") + "'";
+			cmd.CommandType = CommandType.Text;
+			cmd.Connection = connection;
+			using (var adapter = factory.CreateDataAdapter())
+			{
+				adapter.SelectCommand = cmd;
+				adapter.Fill(dataTable);
+			}
+		}
+		return dataTable;
+	}
+
+	protected void v52_TextChanged(object sender, EventArgs e)
+	{
+		var controls = GetAllControls();
+		var namf = (ASPxTextBox)controls["v52"];
+		var nami = (ASPxTextBox)controls["v53"];
+		var namo = (ASPxTextBox)controls["v54"];
+		var email = (ASPxTextBox)controls["v55"];
+		var phone = (ASPxTextBox)controls["v56"];
+
+		var data = GetOrandodavecUserInfo(namf.Text);
+		if (data.Rows.Count > 0)
+		{
+			var row = data.Rows[0];
+			email.Text = GetValue<string>(row["email"]);
+			namf.Text = GetValue<string>(row["namf"]);
+			nami.Text = GetValue<string>(row["nami"]);
+			namo.Text = GetValue<string>(row["namo"]);
+			phone.Text = GetValue<string>(row["phone"]);
+		}
+	}
+
 }
 
 

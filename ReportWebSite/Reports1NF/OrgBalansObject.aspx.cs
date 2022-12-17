@@ -34,24 +34,6 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
     public Control FindControlRecursive(Control control, string id)
     {
-		//ASPxRoundPanel aaa;
-		//aaa.ContentPaddings
-		//ASPxCallbackPanel bbb;
-		//bbb.Paddings
-
-
-		//GridViewDataTextColumn aa;
-		//aa.EditFormSettings
-
-		//ASPxGridView aa;
-		//aa.ClientSideEvents.RowExpanding
-
-		//GridViewDataTextColumn a;
-		//a.EditFormSettings
-
-		//GridViewDataTextColumn a;
-		//a.PropertiesEdit.ClientInstanceName
-
 		if (control == null) return null;
         //try to find the control at the current level
         Control ctrl = control.FindControl(id);
@@ -219,10 +201,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
         validator = new BalansObjectValidator(this, "MainGroup");
 
-        //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "002" + (DateTime.Now - dt__).TotalMilliseconds + "\n");
         PrepareTempPhotoFolder();
-        //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "003" + (DateTime.Now - dt__).TotalMilliseconds + "\n");
-
 
         if (!IsPostBack)
 		{
@@ -607,7 +586,11 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
 		AddQueryParameter(ref fieldList, "geodata_map_opoints", "geodatamappoints", Reports1NFUtils.GetEditText(controls, "EditGeodataMapPoints"), parameters);
 
-		AddQueryParameter(ref fieldList, "building_id", "buildingid", building_id, parameters);
+        AddQueryParameter(ref fieldList, "znizhino_flag", "znizhinoflag", Reports1NFUtils.GetCheckBoxValue(controls, "EditZnizhinoFlag") ? 1 : 0, parameters);
+        AddQueryParameter(ref fieldList, "znizhino_percent", "znizhinopercent", Reports1NFUtils.GetEditNumeric(controls, "EditZnizhinoPercent"), parameters);
+        AddQueryParameter(ref fieldList, "znizhino_stanom", "znizhinostanom", Reports1NFUtils.GetDateValue(controls, "EditZnizhinoStanom"), parameters);
+
+        AddQueryParameter(ref fieldList, "building_id", "buildingid", building_id, parameters);
 
 		// System parameters
 		AddQueryParameter(ref fieldList, "modify_date", "mdt", DateTime.Now, parameters);
@@ -704,40 +687,11 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
         }
 
 
-       SavePhotoChanges();
+       SavePhotoChanges__1();
+       SavePhotoChanges__2();
+    }
 
-		//!!SqlCommand cmd23 = new SqlCommand("rollback", connection);
-		//!!cmd23.ExecuteNonQuery();
-
-
-		//// commit inserted items
-		//using (SqlCommand cmd = new SqlCommand("update reports1nf_photos set status = 0 where status = 1 and bal_id = @bid", connection))
-		//{
-		//    cmd.Parameters.Add(new SqlParameter("bid", BalansObjectID));
-		//    cmd.ExecuteNonQuery();
-		//}
-
-		//// remove deleted
-		//using (SqlCommand cmd = new SqlCommand("select id, file_ext from reports1nf_photos where status = 2 and bal_id = @bid", connection))
-		//{
-		//    cmd.Parameters.AddWithValue("bid", BalansObjectID);
-		//    using (SqlDataReader r = cmd.ExecuteReader())
-		//    {
-		//        while (r.Read())
-		//            Reports1NFUtils.DeleteBalansPhotoFile(r.GetInt32(0), BalansObjectID, r.GetString(1), "1NF");
-
-		//        r.Close();
-		//    }
-		//}
-
-		//using (SqlCommand cmd = new SqlCommand("delete from reports1nf_photos where status = 2 and bal_id = @bid", connection))
-		//{
-		//    cmd.Parameters.Add(new SqlParameter("bid", BalansObjectID));
-		//    cmd.ExecuteNonQuery();
-		//}
-	}
-
-	private void SavePhotoChanges()
+	private void SavePhotoChanges__1()
     {
         string balansIdStr = Request.QueryString["bid"];
         Int32 newId = 0;
@@ -755,7 +709,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
                 cmd.ExecuteNonQuery();
             }
 
-            var allfiles = LLLLhotorowUtils.GetFiles(TempPhotoFolder(), connection, trans);
+            var allfiles = LLLLhotorowUtils.GetFiles(TempPhotoFolder__1(), connection, trans);
             foreach (string filePath in allfiles)
             {
 				var dbfile = PhotoUtils.LocalFilename2DbFilename(filePath);
@@ -784,7 +738,54 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
         }
 	}
 
-	protected void AddQueryParameter(ref string fieldList, string fieldName, string paramName,
+    private void SavePhotoChanges__2()
+    {
+        string balansIdStr = Request.QueryString["bid"];
+        Int32 newId = 0;
+        string photoRootPath = LLLLhotorowUtils.ImgContentRootFolder;
+        string local1NFObjectFolder = Path.Combine(photoRootPath, "2NF", balansIdStr);
+
+        SqlConnection connection = Utils.ConnectToDatabase();
+        SqlTransaction trans = connection.BeginTransaction();
+
+        try
+        {
+            using (SqlCommand cmd = new SqlCommand("delete from reports1nf_btiphoto where bal_id = @bid", connection, trans))
+            {
+                cmd.Parameters.AddWithValue("bid", int.Parse(balansIdStr));
+                cmd.ExecuteNonQuery();
+            }
+
+            var allfiles = LLLLhotorowUtils.GetFiles(TempPhotoFolder__2(), connection, trans);
+            foreach (string filePath in allfiles)
+            {
+                var dbfile = PhotoUtils.LocalFilename2DbFilename(filePath);
+                string fullPath = string.Empty;
+
+                SqlCommand cmd = new SqlCommand("INSERT INTO reports1nf_btiphoto (bal_id, file_name, file_ext, user_id, create_date) VALUES (@balid, @filename, @fileext, @usrid, @createdate); ; SELECT CAST(SCOPE_IDENTITY() AS int)", connection, trans);
+                cmd.Parameters.Add(new SqlParameter("balid", int.Parse(balansIdStr)));
+                cmd.Parameters.Add(new SqlParameter("filename", dbfile.file_name));
+                cmd.Parameters.Add(new SqlParameter("fileext", dbfile.file_ext));
+                cmd.Parameters.Add(new SqlParameter("usrid", (Guid)System.Web.Security.Membership.GetUser().ProviderUserKey));
+                cmd.Parameters.Add(new SqlParameter("createdate", DateTime.Now));
+                newId = (Int32)cmd.ExecuteScalar();
+
+                fullPath = System.IO.Path.Combine(local1NFObjectFolder, newId.ToString() + System.IO.Path.GetExtension(filePath));
+
+                LLLLhotorowUtils.Copy(filePath, fullPath, connection, trans);
+            }
+
+            trans.Commit();
+            connection.Close();
+        }
+        catch
+        {
+            trans.Rollback();
+            throw;
+        }
+    }
+
+    protected void AddQueryParameter(ref string fieldList, string fieldName, string paramName,
         object value, Dictionary<string, object> parameters)
     {
         bool valueExists = false;
@@ -802,6 +803,10 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
             valueExists = true;
         }
         else if (value is DateTime)
+        {
+            valueExists = true;
+        }
+        else if (value is bool)
         {
             valueExists = true;
         }
@@ -884,7 +889,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
 				if (connectionSql != null)
 				{
-					DiscardChanges(connectionSql);
+					DiscardChanges__1(connectionSql);
 
 					connectionSql.Close();
 				}
@@ -909,13 +914,19 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
     }
 
-    private void DiscardChanges(SqlConnection connectionSql)
+    private void DiscardChanges__1(SqlConnection connectionSql)
     {
-        LLLLhotorowUtils.DeleteAll(TempPhotoFolder(), connectionSql);
-        CopySourceFiles(Request.QueryString["bid"]);
+        LLLLhotorowUtils.DeleteAll(TempPhotoFolder__1(), connectionSql);
+        CopySourceFiles__1(Request.QueryString["bid"]);
 	}
 
-	protected void CPCommentViewerPanel_Callback(object sender, CallbackEventArgsBase e)
+    private void DiscardChanges__2(SqlConnection connectionSql)
+    {
+        LLLLhotorowUtils.DeleteAll(TempPhotoFolder__2(), connectionSql);
+        CopySourceFiles__2(Request.QueryString["bid"]);
+    }
+
+    protected void CPCommentViewerPanel_Callback(object sender, CallbackEventArgsBase e)
     {
         // Get the commented control ID and Title
         int dividerPos = e.Parameter.IndexOf(';');
@@ -968,13 +979,22 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
     //    }
     //}
 
-    protected void ASPxUploadPhotoControl_FileUploadComplete(object sender, DevExpress.Web.FileUploadCompleteEventArgs e)
+    protected void ASPxUploadPhotoControl_FileUploadComplete__1(object sender, DevExpress.Web.FileUploadCompleteEventArgs e)
     {
         string balansIdStr = Request.QueryString["bid"];
         string photoRootPath = LLLLhotorowUtils.ImgContentRootFolder;
         string local1NFObjectFolder = Path.Combine(photoRootPath, "1NF", balansIdStr);
 
-        PhotoUtils.AddUploadedFile(TempPhotoFolder(), e.UploadedFile.FileName, e.UploadedFile.FileBytes);
+        PhotoUtils.AddUploadedFile(TempPhotoFolder__1(), e.UploadedFile.FileName, e.UploadedFile.FileBytes);
+    }
+
+    protected void ASPxUploadPhotoControl_FileUploadComplete__2(object sender, DevExpress.Web.FileUploadCompleteEventArgs e)
+    {
+        string balansIdStr = Request.QueryString["bid"];
+        string photoRootPath = LLLLhotorowUtils.ImgContentRootFolder;
+        string local1NFObjectFolder = Path.Combine(photoRootPath, "2NF", balansIdStr);
+
+        PhotoUtils.AddUploadedFile(TempPhotoFolder__2(), e.UploadedFile.FileName, e.UploadedFile.FileBytes);
     }
 
     protected void delete_Callback(object source, CallbackEventArgs e)
@@ -982,11 +1002,11 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
         string indexStr = e.Parameter;
         string imageUrl = string.Empty;
 
-        imageUrl = DeleteImage(indexStr, imageUrl);
+        imageUrl = DeleteImage__1(indexStr, imageUrl);
         e.Result = imageUrl;
     }
 
-    private string DeleteImage(string indexStr, string imageUrl)
+    private string DeleteImage__1(string indexStr, string imageUrl)
     {
         string archiveIdStr = Request.QueryString["arid"];
         if (archiveIdStr != null && archiveIdStr.Length > 0)
@@ -995,12 +1015,39 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
         string balId = Request.QueryString["bid"];
 
-        if (imageGalleryDemo != null)
+        if (imageGalleryDemo__1 != null)
         {
-            if (imageGalleryDemo.Items.Count == 0)
-                BindImageGallery(balId);
+            if (imageGalleryDemo__1.Items.Count == 0)
+                BindImageGallery__1(balId);
 
-            ImageGalleryItem item = imageGalleryDemo.Items[int.Parse(indexStr)];
+            ImageGalleryItem item = imageGalleryDemo__1.Items[int.Parse(indexStr)];
+            FileAttachment drv = (FileAttachment)item.DataItem;
+            string fileExt = Path.GetExtension(drv.Name);
+
+            var connectionSql = Utils.ConnectToDatabase();
+            LLLLhotorowUtils.Delete(drv.Name, connectionSql);
+            connectionSql.Close();
+
+            imageUrl = item.ImageUrl;
+        }
+        return imageUrl;
+    }
+
+    private string DeleteImage__2(string indexStr, string imageUrl)
+    {
+        string archiveIdStr = Request.QueryString["arid"];
+        if (archiveIdStr != null && archiveIdStr.Length > 0)
+            throw new Exception("Ви не можете видалити фото з архівного стану.");
+
+
+        string balId = Request.QueryString["bid"];
+
+        if (imageGalleryDemo__2 != null)
+        {
+            if (imageGalleryDemo__2.Items.Count == 0)
+                BindImageGallery__2(balId);
+
+            ImageGalleryItem item = imageGalleryDemo__2.Items[int.Parse(indexStr)];
             FileAttachment drv = (FileAttachment)item.DataItem;
             string fileExt = Path.GetExtension(drv.Name);
 
@@ -1233,41 +1280,63 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
     }
 
-    protected void ContentCallback_Callback(object sender, CallbackEventArgsBase e)
+    protected void ContentCallback_Callback__1(object sender, CallbackEventArgsBase e)
     {
-
-
         if (e.Parameter.ToLower().StartsWith("deleteimage:"))
         {
-            DeleteImage(e.Parameter.Split(':')[1], string.Empty);
-            BindImageGallery(Request.QueryString["bid"]);
-            //imageGalleryDemo.DataBind();
-            //ASPxFileManagerPhotoFiles.Refresh();
+            DeleteImage__1(e.Parameter.Split(':')[1], string.Empty);
+            BindImageGallery__1(Request.QueryString["bid"]);
         }
     }
-    protected void imageGalleryDemo_DataBound(object sender, EventArgs e)
+    protected void imageGalleryDemo_DataBound__1(object sender, EventArgs e)
     {
-        if ((imageGalleryDemo.PageIndex > imageGalleryDemo.PageCount) && (IsCallback))
-            imageGalleryDemo.PageIndex = 0;
+        if ((imageGalleryDemo__1.PageIndex > imageGalleryDemo__1.PageCount) && (IsCallback))
+            imageGalleryDemo__1.PageIndex = 0;
     }
-
-    protected void imageGalleryDemo_CustomCallback(object sender, CallbackEventArgsBase e)
+    protected void imageGalleryDemo_CustomCallback__1(object sender, CallbackEventArgsBase e)
     {
-        ContentCallback_Callback(sender, e);
+        ContentCallback_Callback__1(sender, e);
     }
-
-    protected void ASPxCallbackPanelImageGallery_Callback(object sender, CallbackEventArgsBase e)
+    protected void ASPxCallbackPanelImageGallery_Callback__1(object sender, CallbackEventArgsBase e)
     {
-        //if (!IsCallback)
         {
             if (e.Parameter.ToLower() == "refreshphoto:")
             {
-                //imageGalleryDemo.DataBind();
-                BindImageGallery(Request.QueryString["bid"]);
+                BindImageGallery__1(Request.QueryString["bid"]);
 
             }
         }
     }
+
+
+    protected void ContentCallback_Callback__2(object sender, CallbackEventArgsBase e)
+    {
+        if (e.Parameter.ToLower().StartsWith("deleteimage:"))
+        {
+            DeleteImage__2(e.Parameter.Split(':')[1], string.Empty);
+            BindImageGallery__2(Request.QueryString["bid"]);
+        }
+    }
+    protected void imageGalleryDemo_DataBound__2(object sender, EventArgs e)
+    {
+        if ((imageGalleryDemo__2.PageIndex > imageGalleryDemo__2.PageCount) && (IsCallback))
+            imageGalleryDemo__2.PageIndex = 0;
+    }
+    protected void imageGalleryDemo_CustomCallback__2(object sender, CallbackEventArgsBase e)
+    {
+        ContentCallback_Callback__2(sender, e);
+    }
+    protected void ASPxCallbackPanelImageGallery_Callback__2(object sender, CallbackEventArgsBase e)
+    {
+        {
+            if (e.Parameter.ToLower() == "refreshphoto:")
+            {
+                BindImageGallery__2(Request.QueryString["bid"]);
+
+            }
+        }
+    }
+
     protected void CPMainPanel_Unload(object sender, EventArgs e)
     {
 
@@ -1299,8 +1368,6 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
     {
         get
         {
-            //return string.IsNullOrEmpty(TempFolderIDField.Value) ? Guid.Empty : new Guid(TempFolderIDField.Value);
-
             object val = Session[GetPageUniqueKey() + "_PHOTO_GUID"];
 
             if (val is Guid)
@@ -1314,47 +1381,39 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
         set
         {
             Session[GetPageUniqueKey() + "_PHOTO_GUID"] = value;
-            //TempFolderIDField.Value = value.ToString(); ;
         }
     }
 
-    private string TempPhotoFolder()
+    private string TempPhotoFolder__1()
     {
         if (PhotoFolderID != Guid.Empty)
         {
             string balansIdStr = Request.QueryString["bid"];
             string photoRootPath = LLLLhotorowUtils.ImgContentRootFolder;
-            string destFolder = Path.Combine(photoRootPath, "1NF_" + balansIdStr + "_" + PhotoFolderID.ToString()).ToLower();
+            string destFolder = Path.Combine(photoRootPath, "1NF_" + balansIdStr + "_" + PhotoFolderID.ToString() + "_A").ToLower();
             return destFolder;
         }
         else
             return string.Empty;
     }
 
-    private void PrepareTempPhotoFolder()
+    private void PrepareTempPhotoFolder__1()
     {
-        //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "010:" + (DateTime.Now - dt__).TotalMilliseconds + "\n");
         string balansIdStr = Request.QueryString["bid"];
 
         if (PhotoFolderID == Guid.Empty)
         {
             PhotoFolderID = Guid.NewGuid();
-
-            //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "011:" + (DateTime.Now - dt__).TotalMilliseconds + "\n");
-            CopySourceFiles(balansIdStr);
-            //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "012:" + (DateTime.Now - dt__).TotalMilliseconds + "\n");
+            CopySourceFiles__1(balansIdStr);
         }
 
-        BindImageGallery(balansIdStr);
-        //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "014:" + (DateTime.Now - dt__).TotalMilliseconds + "\n");
+        BindImageGallery__1(balansIdStr);
     }
 
-    private void CopySourceFiles(string balansIdStr)
+    private void CopySourceFiles__1(string balansIdStr)
     {
-        //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "CopySourceFiles: balansIdStr=" + balansIdStr + "\n");
-
         string photoRootPath = LLLLhotorowUtils.ImgContentRootFolder;
-        string destFolder = TempPhotoFolder();
+        string destFolder = TempPhotoFolder__1();
 
         var connection = Utils.ConnectToDatabase();
         var trans = connection.BeginTransaction();
@@ -1371,6 +1430,89 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
                     string file_ext = r.GetString(2);
 
                     string sourceFileToCopy = Path.Combine(photoRootPath, "1NF", balansIdStr, id.ToString() + file_ext);
+                    if (LLLLhotorowUtils.Exists(sourceFileToCopy, connection, trans))
+                    {
+                        string destFileToCopy = Path.Combine(destFolder, PhotoUtils.DbFilename2LocalFilename(file_name, file_ext));
+                        LLLLhotorowUtils.Copy(sourceFileToCopy, destFileToCopy, connection, trans);
+                    }
+                }
+
+                r.Close();
+            }
+        }
+        trans.Commit();
+        connection.Close();
+    }
+
+    private void BindImageGallery__1(string balansIdStr)
+    {
+        ObjectDataSourceBalansPhoto__1.SelectParameters["recordID"].DefaultValue = balansIdStr;
+        ObjectDataSourceBalansPhoto__1.SelectParameters["tempGuid"].DefaultValue = PhotoFolderID.ToString();
+        imageGalleryDemo__1.DataSourceID = "ObjectDataSourceBalansPhoto__1";
+        imageGalleryDemo__1.DataBind();
+
+    }
+    protected void TempFolderIDField_ValueChanged(object sender, EventArgs e)
+    {
+        //PhotoFolderID = new Guid(TempFolderIDField.Value);
+    }
+    protected void btnUpload_Click__1(object sender, EventArgs e)
+    {
+        
+    }
+    protected void btnUpload_Click__2(object sender, EventArgs e)
+    {
+
+    }
+
+    private string TempPhotoFolder__2()
+    {
+        if (PhotoFolderID != Guid.Empty)
+        {
+            string balansIdStr = Request.QueryString["bid"];
+            string photoRootPath = LLLLhotorowUtils.ImgContentRootFolder;
+            string destFolder = Path.Combine(photoRootPath, "1NF_" + balansIdStr + "_" + PhotoFolderID.ToString() + "_B").ToLower();
+            return destFolder;
+        }
+        else
+            return string.Empty;
+    }
+
+    private void PrepareTempPhotoFolder()
+    {
+        string balansIdStr = Request.QueryString["bid"];
+
+        if (PhotoFolderID == Guid.Empty)
+        {
+            PhotoFolderID = Guid.NewGuid();
+            CopySourceFiles__1(balansIdStr);
+            CopySourceFiles__2(balansIdStr);
+        }
+
+        BindImageGallery__1(balansIdStr);
+        BindImageGallery__2(balansIdStr);
+    }
+
+    private void CopySourceFiles__2(string balansIdStr)
+    {
+        string photoRootPath = LLLLhotorowUtils.ImgContentRootFolder;
+        string destFolder = TempPhotoFolder__2();
+
+        var connection = Utils.ConnectToDatabase();
+        var trans = connection.BeginTransaction();
+
+        using (SqlCommand cmd = new SqlCommand("select id, file_name, file_ext from reports1nf_btiphoto where bal_id = @bid", connection, trans))
+        {
+            cmd.Parameters.AddWithValue("bid", balansIdStr);
+            using (SqlDataReader r = cmd.ExecuteReader())
+            {
+                while (r.Read())
+                {
+                    int id = r.GetInt32(0);
+                    string file_name = r.GetString(1);
+                    string file_ext = r.GetString(2);
+
+                    string sourceFileToCopy = Path.Combine(photoRootPath, "2NF", balansIdStr, id.ToString() + file_ext);
                     //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "sourceFileToCopy: sourceFileToCopy=" + sourceFileToCopy + "\n");
                     if (LLLLhotorowUtils.Exists(sourceFileToCopy, connection, trans))
                     {
@@ -1387,24 +1529,16 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
         connection.Close();
     }
 
-    private void BindImageGallery(string balansIdStr)
+    private void BindImageGallery__2(string balansIdStr)
     {
-        ObjectDataSourceBalansPhoto.SelectParameters["recordID"].DefaultValue = balansIdStr;
-        ObjectDataSourceBalansPhoto.SelectParameters["tempGuid"].DefaultValue = PhotoFolderID.ToString();
-        imageGalleryDemo.DataSourceID = "ObjectDataSourceBalansPhoto";
-        imageGalleryDemo.DataBind();
+        ObjectDataSourceBalansPhoto__2.SelectParameters["recordID"].DefaultValue = balansIdStr;
+        ObjectDataSourceBalansPhoto__2.SelectParameters["tempGuid"].DefaultValue = PhotoFolderID.ToString();
+        imageGalleryDemo__2.DataSourceID = "ObjectDataSourceBalansPhoto__2";
+        imageGalleryDemo__2.DataBind();
 
     }
-    protected void TempFolderIDField_ValueChanged(object sender, EventArgs e)
-    {
-        //PhotoFolderID = new Guid(TempFolderIDField.Value);
-    }
-    protected void btnUpload_Click(object sender, EventArgs e)
-    {
-        
-    }
 
-   private void messageBox(string p)
+    private void messageBox(string p)
     {
         //        throw new NotImplementedException();
         throw new Exception(p);

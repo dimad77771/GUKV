@@ -86,7 +86,12 @@
 				}
 			}
 			return elements;
-		}
+        }
+
+        function v79_TextChanged() {
+            alert(1);
+            v79_callback.PerformCallback('');
+        }
 
 	</script>
 
@@ -309,7 +314,7 @@ order by 1
 						</colgroup>
                         <tr>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Ідентифікатор організації"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v46" ClientInstanceName="v46" runat="server" Text='<%# Eval("v46") %>' Width="350px" Title="Ідентифікатор організації" /></td>
+                            <td><dx:ASPxTextBox ID="v46" ClientInstanceName="v46" runat="server" Text='<%# Eval("v46") %>' Width="350px" Title="Ідентифікатор організації" AutoPostBack="true" OnValueChanged="v46_TextChanged" /></td>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Повна юридична назва організації"></dx:ASPxLabel></td>
                             <td><dx:ASPxTextBox ID="v47" ClientInstanceName="v47" runat="server" Text='<%# Eval("v47") %>' Width="350px" Title="Повна юридична назва організації" /></td>
                         </tr>
@@ -334,7 +339,7 @@ order by 1
                         </tr>
                         <tr>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Призвище"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v52" ClientInstanceName="v52" runat="server" Text='<%# Eval("v52") %>' Width="350px" Title="Призвище" /></td>
+                            <td><dx:ASPxTextBox ID="v52" ClientInstanceName="v52" runat="server" Text='<%# Eval("v52") %>' Width="350px" Title="Призвище" AutoPostBack="true" OnValueChanged="v52_TextChanged" /></td>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Ім'я"></dx:ASPxLabel></td>
                             <td><dx:ASPxTextBox ID="v53" ClientInstanceName="v53" runat="server" Text='<%# Eval("v53") %>' Width="350px" Title="Ім'я" /></td>
                         </tr>
@@ -399,7 +404,7 @@ order by 1
                         </tr>
                         <tr>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Ідентифікатор організації"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v57" ClientInstanceName="v57" runat="server" Text='<%# Eval("v57") %>' Width="350px" Title="Ідентифікатор організації" /></td>
+                            <td><dx:ASPxTextBox ID="v57" ClientInstanceName="v57" runat="server" Text='<%# Eval("v57") %>' Width="350px" Title="Ідентифікатор організації" AutoPostBack="true" OnValueChanged="v57_TextChanged" /></td>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Повна юридична назва організації"></dx:ASPxLabel></td>
                             <td><dx:ASPxTextBox ID="v58" ClientInstanceName="v58" runat="server" Text='<%# Eval("v58") %>' Width="350px" Title="Повна юридична назва організації" /></td>
                         </tr>
@@ -459,7 +464,8 @@ order by 1
 
                         <tr>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Ідентифікатор організації"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v68" ClientInstanceName="v68" runat="server" Text='<%# Eval("v68") %>' Width="350px" Title="Ідентифікатор організації" /></td>
+                            <%--<td><dx:ASPxTextBox ID="v68" ClientInstanceName="v68" runat="server" Text='<%# Eval("v68") %>' Width="350px" Title="Ідентифікатор організації" /></td>--%>
+                            <td><dx:ASPxTextBox ID="v68" ClientInstanceName="v68" runat="server" Text='<%# Eval("v68") %>' Width="350px" Title="Ідентифікатор організації" AutoPostBack="true" OnValueChanged="v68_TextChanged" /></td>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Повна юридична назва організації"></dx:ASPxLabel></td>
                             <td><dx:ASPxTextBox ID="v69" ClientInstanceName="v69" runat="server" Text='<%# Eval("v69") %>' Width="350px" Title="Повна юридична назва організації" /></td>
                         </tr>
@@ -520,7 +526,19 @@ order by 1
 
                         <tr>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Ідентифікатор організації"></dx:ASPxLabel></td>
-                            <td><dx:ASPxTextBox ID="v79" ClientInstanceName="v79" runat="server" Text='<%# Eval("v79") %>' Width="350px" Title="Ідентифікатор організації" /></td>
+                            <%--<td><dx:ASPxTextBox ID="v79" ClientInstanceName="v79" runat="server" Text='<%# Eval("v79") %>' Width="350px" Title="Ідентифікатор організації" /></td>--%>
+                           <td>
+<%-- 
+                                 <dx:ASPxCallbackPanel ID="v79_callback" runat="server"  ClientInstanceName="v79_callback" OnCallback="v79_TextChanged">
+                                     <PanelCollection>
+                                        <dx:PanelContent runat="server" SupportsDisabledAttribute="True">                            --%>
+                                            <dx:ASPxTextBox ID="v79" ClientInstanceName="v79" runat="server" Text='<%# Eval("v79") %>' Width="350px" Title="Ідентифікатор організації" AutoPostBack="true" OnValueChanged="v79_TextChanged" >
+                                                <%--<ClientSideEvents ValueChanged="v79_TextChanged" />--%>
+                                            </dx:ASPxTextBox>
+<%--                                        </dx:PanelContent>
+                                    </PanelCollection>
+                                </dx:ASPxCallbackPanel>--%>
+                            </td>
                             <td align="right"><dx:ASPxLabel runat="server" Text="Повна юридична назва організації"></dx:ASPxLabel></td>
                             <td><dx:ASPxTextBox ID="v80" ClientInstanceName="v80" runat="server" Text='<%# Eval("v80") %>' Width="350px" Title="Повна юридична назва організації" /></td>
                         </tr>

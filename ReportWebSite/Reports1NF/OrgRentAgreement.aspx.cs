@@ -2791,7 +2791,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		{
 			string agreementIdStr = Request.QueryString["aid"];
 			string photoRootPath = WebConfigurationManager.AppSettings["ImgContentRootFolder"];
-			string destFolder = Path.Combine(photoRootPath, "1NF_" + agreementIdStr + "_" + PhotoFolderID.ToString()).ToLower();
+			string destFolder = Path.Combine(photoRootPath, "1NF_" + agreementIdStr + "_" + PhotoFolderID.ToString() + "_A").ToLower();
 			return destFolder;
 		}
 		else

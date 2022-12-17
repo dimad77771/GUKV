@@ -373,68 +373,7 @@
         var imageIndex = 0;
 
 
-//        function OnBeginCallback(s, e) {
-//            //lp.Show();
-//        }
 
-//        function OnCallbackComplete(s, e) {
-//            //ContentCallback.PerformCallback('refreshphoto2:');
-//            ASPxClientUtils.PreventEvent(e);
-//            //setUrlParam('tab', 5);
-//        }
-
-//        function OnPrevBtnClick(e) {
-//            PrevImage();
-//            ASPxClientUtils.PreventEvent(e);
-//        }
-
-//        function OnNextBtnClick(e) {
-//            NextImage();
-//            ASPxClientUtils.PreventEvent(e);
-//        }
-
-//        function NextImage() {
-//            imageIndex++;
-//            if (imageIndex == GetCount())
-//                imageIndex = 0;
-//            cb.PerformCallback(imageIndex);
-//        }
-
-//        function PrevImage() {
-//            imageIndex--;
-//            if (imageIndex < 0)
-//                imageIndex = GetCount() - 1;
-//            cb.PerformCallback(imageIndex);
-//        }
-
-//        function GetCount() {
-//            return imageGallery.cpCount;
-//        }
-
-//        function OnDeleteBtnClick(e) {
-//            DeleteImage();
-//            lp.Hide();
-//            ASPxClientUtils.PreventEvent(e);
-//        }
-
-        function DeleteImage(index) {
-            var r = confirm("Ви дійсно хочете видалити фото?");
-            if (r == true) {
-                ContentCallback.PerformCallback('deleteimage:' + index);
-                ASPxCallbackPanelImageGallery.PerformCallback('ASPxCallbackPanelImageGallery:');
-                //ASPxClientUtils.PreventEvent(e);
-            }
-        }
-
-        function EditImage(index) {
-            editPopup.Show();
-            //cbDelete.PerformCallback(index);
-        }
-
-
-        function Uploader_OnUploadStart() {
-            btnUpload.SetEnabled(false);
-        }
 
 
         function setUrlParam(prmName, val) {
@@ -456,19 +395,54 @@
             return false;
         } 
 
-        function Uploader_OnFilesUploadComplete(args) {
-            UpdateUploadButton();
-            //setUrlParam('tab', 5);
-            ASPxCallbackPanelImageGallery.PerformCallback('refreshphoto:');
 
-
+        function Uploader_OnFilesUploadComplete__1(args) {
+			UpdateUploadButton__1();
+            ASPxCallbackPanelImageGallery__1.PerformCallback('refreshphoto:');
         }
-        function UpdateUploadButton() {
-            btnUpload.SetEnabled(uploader.GetText(0) != "");
+        function UpdateUploadButton__1() {
+            btnUpload__1.SetEnabled(uploader__1.GetText(0) != "");
         }
+		function Uploader_OnUploadStart__1() {
+			btnUpload__1.SetEnabled(false);
+        }
+        function DeleteImage__1(index) {
+			var r = confirm("Ви дійсно хочете видалити фото?");
+			if (r == true) {
+				ContentCallback__1.PerformCallback('deleteimage:' + index);
+				ASPxCallbackPanelImageGallery__1.PerformCallback('ASPxCallbackPanelImageGallery:');
+			}
+		}
+		function EditImage__1(index) {
+			editPopup.Show();
+		}
 
 
-    </script>
+		function Uploader_OnFilesUploadComplete__2(args) {
+			UpdateUploadButton__2();
+			ASPxCallbackPanelImageGallery__2.PerformCallback('refreshphoto:');
+		}
+		function UpdateUploadButton__2() {
+			btnUpload__2.SetEnabled(uploader__2.GetText(0) != "");
+		}
+		function Uploader_OnUploadStart__2() {
+			btnUpload__2.SetEnabled(false);
+		}
+		function DeleteImage__2(index) {
+			var r = confirm("Ви дійсно хочете видалити фото?");
+			if (r == true) {
+				ContentCallback__2.PerformCallback('deleteimage:' + index);
+				ASPxCallbackPanelImageGallery__2.PerformCallback('ASPxCallbackPanelImageGallery:');
+			}
+		}
+		function EditImage__2(index) {
+			editPopup.Show();
+		}
+
+
+
+
+	</script>
 
     <script type="text/javascript">
         function OnInit(s, e) {
@@ -856,7 +830,16 @@
 
 
 
-<asp:ObjectDataSource ID="ObjectDataSourceBalansPhoto" runat="server" SelectMethod="SelectFromTempFolder" 
+<asp:ObjectDataSource ID="ObjectDataSourceBalansPhoto__1" runat="server" SelectMethod="SelectFromTempFolder" 
+    TypeName="ExtDataEntry.Models.FileAttachment">
+    <SelectParameters>
+        <asp:Parameter DefaultValue="1NF" Name="scope" Type="String" />
+        <asp:Parameter DefaultValue="" Name="recordID" Type="Int32" />
+        <asp:Parameter DefaultValue="" Name="tempGuid" Type="String" />
+    </SelectParameters>
+</asp:ObjectDataSource>
+
+<asp:ObjectDataSource ID="ObjectDataSourceBalansPhoto__2" runat="server" SelectMethod="SelectFromTempFolder__2" 
     TypeName="ExtDataEntry.Models.FileAttachment">
     <SelectParameters>
         <asp:Parameter DefaultValue="1NF" Name="scope" Type="String" />
@@ -2895,6 +2878,32 @@ WHERE id = @id"
                                 </PanelCollection>
                             </dx:ASPxRoundPanel>
 
+                            <p class="SpacingPara"/>
+
+                            <dx:ASPxRoundPanel ID="ASPxRoundPanel2" runat="server" HeaderText="Руйнування / Знищення">
+                                <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="4px" />
+                                <PanelCollection>
+                                    <dx:PanelContent ID="PanelContent11" runat="server">
+
+                                        <table border="0" cellspacing="0" cellpadding="0" width="990px">
+                                            <tr>
+                                                <%--<td><dx:ASPxLabel ID="ASPxLabel49" runat="server" Text="Знищено" width="200px"></dx:ASPxLabel></td>--%>
+                                                <td colspan="2"><dx:ASPxCheckBox ID="EditZnizhinoFlag" runat="server" width="390px" Text="Знищено" Value='<%# Eval("znizhino_flag") %>' Title="Підвал існує" /></td>
+                                                <td><dx:ASPxLabel ID="ASPxLabel50" runat="server" Text="Зруйнування,%" width="200px"></dx:ASPxLabel></td>
+                                                <td><dx:ASPxSpinEdit ID="EditZnizhinoPercent" runat="server" NumberType="Float" Value='<%# Eval("znizhino_percent") %>' Width="190px" Title="Зруйнування,%" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td><dx:ASPxLabel ID="ASPxLabel48" runat="server" Text="станом на" width="200px"></dx:ASPxLabel></td>
+                                                <td><dx:ASPxDateEdit ID="EditZnizhinoStanom" runat="server" Value='<%# Eval("znizhino_stanom") %>' Width="190px" Title="Зруйнування станом на" /></td>
+                                            </tr>
+                                        </table>
+
+                                    </dx:PanelContent>
+                                </PanelCollection>
+                            </dx:ASPxRoundPanel>
+
                         </ItemTemplate>
                     </asp:FormView>
 
@@ -2902,50 +2911,44 @@ WHERE id = @id"
             </ContentCollection>
         </dx:TabPage>
 
-        <dx:TabPage Text="Фото / плани" Name="Tab6">
+        <dx:TabPage Text="Фото" Name="Tab6">
             <ContentCollection>
-                <dx:ContentControl ID="ContentControl4" runat="server">
+                <dx:ContentControl ID="ContentControl4__1" runat="server">
 
-                    <dx:ASPxRoundPanel ID="PanelPhoto" runat="server" HeaderText="Фото / плани" EnableViewState="true">
+                    <dx:ASPxRoundPanel ID="PanelPhoto__1" runat="server" HeaderText="Фото" EnableViewState="true">
                         <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="4px" />
                         <PanelCollection>
-                            <dx:PanelContent ID="PanelContent5" runat="server">
+                            <dx:PanelContent ID="PanelContent5__1" runat="server">
 
 
                                 <table border="0" cellspacing="0" cellpadding="0" width="990px">
                                 <tr>
                                 <td>
 
-                                <dx:ASPxCallbackPanel ID="ASPxCallbackPanelImageGallery" EnableViewState="true"
-                                    ClientInstanceName="ASPxCallbackPanelImageGallery" runat="server" 
-                                    OnCallback="ASPxCallbackPanelImageGallery_Callback">
+                                <dx:ASPxCallbackPanel ID="ASPxCallbackPanelImageGallery__1" EnableViewState="true"
+                                    ClientInstanceName="ASPxCallbackPanelImageGallery__1" runat="server" 
+                                    OnCallback="ASPxCallbackPanelImageGallery_Callback__1">
 
                                     <SettingsLoadingPanel Enabled="false"/>
                             
                                     <PanelCollection>
-                                        <dx:PanelContent ID="PanelContent11" runat="server" SupportsDisabledAttribute="True">
+                                        <dx:PanelContent ID="PanelContent11__1" runat="server" SupportsDisabledAttribute="True">
                                         
-                                    <dx:ASPxImageGallery ID="imageGalleryDemo" runat="server" DataSourceID="ObjectDataSourceBalansPhoto"
+                                    <dx:ASPxImageGallery ID="imageGalleryDemo__1" runat="server" DataSourceID="ObjectDataSourceBalansPhoto__1"
                                         EnableViewState="false" 
                                         AlwaysShowPager="false" 
                                         PagerAlign="Center"
                                         ThumbnailHeight="190" ThumbnailWidth="190"
                                         SettingsFullscreenViewer-ShowCloseButton="true" 
-                                        OnDataBound="imageGalleryDemo_DataBound" >
+                                        OnDataBound="imageGalleryDemo_DataBound__1" >
 
-<%--    pgv                             <SettingsFolder ImageCacheFolder="~\Thumb\" ImageSourceFolder="~\ImgContent\tmp\" />      --%>         
                                       <SettingsFolder ImageCacheFolder="~\Thumb\"  /> 
                                         
                                         <ItemTextTemplate>
 
                                             <div class="item">
-                                                <%--<div class="item_email" style="text-align:center"><%# Container.EvalDataItem("file_name")%></div><br />--%>
                                                 <div class="item_email" style="text-align:center">
-                                                <%--<a style="color:White;cursor:pointer" onclick="javascript:EditImage(<%# Container.ItemIndex %>);" title="Редагувати">Редагувати</a>&nbsp;&nbsp;--%>
-                                                    <a style="color:White;cursor:pointer" onclick="javascript:DeleteImage(<%# Container.ItemIndex %>);" title="Видалити">Видалити</a>
-
-                                                    <%--<a style="color:White;cursor:pointer" onclick="function(s, e) { imageGalleryDemo.PerformCallback('deleteimage:<%# Container.ItemIndex %>'); }" title="Видалити">Видалити</a>--%>
-                                                    
+                                                    <a style="color:White;cursor:pointer" onclick="javascript:DeleteImage__1(<%# Container.ItemIndex %>);" title="Видалити">Видалити</a>
                                                 </div>
                                             </div>
 
@@ -2969,49 +2972,36 @@ WHERE id = @id"
                                 <tr>
                                 <td>
 
-
-
-
-
-<%--                                <asp:UpdatePanel ID="updPanel" EnableViewState="true" runat="server" ChildrenAsTriggers="true">
-                                    <ContentTemplate>--%>
-
-                                <dx:ASPxCallbackPanel ID="ContentCallback" runat="server" EnableViewState="true"
-                                    ClientInstanceName="ContentCallback" OnCallback="ContentCallback_Callback">
+                                <dx:ASPxCallbackPanel ID="ContentCallback__1" runat="server" EnableViewState="true"
+                                    ClientInstanceName="ContentCallback__1" OnCallback="ContentCallback_Callback__1">
                                     
                                     <PanelCollection>
                                         <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
                                             
-<%--                                            <asp:HiddenField ID="TempFolderIDField" runat="server" 
-                                                OnValueChanged="TempFolderIDField_ValueChanged" />      --%>
-
-                                            <dx:ASPxUploadControl ID="uplImage" runat="server" ShowUploadButton="false" 
+                                            <dx:ASPxUploadControl ID="uplImage__1" runat="server" ShowUploadButton="false" 
                                                 FileUploadMode="OnPageLoad"
-                                                ClientInstanceName="uploader" NullText="..." 
-                                                OnFileUploadComplete="ASPxUploadPhotoControl_FileUploadComplete" 
+                                                ClientInstanceName="uploader__1" NullText="..." 
+                                                OnFileUploadComplete="ASPxUploadPhotoControl_FileUploadComplete__1" 
                                                 ShowProgressPanel="True" Size="35" UploadMode="Auto">
                                                 <ValidationSettings AllowedFileExtensions=".jpg, .jpeg, .jpe, .gif, .png, .bmp, .pdf" 
                                                     MaxFileSize="20480000">
 
                                                 </ValidationSettings>
-                                                <ClientSideEvents FilesUploadComplete="function(s, e) { Uploader_OnFilesUploadComplete(e); }" 
-                                                    FileUploadStart="function(s, e) { Uploader_OnUploadStart(); }" 
-                                                    TextChanged="function(s, e) { UpdateUploadButton(); }" />
+                                                <ClientSideEvents FilesUploadComplete="function(s, e) { Uploader_OnFilesUploadComplete__1(e); }" 
+                                                    FileUploadStart="function(s, e) { Uploader_OnUploadStart__1(); }" 
+                                                    TextChanged="function(s, e) { UpdateUploadButton__1(); }" />
                                                 <AdvancedModeSettings EnableMultiSelect="True" />
                                             </dx:ASPxUploadControl>
 
-                                            <dx:ASPxButton ID="btnUpload" runat="server" AutoPostBack="False" Visible ="true"
-                                                ClientInstanceName="btnUpload" Text="Завантажити" 
-                                            onclick="btnUpload_Click">
-                                                <ClientSideEvents Click="function(s, e) { uploader.Upload(); }" />
+                                            <dx:ASPxButton ID="btnUpload__1" runat="server" AutoPostBack="False" Visible ="true"
+                                                ClientInstanceName="btnUpload__1" Text="Завантажити" 
+                                            onclick="btnUpload_Click__1">
+                                                <ClientSideEvents Click="function(s, e) { uploader__1.Upload(); }" />
                                             </dx:ASPxButton>
 
                                         </dx:PanelContent>
                                     </PanelCollection>
                                 </dx:ASPxCallbackPanel>
-
-<%--                                    </ContentTemplate>
-                                </asp:UpdatePanel>--%>
 
                                 </td>
                                 </tr>
@@ -3026,6 +3016,114 @@ WHERE id = @id"
                 </dx:ContentControl>
             </ContentCollection>
         </dx:TabPage>
+
+        <dx:TabPage Text="Плани" Name="Tab7">
+            <ContentCollection>
+                <dx:ContentControl ID="ContentControl4__2" runat="server">
+
+                    <dx:ASPxRoundPanel ID="PanelPhoto__2" runat="server" HeaderText="Плани" EnableViewState="true">
+                        <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="4px" />
+                        <PanelCollection>
+                            <dx:PanelContent ID="PanelContent5__2" runat="server">
+
+
+                                <table border="0" cellspacing="0" cellpadding="0" width="990px">
+                                <tr>
+                                <td>
+
+                                <dx:ASPxCallbackPanel ID="ASPxCallbackPanelImageGallery__2" EnableViewState="true"
+                                    ClientInstanceName="ASPxCallbackPanelImageGallery__2" runat="server" 
+                                    OnCallback="ASPxCallbackPanelImageGallery_Callback__2">
+
+                                    <SettingsLoadingPanel Enabled="false"/>
+                            
+                                    <PanelCollection>
+                                        <dx:PanelContent ID="PanelContent11__2" runat="server" SupportsDisabledAttribute="True">
+                                        
+                                    <dx:ASPxImageGallery ID="imageGalleryDemo__2" runat="server" DataSourceID="ObjectDataSourceBalansPhoto__2"
+                                        EnableViewState="false" 
+                                        AlwaysShowPager="false" 
+                                        PagerAlign="Center"
+                                        ThumbnailHeight="190" ThumbnailWidth="190"
+                                        SettingsFullscreenViewer-ShowCloseButton="true" 
+                                        OnDataBound="imageGalleryDemo_DataBound__2" >
+
+                                      <SettingsFolder ImageCacheFolder="~\Thumb\"  /> 
+                                        
+                                        <ItemTextTemplate>
+
+                                            <div class="item">
+                                                <div class="item_email" style="text-align:center">
+                                                    <a style="color:White;cursor:pointer" onclick="javascript:DeleteImage__2(<%# Container.ItemIndex %>);" title="Видалити">Видалити</a>
+                                                </div>
+                                            </div>
+
+                                        </ItemTextTemplate>
+                                        <SettingsTableLayout RowsPerPage="2" ColumnCount="5" />
+
+                                        <SettingsTableLayout ColumnCount="5" RowsPerPage="2"></SettingsTableLayout>
+
+                                        <PagerSettings Position="TopAndBottom">
+                                            <PageSizeItemSettings Visible="False" />
+                                            <PageSizeItemSettings Visible="False"></PageSizeItemSettings>
+                                        </PagerSettings>
+
+                                    </dx:ASPxImageGallery> 
+
+                                        </dx:PanelContent>
+                                    </PanelCollection>
+                                </dx:ASPxCallbackPanel>
+                                </td>
+                                </tr>
+                                <tr>
+                                <td>
+
+                                <dx:ASPxCallbackPanel ID="ContentCallback__2" runat="server" EnableViewState="true"
+                                    ClientInstanceName="ContentCallback__2" OnCallback="ContentCallback_Callback__2">
+                                    
+                                    <PanelCollection>
+                                        <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
+                                            
+                                            <dx:ASPxUploadControl ID="uplImage__2" runat="server" ShowUploadButton="false" 
+                                                FileUploadMode="OnPageLoad"
+                                                ClientInstanceName="uploader__2" NullText="..." 
+                                                OnFileUploadComplete="ASPxUploadPhotoControl_FileUploadComplete__2" 
+                                                ShowProgressPanel="True" Size="35" UploadMode="Auto">
+                                                <ValidationSettings AllowedFileExtensions=".jpg, .jpeg, .jpe, .gif, .png, .bmp, .pdf" 
+                                                    MaxFileSize="20480000">
+
+                                                </ValidationSettings>
+                                                <ClientSideEvents FilesUploadComplete="function(s, e) { Uploader_OnFilesUploadComplete__2(e); }" 
+                                                    FileUploadStart="function(s, e) { Uploader_OnUploadStart__2(); }" 
+                                                    TextChanged="function(s, e) { UpdateUploadButton__2(); }" />
+                                                <AdvancedModeSettings EnableMultiSelect="True" />
+                                            </dx:ASPxUploadControl>
+
+                                            <dx:ASPxButton ID="btnUpload__2" runat="server" AutoPostBack="False" Visible ="true"
+                                                ClientInstanceName="btnUpload__2" Text="Завантажити" 
+                                            onclick="btnUpload_Click__2">
+                                                <ClientSideEvents Click="function(s, e) { uploader__2.Upload(); }" />
+                                            </dx:ASPxButton>
+
+                                        </dx:PanelContent>
+                                    </PanelCollection>
+                                </dx:ASPxCallbackPanel>
+
+                                </td>
+                                </tr>
+                                </table>
+
+
+
+                            </dx:PanelContent>
+                        </PanelCollection>
+                    </dx:ASPxRoundPanel>
+
+                </dx:ContentControl>
+            </ContentCollection>
+        </dx:TabPage>
+
+        
         
     </TabPages>
 </dx:ASPxPageControl>
@@ -3087,7 +3185,11 @@ WHERE id = @id"
         <td> &nbsp; </td>
         <td>
             <dx:ASPxButton ID="ButtonClear" runat="server" Text="Відмінити зміни" CausesValidation="false" AutoPostBack="false">
-                <ClientSideEvents Click="function (s,e) { CPMainPanel.PerformCallback('clear:'); ASPxCallbackPanelImageGallery.PerformCallback('refreshphoto:'); }" />
+                <ClientSideEvents Click="function (s,e) { 
+                    CPMainPanel.PerformCallback('clear:'); 
+                    ASPxCallbackPanelImageGallery__1.PerformCallback('refreshphoto:'); 
+                    ASPxCallbackPanelImageGallery__2.PerformCallback('refreshphoto:'); 
+                 }" />
             </dx:ASPxButton>
         </td>
         <td> &nbsp; </td>

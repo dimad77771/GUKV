@@ -315,7 +315,11 @@ namespace GUKV.ImportToolUtils
 
 			fields.Add("GEODATA_MAP_POINTS", "geodata_map_opoints");
 
-			if (!testOnly)
+            fields.Add("ZNIZHINO_FLAG_", "znizhino_flag");
+            fields.Add("ZNIZHINO_PERCENT_", "znizhino_percent");
+            fields.Add("ZNIZHINO_STANOM_", "znizhino_stanom");
+
+            if (!testOnly)
             {
                 fields.Add("MEMO", "memo");
                 fields.Add("PRYMITKA", "note");

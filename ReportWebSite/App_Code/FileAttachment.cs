@@ -154,7 +154,7 @@ namespace ExtDataEntry.Models
             var fileAttachments = new List<FileAttachment>();
             var connectionSql = Utils.ConnectToDatabase();
             string photoRootPath = WebConfigurationManager.AppSettings["ImgContentRootFolder"];
-            string destFolder = Path.Combine(photoRootPath, scope + "_" + recordID.ToString() + "_" + tempGuid);
+            string destFolder = Path.Combine(photoRootPath, scope + "_" + recordID.ToString() + "_" + tempGuid + "_a");
 
             //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "SelectFromTempFolder-001a:" + (DateTime.Now - nw).TotalMilliseconds + "\n");
             string[] files = LLLLhotorowUtils.GetFiles(destFolder, connectionSql);
@@ -164,7 +164,7 @@ namespace ExtDataEntry.Models
                 string fileName = Path.GetFileNameWithoutExtension(f);
                 string fileExt = Path.GetExtension(f);
 
-                string imageUrl = String.Format("~/ImgContent/{0}_{1}_{2}/{3}{4}", scope, recordID.ToString(), tempGuid, fileName, fileExt);
+                string imageUrl = String.Format("~/ImgContent/{0}_{1}_{2}_a/{3}{4}", scope, recordID.ToString(), tempGuid, fileName, fileExt);
 
                 //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "SelectFromTempFolder-002:" + (DateTime.Now - nw).TotalMilliseconds + "\n");
                 var fileAttachment = new FileAttachment()
@@ -186,7 +186,53 @@ namespace ExtDataEntry.Models
             //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "SelectFromTempFolder-010:" + (DateTime.Now - nw).TotalMilliseconds + "\n");
         }
 
-		public static IEnumerable<FileAttachment> SelectFromTransferRequestFolder(string scope, string tempGuid)
+        public static IEnumerable<FileAttachment> SelectFromTempFolder__2(string scope, int recordID, string tempGuid)
+        {
+            DateTime nw = DateTime.Now;
+
+            if (string.IsNullOrEmpty(scope))
+                throw new ArgumentException("scope must have a value");
+
+            if (recordID <= 0)
+                yield break;
+
+            //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "SelectFromTempFolder-000:" + (DateTime.Now - nw).TotalMilliseconds + "\n");
+            var fileAttachments = new List<FileAttachment>();
+            var connectionSql = Utils.ConnectToDatabase();
+            string photoRootPath = WebConfigurationManager.AppSettings["ImgContentRootFolder"];
+            string destFolder = Path.Combine(photoRootPath, scope + "_" + recordID.ToString() + "_" + tempGuid + "_b");
+
+            //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "SelectFromTempFolder-001a:" + (DateTime.Now - nw).TotalMilliseconds + "\n");
+            string[] files = LLLLhotorowUtils.GetFiles(destFolder, connectionSql);
+            //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "SelectFromTempFolder-001b:" + (DateTime.Now - nw).TotalMilliseconds + "\n");
+            foreach (string f in files)
+            {
+                string fileName = Path.GetFileNameWithoutExtension(f);
+                string fileExt = Path.GetExtension(f);
+
+                string imageUrl = String.Format("~/ImgContent/{0}_{1}_{2}_b/{3}{4}", scope, recordID.ToString(), tempGuid, fileName, fileExt);
+
+                //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "SelectFromTempFolder-002:" + (DateTime.Now - nw).TotalMilliseconds + "\n");
+                var fileAttachment = new FileAttachment()
+                {
+                    ID = fileName,
+                    ParentID = "\\ROOT",
+                    Name = f,
+                    Image = LLLLhotorowUtils.Read(f, connectionSql),
+                    ImageUrl = imageUrl,
+                };
+                //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "SelectFromTempFolder-003:" + (DateTime.Now - nw).TotalMilliseconds + "\n");
+                fileAttachments.Add(fileAttachment);
+            }
+
+            foreach (var fileAttachment in fileAttachments)
+            {
+                yield return fileAttachment;
+            }
+            //File.AppendAllText(@"C:\inetpub\wwwroot\gukv\Test\log.txt", "SelectFromTempFolder-010:" + (DateTime.Now - nw).TotalMilliseconds + "\n");
+        }
+
+        public static IEnumerable<FileAttachment> SelectFromTransferRequestFolder(string scope, string tempGuid)
 		{
 			if (string.IsNullOrEmpty(scope))
 				throw new ArgumentException("scope must have a value");
