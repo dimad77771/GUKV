@@ -587,8 +587,11 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 		AddQueryParameter(ref fieldList, "geodata_map_opoints", "geodatamappoints", Reports1NFUtils.GetEditText(controls, "EditGeodataMapPoints"), parameters);
 
         AddQueryParameter(ref fieldList, "znizhino_flag", "znizhinoflag", Reports1NFUtils.GetCheckBoxValue(controls, "EditZnizhinoFlag") ? 1 : 0, parameters);
-        AddQueryParameter(ref fieldList, "znizhino_percent", "znizhinopercent", Reports1NFUtils.GetEditNumeric(controls, "EditZnizhinoPercent"), parameters);
+        AddQueryParameter(ref fieldList, "znizhino_shkoda", "znizhinoshkoda", Reports1NFUtils.GetCheckBoxValue(controls, "EditZnizhinoShkoda") ? 1 : 0, parameters);
+        AddQueryParameter(ref fieldList, "znizhino_zvitakt", "znizhinozvitakt", Reports1NFUtils.GetCheckBoxValue(controls, "EditZnizhinoZvitakt") ? 1 : 0, parameters);
+        //AddQueryParameter(ref fieldList, "znizhino_percent", "znizhinopercent", Reports1NFUtils.GetEditNumeric(controls, "EditZnizhinoPercent"), parameters);
         AddQueryParameter(ref fieldList, "znizhino_stanom", "znizhinostanom", Reports1NFUtils.GetDateValue(controls, "EditZnizhinoStanom"), parameters);
+        AddQueryParameter(ref fieldList, "znizhino_primitka", "znizhinoprimitka", Reports1NFUtils.GetEditText(controls, "EditZnizhinoPrimitka"), parameters);
 
         AddQueryParameter(ref fieldList, "building_id", "buildingid", building_id, parameters);
 

@@ -99,6 +99,12 @@ namespace ExtDataEntry.Models
                 query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [reports1nf_balans_rish_attachfiles] WHERE [free_square_id] = @free_square_id";
             if (scope.ToLower() == "reports1nf_balans_akt_attachfiles")
                 query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [reports1nf_balans_akt_attachfiles] WHERE [free_square_id] = @free_square_id";
+            if (scope.ToLower() == "reports1nf_balans_bti_attachfiles")
+                query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [reports1nf_balans_bti_attachfiles] WHERE [free_square_id] = @free_square_id";
+            if (scope.ToLower() == "reports1nf_balans_dinfo_attachfiles")
+                query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [reports1nf_balans_dinfo_attachfiles] WHERE [free_square_id] = @free_square_id";
+            if (scope.ToLower() == "reports1nf_balans_znizhino_attachfiles")
+                query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [reports1nf_balans_znizhino_attachfiles] WHERE [free_square_id] = @free_square_id";
 
 
             if (string.IsNullOrEmpty(query))
@@ -335,6 +341,18 @@ namespace ExtDataEntry.Models
             {
                 table = "reports1nf_balans_akt_attachfiles";
             }
+            else if (scope == "reports1nf_balans_bti_attachfiles")
+            {
+                table = "reports1nf_balans_bti_attachfiles";
+            }
+            else if (scope == "reports1nf_balans_dinfo_attachfiles")
+            {
+                table = "reports1nf_balans_dinfo_attachfiles";
+            }
+            else if (scope == "reports1nf_balans_znizhino_attachfiles")
+            {
+                table = "reports1nf_balans_znizhino_attachfiles";
+            }
             else
             {
 				table = "reports1nf_balans_free_square_photos";
@@ -416,6 +434,18 @@ namespace ExtDataEntry.Models
             else if (scope == "reports1nf_balans_akt_attachfiles")
             {
                 table = "reports1nf_balans_akt_attachfiles";
+            }
+            else if (scope == "reports1nf_balans_bti_attachfiles")
+            {
+                table = "reports1nf_balans_bti_attachfiles";
+            }
+            else if (scope == "reports1nf_balans_dinfo_attachfiles")
+            {
+                table = "reports1nf_balans_dinfo_attachfiles";
+            }
+            else if (scope == "reports1nf_balans_znizhino_attachfiles")
+            {
+                table = "reports1nf_balans_znizhino_attachfiles";
             }
             else
             {

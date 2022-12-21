@@ -319,6 +319,10 @@ namespace GUKV.ImportToolUtils
             fields.Add("ZNIZHINO_PERCENT_", "znizhino_percent");
             fields.Add("ZNIZHINO_STANOM_", "znizhino_stanom");
 
+            fields.Add("ZNIZHINO_SHKODA_", "znizhino_shkoda");
+            fields.Add("ZNIZHINO_ZVITAKT_", "znizhino_zvitakt");
+            fields.Add("ZNIZHINO_PRIMITKA_", "znizhino_primitka");
+
             if (!testOnly)
             {
                 fields.Add("MEMO", "memo");

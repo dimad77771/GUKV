@@ -31,7 +31,7 @@ public partial class Assessment_AssessmentObjects : System.Web.UI.Page
 	void LoadData()
 	{
 		var yy1 = 2017;
-		var yy2 = 2020;
+		var yy2 = 2021;
 		for (var yy = yy1; yy <= yy2; yy++)
 		{
 			var seria = new Series("" + yy, ViewType.Bar);

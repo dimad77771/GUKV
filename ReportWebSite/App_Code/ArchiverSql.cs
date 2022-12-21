@@ -133,7 +133,7 @@ public static class ArchiverSql
             modified_by,modify_date,form_giver_id,org_maintain_id,update_src_id,is_deleted,del_date,znos,znos_date,date_expert,reestr_no,fair_cost_date,otdel_gukv_id,date_bti,arch_id,
             arch_flag,date_cost_rinkova,memo,note,is_free_sqr,free_sqr_useful,free_sqr_condition_id,free_sqr_location,ownership_doc_type,ownership_doc_num,ownership_doc_date,balans_doc_type,
             balans_doc_num,balans_doc_date,vidch_doc_type,vidch_doc_num,vidch_doc_date,vidch_type_id,vidch_org_id,vidch_cost,sqr_engineering,obj_status_id,geodata_map_opoints,
-            znizhino_flag,znizhino_percent,znizhino_stanom,
+            znizhino_flag,znizhino_percent,znizhino_stanom,znizhino_shkoda,znizhino_zvitakt,znizhino_primitka,
             
             rent_period_id,report_id
             
@@ -146,7 +146,7 @@ public static class ArchiverSql
             modified_by,modify_date,form_giver_id,org_maintain_id,update_src_id,is_deleted,del_date,znos,znos_date,date_expert,reestr_no,fair_cost_date,otdel_gukv_id,date_bti,arch_id,
             arch_flag,date_cost_rinkova,memo,note,is_free_sqr,free_sqr_useful,free_sqr_condition_id,free_sqr_location,ownership_doc_type,ownership_doc_num,ownership_doc_date,balans_doc_type,
             balans_doc_num,balans_doc_date,vidch_doc_type,vidch_doc_num,vidch_doc_date,vidch_type_id,vidch_org_id,vidch_cost,sqr_engineering,obj_status_id,geodata_map_opoints,
-            znizhino_flag,znizhino_percent,znizhino_stanom,
+            znizhino_flag,znizhino_percent,znizhino_stanom,znizhino_shkoda,znizhino_zvitakt,znizhino_primitka,
             
             isnull((select top 1 p.rent_period_id from reports1nf_arenda_payments p join reports1nf_arenda a on a.id = p.arenda_id where a.balans_id = @balansId and isnull(a.is_deleted, 0) = 0 order by p.modify_date desc), (select id from dict_rent_period per where per.is_active = 1)) as rent_period_id
             , (select report_id from reports1nf_balans where id = @balansId) as report_id
