@@ -683,22 +683,8 @@ SELECT SCOPE_IDENTITY()"
             </DataItemTemplate>
         </dx:GridViewDataComboBoxColumn>
 
-        <dx:GridViewDataComboBoxColumn FieldName="addr_street_id" Caption="Назва вулиці"  Width="200px">
-            <PropertiesComboBox 
-				DataSourceID="SqlDataSourceStreet"
-				DropDownStyle="DropDown"
-				DropDownWidth="300px"
-                EnableSynchronization="False"
-                IncrementalFilteringMode="Contains"
-                FilterMinLength="2"
-                IncrementalFilteringDelay="30"
-				TextField="name"  
-				ValueField="id">
-            </PropertiesComboBox>  
-            <DataItemTemplate>
-                <dx:ASPxLabel runat="server" Text='<%# Eval("addr_street") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
-            </DataItemTemplate>
-        </dx:GridViewDataComboBoxColumn>
+        <dx:GridViewDataTextColumn FieldName="addr_street" Caption="Назва Вулиці" Width="200px">
+        </dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn FieldName="addr_nomer" Caption="Номер будинку"  Width="75px">
         </dx:GridViewDataTextColumn>
@@ -783,7 +769,7 @@ SELECT SCOPE_IDENTITY()"
         ShowFooter="false"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.PrivatisatSquare" Version="A1_17" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.PrivatisatSquare" Version="A1_20" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

@@ -21,6 +21,7 @@ using System.Security.AccessControl;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using GUKV.Conveyancing;
+using System.Data;
 
 public partial class Reports1NF_OrgBalansObject : PhotoPage
 {
@@ -195,6 +196,10 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
         ReportCommentViewer1.ReportId = ReportID;
         ReportCommentViewer1.BalansId = BalansObjectID;
         ReportCommentViewer1.AddNumberOfCommentsToButton(ButtonComments);
+
+        DataTable tableDecisions = DecisionsDataSource;
+        GridViewDecisions.DataSource = tableDecisions;
+        GridViewDecisions.DataBind();
 
         // Enable / disable all controls depending on the report owner
         EnableControlsBasingOnUserRole();
@@ -689,9 +694,10 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
             DevExpress.Web.ASPxWebControl.RedirectOnCallback(Page.ResolveClientUrl("~/Reports1NF/OrgBalansList.aspx?rid=" + ReportID.ToString()));
         }
 
+        SaveDecisions(connection);
 
-       SavePhotoChanges__1();
-       SavePhotoChanges__2();
+        SavePhotoChanges__1();
+        SavePhotoChanges__2();
     }
 
 	private void SavePhotoChanges__1()
@@ -1876,6 +1882,242 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 		comboBox.DataBindItems();
 	}
 
-	#endregion
+    #endregion
 
+
+    protected void SqlDataSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+    {
+        e.Command.Parameters["@bid"].Value = BalansObjectID;
+        e.Command.Parameters["@rep_id"].Value = ReportID;
+    }
+
+    #region Working with the table of Decisions
+
+    protected DataTable DecisionsDataSource
+    {
+        get
+        {
+            string key = GetPageUniqueKey();
+
+            object ds = Session[key + "_DECISIONS_DATA_SOURCE"];
+
+            if (ds is DataTable)
+            {
+                return ds as DataTable;
+            }
+
+            object view = SqlDataSourceDecisions.Select(new DataSourceSelectArguments());
+
+            if (view is DataView)
+            {
+                DataTable dt = (view as DataView).ToTable();
+
+                Session[key + "_DECISIONS_DATA_SOURCE"] = dt;
+
+                return dt;
+            }
+
+            return null;
+        }
+
+        set
+        {
+            Session[GetPageUniqueKey() + "_DECISIONS_DATA_SOURCE"] = value;
+        }
+    }
+
+    protected void CPDecisions_Callback(object sender, CallbackEventArgsBase e)
+    {
+        if (e.Parameter.StartsWith("add:"))
+        {
+            DataTable table = DecisionsDataSource;
+
+            if (table != null)
+            {
+                // Look through all the rows in the table, and find a minimum existing id
+                int minExistingId = 0;
+
+                for (int row = 0; row < table.Rows.Count; row++)
+                {
+                    object id = table.Rows[row]["id"];
+
+                    if (id is int && (int)id < minExistingId)
+                    {
+                        minExistingId = (int)id;
+                    }
+                }
+
+                int newRowId = (minExistingId < 0) ? minExistingId - 1 : -1;
+
+                // id, balans_id, struct_edinich, kolvo_osob, rent_square
+
+                object[] values = new object[] { newRowId, BalansObjectID, "", null, null };
+
+                table.Rows.Add(values);
+
+                GridViewDecisions.DataBind();
+            }
+        }
+    }
+
+    protected void GridViewDecisions_RowDeleting(object sender, ASPxDataDeletingEventArgs e)
+    {
+        object rowKey = e.Keys[GridViewDecisions.KeyFieldName];
+
+        if (rowKey is int)
+        {
+            int decisionId = (int)rowKey;
+
+            // Find a row in the DataTable, and delete it
+            DataTable table = DecisionsDataSource;
+
+            if (table != null)
+            {
+                for (int row = 0; row < table.Rows.Count; row++)
+                {
+                    object id = table.Rows[row]["id"];
+
+                    if (id is int && (int)id == decisionId)
+                    {
+                        table.Rows.RemoveAt(row);
+                        break;
+                    }
+                }
+
+                GridViewDecisions.DataBind();
+            }
+        }
+
+        e.Cancel = true;
+    }
+
+    ASPxGridView GridViewDecisions
+    {
+        get
+        {
+            Dictionary<string, Control> controls = new Dictionary<string, Control>();
+            Reports1NFUtils.GetAllControls(BalansObjForm, controls);
+            var grid = controls["gridviewdecisions"];
+            return (ASPxGridView)grid;
+        }
+    }
+
+    protected void GridViewDecisions_RowUpdating(object sender, ASPxDataUpdatingEventArgs e)
+    {
+        ASPxComboBox comboPidstavaStructEdinich = GridViewDecisions.FindEditFormTemplateControl("ComboPidstavaStructEdinich") as ASPxComboBox;
+        ASPxTextBox editPidstavaKolvoOsob = GridViewDecisions.FindEditFormTemplateControl("EditPidstavaKolvoOsob") as ASPxTextBox;
+        ASPxTextBox editPidstavaRentSquare = GridViewDecisions.FindEditFormTemplateControl("EditPidstavaRentSquare") as ASPxTextBox;
+
+        if (comboPidstavaStructEdinich != null && editPidstavaKolvoOsob != null && editPidstavaRentSquare != null)
+        {
+            object rowKey = e.Keys[GridViewDecisions.KeyFieldName];
+
+            if (rowKey is int)
+            {
+                int decisionId = (int)rowKey;
+
+                // Find a row in the DataTable, and modify it
+                DataTable table = DecisionsDataSource;
+
+                if (table != null)
+                {
+                    for (int row = 0; row < table.Rows.Count; row++)
+                    {
+                        object id = table.Rows[row]["id"];
+
+                        if (id is int && (int)id == decisionId)
+                        {
+                            object[] values = table.Rows[row].ItemArray;
+
+                            // id, arenda_id, doc_num, doc_date, doc_dodatok, doc_punkt, purpose_str, rent_square, pidstava
+
+                            values[2] = comboPidstavaStructEdinich.Text.Trim();
+                            values[3] = Utils.ConvertStrToInt(editPidstavaKolvoOsob.Text);
+                            values[4] = Utils.ConvertStrToDecimal(editPidstavaRentSquare.Text);
+
+
+                            table.Rows[row].ItemArray = values;
+                            break;
+                        }
+                    }
+                    
+                    GridViewDecisions.DataBind();
+                }
+            }
+        }
+
+        e.Cancel = true;
+        GridViewDecisions.CancelEdit();
+    }
+
+    protected void SaveDecisions(SqlConnection connection)
+    {
+        System.Web.Security.MembershipUser user = System.Web.Security.Membership.GetUser();
+        string username = (user == null ? "System" : user.UserName);
+
+        // Delete all rent decisions related to this agreement
+        using (SqlCommand cmd = new SqlCommand("DELETE FROM reports1nf_balans_vlasnpotreb WHERE report_id = @rid AND balans_id = @bid", connection))
+        {
+            cmd.Parameters.Add(new SqlParameter("rid", ReportID));
+            cmd.Parameters.Add(new SqlParameter("bid", BalansObjectID));
+            cmd.ExecuteNonQuery();
+        }
+
+        // Save each decision as a new one
+        DataTable table = DecisionsDataSource;
+
+        if (table != null)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            for (int row = 0; row < table.Rows.Count; row++)
+            {
+                object[] values = table.Rows[row].ItemArray;
+
+                // id, balans_id, struct_edinich, kolvo_osob, rent_square
+
+                string fieldList = "report_id, balans_id, modify_date, modified_by";
+                string paramList = "@rid, @bid, @mdt, @mby";
+
+                parameters.Clear();
+                parameters.Add("rid", ReportID);
+                parameters.Add("bid", BalansObjectID);
+                parameters.Add("mdt", DateTime.Now);
+                parameters.Add("mby", username.Left(18));
+
+                if (values[2] is string)
+                {
+                    fieldList += ", struct_edinich";
+                    paramList += ", @structedinich";
+                    parameters.Add("structedinich", values[2]);
+                }
+
+                if (values[3] is int)
+                {
+                    fieldList += ", kolvo_osob";
+                    paramList += ", @kolvoosob";
+                    parameters.Add("kolvoosob", values[3]);
+                }
+
+                if (values[4] is decimal)
+                {
+                    fieldList += ", rent_square";
+                    paramList += ", @rentsquare";
+                    parameters.Add("rentsquare", values[4]);
+                }
+
+                using (SqlCommand cmdInsert = new SqlCommand("INSERT INTO reports1nf_balans_vlasnpotreb (" + fieldList + ") VALUES (" + paramList + ")", connection))
+                {
+                    foreach (KeyValuePair<string, object> param in parameters)
+                    {
+                        cmdInsert.Parameters.Add(new SqlParameter(param.Key, param.Value));
+                    }
+
+                    cmdInsert.ExecuteNonQuery();
+                }
+            }
+        }
+    }
+
+    #endregion Working with the table of Decisions
 }

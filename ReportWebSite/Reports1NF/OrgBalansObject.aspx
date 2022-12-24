@@ -327,6 +327,13 @@
             window.event.returnValue = false;
     }
 
+	function OnSaveDecisionClick(s, e) {
+		GridViewDecisions.UpdateEdit();
+	}
+	function OnCancelDecisionClick(s, e) {
+		GridViewDecisions.CancelEdit();
+	}
+
     // Object square validation
 
     var buildingTotalSqrInitial = 0;
@@ -766,6 +773,29 @@
     SelectCommand="SELECT id, name FROM dict_1nf_doc_kind ORDER BY name">
 </mini:ProfiledSqlDataSource>
 
+<mini:ProfiledSqlDataSource ID="SqlDataSourceStructEdinich" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="
+select 1 as ord, 'Керівник' as name union 
+select 2, 'Заступник керівника' union 
+select 3, 'Загальний відділ' union 
+select 4, 'Юридичний відділ' union 
+select 5, 'Фінансовий відділ' union 
+select 6, 'Економічний відділ' union 
+select 6, 'Кадровий відділ' union 
+select 7, 'Транспортний відділ' union 
+select 8, 'Відділ збуту' union 
+select 9, 'Відділ зовнішніх зв’язків' union 
+select 10, 'Матеріально-технічний відділ' union 
+select 11, 'Профільні відділи' union 
+select 12, 'Медпункт' union 
+select 13, 'Буфет' union 
+select 14, 'Тощо' 
+order by 1    
+    ">
+</mini:ProfiledSqlDataSource>
+
+
 <mini:ProfiledSqlDataSource ID="SqlDataSourcePurpose" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT id, name FROM dict_1nf_balans_purpose ORDER BY name">
@@ -1123,6 +1153,18 @@ WHERE id = @id"
         <asp:Parameter Name="id" />
     </UpdateParameters>
 </mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDecisions" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, balans_id, struct_edinich, kolvo_osob, rent_square
+        FROM reports1nf_balans_vlasnpotreb WHERE report_id = @rep_id AND balans_id = @bid"
+    OnSelecting="SqlDataSource_Selecting">
+    <SelectParameters>
+        <asp:Parameter DbType="Int32" DefaultValue="0" Name="bid" />
+        <asp:Parameter DbType="Int32" DefaultValue="0" Name="rep_id" />
+    </SelectParameters>
+</mini:ProfiledSqlDataSource>
+
 
 
 
@@ -2367,6 +2409,117 @@ WHERE id = @id"
                                     </dx:PanelContent>
                                 </PanelCollection>
                             </dx:ASPxRoundPanel>
+
+                            <p class="SpacingPara"/>
+
+                            <dx:ASPxCallbackPanel ID="CPDecisions" ClientInstanceName="CPDecisions" runat="server" OnCallback="CPDecisions_Callback">
+                                <PanelCollection>
+                                    <dx:panelcontent ID="Panelcontent2" runat="server">
+                                        <dx:ASPxRoundPanel ID="PanelVlasnpotreb" runat="server" HeaderText="Для власних потреб">
+                                        <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="4px" />
+
+                                        <PanelCollection>
+                                            <dx:PanelContent ID="PanelContent13" runat="server">
+
+                                                <dx:ASPxGridView ID="GridViewDecisions" ClientInstanceName="GridViewDecisions" runat="server" AutoGenerateColumns="False" 
+                                                    KeyFieldName="id" Width="990px"
+                                                    OnRowDeleting="GridViewDecisions_RowDeleting"
+                                                    OnRowUpdating="GridViewDecisions_RowUpdating" >
+
+	                                                <SettingsCommandButton>
+		                                                <EditButton>
+			                                                <Image Url="~/Styles/EditIcon.png" ToolTip="Редагувати запис" />
+		                                                </EditButton>
+		                                                <CancelButton>
+			                                                <Image Url="~/Styles/CancelIcon.png" />
+		                                                </CancelButton>
+		                                                <UpdateButton>
+			                                                <Image Url="~/Styles/SaveIcon.png" />
+		                                                </UpdateButton>
+		                                                <DeleteButton>
+			                                                <Image Url="~/Styles/DeleteIcon.png" ToolTip="Видалити запис" />
+		                                                </DeleteButton>
+		                                                <NewButton>
+			                                                <Image Url="~/Styles/AddIcon.png" />
+		                                                </NewButton>
+		                                                <ClearFilterButton Text="Очистити" RenderMode="Link" />
+	                                                </SettingsCommandButton>
+
+                                                    <Columns>
+                                                        <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" 
+                                                            ShowEditButton="true" ShowDeleteButton="True" >
+                                                        </dx:GridViewCommandColumn>
+                                                        <dx:GridViewDataTextColumn FieldName="struct_edinich" VisibleIndex="1" Caption="Структурна одиниця (згідно штатного розпису)" Width="320px"></dx:GridViewDataTextColumn>
+                                                        <dx:GridViewDataTextColumn FieldName="kolvo_osob" VisibleIndex="2" Caption="Кількість осіб" Width="120px"></dx:GridViewDataTextColumn>
+                                                        <dx:GridViewDataTextColumn FieldName="rent_square" VisibleIndex="3" Caption="Займана площа, кв.м" Width="150px"></dx:GridViewDataTextColumn>
+                                                    </Columns>
+
+                                                    <SettingsBehavior AutoFilterRowInputDelay="2500" ColumnResizeMode="Control" EnableCustomizationWindow="True" />
+                                                    <Settings HorizontalScrollBarMode="Visible" ShowFooter="false" ShowFilterRow="false" ShowFilterRowMenu="false" ShowFilterBar="Hidden" ShowHeaderFilterButton="false" VerticalScrollBarMode="Hidden" VerticalScrollBarStyle="Standard" />
+                                                    <SettingsPager Mode="ShowAllRecords" PageSize="10" />
+                                                    <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
+                                                    <Styles Header-Wrap="True" >
+                                                        <Header Wrap="True"></Header>
+                                                    </Styles>
+                                                    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaDecisions" Enabled="False" Version="A2" />
+
+                                                    <Templates>
+                                                        <EditForm>
+                                                            <table border="0" cellspacing="0" cellpadding="2">
+                                                                <tr>
+                                                                    <td> <dx:ASPxLabel ID="ASPxLabel15" runat="server" Text="Структурна одиниця (згідно штатного розпису)" /> </td>
+                                                                    <td colspan="5">
+                                                                        <dx:ASPxComboBox ID="ComboPidstavaStructEdinich" runat="server" ValueType="System.String" TextField="name" ValueField="name" Width="100%" 
+                                                                            DropDownStyle="DropDown" IncrementalFilteringMode="StartsWith" DataSourceID="SqlDataSourceStructEdinich" Text='<%# Eval("struct_edinich") %>' />
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td> <dx:ASPxLabel ID="Label1" runat="server" Text="Кількість осіб" /> </td>
+                                                                    <td> <dx:ASPxTextBox ID="EditPidstavaKolvoOsob" runat="server" Width="120px" Text='<%# Eval("kolvo_osob")%>' /> </td>
+                                                                    <td> <dx:ASPxLabel ID="ASPxLabel13" runat="server" Text="Займана площа, кв.м" /> </td>
+                                                                    <td> <dx:ASPxTextBox ID="EditPidstavaRentSquare" runat="server" Width="120px" Text='<%# Eval("rent_square")%>' /> </td>
+                                                                </tr>
+                                                            </table>
+
+                                                            <br/>
+
+                                                            <table>
+                                                                <tr>
+                                                                    <td>
+                                                                        <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Зберегти" AutoPostBack="false">
+                                                                            <ClientSideEvents Click="function (s, e) { OnSaveDecisionClick(s, e); }" />
+                                                                        </dx:ASPxButton>
+                                                                    </td>
+                                                                    <td>
+                                                                        <dx:ASPxButton ID="ASPxButton2" runat="server" Text="Відмінити" AutoPostBack="false">
+                                                                            <ClientSideEvents Click="function (s, e) { OnCancelDecisionClick(s, e); }" />
+                                                                        </dx:ASPxButton>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>    
+                                                        </EditForm>
+                                                    </Templates>
+                                                </dx:ASPxGridView>
+
+                                            </dx:PanelContent>
+                                        </PanelCollection>
+
+                                    </dx:ASPxRoundPanel>
+                                    </dx:panelcontent>
+                                </PanelCollection>
+                            </dx:ASPxCallbackPanel>
+
+                            <p class="SpacingPara"/>
+
+                            <table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td>
+                                        <dx:ASPxButton ID="ButtonAddDecision" runat="server" Text="Додати запис для власних потреб" AutoPostBack="false">
+                                            <ClientSideEvents Click="function (s,e) { CPDecisions.PerformCallback('add:');  }" />
+                                        </dx:ASPxButton>
+                                    </td>
+                                </tr>
+                            </table>
 
                         </ItemTemplate>
                     </asp:FormView>
