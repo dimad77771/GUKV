@@ -466,6 +466,17 @@
         <dx:GridViewDataTextColumn FieldName="org_contacts" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="70" Visible="True" Caption="Контактні телефони" Width="160px"></dx:GridViewDataTextColumn>
 
+        <dx:GridViewDataCheckColumn FieldName="znizhino_flag" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="71" Visible="true" Caption="Знищено" Width="80"></dx:GridViewDataCheckColumn>
+        <dx:GridViewDataCheckColumn FieldName="znizhino_shkoda" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="72" Visible="true" Caption="Пошкоджено" Width="80"></dx:GridViewDataCheckColumn>
+        <dx:GridViewDataCheckColumn FieldName="znizhino_zvitakt" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="73" Visible="true" Caption="Наявність звіту / акта про обстеження" Width="80"></dx:GridViewDataCheckColumn>
+        <dx:GridViewDataDateColumn FieldName="znizhino_stanom" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="74" Visible="true" Caption="станом на" Width="80"></dx:GridViewDataDateColumn>
+        <dx:GridViewDataTextColumn FieldName="znizhino_primitka" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="75" Visible="true" Caption="Примітки" Width="120"></dx:GridViewDataTextColumn>
+
         <dx:GridViewDataTextColumn FieldName="balans_id_" VisibleIndex="100" Caption="ID об'єкту" Visible="false"></dx:GridViewDataTextColumn>
 <%-- --%>
     </Columns>
@@ -521,7 +532,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A2_7" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A3_1" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
