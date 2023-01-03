@@ -254,9 +254,9 @@ order by 1
             </dx:ASPxButton>
 		</td>
 		<td align="center">
-			<dx:ASPxButton ID="ButtonExcel" runat="server" Text="Excel" OnClick="ButtonPrint_Click">
-				
-            </dx:ASPxButton>
+			<dx:ASPxButton ID="ButtonExcel" runat="server" Text="Excel" OnClick="ButtonPrint_Click"/>
+            <dx:ASPxButton ID="ButtonDocx1" runat="server" Text="Оголошення" OnClick="ButtonDocx1_Click"/>
+            <dx:ASPxButton ID="ButtonDocx2" runat="server" Text="Договір" OnClick="ButtonDocx2_Click"/>
 		</td>
 		<td align="right">
 			<dx:ASPxButton ID="ButtonSave" runat="server" Text="Зберегти" AutoPostBack="false" CausesValidation="false">
