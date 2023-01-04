@@ -446,7 +446,7 @@ WHERE id = @id"
                         <tr>
                             <td width="100px"><dx:ASPxLabel ID="ASPxLabel12" runat="server" Text="Відповідальна особа"></dx:ASPxLabel></td>
                             <td width="8px">&nbsp;</td>
-                            <td colspan="5"><dx:ASPxTextBox ID="EditDirectorTitle" runat="server" Text='<%# Eval("director_title") %>' Width="100%" Title="ПІБ та телефон відповідальної особи" MaxLength="70" /></td>
+                            <td colspan="5"><dx:ASPxTextBox ID="EditDirectorTitle" runat="server" Text='<%# Eval("director_title") %>' Width="100%" Title="ПІБ та телефон відповідальної особи" MaxLength="500" /></td>
                         </tr>
                     </table>
                 </dx:PanelContent>
