@@ -431,6 +431,11 @@
             var error = false;
               var element = document.getElementById('<%=PaymentForm.ClientID %>' + '_ReportingPeriodCombo_I'); //ctl00_MainContent_CPMainPanel_CardPageControl_PaymentForm_ReportingPeriodCombo_I
             //var period = document.getElementById('<%=PaymentForm.ClientID %>' + '_NeededPeriodCombo'); 
+
+            if (element == null) {
+				return true;
+            }
+
             if (element.value != period)
                    error = true;
 
@@ -3152,7 +3157,7 @@ WHERE id = @id"
                                                 <table border="0" cellspacing="0" cellpadding="2" width="910px">
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel65" runat="server" Text="Авансова орендна плата (нараховано), грн."></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="edit_avance_plat" ClientInstanceName="edit_avance_plat" runat="server" NumberType="Float" Value='<%# Eval("avance_plat") %>' Width="150px"
+                                                        <td><dx:ASPxSpinEdit ID="edit_avance_plat" ClientInstanceName="edit_avance_plat" runat="server" NumberType="Float" Value='<%# Eval("avance_plat") %>' Width="150px" Enabled="false"
                                                             Title="ОБОВЯЗКОВО заноситься нарахована двомісячна сума орендної плати відповідно до п.3.10 договору, яка може бути на поточний момент не сплачена, або сплачена частково">
                                                             <ClientSideEvents 
                                                                 LostFocus="CalcCollectionDebtZvit" />                                                            
@@ -3205,7 +3210,7 @@ WHERE id = @id"
 
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel74" runat="server" Text="Сальдо авансової орендної плати на початок звітного періоду, грн. (без ПДВ)"></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="edit_zabezdepoz_saldo" ClientInstanceName="edit_zabezdepoz_saldo" runat="server" NumberType="Float" Value='<%# Eval("zabezdepoz_saldo") %>' Width="150px"
+                                                        <td><dx:ASPxSpinEdit ID="edit_zabezdepoz_saldo" ClientInstanceName="edit_zabezdepoz_saldo" runat="server" NumberType="Float" Value='<%# Eval("zabezdepoz_saldo") %>' Width="150px" Enabled="false"
                                                             Title="сума коштів отримана від орендаря, (бажано що б вона дорівнювала нарахованій авансовій орендній платі)">
                                                             <ClientSideEvents 
                                                                 LostFocus="CalcCollectionDebtZvit" />                                                            
@@ -3215,7 +3220,7 @@ WHERE id = @id"
 
                                                     <tr>
                                                         <td><dx:ASPxLabel ID="ASPxLabel69" runat="server" Text="Надходження авансової орендної плати у звітному періоді, грн. (без ПДВ)"></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="edit_zabezdepoz_prishlo" ClientInstanceName="edit_zabezdepoz_prishlo" runat="server" NumberType="Float" Value='<%# Eval("zabezdepoz_prishlo") %>' Width="150px"
+                                                        <td><dx:ASPxSpinEdit ID="edit_zabezdepoz_prishlo" ClientInstanceName="edit_zabezdepoz_prishlo" runat="server" NumberType="Float" Value='<%# Eval("zabezdepoz_prishlo") %>' Width="150px" Enabled="false"
                                                             Title="показуємо яка частина поля «у т.ч. Сальдо авансової орендної плати на кінець звітного періоду, грн. (без ПДВ)» отримана у звітному періоді">
                                                             <ClientSideEvents 
                                                                 LostFocus="CalcCollectionDebtZvit" />                                                            
