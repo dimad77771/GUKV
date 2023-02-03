@@ -227,8 +227,13 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 			}
 		}
 
-			//////
-		}
+        if (!IsPostBack)
+        {
+            NarazhCalculation();
+        }
+
+            //////
+        }
         catch (Exception ex)
         {
             var lognet = log4net.LogManager.GetLogger("ReportWebSite");
@@ -1484,7 +1489,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 
                 // id, report_id, arenda_id, payment_date, payment_number, payment_sum, payment_purpose
 
-                object[] values = new object[] { newRowId, ReportID, RentAgreementID, null, "", 0m, "", null, null, ActiveRentPeriodID };
+                object[] values = new object[] { newRowId, ReportID, RentAgreementID, null, "", 0m, "", null, null, ActiveRentPeriodID, 0m, 0m, 0m, 0m };
 
                 table.Rows.Add(values);
 
@@ -1498,6 +1503,10 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         if (e.Parameter.StartsWith("calc:"))
         {
             decimal total_income = 0;
+            decimal total_income_1 = 0;
+            decimal total_income_2 = 0;
+            decimal total_income_3 = 0;
+            decimal total_income_4 = 0;
             int active_rent_period_id;
 
             ASPxComboBox reportingPeriodCombo = PaymentForm.FindControl("ReportingPeriodCombo") as ASPxComboBox;
@@ -1519,7 +1528,12 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 
                     if (rent_period_id == active_rent_period_id)
                     {
-                        total_income = total_income + (decimal)table.Rows[row]["payment_sum"];
+                        total_income += (decimal)table.Rows[row]["payment_sum"];
+                        total_income_1 += (decimal)table.Rows[row]["payment_sm_1"];
+                        total_income_2 += (decimal)table.Rows[row]["payment_sm_2"];
+                        total_income_3 += (decimal)table.Rows[row]["payment_sm_3"];
+                        total_income_4 += (decimal)table.Rows[row]["payment_sm_4"];
+
                     }
                 }
             }
@@ -1533,6 +1547,22 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 
                     if (editPaymentReceived is ASPxSpinEdit)
                         (editPaymentReceived as ASPxSpinEdit).Value = total_income;
+
+                    editPaymentReceived = cpRentPayment.FindControl("EditPaymentNarZvit_orndpymnt");
+                    if (editPaymentReceived is ASPxSpinEdit)
+                        (editPaymentReceived as ASPxSpinEdit).Value = total_income_1;
+
+                    editPaymentReceived = cpRentPayment.FindControl("Edit_avance_paymentnar");
+                    if (editPaymentReceived is ASPxSpinEdit)
+                        (editPaymentReceived as ASPxSpinEdit).Value = total_income_2;
+
+                    editPaymentReceived = cpRentPayment.FindControl("EditPaymentOldDebtsPayed_orndpymnt");
+                    if (editPaymentReceived is ASPxSpinEdit)
+                        (editPaymentReceived as ASPxSpinEdit).Value = total_income_3;
+
+                    editPaymentReceived = cpRentPayment.FindControl("edit_return_orend_payed");
+                    if (editPaymentReceived is ASPxSpinEdit)
+                        (editPaymentReceived as ASPxSpinEdit).Value = total_income_4;
                 }
             }
         }
@@ -1575,6 +1605,10 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         ASPxSpinEdit editPaymentSum = GridViewPaymentDocuments.FindEditFormTemplateControl("EditPaymentSum") as ASPxSpinEdit;
         ASPxMemo editPaymentPurpose = GridViewPaymentDocuments.FindEditFormTemplateControl("EditPaymentPurpose") as ASPxMemo;
         ASPxComboBox editPaymentPeriod = GridViewPaymentDocuments.FindEditFormTemplateControl("EditPaymentPeriod") as ASPxComboBox;
+        ASPxSpinEdit editPaymentSm_1 = GridViewPaymentDocuments.FindEditFormTemplateControl("editPaymentSm_1") as ASPxSpinEdit;
+        ASPxSpinEdit editPaymentSm_2 = GridViewPaymentDocuments.FindEditFormTemplateControl("editPaymentSm_2") as ASPxSpinEdit;
+        ASPxSpinEdit editPaymentSm_3 = GridViewPaymentDocuments.FindEditFormTemplateControl("editPaymentSm_3") as ASPxSpinEdit;
+        ASPxSpinEdit editPaymentSm_4 = GridViewPaymentDocuments.FindEditFormTemplateControl("editPaymentSm_4") as ASPxSpinEdit;
 
         if (editPaymentDate != null && editPaymentNumber != null && editPaymentSum != null && editPaymentPurpose != null && editPaymentPeriod != null)
         {
@@ -1602,9 +1636,14 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
                             values[2] = RentAgreementID;
                             values[3] = editPaymentDate.Date.Year >= 1800 ? (object)editPaymentDate.Date : null;
                             values[4] = editPaymentNumber.Text.Trim().ToUpper().Left(64);
-                            values[5] = Utils.ConvertStrToDecimal(editPaymentSum.Text);
+                            values[5] = (decimal)editPaymentSm_1.Value + (decimal)editPaymentSm_2.Value + (decimal)editPaymentSm_3.Value + (decimal)editPaymentSm_4.Value;
                             values[6] = editPaymentPurpose.Text.Trim().ToUpper().Left(256);
                             values[9] = editPaymentPeriod.SelectedItem.Value;
+                            values[10] = editPaymentSm_1.Value;
+                            values[11] = editPaymentSm_2.Value;
+                            values[12] = editPaymentSm_3.Value;
+                            values[13] = editPaymentSm_4.Value;
+
 
                             table.Rows[row].ItemArray = values;
                             break;
@@ -1688,6 +1727,34 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
                     fieldList += ", rent_period_id";
                     paramList += ", @rent_period_id";
                     parameters.Add("rent_period_id", values[9]);
+                }
+
+                if (values[10] is decimal)
+                {
+                    fieldList += ", payment_sm_1";
+                    paramList += ", @payment_sm_1";
+                    parameters.Add("payment_sm_1", values[10]);
+                }
+
+                if (values[11] is decimal)
+                {
+                    fieldList += ", payment_sm_2";
+                    paramList += ", @payment_sm_2";
+                    parameters.Add("payment_sm_2", values[11]);
+                }
+
+                if (values[12] is decimal)
+                {
+                    fieldList += ", payment_sm_3";
+                    paramList += ", @payment_sm_3";
+                    parameters.Add("payment_sm_3", values[12]);
+                }
+
+                if (values[13] is decimal)
+                {
+                    fieldList += ", payment_sm_4";
+                    paramList += ", @payment_sm_4";
+                    parameters.Add("payment_sm_4", values[13]);
                 }
 
                 using (SqlCommand cmdInsert = new SqlCommand("INSERT INTO reports1nf_payment_documents (" + fieldList + ") VALUES (" + paramList + ")", connection))
@@ -3432,6 +3499,48 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 	}
 
 	#endregion
+
+    void NarazhCalculation()
+    {
+        var inflation = 25.0M / 12.0M;
+
+        var pay_in_month = 0M;
+        for (var r = 0; r < GridViewNotes.VisibleRowCount; r++)
+        {
+            var grow = (object[])GridViewNotes.GetRowValues(r, "cost_agreement", "cost_narah");
+            var cost_agreement = (decimal?)grow[0];
+            var cost_narah = (decimal?)grow[1];
+            //pay_in_month += (cost_agreement ?? 0M) * (cost_narah ?? 0M) / 100.0M;
+            pay_in_month += (cost_agreement ?? 0M);
+        }
+
+        SqlConnection connection = Utils.ConnectToDatabase();
+        var month_count = 12;
+        string query = @"select * from narah_sum_by_monthes(@init_pay, @inflation, @month_count)";
+
+        using (SqlCommand cmd = new SqlCommand(query, connection))
+        {
+            cmd.Parameters.Add(new SqlParameter("init_pay", pay_in_month));
+            cmd.Parameters.Add(new SqlParameter("inflation", inflation));
+            cmd.Parameters.Add(new SqlParameter("month_count", month_count));
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    var mnum = reader.GetInt32(0);
+                    var psum = reader.GetDecimal(1);
+
+                    var edit = ((ASPxSpinEdit)Utils.FindControlRecursive(PanelNarazhCalculation, "NarazhCalculation_" + mnum));
+                    edit.Number = psum;
+                }
+
+                reader.Close();
+            }
+        }
+        
+
+    }
 }
 
 

@@ -27,6 +27,12 @@
         margin-left:4px;
     }
 
+    .classPanelNarahCalculation
+    {
+        margin-left:10px;
+        margin-top:159px;
+    }
+
     .editForm999 .dxgvEditFormTable_DevEx 
     {
          width:1800px !important;
@@ -69,12 +75,22 @@
         function ready(event) {
             HidePnl();
             setTimeout(function () {
-				InitCalcCollectionDebtZvit();
+                InitCalcCollectionDebtZvit();
+				RefreshNarazhCalculation();
             }, 100);
             if (IsReadOnlyForm) {
                 clientBtnAddPaymentDocument.SetEnabled(false);
             }
         }
+
+        function UpdateScaleFactor(sender) {
+            var sum = 0
+            if (id_payment_sm_1.number != null) sum += id_payment_sm_1.number;
+            if (id_payment_sm_2.number != null) sum += id_payment_sm_2.number;
+            if (id_payment_sm_3.number != null) sum += id_payment_sm_3.number;
+            if (id_payment_sm_4.number != null) sum += id_payment_sm_4.number;
+            id_payment_sum.SetNumber(sum);
+		}
 
         function InitCalcCollectionDebtZvit() {
             //return; //!!!!
@@ -97,6 +113,36 @@
                 period = document.getElementById('<%=PaymentForm.ClientID %>' + '_NeededPeriodCombo').innerHTML;
             }
             document.getElementById('<%=PaymentForm.ClientID %>' + '_NeededPeriodCombo').style.display = "none";
+        }
+
+        function RefreshNarazhCalculation() {
+            var mnum = GetMonthNumber();
+            console.log("mnum", mnum);
+            var allsum = 0;
+            for (var r = 1; r <= 12; r++) {
+				var edit = ASPxClientControl.GetControlCollection().GetByName("id_NarazhCalculation_" + r);
+				var element = $(edit.GetMainElement());
+                var row = element.closest("tr");
+
+                if (r <= mnum) {
+                    row.show();
+                    allsum += edit.GetNumber();
+                } else {
+					row.hide();
+                }
+            }
+
+			allsum = Math.round(allsum * 100.0) / 100.0
+            console.log("allsum", allsum);
+            id_NarazhCalculation_all.SetValue(allsum);
+        }
+
+        function GetMonthNumber() {
+            var reportingPeriodInfo = ReportingPeriodCombo.GetItem(ReportingPeriodCombo.GetSelectedIndex());
+            var text = reportingPeriodInfo.text;
+            const matches = /^\d+/.exec(text);
+            var digits = matches[0];
+            return parseInt(digits);
         }
 
         var lastFocusedControlId = "";
@@ -137,10 +183,10 @@
             EditCollectionDebt3Month.SetValue(vv1);
 
 			// - менять каждый квартал
-			//var vvz = round(nn(edit_debtkvart_0.GetValue()));																											//1кв.
+			var vvz = round(nn(edit_debtkvart_0.GetValue()));																											//1кв.
 			//var vvz = round(nn(edit_debtkvart_0.GetValue()) + nn(edit_debtkvart_1.GetValue()));																		//2кв.
 			//var vvz = round( nn(edit_debtkvart_0.GetValue()) + nn(edit_debtkvart_1.GetValue()) + nn(edit_debtkvart_2.GetValue()) );									//3кв.
-			var vvz = round( nn(edit_debtkvart_0.GetValue()) + nn(edit_debtkvart_1.GetValue()) + nn(edit_debtkvart_2.GetValue()) + nn(edit_debtkvart_3.GetValue()) );	//4кв.
+			//var vvz = round( nn(edit_debtkvart_0.GetValue()) + nn(edit_debtkvart_1.GetValue()) + nn(edit_debtkvart_2.GetValue()) + nn(edit_debtkvart_3.GetValue()) );	//4кв.
 			EditCollectionDebtZvit.SetValue(vvz);
 
 			var vv2 = round( nn(edit_debtkvart_1.GetValue()) + nn(edit_debtkvart_2.GetValue()) + nn(edit_debtkvart_3.GetValue()) );
@@ -231,10 +277,10 @@
 				var v6 = nn(edit_debtkvart_3.GetValue());
 
 				// - менять каждый квартал (2)
-				//val = round(nn(val));						// 1кв.
+				val = round(nn(val));						// 1кв.
 				//val = round(nn(val) - v4);				// 2кв.
 				//val = round(nn(val) - v4 - v5 );			// 3кв.
-                val = round(nn(val) - v4 - v5 - v6);		// 4кв.
+                //val = round(nn(val) - v4 - v5 - v6);		// 4кв.
 				
 
                 if (val <= 0) val = null;
@@ -410,6 +456,7 @@
         function updateReportingPeriodComboStyles() {
             console.dir(ReportingPeriodCombo);
             HideValidator();
+            RefreshNarazhCalculation();
         }
 
         function useValidationRules() {
@@ -3096,6 +3143,9 @@ WHERE id = @id"
         <dx:TabPage Text="Плата за використання" Name="Tab4">
             <ContentCollection>
                 <dx:ContentControl ID="ContentControl3" runat="server">
+                    <table style="border-collapse:collapse">
+                        <tr>
+                            <td style="padding:0px">
                     <asp:FormView runat="server" BorderStyle="None" ID="PaymentForm" DataSourceID="SqlDataSourceRentPayment" EnableViewState="False">
                         <ItemTemplate>
                             <div style="margin-bottom: 10px;">
@@ -3151,7 +3201,7 @@ WHERE id = @id"
                                 <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="0px" />
                                 <PanelCollection>
                                     <dx:PanelContent ID="PanelContent9" runat="server">
-                                        <dx:ASPxCallbackPanel ID="CPRentPayment" ClientInstanceName="CPRentPayment" runat="server" OnCallback="CPRentPayment_Callback">
+                                        <dx:ASPxCallbackPanel ID="CPRentPayment" ClientInstanceName="CPRentPayment" runat="server" OnCallback="CPRentPayment_Callback" ClientSideEvents-EndCallback="function (s,e) { setTimeout(CalcCollectionDebtZvit, 10); }">
                                             <PanelCollection>
                                             <dx:panelcontent ID="Panelcontent12" runat="server">
                                                 <table border="0" cellspacing="0" cellpadding="2" width="910px">
@@ -3385,6 +3435,127 @@ WHERE id = @id"
                             </dx:ASPxRoundPanel>
                         </ItemTemplate>
                     </asp:FormView>
+                                </td>
+
+                                <td style="vertical-align:top">
+                                    <dx:ASPxRoundPanel ID="PanelNarazhCalculation" runat="server" HeaderText="Розрахунок нарахування орендної плати" CssClass="classPanelNarahCalculation">
+                                        <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="4px" />
+                                        <PanelCollection>
+											<dx:PanelContent ID="PanelContent1811" runat="server">
+                                                <table border="0" cellspacing="0" cellpadding="2" width="230px" style="border-collapse:collapse">
+                                                    <tr>
+                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Січень:"></dx:ASPxLabel></td>
+                                                        <td>
+                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_1" ClientInstanceName="id_NarazhCalculation_1" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
+                                                                <SpinButtons ShowIncrementButtons="false"/>
+                                                            </dx:ASPxSpinEdit>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Лютий:"></dx:ASPxLabel></td>
+                                                        <td>
+                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_2" ClientInstanceName="id_NarazhCalculation_2" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
+                                                                <SpinButtons ShowIncrementButtons="false"/>
+                                                            </dx:ASPxSpinEdit>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Березень:"></dx:ASPxLabel></td>
+                                                        <td>
+                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_3" ClientInstanceName="id_NarazhCalculation_3" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
+                                                                <SpinButtons ShowIncrementButtons="false"/>
+                                                            </dx:ASPxSpinEdit>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Квітень:"></dx:ASPxLabel></td>
+                                                        <td>
+                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_4" ClientInstanceName="id_NarazhCalculation_4" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
+                                                                <SpinButtons ShowIncrementButtons="false"/>
+                                                            </dx:ASPxSpinEdit>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Травень:"></dx:ASPxLabel></td>
+                                                        <td>
+                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_5" ClientInstanceName="id_NarazhCalculation_5" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
+                                                                <SpinButtons ShowIncrementButtons="false"/>
+                                                            </dx:ASPxSpinEdit>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Червень:"></dx:ASPxLabel></td>
+                                                        <td>
+                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_6" ClientInstanceName="id_NarazhCalculation_6" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
+                                                                <SpinButtons ShowIncrementButtons="false"/>
+                                                            </dx:ASPxSpinEdit>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Липень:"></dx:ASPxLabel></td>
+                                                        <td>
+                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_7" ClientInstanceName="id_NarazhCalculation_7" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
+                                                                <SpinButtons ShowIncrementButtons="false"/>
+                                                            </dx:ASPxSpinEdit>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Серпень:"></dx:ASPxLabel></td>
+                                                        <td>
+                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_8" ClientInstanceName="id_NarazhCalculation_8" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
+                                                                <SpinButtons ShowIncrementButtons="false"/>
+                                                            </dx:ASPxSpinEdit>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Вересень:"></dx:ASPxLabel></td>
+                                                        <td>
+                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_9" ClientInstanceName="id_NarazhCalculation_9" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
+                                                                <SpinButtons ShowIncrementButtons="false"/>
+                                                            </dx:ASPxSpinEdit>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Жовтень:"></dx:ASPxLabel></td>
+                                                        <td>
+                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_10" ClientInstanceName="id_NarazhCalculation_10" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
+                                                                <SpinButtons ShowIncrementButtons="false"/>
+                                                            </dx:ASPxSpinEdit>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Листопад:"></dx:ASPxLabel></td>
+                                                        <td>
+                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_11" ClientInstanceName="id_NarazhCalculation_11" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
+                                                                <SpinButtons ShowIncrementButtons="false"/>
+                                                            </dx:ASPxSpinEdit>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Грудень:"></dx:ASPxLabel></td>
+                                                        <td>
+                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_12" ClientInstanceName="id_NarazhCalculation_12" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
+                                                                <SpinButtons ShowIncrementButtons="false"/>
+                                                            </dx:ASPxSpinEdit>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Всього:" Font-Bold="true"></dx:ASPxLabel></td>
+                                                        <td>
+                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_all" ClientInstanceName="id_NarazhCalculation_all" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" Font-Bold="true" >
+                                                                <SpinButtons ShowIncrementButtons="false"/>
+                                                            </dx:ASPxSpinEdit>
+                                                        </td>
+                                                    </tr>
+
+
+                                                </table>
+                                            </dx:PanelContent>
+                                        </PanelCollection>
+                                    </dx:ASPxRoundPanel>
+                                </td>
+                            </tr>
+                        </table>
                 </dx:ContentControl>
             </ContentCollection>
         </dx:TabPage>
@@ -3539,7 +3710,7 @@ WHERE id = @id"
                                                     <table border="0" cellspacing="0" cellpadding="2" width="200px">
                                                         <tr>
 															<%--- менять каждый квартал (3)--%>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_0" runat="server" Text="2022, 4кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_0" runat="server" Text="2023, 1кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_0" ClientInstanceName="edit_debtkvart_0" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_0") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
@@ -3547,7 +3718,7 @@ WHERE id = @id"
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_1" runat="server" Text="2022, 3кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_1" runat="server" Text="2022, 4кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_1" ClientInstanceName="edit_debtkvart_1" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_1") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
@@ -3555,70 +3726,70 @@ WHERE id = @id"
                                                             </td>
                                                         </tr>                                                  
                                                         <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_2" runat="server" Text="2022, 2кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_2" runat="server" Text="2022, 3кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_2" ClientInstanceName="edit_debtkvart_2" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_2") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_3" runat="server" Text="2022, 1кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_3" runat="server" Text="2022, 2кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_3" ClientInstanceName="edit_debtkvart_3" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_3") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_4" runat="server" Text="2021, 4кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_4" runat="server" Text="2022, 1кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_4" ClientInstanceName="edit_debtkvart_4" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_4") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_5" runat="server" Text="2021, 3кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_5" runat="server" Text="2021, 4кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_5" ClientInstanceName="edit_debtkvart_5" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_5") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_6" runat="server" Text="2021, 2кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_6" runat="server" Text="2021, 3кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_6" ClientInstanceName="edit_debtkvart_6" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_6") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_7" runat="server" Text="2021, 1кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_7" runat="server" Text="2021, 2кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_7" ClientInstanceName="edit_debtkvart_7" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_7") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_8" runat="server" Text="2020, 4кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_8" runat="server" Text="2021, 1кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_8" ClientInstanceName="edit_debtkvart_8" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_8") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_9" runat="server" Text="2020, 3кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_9" runat="server" Text="2020, 4кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_9" ClientInstanceName="edit_debtkvart_9" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_9") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_10" runat="server" Text="2020, 2кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_10" runat="server" Text="2020, 3кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_10" ClientInstanceName="edit_debtkvart_10" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_10") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                                </dx:ASPxSpinEdit>
                                                             </td>
                                                         </tr>                                                        <tr>
-                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_11" runat="server" Text="2020, 1кв.:"></dx:ASPxLabel></td>
+                                                            <td colspan="2"><dx:ASPxLabel ID="label_debtkvart_11" runat="server" Text="2020, 2кв.:"></dx:ASPxLabel></td>
                                                             <td>
                                                                 <dx:ASPxSpinEdit ID="edit_debtkvart_11" ClientInstanceName="edit_debtkvart_11" runat="server" NumberType="Float" Value='<%# Eval("debtkvart_11") %>' Width="100px" Title="таблиця, ТІЛЬКИ у якій, формуються  поля заборгованостей за відповідні періоди. У разі погашення заборгованості за попередні квартали редагування повинно проводитися  балансоутримувачем ТІЛЬКИ у цій таблиці">
                                                                     <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
@@ -3659,7 +3830,7 @@ WHERE id = @id"
                                     <table>
                                         <tr>
                                             <td colspan="5">
-                                                <dx:ASPxGridView ID="GridViewPaymentDocuments" ClientInstanceName="GridViewPaymentDocuments" runat="server" KeyFieldName="id" Width="810px" OnRowDeleting="GridViewPaymentDocuments_RowDeleting"
+                                                <dx:ASPxGridView ID="GridViewPaymentDocuments" ClientInstanceName="GridViewPaymentDocuments" runat="server" KeyFieldName="id" Width="1130px" OnRowDeleting="GridViewPaymentDocuments_RowDeleting"
                                                     OnRowUpdating="GridViewPaymentDocuments_RowUpdating" >
 
 	                                                <SettingsCommandButton>
@@ -3687,14 +3858,22 @@ WHERE id = @id"
                                                         </dx:GridViewCommandColumn>
                                                         <dx:GridViewDataDateColumn FieldName="payment_date" VisibleIndex="1" Caption="Дата переказу" Width="100px"></dx:GridViewDataDateColumn>
                                                         <dx:GridViewDataTextColumn FieldName="payment_number" VisibleIndex="2" Caption="Номер квитанції" Width="100px"></dx:GridViewDataTextColumn>                                        
-                                                        <dx:GridViewDataTextColumn FieldName="payment_sum" VisibleIndex="3" Caption="Сума" Width="150px"></dx:GridViewDataTextColumn>
-                                                        <dx:GridViewDataTextColumn FieldName="payment_purpose" VisibleIndex="4" Caption="Призначення платежу" Width="300px"></dx:GridViewDataTextColumn>
-                                                        <dx:GridViewDataComboBoxColumn FieldName="rent_period_id" ShowInCustomizationForm="True" VisibleIndex="6" Visible="True" Caption="Звітній Період" Width="100px">
+                                                        <dx:GridViewDataTextColumn FieldName="payment_sum" VisibleIndex="3" Caption="Сума" Width="100px"></dx:GridViewDataTextColumn>
+                                                        <dx:GridViewDataTextColumn FieldName="payment_sm_1" VisibleIndex="3" Caption="Сума (за звітний період без боргів та переплат)" Width="100px"></dx:GridViewDataTextColumn>
+                                                        <dx:GridViewDataTextColumn FieldName="payment_sm_2" VisibleIndex="3" Caption="Сума (авансова орендна плата)" Width="100px"></dx:GridViewDataTextColumn>
+                                                        <dx:GridViewDataTextColumn FieldName="payment_sm_3" VisibleIndex="3" Caption="Сума (погашення заборгованості минулих періодів)" Width="100px"></dx:GridViewDataTextColumn>
+                                                        <dx:GridViewDataTextColumn FieldName="payment_sm_4" VisibleIndex="3" Caption="Сума (переплата орендної плати за звітний період)" Width="100px"></dx:GridViewDataTextColumn>
+                                                        <dx:GridViewDataComboBoxColumn FieldName="rent_period_id" ShowInCustomizationForm="True" VisibleIndex="10" Visible="True" Caption="Звітній Період" Width="120px">
                                                             <PropertiesComboBox DataSourceID="SqlDataSourceRentPeriods" ValueField="id" TextField="name" ValueType="System.Int32" />
                                                         </dx:GridViewDataComboBoxColumn>
+                                                        <dx:GridViewDataTextColumn FieldName="payment_purpose" VisibleIndex="20" Caption="Призначення платежу" Width="200px"></dx:GridViewDataTextColumn>
                                                     </Columns>
                                                     <TotalSummary>
                                                         <dx:ASPxSummaryItem FieldName="payment_sum" SummaryType="Sum" DisplayFormat="{0}" />
+                                                        <dx:ASPxSummaryItem FieldName="payment_sm_1" SummaryType="Sum" DisplayFormat="{0}" />
+                                                        <dx:ASPxSummaryItem FieldName="payment_sm_2" SummaryType="Sum" DisplayFormat="{0}" />
+                                                        <dx:ASPxSummaryItem FieldName="payment_sm_3" SummaryType="Sum" DisplayFormat="{0}" />
+                                                        <dx:ASPxSummaryItem FieldName="payment_sm_4" SummaryType="Sum" DisplayFormat="{0}" />
                                                     </TotalSummary>
 
                                                     <SettingsBehavior AutoFilterRowInputDelay="2500" ColumnResizeMode="Control" EnableCustomizationWindow="True" />
@@ -3723,7 +3902,35 @@ WHERE id = @id"
                                                                 <td> <dx:ASPxLabel ID="ASPxLabel19" runat="server" Text="Номер квитанції" Width="150px" /> </td>
                                                                 <td> <dx:ASPxTextBox ID="EditPaymentNumber" runat="server" Width="200px" Text='<%# Eval("payment_number")%>' /> </td>
                                                                 <td> <dx:ASPxLabel ID="ASPxLabel45" runat="server" Text="Сума" Width="150px" /> </td>
-                                                                <td> <dx:ASPxSpinEdit ID="EditPaymentSum" runat="server" NumberType="Float" Value='<%# Eval("payment_sum") %>' Width="200px" /> </td>
+                                                                <td> <dx:ASPxSpinEdit ID="EditPaymentSum" ClientInstanceName="id_payment_sum" runat="server" NumberType="Float" Value='<%# Eval("payment_sum") %>' Width="200px" ReadOnly="true" Enabled="false" /> </td>
+                                                            </tr>      
+                                                            <tr>
+                                                                <td> <dx:ASPxLabel ID="ASPxLabel3" runat="server" Text="Сума (за звітний період без боргів та переплат)" Width="150px" /> </td>
+                                                                <td> 
+                                                                    <dx:ASPxSpinEdit ID="EditPaymentSm_1" ClientInstanceName="id_payment_sm_1" runat="server" NumberType="Float" Value='<%# Eval("payment_sm_1") %>' Width="200px" >
+                                                                        <ClientSideEvents NumberChanged="function(s, e) { UpdateScaleFactor(s) }" />
+                                                                    </dx:ASPxSpinEdit>
+                                                                </td>
+                                                                <td> <dx:ASPxLabel ID="ASPxLabel79" runat="server" Text="Сума (авансова орендна плата)" Width="150px" /> </td>
+                                                                <td> 
+                                                                    <dx:ASPxSpinEdit ID="EditPaymentSm_2" ClientInstanceName="id_payment_sm_2" runat="server" NumberType="Float" Value='<%# Eval("payment_sm_2") %>' Width="200px" >
+                                                                        <ClientSideEvents NumberChanged="function(s, e) { UpdateScaleFactor(s) }" />
+                                                                    </dx:ASPxSpinEdit>
+                                                                </td>
+                                                            </tr>      
+                                                            <tr>
+                                                                <td> <dx:ASPxLabel ID="ASPxLabel80" runat="server" Text="Сума (погашення заборгованості минулих періодів)" Width="150px" /> </td>
+                                                                <td> 
+                                                                    <dx:ASPxSpinEdit ID="EditPaymentSm_3" ClientInstanceName="id_payment_sm_3" runat="server" NumberType="Float" Value='<%# Eval("payment_sm_3") %>' Width="200px" >
+                                                                        <ClientSideEvents NumberChanged="function(s, e) { UpdateScaleFactor(s) }" />
+                                                                    </dx:ASPxSpinEdit>
+                                                                </td>
+                                                                <td> <dx:ASPxLabel ID="ASPxLabel81" runat="server" Text="Сума (переплата орендної плати за звітний період)" Width="150px" /> </td>
+                                                                <td> 
+                                                                    <dx:ASPxSpinEdit ID="EditPaymentSm_4" ClientInstanceName="id_payment_sm_4" runat="server" NumberType="Float" Value='<%# Eval("payment_sm_4") %>' Width="200px" >
+                                                                        <ClientSideEvents NumberChanged="function(s, e) { UpdateScaleFactor(s) }" />
+                                                                    </dx:ASPxSpinEdit> 
+                                                                </td>
                                                             </tr>      
                                                             <tr>
                                                                 <td> <dx:ASPxLabel ID="ASPxLabel46" runat="server" Text="Призначення платежу" Width="150px" /> </td>
