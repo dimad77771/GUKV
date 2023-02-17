@@ -408,7 +408,8 @@ public partial class Reports1NF_OrgInfo : System.Web.UI.Page
 
 			string directorName = GetEditText("PanelContacts", "EditDirectorName");
 			string directorTitle = GetEditText("PanelContacts", "EditDirectorTitle");
-			string directorPhone = GetEditText("PanelContacts", "EditDirectorPhone");
+            string prozoroTitle = GetEditText("PanelContacts", "EditProzoroTitle");
+            string directorPhone = GetEditText("PanelContacts", "EditDirectorPhone");
 
 			string buhgalterName = GetEditText("PanelContacts", "EditBuhgalterName");
 			string buhgalterPhone = GetEditText("PanelContacts", "EditBuhgalterPhone");
@@ -440,8 +441,9 @@ public partial class Reports1NF_OrgInfo : System.Web.UI.Page
 			AddQueryParameter(ref fieldList, "director_fio", "dfio", directorName, parameters);
 			AddQueryParameter(ref fieldList, "director_phone", "dphone", directorPhone, parameters);
 			AddQueryParameter(ref fieldList, "director_title", "dtitle", directorTitle, parameters);
+            AddQueryParameter(ref fieldList, "prozoro_title", "ptitle", prozoroTitle, parameters);
 
-			AddQueryParameter(ref fieldList, "buhgalter_fio", "bfio", buhgalterName, parameters);
+            AddQueryParameter(ref fieldList, "buhgalter_fio", "bfio", buhgalterName, parameters);
 			AddQueryParameter(ref fieldList, "buhgalter_phone", "bphone", buhgalterPhone, parameters);
             AddQueryParameter(ref fieldList, "bank_rahunok", "brahunok", bankRahunok, parameters);
 

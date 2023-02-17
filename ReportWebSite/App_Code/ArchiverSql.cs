@@ -319,7 +319,7 @@ public static class ArchiverSql
         // Format the SQL statement
         string sql = @"insert INTO arch_organizations (
                 id,master_org_id,last_state,occupation_id,status_id,form_gosp_id,form_ownership_id,gosp_struct_id,organ_id,industry_id,nomer_obj,zkpo_code,addr_distr_old_id,addr_distr_new_id,
-                addr_street_name,addr_street_id,addr_nomer,addr_nomer2,addr_korpus,addr_zip_code,addr_misc,director_fio,director_phone,director_fio_kogo,director_title,director_title_kogo,
+                addr_street_name,addr_street_id,addr_nomer,addr_nomer2,addr_korpus,addr_zip_code,addr_misc,director_fio,director_phone,director_fio_kogo,prozoro_title,director_title,director_title_kogo,
                 director_doc,director_doc_kogo,director_email,buhgalter_fio,buhgalter_phone,buhgalter_email,num_buildings,full_name,short_name,priznak_id,title_form_id,form_1nf_id,vedomstvo_id,
                 title_id,form_id,gosp_struct_type_id,search_name,name_komu,fax,registration_auth,registration_num,registration_date,registration_svidot,l_year,date_l_year,sqr_on_balance,
                 sqr_manufact,sqr_non_manufact,sqr_free_for_rent,sqr_total,sqr_rented,sqr_privat,sqr_given_for_rent,sqr_znyata_z_balansu,sqr_prodaj,sqr_spisani_zneseni,sqr_peredana,num_objects,
@@ -333,7 +333,7 @@ public static class ArchiverSql
                 archive_create_date,archive_create_user)
             SELECT
                 id,master_org_id,last_state,occupation_id,status_id,form_gosp_id,form_ownership_id,gosp_struct_id,organ_id,industry_id,nomer_obj,zkpo_code,addr_distr_old_id,addr_distr_new_id,
-                addr_street_name,addr_street_id,addr_nomer,addr_nomer2,addr_korpus,addr_zip_code,addr_misc,director_fio,director_phone,director_fio_kogo,director_title,director_title_kogo,
+                addr_street_name,addr_street_id,addr_nomer,addr_nomer2,addr_korpus,addr_zip_code,addr_misc,director_fio,director_phone,director_fio_kogo,prozoro_title,director_title,director_title_kogo,
                 director_doc,director_doc_kogo,director_email,buhgalter_fio,buhgalter_phone,buhgalter_email,num_buildings,full_name,short_name,priznak_id,title_form_id,form_1nf_id,vedomstvo_id,
                 title_id,form_id,gosp_struct_type_id,search_name,name_komu,fax,registration_auth,registration_num,registration_date,registration_svidot,l_year,date_l_year,sqr_on_balance,
                 sqr_manufact,sqr_non_manufact,sqr_free_for_rent,sqr_total,sqr_rented,sqr_privat,sqr_given_for_rent,sqr_znyata_z_balansu,sqr_prodaj,sqr_spisani_zneseni,sqr_peredana,num_objects,

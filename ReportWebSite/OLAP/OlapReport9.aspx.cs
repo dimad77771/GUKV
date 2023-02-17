@@ -24,6 +24,7 @@ public partial class Assessment_AssessmentObjects : System.Web.UI.Page
 
 		if (!IsPostBack)
 		{
+			LoadData(WebChartControl_2022, 2022);
 			LoadData(WebChartControl_2021, 2021);
 			LoadData(WebChartControl_2020, 2020);
 			LoadData(WebChartControl_2019, 2019);

@@ -53,6 +53,39 @@
 
 	<tr>
 		<td>
+<dx:WebChartControl ID="WebChartControl_2022" runat="server" Height="500px"
+        Width="1500px" ClientInstanceName="chart"
+        CrosshairEnabled="False" ToolTipEnabled="true" RenderFormat="Svg">
+
+        <Titles>
+            <dx:ChartTitle Text="Заборгованість по орендній платі (10 найбільших боржників) за 2022 рік" Font="Tahoma, 14pt"></dx:ChartTitle>
+        </Titles>
+		
+        <DiagramSerializable>
+            <dx:XYDiagram Rotated="True">
+                <AxisX VisibleInPanesSerializable="-1">
+                </AxisX>
+                <AxisY Title-Text="млн." Title-Visibility="True" VisibleInPanesSerializable="-1">
+                    <Label TextPattern="{V:0}"/>
+                    <GridLines MinorVisible="True"></GridLines>
+                </AxisY>
+                <defaultpane>
+                    <stackedbartotallabel textpattern="всього {TV:0.0}" visible="true">
+                    </stackedbartotallabel>
+                </defaultpane>
+            </dx:XYDiagram>
+        </DiagramSerializable>
+
+		<Legend AlignmentHorizontal="Right"  />
+
+    </dx:WebChartControl>
+
+		</td>
+
+	</tr>
+
+	<tr>
+		<td>
 <dx:WebChartControl ID="WebChartControl_2021" runat="server" Height="500px"
         Width="1500px" ClientInstanceName="chart"
         CrosshairEnabled="False" ToolTipEnabled="true" RenderFormat="Svg">
@@ -83,8 +116,6 @@
 		</td>
 
 	</tr>
-
-
 
 	<tr>
 		<td>

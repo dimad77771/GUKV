@@ -163,18 +163,18 @@
 //concat((select Q.name from dict_streets Q where Q.id = D.addr_street_id), ', ', D.addr_nomer) as v48,
 //D.phys_addr_zip_code as v49, 
 //D.director_email v53,
-//(select Q.namf from zzzzz_director_title Q where Q.fio = D.director_title) v50,
-//(select Q.nami from zzzzz_director_title Q where Q.fio = D.director_title) v51,
-//(select Q.namo from zzzzz_director_title Q where Q.fio = D.director_title) v52,
-//(select Q.tel from zzzzz_director_title Q where Q.fio = D.director_title) v54,
+//(select Q.namf from zzzzz_director_title Q where Q.fio = D.prozoro_title) v50,
+//(select Q.nami from zzzzz_director_title Q where Q.fio = D.prozoro_title) v51,
+//(select Q.namo from zzzzz_director_title Q where Q.fio = D.prozoro_title) v52,
+//(select Q.tel from zzzzz_director_title Q where Q.fio = D.prozoro_title) v54,
 
 
 //----------
 //--(select Q.name from dict_org_old_organ Q where Q.id = B.old_organ_id) as v43,
-//(select Q.namf from zzzzz_director_title Q where Q.fio = B.director_title) v35,
-//(select Q.nami from zzzzz_director_title Q where Q.fio = B.director_title) v36,
-//(select Q.namo from zzzzz_director_title Q where Q.fio = B.director_title) v37,
-//(select Q.tel from zzzzz_director_title Q where Q.fio = B.director_title) v39,
+//(select Q.namf from zzzzz_director_title Q where Q.fio = B.prozoro_title) v35,
+//(select Q.nami from zzzzz_director_title Q where Q.fio = B.prozoro_title) v36,
+//(select Q.namo from zzzzz_director_title Q where Q.fio = B.prozoro_title) v37,
+//(select Q.tel from zzzzz_director_title Q where Q.fio = B.prozoro_title) v39,
 //concat((select Q.name from dict_streets Q where Q.id = B.addr_street_id), ', ', B.addr_nomer) as v33,
 //B.phys_addr_zip_code as v34, 
 //B.buhgalter_email as v38,
@@ -185,10 +185,10 @@
 //T.zkpo_code v2,
 //T.full_name v3,
 //T.director_email v13,
-//(select Q.namf from zzzzz_director_title Q where Q.fio = T.director_title) v10,
-//(select Q.nami from zzzzz_director_title Q where Q.fio = T.director_title) v11,
-//(select Q.namo from zzzzz_director_title Q where Q.fio = T.director_title) v12,
-//(select Q.tel from zzzzz_director_title Q where Q.fio = T.director_title) v14
+//(select Q.namf from zzzzz_director_title Q where Q.fio = T.prozoro_title) v10,
+//(select Q.nami from zzzzz_director_title Q where Q.fio = T.prozoro_title) v11,
+//(select Q.namo from zzzzz_director_title Q where Q.fio = T.prozoro_title) v12,
+//(select Q.tel from zzzzz_director_title Q where Q.fio = T.prozoro_title) v14
 //--into zzzzzz20221202z
 //from
 //--(select * from view_arenda Q) H -- where Q.arenda_id = 78483) H

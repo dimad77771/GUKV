@@ -75,7 +75,7 @@ public partial class Assessment_AssessmentObjects : System.Web.UI.Page
 		//FullStackedBarChart.Dock = DockStyle.Fill;
 
 		int yy1 = 2017;
-		int yy2 = 2021;
+		int yy2 = 2022;
 		for (int yy = yy1; yy <= yy2; yy++)
 		{
 			var sql = @"select
