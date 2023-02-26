@@ -33,7 +33,7 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceArendaCardProperties" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT TOP 1 * FROM m_view_arenda WHERE arenda_id = @arid">
+    SelectCommand="SELECT TOP 1 * FROM view_arenda WHERE arenda_id = @arid">
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="arid" />
     </SelectParameters>
