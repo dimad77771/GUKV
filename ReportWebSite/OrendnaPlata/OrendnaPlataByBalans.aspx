@@ -67,7 +67,7 @@
     </Items>
 </dx:ASPxMenu>
 
-<mini:ProfiledSqlDataSource ID="SqlDataSourceRentByBalansOrg" runat="server" EnableCaching="true"
+<mini:ProfiledSqlDataSource ID="SqlDataSourceRentByBalansOrg" runat="server" EnableCaching="false"
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="select * from
         (SELECT 
@@ -333,7 +333,7 @@
     </SelectParameters>
 </mini:ProfiledSqlDataSource>
 
-<mini:ProfiledSqlDataSource ID="SqlDataSourceRentPeriods" runat="server" EnableCaching="true"
+<mini:ProfiledSqlDataSource ID="SqlDataSourceRentPeriods" runat="server" EnableCaching="false"
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT id, name FROM dict_rent_period">
 </mini:ProfiledSqlDataSource>

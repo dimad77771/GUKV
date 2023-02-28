@@ -3508,8 +3508,8 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         for (var r = 0; r < GridViewNotes.VisibleRowCount; r++)
         {
             var grow = (object[])GridViewNotes.GetRowValues(r, "cost_agreement", "cost_narah");
-            var cost_agreement = (decimal?)grow[0];
-            var cost_narah = (decimal?)grow[1];
+            var cost_agreement = GetDecimalValue(grow[0]);
+            var cost_narah = GetDecimalValue(grow[1]);
             //pay_in_month += (cost_agreement ?? 0M) * (cost_narah ?? 0M) / 100.0M;
             pay_in_month += (cost_agreement ?? 0M);
         }
@@ -3540,6 +3540,18 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         }
         
 
+    }
+
+    decimal? GetDecimalValue(object arg)
+    {
+        if (arg is DBNull)
+        {
+            return null;
+        }
+        else
+        {
+            return (decimal)arg;
+        }
     }
 }
 

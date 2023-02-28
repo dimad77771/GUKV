@@ -32,7 +32,7 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 
 		if (Roles.IsUserInRole(Utils.RDAControllerRole))
 		{
-			SectionMenuForRDARole.Visible = true;
+			//SectionMenuForRDARole.Visible = true;
 		}
 
 		//FreeSquareGridView.SettingsEditing.Mode = GridViewEditingMode.Inline;
