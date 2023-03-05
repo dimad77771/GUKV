@@ -1712,7 +1712,7 @@ WHERE id = @id"
 </dx:ASPxMenu>
 
 <p style="font-size: 1.4em; margin: 0 0 0 0; padding: 0 0 0 0; border-bottom: 1px solid #D0D0D0;">
-    <asp:Label runat="server" ID="ASPxLabel19" Text="Картка договору передачі в оренду вільного приміщення" CssClass="pagetitle"/>
+    <asp:Label runat="server" ID="ASPxLabel19" Text="Картка договору передачі в оренду" CssClass="pagetitle"/>
 </p>
 
 <dx:ASPxCallbackPanel ID="CPMainPanel" ClientInstanceName="CPMainPanel" runat="server" OnCallback="CPMainPanel_Callback">
@@ -4183,7 +4183,7 @@ WHERE id = @id"
                     <dx:GridViewCommandColumnCustomButton ID="btnPdfBuild" Text="Pdf"> 
 						<Image Url="~/Styles/PdfReportIcon.png"> </Image>
                     </dx:GridViewCommandColumnCustomButton>
-                    <dx:GridViewCommandColumnCustomButton ID="btnFreeCycle" Text="Картка процесу передачі в оренду вільного приміщення" Visibility="Invisible"> 
+                    <dx:GridViewCommandColumnCustomButton ID="btnFreeCycle" Text="Картка процесу передачі в оренду" Visibility="Invisible"> 
 						<Image Url="~/Styles/ReportDocument18.png"> </Image>
                     </dx:GridViewCommandColumnCustomButton>
                 </CustomButtons>

@@ -52,7 +52,7 @@ where org_id = @org_id and period_id=@period_id"
     </UpdateParameters>
 </mini:ProfiledSqlDataSource>
 
-<mini:ProfiledSqlDataSource ID="SqlDataSourceRentPeriods" runat="server" EnableCaching="true"
+<mini:ProfiledSqlDataSource ID="SqlDataSourceRentPeriods" runat="server" EnableCaching="false"
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT id, name FROM dict_rent_period order by id">
 </mini:ProfiledSqlDataSource>
