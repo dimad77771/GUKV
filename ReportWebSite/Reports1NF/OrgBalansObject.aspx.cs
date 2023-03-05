@@ -2032,7 +2032,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
                             // id, arenda_id, doc_num, doc_date, doc_dodatok, doc_punkt, purpose_str, rent_square, pidstava
 
                             values[2] = comboPidstavaStructEdinich.Text.Trim();
-                            values[3] = Utils.ConvertStrToInt(editPidstavaKolvoOsob.Text);
+                            values[3] = Utils.ConvertStrToDecimal(editPidstavaKolvoOsob.Text);
                             values[4] = Utils.ConvertStrToDecimal(editPidstavaRentSquare.Text);
 
 
@@ -2092,7 +2092,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
                     parameters.Add("structedinich", values[2]);
                 }
 
-                if (values[3] is int)
+                if (values[3] is decimal)
                 {
                     fieldList += ", kolvo_osob";
                     paramList += ", @kolvoosob";

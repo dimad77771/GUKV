@@ -94,6 +94,16 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
         }
 
 		SectionMenu.Visible = (Utils.GetLastReportId() <= 0);
+
+        if (Roles.IsUserInRole(Utils.RDAControllerRole))
+        {
+            var labels = new[] { ASPxLabel5, ASPxLabel3, ASPxLabel4, ASPxLabel6, ASPxLabel7 };
+            foreach(var label in labels)
+            {
+                label.Text = label.Text.Replace("Перегляд та редагування", "Перегляд");
+            }
+            
+        }
     }
 
     protected void SqlDataSourceReport_Selecting(object sender, SqlDataSourceSelectingEventArgs e)

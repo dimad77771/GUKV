@@ -110,7 +110,15 @@ public partial class NoHeader : System.Web.UI.MasterPage
 				mitem.Visible = false;
 			}
 		}
-	}
+
+        if (userIsRdaController)
+        {
+            var menu = MainRibbon.Tabs.Single(q => q.Text == "Контроль використання");
+            var smenu = menu.Groups[0].Items.Single(q => q.Text == "Надходження до бюджету");
+            smenu.Visible = false;
+        }
+
+    }
 
 	RibbonTab MainMenuTab(string text)
 	{

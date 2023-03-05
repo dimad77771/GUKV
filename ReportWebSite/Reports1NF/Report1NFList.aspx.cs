@@ -52,7 +52,7 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 
 		if (Roles.IsUserInRole(Utils.RDAControllerRole))
 		{
-			SectionMenuForRDARole.Visible = true;
+			//SectionMenuForRDARole.Visible = true;
 		}
 
         if (Roles.IsUserInRole(Utils.MISTOControllerRole))
@@ -72,6 +72,13 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
             var commandColumn = PrimaryGridView.Columns.OfType<GridViewCommandColumn>().Single();
             commandColumn.ShowEditButton = false;
         }
+		else if (Roles.IsUserInRole(Utils.RDAControllerRole))
+		{
+			SectionMenu.Visible = false;
+			var commandColumn = PrimaryGridView.Columns.OfType<GridViewCommandColumn>().Single();
+			commandColumn.ShowEditButton = false;
+		}
+
 
 		PrimaryGridView.Settings.VerticalScrollBarMode = DevExpress.Web.ScrollBarMode.Visible;
 		PrimaryGridView.SettingsEditing.Mode = GridViewEditingMode.Inline;
