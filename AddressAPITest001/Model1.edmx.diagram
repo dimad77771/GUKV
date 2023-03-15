@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f150f59f094742c0886b7d697da49ad6" Name="Diagram1" ZoomLevel="100">
+        <EntityTypeShape EntityType="GUKVModel.adresesUrbio_address" Width="1.5" PointX="5.75" PointY="3.75" />
+        <EntityTypeShape EntityType="GUKVModel.adresesUrbio_address_geolocation" Width="1.5" PointX="8" PointY="1.5" />
+        <EntityTypeShape EntityType="GUKVModel.adresesUrbio_address_history" Width="1.5" PointX="8" PointY="4.125" />
+        <EntityTypeShape EntityType="GUKVModel.adresesUrbio_address_incorrect" Width="1.5" PointX="8" PointY="9.375" />
+        <EntityTypeShape EntityType="GUKVModel.adresesUrbio_street" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="GUKVModel.adresesUrbio_street_district" Width="1.5" PointX="3" PointY="10.75" />
+        <EntityTypeShape EntityType="GUKVModel.adresesUrbio_street_geolocation" Width="1.5" PointX="3" PointY="1.375" />
+        <EntityTypeShape EntityType="GUKVModel.adresesUrbio_street_history" Width="1.5" PointX="3" PointY="4.125" />
+        <EntityTypeShape EntityType="GUKVModel.adresesUrbio_street_incorrect" Width="1.5" PointX="3" PointY="7.5" />
+        <AssociationConnector Association="GUKVModel.FK__adresesUr__addre__758065D9" />
+        <AssociationConnector Association="GUKVModel.FK__adresesUr__addre__785CD284" />
+        <AssociationConnector Association="GUKVModel.FK__adresesUr__addre__7B393F2F" />
+        <AssociationConnector Association="GUKVModel.FK__adresesUr__stree__68266ABB" />
+        <AssociationConnector Association="GUKVModel.FK__adresesUr__stree__6B02D766" />
+        <AssociationConnector Association="GUKVModel.FK__adresesUr__stree__6DDF4411" />
+        <AssociationConnector Association="GUKVModel.FK__adresesUr__stree__70BBB0BC" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

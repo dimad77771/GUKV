@@ -1,0 +1,807 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GUKVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="adresesUrbio_address">
+          <Key>
+            <PropertyRef Name="address_id" />
+          </Key>
+          <Property Name="address_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="fullName" Type="varchar" MaxLength="1000" />
+          <Property Name="shortName" Type="varchar" MaxLength="1000" />
+          <Property Name="fullToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="shortToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="isToponymBeforeName" Type="bit" Nullable="false" />
+          <Property Name="secondLevel_fullName" Type="varchar" MaxLength="1000" />
+          <Property Name="secondLevel_shortName" Type="varchar" MaxLength="1000" />
+          <Property Name="secondLevel_fullToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="secondLevel_shortToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="secondLevel_isToponymBeforeName" Type="bit" Nullable="false" />
+          <Property Name="thirdLevel_fullName" Type="varchar" MaxLength="1000" />
+          <Property Name="thirdLevel_shortName" Type="varchar" MaxLength="1000" />
+          <Property Name="thirdLevel_fullToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="thirdLevel_shortToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="thirdLevel_isToponymBeforeName" Type="bit" Nullable="false" />
+          <Property Name="category_fullText" Type="varchar" MaxLength="1000" />
+          <Property Name="category_shortText" Type="varchar" MaxLength="1000" />
+          <Property Name="zip" Type="varchar" MaxLength="1000" />
+          <Property Name="street_id" Type="uniqueidentifier" />
+          <Property Name="street_fullName" Type="varchar" MaxLength="1000" />
+          <Property Name="street_shortName" Type="varchar" MaxLength="1000" />
+          <Property Name="street_fullToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="street_shortToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="street_isToponymBeforeName" Type="bit" Nullable="false" />
+          <Property Name="district_id" Type="uniqueidentifier" />
+          <Property Name="district_fullName" Type="varchar" MaxLength="1000" />
+          <Property Name="district_shortName" Type="varchar" MaxLength="1000" />
+          <Property Name="district_fullToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="district_shortToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="district_isToponymBeforeName" Type="bit" Nullable="false" />
+          <Property Name="asString" Type="varchar" MaxLength="1000" />
+          <Property Name="locale" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="adresesUrbio_address_geolocation">
+          <Key>
+            <PropertyRef Name="address_id" />
+            <PropertyRef Name="rownpp" />
+          </Key>
+          <Property Name="address_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="rownpp" Type="int" Nullable="false" />
+          <Property Name="lat" Type="decimal" Precision="38" Scale="15" Nullable="false" />
+          <Property Name="lon" Type="decimal" Precision="38" Scale="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="adresesUrbio_address_history">
+          <Key>
+            <PropertyRef Name="address_id" />
+            <PropertyRef Name="rownpp" />
+          </Key>
+          <Property Name="address_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="rownpp" Type="int" Nullable="false" />
+          <Property Name="fullName" Type="varchar" MaxLength="1000" />
+          <Property Name="shortName" Type="varchar" MaxLength="1000" />
+          <Property Name="fullToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="shortToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="isToponymBeforeName" Type="bit" Nullable="false" />
+          <Property Name="secondLevel_fullName" Type="varchar" MaxLength="1000" />
+          <Property Name="secondLevel_shortName" Type="varchar" MaxLength="1000" />
+          <Property Name="secondLevel_fullToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="secondLevel_shortToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="secondLevel_isToponymBeforeName" Type="bit" Nullable="false" />
+          <Property Name="thirdLevel_fullName" Type="varchar" MaxLength="1000" />
+          <Property Name="thirdLevel_shortName" Type="varchar" MaxLength="1000" />
+          <Property Name="thirdLevel_fullToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="thirdLevel_shortToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="thirdLevel_isToponymBeforeName" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="adresesUrbio_address_incorrect">
+          <Key>
+            <PropertyRef Name="address_id" />
+            <PropertyRef Name="rownpp" />
+          </Key>
+          <Property Name="address_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="rownpp" Type="int" Nullable="false" />
+          <Property Name="fullName" Type="varchar" MaxLength="1000" />
+          <Property Name="shortName" Type="varchar" MaxLength="1000" />
+          <Property Name="fullToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="shortToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="isToponymBeforeName" Type="bit" Nullable="false" />
+          <Property Name="secondLevel_fullName" Type="varchar" MaxLength="1000" />
+          <Property Name="secondLevel_shortName" Type="varchar" MaxLength="1000" />
+          <Property Name="secondLevel_fullToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="secondLevel_shortToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="secondLevel_isToponymBeforeName" Type="bit" Nullable="false" />
+          <Property Name="thirdLevel_fullName" Type="varchar" MaxLength="1000" />
+          <Property Name="thirdLevel_shortName" Type="varchar" MaxLength="1000" />
+          <Property Name="thirdLevel_fullToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="thirdLevel_shortToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="thirdLevel_isToponymBeforeName" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="adresesUrbio_street">
+          <Key>
+            <PropertyRef Name="street_id" />
+          </Key>
+          <Property Name="street_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="fullName" Type="varchar" MaxLength="1000" />
+          <Property Name="shortName" Type="varchar" MaxLength="1000" />
+          <Property Name="fullToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="shortToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="isToponymBeforeName" Type="bit" Nullable="false" />
+          <Property Name="cadastreCode" Type="varchar" MaxLength="1000" />
+          <Property Name="uniqueMarker_fullText" Type="varchar" MaxLength="1000" />
+          <Property Name="uniqueMarker_shortText" Type="varchar" MaxLength="1000" />
+          <Property Name="locality_id" Type="uniqueidentifier" />
+          <Property Name="locality_fullName" Type="varchar" MaxLength="1000" />
+          <Property Name="locality_shortName" Type="varchar" MaxLength="1000" />
+          <Property Name="locality_fullToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="locality_shortToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="locality_isToponymBeforeName" Type="bit" Nullable="false" />
+          <Property Name="description_fullText" Type="varchar" MaxLength="1000" />
+          <Property Name="description_shortText" Type="varchar" MaxLength="1000" />
+          <Property Name="asString" Type="varchar" MaxLength="1000" />
+          <Property Name="locale" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="adresesUrbio_street_district">
+          <Key>
+            <PropertyRef Name="street_id" />
+            <PropertyRef Name="rownpp" />
+          </Key>
+          <Property Name="street_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="rownpp" Type="int" Nullable="false" />
+          <Property Name="district_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="fullName" Type="varchar" MaxLength="1000" />
+          <Property Name="shortName" Type="varchar" MaxLength="1000" />
+          <Property Name="fullToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="shortToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="isToponymBeforeName" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="adresesUrbio_street_geolocation">
+          <Key>
+            <PropertyRef Name="street_id" />
+            <PropertyRef Name="rownpp" />
+          </Key>
+          <Property Name="street_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="rownpp" Type="int" Nullable="false" />
+          <Property Name="lat" Type="decimal" Precision="38" Scale="15" Nullable="false" />
+          <Property Name="lon" Type="decimal" Precision="38" Scale="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="adresesUrbio_street_history">
+          <Key>
+            <PropertyRef Name="street_id" />
+            <PropertyRef Name="rownpp" />
+          </Key>
+          <Property Name="street_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="rownpp" Type="int" Nullable="false" />
+          <Property Name="fullName" Type="varchar" MaxLength="1000" />
+          <Property Name="shortName" Type="varchar" MaxLength="1000" />
+          <Property Name="fullToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="shortToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="isToponymBeforeName" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="adresesUrbio_street_incorrect">
+          <Key>
+            <PropertyRef Name="street_id" />
+            <PropertyRef Name="rownpp" />
+          </Key>
+          <Property Name="street_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="rownpp" Type="int" Nullable="false" />
+          <Property Name="fullName" Type="varchar" MaxLength="1000" />
+          <Property Name="shortName" Type="varchar" MaxLength="1000" />
+          <Property Name="fullToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="shortToponym" Type="varchar" MaxLength="1000" />
+          <Property Name="isToponymBeforeName" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__adresesUr__addre__758065D9">
+          <End Role="adresesUrbio_address" Type="Self.adresesUrbio_address" Multiplicity="1" />
+          <End Role="adresesUrbio_address_geolocation" Type="Self.adresesUrbio_address_geolocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adresesUrbio_address">
+              <PropertyRef Name="address_id" />
+            </Principal>
+            <Dependent Role="adresesUrbio_address_geolocation">
+              <PropertyRef Name="address_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__adresesUr__addre__785CD284">
+          <End Role="adresesUrbio_address" Type="Self.adresesUrbio_address" Multiplicity="1" />
+          <End Role="adresesUrbio_address_history" Type="Self.adresesUrbio_address_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adresesUrbio_address">
+              <PropertyRef Name="address_id" />
+            </Principal>
+            <Dependent Role="adresesUrbio_address_history">
+              <PropertyRef Name="address_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__adresesUr__addre__7B393F2F">
+          <End Role="adresesUrbio_address" Type="Self.adresesUrbio_address" Multiplicity="1" />
+          <End Role="adresesUrbio_address_incorrect" Type="Self.adresesUrbio_address_incorrect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adresesUrbio_address">
+              <PropertyRef Name="address_id" />
+            </Principal>
+            <Dependent Role="adresesUrbio_address_incorrect">
+              <PropertyRef Name="address_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__adresesUr__stree__68266ABB">
+          <End Role="adresesUrbio_street" Type="Self.adresesUrbio_street" Multiplicity="1" />
+          <End Role="adresesUrbio_street_geolocation" Type="Self.adresesUrbio_street_geolocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adresesUrbio_street">
+              <PropertyRef Name="street_id" />
+            </Principal>
+            <Dependent Role="adresesUrbio_street_geolocation">
+              <PropertyRef Name="street_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__adresesUr__stree__6B02D766">
+          <End Role="adresesUrbio_street" Type="Self.adresesUrbio_street" Multiplicity="1" />
+          <End Role="adresesUrbio_street_history" Type="Self.adresesUrbio_street_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adresesUrbio_street">
+              <PropertyRef Name="street_id" />
+            </Principal>
+            <Dependent Role="adresesUrbio_street_history">
+              <PropertyRef Name="street_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__adresesUr__stree__6DDF4411">
+          <End Role="adresesUrbio_street" Type="Self.adresesUrbio_street" Multiplicity="1" />
+          <End Role="adresesUrbio_street_incorrect" Type="Self.adresesUrbio_street_incorrect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adresesUrbio_street">
+              <PropertyRef Name="street_id" />
+            </Principal>
+            <Dependent Role="adresesUrbio_street_incorrect">
+              <PropertyRef Name="street_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__adresesUr__stree__70BBB0BC">
+          <End Role="adresesUrbio_street" Type="Self.adresesUrbio_street" Multiplicity="1" />
+          <End Role="adresesUrbio_street_district" Type="Self.adresesUrbio_street_district" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adresesUrbio_street">
+              <PropertyRef Name="street_id" />
+            </Principal>
+            <Dependent Role="adresesUrbio_street_district">
+              <PropertyRef Name="street_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GUKVModelStoreContainer">
+          <EntitySet Name="adresesUrbio_address" EntityType="Self.adresesUrbio_address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="adresesUrbio_address_geolocation" EntityType="Self.adresesUrbio_address_geolocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="adresesUrbio_address_history" EntityType="Self.adresesUrbio_address_history" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="adresesUrbio_address_incorrect" EntityType="Self.adresesUrbio_address_incorrect" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="adresesUrbio_street" EntityType="Self.adresesUrbio_street" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="adresesUrbio_street_district" EntityType="Self.adresesUrbio_street_district" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="adresesUrbio_street_geolocation" EntityType="Self.adresesUrbio_street_geolocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="adresesUrbio_street_history" EntityType="Self.adresesUrbio_street_history" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="adresesUrbio_street_incorrect" EntityType="Self.adresesUrbio_street_incorrect" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__adresesUr__addre__758065D9" Association="Self.FK__adresesUr__addre__758065D9">
+            <End Role="adresesUrbio_address" EntitySet="adresesUrbio_address" />
+            <End Role="adresesUrbio_address_geolocation" EntitySet="adresesUrbio_address_geolocation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__adresesUr__addre__785CD284" Association="Self.FK__adresesUr__addre__785CD284">
+            <End Role="adresesUrbio_address" EntitySet="adresesUrbio_address" />
+            <End Role="adresesUrbio_address_history" EntitySet="adresesUrbio_address_history" />
+          </AssociationSet>
+          <AssociationSet Name="FK__adresesUr__addre__7B393F2F" Association="Self.FK__adresesUr__addre__7B393F2F">
+            <End Role="adresesUrbio_address" EntitySet="adresesUrbio_address" />
+            <End Role="adresesUrbio_address_incorrect" EntitySet="adresesUrbio_address_incorrect" />
+          </AssociationSet>
+          <AssociationSet Name="FK__adresesUr__stree__68266ABB" Association="Self.FK__adresesUr__stree__68266ABB">
+            <End Role="adresesUrbio_street" EntitySet="adresesUrbio_street" />
+            <End Role="adresesUrbio_street_geolocation" EntitySet="adresesUrbio_street_geolocation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__adresesUr__stree__6B02D766" Association="Self.FK__adresesUr__stree__6B02D766">
+            <End Role="adresesUrbio_street" EntitySet="adresesUrbio_street" />
+            <End Role="adresesUrbio_street_history" EntitySet="adresesUrbio_street_history" />
+          </AssociationSet>
+          <AssociationSet Name="FK__adresesUr__stree__6DDF4411" Association="Self.FK__adresesUr__stree__6DDF4411">
+            <End Role="adresesUrbio_street" EntitySet="adresesUrbio_street" />
+            <End Role="adresesUrbio_street_incorrect" EntitySet="adresesUrbio_street_incorrect" />
+          </AssociationSet>
+          <AssociationSet Name="FK__adresesUr__stree__70BBB0BC" Association="Self.FK__adresesUr__stree__70BBB0BC">
+            <End Role="adresesUrbio_street" EntitySet="adresesUrbio_street" />
+            <End Role="adresesUrbio_street_district" EntitySet="adresesUrbio_street_district" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GUKVModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="GUKVEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="adresesUrbio_address" EntityType="GUKVModel.adresesUrbio_address" />
+          <EntitySet Name="adresesUrbio_address_geolocation" EntityType="GUKVModel.adresesUrbio_address_geolocation" />
+          <EntitySet Name="adresesUrbio_address_history" EntityType="GUKVModel.adresesUrbio_address_history" />
+          <EntitySet Name="adresesUrbio_address_incorrect" EntityType="GUKVModel.adresesUrbio_address_incorrect" />
+          <EntitySet Name="adresesUrbio_street" EntityType="GUKVModel.adresesUrbio_street" />
+          <EntitySet Name="adresesUrbio_street_district" EntityType="GUKVModel.adresesUrbio_street_district" />
+          <EntitySet Name="adresesUrbio_street_geolocation" EntityType="GUKVModel.adresesUrbio_street_geolocation" />
+          <EntitySet Name="adresesUrbio_street_history" EntityType="GUKVModel.adresesUrbio_street_history" />
+          <EntitySet Name="adresesUrbio_street_incorrect" EntityType="GUKVModel.adresesUrbio_street_incorrect" />
+          <AssociationSet Name="FK__adresesUr__addre__758065D9" Association="GUKVModel.FK__adresesUr__addre__758065D9">
+            <End Role="adresesUrbio_address" EntitySet="adresesUrbio_address" />
+            <End Role="adresesUrbio_address_geolocation" EntitySet="adresesUrbio_address_geolocation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__adresesUr__addre__785CD284" Association="GUKVModel.FK__adresesUr__addre__785CD284">
+            <End Role="adresesUrbio_address" EntitySet="adresesUrbio_address" />
+            <End Role="adresesUrbio_address_history" EntitySet="adresesUrbio_address_history" />
+          </AssociationSet>
+          <AssociationSet Name="FK__adresesUr__addre__7B393F2F" Association="GUKVModel.FK__adresesUr__addre__7B393F2F">
+            <End Role="adresesUrbio_address" EntitySet="adresesUrbio_address" />
+            <End Role="adresesUrbio_address_incorrect" EntitySet="adresesUrbio_address_incorrect" />
+          </AssociationSet>
+          <AssociationSet Name="FK__adresesUr__stree__68266ABB" Association="GUKVModel.FK__adresesUr__stree__68266ABB">
+            <End Role="adresesUrbio_street" EntitySet="adresesUrbio_street" />
+            <End Role="adresesUrbio_street_geolocation" EntitySet="adresesUrbio_street_geolocation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__adresesUr__stree__6B02D766" Association="GUKVModel.FK__adresesUr__stree__6B02D766">
+            <End Role="adresesUrbio_street" EntitySet="adresesUrbio_street" />
+            <End Role="adresesUrbio_street_history" EntitySet="adresesUrbio_street_history" />
+          </AssociationSet>
+          <AssociationSet Name="FK__adresesUr__stree__6DDF4411" Association="GUKVModel.FK__adresesUr__stree__6DDF4411">
+            <End Role="adresesUrbio_street" EntitySet="adresesUrbio_street" />
+            <End Role="adresesUrbio_street_incorrect" EntitySet="adresesUrbio_street_incorrect" />
+          </AssociationSet>
+          <AssociationSet Name="FK__adresesUr__stree__70BBB0BC" Association="GUKVModel.FK__adresesUr__stree__70BBB0BC">
+            <End Role="adresesUrbio_street" EntitySet="adresesUrbio_street" />
+            <End Role="adresesUrbio_street_district" EntitySet="adresesUrbio_street_district" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="adresesUrbio_address">
+          <Key>
+            <PropertyRef Name="address_id" />
+          </Key>
+          <Property Name="address_id" Type="Guid" Nullable="false" />
+          <Property Name="fullName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="shortName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="fullToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="shortToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="isToponymBeforeName" Type="Boolean" Nullable="false" />
+          <Property Name="secondLevel_fullName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="secondLevel_shortName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="secondLevel_fullToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="secondLevel_shortToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="secondLevel_isToponymBeforeName" Type="Boolean" Nullable="false" />
+          <Property Name="thirdLevel_fullName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="thirdLevel_shortName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="thirdLevel_fullToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="thirdLevel_shortToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="thirdLevel_isToponymBeforeName" Type="Boolean" Nullable="false" />
+          <Property Name="category_fullText" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="category_shortText" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="zip" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="street_id" Type="Guid" />
+          <Property Name="street_fullName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="street_shortName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="street_fullToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="street_shortToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="street_isToponymBeforeName" Type="Boolean" Nullable="false" />
+          <Property Name="district_id" Type="Guid" />
+          <Property Name="district_fullName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="district_shortName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="district_fullToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="district_shortToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="district_isToponymBeforeName" Type="Boolean" Nullable="false" />
+          <Property Name="asString" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="locale" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="adresesUrbio_address_geolocation" Relationship="GUKVModel.FK__adresesUr__addre__758065D9" FromRole="adresesUrbio_address" ToRole="adresesUrbio_address_geolocation" />
+          <NavigationProperty Name="adresesUrbio_address_history" Relationship="GUKVModel.FK__adresesUr__addre__785CD284" FromRole="adresesUrbio_address" ToRole="adresesUrbio_address_history" />
+          <NavigationProperty Name="adresesUrbio_address_incorrect" Relationship="GUKVModel.FK__adresesUr__addre__7B393F2F" FromRole="adresesUrbio_address" ToRole="adresesUrbio_address_incorrect" />
+        </EntityType>
+        <EntityType Name="adresesUrbio_address_geolocation">
+          <Key>
+            <PropertyRef Name="address_id" />
+            <PropertyRef Name="rownpp" />
+          </Key>
+          <Property Name="address_id" Type="Guid" Nullable="false" />
+          <Property Name="rownpp" Type="Int32" Nullable="false" />
+          <Property Name="lat" Type="Decimal" Nullable="false" Precision="38" Scale="15" />
+          <Property Name="lon" Type="Decimal" Nullable="false" Precision="38" Scale="15" />
+          <NavigationProperty Name="adresesUrbio_address" Relationship="GUKVModel.FK__adresesUr__addre__758065D9" FromRole="adresesUrbio_address_geolocation" ToRole="adresesUrbio_address" />
+        </EntityType>
+        <EntityType Name="adresesUrbio_address_history">
+          <Key>
+            <PropertyRef Name="address_id" />
+            <PropertyRef Name="rownpp" />
+          </Key>
+          <Property Name="address_id" Type="Guid" Nullable="false" />
+          <Property Name="rownpp" Type="Int32" Nullable="false" />
+          <Property Name="fullName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="shortName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="fullToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="shortToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="isToponymBeforeName" Type="Boolean" Nullable="false" />
+          <Property Name="secondLevel_fullName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="secondLevel_shortName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="secondLevel_fullToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="secondLevel_shortToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="secondLevel_isToponymBeforeName" Type="Boolean" Nullable="false" />
+          <Property Name="thirdLevel_fullName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="thirdLevel_shortName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="thirdLevel_fullToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="thirdLevel_shortToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="thirdLevel_isToponymBeforeName" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="adresesUrbio_address" Relationship="GUKVModel.FK__adresesUr__addre__785CD284" FromRole="adresesUrbio_address_history" ToRole="adresesUrbio_address" />
+        </EntityType>
+        <EntityType Name="adresesUrbio_address_incorrect">
+          <Key>
+            <PropertyRef Name="address_id" />
+            <PropertyRef Name="rownpp" />
+          </Key>
+          <Property Name="address_id" Type="Guid" Nullable="false" />
+          <Property Name="rownpp" Type="Int32" Nullable="false" />
+          <Property Name="fullName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="shortName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="fullToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="shortToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="isToponymBeforeName" Type="Boolean" Nullable="false" />
+          <Property Name="secondLevel_fullName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="secondLevel_shortName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="secondLevel_fullToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="secondLevel_shortToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="secondLevel_isToponymBeforeName" Type="Boolean" Nullable="false" />
+          <Property Name="thirdLevel_fullName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="thirdLevel_shortName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="thirdLevel_fullToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="thirdLevel_shortToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="thirdLevel_isToponymBeforeName" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="adresesUrbio_address" Relationship="GUKVModel.FK__adresesUr__addre__7B393F2F" FromRole="adresesUrbio_address_incorrect" ToRole="adresesUrbio_address" />
+        </EntityType>
+        <EntityType Name="adresesUrbio_street">
+          <Key>
+            <PropertyRef Name="street_id" />
+          </Key>
+          <Property Name="street_id" Type="Guid" Nullable="false" />
+          <Property Name="fullName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="shortName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="fullToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="shortToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="isToponymBeforeName" Type="Boolean" Nullable="false" />
+          <Property Name="cadastreCode" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="uniqueMarker_fullText" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="uniqueMarker_shortText" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="locality_id" Type="Guid" />
+          <Property Name="locality_fullName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="locality_shortName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="locality_fullToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="locality_shortToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="locality_isToponymBeforeName" Type="Boolean" Nullable="false" />
+          <Property Name="description_fullText" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="description_shortText" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="asString" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="locale" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="adresesUrbio_street_geolocation" Relationship="GUKVModel.FK__adresesUr__stree__68266ABB" FromRole="adresesUrbio_street" ToRole="adresesUrbio_street_geolocation" />
+          <NavigationProperty Name="adresesUrbio_street_history" Relationship="GUKVModel.FK__adresesUr__stree__6B02D766" FromRole="adresesUrbio_street" ToRole="adresesUrbio_street_history" />
+          <NavigationProperty Name="adresesUrbio_street_incorrect" Relationship="GUKVModel.FK__adresesUr__stree__6DDF4411" FromRole="adresesUrbio_street" ToRole="adresesUrbio_street_incorrect" />
+          <NavigationProperty Name="adresesUrbio_street_district" Relationship="GUKVModel.FK__adresesUr__stree__70BBB0BC" FromRole="adresesUrbio_street" ToRole="adresesUrbio_street_district" />
+        </EntityType>
+        <EntityType Name="adresesUrbio_street_district">
+          <Key>
+            <PropertyRef Name="street_id" />
+            <PropertyRef Name="rownpp" />
+          </Key>
+          <Property Name="street_id" Type="Guid" Nullable="false" />
+          <Property Name="rownpp" Type="Int32" Nullable="false" />
+          <Property Name="district_id" Type="Guid" Nullable="false" />
+          <Property Name="fullName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="shortName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="fullToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="shortToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="isToponymBeforeName" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="adresesUrbio_street" Relationship="GUKVModel.FK__adresesUr__stree__70BBB0BC" FromRole="adresesUrbio_street_district" ToRole="adresesUrbio_street" />
+        </EntityType>
+        <EntityType Name="adresesUrbio_street_geolocation">
+          <Key>
+            <PropertyRef Name="street_id" />
+            <PropertyRef Name="rownpp" />
+          </Key>
+          <Property Name="street_id" Type="Guid" Nullable="false" />
+          <Property Name="rownpp" Type="Int32" Nullable="false" />
+          <Property Name="lat" Type="Decimal" Nullable="false" Precision="38" Scale="15" />
+          <Property Name="lon" Type="Decimal" Nullable="false" Precision="38" Scale="15" />
+          <NavigationProperty Name="adresesUrbio_street" Relationship="GUKVModel.FK__adresesUr__stree__68266ABB" FromRole="adresesUrbio_street_geolocation" ToRole="adresesUrbio_street" />
+        </EntityType>
+        <EntityType Name="adresesUrbio_street_history">
+          <Key>
+            <PropertyRef Name="street_id" />
+            <PropertyRef Name="rownpp" />
+          </Key>
+          <Property Name="street_id" Type="Guid" Nullable="false" />
+          <Property Name="rownpp" Type="Int32" Nullable="false" />
+          <Property Name="fullName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="shortName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="fullToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="shortToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="isToponymBeforeName" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="adresesUrbio_street" Relationship="GUKVModel.FK__adresesUr__stree__6B02D766" FromRole="adresesUrbio_street_history" ToRole="adresesUrbio_street" />
+        </EntityType>
+        <EntityType Name="adresesUrbio_street_incorrect">
+          <Key>
+            <PropertyRef Name="street_id" />
+            <PropertyRef Name="rownpp" />
+          </Key>
+          <Property Name="street_id" Type="Guid" Nullable="false" />
+          <Property Name="rownpp" Type="Int32" Nullable="false" />
+          <Property Name="fullName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="shortName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="fullToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="shortToponym" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="isToponymBeforeName" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="adresesUrbio_street" Relationship="GUKVModel.FK__adresesUr__stree__6DDF4411" FromRole="adresesUrbio_street_incorrect" ToRole="adresesUrbio_street" />
+        </EntityType>
+        <Association Name="FK__adresesUr__addre__758065D9">
+          <End Type="GUKVModel.adresesUrbio_address" Role="adresesUrbio_address" Multiplicity="1" />
+          <End Type="GUKVModel.adresesUrbio_address_geolocation" Role="adresesUrbio_address_geolocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adresesUrbio_address">
+              <PropertyRef Name="address_id" />
+            </Principal>
+            <Dependent Role="adresesUrbio_address_geolocation">
+              <PropertyRef Name="address_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__adresesUr__addre__785CD284">
+          <End Type="GUKVModel.adresesUrbio_address" Role="adresesUrbio_address" Multiplicity="1" />
+          <End Type="GUKVModel.adresesUrbio_address_history" Role="adresesUrbio_address_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adresesUrbio_address">
+              <PropertyRef Name="address_id" />
+            </Principal>
+            <Dependent Role="adresesUrbio_address_history">
+              <PropertyRef Name="address_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__adresesUr__addre__7B393F2F">
+          <End Type="GUKVModel.adresesUrbio_address" Role="adresesUrbio_address" Multiplicity="1" />
+          <End Type="GUKVModel.adresesUrbio_address_incorrect" Role="adresesUrbio_address_incorrect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adresesUrbio_address">
+              <PropertyRef Name="address_id" />
+            </Principal>
+            <Dependent Role="adresesUrbio_address_incorrect">
+              <PropertyRef Name="address_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__adresesUr__stree__68266ABB">
+          <End Type="GUKVModel.adresesUrbio_street" Role="adresesUrbio_street" Multiplicity="1" />
+          <End Type="GUKVModel.adresesUrbio_street_geolocation" Role="adresesUrbio_street_geolocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adresesUrbio_street">
+              <PropertyRef Name="street_id" />
+            </Principal>
+            <Dependent Role="adresesUrbio_street_geolocation">
+              <PropertyRef Name="street_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__adresesUr__stree__6B02D766">
+          <End Type="GUKVModel.adresesUrbio_street" Role="adresesUrbio_street" Multiplicity="1" />
+          <End Type="GUKVModel.adresesUrbio_street_history" Role="adresesUrbio_street_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adresesUrbio_street">
+              <PropertyRef Name="street_id" />
+            </Principal>
+            <Dependent Role="adresesUrbio_street_history">
+              <PropertyRef Name="street_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__adresesUr__stree__6DDF4411">
+          <End Type="GUKVModel.adresesUrbio_street" Role="adresesUrbio_street" Multiplicity="1" />
+          <End Type="GUKVModel.adresesUrbio_street_incorrect" Role="adresesUrbio_street_incorrect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adresesUrbio_street">
+              <PropertyRef Name="street_id" />
+            </Principal>
+            <Dependent Role="adresesUrbio_street_incorrect">
+              <PropertyRef Name="street_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__adresesUr__stree__70BBB0BC">
+          <End Type="GUKVModel.adresesUrbio_street" Role="adresesUrbio_street" Multiplicity="1" />
+          <End Type="GUKVModel.adresesUrbio_street_district" Role="adresesUrbio_street_district" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adresesUrbio_street">
+              <PropertyRef Name="street_id" />
+            </Principal>
+            <Dependent Role="adresesUrbio_street_district">
+              <PropertyRef Name="street_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GUKVModelStoreContainer" CdmEntityContainer="GUKVEntities">
+          <EntitySetMapping Name="adresesUrbio_address">
+            <EntityTypeMapping TypeName="GUKVModel.adresesUrbio_address">
+              <MappingFragment StoreEntitySet="adresesUrbio_address">
+                <ScalarProperty Name="locale" ColumnName="locale" />
+                <ScalarProperty Name="asString" ColumnName="asString" />
+                <ScalarProperty Name="district_isToponymBeforeName" ColumnName="district_isToponymBeforeName" />
+                <ScalarProperty Name="district_shortToponym" ColumnName="district_shortToponym" />
+                <ScalarProperty Name="district_fullToponym" ColumnName="district_fullToponym" />
+                <ScalarProperty Name="district_shortName" ColumnName="district_shortName" />
+                <ScalarProperty Name="district_fullName" ColumnName="district_fullName" />
+                <ScalarProperty Name="district_id" ColumnName="district_id" />
+                <ScalarProperty Name="street_isToponymBeforeName" ColumnName="street_isToponymBeforeName" />
+                <ScalarProperty Name="street_shortToponym" ColumnName="street_shortToponym" />
+                <ScalarProperty Name="street_fullToponym" ColumnName="street_fullToponym" />
+                <ScalarProperty Name="street_shortName" ColumnName="street_shortName" />
+                <ScalarProperty Name="street_fullName" ColumnName="street_fullName" />
+                <ScalarProperty Name="street_id" ColumnName="street_id" />
+                <ScalarProperty Name="zip" ColumnName="zip" />
+                <ScalarProperty Name="category_shortText" ColumnName="category_shortText" />
+                <ScalarProperty Name="category_fullText" ColumnName="category_fullText" />
+                <ScalarProperty Name="thirdLevel_isToponymBeforeName" ColumnName="thirdLevel_isToponymBeforeName" />
+                <ScalarProperty Name="thirdLevel_shortToponym" ColumnName="thirdLevel_shortToponym" />
+                <ScalarProperty Name="thirdLevel_fullToponym" ColumnName="thirdLevel_fullToponym" />
+                <ScalarProperty Name="thirdLevel_shortName" ColumnName="thirdLevel_shortName" />
+                <ScalarProperty Name="thirdLevel_fullName" ColumnName="thirdLevel_fullName" />
+                <ScalarProperty Name="secondLevel_isToponymBeforeName" ColumnName="secondLevel_isToponymBeforeName" />
+                <ScalarProperty Name="secondLevel_shortToponym" ColumnName="secondLevel_shortToponym" />
+                <ScalarProperty Name="secondLevel_fullToponym" ColumnName="secondLevel_fullToponym" />
+                <ScalarProperty Name="secondLevel_shortName" ColumnName="secondLevel_shortName" />
+                <ScalarProperty Name="secondLevel_fullName" ColumnName="secondLevel_fullName" />
+                <ScalarProperty Name="isToponymBeforeName" ColumnName="isToponymBeforeName" />
+                <ScalarProperty Name="shortToponym" ColumnName="shortToponym" />
+                <ScalarProperty Name="fullToponym" ColumnName="fullToponym" />
+                <ScalarProperty Name="shortName" ColumnName="shortName" />
+                <ScalarProperty Name="fullName" ColumnName="fullName" />
+                <ScalarProperty Name="address_id" ColumnName="address_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adresesUrbio_address_geolocation">
+            <EntityTypeMapping TypeName="GUKVModel.adresesUrbio_address_geolocation">
+              <MappingFragment StoreEntitySet="adresesUrbio_address_geolocation">
+                <ScalarProperty Name="lon" ColumnName="lon" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="rownpp" ColumnName="rownpp" />
+                <ScalarProperty Name="address_id" ColumnName="address_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adresesUrbio_address_history">
+            <EntityTypeMapping TypeName="GUKVModel.adresesUrbio_address_history">
+              <MappingFragment StoreEntitySet="adresesUrbio_address_history">
+                <ScalarProperty Name="thirdLevel_isToponymBeforeName" ColumnName="thirdLevel_isToponymBeforeName" />
+                <ScalarProperty Name="thirdLevel_shortToponym" ColumnName="thirdLevel_shortToponym" />
+                <ScalarProperty Name="thirdLevel_fullToponym" ColumnName="thirdLevel_fullToponym" />
+                <ScalarProperty Name="thirdLevel_shortName" ColumnName="thirdLevel_shortName" />
+                <ScalarProperty Name="thirdLevel_fullName" ColumnName="thirdLevel_fullName" />
+                <ScalarProperty Name="secondLevel_isToponymBeforeName" ColumnName="secondLevel_isToponymBeforeName" />
+                <ScalarProperty Name="secondLevel_shortToponym" ColumnName="secondLevel_shortToponym" />
+                <ScalarProperty Name="secondLevel_fullToponym" ColumnName="secondLevel_fullToponym" />
+                <ScalarProperty Name="secondLevel_shortName" ColumnName="secondLevel_shortName" />
+                <ScalarProperty Name="secondLevel_fullName" ColumnName="secondLevel_fullName" />
+                <ScalarProperty Name="isToponymBeforeName" ColumnName="isToponymBeforeName" />
+                <ScalarProperty Name="shortToponym" ColumnName="shortToponym" />
+                <ScalarProperty Name="fullToponym" ColumnName="fullToponym" />
+                <ScalarProperty Name="shortName" ColumnName="shortName" />
+                <ScalarProperty Name="fullName" ColumnName="fullName" />
+                <ScalarProperty Name="rownpp" ColumnName="rownpp" />
+                <ScalarProperty Name="address_id" ColumnName="address_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adresesUrbio_address_incorrect">
+            <EntityTypeMapping TypeName="GUKVModel.adresesUrbio_address_incorrect">
+              <MappingFragment StoreEntitySet="adresesUrbio_address_incorrect">
+                <ScalarProperty Name="thirdLevel_isToponymBeforeName" ColumnName="thirdLevel_isToponymBeforeName" />
+                <ScalarProperty Name="thirdLevel_shortToponym" ColumnName="thirdLevel_shortToponym" />
+                <ScalarProperty Name="thirdLevel_fullToponym" ColumnName="thirdLevel_fullToponym" />
+                <ScalarProperty Name="thirdLevel_shortName" ColumnName="thirdLevel_shortName" />
+                <ScalarProperty Name="thirdLevel_fullName" ColumnName="thirdLevel_fullName" />
+                <ScalarProperty Name="secondLevel_isToponymBeforeName" ColumnName="secondLevel_isToponymBeforeName" />
+                <ScalarProperty Name="secondLevel_shortToponym" ColumnName="secondLevel_shortToponym" />
+                <ScalarProperty Name="secondLevel_fullToponym" ColumnName="secondLevel_fullToponym" />
+                <ScalarProperty Name="secondLevel_shortName" ColumnName="secondLevel_shortName" />
+                <ScalarProperty Name="secondLevel_fullName" ColumnName="secondLevel_fullName" />
+                <ScalarProperty Name="isToponymBeforeName" ColumnName="isToponymBeforeName" />
+                <ScalarProperty Name="shortToponym" ColumnName="shortToponym" />
+                <ScalarProperty Name="fullToponym" ColumnName="fullToponym" />
+                <ScalarProperty Name="shortName" ColumnName="shortName" />
+                <ScalarProperty Name="fullName" ColumnName="fullName" />
+                <ScalarProperty Name="rownpp" ColumnName="rownpp" />
+                <ScalarProperty Name="address_id" ColumnName="address_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adresesUrbio_street">
+            <EntityTypeMapping TypeName="GUKVModel.adresesUrbio_street">
+              <MappingFragment StoreEntitySet="adresesUrbio_street">
+                <ScalarProperty Name="locale" ColumnName="locale" />
+                <ScalarProperty Name="asString" ColumnName="asString" />
+                <ScalarProperty Name="description_shortText" ColumnName="description_shortText" />
+                <ScalarProperty Name="description_fullText" ColumnName="description_fullText" />
+                <ScalarProperty Name="locality_isToponymBeforeName" ColumnName="locality_isToponymBeforeName" />
+                <ScalarProperty Name="locality_shortToponym" ColumnName="locality_shortToponym" />
+                <ScalarProperty Name="locality_fullToponym" ColumnName="locality_fullToponym" />
+                <ScalarProperty Name="locality_shortName" ColumnName="locality_shortName" />
+                <ScalarProperty Name="locality_fullName" ColumnName="locality_fullName" />
+                <ScalarProperty Name="locality_id" ColumnName="locality_id" />
+                <ScalarProperty Name="uniqueMarker_shortText" ColumnName="uniqueMarker_shortText" />
+                <ScalarProperty Name="uniqueMarker_fullText" ColumnName="uniqueMarker_fullText" />
+                <ScalarProperty Name="cadastreCode" ColumnName="cadastreCode" />
+                <ScalarProperty Name="isToponymBeforeName" ColumnName="isToponymBeforeName" />
+                <ScalarProperty Name="shortToponym" ColumnName="shortToponym" />
+                <ScalarProperty Name="fullToponym" ColumnName="fullToponym" />
+                <ScalarProperty Name="shortName" ColumnName="shortName" />
+                <ScalarProperty Name="fullName" ColumnName="fullName" />
+                <ScalarProperty Name="street_id" ColumnName="street_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adresesUrbio_street_district">
+            <EntityTypeMapping TypeName="GUKVModel.adresesUrbio_street_district">
+              <MappingFragment StoreEntitySet="adresesUrbio_street_district">
+                <ScalarProperty Name="isToponymBeforeName" ColumnName="isToponymBeforeName" />
+                <ScalarProperty Name="shortToponym" ColumnName="shortToponym" />
+                <ScalarProperty Name="fullToponym" ColumnName="fullToponym" />
+                <ScalarProperty Name="shortName" ColumnName="shortName" />
+                <ScalarProperty Name="fullName" ColumnName="fullName" />
+                <ScalarProperty Name="district_id" ColumnName="district_id" />
+                <ScalarProperty Name="rownpp" ColumnName="rownpp" />
+                <ScalarProperty Name="street_id" ColumnName="street_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adresesUrbio_street_geolocation">
+            <EntityTypeMapping TypeName="GUKVModel.adresesUrbio_street_geolocation">
+              <MappingFragment StoreEntitySet="adresesUrbio_street_geolocation">
+                <ScalarProperty Name="lon" ColumnName="lon" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="rownpp" ColumnName="rownpp" />
+                <ScalarProperty Name="street_id" ColumnName="street_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adresesUrbio_street_history">
+            <EntityTypeMapping TypeName="GUKVModel.adresesUrbio_street_history">
+              <MappingFragment StoreEntitySet="adresesUrbio_street_history">
+                <ScalarProperty Name="isToponymBeforeName" ColumnName="isToponymBeforeName" />
+                <ScalarProperty Name="shortToponym" ColumnName="shortToponym" />
+                <ScalarProperty Name="fullToponym" ColumnName="fullToponym" />
+                <ScalarProperty Name="shortName" ColumnName="shortName" />
+                <ScalarProperty Name="fullName" ColumnName="fullName" />
+                <ScalarProperty Name="rownpp" ColumnName="rownpp" />
+                <ScalarProperty Name="street_id" ColumnName="street_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adresesUrbio_street_incorrect">
+            <EntityTypeMapping TypeName="GUKVModel.adresesUrbio_street_incorrect">
+              <MappingFragment StoreEntitySet="adresesUrbio_street_incorrect">
+                <ScalarProperty Name="isToponymBeforeName" ColumnName="isToponymBeforeName" />
+                <ScalarProperty Name="shortToponym" ColumnName="shortToponym" />
+                <ScalarProperty Name="fullToponym" ColumnName="fullToponym" />
+                <ScalarProperty Name="shortName" ColumnName="shortName" />
+                <ScalarProperty Name="fullName" ColumnName="fullName" />
+                <ScalarProperty Name="rownpp" ColumnName="rownpp" />
+                <ScalarProperty Name="street_id" ColumnName="street_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
