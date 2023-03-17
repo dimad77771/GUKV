@@ -149,8 +149,37 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
 		connection.Close();
 	}
 
+    protected void ObjectDataSourceInventarFiles_Inserting(object sender, ObjectDataSourceMethodEventArgs e)
+    {
+        if (Request.Cookies["RecordID"] != null)
+            e.InputParameters["RecordID"] = Request.Cookies["RecordID"].Value;
+    }
 
-	SqlParameter GetSqlParameter(string parameterName, object value)
+    protected void ObjectDataSourceInventarFiles_Inserted(object sender, ObjectDataSourceStatusEventArgs e)
+    {
+        if (e.Exception != null) return;
+
+        var connection = Utils.ConnectToDatabase();
+        var transaction = connection.BeginTransaction();
+        var inventar_recieve_date = DateTime.Today;
+
+        using (var cmd = new SqlCommand(
+            @"update [reports1nf] 
+				set [inventar_recieve_date] = @inventar_recieve_date
+				where [organization_id] = @organization_id", connection, transaction))
+        {
+            cmd.Parameters.Add(GetSqlParameter("inventar_recieve_date", inventar_recieve_date));
+            cmd.Parameters.Add(GetSqlParameter("organization_id", UserOrganizationID));
+            var rowUpdated = cmd.ExecuteNonQuery();
+            if (rowUpdated != 1) throw new Exception("Cabinet update error");
+        }
+
+        transaction.Commit();
+        connection.Close();
+    }
+
+
+    SqlParameter GetSqlParameter(string parameterName, object value)
 	{
 		if (value == null)
 		{

@@ -77,7 +77,9 @@ namespace ExtDataEntry.Models
                 query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [reports1nf_arenda_dogcontinue_photos] WHERE [free_square_id] = @free_square_id";
             if (scope.ToLower() == "reports1nf_report_documents")
 				query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [reports1nf_report_documents] WHERE [report_id] = @free_square_id";
-			if (scope.ToLower() == "free_square_current_stage_documents")
+            if (scope.ToLower() == "reports1nf_inventar_documents")
+                query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [reports1nf_inventar_documents] WHERE [report_id] = @free_square_id";
+            if (scope.ToLower() == "free_square_current_stage_documents")
 				query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [reports1nf_balans_free_square_current_stage_documents] WHERE [free_square_id] = @free_square_id";
             if (scope.ToLower() == "reports1nf_arenda_dogcontinue_current_stage_documents")
                 query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [reports1nf_arenda_dogcontinue_current_stage_documents] WHERE [free_square_id] = @free_square_id";
@@ -313,7 +315,12 @@ namespace ExtDataEntry.Models
 				table = "reports1nf_report_documents";
 				query = "INSERT INTO [" + table + "] ([report_id],[file_name],[file_ext],[modify_date],[modified_by]) VALUES (@free_square_id,@file_name,@file_ext,@modify_date,@modified_by)";
 			}
-			else if (scope == "freecycle_step_documents")
+            else if (scope == "reports1nf_inventar_documents")
+            {
+                table = "reports1nf_inventar_documents";
+                query = "INSERT INTO [" + table + "] ([report_id],[file_name],[file_ext],[modify_date],[modified_by]) VALUES (@free_square_id,@file_name,@file_ext,@modify_date,@modified_by)";
+            }
+            else if (scope == "freecycle_step_documents")
 			{
 				table = "freecycle_step_documents";
 			}
@@ -407,7 +414,11 @@ namespace ExtDataEntry.Models
 			{
 				table = "reports1nf_report_documents";
 			}
-			else if (scope == "freecycle_step_documents")
+            else if (scope == "reports1nf_inventar_documents")
+            {
+                table = "reports1nf_inventar_documents";
+            }
+            else if (scope == "freecycle_step_documents")
 			{
 				table = "freecycle_step_documents";
 			}

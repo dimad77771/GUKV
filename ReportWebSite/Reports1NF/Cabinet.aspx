@@ -167,6 +167,18 @@
         </td>
         <td> &nbsp; &nbsp; </td>
 
+        <td>
+            <dx:ASPxButton ID="ASPxButton1" runat="server" AutoPostBack="false" Text="Надіслати акт інвентаризації" CausesValidation="false">
+				<ClientSideEvents Click="function (s,e) 
+					{ 
+						$.cookie('RecordID', report_id);
+						ASPxFileManagerInventarFiles.Refresh();
+						PopupObjectInventars.Show();
+					}" />
+            </dx:ASPxButton>
+        </td>
+        <td> &nbsp; &nbsp; </td>
+
 
         <td> <dx:ASPxButton ID="ButtonLogout" runat="server" Text="Вийти" OnClick="ButtonLogout_Click" CausesValidation="false"></dx:ASPxButton> </td>
     </tr>
@@ -227,6 +239,70 @@
 
 				<dx:ASPxButton ID="ASPxButtonClose" runat="server" AutoPostBack="False" Text="Закрити" HorizontalAlign="Center">
 					<ClientSideEvents Click="function(s, e) { PopupObjectPhotos.Hide(); }" />
+				</dx:ASPxButton>
+
+			</dx:PopupControlContentControl>
+		</ContentCollection>
+	</dx:ASPxPopupControl>
+
+	<dx:ASPxPopupControl ID="ASPxPopupControlInventar" runat="server" AllowDragging="True" 
+		ClientInstanceName="PopupObjectInventars" EnableClientSideAPI="True" 
+		HeaderText="Документ" Modal="True" 
+		PopupHorizontalAlign="Center" PopupVerticalAlign="Middle"  
+		PopupAction="None" PopupElementID="ASPxGridViewFreeSquare" Width="700px" >
+		<ClientSideEvents CloseUp="function(s, e) { window.location.reload(false); }" />  
+		<ContentCollection>
+			<dx:PopupControlContentControl ID="PopupControlContentControl22" runat="server" SupportsDisabledAttribute="True">
+
+				<asp:ObjectDataSource ID="ObjectDataSourceInventarFiles" runat="server" 
+					DeleteMethod="Delete" InsertMethod="Insert" 
+					OnInserting="ObjectDataSourceInventarFiles_Inserting" 
+					OnInserted="ObjectDataSourceInventarFiles_Inserted"
+					SelectMethod="Select" 
+					TypeName="ExtDataEntry.Models.FileAttachment">
+					<DeleteParameters>
+						<asp:Parameter DefaultValue="reports1nf_inventar_documents" Name="scope" Type="String" />
+						<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+						<asp:Parameter Name="id" Type="String" />
+					</DeleteParameters>
+					<InsertParameters>
+						<asp:Parameter DefaultValue="reports1nf_inventar_documents" Name="scope" Type="String" />
+						<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+						<asp:Parameter Name="Name" Type="String" />
+						<asp:Parameter Name="Image" Type="Object" />
+					</InsertParameters>
+					<SelectParameters>
+						<asp:Parameter DefaultValue="reports1nf_inventar_documents" Name="scope" Type="String" />
+						<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+					</SelectParameters>
+				</asp:ObjectDataSource>
+
+				<dx:ASPxFileManager ID="ASPxFileManagerInventarFiles" runat="server" 
+					ClientInstanceName="ASPxFileManagerInventarFiles" DataSourceID="ObjectDataSourceInventarFiles">
+					<Settings RootFolder="~\" ThumbnailFolder="~\Thumb\" />
+					<%--<SettingsFileList>
+						<ThumbnailsViewSettings ThumbnailSize="180px" />
+					</SettingsFileList>--%>
+					<SettingsFileList View="Details">
+						<DetailsViewSettings AllowColumnResize="true" AllowColumnDragDrop="true" AllowColumnSort="true" ShowHeaderFilterButton="false"/>
+                    </SettingsFileList>
+					<SettingsEditing AllowDelete="true" AllowCreate="true" AllowDownload="true" AllowMove="false" AllowRename="false" />
+					<SettingsFolders Visible="False" />
+					<SettingsToolbar ShowDownloadButton="True" ShowPath="False" />
+					<SettingsUpload UseAdvancedUploadMode="True">
+						<AdvancedModeSettings EnableMultiSelect="True" />
+					</SettingsUpload>
+
+					<SettingsDataSource FileBinaryContentFieldName="Image" 
+						IsFolderFieldName="IsFolder" KeyFieldName="ID" 
+						LastWriteTimeFieldName="LastModified" NameFieldName="Name" 
+						ParentKeyFieldName="ParentID" />
+				</dx:ASPxFileManager>
+
+				<br />
+
+				<dx:ASPxButton ID="ASPxButtonClose2" runat="server" AutoPostBack="False" Text="Закрити" HorizontalAlign="Center">
+					<ClientSideEvents Click="function(s, e) { PopupObjectInventars.Hide(); }" />
 				</dx:ASPxButton>
 
 			</dx:PopupControlContentControl>

@@ -69,8 +69,11 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
             SectionMenuForSmallMode.Visible = true;
             SectionMenu.Visible = false;
             //PrimaryGridView.Set.
-            var commandColumn = PrimaryGridView.Columns.OfType<GridViewCommandColumn>().Single();
-            commandColumn.ShowEditButton = false;
+            var commandColumns = PrimaryGridView.Columns.OfType<GridViewCommandColumn>().ToArray();
+			foreach(var commandColumn in commandColumns)
+			{
+				commandColumn.ShowEditButton = false;
+			}
         }
 		else if (Roles.IsUserInRole(Utils.RDAControllerRole))
 		{

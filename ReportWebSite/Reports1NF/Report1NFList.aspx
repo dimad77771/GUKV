@@ -62,6 +62,11 @@
 			$.cookie('RecordID', s.GetRowKey(e.visibleIndex));
 			ASPxFileManagerPhotoFiles.Refresh();
 			PopupObjectPhotos.Show();
+        }
+		else if (e.buttonID == 'bnt_show_inventar') {
+			$.cookie('RecordID', s.GetRowKey(e.visibleIndex));
+			ASPxFileManagerInventarFiles.Refresh();
+			PopupObjectInventars.Show();
 		}
 	}
 
@@ -453,6 +458,63 @@ WHERE id = @report_id"
 				</ContentCollection>
 			</dx:ASPxPopupControl>
 
+			<dx:ASPxPopupControl ID="ASPxPopupControlInventar" runat="server" AllowDragging="True" 
+				ClientInstanceName="PopupObjectInventars" EnableClientSideAPI="True" 
+				HeaderText="Документ" Modal="True" 
+				PopupHorizontalAlign="Center" PopupVerticalAlign="Middle"  
+				PopupAction="None" PopupElementID="ASPxGridViewFreeSquare" Width="700px" >
+				<ContentCollection>
+					<dx:PopupControlContentControl ID="PopupControlContentControl3" runat="server" SupportsDisabledAttribute="True">
+
+						<asp:ObjectDataSource ID="ObjectDataSourceInventarFiles" runat="server" 
+							SelectMethod="Select" 
+							DeleteMethod="Delete"
+							TypeName="ExtDataEntry.Models.FileAttachment">
+							<SelectParameters>
+								<asp:Parameter DefaultValue="reports1nf_inventar_documents" Name="scope" Type="String" />
+								<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+							</SelectParameters>
+							<DeleteParameters>
+								<asp:Parameter DefaultValue="reports1nf_inventar_documents" Name="scope" Type="String" />
+								<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+								<asp:Parameter Name="id" Type="String" />
+							</DeleteParameters>
+						</asp:ObjectDataSource>
+
+						<dx:ASPxFileManager ID="ASPxFileManagerInventarFiles" runat="server" 
+							ClientInstanceName="ASPxFileManagerInventarFiles" DataSourceID="ObjectDataSourceInventarFiles">
+							<Settings RootFolder="~\" ThumbnailFolder="~\Thumb\" />
+<%--							<SettingsFileList>
+								<ThumbnailsViewSettings ThumbnailSize="180px" />
+							</SettingsFileList>--%>
+                            <SettingsFileList View="Details">
+                                <DetailsViewSettings AllowColumnResize="true" AllowColumnDragDrop="true" AllowColumnSort="true" ShowHeaderFilterButton="false"/>
+                            </SettingsFileList>
+							<SettingsEditing AllowDelete="true" AllowCreate="false" AllowDownload="true" AllowMove="false" AllowRename="false" />
+							<SettingsFolders Visible="False" />
+							<SettingsToolbar ShowDownloadButton="True" ShowPath="False" />
+							<SettingsUpload UseAdvancedUploadMode="True" Enabled="false">
+								<AdvancedModeSettings EnableMultiSelect="True" />
+							</SettingsUpload>
+
+
+
+							<SettingsDataSource FileBinaryContentFieldName="Image" 
+								IsFolderFieldName="IsFolder" KeyFieldName="ID" 
+								LastWriteTimeFieldName="LastModified" NameFieldName="Name" 
+								ParentKeyFieldName="ParentID" />
+						</dx:ASPxFileManager>
+
+						<br />
+
+						<dx:ASPxButton ID="ASPxButtonClose2" runat="server" AutoPostBack="False" Text="Закрити" HorizontalAlign="Center">
+							<ClientSideEvents Click="function(s, e) { PopupObjectInventars.Hide(); }" />
+						</dx:ASPxButton>
+
+					</dx:PopupControlContentControl>
+				</ContentCollection>
+			</dx:ASPxPopupControl>
+
             <dx:ASPxPopupControl ID="ASPxPopupControl_Reports1NF_SaveAs" runat="server" 
                 HeaderText="Збереження у Файлі" 
                 ClientInstanceName="ASPxPopupControl_Reports1NF_SaveAs" 
@@ -645,7 +707,21 @@ WHERE id = @report_id"
             <CellStyle Wrap="False"></CellStyle>
         </dx:GridViewCommandColumn>
 
+        <dx:GridViewDataDateColumn FieldName="inventar_recieve_date" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="5" Caption="Дата останнього прийому акту інвентаризації">
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("inventar_recieve_date", "{0:dd.MM.yyyy}") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataDateColumn>
 
+        <dx:GridViewCommandColumn Caption="#" VisibleIndex="5" Width="40px" ButtonType="Image" CellStyle-Wrap="False" 
+            ShowCancelButton="false" ShowUpdateButton="false" ShowEditButton="false" >
+
+            <CustomButtons>
+                <dx:GridViewCommandColumnCustomButton ID="bnt_show_inventar" Text="Звіт"> <Image Url="~/Styles/inventar_pdf.png"> </Image>
+                </dx:GridViewCommandColumnCustomButton>
+            </CustomButtons>
+            <CellStyle Wrap="False"></CellStyle>
+        </dx:GridViewCommandColumn>
 
         <%--<dx:GridViewDataTextColumn FieldName="review_performed" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="6" Caption="Звіт Перевірено" />--%>
@@ -1180,7 +1256,7 @@ WHERE id = @report_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A3_1" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A3_3" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
