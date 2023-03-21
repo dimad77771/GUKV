@@ -444,7 +444,7 @@ SELECT SCOPE_IDENTITY()"
                 </ContentCollection>
             </dx:ASPxPopupControl>
 
-            <dx:ASPxButton ID="ASPxButton_FreeSquare_SaveAs" runat="server" AutoPostBack="False" visible="false"
+            <dx:ASPxButton ID="ASPxButton_FreeSquare_SaveAs" runat="server" AutoPostBack="False" visible="true"
                 Text="Зберегти у Файлі" Width="148px">
             </dx:ASPxButton>
 
