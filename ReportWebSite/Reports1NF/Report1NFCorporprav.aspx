@@ -307,6 +307,13 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
 
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictOrgOwnership" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="select id, name from dict_1nf_org_ownership where len(name) > 0 order by name"
+    EnableCaching="true">
+</mini:ProfiledSqlDataSource>
+
+
 <mini:ProfiledSqlDataSource ID="SqlDataSourcePrivatisat" runat="server"
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="
@@ -332,6 +339,7 @@ SET
 	,[akcvart] = @akcvart
 	,[akcpart] = @akcpart
 	,[akcform] = @akcform
+	,[ownershipvid] = @ownershipvid
 	,[nomvart] = @nomvart
 	,[stanobj] = @stanobj
 	,[modify_date2] = @modify_date2
@@ -352,6 +360,7 @@ WHERE id = @id"
 	,[akcvart]
 	,[akcpart]
 	,[akcform]
+	,[ownershipvid]
 	,[nomvart]
 	,[stanobj]
 	,[modify_date2]
@@ -370,6 +379,7 @@ WHERE id = @id"
 	,@akcvart
 	,@akcpart
 	,@akcform
+	,@ownershipvid
 	,@nomvart
 	,@stanobj
 	,@modify_date2
@@ -511,7 +521,7 @@ SELECT SCOPE_IDENTITY()"
 </table>
 
 <dx:ASPxGridViewExporter ID="GridViewFreeSquareExporter" runat="server" 
-    FileName="Приватизація" GridViewID="PrivatisatGridView" PaperKind="A4" 
+    FileName="Корпоративні права" GridViewID="PrivatisatGridView" PaperKind="A4" 
     BottomMargin="20" LeftMargin="10" RightMargin="10" TopMargin="20">
     <Styles>
         <Default Font-Names="Calibri,Verdana,Sans Serif">
@@ -607,6 +617,14 @@ SELECT SCOPE_IDENTITY()"
 
 		<dx:GridViewDataTextColumn FieldName="akcform" Caption="Форма існування акцій" Width="120px" CellStyle-HorizontalAlign="Left">
         </dx:GridViewDataTextColumn>
+
+		<dx:GridViewDataComboBoxColumn FieldName="ownershipvid" Caption="Форма власності" Width="140px" CellStyle-HorizontalAlign="Left">
+            <PropertiesComboBox DataSourceID="SqlDataSourceDictOrgOwnership"
+                                ValueType="System.String"
+                                ValueField="name"
+                                TextField="name" />
+        </dx:GridViewDataComboBoxColumn>
+
 
         <dx:GridViewDataSpinEditColumn FieldName="nomvart" Caption="Номінальна вартість акцій, грн" Width="100px">
             <PropertiesSpinEdit NumberType="Float" NumberFormat="Number">
