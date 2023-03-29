@@ -762,6 +762,14 @@ WHERE id = @report_id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("occupation") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="13" Caption="Фін.звітн." Width="65px">
+            <Settings AllowHeaderFilter="False" />
+            <DataItemTemplate>
+                <%# "<a target=\"_blank\" href=\"https://balans.gukv.gov.ua/card/" + Eval("zkpo_code") + "\">" + "Фін.звітн." + "</a>"%>
+            </DataItemTemplate>
+        </dx:GridViewDataTextColumn>
+
 <%--        <dx:GridViewDataTextColumn FieldName="old_industry" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="14" Visible="False" Caption="Галузь (Баланс)">
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("old_industry") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
@@ -1256,7 +1264,7 @@ WHERE id = @report_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A3_3" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A4_3" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

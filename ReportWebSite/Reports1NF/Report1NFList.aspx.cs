@@ -111,6 +111,29 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 		}
 
 		SectionMenuForSmallMode.Visible = false;
+
+		//ForTest();
+	}
+
+	void ForTest()
+	{
+		var lines = new List<string>();
+		var zags = System.IO.File.ReadAllLines(@"C:\Users\ASUS\Documents\SQL Server Management Studio\qqqq2232.txt", System.Text.Encoding.GetEncoding("windows-1251"));
+		foreach(var zag in zags)
+		{
+			var column = PrimaryGridView.Columns.OfType<GridViewDataColumn>().Single(q => getNormalizeString(q.Caption) == getNormalizeString(zag));
+			var findcol = column.FieldName;
+
+			//lines.Add(findcol + " as [" + zag + "]");
+			lines.Add(findcol);
+		}
+
+		var sql = string.Join(",\n", lines);
+	}
+
+	string getNormalizeString(string arg)
+	{
+		return arg.Replace("″", "\"");
 	}
 
 
