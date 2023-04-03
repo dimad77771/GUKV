@@ -175,6 +175,7 @@
 , ar.agreement_date
 , ar.rent_start_date
 , ar.rent_finish_date
+, ar.rent_actual_finish_date
 , org.full_name AS 'renter_name'
 , dict_districts2.name AS 'district'
 , bld.addr_street_name
@@ -866,6 +867,7 @@ FROM reports1nf_arenda ar
         <dx:GridViewDataDateColumn FieldName="agreement_date" VisibleIndex="2" Caption="Дата Договору"></dx:GridViewDataDateColumn>
         <dx:GridViewDataDateColumn FieldName="rent_start_date" VisibleIndex="3" Caption="Початок Використання"></dx:GridViewDataDateColumn>
         <dx:GridViewDataDateColumn FieldName="rent_finish_date" VisibleIndex="4" Caption="Закінчення Використання"></dx:GridViewDataDateColumn>
+        <dx:GridViewDataDateColumn FieldName="rent_actual_finish_date" VisibleIndex="4" Caption="Фактична дата закінчення договору" Visible="false"></dx:GridViewDataDateColumn>
         <dx:GridViewDataTextColumn FieldName="renter_name" VisibleIndex="5" Caption="Орендар" Width="220px"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="giver_name" VisibleIndex="6" Caption="Орендодавець" ShowInCustomizationForm="True" Visible="False" Width="220px"></dx:GridViewDataTextColumn>        
         <dx:GridViewDataTextColumn FieldName="district" VisibleIndex="7" Caption="Район" Width="120px"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
@@ -1006,7 +1008,7 @@ FROM reports1nf_arenda ar
     <SettingsPager PageSize="10" AlwaysShowPager="true" />
     <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
     <Styles Header-Wrap="True" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaList" Enabled="True" Version="B6" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaList.2" Enabled="True" Version="B6" />
 
     <ClientSideEvents
         Init="function (s,e) { PrimaryGridView.PerformCallback('init:'); }"

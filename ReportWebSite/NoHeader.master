@@ -66,6 +66,9 @@
 														<dx:RibbonButtonItem Text="Інші суб'єкти використання" NavigateUrl="Reports1NF/Report1NFList.aspx?smallform=1&smode=2">
 															<SmallImage Url="Styles/ribbonicon_17.png"/>
 														</dx:RibbonButtonItem>
+														<dx:RibbonButtonItem Text="Перелік контрагентів" NavigateUrl="Reports1NF/Report1NFList.aspx">
+															<SmallImage Url="Styles/ribbonicon_24.png" />
+														</dx:RibbonButtonItem>
 														<%--<dx:RibbonButtonItem Text="Роздрукувати картку організації" NavigateUrl="Cards/PrintOrgCard.aspx?orgid=305033">
 															<SmallImage Url="Styles/ribbonicon_print.png"/>
 														</dx:RibbonButtonItem>--%>
