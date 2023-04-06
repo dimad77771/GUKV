@@ -124,8 +124,8 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 			var column = PrimaryGridView.Columns.OfType<GridViewDataColumn>().Single(q => getNormalizeString(q.Caption) == getNormalizeString(zag));
 			var findcol = column.FieldName;
 
-			//lines.Add(findcol + " as [" + zag + "]");
-			lines.Add(findcol);
+			lines.Add(findcol + " as [" + zag + "]");
+			//lines.Add(findcol);
 		}
 
 		var sql = string.Join(",\n", lines);
