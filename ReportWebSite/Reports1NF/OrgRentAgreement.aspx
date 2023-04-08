@@ -505,8 +505,8 @@
                 if (!CheckRadioAgreementActiveValidate())
                     return false;
 
-			    if (!CheckEndOfDogogor())
-				    return false;
+			    //if (!CheckEndOfDogogor())     //закомментровано по указанию АИ -- 2023-04-06
+				//    return false;
 
 			    if (!CheckZaborgMensheNadzhodg())
 	    			return false;
@@ -3205,9 +3205,9 @@ WHERE id = @id"
                                             <PanelCollection>
                                             <dx:panelcontent ID="Panelcontent12" runat="server">
                                                 <table border="0" cellspacing="0" cellpadding="2" width="910px">
-                                                    <tr style="display:none">
+                                                    <tr style="display:none222">
                                                         <td><dx:ASPxLabel ID="ASPxLabel65" runat="server" Text="Авансова орендна плата (нараховано), грн."></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="edit_avance_plat" ClientInstanceName="edit_avance_plat" runat="server" NumberType="Float" Value='<%# Eval("avance_plat") %>' Width="150px" Enabled="false"
+                                                        <td><dx:ASPxSpinEdit ID="edit_avance_plat" ClientInstanceName="edit_avance_plat" runat="server" NumberType="Float" Value='<%# Eval("avance_plat") %>' Width="150px" Enabled="true"
                                                             Title="ОБОВЯЗКОВО заноситься нарахована двомісячна сума орендної плати відповідно до п.3.10 договору, яка може бути на поточний момент не сплачена, або сплачена частково">
                                                             <ClientSideEvents 
                                                                 LostFocus="CalcCollectionDebtZvit" />                                                            
@@ -3258,9 +3258,9 @@ WHERE id = @id"
                                                             </td>
                                                     </tr>
 
-                                                    <tr style="display:none">
+                                                    <tr style="display:none222">
                                                         <td><dx:ASPxLabel ID="ASPxLabel74" runat="server" Text="Сальдо авансової орендної плати на початок звітного періоду, грн. (без ПДВ)"></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="edit_zabezdepoz_saldo" ClientInstanceName="edit_zabezdepoz_saldo" runat="server" NumberType="Float" Value='<%# Eval("zabezdepoz_saldo") %>' Width="150px" Enabled="false"
+                                                        <td><dx:ASPxSpinEdit ID="edit_zabezdepoz_saldo" ClientInstanceName="edit_zabezdepoz_saldo" runat="server" NumberType="Float" Value='<%# Eval("zabezdepoz_saldo") %>' Width="150px" Enabled="true"
                                                             Title="сума коштів отримана від орендаря, (бажано що б вона дорівнювала нарахованій авансовій орендній платі)">
                                                             <ClientSideEvents 
                                                                 LostFocus="CalcCollectionDebtZvit" />                                                            
@@ -3268,9 +3268,9 @@ WHERE id = @id"
                                                             </td>
                                                     </tr>
 
-                                                    <tr style="display:none">
+                                                    <tr style="display:none222">
                                                         <td><dx:ASPxLabel ID="ASPxLabel69" runat="server" Text="Надходження авансової орендної плати у звітному періоді, грн. (без ПДВ)"></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="edit_zabezdepoz_prishlo" ClientInstanceName="edit_zabezdepoz_prishlo" runat="server" NumberType="Float" Value='<%# Eval("zabezdepoz_prishlo") %>' Width="150px" Enabled="false"
+                                                        <td><dx:ASPxSpinEdit ID="edit_zabezdepoz_prishlo" ClientInstanceName="edit_zabezdepoz_prishlo" runat="server" NumberType="Float" Value='<%# Eval("zabezdepoz_prishlo") %>' Width="150px" Enabled="true"
                                                             Title="показуємо яка частина поля «у т.ч. Сальдо авансової орендної плати на кінець звітного періоду, грн. (без ПДВ)» отримана у звітному періоді">
                                                             <ClientSideEvents 
                                                                 LostFocus="CalcCollectionDebtZvit" />                                                            
@@ -3302,7 +3302,7 @@ WHERE id = @id"
                                                                 <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
                                                             </dx:ASPxSpinEdit></td>
                                                     </tr>
-                                                    <tr style="display:none">
+                                                    <tr style="display:none222">
                                                         <td><dx:ASPxLabel ID="ASPxLabel68" runat="server" Text="- у тому числі, з нарахованої авансової орендної плати, грн."></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="Edit_avance_paymentnar"  ClientInstanceName="avance_paymentnar" runat="server" NumberType="Float" Value='<%# Eval("avance_paymentnar") %>' Width="150px"
                                                             Title="використовується повністю або частково сума отриманих коштів авансової орендної плати з поля «у т.ч. Сальдо авансової орендної плати на кінець звітного періоду, грн. (без ПДВ)», ЛИШЕ для оплати орендної плати  за останні два місяці дії договору." MinValue ="0" MaxValue="999999999">
