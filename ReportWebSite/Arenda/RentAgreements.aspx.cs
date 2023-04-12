@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Web.Security;
 using DevExpress.Web;
 using Cache;
+using DevExpress.Utils;
 
 public partial class Arenda_RentAgreements : System.Web.UI.Page, CachingPageIdSupport
 {
@@ -50,7 +51,8 @@ public partial class Arenda_RentAgreements : System.Web.UI.Page, CachingPageIdSu
         // Enable advanced header filter for all grid columns
         Utils.AdjustColumnsVisibleInFilter(PrimaryGridView);
 
-		PrimaryGridView.Settings.VerticalScrollBarMode = DevExpress.Web.ScrollBarMode.Visible;
+        
+        PrimaryGridView.Settings.VerticalScrollBarMode = DevExpress.Web.ScrollBarMode.Visible;
 
 		if (IsReportForm)
 		{
@@ -59,6 +61,22 @@ public partial class Arenda_RentAgreements : System.Web.UI.Page, CachingPageIdSu
         else
         {
             CustomizeColumnList();
+        }
+
+        PrimaryGridView.SettingsEditing.Mode = GridViewEditingMode.PopupEditForm;
+        foreach (var column in PrimaryGridView.Columns.OfType<GridViewDataColumn>())
+        {
+            //column.ReadOnly = true;
+            //column.EditFormSettings.Visible = DefaultBoolean.False;
+            if (column.FieldName == "orandodavec_user_id")
+            {
+                //column.EditFormSettings.
+            }
+            else
+            {
+                column.EditFormSettings.Visible = DefaultBoolean.False;
+            }
+
         }
 
         //ForTest();
@@ -295,5 +313,20 @@ public partial class Arenda_RentAgreements : System.Web.UI.Page, CachingPageIdSu
 	public string GetCachingPageId()
 	{
 		return GetPageUniqueKey();
+	}
+
+    protected void SqlDataSourceFreeSquare_Updating(object sender, SqlDataSourceCommandEventArgs e)
+    {
+        var g = 100;
+        //var dbparams = (System.Data.SqlClient.SqlParameterCollection)(e.Command.Parameters);
+        //dbparams.AddWithValue("@modify_date2", DateTime.Now);
+        //var user = Membership.GetUser();
+        //var username = (user == null ? String.Empty : (String)user.UserName);
+        //dbparams.AddWithValue("@modified_by2", username);
+    }
+
+	protected void PrimaryGridView_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
+	{
+        var g = 1000;
 	}
 }

@@ -152,6 +152,12 @@
     </tr>
 </table>
 
+<mini:ProfiledSqlDataSource ID="SqlDataSourceFreecycleStepDict" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="select rtrim(ltrim(concat(namf,' ',nami,' ',namo))) fio, id from dict_orandodavec_user order by 1">
+</mini:ProfiledSqlDataSource>
+
+
 <dx:ASPxGridViewExporter ID="ASPxGridViewExporterArendaObjects" runat="server" 
     FileName="Оренда" GridViewID="PrimaryGridView" PaperKind="A4" 
     BottomMargin="20" LeftMargin="10" RightMargin="10" TopMargin="20">
@@ -163,7 +169,8 @@
     </Styles>
 </dx:ASPxGridViewExporter>
 
-<mini:ProfiledSqlDataSource ID="SqlDataSourceArendaObjects" runat="server" EnableCaching="true"
+    <%--EnableCaching="true"--%>
+<mini:ProfiledSqlDataSource ID="SqlDataSourceArendaObjects" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT m.*
         ,(CASE WHEN ar.agreement_state = 1 THEN 'Договір діє' ELSE CASE WHEN ar.agreement_state = 2 THEN 'Договір закінчився, але заборгованність не погашено' ELSE CASE WHEN ar.agreement_state = 3 THEN 'Договір закінчився, оренда продовжена іншим договором' ELSE '' END END END) AS 'agreement_active_s'
@@ -234,6 +241,7 @@
 ,ar.insurance_sum
 ,ar.insurance_start
 ,ar.insurance_end
+,ar.orandodavec_user_id
 
 ,isnull(ddd.name, 'Невідомо') as sphera_dialnosti
 ,priznachennya = dc.doc_display_name
@@ -262,12 +270,25 @@
             (m.org_balans_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND m.org_balans_district_id = @p_rda_district_id) OR
             (m.org_giver_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND m.org_giver_district_id = @p_rda_district_id) OR
             (m.org_renter_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND m.org_renter_district_id = @p_rda_district_id))"
-    OnSelecting="SqlDataSourceArendaObjects_Selecting" >
+
+    OnSelecting="SqlDataSourceArendaObjects_Selecting"
+    
+UpdateCommand="UPDATE [arenda]
+SET
+    [orandodavec_user_id] = @orandodavec_user_id
+WHERE id = @arenda_id"
+
+    onupdating="SqlDataSourceFreeSquare_Updating"
+    
+    >
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="1" Name="p_dpz_filter" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_com_filter" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_rda_district_id" />
     </SelectParameters>
+
+
+
 </mini:ProfiledSqlDataSource>
 
 <dx:ASPxGridView ID="PrimaryGridView" runat="server" 
@@ -276,14 +297,40 @@
     DataSourceID="SqlDataSourceArendaObjects" 
     KeyFieldName="arenda_id"
     Width="100%"
+    OnRowUpdated="PrimaryGridView_RowUpdated"
     OnCustomCallback="GridViewArendaObjects_CustomCallback"
     OnCustomFilterExpressionDisplayText="GridViewArendaObjects_CustomFilterExpressionDisplayText"
     OnCustomSummaryCalculate="GridViewArendaObjects_CustomSummaryCalculate"
     OnProcessColumnAutoFilter = "GridViewArendaObjects_ProcessColumnAutoFilter"
     OnCustomColumnSort="GridViewArendaObjects_CustomColumnSort" >
 
+    <SettingsCommandButton>
+		<EditButton>
+			<Image Url="~/Styles/EditIcon.png" />
+		</EditButton>
+		<CancelButton>
+			<Image Url="~/Styles/CancelIcon.png" />
+		</CancelButton>
+		<UpdateButton>
+			<Image Url="~/Styles/SaveIcon.png" />
+		</UpdateButton>
+		<DeleteButton>
+			<Image Url="~/Styles/DeleteIcon.png" />
+		</DeleteButton>
+		<NewButton>
+			<Image Url="~/Styles/AddIcon.png" />
+		</NewButton>
+		<ClearFilterButton Text="Очистити" RenderMode="Link" />
+    </SettingsCommandButton>
+
     <Columns>
-        <dx:GridViewDataTextColumn FieldName="arenda_id" ReadOnly="True" ShowInCustomizationForm="False"
+        <dx:GridViewCommandColumn VisibleIndex="0" Width="30px" ButtonType="Image" CellStyle-Wrap="True" FixedStyle="Left" 
+            ShowCancelButton="true" ShowUpdateButton="true" ShowEditButton="true" >
+
+            <CellStyle Wrap="False"></CellStyle>
+        </dx:GridViewCommandColumn>
+
+        <dx:GridViewDataTextColumn FieldName="arenda_id" ReadOnly="True" ShowInCustomizationForm="False" Width="50px" 
             VisibleIndex="0" Visible="True" Caption="Картка">
             <DataItemTemplate>
                 <%# "<center><a href=\"javascript:ShowArendaCardEx(" + Eval("ex_reports1nf_arenda") + "," + Eval("arenda_id") + "," + Eval("arenda_report_id") + ")\"><img border='0' src='../Styles/" + ((int)Eval("is_dpz_object") == 1 ? "EditIcon_green.png" : "EditIcon.png") + "'/></a></center>"%>
@@ -380,6 +427,7 @@
             <DataItemTemplate>
                 <%# "<a href=\"javascript:ShowObjectCard(" + Eval("balans_id") + "," + Eval("building_id") + ")\">" + Eval("addr_nomer") + "</a>"%>
             </DataItemTemplate>
+
             <Settings SortMode="Custom" />
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataDateColumn FieldName="agreement_date" ReadOnly="True"
@@ -501,8 +549,8 @@
             VisibleIndex="81" Visible="True" Caption="Нараховано орендної плати за звітний період, грн. (без ПДВ)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="last_year_saldo" ReadOnly="True"
             VisibleIndex="82" Visible="True" Caption="Сальдо (переплата) на початок року (незмінна впродовж року величина), грн. (без ПДВ)"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="avance_plat" ReadOnly="True"
-            VisibleIndex="82" Visible="True" Caption="Авансова орендна плата, грн."></dx:GridViewDataTextColumn>
+        <%--<dx:GridViewDataTextColumn FieldName="avance_plat" ReadOnly="True"
+            VisibleIndex="82" Visible="True" Caption="Авансова орендна плата, грн."></dx:GridViewDataTextColumn>--%>
         <dx:GridViewDataTextColumn FieldName="payment_received" ReadOnly="True"
             VisibleIndex="83" Visible="True" Caption="Надходження орендної плати за звітний період, всього, грн. (без ПДВ)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="payment_nar_zvit" ReadOnly="True"
@@ -584,6 +632,17 @@
         <dx:GridViewDataTextColumn FieldName="povidoleno4_num" ReadOnly="True"
             VisibleIndex="124" Visible="True" Caption="Повідомлення орендаря до орендодавця про намір використовувати об'єкт (№)"></dx:GridViewDataTextColumn>
 
+        <dx:GridViewDataComboBoxColumn FieldName="orandodavec_user_id" Caption="Контроль орендодавця" Width="200px" VisibleIndex="130">
+            <PropertiesComboBox 
+				DataSourceID="SqlDataSourceFreecycleStepDict"
+				DropDownStyle="DropDownList"
+				DropDownWidth="500px"
+                AllowNull="true"
+				TextField="fio"  
+				ValueField="id">
+            </PropertiesComboBox>  
+        </dx:GridViewDataComboBoxColumn>
+
 
 <%--        <dx:GridViewDataTextColumn FieldName="n_cost_narah" ReadOnly="True" VisibleIndex="78" Caption="(NEW) Орендна ставка (%)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="n_rent_rate" ReadOnly="True" VisibleIndex="79" Caption="(NEW) Орендна ставка (грн)"></dx:GridViewDataTextColumn>
@@ -604,6 +663,17 @@
         <dx:ASPxSummaryItem FieldName="sqr_free_total" SummaryType="Custom" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="sqr_free_korysna" SummaryType="Custom" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="sqr_free_mzk" SummaryType="Custom" DisplayFormat="{0}" />
+
+        <dx:ASPxSummaryItem FieldName="n_cost_agreement" SummaryType="Custom" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="cost_agreement_max" SummaryType="Custom" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="n_cost_expert_total" SummaryType="Custom" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="payment_narah" SummaryType="Custom" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="last_year_saldo" SummaryType="Custom" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="payment_received" SummaryType="Custom" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="payment_nar_zvit" SummaryType="Custom" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="return_orend_payed" SummaryType="Custom" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="debt_total" SummaryType="Custom" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="debt_spysano" SummaryType="Custom" DisplayFormat="{0}" />
     </TotalSummary>
 
     <GroupSummary>
@@ -625,7 +695,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_17" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_18" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

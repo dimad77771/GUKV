@@ -28,10 +28,50 @@
     window.onresize = function () { AdjustGridSizes(); };
 
     function AdjustGridSizes() {
-
 		FreeSquareGridView.SetHeight(window.innerHeight - 180);
-		console.log("AAAa");
-    }
+	}
+
+	function OnBeginCallback(s, e) {
+		if (e.command == "STARTEDIT") {
+
+			var columns = FreeSquareGridView.columns;
+			var colnum_1 = -1;
+			var colnum_2 = -1;
+			for (var i = 0; i < columns.length; i++) {
+				if (columns[i].fieldName == "freecycle_step_dict_id") {
+					colnum_1 = columns[i].index;
+				} else if (columns[i].fieldName == "is_included") {
+					colnum_2 = columns[i].index;
+				}
+			}
+			if (colnum_1 < 0 || colnum_2 < 0) alert("error 111221");
+
+			var elem_1 = null;
+			var elem_2 = null;
+			
+			window.setTimeout(AddHandlerToEditor, 50);
+			function AddHandlerToEditor() {
+				elem_1 = window["MainContent_FreeSquareGridView_DXEditor" + colnum_1];
+				elem_2 = window["MainContent_FreeSquareGridView_DXEditor" + colnum_2];
+
+				console.log("AddHandlerToEditor...");
+				if (elem_1 != null && elem_2 != null) {
+					elem_1.ValueChanged.AddHandler(OnDropDownChange);
+				} else {
+					window.setTimeout(AddHandlerToEditor, 50);
+				}
+			}
+
+			function OnDropDownChange() {
+				var text = elem_1.GetCurrentText();
+				if (text != null && text.trim() == 'Договір розміщено в «PrоZорро»') {
+					elem_2.SetChecked(false);
+				}
+			}
+
+		}
+	}
+
 
     function GridViewFreeSquareInit(s, e) {
 
@@ -569,7 +609,7 @@ WHERE id = @id"
         OnCustomCallback="GridViewFreeSquare_CustomCallback"
         OnCustomFilterExpressionDisplayText="GridViewFreeSquare_CustomFilterExpressionDisplayText"
         OnProcessColumnAutoFilter="GridViewFreeSquare_ProcessColumnAutoFilter" >
-	   <ClientSideEvents CustomButtonClick="ShowPhoto" />
+	   <ClientSideEvents CustomButtonClick="ShowPhoto" BeginCallback="OnBeginCallback" />
 
 	    <SettingsCommandButton>
 		    <EditButton>
