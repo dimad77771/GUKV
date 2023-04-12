@@ -341,6 +341,7 @@ SET
     ,[total_free_sqr] = @total_free_sqr
     ,[sposib_privat] = @sposib_privat
     ,[document_privat] = @document_privat
+    ,[year_prodage] = @year_prodage
     ,[obj_price] = @obj_price
     ,[buyer_name] = @buyer_name
     ,[buyer_adr_street] = @buyer_adr_street
@@ -366,6 +367,7 @@ WHERE id = @id"
       ,[total_free_sqr]
       ,[sposib_privat]
       ,[document_privat]
+      ,[year_prodage]
       ,[obj_price]
       ,[buyer_name]
       ,[buyer_adr_street]
@@ -389,6 +391,7 @@ WHERE id = @id"
     ,@total_free_sqr
     ,@sposib_privat
     ,@document_privat
+    ,@year_prodage
     ,@obj_price
     ,@buyer_name
     ,@buyer_adr_street
@@ -721,6 +724,9 @@ SELECT SCOPE_IDENTITY()"
         <dx:GridViewDataTextColumn FieldName="document_privat" Caption="Документи щодо приватизації об’єкта"  Width="250px">
         </dx:GridViewDataTextColumn>
 
+        <dx:GridViewDataTextColumn FieldName="year_prodage" Caption="Рік продажу"  Width="75px">
+        </dx:GridViewDataTextColumn>
+
         <dx:GridViewDataSpinEditColumn FieldName="obj_price" Caption="Ціна продажу, грн." Width="75px">
             <PropertiesSpinEdit NumberType="Float" NumberFormat="Number">
                 <SpinButtons Enabled="true" ></SpinButtons>
@@ -783,7 +789,7 @@ SELECT SCOPE_IDENTITY()"
         ShowFooter="false"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.PrivatisatSquare" Version="A1_30" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.PrivatisatSquare" Version="A1_31" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

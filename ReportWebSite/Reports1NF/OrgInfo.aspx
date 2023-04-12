@@ -589,6 +589,23 @@ WHERE id = @id"
                                 <dx:ASPxTextBox ID="edit_prim_balanc" runat="server" Text='<%# Eval("prim_balanc") %>' Width="100%" Title="Примітки балансоутримувача" MaxLength="255" />
                            </td>
                         </tr>
+
+                        <tr>
+                            <td width="100px"><dx:ASPxLabel ID="ASPxLabel45" runat="server" Text="Корпоратині права"></dx:ASPxLabel></td>
+                            <td width="8px">&nbsp;</td>
+                            <td>
+                                <dx:ASPxSpinEdit ID="EditCorporav_prava" runat="server" NumberType="Float" DecimalPlaces="2" Value='<%# Eval("corporav_prava") %>' Width="290px" 
+                                        Title="Корпоратині права"/>                                
+                            </td>
+                            <td width="8px">&nbsp;</td>
+                            <td width="100px">&nbsp;</td>
+                            <td width="8px">&nbsp;</td>
+                            <td>
+                                &nbsp;
+                           </td>
+                        </tr>
+
+
                     </table>
                 </dx:PanelContent>
             </PanelCollection>

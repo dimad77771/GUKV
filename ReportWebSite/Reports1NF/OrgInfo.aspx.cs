@@ -501,6 +501,8 @@ public partial class Reports1NF_OrgInfo : System.Web.UI.Page
             AddQueryParameter(ref fieldList, "planuvania_4", "planuvania4", GetEditNumeric("PanelPlanuvania", "EditPlanuvania_4"), parameters);
             AddQueryParameter(ref fieldList, "planuvania_5", "planuvania5", GetEditNumeric("PanelPlanuvania", "EditPlanuvania_5"), parameters);
 
+            AddQueryParameter(ref fieldList, "corporav_prava", "corporavprava", GetEditNumeric("PanelInfo", "EditCorporav_prava"), parameters);
+
             // System parameters
             AddQueryParameter(ref fieldList, "modify_date", "mdt", DateTime.Now, parameters);
 			AddQueryParameter(ref fieldList, "modified_by", "mby", username.Left(64), parameters);
