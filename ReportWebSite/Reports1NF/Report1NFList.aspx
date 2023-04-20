@@ -250,6 +250,8 @@
             ,org.planuvania_4
             ,org.planuvania_5
 
+            ,[dbo].[get_conveyancingRequests_count]([org].[report_id]) AS conveyancingRequests_count
+
         FROM
             reports1nf_org_info org
             LEFT OUTER JOIN kazna_total_info(null, null) kazna on kazna.ident_bal_zkpo = org.zkpo_code
@@ -1192,6 +1194,11 @@ WHERE id = @report_id"
         <dx:GridViewDataTextColumn Caption="Планові надходження орендної плати до бюджету за рік згідно фін. плану, грн." FieldName="planuvania_5" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="101"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("planuvania_5") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn Caption="Зміна балансоутримувача об'єктів" FieldName="conveyancingRequests_count" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="120"  >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("conveyancingRequests_count") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 

@@ -3692,7 +3692,7 @@ WHERE id = @id"
                                                                 <ClientSideEvents LostFocus="CalcDebt" />
                                                             </dx:ASPxSpinEdit></td>
                                                         </tr>       
-                                                        <tr>
+                                                        <tr style="display:none  ">
                                                             <td colspan="4"><dx:ASPxLabel ID="ASPxLabel70" runat="server" Text="Заборгованість з нарахованої авансової орендної плати, грн. (без ПДВ)"></dx:ASPxLabel></td>
                                                             <td><dx:ASPxSpinEdit ID="Edit_avance_debt" ClientInstanceName="Edit_avance_debt" runat="server" NumberType="Float" Value='<%# Eval("avance_debt") %>' Width="100px" 
                                                                 Title="різниця значень полів «Авансова орендна плата (нарахована), грн.» та «у т.ч. Сальдо авансової орендної плати на кінець звітного періоду, грн. (без ПДВ)» заповнюється  балансоутримувачем у разі наявності">

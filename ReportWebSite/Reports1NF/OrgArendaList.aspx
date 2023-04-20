@@ -192,7 +192,20 @@
 --, CASE WHEN ((ar.submit_date IS NULL OR ar.modify_date > ar.submit_date)) THEN N'НІ' ELSE N'ТАК' END AS 'is_submitted'
 , CASE WHEN (ap.rent_period_id <> apd.period_id or (ar.submit_date IS NULL OR ar.modify_date > ar.submit_date)) THEN N'НІ' ELSE N'ТАК' END AS 'is_submitted'
 
-,(CASE WHEN ar.agreement_state = 1 THEN 'Договір діє' ELSE CASE WHEN ar.agreement_state = 2 THEN 'Договір закінчився, але заборгованність не погашено' ELSE CASE WHEN ar.agreement_state = 3 THEN 'Договір закінчився, оренда продовжена іншим договором' ELSE '' END END END) AS 'agreement_state'
+, CASE 
+        WHEN ar.agreement_state = 1 
+            THEN 'Договір діє' 
+        WHEN ar.agreement_state = 2
+            THEN CASE 
+                WHEN debt_total > 0 
+                    THEN 'Договір закінчився, але заборгованність не погашено' 
+                ELSE
+                    'Договір закінчився' 
+            END
+        WHEN ar.agreement_state = 3 
+            THEN 'Договір закінчився, оренда продовжена іншим договором' 
+        ELSE '' 
+  END AS 'agreement_state'
 , ar.modified_by
 ,(SELECT top 1 Q.ref_balans_id FROM reports1nf_arenda_notes Q WHERE (Q.is_deleted IS NULL OR Q.is_deleted = 0) AND Q.report_id = ar.report_id AND Q.arenda_id = ar.id and Q.ref_balans_id > 0) as first_ref_balans_id
 

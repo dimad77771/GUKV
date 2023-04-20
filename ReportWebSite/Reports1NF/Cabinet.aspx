@@ -23,7 +23,8 @@
      (rep.bal_del_max_submit_date),
      (rep.arenda_max_submit_date),
      (rep.arenda_rented_max_submit_date),
-     (rep.org_max_submit_date)) AS AllMaxSubmitDates(sdt)) AS 'max_submit_date'
+     (rep.org_max_submit_date)) AS AllMaxSubmitDates(sdt)) AS 'max_submit_date',
+	[dbo].[get_conveyancingRequests_count](rep.report_id) AS conveyancingRequests_count
     FROM view_reports1nf rep
     WHERE rep.report_id = @rep_id"
     OnSelecting="SqlDataSourceReport_Selecting" >
@@ -89,6 +90,11 @@
                 <td> <dx:ASPxLabel ID="ASPxLabel12" runat="server" Text="Примітки:" /> </td>
                 <td> &nbsp; &nbsp; </td>
                 <td> <dx:ASPxLabel ID="LabelStanRecieveDescription" ClientInstanceName="LabelStanRecieveDescription" runat="server" Text='<%# Eval("stan_recieve_description") %>' /> </td>
+            </tr>
+			<tr>
+                <td> <dx:ASPxLabel ID="ASPxLabel13" runat="server" Text="Зміна балансоутримувача об'єктів:" /> </td>
+                <td> &nbsp; &nbsp; </td>
+                <td> <dx:ASPxLabel ID="ASPxLabel14" ClientInstanceName="LabelStanRecieveDescription" runat="server" Text='<%# Eval("conveyancingRequests_count") %>' /> </td>
             </tr>
 
         </table>
