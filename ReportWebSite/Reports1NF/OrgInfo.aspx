@@ -591,7 +591,7 @@ WHERE id = @id"
                         </tr>
 
                         <tr>
-                            <td width="100px"><dx:ASPxLabel ID="ASPxLabel45" runat="server" Text="Корпоратині права"></dx:ASPxLabel></td>
+                            <td width="100px"><dx:ASPxLabel ID="ASPxLabel45" runat="server" Text="Корпоративні права"></dx:ASPxLabel></td>
                             <td width="8px">&nbsp;</td>
                             <td>
                                 <dx:ASPxSpinEdit ID="EditCorporav_prava" runat="server" NumberType="Float" DecimalPlaces="2" Value='<%# Eval("corporav_prava") %>' Width="290px" 
