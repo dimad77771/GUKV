@@ -113,7 +113,7 @@ public partial class Reports1NF_ReportCommentViewer : System.Web.UI.UserControl
         {
             Reports1NFUtils.AddComment(connection, ReportId, MemoComment.Text.Trim(),
                 organizationId, balansId, balansDeletedId, rentAgreementId, rentedObjectId,
-                controlId, controlTitle, CheckWrongData.Checked, true);
+                controlId, EditTarget.Text, CheckWrongData.Checked, true);
 
             connection.Close();
 
