@@ -231,7 +231,7 @@
                 </ContentCollection>
             </dx:ASPxPopupControl>
 
-            <dx:ASPxButton ID="ASPxButton_FreeSquare_SaveAs" runat="server" AutoPostBack="False" Visible="false"
+            <dx:ASPxButton ID="ASPxButton_FreeSquare_SaveAs" runat="server" AutoPostBack="False" Visible="true"
                 Text="Зберегти у Файлі" Width="148px">
             </dx:ASPxButton>
         </td>
