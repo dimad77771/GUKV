@@ -105,9 +105,9 @@ public class ZvedZvitBuilder
 		}
 
 		SumBuild(7, new[] { 8, 9, 10, 11, 12, 13, 14 }, wsheet);
-		SumBuild(20, new[] { 5, 6, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19 }, wsheet);
-		SumBuild(31, new[] { 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 }, wsheet);
-		SumBuild(32, new[] { 20, 31 }, wsheet);
+		SumBuild(19, new[] { 5, 6, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18 }, wsheet);
+		SumBuild(30, new[] { 20, 21, 22, 23, 24, 25, 26, 27, 28, 29 }, wsheet);
+		SumBuild(31, new[] { 19, 30 }, wsheet);
 
 
 		using (var cmd = new SqlCommand(@"SELECT [name]+' р.' as dict_rent_period FROM [dbo].[dict_rent_period] where [is_active] = 1", connection))
