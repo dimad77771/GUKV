@@ -3195,4 +3195,18 @@ public static class Utils
 
 		return next;
 	}
+
+    public static bool IsTestSystem()
+    {
+        string connectionString = ConfigurationManager.ConnectionStrings["GUKVConnectionString"].ConnectionString;
+        
+        if ((connectionString ?? "").ToLower().Contains("GUKV2016".ToLower()))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    
 }

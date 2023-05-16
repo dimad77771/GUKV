@@ -2247,7 +2247,7 @@ WHERE id = @id"
                                                 </td>
                                                 <td><dx:ASPxLabel ID="ASPxLabel10" runat="server" Text="Інвентарний номер об'єкту"></dx:ASPxLabel></td>
                                                 <td>
-                                                    <dx:ASPxTextBox ID="EditObjBtiReestrNo" runat="server" Text='<%# Eval("reestr_no") %>' Width="250px" Title="Інвентарний номер об'єкту" MaxLength="18">
+                                                    <dx:ASPxTextBox ID="EditObjBtiReestrNo" runat="server" Text='<%# Eval("reestr_no") %>' Width="250px" Title="Інвентарний номер об'єкту" MaxLength="30">
                                                         <ValidationSettings Display="None" EnableCustomValidation="true" ></ValidationSettings>
                                                     </dx:ASPxTextBox>
                                                 </td>

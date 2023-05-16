@@ -85,7 +85,7 @@
 </mini:ProfiledSqlDataSource>
 
 
-<mini:ProfiledSqlDataSource ID="SqlDataSourceReports" runat="server"
+<mini:ProfiledSqlDataSource ID="SqlDataSourceReports" runat="server" EnableCaching="false"
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT 
         isnull(ddd.name, 'Невідомо') as 'dict_rent_occupation_name',
@@ -337,7 +337,10 @@ join dict_rent_occupation occ on occ.id = obp.org_occupation_id
                 AND
             (@p_misto_id = 0 OR rep.old_organ_id = @p_misto_id)
 				AND
-			( (@smode = 0) OR (@smode = 1 and obj.NumOfObj > 0) OR (@smode = 2 and isnull(obj.NumOfObj,0) <= 0) )"
+			( (@smode = 0) OR (@smode = 1 and obj.NumOfObj > 0) OR (@smode = 2 and isnull(obj.NumOfObj,0) <= 0) )
+                AND
+            (8888 = 8888)
+         "
     OnSelecting="SqlDataSourceReports_Selecting"
 
 UpdateCommand="UPDATE [reports1nf]
@@ -1271,7 +1274,7 @@ WHERE id = @report_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A4_3" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A4_8" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

@@ -415,6 +415,8 @@
             VisibleIndex="65" Visible="False" Caption="Балансоутримувач - Форма Власності"></dx:GridViewDataTextColumn>    --%>
         <dx:GridViewDataTextColumn FieldName="org_balans_form_ownership" ReadOnly="True" ShowInCustomizationForm="True" 
             VisibleIndex="67" Visible="False" Caption="Балансоутримувач - Форма Власності"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="form_gosp" ReadOnly="True" ShowInCustomizationForm="True" 
+            VisibleIndex="67" Visible="False" Caption="Балансоутримувач - Форма фінансування"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="agreement_num_int" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="68" Visible="False" Caption="Номер Договору Оренди (число)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="is_in_privat" ReadOnly="True" ShowInCustomizationForm="True"
@@ -475,7 +477,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.ArendaObjects" Version="A2_32" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.ArendaObjects" Version="A2_34" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

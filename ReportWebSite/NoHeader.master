@@ -185,7 +185,7 @@
 											<Groups>
 												<dx:RibbonGroup Text="">
 													<Items>
-														<dx:RibbonButtonItem Text="Процедура прийому звітів" NavigateUrl="Reports1NF/Report1NFList.aspx">
+														<dx:RibbonButtonItem Text="Процедура прийому звітів" NavigateUrl="Reports1NF/Report1NFList.aspx?controlVikorist=1">
 															<SmallImage Url="Styles/ribbonicon_24.png" />
 														</dx:RibbonButtonItem>
 														<dx:RibbonButtonItem Text="Орендна плата" NavigateUrl="OrendnaPlata/OrendnaPlataByBalans.aspx">

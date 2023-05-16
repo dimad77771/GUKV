@@ -112,6 +112,11 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 
 		SectionMenuForSmallMode.Visible = false;
 
+		if (IsControlVikorist)
+		{
+			CustomizeControlVikorist();
+		}
+
 		//ForTest();
 	}
 
@@ -136,6 +141,47 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 		return arg.Replace("″", "\"");
 	}
 
+
+	void CustomizeControlVikorist()
+	{
+		//if (!IsPostBack)
+		{
+			var column1 = PrimaryGridView.Columns.OfType<GridViewDataColumn>().SingleOrDefault(q => q.FieldName == "inventar_recieve_date");
+			if (column1 != null)
+			{
+				//PrimaryGridView.Columns.Remove(column1);
+				column1.Visible = false;
+			}
+
+			var column2 = PrimaryGridView.Columns.OfType<GridViewDataColumn>().SingleOrDefault(q => q.FieldName == "conveyancingRequests_count");
+			if (column2 != null)
+			{
+				//PrimaryGridView.Columns.Remove(column2);
+				column2.Visible = false;
+			}
+
+			var column3 = PrimaryGridView.Columns.OfType<GridViewCommandColumn>().SingleOrDefault(q => q.Caption == "#" && q.Width == Unit.Pixel(40));
+			if (column3 != null)
+			{
+				//PrimaryGridView.Columns.Remove(column3);
+				column3.Visible = false;
+			}
+
+			var prefix = "controlVikorist.";
+			if (!PrimaryGridView.SettingsCookies.CookiesID.StartsWith(prefix))
+			{
+				PrimaryGridView.SettingsCookies.CookiesID = prefix + PrimaryGridView.SettingsCookies.CookiesID;
+				//PrimaryGridView.SettingsCookies.Enabled = false;
+			}
+
+			var wh = "(isnull(ddd.name, 'Невідомо') not in ('НЕВИЗНАЧЕНІ','Інші установи'))";
+			//if (Utils.IsTestSystem())
+			//{
+			//	wh = "(isnull(ddd.name, 'Невідомо') not in ('НЕВИЗНАЧЕНІ'))";
+			//}
+			SqlDataSourceReports.SelectCommand = SqlDataSourceReports.SelectCommand.Replace("(8888 = 8888)", wh);
+		}
+	}
 
 	void CustomizeReportForm()
 	{
@@ -217,6 +263,14 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
             return Request.QueryString["smallform"] == null ? false : true;
         }
     }
+
+	protected bool IsControlVikorist
+	{
+		get
+		{
+			return Request.QueryString["controlVikorist"] == null ? false : true;
+		}
+	}
 
 	protected int SMode
 	{

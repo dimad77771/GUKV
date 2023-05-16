@@ -59,7 +59,7 @@
 
 </script>
 
-<mini:ProfiledSqlDataSource ID="SqlDataSourceAllOrganizations" runat="server" EnableCaching="true"
+<mini:ProfiledSqlDataSource ID="SqlDataSourceAllOrganizations" runat="server" EnableCaching="false"
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT * FROM view_organizations WHERE ((org_deleted IS NULL) OR (org_deleted = 0)) AND LEN(COALESCE(full_name, '')) > 0 AND (@p_rda_district_id = 0 OR (form_of_ownership_int in (select id from dict_org_ownership where is_rda = 1) AND addr_distr_new_id = @p_rda_district_id) )"
     OnSelecting="SqlDataSourceAllOrganizations_Selecting">
