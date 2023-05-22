@@ -340,6 +340,19 @@ join dict_rent_occupation occ on occ.id = obp.org_occupation_id
 			( (@smode = 0) OR (@smode = 1 and obj.NumOfObj > 0) OR (@smode = 2 and isnull(obj.NumOfObj,0) <= 0) )
                 AND
             (8888 = 8888)
+                AND
+    case when rep.zkpo_code in 
+(
+SELECT
+	distinct
+    org.zkpo_code
+FROM reports1nf_accounts acc
+INNER JOIN aspnet_Users usr ON usr.UserId = acc.UserId
+INNER JOIN aspnet_Membership mem ON mem.UserId = acc.UserId
+LEFT OUTER JOIN organizations org ON org.id = acc.organization_id
+LEFT OUTER JOIN dict_districts2 rda ON rda.id = rda_district_id
+LEFT OUTER JOIN dict_org_old_organ misto ON misto.id = misto_district_id
+) then 1 else 0 end = 1
          "
     OnSelecting="SqlDataSourceReports_Selecting"
 
