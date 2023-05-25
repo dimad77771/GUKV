@@ -167,8 +167,8 @@
 <mini:ProfiledSqlDataSource ID="SqlDataSourceArendaObjects" runat="server" EnableCaching="false"
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT m.*
-    , substring(m.payment_type_obj, 1, 60)  as payment_type_obj_nam 
-    , substring(m.factich_vikorist, 1, 60)  as 'factich_vikorist_type'
+    , m.payment_type_obj_full  as payment_type_obj_nam 
+    , m.factich_vikorist  as 'factich_vikorist_type'
     , pryzn4doc = (select top 1 doc_display_name from view_arenda_link_2_decisions ld where ld.arenda_id = m.arenda_id order by ld.link_id) 
     , cast(CAST(CHECKSUM(NEWID()) & 0x7fffffff AS float) / CAST (0x7fffffff AS int) as varchar(1000)) as factich_vikorist_obj2
     --, r.rental_rate
