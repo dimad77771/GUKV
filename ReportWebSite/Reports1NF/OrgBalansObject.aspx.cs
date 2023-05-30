@@ -575,6 +575,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
         AddQueryParameter(ref fieldList, "purpose_group_id", "pgr", Reports1NFUtils.GetDropDownValue(controls, "ComboPurposeGroup"), parameters);
         AddQueryParameter(ref fieldList, "purpose_id", "purp", Reports1NFUtils.GetDropDownValue(controls, "ComboPurpose"), parameters);
         AddQueryParameter(ref fieldList, "purpose_str", "purpstr", Reports1NFUtils.GetEditText(controls, "EditPurposeStr"), parameters);
+        AddQueryParameter(ref fieldList, "note", "note_", Reports1NFUtils.GetEditText(controls, "EditNote"), parameters);
 
         AddQueryParameter(ref fieldList, "bti_id", "btiid", Reports1NFUtils.GetEditText(controls, "EditObjBTICondition"), parameters);
         AddQueryParameter(ref fieldList, "reestr_no", "reesno", Reports1NFUtils.GetEditText(controls, "EditObjBtiReestrNo"), parameters);

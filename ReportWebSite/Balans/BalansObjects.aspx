@@ -475,7 +475,10 @@
         <dx:GridViewDataDateColumn FieldName="znizhino_stanom" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="74" Visible="true" Caption="станом на" Width="80"></dx:GridViewDataDateColumn>
         <dx:GridViewDataTextColumn FieldName="znizhino_primitka" ReadOnly="True" ShowInCustomizationForm="True"
-            VisibleIndex="75" Visible="true" Caption="Примітки" Width="120"></dx:GridViewDataTextColumn>
+            VisibleIndex="75" Visible="true" Caption="Примітки р/з" Width="120"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="note" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="76" Visible="false" Caption="Примітки" Width="120"></dx:GridViewDataTextColumn>
+
 
         <dx:GridViewDataTextColumn FieldName="balans_id_" VisibleIndex="100" Caption="ID об'єкту" Visible="false"></dx:GridViewDataTextColumn>
 <%-- --%>
@@ -532,7 +535,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A3_1" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A3_2" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

@@ -2404,6 +2404,14 @@ WHERE id = @id"
                                                     </dx:ASPxTextBox>
                                                 </td>
                                             </tr>
+                                            <tr>
+                                                <td><dx:ASPxLabel ID="ASPxLabel47" runat="server" Text="Примітка" width="200px"></dx:ASPxLabel></td>
+                                                <td valign="top">
+                                                    <dx:ASPxTextBox ID="EditNote" runat="server" Text='<%# Eval("note") %>' Width="600px" Title="Примітка" MaxLength="255">
+                                                        <ValidationSettings Display="None"></ValidationSettings>
+                                                    </dx:ASPxTextBox>
+                                                </td>
+                                            </tr>
                                         </table>
 
                                     </dx:PanelContent>
@@ -3246,7 +3254,7 @@ WHERE id = @id"
                                             </tr>
                                             <tr>
                                                 <td colspan="2"><dx:ASPxCheckBox ID="EditZnizhinoShkoda" runat="server" width="390px" Text="Пошкоджено" Value='<%# Eval("znizhino_shkoda") %>' Title="Пошкоджено" /></td>
-                                                <td><dx:ASPxLabel ID="ASPxLabel50" runat="server" Text="Примітки" width="200px"></dx:ASPxLabel></td>
+                                                <td><dx:ASPxLabel ID="ASPxLabel50" runat="server" Text="Примітки р/з" width="200px"></dx:ASPxLabel></td>
                                                 <td><dx:ASPxTextBox ID="EditZnizhinoPrimitka" runat="server" NumberType="Float" Value='<%# Eval("znizhino_primitka") %>' Width="190px" Title="Примітки" /></td>
                                             </tr>
                                             <tr>
