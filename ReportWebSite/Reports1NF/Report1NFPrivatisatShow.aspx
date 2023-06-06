@@ -447,8 +447,8 @@ WHERE id = @id"
             </PropertiesSpinEdit>
         </dx:GridViewDataSpinEditColumn>
 
-        <dx:GridViewDataTextColumn FieldName="sposib_privat" Caption="Спосіб приватизації"  Width="100px">
-        </dx:GridViewDataTextColumn>
+        <%--<dx:GridViewDataTextColumn FieldName="sposib_privat" Caption="Спосіб приватизації"  Width="100px">
+        </dx:GridViewDataTextColumn>--%>
 
         <dx:GridViewDataTextColumn FieldName="document_privat" Caption="Документи щодо приватизації об’єкта"  Width="300px">
         </dx:GridViewDataTextColumn>

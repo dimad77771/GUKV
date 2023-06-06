@@ -61,6 +61,10 @@ namespace GUKVService
 			{
 				var lenguid = default(Guid).ToString().Length;
 				var sname = Path.GetFileName(subdir);
+				if (sname.ToLower().EndsWith("_a") || sname.ToLower().EndsWith("_b") || sname.ToLower().EndsWith("_c") || sname.ToLower().EndsWith("_d") || sname.ToLower().EndsWith("_e"))
+				{
+					sname = sname.Substring(0, sname.Length - 2);
+				}
 				if (sname.Length >= lenguid + 1)
 				{
 					var sname2 = sname.Substring(sname.Length - lenguid - 1);
