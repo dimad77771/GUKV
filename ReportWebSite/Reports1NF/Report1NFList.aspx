@@ -114,6 +114,7 @@
 		,RentPaymentProperties2.*
 
         ,isnull(PAY_RECV_ZVIT,0) + isnull(PAY_RECV_OTHER,0) - isnull(PAY_RETURN_ALL_OREND_PAYED,0) as PAY_RECV_ZVIT_new
+        ,corporav_prava
         
         FROM view_reports1nf rep
         LEFT JOIN (SELECT sum(CASE WHEN (r1a.submit_date IS NULL OR r1a.modify_date IS NULL OR r1a.modify_date > r1a.submit_date) THEN 0 ELSE 1 END) as NumOfSubmAgr, 
@@ -249,6 +250,7 @@
             ,org.planuvania_3
             ,org.planuvania_4
             ,org.planuvania_5
+            ,org.corporav_prava
 
             ,[dbo].[get_conveyancingRequests_count]([org].[report_id]) AS conveyancingRequests_count
 
@@ -1218,6 +1220,12 @@ WHERE id = @report_id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
+        <dx:GridViewDataTextColumn Caption="Корпоративні права" FieldName="corporav_prava" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="130"  >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("corporav_prava") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
     </Columns>
 
     <TotalSummary>
@@ -1287,7 +1295,7 @@ WHERE id = @report_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A4_8" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A4_9" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

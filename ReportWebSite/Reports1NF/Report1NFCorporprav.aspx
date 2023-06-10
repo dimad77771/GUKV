@@ -319,6 +319,7 @@
     SelectCommand="
 SELECT 
 *
+,(select Q2.name from reports1nf_org_info Q join dict_otdel_gukv Q2 on Q2.id = Q.otdel_gukv_id where Q.zkpo_code = A.uridzkpo) stan_urid_osoba
 FROM [corporprav] A
 "
 OnSelecting="SqlDataSourcePrivatisat_Selecting"
@@ -580,8 +581,16 @@ SELECT SCOPE_IDENTITY()"
 
         <dx:GridViewDataTextColumn FieldName="uridname" Caption="Назва юр. особи" Width="160px" CellStyle-HorizontalAlign="Left">
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="uridzkpo" Caption="Код ЕДРПОУ юр. особи" Width="90px" CellStyle-HorizontalAlign="Center">
+        
+		<dx:GridViewDataTextColumn FieldName="uridzkpo" Caption="Код ЕДРПОУ юр. особи" Width="90px" CellStyle-HorizontalAlign="Center">
         </dx:GridViewDataTextColumn>
+
+		<dx:GridViewDataTextColumn FieldName="stan_urid_osoba" Caption="Стан юр.особи" Width="90px" CellStyle-HorizontalAlign="Center">
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("stan_urid_osoba") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
         <dx:GridViewDataTextColumn FieldName="vlasname" Caption="Назва / ФІО власника корпправа" Width="150px" CellStyle-HorizontalAlign="Left">
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="vlasicod" Caption="ІНН власника корпправа" Width="90px" CellStyle-HorizontalAlign="Center">
@@ -614,7 +623,6 @@ SELECT SCOPE_IDENTITY()"
                 <SpinButtons Enabled="false" ClientVisible="false" ></SpinButtons>
             </PropertiesSpinEdit>
         </dx:GridViewDataSpinEditColumn>
-
 		<dx:GridViewDataTextColumn FieldName="akcform" Caption="Форма існування акцій" Width="120px" CellStyle-HorizontalAlign="Left">
         </dx:GridViewDataTextColumn>
 
@@ -664,7 +672,7 @@ SELECT SCOPE_IDENTITY()"
         ShowFooter="false"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.CorporpravSquare" Version="A1_17" Enabled="false" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.CorporpravSquare" Version="A1_18" Enabled="false" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
