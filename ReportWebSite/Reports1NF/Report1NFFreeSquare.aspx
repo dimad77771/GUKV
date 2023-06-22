@@ -363,6 +363,7 @@ SELECT
 ,st.kind
 ,rep.form_of_ownership
 ,rep.old_organ
+,reestr_no
 
 --,b.object_kind as vydbudynku
 ,history = case when isnull(b.history, 'НІ') = 'НІ' then '' else 'ТАК' end 
@@ -749,6 +750,11 @@ WHERE id = @id"
 						<dx:ASPxLabel runat="server" Text='<%# Eval("free_sql_usefull") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 					</EditItemTemplate>
                 </dx:GridViewDataTextColumn>
+			   <dx:GridViewDataTextColumn FieldName="reestr_no" Caption="Інвентарний номер об'єкту" VisibleIndex="8" Width="80px" ReadOnly="true">
+					<EditItemTemplate>
+						<dx:ASPxLabel runat="server" Text='<%# Eval("reestr_no") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+					</EditItemTemplate>
+                </dx:GridViewDataTextColumn>
             </Columns>
          </dx:GridViewBandColumn>
  
@@ -1055,7 +1061,7 @@ WHERE id = @id"
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A2_79" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A2_80" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
