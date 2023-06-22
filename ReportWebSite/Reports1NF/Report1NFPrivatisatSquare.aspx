@@ -744,7 +744,7 @@ SELECT SCOPE_IDENTITY()"
 
         <dx:GridViewDataTextColumn FieldName="prozoro_number" Caption="Унікальний код обєкту у ЕТС Прозорро-продажі"  Width="150px">
             <DataItemTemplate>
-                <%# "<a target=\"_blank\" href=\"https://prozorro.sale/ssp_object/" + Eval("prozoro_number") + "\">" + Eval("prozoro_number") + "</a>"%>
+                <%# "<a target=\"_blank\" href=\"https://prozorro.sale/planning/" + Eval("prozoro_number") + "\">" + Eval("prozoro_number") + "</a>"%>
             </DataItemTemplate>
         </dx:GridViewDataTextColumn>
 

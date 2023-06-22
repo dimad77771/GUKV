@@ -117,7 +117,7 @@ public partial class Reports1NF_Report1NFPrivatisatSquare : System.Web.UI.Page
 					var text = cell.Text ?? "";
 					if (!string.IsNullOrEmpty(text))
 					{
-						var url = "https://prozorro.sale/ssp_object/" + text;
+						var url = "https://prozorro.sale/planning/" + text;
 						worksheet.HyperLinks.Add(cell, ExcelHyperLinkType.Url, url, "Відкрити обєкт у ЕТС Прозорро-продажі");
 						cell.CellStyle.Font.Underline = ExcelUnderline.Single;
 						cell.CellStyle.Font.Color = ExcelKnownColors.Blue;
