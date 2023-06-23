@@ -17,7 +17,7 @@ public partial class Account_Login : System.Web.UI.Page
 		//var password = user.ResetPassword();
 		//user.ChangePassword(password, "fq,jkbn66+++");
 
-		//var user = Membership.GetUser("О.О26315161");
+		//var user = Membership.GetUser("О.О26199714");
 		//var password = user.ResetPassword();
 		//user.ChangePassword(password, "fq,jkbn66+++");
 
@@ -32,7 +32,7 @@ public partial class Account_Login : System.Web.UI.Page
 		//TestChangePasswordAll();
 	}
 
-    protected void LoginUser_LoggedIn(object sender, EventArgs e)
+	protected void LoginUser_LoggedIn(object sender, EventArgs e)
     {
         String username = LoginUser.UserName.Trim();
 
