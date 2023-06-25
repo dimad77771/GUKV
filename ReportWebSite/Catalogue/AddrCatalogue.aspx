@@ -19,41 +19,41 @@
 
 <script type="text/javascript" language="javascript">
 
-    // <![CDATA[
+	// <![CDATA[
 
-    window.onresize = function () { AdjustGridSizes(); };
+	window.onresize = function () { AdjustGridSizes(); };
 
-    function ShowFieldFixxerPopupControl(s, e) { PopupFieldFixxer.Show(); }
+	function ShowFieldFixxerPopupControl(s, e) { PopupFieldFixxer.Show(); }
 
-    function AdjustGridSizes() {
+	function AdjustGridSizes() {
 
-        PrimaryGridView.SetHeight(window.innerHeight - 185);
-    }
+		PrimaryGridView.SetHeight(window.innerHeight - 185);
+	}
 
-    function GridViewAllBuildingsInit(s, e) {
+	function GridViewAllBuildingsInit(s, e) {
 
-        PrimaryGridView.PerformCallback(AddWndHeightToCallbackParam("init:"));
-    }
+		PrimaryGridView.PerformCallback(AddWndHeightToCallbackParam("init:"));
+	}
 
-    function GridViewAllBuildingsEndCallback(s, e) {
+	function GridViewAllBuildingsEndCallback(s, e) {
 
-        AdjustGridSizes();
-    }
+		AdjustGridSizes();
+	}
 
-    function ShowFoldersPopupControl(s, e) {
+	function ShowFoldersPopupControl(s, e) {
 
-        PopupControlFolders.Show();
-    }
+		PopupControlFolders.Show();
+	}
 
-    function ShowAddressPickerPopupControl(s, e) {
+	function ShowAddressPickerPopupControl(s, e) {
 
-        PopupAddressPicker.Show();
-    }
+		PopupAddressPicker.Show();
+	}
 
-    function ShowFieldChooserPopupControl(s, e) {
+	function ShowFieldChooserPopupControl(s, e) {
 
-        PopupFieldChooser.Show();
-    }
+		PopupFieldChooser.Show();
+	}
 
     // ]]>
 
@@ -61,7 +61,31 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceAllBuildings" runat="server" EnableCaching="false"
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT * FROM view_buildings WHERE ((building_deleted IS NULL) OR (building_deleted = 0)) AND LEN(COALESCE(street_full_name, '')) > 0 AND
+    SelectCommand="SELECT *
+    ,
+
+Stuff(
+(
+SELECT 
+'<br/>' + CONCAT(org_holder.full_name,': ',A.sqr_total) 
+FROM balans A
+LEFT OUTER JOIN view_organizations org_holder ON A.organization_id = org_holder.organization_id
+LEFT OUTER JOIN view_buildings b ON A.building_id = b.building_id
+OUTER APPLY
+(SELECT TOP 1 bal2.id FROM balans bal2 INNER JOIN buildings b2 ON b2.id = bal2.building_id WHERE
+		b2.addr_street_id = b.addr_street_id and
+		b2.addr_nomer1 = b.addr_nomer1 and
+		bal2.id + 10 != A.id + 10 and
+		bal2.sqr_total = A.sqr_total and
+		ISNULL(bal2.is_deleted, 0) = 0
+) twin
+WHERE A.building_id = view_buildings.building_id AND (0 = 1 OR (0 = 0 AND (is_deleted IS NULL OR is_deleted = 0 OR CASE WHEN twin.id IS NULL AND A.is_deleted > 0 AND A.modified_by = 'Auto-import' THEN 1 ELSE 0 END = 1 )))
+ORDER by 1
+FOR XML PATH(''),TYPE
+).value('text()[1]','nvarchar(max)'),1,5,'')
+	as balans_info
+
+    FROM view_buildings WHERE ((building_deleted IS NULL) OR (building_deleted = 0)) AND LEN(COALESCE(street_full_name, '')) > 0 AND
         (@p_rda_district_id = 0 OR addr_distr_new_id = @p_rda_district_id)"
     OnSelecting="SqlDataSourceAllBuildings_Selecting">
     <SelectParameters>
@@ -201,6 +225,8 @@
             VisibleIndex="11" Visible="False" Caption="Нежитлова Площа"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="is_in_privat" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="12" Visible="False" Caption="Будинок В Програмі Приватизації"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="balans_info" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="12" Visible="True" Caption="Балансоутримувач" Width="500" PropertiesTextEdit-EncodeHtml="false"></dx:GridViewDataTextColumn>
         <dx:GridViewDataDateColumn FieldName="modify_date" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="13" Visible="False" Caption="Дата редагування"></dx:GridViewDataDateColumn>
         <dx:GridViewDataTextColumn FieldName="modified_by" ReadOnly="True" ShowInCustomizationForm="True"
@@ -234,7 +260,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Catalogue.Buildings" Version="A3" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Catalogue.Buildings" Version="A6_2" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

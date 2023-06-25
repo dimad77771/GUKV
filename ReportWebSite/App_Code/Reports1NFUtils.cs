@@ -391,10 +391,10 @@ public static class Reports1NFUtils
             if (markedControls.TryGetValue(parent.ID.ToLower(), out comment))
             {
                 // This control is marked as having WRONG DATA
-                (parent as ASPxEdit).ForeColor = System.Drawing.Color.FromArgb(255, 0, 0);
-                (parent as ASPxEdit).Border.BorderColor = System.Drawing.Color.FromArgb(255, 0, 0);
+                //(parent as ASPxEdit).ForeColor = System.Drawing.Color.FromArgb(255, 0, 0);
+                //(parent as ASPxEdit).Border.BorderColor = System.Drawing.Color.FromArgb(255, 0, 0);
                 (parent as ASPxEdit).ToolTip = comment;
-                (parent as ASPxEdit).DisabledStyle.ForeColor = System.Drawing.Color.FromArgb(255, 0, 0);
+                //(parent as ASPxEdit).DisabledStyle.ForeColor = System.Drawing.Color.FromArgb(255, 0, 0);
             }
             else if ((parent as ASPxEdit).ReadOnly)
             {

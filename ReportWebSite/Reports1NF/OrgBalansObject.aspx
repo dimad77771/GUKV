@@ -1568,26 +1568,27 @@ WHERE id = @id"
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td> <dx:ASPxLabel ID="ASPxLabel37" runat="server" Text="Номер будинку, літери" Width="125px"/> </td>
+                                                <td> <dx:ASPxLabel ID="ASPxLabel37" runat="server" Text="Номер будинку" Width="125px"/> </td>
                                                 <td>
+                                                    <dx:ASPxTextBox ID="ASPxTextBox1" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_nomer1")) %>' Width="270px" 
+                                                                    Title="Адреса - Номер будинку" MaxLength="9" ReadOnly="true" />
+                                                </td>
+                                                <td> <dx:ASPxLabel ID="ASPxLabel38" runat="server" Text="Корпус / літера"/> </td>
+                                                <td> 
                                                     <table border="0" cellspacing="0" cellpadding="0" width="270px">
                                                         <tr>
                                                             <td>
-                                                                <dx:ASPxTextBox ID="EditBuildingNum1" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_nomer1")) %>' Width="70px" 
-                                                                    Title="Адреса - Номер будинку" MaxLength="9" ReadOnly="true" />
+                                                                <dx:ASPxTextBox ID="EditBuildingNum3" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_nomer3")) %>' Width="200px" Title="Адреса - Номер будинку (корпус)" MaxLength="10" ReadOnly="true" /> 
                                                             </td>
                                                             <td>
-                                                                <dx:ASPxTextBox ID="EditBuildingNum2" ClientInstanceName="EditBuildingNum2" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_nomer2")) %>' Width="200px"
-                                                                    Title="Адреса - Номер будинку (літери)" MaxLength="18" ReadOnly="true" />
+                                                                <dx:ASPxTextBox ID="EditBuildingNum2" ClientInstanceName="EditBuildingNum2" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_nomer2")) %>' Width="70px" Title="Адреса - Номер будинку (літери)" MaxLength="18" ReadOnly="true" />
                                                             </td>
                                                         </tr>
                                                     </table>
                                                 </td>
-                                                <td> <dx:ASPxLabel ID="ASPxLabel38" runat="server" Text="Корпус"/> </td>
-                                                <td> <dx:ASPxTextBox ID="EditBuildingNum3" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_nomer3")) %>' Width="270px" Title="Адреса - Номер будинку (корпус)" MaxLength="10" ReadOnly="true" /> </td>
                                             </tr>
                                             <tr>
-                                                <td> <dx:ASPxLabel ID="ASPxLabel42" runat="server" Text="Додаткова адреса"/> </td>
+                                                <td> <dx:ASPxLabel ID="ASPxLabel42" runat="server" Text="Додаткова інформація"/> </td>
                                                 <td> 
 													<dx:ASPxTextBox ID="EditMiscAddr" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_misc")) %>' Width="270px" Title="Адреса будинку - Додаткова адреса" MaxLength="100" ReadOnly="true">
 														<ClientSideEvents TextChanged="OnEditMiscAddrTextChanged" ValueChanged="OnEditMiscAddrValueChanged" />
