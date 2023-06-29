@@ -1570,7 +1570,7 @@ WHERE id = @id"
                                             <tr>
                                                 <td> <dx:ASPxLabel ID="ASPxLabel37" runat="server" Text="Номер будинку" Width="125px"/> </td>
                                                 <td>
-                                                    <dx:ASPxTextBox ID="ASPxTextBox1" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_nomer1")) %>' Width="270px" 
+                                                    <dx:ASPxTextBox ID="EditBuildingNum1" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_nomer1")) %>' Width="270px" 
                                                                     Title="Адреса - Номер будинку" MaxLength="9" ReadOnly="true" />
                                                 </td>
                                                 <td> <dx:ASPxLabel ID="ASPxLabel38" runat="server" Text="Корпус / літера"/> </td>
