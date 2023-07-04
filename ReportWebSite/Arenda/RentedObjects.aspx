@@ -175,6 +175,8 @@
     --, ar.cost_expert_total as cost_expert_total_agr
     , stan_prym = (select name FROM dbo.dict_arenda_note_status st where m.note_status_id = st.id)
     , isnull(ddd.name, 'Невідомо') as sphera_dialnosti
+    , bb.sqr_non_habit
+    , bb.sqr_pidval
 
     FROM view_arenda m /*m_view_arenda m */
     left join 
@@ -183,6 +185,7 @@
 		join dict_rent_occupation occ on occ.id = obp.org_occupation_id
 		where obp.period_id = (select top 1 id from dict_rent_period order by id desc)
 	) DDD on DDD.org_id = m.org_balans_id
+    left join balans bb on bb.id = m.ref_balans_id
     --join arenda ar on ar.id = m.arenda_id 
     --left join arenda_notes n on n.arenda_id = ar.id and m.arenda_note_id = n.id 
     --left join dict_rental_rate r on n.payment_type_id = r.id
@@ -447,7 +450,14 @@
             VisibleIndex="78" Visible="False" Caption="Поточний стан використання приміщення"></dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn FieldName="arenda_id" ReadOnly="True" ShowInCustomizationForm="True"
-            VisibleIndex="101" Visible="False" Caption="ID об'єкту"></dx:GridViewDataTextColumn>
+            VisibleIndex="101" Visible="False" Caption="ID договору"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="ref_balans_id" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="102" Visible="False" Caption="ID об'єкту"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="sqr_non_habit" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="103" Visible="False" Caption="Площа нежилих приміщень, кв.м"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="sqr_pidval" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="104" Visible="False" Caption="Площа підвалу висотою 1,9м та вище, кв.м"></dx:GridViewDataTextColumn>
+
    </Columns>
 
     <TotalSummary>
@@ -477,7 +487,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.ArendaObjects" Version="A2_34" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.ArendaObjects" Version="A2_36" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
