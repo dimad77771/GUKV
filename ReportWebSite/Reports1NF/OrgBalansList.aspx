@@ -95,6 +95,7 @@
 		 ,bal.cost_zalishkova 	
 		 ,bal.znos
 		 ,bal.znos_date
+         ,bal.note
 
         FROM reports1nf_balans bal
         INNER JOIN reports1nf rep ON rep.id = bal.report_id
@@ -104,7 +105,11 @@
         LEFT OUTER JOIN dict_org_ownership dict_own ON bal.form_ownership_id = dict_own.id
 
         outer apply (select sum(case when fs.is_included = 1 then fs.total_free_sqr else 0 end) as total_free_sqr from reports1nf_balans_free_square fs where fs.balans_id = bal.id and fs.report_id = bal.report_id /*and fs.is_included = 1*/) bfs 
-        outer apply (select COUNT(distinct ar.id) as num_rent_agr, sum(an.rent_square) as total_rent_sqr from reports1nf_arenda ar left join reports1nf_arenda_notes an on ar.id = an.arenda_id and isnull(an.is_deleted,0) = 0 where bal.report_id = ar.report_id and bal.organization_id = ar.org_balans_id and bal.building_id = ar.building_id and isnull(ar.is_deleted,0)=0 and ar.agreement_state = 1) ag 
+
+        outer apply (select COUNT(distinct ar.id) as num_rent_agr, sum(an.rent_square) as total_rent_sqr from reports1nf_arenda ar left join reports1nf_arenda_notes an on ar.id = an.arenda_id and isnull(an.is_deleted,0) = 0 where bal.report_id = ar.report_id and an.ref_balans_id = bal.id and isnull(ar.is_deleted,0)=0 and ar.agreement_state = 1) ag
+        --outer apply (select COUNT(distinct ar.id) as num_rent_agr, sum(an.rent_square) as total_rent_sqr from reports1nf_arenda ar left join reports1nf_arenda_notes an on ar.id = an.arenda_id and isnull(an.is_deleted,0) = 0 where bal.report_id = ar.report_id and bal.organization_id = ar.org_balans_id and bal.building_id = ar.building_id and isnull(ar.is_deleted,0)=0 and ar.agreement_state = 1) ag 
+
+
         --left join reports1nf_balans_free_square fs on fs.balans_id = bal.id and fs.report_id = bal.report_id
         --LEFT JOIN reports1nf_arenda ar ON bal.report_id = ar.report_id and bal.organization_id = ar.org_balans_id and bal.building_id = ar.building_id and isnull(ar.is_deleted,0)=0 and ar.agreement_state = 1
         --LEFT JOIN reports1nf_arenda_notes an on ar.id = an.arenda_id and isnull(an.is_deleted,0) = 0 
@@ -126,7 +131,8 @@
 	    ,bal.cost_balans
 		,bal.cost_zalishkova 	
 		,bal.znos
-		,bal.znos_date" >
+		,bal.znos_date
+    	,bal.note" >
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="rep_id" />
     </SelectParameters>
@@ -295,6 +301,7 @@
         <dx:GridViewDataTextColumn FieldName="total_rent_sqr" VisibleIndex="13" Caption="Площа, що надається в оренду"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="sqr_vlas_potreb" VisibleIndex="14" Caption="Площа об'єкту для власних потреб" ShowInCustomizationForm="True" Visible="False"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="inv_num" VisibleIndex="15" Caption="Інвентарний номер" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="note" VisibleIndex="15" Caption="Примітка" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
 
 		<dx:GridViewDataTextColumn FieldName="cost_balans" VisibleIndex="16" Caption="Первісна (переоцінена) вартість, тис. грн." ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataTextColumn>
 		<dx:GridViewDataTextColumn FieldName="cost_zalishkova" VisibleIndex="17" Caption="Залишкова вартість, тис. грн." ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataTextColumn>
@@ -328,7 +335,7 @@
     <SettingsPager PageSize="20" />
     <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
     <Styles Header-Wrap="True" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.BalansList" Enabled="True" Version="A4" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.BalansList" Enabled="True" Version="A5" />
 
     <ClientSideEvents
         Init="function (s,e) { PrimaryGridView.PerformCallback('init:'); }"
