@@ -76,7 +76,7 @@
 		bal.id AS 'balans_id_', 
         dict_districts2.name AS 'district', 
         bld.addr_street_name,
-        (COALESCE(LTRIM(RTRIM(bld.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer2)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer3)), '')) AS 'addr_nomer',
+        (COALESCE(LTRIM(RTRIM(bld.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer3)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer2)), '')) AS 'addr_nomer',
         bal.sqr_total,
         bal.sqr_vlas_potreb,
         COALESCE(bal.purpose_str, dict_balans_purpose.name) AS 'purpose', bal.is_deleted, bal.modify_date, bal.submit_date, dict_own.name AS ownership_type,
@@ -118,7 +118,7 @@
         bal.id,
         dict_districts2.name, 
         bld.addr_street_name,
-        (COALESCE(LTRIM(RTRIM(bld.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer2)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer3)), '')),
+        (COALESCE(LTRIM(RTRIM(bld.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer3)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer2)), '')),
         bal.sqr_total
        , bal.sqr_vlas_potreb
        , bfs.total_free_sqr
