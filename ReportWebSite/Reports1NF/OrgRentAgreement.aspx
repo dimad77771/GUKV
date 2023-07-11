@@ -3258,7 +3258,7 @@ WHERE id = @id"
                                                             </td>
                                                     </tr>
 
-                                                    <tr style="display:none   ">
+                                                    <tr style="display:none222   ">
                                                         <td><dx:ASPxLabel ID="ASPxLabel74" runat="server" Text="Сальдо авансової орендної плати на початок звітного періоду, грн. (без ПДВ)"></dx:ASPxLabel></td>
                                                         <td><dx:ASPxSpinEdit ID="edit_zabezdepoz_saldo" ClientInstanceName="edit_zabezdepoz_saldo" runat="server" NumberType="Float" Value='<%# Eval("zabezdepoz_saldo") %>' Width="150px" Enabled="true"
                                                             Title="сума коштів отримана від орендаря, (бажано що б вона дорівнювала нарахованій авансовій орендній платі)">
