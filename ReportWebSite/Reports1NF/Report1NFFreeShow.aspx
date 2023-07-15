@@ -9,6 +9,20 @@
 
 <script type="text/javascript" src="../Scripts/PageScript.js"></script>
 
+<style type="text/css">
+.blink2 {
+  -webkit-animation: blink2 1s linear infinite;
+  animation: blink2 5s linear infinite;
+}
+@-webkit-keyframes blink2 {
+  100% { color: rgba(255, 132, 132, 0); }
+}
+@keyframes blink2 {
+  100% { color: rgba(255, 132, 132, 0); }
+}
+</style>
+
+
 <script type="text/javascript" language="javascript">
 
     // <![CDATA[
@@ -145,6 +159,7 @@
 
 ,st.kind
 ,rep.form_of_ownership
+--,(select Q.full_name from organizations Q where Q.id = bal.org_giver_id) as orandodatel
 ,dbo.get_reports1NF_orandodatel(b.district, rep.form_of_ownership) as orandodatel
 ,rep.old_organ
 
@@ -517,6 +532,11 @@ WHERE id = @id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 		<dx:GridViewDataCheckColumn FieldName="isexistsphoto" Caption="Наяв- ність фото" VisibleIndex="1" Width="50px" ReadOnly="true"/>
+        <dx:GridViewDataTextColumn FieldName="freecycle_step_name" Caption="Стан процесу передачі" VisibleIndex="1" Width="200px" CellStyle-ForeColor="Red" CellStyle-CssClass="blink2">
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("freecycle_step_name") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="district" Caption="Район" VisibleIndex="2" Width="120px" ReadOnly="true">
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("district") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
@@ -662,11 +682,6 @@ WHERE id = @id"
         <dx:GridViewDataTextColumn FieldName="history" Caption="Пам’ятка культурної спадщини" VisibleIndex="23" Width="70px">
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("history") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
-			</EditItemTemplate>
-        </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="freecycle_step_name" Caption="Стан процесу передачі" VisibleIndex="24" Width="200px">
-			<EditItemTemplate>
-				<dx:ASPxLabel runat="server" Text='<%# Eval("freecycle_step_name") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="prozoro_number" Caption="Унікальний код обєкту у ЕТС Прозорро-продажі" VisibleIndex="24" Width="150px">
