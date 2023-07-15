@@ -68,7 +68,10 @@ public partial class Reports1NF_OrgInfo : System.Web.UI.Page
         // Enable / disable all controls depending on the report owner
         EnableControlsBasingOnUserRole();
 
-		SectionMenu.Visible = (Utils.GetLastReportId() <= 0);
+        if (!Roles.IsUserInRole(Utils.RDAControllerRole))
+        {
+            SectionMenu.Visible = (Utils.GetLastReportId() <= 0);
+        }
 	}
 
     protected void EnableControlsBasingOnUserRole()

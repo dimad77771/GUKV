@@ -8,10 +8,7 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DevExpress.Web;
-using DevExpress.Web;
-using DevExpress.Web.Data;
-using DevExpress.Web;
-using DevExpress.Web;
+
 
 public partial class Reports1NF_OrgRentedList : System.Web.UI.Page
 {
@@ -93,7 +90,10 @@ public partial class Reports1NF_OrgRentedList : System.Web.UI.Page
         // Bind data to the grid dynamically
         this.ProcessGridDataFetch(ViewState, PrimaryGridView);
 
-		SectionMenu.Visible = (Utils.GetLastReportId() <= 0);
+        if (!Roles.IsUserInRole(Utils.RDAControllerRole))
+        {
+            SectionMenu.Visible = (Utils.GetLastReportId() <= 0);
+        }
 	}
 
     protected int ReportID

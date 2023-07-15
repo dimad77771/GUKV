@@ -291,7 +291,10 @@ public partial class Reports1NF_OrgArendaList : System.Web.UI.Page
         }
         PrimaryGridView.Settings.VerticalScrollBarMode = DevExpress.Web.ScrollBarMode.Visible;
 
-		SectionMenu.Visible = (Utils.GetLastReportId() <= 0);
+        if (!Roles.IsUserInRole(Utils.RDAControllerRole))
+        {
+            SectionMenu.Visible = (Utils.GetLastReportId() <= 0);
+        }
 	}
 
     protected int ReportID

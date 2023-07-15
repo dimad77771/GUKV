@@ -69,7 +69,10 @@ public partial class Reports1NF_OrgBalansDeletedList : System.Web.UI.Page
         // Bind data to the grid dynamically
         this.ProcessGridDataFetch(ViewState, PrimaryGridView);
 
-		SectionMenu.Visible = (Utils.GetLastReportId() <= 0);
+        if (!Roles.IsUserInRole(Utils.RDAControllerRole))
+        {
+            SectionMenu.Visible = (Utils.GetLastReportId() <= 0);
+        }
 	}
 
     protected int ReportID
