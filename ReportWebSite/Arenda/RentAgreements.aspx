@@ -248,6 +248,7 @@
 ,case when exists (select 1 from reports1nf_arenda q where q.id = ar.id) then 1 else 0 end as ex_reports1nf_arenda 
 ,(select top 1 q.report_id from reports1nf_arenda q where q.id = ar.id) as arenda_report_id
 ,case when ar.id in (select b.id from dbo.reports1nf_arenda b where b.org_balans_id = ar.org_balans_id and ISNULL(b.is_deleted, 0) = 0 /*and b.agreement_state = 1*/ ) then 1 else 0 end as is_dpz_object 
+,(SELECT count(*) FROM reports1nf_arenda_notes WHERE (is_deleted IS NULL OR is_deleted = 0) AND report_id = (select top 1 q.report_id from reports1nf_arenda q where q.id = ar.id) AND arenda_id = m.arenda_id) as count_dogovor_objects
 
         FROM view_arenda_agreements m  /*m_view_arenda_agreements m3 */
         join arenda ar on ar.id = m.arenda_id
@@ -438,6 +439,11 @@ WHERE id = @arenda_id"
             VisibleIndex="30" Visible="False" Caption="Дата Договору Оренди - Квартал"></dx:GridViewDataTextColumn>     --%>
         <dx:GridViewDataTextColumn FieldName="agreement_num" ReadOnly="True"
             VisibleIndex="31" Visible="True" Caption="Номер Договору Оренди"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="count_dogovor_objects" ReadOnly="True"
+            VisibleIndex="31" Visible="True" Caption="Кількість об’єктів за договором">
+            <CellStyle HorizontalAlign="Center"></CellStyle>
+        </dx:GridViewDataTextColumn>
+
 <%--        <dx:GridViewDataTextColumn FieldName="floor_number" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="32" Visible="False" Caption="Поверх"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="cost_narah" ReadOnly="True" ShowInCustomizationForm="True"
@@ -665,6 +671,8 @@ WHERE id = @arenda_id"
         <dx:ASPxSummaryItem FieldName="sqr_free_total" SummaryType="Custom" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="sqr_free_korysna" SummaryType="Custom" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="sqr_free_mzk" SummaryType="Custom" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="count_dogovor_objects" SummaryType="Sum" DisplayFormat="{0}"/>
+
 
         <dx:ASPxSummaryItem FieldName="n_cost_agreement" SummaryType="Custom" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="cost_agreement_max" SummaryType="Custom" DisplayFormat="{0}" />
@@ -697,7 +705,7 @@ WHERE id = @arenda_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_19" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_21" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
