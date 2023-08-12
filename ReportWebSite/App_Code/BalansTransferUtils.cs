@@ -442,7 +442,7 @@ public class BalansTransferUtils
 
                             reader.Close();
 
-                            ProcessTransfer(connectionSql, transactionSql, User, notifyByEmail, conveyancing_type, building_id, balans_id, org_from_id, org_to_id, conveyancing_area, new_akt_num, new_akt_date, new_akt_summa, new_akt_summa_zalishkova, rozp_doc_num, rozp_doc_date, rishrozp_doc_id, rish_doc_kind_id, ownership_type_id, form_ownership_id, purpose_group_id, purpose_id, object_type_id, object_kind_id);
+                            ProcessTransfer(connectionSql, transactionSql, User, notifyByEmail, conveyancing_type, building_id, balans_id, org_from_id, org_to_id, conveyancing_area, new_akt_num, new_akt_date, new_akt_summa, new_akt_summa_zalishkova, rozp_doc_num, rozp_doc_date, rishrozp_doc_id, rish_doc_kind_id, ownership_type_id, form_ownership_id, purpose_group_id, purpose_id, object_type_id, object_kind_id, requestId);
                         }
                     }
                 }
@@ -480,7 +480,7 @@ public class BalansTransferUtils
         string new_akt_num, DateTime new_akt_date, decimal new_akt_summa, decimal new_akt_summa_zalishkova, 
         string rozp_doc_num, DateTime rozp_doc_date, int rishrozp_doc_id, int rish_doc_kind_id, 
         int ownership_type_id, int form_ownership_id, int purpose_group_id, int purpose_id, 
-        int object_type_id, int object_kind_id)
+        int object_type_id, int object_kind_id, int request_id)
     {
         if (conveyancing_type == 1 || conveyancing_type == 2) // Прийняти об'єкт на баланс / Передати об'єкт з балансу
         {
@@ -517,13 +517,13 @@ public class BalansTransferUtils
 
             if (GUKV.Conveyancing.DB.ExportAct(importedAct, rish))
             {
-                if (GUKV.Conveyancing.DB.TransferBalansObjects(connectionSql, transactionSql, importedAct, rish, notifyByEmail, 3))
+                if (GUKV.Conveyancing.DB.TransferBalansObjects(connectionSql, transactionSql, importedAct, rish, notifyByEmail, 3, request_id: request_id))
                 {
                     foreach (ActObject act in importedAct.actObjects)
                     {
                         foreach (BalansTransfer bt in act.balansTransfers)
                         {
-                            CreateAktNew(connectionSql, transactionSql, bt.balansId, bt.objectId, importedAct.docDate, importedAct.docNum, importedAct.docSum, importedAct.docFinalSum, rishrozp_doc_id);
+                            CreateAktNew(connectionSql, transactionSql, bt.balansId, bt.objectId, importedAct.docDate, importedAct.docNum, importedAct.docSum, importedAct.docFinalSum, rishrozp_doc_id, request_id);
                         }
                     }
                 }
@@ -688,7 +688,7 @@ public class BalansTransferUtils
     }
 
     public static int CreateAktNew(SqlConnection connectionSql, SqlTransaction transactionSql, int balansId, 
-        int buildingId, DateTime aktDate, string aktNum, decimal aktSum, decimal aktSumFinal, int rozpDocId)
+        int buildingId, DateTime aktDate, string aktNum, decimal aktSum, decimal aktSumFinal, int rozpDocId, int? request_id = null)
     {
         if (connectionSql == null)
             return 0;

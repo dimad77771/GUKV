@@ -3032,7 +3032,7 @@ namespace GUKV.Conveyancing
                                     switch (bt.transferType)
                                     {
                                         case ObjectTransferType.Transfer:
-                                            bt.balansId = CutBalansObject(connectionSql, transactionSql, bt, rishennya, act, notifyByEmail);
+                                            bt.balansId = CutBalansObject(connectionSql, transactionSql, bt, rishennya, act, notifyByEmail, request_id);
                                             break;
 
                                         case ObjectTransferType.Create:
@@ -4457,7 +4457,7 @@ namespace GUKV.Conveyancing
         }
 
         private static int CutBalansObject(/*FbConnection connection1NF, FbTransaction transaction,*/ SqlConnection connectionSql, SqlTransaction transactionSql, BalansTransfer bt,
-            /*int balansId, decimal cutSquare, int newOwnerOrgId,*/ Document rishennya, ImportedAct act, bool notifyByEmail)
+            /*int balansId, decimal cutSquare, int newOwnerOrgId,*/ Document rishennya, ImportedAct act, bool notifyByEmail, int? request_id = null)
         {
             int balansId = bt.balansId;
             decimal cutSquare = bt.sqr;
@@ -4563,6 +4563,15 @@ namespace GUKV.Conveyancing
                     }
                 }
             }
+
+            if (request_id != null)
+            {
+                CopyTransferRequestPhoto(request_id.Value, newBalansObj, connectionSql, transactionSql);
+                CopyTransferRishAttachfiles(request_id.Value, newBalansObj, connectionSql, transactionSql);
+                CopyTransferAktAttachfiles(request_id.Value, newBalansObj, connectionSql, transactionSql);
+            }
+
+
 
             return newBalansObj;
         }

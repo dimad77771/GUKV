@@ -58,7 +58,7 @@ namespace ExtDataEntry.Models
                 {
                     Directory.CreateDirectory(dir);
                 }
-                File.Copy(photofilenameSrc, photofilenameDst);
+                File.Copy(photofilenameSrc, photofilenameDst, true);
             }
         }
 
