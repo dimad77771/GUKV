@@ -54,6 +54,11 @@
         PrimaryGridView.PerformCallback(AddWndHeightToCallbackParam("init:"));
     }
 
+	function CheckBoxBalansObjectsShowNeziznacheni_CheckedChanged(s, e) {
+
+		PrimaryGridView.PerformCallback(AddWndHeightToCallbackParam("init:"));
+	}
+
     function ShowAddressPickerPopupControl(s, e) {
 
         PopupAddressPicker.Show();
@@ -109,6 +114,12 @@
             <dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowDeleted" runat="server" Checked='False' Text="Видалені"
                 Width="80px" ClientInstanceName="CheckBoxBalansObjectsShowDeleted" >
                 <ClientSideEvents CheckedChanged="CheckBoxBalansObjectsShowDeleted_CheckedChanged" />
+            </dx:ASPxCheckBox>
+        </td>
+        <td>
+            <dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowNeziznacheni" runat="server" Checked='False' Text="Невизначені" ToolTip="Показувати невизначені"
+                Width="80px" ClientInstanceName="CheckBoxBalansObjectsShowNeziznacheni" >
+                <ClientSideEvents CheckedChanged="CheckBoxBalansObjectsShowNeziznacheni_CheckedChanged" />
             </dx:ASPxCheckBox>
         </td>
         <td>
@@ -205,6 +216,7 @@
 , vb.balans_id as balans_id_
 , W.sum_rent_square
 , W.count_ref_balans
+, bal.geodata_map_opoints
 
     FROM view_balans_all vb
     LEFT JOIN reports1nf_balans bal on vb.balans_id = bal.id
@@ -221,12 +233,14 @@
  	 ((@p_dpz_filter = 0) OR (@p_dpz_filter <> 0 AND vb.balans_id in (select b.id from dbo.reports1nf_balans b where b.organization_id = vb.organization_id and ISNULL(b.is_deleted, 0) = 0 ) )) AND
         ((@p_com_filter = 0) OR (@p_com_filter <> 0 AND (vb.org_ownership_int IN (32,33,34) OR vb.form_ownership_int IN (32,33,34)))) AND
         ((@p_show_deleted = 1) OR (@p_show_deleted = 0 AND (vb.is_deleted IS NULL OR vb.is_deleted = 0 OR vb.is_not_accepted = 1))) AND
+        ((@p_show_neziznacheni = 1) OR (@p_show_neziznacheni = 0 AND (isnull(ddd.name, 'Невідомо') <> 'Невизначені'))) AND
         ((@p_rda_district_id = 0) OR (vb.org_ownership_int in (select id from dict_org_ownership where is_rda = 1) AND vb.org_district_id = @p_rda_district_id))"
     OnSelecting="SqlDataSourceBalansObjects_Selecting" >
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="1" Name="p_dpz_filter" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_com_filter" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_show_deleted" />
+        <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_show_neziznacheni" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_rda_district_id" />
     </SelectParameters>
 </mini:ProfiledSqlDataSource>
@@ -309,15 +323,23 @@
             </DataItemTemplate>
             <Settings SortMode="Custom" />
         </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="geodata_map_opoints" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="9" Visible="True" Caption="Координати на мапі">
+            <DataItemTemplate>
+                <%# "<a href=\"" + Eval("geodata_map_opoints") + "\" target=\"_blank\" >" + Eval("geodata_map_opoints") + "</a>"%>
+            </DataItemTemplate>
+        </dx:GridViewDataTextColumn>
+
 <%-- --%>
 
     <dx:GridViewDataTextColumn FieldName="orggospupr" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="9" Visible="True" Caption="Орган госп. упр."></dx:GridViewDataTextColumn>
 
-             <dx:GridViewDataTextColumn FieldName="sqr_total_bld" ReadOnly="True" ShowInCustomizationForm="True"
-            VisibleIndex="10" Visible="True" Caption="Загальна Площа будинку (кв.м.)"></dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="sqr_total_bld" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="10" Visible="false" Caption="Загальна Площа будинку (кв.м.)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="sqr_non_habit_bld" ReadOnly="True" ShowInCustomizationForm="True"
-            VisibleIndex="11" Visible="True" Caption="Площа нежилих приміщень будинку (кв.м.)"></dx:GridViewDataTextColumn>
+            VisibleIndex="11" Visible="false" Caption="Площа нежилих приміщень будинку (кв.м.)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="total_free_sqr" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="11" Visible="True" Caption="Площа вільних приміщень (кв.м.)"></dx:GridViewDataTextColumn>
 
@@ -545,7 +567,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A3_3" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A3_8" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

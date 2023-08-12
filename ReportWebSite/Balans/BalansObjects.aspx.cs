@@ -60,7 +60,31 @@ public partial class Balans_BalansObjects : System.Web.UI.Page, CachingPageIdSup
         {
             CustomizeColumnList();
         }
-	}
+
+        ForTest();
+    }
+
+    void ForTest()
+    {
+        var lines = new List<string>();
+        //var zags = System.IO.File.ReadAllLines(@"C:\Users\ASUS\Documents\SQL Server Management Studio\qqqq2238.txt", System.Text.Encoding.GetEncoding("windows-1251"));
+        var zags = PrimaryGridView.Columns.OfType<GridViewDataColumn>().Select(q => getNormalizeString(q.Caption)).ToArray();
+        foreach (var zag in zags)
+        {
+            var column = PrimaryGridView.Columns.OfType<GridViewDataColumn>().Single(q => getNormalizeString(q.Caption) == getNormalizeString(zag));
+            var findcol = column.FieldName;
+
+            lines.Add(findcol + " as [" + zag + "]");
+            //lines.Add(findcol);
+        }
+
+        var sql = string.Join(",\n", lines);
+    }
+
+    string getNormalizeString(string arg)
+    {
+        return arg.Replace("″", "\"");
+    }
 
     void CustomizeColumnList()
     {
@@ -113,7 +137,8 @@ public partial class Balans_BalansObjects : System.Web.UI.Page, CachingPageIdSup
 		ASPxButtonEditColumnList2.Visible = false;
 		//ASPxButton_BalansObjects_SaveAs.Visible = false;
 		CheckBoxBalansObjectsShowDeleted.Visible = false;
-		CheckBoxBalansObjectsComVlasn.Visible = false;
+        CheckBoxBalansObjectsShowNeziznacheni.Visible = false;
+        CheckBoxBalansObjectsComVlasn.Visible = false;
 		CheckBoxBalansObjectsDPZ.Visible = false;
 		ButtonQuickSearchAddr1.Visible = false;
 		SectionMenu.Visible = false;
@@ -217,6 +242,7 @@ public partial class Balans_BalansObjects : System.Web.UI.Page, CachingPageIdSup
         e.Command.Parameters["@p_dpz_filter"].Value = CheckBoxBalansObjectsDPZ.Checked ? 1 : 0;
         e.Command.Parameters["@p_com_filter"].Value = CheckBoxBalansObjectsComVlasn.Checked ? 1 : 0;
         e.Command.Parameters["@p_show_deleted"].Value = CheckBoxBalansObjectsShowDeleted.Checked ? 1 : 0;
+        e.Command.Parameters["@p_show_neziznacheni"].Value = CheckBoxBalansObjectsShowNeziznacheni.Checked ? 1 : 0;
         e.Command.Parameters["@p_rda_district_id"].Value = Utils.RdaDistrictID;
     }
 

@@ -217,6 +217,7 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 		e.Command.Parameters["@p_rda_district_id"].Value = Utils.RdaDistrictID;
 		e.Command.Parameters["@period_year"].Value = DateTime.Now.Date.Month == 1 ? DateTime.Now.Date.Year - 1 : DateTime.Now.Date.Year;
 		e.Command.Parameters["@baseurl"].Value = Utils.WebsiteBaseUrl;
+		e.Command.Parameters["@p_show_neziznacheni"].Value = CheckBoxBalansObjectsShowNeziznacheni.Checked ? 1 : 0;
 	}
 
 	protected void SqlDataSourceFreeSquare_Updating(object sender, SqlDataSourceCommandEventArgs e)

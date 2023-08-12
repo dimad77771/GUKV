@@ -70,6 +70,10 @@
 		}
 	}
 
+	function CheckBoxBalansObjectsShowNeziznacheni_CheckedChanged(s, e) {
+
+		PrimaryGridView.PerformCallback(AddWndHeightToCallbackParam("init:"));
+	}
 
     // ]]>
 
@@ -341,6 +345,8 @@ join dict_rent_occupation occ on occ.id = obp.org_occupation_id
 				AND
 			( (@smode = 0) OR (@smode = 1 and obj.NumOfObj > 0) OR (@smode = 2 and isnull(obj.NumOfObj,0) <= 0) )
                 AND
+            ( (@p_show_neziznacheni = 1) OR (@p_show_neziznacheni = 0 AND (isnull(ddd.name, 'Невідомо') <> 'Невизначені')) ) 
+                AND
             (8888 = 8888)
                 AND
     case when rep.zkpo_code in 
@@ -372,6 +378,7 @@ WHERE id = @report_id"
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="period_year" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_misto_id" />
 		<asp:Parameter DbType="Int32" DefaultValue="0" Name="smode" />
+        <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_show_neziznacheni" />
     </SelectParameters>
 
 
@@ -414,6 +421,12 @@ WHERE id = @report_id"
     <tr>
         <td style="width: 100%;">
             <asp:Label ID="LabelReportTitle1" runat="server" Text="Перелік балансоутримувачів" CssClass="reporttitle"></asp:Label>
+        </td>
+        <td>
+            <dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowNeziznacheni" runat="server" Checked='False' Text="Невизначені" ToolTip="Показувати невизначені"
+                Width="80px" ClientInstanceName="CheckBoxBalansObjectsShowNeziznacheni" >
+                <ClientSideEvents CheckedChanged="CheckBoxBalansObjectsShowNeziznacheni_CheckedChanged" />
+            </dx:ASPxCheckBox>
         </td>
         <td>
             <dx:ASPxButton ID="ASPxButtonEditColumnList" runat="server" AutoPostBack="False" Text="Додаткові Колонки" Width="148px">
@@ -1295,7 +1308,7 @@ WHERE id = @report_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A4_9" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A4_10" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

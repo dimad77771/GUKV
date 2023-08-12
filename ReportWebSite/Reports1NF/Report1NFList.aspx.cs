@@ -117,6 +117,8 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 			CustomizeControlVikorist();
 		}
 
+		this.ProcessGridDataFetch(ViewState, PrimaryGridView);
+
 		//ForTest();
 	}
 
@@ -327,6 +329,7 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
         e.Command.Parameters["@period_year"].Value = DateTime.Now.Date.Month == 1 ? DateTime.Now.Date.Year - 1 : DateTime.Now.Date.Year;
         e.Command.Parameters["@p_misto_id"].Value = ParmMistoId;
 		e.Command.Parameters["@smode"].Value = SMode;
+		e.Command.Parameters["@p_show_neziznacheni"].Value = CheckBoxBalansObjectsShowNeziznacheni.Checked ? 1 : 0;
 	}
 
 	protected void SqlDataSourceReports_Updating(object sender, SqlDataSourceCommandEventArgs e)
