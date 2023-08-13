@@ -233,6 +233,11 @@
         }  
     }
 
+	function CheckBoxBalansObjectsShowNeziznacheni_CheckedChanged(s, e) {
+
+		FreeSquareGridView.PerformCallback(AddWndHeightToCallbackParam("init:"));
+	}
+
     // ]]>
 
 </script>
@@ -380,6 +385,7 @@ LEFT JOIN (
 				) DDD ON DDD.org_id = rep.organization_id
 
         WHERE (@p_rda_district_id = 0 OR (rep.org_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND rep.org_district_id = @p_rda_district_id))
+            AND ( (@p_show_neziznacheni = 0) OR (@p_show_neziznacheni = 1 AND (fs.is_included = 1 and fs.komis_protocol <> '' and fs.geodata_map_points <> '')) )
 
     order by org_name, street_name, addr_nomer, total_free_sqr   "
     OnSelecting="SqlDataSourceFreeSquare_Selecting"
@@ -403,6 +409,7 @@ WHERE id = @id"
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_rda_district_id" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="period_year" />
 		<asp:Parameter DbType="String" DefaultValue="" Name="baseurl" />
+        <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_show_neziznacheni" />
     </SelectParameters>
 </mini:ProfiledSqlDataSource>
 
@@ -453,6 +460,12 @@ WHERE id = @id"
     <tr>
         <td style="width: 100%;">
             <asp:Label ID="LabelReportTitle1" runat="server" Text="Реєстр продовження договорів" CssClass="reporttitle"></asp:Label>
+        </td>
+        <td>
+            <dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowNeziznacheni" runat="server" Checked='True' Text="Публічні" ToolTip="Показувати лише публічні об'єкти"
+                Width="80px" ClientInstanceName="CheckBoxBalansObjectsShowNeziznacheni" >
+                <ClientSideEvents CheckedChanged="CheckBoxBalansObjectsShowNeziznacheni_CheckedChanged" />
+            </dx:ASPxCheckBox>
         </td>
         <td>
             <dx:ASPxButton ID="ASPxButton1" runat="server" AutoPostBack="False" 

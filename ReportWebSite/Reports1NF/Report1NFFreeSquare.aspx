@@ -407,7 +407,7 @@ LEFT JOIN (
 				) DDD ON DDD.org_id = rep.organization_id
 
         WHERE (@p_rda_district_id = 0 OR (rep.org_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND rep.org_district_id = @p_rda_district_id))
-			AND ( (@p_show_neziznacheni = 1) OR (@p_show_neziznacheni = 0 AND (1=1)) )
+			AND ( (@p_show_neziznacheni = 0) OR (@p_show_neziznacheni = 1 AND (fs.is_included = 1 and fs.komis_protocol <> '' and fs.geodata_map_points <> '')) )
 
     order by org_name, street_name, addr_nomer, total_free_sqr   "
     OnSelecting="SqlDataSourceFreeSquare_Selecting"
@@ -484,7 +484,7 @@ WHERE id = @id"
             <asp:Label ID="LabelReportTitle1" runat="server" Text="Реєстр вільних приміщень" CssClass="reporttitle"></asp:Label>
         </td>
 		<td>
-            <dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowNeziznacheni" runat="server" Checked='False' Text="Невизначені" ToolTip="Показувати невизначені"
+            <dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowNeziznacheni" runat="server" Checked='True' Text="Публічні" ToolTip="Показувати лише публічні об'єкти"
                 Width="80px" ClientInstanceName="CheckBoxBalansObjectsShowNeziznacheni" >
                 <ClientSideEvents CheckedChanged="CheckBoxBalansObjectsShowNeziznacheni_CheckedChanged" />
             </dx:ASPxCheckBox>

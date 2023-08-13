@@ -164,6 +164,7 @@ public partial class Arenda_RentedObjects : System.Web.UI.Page
 		e.Command.Parameters["@p_dpz_filter"].Value = CheckBoxRentedObjectsDPZ.Checked ? 1 : 0;
         e.Command.Parameters["@p_com_filter"].Value = CheckBoxRentedObjectsComVlasn.Checked ? 1 : 0;
         e.Command.Parameters["@p_rda_district_id"].Value = Utils.RdaDistrictID;
+        e.Command.Parameters["@p_show_neziznacheni"].Value = CheckBoxBalansObjectsShowNeziznacheni.Checked ? 1 : 0;
     }
 
     protected string GetPageUniqueKey()

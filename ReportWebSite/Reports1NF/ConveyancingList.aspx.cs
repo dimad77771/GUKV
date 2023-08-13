@@ -14,4 +14,10 @@ public partial class Reports1NF_ConveyancingList : System.Web.UI.Page
 		PrimaryGridView.AllColumns["balans_id"].SetGridViewColumnCssClass("bigBossUserStyle");
 	}
 	protected string IsBigBossUser { get; set; }
+
+    protected void ObjectDataSourcePhotoFiles_Inserting(object sender, ObjectDataSourceMethodEventArgs e)
+    {
+        if (Request.Cookies["RecordID"] != null)
+            e.InputParameters["RecordID"] = Request.Cookies["RecordID"].Value;
+    }
 }

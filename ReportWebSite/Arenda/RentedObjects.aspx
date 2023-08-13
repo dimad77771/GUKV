@@ -50,6 +50,11 @@
         PrimaryGridView.PerformCallback(AddWndHeightToCallbackParam("bind:"));
     }
 
+	function CheckBoxBalansObjectsShowNeziznacheni_CheckedChanged(s, e) {
+
+		PrimaryGridView.PerformCallback(AddWndHeightToCallbackParam("bind:"));
+	}
+
     function ShowAddressPickerPopupControl(s, e) {
 
         PopupAddressPicker.Show();
@@ -95,6 +100,12 @@
             <dx:ASPxCheckBox ID="CheckBoxRentedObjectsComVlasn" runat="server" Checked='False' Text="Лише Ком. Власність"
                 Width="155px" ClientInstanceName="CheckBoxRentedObjectsComVlasn" >
                 <ClientSideEvents CheckedChanged="CheckBoxRentedObjectsComVlasn_CheckedChanged" />
+            </dx:ASPxCheckBox>
+        </td>
+        <td>
+            <dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowNeziznacheni" runat="server" Checked='False' Text="Невизначені" ToolTip="Показувати невизначені"
+                Width="80px" ClientInstanceName="CheckBoxBalansObjectsShowNeziznacheni" >
+                <ClientSideEvents CheckedChanged="CheckBoxBalansObjectsShowNeziznacheni_CheckedChanged" />
             </dx:ASPxCheckBox>
         </td>
         <td>
@@ -192,6 +203,7 @@
     WHERE isnull(m.is_deleted,0)=0 and 
  	    ((@p_dpz_filter = 0) OR (@p_dpz_filter <> 0 AND m.arenda_id in (select b.id from dbo.reports1nf_arenda b where b.org_balans_id = m.org_balans_id and ISNULL(b.is_deleted, 0) = 0 /*and b.agreement_state = 1*/ ) )) AND 
         ((@p_com_filter = 0) OR (@p_com_filter <> 0 AND (balans_form_ownership_int IN (32,33,34) OR balans_org_ownership_int IN (32,33,34)))) AND
+        ((@p_show_neziznacheni = 1) OR (@p_show_neziznacheni = 0 AND (isnull(ddd.name, 'Невідомо') <> 'Невизначені'))) AND
         (   (@p_rda_district_id = 0) OR
             (org_balans_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND org_balans_district_id = @p_rda_district_id) OR
             (org_giver_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND org_giver_district_id = @p_rda_district_id) OR
@@ -201,6 +213,7 @@
         <asp:Parameter DbType="Int32" DefaultValue="1" Name="p_dpz_filter" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_com_filter" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_rda_district_id" />
+        <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_show_neziznacheni" />
     </SelectParameters>
 </mini:ProfiledSqlDataSource>
 
