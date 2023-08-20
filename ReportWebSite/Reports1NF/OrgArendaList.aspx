@@ -259,8 +259,8 @@ zvilbykmp_percent,zvilbykmp_date1,zvilbykmp_date2,
 povidoleno1_date,povidoleno1_num,
 povidoleno2_date,povidoleno2_num,
 povidoleno3_date,povidoleno3_num,
-povidoleno4_date,povidoleno4_num
-
+povidoleno4_date,povidoleno4_num,
+(SELECT sum(Q.cost_agreement) FROM reports1nf_arenda_notes Q WHERE (Q.is_deleted IS NULL OR Q.is_deleted = 0) AND Q.report_id = ar.report_id AND arenda_id = ar.id) as cost_agreement_total
 
 FROM reports1nf_arenda ar
         INNER JOIN reports1nf rep ON rep.id = ar.report_id
@@ -938,7 +938,7 @@ FROM reports1nf_arenda ar
         <dx:GridViewDataTextColumn FieldName="return_all_orend_payed" VisibleIndex="53" Caption="Повернення переплати орендної плати всього за звітний період, грн. (без ПДВ)" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="return_orend_payed" VisibleIndex="54" Caption="Переплата орендної плати всього, грн. (без ПДВ)" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
 		<dx:GridViewDataTextColumn FieldName="total_pereplata" VisibleIndex="55" Caption="Переплата орендної плати на кінець звітного періоду, грн. (без ПДВ)" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-
+        
 
         <dx:GridViewDataTextColumn FieldName="zvilneno_percent" VisibleIndex="101" Caption="Звільнено від сплати орендної плати на, %" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataDateColumn FieldName="zvilneno_date1" VisibleIndex="102" Caption="Звільнено від сплати орендної плати на, з" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
@@ -959,6 +959,8 @@ FROM reports1nf_arenda ar
 
         <dx:GridViewDataDateColumn FieldName="povidoleno4_date" VisibleIndex="151" Caption="Повідомлення орендаря до орендодавця про намір використовувати об'єкт, дата" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
         <dx:GridViewDataTextColumn FieldName="povidoleno4_num" VisibleIndex="152" Caption="Повідомлення орендаря до орендодавця про намір використовувати об'єкт, №" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="cost_agreement_total" VisibleIndex="153" Caption="Місячна орендна плата, грн." ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataTextColumn>
 
 		<dx:GridViewDataTextColumn FieldName="first_ref_balans_id" VisibleIndex="160" Caption="ID об'єкту оренди" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataTextColumn>
 		
@@ -1005,8 +1007,8 @@ FROM reports1nf_arenda ar
         <dx:ASPxSummaryItem FieldName="return_orend_payed" SummaryType="Sum" DisplayFormat="{0}" />
 		<dx:ASPxSummaryItem FieldName="total_pereplata" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="payment_narah_normal" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="cost_agreement_total" SummaryType="Sum" DisplayFormat="{0}" />
         
-
     </TotalSummary>
 
     <SettingsBehavior AutoFilterRowInputDelay="2500" ColumnResizeMode="Control" EnableCustomizationWindow="True" />
@@ -1021,7 +1023,7 @@ FROM reports1nf_arenda ar
     <SettingsPager PageSize="10" AlwaysShowPager="true" />
     <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
     <Styles Header-Wrap="True" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaList.2" Enabled="True" Version="B6" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaList.2" Enabled="True" Version="B7" />
 
     <ClientSideEvents
         Init="function (s,e) { PrimaryGridView.PerformCallback('init:'); }"
