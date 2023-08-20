@@ -447,11 +447,11 @@ WHERE id = @report_id"
 							DeleteMethod="Delete"
 							TypeName="ExtDataEntry.Models.FileAttachment">
 							<SelectParameters>
-								<asp:Parameter DefaultValue="reports1nf_report_documents" Name="scope" Type="String" />
+								<asp:Parameter DefaultValue="reports1nf_inventar_documents" Name="scope" Type="String" />
 								<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
 							</SelectParameters>
 							<DeleteParameters>
-								<asp:Parameter DefaultValue="reports1nf_report_documents" Name="scope" Type="String" />
+								<asp:Parameter DefaultValue="reports1nf_inventar_documents" Name="scope" Type="String" />
 								<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
 								<asp:Parameter Name="id" Type="String" />
 							</DeleteParameters>
@@ -504,11 +504,11 @@ WHERE id = @report_id"
 							DeleteMethod="Delete"
 							TypeName="ExtDataEntry.Models.FileAttachment">
 							<SelectParameters>
-								<asp:Parameter DefaultValue="reports1nf_inventar_documents" Name="scope" Type="String" />
+								<asp:Parameter DefaultValue="reports1nf_report_documents" Name="scope" Type="String" />
 								<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
 							</SelectParameters>
 							<DeleteParameters>
-								<asp:Parameter DefaultValue="reports1nf_inventar_documents" Name="scope" Type="String" />
+								<asp:Parameter DefaultValue="reports1nf_report_documents" Name="scope" Type="String" />
 								<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
 								<asp:Parameter Name="id" Type="String" />
 							</DeleteParameters>
@@ -734,7 +734,7 @@ WHERE id = @report_id"
             ShowCancelButton="true" ShowUpdateButton="true" ShowEditButton="true" >
 
             <CustomButtons>
-                <dx:GridViewCommandColumnCustomButton ID="bnt_show_photo" Text="Звіт"> <Image Url="~/Styles/current_stage_pdf.png"> </Image>
+                <dx:GridViewCommandColumnCustomButton ID="bnt_show_inventar" Text="Звіт"> <Image Url="~/Styles/current_stage_pdf.png"> </Image>
                 </dx:GridViewCommandColumnCustomButton>
             </CustomButtons>
             <CellStyle Wrap="False"></CellStyle>
@@ -750,7 +750,7 @@ WHERE id = @report_id"
             ShowCancelButton="false" ShowUpdateButton="false" ShowEditButton="false" >
 
             <CustomButtons>
-                <dx:GridViewCommandColumnCustomButton ID="bnt_show_inventar" Text="Звіт"> <Image Url="~/Styles/inventar_pdf.png"> </Image>
+                <dx:GridViewCommandColumnCustomButton ID="bnt_show_photo" Text="Звіт"> <Image Url="~/Styles/inventar_pdf.png"> </Image>
                 </dx:GridViewCommandColumnCustomButton>
             </CustomButtons>
             <CellStyle Wrap="False"></CellStyle>
