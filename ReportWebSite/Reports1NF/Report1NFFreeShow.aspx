@@ -199,7 +199,7 @@ LEFT JOIN (
 				and (@fs_id = -1 OR fs.id = @fs_id)
 				and (@mode50 = 0 OR fs.freecycle_step_dict_id = 31)
 
-    order by org_name, street_name, addr_nomer, total_free_sqr   "
+    order by case when (SELECT Q.public_name FROM free_proc_step_dict Q where Q.step_id = fs.freecycle_step_dict_id) <> '' then 1 else 2 end, org_name, street_name, addr_nomer, total_free_sqr   "
     OnSelecting="SqlDataSourceFreeSquare_Selecting"
 
 UpdateCommand="UPDATE [reports1nf_balans_free_square]
