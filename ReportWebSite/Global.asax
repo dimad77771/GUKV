@@ -9,6 +9,10 @@
         Utils.EnsureRequestValidationMode();
         log4net.Config.XmlConfigurator.Configure(new System.IO.FileInfo(Server.MapPath("~/Web.config"))); 
         DevExpress.Web.ASPxWebControl.BackwardCompatibility.DataControlAllowReadUnlistedFieldsFromClientApiDefaultValue = true;
+        
+        //MyEditorsLocalizer.Activate();
+        RichEditCoreLocalizer.Activate();
+        MyRichEditLocalizer.Activate();
     }
 
     void Application_PreRequestHandlerExecute(object sender, EventArgs e)
@@ -19,6 +23,7 @@
 		//DevExpress.Web.ASPxWebControl.GlobalTheme = "Aqua";
 		//DevExpress.Web.ASPxWebControl.GlobalTheme = "MetropolisBlue";	//https://docs.devexpress.com/AspNet/6655/common-concepts/appearance-customization-theming/available-themes
     }
+
     
     void Application_BeginRequest()
     {

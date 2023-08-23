@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
@@ -13,6 +14,9 @@ public partial class Reports1NF_Report1NFFreeShow : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+		var gg1 = this.Culture;
+		var gg2 = this.UICulture;
+
 		/*       SectionMenu.Visible = System.Web.Security.Roles.IsUserInRole(Utils.Report1NFReviewerRole);
 
 			   // The 'Notifications' page must be visible only to users that can receive some notifications
@@ -174,5 +178,39 @@ public partial class Reports1NF_Report1NFFreeShow : System.Web.UI.Page
 			FreeSquareGridView.DetailRows.ExpandAllRows();
 			FreeSquareGridView.SettingsDetail.ShowDetailButtons = false;
 		}
+	}
+
+
+	//protected void ZayavkaBtn_Click(object sender, EventArgs e)
+	//{
+	//	var EditedDocuemntID = Guid.NewGuid().ToString();
+	//	var data = File.ReadAllBytes(@"D:\Projects\DKVSOURCESFINALEDITION_v20\ReportWebSite\Reports1NF\Templates\ProzoroDogovor.docx");
+	//	ZayavkaRichEdit.Open(
+	//				EditedDocuemntID,
+	//				DevExpress.XtraRichEdit.DocumentFormat.OpenXml,
+	//				() => { return data; }
+	//			);
+	//}
+
+	protected void callbackZayavka_Callback(object source, CallbackEventArgs e)
+	{
+		//var EditedDocuemntID = Guid.NewGuid().ToString();
+		//var data = File.ReadAllBytes(@"D:\Projects\DKVSOURCESFINALEDITION_v20\ReportWebSite\Reports1NF\Templates\ProzoroDogovor.docx");
+		//ZayavkaRichEdit.Open(
+		//			EditedDocuemntID,
+		//			DevExpress.XtraRichEdit.DocumentFormat.OpenXml,
+		//			() => { return data; }
+		//		);
+	}
+
+	protected void ZayavkaRichEdit_Callback(object sender, CallbackEventArgsBase e)
+	{
+		var EditedDocuemntID = Guid.NewGuid().ToString();
+		var data = File.ReadAllBytes(@"D:\Projects\DKVSOURCESFINALEDITION_v20\ReportWebSite\Reports1NF\Templates\ProzoroDogovor.docx");
+		ZayavkaRichEdit.Open(
+					EditedDocuemntID,
+					DevExpress.XtraRichEdit.DocumentFormat.OpenXml,
+					() => { return data; }
+				);
 	}
 }

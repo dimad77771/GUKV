@@ -1,8 +1,14 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Report1NFFreeShow.aspx.cs" Inherits="Reports1NF_Report1NFFreeShow"
-    MasterPageFile="~/FreeShowPublic.master" Title="Перелік вільних приміщень" %>
+    MasterPageFile="~/FreeShowPublic.master" Title="Перелік вільних приміщень"
+    
+    %>
+<%--UICulture="ru" Culture="ru-UA"--%>
+<%--UICulture="es-AG" Culture="es-AG"--%>
+<%--UICulture="en-en" Culture="en-en"--%>
 
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.Export" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxRichEdit.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxRichEdit" tagprefix="dxe" %>
 <%@ Register Namespace="MiniProfilerHelpers" TagPrefix="mini" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
@@ -73,7 +79,21 @@
 			'Report1NFFreeMap.aspx?fs_id=' + id,
 			'_blank',
 		);
-	}
+    }
+
+    function ZayavkaClick(e) {
+        //alert(1);
+        console.log("e", e)
+		ASPxPopupZayavkaDoc.Show();
+        //e.processOnServer = false
+        //callbackZayavka.PerformCallback(111);
+		ZayavkaRichEdit.PerformCallback(111);
+    }
+
+    function OnZayavkaCallbackComplete() {
+		//alert(2);
+        ASPxPopupZayavkaDoc.Show();
+    }
 
 	window.onload = function () {
 		jQuery(document).ready(function () {
@@ -712,6 +732,14 @@ WHERE id = @id"
             </DataItemTemplate>
 		</dx:GridViewDataTextColumn>
 
+        <dx:GridViewDataTextColumn FieldName="btn_send" Caption="#" VisibleIndex="30" Width="150px" Visible="true">
+			<DataItemTemplate>
+                <dx:ASPxButton runat="server" ID="ZayavkaBtn" Text="Подати заявку" AutoPostBack="false" >
+                    <ClientSideEvents Click="function(s, e) { ZayavkaClick(e); }" />
+                </dx:ASPxButton>
+            </DataItemTemplate>
+		</dx:GridViewDataTextColumn>
+
 
 
         <%--<dx:GridViewDataTextColumn FieldName="komis_protocol" Caption="Протокол комісії" VisibleIndex="40" Width="100px">--%>
@@ -800,5 +828,31 @@ WHERE id = @id"
         </dx:PopupControlContentControl>
     </ContentCollection>
 </dx:ASPxPopupControl>
+
+<dx:ASPxPopupControl ID="ASPxPopupZayavkaDoc" runat="server" AllowDragging="True" 
+    ClientInstanceName="ASPxPopupZayavkaDoc" EnableClientSideAPI="True" 
+    HeaderText="Заявка" Modal="True" 
+    PopupHorizontalAlign="Center" PopupVerticalAlign="Middle"  
+    PopupAction="None" PopupElementID="ASPxGridViewFreeSquare"  >
+    <ContentCollection>
+        <dx:PopupControlContentControl ID="ASPxPopupZayavkaDocContentControl" runat="server" SupportsDisabledAttribute="True">
+            <dxe:ASPxRichEdit ID="ZayavkaRichEdit" ClientInstanceName="ZayavkaRichEdit" runat="server" Width="1000px" Height="700px" ActiveTabIndex="0" ShowConfirmOnLosingChanges="false" OnCallback="ZayavkaRichEdit_Callback" > 
+            </dxe:ASPxRichEdit>
+
+
+
+            <br />
+
+            <dx:ASPxButton ID="ASPxPopupZayavkaDocButtonClose" runat="server" AutoPostBack="False" Text="Закрити" HorizontalAlign="Center">
+                <ClientSideEvents Click="function(s, e) { ASPxPopupZayavkaDoc.Hide(); }" />
+            </dx:ASPxButton>
+
+        </dx:PopupControlContentControl>
+    </ContentCollection>
+</dx:ASPxPopupControl>
+
+<dx:ASPxCallback ID="callbackZayavka" ClientInstanceName="callbackZayavka" runat="server" OnCallback="callbackZayavka_Callback" >
+    <ClientSideEvents CallbackComplete="OnZayavkaCallbackComplete"  />
+</dx:ASPxCallback>
 
 </asp:Content>
