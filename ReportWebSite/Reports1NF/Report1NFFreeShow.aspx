@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Report1NFFreeShow.aspx.cs" Inherits="Reports1NF_Report1NFFreeShow"
-    MasterPageFile="~/FreeShowPublic.master" Title="Перелік вільних приміщень"
+    MasterPageFile="~/FreeShowPublicWithUser.master" Title="Перелік вільних приміщень"
     
     %>
 <%--UICulture="ru" Culture="ru-UA"--%>
@@ -32,6 +32,8 @@
 <script type="text/javascript" language="javascript">
 
     // <![CDATA[
+
+	var IsConnected = <%= IsConnected.ToString().ToLower() %>;
 
     window.onresize = function () { AdjustGridSizes(); };
 
@@ -82,17 +84,17 @@
     }
 
     function ZayavkaClick(e) {
-        //alert(1);
-        console.log("e", e)
-		ASPxPopupZayavkaDoc.Show();
-        //e.processOnServer = false
-        //callbackZayavka.PerformCallback(111);
-		ZayavkaRichEdit.PerformCallback(111);
-    }
+		window.open('/Account/RegisterInCabinet.aspx?ReturnUrl=/Reports1NF/Report1NFFreeShow.aspx', '_self'); return;
+        //ASPxPopupUser.Show(); return;
 
-    function OnZayavkaCallbackComplete() {
-		//alert(2);
-        ASPxPopupZayavkaDoc.Show();
+		//alert(IsConnected);
+        //console.log("e", e)
+        if (IsConnected) {
+            ASPxPopupZayavkaDoc.Show();
+            ZayavkaRichEdit.PerformCallback(111);
+        } else {
+			ASPxPopupUser.Show();
+        }
     }
 
 	window.onload = function () {
@@ -769,7 +771,7 @@ WHERE id = @id"
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <%--<SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A2_9" Enabled="True" />--%>
+    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFFreeShow" Version="D1_1" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
@@ -836,7 +838,7 @@ WHERE id = @id"
     PopupAction="None" PopupElementID="ASPxGridViewFreeSquare"  >
     <ContentCollection>
         <dx:PopupControlContentControl ID="ASPxPopupZayavkaDocContentControl" runat="server" SupportsDisabledAttribute="True">
-            <dxe:ASPxRichEdit ID="ZayavkaRichEdit" ClientInstanceName="ZayavkaRichEdit" runat="server" Width="1000px" Height="700px" ActiveTabIndex="0" ShowConfirmOnLosingChanges="false" OnCallback="ZayavkaRichEdit_Callback" > 
+            <dxe:ASPxRichEdit ID="ZayavkaRichEdit" ClientInstanceName="ZayavkaRichEdit" runat="server" Width="1000px" Height="700px" ActiveTabIndex="0" ShowConfirmOnLosingChanges="false" OnCallback="ZayavkaRichEdit_Callback" OnInit="ZayavkaRichEdit_Init" > 
             </dxe:ASPxRichEdit>
 
 
@@ -851,8 +853,119 @@ WHERE id = @id"
     </ContentCollection>
 </dx:ASPxPopupControl>
 
-<dx:ASPxCallback ID="callbackZayavka" ClientInstanceName="callbackZayavka" runat="server" OnCallback="callbackZayavka_Callback" >
-    <ClientSideEvents CallbackComplete="OnZayavkaCallbackComplete"  />
-</dx:ASPxCallback>
+<dx:ASPxPopupControl ID="ASPxPopupUser" runat="server" AllowDragging="True" 
+    ClientInstanceName="ASPxPopupUser" EnableClientSideAPI="True" 
+    HeaderText="Заявка" Modal="True" 
+    PopupHorizontalAlign="Center" PopupVerticalAlign="Middle"  
+    PopupAction="None" PopupElementID="ASPxGridViewFreeSquare"  >
+    <ContentCollection>
+        <dx:PopupControlContentControl ID="PopupControlContentControlUser" runat="server" SupportsDisabledAttribute="True">
+            <asp:CreateUserWizard ID="RegisterUser" runat="server" EnableViewState="false" 
+        OnCreatedUser="RegisterUser_CreatedUser" 
+        CompleteSuccessText="Користувач успішно зареєстрований." 
+        ContinueButtonText="Продовжити" 
+        DuplicateEmailErrorMessage="Вказана електронна адреса вже використовується іншим користувачем. Будь ласка, введіть іншу електронну адресу." 
+        DuplicateUserNameErrorMessage="Користувач з таким ім'ям вже зареєстрований на сайті. Будь ласка, введіть інше ім'я користувача." 
+        InvalidEmailErrorMessage="Будь ласка, введіть коректну електронну адресу." 
+        InvalidPasswordErrorMessage="Мінімальна довжина паролю: {0} символів" 
+        UnknownErrorMessage="Помилка при створенні нового користувача. Будь ласка, спробуйте знову." >
+        <LayoutTemplate>
+            <asp:PlaceHolder ID="wizardStepPlaceholder" runat="server"></asp:PlaceHolder>
+            <asp:PlaceHolder ID="navigationPlaceholder" runat="server"></asp:PlaceHolder>
+        </LayoutTemplate>
+        <WizardSteps>
+            <asp:CreateUserWizardStep ID="RegisterUserWizardStep" runat="server">
+                <ContentTemplate>
+                    <h2>
+                        Реєстрація нового користувача
+                    </h2>
+                    <p>
+                        Для реєстрації на сайті, будь ласка, заповніть цю форму.
+                    </p>
+                    <p>
+                        Мінімальна припустима довжина паролю складає <%= Membership.MinRequiredPasswordLength %> символів.
+                    </p>
+                    <span class="failureNotification">
+                        <asp:Literal ID="ErrorMessage" runat="server"></asp:Literal>
+                    </span>
+                    <asp:ValidationSummary ID="RegisterUserValidationSummary" runat="server" CssClass="failureNotification" 
+                         ValidationGroup="RegisterUserValidationGroup"/>
+                    <div class="accountInfo">
+                        <fieldset class="register">
+                            <legend>Інформація про користувача</legend>
+                            <p>
+                                <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Ім'я користувача:</asp:Label>
+                                <asp:TextBox ID="UserName" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" 
+                                     CssClass="failureNotification"
+                                     ErrorMessage="Для реєстрації необхідно ввести ім'я користувача."
+                                     ToolTip="Для реєстрації необхідно ввести ім'я користувача." 
+                                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+                            </p>
+                            <p>
+                                <asp:Label ID="EmailLabel" runat="server" AssociatedControlID="Email">Електронна адреса:</asp:Label>
+                                <asp:TextBox ID="Email" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ControlToValidate="Email" 
+                                     CssClass="failureNotification"
+                                     ErrorMessage="Для реєстрації необхідно ввести електронну адресу користувача."
+                                     ToolTip="Для реєстрації необхідно ввести електронну адресу користувача." 
+                                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+                            </p>
+                            <p>
+                                <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Пароль:</asp:Label>
+                                <asp:TextBox ID="Password" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" 
+                                     CssClass="failureNotification"
+                                     ErrorMessage="Для реєстрації необхідно ввести пароль."
+                                     ToolTip="Для реєстрації необхідно ввести пароль." 
+                                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+                            </p>
+                            <p>
+                                <asp:Label ID="ConfirmPasswordLabel" runat="server" AssociatedControlID="ConfirmPassword">Підтвердження паролю:</asp:Label>
+                                <asp:TextBox ID="ConfirmPassword" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
+                                <asp:RequiredFieldValidator ControlToValidate="ConfirmPassword" CssClass="failureNotification"
+                                     Display="Dynamic" 
+                                     ErrorMessage="Для реєстрації необхідно ввести підтвердження паролю."
+                                     ID="ConfirmPasswordRequired"
+                                     runat="server" 
+                                     ToolTip="Для реєстрації необхідно ввести підтвердження паролю."
+                                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+                                <asp:CompareValidator ID="PasswordCompare" runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword" 
+                                     CssClass="failureNotification" Display="Dynamic"
+                                     ErrorMessage="Для успішної реєстрації пароль та підтвердження паролю мають співпадати."
+                                     ValidationGroup="RegisterUserValidationGroup">*</asp:CompareValidator>
+                            </p>
+                        </fieldset>
+                        <p class="submitButton">
+                            <table width="100%" border="0" style="width:100%">
+                                <tr>
+                                    <td>
+                                        <dx:ASPxButton ID="CreateUserButton" runat="server" CommandName="MoveNext" Text="Зареєструватись" ValidationGroup="RegisterUserValidationGroup"></dx:ASPxButton>
+                                   </td>
+
+                                    <td>
+                                        <dx:ASPxButton ID="ASPxPopupUserButtonClose" runat="server" AutoPostBack="False" Text="Закрити" HorizontalAlign="Center">
+                                            <ClientSideEvents Click="function(s, e) { ASPxPopupUser.Hide(); }" />
+                                        </dx:ASPxButton>
+                                    </td>
+                                </tr>
+                            </table>
+                        </p>
+                    </div>
+                </ContentTemplate>
+                <CustomNavigationTemplate>
+                </CustomNavigationTemplate>
+            </asp:CreateUserWizardStep>
+        </WizardSteps>
+    </asp:CreateUserWizard>
+
+            
+
+            
+
+        </dx:PopupControlContentControl>
+    </ContentCollection>
+</dx:ASPxPopupControl>
+
 
 </asp:Content>

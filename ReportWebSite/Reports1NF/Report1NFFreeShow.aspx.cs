@@ -14,24 +14,6 @@ public partial class Reports1NF_Report1NFFreeShow : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-		var gg1 = this.Culture;
-		var gg2 = this.UICulture;
-
-		/*       SectionMenu.Visible = System.Web.Security.Roles.IsUserInRole(Utils.Report1NFReviewerRole);
-
-			   // The 'Notifications' page must be visible only to users that can receive some notifications
-			   if (Roles.IsUserInRole(Utils.DKVOrganizationControllerRole) ||
-				   Roles.IsUserInRole(Utils.DKVObjectControllerRole) ||
-				   Roles.IsUserInRole(Utils.DKVArendaControllerRole) ||
-				   Roles.IsUserInRole(Utils.DKVArendaPaymentsControllerRole))
-			   {
-				   SectionMenu.Items[2].Visible = true;
-			   }
-			   else
-			   {
-				   SectionMenu.Items[2].Visible = false;
-			   }
-	   */
 		FreeSquareGridView.SettingsEditing.Mode = GridViewEditingMode.Inline;
 
 		if (HasFsid)
@@ -45,12 +27,6 @@ public partial class Reports1NF_Report1NFFreeShow : System.Web.UI.Page
 			FreeSquareGridView.Settings.ShowHeaderFilterButton = false;
 			FreeSquareGridView.Settings.ShowFilterBar = GridViewStatusBarMode.Hidden;
 		}
-
-		//DevExpress.Web.ASPxFileManager.ASPxFileManager a;
-		//a.SettingsUpload
-		//a.SettingsToolbar
-		//a.SettingsEditing
-		//a.SettingsUpload
 	}
 
     protected void ASPxButton_FreeSquare_ExportXLS_Click(object sender, EventArgs e)
@@ -108,14 +84,12 @@ public partial class Reports1NF_Report1NFFreeShow : System.Web.UI.Page
         FreeSquareGridView.DataBind();
     }
 
-    protected void GridViewFreeSquare_CustomFilterExpressionDisplayText(object sender,
-        DevExpress.Web.CustomFilterExpressionDisplayTextEventArgs e)
+    protected void GridViewFreeSquare_CustomFilterExpressionDisplayText(object sender, DevExpress.Web.CustomFilterExpressionDisplayTextEventArgs e)
     {
         this.UpdateFilterDisplayTextCache(e.DisplayText, FreeSquareGridView);
     }
 
-    protected void GridViewFreeSquare_ProcessColumnAutoFilter(object sender,
-        DevExpress.Web.ASPxGridViewAutoFilterEventArgs e)
+    protected void GridViewFreeSquare_ProcessColumnAutoFilter(object sender, DevExpress.Web.ASPxGridViewAutoFilterEventArgs e)
     {
         Utils.ProcessGridColumnAutoFilter(sender, e);
     }
@@ -161,7 +135,6 @@ public partial class Reports1NF_Report1NFFreeShow : System.Web.UI.Page
 		}
 	}
 
-
 	protected string ParamMode50
 	{
 		get
@@ -170,7 +143,6 @@ public partial class Reports1NF_Report1NFFreeShow : System.Web.UI.Page
 		}
 	}
 
-
 	protected void FreeSquareGridView_DataBound(object sender, EventArgs e)
 	{
 		if (HasFsid)
@@ -178,29 +150,6 @@ public partial class Reports1NF_Report1NFFreeShow : System.Web.UI.Page
 			FreeSquareGridView.DetailRows.ExpandAllRows();
 			FreeSquareGridView.SettingsDetail.ShowDetailButtons = false;
 		}
-	}
-
-
-	//protected void ZayavkaBtn_Click(object sender, EventArgs e)
-	//{
-	//	var EditedDocuemntID = Guid.NewGuid().ToString();
-	//	var data = File.ReadAllBytes(@"D:\Projects\DKVSOURCESFINALEDITION_v20\ReportWebSite\Reports1NF\Templates\ProzoroDogovor.docx");
-	//	ZayavkaRichEdit.Open(
-	//				EditedDocuemntID,
-	//				DevExpress.XtraRichEdit.DocumentFormat.OpenXml,
-	//				() => { return data; }
-	//			);
-	//}
-
-	protected void callbackZayavka_Callback(object source, CallbackEventArgs e)
-	{
-		//var EditedDocuemntID = Guid.NewGuid().ToString();
-		//var data = File.ReadAllBytes(@"D:\Projects\DKVSOURCESFINALEDITION_v20\ReportWebSite\Reports1NF\Templates\ProzoroDogovor.docx");
-		//ZayavkaRichEdit.Open(
-		//			EditedDocuemntID,
-		//			DevExpress.XtraRichEdit.DocumentFormat.OpenXml,
-		//			() => { return data; }
-		//		);
 	}
 
 	protected void ZayavkaRichEdit_Callback(object sender, CallbackEventArgsBase e)
@@ -212,5 +161,25 @@ public partial class Reports1NF_Report1NFFreeShow : System.Web.UI.Page
 					DevExpress.XtraRichEdit.DocumentFormat.OpenXml,
 					() => { return data; }
 				);
+	}
+
+	protected void ZayavkaRichEdit_Init(object sender, EventArgs e)
+	{
+		ZayavkaRichEdit.CreateDefaultRibbonTabs(true);
+		ZayavkaRichEdit.RibbonTabs.RemoveAt(0);
+	}
+
+	protected bool IsConnected
+	{
+		get
+		{
+			var user = Membership.GetUser();
+			return (user != null);
+		}
+	}
+
+	protected void RegisterUser_CreatedUser(object sender, EventArgs e)
+	{
+		FormsAuthentication.SetAuthCookie(RegisterUser.UserName, true);
 	}
 }
