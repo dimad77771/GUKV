@@ -8,11 +8,23 @@ using System.Web.Security;
 using System.Data.SqlClient;
 using log4net;
 using GUKV.Common;
+using DevExpress.Web;
 
 public partial class Account_Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+		var link = LoginUser.FindControlRecursive("RegisterInCabinet") as ASPxHyperLink;
+		if (link != null)
+		{
+			object returnUrl = Request.QueryString["ReturnUrl"];
+			if (returnUrl != null)
+			{
+				link.NavigateUrl += "?ReturnUrl=" + returnUrl.ToString();
+			}
+		}
+		
+
 		//var user = Membership.GetUser("Януш С.О.");
 		//var password = user.ResetPassword();
 		//user.ChangePassword(password, "fq,jkbn66+++");

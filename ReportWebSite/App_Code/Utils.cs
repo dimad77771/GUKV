@@ -3208,5 +3208,12 @@ public static class Utils
         return false;
     }
 
+    public static bool NoUseCabinet
+    {
+        get
+        {
+            return WebConfigurationManager.AppSettings["NoUseCabinet"] == "1";
+        }
+    }
     
 }

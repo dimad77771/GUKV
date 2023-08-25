@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Log In" Language="C#" MasterPageFile="~/NoHeader.master" AutoEventWireup="true"
+﻿<%@ Page Title="Log In" Language="C#" MasterPageFile="~/FreeShowPublicWithUserNoHeader.master" AutoEventWireup="true"
     CodeFile="LoginInCabinet.aspx.cs" Inherits="Account_Login" %>
 
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
@@ -45,13 +45,21 @@
                              ValidationGroup="LoginUserValidationGroup">*</asp:RequiredFieldValidator>
                     </p>
                     <p>
-                        <asp:CheckBox ID="RememberMe" runat="server" Checked="true"/>
-                        <asp:Label ID="RememberMeLabel" runat="server" AssociatedControlID="RememberMe" CssClass="inline">Запам'ятати мене</asp:Label>
+                        <asp:CheckBox ID="RememberMe" runat="server" Checked="true" Visible="false"/>
+                        <asp:Label ID="RememberMeLabel" runat="server" AssociatedControlID="RememberMe" CssClass="inline" Visible="false">Запам'ятати мене</asp:Label>
                     </p>
                 </fieldset>
                 <p class="submitButton">
-                    <dx:ASPxButton ID="LoginButton" runat="server" CommandName="Login" Text="Увійти" 
-                        ValidationGroup="LoginUserValidationGroup3"></dx:ASPxButton>
+                    <table width="100%" border="0">
+                        <tr>
+                            <td>
+                                <dx:ASPxButton ID="LoginButton" runat="server" CommandName="Login" Text="Увійти" ValidationGroup="LoginUserValidationGroup3"></dx:ASPxButton>
+                            </td>
+                            <td align="right">
+                                <dx:ASPxHyperLink ID="RegisterInCabinet" runat="server" Text="Реєстрація нового користувача" NavigateUrl="RegisterInCabinet.aspx" />
+                            </td>
+                        </tr>
+                    </table>
                 </p>
             </div>
         </LayoutTemplate>

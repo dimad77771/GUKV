@@ -27,6 +27,11 @@ public partial class Reports1NF_Report1NFFreeShow : System.Web.UI.Page
 			FreeSquareGridView.Settings.ShowHeaderFilterButton = false;
 			FreeSquareGridView.Settings.ShowFilterBar = GridViewStatusBarMode.Hidden;
 		}
+
+		if (Utils.NoUseCabinet)
+		{
+			FreeSquareGridView.Columns["btn_send"].Visible = false;
+		}
 	}
 
     protected void ASPxButton_FreeSquare_ExportXLS_Click(object sender, EventArgs e)

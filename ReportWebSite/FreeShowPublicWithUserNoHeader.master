@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="FreeShowPublicWithUser.master.cs" Inherits="FreeShowPublic" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="FreeShowPublicWithUserNoHeader.master.cs" Inherits="FreeShowPublic" %>
 
 <%@ Register Src="~/UserControls/ThemeSelector.ascx" TagPrefix="dx" TagName="ThemeSelector" %>
 
@@ -38,7 +38,7 @@
 				</tr>
 			</table>
 		</div>
-        <div class="clear hideSkiplink">
+        <div class="clear hideSkiplink" style="display:none">
             <table border="0" cellspacing="0" cellpadding="0" width="100%">
                 <tr>
                     <td>
@@ -99,8 +99,6 @@
                             </asp:LoginView>
                         </div>
                     </td>
-
-
                 </tr>
             </table>
         </div>

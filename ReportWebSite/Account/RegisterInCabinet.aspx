@@ -10,6 +10,7 @@
         OnCreatedUser="RegisterUser_CreatedUser" 
         CompleteSuccessText="Користувач успішно зареєстрований." 
         ContinueButtonText="Продовжити" 
+        RequireEmail="false"
         DuplicateEmailErrorMessage="Вказана електронна адреса вже використовується іншим користувачем. Будь ласка, введіть іншу електронну адресу." 
         DuplicateUserNameErrorMessage="Користувач з таким ім'ям вже зареєстрований на сайті. Будь ласка, введіть інше ім'я користувача." 
         InvalidEmailErrorMessage="Будь ласка, введіть коректну електронну адресу." 
@@ -41,12 +42,12 @@
                         <fieldset class="register">
                             <legend>Інформація про користувача</legend>
                             <p>
-                                <asp:Label ID="PhoneLabel" runat="server" AssociatedControlID="Phone">Телефон:</asp:Label>
-                                <asp:TextBox ID="Phone" runat="server" CssClass="textEntry"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="PhoneRequired" runat="server" ControlToValidate="Phone" 
+                                <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Електронна адреса:</asp:Label>
+                                <asp:TextBox ID="UserName" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" 
                                      CssClass="failureNotification"
-                                     ErrorMessage="Для реєстрації необхідно ввести телефон користувача."
-                                     ToolTip="Для реєстрації необхідно ввести телефон користувача." 
+                                     ErrorMessage="Для реєстрації необхідно ввести електронну адресу користувача."
+                                     ToolTip="Для реєстрації необхідно ввести електронну адресу користувача."
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
                             </p>
                             <p>
@@ -58,15 +59,15 @@
                                      ToolTip="Для реєстрації необхідно ввести прізвище користувача." 
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
                             </p>
-                            <p>
-                                <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Ім'я користувача:</asp:Label>
-                                <asp:TextBox ID="UserName" runat="server" CssClass="textEntry"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" 
+			                <p>
+                                <asp:Label ID="NameILabel" runat="server" AssociatedControlID="NameI">Ім'я користувача:</asp:Label>
+                                <asp:TextBox ID="NameI" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="NameIRequired" runat="server" ControlToValidate="NameI" 
                                      CssClass="failureNotification"
                                      ErrorMessage="Для реєстрації необхідно ввести ім'я користувача."
                                      ToolTip="Для реєстрації необхідно ввести ім'я користувача." 
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
-                            </p>
+                            </p>                            
 			                <p>
                                 <asp:Label ID="NameOLabel" runat="server" AssociatedControlID="NameO">По батькові користувача:</asp:Label>
                                 <asp:TextBox ID="NameO" runat="server" CssClass="textEntry"></asp:TextBox>
@@ -77,12 +78,12 @@
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>--%>
                             </p>
                             <p>
-                                <asp:Label ID="EmailLabel" runat="server" AssociatedControlID="Email">Електронна адреса:</asp:Label>
-                                <asp:TextBox ID="Email" runat="server" CssClass="textEntry"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ControlToValidate="Email" 
+                                <asp:Label ID="PhoneLabel" runat="server" AssociatedControlID="Phone">Телефон:</asp:Label>
+                                <asp:TextBox ID="Phone" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="PhoneRequired" runat="server" ControlToValidate="Phone" 
                                      CssClass="failureNotification"
-                                     ErrorMessage="Для реєстрації необхідно ввести електронну адресу користувача."
-                                     ToolTip="Для реєстрації необхідно ввести електронну адресу користувача." 
+                                     ErrorMessage="Для реєстрації необхідно ввести телефон користувача."
+                                     ToolTip="Для реєстрації необхідно ввести телефон користувача." 
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
                             </p>
                             <p>
@@ -122,6 +123,6 @@
         </WizardSteps>
     </asp:CreateUserWizard>
     
-    <dx:ASPxHyperLink ID="LinkManageRoles" runat="server" Text="Керування правами доступу" NavigateUrl="ManageRoles.aspx" />
+    <dx:ASPxHyperLink ID="LinkManageRoles" runat="server" Text="Керування правами доступу" NavigateUrl="ManageRoles.aspx" Visible="false" />
 
 </asp:Content>

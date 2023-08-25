@@ -84,16 +84,13 @@
     }
 
     function ZayavkaClick(e) {
-		window.open('/Account/RegisterInCabinet.aspx?ReturnUrl=/Reports1NF/Report1NFFreeShow.aspx', '_self'); return;
-        //ASPxPopupUser.Show(); return;
-
 		//alert(IsConnected);
         //console.log("e", e)
         if (IsConnected) {
             ASPxPopupZayavkaDoc.Show();
             ZayavkaRichEdit.PerformCallback(111);
         } else {
-			ASPxPopupUser.Show();
+			window.open('/Account/LoginInCabinet.aspx?ReturnUrl=/Reports1NF/Report1NFFreeShow.aspx', '_self'); return;
         }
     }
 

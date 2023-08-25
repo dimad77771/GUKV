@@ -23,11 +23,6 @@ public partial class FreeShowPublic : System.Web.UI.MasterPage
 			var menuitem = menu2.Items.Single(q => q.Name == "LogoutCabinet");
 			menuitem.NavigateUrl += "?ReturnUrl=" + Request.Url.AbsolutePath;
 		}
-
-		if (Utils.NoUseCabinet)
-		{
-			LoginView1.Visible = false;
-		}
 	}
 
 	protected void ASPChangeMapSystem_Click(object sender, EventArgs e)
@@ -35,6 +30,4 @@ public partial class FreeShowPublic : System.Web.UI.MasterPage
 		MapUtils.SetSystem(MapUtils.MBK);
 		Response.Redirect("Report1NFFreeMap.aspx" + Request.Url.Query);
 	}
-
-
 }

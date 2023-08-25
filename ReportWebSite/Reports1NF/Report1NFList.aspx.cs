@@ -125,8 +125,9 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 	void ForTest()
 	{
 		var lines = new List<string>();
-		var zags = System.IO.File.ReadAllLines(@"C:\Users\ASUS\Documents\SQL Server Management Studio\qqqq2232.txt", System.Text.Encoding.GetEncoding("windows-1251"));
-		foreach(var zag in zags)
+		//var zags = System.IO.File.ReadAllLines(@"C:\Users\ASUS\Documents\SQL Server Management Studio\qqqq2232.txt", System.Text.Encoding.GetEncoding("windows-1251"));
+		var zags = PrimaryGridView.Columns.OfType<GridViewDataColumn>().Select(q => getNormalizeString(q.Caption)).ToArray();
+		foreach (var zag in zags)
 		{
 			var column = PrimaryGridView.Columns.OfType<GridViewDataColumn>().Single(q => getNormalizeString(q.Caption) == getNormalizeString(zag));
 			var findcol = column.FieldName;
