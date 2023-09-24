@@ -72,6 +72,13 @@
 		}
 	}
 
+	function aaa(s, e) {
+		//console.log("e", e)
+		//console.log("e2", $("#MainContent_ASPxPopupControlFreeSquare_ASPxFileManagerPhotoFiles_Splitter_UploadButton"))
+		//$("#MainContent_ASPxPopupControlFreeSquare_ASPxFileManagerPhotoFiles_Splitter_UploadButton").hide()
+	}
+	
+
 
     function GridViewFreeSquareInit(s, e) {
 
@@ -407,7 +414,7 @@ LEFT JOIN (
 				) DDD ON DDD.org_id = rep.organization_id
 
         WHERE (@p_rda_district_id = 0 OR (rep.org_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND rep.org_district_id = @p_rda_district_id))
-			AND ( (@p_show_neziznacheni = 0) OR (@p_show_neziznacheni = 1 AND (fs.is_included = 1 and fs.komis_protocol <> '' and fs.geodata_map_points <> '')) )
+			AND ( (@p_show_neziznacheni = 0) OR (@p_show_neziznacheni = 1 AND (fs.is_included = 1)) )
 
     order by org_name, street_name, addr_nomer, total_free_sqr   "
     OnSelecting="SqlDataSourceFreeSquare_Selecting"
@@ -572,6 +579,11 @@ WHERE id = @id"
 								IsFolderFieldName="IsFolder" KeyFieldName="ID" 
 								LastWriteTimeFieldName="LastModified" NameFieldName="Name" 
 								ParentKeyFieldName="ParentID" />
+
+							<ClientSideEvents SelectionChanged="aaa"  />
+
+							
+
 						</dx:ASPxFileManager>
 
 						<br />

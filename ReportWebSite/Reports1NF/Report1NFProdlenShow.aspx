@@ -95,7 +95,12 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceFreeSquare" runat="server"
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT 
+    SelectCommand="
+select
+*
+from
+(
+    SELECT 
 	fs.komis_protocol,
 	fs.geodata_map_url,
  row_number() over (order by org.short_name, b.street_full_name, b.addr_nomer, fs.total_free_sqr) as npp     
@@ -312,8 +317,16 @@ LEFT JOIN (
 				and (@mode50 = 0 OR fs.freecycle_step_dict_id = 31)
 
                     and prozoro_number <> ''
+) TT
 
-    order by org_name, street_name, addr_nomer, total_free_sqr
+    order by      
+        case 
+            when freecycle_step_name like '%Аукціон оголошено%' then 1
+            when freecycle_step_name <> '' then 2
+            else 999
+        end, 
+        case when freecycle_step_name <> '' then 1 else 2 end, 
+        org_name, street_name, addr_nomer, total_free_sqr
     
     
     "
