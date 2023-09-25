@@ -852,6 +852,8 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
                         properties.Add("{AVANCE_SALDO}", reader.IsDBNull(28) ? "" : reader.GetDecimal(28).ToString("F2"));
                         properties.Add("{AVANCE_DEBT}", reader.IsDBNull(29) ? "" : reader.GetDecimal(29).ToString("F2"));
                         properties.Add("{PAY_ZA_NADHOD}", reader.IsDBNull(30) ? "" : reader.GetDecimal(30).ToString("F2"));
+                        properties.Add("{PAY_DEBT_SPYSANO}", reader.IsDBNull(16) ? "" : reader.GetDecimal(16).ToString("F2"));
+
                         // properties.Add("{PAY_SPECIAL}", reader.IsDBNull(8) ? "" : reader.GetDecimal(8).ToString("F2"));
                         // properties.Add("{PAY_50_NARAH}", reader.IsDBNull(17) ? "" : reader.GetDecimal(17).ToString("F2"));
                         // properties.Add("{PAY_50_PAYED}", reader.IsDBNull(18) ? "" : reader.GetDecimal(18).ToString("F2"));

@@ -27,17 +27,31 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 		//SectionMenu.Visible = Roles.IsUserInRole(Utils.Report1NFReviewerRole);
 		SectionMenu.Visible = false;
 
-		var cols = ASPxFileManagerPhotoFiles.SettingsFileList.DetailsViewSettings.Columns;
-        cols.Add(FileInfoType.Thumbnail, " ");
-        var col1 = cols.Add(FileInfoType.FileName, "Файл");
-        col1.Width = 430;
-        var col2 = cols.Add(FileInfoType.LastWriteTime, "Дата");
-        col2.SortOrder = DevExpress.Data.ColumnSortOrder.Descending;
+		{
+			var cols = ASPxFileManagerPhotoFiles.SettingsFileList.DetailsViewSettings.Columns;
+			cols.Add(FileInfoType.Thumbnail, " ");
+			var col1 = cols.Add(FileInfoType.FileName, "Файл");
+			col1.Width = 430;
+			var col2 = cols.Add(FileInfoType.LastWriteTime, "Дата");
+			col2.SortOrder = DevExpress.Data.ColumnSortOrder.Descending;
+		}
+
+		{
+			var cols = ASPxFileManagerInventarFiles.SettingsFileList.DetailsViewSettings.Columns;
+			cols.Add(FileInfoType.Thumbnail, " ");
+			var col1 = cols.Add(FileInfoType.FileName, "Файл");
+			col1.Width = 430;
+			var col2 = cols.Add(FileInfoType.LastWriteTime, "Дата");
+			col2.SortOrder = DevExpress.Data.ColumnSortOrder.Descending;
+		}
 
 
 
-        // The 'Notifications' page must be visible only to users that can receive some notifications
-        if (Roles.IsUserInRole(Utils.DKVOrganizationControllerRole) ||
+
+
+
+		// The 'Notifications' page must be visible only to users that can receive some notifications
+		if (Roles.IsUserInRole(Utils.DKVOrganizationControllerRole) ||
             Roles.IsUserInRole(Utils.DKVObjectControllerRole) ||
             Roles.IsUserInRole(Utils.DKVArendaControllerRole) ||
             Roles.IsUserInRole(Utils.DKVArendaPaymentsControllerRole))
