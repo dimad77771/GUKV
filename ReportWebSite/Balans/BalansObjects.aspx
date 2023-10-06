@@ -211,6 +211,7 @@
 ,(select top 1 q.report_id from reports1nf_balans q where q.id = vb.balans_id) as reports1nf_report_id
 ,case when vb.balans_id in (select b.id from dbo.reports1nf_balans b where b.organization_id = vb.organization_id and ISNULL(b.is_deleted, 0) = 0 ) then 1 else 0 end as is_dpz_object
 ,(select sum(case when fs.is_included = 1 then fs.total_free_sqr else 0 end) as total_free_sqr from reports1nf_balans_free_square fs where fs.balans_id = bal.id and fs.report_id = bal.report_id) as total_free_sqr 
+,(select sum(case when fs.is_included = 1 then 1 else 0 end) from reports1nf_balans_free_square fs where fs.balans_id = bal.id and fs.report_id = bal.report_id) as total_free_count
 
 , orggospupr = (select old_organ from view_organizations WHERE organization_id =  vb.organization_id)
 , vb.balans_id as balans_id_
@@ -342,6 +343,9 @@
             VisibleIndex="11" Visible="false" Caption="Площа нежилих приміщень будинку (кв.м.)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="total_free_sqr" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="11" Visible="True" Caption="Площа вільних приміщень (кв.м.)"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="total_free_count" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="11" Visible="true" Caption="Кількість об'єктів що мають вільну площу"></dx:GridViewDataTextColumn>
+
 
         <dx:GridViewDataTextColumn FieldName="sqr_habit_bld" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="12" Visible="True" Caption="Площа житлового фонду будинку (кв.м.)"></dx:GridViewDataTextColumn>
@@ -358,6 +362,9 @@
             VisibleIndex="18" Visible="False" Caption="Площа об'єкту що знаходиться в оренді (кв.м.)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="sqr_kor" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="21" Visible="False" Caption="Корисна площа об'єкту (кв.м.)"></dx:GridViewDataTextColumn>
+        
+
+
 <%--        <dx:GridViewDataTextColumn FieldName="sqr_pidval" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="16" Visible="False" Caption="Площа підвалу об'єкту (кв.м.)"></dx:GridViewDataTextColumn>      
         <dx:GridViewDataTextColumn FieldName="sqr_free" ReadOnly="True" ShowInCustomizationForm="True"
@@ -523,6 +530,7 @@
         <dx:ASPxSummaryItem FieldName="sqr_loft_bld" SummaryType="Sum" DisplayFormat="{0}" />
 
 		<dx:ASPxSummaryItem FieldName="total_free_sqr" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="total_free_count" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="sqr_total" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="sqr_pidval" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="sqr_vlas_potreb" SummaryType="Sum" DisplayFormat="{0}" />
@@ -542,6 +550,7 @@
         <dx:ASPxSummaryItem FieldName="cost_expert_total" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="cost_zalishkova" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="znos" SummaryType="Sum" DisplayFormat="{0}" />
+
         <dx:ASPxSummaryItem FieldName="sqr_free_total" SummaryType="Custom" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="sqr_free_korysna" SummaryType="Custom" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="sqr_free_mzk" SummaryType="Custom" DisplayFormat="{0}" />
@@ -567,7 +576,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A3_8" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A4_001" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
