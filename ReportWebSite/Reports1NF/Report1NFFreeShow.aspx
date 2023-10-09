@@ -83,6 +83,18 @@
 		);
     }
 
+	function AuctionZayavkaClick(s,e,rownum) {
+        //alert(IsConnected);
+		//console.log("e", e); console.log("rownum", FreeSquareGridView.GetRowKey(rownum)); return;
+        if (IsConnected) {
+            if (confirm("Подавати заявку на аукціон ?")) {
+				FreeSquareGridView.PerformCallback("auctionZayavka:" + FreeSquareGridView.GetRowKey(rownum));
+            }
+		} else {
+			window.open('/Account/LoginInCabinet.aspx?ReturnUrl=/Reports1NF/Report1NFFreeShow.aspx', '_self'); return;
+		}
+	}
+
     function ZayavkaClick(e) {
 		//alert(IsConnected);
         //console.log("e", e)
@@ -194,6 +206,9 @@
        when org.zkpo_code = '40538421' then '2' 
         else '0' 
     end as show_btn_load_dogovor
+
+,(SELECT top 1 Q.zayavka_date FROM auction_uchasnik Q where Q.free_square_id = fs.id and Q.is_arhiv = 0 order by Q.zayavka_date desc) as zayavka_date
+--    ,cast('2023-04-19' as date) as zayavka_date
 
 FROM view_reports1nf rep
 join reports1nf_balans bal on bal.report_id = rep.report_id
@@ -545,8 +560,17 @@ WHERE id = @id"
             <CellStyle Wrap="False"></CellStyle>
         </dx:GridViewCommandColumn>
 
+        <dx:GridViewDataTextColumn FieldName="auction_tablo" Caption="Аукціон" VisibleIndex="0"  Width="350px" ReadOnly="true">
+			<DataItemTemplate>
+                <dx:ASPxButton runat="server" ID="AuctionZayavkaBtn" Text="Подати заявку" AutoPostBack="false" Visible='<%# Eval("zayavka_date").ToString() == "" %>' OnInit="AuctionZayavkaBtn_Init" >
+                    <ClientSideEvents Click="function(s, e) { AuctionZayavkaClick(s,e); }" />
+                </dx:ASPxButton>
+                <dx:ASPxLabel runat="server" Text='<%# "Заявка подана " + (Eval("zayavka_date") is DateTime ? ((DateTime)Eval("zayavka_date")).ToString("dd.MM.yyyy") : "") %>' Visible='<%# Eval("zayavka_date") is DateTime %>' />
+            </DataItemTemplate>
+        </dx:GridViewDataTextColumn>
 
-        <dx:GridViewBandColumn Caption="Заявки"  HeaderStyle-HorizontalAlign="Left" VisibleIndex="0" >
+
+        <dx:GridViewBandColumn Caption="Заявки"  HeaderStyle-HorizontalAlign="Left" VisibleIndex="0" Visible="false">
             <Columns>
                 <dx:GridViewDataTextColumn FieldName="btn_send" Caption="Заявка" Width="150px" Visible="true">
 			        <DataItemTemplate>

@@ -1,0 +1,1 @@
+{{ZAYAVKA_DATETIME}} была подана заявка на объект {{OBJECT_DECSRIPTION}}

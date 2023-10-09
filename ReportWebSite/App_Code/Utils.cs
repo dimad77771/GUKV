@@ -3042,7 +3042,14 @@ public static class Utils
 		return username;
 	}
 
-	public static bool IsBigBossUser()
+    public static string GetUserId()
+    {
+        var user = Membership.GetUser();
+        var userid = (user == null ? null : user.ProviderUserKey.ToString());
+        return userid;
+    }
+
+    public static bool IsBigBossUser()
 	{
 		var user = Membership.GetUser();
 		var connection = Utils.ConnectToDatabase();
