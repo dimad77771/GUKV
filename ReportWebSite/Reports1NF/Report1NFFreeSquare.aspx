@@ -116,6 +116,11 @@
 				cols += "zgoda_control;district;street_name;addr_nomer;total_free_sqr;free_sql_usefull;";
 				cols += "floor;condition;water;heating;gas;power_text;history;zgoda_renter;nomer_derzh_reestr_neruh;reenum_derzh_reestr_neruh;possible_using;info_rahunok_postach;priznach_before;period_nouse;osoba_use_before;rozmir_vidshkoduv;zalbalansvartist_date;id"
 				FreeSquareGridView.GetRowValues(e.visibleIndex, cols, OnCopyFullDescription);
+			} else if (e.buttonID == 'bnt_adogovor_balansoderzhatel') {
+				//Upload_Adogvor.callbackData = "111"
+				hiddenField.Set("rr", "8888")
+				var el1 = document.getElementById("MainContent_Upload_Adogvor_TextBox0_Input");
+				el1.click();
 			}
 		}
 
@@ -630,6 +635,21 @@ WHERE id = @id"
 		</Styles>
 	</dx:ASPxGridViewExporter>
 
+	<dx:ASPxHiddenField ID="ASPxHiddenField1" ClientInstanceName="hiddenField" runat="server">
+	</dx:ASPxHiddenField>
+	<div style="display:none">
+		<dx:ASPxUploadControl runat="server" ID="Upload_Adogvor" ClientInstanceName="Upload_Adogvor" 
+			NullText="Select files 1" AutoStartUpload="true" UploadMode="Auto" ShowUploadButton="True" ShowProgressPanel="True"
+			OnFileUploadComplete="UploadControl_FileUploadComplete">
+			<AdvancedModeSettings EnableMultiSelect="false" EnableFileList="True" EnableDragAndDrop="True" />
+			<ValidationSettings MaxFileSize="100000000" AllowedFileExtensions=".zip">
+			</ValidationSettings>
+		</dx:ASPxUploadControl>
+			<ClientSideEvents 
+				FilesUploadStart="function(s, e) { DXUploadedFilesContainer.Clear(); }"
+				FileUploadComplete="onFileUploadComplete" />
+	</div>
+
 	<%--
 <dx:ASPxGridView
     ID="PrimaryGridView"
@@ -961,7 +981,7 @@ WHERE id = @id"
 					<ClientSideEvents DropDown="function(s, e) { OnDropDown(s) }" />
 				</PropertiesComboBox>
 				<EditItemTemplate>
-					<dx:ASPxComboBox 
+					<dx:ASPxComboBox
 						ID="ID_freecycle_step_dict_id"
 						runat="server" Value='<%# Bind("freecycle_step_dict_id") %>'
 						DataSourceID="SqlDataSourceFreecycleStepDict"
@@ -973,9 +993,9 @@ WHERE id = @id"
 						ValueField="step_id">
 						<ClientSideEvents DropDown="function(s, e) { OnDropDown(s) }" />
 					</dx:ASPxComboBox>
-					<dx:ASPxButton runat="server" ID="AuctionZayavkaBtn" Text="Подати заявку" AutoPostBack="false" Visible="false" >
+					<dx:ASPxButton runat="server" ID="AuctionZayavkaBtn" Text="Подати заявку" AutoPostBack="false" Visible="false">
 						<ClientSideEvents Click="function(s, e) { AuctionZayavkaClick(s,e); }" />
-                </dx:ASPxButton>
+					</dx:ASPxButton>
 				</EditItemTemplate>
 			</dx:GridViewDataComboBoxColumn>
 
@@ -1013,6 +1033,10 @@ WHERE id = @id"
 				<CustomButtons>
 					<dx:GridViewCommandColumnCustomButton ID="bnt_current_stage_pdf" Text="Зображення документу PDF">
 						<Image Url="~/Styles/current_stage_pdf.png"></Image>
+					</dx:GridViewCommandColumnCustomButton>
+
+					<dx:GridViewCommandColumnCustomButton ID="bnt_adogovor_balansoderzhatel" Text="Загрузить подписанный документ">
+						<Image Url="~/Styles/MoveDownIcon.png"></Image>
 					</dx:GridViewCommandColumnCustomButton>
 				</CustomButtons>
 				<CellStyle Wrap="False"></CellStyle>
