@@ -442,21 +442,58 @@ public static class CabinetUtils
 	static void AdogvorSendEmail(int free_square_id, string mode, SqlConnection connection, SqlTransaction transaction)
 	{
 		var sendToUserIds = new List<string>();
+		var template = "";
+		string[] podpises;
 
 		if (mode == BALANSODERZHATEL)
 		{
 			sendToUserIds.Add(GetAuctionWinnerUserId(free_square_id, connection, transaction));
+			template = "Договір потрібно підписати -- Орендарю";
+			podpises = new[] { BALANSODERZHATEL };
 		}
 		else if (mode == ORENDAR)
 		{
 			sendToUserIds.Add(GetOrendodavecUserId());
+			template = "Договір потрібно підписати -- Орендодавцю";
+			podpises = new[] { BALANSODERZHATEL, ORENDAR };
 		}
 		else if (mode == ORENDODAVECZ)
 		{
 			sendToUserIds.Add(GetAuctionWinnerUserId(free_square_id, connection, transaction));
 			sendToUserIds.Add(GetOrendodavecUserId());
 			sendToUserIds.AddRange(GetAllBalansoderzhatels(free_square_id, connection, transaction));
+			template = "Договір потрібно підписати -- Всім";
+			podpises = new[] { BALANSODERZHATEL, ORENDAR, ORENDODAVECZ };
 		}
+		else throw new Exception();
+
+		var attachments = new List<MailAttachment>();
+		var filename = GetAdogvorBodyName(free_square_id, connection, transaction);
+		var body = GetAdogvorBody(free_square_id, connection, transaction);
+		attachments.Add(new MailAttachment(filename, body));
+
+		foreach (var podpistype in podpises)
+		{
+			var podisfilename = filename + "." + Mode2Name(podpistype) + ".p7s";
+			var podis = GetAdogvorPodpis(free_square_id, podpistype, connection, transaction);
+			attachments.Add(new MailAttachment(podisfilename, podis));
+		}
+
+		SendEmail(connection, transaction, free_square_id, template);
+	}
+
+	static string Mode2Name(string mode)
+	{
+		switch(mode)
+		{
+			case ORENDAR:
+				return "Орендар";
+			case ORENDODAVECZ:
+				return "Орендодавць";
+			case BALANSODERZHATEL:
+				return "Балансоутримувач";
+		}
+		return "";
 	}
 
 	static void AdogvorSetPodpis(int free_square_id, byte[] podpis, string mode, SqlConnection connection, SqlTransaction transaction)
@@ -545,6 +582,19 @@ public static class CabinetUtils
 	{
 		byte[] result = null;
 		var data = GetDataTable("select adogovor_body from reports1nf_balans_free_square where id = " + dd(free_square_id), connection, transaction);
+		if (data.Rows.Count > 0)
+		{
+			var val = data.Rows[0]["adogovor_body"];
+			result = (val == System.DBNull.Value ? null : (byte[])val);
+		}
+		return result;
+	}
+
+	static byte[] GetAdogvorPodpis(int free_square_id, string mode, SqlConnection connection, SqlTransaction transaction)
+	{
+		byte[] result = null;
+		var sql = ("select adogovor_podpis_orendar from reports1nf_balans_free_square where id = " + dd(free_square_id)).Replace("podpis_orendar", "podpis_" + mode);
+		var data = GetDataTable(sql, connection, transaction);
 		if (data.Rows.Count > 0)
 		{
 			var val = data.Rows[0]["adogovor_body"];
@@ -815,7 +865,7 @@ where fs.id = " + dd(free_square_id);
 		}
 	}
 
-	public static void SendEmail(SqlConnection connection, SqlTransaction transaction, int free_square_id, string emailtype, string orendarUserId = null, DateTime? zayavkaDate = null)
+	public static void SendEmail(SqlConnection connection, SqlTransaction transaction, int free_square_id, string emailtype, string orendarUserId = null, DateTime? zayavkaDate = null, MailAttachment[] attachments = null)
 	{
 		string[] userIds;
 		string subject;
@@ -848,7 +898,7 @@ where fs.id = " + dd(free_square_id);
 
 		foreach (var email in emails)
 		{
-			SendMailMessage(email, "", "", subject, text);
+			SendMailMessage(email, "", "", subject, text, attachments: attachments);
 		}
 	}
 
@@ -860,8 +910,19 @@ where fs.id = " + dd(free_square_id);
 		}
 	}
 
+	public class MailAttachment
+	{
+		public string FileName { get; set; }
+		public byte[] Bytes { get; set; }
 
-	private static void SendMailMessage(string to, string cc, string bcc, string subject, string body)
+		public MailAttachment(string fileName, byte[] bytes)
+		{
+			this.FileName = fileName;
+			this.Bytes = bytes;
+		}
+	}
+
+	private static void SendMailMessage(string to, string cc, string bcc, string subject, string body, MailAttachment[] attachments = null)
 	{
 		if (WebConfigurationManager.AppSettings["Cabinet.SendEmail.Log"] == "1")
 		{
@@ -926,8 +987,16 @@ where fs.id = " + dd(free_square_id);
 		if (isTest)
 			mMailMessage.Body = "ТЕСТОВАЯ ВЕРСИЯ. ЕСЛИ ВЫ НЕ ЯВЛЯЕТЕСЬ ТЕСТИРОВЩИКОМ, ПРОСТО ИГНОРИРУЙТЕ ДАННОЕ ПИСЬМО<BR/>" + mMailMessage.Body;
 
+		if (attachments != null)
+		{
+			foreach(var attachment in attachments)
+			{
+				mMailMessage.Attachments.Add(new Attachment(new MemoryStream(attachment.Bytes), attachment.FileName));
+			}
+		}
+
 		// Set the priority of the mail message to normal
-		mMailMessage.Priority = MailPriority.Normal;
+			mMailMessage.Priority = MailPriority.Normal;
 
 		System.Net.ServicePointManager.ServerCertificateValidationCallback = (x, y, z, t) => true;
 
