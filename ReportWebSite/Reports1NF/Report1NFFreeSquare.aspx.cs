@@ -447,6 +447,16 @@ public static class CabinetUtils
 		{
 			sendToUserIds.Add(GetAuctionWinnerUserId(free_square_id, connection, transaction));
 		}
+		else if (mode == ORENDAR)
+		{
+			sendToUserIds.Add(GetOrendodavecUserId());
+		}
+		else if (mode == ORENDODAVECZ)
+		{
+			sendToUserIds.Add(GetAuctionWinnerUserId(free_square_id, connection, transaction));
+			sendToUserIds.Add(GetOrendodavecUserId());
+			sendToUserIds.AddRange(GetAllBalansoderzhatels(free_square_id, connection, transaction));
+		}
 	}
 
 	static void AdogvorSetPodpis(int free_square_id, byte[] podpis, string mode, SqlConnection connection, SqlTransaction transaction)
@@ -663,6 +673,30 @@ public static class CabinetUtils
 		return result.ToArray();
 	}
 
+	public static string[] GetAllBalansoderzhatels(int free_square_id, SqlConnection connection, SqlTransaction transaction)
+	{
+		var balans_zkpo = GetBalansoderzhatelZkpo(free_square_id, connection, transaction);
+		var userIds = RdaZkpo2UserIds(balans_zkpo, connection, transaction);
+		return userIds;
+	}
+
+	public static string[] RdaZkpo2UserIds(string balans_zkpo, SqlConnection connection, SqlTransaction transaction)
+	{
+		var result = new List<string>();
+		var data = GetDataTable(@"
+						SELECT usr.UserName, org.zkpo_code, usr.UserId
+						FROM reports1nf_accounts acc 
+						JOIN aspnet_Users usr ON usr.UserId = acc.UserId
+						JOIN reports1nf_org_info org ON org.id = acc.organization_id
+						WHERE org.zkpo_code = " + dd(balans_zkpo), connection, transaction);
+		for (var rownum = 0; rownum < data.Rows.Count; rownum++)
+		{
+			var userId = (data.Rows[0]["UserId"] ?? "").ToString();
+			result.Add(userId);
+		}
+		return result.Where(x => !string.IsNullOrEmpty(x)).Distinct().ToArray();
+	}
+
 	public static string GetAuctionWinnerUserId(int free_square_id, SqlConnection connection, SqlTransaction transaction)
 	{
 		var result = "";
@@ -673,6 +707,17 @@ public static class CabinetUtils
 		for (var rownum = 0; rownum < data.Rows.Count; rownum++)
 		{
 			result = (data.Rows[0]["UserId"] ?? "").ToString();
+		}
+		return result;
+	}
+
+	public static string GetBalansoderzhatelZkpo(int free_square_id, SqlConnection connection, SqlTransaction transaction)
+	{
+		var result = "";
+		var data = GetDataTable(@"select balans_zkpo from reports1nf_balans_free_square_view A where A.free_square_id = " + dd(free_square_id), connection, transaction);
+		for (var rownum = 0; rownum < data.Rows.Count; rownum++)
+		{
+			result = (data.Rows[0]["balans_zkpo"] ?? "").ToString();
 		}
 		return result;
 	}
