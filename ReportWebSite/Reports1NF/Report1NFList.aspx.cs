@@ -163,6 +163,8 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 	{
 		//if (!IsPostBack)
 		{
+			CheckBoxBalansObjectsShowNeziznacheni.Visible = false;
+
 			var column1 = PrimaryGridView.Columns.OfType<GridViewDataColumn>().SingleOrDefault(q => q.FieldName == "inventar_recieve_date");
 			if (column1 != null)
 			{
