@@ -116,9 +116,14 @@
 				cols += "zgoda_control;district;street_name;addr_nomer;total_free_sqr;free_sql_usefull;";
 				cols += "floor;condition;water;heating;gas;power_text;history;zgoda_renter;nomer_derzh_reestr_neruh;reenum_derzh_reestr_neruh;possible_using;info_rahunok_postach;priznach_before;period_nouse;osoba_use_before;rozmir_vidshkoduv;zalbalansvartist_date;id"
 				FreeSquareGridView.GetRowValues(e.visibleIndex, cols, OnCopyFullDescription);
-			} else if (e.buttonID == 'bnt_adogovor_balansoderzhatel') {
-				//Upload_Adogvor.callbackData = "111"
-				hiddenField.Set("rr", "8888")
+			} else if (e.buttonID == 'bnt_adogovor_balansoderzhatel' || e.buttonID == 'bnt_adogovor_orendar' || e.buttonID == 'bnt_adogovor_orendodavecz') {
+				var free_square_id = s.GetRowKey(e.visibleIndex)
+				Upload_Adogvor_info.Set("free_square_id", free_square_id)
+				Upload_Adogvor_info.Set("mode",
+						e.buttonID == "bnt_adogovor_balansoderzhatel" ? "balansoderzhatel" :
+						e.buttonID == "bnt_adogovor_orendar" ? "orendar" :
+						e.buttonID == "bnt_adogovor_orendodavecz" ? "orendodavecz" :
+						"")
 				var el1 = document.getElementById("MainContent_Upload_Adogvor_TextBox0_Input");
 				el1.click();
 			}
@@ -635,8 +640,7 @@ WHERE id = @id"
 		</Styles>
 	</dx:ASPxGridViewExporter>
 
-	<dx:ASPxHiddenField ID="ASPxHiddenField1" ClientInstanceName="hiddenField" runat="server">
-	</dx:ASPxHiddenField>
+	<dx:ASPxHiddenField ID="Upload_Adogvor_info" ClientInstanceName="Upload_Adogvor_info" runat="server"/>
 	<div style="display:none">
 		<dx:ASPxUploadControl runat="server" ID="Upload_Adogvor" ClientInstanceName="Upload_Adogvor" 
 			NullText="Select files 1" AutoStartUpload="true" UploadMode="Auto" ShowUploadButton="True" ShowProgressPanel="True"
@@ -1038,6 +1042,15 @@ WHERE id = @id"
 					<dx:GridViewCommandColumnCustomButton ID="bnt_adogovor_balansoderzhatel" Text="Загрузить подписанный документ">
 						<Image Url="~/Styles/MoveDownIcon.png"></Image>
 					</dx:GridViewCommandColumnCustomButton>
+
+					<dx:GridViewCommandColumnCustomButton ID="bnt_adogovor_orendar" Text="Загрузить подпись">
+						<Image Url="~/Styles/MoveDownIcon.png"></Image>
+					</dx:GridViewCommandColumnCustomButton>
+
+					<dx:GridViewCommandColumnCustomButton ID="bnt_adogovor_orendodavecz" Text="Загрузить подпись (2)">
+						<Image Url="~/Styles/MoveDownIcon.png"></Image>
+					</dx:GridViewCommandColumnCustomButton>
+
 				</CustomButtons>
 				<CellStyle Wrap="False"></CellStyle>
 			</dx:GridViewCommandColumn>

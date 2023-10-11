@@ -15,8 +15,10 @@ using System.Web.Configuration;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using DevExpress.Compression;
 using DevExpress.Web;
 using Syncfusion.XlsIO;
+
 
 public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 {
@@ -366,8 +368,18 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 
 	protected void UploadControl_FileUploadComplete(object sender, FileUploadCompleteEventArgs e)
 	{
-		var gg = ASPxHiddenField1["rr"];
-		var g = 100;
+		using (var connection = Utils.ConnectToDatabase())
+		using (var transaction = connection.BeginTransaction())
+		{
+			var free_square_id = Int32.Parse(Upload_Adogvor_info["free_square_id"].ToString());
+			var mode = Upload_Adogvor_info["mode"].ToString();
+			var zipdata = e.UploadedFile.FileBytes;
+
+			CabinetUtils.ProcUploadAdogvor(zipdata, free_square_id, mode, DateTime.Now, connection, transaction);
+			transaction.Commit();
+		}
+
+		
 	}
 }
 
@@ -375,6 +387,174 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 
 public static class CabinetUtils
 {
+	const string BALANSODERZHATEL = "balansoderzhatel";
+	const string ORENDAR = "orendar";
+	const string ORENDODAVECZ = "orendodavecz";
+
+	public static void ProcUploadAdogvor(byte[] zipdata, int free_square_id, string mode, DateTime date, SqlConnection connection, SqlTransaction transaction)
+	{
+		var zipdir = ExtractZipFile(zipdata);
+		var allfiles = Directory.GetFiles(zipdir);
+		var files = allfiles.Where(x => !Path.GetFileName(x).EndsWith("_Validation_Report.pdf", StringComparison.OrdinalIgnoreCase)).ToArray();
+		
+		var errortext = "Невірний склад архіву";
+		if (files.Length != 2)
+		{
+			throw new Exception(errortext);
+		}
+
+		var file_1 = files[0].Length < files[1].Length ? files[0] : files[1];
+		var file_2 = files[0].Length < files[1].Length ? files[1] : files[0];
+		if (string.Compare(file_1 + ".p7s", file_2, StringComparison.OrdinalIgnoreCase) != 0)
+		{
+			throw new Exception(errortext);
+		}
+
+
+		var body_old = GetAdogvorBody(free_square_id, connection, transaction);
+		var body_new = File.ReadAllBytes(file_1);
+		var filename = Path.GetFileName(file_1);
+		var podpis = File.ReadAllBytes(file_2);
+		if (mode == BALANSODERZHATEL)
+		{
+			if (!IsEqual(body_new, body_old))
+			{
+				AdogvorReset(free_square_id, connection, transaction);
+				AdogvorSetBody(free_square_id, body_new, filename, connection, transaction);
+			}
+		}
+		else 
+		{
+			if (!IsEqual(body_new, body_old))
+			{
+				throw new Exception("Договір усередині архіву відрізняється від завантаженого балансоутримувачем");
+			}
+		}
+
+		AdogvorSetPodpis(free_square_id, podpis, mode, connection, transaction);
+
+		ClearCatalog(zipdir);
+	}
+
+	static bool IsEqual(byte[] arr_1, byte[] arr_2)
+	{
+		if (arr_1 == null && arr_2 == null)
+		{
+			return true;
+		}
+		else if (arr_1 == null || arr_2 == null)
+		{
+			return false;
+		}
+		else
+		{
+			return arr_1.SequenceEqual(arr_2);
+		}
+	}
+
+	static void ClearCatalog(string dir)
+	{
+		try
+		{
+			Directory.Delete(dir, true);
+		}
+		catch(Exception) { }
+	}
+
+	static void AdogvorSetPodpis(int free_square_id, byte[] podpis, string mode, SqlConnection connection, SqlTransaction transaction)
+	{
+		var podpis_date = DateTime.Now;
+		var sql = @"update [reports1nf_balans_free_square] set 
+				[adogovor_podpis_balansoderzhatel] = @podpis,
+				[adogovor_podpis_balansoderzhatel_date] = @podpis_date
+			 where [id] = @free_square_id".Replace("podpis_balansoderzhatel", "podpis_" + mode);
+
+		using (var cmd = new SqlCommand(sql, connection, transaction))
+		{
+			cmd.Parameters.Add(GetSqlParameter("free_square_id", free_square_id));
+			cmd.Parameters.Add(GetSqlParameter("podpis", podpis));
+			cmd.Parameters.Add(GetSqlParameter("podpis_date", podpis_date));
+			var rowUpdated = cmd.ExecuteNonQuery();
+			if (rowUpdated != 1) throw new Exception("update error");
+		}
+	}
+
+	static void AdogvorSetBody(int free_square_id, byte[] body, string body_name, SqlConnection connection, SqlTransaction transaction)
+	{
+		var load_date = DateTime.Now;
+
+		using (var cmd = new SqlCommand(
+			@"update [reports1nf_balans_free_square] set 
+				[adogovor_body] = @body,
+				[adogovor_filename] = @body_name,
+				[adogovor_load_date] = @load_date
+			 where [id] = @free_square_id", connection, transaction))
+		{
+			cmd.Parameters.Add(GetSqlParameter("free_square_id", free_square_id));
+			cmd.Parameters.Add(GetSqlParameter("body", body));
+			cmd.Parameters.Add(GetSqlParameter("body_name", body_name));
+			cmd.Parameters.Add(GetSqlParameter("load_date", load_date));
+			var rowUpdated = cmd.ExecuteNonQuery();
+			if (rowUpdated != 1) throw new Exception("update error");
+		}
+	}
+
+	static void AdogvorReset(int free_square_id, SqlConnection connection, SqlTransaction transaction)
+	{
+		using (var cmd = new SqlCommand(
+			@"update [reports1nf_balans_free_square] set 
+				[adogovor_body] = null,
+				[adogovor_load_date] = null,
+				[adogovor_podpis_balansoderzhatel] = null,
+				[adogovor_podpis_balansoderzhatel_date] = null,
+				[adogovor_podpis_orendar] = null,
+				[adogovor_podpis_orendar_date] = null,
+				[adogovor_podpis_orendodavecz] = null,
+				[adogovor_podpis_orendodavecz_date] = null,
+				[adogovor_filename] = null
+			 where [id] = @free_square_id", connection, transaction))
+		{
+			cmd.Parameters.Add(GetSqlParameter("free_square_id", free_square_id));
+			var rowUpdated = cmd.ExecuteNonQuery();
+			if (rowUpdated != 1) throw new Exception("update error");
+		}
+	}
+
+	static string ExtractZipFile(byte[] zipdata)
+	{
+		var tempFile = Path.GetTempFileName();
+		var tempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+		File.WriteAllBytes(tempFile, zipdata);
+
+		using (var archive = ZipArchive.Read(tempFile))
+		{
+			foreach (ZipItem item in archive)
+			{
+				item.Extract(tempDir);
+			}
+		}
+
+		try
+		{
+			File.Delete(tempFile);
+		}
+		catch(Exception) { }
+
+		return tempDir;
+	}
+
+	static byte[] GetAdogvorBody(int free_square_id, SqlConnection connection, SqlTransaction transaction)
+	{
+		byte[] result = null;
+		var data = GetDataTable("select adogovor_body from reports1nf_balans_free_square where id = " + dd(free_square_id), connection, transaction);
+		if (data.Rows.Count > 0)
+		{
+			var val = data.Rows[0]["adogovor_body"];
+			result = (val == System.DBNull.Value ? null : (byte[])val);
+		}
+		return result;
+	}
+
 	public static void AddUchasnik(int free_square_id, string userid, DateTime zayavkaDate, SqlConnection connection, SqlTransaction transaction)
 	{
 		var username = Utils.GetUser();
