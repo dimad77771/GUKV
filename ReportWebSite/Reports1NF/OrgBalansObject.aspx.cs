@@ -210,6 +210,22 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
         if (!IsPostBack)
 		{
+            var gotoMode = Request.QueryString["goto"];
+            var gogoTabIndex = -1;
+            if (gotoMode == "photo")
+            {
+                gogoTabIndex = CardPageControl.TabPages.IndexOfName("TabPhoto");
+            }
+            else if (gotoMode == "plan")
+            {
+                gogoTabIndex = CardPageControl.TabPages.IndexOfName("TabPlan");
+            }
+            if (gogoTabIndex >= 0)
+            {
+                CardPageControl.ActiveTabIndex = gogoTabIndex;
+            }
+
+
             if (!EditFreeSquareMode)
             {
                 ASPxGridViewFreeSquare.FilterExpression = "[is_included] = True";

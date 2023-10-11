@@ -47,6 +47,13 @@
         window.location = cardUrl;
     }
 
+	function ShowReportBalansObjPhotoPlan(reportId, balansId, mode) {
+
+        var cardUrl = "../Reports1NF/OrgBalansObject.aspx?rid=" + reportId + "&bid=" + balansId + "&goto=" + mode;
+
+		window.open(cardUrl, '_blank');
+	}
+
     function ShowSendingLog() {
         var diagnosticWindow = window.open("SendingBalanceObjectsDiagnostic.aspx?rid=<%= ReportID  %>", "", "width=600,height=400");
         diagnosticWindow.focus();
@@ -96,6 +103,8 @@
 		 ,bal.znos
 		 ,bal.znos_date
          ,bal.note
+         ,case when exists (select 1 from reports1nf_photos Q where Q.bal_id = bal.id) then 1 else 0 end as has_reports1nf_photos
+         ,case when exists (select 1 from reports1nf_btiphoto Q where Q.bal_id = bal.id) then 1 else 0 end as has_reports1nf_btiphoto
 
         FROM reports1nf_balans bal
         INNER JOIN reports1nf rep ON rep.id = bal.report_id
@@ -309,6 +318,27 @@
 		<dx:GridViewDataDateColumn FieldName="znos_date" VisibleIndex="19" Caption="станом на" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataDateColumn>
 
 		<dx:GridViewDataTextColumn FieldName="balans_id_" VisibleIndex="20" Caption="ID об'єкту" Visible="false"></dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="has_reports1nf_photos" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="101" Visible="True" Caption="Наявність фото" Width="40px">
+            <DataItemTemplate>
+               <%# Eval("has_reports1nf_photos").Equals(1) ?
+                       "<center><a title=\"Перейти до фото\" href=\"javascript:ShowReportBalansObjPhotoPlan(" + Request.QueryString["rid"] + "," + Eval("balans_id") + ", 'photo')\"><img border='0' src='../Styles/photo.png'/></a></center>"
+                       : ""
+               %>
+            </DataItemTemplate>
+            <Settings ShowInFilterControl="False" AllowAutoFilter="False" AllowHeaderFilter="False" />
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="has_reports1nf_btiphoto" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="101" Visible="True" Caption="Наявність плану" Width="40px">
+            <DataItemTemplate>
+               <%# Eval("has_reports1nf_btiphoto").Equals(1) ?
+                       "<center><a title=\"Перейти до планів\" href=\"javascript:ShowReportBalansObjPhotoPlan(" + Request.QueryString["rid"] + "," + Eval("balans_id") + ", 'plan')\"><img border='0' src='../Styles/plan.png'/></a></center>"
+                       : ""
+               %>
+            </DataItemTemplate>
+            <Settings ShowInFilterControl="False" AllowAutoFilter="False" AllowHeaderFilter="False" />
+        </dx:GridViewDataTextColumn>
+
     </Columns>
 
     <TotalSummary>

@@ -3280,7 +3280,7 @@ WHERE id = @id"
             </ContentCollection>
         </dx:TabPage>
 
-        <dx:TabPage Text="Фото" Name="Tab6">
+        <dx:TabPage Text="Фото" Name="TabPhoto">
             <ContentCollection>
                 <dx:ContentControl ID="ContentControl4__1" runat="server">
 
@@ -3386,7 +3386,7 @@ WHERE id = @id"
             </ContentCollection>
         </dx:TabPage>
 
-        <dx:TabPage Text="Плани" Name="Tab7">
+        <dx:TabPage Text="Плани" Name="TabPlan">
             <ContentCollection>
                 <dx:ContentControl ID="ContentControl4__2" runat="server">
 
