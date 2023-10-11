@@ -887,6 +887,7 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
             properties.Add("{AVANCE_SALDO}", "");
             properties.Add("{AVANCE_DEBT}", "");
             properties.Add("{PAY_ZA_NADHOD}", "");
+            properties.Add("{PAY_DEBT_SPYSANO}", "");
             // properties.Add("{PAY_SPECIAL}", "");
             // properties.Add("{PAY_50_NARAH}", "");
             // properties.Add("{PAY_50_PAYED}", "");
