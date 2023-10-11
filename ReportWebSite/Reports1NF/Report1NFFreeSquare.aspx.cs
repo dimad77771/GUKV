@@ -433,32 +433,20 @@ public static class CabinetUtils
 
 		AdogvorSetPodpis(free_square_id, podpis, mode, connection, transaction);
 
+		AdogvorSendEmail(free_square_id, mode, connection, transaction);
+
 		ClearCatalog(zipdir);
 	}
 
-	static bool IsEqual(byte[] arr_1, byte[] arr_2)
-	{
-		if (arr_1 == null && arr_2 == null)
-		{
-			return true;
-		}
-		else if (arr_1 == null || arr_2 == null)
-		{
-			return false;
-		}
-		else
-		{
-			return arr_1.SequenceEqual(arr_2);
-		}
-	}
 
-	static void ClearCatalog(string dir)
+	static void AdogvorSendEmail(int free_square_id, string mode, SqlConnection connection, SqlTransaction transaction)
 	{
-		try
+		var sendToUserIds = new List<string>();
+
+		if (mode == BALANSODERZHATEL)
 		{
-			Directory.Delete(dir, true);
+			sendToUserIds.Add(GetAuctionWinnerUserId(free_square_id, connection, transaction));
 		}
-		catch(Exception) { }
 	}
 
 	static void AdogvorSetPodpis(int free_square_id, byte[] podpis, string mode, SqlConnection connection, SqlTransaction transaction)
@@ -555,6 +543,17 @@ public static class CabinetUtils
 		return result;
 	}
 
+	static string GetAdogvorBodyName(int free_square_id, SqlConnection connection, SqlTransaction transaction)
+	{
+		string result = "";
+		var data = GetDataTable("select adogovor_filename from reports1nf_balans_free_square where id = " + dd(free_square_id), connection, transaction);
+		if (data.Rows.Count > 0)
+		{
+			result = (data.Rows[0]["adogovor_filename"] ?? "").ToString();
+		}
+		return result;
+	}
+
 	public static void AddUchasnik(int free_square_id, string userid, DateTime zayavkaDate, SqlConnection connection, SqlTransaction transaction)
 	{
 		var username = Utils.GetUser();
@@ -572,6 +571,32 @@ public static class CabinetUtils
 			if (rowUpdated != 1) throw new Exception("update error");
 		}
 	}
+
+	static bool IsEqual(byte[] arr_1, byte[] arr_2)
+	{
+		if (arr_1 == null && arr_2 == null)
+		{
+			return true;
+		}
+		else if (arr_1 == null || arr_2 == null)
+		{
+			return false;
+		}
+		else
+		{
+			return arr_1.SequenceEqual(arr_2);
+		}
+	}
+
+	static void ClearCatalog(string dir)
+	{
+		try
+		{
+			Directory.Delete(dir, true);
+		}
+		catch (Exception) { }
+	}
+
 
 	public static void ChangeStage(int free_square_id, int stage_id, SqlConnection connection, SqlTransaction transaction)
 	{
@@ -636,6 +661,20 @@ public static class CabinetUtils
 			result.Add((data.Rows[0]["UserId"] ?? "").ToString());
 		}
 		return result.ToArray();
+	}
+
+	public static string GetAuctionWinnerUserId(int free_square_id, SqlConnection connection, SqlTransaction transaction)
+	{
+		var result = "";
+		var data = GetDataTable(@"
+				select distinct A.UserId 
+				from auction_uchasnik A join reports1nf_balans_free_square B on B.id = A.free_square_id and B.winner_id = A.id
+				where A.free_square_id = " + dd(free_square_id) + " and is_arhiv = 0", connection, transaction);
+		for (var rownum = 0; rownum < data.Rows.Count; rownum++)
+		{
+			result = (data.Rows[0]["UserId"] ?? "").ToString();
+		}
+		return result;
 	}
 
 	public static string GetEmail(string userId, SqlConnection connection, SqlTransaction transaction)
