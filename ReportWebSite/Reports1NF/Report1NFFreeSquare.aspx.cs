@@ -443,18 +443,21 @@ public static class CabinetUtils
 	{
 		var sendToUserIds = new List<string>();
 		var template = "";
+		var subject = "";
 		string[] podpises;
 
 		if (mode == BALANSODERZHATEL)
 		{
 			sendToUserIds.Add(GetAuctionWinnerUserId(free_square_id, connection, transaction));
 			template = "Договір потрібно підписати -- Орендарю";
+			subject = "?";
 			podpises = new[] { BALANSODERZHATEL };
 		}
 		else if (mode == ORENDAR)
 		{
 			sendToUserIds.Add(GetOrendodavecUserId());
 			template = "Договір потрібно підписати -- Орендодавцю";
+
 			podpises = new[] { BALANSODERZHATEL, ORENDAR };
 		}
 		else if (mode == ORENDODAVECZ)
@@ -463,6 +466,7 @@ public static class CabinetUtils
 			sendToUserIds.Add(GetOrendodavecUserId());
 			sendToUserIds.AddRange(GetAllBalansoderzhatels(free_square_id, connection, transaction));
 			template = "Договір потрібно підписати -- Всім";
+			subject = "?";
 			podpises = new[] { BALANSODERZHATEL, ORENDAR, ORENDODAVECZ };
 		}
 		else throw new Exception();
@@ -479,7 +483,7 @@ public static class CabinetUtils
 			attachments.Add(new MailAttachment(podisfilename, podis));
 		}
 
-		SendEmail(connection, transaction, free_square_id, template);
+		SendEmail(connection, transaction, free_square_id, template, attachments: attachments, explicit_userIds: sendToUserIds, explicit_subject: subject);
 	}
 
 	static string Mode2Name(string mode)
@@ -593,11 +597,11 @@ public static class CabinetUtils
 	static byte[] GetAdogvorPodpis(int free_square_id, string mode, SqlConnection connection, SqlTransaction transaction)
 	{
 		byte[] result = null;
-		var sql = ("select adogovor_podpis_orendar from reports1nf_balans_free_square where id = " + dd(free_square_id)).Replace("podpis_orendar", "podpis_" + mode);
+		var sql = ("select adogovor_podpis_orendar as podpis from reports1nf_balans_free_square where id = " + dd(free_square_id)).Replace("podpis_orendar", "podpis_" + mode);
 		var data = GetDataTable(sql, connection, transaction);
 		if (data.Rows.Count > 0)
 		{
-			var val = data.Rows[0]["adogovor_body"];
+			var val = data.Rows[0]["podpis"];
 			result = (val == System.DBNull.Value ? null : (byte[])val);
 		}
 		return result;
@@ -865,10 +869,12 @@ where fs.id = " + dd(free_square_id);
 		}
 	}
 
-	public static void SendEmail(SqlConnection connection, SqlTransaction transaction, int free_square_id, string emailtype, string orendarUserId = null, DateTime? zayavkaDate = null, MailAttachment[] attachments = null)
+	public static void SendEmail(SqlConnection connection, SqlTransaction transaction, int free_square_id, string emailtype, 
+		string orendarUserId = null, DateTime? zayavkaDate = null, IEnumerable<MailAttachment> attachments = null,
+		IEnumerable<string> explicit_userIds = null, string explicit_subject = null)
 	{
-		string[] userIds;
-		string subject;
+		string[] userIds = null;
+		string subject = "";
 
 		if (emailtype == "Заявка подана -- Орендодавцю")
 		{
@@ -885,7 +891,16 @@ where fs.id = " + dd(free_square_id);
 			userIds = GetAllOrendars(free_square_id, connection, transaction);
 			subject = "Інформація про оголошення аукціону";
 		}
-		else throw new Exception();
+
+		if (explicit_userIds != null)
+		{
+			userIds = explicit_userIds.ToArray();
+		}
+		if (explicit_subject != null)
+		{
+			subject = explicit_subject;
+		}
+
 
 		string template = Path.Combine(WebConfigurationManager.AppSettings["Cabinet.Templates"], emailtype + ".txt");
 		string text = File.ReadAllText(template, Encoding.GetEncoding(1251));
@@ -922,17 +937,29 @@ where fs.id = " + dd(free_square_id);
 		}
 	}
 
-	private static void SendMailMessage(string to, string cc, string bcc, string subject, string body, MailAttachment[] attachments = null)
+	private static void SendMailMessage(string to, string cc, string bcc, string subject, string body, IEnumerable<MailAttachment> attachments = null)
 	{
 		if (WebConfigurationManager.AppSettings["Cabinet.SendEmail.Log"] == "1")
 		{
-			var logemail = Path.Combine(WebConfigurationManager.AppSettings["Cabinet.SendEmail.Log.Folder"], Guid.NewGuid().ToString() + ".txt");
+			var logfolder = WebConfigurationManager.AppSettings["Cabinet.SendEmail.Log.Folder"];
+			var logidmail = Guid.NewGuid().ToString();
+			var logemail = Path.Combine(logfolder, logidmail + ".txt");
 			var logtxt =
 				"To:" + to + "\n" +
 				"Subject:" + subject + "\n" +
 				"Body:" + body + "\n" +
 				"";
 			File.WriteAllText(logemail, logtxt);
+
+			if (attachments != null)
+			{
+				var attachdir = Path.Combine(logfolder, logidmail);
+				Directory.CreateDirectory(attachdir);
+				foreach (var attachment in attachments)
+				{
+					File.WriteAllBytes(Path.Combine(attachdir, attachment.FileName), attachment.Bytes);
+				}
+			}
 		}
 
 		if (WebConfigurationManager.AppSettings["Cabinet.SendEmail"] != "1")
