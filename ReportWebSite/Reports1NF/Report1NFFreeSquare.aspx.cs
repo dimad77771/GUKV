@@ -722,7 +722,7 @@ public static class CabinetUtils
 		var data = GetDataTable("select distinct UserId from auction_uchasnik where free_square_id = " + dd(free_square_id) + " and is_arhiv = 0", connection, transaction);
 		for(var rownum = 0; rownum < data.Rows.Count; rownum++)
 		{
-			result.Add((data.Rows[0]["UserId"] ?? "").ToString());
+			result.Add((data.Rows[rownum]["UserId"] ?? "").ToString());
 		}
 		return result.ToArray();
 	}
@@ -745,7 +745,7 @@ public static class CabinetUtils
 						WHERE org.zkpo_code = " + dd(balans_zkpo), connection, transaction);
 		for (var rownum = 0; rownum < data.Rows.Count; rownum++)
 		{
-			var userId = (data.Rows[0]["UserId"] ?? "").ToString();
+			var userId = (data.Rows[rownum]["UserId"] ?? "").ToString();
 			result.Add(userId);
 		}
 		return result.Where(x => !string.IsNullOrEmpty(x)).Distinct().ToArray();
@@ -760,7 +760,7 @@ public static class CabinetUtils
 				where A.free_square_id = " + dd(free_square_id) + " and is_arhiv = 0", connection, transaction);
 		for (var rownum = 0; rownum < data.Rows.Count; rownum++)
 		{
-			result = (data.Rows[0]["UserId"] ?? "").ToString();
+			result = (data.Rows[rownum]["UserId"] ?? "").ToString();
 		}
 		return result;
 	}
@@ -771,7 +771,7 @@ public static class CabinetUtils
 		var data = GetDataTable(@"select balans_zkpo from reports1nf_balans_free_square_view A where A.free_square_id = " + dd(free_square_id), connection, transaction);
 		for (var rownum = 0; rownum < data.Rows.Count; rownum++)
 		{
-			result = (data.Rows[0]["balans_zkpo"] ?? "").ToString();
+			result = (data.Rows[rownum]["balans_zkpo"] ?? "").ToString();
 		}
 		return result;
 	}
