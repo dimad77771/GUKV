@@ -148,6 +148,7 @@ public partial class Reports1NF_Report1NFFreeShow : System.Web.UI.Page
 		e.Command.Parameters["@baseurl"].Value = Utils.WebsiteBaseUrl;
 		e.Command.Parameters["@fs_id"].Value = (string.IsNullOrEmpty(ParamFsid) ? -1 : Int32.Parse(ParamFsid));
 		e.Command.Parameters["@mode50"].Value = (string.IsNullOrEmpty(ParamMode50) ? 0 : 1);
+		e.Command.Parameters["@userId"].Value = Utils.GetUserId();
 	}
 
 	protected void SqlDataSourceFreeSquare_Updating(object sender, SqlDataSourceCommandEventArgs e)

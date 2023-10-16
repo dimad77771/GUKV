@@ -227,6 +227,8 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 		e.Command.Parameters["@period_year"].Value = DateTime.Now.Date.Month == 1 ? DateTime.Now.Date.Year - 1 : DateTime.Now.Date.Year;
 		e.Command.Parameters["@baseurl"].Value = Utils.WebsiteBaseUrl;
 		e.Command.Parameters["@p_show_neziznacheni"].Value = CheckBoxBalansObjectsShowNeziznacheni.Checked ? 1 : 0;
+		e.Command.Parameters["@userId"].Value = Utils.GetUserId();
+		e.Command.Parameters["@bal_zkpo"].Value = Utils.GetCabinetBalansoderzhatelZkpo();
 	}
 
 	protected void SqlDataSourceFreeSquare_Updating(object sender, SqlDataSourceCommandEventArgs e)
@@ -375,11 +377,45 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 			var mode = Upload_Adogvor_info["mode"].ToString();
 			var zipdata = e.UploadedFile.FileBytes;
 
-			CabinetUtils.ProcUploadAdogvor(zipdata, free_square_id, mode, DateTime.Now, connection, transaction);
+			var text = CabinetUtils.ProcUploadAdogvor(zipdata, free_square_id, mode, DateTime.Now, connection, transaction);
 			transaction.Commit();
+
+			e.ErrorText = text;
 		}
 
 		
+	}
+
+	protected void FreeSquareGridView_CustomButtonInitialize(object sender, ASPxGridViewCustomButtonEventArgs e)
+	{
+		if (e.ButtonID == "bnt_adogovor_balansoderzhatel")
+		{
+			var show = false;
+			var isCabinetBalansoderzhatel = (short?)FreeSquareGridView.GetRowValues(e.VisibleIndex, "isCabinetBalansoderzhatel");
+			var winner_id = FreeSquareGridView.GetRowValues(e.VisibleIndex, "winner_id");
+			if (isCabinetBalansoderzhatel == 1 && winner_id != System.DBNull.Value)
+			{
+				show = true;
+			}
+			if (!show)
+			{
+				e.Visible = DevExpress.Utils.DefaultBoolean.False;
+			}
+		}
+
+		else if (e.ButtonID == "bnt_adogovor_orendar")
+		{
+			e.Visible = DevExpress.Utils.DefaultBoolean.False;
+		}
+
+		else if (e.ButtonID == "bnt_adogovor_orendodavecz")
+		{
+			var show = (short?)FreeSquareGridView.GetRowValues(e.VisibleIndex, "isCabinetOrendodavecz");
+			if (show != 1)
+			{
+				e.Visible = DevExpress.Utils.DefaultBoolean.False;
+			}
+		}
 	}
 }
 
@@ -391,8 +427,9 @@ public static class CabinetUtils
 	const string ORENDAR = "orendar";
 	const string ORENDODAVECZ = "orendodavecz";
 
-	public static void ProcUploadAdogvor(byte[] zipdata, int free_square_id, string mode, DateTime date, SqlConnection connection, SqlTransaction transaction)
+	public static string ProcUploadAdogvor(byte[] zipdata, int free_square_id, string mode, DateTime date, SqlConnection connection, SqlTransaction transaction)
 	{
+		//System.Threading.Thread.Sleep(5000);
 		var zipdir = ExtractZipFile(zipdata);
 		var allfiles = Directory.GetFiles(zipdir);
 		var files = allfiles.Where(x => !Path.GetFileName(x).EndsWith("_Validation_Report.pdf", StringComparison.OrdinalIgnoreCase)).ToArray();
@@ -436,6 +473,12 @@ public static class CabinetUtils
 		AdogvorSendEmail(free_square_id, mode, connection, transaction);
 
 		ClearCatalog(zipdir);
+
+		if (mode == BALANSODERZHATEL) return "Підписаний документ завантажено успішно";
+		else if (mode == ORENDAR) return "Підпис завантажено успішно";
+		else if (mode == ORENDODAVECZ) return "Підпис завантажено успішно";
+		return "";
+
 	}
 
 
@@ -478,7 +521,7 @@ public static class CabinetUtils
 
 		foreach (var podpistype in podpises)
 		{
-			var podisfilename = filename + "." + Mode2Name(podpistype) + ".p7s";
+			var podisfilename = filename + "." + Mode2PodpisFile(podpistype) + ".p7s";
 			var podis = GetAdogvorPodpis(free_square_id, podpistype, connection, transaction);
 			attachments.Add(new MailAttachment(podisfilename, podis));
 		}
@@ -496,6 +539,20 @@ public static class CabinetUtils
 				return "Орендодавць";
 			case BALANSODERZHATEL:
 				return "Балансоутримувач";
+		}
+		return "";
+	}
+
+	static string Mode2PodpisFile(string mode)
+	{
+		switch (mode)
+		{
+			case ORENDAR:
+				return "підпис орендаря";
+			case ORENDODAVECZ:
+				return "підпис орендодавця";
+			case BALANSODERZHATEL:
+				return "підпис балансоутримувача";
 		}
 		return "";
 	}

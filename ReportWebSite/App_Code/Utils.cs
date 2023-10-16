@@ -3049,6 +3049,36 @@ public static class Utils
         return userid;
     }
 
+    public static string GetCabinetBalansoderzhatelZkpo()
+    {
+        var userId = GetUserId();
+        var connection = Utils.ConnectToDatabase();
+
+        var result = "";
+
+        using (SqlCommand cmd = new SqlCommand("select CabinetBalansoderzhatelZkpo from aspnet_Membership where UserId = @userId", connection))
+        {
+            cmd.Parameters.AddWithValue("userId", userId);
+            using (SqlDataReader r = cmd.ExecuteReader())
+            {
+                while (r.Read())
+                {
+                    if (!r.IsDBNull(0))
+                    {
+                        result = r.GetString(0);
+                    }
+                }
+                r.Close();
+            }
+        }
+
+
+        connection.Close();
+        connection.Dispose();
+
+        return result;
+    }
+
     public static bool IsBigBossUser()
 	{
 		var user = Membership.GetUser();

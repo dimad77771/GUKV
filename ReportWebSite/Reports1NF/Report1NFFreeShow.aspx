@@ -208,7 +208,7 @@
     end as show_btn_load_dogovor
 
 ,(SELECT top 1 Q.zayavka_date FROM auction_uchasnik Q where Q.free_square_id = fs.id and Q.is_arhiv = 0 order by Q.zayavka_date desc) as zayavka_date
---    ,cast('2023-04-19' as date) as zayavka_date
+,dbo.[CabinetOrendarStage](fs.id, @userId) as cabinetOrendarStage
 
 FROM view_reports1nf rep
 join reports1nf_balans bal on bal.report_id = rep.report_id
@@ -257,6 +257,7 @@ WHERE id = @id"
 		<asp:Parameter DbType="String" DefaultValue="" Name="baseurl" />
 		<asp:Parameter DbType="Int32" DefaultValue="-1" Name="fs_id" />
 		<asp:Parameter DbType="Int32" DefaultValue="0" Name="mode50" />
+        <asp:Parameter DbType="String" DefaultValue="" Name="userId" />
     </SelectParameters>
 </mini:ProfiledSqlDataSource>
 
@@ -562,10 +563,17 @@ WHERE id = @id"
 
         <dx:GridViewDataTextColumn FieldName="auction_tablo" Caption="Аукціон" VisibleIndex="0"  Width="350px" ReadOnly="true">
 			<DataItemTemplate>
-                <dx:ASPxButton runat="server" ID="AuctionZayavkaBtn" Text="Подати заявку" AutoPostBack="false" Visible='<%# Eval("zayavka_date").ToString() == "" %>' OnInit="AuctionZayavkaBtn_Init" >
+
+                <dx:ASPxButton runat="server" ID="AuctionZayavkaBtn" Text="Подати заявку" AutoPostBack="false" Visible='<%# Eval("cabinetOrendarStage").ToString() == "" %>' OnInit="AuctionZayavkaBtn_Init" >
                     <ClientSideEvents Click="function(s, e) { AuctionZayavkaClick(s,e); }" />
                 </dx:ASPxButton>
-                <dx:ASPxLabel runat="server" Text='<%# "Заявка подана " + (Eval("zayavka_date") is DateTime ? ((DateTime)Eval("zayavka_date")).ToString("dd.MM.yyyy") : "") %>' Visible='<%# Eval("zayavka_date") is DateTime %>' />
+                
+                <dx:ASPxLabel runat="server" Text='<%# "Заявка подана " + (Eval("zayavka_date") is DateTime ? ((DateTime)Eval("zayavka_date")).ToString("dd.MM.yyyy") : "") %>' Visible='<%# Eval("cabinetOrendarStage").ToString() == "zayavka_podana" %>' />
+                
+                <dx:ASPxButton runat="server" ID="AuctionZayavkaLoadPodpisBtn" Text="Завантажити підпис" AutoPostBack="false" Visible='<%# Eval("cabinetOrendarStage").ToString() == "podpis_balansoderzhatel" %>' OnInit="AuctionZayavkaBtn_Init" >
+                    <ClientSideEvents Click="function(s, e) { AuctionZayavkaClick(s,e); }" />
+                </dx:ASPxButton>
+
             </DataItemTemplate>
         </dx:GridViewDataTextColumn>
 

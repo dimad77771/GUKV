@@ -289,8 +289,19 @@
 		}
 
 		function CheckBoxBalansObjectsShowNeziznacheni_CheckedChanged(s, e) {
-
 			FreeSquareGridView.PerformCallback(AddWndHeightToCallbackParam("init:"));
+		}
+
+		function onAdogvorFileUploadStart(s, e) {
+			LoadingPanel.Show()
+		}
+
+		function onAdogvorFileUploadComplete(s, e) {
+			if (e.isValid) {
+				LoadingPanel.Hide()
+			}
+			//console.log('onAdogvorFileUploadComplete', s)
+			//console.log('onAdogvorFileUploadComplete', e)
 		}
 
     // ]]>
@@ -375,6 +386,8 @@ SELECT
 ,fs.modified_by
 ,fs.note
 ,fs.winner_id
+,dbo.IsCabinetOrendodavecz(@userId) as isCabinetOrendodavecz
+,dbo.IsCabinetBalansoderzhatel(@userId, org.zkpo_code) as isCabinetBalansoderzhatel
 
 ,invest_solution = (select qq.name from dict_1nf_invest_solution qq where qq.id = fs.invest_solution_id)
 --, solution = fs.is_solution
@@ -426,6 +439,7 @@ LEFT JOIN (
 
         WHERE (@p_rda_district_id = 0 OR (rep.org_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND rep.org_district_id = @p_rda_district_id))
 			AND ( (@p_show_neziznacheni = 0) OR (@p_show_neziznacheni = 1 AND (fs.is_included = 1)) )
+			AND ( (isnull(@bal_zkpo,'') = '') OR (org.zkpo_code = @bal_zkpo) )
 
     order by org_name, street_name, addr_nomer, total_free_sqr   "
 		OnSelecting="SqlDataSourceFreeSquare_Selecting"
@@ -449,6 +463,8 @@ WHERE id = @id"
 			<asp:Parameter DbType="Int32" DefaultValue="0" Name="period_year" />
 			<asp:Parameter DbType="String" DefaultValue="" Name="baseurl" />
 			<asp:Parameter DbType="Int32" DefaultValue="0" Name="p_show_neziznacheni" />
+			<asp:Parameter DbType="String" DefaultValue="" Name="userId" />
+			<asp:Parameter DbType="String" DefaultValue="" Name="bal_zkpo" />
 		</SelectParameters>
 	</mini:ProfiledSqlDataSource>
 
@@ -648,10 +664,11 @@ WHERE id = @id"
 			<AdvancedModeSettings EnableMultiSelect="false" EnableFileList="True" EnableDragAndDrop="True" />
 			<ValidationSettings MaxFileSize="100000000" AllowedFileExtensions=".zip">
 			</ValidationSettings>
-		</dx:ASPxUploadControl>
 			<ClientSideEvents 
-				FilesUploadStart="function(s, e) { DXUploadedFilesContainer.Clear(); }"
-				FileUploadComplete="onFileUploadComplete" />
+				FilesUploadStart="onAdogvorFileUploadStart"
+				FileUploadComplete="onAdogvorFileUploadComplete" />
+		</dx:ASPxUploadControl>
+			
 	</div>
 
 	<%--
@@ -667,11 +684,16 @@ WHERE id = @id"
     OnCustomFilterExpressionDisplayText="GridViewReports1NF_CustomFilterExpressionDisplayText"
     OnProcessColumnAutoFilter="GridViewReports1NF_ProcessColumnAutoFilter" >
 	--%>
+	<dx:ASPxLoadingPanel ID="LoadingPanel" runat="server" ClientInstanceName="LoadingPanel">
+
+	</dx:ASPxLoadingPanel>
+        >
 	<dx:ASPxGridView ID="FreeSquareGridView" runat="server" AutoGenerateColumns="False"
 		DataSourceID="SqlDataSourceFreeSquare" KeyFieldName="id" Width="100%"
 		ClientInstanceName="FreeSquareGridView"
 		OnCellEditorInitialize="FreeSquareGridView_CellEditorInitialize"
 		OnCustomCallback="GridViewFreeSquare_CustomCallback"
+		OnCustomButtonInitialize="FreeSquareGridView_CustomButtonInitialize"
 		OnCustomFilterExpressionDisplayText="GridViewFreeSquare_CustomFilterExpressionDisplayText"
 		OnProcessColumnAutoFilter="GridViewFreeSquare_ProcessColumnAutoFilter">
 		<ClientSideEvents CustomButtonClick="ShowPhoto" BeginCallback="OnBeginCallback" />
@@ -1033,21 +1055,21 @@ WHERE id = @id"
 			<dx:GridViewDataTextColumn FieldName="current_stage_docnum" Caption="№ документа" VisibleIndex="70" Width="100px">
 			</dx:GridViewDataTextColumn>
 
-			<dx:GridViewCommandColumn Caption="Док." VisibleIndex="80" Width="40px" ButtonType="Image" CellStyle-Wrap="False">
+			<dx:GridViewCommandColumn Caption="Док." VisibleIndex="80" Width="45px" ButtonType="Image" CellStyle-Wrap="False">
 				<CustomButtons>
 					<dx:GridViewCommandColumnCustomButton ID="bnt_current_stage_pdf" Text="Зображення документу PDF">
 						<Image Url="~/Styles/current_stage_pdf.png"></Image>
 					</dx:GridViewCommandColumnCustomButton>
 
-					<dx:GridViewCommandColumnCustomButton ID="bnt_adogovor_balansoderzhatel" Text="Загрузить подписанный документ">
+					<dx:GridViewCommandColumnCustomButton ID="bnt_adogovor_balansoderzhatel" Text="Завантажити підписаний документ">
 						<Image Url="~/Styles/MoveDownIcon.png"></Image>
 					</dx:GridViewCommandColumnCustomButton>
 
-					<dx:GridViewCommandColumnCustomButton ID="bnt_adogovor_orendar" Text="Загрузить подпись">
+					<dx:GridViewCommandColumnCustomButton ID="bnt_adogovor_orendar" Text="Завантажити підпис">
 						<Image Url="~/Styles/MoveDownIcon.png"></Image>
 					</dx:GridViewCommandColumnCustomButton>
 
-					<dx:GridViewCommandColumnCustomButton ID="bnt_adogovor_orendodavecz" Text="Загрузить подпись (2)">
+					<dx:GridViewCommandColumnCustomButton ID="bnt_adogovor_orendodavecz" Text="Завантажити підпис (2)">
 						<Image Url="~/Styles/MoveDownIcon.png"></Image>
 					</dx:GridViewCommandColumnCustomButton>
 
@@ -1189,7 +1211,7 @@ WHERE id = @id"
 			ShowFooter="True"
 			VerticalScrollBarMode="Auto"
 			VerticalScrollBarStyle="Standard" />
-		<SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A3_002" Enabled="True" />
+		<SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A3_003" Enabled="True" />
 		<Styles Header-Wrap="True">
 			<Header Wrap="True"></Header>
 		</Styles>
