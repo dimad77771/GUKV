@@ -382,8 +382,6 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 
 			e.ErrorText = text;
 		}
-
-		
 	}
 
 	protected void FreeSquareGridView_CustomButtonInitialize(object sender, ASPxGridViewCustomButtonEventArgs e)

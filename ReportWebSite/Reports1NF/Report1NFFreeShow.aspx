@@ -84,8 +84,6 @@
     }
 
 	function AuctionZayavkaClick(s,e,rownum) {
-        //alert(IsConnected);
-		//console.log("e", e); console.log("rownum", FreeSquareGridView.GetRowKey(rownum)); return;
         if (IsConnected) {
             if (confirm("Подавати заявку на аукціон ?")) {
 				FreeSquareGridView.PerformCallback("auctionZayavka:" + FreeSquareGridView.GetRowKey(rownum));
@@ -93,6 +91,15 @@
 		} else {
 			window.open('/Account/LoginInCabinet.aspx?ReturnUrl=/Reports1NF/Report1NFFreeShow.aspx', '_self'); return;
 		}
+    }
+
+    function UploadAdogvorClick(s, e, rownum) {
+        var free_square_id = FreeSquareGridView.GetRowKey(rownum)
+
+		Upload_Adogvor_info.Set("free_square_id", free_square_id)
+		Upload_Adogvor_info.Set("mode", "orendar")
+		var el1 = document.getElementById("MainContent_Upload_Adogvor_TextBox0_Input");
+		el1.click();
 	}
 
     function ZayavkaClick(e) {
@@ -105,6 +112,19 @@
 			window.open('/Account/LoginInCabinet.aspx?ReturnUrl=/Reports1NF/Report1NFFreeShow.aspx', '_self'); return;
         }
     }
+
+	function onAdogvorFileUploadStart(s, e) {
+		LoadingPanel.Show()
+	}
+
+	function onAdogvorFileUploadComplete(s, e) {
+		if (e.isValid) {
+            LoadingPanel.Hide()
+			FreeSquareGridView.PerformCallback('onAdogvorFileUploadComplete')
+		}
+		//console.log('onAdogvorFileUploadComplete', s)
+		//console.log('onAdogvorFileUploadComplete', e)
+	}
 
 	window.onload = function () {
 		jQuery(document).ready(function () {
@@ -319,19 +339,24 @@ WHERE id = @id"
     </Styles>
 </dx:ASPxGridViewExporter>
 
-    <%--
-<dx:ASPxGridView
-    ID="PrimaryGridView"
-    ClientInstanceName="PrimaryGridView"
-    runat="server"
-    AutoGenerateColumns="False"
-    Width="100%"
-    DataSourceID="SqlDataSourceReports"
-    KeyFieldName="report_id"
-    OnCustomCallback="GridViewReports1NF_CustomCallback"
-    OnCustomFilterExpressionDisplayText="GridViewReports1NF_CustomFilterExpressionDisplayText"
-    OnProcessColumnAutoFilter="GridViewReports1NF_ProcessColumnAutoFilter" >
---%>
+
+	<dx:ASPxHiddenField ID="Upload_Adogvor_info" ClientInstanceName="Upload_Adogvor_info" runat="server"/>
+	<div style="display:none">
+		<dx:ASPxUploadControl runat="server" ID="Upload_Adogvor" ClientInstanceName="Upload_Adogvor" 
+			NullText="Select files 1" AutoStartUpload="true" UploadMode="Auto" ShowUploadButton="True" ShowProgressPanel="True"
+			OnFileUploadComplete="UploadControl_FileUploadComplete">
+			<AdvancedModeSettings EnableMultiSelect="false" EnableFileList="True" EnableDragAndDrop="True" />
+			<ValidationSettings MaxFileSize="100000000" AllowedFileExtensions=".zip">
+			</ValidationSettings>
+			<ClientSideEvents 
+				FilesUploadStart="onAdogvorFileUploadStart"
+				FileUploadComplete="onAdogvorFileUploadComplete" />
+		</dx:ASPxUploadControl>
+	</div>
+
+	<dx:ASPxLoadingPanel ID="LoadingPanel" runat="server" ClientInstanceName="LoadingPanel" />
+
+
    <dx:ASPxGridView ID="FreeSquareGridView" runat="server" AutoGenerateColumns="False" 
         DataSourceID="SqlDataSourceFreeSquare" KeyFieldName="id" Width="100%" 
         ClientInstanceName="FreeSquareGridView" 
@@ -570,126 +595,17 @@ WHERE id = @id"
                 
                 <dx:ASPxLabel runat="server" Text='<%# "Заявка подана " + (Eval("zayavka_date") is DateTime ? ((DateTime)Eval("zayavka_date")).ToString("dd.MM.yyyy") : "") %>' Visible='<%# Eval("cabinetOrendarStage").ToString() == "zayavka_podana" %>' />
                 
-                <dx:ASPxButton runat="server" ID="AuctionZayavkaLoadPodpisBtn" Text="Завантажити підпис" AutoPostBack="false" Visible='<%# Eval("cabinetOrendarStage").ToString() == "podpis_balansoderzhatel" %>' OnInit="AuctionZayavkaBtn_Init" >
-                    <ClientSideEvents Click="function(s, e) { AuctionZayavkaClick(s,e); }" />
+                <dx:ASPxButton runat="server" ID="AuctionZayavkaLoadPodpisBtn" Text="Завантажити підпис" AutoPostBack="false" Visible='<%# Eval("cabinetOrendarStage").ToString() == "podpis_balansoderzhatel" %>' OnInit="AuctionZayavkaLoadPodpisBtn_Init" >
+                    <ClientSideEvents Click="function(s, e) { UploadAdogvorClick(s,e); }" />
                 </dx:ASPxButton>
+
+                <dx:ASPxLabel runat="server" Text='<%# "Договір підписано балансоутримувачем та орендодавцем. Очікуємо на підпис орендодавця." %>' Visible='<%# Eval("cabinetOrendarStage").ToString() == "podpis_balansoderzhatel_orendar" %>' />
 
             </DataItemTemplate>
         </dx:GridViewDataTextColumn>
 
 
-        <dx:GridViewBandColumn Caption="Заявки"  HeaderStyle-HorizontalAlign="Left" VisibleIndex="0" Visible="false">
-            <Columns>
-                <dx:GridViewDataTextColumn FieldName="btn_send" Caption="Заявка" Width="150px" Visible="true">
-			        <DataItemTemplate>
-                        <dx:ASPxButton runat="server" ID="ZayavkaBtn" Text="Подати заявку" AutoPostBack="false" >
-                            <ClientSideEvents Click="function(s, e) { ZayavkaClick(e); }" />
-                        </dx:ASPxButton>
-                    </DataItemTemplate>
-        		</dx:GridViewDataTextColumn>
-
-                <dx:GridViewDataTextColumn FieldName="btn_dogovor" Caption="Договір" Width="150px" Visible="true">
-			        <DataItemTemplate>
-                        <dx:ASPxButton runat="server" Text="Завантажити" AutoPostBack="false" Visible='<%# Eval("show_btn_load_dogovor").Equals("1") %>' >
-                            <ClientSideEvents Click="function(s, e) { ZayavkaClick(e); }" />
-                        </dx:ASPxButton>
-                        <dx:ASPxLabel runat="server" Text="Завантажено 11.12.2022" Visible='<%# Eval("show_btn_load_dogovor").Equals("2") %>' />
-                        <dx:ASPxButton runat="server" Text="Вивантажити документ та підписи" AutoPostBack="false" Visible='<%# Eval("show_btn_load_dogovor").Equals("2") %>' >
-                            <ClientSideEvents Click="function(s, e) { ZayavkaClick(e); }" />
-                        </dx:ASPxButton>
-
-                        <dx:ASPxButton ID="apSave" runat="server" Text="" Image-Url="~/Images/diskette_48.png" ToolTip="Submit Changes"  
-    AutoPostBack="False" BackColor="Transparent" VerticalAlign="Top" Height="16px" Width="16px" RenderMode="Link">  
-    <ClientSideEvents Click="function(s, e) { OnSaveClick(s,e);}" />  
-    <Image Url="~/Styles/PhotoIcon.png"/>
-    
-    <Paddings Padding="0" />  
-    <FocusRectPaddings Padding="0px" />  
-    <Border BorderStyle="None" BorderWidth="0px" /> 
-    <HoverStyle BackColor="Transparent"></HoverStyle>  
-    <PressedStyle BackColor="Transparent"></PressedStyle>  
-    <CheckedStyle BackColor="Transparent"></CheckedStyle>  
-</dx:ASPxButton>  
-
-                        <dx:ASPxButton runat="server" AutoPostBack="false" BackColor="Transparent" VerticalAlign="Top" Height="36px" Width="36px"
-                            Visible='<%# Eval("show_btn_load_dogovor").Equals("2") %>' >
-                            <Paddings Padding="0" />  
-    <FocusRectPaddings Padding="0px" />  
-    <Border BorderStyle="None" BorderWidth="0px" />  
-    <HoverStyle BackColor="Transparent"></HoverStyle>  
-    <PressedStyle BackColor="Transparent"></PressedStyle>  
-    <CheckedStyle BackColor="Transparent"></CheckedStyle>  
-                            <Image Url="~/Styles/PhotoIcon.png"/>
-                            <ClientSideEvents Click="function(s, e) { ZayavkaClick(e); }" />
-                        </dx:ASPxButton>
-                         <dx:ASPxButton runat="server" Text="Вилучити" AutoPostBack="false" Visible='<%# Eval("show_btn_load_dogovor").Equals("2") %>' >
-                            <ClientSideEvents Click="function(s, e) { ZayavkaClick(e); }" />
-                        </dx:ASPxButton>
-                    </DataItemTemplate>
-        		</dx:GridViewDataTextColumn>
-
-                <dx:GridViewDataTextColumn FieldName="btn_sign_1" Caption="Підпис орендаря" Width="150px" Visible="true">
-			        <DataItemTemplate>
-                        <dx:ASPxButton runat="server" ID="ZayavkaBtn2" Text="Завантажити підпис" AutoPostBack="false" >
-                            <ClientSideEvents Click="function(s, e) { ZayavkaClick(e); }" />
-                        </dx:ASPxButton>
-                    </DataItemTemplate>
-        		</dx:GridViewDataTextColumn>
-
-                <dx:GridViewDataTextColumn FieldName="btn_sign_2" Caption="Підпис орендодавця" Width="150px" Visible="true">
-			        <DataItemTemplate>
-                        <dx:ASPxLabel runat="server" Text="Підписано 18.12.2022" />
-                        <dx:ASPxButton runat="server" ID="ZayavkaBtn" Text="Подати заявку" AutoPostBack="false" >
-                            <ClientSideEvents Click="function(s, e) { ZayavkaClick(e); }" />
-                        </dx:ASPxButton>
-                    </DataItemTemplate>
-        		</dx:GridViewDataTextColumn>
-
-                <dx:GridViewDataTextColumn FieldName="btn_sign_2222" Caption="Підписи" Width="280px" Visible="true">
-			        <DataItemTemplate>
-                        <table>
-                            <tr>
-                                <td>
-                                    <dx:ASPxLabel runat="server" Text="Підписано орендарем:" />
-                                 </td>
-                                <td>
-                                    <dx:ASPxLabel runat="server" Text="18.12.2022" />
-                                 </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <dx:ASPxLabel runat="server" Text="Підписано орендодавцем:" />
-                                 </td>
-                                <td>
-                                    <dx:ASPxLabel runat="server" Text="-" />
-                                 </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <dx:ASPxLabel runat="server" Text="Підписано балансоутримувачем:" />
-                                 </td>
-                                <td>
-                                    <dx:ASPxLabel runat="server" Text="14.12.2022" />
-                                 </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <dx:ASPxButton runat="server" Text="Завантажити підпис орендодавця" AutoPostBack="false" Visible='<%# Eval("show_btn_load_dogovor").Equals("2") %>' >
-                                    </dx:ASPxButton>
-
-                                    <dx:ASPxButton runat="server" Text="Вилучити підпис" AutoPostBack="false" Visible='<%# Eval("show_btn_load_dogovor").Equals("1") %>' >
-                                    </dx:ASPxButton>
-
-                                 </td>
-                            </tr>
-                        </table>
-                    </DataItemTemplate>
-        		</dx:GridViewDataTextColumn>
-
-            </Columns>
-
-        </dx:GridViewBandColumn>
-
+        
 
         <dx:GridViewDataTextColumn FieldName="org_name" Caption="Балансоутримувач" VisibleIndex="0"  Width="250px" ReadOnly="true">
 			<EditItemTemplate>

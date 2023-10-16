@@ -668,26 +668,10 @@ WHERE id = @id"
 				FilesUploadStart="onAdogvorFileUploadStart"
 				FileUploadComplete="onAdogvorFileUploadComplete" />
 		</dx:ASPxUploadControl>
-			
 	</div>
 
-	<%--
-<dx:ASPxGridView
-    ID="PrimaryGridView"
-    ClientInstanceName="PrimaryGridView"
-    runat="server"
-    AutoGenerateColumns="False"
-    Width="100%"
-    DataSourceID="SqlDataSourceReports"
-    KeyFieldName="report_id"
-    OnCustomCallback="GridViewReports1NF_CustomCallback"
-    OnCustomFilterExpressionDisplayText="GridViewReports1NF_CustomFilterExpressionDisplayText"
-    OnProcessColumnAutoFilter="GridViewReports1NF_ProcessColumnAutoFilter" >
-	--%>
-	<dx:ASPxLoadingPanel ID="LoadingPanel" runat="server" ClientInstanceName="LoadingPanel">
+	<dx:ASPxLoadingPanel ID="LoadingPanel" runat="server" ClientInstanceName="LoadingPanel" />
 
-	</dx:ASPxLoadingPanel>
-        >
 	<dx:ASPxGridView ID="FreeSquareGridView" runat="server" AutoGenerateColumns="False"
 		DataSourceID="SqlDataSourceFreeSquare" KeyFieldName="id" Width="100%"
 		ClientInstanceName="FreeSquareGridView"

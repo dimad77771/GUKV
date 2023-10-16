@@ -15,6 +15,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using DevExpress.Web;
 using Syncfusion.XlsIO;
+using DevExpress.Compression;
+
 
 public partial class Reports1NF_Report1NFFreeShow : System.Web.UI.Page
 {
@@ -110,6 +112,10 @@ public partial class Reports1NF_Report1NFFreeShow : System.Web.UI.Page
 				transaction.Commit();
 			}
 
+			FreeSquareGridView.DataBind();
+		}
+		else if (e.Parameters == "onAdogvorFileUploadComplete")
+		{
 			FreeSquareGridView.DataBind();
 		}
 		else
@@ -237,11 +243,288 @@ public partial class Reports1NF_Report1NFFreeShow : System.Web.UI.Page
 		var container = ((ASPxButton)sender).NamingContainer as GridViewDataItemTemplateContainer;
 		button.ClientSideEvents.Click = String.Format("function (s, e) {{ AuctionZayavkaClick(s, e, {0}); }}", container.VisibleIndex);
 	}
+
+	protected void AuctionZayavkaLoadPodpisBtn_Init(object sender, EventArgs e)
+	{
+		var button = sender as ASPxButton;
+		var container = ((ASPxButton)sender).NamingContainer as GridViewDataItemTemplateContainer;
+		button.ClientSideEvents.Click = String.Format("function (s, e) {{ UploadAdogvorClick(s, e, {0}); }}", container.VisibleIndex);
+	}
+
+	protected void UploadControl_FileUploadComplete(object sender, FileUploadCompleteEventArgs e)
+	{
+		using (var connection = Utils.ConnectToDatabase())
+		using (var transaction = connection.BeginTransaction())
+		{
+			var free_square_id = Int32.Parse(Upload_Adogvor_info["free_square_id"].ToString());
+			var mode = Upload_Adogvor_info["mode"].ToString();
+			var zipdata = e.UploadedFile.FileBytes;
+
+			var text = CabinetUtils.ProcUploadAdogvor(zipdata, free_square_id, mode, DateTime.Now, connection, transaction);
+			transaction.Commit();
+
+			//FreeSquareGridView.DataBind();
+
+			e.ErrorText = text;
+		}
+	}
 }
 
 
 public static class CabinetUtils
 {
+	const string BALANSODERZHATEL = "balansoderzhatel";
+	const string ORENDAR = "orendar";
+	const string ORENDODAVECZ = "orendodavecz";
+
+	public static string ProcUploadAdogvor(byte[] zipdata, int free_square_id, string mode, DateTime date, SqlConnection connection, SqlTransaction transaction)
+	{
+		//System.Threading.Thread.Sleep(5000);
+		var zipdir = ExtractZipFile(zipdata);
+		var allfiles = Directory.GetFiles(zipdir);
+		var files = allfiles.Where(x => !Path.GetFileName(x).EndsWith("_Validation_Report.pdf", StringComparison.OrdinalIgnoreCase)).ToArray();
+
+		var errortext = "Невірний склад архіву";
+		if (files.Length != 2)
+		{
+			throw new Exception(errortext);
+		}
+
+		var file_1 = files[0].Length < files[1].Length ? files[0] : files[1];
+		var file_2 = files[0].Length < files[1].Length ? files[1] : files[0];
+		if (string.Compare(file_1 + ".p7s", file_2, StringComparison.OrdinalIgnoreCase) != 0)
+		{
+			throw new Exception(errortext);
+		}
+
+
+		var body_old = GetAdogvorBody(free_square_id, connection, transaction);
+		var body_new = File.ReadAllBytes(file_1);
+		var filename = Path.GetFileName(file_1);
+		var podpis = File.ReadAllBytes(file_2);
+		if (mode == BALANSODERZHATEL)
+		{
+			if (!IsEqual(body_new, body_old))
+			{
+				AdogvorReset(free_square_id, connection, transaction);
+				AdogvorSetBody(free_square_id, body_new, filename, connection, transaction);
+			}
+		}
+		else
+		{
+			if (!IsEqual(body_new, body_old))
+			{
+				throw new Exception("Договір усередині архіву відрізняється від завантаженого балансоутримувачем");
+			}
+		}
+
+		AdogvorSetPodpis(free_square_id, podpis, mode, connection, transaction);
+
+		AdogvorSendEmail(free_square_id, mode, connection, transaction);
+
+		ClearCatalog(zipdir);
+
+		if (mode == BALANSODERZHATEL) return "Підписаний документ завантажено успішно";
+		else if (mode == ORENDAR) return "Підпис завантажено успішно";
+		else if (mode == ORENDODAVECZ) return "Підпис завантажено успішно";
+		return "";
+
+	}
+
+
+	static void AdogvorSendEmail(int free_square_id, string mode, SqlConnection connection, SqlTransaction transaction)
+	{
+		var sendToUserIds = new List<string>();
+		var template = "";
+		var subject = "";
+		string[] podpises;
+
+		if (mode == BALANSODERZHATEL)
+		{
+			sendToUserIds.Add(GetAuctionWinnerUserId(free_square_id, connection, transaction));
+			template = "Договір потрібно підписати -- Орендарю";
+			subject = "?";
+			podpises = new[] { BALANSODERZHATEL };
+		}
+		else if (mode == ORENDAR)
+		{
+			sendToUserIds.Add(GetOrendodavecUserId());
+			template = "Договір потрібно підписати -- Орендодавцю";
+
+			podpises = new[] { BALANSODERZHATEL, ORENDAR };
+		}
+		else if (mode == ORENDODAVECZ)
+		{
+			sendToUserIds.Add(GetAuctionWinnerUserId(free_square_id, connection, transaction));
+			sendToUserIds.Add(GetOrendodavecUserId());
+			sendToUserIds.AddRange(GetAllBalansoderzhatels(free_square_id, connection, transaction));
+			template = "Договір потрібно підписати -- Всім";
+			subject = "?";
+			podpises = new[] { BALANSODERZHATEL, ORENDAR, ORENDODAVECZ };
+		}
+		else throw new Exception();
+
+		var attachments = new List<MailAttachment>();
+		var filename = GetAdogvorBodyName(free_square_id, connection, transaction);
+		var body = GetAdogvorBody(free_square_id, connection, transaction);
+		attachments.Add(new MailAttachment(filename, body));
+
+		foreach (var podpistype in podpises)
+		{
+			var podisfilename = filename + "." + Mode2PodpisFile(podpistype) + ".p7s";
+			var podis = GetAdogvorPodpis(free_square_id, podpistype, connection, transaction);
+			attachments.Add(new MailAttachment(podisfilename, podis));
+		}
+
+		SendEmail(connection, transaction, free_square_id, template, attachments: attachments, explicit_userIds: sendToUserIds, explicit_subject: subject);
+	}
+
+	static string Mode2Name(string mode)
+	{
+		switch (mode)
+		{
+			case ORENDAR:
+				return "Орендар";
+			case ORENDODAVECZ:
+				return "Орендодавць";
+			case BALANSODERZHATEL:
+				return "Балансоутримувач";
+		}
+		return "";
+	}
+
+	static string Mode2PodpisFile(string mode)
+	{
+		switch (mode)
+		{
+			case ORENDAR:
+				return "підпис орендаря";
+			case ORENDODAVECZ:
+				return "підпис орендодавця";
+			case BALANSODERZHATEL:
+				return "підпис балансоутримувача";
+		}
+		return "";
+	}
+
+	static void AdogvorSetPodpis(int free_square_id, byte[] podpis, string mode, SqlConnection connection, SqlTransaction transaction)
+	{
+		var podpis_date = DateTime.Now;
+		var sql = @"update [reports1nf_balans_free_square] set 
+				[adogovor_podpis_balansoderzhatel] = @podpis,
+				[adogovor_podpis_balansoderzhatel_date] = @podpis_date
+			 where [id] = @free_square_id".Replace("podpis_balansoderzhatel", "podpis_" + mode);
+
+		using (var cmd = new SqlCommand(sql, connection, transaction))
+		{
+			cmd.Parameters.Add(GetSqlParameter("free_square_id", free_square_id));
+			cmd.Parameters.Add(GetSqlParameter("podpis", podpis));
+			cmd.Parameters.Add(GetSqlParameter("podpis_date", podpis_date));
+			var rowUpdated = cmd.ExecuteNonQuery();
+			if (rowUpdated != 1) throw new Exception("update error");
+		}
+	}
+
+	static void AdogvorSetBody(int free_square_id, byte[] body, string body_name, SqlConnection connection, SqlTransaction transaction)
+	{
+		var load_date = DateTime.Now;
+
+		using (var cmd = new SqlCommand(
+			@"update [reports1nf_balans_free_square] set 
+				[adogovor_body] = @body,
+				[adogovor_filename] = @body_name,
+				[adogovor_load_date] = @load_date
+			 where [id] = @free_square_id", connection, transaction))
+		{
+			cmd.Parameters.Add(GetSqlParameter("free_square_id", free_square_id));
+			cmd.Parameters.Add(GetSqlParameter("body", body));
+			cmd.Parameters.Add(GetSqlParameter("body_name", body_name));
+			cmd.Parameters.Add(GetSqlParameter("load_date", load_date));
+			var rowUpdated = cmd.ExecuteNonQuery();
+			if (rowUpdated != 1) throw new Exception("update error");
+		}
+	}
+
+	static void AdogvorReset(int free_square_id, SqlConnection connection, SqlTransaction transaction)
+	{
+		using (var cmd = new SqlCommand(
+			@"update [reports1nf_balans_free_square] set 
+				[adogovor_body] = null,
+				[adogovor_load_date] = null,
+				[adogovor_podpis_balansoderzhatel] = null,
+				[adogovor_podpis_balansoderzhatel_date] = null,
+				[adogovor_podpis_orendar] = null,
+				[adogovor_podpis_orendar_date] = null,
+				[adogovor_podpis_orendodavecz] = null,
+				[adogovor_podpis_orendodavecz_date] = null,
+				[adogovor_filename] = null
+			 where [id] = @free_square_id", connection, transaction))
+		{
+			cmd.Parameters.Add(GetSqlParameter("free_square_id", free_square_id));
+			var rowUpdated = cmd.ExecuteNonQuery();
+			if (rowUpdated != 1) throw new Exception("update error");
+		}
+	}
+
+	static string ExtractZipFile(byte[] zipdata)
+	{
+		var tempFile = Path.GetTempFileName();
+		var tempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+		File.WriteAllBytes(tempFile, zipdata);
+
+		using (var archive = ZipArchive.Read(tempFile))
+		{
+			foreach (ZipItem item in archive)
+			{
+				item.Extract(tempDir);
+			}
+		}
+
+		try
+		{
+			File.Delete(tempFile);
+		}
+		catch (Exception) { }
+
+		return tempDir;
+	}
+
+	static byte[] GetAdogvorBody(int free_square_id, SqlConnection connection, SqlTransaction transaction)
+	{
+		byte[] result = null;
+		var data = GetDataTable("select adogovor_body from reports1nf_balans_free_square where id = " + dd(free_square_id), connection, transaction);
+		if (data.Rows.Count > 0)
+		{
+			var val = data.Rows[0]["adogovor_body"];
+			result = (val == System.DBNull.Value ? null : (byte[])val);
+		}
+		return result;
+	}
+
+	static byte[] GetAdogvorPodpis(int free_square_id, string mode, SqlConnection connection, SqlTransaction transaction)
+	{
+		byte[] result = null;
+		var sql = ("select adogovor_podpis_orendar as podpis from reports1nf_balans_free_square where id = " + dd(free_square_id)).Replace("podpis_orendar", "podpis_" + mode);
+		var data = GetDataTable(sql, connection, transaction);
+		if (data.Rows.Count > 0)
+		{
+			var val = data.Rows[0]["podpis"];
+			result = (val == System.DBNull.Value ? null : (byte[])val);
+		}
+		return result;
+	}
+
+	static string GetAdogvorBodyName(int free_square_id, SqlConnection connection, SqlTransaction transaction)
+	{
+		string result = "";
+		var data = GetDataTable("select adogovor_filename from reports1nf_balans_free_square where id = " + dd(free_square_id), connection, transaction);
+		if (data.Rows.Count > 0)
+		{
+			result = (data.Rows[0]["adogovor_filename"] ?? "").ToString();
+		}
+		return result;
+	}
+
 	public static void AddUchasnik(int free_square_id, string userid, DateTime zayavkaDate, SqlConnection connection, SqlTransaction transaction)
 	{
 		var username = Utils.GetUser();
@@ -259,6 +542,32 @@ public static class CabinetUtils
 			if (rowUpdated != 1) throw new Exception("update error");
 		}
 	}
+
+	static bool IsEqual(byte[] arr_1, byte[] arr_2)
+	{
+		if (arr_1 == null && arr_2 == null)
+		{
+			return true;
+		}
+		else if (arr_1 == null || arr_2 == null)
+		{
+			return false;
+		}
+		else
+		{
+			return arr_1.SequenceEqual(arr_2);
+		}
+	}
+
+	static void ClearCatalog(string dir)
+	{
+		try
+		{
+			Directory.Delete(dir, true);
+		}
+		catch (Exception) { }
+	}
+
 
 	public static void ChangeStage(int free_square_id, int stage_id, SqlConnection connection, SqlTransaction transaction)
 	{
@@ -314,11 +623,64 @@ public static class CabinetUtils
 		return WebConfigurationManager.AppSettings["Cabinet.OrendodavecUserId"];
 	}
 
-	public static string GetOrendarUserId(int free_square_id, SqlConnection connection)
+	public static string[] GetAllOrendars(int free_square_id, SqlConnection connection, SqlTransaction transaction)
 	{
-		//GetDataTable("select distinct UserId auction_uchasnik 
+		var result = new List<string>();
+		var data = GetDataTable("select distinct UserId from auction_uchasnik where free_square_id = " + dd(free_square_id) + " and is_arhiv = 0", connection, transaction);
+		for (var rownum = 0; rownum < data.Rows.Count; rownum++)
+		{
+			result.Add((data.Rows[rownum]["UserId"] ?? "").ToString());
+		}
+		return result.ToArray();
+	}
 
-		return WebConfigurationManager.AppSettings["Cabinet.OrendodavecUserId"];
+	public static string[] GetAllBalansoderzhatels(int free_square_id, SqlConnection connection, SqlTransaction transaction)
+	{
+		var balans_zkpo = GetBalansoderzhatelZkpo(free_square_id, connection, transaction);
+		var userIds = RdaZkpo2UserIds(balans_zkpo, connection, transaction);
+		return userIds;
+	}
+
+	public static string[] RdaZkpo2UserIds(string balans_zkpo, SqlConnection connection, SqlTransaction transaction)
+	{
+		var result = new List<string>();
+		var data = GetDataTable(@"
+						SELECT usr.UserName, org.zkpo_code, usr.UserId
+						FROM reports1nf_accounts acc 
+						JOIN aspnet_Users usr ON usr.UserId = acc.UserId
+						JOIN reports1nf_org_info org ON org.id = acc.organization_id
+						WHERE org.zkpo_code = " + dd(balans_zkpo), connection, transaction);
+		for (var rownum = 0; rownum < data.Rows.Count; rownum++)
+		{
+			var userId = (data.Rows[rownum]["UserId"] ?? "").ToString();
+			result.Add(userId);
+		}
+		return result.Where(x => !string.IsNullOrEmpty(x)).Distinct().ToArray();
+	}
+
+	public static string GetAuctionWinnerUserId(int free_square_id, SqlConnection connection, SqlTransaction transaction)
+	{
+		var result = "";
+		var data = GetDataTable(@"
+				select distinct A.UserId 
+				from auction_uchasnik A join reports1nf_balans_free_square B on B.id = A.free_square_id and B.winner_id = A.id
+				where A.free_square_id = " + dd(free_square_id) + " and is_arhiv = 0", connection, transaction);
+		for (var rownum = 0; rownum < data.Rows.Count; rownum++)
+		{
+			result = (data.Rows[rownum]["UserId"] ?? "").ToString();
+		}
+		return result;
+	}
+
+	public static string GetBalansoderzhatelZkpo(int free_square_id, SqlConnection connection, SqlTransaction transaction)
+	{
+		var result = "";
+		var data = GetDataTable(@"select balans_zkpo from reports1nf_balans_free_square_view A where A.free_square_id = " + dd(free_square_id), connection, transaction);
+		for (var rownum = 0; rownum < data.Rows.Count; rownum++)
+		{
+			result = (data.Rows[rownum]["balans_zkpo"] ?? "").ToString();
+		}
+		return result;
 	}
 
 	public static string GetEmail(string userId, SqlConnection connection, SqlTransaction transaction)
@@ -362,17 +724,64 @@ where fs.id = " + dd(free_square_id);
 		return result;
 	}
 
-	public static string dd(object arg)
+	public static string GetProzoroNumber(int free_square_id, SqlConnection connection, SqlTransaction transaction)
+	{
+		var result = "";
+		var sql = @"select prozoro_number from reports1nf_balans_free_square fs where fs.id = " + dd(free_square_id);
+		var data = GetDataTable(sql, connection, transaction);
+		if (data.Rows.Count > 0)
+		{
+			result = (data.Rows[0]["prozoro_number"] ?? "").ToString();
+		}
+		return result;
+	}
+
+	public static int? GetStep(int free_square_id)
+	{
+		using (var connection = Utils.ConnectToDatabase())
+		{
+			var result = (int?)null;
+			var sql = @"select freecycle_step_dict_id from reports1nf_balans_free_square fs where fs.id = " + dd(free_square_id);
+			var data = GetDataTable(sql, connection, null);
+			if (data.Rows.Count > 0)
+			{
+				result = (int?)data.Rows[0]["freecycle_step_dict_id"];
+			}
+			return result;
+		}
+	}
+
+	public static string GetProzoroNumberLink(int free_square_id, SqlConnection connection, SqlTransaction transaction)
+	{
+		var num = GetProzoroNumber(free_square_id, connection, transaction);
+		var result = @"https://prozorro.sale/auction/" + num;
+		return result;
+	}
+
+	private static string dd(object arg)
 	{
 		if (arg == null) return "null";
 		else if (arg is string) return "'" + arg.ToString().Replace("'", "''") + "'";
 		else return arg.ToString();
 	}
 
-	public static void SendEmail(SqlConnection connection, SqlTransaction transaction, int free_square_id, string emailtype, string orendarUserId = null, DateTime? zayavkaDate = null)
+	public static void ValidateProzoroNumber(int? freecycle_step_dict_id, string prozoro_number)
 	{
-		string[] userIds;
-		string subject;
+		if (new int?[] { 200200, 200300, 200400, 200500, 200600, 200700, 200800, 200900 }.Contains(freecycle_step_dict_id))
+		{
+			if (string.IsNullOrEmpty((prozoro_number ?? "").Trim()))
+			{
+				throw new Exception("Необхідно заповнити поле \"Унікальний код обєкту у ЕТС Прозорро-продажі\"");
+			}
+		}
+	}
+
+	public static void SendEmail(SqlConnection connection, SqlTransaction transaction, int free_square_id, string emailtype,
+		string orendarUserId = null, DateTime? zayavkaDate = null, IEnumerable<MailAttachment> attachments = null,
+		IEnumerable<string> explicit_userIds = null, string explicit_subject = null)
+	{
+		string[] userIds = null;
+		string subject = "";
 
 		if (emailtype == "Заявка подана -- Орендодавцю")
 		{
@@ -384,19 +793,34 @@ where fs.id = " + dd(free_square_id);
 			userIds = new[] { orendarUserId };
 			subject = "Заявка подана";
 		}
-		else throw new Exception();
+		else if (emailtype == "Учасників поінформовано")
+		{
+			userIds = GetAllOrendars(free_square_id, connection, transaction);
+			subject = "Інформація про оголошення аукціону";
+		}
+
+		if (explicit_userIds != null)
+		{
+			userIds = explicit_userIds.ToArray();
+		}
+		if (explicit_subject != null)
+		{
+			subject = explicit_subject;
+		}
+
 
 		string template = Path.Combine(WebConfigurationManager.AppSettings["Cabinet.Templates"], emailtype + ".txt");
 		string text = File.ReadAllText(template, Encoding.GetEncoding(1251));
 
 		ReplaceText(ref text, "{{ZAYAVKA_DATETIME}}", () => zayavkaDate.Value.ToString("dd.MM.yyyy HH:mm"));
 		ReplaceText(ref text, "{{OBJECT_DECSRIPTION}}", () => GetObjectDescription(free_square_id, connection, transaction));
+		ReplaceText(ref text, "{{AUCTION_LINK}}", () => GetProzoroNumberLink(free_square_id, connection, transaction));
 
 		var emails = userIds.Select(q => GetEmail(q, connection, transaction)).Where(x => !string.IsNullOrEmpty(x)).Distinct().ToArray();
 
 		foreach (var email in emails)
 		{
-			SendMailMessage(email, "", "", subject, text);
+			SendMailMessage(email, "", "", subject, text, attachments: attachments);
 		}
 	}
 
@@ -408,18 +832,41 @@ where fs.id = " + dd(free_square_id);
 		}
 	}
 
+	public class MailAttachment
+	{
+		public string FileName { get; set; }
+		public byte[] Bytes { get; set; }
 
-	private static void SendMailMessage(string to, string cc, string bcc, string subject, string body)
+		public MailAttachment(string fileName, byte[] bytes)
+		{
+			this.FileName = fileName;
+			this.Bytes = bytes;
+		}
+	}
+
+	private static void SendMailMessage(string to, string cc, string bcc, string subject, string body, IEnumerable<MailAttachment> attachments = null)
 	{
 		if (WebConfigurationManager.AppSettings["Cabinet.SendEmail.Log"] == "1")
 		{
-			var logemail = Path.Combine(WebConfigurationManager.AppSettings["Cabinet.SendEmail.Log.Folder"], Guid.NewGuid().ToString() + ".txt");
-			var logtxt = 
+			var logfolder = WebConfigurationManager.AppSettings["Cabinet.SendEmail.Log.Folder"];
+			var logidmail = Guid.NewGuid().ToString();
+			var logemail = Path.Combine(logfolder, logidmail + ".txt");
+			var logtxt =
 				"To:" + to + "\n" +
 				"Subject:" + subject + "\n" +
 				"Body:" + body + "\n" +
 				"";
 			File.WriteAllText(logemail, logtxt);
+
+			if (attachments != null)
+			{
+				var attachdir = Path.Combine(logfolder, logidmail);
+				Directory.CreateDirectory(attachdir);
+				foreach (var attachment in attachments)
+				{
+					File.WriteAllBytes(Path.Combine(attachdir, attachment.FileName), attachment.Bytes);
+				}
+			}
 		}
 
 		if (WebConfigurationManager.AppSettings["Cabinet.SendEmail"] != "1")
@@ -473,6 +920,14 @@ where fs.id = " + dd(free_square_id);
 		mMailMessage.Body = body;
 		if (isTest)
 			mMailMessage.Body = "ТЕСТОВАЯ ВЕРСИЯ. ЕСЛИ ВЫ НЕ ЯВЛЯЕТЕСЬ ТЕСТИРОВЩИКОМ, ПРОСТО ИГНОРИРУЙТЕ ДАННОЕ ПИСЬМО<BR/>" + mMailMessage.Body;
+
+		if (attachments != null)
+		{
+			foreach (var attachment in attachments)
+			{
+				mMailMessage.Attachments.Add(new Attachment(new MemoryStream(attachment.Bytes), attachment.FileName));
+			}
+		}
 
 		// Set the priority of the mail message to normal
 		mMailMessage.Priority = MailPriority.Normal;
