@@ -388,6 +388,7 @@ SELECT
 ,fs.winner_id
 ,dbo.IsCabinetOrendodavecz(@userId) as isCabinetOrendodavecz
 ,dbo.IsCabinetBalansoderzhatel(@userId, org.zkpo_code) as isCabinetBalansoderzhatel
+,dbo.[CabinetOrendarStage](fs.id, '-') as cabinetOrendarStage
 
 ,invest_solution = (select qq.name from dict_1nf_invest_solution qq where qq.id = fs.invest_solution_id)
 --, solution = fs.is_solution
@@ -1049,11 +1050,11 @@ WHERE id = @id"
 						<Image Url="~/Styles/MoveDownIcon.png"></Image>
 					</dx:GridViewCommandColumnCustomButton>
 
-					<dx:GridViewCommandColumnCustomButton ID="bnt_adogovor_orendar" Text="Завантажити підпис">
+					<dx:GridViewCommandColumnCustomButton ID="bnt_adogovor_orendar" Text="Завантажити підпис (орендар)">
 						<Image Url="~/Styles/MoveDownIcon.png"></Image>
 					</dx:GridViewCommandColumnCustomButton>
 
-					<dx:GridViewCommandColumnCustomButton ID="bnt_adogovor_orendodavecz" Text="Завантажити підпис (2)">
+					<dx:GridViewCommandColumnCustomButton ID="bnt_adogovor_orendodavecz" Text="Завантажити підпис орендодавця">
 						<Image Url="~/Styles/MoveDownIcon.png"></Image>
 					</dx:GridViewCommandColumnCustomButton>
 

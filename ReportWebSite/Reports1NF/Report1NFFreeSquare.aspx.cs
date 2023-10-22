@@ -270,17 +270,17 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 		var free_square_id = (int)(e.Command.Parameters["@id"].Value);
 		var freecycle_step_dict_id = (int?)(e.Command.Parameters["@freecycle_step_dict_id"].Value);
 		var prozoro_number = (string)(e.Command.Parameters["@prozoro_number"].Value);
-		var current_step = CabinetUtils.GetStep(free_square_id);
+		var current_step = CabinetUtils222.GetStep(free_square_id);
 		var change_step = (freecycle_step_dict_id != current_step);
 
-		CabinetUtils.ValidateProzoroNumber(freecycle_step_dict_id, prozoro_number);
+		CabinetUtils222.ValidateProzoroNumber(freecycle_step_dict_id, prozoro_number);
 		
 		if (change_step && freecycle_step_dict_id == 200300)
 		{
 			using (var connection = Utils.ConnectToDatabase())
 			using (var transaction = connection.BeginTransaction())
 			{
-				CabinetUtils.SendEmail(connection, transaction, free_square_id, "Учасників поінформовано");
+				CabinetUtils222.SendEmail(connection, transaction, free_square_id, "Учасників поінформовано");
 				transaction.Commit();
 			}
 		}
@@ -377,7 +377,7 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 			var mode = Upload_Adogvor_info["mode"].ToString();
 			var zipdata = e.UploadedFile.FileBytes;
 
-			var text = CabinetUtils.ProcUploadAdogvor(zipdata, free_square_id, mode, DateTime.Now, connection, transaction);
+			var text = CabinetUtils222.ProcUploadAdogvor(zipdata, free_square_id, mode, DateTime.Now, connection, transaction);
 			transaction.Commit();
 
 			e.ErrorText = text;
@@ -391,6 +391,7 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 			var show = false;
 			var isCabinetBalansoderzhatel = (short?)FreeSquareGridView.GetRowValues(e.VisibleIndex, "isCabinetBalansoderzhatel");
 			var winner_id = FreeSquareGridView.GetRowValues(e.VisibleIndex, "winner_id");
+			var cabinetOrendarStage = (string)FreeSquareGridView.GetRowValues(e.VisibleIndex, "cabinetOrendarStage");
 			if (isCabinetBalansoderzhatel == 1 && winner_id != System.DBNull.Value)
 			{
 				show = true;
@@ -408,8 +409,15 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 
 		else if (e.ButtonID == "bnt_adogovor_orendodavecz")
 		{
-			var show = (short?)FreeSquareGridView.GetRowValues(e.VisibleIndex, "isCabinetOrendodavecz");
-			if (show != 1)
+			var show = false;
+			var isCabinetOrendodavecz = (short?)FreeSquareGridView.GetRowValues(e.VisibleIndex, "isCabinetOrendodavecz");
+			var cabinetOrendarStage = (string)FreeSquareGridView.GetRowValues(e.VisibleIndex, "cabinetOrendarStage");
+			if (isCabinetOrendodavecz == 1 && cabinetOrendarStage == "podpis_balansoderzhatel_orendar")
+			{
+				show = true;
+			}
+
+			if (!show)
 			{
 				e.Visible = DevExpress.Utils.DefaultBoolean.False;
 			}
@@ -419,7 +427,7 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 
 
 
-public static class CabinetUtils
+public static class CabinetUtils222
 {
 	const string BALANSODERZHATEL = "balansoderzhatel";
 	const string ORENDAR = "orendar";
@@ -431,7 +439,7 @@ public static class CabinetUtils
 		var zipdir = ExtractZipFile(zipdata);
 		var allfiles = Directory.GetFiles(zipdir);
 		var files = allfiles.Where(x => !Path.GetFileName(x).EndsWith("_Validation_Report.pdf", StringComparison.OrdinalIgnoreCase)).ToArray();
-		
+
 		var errortext = "Невірний склад архіву";
 		if (files.Length != 2)
 		{
@@ -458,7 +466,7 @@ public static class CabinetUtils
 				AdogvorSetBody(free_square_id, body_new, filename, connection, transaction);
 			}
 		}
-		else 
+		else
 		{
 			if (!IsEqual(body_new, body_old))
 			{
@@ -496,7 +504,7 @@ public static class CabinetUtils
 		}
 		else if (mode == ORENDAR)
 		{
-			sendToUserIds.Add(GetOrendodavecUserId());
+			sendToUserIds.AddRange(GetOrendodavecUserIds(connection, transaction));
 			template = "Договір потрібно підписати -- Орендодавцю";
 
 			podpises = new[] { BALANSODERZHATEL, ORENDAR };
@@ -504,7 +512,7 @@ public static class CabinetUtils
 		else if (mode == ORENDODAVECZ)
 		{
 			sendToUserIds.Add(GetAuctionWinnerUserId(free_square_id, connection, transaction));
-			sendToUserIds.Add(GetOrendodavecUserId());
+			sendToUserIds.AddRange(GetOrendodavecUserIds(connection, transaction));
 			sendToUserIds.AddRange(GetAllBalansoderzhatels(free_square_id, connection, transaction));
 			template = "Договір потрібно підписати -- Всім";
 			subject = "?";
@@ -529,7 +537,7 @@ public static class CabinetUtils
 
 	static string Mode2Name(string mode)
 	{
-		switch(mode)
+		switch (mode)
 		{
 			case ORENDAR:
 				return "Орендар";
@@ -632,7 +640,7 @@ public static class CabinetUtils
 		{
 			File.Delete(tempFile);
 		}
-		catch(Exception) { }
+		catch (Exception) { }
 
 		return tempDir;
 	}
@@ -766,16 +774,22 @@ public static class CabinetUtils
 		return dataTable;
 	}
 
-	public static string GetOrendodavecUserId()
+	public static string[] GetOrendodavecUserIds(SqlConnection connection, SqlTransaction transaction)
 	{
-		return WebConfigurationManager.AppSettings["Cabinet.OrendodavecUserId"];
+		var result = new List<string>();
+		var data = GetDataTable("select distinct A.UserId from [aspnet_Membership] A join [aspnet_Users] B on B.UserId = A.UserId where IsCabinetOrendodavecz = 1", connection, transaction);
+		for (var rownum = 0; rownum < data.Rows.Count; rownum++)
+		{
+			result.Add((data.Rows[rownum]["UserId"] ?? "").ToString());
+		}
+		return result.ToArray();
 	}
 
 	public static string[] GetAllOrendars(int free_square_id, SqlConnection connection, SqlTransaction transaction)
 	{
 		var result = new List<string>();
 		var data = GetDataTable("select distinct UserId from auction_uchasnik where free_square_id = " + dd(free_square_id) + " and is_arhiv = 0", connection, transaction);
-		for(var rownum = 0; rownum < data.Rows.Count; rownum++)
+		for (var rownum = 0; rownum < data.Rows.Count; rownum++)
 		{
 			result.Add((data.Rows[rownum]["UserId"] ?? "").ToString());
 		}
@@ -790,6 +804,17 @@ public static class CabinetUtils
 	}
 
 	public static string[] RdaZkpo2UserIds(string balans_zkpo, SqlConnection connection, SqlTransaction transaction)
+	{
+		var result = new List<string>();
+		var data = GetDataTable("select distinct A.UserId from [aspnet_Membership] A join [aspnet_Users] B on B.UserId = A.UserId where CabinetBalansoderzhatelZkpo = " + dd(balans_zkpo), connection, transaction);
+		for (var rownum = 0; rownum < data.Rows.Count; rownum++)
+		{
+			result.Add((data.Rows[rownum]["UserId"] ?? "").ToString());
+		}
+		return result.ToArray();
+	}
+
+	public static string[] RdaZkpo2UserIds___(string balans_zkpo, SqlConnection connection, SqlTransaction transaction)
 	{
 		var result = new List<string>();
 		var data = GetDataTable(@"
@@ -915,7 +940,7 @@ where fs.id = " + dd(free_square_id);
 
 	public static void ValidateProzoroNumber(int? freecycle_step_dict_id, string prozoro_number)
 	{
-		if (new int?[] {200200, 200300, 200400, 200500, 200600, 200700, 200800, 200900 }.Contains(freecycle_step_dict_id))
+		if (new int?[] { 200200, 200300, 200400, 200500, 200600, 200700, 200800, 200900 }.Contains(freecycle_step_dict_id))
 		{
 			if (string.IsNullOrEmpty((prozoro_number ?? "").Trim()))
 			{
@@ -924,7 +949,7 @@ where fs.id = " + dd(free_square_id);
 		}
 	}
 
-	public static void SendEmail(SqlConnection connection, SqlTransaction transaction, int free_square_id, string emailtype, 
+	public static void SendEmail(SqlConnection connection, SqlTransaction transaction, int free_square_id, string emailtype,
 		string orendarUserId = null, DateTime? zayavkaDate = null, IEnumerable<MailAttachment> attachments = null,
 		IEnumerable<string> explicit_userIds = null, string explicit_subject = null)
 	{
@@ -933,7 +958,7 @@ where fs.id = " + dd(free_square_id);
 
 		if (emailtype == "Заявка подана -- Орендодавцю")
 		{
-			userIds = new[] { GetOrendodavecUserId() };
+			userIds = GetOrendodavecUserIds(connection, transaction);
 			subject = "Заявка подана";
 		}
 		else if (emailtype == "Заявка подана -- Орендарю")
@@ -1071,14 +1096,14 @@ where fs.id = " + dd(free_square_id);
 
 		if (attachments != null)
 		{
-			foreach(var attachment in attachments)
+			foreach (var attachment in attachments)
 			{
 				mMailMessage.Attachments.Add(new Attachment(new MemoryStream(attachment.Bytes), attachment.FileName));
 			}
 		}
 
 		// Set the priority of the mail message to normal
-			mMailMessage.Priority = MailPriority.Normal;
+		mMailMessage.Priority = MailPriority.Normal;
 
 		System.Net.ServicePointManager.ServerCertificateValidationCallback = (x, y, z, t) => true;
 

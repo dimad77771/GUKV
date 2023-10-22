@@ -348,7 +348,7 @@ public static class CabinetUtils
 		}
 		else if (mode == ORENDAR)
 		{
-			sendToUserIds.Add(GetOrendodavecUserId());
+			sendToUserIds.AddRange(GetOrendodavecUserIds(connection, transaction));
 			template = "Договір потрібно підписати -- Орендодавцю";
 
 			podpises = new[] { BALANSODERZHATEL, ORENDAR };
@@ -356,7 +356,7 @@ public static class CabinetUtils
 		else if (mode == ORENDODAVECZ)
 		{
 			sendToUserIds.Add(GetAuctionWinnerUserId(free_square_id, connection, transaction));
-			sendToUserIds.Add(GetOrendodavecUserId());
+			sendToUserIds.AddRange(GetOrendodavecUserIds(connection, transaction));
 			sendToUserIds.AddRange(GetAllBalansoderzhatels(free_square_id, connection, transaction));
 			template = "Договір потрібно підписати -- Всім";
 			subject = "?";
@@ -618,9 +618,15 @@ public static class CabinetUtils
 		return dataTable;
 	}
 
-	public static string GetOrendodavecUserId()
+	public static string[] GetOrendodavecUserIds(SqlConnection connection, SqlTransaction transaction)
 	{
-		return WebConfigurationManager.AppSettings["Cabinet.OrendodavecUserId"];
+		var result = new List<string>();
+		var data = GetDataTable("select distinct A.UserId from [aspnet_Membership] A join [aspnet_Users] B on B.UserId = A.UserId where IsCabinetOrendodavecz = 1", connection, transaction);
+		for (var rownum = 0; rownum < data.Rows.Count; rownum++)
+		{
+			result.Add((data.Rows[rownum]["UserId"] ?? "").ToString());
+		}
+		return result.ToArray();
 	}
 
 	public static string[] GetAllOrendars(int free_square_id, SqlConnection connection, SqlTransaction transaction)
@@ -642,6 +648,17 @@ public static class CabinetUtils
 	}
 
 	public static string[] RdaZkpo2UserIds(string balans_zkpo, SqlConnection connection, SqlTransaction transaction)
+	{
+		var result = new List<string>();
+		var data = GetDataTable("select distinct A.UserId from [aspnet_Membership] A join [aspnet_Users] B on B.UserId = A.UserId where CabinetBalansoderzhatelZkpo = " + dd(balans_zkpo), connection, transaction);
+		for (var rownum = 0; rownum < data.Rows.Count; rownum++)
+		{
+			result.Add((data.Rows[rownum]["UserId"] ?? "").ToString());
+		}
+		return result.ToArray();
+	}
+
+	public static string[] RdaZkpo2UserIds___(string balans_zkpo, SqlConnection connection, SqlTransaction transaction)
 	{
 		var result = new List<string>();
 		var data = GetDataTable(@"
@@ -785,7 +802,7 @@ where fs.id = " + dd(free_square_id);
 
 		if (emailtype == "Заявка подана -- Орендодавцю")
 		{
-			userIds = new[] { GetOrendodavecUserId() };
+			userIds = GetOrendodavecUserIds(connection, transaction);
 			subject = "Заявка подана";
 		}
 		else if (emailtype == "Заявка подана -- Орендарю")
