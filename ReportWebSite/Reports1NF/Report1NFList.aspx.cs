@@ -309,17 +309,17 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 
 	protected void ASPxButton_Reports1NF_ExportXLS_Click(object sender, EventArgs e)
     {
-        this.ExportGridToXLS(GridViewReports1NFExporter, PrimaryGridView, LabelReportTitle1.Text, "");
+        this.ExportGridToXLS(GridViewReports1NFExporter, PrimaryGridView, LabelReportTitle1.Text, "SqlDataSourceReports");
     }
 
     protected void ASPxButton_Reports1NF_ExportPDF_Click(object sender, EventArgs e)
     {
-        this.ExportGridToPDF(GridViewReports1NFExporter, PrimaryGridView, LabelReportTitle1.Text, "");
+        this.ExportGridToPDF(GridViewReports1NFExporter, PrimaryGridView, LabelReportTitle1.Text, "SqlDataSourceReports");
     }
 
     protected void ASPxButton_Reports1NF_ExportCSV_Click(object sender, EventArgs e)
     {
-        this.ExportGridToCSV(GridViewReports1NFExporter, PrimaryGridView, LabelReportTitle1.Text, "");
+        this.ExportGridToCSV(GridViewReports1NFExporter, PrimaryGridView, LabelReportTitle1.Text, "SqlDataSourceReports");
     }
 
     protected void GridViewReports1NF_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
