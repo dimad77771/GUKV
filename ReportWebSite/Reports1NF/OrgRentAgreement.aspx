@@ -1337,12 +1337,12 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDictRentalRate" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT id, short_name = left(full_name, 150), rental_rate FROM dict_rental_rate ORDER BY short_name">
+    SelectCommand="SELECT id, short_name = left(full_name, 150), rental_rate FROM dict_rental_rate ORDER BY case when full_name like '2023 %' then 2 else 1 end, short_name">
 </mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDictFactichVikorist" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT id, short_name = left(full_name, 150), rental_rate FROM dict_factich_vikorist ORDER BY short_name">
+    SelectCommand="SELECT id, short_name = left(full_name, 150), rental_rate FROM dict_factich_vikorist ORDER BY case when full_name like '2023 %' then 2 else 1 end, short_name">
 </mini:ProfiledSqlDataSource>
 
 
