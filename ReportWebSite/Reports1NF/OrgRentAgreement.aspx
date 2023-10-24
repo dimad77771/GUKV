@@ -495,40 +495,49 @@
                 }
             }
 
+			var vv_orndpymnt = nn(clEditPaymentNarah_orndpymnt.GetValue());                 //Нараховано орендної плати за звітний період, грн. (без ПДВ)
+			var vv_nadmirno_narah = nn(edit_znyato_nadmirno_narah.GetValue());	    //- у тому числі, знято надмірно нарахованої за звітний період
+			if (vv_orndpymnt < 0 || vv_nadmirno_narah < 0) {
+				document.getElementById('valError').style.display = '';
+				document.getElementById('valError').innerHTML = "Відємні значення заборонені";
+				return false;
+            }
 
-                if (!ComboPaymentTypeValidate())
-                    return false;
 
-                if (!EditCollectionDebtTotalValidate())
-                    return false;
 
-                if (!CheckRadioAgreementActiveValidate())
-                    return false;
+            if (!ComboPaymentTypeValidate())
+                return false;
 
-			    //if (!CheckEndOfDogogor())     //закомментровано по указанию АИ -- 2023-04-06
-				//    return false;
+            if (!EditCollectionDebtTotalValidate())
+                return false;
 
-			    if (!CheckZaborgMensheNadzhodg())
-	    			return false;
+            if (!CheckRadioAgreementActiveValidate())
+                return false;
 
-			    if (!CheckReturnOrendPayed())
-                    return false;
+			//if (!CheckEndOfDogogor())     //закомментровано по указанию АИ -- 2023-04-06
+			//    return false;
 
-			    if (!CheckReceivedLessNarazh())
-                    return false;
+			if (!CheckZaborgMensheNadzhodg())
+	    		return false;
 
-			    if (!CheckNarazhAndZaborgSum())
-				    return false;
+			if (!CheckReturnOrendPayed())
+                return false;
+
+			if (!CheckReceivedLessNarazh())
+                return false;
+
+			if (!CheckNarazhAndZaborgSum())
+				return false;
 			    
-			    if (!CheckReturnAllOrendPayed())
-                    return false;
+			if (!CheckReturnAllOrendPayed())
+                return false;
 
-	    		if (!CheckTotalPaidSum())
-    				return false;
+	    	if (!CheckTotalPaidSum())
+    			return false;
 
 
-//                if (!CheckRadioAgreementAndSquare())
-//                    return false;
+//          if (!CheckRadioAgreementAndSquare())
+//              return false;
 
   
 //////////            }
