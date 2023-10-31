@@ -155,7 +155,7 @@
 ,fs.include_in_perelik
 ,org.short_name as org_name
 ,org.zkpo_code
-,org.director_title as vidpov_osoba
+,org.prozoro_title as vidpov_osoba
 
 ,b.district
 ,b.street_full_name as street_name

@@ -255,7 +255,7 @@
 ,ar.orandodavec_user_id
 
 ,isnull(ddd.name, 'Невідомо') as sphera_dialnosti
-,priznachennya = dc.doc_display_name
+,priznachennya = dc.purpose_str
 ,case when exists (select 1 from reports1nf_arenda q where q.id = ar.id) then 1 else 0 end as ex_reports1nf_arenda 
 ,(select top 1 q.report_id from reports1nf_arenda q where q.id = ar.id) as arenda_report_id
 ,case when ar.id in (select b.id from dbo.reports1nf_arenda b where b.org_balans_id = ar.org_balans_id and ISNULL(b.is_deleted, 0) = 0 /*and b.agreement_state = 1*/ ) then 1 else 0 end as is_dpz_object 
@@ -268,7 +268,7 @@
                from [dbo].[arenda_notes] n where n.arenda_id = ar.id and isnull(n.is_deleted, 0) = 0 order by n.cost_agreement desc) an2
 		join dbo.organizations org on m.org_balans_id = org.id
 		outer apply (select top 1 * from arenda_payments where arenda_id = ar.id order by id desc) p 
-		outer apply (select top 1 doc_display_name from view_arenda_link_2_decisions ld where ld.arenda_id = ar.id order by ld.link_id) dc 
+		outer apply (select top 1 doc_display_name, purpose_str from view_arenda_link_2_decisions ld where ld.arenda_id = ar.id order by ld.link_id) dc 
 		left join [dbo].[dict_otdel_gukv] d on org.otdel_gukv_id = d.id 
                     LEFT OUTER JOIN (select obp.org_id,occ.name from org_by_period obp
                                       join dict_rent_occupation occ on occ.id = obp.org_occupation_id
