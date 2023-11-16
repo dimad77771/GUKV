@@ -163,7 +163,8 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 	{
 		//if (!IsPostBack)
 		{
-			//CheckBoxBalansObjectsShowNeziznacheni.Visible = false;
+			CheckBoxBalansObjectsShowNeziznacheni.Visible = false;
+			CheckBoxBalansObjectsShowNeziznacheni.Checked = true;
 
 			var column1 = PrimaryGridView.Columns.OfType<GridViewDataColumn>().SingleOrDefault(q => q.FieldName == "inventar_recieve_date");
 			if (column1 != null)
@@ -193,14 +194,28 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 				//PrimaryGridView.SettingsCookies.Enabled = false;
 			}
 
-			/*
-			var wh = "(isnull(ddd.name, 'Невідомо') not in ('НЕВИЗНАЧЕНІ','Інші установи'))";
+			var wh = @"
+			(
+				(
+					isnull(ddd.name, 'Невідомо') <> 'Невизначені' and
+					obj.NumOfObj >= 1
+				)
+				or
+				(
+					isnull(ddd.name, 'Невідомо') = 'Невизначені' and
+					(
+						PAY_DEBT_TOTAL >= 1.0 or
+						PAY_50_DEBT_CUR >= 1.0 or
+						PAY_50_DEBT_OLD >= 1.0 
+					)
+				)	
+			)";
 			//if (Utils.IsTestSystem())
 			//{
 			//	wh = "(isnull(ddd.name, 'Невідомо') not in ('НЕВИЗНАЧЕНІ'))";
 			//}
 			SqlDataSourceReports.SelectCommand = SqlDataSourceReports.SelectCommand.Replace("(8888 = 8888)", wh);
-			*/
+			
 
 			LabelReportTitle1.Text = @"Звіти щодо використання комунального майна";
 			this.Title = LabelReportTitle1.Text;
