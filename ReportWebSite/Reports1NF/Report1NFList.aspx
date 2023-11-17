@@ -686,12 +686,12 @@ WHERE id = @report_id"
                 <%# "<a class=\"editLabelFormStyle\" href=\"javascript:ShowOrganizationCard(" + Eval("organization_id") + ")\">" + Eval("zkpo_code") + "</a>"%>
             </EditItemTemplate>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="cur_state" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="4" Caption="Стан актуализации данных">
+        <dx:GridViewDataTextColumn FieldName="cur_state" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="4" Caption="Стан актуалізації даних">
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("cur_state") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataDateColumn FieldName="max_submit_date" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="5" Caption="Дата актуализации данных">
+        <dx:GridViewDataDateColumn FieldName="max_submit_date" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="5" Caption="Дата актуалізації даних">
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("max_submit_date", "{0:dd.MM.yyyy}") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
