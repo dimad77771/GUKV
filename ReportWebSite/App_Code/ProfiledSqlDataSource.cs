@@ -27,5 +27,25 @@ namespace MiniProfilerHelpers
             // that wraps the "base" DbProviderFactory
             return new ProfiledDbProviderFactory(base.GetDbProviderFactory());
         }
-    }
+
+		/*
+		public override string ConnectionString
+		{
+			get
+			{
+				var db = HttpContext.Current.Session["currentDatabase"];
+
+				var connectionString = base.ConnectionString;
+				connectionString = connectionString.Replace(@"initial catalog=GUKV20230524", @"initial catalog=GUKV20230105");
+				return connectionString;
+			}
+			set
+			{
+				base.ConnectionString = value;
+			}
+		}
+		*/
+
+
+	}
 }
