@@ -299,9 +299,12 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 			throw new Exception("Невірно заповнене поле \"Координати на мапі\". Приклад вірно заповненого поля (широта довгота) \"50.509205 30.426741\"");
 		}
 
+		//var freecycle_step_date = (DateTime?)(e.Command.Parameters["@freecycle_step_date"].Value);
 		var free_square_id = (int)(e.Command.Parameters["@id"].Value);
 		var freecycle_step_dict_id = (int?)(e.Command.Parameters["@freecycle_step_dict_id"].Value);
 		var prozoro_number = (string)(e.Command.Parameters["@prozoro_number"].Value);
+		var current_stage_docdate = (DateTime?)(e.Command.Parameters["@current_stage_docdate"].Value);
+		var current_stage_docnum = (string)(e.Command.Parameters["@current_stage_docnum"].Value);
 		var current_step = CabinetUtils222.GetStep(free_square_id);
 		var change_step = (freecycle_step_dict_id != current_step);
 		//var freecycle_step_date = (DateTime?)(e.Command.Parameters["@freecycle_step_date"].Value);
@@ -309,18 +312,23 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 		if (freecycle_step_dict_id == null)
 		{
 			dbparams.AddWithValue("@freecycle_step_date", null);
+			dbparams["@winner_id"].Value = null;
+			dbparams["@prozoro_number"].Value = null;
+			dbparams["@current_stage_docdate"].Value = null;
+			dbparams["@current_stage_docnum"].Value = null;
 		}
 		else if (change_step)
 		{
 			dbparams.AddWithValue("@freecycle_step_date", DateTime.Today);
 		}
-		else if (change_step)
+		else
 		{
 			dbparams.AddWithValue("@freecycle_step_date", DateTime.Today);
 		}
 
 		CabinetUtils222.ValidateProzoroNumber(freecycle_step_dict_id, prozoro_number);
-		
+		CabinetUtils222.ValidateDocdateDocnum(freecycle_step_dict_id, current_stage_docnum, current_stage_docdate);
+
 		if (change_step && freecycle_step_dict_id == 200300)
 		{
 			using (var connection = Utils.ConnectToDatabase())
@@ -336,6 +344,15 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 			using (var transaction = connection.BeginTransaction())
 			{
 				CabinetUtils222.SendEmail(connection, transaction, free_square_id, "Розпочати процедуру підписання");
+				transaction.Commit();
+			}
+		}
+		else if (change_step && freecycle_step_dict_id == 200900)
+		{
+			using (var connection = Utils.ConnectToDatabase())
+			using (var transaction = connection.BeginTransaction())
+			{
+				CabinetUtils222.SendEmail(connection, transaction, free_square_id, "Договір зареєстровано");
 				transaction.Commit();
 			}
 		}
@@ -587,7 +604,7 @@ public static class CabinetUtils222
 		{
 			sendToUserIds.Add(GetAuctionWinnerUserId(free_square_id, connection, transaction));
 			template = "Договір потрібно підписати -- Орендарю";
-			subject = "?";
+			subject = "Пропонуємо підписати договір";
 			podpises = new[] { BALANSODERZHATEL };
 		}
 		else if (mode == ORENDAR)
@@ -603,7 +620,7 @@ public static class CabinetUtils222
 			sendToUserIds.AddRange(GetOrendodavecUserIds(connection, transaction));
 			sendToUserIds.AddRange(GetAllBalansoderzhatels(free_square_id, connection, transaction));
 			template = "Договір потрібно підписати -- Всім";
-			subject = "?";
+			subject = "Надсилаємо оригінал договору";
 			podpises = new[] { BALANSODERZHATEL, ORENDAR, ORENDODAVECZ };
 		}
 		else throw new Exception();
@@ -692,6 +709,12 @@ public static class CabinetUtils222
 	public static void ResetStage(int free_square_id, SqlConnection connection, SqlTransaction transaction)
 	{
 		AdogvorReset(free_square_id, connection, transaction);
+
+		using (var cmd = new SqlCommand(@"update [reports1nf_balans_free_square] set [winner_id] = null, [prozoro_number] = null where [id] = @free_square_id", connection, transaction))
+		{
+			cmd.Parameters.Add(GetSqlParameter("free_square_id", free_square_id));
+			var rowUpdated = cmd.ExecuteNonQuery();
+		}
 
 		using (var cmd = new SqlCommand(@"delete from [auction_uchasnik] where [free_square_id] = @free_square_id", connection, transaction))
 		{
@@ -1022,6 +1045,32 @@ where fs.id = " + dd(free_square_id);
 		return result;
 	}
 
+	public static string GetStageDoc(int free_square_id, SqlConnection connection, SqlTransaction transaction)
+	{
+		var result = "";
+		var sql = @"select current_stage_docdate, current_stage_docnum from reports1nf_balans_free_square fs where fs.id = " + dd(free_square_id);
+		var data = GetDataTable(sql, connection, transaction);
+		if (data.Rows.Count > 0)
+		{
+			var current_stage_docnum = (data.Rows[0]["current_stage_docnum"] ?? "").ToString();
+			var current_stage_docdate = (DateTime?)(data.Rows[0]["current_stage_docdate"]);
+			if (current_stage_docdate != null && !string.IsNullOrEmpty(current_stage_docnum))
+			{
+				result = "№ " + current_stage_docnum + " від " +  current_stage_docdate.Value.ToString("dd.MM.yyyy");
+			}
+		}
+		return result;
+	}
+
+	public static string GetInstructions(int free_square_id, SqlConnection connection, SqlTransaction transaction)
+	{
+		var result = 
+			"Електронний підпис: " + WebConfigurationManager.AppSettings["Cabinet.Instruction.Sign"] + "\n" +
+			"Перевірка електронного підпису: " + WebConfigurationManager.AppSettings["Cabinet.Instruction.Verify"];
+
+		return result;
+	}
+
 	public static int? GetStep(int free_square_id)
 	{
 		using (var connection = Utils.ConnectToDatabase())
@@ -1074,6 +1123,21 @@ where fs.id = " + dd(free_square_id);
 		}
 	}
 
+	public static void ValidateDocdateDocnum(int? freecycle_step_dict_id, string current_stage_docnum, DateTime? current_stage_docdate)
+	{
+		if (new int?[] { 200900 }.Contains(freecycle_step_dict_id))
+		{
+			if (string.IsNullOrEmpty((current_stage_docnum ?? "").Trim()))
+			{
+				throw new Exception("Необхідно заповнити поле \"№ документа\"");
+			}
+			if (current_stage_docdate == null)
+			{
+				throw new Exception("Необхідно заповнити поле \"Дата документа\"");
+			}
+		}
+	}
+
 	public static void SendEmail(SqlConnection connection, SqlTransaction transaction, int free_square_id, string emailtype,
 		string orendarUserId = null, DateTime? zayavkaDate = null, IEnumerable<MailAttachment> attachments = null,
 		IEnumerable<string> explicit_userIds = null, string explicit_subject = null)
@@ -1100,6 +1164,13 @@ where fs.id = " + dd(free_square_id);
 		{
 			userIds = GetAllBalansoderzhatels(free_square_id, connection, transaction);
 			subject = "Пропонуємо розпочати процедуру підписання договору";
+		}
+		else if (emailtype == "Договір зареєстровано")
+		{
+			var userIds1 = GetAllOrendars(free_square_id, connection, transaction);
+			var userIds2 = GetAllBalansoderzhatels(free_square_id, connection, transaction);
+			userIds = userIds1.Union(userIds2).Distinct().ToArray();
+			subject = "Договір зареєстровано";
 		}
 
 		if (explicit_userIds != null)
@@ -1129,6 +1200,10 @@ where fs.id = " + dd(free_square_id);
 			ReplaceText(ref text, "{{OBJECT_DECSRIPTION}}", () => GetObjectDescription(free_square_id, connection, transaction));
 			ReplaceText(ref text, "{{AUCTION_LINK}}", () => GetProzoroNumberLink(free_square_id, connection, transaction));
 			ReplaceText(ref text, "{{USER_FIO}}", () => fio);
+			ReplaceText(ref text, "{{STAGE_DOC}}", () => GetStageDoc(free_square_id, connection, transaction));
+			ReplaceText(ref text, "{{INSTRUCTIONS}}", () => GetInstructions(free_square_id, connection, transaction));
+
+			
 
 			SendMailMessage(email, "", "", subject, text, attachments0: attachments);
 		}

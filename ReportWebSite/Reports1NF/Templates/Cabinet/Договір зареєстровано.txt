@@ -1,0 +1,1 @@
+Договір по об’єкту {{OBJECT_DECSRIPTION}} зареєстровано: {{STAGE_DOC}}

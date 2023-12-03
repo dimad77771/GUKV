@@ -592,7 +592,7 @@ WHERE id = @id"
             <CellStyle Wrap="False"></CellStyle>
         </dx:GridViewCommandColumn>
 
-        <dx:GridViewDataTextColumn FieldName="auction_tablo" Caption="Аукціон" VisibleIndex="0"  Width="350px" ReadOnly="true">
+        <dx:GridViewDataTextColumn FieldName="auction_tablo" Caption="Аукціон" VisibleIndex="0"  Width="170px" ReadOnly="true">
 			<DataItemTemplate>
 
                 <dx:ASPxButton runat="server" ID="AuctionZayavkaBtn" Text="Подати заявку" AutoPostBack="false" Visible='<%# Eval("cabinetOrendarStage").ToString() == "" %>' OnInit="AuctionZayavkaBtn_Init" >
