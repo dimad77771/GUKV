@@ -229,6 +229,12 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 
 			FreeSquareGridView.DataBind();
 		}
+
+		else if (e.Parameters == "onAdogvorFileUploadComplete")
+		{
+			FreeSquareGridView.DataBind();
+		}
+
 		else
 		{
 			Utils.ProcessDataGridSaveLayoutCallback(e.Parameters, FreeSquareGridView, Utils.GridIDReports1NF_FreeSquare, "");

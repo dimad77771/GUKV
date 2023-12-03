@@ -610,9 +610,9 @@ WHERE id = @id"
                 </dx:ASPxButton>
 
 
-                <dx:ASPxLabel runat="server" Text='<%# "Договір підписано балансоутримувачем та орендарем. Очікуємо на підпис орендодавця." %>' Visible='<%# Eval("cabinetOrendarStage").ToString() == "podpis_balansoderzhatel_orendar" %>' />
+                <dx:ASPxLabel runat="server" Text='<%# "Договір знаходиться на підпису орендодавця" %>' Visible='<%# Eval("cabinetOrendarStage").ToString() == "podpis_balansoderzhatel_orendar" %>' />
 
-                <dx:ASPxLabel runat="server" Text='<%# "Договір підписано всіма сторонами." %>' Visible='<%# Eval("cabinetOrendarStage").ToString() == "podpis_all" %>' />
+                <dx:ASPxLabel runat="server" Text='<%# "Договір підписано всіма сторонами" %>' Visible='<%# Eval("cabinetOrendarStage").ToString() == "podpis_all" %>' />
 
             </DataItemTemplate>
         </dx:GridViewDataTextColumn>

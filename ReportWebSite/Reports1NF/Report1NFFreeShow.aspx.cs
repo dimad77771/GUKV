@@ -350,6 +350,14 @@ public static class CabinetUtils
 
 		AdogvorSetPodpis(free_square_id, podpis, mode, connection, transaction);
 
+		int new_freecycle_step_dict_id;
+		if (mode == BALANSODERZHATEL) new_freecycle_step_dict_id = 200840;  //Договір знаходиться на підпису орендаря
+		else if (mode == ORENDAR) new_freecycle_step_dict_id = 200870;  //Договір знаходиться на підпису орендодавця
+		else if (mode == ORENDODAVECZ) new_freecycle_step_dict_id = 200880;  //Договір підписано
+		else throw new Exception();
+
+		ChangeStage(free_square_id, new_freecycle_step_dict_id, connection, transaction);
+
 		AdogvorSendEmail(free_square_id, mode, connection, transaction);
 
 		ClearCatalog(zipdir);

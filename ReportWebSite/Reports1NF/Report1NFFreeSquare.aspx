@@ -310,6 +310,7 @@
 		function onAdogvorFileUploadComplete(s, e) {
 			if (e.isValid) {
 				LoadingPanel.Hide()
+				FreeSquareGridView.PerformCallback('onAdogvorFileUploadComplete')
 			}
 			//console.log('onAdogvorFileUploadComplete', s)
 			//console.log('onAdogvorFileUploadComplete', e)
