@@ -116,16 +116,18 @@
 				cols += "zgoda_control;district;street_name;addr_nomer;total_free_sqr;free_sql_usefull;";
 				cols += "floor;condition;water;heating;gas;power_text;history;zgoda_renter;nomer_derzh_reestr_neruh;reenum_derzh_reestr_neruh;possible_using;info_rahunok_postach;priznach_before;period_nouse;osoba_use_before;rozmir_vidshkoduv;zalbalansvartist_date;id"
 				FreeSquareGridView.GetRowValues(e.visibleIndex, cols, OnCopyFullDescription);
-			} else if (e.buttonID == 'bnt_adogovor_balansoderzhatel' || e.buttonID == 'bnt_adogovor_orendar' || e.buttonID == 'bnt_adogovor_orendodavecz') {
+			} else if (e.buttonID == 'bnt_adogovor_balansoderzhatel_1' || e.buttonID == 'bnt_adogovor_orendar' || e.buttonID == 'bnt_adogovor_orendodavecz') {
 				var free_square_id = s.GetRowKey(e.visibleIndex)
 				Upload_Adogvor_info.Set("free_square_id", free_square_id)
 				Upload_Adogvor_info.Set("mode",
-						e.buttonID == "bnt_adogovor_balansoderzhatel" ? "balansoderzhatel" :
+						e.buttonID == "bnt_adogovor_balansoderzhatel_1" ? "balansoderzhatel" :
 						e.buttonID == "bnt_adogovor_orendar" ? "orendar" :
 						e.buttonID == "bnt_adogovor_orendodavecz" ? "orendodavecz" :
 						"")
 				var el1 = document.getElementById("MainContent_Upload_Adogvor_TextBox0_Input");
 				el1.click();
+			} else if (e.buttonID == 'bnt_adogovor_balansoderzhatel_2') {
+				FreeSquareGridView.GetRowValues(e.visibleIndex, 'id', AuctionConfirmSendToOrendar);
 			}
 		}
 
@@ -262,6 +264,11 @@
 			FreeSquareGridView.UnselectRows();
 		}
 
+		function AuctionConfirmSendToOrendar(id) {
+			if (confirm("Підтвердити надсилання листа орендодавцю ?")) {
+				FreeSquareGridView.PerformCallback("auctionConfirmSendToOrendar:" + id);
+			}
+		}
 
 		function _aspxMakeScollableArea(comboBox) {
 			var listBox = comboBox.GetListBoxControl();
@@ -484,7 +491,7 @@ WHERE id = @id"
 
 	<mini:ProfiledSqlDataSource ID="SqlDataSourceFreecycleStepDict" runat="server"
 		ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>"
-		SelectCommand="SELECT step_id, lookup_name as step_name, step_ord FROM free_proc_step_dict union select null, '<пусто>', 0 ORDER BY step_ord">
+		SelectCommand="SELECT step_id, lookup_name as step_name, step_ord FROM free_proc_step_dict union select null, '<пусто>', 0 ORDER BY step_ord,step_id">
 	</mini:ProfiledSqlDataSource>
 
 	<mini:ProfiledSqlDataSource ID="SqlDataSourceAllWinners" runat="server"
@@ -494,7 +501,7 @@ WHERE id = @id"
 
 	<mini:ProfiledSqlDataSource ID="SqlDataSourceWinners" runat="server"
 		ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>"
-		SelectCommand="SELECT id, uchasnik_name FROM auction_uchasnik_name WHERE is_arhiv = 0 and free_square_id = @free_square_id order by uchasnik_name">
+		SelectCommand="SELECT id, uchasnik_name FROM auction_uchasnik_name WHERE is_arhiv = 0 and free_square_id = @free_square_id union select null, '' order by uchasnik_name">
 		<SelectParameters>
 			<asp:Parameter DbType="Int32" DefaultValue="0" Name="free_square_id" />
 		</SelectParameters>
@@ -1026,7 +1033,7 @@ WHERE id = @id"
 
 			<dx:GridViewDataDateColumn FieldName="freecycle_step_date" Caption="Дата стан процесу передачі" VisibleIndex="52" Width="100px">
 				<EditItemTemplate>
-					<dx:ASPxLabel runat="server" Text='<%# Eval("freecycle_step_date") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+					<dx:ASPxLabel runat="server" Text="" CssClass="editLabelFormStyle"></dx:ASPxLabel>
 				</EditItemTemplate>
 			</dx:GridViewDataDateColumn>
 
@@ -1066,7 +1073,11 @@ WHERE id = @id"
 						<Image Url="~/Styles/current_stage_pdf.png"></Image>
 					</dx:GridViewCommandColumnCustomButton>
 
-					<dx:GridViewCommandColumnCustomButton ID="bnt_adogovor_balansoderzhatel" Text="Завантажити підписаний документ">
+					<dx:GridViewCommandColumnCustomButton ID="bnt_adogovor_balansoderzhatel_1" Text="Завантажити підписаний документ">
+						<Image Url="~/Styles/MoveDownIcon.png"></Image>
+					</dx:GridViewCommandColumnCustomButton>
+
+					<dx:GridViewCommandColumnCustomButton ID="bnt_adogovor_balansoderzhatel_2" Text="Підтвердити надсилання листа орендодавцю">
 						<Image Url="~/Styles/MoveDownIcon.png"></Image>
 					</dx:GridViewCommandColumnCustomButton>
 

@@ -216,9 +216,24 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 
 	protected void GridViewFreeSquare_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
 	{
-		Utils.ProcessDataGridSaveLayoutCallback(e.Parameters, FreeSquareGridView, Utils.GridIDReports1NF_FreeSquare, "");
+		if ((e.Parameters ?? "").StartsWith("auctionConfirmSendToOrendar:"))
+		{
+			var free_square_id = int.Parse(e.Parameters.Replace("auctionConfirmSendToOrendar:", ""));
 
-		FreeSquareGridView.DataBind();
+			using (var connection = Utils.ConnectToDatabase())
+			using (var transaction = connection.BeginTransaction())
+			{
+				CabinetUtils222.ChangeStage(free_square_id, 200840, connection, transaction);
+				transaction.Commit();
+			}
+
+			FreeSquareGridView.DataBind();
+		}
+		else
+		{
+			Utils.ProcessDataGridSaveLayoutCallback(e.Parameters, FreeSquareGridView, Utils.GridIDReports1NF_FreeSquare, "");
+			FreeSquareGridView.DataBind();	
+		}
 	}
 
 	protected void GridViewFreeSquare_CustomFilterExpressionDisplayText(object sender,
@@ -278,13 +293,25 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 			throw new Exception("Невірно заповнене поле \"Координати на мапі\". Приклад вірно заповненого поля (широта довгота) \"50.509205 30.426741\"");
 		}
 
-		dbparams.AddWithValue("@freecycle_step_date", DateTime.Today);
-
 		var free_square_id = (int)(e.Command.Parameters["@id"].Value);
 		var freecycle_step_dict_id = (int?)(e.Command.Parameters["@freecycle_step_dict_id"].Value);
 		var prozoro_number = (string)(e.Command.Parameters["@prozoro_number"].Value);
 		var current_step = CabinetUtils222.GetStep(free_square_id);
 		var change_step = (freecycle_step_dict_id != current_step);
+		//var freecycle_step_date = (DateTime?)(e.Command.Parameters["@freecycle_step_date"].Value);
+
+		if (freecycle_step_dict_id == null)
+		{
+			dbparams.AddWithValue("@freecycle_step_date", null);
+		}
+		else if (change_step)
+		{
+			dbparams.AddWithValue("@freecycle_step_date", DateTime.Today);
+		}
+		else if (change_step)
+		{
+			dbparams.AddWithValue("@freecycle_step_date", DateTime.Today);
+		}
 
 		CabinetUtils222.ValidateProzoroNumber(freecycle_step_dict_id, prozoro_number);
 		
@@ -294,6 +321,24 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 			using (var transaction = connection.BeginTransaction())
 			{
 				CabinetUtils222.SendEmail(connection, transaction, free_square_id, "Учасників поінформовано");
+				transaction.Commit();
+			}
+		}
+		else if (change_step && freecycle_step_dict_id == 200820)
+		{
+			using (var connection = Utils.ConnectToDatabase())
+			using (var transaction = connection.BeginTransaction())
+			{
+				CabinetUtils222.SendEmail(connection, transaction, free_square_id, "Розпочати процедуру підписання");
+				transaction.Commit();
+			}
+		}
+		else if (change_step && freecycle_step_dict_id == null)
+		{
+			using (var connection = Utils.ConnectToDatabase())
+			using (var transaction = connection.BeginTransaction())
+			{
+				CabinetUtils222.ResetStage(free_square_id, connection, transaction);
 				transaction.Commit();
 			}
 		}
@@ -401,17 +446,31 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 	{
 		//System.Diagnostics.Debug.WriteLine("e.ButtonID=" + e.ButtonID);
 
-		if (e.ButtonID == "bnt_adogovor_balansoderzhatel")
+		if (e.ButtonID == "bnt_adogovor_balansoderzhatel_1" || e.ButtonID == "bnt_adogovor_balansoderzhatel_2")
 		{
-			var show = false;
+			var show_1 = false;
+			var show_2 = false;
 			var isCabinetBalansoderzhatel = (short?)FreeSquareGridView.GetRowValues(e.VisibleIndex, "isCabinetBalansoderzhatel");
 			var winner_id = FreeSquareGridView.GetRowValues(e.VisibleIndex, "winner_id");
+			var freecycle_step_dict_id = FreeSquareGridView.GetRowValues(e.VisibleIndex, "freecycle_step_dict_id");
 			var cabinetOrendarStage = (string)FreeSquareGridView.GetRowValues(e.VisibleIndex, "cabinetOrendarStage");
-			if (isCabinetBalansoderzhatel == 1 && winner_id != System.DBNull.Value)
+			if (isCabinetBalansoderzhatel == 1 && object.Equals(freecycle_step_dict_id,200820))
 			{
-				show = true;
+				if (winner_id == System.DBNull.Value)
+				{
+					show_2 = true;
+				}
+				else
+				{
+					show_1 = true;
+				}
 			}
-			if (!show)
+
+			if (e.ButtonID == "bnt_adogovor_balansoderzhatel_1" && !show_1)
+			{
+				e.Visible = DevExpress.Utils.DefaultBoolean.False;
+			}
+			else if (e.ButtonID == "bnt_adogovor_balansoderzhatel_2" && !show_2)
 			{
 				e.Visible = DevExpress.Utils.DefaultBoolean.False;
 			}
@@ -490,6 +549,14 @@ public static class CabinetUtils222
 		}
 
 		AdogvorSetPodpis(free_square_id, podpis, mode, connection, transaction);
+
+		int new_freecycle_step_dict_id;
+		if (mode == BALANSODERZHATEL)	new_freecycle_step_dict_id = 200840;  //Договір знаходиться на підпису орендаря
+		else if (mode == ORENDAR)		new_freecycle_step_dict_id = 200870;  //Договір знаходиться на підпису орендодавця
+		else if (mode == ORENDODAVECZ)	new_freecycle_step_dict_id = 200880;  //Договір підписано
+		else throw new Exception();
+
+		ChangeStage(free_square_id, new_freecycle_step_dict_id, connection, transaction);
 
 		AdogvorSendEmail(free_square_id, mode, connection, transaction);
 
@@ -613,6 +680,17 @@ public static class CabinetUtils222
 			cmd.Parameters.Add(GetSqlParameter("load_date", load_date));
 			var rowUpdated = cmd.ExecuteNonQuery();
 			if (rowUpdated != 1) throw new Exception("update error");
+		}
+	}
+
+	public static void ResetStage(int free_square_id, SqlConnection connection, SqlTransaction transaction)
+	{
+		AdogvorReset(free_square_id, connection, transaction);
+
+		using (var cmd = new SqlCommand(@"delete from [auction_uchasnik] where [free_square_id] = @free_square_id", connection, transaction))
+		{
+			cmd.Parameters.Add(GetSqlParameter("free_square_id", free_square_id));
+			var rowUpdated = cmd.ExecuteNonQuery();
 		}
 	}
 
@@ -917,7 +995,8 @@ where fs.id = " + dd(free_square_id);
 		if (data.Rows.Count > 0)
 		{
 			result =
-				(data.Rows[0]["district"] ?? "").ToString() + ", " +
+				//(data.Rows[0]["district"] ?? "").ToString() + ", " +
+				"м.Київ" + ", " +
 				(data.Rows[0]["street_name"] ?? "").ToString() + ", " +
 				(data.Rows[0]["addr_nomer"] ?? "").ToString() + " (реєстраційний № " + (data.Rows[0]["id"] ?? "").ToString() + ")"
 				;
@@ -1010,6 +1089,11 @@ where fs.id = " + dd(free_square_id);
 		{
 			userIds = GetAllOrendars(free_square_id, connection, transaction);
 			subject = "Інформація про оголошення аукціону";
+		}
+		else if (emailtype == "Розпочати процедуру підписання")
+		{
+			userIds = GetAllBalansoderzhatels(free_square_id, connection, transaction);
+			subject = "Пропонуємо розпочати процедуру підписання договору";
 		}
 
 		if (explicit_userIds != null)
