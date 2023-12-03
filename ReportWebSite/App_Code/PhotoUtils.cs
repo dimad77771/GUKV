@@ -73,12 +73,12 @@ public static class PhotoUtils
 		connectionSql.Close();
 	}
 
-	struct ProcImageReturn
+	public struct ProcImageReturn
 	{
 		public bool IsImage { get; set; }
 		public byte[] Jpegbytes { get; set; }
 	}
-	static ProcImageReturn ProcImage(byte[] imageBytes)
+	public static ProcImageReturn ProcImage(byte[] imageBytes)
 	{
 		using (MemoryStream memstr = new MemoryStream(imageBytes))
 		{
@@ -167,13 +167,13 @@ public static class PhotoUtils
 	}
 
 
-	struct ProcPdfReturn
+	public struct ProcPdfReturn
 	{
 		public bool IsPdf { get; set; }
 		public List<string> ListFileNames { get; set; }
 		public List<byte[]> ListJpegbytes { get; set; }
 	}
-	static ProcPdfReturn ProcPdf(string pdfFilename, byte[] pdfbytes)
+	public static ProcPdfReturn ProcPdf(string pdfFilename, byte[] pdfbytes)
 	{
 		var ret = new ProcPdfReturn
 		{

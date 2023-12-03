@@ -292,6 +292,10 @@
 			FreeSquareGridView.PerformCallback(AddWndHeightToCallbackParam("init:"));
 		}
 
+		function CheckBoxBalansObjectsShowControl_CheckedChanged(s, e) {
+			FreeSquareGridView.PerformCallback(AddWndHeightToCallbackParam("init:"));
+		}
+
 		function onAdogvorFileUploadStart(s, e) {
 			LoadingPanel.Show()
 		}
@@ -326,6 +330,7 @@ SELECT
 	fs.include_in_perelik,
 	fs.current_stage_id,
 	fs.freecycle_step_dict_id,
+	fs.freecycle_step_date,
 	fs.current_stage_docdate,
 	fs.current_stage_docnum,
 	fs.modify_date2,
@@ -441,6 +446,7 @@ LEFT JOIN (
         WHERE (@p_rda_district_id = 0 OR (rep.org_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND rep.org_district_id = @p_rda_district_id))
 			AND ( (@p_show_neziznacheni = 0) OR (@p_show_neziznacheni = 1 AND (fs.is_included = 1)) )
 			AND ( (isnull(@bal_zkpo,'') = '') OR (org.zkpo_code = @bal_zkpo) )
+			AND ( (@p_show_control = 0) OR (@p_show_control = 1 AND (fs.komis_protocol = '1')) )
 
     order by org_name, street_name, addr_nomer, total_free_sqr   "
 		OnSelecting="SqlDataSourceFreeSquare_Selecting"
@@ -450,6 +456,7 @@ SET
 	[geodata_map_points] = @geodata_map_points,
 	[include_in_perelik] = @include_in_perelik,
 	[freecycle_step_dict_id] = @freecycle_step_dict_id,
+	[freecycle_step_date] = @freecycle_step_date,
 	[current_stage_docdate] = @current_stage_docdate,
 	[current_stage_docnum] = @current_stage_docnum,
     [prozoro_number] = @prozoro_number,
@@ -466,6 +473,7 @@ WHERE id = @id"
 			<asp:Parameter DbType="Int32" DefaultValue="0" Name="p_show_neziznacheni" />
 			<asp:Parameter DbType="String" DefaultValue="" Name="userId" />
 			<asp:Parameter DbType="String" DefaultValue="" Name="bal_zkpo" />
+			<asp:Parameter DbType="Int32" DefaultValue="0" Name="p_show_control" />
 		</SelectParameters>
 	</mini:ProfiledSqlDataSource>
 
@@ -530,6 +538,12 @@ WHERE id = @id"
 		<tr>
 			<td style="width: 100%;">
 				<asp:Label ID="LabelReportTitle1" runat="server" Text="Реєстр вільних приміщень" CssClass="reporttitle"></asp:Label>
+			</td>
+			<td>
+				<dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowControl" runat="server" Checked='False' Text="Контроль" ToolTip="Показувати лише об'єкти для контролю"
+					Width="80px" ClientInstanceName="CheckBoxBalansObjectsShowControl">
+					<ClientSideEvents CheckedChanged="CheckBoxBalansObjectsShowControl_CheckedChanged" />
+				</dx:ASPxCheckBox>
 			</td>
 			<td>
 				<dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowNeziznacheni" runat="server" Checked='True' Text="Публічні" ToolTip="Показувати лише публічні об'єкти"
@@ -1010,7 +1024,13 @@ WHERE id = @id"
 				</EditItemTemplate>
 			</dx:GridViewDataComboBoxColumn>
 
-			<dx:GridViewDataComboBoxColumn FieldName="winner_id" Caption="Переможець аукціону" VisibleIndex="55" Width="220px">
+			<dx:GridViewDataDateColumn FieldName="freecycle_step_date" Caption="Дата стан процесу передачі" VisibleIndex="52" Width="100px">
+				<EditItemTemplate>
+					<dx:ASPxLabel runat="server" Text='<%# Eval("freecycle_step_date") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+				</EditItemTemplate>
+			</dx:GridViewDataDateColumn>
+
+			<dx:GridViewDataComboBoxColumn FieldName="winner_id" Caption="Переможець аукціону (з кабінету)" VisibleIndex="55" Width="220px">
 				<PropertiesComboBox
 					DataSourceID="SqlDataSourceAllWinners"
 					DropDownStyle="DropDownList"
@@ -1196,7 +1216,7 @@ WHERE id = @id"
 			ShowFooter="True"
 			VerticalScrollBarMode="Auto"
 			VerticalScrollBarStyle="Standard" />
-		<SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A3_003" Enabled="True" />
+		<SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A3_004" Enabled="True" />
 		<Styles Header-Wrap="True">
 			<Header Wrap="True"></Header>
 		</Styles>

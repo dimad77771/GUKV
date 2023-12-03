@@ -1,1 +1,2 @@
-{{ZAYAVKA_DATETIME}} была подана заявка на объект {{OBJECT_DECSRIPTION}}
+Просимо надати в оренду нежитлове приміщення розташоване за адресою {{OBJECT_DECSRIPTION}}
+

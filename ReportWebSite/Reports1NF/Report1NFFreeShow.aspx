@@ -93,6 +93,12 @@
 		}
     }
 
+    function AuctionOtkazClick(s, e, rownum) {
+        if (confirm("Відмовитись від договору ?")) {
+			FreeSquareGridView.PerformCallback("auctionOtkaz:" + FreeSquareGridView.GetRowKey(rownum));
+		}
+	}
+
     function UploadAdogvorClick(s, e, rownum) {
         var free_square_id = FreeSquareGridView.GetRowKey(rownum)
 
@@ -599,7 +605,12 @@ WHERE id = @id"
                     <ClientSideEvents Click="function(s, e) { UploadAdogvorClick(s,e); }" />
                 </dx:ASPxButton>
 
-                <dx:ASPxLabel runat="server" Text='<%# "Договір підписано балансоутримувачем та орендодавцем. Очікуємо на підпис орендодавця." %>' Visible='<%# Eval("cabinetOrendarStage").ToString() == "podpis_balansoderzhatel_orendar" %>' />
+                <dx:ASPxButton runat="server" ID="AuctionZayavkaOtkazBtn" Text="Відмовитись від договору" AutoPostBack="false" Visible='<%# Eval("cabinetOrendarStage").ToString() == "podpis_balansoderzhatel" %>' OnInit="AuctionZayavkaOtkazBtn_Init" >
+                    <ClientSideEvents Click="function(s, e) { AuctionOtkazClick(s,e); }" />
+                </dx:ASPxButton>
+
+
+                <dx:ASPxLabel runat="server" Text='<%# "Договір підписано балансоутримувачем та орендарем. Очікуємо на підпис орендодавця." %>' Visible='<%# Eval("cabinetOrendarStage").ToString() == "podpis_balansoderzhatel_orendar" %>' />
 
                 <dx:ASPxLabel runat="server" Text='<%# "Договір підписано всіма сторонами." %>' Visible='<%# Eval("cabinetOrendarStage").ToString() == "podpis_all" %>' />
 

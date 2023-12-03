@@ -171,6 +171,8 @@
 <table border="0" cellspacing="0" cellpadding="2">
     <tr>
         <td>
+            <dx:ASPxButton ID="TestMoveProc" runat="server" Text="Test Move" AutoPostBack="false" OnClick="TestMoveProc_Click"></dx:ASPxButton>
+
             <dx:ASPxButton ID="ButtonSendAll" runat="server" Text="Надіслати всі зміни в ДКВ" AutoPostBack="false"></dx:ASPxButton>
 
             <dx:ASPxTimer ID="ProgressTimer" runat="server" ClientInstanceName="ProgressTimer" Enabled="False" Interval="3000">

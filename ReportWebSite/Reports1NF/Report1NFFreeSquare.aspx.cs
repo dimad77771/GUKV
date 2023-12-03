@@ -54,6 +54,18 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 			col.ShowCancelButton = false;
 			col.ShowNewButton = false;
 			col.ShowDeleteButton = false;
+			CheckBoxBalansObjectsShowControl.Visible = false;
+		}
+
+		if (Utils.IsCabinetBalansoderzhatel())
+		{
+			var col = FreeSquareGridView.Columns.OfType<GridViewCommandColumn>().First();
+			col.ShowEditButton = false;
+			col.ShowUpdateButton = false;
+			col.ShowCancelButton = false;
+			col.ShowNewButton = false;
+			col.ShowDeleteButton = false;
+			CheckBoxBalansObjectsShowControl.Visible = false;
 		}
 
 		if (IsReportForm)
@@ -227,6 +239,7 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 		e.Command.Parameters["@period_year"].Value = DateTime.Now.Date.Month == 1 ? DateTime.Now.Date.Year - 1 : DateTime.Now.Date.Year;
 		e.Command.Parameters["@baseurl"].Value = Utils.WebsiteBaseUrl;
 		e.Command.Parameters["@p_show_neziznacheni"].Value = CheckBoxBalansObjectsShowNeziznacheni.Checked ? 1 : 0;
+		e.Command.Parameters["@p_show_control"].Value = CheckBoxBalansObjectsShowControl.Checked ? 1 : 0;
 		e.Command.Parameters["@userId"].Value = Utils.GetUserId();
 		e.Command.Parameters["@bal_zkpo"].Value = Utils.GetCabinetBalansoderzhatelZkpo();
 	}
@@ -265,8 +278,8 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 			throw new Exception("Невірно заповнене поле \"Координати на мапі\". Приклад вірно заповненого поля (широта довгота) \"50.509205 30.426741\"");
 		}
 
+		dbparams.AddWithValue("@freecycle_step_date", DateTime.Today);
 
-		
 		var free_square_id = (int)(e.Command.Parameters["@id"].Value);
 		var freecycle_step_dict_id = (int?)(e.Command.Parameters["@freecycle_step_dict_id"].Value);
 		var prozoro_number = (string)(e.Command.Parameters["@prozoro_number"].Value);
@@ -386,6 +399,8 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 
 	protected void FreeSquareGridView_CustomButtonInitialize(object sender, ASPxGridViewCustomButtonEventArgs e)
 	{
+		//System.Diagnostics.Debug.WriteLine("e.ButtonID=" + e.ButtonID);
+
 		if (e.ButtonID == "bnt_adogovor_balansoderzhatel")
 		{
 			var show = false;
@@ -448,7 +463,7 @@ public static class CabinetUtils222
 
 		var file_1 = files[0].Length < files[1].Length ? files[0] : files[1];
 		var file_2 = files[0].Length < files[1].Length ? files[1] : files[0];
-		if (string.Compare(file_1 + ".p7s", file_2, StringComparison.OrdinalIgnoreCase) != 0)
+		if (string.Compare(file_1 + ".xml", file_2, StringComparison.OrdinalIgnoreCase) != 0)
 		{
 			throw new Exception(errortext);
 		}
@@ -527,7 +542,7 @@ public static class CabinetUtils222
 
 		foreach (var podpistype in podpises)
 		{
-			var podisfilename = filename + "." + Mode2PodpisFile(podpistype) + ".p7s";
+			var podisfilename = filename + "." + Mode2PodpisFile(podpistype) + ".xml";
 			var podis = GetAdogvorPodpis(free_square_id, podpistype, connection, transaction);
 			attachments.Add(new MailAttachment(podisfilename, podis));
 		}
@@ -730,12 +745,14 @@ public static class CabinetUtils222
 		var username = Utils.GetUser();
 		var userid = Utils.GetUserId();
 		var modify_date = DateTime.Now;
+		var today = DateTime.Today;
 
 		using (var cmd = new SqlCommand(
-										@"update reports1nf_balans_free_square set [freecycle_step_dict_id] = @stage_id where id = @free_square_id", connection, transaction))
+					@"update reports1nf_balans_free_square set [freecycle_step_dict_id] = @stage_id, freecycle_step_date = @today where id = @free_square_id", connection, transaction))
 		{
 			cmd.Parameters.Add(GetSqlParameter("free_square_id", free_square_id));
 			cmd.Parameters.Add(GetSqlParameter("stage_id", stage_id));
+			cmd.Parameters.Add(GetSqlParameter("today", today));
 			var rowUpdated = cmd.ExecuteNonQuery();
 			if (rowUpdated != 1) throw new Exception("update error");
 		}
@@ -867,6 +884,17 @@ public static class CabinetUtils222
 		return email;
 	}
 
+	public static string GetUserFio(string userId, SqlConnection connection, SqlTransaction transaction)
+	{
+		var fio = "";
+		var data = GetDataTable("select ltrim(ltrim(CONCAT(namef,' ',namei,' ',nameo))) fio from aspnet_Membership where UserId = " + dd(userId), connection, transaction);
+		if (data.Rows.Count > 0)
+		{
+			fio = (data.Rows[0]["fio"] ?? "").ToString();
+		}
+		return fio;
+	}
+
 	public static string GetObjectDescription(int free_square_id, SqlConnection connection, SqlTransaction transaction)
 	{
 		var result = "";
@@ -918,9 +946,21 @@ where fs.id = " + dd(free_square_id);
 			var data = GetDataTable(sql, connection, null);
 			if (data.Rows.Count > 0)
 			{
-				result = (int?)data.Rows[0]["freecycle_step_dict_id"];
+				result = GetData<int>(data.Rows[0]["freecycle_step_dict_id"]);
 			}
 			return result;
+		}
+	}
+
+	static T? GetData<T>(object data) where T: struct
+	{
+		if (data == System.DBNull.Value)
+		{
+			return null;
+		}
+		else
+		{
+			return (T)data;
 		}
 	}
 
@@ -940,7 +980,7 @@ where fs.id = " + dd(free_square_id);
 
 	public static void ValidateProzoroNumber(int? freecycle_step_dict_id, string prozoro_number)
 	{
-		if (new int?[] { 200200, 200300, 200400, 200500, 200600, 200700, 200800, 200900 }.Contains(freecycle_step_dict_id))
+		if (new int?[] { 200200, 200300, 200400, 200500, 200600, 200700, 200800, 200820, 200840, 200860, 200870, 200880, 200900 }.Contains(freecycle_step_dict_id))
 		{
 			if (string.IsNullOrEmpty((prozoro_number ?? "").Trim()))
 			{
@@ -982,18 +1022,25 @@ where fs.id = " + dd(free_square_id);
 		}
 
 
-		string template = Path.Combine(WebConfigurationManager.AppSettings["Cabinet.Templates"], emailtype + ".txt");
-		string text = File.ReadAllText(template, Encoding.GetEncoding(1251));
 
-		ReplaceText(ref text, "{{ZAYAVKA_DATETIME}}", () => zayavkaDate.Value.ToString("dd.MM.yyyy HH:mm"));
-		ReplaceText(ref text, "{{OBJECT_DECSRIPTION}}", () => GetObjectDescription(free_square_id, connection, transaction));
-		ReplaceText(ref text, "{{AUCTION_LINK}}", () => GetProzoroNumberLink(free_square_id, connection, transaction));
+		//var emails = userIds.Select(q => GetEmail(q, connection, transaction)).Where(x => !string.IsNullOrEmpty(x)).Distinct().ToArray();
 
-		var emails = userIds.Select(q => GetEmail(q, connection, transaction)).Where(x => !string.IsNullOrEmpty(x)).Distinct().ToArray();
-
-		foreach (var email in emails)
+		foreach (var userId in userIds)
 		{
-			SendMailMessage(email, "", "", subject, text, attachments: attachments);
+			var email = GetEmail(userId, connection, transaction);
+			if (string.IsNullOrEmpty(email)) continue;
+
+			var fio = GetUserFio(userId, connection, transaction);
+
+			var template = Path.Combine(WebConfigurationManager.AppSettings["Cabinet.Templates"], emailtype + ".txt");
+			var text = File.ReadAllText(template, Encoding.GetEncoding(1251));
+
+			ReplaceText(ref text, "{{ZAYAVKA_DATETIME}}", () => zayavkaDate.Value.ToString("dd.MM.yyyy HH:mm"));
+			ReplaceText(ref text, "{{OBJECT_DECSRIPTION}}", () => GetObjectDescription(free_square_id, connection, transaction));
+			ReplaceText(ref text, "{{AUCTION_LINK}}", () => GetProzoroNumberLink(free_square_id, connection, transaction));
+			ReplaceText(ref text, "{{USER_FIO}}", () => fio);
+
+			SendMailMessage(email, "", "", subject, text, attachments0: attachments);
 		}
 	}
 
@@ -1017,8 +1064,47 @@ where fs.id = " + dd(free_square_id);
 		}
 	}
 
-	private static void SendMailMessage(string to, string cc, string bcc, string subject, string body, IEnumerable<MailAttachment> attachments = null)
+	static byte[] ZipFiles(Dictionary<string, byte[]> files)
 	{
+		var result = default(byte[]);
+		var tempFile = Path.GetTempFileName();
+		var tempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+		Directory.CreateDirectory(tempDir);
+
+		using (ZipArchive archive = new ZipArchive())
+		{
+			foreach (var file in files)
+			{
+				var tempfile = Path.Combine(tempDir, file.Key);
+				File.WriteAllBytes(tempfile, file.Value);
+				archive.AddFile(tempfile, "\\");
+			}
+
+			archive.Save(tempFile);
+			result = File.ReadAllBytes(tempFile);
+		}
+
+		try
+		{
+			File.Delete(tempFile);
+			Directory.Delete(tempDir, true);
+		}
+		catch (Exception) { }
+
+		return result;
+	}
+
+	private static void SendMailMessage(string to, string cc, string bcc, string subject, string body, IEnumerable<MailAttachment> attachments0 = null)
+	{
+		MailAttachment[] attachments = null;
+		if (attachments0 != null && attachments0.Any())
+		{
+			var attachinfo = attachments0.ToDictionary(x => x.FileName, x => x.Bytes);
+			var zipattach = ZipFiles(attachinfo);
+			var zipname = "Документ_" + DateTime.Now.ToString("yyyyMMddHHmm") + ".zip";
+			attachments = new[] { new MailAttachment(zipname, zipattach) };
+		}
+
 		if (WebConfigurationManager.AppSettings["Cabinet.SendEmail.Log"] == "1")
 		{
 			var logfolder = WebConfigurationManager.AppSettings["Cabinet.SendEmail.Log.Folder"];
@@ -1051,6 +1137,30 @@ where fs.id = " + dd(free_square_id);
 		if (string.IsNullOrEmpty(from))
 		{
 			return;
+		}
+
+		if (WebConfigurationManager.AppSettings["Cabinet.UseDebugEmail"] == "1")
+		{
+			var debugEmail = WebConfigurationManager.AppSettings["Cabinet.DebugEmail"];
+			
+			body += body 
+				+ "\n\n\n\n\n" 
+				+ "-------------------------------------------------------------------\n"
+				+ "to: " + to + "\n"
+				+ "cc: " + cc + "\n"
+				+ "bcc: " + bcc + "\n"
+				+ "-------------------------------------------------------------------\n"
+				;
+
+			to = debugEmail;
+			cc = null;
+			bcc = null;
+		}
+
+		{
+			if (to == "test1@google.com") to = "dimad77772@yandex.ru";
+			else if (to == "aistspfu@gmail.com") to = "dimad77771@gmail.com";
+			else if (to == "seic@gukv.gov.ua") to = "torbanaruche@mail.com";
 		}
 
 		bool isTest = false;

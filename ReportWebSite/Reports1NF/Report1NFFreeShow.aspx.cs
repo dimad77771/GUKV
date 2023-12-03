@@ -114,10 +114,33 @@ public partial class Reports1NF_Report1NFFreeShow : System.Web.UI.Page
 
 			FreeSquareGridView.DataBind();
 		}
+
+		else if ((e.Parameters ?? "").StartsWith("auctionOtkaz:"))
+		{
+			var free_square_id = int.Parse(e.Parameters.Replace("auctionOtkaz:", ""));
+
+			using (var connection = Utils.ConnectToDatabase())
+			using (var transaction = connection.BeginTransaction())
+			{
+				var orendarUserId = Utils.GetUserId();
+				var zayavkaDate = DateTime.Now;
+
+				CabinetUtils.ChangeStage(free_square_id, 200860, connection, transaction);
+
+				//CabinetUtils.SendEmail(connection, transaction, free_square_id, "Заявка подана -- Орендодавцю", zayavkaDate: zayavkaDate);
+				//CabinetUtils.SendEmail(connection, transaction, free_square_id, "Заявка подана -- Орендарю", orendarUserId: orendarUserId);
+
+				transaction.Commit();
+			}
+
+			FreeSquareGridView.DataBind();
+		}
+
 		else if (e.Parameters == "onAdogvorFileUploadComplete")
 		{
 			FreeSquareGridView.DataBind();
 		}
+
 		else
 		{
 			Utils.ProcessDataGridSaveLayoutCallback(e.Parameters, FreeSquareGridView, Utils.GridIDReports1NF_FreeSquare, "");
@@ -251,6 +274,13 @@ public partial class Reports1NF_Report1NFFreeShow : System.Web.UI.Page
 		button.ClientSideEvents.Click = String.Format("function (s, e) {{ UploadAdogvorClick(s, e, {0}); }}", container.VisibleIndex);
 	}
 
+	protected void AuctionZayavkaOtkazBtn_Init(object sender, EventArgs e)
+	{
+		var button = sender as ASPxButton;
+		var container = ((ASPxButton)sender).NamingContainer as GridViewDataItemTemplateContainer;
+		button.ClientSideEvents.Click = String.Format("function (s, e) {{ AuctionOtkazClick(s, e, {0}); }}", container.VisibleIndex);
+	}
+
 	protected void UploadControl_FileUploadComplete(object sender, FileUploadCompleteEventArgs e)
 	{
 		using (var connection = Utils.ConnectToDatabase())
@@ -292,7 +322,7 @@ public static class CabinetUtils
 
 		var file_1 = files[0].Length < files[1].Length ? files[0] : files[1];
 		var file_2 = files[0].Length < files[1].Length ? files[1] : files[0];
-		if (string.Compare(file_1 + ".p7s", file_2, StringComparison.OrdinalIgnoreCase) != 0)
+		if (string.Compare(file_1 + ".xml", file_2, StringComparison.OrdinalIgnoreCase) != 0)
 		{
 			throw new Exception(errortext);
 		}
@@ -371,7 +401,7 @@ public static class CabinetUtils
 
 		foreach (var podpistype in podpises)
 		{
-			var podisfilename = filename + "." + Mode2PodpisFile(podpistype) + ".p7s";
+			var podisfilename = filename + "." + Mode2PodpisFile(podpistype) + ".xml";
 			var podis = GetAdogvorPodpis(free_square_id, podpistype, connection, transaction);
 			attachments.Add(new MailAttachment(podisfilename, podis));
 		}
@@ -489,6 +519,8 @@ public static class CabinetUtils
 		return tempDir;
 	}
 
+	
+
 	static byte[] GetAdogvorBody(int free_square_id, SqlConnection connection, SqlTransaction transaction)
 	{
 		byte[] result = null;
@@ -574,12 +606,14 @@ public static class CabinetUtils
 		var username = Utils.GetUser();
 		var userid = Utils.GetUserId();
 		var modify_date = DateTime.Now;
+		var today = DateTime.Today;
 
 		using (var cmd = new SqlCommand(
-										@"update reports1nf_balans_free_square set [freecycle_step_dict_id] = @stage_id where id = @free_square_id", connection, transaction))
+					@"update reports1nf_balans_free_square set [freecycle_step_dict_id] = @stage_id, freecycle_step_date = @today where id = @free_square_id", connection, transaction))
 		{
 			cmd.Parameters.Add(GetSqlParameter("free_square_id", free_square_id));
 			cmd.Parameters.Add(GetSqlParameter("stage_id", stage_id));
+			cmd.Parameters.Add(GetSqlParameter("today", today));
 			var rowUpdated = cmd.ExecuteNonQuery();
 			if (rowUpdated != 1) throw new Exception("update error");
 		}
@@ -719,6 +753,7 @@ fs.id
 ,b.district
 ,b.street_full_name as street_name
 ,(COALESCE(LTRIM(RTRIM(b.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer2)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer3)), '')) as addr_nomer
+,fs.total_free_sqr
 FROM view_reports1nf rep
 join reports1nf_balans bal on bal.report_id = rep.report_id
 JOIN view_reports1nf_buildings b ON b.unique_id = bal.building_1nf_unique_id
@@ -732,10 +767,15 @@ where fs.id = " + dd(free_square_id);
 		var data = GetDataTable(sql, connection, transaction);
 		if (data.Rows.Count > 0)
 		{
+			var total_free_sqr = (decimal)data.Rows[0]["total_free_sqr"];
+
 			result =
-				(data.Rows[0]["district"] ?? "").ToString() + ", " +
-				(data.Rows[0]["street_name"] ?? "").ToString() + ", " +
-				(data.Rows[0]["addr_nomer"] ?? "").ToString() + " (реєстраційний № " + (data.Rows[0]["id"] ?? "").ToString() + ")"
+				//(data.Rows[0]["district"] ?? "").ToString().Trim() + ", " +
+				"м.Київ" + ", " +
+				(data.Rows[0]["street_name"] ?? "").ToString().Trim() + ", " +
+				(data.Rows[0]["addr_nomer"] ?? "").ToString().Trim() + ", " +
+				"загальною площею " + total_free_sqr.ToString("0.00") + " кв.м., " +
+				"регістраційний номер " + (data.Rows[0]["id"] ?? "").ToString()
 				;
 		}
 		return result;
@@ -784,7 +824,7 @@ where fs.id = " + dd(free_square_id);
 
 	public static void ValidateProzoroNumber(int? freecycle_step_dict_id, string prozoro_number)
 	{
-		if (new int?[] { 200200, 200300, 200400, 200500, 200600, 200700, 200800, 200900 }.Contains(freecycle_step_dict_id))
+		if (new int?[] { 200200, 200300, 200400, 200500, 200600, 200700, 200800, 200820, 200840, 200860, 200870, 200880, 200900 }.Contains(freecycle_step_dict_id))
 		{
 			if (string.IsNullOrEmpty((prozoro_number ?? "").Trim()))
 			{
@@ -803,12 +843,13 @@ where fs.id = " + dd(free_square_id);
 		if (emailtype == "Заявка подана -- Орендодавцю")
 		{
 			userIds = GetOrendodavecUserIds(connection, transaction);
-			subject = "Заявка подана";
+			subject = "Заявка оренди приміщення";
 		}
 		else if (emailtype == "Заявка подана -- Орендарю")
 		{
-			userIds = new[] { orendarUserId };
-			subject = "Заявка подана";
+			//userIds = new[] { orendarUserId };
+			userIds = new string[0];
+			subject = "Заявка оренди приміщення";
 		}
 		else if (emailtype == "Учасників поінформовано")
 		{
@@ -837,7 +878,7 @@ where fs.id = " + dd(free_square_id);
 
 		foreach (var email in emails)
 		{
-			SendMailMessage(email, "", "", subject, text, attachments: attachments);
+			SendMailMessage(email, "", "", subject, text, attachments0: attachments);
 		}
 	}
 
@@ -861,8 +902,47 @@ where fs.id = " + dd(free_square_id);
 		}
 	}
 
-	private static void SendMailMessage(string to, string cc, string bcc, string subject, string body, IEnumerable<MailAttachment> attachments = null)
+	static byte[] ZipFiles(Dictionary<string, byte[]> files)
 	{
+		var result = default(byte[]);
+		var tempFile = Path.GetTempFileName();
+		var tempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+		Directory.CreateDirectory(tempDir);
+
+		using (ZipArchive archive = new ZipArchive())
+		{
+			foreach (var file in files)
+			{
+				var tempfile = Path.Combine(tempDir, file.Key);
+				File.WriteAllBytes(tempfile, file.Value);
+				archive.AddFile(tempfile, "\\");
+			}
+
+			archive.Save(tempFile);
+			result = File.ReadAllBytes(tempFile);
+		}
+
+		try
+		{
+			File.Delete(tempFile);
+			Directory.Delete(tempDir, true);
+		}
+		catch (Exception) { }
+
+		return result;
+	}
+
+	private static void SendMailMessage(string to, string cc, string bcc, string subject, string body, IEnumerable<MailAttachment> attachments0 = null)
+	{
+		MailAttachment[] attachments = null;
+		if (attachments0 != null && attachments0.Any())
+		{
+			var attachinfo = attachments0.ToDictionary(x => x.FileName, x => x.Bytes);
+			var zipattach = ZipFiles(attachinfo);
+			var zipname = "Документ_" + DateTime.Now.ToString("yyyyMMddHHmm") + ".zip";
+			attachments = new[] { new MailAttachment(zipname, zipattach) };
+		}
+
 		if (WebConfigurationManager.AppSettings["Cabinet.SendEmail.Log"] == "1")
 		{
 			var logfolder = WebConfigurationManager.AppSettings["Cabinet.SendEmail.Log.Folder"];
@@ -895,6 +975,30 @@ where fs.id = " + dd(free_square_id);
 		if (string.IsNullOrEmpty(from))
 		{
 			return;
+		}
+
+		if (WebConfigurationManager.AppSettings["Cabinet.UseDebugEmail"] == "1")
+		{
+			var debugEmail = WebConfigurationManager.AppSettings["Cabinet.DebugEmail"];
+
+			body += body
+				+ "\n\n\n\n\n"
+				+ "-------------------------------------------------------------------\n"
+				+ "to: " + to + "\n"
+				+ "cc: " + cc + "\n"
+				+ "bcc: " + bcc + "\n"
+				+ "-------------------------------------------------------------------\n"
+				;
+
+			to = debugEmail;
+			cc = null;
+			bcc = null;
+		}
+
+		{
+			if (to == "test1@google.com") to = "dimad77772@yandex.ru";
+			else if (to == "aistspfu@gmail.com") to = "dimad77771@gmail.com";
+			else if (to == "seic@gukv.gov.ua") to = "torbanaruche@mail.com";
 		}
 
 		bool isTest = false;
@@ -957,5 +1061,6 @@ where fs.id = " + dd(free_square_id);
 		// Send the mail message
 		mSmtpClient.Send(mMailMessage);
 	}
+
 
 }

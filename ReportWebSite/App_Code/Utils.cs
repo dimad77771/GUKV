@@ -3049,6 +3049,11 @@ public static class Utils
         return userid;
     }
 
+    public static bool IsCabinetBalansoderzhatel()
+    {
+        return (!string.IsNullOrEmpty(GetCabinetBalansoderzhatelZkpo()));
+    }
+
     public static string GetCabinetBalansoderzhatelZkpo()
     {
         var userId = GetUserId();
