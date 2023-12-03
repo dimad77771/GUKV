@@ -352,7 +352,10 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 			using (var connection = Utils.ConnectToDatabase())
 			using (var transaction = connection.BeginTransaction())
 			{
-				CabinetUtils222.SendEmail(connection, transaction, free_square_id, "Договір зареєстровано");
+				var additionalData = new Dictionary<string, object>();
+				additionalData.Add("current_stage_docnum", current_stage_docnum);
+				additionalData.Add("current_stage_docdate", current_stage_docdate);
+				CabinetUtils222.SendEmail(connection, transaction, free_square_id, "Договір зареєстровано", additionalData: additionalData);
 				transaction.Commit();
 			}
 		}
@@ -1045,20 +1048,26 @@ where fs.id = " + dd(free_square_id);
 		return result;
 	}
 
-	public static string GetStageDoc(int free_square_id, SqlConnection connection, SqlTransaction transaction)
+	public static string GetStageDoc(Dictionary<string, object> additionalData)
 	{
 		var result = "";
-		var sql = @"select current_stage_docdate, current_stage_docnum from reports1nf_balans_free_square fs where fs.id = " + dd(free_square_id);
-		var data = GetDataTable(sql, connection, transaction);
-		if (data.Rows.Count > 0)
+		var current_stage_docnum = "";
+		var current_stage_docdate = default(DateTime?);
+		if (additionalData.ContainsKey("current_stage_docnum"))
 		{
-			var current_stage_docnum = (data.Rows[0]["current_stage_docnum"] ?? "").ToString();
-			var current_stage_docdate = (DateTime?)(data.Rows[0]["current_stage_docdate"]);
-			if (current_stage_docdate != null && !string.IsNullOrEmpty(current_stage_docnum))
-			{
-				result = "№ " + current_stage_docnum + " від " +  current_stage_docdate.Value.ToString("dd.MM.yyyy");
-			}
+			current_stage_docnum = (string)additionalData["current_stage_docnum"];
 		}
+		if (additionalData.ContainsKey("current_stage_docdate"))
+		{
+			current_stage_docdate = (DateTime?)additionalData["current_stage_docdate"];
+		}
+
+
+		if (current_stage_docdate != null && !string.IsNullOrEmpty(current_stage_docnum))
+		{
+			result = "№ " + current_stage_docnum + " від " +  current_stage_docdate.Value.ToString("dd.MM.yyyy");
+		}
+
 		return result;
 	}
 
@@ -1140,7 +1149,7 @@ where fs.id = " + dd(free_square_id);
 
 	public static void SendEmail(SqlConnection connection, SqlTransaction transaction, int free_square_id, string emailtype,
 		string orendarUserId = null, DateTime? zayavkaDate = null, IEnumerable<MailAttachment> attachments = null,
-		IEnumerable<string> explicit_userIds = null, string explicit_subject = null)
+		IEnumerable<string> explicit_userIds = null, string explicit_subject = null, Dictionary<string, object> additionalData = null)
 	{
 		string[] userIds = null;
 		string subject = "";
@@ -1200,7 +1209,7 @@ where fs.id = " + dd(free_square_id);
 			ReplaceText(ref text, "{{OBJECT_DECSRIPTION}}", () => GetObjectDescription(free_square_id, connection, transaction));
 			ReplaceText(ref text, "{{AUCTION_LINK}}", () => GetProzoroNumberLink(free_square_id, connection, transaction));
 			ReplaceText(ref text, "{{USER_FIO}}", () => fio);
-			ReplaceText(ref text, "{{STAGE_DOC}}", () => GetStageDoc(free_square_id, connection, transaction));
+			ReplaceText(ref text, "{{STAGE_DOC}}", () => GetStageDoc(additionalData));
 			ReplaceText(ref text, "{{INSTRUCTIONS}}", () => GetInstructions(free_square_id, connection, transaction));
 
 			
