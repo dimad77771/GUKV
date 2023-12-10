@@ -1,0 +1,119 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="LoginInCabinet.master.cs" Inherits="FreeShowPublic" %>
+
+<%@ Register Src="~/UserControls/ThemeSelector.ascx" TagPrefix="dx" TagName="ThemeSelector" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head id="Head1" runat="server">
+    <title>Єдина Інформаційна Система ДКВ м. Києва</title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/DXTheme.js") %>"></script>
+    <form id="Form1" runat="server">
+    <div class="page" style="background-color:#D8DBCC">
+        <div class="narrowheader-free-show-public">
+			<table style="width:100%">
+				<tr>
+					<td>
+						<div>
+							<img src="../Styles/Header-Background-narrow-2.png" />
+						</div>
+					</td>
+					<td>
+						<span style="color:white; font-size:large">
+							ІАС «Управління майновим комплексом територіальної громади міста Києва». Модуль ДКВ
+						</span>
+					</td>
+					<td style="text-align:right" >
+			            <span style="color:white; display:none2">
+					        <strong>Модуль знаходиться в дослідницькій експлуатаціі, 
+							<br />
+							зауваження направляти на ел. адресу: <a style="color:white" href="mailto:seic@gukv.gov.ua" title="Написати лист">seic@gukv.gov.ua</a> </strong>
+							
+						</span>
+					</td>
+				</tr>
+			</table>
+		</div>
+        <div class="clear hideSkiplink" style="display:none">
+            <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                <tr>
+                    <td>
+                        <div style="float: left; padding-top: 0px; width:inherit; ">
+                            <asp:Panel ID="PanelNavigation" runat="server" Width="100%">
+                                <dx:ASPxMenu ID="MainMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left" >
+                                    <ItemStyle Paddings-PaddingLeft="5px" Paddings-PaddingRight="5px" Font-Size="Larger" />
+                                    <Items>
+										<dx:MenuItem Visible="false" NavigateUrl="~/Reports1NF/Report1NFFreeMap.aspx" Text="Мапа майна, що може бути передане в оренду" Selected="true"></dx:MenuItem>
+										<dx:MenuItem NavigateUrl="~/Reports1NF/Report1NFFreeShow.aspx" Text="Перелік майна, що може бути передане в оренду"></dx:MenuItem>
+										<dx:MenuItem Visible="false" NavigateUrl="~/Reports1NF/Report1NFFreeRejections.aspx" Text="Перелік відмов потенційним орендарям"></dx:MenuItem>
+										<dx:MenuItem Visible="false" NavigateUrl="~/Reports1NF/Report1NFFreeShow.aspx?mode50=1" Text="Рішення про укладання договору (площа  50 кв.м або менше, та вартість до 500 000 грн.)"></dx:MenuItem>
+                                        <dx:MenuItem Visible="false" NavigateUrl="~/Reports1NF/Report1NFPrivatisatMap.aspx" Text="Мапа об'єктів приватизації"></dx:MenuItem>
+                                        <dx:MenuItem Visible="false" NavigateUrl="~/Reports1NF/Report1NFPrivatisatShow.aspx" Text="Перелік об'єктів приватизації"></dx:MenuItem>
+                                    </Items>
+                                </dx:ASPxMenu>
+                            </asp:Panel>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div style="float: right; padding-top: 0px;">
+                            <dx:ASPxButton ID="ASPChangeMapSystem" runat="server" Text="Використовувати мапу містобудівного кадастру" OnClick="ASPChangeMapSystem_Click" Visible="false"  >
+                                
+                            </dx:ASPxButton>
+
+
+                            <asp:LoginView ID="LoginView1" runat="server">
+                                <AnonymousTemplate>
+                                    <dx:ASPxMenu ID="LoginMenu1" runat="server" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
+                                        <ItemStyle Paddings-PaddingLeft="6px" Paddings-PaddingRight="6px" />
+                                        <Items>
+                                            <dx:MenuItem NavigateUrl="~/Account/LoginInCabinet.aspx" Text="Увійти" Name="LoginInCabinet"></dx:MenuItem>
+                                            <dx:MenuItem NavigateUrl="~/Account/RecoverPwd.aspx" Text="?" Visible="false"></dx:MenuItem>
+                                        </Items>
+                                    </dx:ASPxMenu>
+                                </AnonymousTemplate>
+                                <LoggedInTemplate>
+                                    <table border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td valign="middle">
+                                                <div class="username">
+                                                    <asp:LoginName id="LoginName1" runat="server" FormatString ="{0}" /> &nbsp;
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <dx:ASPxMenu ID="LoginMenu2" runat="server" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
+                                                    <ItemStyle Paddings-PaddingLeft="6px" Paddings-PaddingRight="6px" />
+                                                    <Items>
+                                                        <dx:MenuItem NavigateUrl="~/Account/LogoutCabinet.aspx" Text="Вийти" Name="LogoutCabinet"></dx:MenuItem>
+                                                        <dx:MenuItem NavigateUrl="~/Account/ChangePassword.aspx" Text="Пароль" Visible="false"></dx:MenuItem>
+                                                    </Items>
+                                                </dx:ASPxMenu>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </LoggedInTemplate>
+                            </asp:LoginView>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="main" style="background-image:url('../Styles/CabinetBackground.png'); background-repeat:repeat-x; ">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    </form>
+    <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/CommonScript.js") %>"></script>
+    <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jquery-1.8.3.js") %>"></script>
+    <%= StackExchange.Profiling.MiniProfiler.RenderIncludes() %> 
+
+    <script type="text/javascript" src="<%= ResolveUrl("~/Scripts/jquery-2.1.4.min.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/Scripts/jquery.cookie.js") %>"></script>
+</body>
+</html>
