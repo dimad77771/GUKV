@@ -175,7 +175,7 @@
 															<dx:RibbonButtonItem Text="Об'єкти приватизації" NavigateUrl="Reports1NF/Report1NFPrivatisatSquare.aspx">
 																<SmallImage Url="Styles/ribbonicon_14.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="Програма приватизації" NavigateUrl="Privatization/PrivatObjects.aspx">
+															<dx:RibbonButtonItem Text="Програма приватизації" NavigateUrl="Privatization/PrivatObjects.aspx" Visible="false">
 																<SmallImage Url="Styles/ribbonicon_12.png" />
 															</dx:RibbonButtonItem>
 														</Items>
