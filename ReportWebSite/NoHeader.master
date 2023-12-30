@@ -148,6 +148,9 @@
 																	<%--<dx:RibbonDropDownButtonItem Text="Стани рецензії" NavigateUrl="Assessment/dict_expert_stan.aspx"/>--%>
 																</Items>
 															</dx:RibbonDropDownButtonItem>
+															<dx:RibbonButtonItem Text="Архів об'єктів оцінки" NavigateUrl="Assessment/AssessmentArhive.aspx">
+																<SmallImage Url="Styles/ribbonicon_17.png" />
+															</dx:RibbonButtonItem>
 														</Items>
 													</dx:RibbonGroup>
 												</Groups>
@@ -177,6 +180,9 @@
 															</dx:RibbonButtonItem>
 															<dx:RibbonButtonItem Text="Програма приватизації" NavigateUrl="Privatization/PrivatObjects.aspx" Visible="false">
 																<SmallImage Url="Styles/ribbonicon_12.png" />
+															</dx:RibbonButtonItem>
+															<dx:RibbonButtonItem Text="Архів об'єктів приватизації" NavigateUrl="Reports1NF/PrivatisatArhive.aspx">
+																<SmallImage Url="Styles/ribbonicon_17.png" />
 															</dx:RibbonButtonItem>
 														</Items>
 													</dx:RibbonGroup>

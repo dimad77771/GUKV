@@ -14,6 +14,7 @@ public class TempFile : IDisposable
 
 	public TempFile()
 	{
+        System.IO.File.AppendAllText(@"c:\tmp\debug333.log", Path.GetTempPath());
         _fileName = Path.GetTempFileName();
 	}
 

@@ -1331,6 +1331,7 @@ where fs.id = " + dd(free_square_id);
 			bcc = null;
 		}
 
+		if (WebConfigurationManager.AppSettings["Cabinet.ReplaceEmail"] != "1")
 		{
 			if (to == "test1@google.com") to = "dimad77772@yandex.ru";
 			else if (to == "aistspfu@gmail.com") to = "dimad77771@gmail.com";
