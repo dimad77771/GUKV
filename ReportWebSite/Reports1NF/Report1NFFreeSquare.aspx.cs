@@ -925,9 +925,8 @@ public static class CabinetUtils222
 
 	public static string[] GetAllBalansoderzhatels(int free_square_id, SqlConnection connection, SqlTransaction transaction)
 	{
-		var balans_zkpo = GetBalansoderzhatelZkpo(free_square_id, connection, transaction);
-		var userIds = RdaZkpo2UserIds(balans_zkpo, connection, transaction);
-		return userIds;
+		var userId = GetBalansoderzhatelUserId(free_square_id, connection, transaction);
+		return new[] { userId };
 	}
 
 	public static string[] RdaZkpo2UserIds(string balans_zkpo, SqlConnection connection, SqlTransaction transaction)
@@ -979,6 +978,17 @@ public static class CabinetUtils222
 		for (var rownum = 0; rownum < data.Rows.Count; rownum++)
 		{
 			result = (data.Rows[rownum]["balans_zkpo"] ?? "").ToString();
+		}
+		return result;
+	}
+
+	public static string GetBalansoderzhatelUserId(int free_square_id, SqlConnection connection, SqlTransaction transaction)
+	{
+		var result = "";
+		var data = GetDataTable(@"select B.UserId from reports1nf_balans_free_square A join aspnet_Users B on A.modified_by = B.UserName where A.id = " + dd(free_square_id), connection, transaction);
+		for (var rownum = 0; rownum < data.Rows.Count; rownum++)
+		{
+			result = (data.Rows[rownum]["UserId"] ?? "").ToString();
 		}
 		return result;
 	}
@@ -1331,7 +1341,7 @@ where fs.id = " + dd(free_square_id);
 			bcc = null;
 		}
 
-		if (WebConfigurationManager.AppSettings["Cabinet.ReplaceEmail"] != "1")
+		if (WebConfigurationManager.AppSettings["Cabinet.ReplaceEmail"] == "1")
 		{
 			if (to == "test1@google.com") to = "dimad77772@yandex.ru";
 			else if (to == "aistspfu@gmail.com") to = "dimad77771@gmail.com";
