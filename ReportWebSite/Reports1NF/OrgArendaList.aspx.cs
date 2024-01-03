@@ -297,6 +297,14 @@ public partial class Reports1NF_OrgArendaList : System.Web.UI.Page
         }
 	}
 
+    protected void SqlDataSourceArendaObjects_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+    {
+        e.Command.CommandTimeout = 600;
+
+        e.Command.Parameters["@p_dpz_filter"].Value = CheckBoxRentedObjectsDPZ.Checked ? 1 : 0;
+        e.Command.Parameters["@rep_id"].Value = ReportID.ToString();
+    }
+
     protected int ReportID
     {
         get
@@ -569,6 +577,10 @@ public partial class Reports1NF_OrgArendaList : System.Web.UI.Page
             {
                 e.Row.BackColor = System.Drawing.Color.LightGray;
             }
+            else if (isDeletedInReport > 0 && isDeletedInEis > 0)
+            {
+                e.Row.BackColor = System.Drawing.Color.LightGray;
+            }
         }
     }
 
@@ -601,9 +613,16 @@ public partial class Reports1NF_OrgArendaList : System.Web.UI.Page
         System.Web.Security.MembershipUser user = System.Web.Security.Membership.GetUser();
         string username = (user == null ? "System" : user.UserName);
 
+        
+
         if (e.Parameters.StartsWith("init:"))
         {
             // Fake callback; do nothing
+        }
+        else if (e.Parameters.StartsWith("bind:"))
+        {
+            PrimaryGridView.DataSourceID = "SqlDataSourceReportArenda";
+            PrimaryGridView.DataBind();
         }
         else
         {

@@ -197,8 +197,8 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 			var wh = @"
 			(
 				(
-					isnull(ddd.name, 'Невідомо') <> 'Невизначені' and
-					obj.NumOfObj >= 1
+					isnull(ddd.name, 'Невідомо') <> 'Невизначені' 
+					--and obj.NumOfObj >= 1
 				)
 				or
 				(

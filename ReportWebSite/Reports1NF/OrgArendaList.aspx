@@ -150,6 +150,10 @@
         alert(document.getElementById('<%=ASPxLabelState.ClientID %>').innerHTML);
     }
 
+	function CheckBoxRentedObjectsDPZ_CheckedChanged(s, e) {
+		PrimaryGridView.PerformCallback(AddWndHeightToCallbackParam("bind:"));
+	}
+
 </script>
 
 </asp:Content>
@@ -283,9 +287,14 @@ FROM reports1nf_arenda ar
 
 		outer apply (select top 1 id as period_id from dict_rent_period per where per.is_active = 1) apd
 
-        WHERE ar.report_id = @rep_id AND isnull(a.is_deleted, 0) = 0 ORDER BY ar.modify_date DESC" >
+        WHERE ar.report_id = @rep_id 
+            AND (isnull(a.is_deleted, 0) = 0 OR @p_dpz_filter = 1)
+        ORDER BY ar.modify_date DESC" 
+    OnSelecting="SqlDataSourceArendaObjects_Selecting"
+    >
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="rep_id" />
+        <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_dpz_filter" />
     </SelectParameters>
 </mini:ProfiledSqlDataSource>
 
@@ -839,9 +848,17 @@ FROM reports1nf_arenda ar
                 </PanelCollection>
             </dx:ASPxCallbackPanel>
         </td>
+
         <td>
-        </td>    
+        </td>
+
         <td width = "500" align ="right">
+            <dx:ASPxCheckBox ID="CheckBoxRentedObjectsDPZ" runat="server" Checked='False' Text="Видалені"
+                Width="100px" ClientInstanceName="CheckBoxRentedObjectsDPZ" >
+                <ClientSideEvents CheckedChanged="CheckBoxRentedObjectsDPZ_CheckedChanged" />
+            </dx:ASPxCheckBox>
+        </td>        
+        <td  align ="right">
             <dx:ASPxButton ID="ASPxButton3" runat="server" AutoPostBack="False" Text="Додаткові Колонки" Width="160px">
                 <ClientSideEvents Click="function (s,e) { PopupFieldChooser.Show(); }" />
             </dx:ASPxButton>
