@@ -399,8 +399,15 @@ SELECT
 ,fs.modified_by
 ,fs.note
 ,fs.winner_id
-,dbo.IsCabinetOrendodavecz(@userId) as isCabinetOrendodavecz
-,dbo.IsCabinetBalansoderzhatel(@userId, org.zkpo_code) as isCabinetBalansoderzhatel
+
+
+--,dbo.IsCabinetOrendodavecz(@userId) as isCabinetOrendodavecz
+,case when (select Q.UserName from aspnet_Users Q where Q.UserId = @userId) = fs.modified_by2 then 1 else 0 end as isCabinetOrendodavecz
+
+--,dbo.IsCabinetBalansoderzhatel(@userId, org.zkpo_code) as isCabinetBalansoderzhatel
+,case when (select Q.UserName from aspnet_Users Q where Q.UserId = @userId) = fs.modified_by then 1 else 0 end as isCabinetBalansoderzhatel
+
+
 ,dbo.[CabinetOrendarStage](fs.id, '-') as cabinetOrendarStage
 
 ,invest_solution = (select qq.name from dict_1nf_invest_solution qq where qq.id = fs.invest_solution_id)
@@ -455,6 +462,8 @@ LEFT JOIN (
 			AND ( (@p_show_neziznacheni = 0) OR (@p_show_neziznacheni = 1 AND (fs.is_included = 1)) )
 			AND ( (isnull(@bal_zkpo,'') = '') OR (org.zkpo_code = @bal_zkpo) )
 			AND ( (@p_show_control = 0) OR (@p_show_control = 1 AND (fs.komis_protocol = '1')) )
+
+					--AND fs.id = 4606
 
     order by org_name, street_name, addr_nomer, total_free_sqr   "
 		OnSelecting="SqlDataSourceFreeSquare_Selecting"

@@ -476,7 +476,7 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 		{
 			var show_1 = false;
 			var show_2 = false;
-			var isCabinetBalansoderzhatel = (short?)FreeSquareGridView.GetRowValues(e.VisibleIndex, "isCabinetBalansoderzhatel");
+			var isCabinetBalansoderzhatel = (int?)FreeSquareGridView.GetRowValues(e.VisibleIndex, "isCabinetBalansoderzhatel");
 			var winner_id = FreeSquareGridView.GetRowValues(e.VisibleIndex, "winner_id");
 			var freecycle_step_dict_id = FreeSquareGridView.GetRowValues(e.VisibleIndex, "freecycle_step_dict_id");
 			var cabinetOrendarStage = (string)FreeSquareGridView.GetRowValues(e.VisibleIndex, "cabinetOrendarStage");
@@ -510,7 +510,7 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 		else if (e.ButtonID == "bnt_adogovor_orendodavecz")
 		{
 			var show = false;
-			var isCabinetOrendodavecz = (short?)FreeSquareGridView.GetRowValues(e.VisibleIndex, "isCabinetOrendodavecz");
+			var isCabinetOrendodavecz = (int?)FreeSquareGridView.GetRowValues(e.VisibleIndex, "isCabinetOrendodavecz");
 			var cabinetOrendarStage = (string)FreeSquareGridView.GetRowValues(e.VisibleIndex, "cabinetOrendarStage");
 			if (isCabinetOrendodavecz == 1 && cabinetOrendarStage == "podpis_balansoderzhatel_orendar")
 			{
@@ -612,7 +612,7 @@ public static class CabinetUtils222
 		}
 		else if (mode == ORENDAR)
 		{
-			sendToUserIds.AddRange(GetOrendodavecUserIds(connection, transaction));
+			sendToUserIds.AddRange(GetOrendodavecUserIds(free_square_id, connection, transaction));
 			template = "Договір потрібно підписати -- Орендодавцю";
 
 			podpises = new[] { BALANSODERZHATEL, ORENDAR };
@@ -620,7 +620,7 @@ public static class CabinetUtils222
 		else if (mode == ORENDODAVECZ)
 		{
 			sendToUserIds.Add(GetAuctionWinnerUserId(free_square_id, connection, transaction));
-			sendToUserIds.AddRange(GetOrendodavecUserIds(connection, transaction));
+			sendToUserIds.AddRange(GetOrendodavecUserIds(free_square_id, connection, transaction));
 			sendToUserIds.AddRange(GetAllBalansoderzhatels(free_square_id, connection, transaction));
 			template = "Договір потрібно підписати -- Всім";
 			subject = "Надсилаємо оригінал договору";
@@ -901,7 +901,7 @@ public static class CabinetUtils222
 		return dataTable;
 	}
 
-	public static string[] GetOrendodavecUserIds(SqlConnection connection, SqlTransaction transaction)
+	public static string[] GetOrendodavecUserIds(int free_square_id, SqlConnection connection, SqlTransaction transaction)
 	{
 		var result = new List<string>();
 		var data = GetDataTable("select distinct A.UserId from [aspnet_Membership] A join [aspnet_Users] B on B.UserId = A.UserId where IsCabinetOrendodavecz = 1", connection, transaction);
@@ -1166,7 +1166,7 @@ where fs.id = " + dd(free_square_id);
 
 		if (emailtype == "Заявка подана -- Орендодавцю")
 		{
-			userIds = GetOrendodavecUserIds(connection, transaction);
+			userIds = GetOrendodavecUserIds(free_square_id, connection, transaction);
 			subject = "Заявка подана";
 		}
 		else if (emailtype == "Заявка подана -- Орендарю")
@@ -1343,9 +1343,17 @@ where fs.id = " + dd(free_square_id);
 
 		if (WebConfigurationManager.AppSettings["Cabinet.ReplaceEmail"] == "1")
 		{
+			to = to;
+
 			if (to == "test1@google.com") to = "dimad77772@yandex.ru";
+
 			else if (to == "aistspfu@gmail.com") to = "dimad77771@gmail.com";
+			else if (to == "katya2000pavlyuk@gmail.com") to = "dimad77771@gmail.com";
+
 			else if (to == "seic@gukv.gov.ua") to = "torbanaruche@mail.com";
+			else if (to == "knmc2@ukr.net") to = "torbanaruche@mail.com";
+
+			else throw new Exception();
 		}
 
 		bool isTest = false;

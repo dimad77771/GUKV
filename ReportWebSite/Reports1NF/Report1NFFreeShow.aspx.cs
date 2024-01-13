@@ -386,7 +386,7 @@ public static class CabinetUtils
 		}
 		else if (mode == ORENDAR)
 		{
-			sendToUserIds.AddRange(GetOrendodavecUserIds(connection, transaction));
+			sendToUserIds.AddRange(GetOrendodavecUserIds(free_square_id, connection, transaction));
 			template = "Договір потрібно підписати -- Орендодавцю";
 
 			podpises = new[] { BALANSODERZHATEL, ORENDAR };
@@ -394,7 +394,7 @@ public static class CabinetUtils
 		else if (mode == ORENDODAVECZ)
 		{
 			sendToUserIds.Add(GetAuctionWinnerUserId(free_square_id, connection, transaction));
-			sendToUserIds.AddRange(GetOrendodavecUserIds(connection, transaction));
+			sendToUserIds.AddRange(GetOrendodavecUserIds(free_square_id, connection, transaction));
 			sendToUserIds.AddRange(GetAllBalansoderzhatels(free_square_id, connection, transaction));
 			template = "Договір потрібно підписати -- Всім";
 			subject = "?";
@@ -660,10 +660,10 @@ public static class CabinetUtils
 		return dataTable;
 	}
 
-	public static string[] GetOrendodavecUserIds(SqlConnection connection, SqlTransaction transaction)
+	public static string[] GetOrendodavecUserIds(int free_square_id, SqlConnection connection, SqlTransaction transaction)
 	{
 		var result = new List<string>();
-		var data = GetDataTable("select distinct A.UserId from [aspnet_Membership] A join [aspnet_Users] B on B.UserId = A.UserId where IsCabinetOrendodavecz = 1", connection, transaction);
+		var data = GetDataTable(@"select B.UserId from reports1nf_balans_free_square A join aspnet_Users B on A.modified_by2 = B.UserName where A.id = " + dd(free_square_id), connection, transaction);
 		for (var rownum = 0; rownum < data.Rows.Count; rownum++)
 		{
 			result.Add((data.Rows[rownum]["UserId"] ?? "").ToString());
@@ -860,7 +860,7 @@ where fs.id = " + dd(free_square_id);
 
 		if (emailtype == "Заявка подана -- Орендодавцю")
 		{
-			userIds = GetOrendodavecUserIds(connection, transaction);
+			userIds = GetOrendodavecUserIds(free_square_id, connection, transaction);
 			subject = "Заявка оренди приміщення";
 		}
 		else if (emailtype == "Заявка подана -- Орендарю")
@@ -1015,9 +1015,17 @@ where fs.id = " + dd(free_square_id);
 
 		if (WebConfigurationManager.AppSettings["Cabinet.ReplaceEmail"] == "1")
 		{
+			to = to;
+
 			if (to == "test1@google.com") to = "dimad77772@yandex.ru";
+
 			else if (to == "aistspfu@gmail.com") to = "dimad77771@gmail.com";
+			else if (to == "katya2000pavlyuk@gmail.com") to = "dimad77771@gmail.com";
+
 			else if (to == "seic@gukv.gov.ua") to = "torbanaruche@mail.com";
+			else if (to == "knmc2@ukr.net") to = "torbanaruche@mail.com";
+
+			else throw new Exception();
 		}
 
 		bool isTest = false;
