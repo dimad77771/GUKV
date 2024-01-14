@@ -368,7 +368,9 @@ UpdateCommand="UPDATE [reports1nf]
 SET
     [stan_recieve_id] = @stan_recieve_id,
 	[stan_recieve_date] = @stan_recieve_date,
-	[stan_recieve_description] = @stan_recieve_description
+	[stan_recieve_description] = @stan_recieve_description,
+    [rep_modified_by] = @rep_modified_by,
+    [rep_modify_date] = @rep_modify_date 
 WHERE id = @report_id" 
 	onupdating="SqlDataSourceReports_Updating"
 	
@@ -715,6 +717,12 @@ WHERE id = @report_id"
         </dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn FieldName="stan_recieve_description" ReadOnly="False" ShowInCustomizationForm="True" VisibleIndex="5" Visible="True" Caption="Примітки" Width="150px">
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="rep_modified_by" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="5" Visible="True" Caption="Контроль використання" Width="100px">
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("rep_modified_by") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn FieldName="prim_balanc" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="5" Visible="True" Caption="Примітки балансоутримувача" Width="120px">
@@ -1308,7 +1316,7 @@ WHERE id = @report_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A4_11" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A4_12" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

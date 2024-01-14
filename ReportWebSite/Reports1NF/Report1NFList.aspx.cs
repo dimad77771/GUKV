@@ -232,6 +232,7 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 					@"Дата актуализации данных",
 					@"Поточний стан звіту",
 					@"Примітки",
+					@"Контроль використання",
 					@"Примітки балансоутримувача",
 					@"Дата останнього прийому",
 					@"Сфера діяльності",
@@ -438,9 +439,10 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 		var dbparams = (System.Data.SqlClient.SqlParameterCollection)(e.Command.Parameters);
 		dbparams.AddWithValue("@stan_recieve_date", DateTime.Now);
 
-		//var user = Membership.GetUser();
-		//var username = (user == null ? String.Empty : (String)user.UserName);
-		//dbparams.AddWithValue("@modified_by2", username);
+		var user = Membership.GetUser();
+		var username = (user == null ? String.Empty : (String)user.UserName);
+		dbparams.AddWithValue("@rep_modified_by", username);
+		dbparams.AddWithValue("@rep_modify_date", DateTime.Now);
 	}
 
     protected void ASPxButton_Zvedeniy_Build(object sender, EventArgs e)

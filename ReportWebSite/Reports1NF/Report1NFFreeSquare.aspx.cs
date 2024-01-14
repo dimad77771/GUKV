@@ -1176,7 +1176,9 @@ where fs.id = " + dd(free_square_id);
 		}
 		else if (emailtype == "Учасників поінформовано")
 		{
-			userIds = GetAllOrendars(free_square_id, connection, transaction);
+			var userIds1 = GetAllOrendars(free_square_id, connection, transaction);
+			var userIds2 = GetAllBalansoderzhatels(free_square_id, connection, transaction);
+			userIds = userIds1.Union(userIds2).Distinct().ToArray();
 			subject = "Інформація про оголошення аукціону";
 		}
 		else if (emailtype == "Розпочати процедуру підписання")
