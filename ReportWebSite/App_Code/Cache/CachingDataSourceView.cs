@@ -286,10 +286,55 @@ namespace Cache
             DataSourceCache.Put(command, GetPageId(), table);
             return new DataView(table);
         }
+
+        /*
+        public virtual void Update(IDictionary keys, IDictionary values, IDictionary oldValues, DataSourceViewOperationCallback callback)
+        {
+            var h = 10;
+        }
+
+        protected virtual int ExecuteUpdate(IDictionary keys, IDictionary values, IDictionary oldValues)
+        {
+            return 0;
+
+            //if (!CanUpdate)
+            //{
+            //    throw new NotSupportedException(SR.GetString("SqlDataSourceView_UpdateNotSupported", _owner.ID));
+            //}
+            //DbConnection dbConnection = _owner.CreateConnection(_owner.ConnectionString);
+            //if (dbConnection == null)
+            //{
+            //    throw new InvalidOperationException(SR.GetString("SqlDataSourceView_CouldNotCreateConnection", _owner.ID));
+            //}
+            //string oldValuesParameterFormatString = OldValuesParameterFormatString;
+            //DbCommand dbCommand = _owner.CreateCommand(UpdateCommand, dbConnection);
+            //InitializeParameters(dbCommand, UpdateParameters, keys);
+            //AddParameters(dbCommand, UpdateParameters, values, null, null);
+            //AddParameters(dbCommand, UpdateParameters, keys, null, oldValuesParameterFormatString);
+            //if (ConflictDetection == ConflictOptions.CompareAllValues)
+            //{
+            //    if (oldValues == null || oldValues.Count == 0)
+            //    {
+            //        throw new InvalidOperationException(SR.GetString("SqlDataSourceView_Pessimistic", SR.GetString("DataSourceView_update"), _owner.ID, "oldValues"));
+            //    }
+            //    AddParameters(dbCommand, UpdateParameters, oldValues, null, oldValuesParameterFormatString);
+            //}
+            //dbCommand.CommandType = GetCommandType(UpdateCommandType);
+            //SqlDataSourceCommandEventArgs sqlDataSourceCommandEventArgs = new SqlDataSourceCommandEventArgs(dbCommand);
+            //OnUpdating(sqlDataSourceCommandEventArgs);
+            //if (sqlDataSourceCommandEventArgs.Cancel)
+            //{
+            //    return 0;
+            //}
+            //ReplaceNullValues(dbCommand);
+            //return ExecuteDbCommand(dbCommand, DataSourceOperation.Update);
+        }
+        */
+
     }
 
 
-	public interface CachingPageIdSupport
+    public interface CachingPageIdSupport
 	{
 		string GetCachingPageId();
 	}
