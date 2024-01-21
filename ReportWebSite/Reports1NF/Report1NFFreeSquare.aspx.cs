@@ -1083,12 +1083,15 @@ where fs.id = " + dd(free_square_id);
 
 	public static string GetInstructions(int free_square_id, SqlConnection connection, SqlTransaction transaction)
 	{
-		var result = 
-			"Електронний підпис: " + WebConfigurationManager.AppSettings["Cabinet.Instruction.Sign"] + "\n" +
-			"Перевірка електронного підпису: " + WebConfigurationManager.AppSettings["Cabinet.Instruction.Verify"];
+		var result = @"
+Електронний підпис. Інструкція: https://dkv.kyivcity.gov.ua/Static/sign.htm
+Електронний підпис: https://czo.gov.ua/sign
+Перевірка електронного підпису: https://czo.gov.ua/verify
+";
 
 		return result;
 	}
+
 
 	public static int? GetStep(int free_square_id)
 	{

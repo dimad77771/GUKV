@@ -893,6 +893,7 @@ where fs.id = " + dd(free_square_id);
 		ReplaceText(ref text, "{{ZAYAVKA_DATETIME}}", () => zayavkaDate.Value.ToString("dd.MM.yyyy HH:mm"));
 		ReplaceText(ref text, "{{OBJECT_DECSRIPTION}}", () => GetObjectDescription(free_square_id, connection, transaction));
 		ReplaceText(ref text, "{{AUCTION_LINK}}", () => GetProzoroNumberLink(free_square_id, connection, transaction));
+		ReplaceText(ref text, "{{INSTRUCTIONS}}", () => GetInstructions(free_square_id, connection, transaction));
 
 		var emails = userIds.Select(q => GetEmail(q, connection, transaction)).Where(x => !string.IsNullOrEmpty(x)).Distinct().ToArray();
 
@@ -900,6 +901,17 @@ where fs.id = " + dd(free_square_id);
 		{
 			SendMailMessage(email, "", "", subject, text, attachments0: attachments);
 		}
+	}
+
+	public static string GetInstructions(int free_square_id, SqlConnection connection, SqlTransaction transaction)
+	{
+		var result = @"
+Електронний підпис. Інструкція: https://dkv.kyivcity.gov.ua/Static/sign.htm
+Електронний підпис: https://czo.gov.ua/sign
+Перевірка електронного підпису: https://czo.gov.ua/verify
+";
+
+		return result;
 	}
 
 	private static void ReplaceText(ref string text, string field, Func<string> valueFunc)

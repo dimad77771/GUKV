@@ -119,17 +119,24 @@
         }
     }
 
-	function onAdogvorFileUploadStart(s, e) {
+    function onAdogvorFileUploadStart(s, e) {
+		console.log('onAdogvorFileUploadStart', e)
 		LoadingPanel.Show()
 	}
 
-	function onAdogvorFileUploadComplete(s, e) {
+    function onAdogvorFileUploadComplete(s, e) {
+        console.log('onAdogvorFileUploadComplete', e)
 		if (e.isValid) {
             LoadingPanel.Hide()
 			FreeSquareGridView.PerformCallback('onAdogvorFileUploadComplete')
+		} else {
+			LoadingPanel.Hide()
+			if (e.errorText) {
+				alert(e.errorText)
+			} else {
+				alert("Помилка")
+			}
 		}
-		//console.log('onAdogvorFileUploadComplete', s)
-		//console.log('onAdogvorFileUploadComplete', e)
 	}
 
 	window.onload = function () {
@@ -595,7 +602,7 @@ WHERE id = @id"
         <dx:GridViewDataTextColumn FieldName="auction_tablo" Caption="Аукціон" VisibleIndex="0"  Width="170px" ReadOnly="true">
 			<DataItemTemplate>
 
-                <dx:ASPxButton runat="server" ID="AuctionZayavkaBtn" Text="Подати заявку" AutoPostBack="false" Visible='<%# Eval("cabinetOrendarStage").ToString() == "" %>' OnInit="AuctionZayavkaBtn_Init" >
+                <dx:ASPxButton Enabled="true" runat="server" ID="AuctionZayavkaBtn" Text="Подати заявку" AutoPostBack="false" Visible='<%# Eval("cabinetOrendarStage").ToString() == "" %>' OnInit="AuctionZayavkaBtn_Init" >
                     <ClientSideEvents Click="function(s, e) { AuctionZayavkaClick(s,e); }" />
                 </dx:ASPxButton>
                 

@@ -308,9 +308,17 @@
 		}
 
 		function onAdogvorFileUploadComplete(s, e) {
+			console.log("onAdogvorFileUploadComplete.e", e)
 			if (e.isValid) {
 				LoadingPanel.Hide()
 				FreeSquareGridView.PerformCallback('onAdogvorFileUploadComplete')
+			} else {
+				LoadingPanel.Hide()
+				if (e.errorText) {
+					alert(e.errorText)
+				} else {
+					alert("Помилка")
+				}
 			}
 			//console.log('onAdogvorFileUploadComplete', s)
 			//console.log('onAdogvorFileUploadComplete', e)
