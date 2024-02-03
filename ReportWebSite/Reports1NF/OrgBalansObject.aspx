@@ -467,6 +467,7 @@
         function OnEndCallback(s, e) {
             AdjustSize();
 
+			console.log("grid.IsEditing()", grid.IsEditing())
             if (grid.IsEditing()) {
 				var popup = s.GetEditFormTable();
                 $(felm__tmp1.mainElement).hide();
@@ -608,6 +609,14 @@
 		var paramRid = <%= ParamRid %>;
         var paramBid = <%= ParamBid %>;
         var editFreeSquareMode = <%= EditFreeSquareMode.ToString().ToLower() %>;
+
+        if (editFreeSquareMode) {
+			setTimeout(() => {
+                //alert(11);
+                grid.StartEditRow(0);
+				//alert(12);
+			}, 500);
+        }
 	</script>
 
 

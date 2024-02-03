@@ -249,7 +249,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
                     }
                 }
 
-                ASPxGridViewFreeSquare.StartEdit(0);
+                //ASPxGridViewFreeSquare.StartEdit(0);
             }
         }
             //////

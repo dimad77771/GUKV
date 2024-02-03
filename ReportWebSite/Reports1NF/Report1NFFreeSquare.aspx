@@ -54,7 +54,7 @@
 					elem_1 = window["MainContent_FreeSquareGridView_DXEditor" + colnum_1];
 					elem_2 = window["MainContent_FreeSquareGridView_DXEditor" + colnum_2];
 
-					console.log("AddHandlerToEditor...");
+					//console.log("AddHandlerToEditor...");
 					if (elem_1 != null && elem_2 != null) {
 						elem_1.ValueChanged.AddHandler(OnDropDownChange);
 					} else {
