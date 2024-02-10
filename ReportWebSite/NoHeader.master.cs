@@ -16,8 +16,9 @@ public partial class NoHeader : System.Web.UI.MasterPage
         bool userIsReportReviewer = Roles.IsUserInRole(Utils.Report1NFReviewerRole);
         bool userIsRdaController = Roles.IsUserInRole(Utils.RDAControllerRole);
         bool userIsMistoController = Roles.IsUserInRole(Utils.MISTOControllerRole);
+        bool userIsOcenka = Roles.IsUserInRole(Utils.OcenkaRole);
 
-		/*
+        /*
         // If user does not belong to the role "1NFReportReviewer", hide the menu items related to 1NF reports
         if (!userIsReportReviewer && !userIsRdaController && !userIsMistoController)
         {
@@ -69,8 +70,8 @@ public partial class NoHeader : System.Web.UI.MasterPage
         }
 		*/
 
-		// If user is not authenticated, hide the main menu
-		if (Membership.GetUser() == null)
+        // If user is not authenticated, hide the main menu
+        if (Membership.GetUser() == null)
         {
 			MainRibbon.Visible = false;
 
@@ -116,6 +117,13 @@ public partial class NoHeader : System.Web.UI.MasterPage
             var menu = MainRibbon.Tabs.Single(q => q.Text == "Контроль використання");
             var smenu = menu.Groups[0].Items.Single(q => q.Text == "Надходження до бюджету");
             smenu.Visible = false;
+        }
+
+
+        if (!userIsOcenka)
+        {
+            var menu = MainRibbon.Tabs.Single(q => q.Text == "Оцінка");
+            menu.Visible = false;
         }
 
     }

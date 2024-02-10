@@ -16,6 +16,8 @@ public partial class Assessment_AssessmentObjects : System.Web.UI.Page
     {
         Response.Cache.SetNoStore();
 
+        if (!Roles.IsUserInRole(Utils.OcenkaRole)) Response.Redirect("~/Account/Restricted.aspx");
+
         bool userIsReportManager = Roles.IsUserInRole(Utils.ReportManagerRole);
 
         ButtonShowFoldersPopup1.Visible = userIsReportManager;

@@ -13,6 +13,8 @@ public partial class Assessment_SODList : System.Web.UI.Page
     {
         Response.Cache.SetNoStore();
 
+        if (!Roles.IsUserInRole(Utils.OcenkaRole)) Response.Redirect("~/Account/Restricted.aspx");
+
         // bool userIsReportManager = Roles.IsUserInRole(Utils.ReportManagerRole);
 
         // Check if this is first loading of this page

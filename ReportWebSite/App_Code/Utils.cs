@@ -59,6 +59,7 @@ public static class Utils
     public const string OrgOccupationAdmin = "OrgOccupationAdmin";
     public const string UsersAdmin = "UsersAdmin";
     public const string ConveyancingConfirmation = "ConveyancingConfirmation";
+    public const string OcenkaRole = "Оцінка";
 
     public const string AdministratorRole = "Administrator";
 
