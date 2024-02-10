@@ -83,6 +83,12 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
 
+<mini:ProfiledSqlDataSource ID="SqlDataSourceFreecycleStepDict" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="select rtrim(ltrim(concat(namf,' ',nami,' ',namo))) fio, id from dict_orandodavec_user order by 1">
+</mini:ProfiledSqlDataSource>
+
+
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDictStanRecieve" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT stan_recieve_id, stan_recieve_name, step_ord FROM dict_stan_recieve ORDER BY step_ord">
@@ -370,7 +376,8 @@ SET
 	[stan_recieve_date] = @stan_recieve_date,
 	[stan_recieve_description] = @stan_recieve_description,
     [rep_modified_by] = @rep_modified_by,
-    [rep_modify_date] = @rep_modify_date 
+    [rep_modify_date] = @rep_modify_date,
+    [orandodavec_user_id] = @orandodavec_user_id
 WHERE id = @report_id" 
 	onupdating="SqlDataSourceReports_Updating"
 	
@@ -809,6 +816,9 @@ WHERE id = @report_id"
             <DataItemTemplate>
                 <%# "<a target=\"_blank\" href=\"https://balans.gukv.gov.ua/card/" + Eval("zkpo_code") + "\">" + "Фін.звітн." + "</a>"%>
             </DataItemTemplate>
+            <EditItemTemplate>
+				<%# "<a target=\"_blank\" href=\"https://balans.gukv.gov.ua/card/" + Eval("zkpo_code") + "\">" + "Фін.звітн." + "</a>"%>
+			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
 <%--        <dx:GridViewDataTextColumn FieldName="old_industry" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="14" Visible="False" Caption="Галузь (Баланс)">
@@ -1247,6 +1257,17 @@ WHERE id = @report_id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
+        <dx:GridViewDataComboBoxColumn FieldName="orandodavec_user_id" Caption="Контроль орендодавця" Width="200px" VisibleIndex="130">
+            <PropertiesComboBox 
+				DataSourceID="SqlDataSourceFreecycleStepDict"
+				DropDownStyle="DropDownList"
+				DropDownWidth="500px"
+                AllowNull="true"
+				TextField="fio"  
+				ValueField="id">
+            </PropertiesComboBox>  
+        </dx:GridViewDataComboBoxColumn>
+
     </Columns>
 
     <TotalSummary>
@@ -1316,7 +1337,7 @@ WHERE id = @report_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A4_12" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A4_14" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

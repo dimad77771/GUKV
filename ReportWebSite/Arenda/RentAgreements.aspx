@@ -252,7 +252,9 @@
 ,ar.insurance_sum
 ,ar.insurance_start
 ,ar.insurance_end
+
 ,ar.orandodavec_user_id
+,(select rtrim(ltrim(concat(Q2.namf,' ',Q2.nami,' ',Q2.namo))) from reports1nf Q1 join dict_orandodavec_user Q2 on Q2.id = Q1.orandodavec_user_id where Q1.organization_id = m.org_balans_id) as orandodavec_user_name
 
 ,isnull(ddd.name, 'Невідомо') as sphera_dialnosti
 ,priznachennya = dc.purpose_str
@@ -653,7 +655,7 @@ WHERE id = @arenda_id"
         <dx:GridViewDataTextColumn FieldName="povidoleno4_num" ReadOnly="True"
             VisibleIndex="124" Visible="True" Caption="Повідомлення орендаря до орендодавця про намір використовувати об'єкт (№)"></dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataComboBoxColumn FieldName="orandodavec_user_id" Caption="Контроль орендодавця" Width="200px" VisibleIndex="130">
+        <%--<dx:GridViewDataComboBoxColumn FieldName="orandodavec_user_id" Caption="Контроль орендодавця" Width="200px" VisibleIndex="130">
             <PropertiesComboBox 
 				DataSourceID="SqlDataSourceFreecycleStepDict"
 				DropDownStyle="DropDownList"
@@ -662,7 +664,10 @@ WHERE id = @arenda_id"
 				TextField="fio"  
 				ValueField="id">
             </PropertiesComboBox>  
-        </dx:GridViewDataComboBoxColumn>
+        </dx:GridViewDataComboBoxColumn>--%>
+
+        <dx:GridViewDataTextColumn FieldName="orandodavec_user_name" ReadOnly="True"
+            VisibleIndex="131" Visible="True" Caption="Контроль орендодавця"></dx:GridViewDataTextColumn>
 
 
 <%--        <dx:GridViewDataTextColumn FieldName="n_cost_narah" ReadOnly="True" VisibleIndex="78" Caption="(NEW) Орендна ставка (%)"></dx:GridViewDataTextColumn>

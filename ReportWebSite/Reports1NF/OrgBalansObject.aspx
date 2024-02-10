@@ -512,6 +512,9 @@
         }
 
         function CustomizeEditFormTable() {
+            return; //2024-02-10: по указанию С. убрали
+
+
             console.log("a");
             var include_in_perelik = felm__include_in_perelik.GetValue();
             var showrow1 = false;
