@@ -3318,7 +3318,7 @@ public static class Utils
                         cmd.Parameters.Add(new SqlParameter("repid", ReportID));
                         cmd.Parameters.Add(new SqlParameter("bid", data.BuildingID));
                         cmd.Parameters.Add(new SqlParameter("orgbal", data.OrgBalansID));
-                        cmd.Parameters.Add(new SqlParameter("orgrent", data.OrgRenterID));
+                        cmd.Parameters.Add(new SqlParameter("orgrent", data.OrgRenterID ?? (object)DBNull.Value));
                         cmd.Parameters.Add(new SqlParameter("orggiv", data.OrgGiverID ?? (object)DBNull.Value));
                         cmd.Parameters.Add(new SqlParameter("adt", agreementDate));
                         cmd.Parameters.Add(new SqlParameter("anum", data.AgreementNum));
@@ -3365,7 +3365,7 @@ public class CreateNewArendaDogovorData
     public int AgreementDateDay { get; set; }
     public int BuildingID { get; set; }
     public int OrgBalansID { get; set; }
-    public int OrgRenterID { get; set; }
+    public int? OrgRenterID { get; set; }
     public int? OrgGiverID { get; set; }
     public string OrgGiverComment { get; set; }
 

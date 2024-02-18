@@ -347,7 +347,7 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 				transaction.Commit();
 			}
 		}
-		else if (change_step && freecycle_step_dict_id == 200900)
+		else if (change_step && new int?[] { 200900, 180 }.Contains(freecycle_step_dict_id))
 		{
 			dbparams["@is_included"].Value = 0;
 
@@ -863,7 +863,7 @@ select
 	fs.id,
 	b.building_id,
 	rep.report_id,
-	bal.id as orgBalansID,
+	org.id as orgBalansID,
 	isnull(ddd.name, 'Невизначені') as sf_upr
 FROM view_reports1nf rep
 join reports1nf_balans bal on bal.report_id = rep.report_id
@@ -899,8 +899,8 @@ connection, transaction);
 			AgreementDateDay = stage_docdate.Value.Day,
 			BuildingID = building_id,
 			OrgBalansID = orgBalansID,
-			OrgRenterID = GetRenterID(sf_upr),
-			OrgGiverID = null,
+			OrgRenterID = null,
+			OrgGiverID = GetRenterID(sf_upr),
 			OrgGiverComment = "",
 		};
 		Utils.CreateNewArendaDogovor(report_id, username, dogparm);
@@ -1209,7 +1209,7 @@ where fs.id = " + dd(free_square_id);
 
 	public static void ValidateProzoroNumber(int? freecycle_step_dict_id, string prozoro_number)
 	{
-		if (new int?[] { 200200, 200300, 200400, 200500, 200600, 200700, 200800, 200820, 200840, 200860, 200870, 200880, 200900 }.Contains(freecycle_step_dict_id))
+		if (new int?[] { 200200, 200300, 200400, 200500, 200600, 200700, 200800, 200820, 200840, 200860, 200870, 200880, 200900, 180 }.Contains(freecycle_step_dict_id))
 		{
 			if (string.IsNullOrEmpty((prozoro_number ?? "").Trim()))
 			{
@@ -1220,7 +1220,7 @@ where fs.id = " + dd(free_square_id);
 
 	public static void ValidateDocdateDocnum(int? freecycle_step_dict_id, string current_stage_docnum, DateTime? current_stage_docdate)
 	{
-		if (new int?[] { 200900 }.Contains(freecycle_step_dict_id))
+		if (new int?[] { 200900, 180 }.Contains(freecycle_step_dict_id))
 		{
 			if (string.IsNullOrEmpty((current_stage_docnum ?? "").Trim()))
 			{
