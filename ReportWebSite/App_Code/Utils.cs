@@ -3258,5 +3258,116 @@ public static class Utils
             return WebConfigurationManager.AppSettings["NoUseCabinet"] == "1";
         }
     }
-    
+
+
+
+    public static bool CreateNewArendaDogovor(int ReportID, string username, CreateNewArendaDogovorData data)
+    {
+        {
+            DateTime agreementDate = new DateTime(data.AgreementDateYear, data.AgreementDateMonth + 1, data.AgreementDateDay);
+
+            SqlConnection connection = Utils.ConnectToDatabase();
+
+            if (connection != null)
+            {
+                // Copy the building information to report
+                //using (SqlCommand cmd = new SqlCommand("INSERT INTO reports1nf_buildings SELECT b.*, @repid AS 'report_id' FROM buildings b WHERE b.id = @bid", connection))
+                //{
+                //    cmd.Parameters.Add(new SqlParameter("repid", ReportID));
+                //    cmd.Parameters.Add(new SqlParameter("bid", data.BuildingID));
+
+                //    cmd.ExecuteNonQuery();
+                //}
+
+                // Get the generated building ID from the 'reports1nf_buildings' table
+                int uniqueBuildingId = Reports1NFUtils.GenerateUniqueBuilding(connection, data.BuildingID, ReportID);
+
+                if (uniqueBuildingId > 0)
+                {
+                    // Get the available ID for the new rent agreement
+                    int minExistingId = 0;
+
+                    using (SqlCommand cmd = new SqlCommand("SELECT MIN(id) FROM reports1nf_arenda WHERE report_id = @repid", connection))
+                    {
+                        cmd.Parameters.Add(new SqlParameter("repid", ReportID));
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                if (!reader.IsDBNull(0))
+                                    minExistingId = reader.GetInt32(0);
+                            }
+
+                            reader.Close();
+                        }
+                    }
+
+                    int newAgreementId = (minExistingId < 0) ? minExistingId - 1 : -1;
+
+                    // Create a new rent agreement
+                    string query = @"INSERT INTO reports1nf_arenda
+                            (id, report_id, building_id, org_balans_id, org_renter_id, org_giver_id, agreement_date, agreement_num,
+                                building_1nf_unique_id, agreement_state, is_deleted, update_src_id, modified_by, modify_date)
+                            VALUES
+                            (@aid, @repid, @bid, @orgbal, @orgrent, @orggiv, @adt, @anum, @buid, 1, 0, 2, @usr, @dt)";
+
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.Add(new SqlParameter("aid", newAgreementId));
+                        cmd.Parameters.Add(new SqlParameter("repid", ReportID));
+                        cmd.Parameters.Add(new SqlParameter("bid", data.BuildingID));
+                        cmd.Parameters.Add(new SqlParameter("orgbal", data.OrgBalansID));
+                        cmd.Parameters.Add(new SqlParameter("orgrent", data.OrgRenterID));
+                        cmd.Parameters.Add(new SqlParameter("orggiv", data.OrgGiverID ?? (object)DBNull.Value));
+                        cmd.Parameters.Add(new SqlParameter("adt", agreementDate));
+                        cmd.Parameters.Add(new SqlParameter("anum", data.AgreementNum));
+                        cmd.Parameters.Add(new SqlParameter("buid", uniqueBuildingId));
+                        cmd.Parameters.Add(new SqlParameter("usr", username));
+                        cmd.Parameters.Add(new SqlParameter("dt", DateTime.Now));
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Create an entry for rent payment information
+                    using (SqlCommand cmd = new SqlCommand("INSERT INTO reports1nf_arenda_payments (report_id, arenda_id) VALUES (@repid, @aid)", connection))
+                    {
+                        cmd.Parameters.Add(new SqlParameter("aid", newAgreementId));
+                        cmd.Parameters.Add(new SqlParameter("repid", ReportID));
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // If comment is specified, add the default comment
+                    if (data.OrgGiverID != Utils.GUKVOrganizationID && data.OrgGiverComment.Length > 0)
+                    {
+                        Reports1NFUtils.AddComment(connection, ReportID, data.OrgGiverComment,
+                            0, 0, 0, newAgreementId, 0, "EditGiverName", Resources.Strings.RentAgreementGiver, false, false);
+                    }
+                }
+
+                connection.Close();
+            }
+        }
+
+        return true;
+    }
+
+
+
+}
+
+public class CreateNewArendaDogovorData
+{
+    public string AgreementNum { get; set; }
+    public int AgreementDateYear { get; set; }
+    public int AgreementDateMonth { get; set; }
+    public int AgreementDateDay { get; set; }
+    public int BuildingID { get; set; }
+    public int OrgBalansID { get; set; }
+    public int OrgRenterID { get; set; }
+    public int? OrgGiverID { get; set; }
+    public string OrgGiverComment { get; set; }
+
+    public int AgreementToDeleteID { get; set; }
 }

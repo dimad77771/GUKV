@@ -197,12 +197,12 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 			var wh = @"
 			(
 				(
-					--isnull(ddd.name, 'Невідомо') <> 'Невизначені' and 
-					obj.NumOfObj >= 1
+					isnull(ddd.name, 'Невідомо') <> 'Невизначені' 
+					--and obj.NumOfObj >= 1
 				)
 				or
 				(
-					--isnull(ddd.name, 'Невідомо') = 'Невизначені' and
+					isnull(ddd.name, 'Невідомо') = 'Невизначені' and
 					(
 						PAY_DEBT_TOTAL >= 1.0 or
 						PAY_50_DEBT_CUR >= 1.0 or

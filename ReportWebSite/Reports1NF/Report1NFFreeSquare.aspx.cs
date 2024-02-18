@@ -349,12 +349,15 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 		}
 		else if (change_step && freecycle_step_dict_id == 200900)
 		{
+			dbparams["@is_included"].Value = 0;
+
 			using (var connection = Utils.ConnectToDatabase())
 			using (var transaction = connection.BeginTransaction())
 			{
 				var additionalData = new Dictionary<string, object>();
 				additionalData.Add("current_stage_docnum", current_stage_docnum);
 				additionalData.Add("current_stage_docdate", current_stage_docdate);
+				CabinetUtils222.AfterDogovorReestration(free_square_id, connection, transaction, current_stage_docnum, current_stage_docdate);
 				CabinetUtils222.SendEmail(connection, transaction, free_square_id, "Договір зареєстровано", additionalData: additionalData);
 				transaction.Commit();
 			}
@@ -849,6 +852,76 @@ public static class CabinetUtils222
 		catch (Exception) { }
 	}
 
+	public static void AfterDogovorReestration(int free_square_id, SqlConnection connection, SqlTransaction transaction, string stage_docnum, DateTime? stage_docdate)
+	{
+		var username = Utils.GetUser();
+
+
+		var result = new List<string>();
+		var data = GetDataTable(@"
+select
+	fs.id,
+	b.building_id,
+	rep.report_id,
+	bal.id as orgBalansID,
+	isnull(ddd.name, 'Невизначені') as sf_upr
+FROM view_reports1nf rep
+join reports1nf_balans bal on bal.report_id = rep.report_id
+JOIN view_reports1nf_buildings b ON b.unique_id = bal.building_1nf_unique_id
+join dbo.reports1nf_balans_free_square fs on fs.balans_id = bal.id and fs.report_id = rep.report_id
+join reports1nf_org_info org on org.id = bal.organization_id
+left join [dbo].[dict_streets] st on b.addr_street_id = st.id
+left join dbo.dict_zgoda_renter zg on fs.zgoda_renter_id = zg.id
+left join dbo.dict_zgoda_renter zg2 on fs.zgoda_control_id = zg2.id
+LEFT JOIN (
+			select obp.org_id
+			, occ.name
+			, occ.id
+			, per.name as period 
+			from org_by_period obp
+			join dict_rent_period per on per.id = obp.period_id and per.is_active = 1
+			join dict_rent_occupation occ on occ.id = obp.org_occupation_id
+		  ) DDD ON DDD.org_id = rep.organization_id
+where fs.id = " + free_square_id, 
+connection, transaction);
+
+		var row = data.Rows[0];
+		var building_id = (int)row["building_id"];
+		var report_id = (int)row["report_id"];
+		var orgBalansID = (int)row["orgBalansID"];
+		var sf_upr = (string)row["sf_upr"];
+
+		var dogparm = new CreateNewArendaDogovorData
+		{
+			AgreementNum = stage_docnum,
+			AgreementDateYear = stage_docdate.Value.Year,
+			AgreementDateMonth = stage_docdate.Value.Month,
+			AgreementDateDay = stage_docdate.Value.Day,
+			BuildingID = building_id,
+			OrgBalansID = orgBalansID,
+			OrgRenterID = GetRenterID(sf_upr),
+			OrgGiverID = null,
+			OrgGiverComment = "",
+		};
+		Utils.CreateNewArendaDogovor(report_id, username, dogparm);
+
+	}
+	
+	static int GetRenterID(string sf_upr)
+	{
+		if (sf_upr == "Голосіївський район") return 8515;
+		if (sf_upr == "Дарницький район") return 8400;
+		if (sf_upr == "Деснянський район") return 1728;
+		if (sf_upr == "Дніпровський район") return 99405315;
+		if (sf_upr == "Оболонський район") return 9826;
+		if (sf_upr == "Печерський район") return 15130;
+		if (sf_upr == "Подільський район") return 141824;
+		if (sf_upr == "Святошинський район") return 137676;
+		if (sf_upr == "Солом'янський район") return 8566;
+		if (sf_upr == "Шевченківський район") return 308543;
+
+		return 27065;
+	}
 
 	public static void ChangeStage(int free_square_id, int stage_id, SqlConnection connection, SqlTransaction transaction)
 	{
