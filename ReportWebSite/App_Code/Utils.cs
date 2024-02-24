@@ -193,7 +193,8 @@ public static class Utils
 			string reportTitle, 
 			string gridDataSourceID = null, 
 			ExportGridToXLS__ExportHiddenColumn exportHiddenColumnCallback = null,
-			ExportGridToXLS__AfterBuildXlsx afterBuildXlsx = null)
+			ExportGridToXLS__AfterBuildXlsx afterBuildXlsx = null,
+            ExportGridToXLS__ExportHiddenColumn exportExludeColumnCallback = null)
     {
         // If the data source ID is specified, bind the grid to data
         if (!string.IsNullOrEmpty(gridDataSourceID))
@@ -205,7 +206,7 @@ public static class Utils
         // Hide the Card columns; they should not be exported
         Dictionary<int, bool> cardColumns = new Dictionary<int, bool>();
 
-        HideGridCardColumns(grid, cardColumns, exportHiddenColumnCallback);
+        HideGridCardColumns(grid, cardColumns, exportHiddenColumnCallback, exportExludeColumnCallback);
 
         // Adjust column width
         SetGridExporterProps(grid, exporter, reportTitle, page);
@@ -360,7 +361,9 @@ public static class Utils
     }
 
     private static void HideGridCardColumns(DevExpress.Web.ASPxGridView grid,
-        Dictionary<int, bool> cardColumns, ExportGridToXLS__ExportHiddenColumn exportHiddenColumnCallback = null)
+        Dictionary<int, bool> cardColumns, 
+        ExportGridToXLS__ExportHiddenColumn exportHiddenColumnCallback = null,
+        ExportGridToXLS__ExportHiddenColumn exportExludeColumnCallback = null)
     {
         for (int i = 0; i < grid.Columns.Count; i++)
         {
@@ -381,7 +384,11 @@ public static class Utils
             // Not all columns in all grids are DATA columns, therefore casting
             // may result in a null reference (ex: command columns).
 
-            if (column != null && column.Caption.ToLower().Trim().StartsWith(Resources.Strings.CardColumnTitle))
+            if (
+                    (column != null && column.Caption.ToLower().Trim().StartsWith(Resources.Strings.CardColumnTitle))
+                    ||
+                    (column != null && exportExludeColumnCallback != null && exportExludeColumnCallback(column))
+                )
             {
                 cardColumns[i] = column.Visible;
 

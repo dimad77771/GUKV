@@ -46,7 +46,8 @@ public partial class Reports1NF_Report1NFFreeShow : System.Web.UI.Page
     {
 		this.ExportGridToXLS(GridViewFreeSquareExporter, FreeSquareGridView, LabelReportTitle1.Text, "",
 			exportHiddenColumnCallback: q => (q.FieldName == "pdfurl"),
-			afterBuildXlsx: ASPxButton_FreeSquare_ExportXLS_AfterBuildXlsx
+			afterBuildXlsx: ASPxButton_FreeSquare_ExportXLS_AfterBuildXlsx,
+			exportExludeColumnCallback: q => (q.FieldName == "auction_tablo")
 		);
     }
 

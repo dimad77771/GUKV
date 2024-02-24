@@ -320,7 +320,7 @@ WHERE id = @id"
                             Text="XLS - Microsoft Excel&reg;" 
                             OnClick="ASPxButton_FreeSquare_ExportXLS_Click" Width="180px">
                         </dx:ASPxButton>
-                        <br />
+                        <%--<br />
                         <dx:ASPxButton ID="ASPxButton_FreeSquare_ExportPDF" runat="server" 
                             Text="PDF - Adobe Acrobat&reg;" 
                             OnClick="ASPxButton_FreeSquare_ExportPDF_Click" Width="180px">
@@ -329,7 +329,7 @@ WHERE id = @id"
                         <dx:ASPxButton ID="ASPxButton_FreeSquare_ExportCSV" runat="server" 
                             Text="CSV - значення, розділені комами" 
                             OnClick="ASPxButton_FreeSquare_ExportCSV_Click" Width="180px">
-                        </dx:ASPxButton>
+                        </dx:ASPxButton>--%>
                     </dx:PopupControlContentControl>
                 </ContentCollection>
             </dx:ASPxPopupControl>

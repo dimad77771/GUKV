@@ -274,6 +274,11 @@
 																<SmallImage Url="Styles/ribbonicon_5.png" />
 															</dx:RibbonButtonItem>
 														</Items>
+														<Items>
+															<dx:RibbonButtonItem Text="Реєстрація" NavigateUrl="Reports1NF/Valsndogovor.aspx">
+																<SmallImage Url="Styles/ribbonicon_20.png" />
+															</dx:RibbonButtonItem>
+														</Items>
 													</dx:RibbonGroup>
 												</Groups>
 											</dx:RibbonTab>
