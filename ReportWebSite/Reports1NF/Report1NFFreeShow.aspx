@@ -602,7 +602,7 @@ WHERE id = @id"
         <dx:GridViewDataTextColumn FieldName="auction_tablo" Caption="Аукціон" VisibleIndex="0"  Width="170px" ReadOnly="true">
 			<DataItemTemplate>
 
-                <dx:ASPxButton Enabled="true" runat="server" ID="AuctionZayavkaBtn" Text="Подати заявку" AutoPostBack="false" Visible='<%# Eval("cabinetOrendarStage").ToString() == "" %>' OnInit="AuctionZayavkaBtn_Init" >
+                <dx:ASPxButton Enabled="false" runat="server" ID="AuctionZayavkaBtn" Text="Подати заявку" AutoPostBack="false" Visible='<%# Eval("cabinetOrendarStage").ToString() == "" %>' OnInit="AuctionZayavkaBtn_Init" >
                     <ClientSideEvents Click="function(s, e) { AuctionZayavkaClick(s,e); }" />
                 </dx:ASPxButton>
                 
