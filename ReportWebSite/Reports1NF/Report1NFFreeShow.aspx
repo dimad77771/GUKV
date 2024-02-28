@@ -203,10 +203,10 @@
 ,fs.period_nouse
 ,fs.osoba_use_before
 ,fs.floor
-,water = case when fs.water = 1 then 'ТАК' when fs.water = 0 then 'НІ' end
-,heating = case when fs.heating = 1 then 'ТАК' when fs.heating = 0 then 'НІ' end
-,power = case when fs.power = 1 then 'ТАК' when fs.power = 0 then 'НІ' end
-,gas = case when fs.gas = 1 then 'ТАК' when fs.gas = 0 then 'НІ' end
+,water = case when fs.water = 1 then 1 when fs.water = 0 then 0 end
+,heating = case when fs.heating = 1 then 1 when fs.heating = 0 then 0 end
+,power = case when fs.power = 1 then 1 when fs.power = 0 then 0 end
+,gas = case when fs.gas = 1 then 1 when fs.gas = 0 then 0 end
 
 --,(select qq.name2 from view_dict_rental_rate qq where qq.id = fs.using_possible_id) as possible_using
 ,fs.possible_using
