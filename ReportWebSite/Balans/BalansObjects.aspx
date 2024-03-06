@@ -513,7 +513,7 @@
             VisibleIndex="70" Visible="True" Caption="Контактні телефони" Width="160px"></dx:GridViewDataTextColumn>
 
 
-        <dx:GridViewDataTextColumn FieldName="has_reports1nf_photos" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="70" Visible="True" Caption="Наявність фото" Width="40px">
+        <dx:GridViewDataTextColumn FieldName="has_reports1nf_photos" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="71" Visible="True" Caption="Наявність фото" Width="40px">
             <DataItemTemplate>
                <%# Eval("has_reports1nf_photos").Equals(1) ?
                        "<center><a title=\"Перейти до фото\" href=\"javascript:ShowReportBalansObjPhotoPlan(" + Eval("reports1nf_report_id") + "," + Eval("balans_id") + ", 'photo')\"><img border='0' src='../Styles/photo.png'/></a></center>"
@@ -523,7 +523,7 @@
             <Settings ShowInFilterControl="False" AllowAutoFilter="False" AllowHeaderFilter="False" />
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn FieldName="has_reports1nf_btiphoto" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="70" Visible="True" Caption="Наявність плану" Width="40px">
+        <dx:GridViewDataTextColumn FieldName="has_reports1nf_btiphoto" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="71" Visible="True" Caption="Наявність плану" Width="40px">
             <DataItemTemplate>
                <%# Eval("has_reports1nf_btiphoto").Equals(1) ?
                        "<center><a title=\"Перейти до планів\" href=\"javascript:ShowReportBalansObjPhotoPlan(" + Eval("reports1nf_report_id") + "," + Eval("balans_id") + ", 'plan')\"><img border='0' src='../Styles/plan.png'/></a></center>"
@@ -613,7 +613,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A4_005" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A4_007" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

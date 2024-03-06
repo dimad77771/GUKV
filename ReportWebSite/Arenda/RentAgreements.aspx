@@ -262,6 +262,7 @@
 ,(select top 1 q.report_id from reports1nf_arenda q where q.id = ar.id) as arenda_report_id
 ,case when ar.id in (select b.id from dbo.reports1nf_arenda b where b.org_balans_id = ar.org_balans_id and ISNULL(b.is_deleted, 0) = 0 /*and b.agreement_state = 1*/ ) then 1 else 0 end as is_dpz_object 
 ,(SELECT count(*) FROM reports1nf_arenda_notes WHERE (is_deleted IS NULL OR is_deleted = 0) AND report_id = (select top 1 q.report_id from reports1nf_arenda q where q.id = ar.id) AND arenda_id = m.arenda_id) as count_dogovor_objects
+,case when exists (select 1 from reports1nf_arendaphotos Q where Q.arenda_id = m.arenda_id) then 1 else 0 end as has_reports1nf_photos
 
         FROM view_arenda_agreements m  /*m_view_arenda_agreements m3 */
         join arenda ar on ar.id = m.arenda_id
@@ -568,6 +569,19 @@ WHERE id = @arenda_id"
 
         <dx:GridViewDataDateColumn FieldName="modify_date" ReadOnly="True"
             VisibleIndex="80" Visible="False" Caption="Дата Актуальності"></dx:GridViewDataDateColumn>
+
+        <dx:GridViewDataTextColumn FieldName="has_reports1nf_photos" ReadOnly="True" 
+            VisibleIndex="80" Visible="True" Caption="Наявність фото/плану" Width="40px">
+            <DataItemTemplate>
+               <%# Eval("has_reports1nf_photos").Equals(1) ?
+                       "<center><img border='0' src='../Styles/photo.png'/></center>"
+                       : ""
+               %>
+            </DataItemTemplate>
+            <Settings ShowInFilterControl="False" AllowAutoFilter="False" AllowHeaderFilter="False" />
+        </dx:GridViewDataTextColumn>
+
+
         <dx:GridViewDataTextColumn FieldName="payment_narah" ReadOnly="True"
             VisibleIndex="81" Visible="True" Caption="Нараховано орендної плати за звітний період, грн. (без ПДВ)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="last_year_saldo" ReadOnly="True"
@@ -670,6 +684,8 @@ WHERE id = @arenda_id"
             VisibleIndex="131" Visible="True" Caption="Контроль орендодавця"></dx:GridViewDataTextColumn>
 
 
+
+
 <%--        <dx:GridViewDataTextColumn FieldName="n_cost_narah" ReadOnly="True" VisibleIndex="78" Caption="(NEW) Орендна ставка (%)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="n_rent_rate" ReadOnly="True" VisibleIndex="79" Caption="(NEW) Орендна ставка (грн)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="n_cost_expert_total" ReadOnly="True" VisibleIndex="81" Caption="(NEW) Експертна вартість (грн)"></dx:GridViewDataTextColumn>
@@ -723,7 +739,7 @@ WHERE id = @arenda_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_21" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_22" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
