@@ -264,7 +264,8 @@ povidoleno1_date,povidoleno1_num,
 povidoleno2_date,povidoleno2_num,
 povidoleno3_date,povidoleno3_num,
 povidoleno4_date,povidoleno4_num,
-(SELECT sum(Q.cost_agreement) FROM reports1nf_arenda_notes Q WHERE (Q.is_deleted IS NULL OR Q.is_deleted = 0) AND Q.report_id = ar.report_id AND arenda_id = ar.id) as cost_agreement_total
+(SELECT sum(Q.cost_agreement) FROM reports1nf_arenda_notes Q WHERE (Q.is_deleted IS NULL OR Q.is_deleted = 0) AND Q.report_id = ar.report_id AND arenda_id = ar.id) as cost_agreement_total,
+case when exists (select 1 from reports1nf_arendaphotos Q where Q.arenda_id = ar.id) then 1 else 0 end as has_reports1nf_photos
 
 FROM reports1nf_arenda ar
         INNER JOIN reports1nf rep ON rep.id = ar.report_id
@@ -910,6 +911,17 @@ FROM reports1nf_arenda ar
         <dx:GridViewDataTextColumn FieldName="agreement_state" VisibleIndex="14" Caption="Стан договору"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="modified_by" VisibleIndex="15" Caption="Користувач"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
 
+        <dx:GridViewDataTextColumn FieldName="has_reports1nf_photos" ReadOnly="True" 
+            VisibleIndex="15" Visible="True" Caption="Наявність фото/плану" Width="40px">
+            <DataItemTemplate>
+               <%# Eval("has_reports1nf_photos").Equals(1) ?
+                       "<center><img border='0' src='../Styles/photo.png'/></center>"
+                       : ""
+               %>
+            </DataItemTemplate>
+            <Settings ShowInFilterControl="False" AllowAutoFilter="False" AllowHeaderFilter="False" />
+        </dx:GridViewDataTextColumn>
+
         <dx:GridViewDataTextColumn FieldName="sqr_payed_by_percent" VisibleIndex="16" Caption="на яку нараховується плата за використання у відсотках від вартості" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="sqr_payed_by_1uah" VisibleIndex="17" Caption="на яку нараховується плата за використання в розмірі 1 грн" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="sqr_payed_hourly" VisibleIndex="18" Caption="надана в погодинну оренду, чи відповідно до угод про співпрацю" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
@@ -1040,7 +1052,7 @@ FROM reports1nf_arenda ar
     <SettingsPager PageSize="10" AlwaysShowPager="true" />
     <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
     <Styles Header-Wrap="True" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaList.2" Enabled="True" Version="B7" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaList.2" Enabled="True" Version="B8" />
 
     <ClientSideEvents
         Init="function (s,e) { PrimaryGridView.PerformCallback('init:'); }"

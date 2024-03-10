@@ -236,6 +236,10 @@
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
+																	<dx:RibbonDropDownButtonItem Text="станом на 2023 рік" NavigateUrl="20240201" Target="_blank">
+																		<SmallImage IconID="scheduling_groupbydate_16x16">
+																		</SmallImage>
+																	</dx:RibbonDropDownButtonItem>
 																</Items>
 																<LargeImage IconID="scheduling_groupbydate_32x32">
 																</LargeImage>
