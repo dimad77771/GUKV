@@ -92,6 +92,8 @@ public partial class Cards_AssessmentCard : System.Web.UI.Page
 
 					connectionSql.Close();
 				}
+
+				ObjDetails.FindControlRecursive("FormViewState").DataBind();
 			}
 		}
 		catch (Exception ex)
@@ -159,6 +161,14 @@ public partial class Cards_AssessmentCard : System.Web.UI.Page
 
 			cmd.ExecuteNonQuery();
 		}
+	}
+
+	public string EvaluateSignature(object modifiedBy, object modifyDate)
+	{
+		string userName = (modifiedBy is string) ? (string)modifiedBy : Resources.Strings.SignatureUnknownUser;
+		string date = (modifyDate is DateTime) ? ((DateTime)modifyDate).ToShortDateString() + " " + ((DateTime)modifyDate).ToShortTimeString() : Resources.Strings.SignatureUnknownDate;
+
+		return string.Format(Resources.Strings.SignatureObjCard, userName, date);
 	}
 
 	protected void AddQueryParameter(ref string fieldList, string fieldName, string paramName,

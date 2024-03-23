@@ -329,6 +329,13 @@
             </DataItemTemplate>
 			<Settings AutoFilterCondition="Contains" />
 		</dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="valuation_dates" ReadOnly="True" ShowInCustomizationForm="True" Caption="Дата Оцінки" Width="90px">
+			<DataItemTemplate>
+                <%# EvaluateMultiLineValue(Eval("valuation_dates")) %>
+            </DataItemTemplate>
+			<Settings AutoFilterCondition="Contains" />
+		</dx:GridViewDataTextColumn>
+
 
 		<dx:GridViewDataTextColumn FieldName="cost_prim" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Вартість об’єкту без ПДВ (грн.)" Width="100px">
 		</dx:GridViewDataTextColumn>
@@ -390,7 +397,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Visible"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Assessment.Objects" Version="A14" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.Assessment.Objects" Version="A15" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

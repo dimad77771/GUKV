@@ -357,6 +357,33 @@
                                </dx:ASPxComboBox>
                             </td>
                         </tr>
+
+						<tr><td colspan="7" height="4px"/></tr>
+						<tr>
+<%--                            <td width="100px"><dx:ASPxLabel ID="ASPxLabel10" runat="server" Text="Вид рецензії"></dx:ASPxLabel></td>
+                            <td width="8px">&nbsp;</td>
+                            <td>
+								<dx:ASPxComboBox ID="valuation_kind_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="290px"
+									IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceDictExpertValuationKind" Value='<%# Eval("valuation_kind_id") %>'
+									Title="Вид рецензії"
+									DropDownStyle="DropDown" />
+                            </td>--%>
+                            <%--<td width="100px"><dx:ASPxLabel ID="ASPxLabel10" runat="server" Text="Стан рецензування"></dx:ASPxLabel></td>--%>
+                            <%--<td width="8px">&nbsp;</td>--%>
+                            <%--<td>
+								<dx:ASPxComboBox ID="stan_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="290px"
+									IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceDictExpertStan" Value='<%# Eval("stan_id") %>'
+									Title="Стан рецензії"
+									DropDownStyle="DropDown" />
+                            </td>--%>
+                            <%--<td width="8px">&nbsp;</td>--%>
+                            <td width="100px"><dx:ASPxLabel ID="ASPxLabel11" runat="server" Text="Площа Об'єкту"></dx:ASPxLabel></td>
+                            <td width="8px">&nbsp;</td>
+                            <td>
+								<dx:ASPxSpinEdit ID="obj_square" runat="server" NumberType="Float" Value='<%# Eval("obj_square") %>' Width="290px"
+									Title="Площа Об'єкту" SpinButtons-ShowIncrementButtons="false" AllowMouseWheel="false" />
+                            </td>
+                        </tr>
                     </table>
                 </dx:PanelContent>
             </PanelCollection>
@@ -432,31 +459,7 @@
                             </td>
                         </tr>--%>
                         <tr><td colspan="7" height="4px"/></tr>
-                        <tr>
-<%--                            <td width="100px"><dx:ASPxLabel ID="ASPxLabel10" runat="server" Text="Вид рецензії"></dx:ASPxLabel></td>
-                            <td width="8px">&nbsp;</td>
-                            <td>
-								<dx:ASPxComboBox ID="valuation_kind_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="290px"
-									IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceDictExpertValuationKind" Value='<%# Eval("valuation_kind_id") %>'
-									Title="Вид рецензії"
-									DropDownStyle="DropDown" />
-                            </td>--%>
-                            <%--<td width="100px"><dx:ASPxLabel ID="ASPxLabel10" runat="server" Text="Стан рецензування"></dx:ASPxLabel></td>--%>
-                            <%--<td width="8px">&nbsp;</td>--%>
-                            <%--<td>
-								<dx:ASPxComboBox ID="stan_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="290px"
-									IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceDictExpertStan" Value='<%# Eval("stan_id") %>'
-									Title="Стан рецензії"
-									DropDownStyle="DropDown" />
-                            </td>--%>
-                            <%--<td width="8px">&nbsp;</td>--%>
-                            <td width="100px"><dx:ASPxLabel ID="ASPxLabel11" runat="server" Text="Площа Об'єкту"></dx:ASPxLabel></td>
-                            <td width="8px">&nbsp;</td>
-                            <td>
-								<dx:ASPxSpinEdit ID="obj_square" runat="server" NumberType="Float" Value='<%# Eval("obj_square") %>' Width="290px"
-									Title="Площа Об'єкту" SpinButtons-ShowIncrementButtons="false" />
-                            </td>
-                        </tr>
+                        
                     </table>
                 </dx:PanelContent>
             </PanelCollection>
@@ -506,6 +509,27 @@
                 </dx:PanelContent>
             </PanelCollection>
         </dx:ASPxRoundPanel>
+
+		<p class="SpacingPara"/>
+
+		<asp:FormView runat="server" BorderStyle="None" ID="FormViewState" DataSourceID="SqlDataSourceAssessmentProperties" EnableViewState="False">
+            <ItemTemplate>
+                <dx:ASPxRoundPanel ID="StatePanel" runat="server" HeaderText="Стан">
+                    <ContentPaddings PaddingTop="4px" PaddingBottom="4px" />
+                    <PanelCollection>
+                        <dx:PanelContent ID="PanelContent7" runat="server">
+                            <table border="0" cellspacing="0" cellpadding="0" width="810px">
+                                <tr>
+									<tr><td colspan="7" height="4px"/></tr>
+                                    <td><dx:ASPxLabel ID="ASPxLabel34" runat="server" Text='<%# EvaluateSignature(Eval("modified_by"), Eval("modify_date")) %>'></dx:ASPxLabel></td>
+									<tr><td colspan="7" height="4px"/></tr>
+                                </tr>
+                            </table>
+                        </dx:PanelContent>
+                    </PanelCollection>
+                </dx:ASPxRoundPanel>
+            </ItemTemplate>
+        </asp:FormView>
 
 		<p class="SpacingPara"/>
 		<table border="0" cellspacing="0" cellpadding="0">
