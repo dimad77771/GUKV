@@ -96,14 +96,14 @@
                 <ClientSideEvents CheckedChanged="CheckBoxRentedObjectsDPZ_CheckedChanged" />
             </dx:ASPxCheckBox>
         </td>       
-       <td>
+       <td style="display:none">
             <dx:ASPxCheckBox ID="CheckBoxRentedObjectsComVlasn" runat="server" Checked='False' Text="Лише Ком. Власність"
                 Width="155px" ClientInstanceName="CheckBoxRentedObjectsComVlasn" >
                 <ClientSideEvents CheckedChanged="CheckBoxRentedObjectsComVlasn_CheckedChanged" />
             </dx:ASPxCheckBox>
         </td>
         <td>
-            <dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowNeziznacheni" runat="server" Checked='False' Text="Невизначені" ToolTip="Показувати невизначені"
+            <dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowNeziznacheni" runat="server" Checked='False' Text="Діючі" ToolTip="Показувати діючі"
                 Width="80px" ClientInstanceName="CheckBoxBalansObjectsShowNeziznacheni" >
                 <ClientSideEvents CheckedChanged="CheckBoxBalansObjectsShowNeziznacheni_CheckedChanged" />
             </dx:ASPxCheckBox>

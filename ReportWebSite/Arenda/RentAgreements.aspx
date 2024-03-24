@@ -96,7 +96,7 @@
             </dx:ASPxCheckBox>
         </td>        
         <td>
-            <dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowNeziznacheni" runat="server" Checked='False' Text="Невизначені" ToolTip="Показувати невизначені"
+            <dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowNeziznacheni" runat="server" Checked='False' Text="Діючі" ToolTip="Показувати діючі"
                 Width="80px" ClientInstanceName="CheckBoxBalansObjectsShowNeziznacheni" >
                 <ClientSideEvents CheckedChanged="CheckBoxBalansObjectsShowNeziznacheni_CheckedChanged" />
             </dx:ASPxCheckBox>
@@ -396,6 +396,7 @@ WHERE id = @arenda_id"
         <dx:GridViewDataTextColumn FieldName="org_renter_short_name" ReadOnly="True"
             VisibleIndex="9" Visible="True" Caption="Орендар - Коротка Назва" 
             Width="200px">
+            <Settings AutoFilterCondition="Contains" />
             <DataItemTemplate>
                 <%# "<a href=\"javascript:ShowOrganizationCard(" + Eval("org_renter_id") + ")\">" + Eval("org_renter_short_name") + "</a>"%>
             </DataItemTemplate>
@@ -472,8 +473,8 @@ WHERE id = @arenda_id"
             VisibleIndex="35" Visible="False" Caption="Борг (грн.)"></dx:GridViewDataTextColumn>       --%>
         <dx:GridViewDataTextColumn FieldName="n_cost_agreement" ReadOnly="True"
             VisibleIndex="36" Visible="True" Caption="Плата за використання, грн."></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="cost_agreement_max" ReadOnly="True"
-            VisibleIndex="37" Visible="True" Caption="Максимальна Орендна Плата за об'єкт договору (грн.)"></dx:GridViewDataTextColumn>
+        <%--<dx:GridViewDataTextColumn FieldName="cost_agreement_max" ReadOnly="True"
+            VisibleIndex="37" Visible="True" Caption="Максимальна Орендна Плата за об'єкт договору (грн.)"></dx:GridViewDataTextColumn>--%>
 <%--        <dx:GridViewDataTextColumn FieldName="cost_narah_max" ReadOnly="True"
             VisibleIndex="38" Visible="True" Caption="Ставка за використання (%) об'єкту з макс.орен.платою"></dx:GridViewDataTextColumn>
           <dx:GridViewDataTextColumn FieldName="n_cost_expert_1m" ReadOnly="True" 
@@ -511,7 +512,7 @@ WHERE id = @arenda_id"
         <dx:GridViewDataTextColumn FieldName="rent_rate_uah" ReadOnly="True"
             VisibleIndex="53" Visible="False" Caption="Ставка (грн.)"></dx:GridViewDataTextColumn>    --%>
         <dx:GridViewDataTextColumn FieldName="rent_square" ReadOnly="True" 
-            VisibleIndex="54" Visible="False" Caption="Площа (кв.м.)"></dx:GridViewDataTextColumn>
+            VisibleIndex="54" Visible="False" Caption="Площа приміщення, що використовується, кв.м"></dx:GridViewDataTextColumn>
 <%--        <dx:GridViewDataTextColumn FieldName="num_akt" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="55" Visible="False" Caption="Номер Акту"></dx:GridViewDataTextColumn>
         <dx:GridViewDataDateColumn FieldName="date_akt" ReadOnly="True" ShowInCustomizationForm="False"

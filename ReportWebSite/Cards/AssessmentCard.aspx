@@ -198,7 +198,7 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceOrganizations" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="select id, CONCAT(zkpo_code, ' - ', full_name) name from organizations order by case when zkpo_code <> '' then 1 else 2 end, 2">
+    SelectCommand="select id, CONCAT(zkpo_code, ' - ', full_name) name from (select ROW_NUMBER() over(partition by isnull(zkpo_code,'') order by modify_date desc) rnpp, * from organizations) T where isnull(zkpo_code,'') = '' or T.rnpp = 1 order by case when zkpo_code <> '' then 1 else 2 end, 2">
 </mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceStreets" runat="server" 

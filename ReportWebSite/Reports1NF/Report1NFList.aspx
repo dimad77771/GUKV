@@ -432,7 +432,7 @@ WHERE id = @report_id"
             <asp:Label ID="LabelReportTitle1" runat="server" Text="Перелік балансоутримувачів" CssClass="reporttitle"></asp:Label>
         </td>
         <td>
-            <dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowNeziznacheni" runat="server" Checked='False' Text="Невизначені" ToolTip="Показувати невизначені"
+            <dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowNeziznacheni" runat="server" Checked='True' Text="ДПЗ" ToolTip="Показувати ДПЗ"
                 Width="80px" ClientInstanceName="CheckBoxBalansObjectsShowNeziznacheni" >
                 <ClientSideEvents CheckedChanged="CheckBoxBalansObjectsShowNeziznacheni_CheckedChanged" />
             </dx:ASPxCheckBox>
@@ -861,11 +861,11 @@ WHERE id = @report_id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("old_organ") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="status" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="22" Visible="False" Caption="Фіз. / Юр. Особа">
+        <%--<dx:GridViewDataTextColumn FieldName="status" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="22" Visible="False" Caption="Фіз. / Юр. Особа">
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("status") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
-        </dx:GridViewDataTextColumn>
+        </dx:GridViewDataTextColumn>--%>
         <dx:GridViewDataTextColumn FieldName="director_fio" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="23" Visible="False" Caption="ФІО Директора">
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("director_fio") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
@@ -898,9 +898,9 @@ WHERE id = @report_id"
         <dx:GridViewDataTextColumn FieldName="kved_code" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="32" Visible="False" Caption="КВЕД"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="koatuu" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="33" Visible="False" Caption="ОАТУУ"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="otdel_gukv" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="34" Visible="False" Caption="Стан юр.особи"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="mayno" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="35" Visible="False" Caption="Правовий режим майна"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="is_liquidated" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="36" Visible="False" Caption="Ліквідовано"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="liquidation_date" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="37" Visible="False" Caption="Дата Ліквідації"></dx:GridViewDataTextColumn>
+        <%--<dx:GridViewDataTextColumn FieldName="mayno" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="35" Visible="False" Caption="Правовий режим майна"></dx:GridViewDataTextColumn>--%>
+        <%--<dx:GridViewDataTextColumn FieldName="is_liquidated" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="36" Visible="False" Caption="Ліквідовано"></dx:GridViewDataTextColumn>--%>
+        <%--<dx:GridViewDataTextColumn FieldName="liquidation_date" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="37" Visible="False" Caption="Дата Ліквідації"></dx:GridViewDataTextColumn>--%>
         <dx:GridViewDataTextColumn FieldName="contact_email" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="38" Visible="False" Caption="Ел. Адреса"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="contact_posada" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="39" Visible="False" Caption="Контактна Особа"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="sfera_upr" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="40" Visible="False" Caption="Сфера Управління"></dx:GridViewDataTextColumn>

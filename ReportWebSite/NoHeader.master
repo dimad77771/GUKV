@@ -34,7 +34,7 @@
 									<dx:ASPxRibbon ID="MainRibbon" runat="server" ClientInstanceName="MainRibbon" ShowFileTab="false" Styles-TabContent-Height="100px" Width="100%" BackColor="White" AllowMinimize="true" Minimized="true">
 										<Tabs>
 
-											<dx:RibbonTab Text="Публічна">
+											<dx:RibbonTab Text="Звіти">
 												<Groups>
 													<dx:RibbonGroup Text="">
 														<Items>
@@ -58,17 +58,17 @@
 												</Groups>
 											</dx:RibbonTab>
 
-											<dx:RibbonTab Text="Контрагенти">
+											<dx:RibbonTab Text="Юридичні особи">
 												<Groups>
 													<dx:RibbonGroup Text="">
 														<Items>
 															<dx:RibbonButtonItem Text="Перелік Балансоутримувачів" NavigateUrl="Reports1NF/Report1NFList.aspx?smallform=1&smode=1">
 																<SmallImage Url="Styles/ribbonicon_5.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="Інші суб'єкти використання" NavigateUrl="Reports1NF/Report1NFList.aspx?smallform=1&smode=2">
+															<%--<dx:RibbonButtonItem Text="Інші суб'єкти використання" NavigateUrl="Reports1NF/Report1NFList.aspx?smallform=1&smode=2">
 																<SmallImage Url="Styles/ribbonicon_17.png" />
-															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="Перелік контрагентів" NavigateUrl="Reports1NF/Report1NFList.aspx">
+															</dx:RibbonButtonItem>--%>
+															<dx:RibbonButtonItem Text="Підприємства та організації" NavigateUrl="Reports1NF/Report1NFList.aspx">
 																<SmallImage Url="Styles/ribbonicon_24.png" />
 															</dx:RibbonButtonItem>
 															<%--<dx:RibbonButtonItem Text="Роздрукувати картку організації" NavigateUrl="Cards/PrintOrgCard.aspx?orgid=305033">

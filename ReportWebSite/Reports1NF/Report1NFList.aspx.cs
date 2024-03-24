@@ -120,7 +120,7 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 		}
 		else if (SMode == 0)
 		{
-			LabelReportTitle1.Text = @"Реєстр користувачів майна";
+			LabelReportTitle1.Text = @"Реєстр підприємств та організацій";
 			this.Title = LabelReportTitle1.Text;
 		}
 
@@ -164,7 +164,7 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 		//if (!IsPostBack)
 		{
 			CheckBoxBalansObjectsShowNeziznacheni.Visible = false;
-			CheckBoxBalansObjectsShowNeziznacheni.Checked = true;
+			CheckBoxBalansObjectsShowNeziznacheni.Checked = false;
 
 			var column1 = PrimaryGridView.Columns.OfType<GridViewDataColumn>().SingleOrDefault(q => q.FieldName == "inventar_recieve_date");
 			if (column1 != null)
@@ -431,7 +431,7 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
         e.Command.Parameters["@period_year"].Value = DateTime.Now.Date.Month == 1 ? DateTime.Now.Date.Year - 1 : DateTime.Now.Date.Year;
         e.Command.Parameters["@p_misto_id"].Value = ParmMistoId;
 		e.Command.Parameters["@smode"].Value = SMode;
-		e.Command.Parameters["@p_show_neziznacheni"].Value = CheckBoxBalansObjectsShowNeziznacheni.Checked ? 1 : 0;
+		e.Command.Parameters["@p_show_neziznacheni"].Value = CheckBoxBalansObjectsShowNeziznacheni.Checked ? 0 : 1;
 	}
 
 	protected void SqlDataSourceReports_Updating(object sender, SqlDataSourceCommandEventArgs e)

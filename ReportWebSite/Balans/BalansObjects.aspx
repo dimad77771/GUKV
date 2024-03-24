@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="BalansObjects.aspx.cs" Inherits="Balans_BalansObjects" MasterPageFile="~/NoHeader.master" Title="Об'єкти на Балансі" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="BalansObjects.aspx.cs" Inherits="Balans_BalansObjects" MasterPageFile="~/NoHeader.master" Title="Об'єкти на Балансах" %>
 
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
@@ -101,7 +101,7 @@
 <table border="0" cellspacing="4" cellpadding="0" width="100%">
     <tr>
         <td style="width: 100%;">
-            <asp:Label ID="LabelReportTitle1" runat="server" Text="Об'єкти на балансі" CssClass="reporttitle"></asp:Label>
+            <asp:Label ID="LabelReportTitle1" runat="server" Text="Об'єкти на балансах" CssClass="reporttitle"></asp:Label>
         </td>
         <td>
             <dx:ASPxCheckBox ID="CheckBoxBalansObjectsDPZ" runat="server" Checked='True' Text="Дані ДПЗ"
@@ -109,19 +109,19 @@
                 <ClientSideEvents CheckedChanged="CheckBoxBalansObjectsDPZ_CheckedChanged" />
             </dx:ASPxCheckBox>
         </td>        
-        <td>
+        <td style="display:none">
             <dx:ASPxCheckBox ID="CheckBoxBalansObjectsComVlasn" runat="server" Checked='False' Text="Лише Ком. Власність"
                 Width="145px" ClientInstanceName="CheckBoxBalansObjectsComVlasn" >
                 <ClientSideEvents CheckedChanged="CheckBoxBalansObjectsComVlasn_CheckedChanged" />
             </dx:ASPxCheckBox>
         </td>
-        <td>
+        <td style="display:none">
             <dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowDeleted" runat="server" Checked='False' Text="Видалені"
                 Width="80px" ClientInstanceName="CheckBoxBalansObjectsShowDeleted" >
                 <ClientSideEvents CheckedChanged="CheckBoxBalansObjectsShowDeleted_CheckedChanged" />
             </dx:ASPxCheckBox>
         </td>
-        <td>
+        <td style="display:none">
             <dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowNeziznacheni" runat="server" Checked='False' Text="Невизначені" ToolTip="Показувати невизначені"
                 Width="80px" ClientInstanceName="CheckBoxBalansObjectsShowNeziznacheni" >
                 <ClientSideEvents CheckedChanged="CheckBoxBalansObjectsShowNeziznacheni_CheckedChanged" />
@@ -240,9 +240,9 @@
 
     WHERE
  	 ((@p_dpz_filter = 0) OR (@p_dpz_filter <> 0 AND vb.balans_id in (select b.id from dbo.reports1nf_balans b where b.organization_id = vb.organization_id and ISNULL(b.is_deleted, 0) = 0 ) )) AND
-        ((@p_com_filter = 0) OR (@p_com_filter <> 0 AND (vb.org_ownership_int IN (32,33,34) OR vb.form_ownership_int IN (32,33,34)))) AND
-        ((@p_show_deleted = 1) OR (@p_show_deleted = 0 AND (vb.is_deleted IS NULL OR vb.is_deleted = 0 OR vb.is_not_accepted = 1))) AND
-        ((@p_show_neziznacheni = 1) OR (@p_show_neziznacheni = 0 AND (isnull(ddd.name, 'Невідомо') <> 'Невизначені'))) AND
+        --((@p_com_filter = 0) OR (@p_com_filter <> 0 AND (vb.org_ownership_int IN (32,33,34) OR vb.form_ownership_int IN (32,33,34)))) AND
+        --((@p_show_deleted = 1) OR (@p_show_deleted = 0 AND (vb.is_deleted IS NULL OR vb.is_deleted = 0 OR vb.is_not_accepted = 1))) AND
+        --((@p_show_neziznacheni = 1) OR (@p_show_neziznacheni = 0 AND (isnull(ddd.name, 'Невідомо') <> 'Невизначені'))) AND
         ((@p_rda_district_id = 0) OR (vb.org_ownership_int in (select id from dict_org_ownership where is_rda = 1) AND vb.org_district_id = @p_rda_district_id))"
     OnSelecting="SqlDataSourceBalansObjects_Selecting" >
     <SelectParameters>
