@@ -17,7 +17,10 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using DevExpress.Compression;
 using DevExpress.Web;
+using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Packaging;
 using Syncfusion.XlsIO;
+using WP = DocumentFormat.OpenXml.Wordprocessing;
 
 
 public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
@@ -228,6 +231,22 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 			}
 
 			FreeSquareGridView.DataBind();
+		}
+
+
+		else if ((e.Parameters ?? "").StartsWith("zvit_1:"))
+		{
+			//var free_square_id = int.Parse(e.Parameters.Replace("zvit_1:", ""));
+			//new Report1NFFreeSquareZvit1() 
+			//{ 
+			//	Page = Page, 
+			//	free_square_id = free_square_id 
+			//}.Run();
+
+			//using (var connection = Utils.ConnectToDatabase())
+			//{
+			//}
+			//FreeSquareGridView.DataBind();
 		}
 
 		else if (e.Parameters == "onAdogvorFileUploadComplete")
@@ -524,6 +543,17 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 			{
 				e.Visible = DevExpress.Utils.DefaultBoolean.False;
 			}
+		}
+	}
+
+	protected void FreeSquareGridView_FillContextMenuItems(object sender, ASPxGridViewContextMenuEventArgs e)
+	{
+		e.Items.ForEach(x => x.Visible = false);
+
+		if (e.MenuType == GridViewContextMenuType.Rows)
+		{
+			e.Items.Add("Лист щодо включення до переліку вільних", "Report_1");
+			//e.Items.Add("Звит 2", "Report_2");
 		}
 	}
 }
@@ -1496,3 +1526,5 @@ where fs.id = " + dd(free_square_id);
 	}
 
 }
+
+

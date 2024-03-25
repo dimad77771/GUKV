@@ -324,6 +324,17 @@
 			//console.log('onAdogvorFileUploadComplete', e)
 		}
 
+		function OnContextMenuItemClick(s, e) {
+			var free_square_id = s.GetRowKey(e.elementIndex)
+			window.open(
+				'Report1.aspx?id=' + free_square_id,
+				'_blank',
+			);
+
+			//console.log('OnContextMenuItemClick.free_square_id=', free_square_id)
+			//FreeSquareGridView.PerformCallback("zvit_1:" + free_square_id);
+		}
+
     // ]]>
 
 	</script>
@@ -719,8 +730,17 @@ WHERE id = @id"
 		OnCustomCallback="GridViewFreeSquare_CustomCallback"
 		OnCustomButtonInitialize="FreeSquareGridView_CustomButtonInitialize"
 		OnCustomFilterExpressionDisplayText="GridViewFreeSquare_CustomFilterExpressionDisplayText"
-		OnProcessColumnAutoFilter="GridViewFreeSquare_ProcessColumnAutoFilter">
-		<ClientSideEvents CustomButtonClick="ShowPhoto" BeginCallback="OnBeginCallback" />
+		OnProcessColumnAutoFilter="GridViewFreeSquare_ProcessColumnAutoFilter"
+		OnContextMenuInitialize2="Grid_ContextMenuInitialize"
+		OnFillContextMenuItems="FreeSquareGridView_FillContextMenuItems"
+		>
+		<ClientSideEvents CustomButtonClick="ShowPhoto" BeginCallback="OnBeginCallback" ContextMenuItemClick="OnContextMenuItemClick" />
+
+		<SettingsContextMenu Enabled="true">
+            <%--<RowMenuItemVisibility ExportMenu-Visible="true">
+                <GroupSummaryMenu SummaryAverage="false" SummaryMax="false" SummaryMin="false" SummarySum="false" />
+            </RowMenuItemVisibility>--%>
+        </SettingsContextMenu>
 
 		<SettingsCommandButton>
 			<EditButton>
@@ -789,6 +809,43 @@ WHERE id = @id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("isexistsphoto") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>--%>
 			</dx:GridViewDataCheckColumn>
+
+			<dx:GridViewDataComboBoxColumn FieldName="freecycle_step_dict_id" Caption="Стан процесу передачі" VisibleIndex="1" Width="300px">
+				<PropertiesComboBox
+					DataSourceID="SqlDataSourceFreecycleStepDict"
+					DropDownStyle="DropDownList"
+					DropDownWidth="500px"
+					TextField="step_name"
+					ValueField="step_id">
+					<ClientSideEvents DropDown="function(s, e) { OnDropDown(s) }" />
+				</PropertiesComboBox>
+				<EditItemTemplate>
+					<dx:ASPxComboBox
+						ID="ID_freecycle_step_dict_id"
+						runat="server" Value='<%# Bind("freecycle_step_dict_id") %>'
+						DataSourceID="SqlDataSourceFreecycleStepDict"
+						DropDownStyle="DropDownList"
+						Width="300px"
+						DropDownWidth="500px"
+						ValueType="System.Int32"
+						TextField="step_name"
+						ValueField="step_id">
+						<ClientSideEvents DropDown="function(s, e) { OnDropDown(s) }" />
+					</dx:ASPxComboBox>
+					<dx:ASPxButton runat="server" ID="AuctionZayavkaBtn" Text="Подати заявку" AutoPostBack="false" Visible="false">
+						<ClientSideEvents Click="function(s, e) { AuctionZayavkaClick(s,e); }" />
+					</dx:ASPxButton>
+				</EditItemTemplate>
+			</dx:GridViewDataComboBoxColumn>
+
+			<dx:GridViewDataDateColumn FieldName="freecycle_step_date" Caption="Дата стан процесу передачі" VisibleIndex="1" Width="100px">
+				<EditItemTemplate>
+					<dx:ASPxLabel runat="server" Text="" CssClass="editLabelFormStyle"></dx:ASPxLabel>
+				</EditItemTemplate>
+			</dx:GridViewDataDateColumn>
+
+
+
 			<dx:GridViewDataTextColumn FieldName="district" Caption="Район" VisibleIndex="2" Width="120px" ReadOnly="true">
 				<SettingsHeaderFilter Mode="CheckedList" />
 				<EditItemTemplate>
@@ -1021,39 +1078,6 @@ WHERE id = @id"
 				}" />
             </PropertiesComboBox>
         </dx:GridViewDataComboBoxColumn>--%>
-			<dx:GridViewDataComboBoxColumn FieldName="freecycle_step_dict_id" Caption="Стан процесу передачі" VisibleIndex="50" Width="300px">
-				<PropertiesComboBox
-					DataSourceID="SqlDataSourceFreecycleStepDict"
-					DropDownStyle="DropDownList"
-					DropDownWidth="500px"
-					TextField="step_name"
-					ValueField="step_id">
-					<ClientSideEvents DropDown="function(s, e) { OnDropDown(s) }" />
-				</PropertiesComboBox>
-				<EditItemTemplate>
-					<dx:ASPxComboBox
-						ID="ID_freecycle_step_dict_id"
-						runat="server" Value='<%# Bind("freecycle_step_dict_id") %>'
-						DataSourceID="SqlDataSourceFreecycleStepDict"
-						DropDownStyle="DropDownList"
-						Width="300px"
-						DropDownWidth="500px"
-						ValueType="System.Int32"
-						TextField="step_name"
-						ValueField="step_id">
-						<ClientSideEvents DropDown="function(s, e) { OnDropDown(s) }" />
-					</dx:ASPxComboBox>
-					<dx:ASPxButton runat="server" ID="AuctionZayavkaBtn" Text="Подати заявку" AutoPostBack="false" Visible="false">
-						<ClientSideEvents Click="function(s, e) { AuctionZayavkaClick(s,e); }" />
-					</dx:ASPxButton>
-				</EditItemTemplate>
-			</dx:GridViewDataComboBoxColumn>
-
-			<dx:GridViewDataDateColumn FieldName="freecycle_step_date" Caption="Дата стан процесу передачі" VisibleIndex="52" Width="100px">
-				<EditItemTemplate>
-					<dx:ASPxLabel runat="server" Text="" CssClass="editLabelFormStyle"></dx:ASPxLabel>
-				</EditItemTemplate>
-			</dx:GridViewDataDateColumn>
 
 			<dx:GridViewDataComboBoxColumn FieldName="winner_id" Caption="Переможець аукціону (з кабінету)" VisibleIndex="55" Width="220px">
 				<PropertiesComboBox
@@ -1230,7 +1254,7 @@ WHERE id = @id"
 		<Settings VerticalScrollBarMode="Visible" VerticalScrollableHeight="500" />
 		<SettingsAdaptivity AdaptivityMode="HideDataCells" AllowOnlyOneAdaptiveDetailExpanded="true" AdaptiveDetailColumnCount="1" />
 
-		<SettingsBehavior EnableCustomizationWindow="True" AutoFilterRowInputDelay="2500" ColumnResizeMode="Control" />
+		<SettingsBehavior EnableCustomizationWindow="True" AutoFilterRowInputDelay="2500" ColumnResizeMode="Control" AllowSelectByRowClick="false" />
 		<SettingsPager AlwaysShowPager="true" PageSize="25"></SettingsPager>
 		<SettingsPopup>
 			<HeaderFilter Width="200" Height="300" />
@@ -1245,7 +1269,7 @@ WHERE id = @id"
 			ShowFooter="True"
 			VerticalScrollBarMode="Auto"
 			VerticalScrollBarStyle="Standard" />
-		<SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A3_004" Enabled="True" />
+		<SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A3_006" Enabled="True" />
 		<Styles Header-Wrap="True">
 			<Header Wrap="True"></Header>
 		</Styles>
