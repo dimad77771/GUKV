@@ -236,6 +236,15 @@
 	function CheckBoxBalansObjectsShowNeziznacheni_CheckedChanged(s, e) {
 
 		FreeSquareGridView.PerformCallback(AddWndHeightToCallbackParam("init:"));
+    }
+
+
+	function OnContextMenuItemClick(s, e) {
+		var id = s.GetRowKey(e.elementIndex)
+		window.open(
+			'Report2.aspx?id=' + id,
+			'_blank',
+		);
 	}
 
     // ]]>
@@ -594,8 +603,11 @@ WHERE id = @id"
         ClientInstanceName="FreeSquareGridView" 
         OnCustomCallback="GridViewFreeSquare_CustomCallback"
         OnCustomFilterExpressionDisplayText="GridViewFreeSquare_CustomFilterExpressionDisplayText"
-        OnProcessColumnAutoFilter="GridViewFreeSquare_ProcessColumnAutoFilter" >
-	   <ClientSideEvents CustomButtonClick="ShowPhoto" />
+        OnProcessColumnAutoFilter="GridViewFreeSquare_ProcessColumnAutoFilter"
+        OnFillContextMenuItems="FreeSquareGridView_FillContextMenuItems" >
+	   <ClientSideEvents CustomButtonClick="ShowPhoto" ContextMenuItemClick="OnContextMenuItemClick" />
+
+       <SettingsContextMenu Enabled="true"/>
 
 	    <SettingsCommandButton>
 		    <EditButton>

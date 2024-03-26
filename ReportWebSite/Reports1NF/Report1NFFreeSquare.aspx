@@ -736,11 +736,7 @@ WHERE id = @id"
 		>
 		<ClientSideEvents CustomButtonClick="ShowPhoto" BeginCallback="OnBeginCallback" ContextMenuItemClick="OnContextMenuItemClick" />
 
-		<SettingsContextMenu Enabled="true">
-            <%--<RowMenuItemVisibility ExportMenu-Visible="true">
-                <GroupSummaryMenu SummaryAverage="false" SummaryMax="false" SummaryMin="false" SummarySum="false" />
-            </RowMenuItemVisibility>--%>
-        </SettingsContextMenu>
+		<SettingsContextMenu Enabled="true"/>
 
 		<SettingsCommandButton>
 			<EditButton>

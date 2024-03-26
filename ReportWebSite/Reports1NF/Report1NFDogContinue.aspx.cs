@@ -204,4 +204,15 @@ public partial class Reports1NF_Report1NFDogContinue : System.Web.UI.Page
 		//    e.InputParameters["arenda_id"] = int.Parse(Request.QueryString["bid"]);
 	}
 
+	protected void FreeSquareGridView_FillContextMenuItems(object sender, ASPxGridViewContextMenuEventArgs e)
+	{
+		e.Items.ForEach(x => x.Visible = false);
+
+		if (e.MenuType == GridViewContextMenuType.Rows)
+		{
+			e.Items.Add("Лист щодо продовження", "Report_2"); 
+			//e.Items.Add("Звит 2", "Report_2");
+		}
+	}
+
 }
