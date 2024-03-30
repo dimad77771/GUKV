@@ -32,22 +32,84 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-		var id = Int32.Parse(Request.QueryString["id"]);
+		var sids = Request.QueryString["ids"];
+		var ids = sids.Split(';').Select(x => Int32.Parse(x)).ToArray();
 
-		new Report1NFFreeSquareZvit1()
+		new Report1NFFreeSquareZvit2()
 		{
 			Page = Page,
-			free_square_id = id
+			IDs = ids
 		}.Run();
 	}
 
 
-	public class Report1NFFreeSquareZvit1
+	public class Report1NFFreeSquareZvit2
 	{
 		public Page Page;
-		public int free_square_id;
 		public int ID;
+		public int[] IDs;
 		public bool IsOgoloshena;
+
+		public void Run()
+		{
+			string templateFileName = Page.Server.MapPath("Templates/" + "Лист_щодо_продовження.docx");
+
+			if (templateFileName.Length > 0)
+			{
+				using (TempFile tempFile = TempFile.FromExistingFile(templateFileName))
+				{
+					using (WordprocessingDocument wordDocument = WordprocessingDocument.Open(tempFile.FileName, true))
+					{
+						MainDocumentPart mainPart = wordDocument.MainDocumentPart;
+
+						if (mainPart != null)
+						{
+							UpdateTemplateFile(mainPart);
+						}
+
+						//SaltedHash sh = new SaltedHash("123");
+						//DocumentSettingsPart docSett = wordDocument.MainDocumentPart.DocumentSettingsPart;
+						//DocumentProtection documentProtection = new DocumentProtection();
+						//documentProtection.Edit = DocumentProtectionValues.ReadOnly;
+						//OnOffValue docProtection = new OnOffValue(true);
+						//documentProtection.Enforcement = docProtection;
+
+						//documentProtection.CryptographicAlgorithmClass = CryptAlgorithmClassValues.Hash;
+						//documentProtection.CryptographicProviderType = CryptProviderValues.RsaFull;
+						//documentProtection.CryptographicAlgorithmType = CryptAlgorithmValues.TypeAny;
+						//documentProtection.CryptographicAlgorithmSid = 4; // SHA1
+						//												  //    The iteration count is unsigned
+						//												  //UInt32Value uintVal = new UInt32Value();
+						//												  //uintVal.Value = (uint)123;
+						//documentProtection.CryptographicSpinCount = 1;
+						//documentProtection.Hash = sh.Hash;
+						//documentProtection.Salt = sh.Salt;
+						//wordDocument.MainDocumentPart.DocumentSettingsPart.Settings.AppendChild(documentProtection);
+						//wordDocument.MainDocumentPart.DocumentSettingsPart.Settings.Save();
+
+						wordDocument.Close();
+
+						// Dump the document contents to the output stream
+						System.IO.FileInfo info = new System.IO.FileInfo(tempFile.FileName);
+
+						var outfile = "Лист_щодо_продовження.docx";
+						Page.Response.Clear();
+						Page.Response.ClearHeaders();
+						Page.Response.ClearContent();
+						Page.Response.ContentType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+						Page.Response.AddHeader("content-disposition", "attachment; filename=" + outfile + "; size=" + info.Length.ToString());
+
+						// Pipe the stream contents to the output stream
+						using (var stream = File.Open(tempFile.FileName, FileMode.Open, FileAccess.ReadWrite))
+						{
+							stream.CopyTo(Page.Response.OutputStream);
+						}
+					}
+
+					Page.Response.End();
+				}
+			}
+		}
 
 		void UpdateTemplateFile(MainDocumentPart mainPart)
 		{
@@ -78,9 +140,10 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
 			var dataTable = new DataTable();
 			using (var cmd = factory.CreateCommand())
 			{
-				cmd.CommandText = @"
-WITH RR AS (select street_full_name,addr_nomer,rent_square, agreement_active_s from v_RentAgreements)
+				cmd.CommandText =
+					@"
 SELECT 
+fs.id,
 	fs.komis_protocol,
     fs.prozoro_number,
 	fs.using_possible_id,
@@ -88,7 +151,6 @@ SELECT
 	fs.include_in_perelik,
 	fs.current_stage_id,
 	fs.freecycle_step_dict_id,
-	fs.freecycle_step_date,
 	fs.current_stage_docdate,
 	fs.current_stage_docnum,
 	fs.modify_date2,
@@ -102,18 +164,18 @@ SELECT
     fs.info_priznach_nouse,
     fs.info_rahunok_postach,
     fs.priznach_before,
+    fs.orend_plat_borg,
     fs.period_nouse,
+    fs.stanom_na,
     fs.osoba_use_before,
-    fs.zalbalansvartist_date,
-    fs.osoba_oznakoml,
-    fs.rozmir_vidshkoduv,
  row_number() over (order by org.short_name, b.street_full_name, b.addr_nomer, fs.total_free_sqr) as npp     
-,fs.id
-,fs.balans_id
+,fs.arenda_id
 ,org.short_name as org_name
 ,org.zkpo_code
 ,org.report_id
 ,org.director_title as vidpov_osoba
+,(select Q.name from dict_streets Q where Q.id = org.addr_street_id) as balanutr_addr_street
+,org.addr_nomer as balanutr_addr_nomer
 
 ,b.district
 ,b.street_full_name as street_name
@@ -148,45 +210,56 @@ SELECT
 ,fs.modify_date
 ,fs.modified_by
 ,fs.note
-,fs.winner_id
-
-
-,dbo.[CabinetOrendarStage](fs.id, '-') as cabinetOrendarStage
 
 ,invest_solution = (select qq.name from dict_1nf_invest_solution qq where qq.id = fs.invest_solution_id)
 --, solution = fs.is_solution
 
 , fs.initiator
-, fs.meta_zvern
 , zg2.name as zgoda_control
 , zg.name as zgoda_renter
 
 ,st.kind
 ,rep.form_of_ownership
 ,rep.old_organ
-,reestr_no
 
 --,b.object_kind as vydbudynku
 ,history = case when isnull(b.history, 'НІ') = 'НІ' then '' else 'ТАК' end 
 , isnull(ddd.name, 'Невизначені') as sf_upr
+, case when exists (select 1 from reports1nf_arenda_dogcontinue_photos qq where qq.free_square_id = fs.id) then 1 else 0 end as isexistsphoto
 
-, case when exists (select 1 from reports1nf_balans_free_square_photos qq where qq.free_square_id = fs.id) then 1 else 0 end as isexistsphoto
-, case when exists (select 1 from RR qq 
-	where qq.street_full_name = b.street_full_name 
-		and qq.addr_nomer = (COALESCE(LTRIM(RTRIM(b.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer2)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer3)), ''))
-		and qq.rent_square = total_free_sqr
-		and qq.agreement_active_s = 'Договір діє'
-) then 1 else 0 end as isexistsdogovor
+,org_renter.zkpo_code as orendar_zkpo
+,org_renter.full_name as orendar_name
+
+,org_giver.zkpo_code as giver_zkpo
+,org_giver.full_name as giver_name
+,(select Q.name from dict_streets Q where Q.id = org_giver.addr_street_id) as giver_addr_street
+,org_giver.addr_nomer as giver_addr_nomer
+
+,bal.agreement_num
+,bal.agreement_date
+,bal.rent_finish_date
+,cast(round(DATEDIFF ( month, bal.agreement_date, bal.rent_finish_date ) / 12.0, 0) as int) as srok_dog
+
+,fs.orend_plat_last_month
+,fs.has_perevazh_pravo
+,fs.polipshanya_vartist
+,fs.polipshanya_finish_date
+,fs.primitki
+,fs.zalbalansvartist_date
+,fs.osoba_oznakoml
+,fs.rozmir_vidshkoduv
 
 FROM view_reports1nf rep
-join reports1nf_balans bal on bal.report_id = rep.report_id
+join reports1nf_arenda bal on bal.report_id = rep.report_id
 JOIN view_reports1nf_buildings b ON b.unique_id = bal.building_1nf_unique_id
-join dbo.reports1nf_balans_free_square fs on fs.balans_id = bal.id and fs.report_id = rep.report_id
---left join (select * from dbo.reports1nf_balans_free_square where id = (select top 1 id from dbo.reports1nf_balans_free_square where balans_id = bal.id)) fs on fs.balans_id = bal.id
-join reports1nf_org_info org on org.id = bal.organization_id
+join dbo.reports1nf_arenda_dogcontinue fs on fs.arenda_id = bal.id and fs.report_id = rep.report_id
+--left join (select * from dbo.reports1nf_arenda_dogcontinue where id = (select top 1 id from dbo.reports1nf_arenda_dogcontinue where arenda_id = bal.id)) fs on fs.arenda_id = bal.id
+join reports1nf_org_info org on org.id = bal.org_balans_id
 left join [dbo].[dict_streets] st on b.addr_street_id = st.id
 left join dbo.dict_zgoda_renter zg on fs.zgoda_renter_id = zg.id
 left join dbo.dict_zgoda_renter zg2 on fs.zgoda_control_id = zg2.id
+left join organizations org_renter on org_renter.id = bal.org_renter_id
+left outer join organizations org_giver ON org_giver.id = bal.org_giver_id and (org_giver.is_deleted is null or org_giver.is_deleted = 0)
 
 --OUTER APPLY (SELECT TOP 1 * FROM rent_free_square rfs
 --		WHERE rfs.building_id = bal.building_id AND
@@ -202,7 +275,7 @@ LEFT JOIN (
 			join dict_rent_occupation occ on occ.id = obp.org_occupation_id
 				) DDD ON DDD.org_id = rep.organization_id
 
-WHERE fs.id = " + free_square_id;
+        WHERE fs.id = " + ID;
 
 				cmd.CommandType = CommandType.Text;
 				cmd.Connection = connection;
@@ -214,15 +287,25 @@ WHERE fs.id = " + free_square_id;
 			}
 			var r = dataTable.Rows[0];
 
+			properties.Add("{Дата укладання договору}", GetDate(r["agreement_date"]));
+			properties.Add("{Номер договору}", r["agreement_num"]);
 			properties.Add("{Загальна площа об’єкта}", "" + GetDecimal(r["total_free_sqr"]));
-			properties.Add("{Назва Вулиці}", r["street_name"]);
-			properties.Add("{Номер Будинку}", r["addr_nomer"]);
-			properties.Add("{Балансоутримувач}", r["org_name"]);
-			properties.Add("{Ініціатор оренди}", r["initiator"]);
-			properties.Add("{Мета звернення}", r["meta_zvern"]);
+			properties.Add("{Найменування орендаря}", r["orendar_name"]);
+			properties.Add("{Строк оренди (роки)}", StrokOrenda(r["srok_dog"]));
+			properties.Add("{Адреса балансоутримувача (вулиця)}", r["balanutr_addr_street"]);
+			properties.Add("{Адреса балансоутримувача (номер дому)}", r["balanutr_addr_nomer"]);
 		}
 
+		string StrokOrenda(object arg)
+		{
+			if (arg is DBNull) return "";
 
+			var srok = (int)arg;
+
+			if (srok == 1) return "" + srok + " рік";
+			else if (srok == 2 || srok == 3 || srok == 4) return "" + srok + " ріки";
+			else return "" + srok + " років";
+		}
 
 		string nayavn(object arg)
 		{
@@ -342,67 +425,6 @@ WHERE fs.id = " + free_square_id;
 			}
 
 			return paragraphText;
-		}
-
-		public void Run()
-		{
-			string templateFileName = Page.Server.MapPath("Templates/" + "Лист_включ_вільні.docx");
-
-			if (templateFileName.Length > 0)
-			{
-				using (TempFile tempFile = TempFile.FromExistingFile(templateFileName))
-				{
-					using (WordprocessingDocument wordDocument = WordprocessingDocument.Open(tempFile.FileName, true))
-					{
-						MainDocumentPart mainPart = wordDocument.MainDocumentPart;
-
-						if (mainPart != null)
-						{
-							UpdateTemplateFile(mainPart);
-						}
-
-						//SaltedHash sh = new SaltedHash("123");
-						//DocumentSettingsPart docSett = wordDocument.MainDocumentPart.DocumentSettingsPart;
-						//DocumentProtection documentProtection = new DocumentProtection();
-						//documentProtection.Edit = DocumentProtectionValues.ReadOnly;
-						//OnOffValue docProtection = new OnOffValue(true);
-						//documentProtection.Enforcement = docProtection;
-
-						//documentProtection.CryptographicAlgorithmClass = CryptAlgorithmClassValues.Hash;
-						//documentProtection.CryptographicProviderType = CryptProviderValues.RsaFull;
-						//documentProtection.CryptographicAlgorithmType = CryptAlgorithmValues.TypeAny;
-						//documentProtection.CryptographicAlgorithmSid = 4; // SHA1
-						//												  //    The iteration count is unsigned
-						//												  //UInt32Value uintVal = new UInt32Value();
-						//												  //uintVal.Value = (uint)123;
-						//documentProtection.CryptographicSpinCount = 1;
-						//documentProtection.Hash = sh.Hash;
-						//documentProtection.Salt = sh.Salt;
-						//wordDocument.MainDocumentPart.DocumentSettingsPart.Settings.AppendChild(documentProtection);
-						//wordDocument.MainDocumentPart.DocumentSettingsPart.Settings.Save();
-
-						wordDocument.Close();
-
-						// Dump the document contents to the output stream
-						System.IO.FileInfo info = new System.IO.FileInfo(tempFile.FileName);
-
-						var outfile = "Лист_включ_вільні.docx";
-						Page.Response.Clear();
-						Page.Response.ClearHeaders();
-						Page.Response.ClearContent();
-						Page.Response.ContentType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-						Page.Response.AddHeader("content-disposition", "attachment; filename=" + outfile + "; size=" + info.Length.ToString());
-
-						// Pipe the stream contents to the output stream
-						using (var stream = File.Open(tempFile.FileName, FileMode.Open, FileAccess.ReadWrite))
-						{
-							stream.CopyTo(Page.Response.OutputStream);
-						}
-					}
-
-					Page.Response.End();
-				}
-			}
 		}
 
 		string GetDateMonthName(object date)

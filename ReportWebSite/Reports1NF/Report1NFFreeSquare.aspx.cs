@@ -553,7 +553,7 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 		if (e.MenuType == GridViewContextMenuType.Rows)
 		{
 			e.Items.Add("Лист щодо включення до переліку вільних", "Report_1");
-			//e.Items.Add("Звит 2", "Report_2");
+			e.Items.Add("Лист щодо виключення з переліку вільних", "Report_4");
 		}
 	}
 }

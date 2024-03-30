@@ -325,14 +325,62 @@
 		}
 
 		function OnContextMenuItemClick(s, e) {
-			var free_square_id = s.GetRowKey(e.elementIndex)
-			window.open(
-				'Report1.aspx?id=' + free_square_id,
-				'_blank',
-			);
+			//console.log('OnContextMenuItemClick.e', e)
+
+			if (e.item.name === "Report_1") {
+				s.GetRowValues(e.elementIndex, "id;komis_protocol;include_in_perelik", BuildReport1)
+			
+			} else if (e.item.name === "Report_3") {
+				FreeSquareGridView.GetSelectedFieldValues("id", BuildReport3);
+				//var free_square_id = s.GetRowKey(e.elementIndex)
+				//window.open(
+				//	'Report1.aspx?id=' + free_square_id,
+				//	'_blank',
+				//);
+			} else if (e.item.name === "Report_4") {
+				s.GetRowValues(e.elementIndex, "id;komis_protocol;include_in_perelik", BuildReport4)
+			}
 
 			//console.log('OnContextMenuItemClick.free_square_id=', free_square_id)
 			//FreeSquareGridView.PerformCallback("zvit_1:" + free_square_id);
+		}
+
+		function BuildReport1(values) {
+			if ((values[1] == "" || values[1] == null) && (values[2] == "" || values[2] == null)) {
+				var free_square_id = values[0]
+				window.open(
+					'Report1.aspx?id=' + free_square_id,
+					'_blank',
+				);
+			} else {
+				alert("Включення неможливо")
+			}
+		}
+
+		function BuildReport4(values) {
+			//if ((values[1] == "" || values[1] == null) && (values[2] == "" || values[2] == null)) {
+			var free_square_id = values[0]
+			window.open(
+					'Report4.aspx?id=' + free_square_id,
+					'_blank',
+				);
+			//} else {
+			//				alert("Включення неможливо")
+			//}
+		}
+
+		function BuildReport3(values) {
+			var idList = "";
+			for (var i = 0; i < values.length; i++) {
+				idList += values[i];
+				idList += ";";
+			}
+			console.log('idList', idList)
+
+			window.open(
+				'Report3.aspx?ids=' + idList,
+				'_blank',
+			);
 		}
 
     // ]]>

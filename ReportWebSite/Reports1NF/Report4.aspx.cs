@@ -214,12 +214,15 @@ WHERE fs.id = " + free_square_id;
 			}
 			var r = dataTable.Rows[0];
 
-			properties.Add("{Загальна площа об’єкта}", "" + GetDecimal(r["total_free_sqr"]));
-			properties.Add("{Назва Вулиці}", r["street_name"]);
-			properties.Add("{Номер Будинку}", r["addr_nomer"]);
 			properties.Add("{Балансоутримувач}", r["org_name"]);
-			properties.Add("{Ініціатор оренди}", r["initiator"]);
-			properties.Add("{Мета звернення}", r["meta_zvern"]);
+			properties.Add("{Загальна площа об’єкта}", "" + GetDecimal(r["total_free_sqr"]));
+			properties.Add("{Характеристика об’єкта оренди}", r["floor"]);
+			properties.Add("{Погодження орендодавця}", r["komis_protocol"]);
+
+			//properties.Add("{Назва Вулиці}", r["street_name"]);
+			//properties.Add("{Номер Будинку}", r["addr_nomer"]);
+			//properties.Add("{Ініціатор оренди}", r["initiator"]);
+			//properties.Add("{Мета звернення}", r["meta_zvern"]);
 		}
 
 
@@ -346,7 +349,7 @@ WHERE fs.id = " + free_square_id;
 
 		public void Run()
 		{
-			string templateFileName = Page.Server.MapPath("Templates/" + "Лист_включ_вільні.docx");
+			string templateFileName = Page.Server.MapPath("Templates/" + "Лист щодо виключення з переліку вільних.docx");
 
 			if (templateFileName.Length > 0)
 			{
@@ -386,7 +389,7 @@ WHERE fs.id = " + free_square_id;
 						// Dump the document contents to the output stream
 						System.IO.FileInfo info = new System.IO.FileInfo(tempFile.FileName);
 
-						var outfile = "Лист_включ_вільні.docx";
+						var outfile = "Лист щодо виключення з переліку вільних.docx";
 						Page.Response.Clear();
 						Page.Response.ClearHeaders();
 						Page.Response.ClearContent();

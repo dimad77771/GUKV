@@ -67,6 +67,29 @@
 	function CheckBoxBalansObjectsShowNeziznacheni_CheckedChanged(s, e) {
 
 		PrimaryGridView.PerformCallback(AddWndHeightToCallbackParam("bind:"));
+    }
+
+	function OnContextMenuItemClick(s, e) {
+		if (e.item.name === "Report_5") {
+			var id = s.GetRowKey(e.elementIndex)
+			window.open(
+				'\\Reports1NF\\Report5.aspx?id=' + id,
+				//'RentAgreements.aspx',
+				'_blank',
+			)
+		}
+    }
+
+    function BuildReport5(values) {
+		console.log('values2', values)
+        var id = values[0]
+        setTimeout(() => {
+            window.open(
+                //'\\Reports1NF\\Report4.aspx?id=' + id,
+                'RentAgreements.aspx',
+                '_blank',
+            )
+        }, 1000);
 	}
 
     // ]]>
@@ -319,7 +342,10 @@ WHERE id = @arenda_id"
     OnCustomFilterExpressionDisplayText="GridViewArendaObjects_CustomFilterExpressionDisplayText"
     OnCustomSummaryCalculate="GridViewArendaObjects_CustomSummaryCalculate"
     OnProcessColumnAutoFilter = "GridViewArendaObjects_ProcessColumnAutoFilter"
-    OnCustomColumnSort="GridViewArendaObjects_CustomColumnSort" >
+    OnCustomColumnSort="GridViewArendaObjects_CustomColumnSort"
+    OnFillContextMenuItems="PrimaryGridView_FillContextMenuItems" >
+
+    <SettingsContextMenu Enabled="true"/>
 
     <SettingsCommandButton>
 		<EditButton>
@@ -745,7 +771,7 @@ WHERE id = @arenda_id"
         <Header Wrap="True"></Header>
     </Styles>
 
-    <ClientSideEvents Init="GridViewArendaObjectsInit" EndCallback="GridViewArendaObjectsEndCallback" />
+    <ClientSideEvents Init="GridViewArendaObjectsInit" EndCallback="GridViewArendaObjectsEndCallback" ContextMenuItemClick="OnContextMenuItemClick" />
 </dx:ASPxGridView>
 
 </center>

@@ -330,4 +330,14 @@ public partial class Arenda_RentAgreements : System.Web.UI.Page, CachingPageIdSu
 	{
         var g = 1000;
 	}
+
+	protected void PrimaryGridView_FillContextMenuItems(object sender, ASPxGridViewContextMenuEventArgs e)
+	{
+        e.Items.ForEach(x => x.Visible = false);
+
+        if (e.MenuType == GridViewContextMenuType.Rows)
+        {
+            e.Items.Add("Повідомлення", "Report_5");
+        }
+    }
 }

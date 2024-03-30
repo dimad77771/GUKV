@@ -943,6 +943,7 @@ order by 1
       ,[zalbalansvartist_date]
       ,[osoba_oznakoml]
 	  ,[rozmir_vidshkoduv]
+      ,[meta_zvern]
       ,(select Q.form_of_ownership from view_reports1nf Q where Q.report_id = [reports1nf_balans_free_square].report_id) as form_of_ownership 
     FROM [reports1nf_balans_free_square] WHERE [balans_id] = @balans_id and [report_id] = @report_id and ([id] = @free_square_id or @free_square_id = -1)" 
     DeleteCommand="EXEC [delete_reports1nf_balans_free_square] @id" 
@@ -986,6 +987,7 @@ order by 1
       ,[zalbalansvartist_date]
       ,[osoba_oznakoml]
 	  ,[rozmir_vidshkoduv]
+      ,[meta_zvern]
     ) 
     VALUES
     (@balans_id
@@ -1027,6 +1029,7 @@ order by 1
       ,@zalbalansvartist_date
       ,@osoba_oznakoml
 	  ,@rozmir_vidshkoduv
+      ,@meta_zvern
     );
 SELECT SCOPE_IDENTITY()" 
     UpdateCommand="UPDATE [reports1nf_balans_free_square]
@@ -1070,6 +1073,7 @@ SET
         ,[zalbalansvartist_date]  	  = @zalbalansvartist_date     
         ,[osoba_oznakoml]  	  = @osoba_oznakoml     
         ,[rozmir_vidshkoduv]  	  = @rozmir_vidshkoduv     
+        ,[meta_zvern]  	  = @meta_zvern     
 WHERE id = @id" 
         oninserting="SqlDataSourceFreeSquare_Inserting" 
         onupdating="SqlDataSourceFreeSquare_Updating" ProviderName="System.Data.SqlClient">
@@ -1121,6 +1125,7 @@ WHERE id = @id"
         <asp:Parameter Name="zalbalansvartist_date" />
         <asp:Parameter Name="osoba_oznakoml" />
         <asp:Parameter Name="rozmir_vidshkoduv" />
+        <asp:Parameter Name="meta_zvern" />
     </InsertParameters>
     <UpdateParameters>
         <asp:Parameter Name="balans_id" />
@@ -1162,6 +1167,7 @@ WHERE id = @id"
         <asp:Parameter Name="zalbalansvartist_date" />
         <asp:Parameter Name="osoba_oznakoml" />
         <asp:Parameter Name="rozmir_vidshkoduv" />
+        <asp:Parameter Name="meta_zvern" />
         <asp:Parameter Name="id" />
     </UpdateParameters>
 </mini:ProfiledSqlDataSource>
@@ -2969,6 +2975,13 @@ WHERE id = @id"
                 <PropertiesComboBox DataSourceID="SqlDataSourceZgodaRenter" ValueField="id" TextField="name" ValueType="System.Int32" />
             </dx:GridViewDataComboBoxColumn>
 
+            <dx:GridViewDataTextColumn FieldName="meta_zvern" Caption="Мета звернення" VisibleIndex="20" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+
             <dx:GridViewDataComboBoxColumn FieldName="zgoda_renter_id" VisibleIndex="21" Width ="80px"
                 Visible="True" Caption="Погодження органу охорони культурної спадщини">
                 <HeaderStyle Wrap="True" />
@@ -3111,6 +3124,7 @@ WHERE id = @id"
                 <EditFormSettings Visible="True" />
                 <EditFormCaptionStyle Wrap="True"/>
             </dx:GridViewDataTextColumn>
+
 
 
 
