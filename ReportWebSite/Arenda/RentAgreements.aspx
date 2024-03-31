@@ -422,7 +422,6 @@ WHERE id = @arenda_id"
         <dx:GridViewDataTextColumn FieldName="org_renter_short_name" ReadOnly="True"
             VisibleIndex="9" Visible="True" Caption="Орендар - Коротка Назва" 
             Width="200px">
-            <Settings AutoFilterCondition="Contains" />
             <DataItemTemplate>
                 <%# "<a href=\"javascript:ShowOrganizationCard(" + Eval("org_renter_id") + ")\">" + Eval("org_renter_short_name") + "</a>"%>
             </DataItemTemplate>
