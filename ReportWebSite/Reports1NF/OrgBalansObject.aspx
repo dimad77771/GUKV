@@ -3463,10 +3463,10 @@ WHERE id = @id"
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>
 
-            <dx:GridViewDataTextColumn FieldName="possible_using" Caption="Можливе використання вільного приміщення" VisibleIndex="50" Width="300px" >
+            <dx:GridViewDataComboBoxColumn FieldName="possible_using" Caption="Можливе використання вільного приміщення" VisibleIndex="50" Width="320px" >
                 <HeaderStyle Wrap="True" />
-            </dx:GridViewDataTextColumn>
-
+                <PropertiesComboBox DataSourceID="SqlDataSourceUsingPossible" DropDownStyle="DropDown" AllowMouseWheel="true" ValueField="name" TextField="name" ValueType="System.String" EnableSynchronization="False" />
+            </dx:GridViewDataComboBoxColumn>
 
 
 
