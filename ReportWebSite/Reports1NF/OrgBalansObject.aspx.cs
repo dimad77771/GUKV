@@ -141,6 +141,9 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
             SqlDataSourceFreeSquare.SelectParameters["report_id"].DefaultValue = ReportID.ToString();
             SqlDataSourceFreeSquare.SelectParameters["free_square_id"].DefaultValue = (EditFreeSquareMode ? ParamEditFreeSquareId : - 1).ToString();
 
+            SqlDataSourceZvernenya.SelectParameters["balans_id"].DefaultValue = BalansObjectID.ToString();
+            SqlDataSourceZvernenya.SelectParameters["report_id"].DefaultValue = ReportID.ToString();
+
             SqlDataSourceBalansArchive.SelectParameters["balid"].DefaultValue = balansIdStr.Trim();
         }
 
@@ -1175,6 +1178,33 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
     //    //    e.InputParameters["id"] = Request.Cookies["RecordID"].Value;
     //}
 
+
+    protected void SqlDataSourceZvernenya_Inserting(object sender, SqlDataSourceCommandEventArgs e)
+    {
+        if (!string.IsNullOrEmpty(Request.QueryString["rid"]))
+            e.Command.Parameters["@report_id"].Value = int.Parse(Request.QueryString["rid"]);
+
+        if (!string.IsNullOrEmpty(Request.QueryString["bid"]))
+            e.Command.Parameters["@balans_id"].Value = int.Parse(Request.QueryString["bid"]);
+
+        e.Command.Parameters["@modify_date"].Value = DateTime.Now;
+        MembershipUser user = Membership.GetUser();
+        e.Command.Parameters["@modified_by"].Value = user == null ? String.Empty : (String)user.UserName;
+    }
+
+    protected void SqlDataSourceZvernenya_Updating(object sender, SqlDataSourceCommandEventArgs e)
+    {
+        if (!string.IsNullOrEmpty(Request.QueryString["rid"]))
+            e.Command.Parameters["@report_id"].Value = int.Parse(Request.QueryString["rid"]);
+
+        if (!string.IsNullOrEmpty(Request.QueryString["bid"]))
+            e.Command.Parameters["@balans_id"].Value = int.Parse(Request.QueryString["bid"]);
+
+        e.Command.Parameters["@modify_date"].Value = DateTime.Now;
+        MembershipUser user = Membership.GetUser();
+        e.Command.Parameters["@modified_by"].Value = user == null ? String.Empty : (String)user.UserName;
+    }
+
     protected void ObjectDataSourcePhotoFiles_Inserting(object sender, ObjectDataSourceMethodEventArgs e)
     {
         if (Request.Cookies["RecordID"] != null)
@@ -2136,5 +2166,15 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
         }
     }
 
-    #endregion Working with the table of Decisions
+	#endregion Working with the table of Decisions
+
+	protected void ASPxGridZvernenya_FillContextMenuItems(object sender, ASPxGridViewContextMenuEventArgs e)
+	{
+        e.Items.ForEach(x => x.Visible = false);
+
+        if (e.MenuType == GridViewContextMenuType.Rows)
+        {
+            e.Items.Add("Звернення", "Report_6");
+        }
+    }
 }

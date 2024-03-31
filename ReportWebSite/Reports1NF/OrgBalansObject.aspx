@@ -378,6 +378,16 @@
 			ASPxFileManagerPhotoFiles5.Refresh();
 			PopupObjectPhotos5.Show();
 		}
+    }
+
+	function OnContextMenuItemClick(s, e) {
+		if (e.item.name === "Report_6") {
+			var id = s.GetRowKey(e.elementIndex)
+			window.open(
+				'Report6.aspx?id=' + id,
+				'_blank',
+			)
+		}
 	}
 
 
@@ -899,6 +909,83 @@ order by 1
     </SelectParameters>
 </asp:ObjectDataSource>
 
+<mini:ProfiledSqlDataSource ID="SqlDataSourceZvernenya" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT [id]
+      ,[balans_id]
+      ,[report_id] 
+      ,[zvernen_dat]
+      ,[zvernen_vid]
+      ,[bazhana_ploshad]
+	  ,[possible_using]
+      ,[modify_date]
+      ,[modified_by]
+    FROM [reports1nf_zvernenya] WHERE [balans_id] = @balans_id and [report_id] = @report_id
+    ORDER BY zvernen_dat desc" 
+    DeleteCommand="delete from [reports1nf_zvernenya] where id = @id" 
+    InsertCommand="INSERT INTO [reports1nf_zvernenya]
+    ([balans_id]
+      ,[report_id]
+      ,[zvernen_dat]
+      ,[zvernen_vid]
+      ,[bazhana_ploshad]
+	  ,[possible_using]
+      ,[modify_date]
+      ,[modified_by]
+    ) 
+    VALUES
+    (@balans_id
+      ,@report_id
+      ,@zvernen_dat
+      ,@zvernen_vid
+      ,@bazhana_ploshad
+	  ,@possible_using
+      ,@modify_date
+      ,@modified_by
+    );
+SELECT SCOPE_IDENTITY()" 
+    UpdateCommand="UPDATE [reports1nf_zvernenya]
+SET
+    [balans_id] = @balans_id,
+    [report_id] = @report_id,
+    [zvernen_dat] = @zvernen_dat,
+    [zvernen_vid] = @zvernen_vid,
+    [bazhana_ploshad] = @bazhana_ploshad,
+    [possible_using] = @possible_using,
+    [modify_date] = @modify_date,
+    [modified_by] = @modified_by
+WHERE id = @id" 
+        oninserting="SqlDataSourceZvernenya_Inserting" 
+        onupdating="SqlDataSourceZvernenya_Updating" ProviderName="System.Data.SqlClient">
+    <SelectParameters>
+        <asp:Parameter Name="balans_id" />
+        <asp:Parameter Name="report_id" />
+    </SelectParameters>
+    <DeleteParameters>
+        <asp:Parameter Name="id" />
+    </DeleteParameters>
+    <InsertParameters>
+        <asp:Parameter Name="balans_id" />
+        <asp:Parameter Name="report_id" />
+        <asp:Parameter Name="zvernen_dat" />
+        <asp:Parameter Name="zvernen_vid" />
+        <asp:Parameter Name="bazhana_ploshad" />
+		<asp:Parameter Name="possible_using" />
+        <asp:Parameter Name="modify_date" />
+        <asp:Parameter Name="modified_by" />
+    </InsertParameters>
+    <UpdateParameters>
+                <asp:Parameter Name="balans_id" />
+        <asp:Parameter Name="report_id" />
+        <asp:Parameter Name="zvernen_dat" />
+        <asp:Parameter Name="zvernen_vid" />
+        <asp:Parameter Name="bazhana_ploshad" />
+		<asp:Parameter Name="possible_using" />
+        <asp:Parameter Name="modify_date" />
+        <asp:Parameter Name="modified_by" />
+        <asp:Parameter Name="id" />
+    </UpdateParameters>
+</mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceFreeSquare" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
@@ -3302,6 +3389,102 @@ WHERE id = @id"
                         </ItemTemplate>
                     </asp:FormView>
 
+                </dx:ContentControl>
+            </ContentCollection>
+        </dx:TabPage>
+
+        <dx:TabPage Text="Звернення щодо оренди" Name="Tab9">
+            <ContentCollection>
+                <dx:ContentControl ID="ContentControl4" runat="server">
+                            <dx:ASPxRoundPanel ID="ASPxRoundPanel3" runat="server" HeaderText="Звернення щодо оренди">
+                                <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="4px" />
+                                <PanelCollection>
+                                    <dx:PanelContent ID="PanelContent14" runat="server">
+                                        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                            <tr>
+                                                <td>
+                                                
+
+    <dx:ASPxGridView ID="ASPxGridZvernenya" runat="server" AutoGenerateColumns="False" 
+        DataSourceID="SqlDataSourceZvernenya" KeyFieldName="id"
+        OnFillContextMenuItems="ASPxGridZvernenya_FillContextMenuItems">
+
+        <SettingsContextMenu Enabled="true"/>
+        <ClientSideEvents ContextMenuItemClick="OnContextMenuItemClick" />
+            
+        <Styles>  
+            <EditForm CssClass="editForm" ></EditForm>
+        </Styles>  
+
+	    <SettingsCommandButton>
+		    <EditButton>
+			    <Image Url="~/Styles/EditIcon.png" />
+		    </EditButton>
+		    <CancelButton>
+			    <Image Url="~/Styles/CancelIcon.png" />
+		    </CancelButton>
+		    <UpdateButton>
+			    <Image Url="~/Styles/SaveIcon.png" />
+		    </UpdateButton>
+		    <DeleteButton>
+			    <Image Url="~/Styles/DeleteIcon.png" />
+		    </DeleteButton>
+		    <NewButton>
+			    <Image Url="~/Styles/AddIcon.png" />
+		    </NewButton>
+		    <ClearFilterButton Text="&#160;&#160;&#160;&#160;Очистити&#160;&#160;&#160;&#160;" RenderMode="Link" />
+	    </SettingsCommandButton>
+
+        <Columns>
+            <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" ShowInCustomizationForm="True" CellStyle-Wrap="True" Width="70px" CellStyle-CssClass="command-column-class" 
+                ShowDeleteButton="True" ShowCancelButton="true" ShowUpdateButton="true" ShowClearFilterButton="true" ShowEditButton="true" ShowNewButton="true" >
+                <CellStyle Wrap="False"></CellStyle>
+            </dx:GridViewCommandColumn>
+
+            <dx:GridViewDataTextColumn FieldName="id" Caption="ID" VisibleIndex="1"  ReadOnly="true" Visible="false">
+                <EditFormSettings Visible="False" />
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="balans_id" Caption="balans_id" VisibleIndex="2" ReadOnly="true" Visible="false">
+                <EditFormSettings Visible="False" />
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataColumn FieldName="zvernen_dat" Caption="Дата звернення" VisibleIndex="20" Width="100px" >
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataColumn>
+
+            <dx:GridViewDataTextColumn FieldName="zvernen_vid" Caption="Звернення від" VisibleIndex="30" Width="400px" >
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="bazhana_ploshad" Caption="Бажана площа" VisibleIndex="40" Width="300px" >
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataTextColumn FieldName="possible_using" Caption="Можливе використання вільного приміщення" VisibleIndex="50" Width="300px" >
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+
+
+
+        </Columns>
+        <SettingsBehavior ConfirmDelete="True" />
+        <SettingsPager PageSize="10" />
+        <SettingsEditing NewItemRowPosition="Bottom" Mode="Inline" />
+        <Settings ShowFilterRow="false" ShowFilterBar="Auto" ShowFilterRowMenu="True" VerticalScrollableHeight="0" VerticalScrollBarMode="Hidden" VerticalScrollBarStyle="Standard"/>
+    </dx:ASPxGridView>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </dx:PanelContent>
+                                </PanelCollection>
+                            </dx:ASPxRoundPanel>
+<%--                        </ItemTemplate>
+                    </asp:FormView>--%>
                 </dx:ContentControl>
             </ContentCollection>
         </dx:TabPage>
