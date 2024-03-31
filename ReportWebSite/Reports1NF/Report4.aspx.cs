@@ -218,11 +218,8 @@ WHERE fs.id = " + free_square_id;
 			properties.Add("{Загальна площа об’єкта}", "" + GetDecimal(r["total_free_sqr"]));
 			properties.Add("{Характеристика об’єкта оренди}", r["floor"]);
 			properties.Add("{Погодження орендодавця}", r["komis_protocol"]);
-
-			//properties.Add("{Назва Вулиці}", r["street_name"]);
-			//properties.Add("{Номер Будинку}", r["addr_nomer"]);
-			//properties.Add("{Ініціатор оренди}", r["initiator"]);
-			//properties.Add("{Мета звернення}", r["meta_zvern"]);
+			properties.Add("{Назва Вулиці}", r["street_name"]);
+			properties.Add("{Номер Будинку}", r["addr_nomer"]);
 		}
 
 

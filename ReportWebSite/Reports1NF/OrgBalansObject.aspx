@@ -3319,7 +3319,7 @@ WHERE id = @id"
                                                 <td><dx:ASPxLabel ID="ASPxLabel27" runat="server" Text="Первісна (переоцінена) вартість, тис. грн." width="200px"></dx:ASPxLabel></td>
                                                 <td><dx:ASPxSpinEdit ID="EditObjCostBalans" runat="server" NumberType="Float" Value='<%# Eval("cost_balans") %>' Width="190px" Title="Первісна (переоцінена) вартість" /></td>
                                                 <td><dx:ASPxLabel ID="ASPxLabel30" runat="server" Text="Залишкова вартість, тис. грн." width="200px"></dx:ASPxLabel></td>
-                                                <td><dx:ASPxSpinEdit ID="EditObjCostZalishkova" runat="server" NumberType="Float" Value='<%# Eval("cost_zalishkova") %>' Width="190px" Title="Залишкова вартість" /></td>
+                                                <td><dx:ASPxSpinEdit ID="EditObjCostZalishkova" runat="server" NumberType="Float" DecimalPlaces="2" Value='<%# Eval("cost_zalishkova") %>' Width="190px" Title="Залишкова вартість" /></td>
                                             </tr>
                                             <tr>
                                                 <td><dx:ASPxLabel ID="ASPxLabel31" runat="server" Text="Знос, тис. грн." width="200px"></dx:ASPxLabel></td>
