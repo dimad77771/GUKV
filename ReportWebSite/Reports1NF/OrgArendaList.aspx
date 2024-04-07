@@ -912,7 +912,7 @@ FROM reports1nf_arenda ar
         <dx:GridViewDataTextColumn FieldName="modified_by" VisibleIndex="15" Caption="Користувач"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn FieldName="has_reports1nf_photos" ReadOnly="True" 
-            VisibleIndex="15" Visible="True" Caption="Наявність фото/плану" Width="40px">
+            VisibleIndex="15" Visible="True" Caption="Наявність скану договору" Width="40px">
             <DataItemTemplate>
                <%# Eval("has_reports1nf_photos").Equals(1) ?
                        "<center><img border='0' src='../Styles/photo.png'/></center>"

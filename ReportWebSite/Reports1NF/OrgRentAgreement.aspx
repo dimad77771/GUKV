@@ -4610,11 +4610,11 @@ WHERE id = @id"
             </ContentCollection>
         </dx:TabPage>
 
-		<dx:TabPage Text="Фото / плани" Name="Tab6">
+		<dx:TabPage Text="Скани договорів" Name="Tab6">
             <ContentCollection>
                 <dx:ContentControl ID="ContentControl7" runat="server">
 
-                    <dx:ASPxRoundPanel ID="PanelPhoto" runat="server" HeaderText="Фото / плани" EnableViewState="true">
+                    <dx:ASPxRoundPanel ID="PanelPhoto" runat="server" HeaderText="Скани договорів" EnableViewState="true">
                         <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="4px" />
                         <PanelCollection>
                             <dx:PanelContent ID="PanelContent16" runat="server">
