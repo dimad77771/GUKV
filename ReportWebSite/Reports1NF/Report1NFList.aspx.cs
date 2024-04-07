@@ -215,7 +215,8 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 			//	wh = "(isnull(ddd.name, 'Невідомо') not in ('НЕВИЗНАЧЕНІ'))";
 			//}
 			SqlDataSourceReports.SelectCommand = SqlDataSourceReports.SelectCommand.Replace("(8888 = 8888)", wh);
-			
+			SqlDataSourceReports.UpdateCommand = SqlDataSourceReports.UpdateCommand.Replace("[orandodavec_user_id] = @orandodavec_user_id,", "");
+
 
 			LabelReportTitle1.Text = @"Звіти щодо використання комунального майна";
 			this.Title = LabelReportTitle1.Text;
@@ -443,6 +444,11 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 		var username = (user == null ? String.Empty : (String)user.UserName);
 		dbparams.AddWithValue("@rep_modified_by", username);
 		dbparams.AddWithValue("@rep_modify_date", DateTime.Now);
+
+		//if (!dbparams.OfType<SqlParameter>().Any(x => x.ParameterName == "@orandodavec_user_id"))
+		//{
+		//	dbparams.AddWithValue("@rep_modified_by", username);
+		//}
 	}
 
     protected void ASPxButton_Zvedeniy_Build(object sender, EventArgs e)

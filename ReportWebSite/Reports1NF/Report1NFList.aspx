@@ -372,12 +372,12 @@ LEFT OUTER JOIN dict_org_old_organ misto ON misto.id = misto_district_id
 
 UpdateCommand="UPDATE [reports1nf]
 SET
+    [orandodavec_user_id] = @orandodavec_user_id,
     [stan_recieve_id] = @stan_recieve_id,
 	[stan_recieve_date] = @stan_recieve_date,
 	[stan_recieve_description] = @stan_recieve_description,
     [rep_modified_by] = @rep_modified_by,
-    [rep_modify_date] = @rep_modify_date,
-    [orandodavec_user_id] = @orandodavec_user_id
+    [rep_modify_date] = @rep_modify_date
 WHERE id = @report_id" 
 	onupdating="SqlDataSourceReports_Updating"
 	
