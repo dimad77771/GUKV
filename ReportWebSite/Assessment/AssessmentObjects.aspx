@@ -183,7 +183,7 @@
     OnCustomColumnDisplayText = "GridViewAssessmentObjects_CustomColumnDisplayText"
     OnCustomColumnSort="GridViewAssessmentObjects_CustomColumnSort" >
 
-    <Settings ShowHeaderFilterButton="True"/>
+    
 
     <Columns>
 		<dx:GridViewCommandColumn ButtonType="Image" Name="CmdColumn" Width="60px">
