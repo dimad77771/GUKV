@@ -363,13 +363,14 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
         properties.Add("{REPORT_PRINT_DATE}", currentDate);
 
         // Format the last submit date
-        string query = @"SELECT
-	        (SELECT MAX(org.submit_date) FROM reports1nf_org_info org WHERE org.report_id = r.id) AS 'org_date',
-	        (SELECT MAX(bal.submit_date) FROM reports1nf_balans bal WHERE bal.report_id = r.id AND (bal.is_deleted IS NULL OR bal.is_deleted = 0)) AS 'bal_date',
-	        (SELECT MAX(bd.submit_date) FROM reports1nf_balans_deleted bd WHERE bd.report_id = r.id) AS 'bal_deleted_date',
-	        (SELECT MAX(ar.submit_date) FROM reports1nf_arenda ar WHERE ar.report_id = r.id AND (ar.is_deleted IS NULL OR ar.is_deleted = 0)) AS 'arenda_date',
-	        (SELECT MAX(arr.submit_date) FROM reports1nf_arenda_rented arr WHERE arr.report_id = r.id AND (arr.is_deleted IS NULL OR arr.is_deleted = 0)) AS 'arenda_rented_date'
-        FROM reports1nf r WHERE r.id = @rep";
+        //string query = @"SELECT
+        // (SELECT MAX(org.submit_date) FROM reports1nf_org_info org WHERE org.report_id = r.id) AS 'org_date',
+        // (SELECT MAX(bal.submit_date) FROM reports1nf_balans bal WHERE bal.report_id = r.id AND (bal.is_deleted IS NULL OR bal.is_deleted = 0)) AS 'bal_date',
+        // (SELECT MAX(bd.submit_date) FROM reports1nf_balans_deleted bd WHERE bd.report_id = r.id) AS 'bal_deleted_date',
+        // (SELECT MAX(ar.submit_date) FROM reports1nf_arenda ar WHERE ar.report_id = r.id AND (ar.is_deleted IS NULL OR ar.is_deleted = 0)) AS 'arenda_date',
+        // (SELECT MAX(arr.submit_date) FROM reports1nf_arenda_rented arr WHERE arr.report_id = r.id AND (arr.is_deleted IS NULL OR arr.is_deleted = 0)) AS 'arenda_rented_date'
+        //FROM reports1nf r WHERE r.id = @rep";
+        string query = @"SELECT top 1 period_end from dict_rent_period where is_active = 1 order by 1 desc";
 
         using (SqlCommand cmd = new SqlCommand(query, connection))
         {
@@ -379,20 +380,22 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
             {
                 if (reader.Read())
                 {
-                    object submitDate1 = reader.IsDBNull(0) ? null : reader.GetValue(0);
-                    object submitDate2 = reader.IsDBNull(1) ? null : reader.GetValue(1);
-                    object submitDate3 = reader.IsDBNull(2) ? null : reader.GetValue(2);
-                    object submitDate4 = reader.IsDBNull(3) ? null : reader.GetValue(3);
-                    object submitDate5 = reader.IsDBNull(4) ? null : reader.GetValue(4);
+                    //object submitDate1 = reader.IsDBNull(0) ? null : reader.GetValue(0);
+                    //object submitDate2 = reader.IsDBNull(1) ? null : reader.GetValue(1);
+                    //object submitDate3 = reader.IsDBNull(2) ? null : reader.GetValue(2);
+                    //object submitDate4 = reader.IsDBNull(3) ? null : reader.GetValue(3);
+                    //object submitDate5 = reader.IsDBNull(4) ? null : reader.GetValue(4);
+                    //submitDate1 = SelectMaxDate(submitDate1, submitDate2);
+                    //submitDate1 = SelectMaxDate(submitDate1, submitDate3);
+                    //submitDate1 = SelectMaxDate(submitDate1, submitDate4);
+                    //submitDate1 = SelectMaxDate(submitDate1, submitDate5);
 
-                    submitDate1 = SelectMaxDate(submitDate1, submitDate2);
-                    submitDate1 = SelectMaxDate(submitDate1, submitDate3);
-                    submitDate1 = SelectMaxDate(submitDate1, submitDate4);
-                    submitDate1 = SelectMaxDate(submitDate1, submitDate5);
+                    object submitDate1 = reader.IsDBNull(0) ? null : reader.GetValue(0);
 
                     if (submitDate1 is DateTime)
                     {
                         DateTime dtSubmit = (DateTime)submitDate1;
+                        dtSubmit = dtSubmit.AddDays(1);
 
                         string submitDate = "\xAB" + " " + dtSubmit.Day.ToString() + " " + "\xBB" + " " + GetDateMonthName(dtSubmit) + " " + dtSubmit.Year.ToString();
 

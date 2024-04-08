@@ -183,6 +183,8 @@
     OnCustomColumnDisplayText = "GridViewAssessmentObjects_CustomColumnDisplayText"
     OnCustomColumnSort="GridViewAssessmentObjects_CustomColumnSort" >
 
+    <Settings ShowHeaderFilterButton="True"/>
+
     <Columns>
 		<dx:GridViewCommandColumn ButtonType="Image" Name="CmdColumn" Width="60px">
             <CustomButtons>                
@@ -191,6 +193,8 @@
             </CustomButtons>
             <FooterCellStyle HorizontalAlign="Right"></FooterCellStyle>
         </dx:GridViewCommandColumn>
+
+        <dx:GridViewDataTextColumn FieldName="district" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Район" Width="120px"></dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn FieldName="street_full_name" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Вулиця" Width="180px">
             <%--<DataItemTemplate>
@@ -341,6 +345,7 @@
 		</dx:GridViewDataTextColumn>
 
 		<dx:GridViewDataDateColumn FieldName="final_date" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Дата затвердження" Width="80px">
+            <Settings AllowHeaderFilter="True" />
 		</dx:GridViewDataDateColumn>
 
 		<dx:GridViewDataTextColumn FieldName="arch_num" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Архівний номер" Width="80px">
@@ -355,7 +360,7 @@
 
 
         
-        <%--<dx:GridViewDataTextColumn FieldName="district" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Район" Width="120px"></dx:GridViewDataTextColumn>--%>
+        
         
 <%--		<dx:GridViewDataTextColumn FieldName="in_doc_dates" ReadOnly="True" ShowInCustomizationForm="True" Visible="False" Caption="Дата Вхідного Документу"></dx:GridViewDataTextColumn>
         
@@ -397,7 +402,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Visible"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Assessment.Objects" Version="A15" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.Assessment.Objects" Version="A17" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
