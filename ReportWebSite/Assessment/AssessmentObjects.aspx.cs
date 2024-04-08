@@ -52,7 +52,7 @@ public partial class Assessment_AssessmentObjects : System.Web.UI.Page
         this.ProcessGridDataFetch(ViewState, PrimaryGridView);
 
         // Enable advanced header filter for all grid columns
-        Utils.AdjustColumnsVisibleInFilter(PrimaryGridView);
+        //Utils.AdjustColumnsVisibleInFilter(PrimaryGridView);
     }
 
     protected void ASPxButton_AssessmentObjects_ExportXLS_Click(object sender, EventArgs e)

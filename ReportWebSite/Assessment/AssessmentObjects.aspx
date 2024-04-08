@@ -344,7 +344,7 @@
 		<dx:GridViewDataTextColumn FieldName="cost_prim" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Вартість об’єкту без ПДВ (грн.)" Width="100px">
 		</dx:GridViewDataTextColumn>
 
-		<dx:GridViewDataDateColumn FieldName="final_date" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Дата затвердження" Width="80px">
+		<dx:GridViewDataDateColumn FieldName="final_date" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Дата затвердження" Width="110px">
             <Settings AllowHeaderFilter="True" />
 		</dx:GridViewDataDateColumn>
 
@@ -402,7 +402,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Visible"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Assessment.Objects" Version="A17" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.Assessment.Objects" Version="A18" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
