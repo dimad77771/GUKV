@@ -220,6 +220,7 @@ WHERE fs.id = " + free_square_id;
 			properties.Add("{Погодження орендодавця}", r["komis_protocol"]);
 			properties.Add("{Назва Вулиці}", r["street_name"]);
 			properties.Add("{Номер Будинку}", r["addr_nomer"]);
+			properties.Add("{Дата редагування Б}", "" + GetDate(r["modify_date"]));
 		}
 
 

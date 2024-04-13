@@ -346,7 +346,8 @@
 		}
 
 		function BuildReport1(values) {
-			if ((values[1] == "" || values[1] == null) && (values[2] == "" || values[2] == null)) {
+			//if ((values[1] == "" || values[1] == null) && (values[2] == "" || values[2] == null)) {
+			if ((values[1] == "" || values[1] == null)) {
 				var free_square_id = values[0]
 				window.open(
 					'Report1.aspx?id=' + free_square_id,
@@ -358,15 +359,15 @@
 		}
 
 		function BuildReport4(values) {
-			//if ((values[1] == "" || values[1] == null) && (values[2] == "" || values[2] == null)) {
+			if (values[2] == "1") {
 			var free_square_id = values[0]
 			window.open(
 					'Report4.aspx?id=' + free_square_id,
 					'_blank',
 				);
-			//} else {
-			//				alert("Включення неможливо")
-			//}
+			} else {
+				alert("Виключення неможливо")
+			}
 		}
 
 		function BuildReport3(values) {
