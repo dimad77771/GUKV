@@ -71,7 +71,10 @@
 	}
 
 	function CheckBoxBalansObjectsShowNeziznacheni_CheckedChanged(s, e) {
+		PrimaryGridView.PerformCallback(AddWndHeightToCallbackParam("init:"));
+    }
 
+	function CheckBoxBalansObjectsShowNeviznacheni_CheckedChanged(s, e) {
 		PrimaryGridView.PerformCallback(AddWndHeightToCallbackParam("init:"));
 	}
 
@@ -262,7 +265,7 @@
             ,org.planuvania_5
             ,org.corporav_prava
 
-            ,[dbo].[get_conveyancingRequests_count]([org].[report_id]) AS conveyancingRequests_count
+            --,[dbo].[get_conveyancingRequests_count]([org].[report_id]) AS conveyancingRequests_count
 
         FROM
             reports1nf_org_info org
@@ -353,6 +356,8 @@ join dict_rent_occupation occ on occ.id = obp.org_occupation_id
                 AND
             ( (@p_show_neziznacheni = 1) OR (@p_show_neziznacheni = 0 AND (isnull(ddd.name, 'Невідомо') <> 'Невизначені')) ) 
                 AND
+            ( (@p_show_neviznacheni = 1) OR (@p_show_neviznacheni = 0 AND (isnull(ddd.name, '') <> 'Невизначені')) ) 
+                AND
             (8888 = 8888)
                 AND
     case when rep.zkpo_code in 
@@ -388,6 +393,7 @@ WHERE id = @report_id"
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_misto_id" />
 		<asp:Parameter DbType="Int32" DefaultValue="0" Name="smode" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_show_neziznacheni" />
+        <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_show_neviznacheni" />
     </SelectParameters>
 
 
@@ -435,6 +441,12 @@ WHERE id = @report_id"
             <dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowNeziznacheni" runat="server" Checked='True' Text="ДПЗ" ToolTip="Показувати ДПЗ"
                 Width="80px" ClientInstanceName="CheckBoxBalansObjectsShowNeziznacheni" >
                 <ClientSideEvents CheckedChanged="CheckBoxBalansObjectsShowNeziznacheni_CheckedChanged" />
+            </dx:ASPxCheckBox>
+        </td>
+        <td>
+            <dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowNeviznacheni" runat="server" Checked='False' Text="Невизначені" ToolTip="Невизначені" Visible="false"
+                Width="80px" ClientInstanceName="CheckBoxBalansObjectsShowNeviznacheni" >
+                <ClientSideEvents CheckedChanged="CheckBoxBalansObjectsShowNeviznacheni_CheckedChanged" />
             </dx:ASPxCheckBox>
         </td>
         <td>
@@ -1245,11 +1257,12 @@ WHERE id = @report_id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("planuvania_5") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn Caption="Зміна балансоутримувача об'єктів" FieldName="conveyancingRequests_count" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="120"  >
+
+        <%--<dx:GridViewDataTextColumn Caption="Зміна балансоутримувача об'єктів" FieldName="conveyancingRequests_count" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="120"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("conveyancingRequests_count") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
-        </dx:GridViewDataTextColumn>
+        </dx:GridViewDataTextColumn>--%>
 
         <dx:GridViewDataTextColumn Caption="Корпоративні права" FieldName="corporav_prava" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="130"  >
 			<EditItemTemplate>

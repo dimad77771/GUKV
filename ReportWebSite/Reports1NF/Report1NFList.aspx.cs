@@ -165,6 +165,7 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 		{
 			CheckBoxBalansObjectsShowNeziznacheni.Visible = false;
 			CheckBoxBalansObjectsShowNeziznacheni.Checked = false;
+			CheckBoxBalansObjectsShowNeviznacheni.Visible = true;
 
 			var column1 = PrimaryGridView.Columns.OfType<GridViewDataColumn>().SingleOrDefault(q => q.FieldName == "inventar_recieve_date");
 			if (column1 != null)
@@ -433,6 +434,7 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
         e.Command.Parameters["@p_misto_id"].Value = ParmMistoId;
 		e.Command.Parameters["@smode"].Value = SMode;
 		e.Command.Parameters["@p_show_neziznacheni"].Value = CheckBoxBalansObjectsShowNeziznacheni.Checked ? 0 : 1;
+		e.Command.Parameters["@p_show_neviznacheni"].Value = CheckBoxBalansObjectsShowNeviznacheni.Checked ? 0 : 1;
 	}
 
 	protected void SqlDataSourceReports_Updating(object sender, SqlDataSourceCommandEventArgs e)
