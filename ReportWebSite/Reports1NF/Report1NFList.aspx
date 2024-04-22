@@ -266,9 +266,11 @@
             ,org.corporav_prava
 
             --,[dbo].[get_conveyancingRequests_count]([org].[report_id]) AS conveyancingRequests_count
+            ,isnull(view_conveyancingRequests_count.cnt,0) AS conveyancingRequests_count
 
         FROM
             reports1nf_org_info org
+            LEFT OUTER JOIN view_conveyancingRequests_count on view_conveyancingRequests_count.report_id = [org].[report_id]
             LEFT OUTER JOIN kazna_total_info(null, null) kazna on kazna.ident_bal_zkpo = org.zkpo_code
             LEFT OUTER JOIN dict_otdel_gukv ON org.otdel_gukv_id = dict_otdel_gukv.id
             LEFT OUTER JOIN dict_org_industry ON org.industry_id = dict_org_industry.id
@@ -1258,11 +1260,11 @@ WHERE id = @report_id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
-        <%--<dx:GridViewDataTextColumn Caption="Зміна балансоутримувача об'єктів" FieldName="conveyancingRequests_count" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="120"  >
+        <dx:GridViewDataTextColumn Caption="Зміна балансоутримувача об'єктів" FieldName="conveyancingRequests_count" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="120"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("conveyancingRequests_count") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
-        </dx:GridViewDataTextColumn>--%>
+        </dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn Caption="Корпоративні права" FieldName="corporav_prava" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="130"  >
 			<EditItemTemplate>
