@@ -116,7 +116,7 @@
 			return;
 		}
 
-		CPAddRdaAcc.PerformCallback('');
+		CPAddMistoAcc.PerformCallback('');
 	}
 
 

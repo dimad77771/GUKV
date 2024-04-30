@@ -391,7 +391,8 @@ public partial class Reports1NF_Report1NFAccounts : System.Web.UI.Page
             //int districtId = GetDistrictIdByMistoId(connection, organizationId);
 
             // Generate password for the new user
-            string password = System.Web.Security.Membership.GeneratePassword(10, 0);
+            //string password = System.Web.Security.Membership.GeneratePassword(10, 0);
+            string password = "123456";
 
             System.Web.Security.MembershipUser user = System.Web.Security.Membership.CreateUser(userName, password, email);
 
