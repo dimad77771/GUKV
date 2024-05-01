@@ -303,10 +303,10 @@
                 --,SUM(pay.payment_budget_special) as 'payment_budget_special' -- 8
                 ,SUM(pay.debt_total) as 'PAY_DEBT_TOTAL' -- 9
                 ,SUM(pay.debt_zvit) as 'PAY_DEBT_ZVIT' -- 10
-                --,SUM(pay.debt_3_month) as 'debt_3_month' -- 11
-                --,SUM(pay.debt_12_month) as 'debt_12_month' -- 12
-                --,SUM(pay.debt_3_years) as 'debt_3_years' -- 13
-                --,SUM(pay.debt_over_3_years) as 'debt_over_3_years' -- 14
+                ,SUM(pay.debt_3_month) as 'PAY_debt_3_month' -- 11
+                ,SUM(pay.debt_12_month) as 'PAY_debt_12_month' -- 12
+                ,SUM(pay.debt_3_years) as 'PAY_debt_3_years' -- 13
+                ,SUM(pay.debt_over_3_years) as 'PAY_debt_over_3_years' -- 14
                 ,SUM(pay.debt_v_mezhah_vitrat) as 'PAY_DEBT_V_MEZH' -- 15
                 ,SUM(pay.debt_spysano) as 'debt_spysano' -- 16
                 --,SUM(budget_narah_50_uah) as 'budget_narah_50_uah' -- 17
@@ -1166,6 +1166,33 @@ WHERE id = @report_id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_DEBT_V_MEZH") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
+
+       <dx:GridViewDataTextColumn Caption="- в тому числі поточна до 3-х місяців, грн. (без ПДВ)" FieldName="PAY_debt_3_month" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="64" Visible="false"  >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_debt_3_month") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+       <dx:GridViewDataTextColumn Caption="- в тому числі прострочена від 4 до 12 місяців, грн. (без ПДВ)" FieldName="PAY_debt_12_month" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="64" Visible="false"  >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_debt_12_month") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn Caption="- в тому числі прострочена від 1 до 3 років, грн. (без ПДВ)" FieldName="PAY_debt_3_years" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="64" Visible="false"  >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_debt_3_years") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn Caption="- в тому числі безнадійна більше 3-х років, грн. (без ПДВ)" FieldName="PAY_debt_over_3_years" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="64" Visible="false"  >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("PAY_debt_over_3_years") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+
+
         
         <dx:GridViewDataTextColumn Caption="Нарахована сума до бюджету % від загальної суми надходжень орендної плати за звітний період, грн. (без ПДВ)" FieldName="PAY_50_NARAH" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="65"  >
 			<EditItemTemplate>
@@ -1331,6 +1358,10 @@ WHERE id = @report_id"
         <dx:ASPxSummaryItem FieldName="PAY_CMK_DEBT" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_SPECIAL" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_UNKNOWN_PAYMENTS" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="PAY_debt_3_month" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="PAY_debt_12_month" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="PAY_debt_3_years" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="PAY_debt_over_3_years" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="debt_spysano" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="planuvania_1" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="planuvania_2" SummaryType="Sum" DisplayFormat="{0}" />
@@ -1352,7 +1383,7 @@ WHERE id = @report_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A4_14" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A4_15" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
