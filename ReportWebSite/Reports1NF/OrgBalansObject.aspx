@@ -1075,6 +1075,7 @@ WHERE id = @id"
       ,[osoba_oznakoml]
 	  ,[rozmir_vidshkoduv]
       ,[meta_zvern]
+      ,[ispriviliger]
     ) 
     VALUES
     (@balans_id
@@ -1117,6 +1118,7 @@ WHERE id = @id"
       ,@osoba_oznakoml
 	  ,@rozmir_vidshkoduv
       ,@meta_zvern
+      ,case when @total_free_sqr > 400 then 1 else 0 end
     );
 SELECT SCOPE_IDENTITY()" 
     UpdateCommand="UPDATE [reports1nf_balans_free_square]
@@ -1160,7 +1162,8 @@ SET
         ,[zalbalansvartist_date]  	  = @zalbalansvartist_date     
         ,[osoba_oznakoml]  	  = @osoba_oznakoml     
         ,[rozmir_vidshkoduv]  	  = @rozmir_vidshkoduv     
-        ,[meta_zvern]  	  = @meta_zvern     
+        ,[meta_zvern]  	  = @meta_zvern
+        ,[ispriviliger] = case when @total_free_sqr > 400 then 1 else 0 end
 WHERE id = @id" 
         oninserting="SqlDataSourceFreeSquare_Inserting" 
         onupdating="SqlDataSourceFreeSquare_Updating" ProviderName="System.Data.SqlClient">

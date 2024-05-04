@@ -28,6 +28,9 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		SectionMenu.Visible = Roles.IsUserInRole(Utils.Report1NFReviewerRole);
+		IsChmo400 = Roles.IsUserInRole(Utils.Chmo400Role);
+
+		Chmo400Customize();
 
 		// The 'Notifications' page must be visible only to users that can receive some notifications
 		if (Roles.IsUserInRole(Utils.DKVOrganizationControllerRole) ||
@@ -160,6 +163,21 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 		npp = npp;
 	}
 
+	void Chmo400Customize()
+	{
+		if (!IsChmo400)
+		{
+			var column = FreeSquareGridView.Columns.OfType<GridViewDataColumn>().SingleOrDefault(x => x.FieldName == "ispriviliger");
+			if (column != null)
+			{
+				column.Visible = false;
+				column.ReadOnly = true;
+			}
+		}
+	}
+
+
+	protected bool IsChmo400 { get; set; }
 
 	protected bool IsReportForm
 	{
@@ -282,6 +300,7 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 		e.Command.Parameters["@p_show_control"].Value = CheckBoxBalansObjectsShowControl.Checked ? 1 : 0;
 		e.Command.Parameters["@userId"].Value = Utils.GetUserId();
 		e.Command.Parameters["@bal_zkpo"].Value = Utils.GetCabinetBalansoderzhatelZkpo();
+		e.Command.Parameters["@isChmo400"].Value = IsChmo400 ? 1 : 0;
 	}
 
 	protected void SqlDataSourceFreeSquare_Updating(object sender, SqlDataSourceCommandEventArgs e)
@@ -555,6 +574,19 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 			e.Items.Add("Лист щодо включення до переліку вільних", "Report_1");
 			e.Items.Add("Лист щодо виключення з переліку вільних", "Report_4");
 		}
+	}
+
+	protected void FreeSquareGridView_CommandButtonInitialize(object sender, ASPxGridViewCommandButtonEventArgs e)
+	{
+		//if (e.ButtonType == ColumnCommandButtonType.Edit)
+		//{
+		//	var value = FreeSquareGridView.GetRowValues(e.VisibleIndex, new[] { "total_free_sqr" });
+		//	var val = (decimal)value;
+		//	if (val > 400M)
+		//	{
+		//		e.Visible = false;
+		//	}
+		//}
 	}
 }
 
@@ -1526,5 +1558,6 @@ where fs.id = " + dd(free_square_id);
 	}
 
 }
+
 
 

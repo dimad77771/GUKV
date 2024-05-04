@@ -468,6 +468,8 @@ SELECT
 ,fs.note
 ,fs.winner_id
 
+,fs.ispriviliger
+
 
 --,dbo.IsCabinetOrendodavecz(@userId) as isCabinetOrendodavecz
 ,case when (select Q.UserName from aspnet_Users Q where Q.UserId = @userId) = fs.modified_by2 then 1 else 0 end as isCabinetOrendodavecz
@@ -530,6 +532,8 @@ LEFT JOIN (
 			AND ( (@p_show_neziznacheni = 0) OR (@p_show_neziznacheni = 1 AND (fs.is_included = 1)) )
 			AND ( (isnull(@bal_zkpo,'') = '') OR (org.zkpo_code = @bal_zkpo) )
 			AND ( (@p_show_control = 0) OR (@p_show_control = 1 AND (fs.komis_protocol = '1')) )
+			AND ( (@isChmo400 = 1) OR (@isChmo400 = 0 AND (fs.ispriviliger = 0)) )
+		
 
 					--AND fs.id = 4606
 
@@ -549,6 +553,7 @@ SET
 	[winner_id] = @winner_id,
 	[modify_date2] = @modify_date2,
 	[modified_by2] = @modified_by2
+	,[ispriviliger] = @ispriviliger
 WHERE id = @id"
 		OnUpdating="SqlDataSourceFreeSquare_Updating">
 		<SelectParameters>
@@ -559,6 +564,7 @@ WHERE id = @id"
 			<asp:Parameter DbType="String" DefaultValue="" Name="userId" />
 			<asp:Parameter DbType="String" DefaultValue="" Name="bal_zkpo" />
 			<asp:Parameter DbType="Int32" DefaultValue="0" Name="p_show_control" />
+			<asp:Parameter DbType="Int32" DefaultValue="0" Name="isChmo400" />
 		</SelectParameters>
 	</mini:ProfiledSqlDataSource>
 
@@ -782,6 +788,7 @@ WHERE id = @id"
 		OnProcessColumnAutoFilter="GridViewFreeSquare_ProcessColumnAutoFilter"
 		OnContextMenuInitialize2="Grid_ContextMenuInitialize"
 		OnFillContextMenuItems="FreeSquareGridView_FillContextMenuItems"
+		OnCommandButtonInitialize="FreeSquareGridView_CommandButtonInitialize"
 		>
 		<ClientSideEvents CustomButtonClick="ShowPhoto" BeginCallback="OnBeginCallback" ContextMenuItemClick="OnContextMenuItemClick" />
 
@@ -929,6 +936,11 @@ WHERE id = @id"
 					<ClientSideEvents ValueChanged="include_in_perelik_change" />
 				</PropertiesComboBox>
 			</dx:GridViewDataComboBoxColumn>
+
+			<dx:GridViewDataCheckColumn FieldName="ispriviliger" Caption="Приві-лейо-ваний" VisibleIndex="4" Width="45px">
+				<HeaderStyle Wrap="True" />
+			</dx:GridViewDataCheckColumn>
+
 
 
 			<dx:GridViewDataTextColumn FieldName="komis_protocol" Caption="Погодження орендодавця" VisibleIndex="4" Width="100px">
@@ -1314,7 +1326,7 @@ WHERE id = @id"
 			ShowFooter="True"
 			VerticalScrollBarMode="Auto"
 			VerticalScrollBarStyle="Standard" />
-		<SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A3_006" Enabled="True" />
+		<SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A3_017" Enabled="true" />
 		<Styles Header-Wrap="True">
 			<Header Wrap="True"></Header>
 		</Styles>
