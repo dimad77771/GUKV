@@ -17,6 +17,7 @@ public partial class NoHeader : System.Web.UI.MasterPage
         bool userIsRdaController = Roles.IsUserInRole(Utils.RDAControllerRole);
         bool userIsMistoController = Roles.IsUserInRole(Utils.MISTOControllerRole);
         bool userIsOcenka = Roles.IsUserInRole(Utils.OcenkaRole);
+        bool userIsChmo400 = Roles.IsUserInRole(Utils.Chmo400Role);
 
         /*
         // If user does not belong to the role "1NFReportReviewer", hide the menu items related to 1NF reports
@@ -124,6 +125,13 @@ public partial class NoHeader : System.Web.UI.MasterPage
         {
             var menu = MainRibbon.Tabs.Single(q => q.Text == "Оцінка");
             menu.Visible = false;
+        }
+
+        if (!userIsChmo400)
+        {
+            var menu = MainRibbon.Tabs.Single(q => q.Text == "Реєстри");
+            var smenu = menu.Groups[0].Items.Single(q => q.Text == "Запити на привілейовані вільні приміщення");
+            smenu.Visible = false;
         }
 
     }

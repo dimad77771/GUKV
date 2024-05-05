@@ -347,6 +347,7 @@ SET
     ,[buyer_adr_street] = @buyer_adr_street
     ,[buyer_adr_nomer] = @buyer_adr_nomer
     ,[prozoro_number] = @prozoro_number
+    ,[primitka] = @primitka
     ,[modify_date2] = @modify_date2
     ,[modified_by2] = @modified_by2
 WHERE id = @id" 
@@ -373,6 +374,7 @@ WHERE id = @id"
       ,[buyer_adr_street]
       ,[buyer_adr_nomer]
       ,[prozoro_number]
+      ,[primitka]
       ,[modify_date2]
       ,[modified_by2]
     ) 
@@ -397,6 +399,7 @@ WHERE id = @id"
     ,@buyer_adr_street
     ,@buyer_adr_nomer
     ,@prozoro_number
+    ,@primitka
     ,@modify_date2
     ,@modified_by2
     );
@@ -748,6 +751,10 @@ SELECT SCOPE_IDENTITY()"
             </DataItemTemplate>
         </dx:GridViewDataTextColumn>
 
+        <dx:GridViewDataTextColumn FieldName="primitka" Caption="Примітка"  Width="150px">
+        </dx:GridViewDataTextColumn>
+
+
         <dx:GridViewCommandColumn Caption="Док." Width="40px" ButtonType="Image" CellStyle-Wrap="False" >
             <CustomButtons>
                 <dx:GridViewCommandColumnCustomButton ID="bnt_current_stage_pdf" Text="Зображення документу PDF"> <Image Url="~/Styles/current_stage_pdf.png"> </Image>
@@ -789,7 +796,7 @@ SELECT SCOPE_IDENTITY()"
         ShowFooter="false"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.PrivatisatSquare" Version="A1_31" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.PrivatisatSquare" Version="A1_32" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
