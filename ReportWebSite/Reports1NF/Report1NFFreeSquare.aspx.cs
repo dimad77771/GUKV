@@ -173,6 +173,12 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 				column.Visible = false;
 				column.ReadOnly = true;
 			}
+
+			var sqlDataSourceFreeSquare = this.FindControlRecursive("SqlDataSourceFreeSquare") as SqlDataSource;
+			if (sqlDataSourceFreeSquare != null)
+			{
+				sqlDataSourceFreeSquare.UpdateCommand = sqlDataSourceFreeSquare.UpdateCommand.Replace(",[ispriviliger] = @ispriviliger","");
+			}
 		}
 	}
 
