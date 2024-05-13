@@ -269,8 +269,12 @@ LEFT JOIN (
 
         WHERE (@p_rda_district_id = 0 OR (rep.org_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND rep.org_district_id = @p_rda_district_id))
 				and (is_included = 1)
+                and (ispriviliger = 0)
 				and (@fs_id = -1 OR fs.id = @fs_id)
 				and (@mode50 = 0 OR fs.freecycle_step_dict_id = 31)
+                
+
+                
     order by 
         case when (SELECT Q.public_name FROM free_proc_step_dict Q where Q.step_id = fs.freecycle_step_dict_id) <> '' then 1 else 2 end, 
         case when (SELECT Q.public_name FROM free_proc_step_dict Q where Q.step_id = fs.freecycle_step_dict_id) = 'аукціон оголошено' then 1 else 2 end, 
