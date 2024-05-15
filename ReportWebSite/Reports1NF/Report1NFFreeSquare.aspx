@@ -533,6 +533,7 @@ LEFT JOIN (
 			AND ( (isnull(@bal_zkpo,'') = '') OR (org.zkpo_code = @bal_zkpo) )
 			AND ( (@p_show_control = 0) OR (@p_show_control = 1 AND (fs.komis_protocol = '1')) )
 			AND ( (@isChmo400 = 1) OR (@isChmo400 = 0 AND (fs.ispriviliger = 0)) )
+			AND ( (@bal_organization_id <= 0) OR ( org.zkpo_code in (select q.zkpo_code from view_reports1nf q where q.organization_id = @bal_organization_id)) )
 		
 
 					--AND fs.id = 4606
@@ -565,6 +566,7 @@ WHERE id = @id"
 			<asp:Parameter DbType="String" DefaultValue="" Name="bal_zkpo" />
 			<asp:Parameter DbType="Int32" DefaultValue="0" Name="p_show_control" />
 			<asp:Parameter DbType="Int32" DefaultValue="0" Name="isChmo400" />
+			<asp:Parameter DbType="Int32" DefaultValue="0" Name="bal_organization_id" />
 		</SelectParameters>
 	</mini:ProfiledSqlDataSource>
 

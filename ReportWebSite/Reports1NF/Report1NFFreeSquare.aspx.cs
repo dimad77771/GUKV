@@ -305,8 +305,10 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 		e.Command.Parameters["@p_show_neziznacheni"].Value = CheckBoxBalansObjectsShowNeziznacheni.Checked ? 1 : 0;
 		e.Command.Parameters["@p_show_control"].Value = CheckBoxBalansObjectsShowControl.Checked ? 1 : 0;
 		e.Command.Parameters["@userId"].Value = Utils.GetUserId();
-		e.Command.Parameters["@bal_zkpo"].Value = Utils.GetCabinetBalansoderzhatelZkpo();
+		//e.Command.Parameters["@bal_zkpo"].Value = Utils.GetCabinetBalansoderzhatelZkpo();
+		e.Command.Parameters["@bal_zkpo"].Value = "";
 		e.Command.Parameters["@isChmo400"].Value = IsChmo400 ? 1 : 0;
+		e.Command.Parameters["@bal_organization_id"].Value = Utils.RdaDistrictID > 0 ? -1 : Utils.UserOrganizationID;
 	}
 
 	protected void SqlDataSourceFreeSquare_Updating(object sender, SqlDataSourceCommandEventArgs e)
