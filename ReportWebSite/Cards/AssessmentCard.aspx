@@ -414,13 +414,13 @@
 						</tr>
 						<tr>
 							<td width="100px">
-								<dx:ASPxLabel ID="ASPxLabel5" runat="server" Text="Орендар"></dx:ASPxLabel>
+								<dx:ASPxLabel ID="ASPxLabel5" runat="server" Text="Замовник оцінки"></dx:ASPxLabel>
 							</td>
 							<td width="8px">&nbsp;</td>
 							<td colspan="5">
 								<dx:ASPxComboBox ID="org_renter_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="700px"
 									IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceOrganizations" Value='<%# Eval("org_renter_id") %>'
-									Title="Орендар"
+									Title="Замовник оцінки"
 									DropDownStyle="DropDown"
 									EnableCallbackMode="True"
 									CallbackPageSize="100" />

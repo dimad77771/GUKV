@@ -446,8 +446,8 @@ WHERE id = @report_id"
             </dx:ASPxCheckBox>
         </td>
         <td>
-            <dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowNeviznacheni" runat="server" Checked='False' Text="Невизначені" ToolTip="Невизначені" Visible="false"
-                Width="80px" ClientInstanceName="CheckBoxBalansObjectsShowNeviznacheni" >
+            <dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowNeviznacheni" runat="server" Checked='True' Text="Показати невизначені" ToolTip="Показати невизначені" Visible="false"
+                Width="160px" ClientInstanceName="CheckBoxBalansObjectsShowNeviznacheni" >
                 <ClientSideEvents CheckedChanged="CheckBoxBalansObjectsShowNeviznacheni_CheckedChanged" />
             </dx:ASPxCheckBox>
         </td>
@@ -1383,7 +1383,7 @@ WHERE id = @report_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A4_15" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A4_18" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

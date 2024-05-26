@@ -158,6 +158,7 @@ SELECT
 
 , fs.initiator
 , fs.meta_zvern
+, (select Q.name from dict_pravo_bez_auction Q where Q.id = fs.pravo_bez_auction) as pravo_bez_auction
 , zg2.name as zgoda_control
 , zg.name as zgoda_renter
 
@@ -220,6 +221,8 @@ WHERE fs.id = " + free_square_id;
 			properties.Add("{Балансоутримувач}", r["org_name"]);
 			properties.Add("{Ініціатор оренди}", r["initiator"]);
 			properties.Add("{Мета звернення}", r["meta_zvern"]);
+			properties.Add("{Можливе використання вільного приміщення}", r["possible_using"]);
+			properties.Add("{Право на оренду без проведення аукціону}", r["pravo_bez_auction"]);
 		}
 
 

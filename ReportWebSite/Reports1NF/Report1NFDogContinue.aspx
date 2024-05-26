@@ -471,7 +471,7 @@ WHERE id = @id"
             <asp:Label ID="LabelReportTitle1" runat="server" Text="Реєстр продовження договорів" CssClass="reporttitle"></asp:Label>
         </td>
         <td>
-            <dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowNeziznacheni" runat="server" Checked='True' Text="Публічні" ToolTip="Показувати лише публічні об'єкти"
+            <dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowNeziznacheni" runat="server" Checked='False' Text="Публічні" ToolTip="Показувати лише публічні об'єкти"
                 Width="80px" ClientInstanceName="CheckBoxBalansObjectsShowNeziznacheni" >
                 <ClientSideEvents CheckedChanged="CheckBoxBalansObjectsShowNeziznacheni_CheckedChanged" />
             </dx:ASPxCheckBox>

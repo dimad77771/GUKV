@@ -236,6 +236,11 @@
             </DataItemTemplate>
 			<Settings AutoFilterCondition="Contains" />
 		</dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="inputdoc_rezenz_type" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Тип рецензента" Width="100px">
+            <SettingsHeaderFilter Mode="CheckedList" />
+		</dx:GridViewDataTextColumn>
+
 		<dx:GridViewDataTextColumn FieldName="inputdoc_korrespondent" ReadOnly="True" ShowInCustomizationForm="True" Caption="Кореспондент" Width="140px">
 			<DataItemTemplate>
                 <%# EvaluateMultiLineValue(Eval("inputdoc_korrespondent")) %>
@@ -251,7 +256,7 @@
             </DataItemTemplate>
             <Settings ShowInFilterControl="False"/>
         </dx:GridViewDataTextColumn>--%>
-        <dx:GridViewDataTextColumn FieldName="renter_name" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Орендар" Width="160px">
+        <dx:GridViewDataTextColumn FieldName="renter_name" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Замовник оцінки" Width="160px">
             <DataItemTemplate>
                 <%# EvaluateOrganizationLink(Eval("org_renter_id"), Eval("renter_name"))%>
             </DataItemTemplate>
@@ -402,7 +407,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Visible"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Assessment.Objects" Version="A18" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.Assessment.Objects" Version="A20" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

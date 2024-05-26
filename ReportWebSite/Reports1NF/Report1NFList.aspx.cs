@@ -163,6 +163,8 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 	{
 		//if (!IsPostBack)
 		{
+			var isRDAControllerRole = Roles.IsUserInRole(Utils.RDAControllerRole);
+
 			CheckBoxBalansObjectsShowNeziznacheni.Visible = false;
 			CheckBoxBalansObjectsShowNeziznacheni.Checked = false;
 			CheckBoxBalansObjectsShowNeviznacheni.Visible = true;
@@ -171,7 +173,10 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 			if (column1 != null)
 			{
 				//PrimaryGridView.Columns.Remove(column1);
-				column1.Visible = false;
+				if (!isRDAControllerRole)
+				{
+					column1.Visible = false;
+				}
 			}
 
 			var column2 = PrimaryGridView.Columns.OfType<GridViewDataColumn>().SingleOrDefault(q => q.FieldName == "conveyancingRequests_count");
@@ -185,7 +190,10 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 			if (column3 != null)
 			{
 				//PrimaryGridView.Columns.Remove(column3);
-				column3.Visible = false;
+				if (!isRDAControllerRole)
+				{
+					column3.Visible = false;
+				}
 			}
 
 			var prefix = "controlVikorist.";
@@ -268,12 +276,21 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 					@"ЦМК Заборгованість по орендній платі, грн. (без ПДВ)",
 					@"Картка Звіту",
 				};
+				if (isRDAControllerRole)
+				{
+					visibleColumns = visibleColumns.Union(new[] { "inventar_recieve_date" }).ToArray();
+				}
+
 				int npp = 0;
 				foreach (GridViewColumn column in PrimaryGridView.Columns)
 				{
 					if (column.Caption == "#")
 					{
 						var visible = !(column as GridViewCommandColumn).CustomButtons.Any(x => x.ID == "bnt_show_photo");
+						if (isRDAControllerRole)
+						{
+							visible = true;
+						}
 						column.Visible = visible;
 						if (column.Visible) npp++;
 					}
@@ -434,7 +451,7 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
         e.Command.Parameters["@p_misto_id"].Value = ParmMistoId;
 		e.Command.Parameters["@smode"].Value = SMode;
 		e.Command.Parameters["@p_show_neziznacheni"].Value = CheckBoxBalansObjectsShowNeziznacheni.Checked ? 0 : 1;
-		e.Command.Parameters["@p_show_neviznacheni"].Value = CheckBoxBalansObjectsShowNeviznacheni.Checked ? 0 : 1;
+		e.Command.Parameters["@p_show_neviznacheni"].Value = CheckBoxBalansObjectsShowNeviznacheni.Checked ? 1 : 0;
 	}
 
 	protected void SqlDataSourceReports_Updating(object sender, SqlDataSourceCommandEventArgs e)

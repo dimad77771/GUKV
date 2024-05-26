@@ -484,6 +484,14 @@ SELECT
 --, solution = fs.is_solution
 
 , fs.initiator
+, fs.initiator_docnum
+, fs.initiator_docdat
+
+, fs.pogodzhenya_docnum
+, fs.pogodzhenya_docdat
+
+, fs.pravo_bez_auction
+
 , zg2.name as zgoda_control
 , zg.name as zgoda_renter
 
@@ -545,6 +553,7 @@ SET
     [komis_protocol] = @komis_protocol,
 	[geodata_map_points] = @geodata_map_points,
 	[include_in_perelik] = @include_in_perelik,
+	[pravo_bez_auction] = @pravo_bez_auction,
 	[freecycle_step_dict_id] = @freecycle_step_dict_id,
 	[freecycle_step_date] = @freecycle_step_date,
 	[current_stage_docdate] = @current_stage_docdate,
@@ -602,6 +611,11 @@ WHERE id = @id"
 	<mini:ProfiledSqlDataSource ID="SqlDataSourceIncludeInPerelik" runat="server"
 		ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>"
 		SelectCommand="SELECT '1' id, '1' name, 1 as ordrow union SELECT '2' id, '2' name, 1 as ordrow union select null, '',  2 as ordrow ORDER BY ordrow, name">
+	</mini:ProfiledSqlDataSource>
+
+	<mini:ProfiledSqlDataSource ID="SqlDataSourcePravoBezAuction" runat="server"
+		ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>"
+		SelectCommand="SELECT id, name, ordnum from dict_pravo_bez_auction union select null, '',  9999 as ordrow ORDER BY ordnum, name">
 	</mini:ProfiledSqlDataSource>
 
 	<textarea rows="2" cols="2" id="inpit-for-copy-clipboard" style="display: none2; width: 1px; height: 1px; position: absolute; top: 1px; right: 1px; z-index: -1"></textarea>
@@ -939,6 +953,8 @@ WHERE id = @id"
 				</PropertiesComboBox>
 			</dx:GridViewDataComboBoxColumn>
 
+
+
 			<dx:GridViewDataCheckColumn FieldName="ispriviliger" Caption="Приві-лейо-ваний" VisibleIndex="4" Width="45px">
 				<HeaderStyle Wrap="True" />
 			</dx:GridViewDataCheckColumn>
@@ -1042,11 +1058,19 @@ WHERE id = @id"
 				</dx:GridViewDataComboBoxColumn>--%>
 				</Columns>
 			</dx:GridViewBandColumn>
+
+			<dx:GridViewDataComboBoxColumn FieldName="pravo_bez_auction" VisibleIndex="16" Width="450px" Visible="True" Caption="Право на оренду без проведення аукціону">
+				<HeaderStyle Wrap="True" />
+				<PropertiesComboBox DataSourceID="SqlDataSourcePravoBezAuction" ValueField="id" TextField="name" ValueType="System.Int32" ClearButton-DisplayMode="OnHover"/>
+			</dx:GridViewDataComboBoxColumn>
+
+
 			<dx:GridViewDataTextColumn FieldName="form_of_ownership" Caption="Форма Власності" VisibleIndex="16" Width="100px">
 				<EditItemTemplate>
 					<dx:ASPxLabel runat="server" Text='<%# Eval("form_of_ownership") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 				</EditItemTemplate>
 			</dx:GridViewDataTextColumn>
+
 			<dx:GridViewDataTextColumn FieldName="old_organ" Caption="Орган госп. упр." VisibleIndex="17" Width="100px">
 				<EditItemTemplate>
 					<dx:ASPxLabel runat="server" Text='<%# Eval("old_organ") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
@@ -1066,6 +1090,35 @@ WHERE id = @id"
 					<dx:ASPxLabel runat="server" Text='<%# Eval("initiator") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 				</EditItemTemplate>
 			</dx:GridViewDataTextColumn>
+
+
+			<dx:GridViewDataTextColumn FieldName="initiator_docnum" Caption="Ініціатор оренди вх. №" VisibleIndex="19" Width="80px">
+				<EditItemTemplate>
+					<dx:ASPxLabel runat="server" Text='<%# Eval("initiator_docnum") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+				</EditItemTemplate>
+			</dx:GridViewDataTextColumn>
+
+			<dx:GridViewDataDateColumn FieldName="initiator_docdat" Caption="Ініціатор оренди дата" VisibleIndex="19" Width="80px">
+				<EditItemTemplate>
+					<dx:ASPxLabel runat="server" Text='<%# Eval("initiator_docdat", "{0:dd.MM.yyyy}") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+				</EditItemTemplate>
+			</dx:GridViewDataDateColumn>
+
+			<dx:GridViewDataTextColumn FieldName="pogodzhenya_docnum" Caption="Погодження балансоутримувача без аукціону вх. №" VisibleIndex="19" Width="80px">
+				<EditItemTemplate>
+					<dx:ASPxLabel runat="server" Text='<%# Eval("pogodzhenya_docnum") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+				</EditItemTemplate>
+			</dx:GridViewDataTextColumn>
+
+			<dx:GridViewDataDateColumn FieldName="pogodzhenya_docdat" Caption="Погодження балансоутримувача без аукціону дата" VisibleIndex="19" Width="80px">
+				<EditItemTemplate>
+					<dx:ASPxLabel runat="server" Text='<%# Eval("pogodzhenya_docdat", "{0:dd.MM.yyyy}") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+				</EditItemTemplate>
+			</dx:GridViewDataDateColumn>
+
+
+
+
 			<dx:GridViewDataTextColumn FieldName="zgoda_control" Caption="Погодження органу управління балансоутримувача" VisibleIndex="20" Width="100px">
 				<EditItemTemplate>
 					<dx:ASPxLabel runat="server" Text='<%# Eval("zgoda_control") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
@@ -1328,7 +1381,7 @@ WHERE id = @id"
 			ShowFooter="True"
 			VerticalScrollBarMode="Auto"
 			VerticalScrollBarStyle="Standard" />
-		<SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A3_017" Enabled="true" />
+		<SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A3_020" Enabled="true" />
 		<Styles Header-Wrap="True">
 			<Header Wrap="True"></Header>
 		</Styles>

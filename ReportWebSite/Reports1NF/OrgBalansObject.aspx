@@ -785,6 +785,11 @@
     SelectCommand="SELECT id, name FROM dict_1nf_invest_solution union select null, ''">
 </mini:ProfiledSqlDataSource>
 
+<mini:ProfiledSqlDataSource ID="SqlDataSourcePravoBezAuction" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name, ordnum from dict_pravo_bez_auction union select null, '',  9999 as ordrow ORDER BY ordnum, name">
+</mini:ProfiledSqlDataSource>
+
 <mini:ProfiledSqlDataSource ID="SqlDataSourceHistory" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT id, name FROM dict_1nf_history">
@@ -1009,7 +1014,12 @@ WHERE id = @id"
       ,[is_solution] 
 	  ,[invest_solution_id] 
       ,[initiator] 
+      ,[initiator_docnum]   
+      ,[initiator_docdat]   
+      ,[pogodzhenya_docnum]   
+      ,[pogodzhenya_docdat]   
       ,[zgoda_control_id] 
+      ,[pravo_bez_auction] 
       ,[free_object_type_id] 
       ,[zgoda_renter_id] 
 	  ,[is_included] 	
@@ -1054,7 +1064,12 @@ WHERE id = @id"
       ,[is_solution] 
 	  ,[invest_solution_id]  
       ,[initiator] 
+      ,[initiator_docnum] 
+      ,[initiator_docdat] 
+      ,[pogodzhenya_docnum] 
+      ,[pogodzhenya_docdat]  
       ,[zgoda_control_id] 
+      ,[pravo_bez_auction] 
       ,[free_object_type_id] 
       ,[zgoda_renter_id]
 	  ,[is_included]
@@ -1097,7 +1112,12 @@ WHERE id = @id"
       ,@is_solution
 	  ,@invest_solution_id
       ,@initiator
+      ,@initiator_docnum
+      ,@initiator_docdat
+      ,@pogodzhenya_docnum
+      ,@pogodzhenya_docdat
       ,@zgoda_control_id
+      ,@pravo_bez_auction
       ,@free_object_type_id
       ,@zgoda_renter_id
 	  ,@is_included
@@ -1142,7 +1162,12 @@ SET
       ,[is_solution] = @is_solution
 	  ,[invest_solution_id] = @invest_solution_id
       ,[initiator] = @initiator
+      ,[initiator_docnum] = @initiator_docnum
+      ,[initiator_docdat] = @initiator_docdat
+      ,[pogodzhenya_docnum] = @pogodzhenya_docnum
+      ,[pogodzhenya_docdat] = @pogodzhenya_docdat
       ,[zgoda_control_id] = @zgoda_control_id
+      ,[pravo_bez_auction] = @pravo_bez_auction
       ,[free_object_type_id] = @free_object_type_id
       ,[zgoda_renter_id] = @zgoda_renter_id 
 	  ,[is_included] = @is_included 
@@ -1195,7 +1220,12 @@ WHERE id = @id"
         <asp:Parameter Name="is_solution" />
 		<asp:Parameter Name="invest_solution_id" />
         <asp:Parameter Name="initiator" />
+        <asp:Parameter Name="initiator_docnum" />
+        <asp:Parameter Name="initiator_docdat" />
+        <asp:Parameter Name="pogodzhenya_docnum" />
+        <asp:Parameter Name="pogodzhenya_docdat" />
         <asp:Parameter Name="zgoda_control_id" />
+        <asp:Parameter Name="pravo_bez_auction" />
         <asp:Parameter Name="free_object_type_id" />
         <asp:Parameter Name="zgoda_renter_id" />
 		<asp:Parameter Name="is_included" />		
@@ -1237,7 +1267,12 @@ WHERE id = @id"
         <asp:Parameter Name="is_solution" />
 		<asp:Parameter Name="invest_solution_id" />
         <asp:Parameter Name="initiator" />
+        <asp:Parameter Name="initiator_docnum" />
+        <asp:Parameter Name="initiator_docdat" />
+        <asp:Parameter Name="pogodzhenya_docnum" />
+        <asp:Parameter Name="pogodzhenya_docdat" />
         <asp:Parameter Name="zgoda_control_id" />
+        <asp:Parameter Name="pravo_bez_auction" />
         <asp:Parameter Name="free_object_type_id" />
         <asp:Parameter Name="zgoda_renter_id" />
 		<asp:Parameter Name="is_included" />	
@@ -3059,6 +3094,15 @@ WHERE id = @id"
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>
 
+             <dx:GridViewDataTextColumn FieldName="initiator_docnum" Caption="Ініціатор оренди вх. №" VisibleIndex="19" Width ="80px">
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+             <dx:GridViewDataDateColumn FieldName="initiator_docdat" Caption="Ініціатор оренди дата" VisibleIndex="19" Width ="80px">
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataDateColumn>
+
+
             <dx:GridViewDataComboBoxColumn FieldName="zgoda_control_id" VisibleIndex="20" Width ="80px"
                 Visible="True" Caption="Погодження органу управління балансоутримувача">
                 <HeaderStyle Wrap="True" />
@@ -3070,6 +3114,24 @@ WHERE id = @id"
                 <EditFormSettings Visible="True" />
                 <EditFormCaptionStyle Wrap="True"/>
             </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataComboBoxColumn FieldName="pravo_bez_auction" VisibleIndex="20" Width = "100px" Visible="False" Caption="Право на оренду без проведення аукціону">
+				<HeaderStyle Wrap="True" />
+                <PropertiesComboBox DataSourceID="SqlDataSourcePravoBezAuction" ValueField="id" TextField="name" ValueType="System.Int32" />
+                <EditFormSettings Visible="True" />
+				<EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataComboBoxColumn>
+
+
+            <dx:GridViewDataTextColumn FieldName="pogodzhenya_docnum" Caption="Погодження балансоутримувача без аукціону вх. №" VisibleIndex="20" >
+                <HeaderStyle Wrap="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataDateColumn FieldName="pogodzhenya_docdat" Caption="Погодження балансоутримувача без аукціону дата" VisibleIndex="20" >
+                <HeaderStyle Wrap="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataDateColumn>
 
 
             <dx:GridViewDataComboBoxColumn FieldName="zgoda_renter_id" VisibleIndex="21" Width ="80px"

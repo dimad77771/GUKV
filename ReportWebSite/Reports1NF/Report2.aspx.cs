@@ -285,6 +285,7 @@ LEFT JOIN (
 			}
 			var r = dataTable.Rows[0];
 
+
 			properties.Add("{Дата укладання договору}", GetDate(r["agreement_date"]));
 			properties.Add("{Номер договору}", r["agreement_num"]);
 			properties.Add("{Загальна площа об’єкта}", "" + GetDecimal(r["total_free_sqr"]));
@@ -292,6 +293,7 @@ LEFT JOIN (
 			properties.Add("{Строк оренди (роки)}", StrokOrenda(r["srok_dog"]));
 			properties.Add("{Адреса балансоутримувача (вулиця)}", r["balanutr_addr_street"]);
 			properties.Add("{Адреса балансоутримувача (номер дому)}", r["balanutr_addr_nomer"]);
+			properties.Add("{Має право на продовження договору без проведення аукціону}", GetBool222(r["has_perevazh_pravo"]));
 		}
 
 		string StrokOrenda(object arg)
@@ -332,6 +334,13 @@ LEFT JOIN (
 		string GetDate(object arg)
 		{
 			return arg is DBNull ? "" : ((DateTime)arg).ToString("dd.MM.yyyy");
+		}
+
+		string GetBool222(object arg)
+		{
+			return arg is bool && (bool)arg == true ? 
+				"укладені без проведення аукціону з підприємствами, установами, організаціями, передбаченими частиною другою статті 15 цього Закону відповідно до вимог статті 15 цього Закону, крім випадків, передбачених абзацами одинадцятим та дванадцятим частини другої статті 15 цього Закону;" :
+				"укладені з підприємствами, установами, організаціями, що надають соціально важливі послуги населенню, перелік яких визначається Кабінетом Міністрів України, додатковий перелік яких може бути визначений представницькими органами місцевого самоврядування згідно із законодавством;";
 		}
 
 		void ReplaceDocTagInElements(MainDocumentPart mainPart, string tag, string replacement)
