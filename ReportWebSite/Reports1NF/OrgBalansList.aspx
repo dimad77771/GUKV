@@ -102,9 +102,15 @@
 		 ,bal.cost_zalishkova 	
 		 ,bal.znos
 		 ,bal.znos_date
+         ,bal.geodata_map_opoints
          ,bal.note
          ,case when exists (select 1 from reports1nf_photos Q where Q.bal_id = bal.id) then 1 else 0 end as has_reports1nf_photos
          ,case when exists (select 1 from reports1nf_btiphoto Q where Q.bal_id = bal.id) then 1 else 0 end as has_reports1nf_btiphoto
+
+        ,case when exists (select 1 from reports1nf_balans_akt_attachfiles Q where Q.free_square_id = 500000 * bal.report_id + bal.id) then 1 else 0 end as has_reports1nf_balans_akt_attachfiles
+        ,case when exists (select 1 from reports1nf_balans_rish_attachfiles Q where Q.free_square_id = 500000 * bal.report_id + bal.id) then 1 else 0 end as has_reports1nf_balans_rish_attachfiles
+        ,case when exists (select 1 from reports1nf_balans_bti_attachfiles Q where Q.free_square_id = 500000 * bal.report_id + bal.id) then 1 else 0 end as has_reports1nf_balans_bti_attachfiles
+        ,case when exists (select 1 from reports1nf_balans_dinfo_attachfiles Q where Q.free_square_id = 500000 * bal.report_id + bal.id) then 1 else 0 end as has_reports1nf_balans_dinfo_attachfiles
 
         FROM reports1nf_balans bal
         INNER JOIN reports1nf rep ON rep.id = bal.report_id
@@ -141,7 +147,9 @@
 		,bal.cost_zalishkova 	
 		,bal.znos
 		,bal.znos_date
-    	,bal.note" >
+        ,bal.geodata_map_opoints
+    	,bal.note
+        ,bal.report_id" >
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="rep_id" />
     </SelectParameters>
@@ -318,8 +326,9 @@
 		<dx:GridViewDataTextColumn FieldName="cost_zalishkova" VisibleIndex="17" Caption="Залишкова вартість, тис. грн." ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataTextColumn>
 		<dx:GridViewDataTextColumn FieldName="znos" VisibleIndex="18" Caption="Знос, тис. грн." ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataTextColumn>
 		<dx:GridViewDataDateColumn FieldName="znos_date" VisibleIndex="19" Caption="станом на" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataDateColumn>
+        <dx:GridViewDataDateColumn FieldName="geodata_map_opoints" VisibleIndex="20" Caption="Координати на мапі" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataDateColumn>
 
-		<dx:GridViewDataTextColumn FieldName="balans_id_" VisibleIndex="20" Caption="ID об'єкту" Visible="false"></dx:GridViewDataTextColumn>
+		<dx:GridViewDataTextColumn FieldName="balans_id_" VisibleIndex="21" Caption="ID об'єкту" Visible="false"></dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn FieldName="has_reports1nf_photos" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="101" Visible="True" Caption="Наявність фото" Width="40px">
             <DataItemTemplate>
@@ -340,6 +349,48 @@
             </DataItemTemplate>
             <Settings ShowInFilterControl="False" AllowAutoFilter="False" AllowHeaderFilter="False" />
         </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="has_reports1nf_balans_akt_attachfiles" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="151" Visible="True" Caption="Док. на право користування об’єктом" Width="50px">
+            <DataItemTemplate>
+               <%# Eval("has_reports1nf_balans_akt_attachfiles").Equals(1) ?
+                       "<center><img border='0' src='../Styles/MarkOn.png'/></center>"
+                       : ""
+               %>
+            </DataItemTemplate>
+            <Settings ShowInFilterControl="False" AllowAutoFilter="False" AllowHeaderFilter="False" />
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="has_reports1nf_balans_rish_attachfiles" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="152" Visible="True" Caption="Док. що підтверджує передачу на баланс" Width="50px">
+            <DataItemTemplate>
+               <%# Eval("has_reports1nf_balans_rish_attachfiles").Equals(1) ?
+                       "<center><img border='0' src='../Styles/MarkOn.png'/></center>"
+                       : ""
+               %>
+            </DataItemTemplate>
+            <Settings ShowInFilterControl="False" AllowAutoFilter="False" AllowHeaderFilter="False" />
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="has_reports1nf_balans_bti_attachfiles" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="153" Visible="True" Caption="Документація БТІ" Width="50px">
+            <DataItemTemplate>
+               <%# Eval("has_reports1nf_balans_bti_attachfiles").Equals(1) ?
+                       "<center><img border='0' src='../Styles/MarkOn.png'/></center>"
+                       : ""
+               %>
+            </DataItemTemplate>
+            <Settings ShowInFilterControl="False" AllowAutoFilter="False" AllowHeaderFilter="False" />
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="has_reports1nf_balans_dinfo_attachfiles" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="154" Visible="True" Caption="Реєстрація у реєстрі речових прав" Width="50px">
+            <DataItemTemplate>
+               <%# Eval("has_reports1nf_balans_dinfo_attachfiles").Equals(1) ?
+                       "<center><img border='0' src='../Styles/MarkOn.png'/></center>"
+                       : ""
+               %>
+            </DataItemTemplate>
+            <Settings ShowInFilterControl="False" AllowAutoFilter="False" AllowHeaderFilter="False" />
+        </dx:GridViewDataTextColumn>
+
+
 
     </Columns>
 
@@ -367,7 +418,7 @@
     <SettingsPager PageSize="20" />
     <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
     <Styles Header-Wrap="True" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.BalansList" Enabled="True" Version="A5" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.BalansList" Enabled="True" Version="A7" />
 
     <ClientSideEvents
         Init="function (s,e) { PrimaryGridView.PerformCallback('init:'); }"

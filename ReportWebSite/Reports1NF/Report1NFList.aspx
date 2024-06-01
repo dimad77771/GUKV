@@ -128,6 +128,10 @@
 
         ,isnull(PAY_RECV_ZVIT,0) + isnull(PAY_RECV_OTHER,0) - isnull(PAY_RETURN_ALL_OREND_PAYED,0) as PAY_RECV_ZVIT_new
         ,corporav_prava
+        ,case when exists (select 1 from reports1nf_balans_dinfo_attachfiles Q join reports1nf_balans Q2 on Q.free_square_id = 500000 * Q2.report_id + Q2.id where Q2.report_id = rep.report_id) then 1 else 0 end as has_reports1nf_balans_akt_attachfiles
+        ,case when exists (select 1 from reports1nf_balans_rish_attachfiles Q join reports1nf_balans Q2 on Q.free_square_id = 500000 * Q2.report_id + Q2.id where Q2.report_id = rep.report_id) then 1 else 0 end as has_reports1nf_balans_rish_attachfiles
+        ,case when exists (select 1 from reports1nf_balans_bti_attachfiles Q join reports1nf_balans Q2 on Q.free_square_id = 500000 * Q2.report_id + Q2.id where Q2.report_id = rep.report_id) then 1 else 0 end as has_reports1nf_balans_bti_attachfiles
+        ,case when exists (select 1 from reports1nf_balans_dinfo_attachfiles Q join reports1nf_balans Q2 on Q.free_square_id = 500000 * Q2.report_id + Q2.id where Q2.report_id = rep.report_id) then 1 else 0 end as has_reports1nf_balans_dinfo_attachfiles
         
         FROM view_reports1nf rep
         LEFT JOIN (SELECT sum(CASE WHEN (r1a.submit_date IS NULL OR r1a.modify_date IS NULL OR r1a.modify_date > r1a.submit_date) THEN 0 ELSE 1 END) as NumOfSubmAgr, 
@@ -1310,6 +1314,47 @@ WHERE id = @report_id"
             </PropertiesComboBox>  
         </dx:GridViewDataComboBoxColumn>
 
+                <dx:GridViewDataTextColumn FieldName="has_reports1nf_balans_akt_attachfiles" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="151" Visible="True" Caption="Док. на право користування об’єктом" Width="50px">
+            <DataItemTemplate>
+               <%# Eval("has_reports1nf_balans_akt_attachfiles").Equals(1) ?
+                       "<center><img border='0' src='../Styles/MarkOn.png'/></center>"
+                       : ""
+               %>
+            </DataItemTemplate>
+            <Settings ShowInFilterControl="False" AllowAutoFilter="False" AllowHeaderFilter="False" />
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="has_reports1nf_balans_rish_attachfiles" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="152" Visible="True" Caption="Док. що підтверджує передачу на баланс" Width="50px">
+            <DataItemTemplate>
+               <%# Eval("has_reports1nf_balans_rish_attachfiles").Equals(1) ?
+                       "<center><img border='0' src='../Styles/MarkOn.png'/></center>"
+                       : ""
+               %>
+            </DataItemTemplate>
+            <Settings ShowInFilterControl="False" AllowAutoFilter="False" AllowHeaderFilter="False" />
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="has_reports1nf_balans_bti_attachfiles" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="153" Visible="True" Caption="Документація БТІ" Width="50px">
+            <DataItemTemplate>
+               <%# Eval("has_reports1nf_balans_bti_attachfiles").Equals(1) ?
+                       "<center><img border='0' src='../Styles/MarkOn.png'/></center>"
+                       : ""
+               %>
+            </DataItemTemplate>
+            <Settings ShowInFilterControl="False" AllowAutoFilter="False" AllowHeaderFilter="False" />
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="has_reports1nf_balans_dinfo_attachfiles" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="154" Visible="True" Caption="Реєстрація у реєстрі речових прав" Width="50px">
+            <DataItemTemplate>
+               <%# Eval("has_reports1nf_balans_dinfo_attachfiles").Equals(1) ?
+                       "<center><img border='0' src='../Styles/MarkOn.png'/></center>"
+                       : ""
+               %>
+            </DataItemTemplate>
+            <Settings ShowInFilterControl="False" AllowAutoFilter="False" AllowHeaderFilter="False" />
+        </dx:GridViewDataTextColumn>
+
+
     </Columns>
 
     <TotalSummary>
@@ -1383,7 +1428,7 @@ WHERE id = @report_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A4_18" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A4_19" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
