@@ -696,6 +696,12 @@
     SelectCommand="SELECT id, name FROM dict_1nf_districts2 ORDER BY name">
 </mini:ProfiledSqlDataSource>
 
+<mini:ProfiledSqlDataSource ID="SqlDataSourceMayPravoProdov" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name, ordnum from dict_may_pravo_prodov union select null, '',  9999 as ordrow ORDER BY ordnum, name">
+</mini:ProfiledSqlDataSource>
+
+
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDictDistricts2" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT [id], [name] FROM [dict_1nf_districts2] WHERE len(name) > 0 ORDER BY [name]" 
@@ -783,6 +789,11 @@
 <mini:ProfiledSqlDataSource ID="SqlDataSourceInvestSolution" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT id, name FROM dict_1nf_invest_solution union select null, ''">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceCziloveVikorist" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name, ordnum FROM dict_czilove_vikorist union select null, '', 99999 order by ordnum">
 </mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourcePravoBezAuction" runat="server" 
@@ -922,6 +933,7 @@ order by 1
       ,[zvernen_dat]
       ,[zvernen_vid]
       ,[bazhana_ploshad]
+      ,[czilove_vikorist]
 	  ,[possible_using]
       ,[modify_date]
       ,[modified_by]
@@ -934,6 +946,7 @@ order by 1
       ,[zvernen_dat]
       ,[zvernen_vid]
       ,[bazhana_ploshad]
+      ,[czilove_vikorist]
 	  ,[possible_using]
       ,[modify_date]
       ,[modified_by]
@@ -944,6 +957,7 @@ order by 1
       ,@zvernen_dat
       ,@zvernen_vid
       ,@bazhana_ploshad
+      ,@czilove_vikorist
 	  ,@possible_using
       ,@modify_date
       ,@modified_by
@@ -956,6 +970,7 @@ SET
     [zvernen_dat] = @zvernen_dat,
     [zvernen_vid] = @zvernen_vid,
     [bazhana_ploshad] = @bazhana_ploshad,
+    [czilove_vikorist] = @czilove_vikorist,
     [possible_using] = @possible_using,
     [modify_date] = @modify_date,
     [modified_by] = @modified_by
@@ -975,6 +990,7 @@ WHERE id = @id"
         <asp:Parameter Name="zvernen_dat" />
         <asp:Parameter Name="zvernen_vid" />
         <asp:Parameter Name="bazhana_ploshad" />
+        <asp:Parameter Name="czilove_vikorist" />
 		<asp:Parameter Name="possible_using" />
         <asp:Parameter Name="modify_date" />
         <asp:Parameter Name="modified_by" />
@@ -985,6 +1001,7 @@ WHERE id = @id"
         <asp:Parameter Name="zvernen_dat" />
         <asp:Parameter Name="zvernen_vid" />
         <asp:Parameter Name="bazhana_ploshad" />
+        <asp:Parameter Name="czilove_vikorist" />
 		<asp:Parameter Name="possible_using" />
         <asp:Parameter Name="modify_date" />
         <asp:Parameter Name="modified_by" />
@@ -1013,6 +1030,7 @@ WHERE id = @id"
       ,[report_id] 
       ,[is_solution] 
 	  ,[invest_solution_id] 
+      ,[czilove_vikorist] 
       ,[initiator] 
       ,[initiator_docnum]   
       ,[initiator_docdat]   
@@ -1063,6 +1081,7 @@ WHERE id = @id"
       ,[report_id]
       ,[is_solution] 
 	  ,[invest_solution_id]  
+      ,[czilove_vikorist]  
       ,[initiator] 
       ,[initiator_docnum] 
       ,[initiator_docdat] 
@@ -1111,6 +1130,7 @@ WHERE id = @id"
       ,@report_id
       ,@is_solution
 	  ,@invest_solution_id
+      ,@czilove_vikorist
       ,@initiator
       ,@initiator_docnum
       ,@initiator_docdat
@@ -1161,6 +1181,7 @@ SET
     [report_id] = @report_id
       ,[is_solution] = @is_solution
 	  ,[invest_solution_id] = @invest_solution_id
+      ,[czilove_vikorist] = @czilove_vikorist
       ,[initiator] = @initiator
       ,[initiator_docnum] = @initiator_docnum
       ,[initiator_docdat] = @initiator_docdat
@@ -1219,6 +1240,7 @@ WHERE id = @id"
         <asp:Parameter Name="report_id" />
         <asp:Parameter Name="is_solution" />
 		<asp:Parameter Name="invest_solution_id" />
+        <asp:Parameter Name="czilove_vikorist" />
         <asp:Parameter Name="initiator" />
         <asp:Parameter Name="initiator_docnum" />
         <asp:Parameter Name="initiator_docdat" />
@@ -1266,6 +1288,7 @@ WHERE id = @id"
         <asp:Parameter Name="report_id" />
         <asp:Parameter Name="is_solution" />
 		<asp:Parameter Name="invest_solution_id" />
+        <asp:Parameter Name="czilove_vikorist" />
         <asp:Parameter Name="initiator" />
         <asp:Parameter Name="initiator_docnum" />
         <asp:Parameter Name="initiator_docdat" />
@@ -3090,6 +3113,14 @@ WHERE id = @id"
 				<EditFormCaptionStyle Wrap="True"/>
             </dx:GridViewDataComboBoxColumn>
 
+            <dx:GridViewDataComboBoxColumn FieldName="czilove_vikorist" VisibleIndex="19" Width = "100px" Visible="false" Caption="Цільове використання вільного приміщення">
+				<HeaderStyle Wrap="True" />
+                <PropertiesComboBox DataSourceID="SqlDataSourceCziloveVikorist" ValueField="id" TextField="name" ValueType="System.Int32" />
+				<EditFormCaptionStyle Wrap="True"/>
+                <EditFormSettings Visible="True" />
+            </dx:GridViewDataComboBoxColumn>
+
+
             <dx:GridViewDataTextColumn FieldName="initiator" Caption="Ініціатор оренди (текстова інформація, якщо балансоутримувач - пусто)" VisibleIndex="19" Width ="100px">
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>
@@ -3520,17 +3551,17 @@ WHERE id = @id"
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataColumn>
 
-            <dx:GridViewDataTextColumn FieldName="zvernen_vid" Caption="Звернення від" VisibleIndex="30" Width="400px" >
+            <dx:GridViewDataTextColumn FieldName="zvernen_vid" Caption="Звернення від" VisibleIndex="30" Width="300px" >
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>
 
-            <dx:GridViewDataTextColumn FieldName="bazhana_ploshad" Caption="Бажана площа" VisibleIndex="40" Width="300px" >
+            <dx:GridViewDataTextColumn FieldName="bazhana_ploshad" Caption="Бажана площа" VisibleIndex="40" Width="200px" >
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>
 
-            <dx:GridViewDataComboBoxColumn FieldName="possible_using" Caption="Можливе використання вільного приміщення" VisibleIndex="50" Width="320px" >
+            <dx:GridViewDataComboBoxColumn FieldName="czilove_vikorist" Caption="Цільове використання вільного приміщення" VisibleIndex="50" Width="480px" >
                 <HeaderStyle Wrap="True" />
-                <PropertiesComboBox DataSourceID="SqlDataSourceUsingPossible" DropDownStyle="DropDown" AllowMouseWheel="true" ValueField="name" TextField="name" ValueType="System.String" EnableSynchronization="False" />
+                <PropertiesComboBox DataSourceID="SqlDataSourceCziloveVikorist" DropDownStyle="DropDown" AllowMouseWheel="true" ValueField="id" TextField="name" ValueType="System.String" EnableSynchronization="False" />
             </dx:GridViewDataComboBoxColumn>
 
 

@@ -110,7 +110,7 @@ SELECT
  row_number() over (order by org.short_name, b.street_full_name, b.addr_nomer, fs.total_free_sqr) as npp     
 ,fs.id
 ,fs.balans_id
-,org.short_name as org_name
+,org.full_name as org_name
 ,org.zkpo_code
 ,org.report_id
 ,org.director_title as vidpov_osoba

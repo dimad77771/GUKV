@@ -428,7 +428,7 @@ SELECT
  row_number() over (order by org.short_name, b.street_full_name, b.addr_nomer, fs.total_free_sqr) as npp     
 ,fs.id
 ,fs.balans_id
-,org.short_name as org_name
+,org.full_name as org_name
 ,org.zkpo_code
 ,org.report_id
 ,org.director_title as vidpov_osoba
@@ -482,6 +482,8 @@ SELECT
 
 ,invest_solution = (select qq.name from dict_1nf_invest_solution qq where qq.id = fs.invest_solution_id)
 --, solution = fs.is_solution
+
+,czilove_vikorist_text = (select q.name from dict_czilove_vikorist q where q.id = fs.czilove_vikorist)
 
 , fs.initiator
 , fs.initiator_docnum
@@ -1085,6 +1087,13 @@ WHERE id = @id"
 				</EditItemTemplate>
 			</dx:GridViewDataTextColumn>
 
+			<dx:GridViewDataTextColumn FieldName="czilove_vikorist_text" Caption="Цільове використання вільного приміщення" VisibleIndex="19" Width="230px">
+				<EditItemTemplate>
+					<dx:ASPxLabel runat="server" Text='<%# Eval("czilove_vikorist_text") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+				</EditItemTemplate>
+			</dx:GridViewDataTextColumn>
+
+
 			<dx:GridViewDataTextColumn FieldName="initiator" Caption="Ініціатор оренди" VisibleIndex="19" Width="100px">
 				<EditItemTemplate>
 					<dx:ASPxLabel runat="server" Text='<%# Eval("initiator") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
@@ -1381,7 +1390,7 @@ WHERE id = @id"
 			ShowFooter="True"
 			VerticalScrollBarMode="Auto"
 			VerticalScrollBarStyle="Standard" />
-		<SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A3_020" Enabled="true" />
+		<SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A3_021" Enabled="true" />
 		<Styles Header-Wrap="True">
 			<Header Wrap="True"></Header>
 		</Styles>

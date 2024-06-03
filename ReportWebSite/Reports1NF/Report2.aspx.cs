@@ -240,6 +240,7 @@ fs.id,
 
 ,fs.orend_plat_last_month
 ,fs.has_perevazh_pravo
+,(select Q.name from dict_may_pravo_prodov Q where Q.id = fs.may_pravo_prodov) as may_pravo_prodov_text
 ,fs.polipshanya_vartist
 ,fs.polipshanya_finish_date
 ,fs.primitki
@@ -293,7 +294,7 @@ LEFT JOIN (
 			properties.Add("{Строк оренди (роки)}", StrokOrenda(r["srok_dog"]));
 			properties.Add("{Адреса балансоутримувача (вулиця)}", r["balanutr_addr_street"]);
 			properties.Add("{Адреса балансоутримувача (номер дому)}", r["balanutr_addr_nomer"]);
-			properties.Add("{Має право на продовження договору без проведення аукціону}", GetBool222(r["has_perevazh_pravo"]));
+			properties.Add("{Має право на продовження договору без проведення аукціону}", r["may_pravo_prodov_text"]);
 		}
 
 		string StrokOrenda(object arg)

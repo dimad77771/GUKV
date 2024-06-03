@@ -1100,6 +1100,12 @@
     SelectCommand="select id, name from dict_streets where (not name is null) and (RTRIM(LTRIM(name)) <> '')">
 </mini:ProfiledSqlDataSource>
 
+<mini:ProfiledSqlDataSource ID="SqlDataSourceMayPravoProdov" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name, ordnum from dict_may_pravo_prodov union select null, '',  9999 as ordrow ORDER BY ordnum, name">
+</mini:ProfiledSqlDataSource>
+
+
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDictBuildings" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="select id, LTRIM(RTRIM(addr_nomer)) AS 'nomer' from buildings where 
@@ -1427,6 +1433,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
       ,[is_solution] 
 	  ,[invest_solution_id] 
       ,[initiator] 
+      ,[may_pravo_prodov] 
       ,[zgoda_control_id] 
       ,[free_object_type_id] 
       ,[zgoda_renter_id] 
@@ -1476,6 +1483,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
       ,[is_solution] 
 	  ,[invest_solution_id]  
       ,[initiator] 
+      ,[may_pravo_prodov] 
       ,[zgoda_control_id] 
       ,[free_object_type_id] 
       ,[zgoda_renter_id]
@@ -1523,6 +1531,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
       ,@is_solution
 	  ,@invest_solution_id
       ,@initiator
+      ,@may_pravo_prodov
       ,@zgoda_control_id
       ,@free_object_type_id
       ,@zgoda_renter_id
@@ -1572,6 +1581,7 @@ SET
       ,[is_solution] = @is_solution
 	  ,[invest_solution_id] = @invest_solution_id
       ,[initiator] = @initiator
+      ,[may_pravo_prodov] = @may_pravo_prodov
       ,[zgoda_control_id] = @zgoda_control_id
       ,[free_object_type_id] = @free_object_type_id
       ,[zgoda_renter_id] = @zgoda_renter_id 
@@ -1629,6 +1639,7 @@ WHERE id = @id"
         <asp:Parameter Name="is_solution" />
 		<asp:Parameter Name="invest_solution_id" />
         <asp:Parameter Name="initiator" />
+        <asp:Parameter Name="may_pravo_prodov" />
         <asp:Parameter Name="zgoda_control_id" />
         <asp:Parameter Name="free_object_type_id" />
         <asp:Parameter Name="zgoda_renter_id" />
@@ -1676,6 +1687,7 @@ WHERE id = @id"
         <asp:Parameter Name="is_solution" />
 		<asp:Parameter Name="invest_solution_id" />
         <asp:Parameter Name="initiator" />
+        <asp:Parameter Name="may_pravo_prodov" />
         <asp:Parameter Name="zgoda_control_id" />
         <asp:Parameter Name="free_object_type_id" />
         <asp:Parameter Name="zgoda_renter_id" />
@@ -4353,6 +4365,14 @@ WHERE id = @id"
             <dx:GridViewDataTextColumn FieldName="initiator" Caption="Ініціатор оренди (текстова інформація, якщо балансоутримувач - пусто)" VisibleIndex="19" Width ="100px">
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>
+
+           <dx:GridViewDataComboBoxColumn FieldName="may_pravo_prodov" VisibleIndex="19" Width = "100px" Visible="False" Caption="Має право на продовження договору без проведення аукціону">
+				<HeaderStyle Wrap="True" />
+                <PropertiesComboBox DataSourceID="SqlDataSourceMayPravoProdov" ValueField="id" TextField="name" ValueType="System.Int32" />
+                <EditFormSettings Visible="True" />
+				<EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataComboBoxColumn>
+
 
             <dx:GridViewDataComboBoxColumn FieldName="zgoda_control_id" VisibleIndex="20" Width ="80px"
                 Visible="True" Caption="Погодження органу управління балансоутримувача">

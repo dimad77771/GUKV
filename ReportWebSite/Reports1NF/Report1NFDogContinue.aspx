@@ -360,6 +360,7 @@
 
 ,fs.orend_plat_last_month
 ,fs.has_perevazh_pravo
+,(select Q.name from dict_may_pravo_prodov Q where Q.id = fs.may_pravo_prodov) as may_pravo_prodov_text
 ,fs.polipshanya_vartist
 ,fs.polipshanya_finish_date
 ,fs.primitki
@@ -963,6 +964,12 @@ WHERE id = @id"
 		<dx:GridViewDataCheckColumn FieldName="has_perevazh_pravo" Caption="Має переважне право на продовження" VisibleIndex="24" Width="60px" ReadOnly="true">
 		</dx:GridViewDataCheckColumn>
 
+        <dx:GridViewDataTextColumn FieldName="may_pravo_prodov_text" Caption="Має право на продовження договору без проведення аукціону" VisibleIndex="24" Width="230px">
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("may_pravo_prodov_text") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
         <dx:GridViewDataTextColumn FieldName="polipshanya_vartist" Caption="Вартість здійснених чинним орендарем невід’ємних поліпшень" VisibleIndex="24" Width="100px">
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("polipshanya_vartist") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
@@ -1171,7 +1178,7 @@ WHERE id = @id"
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFDogContinue" Version="A3_33" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFDogContinue" Version="A3_35" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
