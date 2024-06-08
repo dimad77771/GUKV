@@ -130,7 +130,7 @@ public partial class NoHeader : System.Web.UI.MasterPage
         if (!userIsChmo400)
         {
             var menu = MainRibbon.Tabs.Single(q => q.Text == "Реєстри");
-            var smenu = menu.Groups[0].Items.Single(q => q.Text == "Запити на привілейовані вільні приміщення");
+            var smenu = menu.Groups[0].Items.Single(q => q.Text == "Запити на передопрацьовані вільні приміщення");
             smenu.Visible = false;
         }
 

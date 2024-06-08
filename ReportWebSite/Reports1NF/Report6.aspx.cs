@@ -82,7 +82,8 @@ select
 a.*,
 b.org_full_name,
 b.street_full_name,
-b.addr_nomer
+b.addr_nomer,
+(select Q.name from dict_czilove_vikorist Q where Q.id = a.czilove_vikorist) as czilove_vikorist_text
 FROM reports1nf_zvernenya a 
 left join view_balans_all b on b.balans_id = a.balans_id
 where a.id = " + ID;
@@ -98,10 +99,13 @@ where a.id = " + ID;
 			var r = dataTable.Rows[0];
 
 			properties.Add("{Звернення від}", r["zvernen_vid"]);
+			properties.Add("{Дата звернення}", GetDate(r["zvernen_dat"]));
 			properties.Add("{Орендована площа кВ.м.}", r["bazhana_ploshad"]);
 			properties.Add("{Балансоутримувач - Повна Назва}", r["org_full_name"]);
 			properties.Add("{Назва Вулиці}", r["street_full_name"]);
 			properties.Add("{Номер Будинку}", r["addr_nomer"]);
+			properties.Add("{Цільове використання вільного приміщення}", r["czilove_vikorist_text"]);
+			properties.Add("{Бажана площа}", r["bazhana_ploshad"]);
 		}
 
 

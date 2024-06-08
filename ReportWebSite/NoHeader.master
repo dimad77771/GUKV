@@ -166,7 +166,7 @@
 															<dx:RibbonButtonItem Text="Реєстр продовження договорів" NavigateUrl="Reports1NF/Report1NFDogContinue.aspx">
 																<SmallImage Url="Styles/AddIcon.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="Запити на привілейовані вільні приміщення" NavigateUrl="Reports1NF/QueryPriviliger.aspx">
+															<dx:RibbonButtonItem Text="Запити на передопрацьовані вільні приміщення" NavigateUrl="Reports1NF/QueryPriviliger.aspx">
 																<SmallImage Url="Styles/ribbonicon_23.png" />
 															</dx:RibbonButtonItem>
 														</Items>

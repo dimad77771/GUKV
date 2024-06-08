@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="QueryPriviliger.aspx.cs" Inherits="Reports1NF_Report1NFPrivatisatSquare"
-    MasterPageFile="~/NoHeader.master" Title="Запити на привілейовані вільні приміщення" %>
+    MasterPageFile="~/NoHeader.master" Title="Запити на передопрацьовані вільні приміщення" %>
 
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.Export" tagprefix="dx" %>
@@ -332,6 +332,10 @@ SET
     ,[addr_street_id] = @addr_street_id
     ,[addr_nomer] = @addr_nomer
     ,[total_free_sqr] = @total_free_sqr
+    ,[primitke] = @primitke
+    ,[vilne_id] = @vilne_id
+    ,[vidpovid_num] = @vidpovid_num
+    ,[vidpovid_date] = @vidpovid_date
     ,[dat] = @dat
     ,[modify_date2] = @modify_date2
     ,[modified_by2] = @modified_by2
@@ -350,6 +354,10 @@ WHERE id = @id"
     addr_street_id,
     addr_nomer,
     total_free_sqr,
+    primitke,
+    vilne_id,
+    vidpovid_num,
+    vidpovid_date,
     modify_date2,
     modified_by2
     ) 
@@ -365,6 +373,10 @@ WHERE id = @id"
     @addr_street_id,
     @addr_nomer,
     @total_free_sqr,
+    @primitke,
+    @vilne_id,
+    @vidpovid_num,
+    @vidpovid_date,
     @modify_date2,
     @modified_by2
     );
@@ -436,7 +448,7 @@ SELECT SCOPE_IDENTITY()"
 <table border="0" cellspacing="4" cellpadding="0" width="100%">
     <tr>
         <td style="width: 100%;">
-            <asp:Label ID="LabelReportTitle1" runat="server" Text="Запити на привілейовані вільні приміщення" CssClass="reporttitle"></asp:Label>
+            <asp:Label ID="LabelReportTitle1" runat="server" Text="Запити на передопрацьовані вільні приміщення" CssClass="reporttitle"></asp:Label>
         </td>
         <td>
             <dx:ASPxButton ID="ASPxButton1" runat="server" AutoPostBack="False" 
@@ -594,19 +606,19 @@ SELECT SCOPE_IDENTITY()"
             <%--<CellStyle Wrap="False"></CellStyle>--%>
         </dx:GridViewCommandColumn>
 
-        <dx:GridViewDataTextColumn FieldName="zamovn" Caption="Замовник прим." Width="210" CellStyle-HorizontalAlign="Left">
+        <dx:GridViewDataTextColumn FieldName="zamovn" Caption="Замовник прим." Width="160" CellStyle-HorizontalAlign="Left">
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn FieldName="plosha" Caption="Бажана площа"  Width="120" CellStyle-HorizontalAlign="Left">
+        <dx:GridViewDataTextColumn FieldName="plosha" Caption="Бажана площа"  Width="80" CellStyle-HorizontalAlign="Left">
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn FieldName="adresat" Caption="Адресат"  Width="220" CellStyle-HorizontalAlign="Left">
+        <dx:GridViewDataTextColumn FieldName="adresat" Caption="Адресат"  Width="160" CellStyle-HorizontalAlign="Left">
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn FieldName="regzvern" Caption="Рег. № звернення"  Width="120" CellStyle-HorizontalAlign="Left">
+        <dx:GridViewDataTextColumn FieldName="regzvern" Caption="Рег. № звернення"  Width="80" CellStyle-HorizontalAlign="Left">
         </dx:GridViewDataTextColumn>
       
-        <dx:GridViewDataDateColumn FieldName="datzvern" Caption="Дата звернення"  Width="100" CellStyle-HorizontalAlign="Left">
+        <dx:GridViewDataDateColumn FieldName="datzvern" Caption="Дата звернення"  Width="80" CellStyle-HorizontalAlign="Left">
         </dx:GridViewDataDateColumn>
 
         <dx:GridViewDataTextColumn FieldName="org_name" Caption="Балансоутримувач - Повна назва" Width="240px" ReadOnly="true" >
@@ -655,9 +667,20 @@ SELECT SCOPE_IDENTITY()"
         <dx:GridViewDataTextColumn FieldName="addr_nomer" Caption="Номер будинку"  Width="65px">
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn FieldName="total_free_sqr" Caption="Площа нежилих приміщень будинку (кв.м.)">
+        <dx:GridViewDataTextColumn FieldName="total_free_sqr" Caption="Площа нежилих приміщень об'єкта (кв.м.)">
         </dx:GridViewDataTextColumn>
 
+        <dx:GridViewDataTextColumn FieldName="primitke" Caption="Примітки">
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="vilne_id" Caption="Реєстра-ційний № вільного об'єкта">
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="vidpovid_num" Caption="Реєстра-ційний № відповіді">
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataDateColumn FieldName="vidpovid_date" Caption="Дата відповіді">
+        </dx:GridViewDataDateColumn>
 
         <dx:GridViewDataTextColumn FieldName="regnum" Caption="Регістр. номер" Width="100" CellStyle-HorizontalAlign="Left">
         </dx:GridViewDataTextColumn>
@@ -700,7 +723,7 @@ SELECT SCOPE_IDENTITY()"
         ShowFooter="false"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.QueryPriviliger" Version="A10_009" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.QueryPriviliger" Version="A10_014" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
