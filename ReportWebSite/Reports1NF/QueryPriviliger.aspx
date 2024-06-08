@@ -309,7 +309,13 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourcePrivatisat" runat="server"
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT *  FROM queryPriviliger A order by dat desc"
+    SelectCommand="
+    SELECT 
+    *
+    ,(select Q.zkpo_code from reports1nf_org_info Q where Q.report_id = A.org_info_id) as zkpo_code
+    ,(select Q.full_name from reports1nf_org_info Q where Q.report_id = A.org_info_id) as org_name
+    ,(select Q.name from dict_streets Q where Q.id = A.addr_street_id) as addr_street
+    FROM queryPriviliger A order by dat desc"
     OnSelecting="SqlDataSourcePrivatisat_Selecting"
 
 DeleteCommand="DELETE FROM [queryPriviliger] WHERE id = @id" 
@@ -322,6 +328,10 @@ SET
     ,[regzvern] = @regzvern
     ,[datzvern] = @datzvern
     ,[regnum] = @regnum
+    ,[org_info_id] = @org_info_id
+    ,[addr_street_id] = @addr_street_id
+    ,[addr_nomer] = @addr_nomer
+    ,[total_free_sqr] = @total_free_sqr
     ,[dat] = @dat
     ,[modify_date2] = @modify_date2
     ,[modified_by2] = @modified_by2
@@ -336,6 +346,10 @@ WHERE id = @id"
     datzvern,
     regnum,
     dat,
+    org_info_id,
+    addr_street_id,
+    addr_nomer,
+    total_free_sqr,
     modify_date2,
     modified_by2
     ) 
@@ -347,6 +361,10 @@ WHERE id = @id"
     @datzvern,
     @regnum,
     @dat,
+    @org_info_id,
+    @addr_street_id,
+    @addr_nomer,
+    @total_free_sqr,
     @modify_date2,
     @modified_by2
     );
@@ -576,13 +594,13 @@ SELECT SCOPE_IDENTITY()"
             <%--<CellStyle Wrap="False"></CellStyle>--%>
         </dx:GridViewCommandColumn>
 
-        <dx:GridViewDataTextColumn FieldName="zamovn" Caption="Замовник прим." Width="250" CellStyle-HorizontalAlign="Left">
+        <dx:GridViewDataTextColumn FieldName="zamovn" Caption="Замовник прим." Width="210" CellStyle-HorizontalAlign="Left">
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn FieldName="plosha" Caption="Бажана площа"  Width="150" CellStyle-HorizontalAlign="Left">
+        <dx:GridViewDataTextColumn FieldName="plosha" Caption="Бажана площа"  Width="120" CellStyle-HorizontalAlign="Left">
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn FieldName="adresat" Caption="Адресат"  Width="250" CellStyle-HorizontalAlign="Left">
+        <dx:GridViewDataTextColumn FieldName="adresat" Caption="Адресат"  Width="220" CellStyle-HorizontalAlign="Left">
         </dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn FieldName="regzvern" Caption="Рег. № звернення"  Width="120" CellStyle-HorizontalAlign="Left">
@@ -591,7 +609,57 @@ SELECT SCOPE_IDENTITY()"
         <dx:GridViewDataDateColumn FieldName="datzvern" Caption="Дата звернення"  Width="100" CellStyle-HorizontalAlign="Left">
         </dx:GridViewDataDateColumn>
 
-        <dx:GridViewDataTextColumn FieldName="regnum" Caption="Регістр. номер" Width="120" CellStyle-HorizontalAlign="Left">
+        <dx:GridViewDataTextColumn FieldName="org_name" Caption="Балансоутримувач - Повна назва" Width="240px" ReadOnly="true" >
+            <DataItemTemplate>
+                <%# "<a href=\"javascript:ShowOrgInfo(" + Eval("org_info_id") + ")\">" + Eval("org_name") + "</a>"%>
+            </DataItemTemplate>
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("org_name") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+
+        <dx:GridViewDataComboBoxColumn FieldName="org_info_id" Caption="Балансоутримувач - ЄДРПОУ"  Width="80px" CellStyle-HorizontalAlign="Center">
+            <PropertiesComboBox 
+				DataSourceID="SqlDataSourceOrgInfo"
+				DropDownStyle="DropDown"
+				DropDownWidth="500px"
+                EnableSynchronization="False"
+                IncrementalFilteringMode="Contains"
+				TextField="nam"  
+				ValueField="report_id">
+                <ClientSideEvents SelectedIndexChanged="onZkpoCodeChanged" />
+            </PropertiesComboBox>  
+            <DataItemTemplate>
+                <dx:ASPxLabel runat="server" Text='<%# Eval("zkpo_code") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+            </DataItemTemplate>
+        </dx:GridViewDataComboBoxColumn>
+
+        <dx:GridViewDataComboBoxColumn FieldName="addr_street_id" Caption="Назва вулиці"  Width="210px">
+            <PropertiesComboBox 
+				DataSourceID="SqlDataSourceStreet"
+				DropDownStyle="DropDown"
+				DropDownWidth="300px"
+                EnableSynchronization="False"
+                IncrementalFilteringMode="Contains"
+                FilterMinLength="2"
+                IncrementalFilteringDelay="30"
+				TextField="name"  
+				ValueField="id">
+            </PropertiesComboBox>  
+            <DataItemTemplate>
+                <dx:ASPxLabel runat="server" Text='<%# Eval("addr_street") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+            </DataItemTemplate>
+        </dx:GridViewDataComboBoxColumn>
+
+        <dx:GridViewDataTextColumn FieldName="addr_nomer" Caption="Номер будинку"  Width="65px">
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="total_free_sqr" Caption="Площа нежилих приміщень будинку (кв.м.)">
+        </dx:GridViewDataTextColumn>
+
+
+        <dx:GridViewDataTextColumn FieldName="regnum" Caption="Регістр. номер" Width="100" CellStyle-HorizontalAlign="Left">
         </dx:GridViewDataTextColumn>
       
         <dx:GridViewDataDateColumn FieldName="dat" Caption="Дата" Width="100" CellStyle-HorizontalAlign="Left">
@@ -632,7 +700,7 @@ SELECT SCOPE_IDENTITY()"
         ShowFooter="false"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.QueryPriviliger" Version="A10_002" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.QueryPriviliger" Version="A10_009" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
