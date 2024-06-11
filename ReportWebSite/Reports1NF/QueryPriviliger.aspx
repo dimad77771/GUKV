@@ -468,22 +468,24 @@ SELECT SCOPE_IDENTITY()"
                             Text="XLS - Microsoft Excel&reg;" 
                             OnClick="ASPxButton_FreeSquare_ExportXLS_Click" Width="180px">
                         </dx:ASPxButton>
-                        <br />
-                        <dx:ASPxButton ID="ASPxButton_FreeSquare_ExportPDF" runat="server" 
-                            Text="PDF - Adobe Acrobat&reg;" 
-                            OnClick="ASPxButton_FreeSquare_ExportPDF_Click" Width="180px">
-                        </dx:ASPxButton>
-                        <br />
-                        <dx:ASPxButton ID="ASPxButton_FreeSquare_ExportCSV" runat="server" 
-                            Text="CSV - значення, розділені комами" 
-                            OnClick="ASPxButton_FreeSquare_ExportCSV_Click" Width="180px">
-                        </dx:ASPxButton>
+                        <%--
+                            <br />
+                            <dx:ASPxButton ID="ASPxButton_FreeSquare_ExportPDF" runat="server" 
+                                Text="PDF - Adobe Acrobat&reg;" 
+                                OnClick="ASPxButton_FreeSquare_ExportPDF_Click" Width="180px">
+                            </dx:ASPxButton>
+                            <br />
+                            <dx:ASPxButton ID="ASPxButton_FreeSquare_ExportCSV" runat="server" 
+                                Text="CSV - значення, розділені комами" 
+                                OnClick="ASPxButton_FreeSquare_ExportCSV_Click" Width="180px">
+                            </dx:ASPxButton>
+                        --%>
                     </dx:PopupControlContentControl>
                 </ContentCollection>
             </dx:ASPxPopupControl>
 
             <dx:ASPxButton ID="ASPxButton_FreeSquare_SaveAs" runat="server" AutoPostBack="False" 
-                Text="Зберегти у Файлі" Width="148px" Visible="false">
+                Text="Зберегти у Файлі" Width="148px" Visible="true">
             </dx:ASPxButton>
 
 			<dx:ASPxPopupControl ID="ASPxPopupControlFreeSquare" runat="server" AllowDragging="True" 
@@ -549,7 +551,7 @@ SELECT SCOPE_IDENTITY()"
 </table>
 
 <dx:ASPxGridViewExporter ID="GridViewFreeSquareExporter" runat="server" 
-    FileName="Приватизація" GridViewID="PrivatisatGridView" PaperKind="A4" 
+    FileName="Запити на передопрацьовані вільні приміщення" GridViewID="PrivatisatGridView" PaperKind="A4" 
     BottomMargin="20" LeftMargin="10" RightMargin="10" TopMargin="20">
     <Styles>
         <Default Font-Names="Calibri,Verdana,Sans Serif">
@@ -685,7 +687,7 @@ SELECT SCOPE_IDENTITY()"
         <dx:GridViewDataTextColumn FieldName="regnum" Caption="Регістр. номер" Width="100" CellStyle-HorizontalAlign="Left">
         </dx:GridViewDataTextColumn>
       
-        <dx:GridViewDataDateColumn FieldName="dat" Caption="Дата" Width="100" CellStyle-HorizontalAlign="Left">
+        <dx:GridViewDataDateColumn FieldName="dat" Caption="Дата прийняття рішення" Width="100" CellStyle-HorizontalAlign="Left">
         </dx:GridViewDataDateColumn>
 
 
