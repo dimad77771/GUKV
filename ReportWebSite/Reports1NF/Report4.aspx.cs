@@ -125,6 +125,9 @@ SELECT
 ,b.sqr_total
 ,b.sqr_for_rent
 
+,fs.zvernenya_vikluch_num 
+,fs.zvernenya_vikluch_date 
+
 ,fs.total_free_sqr 
 --,null as free_sql_usefull
 --,null as mzk
@@ -221,6 +224,8 @@ WHERE fs.id = " + free_square_id;
 			properties.Add("{Назва Вулиці}", r["street_name"]);
 			properties.Add("{Номер Будинку}", r["addr_nomer"]);
 			properties.Add("{Дата редагування Б}", "" + GetDate(r["modify_date"]));
+			properties.Add("{Звернення на виключення вх.№}", r["zvernenya_vikluch_num"]);
+			properties.Add("{Звернення на виключення дата}", GetDate(r["zvernenya_vikluch_date"]));
 		}
 
 

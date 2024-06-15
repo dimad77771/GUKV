@@ -890,6 +890,12 @@ order by 1
     SelectCommand="SELECT '1' id, '1' name, 1 as ordrow union SELECT '2' id, '2' name, 1 as ordrow union select null, '',  2 as ordrow ORDER BY ordrow, name">
 </mini:ProfiledSqlDataSource>
 
+<mini:ProfiledSqlDataSource ID="SqlDataSourcePropStrokOrend" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT name, ordnum from dict_prop_strok_orend union select null, 9999 as ordrow ORDER BY ordnum, name">
+</mini:ProfiledSqlDataSource>
+
+
 <mini:ProfiledSqlDataSource ID="SqlDataSourceFreeObjectType" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT id, name FROM dict_free_object_type ORDER BY id">
@@ -1034,6 +1040,8 @@ WHERE id = @id"
       ,[initiator] 
       ,[initiator_docnum]   
       ,[initiator_docdat]   
+      ,[zvernenya_vikluch_num]   
+      ,[zvernenya_vikluch_date]   
       ,[pogodzhenya_docnum]   
       ,[pogodzhenya_docdat]   
       ,[zgoda_control_id] 
@@ -1085,6 +1093,8 @@ WHERE id = @id"
       ,[initiator] 
       ,[initiator_docnum] 
       ,[initiator_docdat] 
+      ,[zvernenya_vikluch_num] 
+      ,[zvernenya_vikluch_date] 
       ,[pogodzhenya_docnum] 
       ,[pogodzhenya_docdat]  
       ,[zgoda_control_id] 
@@ -1134,6 +1144,8 @@ WHERE id = @id"
       ,@initiator
       ,@initiator_docnum
       ,@initiator_docdat
+      ,@zvernenya_vikluch_num
+      ,@zvernenya_vikluch_date
       ,@pogodzhenya_docnum
       ,@pogodzhenya_docdat
       ,@zgoda_control_id
@@ -1185,6 +1197,8 @@ SET
       ,[initiator] = @initiator
       ,[initiator_docnum] = @initiator_docnum
       ,[initiator_docdat] = @initiator_docdat
+      ,[zvernenya_vikluch_num] = @zvernenya_vikluch_num
+      ,[zvernenya_vikluch_date] = @zvernenya_vikluch_date
       ,[pogodzhenya_docnum] = @pogodzhenya_docnum
       ,[pogodzhenya_docdat] = @pogodzhenya_docdat
       ,[zgoda_control_id] = @zgoda_control_id
@@ -1244,6 +1258,8 @@ WHERE id = @id"
         <asp:Parameter Name="initiator" />
         <asp:Parameter Name="initiator_docnum" />
         <asp:Parameter Name="initiator_docdat" />
+        <asp:Parameter Name="zvernenya_vikluch_num" />
+        <asp:Parameter Name="zvernenya_vikluch_date" />
         <asp:Parameter Name="pogodzhenya_docnum" />
         <asp:Parameter Name="pogodzhenya_docdat" />
         <asp:Parameter Name="zgoda_control_id" />
@@ -1292,6 +1308,8 @@ WHERE id = @id"
         <asp:Parameter Name="initiator" />
         <asp:Parameter Name="initiator_docnum" />
         <asp:Parameter Name="initiator_docdat" />
+        <asp:Parameter Name="zvernenya_vikluch_num" />
+        <asp:Parameter Name="zvernenya_vikluch_date" />
         <asp:Parameter Name="pogodzhenya_docnum" />
         <asp:Parameter Name="pogodzhenya_docdat" />
         <asp:Parameter Name="zgoda_control_id" />
@@ -3125,11 +3143,25 @@ WHERE id = @id"
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>
 
-             <dx:GridViewDataTextColumn FieldName="initiator_docnum" Caption="Ініціатор оренди вх. №" VisibleIndex="19" Width ="80px">
+            <dx:GridViewDataTextColumn Name="tmp3" Caption="" VisibleIndex="19" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+            </dx:GridViewDataTextColumn>
+
+
+             <dx:GridViewDataTextColumn FieldName="initiator_docnum" Caption="Ініціатор оренди вх.№" VisibleIndex="19" Width ="80px">
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>
 
              <dx:GridViewDataDateColumn FieldName="initiator_docdat" Caption="Ініціатор оренди дата" VisibleIndex="19" Width ="80px">
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataDateColumn>
+
+            <dx:GridViewDataTextColumn FieldName="zvernenya_vikluch_num" Caption="Звернення на виключення вх.№" VisibleIndex="19" Width ="80px">
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
+
+            <dx:GridViewDataDateColumn FieldName="zvernenya_vikluch_date" Caption="Звернення на виключення дата" VisibleIndex="19" Width ="80px">
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataDateColumn>
 
@@ -3231,16 +3263,12 @@ WHERE id = @id"
                 <EditFormSettings Visible="True" />
             </dx:GridViewDataTextColumn>
 
-            <dx:GridViewDataTextColumn FieldName="prop_srok_orands" Caption="Пропонований строк оренди (у роках)" VisibleIndex="140" Visible="false" >
-                <HeaderStyle Wrap="True" />
+            <dx:GridViewDataComboBoxColumn FieldName="prop_srok_orands" VisibleIndex="140" Caption="Пропонований строк оренди (у роках)">
+			    <HeaderStyle Wrap="True" />
                 <EditFormSettings Visible="True" />
                 <EditFormCaptionStyle Wrap="True"/>
-            </dx:GridViewDataTextColumn>
-
-            <dx:GridViewDataTextColumn Name="tmp3" Caption="" VisibleIndex="145" Visible="false" >
-                <HeaderStyle Wrap="True" />
-                <EditFormSettings Visible="True" />
-            </dx:GridViewDataTextColumn>
+			    <PropertiesComboBox DataSourceID="SqlDataSourcePropStrokOrend" ValueField="name" TextField="name" ValueType="System.String"  />
+		    </dx:GridViewDataComboBoxColumn>
 
             <dx:GridViewDataTextColumn FieldName="nomer_derzh_reestr_neruh" Caption="Номер запису про право власності у Реєстрація у Державному реєстрі речових прав на нерухоме майно" VisibleIndex="150" Visible="false" >
                 <HeaderStyle Wrap="True" />
