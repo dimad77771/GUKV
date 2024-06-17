@@ -272,6 +272,7 @@ LEFT JOIN (
                 and (ispriviliger = 0)
 				and (@fs_id = -1 OR fs.id = @fs_id)
 				and (@mode50 = 0 OR fs.freecycle_step_dict_id = 31)
+                and (@district = '' OR dbo.get_reports1NF_orandodatel(b.district, rep.form_of_ownership) = @district)
                 
 
                 
@@ -295,6 +296,7 @@ WHERE id = @id"
 		<asp:Parameter DbType="Int32" DefaultValue="-1" Name="fs_id" />
 		<asp:Parameter DbType="Int32" DefaultValue="0" Name="mode50" />
         <asp:Parameter DbType="String" DefaultValue="" Name="userId" />
+        <asp:Parameter DbType="String" DefaultValue="" Name="district" />
     </SelectParameters>
 </mini:ProfiledSqlDataSource>
 

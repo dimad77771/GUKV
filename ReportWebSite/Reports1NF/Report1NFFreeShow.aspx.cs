@@ -171,7 +171,28 @@ public partial class Reports1NF_Report1NFFreeShow : System.Web.UI.Page
         Utils.ProcessGridColumnAutoFilter(sender, e);
     }
 
-    protected void SqlDataSourceFreeSquare_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+	protected string DistrictFilter
+	{
+		get
+		{
+			var district = Request.QueryString["district"];
+
+			if (district == "ПОДІЛЬСЬКИЙ") return "ПОДІЛЬСЬКА РАЙОННА В МІСТІ КИЄВІ ДЕРЖАВНА АДМІНІСТРАЦІЯ";
+			else if (district == "ПЕЧЕРСЬКИЙ") return "ПЕЧЕРСЬКА РАЙОННА В МІСТІ КИЄВІ ДЕРЖАВНА АДМІНІСТРАЦІЯ";
+			else if (district == "ДЕСНЯНСЬКИЙ") return "ДЕСНЯНСЬКА РАЙОННА В М.КИЄВІ ДЕРЖАВНА АДМІНІСТРАЦІЯ";
+			else if (district == "СВЯТОШИНСЬКИЙ") return "СВЯТОШИНСЬКА РАЙОННА В МІСТІ КИЄВІ ДЕРЖАВНА АДМІНІСТРАЦІЯ";
+			else if (district == "ГОЛОСІЇВСЬКИЙ") return "ГОЛОСІЇВСЬКА РАЙОННА В МІСТІ КИЄВІ ДЕРЖАВНА АДМІНІСТРАЦІЯ";
+			else if (district == "ОБОЛОНСЬКИЙ") return "ОБОЛОНСЬКА РАЙОННА В М.КИЄВІ ДЕРЖАВНА АДМІНІСТРАЦІЯ";
+			else if (district == "ДНІПРОВСЬКИЙ") return "ДНІПРОВСЬКА РАЙОННА В МІСТІ КИЄВІ ДЕРЖАВНА АДМІНІСТРАЦІЯ";
+			else if (district == "СОЛОМ'ЯНСЬКИЙ") return "СОЛОМ'ЯНСЬКА РАЙОННА В МІСТІ КИЄВІ ДЕРЖАВНА АДМІНІСТРАЦІЯ";
+			else if (district == "ШЕВЧЕНКІВСЬКИЙ") return "ШЕВЧЕНКІВСЬКА РАЙОННА В М.КИЄВІ  ДЕРЖАВНА АДМІНІСТРАЦІЯ";
+			else if (district == "ДАРНИЦЬКИЙ") return "ДАРНИЦЬКА РАЙОННА В МІСТІ КИЄВІ ДЕРЖАВНА АДМІНІСТРАЦІЯ";
+
+			return "";
+		}
+	}
+
+	protected void SqlDataSourceFreeSquare_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
     {
         e.Command.Parameters["@p_rda_district_id"].Value = Utils.RdaDistrictID;
         e.Command.Parameters["@period_year"].Value = DateTime.Now.Date.Month == 1 ? DateTime.Now.Date.Year - 1 : DateTime.Now.Date.Year;
@@ -179,6 +200,7 @@ public partial class Reports1NF_Report1NFFreeShow : System.Web.UI.Page
 		e.Command.Parameters["@fs_id"].Value = (string.IsNullOrEmpty(ParamFsid) ? -1 : Int32.Parse(ParamFsid));
 		e.Command.Parameters["@mode50"].Value = (string.IsNullOrEmpty(ParamMode50) ? 0 : 1);
 		e.Command.Parameters["@userId"].Value = Utils.GetUserId() ?? "";
+		e.Command.Parameters["@district"].Value = DistrictFilter;
 	}
 
 	protected void SqlDataSourceFreeSquare_Updating(object sender, SqlDataSourceCommandEventArgs e)

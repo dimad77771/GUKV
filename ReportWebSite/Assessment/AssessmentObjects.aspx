@@ -218,18 +218,18 @@
             </DataItemTemplate>
 			<Settings AutoFilterCondition="Contains" />
 		</dx:GridViewDataTextColumn>
-		<dx:GridViewDataTextColumn FieldName="inputdoc_doc_date" ReadOnly="True" ShowInCustomizationForm="True" Caption="Дата документа" Width="90px">
-			<DataItemTemplate>
-                <%# EvaluateMultiLineValue(Eval("inputdoc_doc_date")) %>
-            </DataItemTemplate>
+		<dx:GridViewDataDateColumn FieldName="inputdoc_doc_date" ReadOnly="True" ShowInCustomizationForm="True" Caption="Дата документа" Width="90px">
+			<%--<DataItemTemplate>
+                <%# Eval("inputdoc_doc_date") %>
+            </DataItemTemplate>--%>
 			<Settings AutoFilterCondition="Contains" />
-		</dx:GridViewDataTextColumn>
-		<dx:GridViewDataTextColumn FieldName="inputdoc_control_date" ReadOnly="True" ShowInCustomizationForm="True" Caption="Контрольна дата" Width="90px">
-			<DataItemTemplate>
+		</dx:GridViewDataDateColumn>
+		<dx:GridViewDataDateColumn FieldName="inputdoc_control_date" ReadOnly="True" ShowInCustomizationForm="True" Caption="Контрольна дата" Width="90px">
+			<%--<DataItemTemplate>
                 <%# EvaluateСontrolDate(Eval("inputdoc_control_date")) %>
-            </DataItemTemplate>
+            </DataItemTemplate>--%>
 			<Settings AutoFilterCondition="Contains" />
-		</dx:GridViewDataTextColumn>
+		</dx:GridViewDataDateColumn>
 		<dx:GridViewDataTextColumn FieldName="inputdoc_rezenz_name" ReadOnly="True" ShowInCustomizationForm="True" Caption="Рецензент" Width="140px">
 			<DataItemTemplate>
                 <%# EvaluateMultiLineValue(Eval("inputdoc_rezenz_name")) %>
@@ -280,24 +280,27 @@
             </DataItemTemplate>
 			<Settings AutoFilterCondition="Contains" />
 		</dx:GridViewDataTextColumn>
-		<dx:GridViewDataTextColumn FieldName="outputdoc_doc_date" ReadOnly="True" ShowInCustomizationForm="True" Caption="Дата вих. документа" Width="90px">
-			<DataItemTemplate>
+
+		<dx:GridViewDataDateColumn FieldName="outputdoc_doc_date" ReadOnly="True" ShowInCustomizationForm="True" Caption="Дата вих. документа" Width="90px">
+			<%--<DataItemTemplate>
                 <%# EvaluateMultiLineValue(Eval("outputdoc_doc_date")) %>
-            </DataItemTemplate>
+            </DataItemTemplate>--%>
 			<Settings AutoFilterCondition="Contains" />
-		</dx:GridViewDataTextColumn>
+		</dx:GridViewDataDateColumn>
+
 		<dx:GridViewDataTextColumn FieldName="outputdoc_rezenz" ReadOnly="True" ShowInCustomizationForm="True" Caption="Стан/категорія рецензування" Width="140px">
 			<DataItemTemplate>
                 <%# EvaluateMultiLineValue(Eval("outputdoc_rezenz")) %>
             </DataItemTemplate>
 			<Settings AutoFilterCondition="Contains" />
 		</dx:GridViewDataTextColumn>
-		<dx:GridViewDataTextColumn FieldName="outputdoc_rezenz_date" ReadOnly="True" ShowInCustomizationForm="True" Caption="Дата рецензування" Width="90px">
-			<DataItemTemplate>
+
+		<dx:GridViewDataDateColumn FieldName="outputdoc_rezenz_date" ReadOnly="True" ShowInCustomizationForm="True" Caption="Дата рецензування" Width="90px">
+			<%--<DataItemTemplate>
                 <%# EvaluateMultiLineValue(Eval("outputdoc_rezenz_date")) %>
-            </DataItemTemplate>
+            </DataItemTemplate>--%>
 			<Settings AutoFilterCondition="Contains" />
-		</dx:GridViewDataTextColumn>
+		</dx:GridViewDataDateColumn>
 
 
 
@@ -338,12 +341,13 @@
             </DataItemTemplate>
 			<Settings AutoFilterCondition="Contains" />
 		</dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="valuation_dates" ReadOnly="True" ShowInCustomizationForm="True" Caption="Дата Оцінки" Width="90px">
-			<DataItemTemplate>
+
+        <dx:GridViewDataDateColumn FieldName="valuation_dates" ReadOnly="True" ShowInCustomizationForm="True" Caption="Дата Оцінки" Width="90px">
+			<%--<DataItemTemplate>
                 <%# EvaluateMultiLineValue(Eval("valuation_dates")) %>
-            </DataItemTemplate>
+            </DataItemTemplate>--%>
 			<Settings AutoFilterCondition="Contains" />
-		</dx:GridViewDataTextColumn>
+		</dx:GridViewDataDateColumn>
 
 
 		<dx:GridViewDataTextColumn FieldName="cost_prim" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Вартість об’єкту без ПДВ (грн.)" Width="100px">
