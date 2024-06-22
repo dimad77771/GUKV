@@ -27,6 +27,7 @@ using DevExpress.Compression;
 using Syncfusion.XlsIO;
 using WP = DocumentFormat.OpenXml.Wordprocessing;
 using System.Data.Common;
+using System.Text.RegularExpressions;
 
 public partial class Reports1NF_Cabinet : System.Web.UI.Page
 {
@@ -286,6 +287,11 @@ LEFT JOIN (
 			}
 			var r = dataTable.Rows[0];
 
+			var may_pravo_prodov_text = (r["may_pravo_prodov_text"] ?? "").ToString().Trim();
+			var match = new Regex(@"^а\.(\d)\s+(.+)$").Match(may_pravo_prodov_text);
+			var abzach = match.Groups[1].Value;
+			var cilove = match.Groups[2].Value;
+
 
 			properties.Add("{Дата укладання договору}", GetDate(r["agreement_date"]));
 			properties.Add("{Номер договору}", r["agreement_num"]);
@@ -294,7 +300,8 @@ LEFT JOIN (
 			properties.Add("{Строк оренди (роки)}", StrokOrenda(r["srok_dog"]));
 			properties.Add("{Адреса балансоутримувача (вулиця)}", r["balanutr_addr_street"]);
 			properties.Add("{Адреса балансоутримувача (номер дому)}", r["balanutr_addr_nomer"]);
-			properties.Add("{Має право на продовження договору без проведення аукціону}", r["may_pravo_prodov_text"]);
+			properties.Add("{абзац}", abzach);
+			properties.Add("{Цільове використання}", cilove);
 		}
 
 		string StrokOrenda(object arg)

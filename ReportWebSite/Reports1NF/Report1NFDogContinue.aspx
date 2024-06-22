@@ -964,7 +964,7 @@ WHERE id = @id"
 		<dx:GridViewDataCheckColumn FieldName="has_perevazh_pravo" Caption="Має переважне право на продовження" VisibleIndex="24" Width="60px" ReadOnly="true">
 		</dx:GridViewDataCheckColumn>
 
-        <dx:GridViewDataTextColumn FieldName="may_pravo_prodov_text" Caption="Має право на продовження договору без проведення аукціону" VisibleIndex="24" Width="230px">
+        <dx:GridViewDataTextColumn FieldName="may_pravo_prodov_text" Caption="Цільове використання" VisibleIndex="24" Width="230px">
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("may_pravo_prodov_text") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>

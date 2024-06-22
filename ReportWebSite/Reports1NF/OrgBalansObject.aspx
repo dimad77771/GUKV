@@ -696,11 +696,6 @@
     SelectCommand="SELECT id, name FROM dict_1nf_districts2 ORDER BY name">
 </mini:ProfiledSqlDataSource>
 
-<mini:ProfiledSqlDataSource ID="SqlDataSourceMayPravoProdov" runat="server" 
-    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT id, name, ordnum from dict_may_pravo_prodov union select null, '',  9999 as ordrow ORDER BY ordnum, name">
-</mini:ProfiledSqlDataSource>
-
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDictDistricts2" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 

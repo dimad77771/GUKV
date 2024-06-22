@@ -4366,7 +4366,7 @@ WHERE id = @id"
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>
 
-           <dx:GridViewDataComboBoxColumn FieldName="may_pravo_prodov" VisibleIndex="19" Width = "100px" Visible="False" Caption="Має право на продовження договору без проведення аукціону">
+           <dx:GridViewDataComboBoxColumn FieldName="may_pravo_prodov" VisibleIndex="19" Width = "100px" Visible="False" Caption="Цільове використання">
 				<HeaderStyle Wrap="True" />
                 <PropertiesComboBox DataSourceID="SqlDataSourceMayPravoProdov" ValueField="id" TextField="name" ValueType="System.Int32" />
                 <EditFormSettings Visible="True" />
