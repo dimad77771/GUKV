@@ -70,8 +70,12 @@
     }
 
 	function OnContextMenuItemClick(s, e) {
-		if (e.item.name === "Report_5") {
-			var id = s.GetRowKey(e.elementIndex)
+        if (e.item.name === "Report_5") {
+            //s.GetRowValues(e.elementIndex, "arenda_id;insurance_end", BuildReport5);
+            //return;
+
+            var id = s.GetRowKey(e.elementIndex)
+			console.log('id', id)
 			window.open(
 				'\\Reports1NF\\Report5.aspx?id=' + id,
 				//'RentAgreements.aspx',
@@ -80,16 +84,18 @@
 		}
     }
 
+
     function BuildReport5(values) {
-		console.log('values2', values)
-        var id = values[0]
-        setTimeout(() => {
-            window.open(
-                //'\\Reports1NF\\Report4.aspx?id=' + id,
-                'RentAgreements.aspx',
-                '_blank',
-            )
-        }, 1000);
+        console.log('values2', values)
+
+   //     var id = values[0]
+   //     setTimeout(() => {
+			//window.open(
+			//	'\\Reports1NF\\Report5.aspx?id=' + id,
+			//	//'RentAgreements.aspx',
+			//	'_blank',
+			//)
+   //     }, 100);
 	}
 
     // ]]>

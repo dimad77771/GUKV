@@ -390,7 +390,8 @@
             <Settings ShowInFilterControl="False" AllowAutoFilter="False" AllowHeaderFilter="False" />
         </dx:GridViewDataTextColumn>
 
-
+<%--        <dx:GridViewCommandColumn ShowSelectCheckbox="true" Caption="Select" VisibleIndex="999" CellStyle-Border-BorderStyle="None" CellStyle-BackColor="#F5F5F5" HeaderStyle-Border-BorderStyle="None" >  
+       </dx:GridViewCommandColumn>  --%>
 
     </Columns>
 
@@ -418,7 +419,7 @@
     <SettingsPager PageSize="20" />
     <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
     <Styles Header-Wrap="True" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.BalansList" Enabled="True" Version="A7" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.BalansList" Enabled="True" Version="A9" />
 
     <ClientSideEvents
         Init="function (s,e) { PrimaryGridView.PerformCallback('init:'); }"

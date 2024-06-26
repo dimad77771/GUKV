@@ -32,6 +32,8 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+		//throw new Exception("asasa");
+
 		var id = Int32.Parse(Request.QueryString["id"]);
 
 		new Report1NFFreeSquareZvit1()
