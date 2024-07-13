@@ -300,6 +300,8 @@ LEFT JOIN (
 			properties.Add("{Строк оренди (роки)}", StrokOrenda(r["srok_dog"]));
 			properties.Add("{Адреса балансоутримувача (вулиця)}", r["balanutr_addr_street"]);
 			properties.Add("{Адреса балансоутримувача (номер дому)}", r["balanutr_addr_nomer"]);
+			properties.Add("{Назва Вулиці}", r["street_name"]);
+			properties.Add("{Номер будинку}", r["addr_nomer"]);
 			properties.Add("{абзац}", abzach);
 			properties.Add("{Цільове використання}", cilove);
 		}
