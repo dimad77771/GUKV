@@ -32,6 +32,7 @@ using System.Collections;
 using System.Text.RegularExpressions;
 using System.Threading;
 using GUKV.Common;
+using System.Drawing;
 
 public static class Utils
 {
@@ -3224,10 +3225,22 @@ public static class Utils
 		return -1;
 	}
 
-	#endregion (Report initialization)
+
+    public static void TemplateColumnsStyles(this ASPxGridView grid, params string[] colums)
+    {
+        var color = Color.FromArgb(1, 204, 204, 204);
+
+        foreach (var column in colums)
+        {
+            grid.Columns[column].CellStyle.BackColor = color;
+            grid.Columns[column].HeaderStyle.BackColor = color;
+        }
+    }
+
+    #endregion (Report initialization)
 
 
-	public static long GetNextSequenceValue(string sequence)
+    public static long GetNextSequenceValue(string sequence)
 	{
 		long next;
 		var connection = Utils.ConnectToDatabase();

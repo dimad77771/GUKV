@@ -409,6 +409,7 @@ SET
 	[current_stage_docdate] = @current_stage_docdate,
 	[current_stage_docnum] = @current_stage_docnum,
     [prozoro_number] = @prozoro_number,
+    [may_pravo_prodov] = @may_pravo_prodov_text,
 	[is_included] = @is_included,
 	[modify_date2] = @modify_date2,
 	[modified_by2] = @modified_by2
@@ -436,6 +437,11 @@ WHERE id = @id"
 <mini:ProfiledSqlDataSource ID="SqlDataSourceUsingPossible" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT id, left(full_name, 150) as name, rental_rate, 1 as ordrow FROM dict_rental_rate union select null, '<пусто>', null, 2 as ordrow ORDER BY ordrow, name">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceMayPravoProdov" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name, ordnum from dict_may_pravo_prodov union select null, '',  9999 as ordrow ORDER BY ordnum, name">
 </mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceIncludeInPerelik" runat="server" 
@@ -964,11 +970,20 @@ WHERE id = @id"
 		<dx:GridViewDataCheckColumn FieldName="has_perevazh_pravo" Caption="Має переважне право на продовження" VisibleIndex="24" Width="60px" ReadOnly="true">
 		</dx:GridViewDataCheckColumn>
 
-        <dx:GridViewDataTextColumn FieldName="may_pravo_prodov_text" Caption="Цільове використання" VisibleIndex="24" Width="230px">
+        <%--<dx:GridViewDataTextColumn FieldName="may_pravo_prodov_text" Caption="Цільове використання" VisibleIndex="24" Width="230px">
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("may_pravo_prodov_text") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
-        </dx:GridViewDataTextColumn>
+        </dx:GridViewDataTextColumn>--%>
+        	<dx:GridViewDataComboBoxColumn FieldName="may_pravo_prodov_text" Caption="Цільове використання" VisibleIndex="24" Width="230px">
+            <PropertiesComboBox 
+				DataSourceID="SqlDataSourceMayPravoProdov"
+				DropDownStyle="DropDownList"
+				DropDownWidth="500px"
+				TextField="name"  
+				ValueField="id">
+            </PropertiesComboBox>  
+        </dx:GridViewDataComboBoxColumn>
 
         <dx:GridViewDataTextColumn FieldName="polipshanya_vartist" Caption="Вартість здійснених чинним орендарем невід’ємних поліпшень" VisibleIndex="24" Width="100px">
 			<EditItemTemplate>

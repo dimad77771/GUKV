@@ -80,6 +80,9 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 		}
 
 		SectionMenu.Visible = false;
+
+
+		FreeSquareGridView.TemplateColumnsStyles("initiator", "pravo_bez_auction", "zvernenya_vikluch_num", "zvernenya_vikluch_date");
 	}
 
 	void CustomizeReportForm()

@@ -489,6 +489,9 @@ SELECT
 , fs.initiator_docnum
 , fs.initiator_docdat
 
+, fs.zvernenya_vikluch_num
+, fs.zvernenya_vikluch_date
+
 , fs.pogodzhenya_docnum
 , fs.pogodzhenya_docdat
 
@@ -563,6 +566,9 @@ SET
     [prozoro_number] = @prozoro_number,
 	[is_included] = @is_included,
 	[winner_id] = @winner_id,
+	[initiator] =  @initiator,
+	[zvernenya_vikluch_num] = @zvernenya_vikluch_num,
+	[zvernenya_vikluch_date] = @zvernenya_vikluch_date,
 	[modify_date2] = @modify_date2,
 	[modified_by2] = @modified_by2
 	,[ispriviliger] = @ispriviliger
@@ -1095,9 +1101,9 @@ WHERE id = @id"
 
 
 			<dx:GridViewDataTextColumn FieldName="initiator" Caption="Ініціатор оренди" VisibleIndex="19" Width="100px">
-				<EditItemTemplate>
+				<%--<EditItemTemplate>
 					<dx:ASPxLabel runat="server" Text='<%# Eval("initiator") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
-				</EditItemTemplate>
+				</EditItemTemplate>--%>
 			</dx:GridViewDataTextColumn>
 
 
@@ -1112,6 +1118,13 @@ WHERE id = @id"
 					<dx:ASPxLabel runat="server" Text='<%# Eval("initiator_docdat", "{0:dd.MM.yyyy}") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 				</EditItemTemplate>
 			</dx:GridViewDataDateColumn>
+
+			<dx:GridViewDataTextColumn FieldName="zvernenya_vikluch_num" Caption="Звернення на виключення вх.№" VisibleIndex="19" Width="80px">
+			</dx:GridViewDataTextColumn>
+
+			<dx:GridViewDataDateColumn FieldName="zvernenya_vikluch_date" Caption="Звернення на виключення дата" VisibleIndex="19" Width="80px">
+			</dx:GridViewDataDateColumn>
+
 
 			<dx:GridViewDataTextColumn FieldName="pogodzhenya_docnum" Caption="Погодження балансоутримувача без аукціону вх. №" VisibleIndex="19" Width="80px">
 				<EditItemTemplate>
