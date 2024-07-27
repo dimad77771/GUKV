@@ -46,6 +46,8 @@ public partial class Reports1NF_Report1NFDogContinue : System.Web.UI.Page
 		}
 
 		SectionMenu.Visible = false;
+
+		FreeSquareGridView.TemplateColumnsStyles("may_pravo_prodov_text");
 	}
 
     protected void ASPxButton_FreeSquare_ExportXLS_Click(object sender, EventArgs e)
