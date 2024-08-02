@@ -193,6 +193,7 @@ SELECT
         case when rep.zkpo_code in ('02772037','03327664','03346331') then 'Від прибутку згідно з угодой' else isnull(ddd.name, 'Невідомо') end as 'dict_rent_occupation_name',
         (SELECT Q.stan_recieve_name FROM dict_stan_recieve Q where Q.stan_recieve_id = rep.stan_recieve_id) stan_recieve_name,
 		rep.cur_state,
+		rep.stan_recieve_date,
 		--rep.*,
 		ar.NumOfSubmAgr, 
 		ar.NumOfAgr, 
@@ -449,6 +450,7 @@ join dict_rent_occupation occ on occ.id = obp.org_occupation_id
 where 1=1
 and cur_state = 'Надісланий'
 and max_submit_date >= (select DATEADD(day, 1, Q.period_end) FROM dict_rent_period Q where Q.is_active = 1)
+and stan_recieve_date >= (select DATEADD(day, 1, Q.period_end) FROM dict_rent_period Q where Q.is_active = 1)
 group by dict_rent_occupation_name
 ";
 		var period_year = DateTime.Now.Date.Month == 1 ? DateTime.Now.Date.Year - 1 : DateTime.Now.Date.Year;
