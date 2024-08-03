@@ -61,7 +61,7 @@ public partial class Balans_BalansObjects : System.Web.UI.Page, CachingPageIdSup
             CustomizeColumnList();
         }
 
-        ForTest();
+        //ForTest();
     }
 
     void ForTest()
@@ -113,6 +113,10 @@ public partial class Balans_BalansObjects : System.Web.UI.Page, CachingPageIdSup
             @"Дата Актуальності",
             @"Сфера діяльності",
             @"Контактні телефони",
+            @"Док. на право користування об’єктом",
+            @"Док. що підтверджує передачу на баланс",
+            @"Документація БТІ",
+            @"Реєстрація у реєстрі речових прав",
         };
         int npp = 0;
         foreach (GridViewColumn column in PrimaryGridView.Columns)
@@ -181,7 +185,11 @@ public partial class Balans_BalansObjects : System.Web.UI.Page, CachingPageIdSup
 			@"Сфера діяльності",
 			@"Госп. Структура",
 			@"Контактні телефони",
-		};
+            @"Док. на право користування об’єктом",
+            @"Док. що підтверджує передачу на баланс",
+            @"Документація БТІ",
+            @"Реєстрація у реєстрі речових прав",
+        };
 		int npp = 0;
 		foreach (GridViewColumn column in PrimaryGridView.Columns)
 		{

@@ -226,6 +226,12 @@
 , case when exists (select 1 from reports1nf_photos Q where Q.bal_id = vb.balans_id) then 1 else 0 end as has_reports1nf_photos
 , case when exists (select 1 from reports1nf_btiphoto Q where Q.bal_id = vb.balans_id) then 1 else 0 end as has_reports1nf_btiphoto
 
+,case when exists (select 1 from reports1nf_balans_akt_attachfiles Q where Q.free_square_id = 500000 * bal.report_id + vb.balans_id) then 1 else 0 end as has_reports1nf_balans_akt_attachfiles
+,case when exists (select 1 from reports1nf_balans_rish_attachfiles Q where Q.free_square_id = 500000 * bal.report_id + bal.id) then 1 else 0 end as has_reports1nf_balans_rish_attachfiles
+,case when exists (select 1 from reports1nf_balans_bti_attachfiles Q where Q.free_square_id = 500000 * bal.report_id + bal.id) then 1 else 0 end as has_reports1nf_balans_bti_attachfiles
+,case when exists (select 1 from reports1nf_balans_dinfo_attachfiles Q where Q.free_square_id = 500000 * bal.report_id + bal.id) then 1 else 0 end as has_reports1nf_balans_dinfo_attachfiles
+
+
 
     FROM view_balans_all vb
     LEFT JOIN reports1nf_balans bal on vb.balans_id = bal.id
@@ -549,6 +555,48 @@
             VisibleIndex="76" Visible="false" Caption="Примітки" Width="120"></dx:GridViewDataTextColumn>
 
 
+        <dx:GridViewDataTextColumn FieldName="has_reports1nf_balans_akt_attachfiles" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="82" Visible="True" Caption="Док. на право користування об’єктом" Width="50px">
+            <DataItemTemplate>
+               <%# Eval("has_reports1nf_balans_akt_attachfiles").Equals(1) ?
+                       "<center><img border='0' src='../Styles/MarkOn.png'/></center>"
+                       : ""
+               %>
+            </DataItemTemplate>
+            <Settings ShowInFilterControl="False" AllowAutoFilter="False" AllowHeaderFilter="False" />
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="has_reports1nf_balans_rish_attachfiles" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="83" Visible="True" Caption="Док. що підтверджує передачу на баланс" Width="50px">
+            <DataItemTemplate>
+               <%# Eval("has_reports1nf_balans_rish_attachfiles").Equals(1) ?
+                       "<center><img border='0' src='../Styles/MarkOn.png'/></center>"
+                       : ""
+               %>
+            </DataItemTemplate>
+            <Settings ShowInFilterControl="False" AllowAutoFilter="False" AllowHeaderFilter="False" />
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="has_reports1nf_balans_bti_attachfiles" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="84" Visible="True" Caption="Документація БТІ" Width="50px">
+            <DataItemTemplate>
+               <%# Eval("has_reports1nf_balans_bti_attachfiles").Equals(1) ?
+                       "<center><img border='0' src='../Styles/MarkOn.png'/></center>"
+                       : ""
+               %>
+            </DataItemTemplate>
+            <Settings ShowInFilterControl="False" AllowAutoFilter="False" AllowHeaderFilter="False" />
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="has_reports1nf_balans_dinfo_attachfiles" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="85" Visible="True" Caption="Реєстрація у реєстрі речових прав" Width="50px">
+            <DataItemTemplate>
+               <%# Eval("has_reports1nf_balans_dinfo_attachfiles").Equals(1) ?
+                       "<center><img border='0' src='../Styles/MarkOn.png'/></center>"
+                       : ""
+               %>
+            </DataItemTemplate>
+            <Settings ShowInFilterControl="False" AllowAutoFilter="False" AllowHeaderFilter="False" />
+        </dx:GridViewDataTextColumn>
+
+
+
         <dx:GridViewDataTextColumn FieldName="balans_id_" VisibleIndex="100" Caption="ID об'єкту" Visible="false"></dx:GridViewDataTextColumn>
 
 
@@ -613,7 +661,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A4_007" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A4_008" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
