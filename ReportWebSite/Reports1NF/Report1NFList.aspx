@@ -362,7 +362,7 @@ join dict_rent_occupation occ on occ.id = obp.org_occupation_id
                 AND
             ( (@p_show_neziznacheni = 1) OR (@p_show_neziznacheni = 0 AND (isnull(ddd.name, 'Невідомо') <> 'Невизначені')) ) 
                 AND
-            ( (@p_show_neviznacheni = 1) OR (@p_show_neviznacheni = 0 AND (isnull(ddd.name, '') <> 'Невизначені')) ) 
+            ( (@p_show_neviznacheni = 1) OR (@p_show_neviznacheni = 0 AND (isnull(ddd.name, '') not in ('Невизначені','АРХИВНІ(ПРИПИНЕНІ)'))) ) 
                 AND
             (8888 = 8888)
                 AND
@@ -450,8 +450,8 @@ WHERE id = @report_id"
             </dx:ASPxCheckBox>
         </td>
         <td>
-            <dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowNeviznacheni" runat="server" Checked='True' Text="Показати невизначені" ToolTip="Показати невизначені" Visible="false"
-                Width="160px" ClientInstanceName="CheckBoxBalansObjectsShowNeviznacheni" >
+            <dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowNeviznacheni" runat="server" Checked='False' Text="Показати невизначені/архівні" ToolTip="Показати невизначені/архівні" Visible="false"
+                Width="210px" ClientInstanceName="CheckBoxBalansObjectsShowNeviznacheni" >
                 <ClientSideEvents CheckedChanged="CheckBoxBalansObjectsShowNeviznacheni_CheckedChanged" />
             </dx:ASPxCheckBox>
         </td>
@@ -1428,7 +1428,7 @@ WHERE id = @report_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A4_19" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A4_20" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
