@@ -131,7 +131,17 @@ from
 
 ,fs.zal_balans_vartist
 ,fs.perv_balans_vartist
-,fs.prop_srok_orands
+
+
+--,fs.prop_srok_orands
+,cast(fs.prop_srok_orands as varchar(100)) + ' '+ 
+case 
+	when fs.prop_srok_orands = 1 then 'рік' 
+	when fs.prop_srok_orands <= 4 then 'роки' 
+	else 'років' 
+end as prop_srok_orands
+
+
 ,fs.punkt_metod_rozrahunok
 ,invest_solution = (select qq.name from dict_1nf_invest_solution qq where qq.id = fs.invest_solution_id)
 ,(select q.name from dict_1nf_power_info q where q.id = fs.power_info_id) as power_text

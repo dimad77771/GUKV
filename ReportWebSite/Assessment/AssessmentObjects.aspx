@@ -72,6 +72,13 @@
 		}
 
 		e.processOnServer = false;
+    }
+
+	function CheckBoxShowArhiv_CheckedChanged(s, e) {
+		PrimaryGridView.PerformCallback(AddWndHeightToCallbackParam("init:"));
+    }
+	function CheckBoxShowNearhiv_CheckedChanged(s, e) {
+		PrimaryGridView.PerformCallback(AddWndHeightToCallbackParam("init:"));
 	}
 
     // ]]>
@@ -80,7 +87,21 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceAssessmentObjects" runat="server" EnableCaching="false"
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT * FROM view_assessment">
+    SelectCommand="
+        SELECT * FROM view_assessment
+        where 1=1
+        and (@p_show_arhiv = 1 or isnull(is_archived,0) = 0)
+        and (@p_show_nearhiv = 1 or isnull(is_archived,0) = 1)
+    "
+    OnSelecting="SqlDataSourceAssessmentObjects_Selecting"
+    >
+    <SelectParameters>
+        <asp:Parameter DbType="Int32" DefaultValue="2" Name="p_show_arhiv" />
+        <asp:Parameter DbType="Int32" DefaultValue="2" Name="p_show_nearhiv" />
+    </SelectParameters>
+
+
+
 </mini:ProfiledSqlDataSource>
 
 <center>
@@ -118,6 +139,18 @@
 				<ClientSideEvents Click="ShowFieldFixxerPopupControl" />
 			</dx:ASPxButton>
 		</td>
+        <td>
+            <dx:ASPxCheckBox ID="CheckBoxShowArhiv" runat="server" Checked='True' Text="Показати архівні" ToolTip="Показати архівні" 
+                Width="150px" ClientInstanceName="CheckBoxShowArhiv" >
+                <ClientSideEvents CheckedChanged="CheckBoxShowArhiv_CheckedChanged" />
+            </dx:ASPxCheckBox>
+        </td>
+        <td>
+            <dx:ASPxCheckBox ID="CheckBoxShowNearhiv" runat="server" Checked='True' Text="Показати не архівні" ToolTip="Показати не архівні" 
+                Width="150px" ClientInstanceName="CheckBoxShowNearhiv" >
+                <ClientSideEvents CheckedChanged="CheckBoxShowNearhiv_CheckedChanged" />
+            </dx:ASPxCheckBox>
+        </td>
         <td>
             <dx:ASPxButton ID="ASPxButton1" runat="server" AutoPostBack="False" 
                 Text="Додаткові Колонки" Width="148px" Visible="true">

@@ -2084,7 +2084,7 @@ WHERE id = @id"
 
                             <p class="SpacingPara"/>
 
-                            <dx:ASPxRoundPanel ID="PanelBuildingProps" runat="server" HeaderText="Характеристики будинку">
+                            <dx:ASPxRoundPanel ID="PanelBuildingProps" runat="server" HeaderText="Характеристики будинку/споруди">
                                 <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="4px" />
                                 <PanelCollection>
                                     <dx:PanelContent ID="PanelContent1" runat="server">
@@ -2118,11 +2118,11 @@ WHERE id = @id"
 														 />
 <%--OnItemRequestedByValue="ComboRozpDoc_OnItemRequestedByValue" OnItemsRequestedByFilterCondition="ComboRozpDoc_OnItemsRequestedByFilterCondition"--%>
                                                 </td>
-                                                <td><dx:ASPxLabel ID="ASPxLabel20" runat="server" Text="Тип будинку"></dx:ASPxLabel></td>
+                                                <td><dx:ASPxLabel ID="ASPxLabel20" runat="server" Text="Тип будинку/споруди"></dx:ASPxLabel></td>
                                                 <td>
                                                     <dx:ASPxComboBox ID="ComboBuildingType" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="270px" 
                                                         IncrementalFilteringMode="StartsWith" DataSourceID="SqlDataSourceObjType" Value='<%# Eval("object_type_id") %>'
-                                                        Title="Тип будинку" />
+                                                        Title="Тип будинку/споруди" />
                                                 </td>
                                             </tr>
                                             <tr>

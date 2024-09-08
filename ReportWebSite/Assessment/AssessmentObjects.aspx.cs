@@ -254,4 +254,11 @@ public partial class Assessment_AssessmentObjects : System.Web.UI.Page
 	{
 		var hh = 10;
 	}
+
+
+	protected void SqlDataSourceAssessmentObjects_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+	{
+        e.Command.Parameters["@p_show_arhiv"].Value = CheckBoxShowArhiv.Checked ? 1 : 0;
+        e.Command.Parameters["@p_show_nearhiv"].Value = CheckBoxShowNearhiv.Checked ? 1 : 0;
+    }
 }
