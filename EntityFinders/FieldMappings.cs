@@ -403,6 +403,9 @@ namespace GUKV.ImportToolUtils
             fields.Add("START_ORENDA", "rent_start_date");
             fields.Add("FINISH_ORENDA", "rent_finish_date");
 
+            fields.Add("METHOD_CALC", "method_calc_id");
+            fields.Add("BASEMONTH", "base_month");
+
             fields.Add("FINISH_ORENDA_FACT", "rent_actual_finish_date");
             fields.Add("AR_STAVKA", "rent_rate");
             fields.Add("AR_STAVKA_UAH", "rent_rate_uah");

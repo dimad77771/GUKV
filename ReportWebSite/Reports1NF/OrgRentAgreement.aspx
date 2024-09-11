@@ -1033,6 +1033,24 @@
         }
 
 
+		function OnBirthdayValidation(s, e) {
+			var birthday = e.value;
+			if (!birthday) return;
+            var day = birthday.getDate();
+			console.log('day', day)
+            console.log('e', e)
+
+            if (day != 1) {
+                var dateOffset = (24 * 60 * 60 * 1000) * (day - 1);
+                var myDate = new Date(birthday.getTime() - dateOffset);
+                e.value = myDate;
+
+                e.isValid = false;
+                e.errorText = "Вкажіть перше число місяця";
+                alert("Змінено на перше число місяця");
+            }
+		}
+
 
 	</script>
 
@@ -1187,6 +1205,12 @@
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT id, name FROM dict_arenda_payment_type WHERE id IN (11, 8, 3, 7) ORDER BY name">
 </mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceMethodCalc" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT id, name FROM dict_method_calc ORDER BY id">
+</mini:ProfiledSqlDataSource>
+
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDocKind" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
@@ -2617,6 +2641,31 @@ WHERE id = @id"
                                                     <dx:ASPxDateEdit ID="EditFinishDate" runat="server" Value='<%# Eval("rent_finish_date") %>' Width="190px" Title="Дата закінчення оренди"></dx:ASPxDateEdit>
                                                 </td>
                                             </tr>
+
+
+                                            <tr>
+                                                <td><dx:ASPxLabel ID="ASPxLabel82" runat="server" Text="Базовий місяць (вкажіть перше число місяця)"></dx:ASPxLabel></td>
+                                                <td>
+                                                    <dx:ASPxDateEdit ID="EditBaseMonth" runat="server" Value='<%# Eval("base_month") %>' Width="190px" Title="Базовий місяць (вкажіть перше число місяця)">
+                                                        <ValidationSettings Display="None" ValidationGroup="MainGroup" EnableCustomValidation="true"></ValidationSettings>
+                                                        <ClientSideEvents Validation="OnBirthdayValidation" />
+                                                    </dx:ASPxDateEdit>
+                                                </td>
+                                                <td> &nbsp; </td>
+                                                <td><dx:ASPxLabel ID="ASPxLabel83" runat="server" Text="Методика розрахунку"></dx:ASPxLabel></td>
+                                                <td>
+                                                    <dx:ASPxComboBox ID="EditMethodCalc" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="190px" 
+                                                        IncrementalFilteringMode="StartsWith" DataSourceID="SqlDataSourceMethodCalc" Value='<%# Eval("method_calc_id") %>'
+                                                        Title="Методика розрахунку">
+                                                          <ClientSideEvents 
+                                                            SelectedIndexChanged ="function (s, e) { HideValidator(); }"
+                                                           />
+                                                        <ValidationSettings Display="None" ValidationGroup="MainGroup" > <RequiredField IsRequired="false" /> </ValidationSettings>
+                                                    </dx:ASPxComboBox>
+                                                </td>
+                                            </tr>
+
+
                                             <tr>
                                                 <td><dx:ASPxLabel ID="ASPxLabel6" runat="server" Text="Вид оплати"></dx:ASPxLabel></td>
                                                 <td>

@@ -1921,6 +1921,10 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         AddQueryParameter(ref fieldList, "agreement_num", "anum", Reports1NFUtils.GetEditText(controls, "EditAgreementNum"), parameters);
         AddQueryParameter(ref fieldList, "agreement_date", "adt", Reports1NFUtils.GetDateValue(controls, "EditAgreementDate"), parameters);
         AddQueryParameter(ref fieldList, "rent_start_date", "dtstart", Reports1NFUtils.GetDateValue(controls, "EditStartDate"), parameters);
+
+        AddQueryParameter(ref fieldList, "base_month", "basemonth", Reports1NFUtils.GetDateValue(controls, "EditBaseMonth"), parameters);
+        AddQueryParameter(ref fieldList, "method_calc_id", "methodcalcid", Reports1NFUtils.GetDropDownValue(controls, "EditMethodCalc"), parameters);
+
         AddQueryParameter(ref fieldList, "rent_finish_date", "dtfin", Reports1NFUtils.GetDateValue(controls, "EditFinishDate"), parameters);
         AddQueryParameter(ref fieldList, "rent_actual_finish_date", "dtafin", Reports1NFUtils.GetDateValue(controls, "EditActualFinishDate"), parameters);
         AddQueryParameter(ref fieldList, "payment_type_id", "payid", Reports1NFUtils.GetDropDownValue(controls, "ComboPaymentType"), parameters);

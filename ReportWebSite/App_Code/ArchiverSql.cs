@@ -40,6 +40,7 @@ public static class ArchiverSql
             rent_rate,rent_rate_uah,rent_square,priznak_1nf,debt_timespan,order_num,order_date,order_no2,rishennya_id,is_inactive,inactive_date,is_deleted,del_date,date_expert,
             is_subarenda,privat_kind_id,num_primirnikiv,date_expl_enter,num_akt,date_akt,num_bti,date_bti,svidotstvo_serial,svidotstvo_num,svidotstvo_date,payment_type_id,
             arch_id,modified_by,modify_date,note,agreement_state,is_insured,insurance_start,insurance_end,insurance_sum,is_loan_agreement,
+            base_month,method_calc_id,
             
             rent_period_id,report_id
             
@@ -51,6 +52,7 @@ public static class ArchiverSql
             rent_rate,rent_rate_uah,rent_square,priznak_1nf,debt_timespan,order_num,order_date,order_no2,rishennya_id,is_inactive,inactive_date,is_deleted,del_date,date_expert,
             is_subarenda,privat_kind_id,num_primirnikiv,date_expl_enter,num_akt,date_akt,num_bti,date_bti,svidotstvo_serial,svidotstvo_num,svidotstvo_date,payment_type_id,
             arch_id,modified_by,modify_date,note,agreement_state,is_insured,insurance_start,insurance_end,insurance_sum,is_loan_agreement,
+            base_month,method_calc_id,
             
             (select top 1 p.rent_period_id from reports1nf_arenda_payments p join reports1nf_arenda a on a.id = p.arenda_id where a.id = @arendaId order by p.modify_date desc) as rent_period_id
             , (select report_id from reports1nf_arenda where id = @arendaId) as report_id
