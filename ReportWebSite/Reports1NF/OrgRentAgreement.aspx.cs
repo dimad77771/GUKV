@@ -2369,6 +2369,8 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         }
         else if (e.Parameter.StartsWith("send:"))
         {
+            //throw new Exception("aa");
+
             validator.ValidateUI();
             //!!ValidatePaymentForm();
             this.errorForm.DataSource = validator.FormatErrorDataSource();

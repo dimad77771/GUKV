@@ -104,7 +104,9 @@
 			}
 		}
 
-		function afterCPMainPanelCallback(event) {
+        function afterCPMainPanelCallback(event) {
+			console.log('RUN afterCPMainPanelCallback')
+			//console.log('event', event)
 			setTimeout(CalcCollectionDebtZvit, 100);
 		}
 
@@ -266,7 +268,9 @@
 			if (vv <= 0) vv = null;
 			edit_total_year_saldo.SetValue(vv);
 
-			CalcDebt();
+            CalcDebt();
+
+            console.log('CalcCollectionDebtZvit FINISH');
         }
 
 		function set_edit_debtkvart_0(val) {

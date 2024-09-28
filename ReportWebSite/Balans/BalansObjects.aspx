@@ -230,7 +230,10 @@
 ,case when exists (select 1 from reports1nf_balans_rish_attachfiles Q where Q.free_square_id = 500000 * bal.report_id + bal.id) then 1 else 0 end as has_reports1nf_balans_rish_attachfiles
 ,case when exists (select 1 from reports1nf_balans_bti_attachfiles Q where Q.free_square_id = 500000 * bal.report_id + bal.id) then 1 else 0 end as has_reports1nf_balans_bti_attachfiles
 ,case when exists (select 1 from reports1nf_balans_dinfo_attachfiles Q where Q.free_square_id = 500000 * bal.report_id + bal.id) then 1 else 0 end as has_reports1nf_balans_dinfo_attachfiles
+
 ,(COALESCE(LTRIM(RTRIM(b.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer3)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer2)), '')) as addr_nomer_new
+,(COALESCE(LTRIM(RTRIM(b.addr_nomer1)) + ' ', '')) as addr_nomer_short
+
 
 
     FROM view_balans_all vb
@@ -331,10 +334,19 @@
                 <%# "<a href=\"javascript:ShowObjectCard(" + Eval("balans_id") + "," + Eval("building_id") + ")\">" + Eval("street_full_name") + "</a>"%>
             </DataItemTemplate>
         </dx:GridViewDataTextColumn>
+
         <dx:GridViewDataTextColumn FieldName="addr_nomer_new" ReadOnly="True" ShowInCustomizationForm="True"
-            VisibleIndex="9" Visible="True" Caption="Номер Будинку">
+            VisibleIndex="9" Visible="True" Caption="Номер об'єкту">
             <DataItemTemplate>
                 <%# "<a href=\"javascript:ShowObjectCard(" + Eval("balans_id") + "," + Eval("building_id") + ")\">" + Eval("addr_nomer_new") + "</a>"%>
+            </DataItemTemplate>
+            <Settings SortMode="Custom" />
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="addr_nomer_short" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="9" Visible="False" Caption="Номер Будинку">
+            <DataItemTemplate>
+                <%# "<a href=\"javascript:ShowObjectCard(" + Eval("balans_id") + "," + Eval("building_id") + ")\">" + Eval("addr_nomer_short") + "</a>"%>
             </DataItemTemplate>
             <Settings SortMode="Custom" />
         </dx:GridViewDataTextColumn>
@@ -661,7 +673,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A4_008" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A4_009" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
