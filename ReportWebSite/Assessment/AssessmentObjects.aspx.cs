@@ -62,12 +62,12 @@ public partial class Assessment_AssessmentObjects : System.Web.UI.Page
 
     protected void ASPxButton_AssessmentObjects_ExportPDF_Click(object sender, EventArgs e)
     {
-        this.ExportGridToXLS(GridViewAssessmentObjectsExporter, PrimaryGridView, LabelReportTitle1.Text, ViewState["PrimaryGridView.DataSourceID"] as string);
+        this.ExportGridToPDF(GridViewAssessmentObjectsExporter, PrimaryGridView, LabelReportTitle1.Text, ViewState["PrimaryGridView.DataSourceID"] as string);
     }
 
     protected void ASPxButton_AssessmentObjects_ExportCSV_Click(object sender, EventArgs e)
     {
-        this.ExportGridToXLS(GridViewAssessmentObjectsExporter, PrimaryGridView, LabelReportTitle1.Text, ViewState["PrimaryGridView.DataSourceID"] as string);
+        this.ExportGridToCSV(GridViewAssessmentObjectsExporter, PrimaryGridView, LabelReportTitle1.Text, ViewState["PrimaryGridView.DataSourceID"] as string);
     }
 
 	private class GridCallbackData

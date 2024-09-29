@@ -21,6 +21,7 @@ using Syncfusion.Pdf.Graphics;
 using Syncfusion.Pdf.Parsing;
 using Syncfusion.DocToPDFConverter;
 using Syncfusion.DocIO.DLS;
+using System.Data.Common;
 
 public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 {
@@ -229,7 +230,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 
         if (!IsPostBack)
         {
-            NarazhCalculation();
+            NarazhCalculation_old();
         }
 
             //////
@@ -3566,9 +3567,46 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		comboBox.DataBindItems();
 	}
 
-	#endregion
+    #endregion
 
-    void NarazhCalculation()
+
+    decimal? GetDecimalValue(object arg)
+    {
+        if (arg is DBNull)
+        {
+            return null;
+        }
+        else
+        {
+            return (decimal)arg;
+        }
+    }
+
+    private static DataTable GetDataTable(string sql, SqlConnection connection, SqlTransaction transaction = null)
+    {
+        var factory = DbProviderFactories.GetFactory(connection);
+        var dataTable = new DataTable();
+        using (var cmd = factory.CreateCommand())
+        {
+            cmd.CommandText = sql;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = connection;
+            if (transaction != null)
+            {
+                cmd.Transaction = transaction;
+            }
+            using (var adapter = factory.CreateDataAdapter())
+            {
+                adapter.SelectCommand = cmd;
+                adapter.Fill(dataTable);
+            }
+        }
+
+        return dataTable;
+    }
+
+
+    void NarazhCalculation_old()
     {
         var inflation = 25.0M / 12.0M;
 
@@ -3606,21 +3644,60 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
                 reader.Close();
             }
         }
-        
-
     }
 
-    decimal? GetDecimalValue(object arg)
+
+    protected void cbNarazhCalculation_Callback(object source, CallbackEventArgs e)
     {
-        if (arg is DBNull)
+        Dictionary<string, Control> controls = new Dictionary<string, Control>();
+
+        Reports1NFUtils.GetAllControls(OrganizationsForm, controls);
+        Reports1NFUtils.GetAllControls(PaymentForm, controls);
+        Reports1NFUtils.GetAllControls(CollectionForm, controls);
+        Reports1NFUtils.GetAllControls(InsuranceForm, controls);
+        Reports1NFUtils.GetAllControls(AddressForm, controls);
+        //Reports1NFUtils.GetAllControls(PanelNarazhCalculation, controls);
+
+        var hh = Reports1NFUtils.GetDropDownValue(controls, "EditMethodCalc");
+
+
+
+        var connection = Utils.ConnectToDatabase();
+
+        //var data = GetDataTable("select * ", connection);
+        //for (var rownum = 0; rownum < data.Rows.Count; rownum++)
+        //{
+        //    //data.Rows[rownum]["UserId"]
+        //}
+
+
+
+        //var edit = ((ASPxSpinEdit)Utils.FindControlRecursive(PanelNarazhCalculation, "NarazhCalculation_" + "2"));
+        //edit.Number = 987.12M;
+
+        var result = new
         {
-            return null;
-        }
-        else
-        {
-            return (decimal)arg;
-        }
+            NarazhCalculation_1 = 1987.12M,
+            NarazhCalculation_2 = 2987.12M,
+            NarazhCalculation_3 = 3987.12M,
+            NarazhCalculation_4 = 987.12M,
+            NarazhCalculation_5 = 987.12M,
+            NarazhCalculation_6 = 987.12M,
+            NarazhCalculation_7 = 987.12M,
+            NarazhCalculation_8 = 987.12M,
+            NarazhCalculation_9 = 987.12M,
+            NarazhCalculation_10 = 987.12M,
+            NarazhCalculation_11 = 987.12M,
+            NarazhCalculation_12 = 987.12M,
+            NarazhCalculation_all = 23987.12M,
+        };
+
+        var json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
+        e.Result = json;
     }
+
+
+
 }
 
 

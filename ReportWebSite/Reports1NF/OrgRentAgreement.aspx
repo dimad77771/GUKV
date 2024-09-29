@@ -552,6 +552,30 @@
         function HideValidator() {
             document.getElementById('valError').style.display = 'none';
         }
+
+		function NarazhCalculationRun() {
+			cbNarazhCalculation.PerformCallback(111);
+        }
+
+        function NarazhCalculationComplete(s, e) {
+            //console.log('ee', e);
+            var obj = JSON.parse(e.result);
+            console.log('obj', obj);
+            //console.log('id_NarazhCalculation_1', id_NarazhCalculation_1);
+            id_NarazhCalculation_1.SetValue(obj['NarazhCalculation_1']);
+            id_NarazhCalculation_2.SetValue(obj['NarazhCalculation_2']);
+			id_NarazhCalculation_3.SetValue(obj['NarazhCalculation_3']);
+			id_NarazhCalculation_4.SetValue(obj['NarazhCalculation_4']);
+			id_NarazhCalculation_5.SetValue(obj['NarazhCalculation_5']);
+			id_NarazhCalculation_6.SetValue(obj['NarazhCalculation_6']);
+			id_NarazhCalculation_7.SetValue(obj['NarazhCalculation_7']);
+			id_NarazhCalculation_8.SetValue(obj['NarazhCalculation_8']);
+            id_NarazhCalculation_9.SetValue(obj['NarazhCalculation_9']);
+            id_NarazhCalculation_10.SetValue(obj['NarazhCalculation_10']);
+            id_NarazhCalculation_11.SetValue(obj['NarazhCalculation_11']);
+            id_NarazhCalculation_12.SetValue(obj['NarazhCalculation_12']);
+			id_NarazhCalculation_all.SetValue(obj['NarazhCalculation_all']);
+		}
         
         function ComboPaymentTypeValidate() {
             if ((document.getElementById('<%=OrganizationsForm.ClientID %>' + '_PanelAgreement_ComboPaymentType_I').value.toLowerCase() == "грошова оплата" || (document.getElementById('<%=OrganizationsForm.ClientID %>' + '_PanelAgreement_ComboPaymentType_I').value.toLowerCase() == "погодинно") &&
@@ -2662,7 +2686,7 @@ WHERE id = @id"
                                                         IncrementalFilteringMode="StartsWith" DataSourceID="SqlDataSourceMethodCalc" Value='<%# Eval("method_calc_id") %>'
                                                         Title="Методика розрахунку">
                                                           <ClientSideEvents 
-                                                            SelectedIndexChanged ="function (s, e) { HideValidator(); }"
+                                                            SelectedIndexChanged ="function (s, e) { HideValidator(); NarazhCalculationRun(); }"
                                                            />
                                                         <ValidationSettings Display="None" ValidationGroup="MainGroup" > <RequiredField IsRequired="false" /> </ValidationSettings>
                                                     </dx:ASPxComboBox>
@@ -4973,6 +4997,11 @@ WHERE id = @id"
 
 <dx:ASPxValidationSummary ID="ValidationSummary" ValidationGroup="MainGroup" runat="server" RenderMode="BulletedList" Width="800px" ClientInstanceName="ValidationSummary">
 </dx:ASPxValidationSummary>
+
+<dx:ASPxCallback ID="cbNarazhCalculation" ClientInstanceName="cbNarazhCalculation" runat="server" OnCallback="cbNarazhCalculation_Callback" >
+    <ClientSideEvents CallbackComplete="NarazhCalculationComplete"  />
+</dx:ASPxCallback>
+
 
 <div id ="valError" style="color:red; display:none;">По кожному договору зі списку ДПЗ, що має статус «Договір діє» та “Вид оплати”  - «ГРОШОВА ОПЛАТА», повинен бути встановлений діючий Звітний період </div>
 
