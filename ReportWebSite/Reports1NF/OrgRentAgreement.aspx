@@ -29,8 +29,8 @@
 
     .classPanelNarahCalculation
     {
-        margin-left:10px;
-        margin-top:159px;
+        margin-left:-250px;
+        margin-top:21px;
     }
 
     .editForm999 .dxgvEditFormTable_DevEx 
@@ -3221,477 +3221,541 @@ WHERE id = @id"
                     <table style="border-collapse:collapse">
                         <tr>
                             <td style="padding:0px">
-                    <asp:FormView runat="server" BorderStyle="None" ID="PaymentForm" DataSourceID="SqlDataSourceRentPayment" EnableViewState="False">
-                        <ItemTemplate>
-                            <div style="margin-bottom: 10px;">
-                                <div style="float: left; margin-right: 10px; line-height: 1.8em;">
-                                    <dx:ASPxLabel ID="ReportingPeriodLabel" runat="server" Text="Звітний Період:"></dx:ASPxLabel>
-                                </div>
-                                <div style="float: left; margin-right: 10px; line-height: 1.8em;">
-                                <dx:ASPxComboBox ID="ReportingPeriodCombo" runat="server" 
-                                    DataSourceID="SqlDataSourceRentPeriods" TextField="name" ValueField="id" 
-                                    ValueType="System.Int32" Value='<%# Eval("rent_period_id") %>'
-                                    Title="період поточного року, за який обраховується та подається квартальний звіт: 3 місяці 2020, 6 місяців 2020, 9 місяців 2020, 12 місяців 2020" 
-                                    ClientInstanceName="ReportingPeriodCombo">
-                                    <ClientSideEvents 
-                                        SelectedIndexChanged="function (s, e) { updateReportingPeriodComboStyles(); }"
-                                    />
-                                </dx:ASPxComboBox>
-                                    </div>
-                                <dx:ASPxLabel ID="NeededPeriodCombo"  runat="server"  ForeColor="White" />
+                                <asp:FormView runat="server" BorderStyle="None" ID="PaymentForm" DataSourceID="SqlDataSourceRentPayment" EnableViewState="False">
+                                    <ItemTemplate>
+                                        <div style="margin-bottom: 10px;">
+                                            <div style="float: left; margin-right: 10px; line-height: 1.8em;">
+                                                <dx:ASPxLabel ID="ReportingPeriodLabel" runat="server" Text="Звітний Період:"></dx:ASPxLabel>
+                                            </div>
+                                            <div style="float: left; margin-right: 10px; line-height: 1.8em;">
+                                            <dx:ASPxComboBox ID="ReportingPeriodCombo" runat="server" 
+                                                DataSourceID="SqlDataSourceRentPeriods" TextField="name" ValueField="id" 
+                                                ValueType="System.Int32" Value='<%# Eval("rent_period_id") %>'
+                                                Title="період поточного року, за який обраховується та подається квартальний звіт: 3 місяці 2020, 6 місяців 2020, 9 місяців 2020, 12 місяців 2020" 
+                                                ClientInstanceName="ReportingPeriodCombo">
+                                                <ClientSideEvents 
+                                                    SelectedIndexChanged="function (s, e) { updateReportingPeriodComboStyles(); }"
+                                                />
+                                            </dx:ASPxComboBox>
+                                                </div>
+                                            <dx:ASPxLabel ID="NeededPeriodCombo"  runat="server"  ForeColor="White" />
                                 
-                            </div>
-                            <dx:ASPxRoundPanel ID="PanelRentPayment" runat="server" HeaderText="Площа, надана в оренду">
-                                <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="0px" />
-                                <PanelCollection>
-                                    <dx:PanelContent ID="PanelContent4" runat="server">                                        
-                                        <table border="0" cellspacing="0" cellpadding="2" width="910px">
-                                            <tr>
-                                                <td><dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="Площа, надана в оренду, всього, кв.м." Width="650px"></dx:ASPxLabel></td>
-                                                <td><dx:ASPxTextBox ID="EditPaymentSqrTotal_orndpymnt" runat="server" Enabled="false" Width="150px" Title="Загальна площа, надана в оренду" /></td>
-                                            </tr>
-                                            <tr>
-                                                <td><dx:ASPxLabel ID="ASPxLabel24" runat="server" Text="- у тому числі, на яку нараховується плата за використання у відсотках від вартості, кв.м."></dx:ASPxLabel></td>
-                                                <td><dx:ASPxSpinEdit ID="EditPaymentSqrByPercent_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("sqr_payed_by_percent") %>' Width="150px"
-                                                    Title="Площа, на яку нараховується плата за використання у відсотках від вартості"/></td>
-                                            </tr>
-                                            <tr>
-                                                <td><dx:ASPxLabel ID="ASPxLabel25" runat="server" Text="- у тому числі, на яку нараховується плата за використання в розмірі 1 грн., кв.м."></dx:ASPxLabel></td>
-                                                <td><dx:ASPxSpinEdit ID="EditPaymentSqr1UAH_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("sqr_payed_by_1uah") %>' Width="150px"
-                                                    Title="Площа, на яку нараховується плата за використання в розмірі 1 грн."/></td>
-                                            </tr>
-                                            <tr>
-                                                <td><dx:ASPxLabel ID="ASPxLabel26" runat="server" Text="- у тому числі, надана в погодинну оренду, чи відповідно до угод про співпрацю, кв.м."></dx:ASPxLabel></td>
-                                                <td><dx:ASPxSpinEdit ID="EditPaymentSqrHourly_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("sqr_payed_hourly") %>' Width="150px"
-                                                    Title="Площа, надана в погодинну оренду, чи відповідно до угод про співпрацю"/></td>
-                                            </tr>   
-                                        </table>
-                                    </dx:PanelContent>
-                                </PanelCollection>
-                            </dx:ASPxRoundPanel>
-
-                            <p class="SpacingPara"/>
-
-                            <dx:ASPxRoundPanel ID="PanelRentPaymentDocuments" runat="server" HeaderText="Надходження орендної плати">
-                                <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="0px" />
-                                <PanelCollection>
-                                    <dx:PanelContent ID="PanelContent9" runat="server">
-                                        <dx:ASPxCallbackPanel ID="CPRentPayment" ClientInstanceName="CPRentPayment" runat="server" OnCallback="CPRentPayment_Callback" ClientSideEvents-EndCallback="function (s,e) { setTimeout(CalcCollectionDebtZvit, 10); }">
+                                        </div>
+                                        <dx:ASPxRoundPanel ID="PanelRentPayment" runat="server" HeaderText="Площа, надана в оренду">
+                                            <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="0px" />
                                             <PanelCollection>
-                                            <dx:panelcontent ID="Panelcontent12" runat="server">
-                                                <table border="0" cellspacing="0" cellpadding="2" width="910px">
-                                                    <tr style="display:none   ">
-                                                        <td><dx:ASPxLabel ID="ASPxLabel65" runat="server" Text="Авансова орендна плата (нараховано), грн."></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="edit_avance_plat" ClientInstanceName="edit_avance_plat" runat="server" NumberType="Float" Value='<%# Eval("avance_plat") %>' Width="150px" Enabled="true"
-                                                            Title="ОБОВЯЗКОВО заноситься нарахована двомісячна сума орендної плати відповідно до п.3.10 договору, яка може бути на поточний момент не сплачена, або сплачена частково">
-                                                            <ClientSideEvents 
-                                                                LostFocus="CalcCollectionDebtZvit" />                                                            
-                                                            </dx:ASPxSpinEdit>
+                                                <dx:PanelContent ID="PanelContent4" runat="server">                                        
+                                                    <table border="0" cellspacing="0" cellpadding="2" width="810px">
+                                                        <tr>
+                                                            <td><dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="Площа, надана в оренду, всього, кв.м." Width="650px"></dx:ASPxLabel></td>
+                                                            <td><dx:ASPxTextBox ID="EditPaymentSqrTotal_orndpymnt" runat="server" Enabled="false" Width="150px" Title="Загальна площа, надана в оренду" /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><dx:ASPxLabel ID="ASPxLabel24" runat="server" Text="- у тому числі, на яку нараховується плата за використання у відсотках від вартості, кв.м."></dx:ASPxLabel></td>
+                                                            <td><dx:ASPxSpinEdit ID="EditPaymentSqrByPercent_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("sqr_payed_by_percent") %>' Width="150px"
+                                                                Title="Площа, на яку нараховується плата за використання у відсотках від вартості"/></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><dx:ASPxLabel ID="ASPxLabel25" runat="server" Text="- у тому числі, на яку нараховується плата за використання в розмірі 1 грн., кв.м."></dx:ASPxLabel></td>
+                                                            <td><dx:ASPxSpinEdit ID="EditPaymentSqr1UAH_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("sqr_payed_by_1uah") %>' Width="150px"
+                                                                Title="Площа, на яку нараховується плата за використання в розмірі 1 грн."/></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><dx:ASPxLabel ID="ASPxLabel26" runat="server" Text="- у тому числі, надана в погодинну оренду, чи відповідно до угод про співпрацю, кв.м."></dx:ASPxLabel></td>
+                                                            <td><dx:ASPxSpinEdit ID="EditPaymentSqrHourly_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("sqr_payed_hourly") %>' Width="150px"
+                                                                Title="Площа, надана в погодинну оренду, чи відповідно до угод про співпрацю"/></td>
+                                                        </tr>   
+                                                    </table>
+                                                </dx:PanelContent>
+                                            </PanelCollection>
+                                        </dx:ASPxRoundPanel>
+
+                                        <p class="SpacingPara"/>
+
+                                        <dx:ASPxRoundPanel ID="PanelRentPaymentDocuments" runat="server" HeaderText="Надходження орендної плати">
+                                            <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="0px" />
+                                            <PanelCollection>
+                                                <dx:PanelContent ID="PanelContent9" runat="server">
+                                                    <dx:ASPxCallbackPanel ID="CPRentPayment" ClientInstanceName="CPRentPayment" runat="server" OnCallback="CPRentPayment_Callback" ClientSideEvents-EndCallback="function (s,e) { setTimeout(CalcCollectionDebtZvit, 10); }">
+                                                        <PanelCollection>
+                                                        <dx:panelcontent ID="Panelcontent12" runat="server">
+                                                            <table border="0" cellspacing="0" cellpadding="2" width="810px">
+                                                                <tr style="display:none   ">
+                                                                    <td><dx:ASPxLabel ID="ASPxLabel65" runat="server" Text="Авансова орендна плата (нараховано), грн."></dx:ASPxLabel></td>
+                                                                    <td><dx:ASPxSpinEdit ID="edit_avance_plat" ClientInstanceName="edit_avance_plat" runat="server" NumberType="Float" Value='<%# Eval("avance_plat") %>' Width="150px" Enabled="true"
+                                                                        Title="ОБОВЯЗКОВО заноситься нарахована двомісячна сума орендної плати відповідно до п.3.10 договору, яка може бути на поточний момент не сплачена, або сплачена частково">
+                                                                        <ClientSideEvents 
+                                                                            LostFocus="CalcCollectionDebtZvit" />                                                            
+                                                                        </dx:ASPxSpinEdit>
+                                                                        </td>
+                                                                </tr>
+                                                                <tr style="display:none" id="tr_alert_edit_avance_plat">
+                                                                    <td colspan="2" align="right" style="padding-right:20px"><dx:ASPxLabel ID="ASPxLabel67" ForeColor="Brown" runat="server" Text="Внесення авансової орендної плати одноразова операція, Ви повинні вирахувати її з поля «Надходження орендної плати за звітний період, всього, грн.»"></dx:ASPxLabel></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><dx:ASPxLabel ID="ASPxLabel27" runat="server" Text="Нараховано орендної плати за звітний період, грн. (без ПДВ)" Width="650px"></dx:ASPxLabel></td>
+                                                                    <td><dx:ASPxSpinEdit ID="EditPaymentNarah_orndpymnt" ClientInstanceName="clEditPaymentNarah_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("payment_narah") %>' Width="150px"
+                                                                        Title="нарахована орендна плата за 3,6,9,12 місяців відповідно (індексація може враховуватися) і підлягає оплаті або зарахуванню в борг">
+                                                                          <ClientSideEvents 
+                                                                        ValueChanged ="function (s, e) { HideValidator(); }"
+                                                                        LostFocus="CalcCollectionDebtZvit"
+                                                                        />
+                                                                        </dx:ASPxSpinEdit></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><dx:ASPxLabel ID="ASPxLabel66" runat="server" Text="- у тому числі, знято надмірно нарахованої за звітний період"></dx:ASPxLabel></td>
+                                                                    <td><dx:ASPxSpinEdit ID="edit_znyato_nadmirno_narah" ClientInstanceName="edit_znyato_nadmirno_narah" runat="server" NumberType="Float" Value='<%# Eval("znyato_nadmirno_narah") %>' Width="150px"
+                                                                        Title="сума що не підлягає оплаті, відповідно до акту про неможливість використання приміщення і вираховується з нарахованої">
+                                                                        <ClientSideEvents 
+                                                                            LostFocus="CalcCollectionDebtZvit" />                                                            
+                                                                        </dx:ASPxSpinEdit>
+                                                                        </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td><dx:ASPxLabel ID="ASPxLabel71" runat="server" Text="Переплата орендної плати, всього, грн. (без ПДВ)"></dx:ASPxLabel></td>
+                                                                    <td><dx:ASPxSpinEdit ID="edit_total_year_saldo" ClientInstanceName="edit_total_year_saldo" runat="server" NumberType="Float" Value='<%# Eval("total_year_saldo") %>' Width="150px" ReadOnly="true" Font-Italic="true"
+                                                                        Title="сума полів «у т.ч. Сальдо (переплата) на початок року (незмінна впродовж року величина), грн. (без ПДВ)» та «у т.ч. Сальдо авансової орендної плати на кінець звітного періоду, грн. (без ПДВ)»">
+                                                                        <ClientSideEvents 
+                                                                            LostFocus="CalcCollectionDebtZvit" />                                                            
+                                                                        </dx:ASPxSpinEdit>
+                                                                        </td>
+                                                                </tr>
+
+
+                                                                <tr>
+                                                                    <td><dx:ASPxLabel ID="ASPxLabel28" runat="server" Text="Сальдо (переплата) на початок року (незмінна впродовж року величина), грн. (без ПДВ)"></dx:ASPxLabel></td>
+                                                                    <td><dx:ASPxSpinEdit ID="EditPaymentSaldo_orndpymnt" ClientInstanceName="clEditPaymentSaldo_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("last_year_saldo") %>' Width="150px"
+                                                                        Title="переплата орендарем коштів на початок звітного року и використовується безумовно для покриття (повністю або частково) у разі виникненню заборгованості з нарахованій орендній платі за звітний період.">
+                                                                        <ClientSideEvents 
+                                                                            LostFocus="CalcCollectionDebtZvit" />                                                            
+                                                                        </dx:ASPxSpinEdit>
+                                                                        </td>
+                                                                </tr>
+
+                                                                <tr style="display:none   ">
+                                                                    <td><dx:ASPxLabel ID="ASPxLabel74" runat="server" Text="Сальдо авансової орендної плати на початок звітного періоду, грн. (без ПДВ)"></dx:ASPxLabel></td>
+                                                                    <td><dx:ASPxSpinEdit ID="edit_zabezdepoz_saldo" ClientInstanceName="edit_zabezdepoz_saldo" runat="server" NumberType="Float" Value='<%# Eval("zabezdepoz_saldo") %>' Width="150px" Enabled="true"
+                                                                        Title="сума коштів отримана від орендаря, (бажано що б вона дорівнювала нарахованій авансовій орендній платі)">
+                                                                        <ClientSideEvents 
+                                                                            LostFocus="CalcCollectionDebtZvit" />                                                            
+                                                                        </dx:ASPxSpinEdit>
+                                                                        </td>
+                                                                </tr>
+
+                                                                <tr style="display:none   ">
+                                                                    <td><dx:ASPxLabel ID="ASPxLabel69" runat="server" Text="Надходження авансової орендної плати у звітному періоді, грн. (без ПДВ)"></dx:ASPxLabel></td>
+                                                                    <td><dx:ASPxSpinEdit ID="edit_zabezdepoz_prishlo" ClientInstanceName="edit_zabezdepoz_prishlo" runat="server" NumberType="Float" Value='<%# Eval("zabezdepoz_prishlo") %>' Width="150px" Enabled="true"
+                                                                        Title="показуємо яка частина поля «у т.ч. Сальдо авансової орендної плати на кінець звітного періоду, грн. (без ПДВ)» отримана у звітному періоді">
+                                                                        <ClientSideEvents 
+                                                                            LostFocus="CalcCollectionDebtZvit" />                                                            
+                                                                        </dx:ASPxSpinEdit>
+                                                                        </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td><dx:ASPxLabel ID="ASPxLabel29" runat="server" Text="Надходження орендної плати за звітний період, всього, грн. (без ПДВ)"></dx:ASPxLabel></td>
+                                                                    <td><dx:ASPxSpinEdit ID="EditPaymentReceived_orndpymnt" ClientInstanceName="Received_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("payment_received") %>' Width="150px" ReadOnly="true" Font-Italic="true"
+                                                                        Title="отримана протягом поточного звітного періоду сума коштів від орендаря:" MinValue ="0" MaxValue="999999999" >
+                                                                        <ClientSideEvents 
+                                                                            LostFocus="CalcCollectionDebtZvit" />   
+                                                                        </dx:ASPxSpinEdit>
+                                                                        </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>
+                                                                        <dx:ASPxButton Enabled="true" ID="BtnAddPaymentDocument" ClientInstanceName="clientBtnAddPaymentDocument" runat="server" Text="Розрахувати" AutoPostBack="false" Width="150px">
+                                                                            <ClientSideEvents Click="function (s,e) { CPRentPayment.PerformCallback('calc:');  }" />
+                                                                        </dx:ASPxButton>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><dx:ASPxLabel ID="ASPxLabel30" runat="server" Text="- у тому числі, з нарахованої за звітний період (без боргів та переплат)"></dx:ASPxLabel></td>
+                                                                    <td><dx:ASPxSpinEdit ID="EditPaymentNarZvit_orndpymnt"  ClientInstanceName="Zvit_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("payment_nar_zvit") %>' Width="150px"
+                                                                        Title="отримана протягом поточного звітного періоду сума коштів від орендаря призначена  лише на оплату нарахованої за звітний період орендної плати." MinValue ="0" MaxValue="999999999">
+                                                                            <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
+                                                                        </dx:ASPxSpinEdit></td>
+                                                                </tr>
+                                                                <tr style="display:none   ">
+                                                                    <td><dx:ASPxLabel ID="ASPxLabel68" runat="server" Text="- у тому числі, з нарахованої авансової орендної плати, грн."></dx:ASPxLabel></td>
+                                                                    <td><dx:ASPxSpinEdit ID="Edit_avance_paymentnar"  ClientInstanceName="avance_paymentnar" runat="server" NumberType="Float" Value='<%# Eval("avance_paymentnar") %>' Width="150px"
+                                                                        Title="використовується повністю або частково сума отриманих коштів авансової орендної плати з поля «у т.ч. Сальдо авансової орендної плати на кінець звітного періоду, грн. (без ПДВ)», ЛИШЕ для оплати орендної плати  за останні два місяці дії договору." MinValue ="0" MaxValue="999999999">
+                                                                            <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
+                                                                        </dx:ASPxSpinEdit></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><dx:ASPxLabel ID="ASPxLabel55" runat="server" Text="- у тому числі, погашення заборгованості минулих періодів, грн."></dx:ASPxLabel></td>
+                                                                    <td><dx:ASPxSpinEdit ID="EditPaymentOldDebtsPayed_orndpymnt" ClientInstanceName="clEditPaymentOldDebtsPayed_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("old_debts_payed") %>' Width="150px"
+                                                                        Title="частина коштів з надходження орендної плати за звітний період, всього, призначена на погашення заборгованості попередніх періодів.">
+                                                                            <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
+                                                                        </dx:ASPxSpinEdit></td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td><dx:ASPxLabel ID="ASPxLabel62" runat="server" Text="- у тому числі, переплата орендної плати за звітний період, грн."></dx:ASPxLabel></td>
+                                                                    <td><dx:ASPxSpinEdit ID="edit_return_orend_payed" ClientInstanceName="edit_return_orend_payed" runat="server" NumberType="Float" Value='<%# Eval("return_orend_payed") %>' Width="150px" 
+                                                                        Title="переплата поточної орендної плати у звітному періоді (не включає Сальдо (переплата) на початок року)">
+                                                                        <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
+                                                                        </dx:ASPxSpinEdit></td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td><dx:ASPxLabel ID="ASPxLabel72" runat="server" Text="Переплата орендної плати на кінець звітного періоду, грн. (без ПДВ)"></dx:ASPxLabel></td>
+                                                                    <td><dx:ASPxSpinEdit ID="edit_total_pereplata" ClientInstanceName="edit_total_pereplata" runat="server" NumberType="Float" Value='<%# Eval("total_pereplata") %>'  Width="150px" ReadOnly="true" Font-Italic="true"
+                                                                        Title="перевищення значення поля «Надходження орендної плати за звітний період» над значенням поля «Нарахована  орендної плати за звітний період, грн. (без ПДВ)»"/></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><dx:ASPxLabel ID="ASPxLabel63" runat="server" Text="Повернення переплати орендної плати всього у звітному періоді, грн. (без ПДВ)"></dx:ASPxLabel></td>
+                                                                    <td><dx:ASPxSpinEdit ID="edit_return_all_orend_payed" ClientInstanceName="edit_return_all_orend_payed" runat="server" NumberType="Float" Value='<%# Eval("return_all_orend_payed") %>' Width="150px" 
+                                                                        Title="повернення переплати орендної плати орендарю за його вимогою або по завершенні терміну договору. Заповнюється та редагується балансоутримувачем, лише за умові що договір має статус «Договір закінчився».">
+                                                                            <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
+                                                                        </dx:ASPxSpinEdit>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><dx:ASPxLabel ID="ASPxLabel64" runat="server" Text="Розраховувати заборгованість з орендної плати"></dx:ASPxLabel></td>
+                                                                    <td><dx:ASPxCheckBox ID="edit_use_calc_debt" ClientInstanceName="edit_use_calc_debt" runat="server" Text="" Checked='<%# 1.Equals(Eval("use_calc_debt")) %>' Title="Розраховувати заборгованість з орендної плати">
+                                                                            <ClientSideEvents CheckedChanged="CalcCollectionDebtZvit" />
+                                                                        </dx:ASPxCheckBox>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </dx:panelcontent>    
+                                                        </PanelCollection>                                                    
+                                                    </dx:ASPxCallbackPanel>
+                                                </dx:PanelContent>
+                                            </PanelCollection>                                
+                                        </dx:ASPxRoundPanel>
+
+                                        <p class="SpacingPara"/>
+
+                                        <dx:ASPxRoundPanel ID="AdditionalInfoPanel" runat="server" HeaderText="Знижка">
+                                            <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="4px" />
+                                            <PanelCollection>
+                                                <dx:PanelContent ID="PanelContent11" runat="server">
+                                                    <table border="0" cellspacing="0" cellpadding="2" width="1070px" style="display:block; height:120px; overflow:auto">
+                                                        <tr style="visibility:collapse">
+                                                            <td colspan="7">
+                                                                <dx:ASPxCheckBox ID="CheckRenterIsOut" runat="server" Text="Знижка" Checked='<%# 1.Equals(Eval("is_discount")) %>' Title="Знижка" />
                                                             </td>
-                                                    </tr>
-                                                    <tr style="display:none" id="tr_alert_edit_avance_plat">
-                                                        <td colspan="2" align="right" style="padding-right:20px"><dx:ASPxLabel ID="ASPxLabel67" ForeColor="Brown" runat="server" Text="Внесення авансової орендної плати одноразова операція, Ви повинні вирахувати її з поля «Надходження орендної плати за звітний період, всього, грн.»"></dx:ASPxLabel></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><dx:ASPxLabel ID="ASPxLabel27" runat="server" Text="Нараховано орендної плати за звітний період, грн. (без ПДВ)" Width="650px"></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="EditPaymentNarah_orndpymnt" ClientInstanceName="clEditPaymentNarah_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("payment_narah") %>' Width="150px"
-                                                            Title="нарахована орендна плата за 3,6,9,12 місяців відповідно (індексація може враховуватися) і підлягає оплаті або зарахуванню в борг">
-                                                              <ClientSideEvents 
-                                                            ValueChanged ="function (s, e) { HideValidator(); }"
-                                                            LostFocus="CalcCollectionDebtZvit"
-                                                            />
-                                                            </dx:ASPxSpinEdit></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><dx:ASPxLabel ID="ASPxLabel66" runat="server" Text="- у тому числі, знято надмірно нарахованої за звітний період"></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="edit_znyato_nadmirno_narah" ClientInstanceName="edit_znyato_nadmirno_narah" runat="server" NumberType="Float" Value='<%# Eval("znyato_nadmirno_narah") %>' Width="150px"
-                                                            Title="сума що не підлягає оплаті, відповідно до акту про неможливість використання приміщення і вираховується з нарахованої">
-                                                            <ClientSideEvents 
-                                                                LostFocus="CalcCollectionDebtZvit" />                                                            
-                                                            </dx:ASPxSpinEdit>
-                                                            </td>
-                                                    </tr>
+                                                        </tr>
 
-                                                    <tr>
-                                                        <td><dx:ASPxLabel ID="ASPxLabel71" runat="server" Text="Переплата орендної плати, всього, грн. (без ПДВ)"></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="edit_total_year_saldo" ClientInstanceName="edit_total_year_saldo" runat="server" NumberType="Float" Value='<%# Eval("total_year_saldo") %>' Width="150px" ReadOnly="true" Font-Italic="true"
-                                                            Title="сума полів «у т.ч. Сальдо (переплата) на початок року (незмінна впродовж року величина), грн. (без ПДВ)» та «у т.ч. Сальдо авансової орендної плати на кінець звітного періоду, грн. (без ПДВ)»">
-                                                            <ClientSideEvents 
-                                                                LostFocus="CalcCollectionDebtZvit" />                                                            
-                                                            </dx:ASPxSpinEdit>
-                                                            </td>
-                                                    </tr>
+                                                        <tr>
+                                                            <td><dx:ASPxTextBox ID="edit_znizhka1_name" runat="server" Value='<%# Eval("znizhka1_name") %>' Width="480px" Title="Назва знижки"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
+                                                            <td align="left"><dx:ASPxSpinEdit ID="edit_znizhka1_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka1_percent") %>' Width="100px" Title="%"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_znizhka1_date1" runat="server" Value='<%# Eval("znizhka1_date1") %>' Width="100px" Title="з"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_znizhka1_date2" runat="server" Value='<%# Eval("znizhka1_date2") %>' Width="100px" Title="по"/></td>
+                                                            <td align="right"><dx:ASPxLabel runat="server" Text="Інв.№"></dx:ASPxLabel></td>
+                                                            <td><dx:ASPxTextBox ID="znizhka1_invnums" runat="server" Value='<%# Eval("znizhka1_invnums") %>' Width="150px" Title="Інв.№"/></td>
+                                                        </tr>
 
+                                                        <tr>
+                                                            <td><dx:ASPxTextBox ID="edit_znizhka2_name" runat="server" Value='<%# Eval("znizhka2_name") %>' Width="480px" Title="Назва знижки"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
+                                                            <td align="left"><dx:ASPxSpinEdit ID="edit_znizhka2_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka2_percent") %>' Width="100px" Title="%"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_znizhka2_date1" runat="server" Value='<%# Eval("znizhka2_date1") %>' Width="100px" Title="з"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_znizhka2_date2" runat="server" Value='<%# Eval("znizhka2_date2") %>' Width="100px" Title="по"/></td>
+                                                            <td align="right"><dx:ASPxLabel runat="server" Text="Інв.№"></dx:ASPxLabel></td>
+                                                            <td><dx:ASPxTextBox ID="znizhka2_invnums" runat="server" Value='<%# Eval("znizhka2_invnums") %>' Width="150px" Title="Інв.№"/></td>
+                                                        </tr>
 
-                                                    <tr>
-                                                        <td><dx:ASPxLabel ID="ASPxLabel28" runat="server" Text="Сальдо (переплата) на початок року (незмінна впродовж року величина), грн. (без ПДВ)"></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="EditPaymentSaldo_orndpymnt" ClientInstanceName="clEditPaymentSaldo_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("last_year_saldo") %>' Width="150px"
-                                                            Title="переплата орендарем коштів на початок звітного року и використовується безумовно для покриття (повністю або частково) у разі виникненню заборгованості з нарахованій орендній платі за звітний період.">
-                                                            <ClientSideEvents 
-                                                                LostFocus="CalcCollectionDebtZvit" />                                                            
-                                                            </dx:ASPxSpinEdit>
-                                                            </td>
-                                                    </tr>
+                                                        <tr>
+                                                            <td><dx:ASPxTextBox ID="edit_znizhka3_name" runat="server" Value='<%# Eval("znizhka3_name") %>' Width="480px" Title="Назва знижки"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
+                                                            <td align="left"><dx:ASPxSpinEdit ID="edit_znizhka3_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka3_percent") %>' Width="100px" Title="%"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_znizhka3_date1" runat="server" Value='<%# Eval("znizhka3_date1") %>' Width="100px" Title="з"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_znizhka3_date2" runat="server" Value='<%# Eval("znizhka3_date2") %>' Width="100px" Title="по"/></td>
+                                                            <td align="right"><dx:ASPxLabel runat="server" Text="Інв.№"></dx:ASPxLabel></td>
+                                                            <td><dx:ASPxTextBox ID="znizhka3_invnums" runat="server" Value='<%# Eval("znizhka3_invnums") %>' Width="150px" Title="Інв.№"/></td>
+                                                        </tr>
 
-                                                    <tr style="display:none   ">
-                                                        <td><dx:ASPxLabel ID="ASPxLabel74" runat="server" Text="Сальдо авансової орендної плати на початок звітного періоду, грн. (без ПДВ)"></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="edit_zabezdepoz_saldo" ClientInstanceName="edit_zabezdepoz_saldo" runat="server" NumberType="Float" Value='<%# Eval("zabezdepoz_saldo") %>' Width="150px" Enabled="true"
-                                                            Title="сума коштів отримана від орендаря, (бажано що б вона дорівнювала нарахованій авансовій орендній платі)">
-                                                            <ClientSideEvents 
-                                                                LostFocus="CalcCollectionDebtZvit" />                                                            
-                                                            </dx:ASPxSpinEdit>
-                                                            </td>
-                                                    </tr>
+                                                        <tr>
+                                                            <td><dx:ASPxTextBox ID="edit_znizhka4_name" runat="server" Value='<%# Eval("znizhka4_name") %>' Width="480px" Title="Назва знижки"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
+                                                            <td align="left"><dx:ASPxSpinEdit ID="edit_znizhka4_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka4_percent") %>' Width="100px" Title="%"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_znizhka4_date1" runat="server" Value='<%# Eval("znizhka4_date1") %>' Width="100px" Title="з"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_znizhka4_date2" runat="server" Value='<%# Eval("znizhka4_date2") %>' Width="100px" Title="по"/></td>
+                                                            <td align="right"><dx:ASPxLabel runat="server" Text="Інв.№"></dx:ASPxLabel></td>
+                                                            <td><dx:ASPxTextBox ID="znizhka4_invnums" runat="server" Value='<%# Eval("znizhka4_invnums") %>' Width="150px" Title="Інв.№"/></td>
+                                                        </tr>
 
-                                                    <tr style="display:none   ">
-                                                        <td><dx:ASPxLabel ID="ASPxLabel69" runat="server" Text="Надходження авансової орендної плати у звітному періоді, грн. (без ПДВ)"></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="edit_zabezdepoz_prishlo" ClientInstanceName="edit_zabezdepoz_prishlo" runat="server" NumberType="Float" Value='<%# Eval("zabezdepoz_prishlo") %>' Width="150px" Enabled="true"
-                                                            Title="показуємо яка частина поля «у т.ч. Сальдо авансової орендної плати на кінець звітного періоду, грн. (без ПДВ)» отримана у звітному періоді">
-                                                            <ClientSideEvents 
-                                                                LostFocus="CalcCollectionDebtZvit" />                                                            
-                                                            </dx:ASPxSpinEdit>
-                                                            </td>
-                                                    </tr>
+                                                        <tr>
+                                                            <td><dx:ASPxTextBox ID="edit_znizhka5_name" runat="server" Value='<%# Eval("znizhka5_name") %>' Width="480px" Title="Назва знижки"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
+                                                            <td align="left"><dx:ASPxSpinEdit ID="edit_znizhka5_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka5_percent") %>' Width="100px" Title="%"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_znizhka5_date1" runat="server" Value='<%# Eval("znizhka5_date1") %>' Width="100px" Title="з"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_znizhka5_date2" runat="server" Value='<%# Eval("znizhka5_date2") %>' Width="100px" Title="по"/></td>
+                                                            <td align="right"><dx:ASPxLabel runat="server" Text="Інв.№"></dx:ASPxLabel></td>
+                                                            <td><dx:ASPxTextBox ID="znizhka5_invnums" runat="server" Value='<%# Eval("znizhka5_invnums") %>' Width="150px" Title="Інв.№"/></td>
+                                                        </tr>
 
-                                                    <tr>
-                                                        <td><dx:ASPxLabel ID="ASPxLabel29" runat="server" Text="Надходження орендної плати за звітний період, всього, грн. (без ПДВ)"></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="EditPaymentReceived_orndpymnt" ClientInstanceName="Received_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("payment_received") %>' Width="150px" ReadOnly="true" Font-Italic="true"
-                                                            Title="отримана протягом поточного звітного періоду сума коштів від орендаря:" MinValue ="0" MaxValue="999999999" >
-                                                            <ClientSideEvents 
-                                                                LostFocus="CalcCollectionDebtZvit" />   
-                                                            </dx:ASPxSpinEdit>
-                                                            </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td>
-                                                            <dx:ASPxButton Enabled="true" ID="BtnAddPaymentDocument" ClientInstanceName="clientBtnAddPaymentDocument" runat="server" Text="Розрахувати" AutoPostBack="false" Width="150px">
-                                                                <ClientSideEvents Click="function (s,e) { CPRentPayment.PerformCallback('calc:');  }" />
-                                                            </dx:ASPxButton>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><dx:ASPxLabel ID="ASPxLabel30" runat="server" Text="- у тому числі, з нарахованої за звітний період (без боргів та переплат)"></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="EditPaymentNarZvit_orndpymnt"  ClientInstanceName="Zvit_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("payment_nar_zvit") %>' Width="150px"
-                                                            Title="отримана протягом поточного звітного періоду сума коштів від орендаря призначена  лише на оплату нарахованої за звітний період орендної плати." MinValue ="0" MaxValue="999999999">
-                                                                <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
-                                                            </dx:ASPxSpinEdit></td>
-                                                    </tr>
-                                                    <tr style="display:none   ">
-                                                        <td><dx:ASPxLabel ID="ASPxLabel68" runat="server" Text="- у тому числі, з нарахованої авансової орендної плати, грн."></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="Edit_avance_paymentnar"  ClientInstanceName="avance_paymentnar" runat="server" NumberType="Float" Value='<%# Eval("avance_paymentnar") %>' Width="150px"
-                                                            Title="використовується повністю або частково сума отриманих коштів авансової орендної плати з поля «у т.ч. Сальдо авансової орендної плати на кінець звітного періоду, грн. (без ПДВ)», ЛИШЕ для оплати орендної плати  за останні два місяці дії договору." MinValue ="0" MaxValue="999999999">
-                                                                <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
-                                                            </dx:ASPxSpinEdit></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><dx:ASPxLabel ID="ASPxLabel55" runat="server" Text="- у тому числі, погашення заборгованості минулих періодів, грн."></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="EditPaymentOldDebtsPayed_orndpymnt" ClientInstanceName="clEditPaymentOldDebtsPayed_orndpymnt" runat="server" NumberType="Float" Value='<%# Eval("old_debts_payed") %>' Width="150px"
-                                                            Title="частина коштів з надходження орендної плати за звітний період, всього, призначена на погашення заборгованості попередніх періодів.">
-                                                                <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
-                                                            </dx:ASPxSpinEdit></td>
-                                                    </tr>
+                                                        <tr>
+                                                            <td><dx:ASPxTextBox ID="edit_znizhka6_name" runat="server" Value='<%# Eval("znizhka6_name") %>' Width="480px" Title="Назва знижки"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
+                                                            <td align="left"><dx:ASPxSpinEdit ID="edit_znizhka6_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka6_percent") %>' Width="100px" Title="%"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_znizhka6_date1" runat="server" Value='<%# Eval("znizhka6_date1") %>' Width="100px" Title="з"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_znizhka6_date2" runat="server" Value='<%# Eval("znizhka6_date2") %>' Width="100px" Title="по"/></td>
+                                                            <td align="right"><dx:ASPxLabel runat="server" Text="Інв.№"></dx:ASPxLabel></td>
+                                                            <td><dx:ASPxTextBox ID="znizhka6_invnums" runat="server" Value='<%# Eval("znizhka6_invnums") %>' Width="150px" Title="Інв.№"/></td>
+                                                        </tr>
 
-                                                    <tr>
-                                                        <td><dx:ASPxLabel ID="ASPxLabel62" runat="server" Text="- у тому числі, переплата орендної плати за звітний період, грн."></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="edit_return_orend_payed" ClientInstanceName="edit_return_orend_payed" runat="server" NumberType="Float" Value='<%# Eval("return_orend_payed") %>' Width="150px" 
-                                                            Title="переплата поточної орендної плати у звітному періоді (не включає Сальдо (переплата) на початок року)">
-                                                            <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
-                                                            </dx:ASPxSpinEdit></td>
-                                                    </tr>
+                                                        <tr>
+                                                            <td><dx:ASPxTextBox ID="edit_znizhka7_name" runat="server" Value='<%# Eval("znizhka7_name") %>' Width="480px" Title="Назва знижки"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
+                                                            <td align="left"><dx:ASPxSpinEdit ID="edit_znizhka7_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka7_percent") %>' Width="100px" Title="%"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_znizhka7_date1" runat="server" Value='<%# Eval("znizhka7_date1") %>' Width="100px" Title="з"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_znizhka7_date2" runat="server" Value='<%# Eval("znizhka7_date2") %>' Width="100px" Title="по"/></td>
+                                                            <td align="right"><dx:ASPxLabel runat="server" Text="Інв.№"></dx:ASPxLabel></td>
+                                                            <td><dx:ASPxTextBox ID="znizhka7_invnums" runat="server" Value='<%# Eval("znizhka7_invnums") %>' Width="150px" Title="Інв.№"/></td>
+                                                        </tr>
 
-                                                    <tr>
-                                                        <td><dx:ASPxLabel ID="ASPxLabel72" runat="server" Text="Переплата орендної плати на кінець звітного періоду, грн. (без ПДВ)"></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="edit_total_pereplata" ClientInstanceName="edit_total_pereplata" runat="server" NumberType="Float" Value='<%# Eval("total_pereplata") %>'  Width="150px" ReadOnly="true" Font-Italic="true"
-                                                            Title="перевищення значення поля «Надходження орендної плати за звітний період» над значенням поля «Нарахована  орендної плати за звітний період, грн. (без ПДВ)»"/></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><dx:ASPxLabel ID="ASPxLabel63" runat="server" Text="Повернення переплати орендної плати всього у звітному періоді, грн. (без ПДВ)"></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxSpinEdit ID="edit_return_all_orend_payed" ClientInstanceName="edit_return_all_orend_payed" runat="server" NumberType="Float" Value='<%# Eval("return_all_orend_payed") %>' Width="150px" 
-                                                            Title="повернення переплати орендної плати орендарю за його вимогою або по завершенні терміну договору. Заповнюється та редагується балансоутримувачем, лише за умові що договір має статус «Договір закінчився».">
-                                                                <ClientSideEvents LostFocus="CalcCollectionDebtZvit" />
-                                                            </dx:ASPxSpinEdit>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><dx:ASPxLabel ID="ASPxLabel64" runat="server" Text="Розраховувати заборгованість з орендної плати"></dx:ASPxLabel></td>
-                                                        <td><dx:ASPxCheckBox ID="edit_use_calc_debt" ClientInstanceName="edit_use_calc_debt" runat="server" Text="" Checked='<%# 1.Equals(Eval("use_calc_debt")) %>' Title="Розраховувати заборгованість з орендної плати">
-                                                                <ClientSideEvents CheckedChanged="CalcCollectionDebtZvit" />
-                                                            </dx:ASPxCheckBox>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </dx:panelcontent>    
-                                            </PanelCollection>                                                    
-                                        </dx:ASPxCallbackPanel>
-                                    </dx:PanelContent>
-                                </PanelCollection>                                
-                            </dx:ASPxRoundPanel>
+                                                         <tr>
+                                                            <td><dx:ASPxTextBox ID="edit_znizhka8_name" runat="server" Value='<%# Eval("znizhka8_name") %>' Width="480px" Title="Назва знижки"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
+                                                            <td align="left"><dx:ASPxSpinEdit ID="edit_znizhka8_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka8_percent") %>' Width="100px" Title="%"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_znizhka8_date1" runat="server" Value='<%# Eval("znizhka8_date1") %>' Width="100px" Title="з"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_znizhka8_date2" runat="server" Value='<%# Eval("znizhka8_date2") %>' Width="100px" Title="по"/></td>
+                                                            <td align="right"><dx:ASPxLabel runat="server" Text="Інв.№"></dx:ASPxLabel></td>
+                                                            <td><dx:ASPxTextBox ID="znizhka8_invnums" runat="server" Value='<%# Eval("znizhka8_invnums") %>' Width="150px" Title="Інв.№"/></td>
+                                                        </tr>
 
-                            <p class="SpacingPara"/>
+                                                        <tr>
+                                                            <td><dx:ASPxTextBox ID="edit_znizhka9_name" runat="server" Value='<%# Eval("znizhka9_name") %>' Width="480px" Title="Назва знижки"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
+                                                            <td align="left"><dx:ASPxSpinEdit ID="edit_znizhka9_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka9_percent") %>' Width="100px" Title="%"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_znizhka9_date1" runat="server" Value='<%# Eval("znizhka9_date1") %>' Width="100px" Title="з"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_znizhka9_date2" runat="server" Value='<%# Eval("znizhka9_date2") %>' Width="100px" Title="по"/></td>
+                                                            <td align="right"><dx:ASPxLabel runat="server" Text="Інв.№"></dx:ASPxLabel></td>
+                                                            <td><dx:ASPxTextBox ID="znizhka9_invnums" runat="server" Value='<%# Eval("znizhka9_invnums") %>' Width="150px" Title="Інв.№"/></td>
+                                                        </tr>
 
-                            <dx:ASPxRoundPanel ID="AdditionalInfoPanel" runat="server" HeaderText="Знижка">
-                                <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="4px" />
-                                <PanelCollection>
-                                    <dx:PanelContent ID="PanelContent11" runat="server">
-                                        <table border="0" cellspacing="0" cellpadding="2" width="910px">
-                                            <tr style="visibility:collapse">
-                                                <td colspan="7">
-                                                    <dx:ASPxCheckBox ID="CheckRenterIsOut" runat="server" Text="Знижка" Checked='<%# 1.Equals(Eval("is_discount")) %>' Title="Знижка" />
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td><dx:ASPxTextBox ID="edit_znizhka1_name" runat="server" Value='<%# Eval("znizhka1_name") %>' Width="480px" Title="Назва знижки"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
-                                                <td align="left"><dx:ASPxSpinEdit ID="edit_znizhka1_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka1_percent") %>' Width="100px" Title="%"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
-												<td align="left"><dx:ASPxDateEdit ID="edit_znizhka1_date1" runat="server" Value='<%# Eval("znizhka1_date1") %>' Width="100px" Title="з"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
-												<td align="left"><dx:ASPxDateEdit ID="edit_znizhka1_date2" runat="server" Value='<%# Eval("znizhka1_date2") %>' Width="100px" Title="по"/></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td><dx:ASPxTextBox ID="edit_znizhka2_name" runat="server" Value='<%# Eval("znizhka2_name") %>' Width="480px" Title="Назва знижки"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
-                                                <td align="left"><dx:ASPxSpinEdit ID="edit_znizhka2_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka2_percent") %>' Width="100px" Title="%"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
-												<td align="left"><dx:ASPxDateEdit ID="edit_znizhka2_date1" runat="server" Value='<%# Eval("znizhka2_date1") %>' Width="100px" Title="з"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
-												<td align="left"><dx:ASPxDateEdit ID="edit_znizhka2_date2" runat="server" Value='<%# Eval("znizhka2_date2") %>' Width="100px" Title="по"/></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td><dx:ASPxTextBox ID="edit_znizhka3_name" runat="server" Value='<%# Eval("znizhka3_name") %>' Width="480px" Title="Назва знижки"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
-                                                <td align="left"><dx:ASPxSpinEdit ID="edit_znizhka3_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka3_percent") %>' Width="100px" Title="%"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
-												<td align="left"><dx:ASPxDateEdit ID="edit_znizhka3_date1" runat="server" Value='<%# Eval("znizhka3_date1") %>' Width="100px" Title="з"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
-												<td align="left"><dx:ASPxDateEdit ID="edit_znizhka3_date2" runat="server" Value='<%# Eval("znizhka3_date2") %>' Width="100px" Title="по"/></td>
-                                            </tr>
-
-                                            					   <tr>
-                                                <td><dx:ASPxTextBox ID="edit_znizhka4_name" runat="server" Value='<%# Eval("znizhka4_name") %>' Width="480px" Title="Назва знижки"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
-                                                <td align="left"><dx:ASPxSpinEdit ID="edit_znizhka4_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka4_percent") %>' Width="100px" Title="%"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
-												<td align="left"><dx:ASPxDateEdit ID="edit_znizhka4_date1" runat="server" Value='<%# Eval("znizhka4_date1") %>' Width="100px" Title="з"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
-												<td align="left"><dx:ASPxDateEdit ID="edit_znizhka4_date2" runat="server" Value='<%# Eval("znizhka4_date2") %>' Width="100px" Title="по"/></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td><dx:ASPxTextBox ID="edit_znizhka5_name" runat="server" Value='<%# Eval("znizhka5_name") %>' Width="480px" Title="Назва знижки"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
-                                                <td align="left"><dx:ASPxSpinEdit ID="edit_znizhka5_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka5_percent") %>' Width="100px" Title="%"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
-												<td align="left"><dx:ASPxDateEdit ID="edit_znizhka5_date1" runat="server" Value='<%# Eval("znizhka5_date1") %>' Width="100px" Title="з"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
-												<td align="left"><dx:ASPxDateEdit ID="edit_znizhka5_date2" runat="server" Value='<%# Eval("znizhka5_date2") %>' Width="100px" Title="по"/></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td><dx:ASPxTextBox ID="edit_znizhka6_name" runat="server" Value='<%# Eval("znizhka6_name") %>' Width="480px" Title="Назва знижки"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
-                                                <td align="left"><dx:ASPxSpinEdit ID="edit_znizhka6_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka6_percent") %>' Width="100px" Title="%"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
-												<td align="left"><dx:ASPxDateEdit ID="edit_znizhka6_date1" runat="server" Value='<%# Eval("znizhka6_date1") %>' Width="100px" Title="з"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
-												<td align="left"><dx:ASPxDateEdit ID="edit_znizhka6_date2" runat="server" Value='<%# Eval("znizhka6_date2") %>' Width="100px" Title="по"/></td>
-                                            </tr>
-                                            <tr style="display:none">
-                                                <td><dx:ASPxLabel runat="server" Text="Звільнено від сплати орендної плати на"></dx:ASPxLabel></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
-                                                <td align="left"><dx:ASPxSpinEdit ID="edit_zvilneno_percent" runat="server" NumberType="Float" Value='<%# Eval("zvilneno_percent") %>' Width="100px" Title="%"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
-												<td align="left"><dx:ASPxDateEdit ID="edit_zvilneno_date1" runat="server" NumberType="Float" Value='<%# Eval("zvilneno_date1") %>' Width="100px" Title="з"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
-												<td align="left"><dx:ASPxDateEdit ID="edit_zvilneno_date2" runat="server" NumberType="Float" Value='<%# Eval("zvilneno_date2") %>' Width="100px" Title="по"/></td>
-                                            </tr>
-
-                                            <tr style="display:none">
-                                                <td><dx:ASPxLabel runat="server" Text="Звільнено від сплати згідно п.6 рішення КМР №25/25"></dx:ASPxLabel></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
-                                                <td align="left"><dx:ASPxSpinEdit ID="edit_zvilbykmp6_percent" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp6_percent") %>' Width="100px" Title="%"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
-												<td align="left"><dx:ASPxDateEdit ID="edit_zvilbykmp6_date1" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp6_date1") %>' Width="100px" Title="з"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
-												<td align="left"><dx:ASPxDateEdit ID="edit_zvilbykmp6_date2" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp6_date2") %>' Width="100px" Title="по"/></td>
-                                            </tr>
-                                            <tr style="display:none">
-                                                <td><dx:ASPxLabel runat="server" Text="Звільнено від сплати згідно п.7 рішення КМР №25/25"></dx:ASPxLabel></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
-                                                <td align="left"><dx:ASPxSpinEdit ID="edit_zvilbykmp7_percent" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp7_percent") %>' Width="100px" Title="%"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
-												<td align="left"><dx:ASPxDateEdit ID="edit_zvilbykmp7_date1" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp7_date1") %>' Width="100px" Title="з"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
-												<td align="left"><dx:ASPxDateEdit ID="edit_zvilbykmp7_date2" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp7_date2") %>' Width="100px" Title="по"/></td>
-                                            </tr>
-                                            <tr style="display:none">
-                                                <td><dx:ASPxLabel runat="server" Text="Звільнено від сплати згідно п.3 ПКМУ №1236"></dx:ASPxLabel></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
-                                                <td align="left"><dx:ASPxSpinEdit ID="edit_zvilbykmp3_percent" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp3_percent") %>' Width="100px" Title="%"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
-												<td align="left"><dx:ASPxDateEdit ID="edit_zvilbykmp3_date1" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp3_date1") %>' Width="100px" Title="з"/></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
-												<td align="left"><dx:ASPxDateEdit ID="edit_zvilbykmp3_date2" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp3_date2") %>' Width="100px" Title="по"/></td>
-                                            </tr>
-                                            <tr style="display:none">
-                                                <td colspan="1"><dx:ASPxLabel runat="server" Text="Повідомлення орендаря до балансоутримувача про неможлівість використання"></dx:ASPxLabel></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="дата"></dx:ASPxLabel></td>
-                                                <td align="left"><dx:ASPxDateEdit ID="edit_povidoleno1_date" runat="server" Value='<%# Eval("povidoleno1_date") %>' Width="100px" Title="дата"/></td>
-                                                <td align="right"><dx:ASPxLabel runat="server" Text="№"></dx:ASPxLabel></td>
-                                                <td align="left"><dx:ASPxTextBox ID="edit_povidoleno1_num" runat="server" Text='<%# Eval("povidoleno1_num") %>' Width="100px" Title="№" /></td>
-                                            </tr>
-                                            <tr style="display:none">
-                                                <td colspan="1"><dx:ASPxLabel runat="server" Text="Повідомлення орендаря до орендодавця про неможлівість використання"></dx:ASPxLabel></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="дата"></dx:ASPxLabel></td>
-                                                <td align="left"><dx:ASPxDateEdit ID="edit_povidoleno2_date" runat="server" Value='<%# Eval("povidoleno2_date") %>' Width="100px" Title="дата"/></td>
-                                                <td align="right"><dx:ASPxLabel runat="server" Text="№"></dx:ASPxLabel></td>
-                                                <td align="left"><dx:ASPxTextBox ID="edit_povidoleno2_num" runat="server" Text='<%# Eval("povidoleno2_num") %>' Width="100px" Title="№" /></td>
-                                            </tr>
-                                            <tr style="display:none">
-                                                <td colspan="1"><dx:ASPxLabel runat="server" Text="Повідомлення орендаря до балансоутримувача про намір використовувати об'єкт"></dx:ASPxLabel></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="дата"></dx:ASPxLabel></td>
-                                                <td align="left"><dx:ASPxDateEdit ID="edit_povidoleno3_date" runat="server" Value='<%# Eval("povidoleno3_date") %>' Width="100px" Title="дата"/></td>
-                                                <td align="right"><dx:ASPxLabel runat="server" Text="№"></dx:ASPxLabel></td>
-                                                <td align="left"><dx:ASPxTextBox ID="edit_povidoleno3_num" runat="server" Text='<%# Eval("povidoleno3_num") %>' Width="100px" Title="№" /></td>
-                                            </tr>
-                                            <tr style="display:none">
-                                                <td colspan="1"><dx:ASPxLabel runat="server" Text="Повідомлення орендаря до орендодавця про намір використовувати об'єкт"></dx:ASPxLabel></td>
-												<td align="right"><dx:ASPxLabel runat="server" Text="дата"></dx:ASPxLabel></td>
-                                                <td align="left"><dx:ASPxDateEdit ID="edit_povidoleno4_date" runat="server" Value='<%# Eval("povidoleno4_date") %>' Width="100px" Title="дата"/></td>
-                                                <td align="right"><dx:ASPxLabel runat="server" Text="№"></dx:ASPxLabel></td>
-                                                <td align="left"><dx:ASPxTextBox ID="edit_povidoleno4_num" runat="server" Text='<%# Eval("povidoleno4_num") %>' Width="100px" Title="№" /></td>
-                                            </tr>
-                                        </table>
-                                    </dx:PanelContent>
-                                </PanelCollection>                                
-                            </dx:ASPxRoundPanel>
-                        </ItemTemplate>
-                    </asp:FormView>
-                                </td>
-
-                                <td style="vertical-align:top">
-                                    <dx:ASPxRoundPanel ID="PanelNarazhCalculation" runat="server" HeaderText="Розрахунок нарахування орендної плати" CssClass="classPanelNarahCalculation">
-                                        <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="4px" />
-                                        <PanelCollection>
-											<dx:PanelContent ID="PanelContent1811" runat="server">
-                                                <table border="0" cellspacing="0" cellpadding="2" width="230px" style="border-collapse:collapse">
-                                                    <tr>
-                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Січень:"></dx:ASPxLabel></td>
-                                                        <td>
-                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_1" ClientInstanceName="id_NarazhCalculation_1" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
-                                                                <SpinButtons ShowIncrementButtons="false"/>
-                                                            </dx:ASPxSpinEdit>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Лютий:"></dx:ASPxLabel></td>
-                                                        <td>
-                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_2" ClientInstanceName="id_NarazhCalculation_2" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
-                                                                <SpinButtons ShowIncrementButtons="false"/>
-                                                            </dx:ASPxSpinEdit>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Березень:"></dx:ASPxLabel></td>
-                                                        <td>
-                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_3" ClientInstanceName="id_NarazhCalculation_3" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
-                                                                <SpinButtons ShowIncrementButtons="false"/>
-                                                            </dx:ASPxSpinEdit>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Квітень:"></dx:ASPxLabel></td>
-                                                        <td>
-                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_4" ClientInstanceName="id_NarazhCalculation_4" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
-                                                                <SpinButtons ShowIncrementButtons="false"/>
-                                                            </dx:ASPxSpinEdit>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Травень:"></dx:ASPxLabel></td>
-                                                        <td>
-                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_5" ClientInstanceName="id_NarazhCalculation_5" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
-                                                                <SpinButtons ShowIncrementButtons="false"/>
-                                                            </dx:ASPxSpinEdit>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Червень:"></dx:ASPxLabel></td>
-                                                        <td>
-                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_6" ClientInstanceName="id_NarazhCalculation_6" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
-                                                                <SpinButtons ShowIncrementButtons="false"/>
-                                                            </dx:ASPxSpinEdit>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Липень:"></dx:ASPxLabel></td>
-                                                        <td>
-                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_7" ClientInstanceName="id_NarazhCalculation_7" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
-                                                                <SpinButtons ShowIncrementButtons="false"/>
-                                                            </dx:ASPxSpinEdit>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Серпень:"></dx:ASPxLabel></td>
-                                                        <td>
-                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_8" ClientInstanceName="id_NarazhCalculation_8" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
-                                                                <SpinButtons ShowIncrementButtons="false"/>
-                                                            </dx:ASPxSpinEdit>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Вересень:"></dx:ASPxLabel></td>
-                                                        <td>
-                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_9" ClientInstanceName="id_NarazhCalculation_9" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
-                                                                <SpinButtons ShowIncrementButtons="false"/>
-                                                            </dx:ASPxSpinEdit>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Жовтень:"></dx:ASPxLabel></td>
-                                                        <td>
-                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_10" ClientInstanceName="id_NarazhCalculation_10" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
-                                                                <SpinButtons ShowIncrementButtons="false"/>
-                                                            </dx:ASPxSpinEdit>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Листопад:"></dx:ASPxLabel></td>
-                                                        <td>
-                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_11" ClientInstanceName="id_NarazhCalculation_11" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
-                                                                <SpinButtons ShowIncrementButtons="false"/>
-                                                            </dx:ASPxSpinEdit>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Грудень:"></dx:ASPxLabel></td>
-                                                        <td>
-                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_12" ClientInstanceName="id_NarazhCalculation_12" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
-                                                                <SpinButtons ShowIncrementButtons="false"/>
-                                                            </dx:ASPxSpinEdit>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2"><dx:ASPxLabel runat="server" Text="Всього:" Font-Bold="true"></dx:ASPxLabel></td>
-                                                        <td>
-                                                            <dx:ASPxSpinEdit ID="NarazhCalculation_all" ClientInstanceName="id_NarazhCalculation_all" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" Font-Bold="true" >
-                                                                <SpinButtons ShowIncrementButtons="false"/>
-                                                            </dx:ASPxSpinEdit>
-                                                        </td>
-                                                    </tr>
+                                                        <tr>
+                                                            <td><dx:ASPxTextBox ID="edit_znizhka10_name" runat="server" Value='<%# Eval("znizhka10_name") %>' Width="480px" Title="Назва знижки"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
+                                                            <td align="left"><dx:ASPxSpinEdit ID="edit_znizhka10_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka10_percent") %>' Width="100px" Title="%"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_znizhka10_date1" runat="server" Value='<%# Eval("znizhka10_date1") %>' Width="100px" Title="з"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_znizhka10_date2" runat="server" Value='<%# Eval("znizhka10_date2") %>' Width="100px" Title="по"/></td>
+                                                            <td align="right"><dx:ASPxLabel runat="server" Text="Інв.№"></dx:ASPxLabel></td>
+                                                            <td><dx:ASPxTextBox ID="znizhka10_invnums" runat="server" Value='<%# Eval("znizhka10_invnums") %>' Width="150px" Title="Інв.№"/></td>
+                                                        </tr>
 
 
-                                                </table>
-                                            </dx:PanelContent>
-                                        </PanelCollection>
-                                    </dx:ASPxRoundPanel>
-                                </td>
-                            </tr>
-                        </table>
+
+
+
+                                                        <tr style="display:none">
+                                                            <td><dx:ASPxLabel runat="server" Text="Звільнено від сплати орендної плати на"></dx:ASPxLabel></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
+                                                            <td align="left"><dx:ASPxSpinEdit ID="edit_zvilneno_percent" runat="server" NumberType="Float" Value='<%# Eval("zvilneno_percent") %>' Width="100px" Title="%"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_zvilneno_date1" runat="server" NumberType="Float" Value='<%# Eval("zvilneno_date1") %>' Width="100px" Title="з"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_zvilneno_date2" runat="server" NumberType="Float" Value='<%# Eval("zvilneno_date2") %>' Width="100px" Title="по"/></td>
+                                                        </tr>
+                                                        <tr style="display:none">
+                                                            <td><dx:ASPxLabel runat="server" Text="Звільнено від сплати згідно п.6 рішення КМР №25/25"></dx:ASPxLabel></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
+                                                            <td align="left"><dx:ASPxSpinEdit ID="edit_zvilbykmp6_percent" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp6_percent") %>' Width="100px" Title="%"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_zvilbykmp6_date1" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp6_date1") %>' Width="100px" Title="з"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_zvilbykmp6_date2" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp6_date2") %>' Width="100px" Title="по"/></td>
+                                                        </tr>
+                                                        <tr style="display:none">
+                                                            <td><dx:ASPxLabel runat="server" Text="Звільнено від сплати згідно п.7 рішення КМР №25/25"></dx:ASPxLabel></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
+                                                            <td align="left"><dx:ASPxSpinEdit ID="edit_zvilbykmp7_percent" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp7_percent") %>' Width="100px" Title="%"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_zvilbykmp7_date1" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp7_date1") %>' Width="100px" Title="з"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_zvilbykmp7_date2" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp7_date2") %>' Width="100px" Title="по"/></td>
+                                                        </tr>
+                                                        <tr style="display:none">
+                                                            <td><dx:ASPxLabel runat="server" Text="Звільнено від сплати згідно п.3 ПКМУ №1236"></dx:ASPxLabel></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
+                                                            <td align="left"><dx:ASPxSpinEdit ID="edit_zvilbykmp3_percent" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp3_percent") %>' Width="100px" Title="%"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_zvilbykmp3_date1" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp3_date1") %>' Width="100px" Title="з"/></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
+												            <td align="left"><dx:ASPxDateEdit ID="edit_zvilbykmp3_date2" runat="server" NumberType="Float" Value='<%# Eval("zvilbykmp3_date2") %>' Width="100px" Title="по"/></td>
+                                                        </tr>
+                                                        <tr style="display:none">
+                                                            <td colspan="1"><dx:ASPxLabel runat="server" Text="Повідомлення орендаря до балансоутримувача про неможлівість використання"></dx:ASPxLabel></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="дата"></dx:ASPxLabel></td>
+                                                            <td align="left"><dx:ASPxDateEdit ID="edit_povidoleno1_date" runat="server" Value='<%# Eval("povidoleno1_date") %>' Width="100px" Title="дата"/></td>
+                                                            <td align="right"><dx:ASPxLabel runat="server" Text="№"></dx:ASPxLabel></td>
+                                                            <td align="left"><dx:ASPxTextBox ID="edit_povidoleno1_num" runat="server" Text='<%# Eval("povidoleno1_num") %>' Width="100px" Title="№" /></td>
+                                                        </tr>
+                                                        <tr style="display:none">
+                                                            <td colspan="1"><dx:ASPxLabel runat="server" Text="Повідомлення орендаря до орендодавця про неможлівість використання"></dx:ASPxLabel></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="дата"></dx:ASPxLabel></td>
+                                                            <td align="left"><dx:ASPxDateEdit ID="edit_povidoleno2_date" runat="server" Value='<%# Eval("povidoleno2_date") %>' Width="100px" Title="дата"/></td>
+                                                            <td align="right"><dx:ASPxLabel runat="server" Text="№"></dx:ASPxLabel></td>
+                                                            <td align="left"><dx:ASPxTextBox ID="edit_povidoleno2_num" runat="server" Text='<%# Eval("povidoleno2_num") %>' Width="100px" Title="№" /></td>
+                                                        </tr>
+                                                        <tr style="display:none">
+                                                            <td colspan="1"><dx:ASPxLabel runat="server" Text="Повідомлення орендаря до балансоутримувача про намір використовувати об'єкт"></dx:ASPxLabel></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="дата"></dx:ASPxLabel></td>
+                                                            <td align="left"><dx:ASPxDateEdit ID="edit_povidoleno3_date" runat="server" Value='<%# Eval("povidoleno3_date") %>' Width="100px" Title="дата"/></td>
+                                                            <td align="right"><dx:ASPxLabel runat="server" Text="№"></dx:ASPxLabel></td>
+                                                            <td align="left"><dx:ASPxTextBox ID="edit_povidoleno3_num" runat="server" Text='<%# Eval("povidoleno3_num") %>' Width="100px" Title="№" /></td>
+                                                        </tr>
+                                                        <tr style="display:none">
+                                                            <td colspan="1"><dx:ASPxLabel runat="server" Text="Повідомлення орендаря до орендодавця про намір використовувати об'єкт"></dx:ASPxLabel></td>
+												            <td align="right"><dx:ASPxLabel runat="server" Text="дата"></dx:ASPxLabel></td>
+                                                            <td align="left"><dx:ASPxDateEdit ID="edit_povidoleno4_date" runat="server" Value='<%# Eval("povidoleno4_date") %>' Width="100px" Title="дата"/></td>
+                                                            <td align="right"><dx:ASPxLabel runat="server" Text="№"></dx:ASPxLabel></td>
+                                                            <td align="left"><dx:ASPxTextBox ID="edit_povidoleno4_num" runat="server" Text='<%# Eval("povidoleno4_num") %>' Width="100px" Title="№" /></td>
+                                                        </tr>
+                                                    </table>
+                                                </dx:PanelContent>
+                                            </PanelCollection>                                
+                                        </dx:ASPxRoundPanel>
+                                    </ItemTemplate>
+                                </asp:FormView>
+                            </td>
+
+                            <td style="vertical-align:top">
+                                <dx:ASPxRoundPanel ID="PanelNarazhCalculation" runat="server" HeaderText="Розрахунок нарахування орендної плати" CssClass="classPanelNarahCalculation">
+                                    <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="4px" />
+                                    <PanelCollection>
+										<dx:PanelContent ID="PanelContent1811" runat="server">
+                                            <table border="0" cellspacing="0" cellpadding="2" width="230px" style="border-collapse:collapse">
+                                                <tr>
+                                                    <td colspan="2"><dx:ASPxLabel runat="server" Text="Січень:"></dx:ASPxLabel></td>
+                                                    <td>
+                                                        <dx:ASPxSpinEdit ID="NarazhCalculation_1" ClientInstanceName="id_NarazhCalculation_1" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
+                                                            <SpinButtons ShowIncrementButtons="false"/>
+                                                        </dx:ASPxSpinEdit>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"><dx:ASPxLabel runat="server" Text="Лютий:"></dx:ASPxLabel></td>
+                                                    <td>
+                                                        <dx:ASPxSpinEdit ID="NarazhCalculation_2" ClientInstanceName="id_NarazhCalculation_2" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
+                                                            <SpinButtons ShowIncrementButtons="false"/>
+                                                        </dx:ASPxSpinEdit>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"><dx:ASPxLabel runat="server" Text="Березень:"></dx:ASPxLabel></td>
+                                                    <td>
+                                                        <dx:ASPxSpinEdit ID="NarazhCalculation_3" ClientInstanceName="id_NarazhCalculation_3" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
+                                                            <SpinButtons ShowIncrementButtons="false"/>
+                                                        </dx:ASPxSpinEdit>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"><dx:ASPxLabel runat="server" Text="Квітень:"></dx:ASPxLabel></td>
+                                                    <td>
+                                                        <dx:ASPxSpinEdit ID="NarazhCalculation_4" ClientInstanceName="id_NarazhCalculation_4" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
+                                                            <SpinButtons ShowIncrementButtons="false"/>
+                                                        </dx:ASPxSpinEdit>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"><dx:ASPxLabel runat="server" Text="Травень:"></dx:ASPxLabel></td>
+                                                    <td>
+                                                        <dx:ASPxSpinEdit ID="NarazhCalculation_5" ClientInstanceName="id_NarazhCalculation_5" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
+                                                            <SpinButtons ShowIncrementButtons="false"/>
+                                                        </dx:ASPxSpinEdit>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"><dx:ASPxLabel runat="server" Text="Червень:"></dx:ASPxLabel></td>
+                                                    <td>
+                                                        <dx:ASPxSpinEdit ID="NarazhCalculation_6" ClientInstanceName="id_NarazhCalculation_6" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
+                                                            <SpinButtons ShowIncrementButtons="false"/>
+                                                        </dx:ASPxSpinEdit>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"><dx:ASPxLabel runat="server" Text="Липень:"></dx:ASPxLabel></td>
+                                                    <td>
+                                                        <dx:ASPxSpinEdit ID="NarazhCalculation_7" ClientInstanceName="id_NarazhCalculation_7" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
+                                                            <SpinButtons ShowIncrementButtons="false"/>
+                                                        </dx:ASPxSpinEdit>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"><dx:ASPxLabel runat="server" Text="Серпень:"></dx:ASPxLabel></td>
+                                                    <td>
+                                                        <dx:ASPxSpinEdit ID="NarazhCalculation_8" ClientInstanceName="id_NarazhCalculation_8" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
+                                                            <SpinButtons ShowIncrementButtons="false"/>
+                                                        </dx:ASPxSpinEdit>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"><dx:ASPxLabel runat="server" Text="Вересень:"></dx:ASPxLabel></td>
+                                                    <td>
+                                                        <dx:ASPxSpinEdit ID="NarazhCalculation_9" ClientInstanceName="id_NarazhCalculation_9" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
+                                                            <SpinButtons ShowIncrementButtons="false"/>
+                                                        </dx:ASPxSpinEdit>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"><dx:ASPxLabel runat="server" Text="Жовтень:"></dx:ASPxLabel></td>
+                                                    <td>
+                                                        <dx:ASPxSpinEdit ID="NarazhCalculation_10" ClientInstanceName="id_NarazhCalculation_10" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
+                                                            <SpinButtons ShowIncrementButtons="false"/>
+                                                        </dx:ASPxSpinEdit>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"><dx:ASPxLabel runat="server" Text="Листопад:"></dx:ASPxLabel></td>
+                                                    <td>
+                                                        <dx:ASPxSpinEdit ID="NarazhCalculation_11" ClientInstanceName="id_NarazhCalculation_11" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
+                                                            <SpinButtons ShowIncrementButtons="false"/>
+                                                        </dx:ASPxSpinEdit>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"><dx:ASPxLabel runat="server" Text="Грудень:"></dx:ASPxLabel></td>
+                                                    <td>
+                                                        <dx:ASPxSpinEdit ID="NarazhCalculation_12" ClientInstanceName="id_NarazhCalculation_12" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
+                                                            <SpinButtons ShowIncrementButtons="false"/>
+                                                        </dx:ASPxSpinEdit>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"><dx:ASPxLabel runat="server" Text="Всього:" Font-Bold="true"></dx:ASPxLabel></td>
+                                                    <td>
+                                                        <dx:ASPxSpinEdit ID="NarazhCalculation_all" ClientInstanceName="id_NarazhCalculation_all" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" Font-Bold="true" >
+                                                            <SpinButtons ShowIncrementButtons="false"/>
+                                                        </dx:ASPxSpinEdit>
+                                                    </td>
+                                                </tr>
+
+
+                                            </table>
+                                        </dx:PanelContent>
+                                    </PanelCollection>
+                                </dx:ASPxRoundPanel>
+                            </td>
+                       </tr>
+                   </table>
                 </dx:ContentControl>
             </ContentCollection>
         </dx:TabPage>
