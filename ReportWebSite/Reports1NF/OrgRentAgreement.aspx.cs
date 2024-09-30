@@ -3724,7 +3724,7 @@ public class NarazhCalculation
         var time2 = DateTime.Now;
         var delta = (time2 - time1).Milliseconds;
 
-
+        var total = plata.Sum(x => x.Value);
         var result = new
         {
             NarazhCalculation_1 = plata[1],
@@ -3739,7 +3739,7 @@ public class NarazhCalculation
             NarazhCalculation_10 = plata[10],
             NarazhCalculation_11 = plata[11],
             NarazhCalculation_12 = plata[12],
-            NarazhCalculation_all = 23987.12M,
+            NarazhCalculation_all = total,
         };
 
         var json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
@@ -3959,7 +3959,7 @@ public class NarazhCalculation
             var percent = Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka" + num + "_percent") as decimal?;
             var date1 = Reports1NFUtils.GetDateValue(controls, "edit_znizhka" + num + "_date1") as DateTime?;
             var date2 = Reports1NFUtils.GetDateValue(controls, "edit_znizhka" + num + "_date2") as DateTime?;
-            var invnums = Reports1NFUtils.GetEditText(controls, "edit_znizhka" + num + "_invnums") as string;
+            var invnums = Reports1NFUtils.GetEditText(controls, "znizhka" + num + "_invnums") as string;
 
             string[] invlist = null;
             if (!string.IsNullOrEmpty(invnums))

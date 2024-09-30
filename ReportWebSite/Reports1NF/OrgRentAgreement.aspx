@@ -77,6 +77,7 @@
             setTimeout(function () {
                 InitCalcCollectionDebtZvit();
 				RefreshNarazhCalculation();
+                NarazhCalculationRun();
             }, 100);
             if (IsReadOnlyForm) {
                 clientBtnAddPaymentDocument.SetEnabled(false);
