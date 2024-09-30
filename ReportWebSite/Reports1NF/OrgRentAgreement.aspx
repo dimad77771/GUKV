@@ -553,7 +553,9 @@
             document.getElementById('valError').style.display = 'none';
         }
 
-		function NarazhCalculationRun() {
+        function NarazhCalculationRun() {
+            ButtonSave.SetEnabled(false);
+            ButtonSend.SetEnabled(false);
 			cbNarazhCalculation.PerformCallback(111);
         }
 
@@ -574,7 +576,10 @@
             id_NarazhCalculation_10.SetValue(obj['NarazhCalculation_10']);
             id_NarazhCalculation_11.SetValue(obj['NarazhCalculation_11']);
             id_NarazhCalculation_12.SetValue(obj['NarazhCalculation_12']);
-			id_NarazhCalculation_all.SetValue(obj['NarazhCalculation_all']);
+            id_NarazhCalculation_all.SetValue(obj['NarazhCalculation_all']);
+
+            ButtonSave.SetEnabled(true);
+            ButtonSend.SetEnabled(true);
 		}
         
         function ComboPaymentTypeValidate() {
@@ -2661,6 +2666,9 @@ WHERE id = @id"
                                                 <td>
                                                     <dx:ASPxDateEdit ID="EditStartDate" runat="server" Value='<%# Eval("rent_start_date") %>' Width="190px" Title="Дата початку оренди">
                                                         <ValidationSettings Display="None" ValidationGroup="MainGroup" EnableCustomValidation="true"></ValidationSettings>
+                                                        <ClientSideEvents 
+                                                            DateChanged="function (s, e) { NarazhCalculationRun(); }"
+                                                        />
                                                     </dx:ASPxDateEdit>
                                                 </td>
                                                 <td> &nbsp; </td>
@@ -2676,7 +2684,7 @@ WHERE id = @id"
                                                 <td>
                                                     <dx:ASPxDateEdit ID="EditBaseMonth" runat="server" Value='<%# Eval("base_month") %>' Width="190px" Title="Базовий місяць (вкажіть перше число місяця)">
                                                         <ValidationSettings Display="None" ValidationGroup="MainGroup" EnableCustomValidation="true"></ValidationSettings>
-                                                        <ClientSideEvents Validation="OnBirthdayValidation" />
+                                                        <ClientSideEvents Validation="OnBirthdayValidation" DateChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                     </dx:ASPxDateEdit>
                                                 </td>
                                                 <td> &nbsp; </td>
@@ -3468,13 +3476,29 @@ WHERE id = @id"
                                                         <tr>
                                                             <td><dx:ASPxTextBox ID="edit_znizhka1_name" runat="server" Value='<%# Eval("znizhka1_name") %>' Width="480px" Title="Назва знижки"/></td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
-                                                            <td align="left"><dx:ASPxSpinEdit ID="edit_znizhka1_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka1_percent") %>' Width="100px" Title="%"/></td>
+                                                            <td align="left">
+                                                                <dx:ASPxSpinEdit ID="edit_znizhka1_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka1_percent") %>' Width="100px" Title="%">
+                                                                    <ClientSideEvents NumberChanged="function (s, e) { NarazhCalculationRun(); }" />
+                                                                </dx:ASPxSpinEdit>
+                                                            </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
-												            <td align="left"><dx:ASPxDateEdit ID="edit_znizhka1_date1" runat="server" Value='<%# Eval("znizhka1_date1") %>' Width="100px" Title="з"/></td>
+												            <td align="left">
+                                                                <dx:ASPxDateEdit ID="edit_znizhka1_date1" runat="server" Value='<%# Eval("znizhka1_date1") %>' Width="100px" Title="з">
+                                                                    <ClientSideEvents DateChanged="function (s, e) { NarazhCalculationRun(); }" />
+                                                                </dx:ASPxDateEdit>
+												            </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
-												            <td align="left"><dx:ASPxDateEdit ID="edit_znizhka1_date2" runat="server" Value='<%# Eval("znizhka1_date2") %>' Width="100px" Title="по"/></td>
+												            <td align="left">
+                                                                <dx:ASPxDateEdit ID="edit_znizhka1_date2" runat="server" Value='<%# Eval("znizhka1_date2") %>' Width="100px" Title="по">
+                                                                    <ClientSideEvents DateChanged="function (s, e) { NarazhCalculationRun(); }" />
+                                                                </dx:ASPxDateEdit>
+												            </td>
                                                             <td align="right"><dx:ASPxLabel runat="server" Text="Інв.№"></dx:ASPxLabel></td>
-                                                            <td><dx:ASPxTextBox ID="znizhka1_invnums" runat="server" Value='<%# Eval("znizhka1_invnums") %>' Width="150px" Title="Інв.№"/></td>
+                                                            <td>
+                                                                <dx:ASPxTextBox ID="znizhka1_invnums" runat="server" Value='<%# Eval("znizhka1_invnums") %>' Width="150px" Title="Інв.№">
+                                                                    <ClientSideEvents ValueChanged="function (s, e) { NarazhCalculationRun(); }" />
+                                                                </dx:ASPxTextBox>
+                                                            </td>
                                                         </tr>
 
                                                         <tr>
