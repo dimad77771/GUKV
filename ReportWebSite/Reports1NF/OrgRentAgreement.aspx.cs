@@ -3636,6 +3636,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         var json = new NarazhCalculation
         {
             controls = controls,
+            GridViewNotes = GridViewNotes,
             report_id = ReportID,
             arenda_id = RentAgreementID,
         }.Run();
@@ -3653,6 +3654,7 @@ public class NarazhCalculation
     public int arenda_id;
     public int report_id;
     public Dictionary<string, Control> controls;
+    public ASPxGridView GridViewNotes;
 
     int CurrentYear;
     int LastMonth;
@@ -3911,28 +3913,11 @@ public class NarazhCalculation
 
     void BuildNotes()
     {
-        var sql = @"SELECT id, purpose_group_id, purpose_id, purpose_str, rent_square, note, rent_rate, cost_narah, cost_agreement,
-        cost_expert_total, date_expert, payment_type_id, invent_no, note_status_id, zapezh_deposit, ref_balans_id, factich_vikorist_id,
-        R.*
-        FROM reports1nf_arenda_notes
-        OUTER APPLY
-        (
-            select
-            top 1
-            --dict_districts2.name AS district,
-            addr_street_name,
-            (COALESCE(LTRIM(RTRIM(bld.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer2)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer3)), '')) as addr_nomer,
-            bal.sqr_total
-            FROM reports1nf_balans bal
-            LEFT OUTER JOIN reports1nf_buildings bld ON bld.unique_id = bal.building_1nf_unique_id
-            LEFT OUTER JOIN dict_districts2 ON dict_districts2.id = bld.addr_distr_new_id
-            where bal.id = reports1nf_arenda_notes.ref_balans_id
-        ) R
-        WHERE(is_deleted IS NULL OR is_deleted = 0) AND report_id = @rep_id AND arenda_id = @aid"
-        .Replace("@rep_id", report_id.ToString())
-        .Replace("@aid", arenda_id.ToString());
-        
-        var table = GetDataTable(sql);
+        var table = GridViewNotes.DataSource as DataTable;
+        //var rows = hh.Rows;
+        //var id = rows[0]["id"];
+        //var invent_no = rows[0]["invent_no"];
+        //var cost_agreement = rows[0]["cost_agreement"];
 
         for (var rownum = 0; rownum < table.Rows.Count; rownum++)
         {
