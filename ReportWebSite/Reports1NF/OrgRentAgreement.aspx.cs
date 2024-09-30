@@ -3582,29 +3582,6 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         }
     }
 
-    private static DataTable GetDataTable(string sql, SqlConnection connection, SqlTransaction transaction = null)
-    {
-        var factory = DbProviderFactories.GetFactory(connection);
-        var dataTable = new DataTable();
-        using (var cmd = factory.CreateCommand())
-        {
-            cmd.CommandText = sql;
-            cmd.CommandType = CommandType.Text;
-            cmd.Connection = connection;
-            if (transaction != null)
-            {
-                cmd.Transaction = transaction;
-            }
-            using (var adapter = factory.CreateDataAdapter())
-            {
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
-            }
-        }
-
-        return dataTable;
-    }
-
 
     void NarazhCalculation_old()
     {
@@ -3650,30 +3627,95 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
     protected void cbNarazhCalculation_Callback(object source, CallbackEventArgs e)
     {
         Dictionary<string, Control> controls = new Dictionary<string, Control>();
-
         Reports1NFUtils.GetAllControls(OrganizationsForm, controls);
         Reports1NFUtils.GetAllControls(PaymentForm, controls);
         Reports1NFUtils.GetAllControls(CollectionForm, controls);
         Reports1NFUtils.GetAllControls(InsuranceForm, controls);
         Reports1NFUtils.GetAllControls(AddressForm, controls);
-        //Reports1NFUtils.GetAllControls(PanelNarazhCalculation, controls);
 
-        var hh = Reports1NFUtils.GetDropDownValue(controls, "EditMethodCalc");
+        var json = new NarazhCalculation
+        {
+            controls = controls,
+            report_id = ReportID,
+            arenda_id = RentAgreementID,
+            CurrentYear = 2024,
+            LastMonth = 9,
+        }.Run();
 
-
-
-        var connection = Utils.ConnectToDatabase();
-
-        //var data = GetDataTable("select * ", connection);
-        //for (var rownum = 0; rownum < data.Rows.Count; rownum++)
-        //{
-        //    //data.Rows[rownum]["UserId"]
-        //}
-
+        e.Result = json;
+    }
 
 
-        //var edit = ((ASPxSpinEdit)Utils.FindControlRecursive(PanelNarazhCalculation, "NarazhCalculation_" + "2"));
-        //edit.Number = 987.12M;
+
+}
+
+
+public class NarazhCalculation
+{
+    public int arenda_id;
+    public int report_id;
+    public Dictionary<string, Control> controls;
+    public int CurrentYear;
+    public int LastMonth;
+
+    SqlConnection connection;
+    Dictionary<int, decimal> InflationYearData = new Dictionary<int, decimal>();
+    Dictionary<DateTime, decimal> InflationMonthData = new Dictionary<DateTime, decimal>();
+    Dictionary<int, NotesDataClass> NotesData = new Dictionary<int, NotesDataClass>();
+    List<ZnizhkaClass> ZnizhkaData = new List<ZnizhkaClass>();
+    string methodCalc;
+    DateTime baseMonth;
+    DateTime rentStart;
+    DateTime rentFinish;
+
+    public class NotesDataClass
+    {
+        public int id;
+        public string invent_no;
+        public decimal cost_agreement;
+        public Dictionary<DateTime, decimal> MonthPlataBase = new Dictionary<DateTime, decimal>();
+    }
+
+    public class ZnizhkaClass
+    {
+        public decimal percent;
+        public DateTime date1;
+        public DateTime date2;
+        public string invnum;
+    }
+
+    public string Run()
+    {
+        connection = Utils.ConnectToDatabase();
+
+        methodCalc = Reports1NFUtils.GetDropDownText(controls, "EditMethodCalc");
+        var baseMonthControl = Reports1NFUtils.GetDateValue(controls, "EditBaseMonth") as DateTime?;
+        var rentStartControl = Reports1NFUtils.GetDateValue(controls, "EditStartDate") as DateTime?;
+        var rentFinishControl = Reports1NFUtils.GetDateValue(controls, "EditActualFinishDate") as DateTime?;
+        
+
+        if (string.IsNullOrEmpty(methodCalc))
+        {
+            return ReturnEmpty();
+        }
+        if (baseMonthControl == null)
+        {
+            return ReturnEmpty();
+        }
+        if (rentStartControl == null)
+        {
+            return ReturnEmpty();
+        }
+
+        baseMonth = new DateTime(baseMonthControl.Value.Year, baseMonthControl.Value.Month, 1);
+        rentStart = rentStartControl.Value;
+        rentFinish = rentFinishControl != null ? rentFinishControl.Value : new DateTime(CurrentYear + 1, 1, 1).AddDays(-1);
+        CreateInflationData();
+        BuildNotes();
+        CalcMonthPlata();
+        CalcRealPlata();
+
+
 
         var result = new
         {
@@ -3693,13 +3735,305 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         };
 
         var json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
-        e.Result = json;
+        return json;
     }
 
 
+    void CalcRealPlata()
+    {
+        var finalPlataByMonth = new Dictionary<int, decimal>();
+        for (int month = 1; month <= 12; month++)
+        {
+            finalPlataByMonth.Add(month, 0);
+        }
+
+        foreach (var note in NotesData)
+        {
+            var plataInfo = new Dictionary<DateTime, decimal>();
+            var invnum = note.Value.invent_no;
+            for(int month = 1; month <= LastMonth; month++)
+            {
+                var daysInMonth = DateTime.DaysInMonth(CurrentYear, LastMonth);
+                var baseMonthPlata = note.Value.MonthPlataBase[new DateTime(CurrentYear, LastMonth, 1)];
+                var baseDayPlata = baseMonthPlata / daysInMonth;
+                for (int day = 1; day <= daysInMonth; day++)
+                {
+                    var date = new DateTime(CurrentYear, LastMonth, day);
+                    if (date >= rentStart && date <= rentFinish)
+                    {
+                        var znizhkaPercent = ZnizhkaData.Where(x => (x.invnum == "" || x.invnum == invnum) && date >= x.date1 && date <= x.date2).Sum(x => x.percent);
+                        if (znizhkaPercent > 100.0M)
+                        {
+                            znizhkaPercent = 100.0M;
+                        }
+
+                        var znizhka = baseDayPlata * znizhkaPercent / 100.0M;
+                        var plata = baseDayPlata - znizhka;
+                        plataInfo.Add(date, plata);
+                    }
+                }
+
+                var totalMonth = plataInfo.Sum(x => x.Value);
+                finalPlataByMonth[month] = finalPlataByMonth[month] + totalMonth;
+            }
+
+            
+            
+
+        }
+    }
+
+
+    void CalcMonthPlata()
+    {
+        foreach (var note in NotesData)
+        {
+            var noteId = note.Key;
+
+            if (methodCalc == "аукціон")
+            {
+                CalcMonthPlata__auction(note.Value);
+            }
+            else if (methodCalc == "без аукціону/нові")
+            {
+                CalcMonthPlata__noauction(note.Value, true);
+            }
+            else if (methodCalc == "без аукціону/старі")
+            {
+                CalcMonthPlata__noauction(note.Value, false);
+            }
+            else throw new Exception();
+        }
+    }
+
+    void CalcMonthPlata__auction(NotesDataClass note)
+    {
+        var year = baseMonth.Year;
+        var plata = NotesData[note.id].cost_agreement;
+        var monthPlata = note.MonthPlataBase;
+        while (year <= CurrentYear)
+        {
+            for(var mm = 1; mm <= 12; mm++)
+            {
+                var date = new DateTime(year, mm, 1);
+                monthPlata.Add(date, plata);
+            }
+
+            var inflation = GetYearInflation(year);
+            plata = round(plata * inflation / 100M);
+            year++;
+        }
+    }
+
+    void CalcMonthPlata__noauction(NotesDataClass note, bool isnew)
+    {
+        var year = baseMonth.Year;
+        var plata = NotesData[note.id].cost_agreement;
+        var monthPlata = note.MonthPlataBase;
+        while (year <= CurrentYear)
+        {
+            var start_month = (year == baseMonth.Year ? baseMonth.Month : 1);
+            for (var mm = start_month; mm <= 12; mm++)
+            {
+                var date = new DateTime(year, mm, 1);
+                var inflation = GetMonthInflation(date);
+
+                if (isnew)
+                {
+                    plata = round(plata * inflation / 100M);
+                }
+
+                monthPlata.Add(date, plata);
+
+                if (!isnew)
+                {
+                    plata = round(plata * inflation / 100M);
+                }
+            }
+
+            year++;
+        }
+    }
+
+    decimal GetYearInflation(int year)
+    {
+        decimal value;
+        if (InflationYearData.TryGetValue(year, out value))
+        {
+            return value;
+        }
+        else
+        {
+            return 100;
+        }
+    }
+
+    decimal GetMonthInflation(DateTime month)
+    {
+        decimal value;
+        if (InflationMonthData.TryGetValue(month, out value))
+        {
+            return value;
+        }
+        else
+        {
+            return 100;
+        }
+    }
+
+    void CreateInflationData()
+    {
+        var inflationMonthData = GetDataTable("select * from inflation_month");
+        for (var rownum = 0; rownum < inflationMonthData.Rows.Count; rownum++)
+        {
+            var year = (int)inflationMonthData.Rows[rownum]["year"];
+            var month = (int)inflationMonthData.Rows[rownum]["month"];
+            var inflation = (decimal)inflationMonthData.Rows[rownum]["inflation"];
+            InflationMonthData.Add(new DateTime(year, month, 1), inflation);
+        }
+
+        var inflationYearData = GetDataTable("select * from inflation_year");
+        for (var rownum = 0; rownum < inflationYearData.Rows.Count; rownum++)
+        {
+            var year = (int)inflationYearData.Rows[rownum]["year"];
+            var inflation = (decimal)inflationYearData.Rows[rownum]["inflation"];
+            InflationYearData.Add(year, inflation);
+        }
+    }
+
+    void BuildNotes()
+    {
+        var sql = @"SELECT id, purpose_group_id, purpose_id, purpose_str, rent_square, note, rent_rate, cost_narah, cost_agreement,
+        cost_expert_total, date_expert, payment_type_id, invent_no, note_status_id, zapezh_deposit, ref_balans_id, factich_vikorist_id,
+        R.*
+        FROM reports1nf_arenda_notes
+        OUTER APPLY
+        (
+            select
+            top 1
+            --dict_districts2.name AS district,
+            addr_street_name,
+            (COALESCE(LTRIM(RTRIM(bld.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer2)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer3)), '')) as addr_nomer,
+            bal.sqr_total
+            FROM reports1nf_balans bal
+            LEFT OUTER JOIN reports1nf_buildings bld ON bld.unique_id = bal.building_1nf_unique_id
+            LEFT OUTER JOIN dict_districts2 ON dict_districts2.id = bld.addr_distr_new_id
+            where bal.id = reports1nf_arenda_notes.ref_balans_id
+        ) R
+        WHERE(is_deleted IS NULL OR is_deleted = 0) AND report_id = @rep_id AND arenda_id = @aid"
+        .Replace("@rep_id", report_id.ToString())
+        .Replace("@aid", arenda_id.ToString());
+        
+        var table = GetDataTable(sql);
+
+        for (var rownum = 0; rownum < table.Rows.Count; rownum++)
+        {
+            var id = (int)table.Rows[rownum]["id"];
+            var invent_no = (string)table.Rows[rownum]["invent_no"];
+            var cost_agreement = (decimal?)table.Rows[rownum]["cost_agreement"];
+            NotesData.Add(id, new NotesDataClass { id = id, invent_no = invent_no, cost_agreement = cost_agreement ?? 0 } );
+        }
+    }
+
+    void BuildZnizhka()
+    {
+        int fileldCount = 10;
+
+        var sql = "";
+        for(int num = 1; num <= fileldCount; num++)
+        {
+            sql += (sql == "" ? "" : ",");
+            sql += "znizhka7_percent, znizhka7_date1, znizhka7_date2, znizhka7_invnums,".Replace("znizhka7", "znizhka" + num);
+        }
+        sql = "select " + sql + " from reports1nf_arenda_payments where arenda_id = " + arenda_id + " and report_id = " + report_id;
+
+        var table = GetDataTable(sql);
+
+        for (var rownum = 0; rownum < table.Rows.Count; rownum++)
+        {
+            for (int num = 1; num <= fileldCount; num++)
+            {
+                var percent = (decimal?)table.Rows[rownum]["znizhka" + num + "_percent"];
+                var date1 = (DateTime?)table.Rows[rownum]["znizhka" + num + "_date1"];
+                var date2 = (DateTime?)table.Rows[rownum]["znizhka" + num + "_date2"];
+                var invnums = (string)table.Rows[rownum]["znizhka" + num + "_invnums"];
+
+                string[] invlist = null;
+                if (!string.IsNullOrEmpty(invnums))
+                {
+                    invlist = invnums.Split(';').Select(x => x.Trim()).Where(x => !string.IsNullOrEmpty(x)).Distinct().ToArray();
+                }
+                if (invlist == null)
+                {
+                    invlist = new[] { "" };
+                }
+
+                foreach(var invnum in invlist)
+                {
+                    if (percent != null)
+                    {
+                        ZnizhkaData.Add(new ZnizhkaClass
+                        {
+                            percent = percent.Value,
+                            date1 = date1 ?? new DateTime(1, 1, 1),
+                            date2 = date2 ?? new DateTime(4000, 1, 1),
+                            invnum = invnum,
+                        });
+                    }
+                }
+            }
+        }
+
+    }
+
+    string ReturnEmpty()
+    {
+        var result = new
+        {
+            NarazhCalculation_1 = (decimal?)null,
+            NarazhCalculation_2 = (decimal?)null,
+            NarazhCalculation_3 = (decimal?)null,
+            NarazhCalculation_4 = (decimal?)null,
+            NarazhCalculation_5 = (decimal?)null,
+            NarazhCalculation_6 = (decimal?)null,
+            NarazhCalculation_7 = (decimal?)null,
+            NarazhCalculation_8 = (decimal?)null,
+            NarazhCalculation_9 = (decimal?)null,
+            NarazhCalculation_10 = (decimal?)null,
+            NarazhCalculation_11 = (decimal?)null,
+            NarazhCalculation_12 = (decimal?)null,
+            NarazhCalculation_all = (decimal?)null,
+        };
+        var json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
+        return json;
+    }
+
+    DataTable GetDataTable(string sql)
+    {
+        var factory = DbProviderFactories.GetFactory(connection);
+        var dataTable = new DataTable();
+        using (var cmd = factory.CreateCommand())
+        {
+            cmd.CommandText = sql;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = connection;
+            using (var adapter = factory.CreateDataAdapter())
+            {
+                adapter.SelectCommand = cmd;
+                adapter.Fill(dataTable);
+            }
+        }
+
+        return dataTable;
+    }
+
+    static Decimal round(Decimal arg)
+    {
+        //return Math.Round(arg, 2);
+
+        var result = ((Int64)(arg * 100)) / 100.0M;
+        return result;
+    }
 
 }
-
-
-
 
