@@ -321,6 +321,36 @@ public partial class Reports1NF_Report1NFFreeShow : System.Web.UI.Page
 			e.ErrorText = text;
 		}
 	}
+
+	protected void FreeSquareGridView_HtmlRowPrepared(object sender, ASPxGridViewTableRowEventArgs e)
+	{
+		//if (e.Row.
+	}
+
+	protected void FreeSquareGridView_HtmlDataCellPrepared(object sender, ASPxGridViewTableDataCellEventArgs e)
+	{
+		if (e.DataColumn.FieldName == "freecycle_step_name")
+		{
+			var gridView = sender as ASPxGridView;
+			var key = e.KeyValue;
+			var val = gridView.GetRowValuesByKeyValue(key, "freecycle_step_color");
+			var freecycle_step_color = val == null ? "" : val.ToString();
+			var color = Color.Black;
+			if (freecycle_step_color == "A")
+			{
+				color = Color.FromArgb(0, 255, 0, 0);
+			}
+			else if (freecycle_step_color == "B")
+			{
+				color = Color.FromArgb(0,255,192,0);
+			}
+			else if (freecycle_step_color == "C")
+			{
+				color = Color.FromArgb(0, 0, 176, 80);
+			}
+			e.Cell.ForeColor = color;
+		}
+	}
 }
 
 

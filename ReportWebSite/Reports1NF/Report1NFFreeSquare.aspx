@@ -189,6 +189,7 @@
 
 			var id = values[values.length - 1];
 			txt += "\n" + "Фото - http://eis.gukv.gov.ua/gukv/Reports1NF/Report1NFFreeShowPhotosPdf.aspx?id=" + id + '&jpeg=1';
+			txt = "Сформовано " + formatDate(new Date()) + "\n" + txt;
 
 			//console.log("txt", txt);
 
@@ -205,6 +206,7 @@
 		}
 
 		function formatDate(date) {
+			//console.log('date', date)
 			var year = date.getFullYear();
 			var month = date.getMonth() + 1;
 			var day = date.getDate();

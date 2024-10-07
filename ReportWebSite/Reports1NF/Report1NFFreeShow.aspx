@@ -16,7 +16,7 @@
 <script type="text/javascript" src="../Scripts/PageScript.js"></script>
 
 <style type="text/css">
-.blink2 {
+.blink2old {
   -webkit-animation: blink2 1s linear infinite;
   animation: blink2 5s linear infinite;
 }
@@ -188,6 +188,7 @@
 ,fs.free_sqr_korysna as free_sql_usefull
 
 ,(SELECT Q.public_name FROM free_proc_step_dict Q where Q.step_id = fs.freecycle_step_dict_id) freecycle_step_name
+,(SELECT Q.color FROM free_proc_step_dict Q where Q.step_id = fs.freecycle_step_dict_id) freecycle_step_color
 
 ,fs.zal_balans_vartist
 ,fs.perv_balans_vartist
@@ -382,7 +383,9 @@ WHERE id = @id"
         OnDataBound="FreeSquareGridView_DataBound"
         OnCustomCallback="GridViewFreeSquare_CustomCallback"
         OnCustomFilterExpressionDisplayText="GridViewFreeSquare_CustomFilterExpressionDisplayText"
-        OnProcessColumnAutoFilter="GridViewFreeSquare_ProcessColumnAutoFilter" >
+        OnProcessColumnAutoFilter="GridViewFreeSquare_ProcessColumnAutoFilter" 
+        OnHtmlDataCellPrepared="FreeSquareGridView_HtmlDataCellPrepared"
+        OnHtmlRowPrepared="FreeSquareGridView_HtmlRowPrepared">
 	   <ClientSideEvents CustomButtonClick="ShowPhoto" />
     <Templates>
         <DetailRow>

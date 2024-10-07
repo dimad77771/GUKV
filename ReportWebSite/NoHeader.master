@@ -385,6 +385,10 @@
 															<dx:RibbonButtonItem Text="Інструкція БАЛАНСОУТРИМУВАЧА" NavigateUrl="UserGuide/Інструкція БАЛАНСОУТРИМУВАЧА.docx">
 																<SmallImage Url="Styles/ribbonicon_help_4.png" />
 															</dx:RibbonButtonItem>
+															<dx:RibbonButtonItem Text="ВІДЕОМАТЕРИАЛИ" NavigateUrl="UserGuide/ВІДЕОМАТЕРИАЛИ.docx">
+																<SmallImage Url="Styles/video-camera.png" />
+															</dx:RibbonButtonItem>
+
 
 															<%--
 														<dx:RibbonButtonItem Text="Аналітик ДКВ (орендодавець)" NavigateUrl="UserGuide/UserGuide.aspx">
