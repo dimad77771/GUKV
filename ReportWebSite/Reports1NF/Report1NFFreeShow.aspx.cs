@@ -338,7 +338,7 @@ public partial class Reports1NF_Report1NFFreeShow : System.Web.UI.Page
 			var color = Color.Black;
 			if (freecycle_step_color == "A")
 			{
-				color = Color.FromArgb(0, 255, 0, 0);
+				color = Color.FromArgb(0, 0, 176, 80);
 			}
 			else if (freecycle_step_color == "B")
 			{
@@ -346,7 +346,7 @@ public partial class Reports1NF_Report1NFFreeShow : System.Web.UI.Page
 			}
 			else if (freecycle_step_color == "C")
 			{
-				color = Color.FromArgb(0, 0, 176, 80);
+				color = Color.FromArgb(0, 255, 0, 0); 
 			}
 			e.Cell.ForeColor = color;
 		}
