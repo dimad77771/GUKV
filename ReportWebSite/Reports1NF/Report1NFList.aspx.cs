@@ -224,7 +224,7 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 			//	wh = "(isnull(ddd.name, 'Невідомо') not in ('НЕВИЗНАЧЕНІ'))";
 			//}
 			SqlDataSourceReports.SelectCommand = SqlDataSourceReports.SelectCommand.Replace("(8888 = 8888)", wh);
-			SqlDataSourceReports.UpdateCommand = SqlDataSourceReports.UpdateCommand.Replace("[orandodavec_user_id] = @orandodavec_user_id,", "");
+			//SqlDataSourceReports.UpdateCommand = SqlDataSourceReports.UpdateCommand.Replace("[orandodavec_user_id] = @orandodavec_user_id,", "");
 
 
 			LabelReportTitle1.Text = @"Звіти щодо використання комунального майна";
@@ -492,8 +492,33 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 	}
 
 	int ParmMistoId;
-	
 
 
 
+
+
+	protected void PrimaryGridView_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
+	{
+		var e1 = e.AffectedRecords;
+		var report_id = e.Keys["report_id"];
+		var new_orandodavec_user_id = e.NewValues["orandodavec_user_id"];
+		var old_orandodavec_user_id = e.OldValues["orandodavec_user_id"];
+		if (!Object.Equals(new_orandodavec_user_id, old_orandodavec_user_id))
+		{
+			using(SqlConnection connection = Utils.ConnectToDatabase())
+			{
+				using(SqlTransaction trans = connection.BeginTransaction())
+				{
+					using (SqlCommand cmd = new SqlCommand("update arenda set orandodavec_user_id = Q1.orandodavec_user_id from arenda join reports1nf Q1 on Q1.organization_id = arenda.org_balans_id and Q1.id = @report_id", connection, trans))
+					{
+						cmd.Parameters.AddWithValue("report_id", report_id);
+						cmd.ExecuteNonQuery();
+					}
+					trans.Commit();
+				}
+			}
+		}
+
+
+	}
 }

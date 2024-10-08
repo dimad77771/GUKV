@@ -647,7 +647,9 @@ WHERE id = @report_id"
     KeyFieldName="report_id"
     OnCustomCallback="GridViewReports1NF_CustomCallback"
     OnCustomFilterExpressionDisplayText="GridViewReports1NF_CustomFilterExpressionDisplayText"
-    OnProcessColumnAutoFilter="GridViewReports1NF_ProcessColumnAutoFilter" >
+    OnProcessColumnAutoFilter="GridViewReports1NF_ProcessColumnAutoFilter"
+    OnRowUpdated="PrimaryGridView_RowUpdated"
+    >
 	<ClientSideEvents CustomButtonClick="ShowPhoto" />
 
 	<SettingsCommandButton>
