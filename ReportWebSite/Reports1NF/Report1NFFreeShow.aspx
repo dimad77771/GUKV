@@ -187,7 +187,7 @@
 --,rfs.sqr_free_mzk as mzk
 ,fs.free_sqr_korysna as free_sql_usefull
 
-,(SELECT Q.public_name FROM free_proc_step_dict Q where Q.step_id = fs.freecycle_step_dict_id) freecycle_step_name
+,(SELECT case when Q.site_text <> '' then Q.site_text else Q.public_name end FROM free_proc_step_dict Q where Q.step_id = fs.freecycle_step_dict_id) freecycle_step_name
 ,(SELECT Q.color FROM free_proc_step_dict Q where Q.step_id = fs.freecycle_step_dict_id) freecycle_step_color
 
 ,fs.zal_balans_vartist
