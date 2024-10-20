@@ -460,8 +460,8 @@
                                 <tr>
                                     <td> <dx:ASPxLabel ID="ASPxLabel15" runat="server" Text="Номер Будинку:" Width="110px" /> </td>
                                     <td> <dx:ASPxTextBox ID="TextBoxNumber1" ClientInstanceName="TextBoxNumber1" runat="server" Width="100px" /> </td>
-                                    <td> <dx:ASPxTextBox ID="TextBoxNumber2" ClientInstanceName="TextBoxNumber2" runat="server" Width="100px" /> </td>
                                     <td> <dx:ASPxTextBox ID="TextBoxNumber3" ClientInstanceName="TextBoxNumber3" runat="server" Width="100px" /> </td>
+                                    <td> <dx:ASPxTextBox ID="TextBoxNumber2" ClientInstanceName="TextBoxNumber2" runat="server" Width="100px" /> </td>
                                 </tr>
                                 <tr>
                                     <td> <dx:ASPxLabel ID="ASPxLabel18" runat="server" Text="Додаткова Адреса:" Width="110px" /> </td>
