@@ -3771,14 +3771,20 @@ public class NarazhCalculation
                     var date = new DateTime(CurrentYear, month, day);
                     if (date >= rentStart && date <= rentFinish)
                     {
-                        var znizhkaPercent = ZnizhkaData.Where(x => (x.invnum == "" || x.invnum == invnum) && date >= x.date1 && date <= x.date2).Sum(x => x.percent);
-                        if (znizhkaPercent > 100.0M)
+                        var plata = baseDayPlata;
+
+                        var znizhkaList = ZnizhkaData.Where(x => (x.invnum == "" || x.invnum == invnum) && date >= x.date1 && date <= x.date2).ToArray();
+                        if (znizhkaList.Any())
                         {
-                            znizhkaPercent = 100.0M;
+                            var znizhkaPercent = 1.0M;
+                            foreach(var znizhkaOne in znizhkaList)
+                            {
+                                if (znizhkaOne.percent > 100.0M) znizhkaOne.percent = 100.0M;
+                                znizhkaPercent *= (1 - znizhkaOne.percent / 100.0M);
+                            }
+                            plata = plata * znizhkaPercent;
                         }
 
-                        var znizhka = baseDayPlata * znizhkaPercent / 100.0M;
-                        var plata = baseDayPlata - znizhka;
                         plataInfo.Add(date, plata);
                     }
                 }
@@ -4041,10 +4047,16 @@ public class NarazhCalculation
 
     static Decimal round(Decimal arg)
     {
-        //return Math.Round(arg, 2);
-
-        var result = ((Int64)(arg * 100)) / 100.0M;
-        return result;
+        arg = Math.Round(arg, 6);
+        var result = (Int64)(arg * 100M) / 100.0M;
+        if (arg == result)
+        {
+            return result;
+        }
+        else
+        {
+            return result + 0.01M;
+        }
     }
 
 }
