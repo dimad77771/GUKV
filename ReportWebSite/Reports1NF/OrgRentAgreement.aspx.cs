@@ -3836,7 +3836,7 @@ public class NarazhCalculation
             }
 
             var inflation = GetYearInflation(year);
-            plata = round(plata * inflation / 100M);
+            plata = round_0(plata * inflation / 100M);
             year++;
         }
     }
@@ -3856,14 +3856,14 @@ public class NarazhCalculation
 
                 if (isnew)
                 {
-                    plata = round(plata * inflation / 100M);
+                    plata = round_0(plata * inflation / 100M);
                 }
 
                 monthPlata.Add(date, plata);
 
                 if (!isnew)
                 {
-                    plata = round(plata * inflation / 100M);
+                    plata = round_0(plata * inflation / 100M);
                 }
             }
 
@@ -4057,6 +4057,11 @@ public class NarazhCalculation
         {
             return result + 0.01M;
         }
+    }
+
+    static Decimal round_0(Decimal arg)
+    {
+        return arg;
     }
 
 }
