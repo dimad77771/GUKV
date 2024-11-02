@@ -300,57 +300,64 @@ namespace GUKV.Common
                 return;
             }
 
-            bool isTest = false;
-
-            body = body.Replace("\r", "");
-            body = body.Replace("\n", "<br/>");
-
-            // Instantiate a new instance of MailMessage
-            MailMessage mMailMessage = new MailMessage();
-            mMailMessage.IsBodyHtml = true;
-
-            // Set the sender address of the mail message
-            mMailMessage.From = new MailAddress(from);
-            // Set the recepient address of the mail message
-            mMailMessage.To.Add(new MailAddress(to));
-            //mMailMessage.To.Add(new MailAddress("ILazarieva@itgukraine.com"));
-            //mMailMessage.Bcc.Add(new MailAddress("pul@ukr.net"));
-            //mMailMessage.Bcc.Add(new MailAddress("pul@yandex.com"));
-
-            // Check if the cc value is null or an empty value
-            if ((cc != null) && (cc != string.Empty))
+            try
             {
-                // Set the CC address of the mail message
-                mMailMessage.CC.Add(new MailAddress(cc));
-            }
+                bool isTest = false;
 
-            // Check if the bcc value is null or an empty string
-            if ((bcc != null) && (bcc != string.Empty))
-            {
-                // Set the Bcc address of the mail message
-                mMailMessage.Bcc.Add(new MailAddress(bcc));
-            }
+                body = body.Replace("\r", "");
+                body = body.Replace("\n", "<br/>");
 
-            // Set the subject of the mail message
-            mMailMessage.Subject = subject;
-            if (isTest)
-                mMailMessage.Subject = "ТЕСТОВАЯ ВЕРСИЯ " + mMailMessage.Subject;
-            // Set the body of the mail message
+                // Instantiate a new instance of MailMessage
+                MailMessage mMailMessage = new MailMessage();
+                mMailMessage.IsBodyHtml = true;
+
+                // Set the sender address of the mail message
+                mMailMessage.From = new MailAddress(from);
+                // Set the recepient address of the mail message
+                mMailMessage.To.Add(new MailAddress(to));
+                //mMailMessage.To.Add(new MailAddress("ILazarieva@itgukraine.com"));
+                //mMailMessage.Bcc.Add(new MailAddress("pul@ukr.net"));
+                //mMailMessage.Bcc.Add(new MailAddress("pul@yandex.com"));
+
+                // Check if the cc value is null or an empty value
+                if ((cc != null) && (cc != string.Empty))
+                {
+                    // Set the CC address of the mail message
+                    mMailMessage.CC.Add(new MailAddress(cc));
+                }
+
+                // Check if the bcc value is null or an empty string
+                if ((bcc != null) && (bcc != string.Empty))
+                {
+                    // Set the Bcc address of the mail message
+                    mMailMessage.Bcc.Add(new MailAddress(bcc));
+                }
+
+                // Set the subject of the mail message
+                mMailMessage.Subject = subject;
+                if (isTest)
+                    mMailMessage.Subject = "ТЕСТОВАЯ ВЕРСИЯ " + mMailMessage.Subject;
+                // Set the body of the mail message
             
-            mMailMessage.Body = body;
-            if (isTest)
-                mMailMessage.Body = "ТЕСТОВАЯ ВЕРСИЯ. ЕСЛИ ВЫ НЕ ЯВЛЯЕТЕСЬ ТЕСТИРОВЩИКОМ, ПРОСТО ИГНОРИРУЙТЕ ДАННОЕ ПИСЬМО<BR/>" + mMailMessage.Body;
+                mMailMessage.Body = body;
+                if (isTest)
+                    mMailMessage.Body = "ТЕСТОВАЯ ВЕРСИЯ. ЕСЛИ ВЫ НЕ ЯВЛЯЕТЕСЬ ТЕСТИРОВЩИКОМ, ПРОСТО ИГНОРИРУЙТЕ ДАННОЕ ПИСЬМО<BR/>" + mMailMessage.Body;
 
-            // Set the priority of the mail message to normal
-            mMailMessage.Priority = MailPriority.Normal;
+                // Set the priority of the mail message to normal
+                mMailMessage.Priority = MailPriority.Normal;
 
-			System.Net.ServicePointManager.ServerCertificateValidationCallback = (x, y, z, t) => true;
+			    System.Net.ServicePointManager.ServerCertificateValidationCallback = (x, y, z, t) => true;
 
-			// Instantiate a new instance of SmtpClient
-			SmtpClient mSmtpClient = new SmtpClient();
+			    // Instantiate a new instance of SmtpClient
+			    SmtpClient mSmtpClient = new SmtpClient();
 
-            // Send the mail message
-            mSmtpClient.Send(mMailMessage);
+                // Send the mail message
+                mSmtpClient.Send(mMailMessage);
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
 
     }
