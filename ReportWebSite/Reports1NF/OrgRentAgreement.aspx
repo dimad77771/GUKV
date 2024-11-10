@@ -2291,7 +2291,7 @@ WHERE id = @id"
                                                     <tr>
                                                         <td> <dx:ASPxLabel ID="ASPxLabel22" runat="server" Text="Номер Будинку" /> </td>
                                                         <td> <dx:ASPxTextBox ID="TextBoxAddrNomerOrg" runat="server" Text="" Width="120px" ClientInstanceName="TextBoxAddrNomerOrg" Title="" /> </td>
-                                                        <td> <dx:ASPxLabel ID="ASPxLabelCorp" runat="server" Text="Корпус" /> </td>
+                                                        <td> <dx:ASPxLabel ID="ASPxLabelCorp" runat="server" Text="Квартира/корпус" /> </td>
                                                         <td> <dx:ASPxTextBox ID="TextBoxAddrKorpusFrom" runat="server" Text="" Width="80px" ClientInstanceName="TextBoxAddrKorpusFrom" Title="" /> </td>
                                                         <td> <dx:ASPxLabel ID="ASPxLabelZip" runat="server" Text="Пошт. Індекс" Width="85px" /> </td>
                                                         <td> <dx:ASPxTextBox ID="TextBoxAddrZipCodeOrg" runat="server" Width="80px" ClientInstanceName="TextBoxAddrZipCodeOrg" Title="" /> </td>
@@ -2449,7 +2449,7 @@ WHERE id = @id"
                                                     <tr>
                                                         <td> <dx:ASPxLabel ID="ASPxLabel22" runat="server" Text="Номер Будинку" /> </td>
                                                         <td> <dx:ASPxTextBox ID="TextBoxAddrNomerOrg" runat="server" Text="" Width="120px" ClientInstanceName="TextBoxAddrNomerOrg" Title="" Value='<%# Eval("addr_nomer") %>' /> </td>
-                                                        <td> <dx:ASPxLabel ID="ASPxLabelCorp" runat="server" Text="Корпус" /> </td>
+                                                        <td> <dx:ASPxLabel ID="ASPxLabelCorp" runat="server" Text="Квартира/корпус" /> </td>
                                                         <td> <dx:ASPxTextBox ID="TextBoxAddrKorpusFrom" runat="server" Text="" Width="80px" ClientInstanceName="TextBoxAddrKorpusFrom" Title="" Value='<%# Eval("addr_korpus") %>' /> </td>
                                                         <td> <dx:ASPxLabel ID="ASPxLabelZip" runat="server" Text="Пошт. Індекс" Width="85px" /> </td>
                                                         <td> <dx:ASPxTextBox ID="TextBoxAddrZipCodeOrg" runat="server" Width="80px" ClientInstanceName="TextBoxAddrZipCodeOrg" Title="" Value='<%# Eval("addr_zip_code") %>' /> </td>

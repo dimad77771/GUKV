@@ -23,6 +23,7 @@
      (rep.bal_del_max_submit_date),
      (rep.arenda_max_submit_date),
      (rep.arenda_rented_max_submit_date),
+	 (rep.zvit_last_created),
      (rep.org_max_submit_date)) AS AllMaxSubmitDates(sdt)) AS 'max_submit_date',
 	[dbo].[get_conveyancingRequests_count](rep.report_id) AS conveyancingRequests_count
     FROM view_reports1nf rep
@@ -72,7 +73,7 @@
             <tr>
                 <td> <dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Дата останньої актуалізації даних:" /> </td>
                 <td> &nbsp; &nbsp; </td>
-                <td> <dx:ASPxDateEdit ID="EditReportDueDate" runat="server" ReadOnly="true" Value='<%# Eval("max_submit_date") %>' /> </td>
+                <td> <dx:ASPxDateEdit ID="EditReportDueDate"  ClientInstanceName="clEditReportDueDate" runat="server" ReadOnly="true" Value='<%# Eval("max_submit_date") %>' /> </td>
                 <%--<td> <dx:ASPxDateEdit ID="EditReportDueDate" runat="server" ReadOnly="true" Value='<%# GetMaxDate( Eval("bal_max_submit_date"), Eval("org_max_submit_date") ) %>' /> </td>--%>
             </tr>
 
@@ -84,7 +85,7 @@
             <tr>
                 <td> <dx:ASPxLabel ID="ASPxLabel11" runat="server" Text="Дата останнього прийому:" /> </td>
                 <td> &nbsp; &nbsp; </td>
-                <td> <dx:ASPxDateEdit ID="EditStanRecieveDate" runat="server" ReadOnly="true" Value='<%#  Eval("stan_recieve_date") %>' /> </td>
+                <td> <dx:ASPxDateEdit ID="EditStanRecieveDate" ClientInstanceName="clEditStanRecieveDate" runat="server" ReadOnly="true" Value='<%#  Eval("stan_recieve_date") %>' /> </td>
             </tr>
             <tr>
                 <td> <dx:ASPxLabel ID="ASPxLabel12" runat="server" Text="Примітки:" /> </td>
@@ -150,6 +151,13 @@
 								e.processOnServer = false;
 							}
 						}
+
+						if (e.processOnServer) {
+							setTimeout(() => {
+								clEditReportDueDate.SetDate(new Date());
+							}, 100);
+						}
+
 					}" />
             </dx:ASPxButton>
         </td>

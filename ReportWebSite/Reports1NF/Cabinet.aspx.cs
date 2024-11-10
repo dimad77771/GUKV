@@ -324,6 +324,14 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
                     }
                 }
 
+                var connection = Utils.ConnectToDatabase();
+                using (var cmd = new SqlCommand(@"update view_reports1nf set zvit_last_created = getdate() where report_id = @rep_id", connection))
+                {
+                    cmd.Parameters.Add(GetSqlParameter("rep_id", ReportID));
+                    cmd.ExecuteNonQuery();
+                }
+                connection.Close();
+
                 Response.End();
             }
         }
