@@ -8,6 +8,7 @@ using System.Web.Security;
 using DevExpress.Web;
 using Cache;
 using DevExpress.Utils;
+using System.Data.SqlClient;
 
 public partial class Arenda_RentAgreements : System.Web.UI.Page, CachingPageIdSupport
 {
@@ -43,6 +44,8 @@ public partial class Arenda_RentAgreements : System.Web.UI.Page, CachingPageIdSu
                 // Restore grid fixed columns
                 Utils.RestoreFixedColumns(PrimaryGridView);
             }
+
+            CustomizeCheckBoxBigBorgShow();
         }
 
         // Bind data to the grid dynamically
@@ -287,6 +290,7 @@ public partial class Arenda_RentAgreements : System.Web.UI.Page, CachingPageIdSu
 		e.Command.CommandTimeout = 600;
 
 		e.Command.Parameters["@p_dpz_filter"].Value = CheckBoxRentedObjectsDPZ.Checked ? 1 : 0;
+        e.Command.Parameters["@p_bigborg_filter"].Value = CheckBoxBigBorgShow.Checked ? 1 : 0;
         e.Command.Parameters["@p_com_filter"].Value = CheckBoxRentedObjectsComVlasn.Checked ? 1 : 0;
         e.Command.Parameters["@p_rda_district_id"].Value = Utils.RdaDistrictID;
         e.Command.Parameters["@p_show_neziznacheni"].Value = CheckBoxBalansObjectsShowNeziznacheni.Checked ? 1 : 0;
@@ -338,6 +342,20 @@ public partial class Arenda_RentAgreements : System.Web.UI.Page, CachingPageIdSu
         if (e.MenuType == GridViewContextMenuType.Rows)
         {
             e.Items.Add("Повідомлення", "Report_5");
+        }
+    }
+
+    void CustomizeCheckBoxBigBorgShow()
+    {
+        SqlConnection connection = Utils.ConnectToDatabase();
+        var user = Membership.GetUser();
+        var email = user != null ? user.Email : "";
+
+        using (SqlCommand cmd = new SqlCommand("select case when exists (select 1 from bigborg_arenda(@email)) then 1 else 0 end", connection))
+        {
+            cmd.Parameters.Add(new SqlParameter("email", email));
+            var result = cmd.ExecuteScalar();
+            CheckBoxBigBorgShow.Visible = (object.Equals(result, 1));
         }
     }
 }

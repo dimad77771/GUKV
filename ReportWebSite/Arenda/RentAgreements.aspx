@@ -64,6 +64,11 @@
         PrimaryGridView.PerformCallback(AddWndHeightToCallbackParam("bind:"));
     }
 
+	function CheckBoxBigBorgShow_CheckedChanged(s, e) {
+
+		PrimaryGridView.PerformCallback(AddWndHeightToCallbackParam("bind:"));
+	}
+
 	function CheckBoxBalansObjectsShowNeziznacheni_CheckedChanged(s, e) {
 
 		PrimaryGridView.PerformCallback(AddWndHeightToCallbackParam("bind:"));
@@ -118,6 +123,12 @@
         <td style="width: 100%;">
             <asp:Label ID="LabelReportTitle1" runat="server" Text="Договори Оренди" CssClass="reporttitle"></asp:Label>
         </td>
+        <td>
+            <dx:ASPxCheckBox ID="CheckBoxBigBorgShow" runat="server" Checked='False' Text="Заборгованість понад 4 місяці" ForeColor="Red"
+                Width="250px" ClientInstanceName="CheckBoxBigBorgShow" >
+                <ClientSideEvents CheckedChanged="CheckBoxBigBorgShow_CheckedChanged" />
+            </dx:ASPxCheckBox>
+        </td>        
         <td>
             <dx:ASPxCheckBox ID="CheckBoxRentedObjectsDPZ" runat="server" Checked='True' Text="Дані ДПЗ"
                 Width="100px" ClientInstanceName="CheckBoxRentedObjectsDPZ" >
@@ -310,6 +321,7 @@
     --isnull(ar.is_deleted, 0) = 0 and 
  	    ((@p_dpz_filter = 0) OR (@p_dpz_filter <> 0 AND ar.id in (select b.id from dbo.reports1nf_arenda b where b.org_balans_id = ar.org_balans_id and ISNULL(b.is_deleted, 0) = 0 /*and b.agreement_state = 1*/ ) )) AND
         ((@p_com_filter = 0) OR (@p_com_filter <> 0 AND (m.balans_form_ownership_int IN (32,33,34) OR m.balans_org_ownership_int IN (32,33,34)))) AND
+        ((@p_bigborg_filter = 0) OR (@p_bigborg_filter <> 0 AND ar.id in (select Q.arenda_id from bigborg_arenda('pravduk@gukv.gov.ua') Q))) AND
         ((@p_show_neziznacheni = 1) OR (@p_show_neziznacheni = 0 AND (isnull(ddd.name, 'Невідомо') <> 'Невизначені'))) AND
         (   (@p_rda_district_id = 0) OR
             (m.org_balans_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND m.org_balans_district_id = @p_rda_district_id) OR
@@ -328,6 +340,7 @@ WHERE id = @arenda_id"
     >
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="1" Name="p_dpz_filter" />
+        <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_bigborg_filter" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_com_filter" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_rda_district_id" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_show_neziznacheni" />

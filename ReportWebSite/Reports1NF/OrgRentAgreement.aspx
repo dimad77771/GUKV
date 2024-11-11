@@ -562,8 +562,11 @@
 
         function NarazhCalculationComplete(s, e) {
             //console.log('ee', e);
-            var obj = JSON.parse(e.result);
-            console.log('obj', obj);
+			var resultJson = e.result;
+			var objTotlal = JSON.parse(resultJson);
+            console.log('objTotlal', objTotlal);
+            var obj = objTotlal.CurrentYear;
+			console.log('obj', obj);
             //console.log('id_NarazhCalculation_1', id_NarazhCalculation_1);
             id_NarazhCalculation_1.SetValue(obj['NarazhCalculation_1']);
             id_NarazhCalculation_2.SetValue(obj['NarazhCalculation_2']);
@@ -578,6 +581,9 @@
             id_NarazhCalculation_11.SetValue(obj['NarazhCalculation_11']);
             id_NarazhCalculation_12.SetValue(obj['NarazhCalculation_12']);
             id_NarazhCalculation_all.SetValue(obj['NarazhCalculation_all']);
+
+			cNarazhCalculationData.Set('data', resultJson);
+            //console.log('cNarazhCalculationData', cNarazhCalculationData);
 
             ButtonSave.SetEnabled(true);
             ButtonSend.SetEnabled(true);
@@ -1813,6 +1819,7 @@ WHERE id = @id"
 </asp:FormView>
 
 <asp:HiddenField ID="ConveyancingType" runat="server" />
+<dx:ASPxHiddenField ID="NarazhCalculationData" ClientInstanceName="cNarazhCalculationData" runat="server"/>
 
 <dx:ASPxPageControl ID="CardPageControl" ClientInstanceName="CardPageControl" 
                 runat="server" ActiveTabIndex="0">

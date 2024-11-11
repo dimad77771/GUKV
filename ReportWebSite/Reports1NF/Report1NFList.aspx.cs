@@ -89,7 +89,7 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 				commandColumn.ShowEditButton = false;
 			}
         }
-		else if (Roles.IsUserInRole(Utils.RDAControllerRole))
+		else if (Roles.IsUserInRole(Utils.RDAControllerRole) || Roles.IsUserInRole(Utils.MISTOControllerRole))
 		{
 			SectionMenu.Visible = false;
 			var commandColumns = PrimaryGridView.Columns.OfType<GridViewCommandColumn>().ToArray();

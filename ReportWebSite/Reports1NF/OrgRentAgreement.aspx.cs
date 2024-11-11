@@ -25,274 +25,275 @@ using System.Data.Common;
 
 public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 {
-    private static readonly ILog log = LogManager.GetLogger("ReportWebSite");
-    //private bool FormIsValid = true;
-    //private static IList<string> ErrorMessages = new List<string>();
-    //private static List<string> reqEditors = new List<string> { "EditAgreementNum", "EditAgreementDate", "EditStartDate", "ComboPaymentType" };
-    //private string mode = ""; // save or send? 
+	private static readonly ILog log = LogManager.GetLogger("ReportWebSite");
+	//private bool FormIsValid = true;
+	//private static IList<string> ErrorMessages = new List<string>();
+	//private static List<string> reqEditors = new List<string> { "EditAgreementNum", "EditAgreementDate", "EditStartDate", "ComboPaymentType" };
+	//private string mode = ""; // save or send? 
 
-    private RentingAgreementValidator validator;
+	private RentingAgreementValidator validator;
 
-    protected void Page_Load(object sender, EventArgs e)
-    {
-//////
-        try
+	protected void Page_Load(object sender, EventArgs e)
 	{
-        string reportIdStr = Request.QueryString["rid"];
-        string agreementIdStr = Request.QueryString["aid"];
-        string copyIdStr = Request.QueryString["copyid"];
-		IsAdmin = Request.QueryString["admin"];
-
-		if (!string.IsNullOrEmpty(copyIdStr))
-        {
-            CopyCard(Int32.Parse(copyIdStr), Int32.Parse(reportIdStr));
-        }
-
-        GetPageUniqueKey();
-
-        if (reportIdStr != null && reportIdStr.Length > 0 && agreementIdStr != null && agreementIdStr.Length > 0)
-        {
-            ReportID = int.Parse(reportIdStr);
-
-            if (RentAgreementID == 0)
-                RentAgreementID = int.Parse(agreementIdStr);
-        }
-
-        // Check if report belongs to this user
-        int reportRdaDistrictId = -1;
-        int reportOrganizationId = Reports1NFUtils.GetReportOrganizationId(ReportID, ref reportRdaDistrictId);
-
-        if (ReportID > 0 && !ReportBelongsToThisUser.HasValue)
-        {
-            int userOrg = Utils.UserOrganizationID; // Defined in Cabinet.aspx.cs
-
-            if (userOrg > 0)
-            {
-                ReportBelongsToThisUser = (reportOrganizationId == userOrg);
-            }
-            else
-            {
-                ReportBelongsToThisUser = false;
-            }
-
-            // Save the user organization ID
-            ViewState["OrgRentAgreement_UserOrgID"] = reportOrganizationId;
-        }
-
-        // Restrict access to card if report belongs to another organization
-        if (ReportBelongsToThisUser.HasValue && !ReportBelongsToThisUser.Value)
-        {
-            if (Roles.IsUserInRole(Utils.Report1NFSubmitterRole))
-            {
-                Response.Redirect(Page.ResolveClientUrl("~/Account/Restricted.aspx"));
-            }
-            else if (Roles.IsUserInRole(Utils.RDAControllerRole))
-            {
-                if (Utils.RdaDistrictID != reportRdaDistrictId)
-                {
-                    Response.Redirect(Page.ResolveClientUrl("~/Account/Restricted.aspx"));
-                }
-            }
-        }
-
-        // Restrict access to card if this rent agreement does not belong to the report
-        if (!RentAgreementExistsInReport)
-        {
-            if (RentAgreementID < 0)
-            {
-                Response.Redirect(Page.ResolveClientUrl("~/Reports1NF/Cabinet.aspx?rid=" + ReportID.ToString()));
-            }
-            else
-            {
-                Response.Redirect(Page.ResolveClientUrl("~/Account/RestrictedRentAgreement.aspx"));
-            }
-        }
-
-        if (ReportID > 0)
-        {
-            for (int i = 0; i < SectionMenu.Items.Count; i++)
-            {
-                if (SectionMenu.Items[i].NavigateUrl.IndexOf('?') < 0)
-                    SectionMenu.Items[i].NavigateUrl += "?rid=" + ReportID.ToString();
-            }
-        }
-
-        DataTable tableDecisions = DecisionsDataSource;
-        GridViewDecisions.DataSource = tableDecisions;
-        GridViewDecisions.DataBind();
-
-		DataTable tableSubleases = SubleasesDataSource;
-		GridViewSubleases.DataSource = tableSubleases;
-		GridViewSubleases.DataBind();
+		//////
+		try
+		{
+			string reportIdStr = Request.QueryString["rid"];
+			string agreementIdStr = Request.QueryString["aid"];
+			string copyIdStr = Request.QueryString["copyid"];
+			IsAdmin = Request.QueryString["admin"];
 
 
-		DataTable tableNotes = NotesDataSource;
-        GridViewNotes.DataSource = tableNotes;
-        GridViewNotes.DataBind();
-
-        DataTable tablePaymentDocuments = PaymentDocumentsDataSource;
-        GridViewPaymentDocuments.DataSource = tablePaymentDocuments;
-        GridViewPaymentDocuments.DataBind();
-
-        // Set the auto-calculated fields
-        CalculateTotals();
-
-        ReportCommentViewer1.ReportId = ReportID;
-        ReportCommentViewer1.RentAgreementId = RentAgreementID;
-        ReportCommentViewer1.AddNumberOfCommentsToButton(ButtonComments);
-
-
-        ASPxComboBox periodCombo = ((ASPxComboBox)Utils.FindControlRecursive(PaymentForm, "ReportingPeriodCombo"));
-        if (periodCombo != null)
-        {
-            object value = periodCombo.Value;
-            if ((value == null) || ((value is int) && ((int)value <= 0)))
-                periodCombo.Value = ActiveRentPeriodID;
-        }
-
-        // Enable / disable all controls depending on the report owner
-        EnableControlsBasingOnUserRole();
-
-        if (!Roles.IsUserInRole(Utils.Report1NFSubmitterRole))
-        {
-            ASPxButton btn = ((ASPxButton)Utils.FindControlRecursive(OrganizationsForm, "BtnCreateRenterOrg"));
-            if (btn != null)
-                btn.ClientVisible = false;
-            btn = ((ASPxButton)Utils.FindControlRecursive(OrganizationsForm, "BtnEditRenterOrg"));
-            if (btn != null)
-                btn.ClientVisible = false;
-        }
-
-        validator = new RentingAgreementValidator(this, "MainGroup");
-
-		PrepareTempPhotoFolder();
-
-		if (!IsPostBack)
-        {
-            SqlConnection connection = Utils.ConnectToDatabase();
-            string query = @"SELECT id, name FROM dict_rent_period where is_active = 1";
-
-            string name = String.Empty;
-            using (SqlCommand cmd = new SqlCommand(query, connection))
-            {
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        name = reader.GetString(1);
-                    }
-
-                    reader.Close();
-                }
-            }
-            ASPxLabel lbl = ((ASPxLabel)Utils.FindControlRecursive(PaymentForm, "NeededPeriodCombo"));
-			if (lbl != null)
-			{ 
-				lbl.Text = name;
+			if (!string.IsNullOrEmpty(copyIdStr))
+			{
+				CopyCard(Int32.Parse(copyIdStr), Int32.Parse(reportIdStr));
 			}
 
-            foreach (var col in ASPxGridViewFreeSquare.Columns)
-            {
-                var vcol = col as GridViewEditDataColumn;
-                if (vcol != null)
-                {
-                    vcol.PropertiesEdit.ClientInstanceName = "felm__" + (!string.IsNullOrEmpty(vcol.FieldName) ? vcol.FieldName : vcol.Name);
-                }
-            }
-		}
+			GetPageUniqueKey();
 
-        if ((!IsCallback) && (reportIdStr != null && reportIdStr.Length > 0 && agreementIdStr != null && agreementIdStr.Length > 0))
-        {
-            SqlDataSourceFreeSquare.SelectParameters["arenda_id"].DefaultValue = agreementIdStr.ToString();
-            SqlDataSourceFreeSquare.SelectParameters["report_id"].DefaultValue = ReportID.ToString();
-            SqlDataSourceFreeSquare.SelectParameters["free_square_id"].DefaultValue = (EditFreeSquareMode ? ParamEditFreeSquareId : -1).ToString();
-
-            SqlDataSourceArendaArchive.SelectParameters["arid"].DefaultValue = agreementIdStr.Trim();
-        }
-
-
-		if (!IsPostBack)
-		{
-			if (EditFreeSquareMode)
+			if (reportIdStr != null && reportIdStr.Length > 0 && agreementIdStr != null && agreementIdStr.Length > 0)
 			{
-				foreach (TabPage tabpage in CardPageControl.TabPages)
+				ReportID = int.Parse(reportIdStr);
+
+				if (RentAgreementID == 0)
+					RentAgreementID = int.Parse(agreementIdStr);
+			}
+
+			// Check if report belongs to this user
+			int reportRdaDistrictId = -1;
+			int reportOrganizationId = Reports1NFUtils.GetReportOrganizationId(ReportID, ref reportRdaDistrictId);
+
+			if (ReportID > 0 && !ReportBelongsToThisUser.HasValue)
+			{
+				int userOrg = Utils.UserOrganizationID; // Defined in Cabinet.aspx.cs
+
+				if (userOrg > 0)
 				{
-					if (tabpage.Text != "Продовження договору")
-					{
-						tabpage.Visible = false;
-					}
+					ReportBelongsToThisUser = (reportOrganizationId == userOrg);
+				}
+				else
+				{
+					ReportBelongsToThisUser = false;
 				}
 
-				//var col = ASPxGridViewFreeSquare.Columns;
-				ASPxGridViewFreeSquare.StartEdit(0);
+				// Save the user organization ID
+				ViewState["OrgRentAgreement_UserOrgID"] = reportOrganizationId;
+			}
+
+			// Restrict access to card if report belongs to another organization
+			if (ReportBelongsToThisUser.HasValue && !ReportBelongsToThisUser.Value)
+			{
+				if (Roles.IsUserInRole(Utils.Report1NFSubmitterRole))
+				{
+					Response.Redirect(Page.ResolveClientUrl("~/Account/Restricted.aspx"));
+				}
+				else if (Roles.IsUserInRole(Utils.RDAControllerRole))
+				{
+					if (Utils.RdaDistrictID != reportRdaDistrictId)
+					{
+						Response.Redirect(Page.ResolveClientUrl("~/Account/Restricted.aspx"));
+					}
+				}
+			}
+
+			// Restrict access to card if this rent agreement does not belong to the report
+			if (!RentAgreementExistsInReport)
+			{
+				if (RentAgreementID < 0)
+				{
+					Response.Redirect(Page.ResolveClientUrl("~/Reports1NF/Cabinet.aspx?rid=" + ReportID.ToString()));
+				}
+				else
+				{
+					Response.Redirect(Page.ResolveClientUrl("~/Account/RestrictedRentAgreement.aspx"));
+				}
+			}
+
+			if (ReportID > 0)
+			{
+				for (int i = 0; i < SectionMenu.Items.Count; i++)
+				{
+					if (SectionMenu.Items[i].NavigateUrl.IndexOf('?') < 0)
+						SectionMenu.Items[i].NavigateUrl += "?rid=" + ReportID.ToString();
+				}
+			}
+
+			DataTable tableDecisions = DecisionsDataSource;
+			GridViewDecisions.DataSource = tableDecisions;
+			GridViewDecisions.DataBind();
+
+			DataTable tableSubleases = SubleasesDataSource;
+			GridViewSubleases.DataSource = tableSubleases;
+			GridViewSubleases.DataBind();
+
+
+			DataTable tableNotes = NotesDataSource;
+			GridViewNotes.DataSource = tableNotes;
+			GridViewNotes.DataBind();
+
+			DataTable tablePaymentDocuments = PaymentDocumentsDataSource;
+			GridViewPaymentDocuments.DataSource = tablePaymentDocuments;
+			GridViewPaymentDocuments.DataBind();
+
+			// Set the auto-calculated fields
+			CalculateTotals();
+
+			ReportCommentViewer1.ReportId = ReportID;
+			ReportCommentViewer1.RentAgreementId = RentAgreementID;
+			ReportCommentViewer1.AddNumberOfCommentsToButton(ButtonComments);
+
+
+			ASPxComboBox periodCombo = ((ASPxComboBox)Utils.FindControlRecursive(PaymentForm, "ReportingPeriodCombo"));
+			if (periodCombo != null)
+			{
+				object value = periodCombo.Value;
+				if ((value == null) || ((value is int) && ((int)value <= 0)))
+					periodCombo.Value = ActiveRentPeriodID;
+			}
+
+			// Enable / disable all controls depending on the report owner
+			EnableControlsBasingOnUserRole();
+
+			if (!Roles.IsUserInRole(Utils.Report1NFSubmitterRole))
+			{
+				ASPxButton btn = ((ASPxButton)Utils.FindControlRecursive(OrganizationsForm, "BtnCreateRenterOrg"));
+				if (btn != null)
+					btn.ClientVisible = false;
+				btn = ((ASPxButton)Utils.FindControlRecursive(OrganizationsForm, "BtnEditRenterOrg"));
+				if (btn != null)
+					btn.ClientVisible = false;
+			}
+
+			validator = new RentingAgreementValidator(this, "MainGroup");
+
+			PrepareTempPhotoFolder();
+
+			if (!IsPostBack)
+			{
+				SqlConnection connection = Utils.ConnectToDatabase();
+				string query = @"SELECT id, name FROM dict_rent_period where is_active = 1";
+
+				string name = String.Empty;
+				using (SqlCommand cmd = new SqlCommand(query, connection))
+				{
+					using (SqlDataReader reader = cmd.ExecuteReader())
+					{
+						while (reader.Read())
+						{
+							name = reader.GetString(1);
+						}
+
+						reader.Close();
+					}
+				}
+				ASPxLabel lbl = ((ASPxLabel)Utils.FindControlRecursive(PaymentForm, "NeededPeriodCombo"));
+				if (lbl != null)
+				{
+					lbl.Text = name;
+				}
+
+				foreach (var col in ASPxGridViewFreeSquare.Columns)
+				{
+					var vcol = col as GridViewEditDataColumn;
+					if (vcol != null)
+					{
+						vcol.PropertiesEdit.ClientInstanceName = "felm__" + (!string.IsNullOrEmpty(vcol.FieldName) ? vcol.FieldName : vcol.Name);
+					}
+				}
+			}
+
+			if ((!IsCallback) && (reportIdStr != null && reportIdStr.Length > 0 && agreementIdStr != null && agreementIdStr.Length > 0))
+			{
+				SqlDataSourceFreeSquare.SelectParameters["arenda_id"].DefaultValue = agreementIdStr.ToString();
+				SqlDataSourceFreeSquare.SelectParameters["report_id"].DefaultValue = ReportID.ToString();
+				SqlDataSourceFreeSquare.SelectParameters["free_square_id"].DefaultValue = (EditFreeSquareMode ? ParamEditFreeSquareId : -1).ToString();
+
+				SqlDataSourceArendaArchive.SelectParameters["arid"].DefaultValue = agreementIdStr.Trim();
+			}
+
+
+			if (!IsPostBack)
+			{
+				if (EditFreeSquareMode)
+				{
+					foreach (TabPage tabpage in CardPageControl.TabPages)
+					{
+						if (tabpage.Text != "Продовження договору")
+						{
+							tabpage.Visible = false;
+						}
+					}
+
+					//var col = ASPxGridViewFreeSquare.Columns;
+					ASPxGridViewFreeSquare.StartEdit(0);
+				}
+			}
+
+			if (!IsPostBack)
+			{
+				//NarazhCalculation_old();
+			}
+
+			//////
+		}
+		catch (Exception ex)
+		{
+			var lognet = log4net.LogManager.GetLogger("ReportWebSite");
+			lognet.Debug("--------------- OrgRentAgreement page load ----------------", ex);
+			throw ex;
+		}
+	}
+
+	protected bool EditFreeSquareMode
+	{
+		get
+		{
+			return (ParamEditFreeSquareId != null);
+		}
+	}
+	protected int? ParamEditFreeSquareId
+	{
+		get
+		{
+			var val = Request.QueryString["edit_free_square_id"];
+			if (string.IsNullOrEmpty(val))
+			{
+				return null;
+			}
+			else
+			{
+				return int.Parse(val);
 			}
 		}
-
-        if (!IsPostBack)
-        {
-            //NarazhCalculation_old();
-        }
-
-            //////
-        }
-        catch (Exception ex)
-        {
-            var lognet = log4net.LogManager.GetLogger("ReportWebSite");
-            lognet.Debug("--------------- OrgRentAgreement page load ----------------", ex);
-            throw ex;
-        }
-    }
-
-    protected bool EditFreeSquareMode
-    {
-        get
-        {
-            return (ParamEditFreeSquareId != null);
-        }
-    }
-    protected int? ParamEditFreeSquareId
-    {
-        get
-        {
-            var val = Request.QueryString["edit_free_square_id"];
-            if (string.IsNullOrEmpty(val))
-            {
-                return null;
-            }
-            else
-            {
-                return int.Parse(val);
-            }
-        }
-    }
+	}
 
 
 
-    protected void EnableControlsBasingOnUserRole()
-    {
-        bool userIsReportSubmitter = Roles.IsUserInRole(Utils.Report1NFSubmitterRole);
-        bool reportBelongsToUser = ReportBelongsToThisUser.HasValue ? ReportBelongsToThisUser.Value : false;
+	protected void EnableControlsBasingOnUserRole()
+	{
+		bool userIsReportSubmitter = Roles.IsUserInRole(Utils.Report1NFSubmitterRole);
+		bool reportBelongsToUser = ReportBelongsToThisUser.HasValue ? ReportBelongsToThisUser.Value : false;
 
-        string strAid = Request.QueryString["aid"];
-        int arendaId = int.Parse(strAid);
+		string strAid = Request.QueryString["aid"];
+		int arendaId = int.Parse(strAid);
 
-        Dictionary<string, string> markedControls = Reports1NFUtils.GetMarkedControlIDs(ReportID, null, null, arendaId, null, null);
+		Dictionary<string, string> markedControls = Reports1NFUtils.GetMarkedControlIDs(ReportID, null, null, arendaId, null, null);
 
-        Reports1NFUtils.EnableDevExpressEditors(AddressForm, reportBelongsToUser && userIsReportSubmitter, markedControls);
-        Reports1NFUtils.EnableDevExpressEditors(OrganizationsForm, reportBelongsToUser && userIsReportSubmitter, markedControls);
-        Reports1NFUtils.EnableDevExpressEditors(PaymentForm, reportBelongsToUser && userIsReportSubmitter, markedControls);
-        Reports1NFUtils.EnableDevExpressEditors(CollectionForm, reportBelongsToUser && userIsReportSubmitter, markedControls);
-        Reports1NFUtils.EnableDevExpressEditors(InsuranceForm, reportBelongsToUser && userIsReportSubmitter, markedControls);
+		Reports1NFUtils.EnableDevExpressEditors(AddressForm, reportBelongsToUser && userIsReportSubmitter, markedControls);
+		Reports1NFUtils.EnableDevExpressEditors(OrganizationsForm, reportBelongsToUser && userIsReportSubmitter, markedControls);
+		Reports1NFUtils.EnableDevExpressEditors(PaymentForm, reportBelongsToUser && userIsReportSubmitter, markedControls);
+		Reports1NFUtils.EnableDevExpressEditors(CollectionForm, reportBelongsToUser && userIsReportSubmitter, markedControls);
+		Reports1NFUtils.EnableDevExpressEditors(InsuranceForm, reportBelongsToUser && userIsReportSubmitter, markedControls);
 
-        GridViewDecisions.Enabled = reportBelongsToUser && userIsReportSubmitter;
+		GridViewDecisions.Enabled = reportBelongsToUser && userIsReportSubmitter;
 		//!!!! GridViewSubleases.Enabled = reportBelongsToUser && userIsReportSubmitter;
 		GridViewNotes.Enabled = reportBelongsToUser && userIsReportSubmitter;
-        StatusForm.Visible = reportBelongsToUser && userIsReportSubmitter;
+		StatusForm.Visible = reportBelongsToUser && userIsReportSubmitter;
 
 		ButtonSave.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
 		//!!!! ButtonSend.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
 		ButtonClear.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
-        ButtonAddDecision.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
+		ButtonAddDecision.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
 		//!!!! ButtonAddSublease.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
 		ButtonAddNote.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
 		ButtonCopyCard.ClientVisible = reportBelongsToUser && userIsReportSubmitter;
@@ -301,8 +302,8 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 
 		IsReadOnlyForm = !(reportBelongsToUser && userIsReportSubmitter);
 
-        // Enable or disable 'special payments' field
-        /*
+		// Enable or disable 'special payments' field
+		/*
         Control panelAdditionalInfo = PaymentForm.FindControl("AdditionalInfoPanel");
 
         if (panelAdditionalInfo is ASPxRoundPanel)
@@ -317,7 +318,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         }
         */
 
-        /*
+		/*
         new[]
         { 
             //"edit_povidoleno1_date", "edit_povidoleno1_num",
@@ -334,55 +335,55 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		});
         */
 
-//        EnableCollectionControls();
-        EnableInsuranceControls();
-    }
+		//        EnableCollectionControls();
+		EnableInsuranceControls();
+	}
 
-    //bool a(Control q)
-    //{
-    //    
-    //}
+	//bool a(Control q)
+	//{
+	//    
+	//}
 
-    protected bool IsReadOnlyForm { get; set; }
+	protected bool IsReadOnlyForm { get; set; }
 
-    protected string GetPageUniqueKey()
-    {
-        object key = ViewState["PageUniqueKey"];
+	protected string GetPageUniqueKey()
+	{
+		object key = ViewState["PageUniqueKey"];
 
-        if (key is string)
-        {
-            return (string)key;
-        }
+		if (key is string)
+		{
+			return (string)key;
+		}
 
-        // Generate unique key
-        Guid guid = Guid.NewGuid();
+		// Generate unique key
+		Guid guid = Guid.NewGuid();
 
-        string str = guid.ToString();
+		string str = guid.ToString();
 
-        ViewState["PageUniqueKey"] = str;
+		ViewState["PageUniqueKey"] = str;
 
-        return str;
-    }
+		return str;
+	}
 
-    protected int ReportID
-    {
-        get
-        {
-            object reportId = ViewState["REPORT_ID"];
+	protected int ReportID
+	{
+		get
+		{
+			object reportId = ViewState["REPORT_ID"];
 
-            if (reportId is int)
-            {
-                return (int)reportId;
-            }
+			if (reportId is int)
+			{
+				return (int)reportId;
+			}
 
-            return 0;
-        }
+			return 0;
+		}
 
-        set
-        {
-            ViewState["REPORT_ID"] = value;
-        }
-    }
+		set
+		{
+			ViewState["REPORT_ID"] = value;
+		}
+	}
 
 	protected string IsAdmin
 	{
@@ -403,372 +404,372 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 	}
 
 	protected int RentAgreementID
-    {
-        get
-        {
-            object agreementId = Session[GetPageUniqueKey() + "_RENT_AGREEMENT_ID"];
-
-            if (agreementId is int)
-            {
-                return (int)agreementId;
-            }
-
-            return 0;
-        }
-
-        set
-        {
-            Session[GetPageUniqueKey() + "_RENT_AGREEMENT_ID"] = value;
-        }
-    }
-
-    protected int ActiveRentPeriodID
-    {
-        get
-        {
-            var active_rent_period_id = 0;
-            var connection = Utils.ConnectToDatabase();
-            if (connection == null)
-            {
-                return 0;
-            }
-            string queryString = "select * from dict_rent_period where is_active = 1";
-            var sqlCmd = new SqlCommand(queryString, connection);
-            var reader = sqlCmd.ExecuteReader();
-            if (reader.Read())
-            {
-                active_rent_period_id = Convert.ToInt32(reader["id"]);
-            }
-            connection.Close();
-            return active_rent_period_id;
-        }
-    }
-
-    protected bool? ReportBelongsToThisUser
-    {
-        get
-        {
-            object val = ViewState["REPORT_BELONGS_TO_USER"];
-
-            if (val is bool)
-            {
-                return (bool)val;
-            }
-
-            return null;
-        }
-
-        set
-        {
-            ViewState["REPORT_BELONGS_TO_USER"] = value;
-        }
-    }
-
-    protected bool RentAgreementExistsInReport
-    {
-        get
-        {
-            bool exists = false;
-            SqlConnection connection = Utils.ConnectToDatabase();
-
-            if (connection != null)
-            {
-                using (SqlCommand cmd = new SqlCommand("SELECT TOP 1 id FROM reports1nf_arenda WHERE id = @aid AND report_id = @rep_id", connection))
-                {
-                    cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
-                    cmd.Parameters.Add(new SqlParameter("rep_id", ReportID));
-
-                    using (SqlDataReader r = cmd.ExecuteReader())
-                    {
-                        exists = r.Read();
-                        r.Close();
-                    }
-                }
-
-                connection.Close();
-            }
-
-            return exists;
-        }
-    }
-
-    protected void SqlDataSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
-    {
-        e.Command.Parameters["@aid"].Value = RentAgreementID;
-        e.Command.Parameters["@rep_id"].Value = ReportID;
-    }
-
-    protected void SqlDataSourceRenter_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
-    {
-        e.Command.Parameters["@aid"].Value = RentAgreementID;
-        e.Command.Parameters["@rep_id"].Value = ReportID;
-    }
-
-    protected void CalculateTotals()
-    {
-        decimal totalRentedSquare = 0m;
-        Control panelAgreement = OrganizationsForm.FindControl("PanelAgreement");
+	{
+		get
+		{
+			object agreementId = Session[GetPageUniqueKey() + "_RENT_AGREEMENT_ID"];
+
+			if (agreementId is int)
+			{
+				return (int)agreementId;
+			}
+
+			return 0;
+		}
+
+		set
+		{
+			Session[GetPageUniqueKey() + "_RENT_AGREEMENT_ID"] = value;
+		}
+	}
+
+	protected int ActiveRentPeriodID
+	{
+		get
+		{
+			var active_rent_period_id = 0;
+			var connection = Utils.ConnectToDatabase();
+			if (connection == null)
+			{
+				return 0;
+			}
+			string queryString = "select * from dict_rent_period where is_active = 1";
+			var sqlCmd = new SqlCommand(queryString, connection);
+			var reader = sqlCmd.ExecuteReader();
+			if (reader.Read())
+			{
+				active_rent_period_id = Convert.ToInt32(reader["id"]);
+			}
+			connection.Close();
+			return active_rent_period_id;
+		}
+	}
+
+	protected bool? ReportBelongsToThisUser
+	{
+		get
+		{
+			object val = ViewState["REPORT_BELONGS_TO_USER"];
+
+			if (val is bool)
+			{
+				return (bool)val;
+			}
+
+			return null;
+		}
+
+		set
+		{
+			ViewState["REPORT_BELONGS_TO_USER"] = value;
+		}
+	}
+
+	protected bool RentAgreementExistsInReport
+	{
+		get
+		{
+			bool exists = false;
+			SqlConnection connection = Utils.ConnectToDatabase();
+
+			if (connection != null)
+			{
+				using (SqlCommand cmd = new SqlCommand("SELECT TOP 1 id FROM reports1nf_arenda WHERE id = @aid AND report_id = @rep_id", connection))
+				{
+					cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
+					cmd.Parameters.Add(new SqlParameter("rep_id", ReportID));
+
+					using (SqlDataReader r = cmd.ExecuteReader())
+					{
+						exists = r.Read();
+						r.Close();
+					}
+				}
+
+				connection.Close();
+			}
+
+			return exists;
+		}
+	}
+
+	protected void SqlDataSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+	{
+		e.Command.Parameters["@aid"].Value = RentAgreementID;
+		e.Command.Parameters["@rep_id"].Value = ReportID;
+	}
+
+	protected void SqlDataSourceRenter_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+	{
+		e.Command.Parameters["@aid"].Value = RentAgreementID;
+		e.Command.Parameters["@rep_id"].Value = ReportID;
+	}
+
+	protected void CalculateTotals()
+	{
+		decimal totalRentedSquare = 0m;
+		Control panelAgreement = OrganizationsForm.FindControl("PanelAgreement");
 
-        DataTable tableNotes = NotesDataSource;
+		DataTable tableNotes = NotesDataSource;
 
-        if (panelAgreement != null && tableNotes != null)
-        {
-            Control editNumObjects = panelAgreement.FindControl("EditNumApt");
-            Control editRentSquare = panelAgreement.FindControl("EditRentSquare");
+		if (panelAgreement != null && tableNotes != null)
+		{
+			Control editNumObjects = panelAgreement.FindControl("EditNumApt");
+			Control editRentSquare = panelAgreement.FindControl("EditRentSquare");
 
-            if (editNumObjects is ASPxTextBox)
-                (editNumObjects as ASPxTextBox).Text = tableNotes.Rows.Count.ToString();
+			if (editNumObjects is ASPxTextBox)
+				(editNumObjects as ASPxTextBox).Text = tableNotes.Rows.Count.ToString();
 
-            totalRentedSquare = GetTotalRentedSquare(tableNotes);
+			totalRentedSquare = GetTotalRentedSquare(tableNotes);
 
-            if (editRentSquare is ASPxTextBox)
-                (editRentSquare as ASPxTextBox).Text = totalRentedSquare.ToString();
-        }
+			if (editRentSquare is ASPxTextBox)
+				(editRentSquare as ASPxTextBox).Text = totalRentedSquare.ToString();
+		}
 
-        Control panelRentPayment = PaymentForm.FindControl("PanelRentPayment");
+		Control panelRentPayment = PaymentForm.FindControl("PanelRentPayment");
 
-        if (panelRentPayment != null)
-        {
-            Control editPaymentSqrTotal = panelRentPayment.FindControl("EditPaymentSqrTotal_orndpymnt");
+		if (panelRentPayment != null)
+		{
+			Control editPaymentSqrTotal = panelRentPayment.FindControl("EditPaymentSqrTotal_orndpymnt");
 
-            if (editPaymentSqrTotal is ASPxTextBox)
-                (editPaymentSqrTotal as ASPxTextBox).Text = totalRentedSquare.ToString();
-        }
-    }
+			if (editPaymentSqrTotal is ASPxTextBox)
+				(editPaymentSqrTotal as ASPxTextBox).Text = totalRentedSquare.ToString();
+		}
+	}
 
-    #region Working with the table of Decisions
+	#region Working with the table of Decisions
 
-    protected DataTable DecisionsDataSource
-    {
-        get
-        {
-            string key = GetPageUniqueKey();
+	protected DataTable DecisionsDataSource
+	{
+		get
+		{
+			string key = GetPageUniqueKey();
 
-            object ds = Session[key + "_DECISIONS_DATA_SOURCE"];
+			object ds = Session[key + "_DECISIONS_DATA_SOURCE"];
 
-            if (ds is DataTable)
-            {
-                return ds as DataTable;
-            }
+			if (ds is DataTable)
+			{
+				return ds as DataTable;
+			}
 
-            object view = SqlDataSourceDecisions.Select(new DataSourceSelectArguments());
+			object view = SqlDataSourceDecisions.Select(new DataSourceSelectArguments());
 
-            if (view is DataView)
-            {
-                DataTable dt = (view as DataView).ToTable();
+			if (view is DataView)
+			{
+				DataTable dt = (view as DataView).ToTable();
 
-                Session[key + "_DECISIONS_DATA_SOURCE"] = dt;
+				Session[key + "_DECISIONS_DATA_SOURCE"] = dt;
 
-                return dt;
-            }
+				return dt;
+			}
 
-            return null;
-        }
+			return null;
+		}
 
-        set
-        {
-            Session[GetPageUniqueKey() + "_DECISIONS_DATA_SOURCE"] = value;
-        }
-    }
+		set
+		{
+			Session[GetPageUniqueKey() + "_DECISIONS_DATA_SOURCE"] = value;
+		}
+	}
 
-    protected void CPDecisions_Callback(object sender, CallbackEventArgsBase e)
-    {
-        if (e.Parameter.StartsWith("add:"))
-        {
-            DataTable table = DecisionsDataSource;
+	protected void CPDecisions_Callback(object sender, CallbackEventArgsBase e)
+	{
+		if (e.Parameter.StartsWith("add:"))
+		{
+			DataTable table = DecisionsDataSource;
 
-            if (table != null)
-            {
-                // Look through all the rows in the table, and find a minimum existing id
-                int minExistingId = 0;
+			if (table != null)
+			{
+				// Look through all the rows in the table, and find a minimum existing id
+				int minExistingId = 0;
 
-                for (int row = 0; row < table.Rows.Count; row++)
-                {
-                    object id = table.Rows[row]["id"];
+				for (int row = 0; row < table.Rows.Count; row++)
+				{
+					object id = table.Rows[row]["id"];
 
-                    if (id is int && (int)id < minExistingId)
-                    {
-                        minExistingId = (int)id;
-                    }
-                }
+					if (id is int && (int)id < minExistingId)
+					{
+						minExistingId = (int)id;
+					}
+				}
 
-                int newRowId = (minExistingId < 0) ? minExistingId - 1 : -1;
+				int newRowId = (minExistingId < 0) ? minExistingId - 1 : -1;
 
-                // id, arenda_id, doc_num, doc_date, doc_dodatok, doc_punkt, purpose_str, rent_square, pidstava
+				// id, arenda_id, doc_num, doc_date, doc_dodatok, doc_punkt, purpose_str, rent_square, pidstava
 
-                object[] values = new object[] { newRowId, RentAgreementID, "", null, null, null, "", 0m, "" };
-
-                table.Rows.Add(values);
-
-                GridViewDecisions.DataBind();
-            }
-        }
-    }
-
-    protected void GridViewDecisions_RowDeleting(object sender, ASPxDataDeletingEventArgs e)
-    {
-        object rowKey = e.Keys[GridViewDecisions.KeyFieldName];
-
-        if (rowKey is int)
-        {
-            int decisionId = (int)rowKey;
-
-            // Find a row in the DataTable, and delete it
-            DataTable table = DecisionsDataSource;
+				object[] values = new object[] { newRowId, RentAgreementID, "", null, null, null, "", 0m, "" };
+
+				table.Rows.Add(values);
+
+				GridViewDecisions.DataBind();
+			}
+		}
+	}
+
+	protected void GridViewDecisions_RowDeleting(object sender, ASPxDataDeletingEventArgs e)
+	{
+		object rowKey = e.Keys[GridViewDecisions.KeyFieldName];
+
+		if (rowKey is int)
+		{
+			int decisionId = (int)rowKey;
+
+			// Find a row in the DataTable, and delete it
+			DataTable table = DecisionsDataSource;
 
-            if (table != null)
-            {
-                for (int row = 0; row < table.Rows.Count; row++)
-                {
-                    object id = table.Rows[row]["id"];
-
-                    if (id is int && (int)id == decisionId)
-                    {
-                        table.Rows.RemoveAt(row);
-                        break;
-                    }
-                }
-
-                GridViewDecisions.DataBind();
-            }
-        }
-
-        e.Cancel = true;
-    }
-
-    protected void GridViewDecisions_RowUpdating(object sender, ASPxDataUpdatingEventArgs e)
-    {
-        ASPxComboBox comboDocName = GridViewDecisions.FindEditFormTemplateControl("ComboPidstavaDocKind") as ASPxComboBox;
-        ASPxTextBox editDocNum = GridViewDecisions.FindEditFormTemplateControl("EditPidstavaDocNum") as ASPxTextBox;
-        ASPxDateEdit editDocDate = GridViewDecisions.FindEditFormTemplateControl("EditPidstavaDocDate") as ASPxDateEdit;
-        ASPxTextBox editDocSquare = GridViewDecisions.FindEditFormTemplateControl("EditPidstavaDocSquare") as ASPxTextBox;
-        ASPxTextBox editDocPurpose = GridViewDecisions.FindEditFormTemplateControl("EditPidstavaDocPurpose") as ASPxTextBox;
-
-        if (comboDocName != null && editDocNum != null && editDocDate != null && editDocSquare != null && editDocPurpose != null)
-        {
-            object rowKey = e.Keys[GridViewDecisions.KeyFieldName];
-
-            if (rowKey is int)
-            {
-                int decisionId = (int)rowKey;
-
-                // Find a row in the DataTable, and modify it
-                DataTable table = DecisionsDataSource;
-
-                if (table != null)
-                {
-                    for (int row = 0; row < table.Rows.Count; row++)
-                    {
-                        object id = table.Rows[row]["id"];
-
-                        if (id is int && (int)id == decisionId)
-                        {
-                            object[] values = table.Rows[row].ItemArray;
-
-                            // id, arenda_id, doc_num, doc_date, doc_dodatok, doc_punkt, purpose_str, rent_square, pidstava
-
-                            values[2] = editDocNum.Text.Trim().ToUpper().Left(18);
-                            values[3] = editDocDate.Date.Year >= 1800 ? (object)editDocDate.Date : null;
-                            values[6] = editDocPurpose.Text.Trim().ToUpper().Left(255);
-                            values[7] = Utils.ConvertStrToDecimal(editDocSquare.Text);
-                            values[8] = comboDocName.Text.Trim().ToUpper().Left(255);
-
-                            table.Rows[row].ItemArray = values;
-                            break;
-                        }
-                    }
-
-                    GridViewDecisions.DataBind();
-                }
-            }
-        }
-
-        e.Cancel = true;
-        GridViewDecisions.CancelEdit();
-    }
-
-    protected void SaveDecisions(SqlConnection connection)
-    {
-        System.Web.Security.MembershipUser user = System.Web.Security.Membership.GetUser();
-        string username = (user == null ? "System" : user.UserName);
-
-        // Delete all rent decisions related to this agreement
-        using (SqlCommand cmd = new SqlCommand("DELETE FROM reports1nf_arenda_decisions WHERE report_id = @rid AND arenda_id = @aid", connection))
-        {
-            cmd.Parameters.Add(new SqlParameter("rid", ReportID));
-            cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
-            cmd.ExecuteNonQuery();
-        }
-
-        // Save each decision as a new one
-        DataTable table = DecisionsDataSource;
-
-        if (table != null)
-        {
-            Dictionary<string, object> parameters = new Dictionary<string, object>();
-
-            for (int row = 0; row < table.Rows.Count; row++)
-            {
-                object[] values = table.Rows[row].ItemArray;
-
-                // id, arenda_id, doc_num, doc_date, doc_dodatok, doc_punkt, purpose_str, rent_square, pidstava
-
-                string fieldList = "report_id, arenda_id, modify_date, modified_by";
-                string paramList = "@rid, @aid, @mdt, @mby";
-
-                parameters.Clear();
-                parameters.Add("rid", ReportID);
-                parameters.Add("aid", RentAgreementID);
-                parameters.Add("mdt", DateTime.Now);
-                parameters.Add("mby", username.Left(18));
-
-                if (values[2] is string)
-                {
-                    fieldList += ", doc_num";
-                    paramList += ", @dnum";
-                    parameters.Add("dnum", values[2]);
-                }
-
-                if (values[3] is DateTime)
-                {
-                    fieldList += ", doc_date";
-                    paramList += ", @ddate";
-                    parameters.Add("ddate", values[3]);
-                }
-
-                if (values[6] is string)
-                {
-                    fieldList += ", purpose_str";
-                    paramList += ", @pstr";
-                    parameters.Add("pstr", values[6]);
-                }
-
-                if (values[7] is decimal)
-                {
-                    fieldList += ", rent_square";
-                    paramList += ", @rsqr";
-                    parameters.Add("rsqr", values[7]);
-                }
-
-                if (values[8] is string)
-                {
-                    fieldList += ", pidstava";
-                    paramList += ", @pdst";
-                    parameters.Add("pdst", values[8]);
-                }
-
-                using (SqlCommand cmdInsert = new SqlCommand("INSERT INTO reports1nf_arenda_decisions (" + fieldList + ") VALUES (" + paramList + ")", connection))
-                {
-                    foreach (KeyValuePair<string, object> param in parameters)
-                    {
-                        cmdInsert.Parameters.Add(new SqlParameter(param.Key, param.Value));
-                    }
-
-                    cmdInsert.ExecuteNonQuery();
-                }
-            }
-        }
-    }
+			if (table != null)
+			{
+				for (int row = 0; row < table.Rows.Count; row++)
+				{
+					object id = table.Rows[row]["id"];
+
+					if (id is int && (int)id == decisionId)
+					{
+						table.Rows.RemoveAt(row);
+						break;
+					}
+				}
+
+				GridViewDecisions.DataBind();
+			}
+		}
+
+		e.Cancel = true;
+	}
+
+	protected void GridViewDecisions_RowUpdating(object sender, ASPxDataUpdatingEventArgs e)
+	{
+		ASPxComboBox comboDocName = GridViewDecisions.FindEditFormTemplateControl("ComboPidstavaDocKind") as ASPxComboBox;
+		ASPxTextBox editDocNum = GridViewDecisions.FindEditFormTemplateControl("EditPidstavaDocNum") as ASPxTextBox;
+		ASPxDateEdit editDocDate = GridViewDecisions.FindEditFormTemplateControl("EditPidstavaDocDate") as ASPxDateEdit;
+		ASPxTextBox editDocSquare = GridViewDecisions.FindEditFormTemplateControl("EditPidstavaDocSquare") as ASPxTextBox;
+		ASPxTextBox editDocPurpose = GridViewDecisions.FindEditFormTemplateControl("EditPidstavaDocPurpose") as ASPxTextBox;
+
+		if (comboDocName != null && editDocNum != null && editDocDate != null && editDocSquare != null && editDocPurpose != null)
+		{
+			object rowKey = e.Keys[GridViewDecisions.KeyFieldName];
+
+			if (rowKey is int)
+			{
+				int decisionId = (int)rowKey;
+
+				// Find a row in the DataTable, and modify it
+				DataTable table = DecisionsDataSource;
+
+				if (table != null)
+				{
+					for (int row = 0; row < table.Rows.Count; row++)
+					{
+						object id = table.Rows[row]["id"];
+
+						if (id is int && (int)id == decisionId)
+						{
+							object[] values = table.Rows[row].ItemArray;
+
+							// id, arenda_id, doc_num, doc_date, doc_dodatok, doc_punkt, purpose_str, rent_square, pidstava
+
+							values[2] = editDocNum.Text.Trim().ToUpper().Left(18);
+							values[3] = editDocDate.Date.Year >= 1800 ? (object)editDocDate.Date : null;
+							values[6] = editDocPurpose.Text.Trim().ToUpper().Left(255);
+							values[7] = Utils.ConvertStrToDecimal(editDocSquare.Text);
+							values[8] = comboDocName.Text.Trim().ToUpper().Left(255);
+
+							table.Rows[row].ItemArray = values;
+							break;
+						}
+					}
+
+					GridViewDecisions.DataBind();
+				}
+			}
+		}
+
+		e.Cancel = true;
+		GridViewDecisions.CancelEdit();
+	}
+
+	protected void SaveDecisions(SqlConnection connection)
+	{
+		System.Web.Security.MembershipUser user = System.Web.Security.Membership.GetUser();
+		string username = (user == null ? "System" : user.UserName);
+
+		// Delete all rent decisions related to this agreement
+		using (SqlCommand cmd = new SqlCommand("DELETE FROM reports1nf_arenda_decisions WHERE report_id = @rid AND arenda_id = @aid", connection))
+		{
+			cmd.Parameters.Add(new SqlParameter("rid", ReportID));
+			cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
+			cmd.ExecuteNonQuery();
+		}
+
+		// Save each decision as a new one
+		DataTable table = DecisionsDataSource;
+
+		if (table != null)
+		{
+			Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+			for (int row = 0; row < table.Rows.Count; row++)
+			{
+				object[] values = table.Rows[row].ItemArray;
+
+				// id, arenda_id, doc_num, doc_date, doc_dodatok, doc_punkt, purpose_str, rent_square, pidstava
+
+				string fieldList = "report_id, arenda_id, modify_date, modified_by";
+				string paramList = "@rid, @aid, @mdt, @mby";
+
+				parameters.Clear();
+				parameters.Add("rid", ReportID);
+				parameters.Add("aid", RentAgreementID);
+				parameters.Add("mdt", DateTime.Now);
+				parameters.Add("mby", username.Left(18));
+
+				if (values[2] is string)
+				{
+					fieldList += ", doc_num";
+					paramList += ", @dnum";
+					parameters.Add("dnum", values[2]);
+				}
+
+				if (values[3] is DateTime)
+				{
+					fieldList += ", doc_date";
+					paramList += ", @ddate";
+					parameters.Add("ddate", values[3]);
+				}
+
+				if (values[6] is string)
+				{
+					fieldList += ", purpose_str";
+					paramList += ", @pstr";
+					parameters.Add("pstr", values[6]);
+				}
+
+				if (values[7] is decimal)
+				{
+					fieldList += ", rent_square";
+					paramList += ", @rsqr";
+					parameters.Add("rsqr", values[7]);
+				}
+
+				if (values[8] is string)
+				{
+					fieldList += ", pidstava";
+					paramList += ", @pdst";
+					parameters.Add("pdst", values[8]);
+				}
+
+				using (SqlCommand cmdInsert = new SqlCommand("INSERT INTO reports1nf_arenda_decisions (" + fieldList + ") VALUES (" + paramList + ")", connection))
+				{
+					foreach (KeyValuePair<string, object> param in parameters)
+					{
+						cmdInsert.Parameters.Add(new SqlParameter(param.Key, param.Value));
+					}
+
+					cmdInsert.ExecuteNonQuery();
+				}
+			}
+		}
+	}
 
 	#endregion Working with the table of Decisions
 
@@ -884,7 +885,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		var edit_using_possible_id = GridViewSubleases.FindEditFormTemplateControl("edit_using_possible_id") as ASPxComboBox;
 
 
-		if (edit_agreement_num != null && edit_agreement_date != null && edit_rent_start_date != null && 
+		if (edit_agreement_num != null && edit_agreement_date != null && edit_rent_start_date != null &&
 			edit_rent_finish_date != null && edit_payment_type_id != null && edit_rent_square != null && edit_rent_payment_month != null &&
 			edit_using_possible_id != null)
 		{
@@ -1042,171 +1043,171 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 	#region Working with the table of Notes
 
 	protected DataTable NotesDataSource
-    {
-        get
-        {
-            string key = GetPageUniqueKey();
+	{
+		get
+		{
+			string key = GetPageUniqueKey();
 
-            object ds = Session[key + "_NOTES_DATA_SOURCE"];
+			object ds = Session[key + "_NOTES_DATA_SOURCE"];
 
-            if (ds is DataTable)
-            {
-                return ds as DataTable;
-            }
+			if (ds is DataTable)
+			{
+				return ds as DataTable;
+			}
 
-            object view = SqlDataSourceNotes.Select(new DataSourceSelectArguments());
+			object view = SqlDataSourceNotes.Select(new DataSourceSelectArguments());
 
-            if (view is DataView)
-            {
-                DataTable dt = (view as DataView).ToTable();
+			if (view is DataView)
+			{
+				DataTable dt = (view as DataView).ToTable();
 
-                Session[key + "_NOTES_DATA_SOURCE"] = dt;
+				Session[key + "_NOTES_DATA_SOURCE"] = dt;
 
-                return dt;
-            }
+				return dt;
+			}
 
-            return null;
-        }
+			return null;
+		}
 
-        set
-        {
-            Session[GetPageUniqueKey() + "_NOTES_DATA_SOURCE"] = value;
-        }
-    }
+		set
+		{
+			Session[GetPageUniqueKey() + "_NOTES_DATA_SOURCE"] = value;
+		}
+	}
 
-    protected void CPNotes_Callback(object sender, CallbackEventArgsBase e)
-    {
-        if (e.Parameter.StartsWith("add:"))
-        {
-            DataTable table = NotesDataSource;
+	protected void CPNotes_Callback(object sender, CallbackEventArgsBase e)
+	{
+		if (e.Parameter.StartsWith("add:"))
+		{
+			DataTable table = NotesDataSource;
 
-            if (table != null)
-            {
-                // Look through all the rows in the table, and find a minimum existing id
-                int minExistingId = 0;
+			if (table != null)
+			{
+				// Look through all the rows in the table, and find a minimum existing id
+				int minExistingId = 0;
 
-                for (int row = 0; row < table.Rows.Count; row++)
-                {
-                    object id = table.Rows[row]["id"];
+				for (int row = 0; row < table.Rows.Count; row++)
+				{
+					object id = table.Rows[row]["id"];
 
-                    if (id is int && (int)id < minExistingId)
-                    {
-                        minExistingId = (int)id;
-                    }
-                }
+					if (id is int && (int)id < minExistingId)
+					{
+						minExistingId = (int)id;
+					}
+				}
 
-                int newRowId = (minExistingId < 0) ? minExistingId - 1 : -1;
+				int newRowId = (minExistingId < 0) ? minExistingId - 1 : -1;
 
-                // id, purpose_group_id, purpose_id, purpose_str, rent_square, note, rent_rate, cost_narah, cost_agreement, cost_expert_total, date_expert, payment_type_id, invent_no, note_status_id
+				// id, purpose_group_id, purpose_id, purpose_str, rent_square, note, rent_rate, cost_narah, cost_agreement, cost_expert_total, date_expert, payment_type_id, invent_no, note_status_id
 
-                object[] values = new object[] { newRowId, null, null, "", 0m, "", 0m, 0m, 0m, 0m, null, null, "", null };
+				object[] values = new object[] { newRowId, null, null, "", 0m, "", 0m, 0m, 0m, 0m, null, null, "", null };
 
-                table.Rows.Add(values);
+				table.Rows.Add(values);
 
-                GridViewNotes.DataBind();
-            }
-        }
-    }
+				GridViewNotes.DataBind();
+			}
+		}
+	}
 
-    protected void GridViewNotes_RowDeleting(object sender, ASPxDataDeletingEventArgs e)
-    {
-        object rowKey = e.Keys[GridViewNotes.KeyFieldName];
+	protected void GridViewNotes_RowDeleting(object sender, ASPxDataDeletingEventArgs e)
+	{
+		object rowKey = e.Keys[GridViewNotes.KeyFieldName];
 
-        if (rowKey is int)
-        {
-            int decisionId = (int)rowKey;
+		if (rowKey is int)
+		{
+			int decisionId = (int)rowKey;
 
-            // Find a row in the DataTable, and delete it
-            DataTable table = NotesDataSource;
+			// Find a row in the DataTable, and delete it
+			DataTable table = NotesDataSource;
 
-            if (table != null)
-            {
-                for (int row = 0; row < table.Rows.Count; row++)
-                {
-                    object id = table.Rows[row]["id"];
+			if (table != null)
+			{
+				for (int row = 0; row < table.Rows.Count; row++)
+				{
+					object id = table.Rows[row]["id"];
 
-                    if (id is int && (int)id == decisionId)
-                    {
-                        table.Rows.RemoveAt(row);
-                        break;
-                    }
-                }
+					if (id is int && (int)id == decisionId)
+					{
+						table.Rows.RemoveAt(row);
+						break;
+					}
+				}
 
-                GridViewNotes.DataBind();
-            }
-        }
+				GridViewNotes.DataBind();
+			}
+		}
 
-        e.Cancel = true;
-    }
+		e.Cancel = true;
+	}
 
-    protected void GridViewNotes_RowUpdating(object sender, ASPxDataUpdatingEventArgs e)
-    {
-        ASPxTextBox editNoteSquare = GridViewNotes.FindEditFormTemplateControl("EditNoteSqr") as ASPxTextBox;
-        ASPxTextBox editNoteFloor = GridViewNotes.FindEditFormTemplateControl("EditNoteFloor") as ASPxTextBox;
-        ASPxTextBox editNoteInventNo = GridViewNotes.FindEditFormTemplateControl("EditNoteInventNo") as ASPxTextBox;
-        ASPxComboBox comboNoteCurState = GridViewNotes.FindEditFormTemplateControl("ComboNoteCurState") as ASPxComboBox;
-        ASPxComboBox comboNotePurposeGroup = GridViewNotes.FindEditFormTemplateControl("ComboNotePurposeGroup") as ASPxComboBox;
-        ASPxComboBox comboNotePurpose = GridViewNotes.FindEditFormTemplateControl("ComboNotePurpose") as ASPxComboBox;
-        ASPxTextBox editNotePurposeStr = GridViewNotes.FindEditFormTemplateControl("EditNotePurposeStr") as ASPxTextBox;
-        ASPxTextBox editNoteCostExpert = GridViewNotes.FindEditFormTemplateControl("EditNoteCostExpert") as ASPxTextBox;
-        ASPxDateEdit editNoteDateExpert = GridViewNotes.FindEditFormTemplateControl("EditNoteDateExpert") as ASPxDateEdit;
-        ASPxTextBox editNoteCostNarah = GridViewNotes.FindEditFormTemplateControl("EditNoteCostNarah") as ASPxTextBox;
-        ASPxTextBox editNoteRentRate = GridViewNotes.FindEditFormTemplateControl("EditNoteRentRate") as ASPxTextBox;
-        ASPxTextBox editNoteCostAgreement = GridViewNotes.FindEditFormTemplateControl("EditNoteCostAgreement") as ASPxTextBox;
+	protected void GridViewNotes_RowUpdating(object sender, ASPxDataUpdatingEventArgs e)
+	{
+		ASPxTextBox editNoteSquare = GridViewNotes.FindEditFormTemplateControl("EditNoteSqr") as ASPxTextBox;
+		ASPxTextBox editNoteFloor = GridViewNotes.FindEditFormTemplateControl("EditNoteFloor") as ASPxTextBox;
+		ASPxTextBox editNoteInventNo = GridViewNotes.FindEditFormTemplateControl("EditNoteInventNo") as ASPxTextBox;
+		ASPxComboBox comboNoteCurState = GridViewNotes.FindEditFormTemplateControl("ComboNoteCurState") as ASPxComboBox;
+		ASPxComboBox comboNotePurposeGroup = GridViewNotes.FindEditFormTemplateControl("ComboNotePurposeGroup") as ASPxComboBox;
+		ASPxComboBox comboNotePurpose = GridViewNotes.FindEditFormTemplateControl("ComboNotePurpose") as ASPxComboBox;
+		ASPxTextBox editNotePurposeStr = GridViewNotes.FindEditFormTemplateControl("EditNotePurposeStr") as ASPxTextBox;
+		ASPxTextBox editNoteCostExpert = GridViewNotes.FindEditFormTemplateControl("EditNoteCostExpert") as ASPxTextBox;
+		ASPxDateEdit editNoteDateExpert = GridViewNotes.FindEditFormTemplateControl("EditNoteDateExpert") as ASPxDateEdit;
+		ASPxTextBox editNoteCostNarah = GridViewNotes.FindEditFormTemplateControl("EditNoteCostNarah") as ASPxTextBox;
+		ASPxTextBox editNoteRentRate = GridViewNotes.FindEditFormTemplateControl("EditNoteRentRate") as ASPxTextBox;
+		ASPxTextBox editNoteCostAgreement = GridViewNotes.FindEditFormTemplateControl("EditNoteCostAgreement") as ASPxTextBox;
 		ASPxTextBox editNoteZapezhDeposit = GridViewNotes.FindEditFormTemplateControl("EditNoteZapezhDeposit") as ASPxTextBox;
 		ASPxTextBox editRefBalansId = GridViewNotes.FindEditFormTemplateControl("EditRefBalansId") as ASPxTextBox;
 		ASPxComboBox comboNotePaymentType = GridViewNotes.FindEditFormTemplateControl("ComboNotePaymentType1") as ASPxComboBox;
-        ASPxComboBox comboFactichVikorist = GridViewNotes.FindEditFormTemplateControl("ComboFactichVikorist") as ASPxComboBox;
+		ASPxComboBox comboFactichVikorist = GridViewNotes.FindEditFormTemplateControl("ComboFactichVikorist") as ASPxComboBox;
 
-        if (editNoteSquare != null && editNoteFloor != null && editNoteInventNo != null &&
-            comboNoteCurState != null && comboNotePurposeGroup != null &&
-            comboNotePurpose != null && editNotePurposeStr != null && editNoteCostExpert != null &&
-            editNoteDateExpert != null && editNoteCostNarah != null && editNoteRentRate != null &&
-            editNoteCostAgreement != null && editNoteZapezhDeposit != null && comboNotePaymentType != null && editRefBalansId != null)
-        {
-            object rowKey = e.Keys[GridViewNotes.KeyFieldName];
+		if (editNoteSquare != null && editNoteFloor != null && editNoteInventNo != null &&
+			comboNoteCurState != null && comboNotePurposeGroup != null &&
+			comboNotePurpose != null && editNotePurposeStr != null && editNoteCostExpert != null &&
+			editNoteDateExpert != null && editNoteCostNarah != null && editNoteRentRate != null &&
+			editNoteCostAgreement != null && editNoteZapezhDeposit != null && comboNotePaymentType != null && editRefBalansId != null)
+		{
+			object rowKey = e.Keys[GridViewNotes.KeyFieldName];
 
-            if (rowKey is int)
-            {
-                int decisionId = (int)rowKey;
+			if (rowKey is int)
+			{
+				int decisionId = (int)rowKey;
 
-                // Find a row in the DataTable, and modify it
-                DataTable table = NotesDataSource;
+				// Find a row in the DataTable, and modify it
+				DataTable table = NotesDataSource;
 
-                if (table != null)
-                {
-                    for (int row = 0; row < table.Rows.Count; row++)
-                    {
-                        object id = table.Rows[row]["id"];
+				if (table != null)
+				{
+					for (int row = 0; row < table.Rows.Count; row++)
+					{
+						object id = table.Rows[row]["id"];
 
-                        if (id is int && (int)id == decisionId)
-                        {
-                            object[] values = table.Rows[row].ItemArray;
+						if (id is int && (int)id == decisionId)
+						{
+							object[] values = table.Rows[row].ItemArray;
 
-                            // id, purpose_group_id, purpose_id, purpose_str, rent_square, note, rent_rate, cost_narah, cost_agreement, cost_expert_total, date_expert, payment_type_id, invent_no, note_status_id
+							// id, purpose_group_id, purpose_id, purpose_str, rent_square, note, rent_rate, cost_narah, cost_agreement, cost_expert_total, date_expert, payment_type_id, invent_no, note_status_id
 
-                            values[1] = comboNotePurposeGroup.Value is int ? comboNotePurposeGroup.Value : null;
-                            values[2] = comboNotePurpose.Value is int ? comboNotePurpose.Value : null;
-                            values[3] = editNotePurposeStr.Text.Trim().ToUpper().Left(250);
-                            values[4] = Utils.ConvertStrToDecimal(editNoteSquare.Text);
-                            values[5] = editNoteFloor.Text.Trim().ToUpper().Left(250);
-                            values[6] = Utils.ConvertStrToDecimal(editNoteRentRate.Text);
-                            values[7] = Utils.ConvertStrToDecimal(editNoteCostNarah.Text);
-                            values[8] = Utils.ConvertStrToDecimal(editNoteCostAgreement.Text);
-                            values[9] = Utils.ConvertStrToDecimal(editNoteCostExpert.Text);
-                            values[10] = editNoteDateExpert.Date.Year >= 1800 ? (object)editNoteDateExpert.Date : null;
-                            values[11] = comboNotePaymentType.Value is int ? comboNotePaymentType.Value : null;
-                            values[12] = editNoteInventNo.Text.Trim().ToUpper().Left(128);
-                            values[13] = comboNoteCurState.Value is int ? comboNoteCurState.Value : null;
+							values[1] = comboNotePurposeGroup.Value is int ? comboNotePurposeGroup.Value : null;
+							values[2] = comboNotePurpose.Value is int ? comboNotePurpose.Value : null;
+							values[3] = editNotePurposeStr.Text.Trim().ToUpper().Left(250);
+							values[4] = Utils.ConvertStrToDecimal(editNoteSquare.Text);
+							values[5] = editNoteFloor.Text.Trim().ToUpper().Left(250);
+							values[6] = Utils.ConvertStrToDecimal(editNoteRentRate.Text);
+							values[7] = Utils.ConvertStrToDecimal(editNoteCostNarah.Text);
+							values[8] = Utils.ConvertStrToDecimal(editNoteCostAgreement.Text);
+							values[9] = Utils.ConvertStrToDecimal(editNoteCostExpert.Text);
+							values[10] = editNoteDateExpert.Date.Year >= 1800 ? (object)editNoteDateExpert.Date : null;
+							values[11] = comboNotePaymentType.Value is int ? comboNotePaymentType.Value : null;
+							values[12] = editNoteInventNo.Text.Trim().ToUpper().Left(128);
+							values[13] = comboNoteCurState.Value is int ? comboNoteCurState.Value : null;
 							values[14] = Utils.ConvertStrToDecimal(editNoteZapezhDeposit.Text);
 							values[15] = Utils.ConvertStrToInt(editRefBalansId.Text);
-                            values[16] = comboFactichVikorist.Value is int ? comboFactichVikorist.Value : null;
+							values[16] = comboFactichVikorist.Value is int ? comboFactichVikorist.Value : null;
 
-                            var refBalansId = (int)values[15];
-                            if (refBalansId != 0)
-                            {
-                                SqlConnection connection = Utils.ConnectToDatabase();
-                                string query = @"select 
+							var refBalansId = (int)values[15];
+							if (refBalansId != 0)
+							{
+								SqlConnection connection = Utils.ConnectToDatabase();
+								string query = @"select 
                                                     top 1
                                                     dict_districts2.name AS district,
                                                     addr_street_name,
@@ -1216,184 +1217,184 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
                                                  LEFT OUTER JOIN reports1nf_buildings bld ON bld.unique_id = bal.building_1nf_unique_id
                                                  LEFT OUTER JOIN dict_districts2 ON dict_districts2.id = bld.addr_distr_new_id
                                                  WHERE bal.id = " + refBalansId;
-                                using (SqlCommand cmd = new SqlCommand(query, connection))
-                                {
-                                    using (SqlDataReader reader = cmd.ExecuteReader())
-                                    {
-                                        while (reader.Read())
-                                        {
-                                            var addr_street_name = reader.IsDBNull(1) ? null : reader.GetString(1);
-                                            var addr_nomer = reader.IsDBNull(2) ? null : reader.GetString(2);
-                                            var sqr_total = reader.IsDBNull(3) ? (decimal?)null : reader.GetDecimal(3);
-                                            values[17] = addr_street_name;
-                                            values[18] = addr_nomer;
-                                            values[19] = sqr_total;
-                                        }
+								using (SqlCommand cmd = new SqlCommand(query, connection))
+								{
+									using (SqlDataReader reader = cmd.ExecuteReader())
+									{
+										while (reader.Read())
+										{
+											var addr_street_name = reader.IsDBNull(1) ? null : reader.GetString(1);
+											var addr_nomer = reader.IsDBNull(2) ? null : reader.GetString(2);
+											var sqr_total = reader.IsDBNull(3) ? (decimal?)null : reader.GetDecimal(3);
+											values[17] = addr_street_name;
+											values[18] = addr_nomer;
+											values[19] = sqr_total;
+										}
 
-                                        reader.Close();
-                                    }
-                                }
+										reader.Close();
+									}
+								}
 
-                            }
+							}
 
 
 
-                            table.Rows[row].ItemArray = values;
-                            break;
-                        }
-                    }
+							table.Rows[row].ItemArray = values;
+							break;
+						}
+					}
 
-                    GridViewNotes.DataBind();
-                }
-            }
-        }
+					GridViewNotes.DataBind();
+				}
+			}
+		}
 
-        e.Cancel = true;
-        GridViewNotes.CancelEdit();
-    }
+		e.Cancel = true;
+		GridViewNotes.CancelEdit();
+	}
 
-    protected decimal GetTotalRentedSquare(DataTable tableNotes)
-    {
-        decimal total = 0m;
+	protected decimal GetTotalRentedSquare(DataTable tableNotes)
+	{
+		decimal total = 0m;
 
-        for (int row = 0; row < tableNotes.Rows.Count; row++)
-        {
-            object square = tableNotes.Rows[row]["rent_square"];
+		for (int row = 0; row < tableNotes.Rows.Count; row++)
+		{
+			object square = tableNotes.Rows[row]["rent_square"];
 
-            if (square is decimal)
-            {
-                total += (decimal)square;
-            }
-        }
+			if (square is decimal)
+			{
+				total += (decimal)square;
+			}
+		}
 
-        return total;
-    }
+		return total;
+	}
 
-    protected void SaveNotes(SqlConnection connection)
-    {
-        System.Web.Security.MembershipUser user = System.Web.Security.Membership.GetUser();
-        string username = (user == null ? "System" : user.UserName);
+	protected void SaveNotes(SqlConnection connection)
+	{
+		System.Web.Security.MembershipUser user = System.Web.Security.Membership.GetUser();
+		string username = (user == null ? "System" : user.UserName);
 
-        // Delete all notes related to this agreement
-        using (SqlCommand cmd = new SqlCommand("DELETE FROM reports1nf_arenda_notes WHERE report_id = @rid AND arenda_id = @aid", connection))
-        {
-            cmd.Parameters.Add(new SqlParameter("rid", ReportID));
-            cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
-            cmd.ExecuteNonQuery();
-        }
+		// Delete all notes related to this agreement
+		using (SqlCommand cmd = new SqlCommand("DELETE FROM reports1nf_arenda_notes WHERE report_id = @rid AND arenda_id = @aid", connection))
+		{
+			cmd.Parameters.Add(new SqlParameter("rid", ReportID));
+			cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
+			cmd.ExecuteNonQuery();
+		}
 
-        // Save each note as a new one
-        DataTable table = NotesDataSource;
+		// Save each note as a new one
+		DataTable table = NotesDataSource;
 
-        if (table != null)
-        {
-            Dictionary<string, object> parameters = new Dictionary<string, object>();
+		if (table != null)
+		{
+			Dictionary<string, object> parameters = new Dictionary<string, object>();
 
-            for (int row = 0; row < table.Rows.Count; row++)
-            {
-                object[] values = table.Rows[row].ItemArray;
+			for (int row = 0; row < table.Rows.Count; row++)
+			{
+				object[] values = table.Rows[row].ItemArray;
 
-                // id, purpose_group_id, purpose_id, purpose_str, rent_square, note, rent_rate, cost_narah, cost_agreement, cost_expert_total, date_expert, payment_type_id, invent_no, note_status_id
+				// id, purpose_group_id, purpose_id, purpose_str, rent_square, note, rent_rate, cost_narah, cost_agreement, cost_expert_total, date_expert, payment_type_id, invent_no, note_status_id
 
-                string fieldList = "report_id, arenda_id, modify_date, modified_by";
-                string paramList = "@rid, @aid, @mdt, @mby";
+				string fieldList = "report_id, arenda_id, modify_date, modified_by";
+				string paramList = "@rid, @aid, @mdt, @mby";
 
-                parameters.Clear();
-                parameters.Add("rid", ReportID);
-                parameters.Add("aid", RentAgreementID);
-                parameters.Add("mdt", DateTime.Now);
-                parameters.Add("mby", username.Left(18));
+				parameters.Clear();
+				parameters.Add("rid", ReportID);
+				parameters.Add("aid", RentAgreementID);
+				parameters.Add("mdt", DateTime.Now);
+				parameters.Add("mby", username.Left(18));
 
-                if (values[1] is int)
-                {
-                    fieldList += ", purpose_group_id";
-                    paramList += ", @pgr";
-                    parameters.Add("pgr", values[1]);
-                }
+				if (values[1] is int)
+				{
+					fieldList += ", purpose_group_id";
+					paramList += ", @pgr";
+					parameters.Add("pgr", values[1]);
+				}
 
-                if (values[2] is int)
-                {
-                    fieldList += ", purpose_id";
-                    paramList += ", @pid";
-                    parameters.Add("pid", values[2]);
-                }
+				if (values[2] is int)
+				{
+					fieldList += ", purpose_id";
+					paramList += ", @pid";
+					parameters.Add("pid", values[2]);
+				}
 
-                if (values[3] is string)
-                {
-                    fieldList += ", purpose_str";
-                    paramList += ", @pstr";
-                    parameters.Add("pstr", values[3]);
-                }
+				if (values[3] is string)
+				{
+					fieldList += ", purpose_str";
+					paramList += ", @pstr";
+					parameters.Add("pstr", values[3]);
+				}
 
-                if (values[4] is decimal)
-                {
-                    fieldList += ", rent_square";
-                    paramList += ", @rsqr";
-                    parameters.Add("rsqr", values[4]);
-                }
+				if (values[4] is decimal)
+				{
+					fieldList += ", rent_square";
+					paramList += ", @rsqr";
+					parameters.Add("rsqr", values[4]);
+				}
 
-                if (values[5] is string)
-                {
-                    fieldList += ", note";
-                    paramList += ", @note";
-                    parameters.Add("note", values[5]);
-                }
+				if (values[5] is string)
+				{
+					fieldList += ", note";
+					paramList += ", @note";
+					parameters.Add("note", values[5]);
+				}
 
-                if (values[6] is decimal)
-                {
-                    fieldList += ", rent_rate";
-                    paramList += ", @rrate";
-                    parameters.Add("rrate", values[6]);
-                }
+				if (values[6] is decimal)
+				{
+					fieldList += ", rent_rate";
+					paramList += ", @rrate";
+					parameters.Add("rrate", values[6]);
+				}
 
-                if (values[7] is decimal)
-                {
-                    fieldList += ", cost_narah";
-                    paramList += ", @costnar";
-                    parameters.Add("costnar", values[7]);
-                }
+				if (values[7] is decimal)
+				{
+					fieldList += ", cost_narah";
+					paramList += ", @costnar";
+					parameters.Add("costnar", values[7]);
+				}
 
-                if (values[8] is decimal)
-                {
-                    fieldList += ", cost_agreement";
-                    paramList += ", @costagr";
-                    parameters.Add("costagr", values[8]);
-                }
+				if (values[8] is decimal)
+				{
+					fieldList += ", cost_agreement";
+					paramList += ", @costagr";
+					parameters.Add("costagr", values[8]);
+				}
 
-                if (values[9] is decimal)
-                {
-                    fieldList += ", cost_expert_total";
-                    paramList += ", @costexp";
-                    parameters.Add("costexp", values[9]);
-                }
+				if (values[9] is decimal)
+				{
+					fieldList += ", cost_expert_total";
+					paramList += ", @costexp";
+					parameters.Add("costexp", values[9]);
+				}
 
-                if (values[10] is DateTime)
-                {
-                    fieldList += ", date_expert";
-                    paramList += ", @dtex";
-                    parameters.Add("dtex", values[10]);
-                }
+				if (values[10] is DateTime)
+				{
+					fieldList += ", date_expert";
+					paramList += ", @dtex";
+					parameters.Add("dtex", values[10]);
+				}
 
-                if (values[11] is int)
-                {
-                    fieldList += ", payment_type_id";
-                    paramList += ", @payid";
-                    parameters.Add("payid", values[11]);
-                }
+				if (values[11] is int)
+				{
+					fieldList += ", payment_type_id";
+					paramList += ", @payid";
+					parameters.Add("payid", values[11]);
+				}
 
-                if (values[12] is string)
-                {
-                    fieldList += ", invent_no";
-                    paramList += ", @ino";
-                    parameters.Add("ino", values[12]);
-                }
+				if (values[12] is string)
+				{
+					fieldList += ", invent_no";
+					paramList += ", @ino";
+					parameters.Add("ino", values[12]);
+				}
 
-                if (values[13] is int)
-                {
-                    fieldList += ", note_status_id";
-                    paramList += ", @stid";
-                    parameters.Add("stid", values[13]);
-                }
+				if (values[13] is int)
+				{
+					fieldList += ", note_status_id";
+					paramList += ", @stid";
+					parameters.Add("stid", values[13]);
+				}
 
 				if (values[14] is decimal)
 				{
@@ -1409,841 +1410,895 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 					parameters.Add("refbalansid", values[15]);
 				}
 
-                if (values[16] is int)
-                {
-                    fieldList += ", factich_vikorist_id";
-                    paramList += ", @factichvikoristid";
-                    parameters.Add("factichvikoristid", values[16]);
-                }
-
-
-                using (SqlCommand cmdInsert = new SqlCommand("INSERT INTO reports1nf_arenda_notes (" + fieldList + ") VALUES (" + paramList + ")", connection))
-                {
-                    foreach (KeyValuePair<string, object> param in parameters)
-                    {
-                        cmdInsert.Parameters.Add(new SqlParameter(param.Key, param.Value));
-                    }
-
-                    cmdInsert.ExecuteNonQuery();
-                }
-            }
-        }
-    }
-
-    #endregion Working with the table of Notes
-
-    #region Working with the table of Payment Documents
-
-    protected DataTable PaymentDocumentsDataSource
-    {
-        get
-        {
-            string key = GetPageUniqueKey();
-
-            object ds = Session[key + "_PAYMENT_DOCUMENTS_DATA_SOURCE"];
-
-            if (ds is DataTable)
-            {
-                return ds as DataTable;
-            }
-
-            object view = SqlDataSourcePaymentDocuments.Select(new DataSourceSelectArguments());
-
-            if (view is DataView)
-            {
-                DataTable dt = (view as DataView).ToTable();
-
-                Session[key + "_PAYMENT_DOCUMENTS_DATA_SOURCE"] = dt;
-
-                return dt;
-            }
-
-            return null;
-        }
-
-        set
-        {
-            Session[GetPageUniqueKey() + "_PAYMENT_DOCUMENTS_DATA_SOURCE"] = value;
-        }
-    }
-
-    protected void CPPaymentDocuments_Callback(object sender, CallbackEventArgsBase e)
-    {
-        if (e.Parameter.StartsWith("add:"))
-        {
-            DataTable table = PaymentDocumentsDataSource;
-
-            if (table != null)
-            {
-                // Look through all the rows in the table, and find a minimum existing id
-                int minExistingId = 0;
-
-                for (int row = 0; row < table.Rows.Count; row++)
-                {
-                    object id = table.Rows[row]["id"];
-
-                    if (id is int && (int)id < minExistingId)
-                    {
-                        minExistingId = (int)id;
-                    }
-                }
-
-                int newRowId = (minExistingId < 0) ? minExistingId - 1 : -1;
-
-                // id, report_id, arenda_id, payment_date, payment_number, payment_sum, payment_purpose
-
-                object[] values = new object[] { newRowId, ReportID, RentAgreementID, null, "", 0m, "", null, null, ActiveRentPeriodID, 0m, 0m, 0m, 0m };
-
-                table.Rows.Add(values);
-
-                GridViewPaymentDocuments.DataBind();
-            }
-        }
-    }
-
-    protected void CPRentPayment_Callback(object sender, CallbackEventArgsBase e)
-    {
-        if (e.Parameter.StartsWith("calc:"))
-        {
-            decimal total_income = 0;
-            decimal total_income_1 = 0;
-            decimal total_income_2 = 0;
-            decimal total_income_3 = 0;
-            decimal total_income_4 = 0;
-            int active_rent_period_id;
-
-            ASPxComboBox reportingPeriodCombo = PaymentForm.FindControl("ReportingPeriodCombo") as ASPxComboBox;
-            if (reportingPeriodCombo != null)
-            {
-                active_rent_period_id = (int)reportingPeriodCombo.Value;
-            }
-            else
-            {
-                active_rent_period_id = ActiveRentPeriodID;
-            }
-            DataTable table = PaymentDocumentsDataSource;
-
-            if (table != null)
-            {
-                for (int row = 0; row < table.Rows.Count; row++)
-                {
-                    var rent_period_id = (int)table.Rows[row]["rent_period_id"];
-
-                    if (rent_period_id == active_rent_period_id)
-                    {
-                        total_income += (decimal)table.Rows[row]["payment_sum"];
-                        total_income_1 += (decimal)table.Rows[row]["payment_sm_1"];
-                        total_income_2 += (decimal)table.Rows[row]["payment_sm_2"];
-                        total_income_3 += (decimal)table.Rows[row]["payment_sm_3"];
-                        total_income_4 += (decimal)table.Rows[row]["payment_sm_4"];
-
-                    }
-                }
-            }
-            Control panelRentPayment = PaymentForm.FindControl("PanelRentPaymentDocuments");
-            if (panelRentPayment != null)
-            {
-                Control cpRentPayment = panelRentPayment.FindControl("CPRentPayment");
-                if (cpRentPayment != null)
-                {
-                    Control editPaymentReceived = cpRentPayment.FindControl("EditPaymentReceived_orndpymnt");
-
-                    if (editPaymentReceived is ASPxSpinEdit)
-                        (editPaymentReceived as ASPxSpinEdit).Value = total_income;
-
-                    editPaymentReceived = cpRentPayment.FindControl("EditPaymentNarZvit_orndpymnt");
-                    if (editPaymentReceived is ASPxSpinEdit)
-                        (editPaymentReceived as ASPxSpinEdit).Value = total_income_1;
-
-                    editPaymentReceived = cpRentPayment.FindControl("Edit_avance_paymentnar");
-                    if (editPaymentReceived is ASPxSpinEdit)
-                        (editPaymentReceived as ASPxSpinEdit).Value = total_income_2;
-
-                    editPaymentReceived = cpRentPayment.FindControl("EditPaymentOldDebtsPayed_orndpymnt");
-                    if (editPaymentReceived is ASPxSpinEdit)
-                        (editPaymentReceived as ASPxSpinEdit).Value = total_income_3;
-
-                    editPaymentReceived = cpRentPayment.FindControl("edit_return_orend_payed");
-                    if (editPaymentReceived is ASPxSpinEdit)
-                        (editPaymentReceived as ASPxSpinEdit).Value = total_income_4;
-                }
-            }
-        }
-    }
-
-    protected void GridViewPaymentDocuments_RowDeleting(object sender, ASPxDataDeletingEventArgs e)
-    {
-        object rowKey = e.Keys[GridViewPaymentDocuments.KeyFieldName];
-
-        if (rowKey is int)
-        {
-            int paymentDocumentId = (int)rowKey;
-
-            // Find a row in the DataTable, and delete it
-            DataTable table = PaymentDocumentsDataSource;
-
-            if (table != null)
-            {
-                for (int row = 0; row < table.Rows.Count; row++)
-                {
-                    object id = table.Rows[row]["id"];
-
-                    if (id is int && (int)id == paymentDocumentId)
-                    {
-                        table.Rows.RemoveAt(row);
-                        break;
-                    }
-                }
-                GridViewPaymentDocuments.DataBind();
-            }
-        }
-
-        e.Cancel = true;
-    }
-
-    protected void GridViewPaymentDocuments_RowUpdating(object sender, ASPxDataUpdatingEventArgs e)
-    {
-        ASPxDateEdit editPaymentDate = GridViewPaymentDocuments.FindEditFormTemplateControl("EditPaymentDate") as ASPxDateEdit;
-        ASPxTextBox editPaymentNumber = GridViewPaymentDocuments.FindEditFormTemplateControl("EditPaymentNumber") as ASPxTextBox;
-        ASPxSpinEdit editPaymentSum = GridViewPaymentDocuments.FindEditFormTemplateControl("EditPaymentSum") as ASPxSpinEdit;
-        ASPxMemo editPaymentPurpose = GridViewPaymentDocuments.FindEditFormTemplateControl("EditPaymentPurpose") as ASPxMemo;
-        ASPxComboBox editPaymentPeriod = GridViewPaymentDocuments.FindEditFormTemplateControl("EditPaymentPeriod") as ASPxComboBox;
-        ASPxSpinEdit editPaymentSm_1 = GridViewPaymentDocuments.FindEditFormTemplateControl("editPaymentSm_1") as ASPxSpinEdit;
-        ASPxSpinEdit editPaymentSm_2 = GridViewPaymentDocuments.FindEditFormTemplateControl("editPaymentSm_2") as ASPxSpinEdit;
-        ASPxSpinEdit editPaymentSm_3 = GridViewPaymentDocuments.FindEditFormTemplateControl("editPaymentSm_3") as ASPxSpinEdit;
-        ASPxSpinEdit editPaymentSm_4 = GridViewPaymentDocuments.FindEditFormTemplateControl("editPaymentSm_4") as ASPxSpinEdit;
-
-        if (editPaymentDate != null && editPaymentNumber != null && editPaymentSum != null && editPaymentPurpose != null && editPaymentPeriod != null)
-        {
-            object rowKey = e.Keys[GridViewPaymentDocuments.KeyFieldName];
-
-            if (rowKey is int)
-            {
-                int paymentDocumentId = (int)rowKey;
-
-                // Find a row in the DataTable, and modify it
-                DataTable table = PaymentDocumentsDataSource;
-
-                if (table != null)
-                {
-                    for (int row = 0; row < table.Rows.Count; row++)
-                    {
-                        object id = table.Rows[row]["id"];
-
-                        if (id is int && (int)id == paymentDocumentId)
-                        {
-                            object[] values = table.Rows[row].ItemArray;
-
-                            // id, report_id, arenda_id, payment_date, payment_number, payment_sum, payment_purpose, modify_date, modified_by, rent_period_id
-                            values[1] = ReportID;
-                            values[2] = RentAgreementID;
-                            values[3] = editPaymentDate.Date.Year >= 1800 ? (object)editPaymentDate.Date : null;
-                            values[4] = editPaymentNumber.Text.Trim().ToUpper().Left(64);
-                            values[5] = (decimal)editPaymentSm_1.Value + (decimal)editPaymentSm_2.Value + (decimal)editPaymentSm_3.Value + (decimal)editPaymentSm_4.Value;
-                            values[6] = editPaymentPurpose.Text.Trim().ToUpper().Left(256);
-                            values[9] = editPaymentPeriod.SelectedItem.Value;
-                            values[10] = editPaymentSm_1.Value;
-                            values[11] = editPaymentSm_2.Value;
-                            values[12] = editPaymentSm_3.Value;
-                            values[13] = editPaymentSm_4.Value;
-
-
-                            table.Rows[row].ItemArray = values;
-                            break;
-                        }
-                    }
-
-                    GridViewPaymentDocuments.DataBind();
-                }
-            }
-        }
-
-        e.Cancel = true;
-        GridViewPaymentDocuments.CancelEdit();
-    }
-
-    protected void SavePaymentDocuments(SqlConnection connection)
-    {
-        System.Web.Security.MembershipUser user = System.Web.Security.Membership.GetUser();
-        string username = (user == null ? "System" : user.UserName);
-
-        // Delete all notes related to this agreement
-        using (SqlCommand cmd = new SqlCommand("DELETE FROM reports1nf_payment_documents WHERE report_id = @rid AND arenda_id = @aid", connection))
-        {
-            cmd.Parameters.Add(new SqlParameter("rid", ReportID));
-            cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
-            cmd.ExecuteNonQuery();
-        }
-
-        // Save each note as a new one
-        DataTable table = PaymentDocumentsDataSource;
-
-        if (table != null)
-        {
-            Dictionary<string, object> parameters = new Dictionary<string, object>();
-
-            for (int row = 0; row < table.Rows.Count; row++)
-            {
-                object[] values = table.Rows[row].ItemArray;
-
-                // id, report_id, arenda_id, payment_date, payment_number, payment_sum, payment_purpose, modify_date, modified_by, rent_period_id
-
-                string fieldList = "report_id, arenda_id, modify_date, modified_by";
-                string paramList = "@rid, @aid, @mdt, @mby";
-
-                parameters.Clear();
-                parameters.Add("rid", ReportID);
-                parameters.Add("aid", RentAgreementID);
-                parameters.Add("mdt", DateTime.Now);
-                parameters.Add("mby", username.Left(64));
-
-                if (values[3] is DateTime)
-                {
-                    fieldList += ", payment_date";
-                    paramList += ", @payment_date";
-                    parameters.Add("payment_date", values[3]);
-                }
-
-                if (values[4] is string)
-                {
-                    fieldList += ", payment_number";
-                    paramList += ", @payment_number";
-                    parameters.Add("payment_number", values[4]);
-                }
-
-                if (values[5] is decimal)
-                {
-                    fieldList += ", payment_sum";
-                    paramList += ", @payment_sum";
-                    parameters.Add("payment_sum", values[5]);
-                }
-
-                if (values[6] is string)
-                {
-                    fieldList += ", payment_purpose";
-                    paramList += ", @payment_purpose";
-                    parameters.Add("payment_purpose", values[6]);
-                }
-
-                if (values[9] is Int32)
-                {
-                    fieldList += ", rent_period_id";
-                    paramList += ", @rent_period_id";
-                    parameters.Add("rent_period_id", values[9]);
-                }
-
-                if (values[10] is decimal)
-                {
-                    fieldList += ", payment_sm_1";
-                    paramList += ", @payment_sm_1";
-                    parameters.Add("payment_sm_1", values[10]);
-                }
-
-                if (values[11] is decimal)
-                {
-                    fieldList += ", payment_sm_2";
-                    paramList += ", @payment_sm_2";
-                    parameters.Add("payment_sm_2", values[11]);
-                }
-
-                if (values[12] is decimal)
-                {
-                    fieldList += ", payment_sm_3";
-                    paramList += ", @payment_sm_3";
-                    parameters.Add("payment_sm_3", values[12]);
-                }
-
-                if (values[13] is decimal)
-                {
-                    fieldList += ", payment_sm_4";
-                    paramList += ", @payment_sm_4";
-                    parameters.Add("payment_sm_4", values[13]);
-                }
-
-                using (SqlCommand cmdInsert = new SqlCommand("INSERT INTO reports1nf_payment_documents (" + fieldList + ") VALUES (" + paramList + ")", connection))
-                {
-                    foreach (KeyValuePair<string, object> param in parameters)
-                    {
-                        cmdInsert.Parameters.Add(new SqlParameter(param.Key, param.Value));
-                    }
-
-                    cmdInsert.ExecuteNonQuery();
-                }
-            }
-        }
-    }
-
-    #endregion Working with the table of Payment Documents
-
-    #region Collection tab
-
-    protected void EnableCollectionControls()
-    {
-
-        Control panelCollection = CollectionForm.FindControl("PanelCollection");
-        Control panelCollection2 = CollectionForm.FindControl("PanelCollection2");
-        if (panelCollection is ASPxRoundPanel)
-        {
-            Control checkBox = CollectionForm.FindControl("CheckNoDebt");
-
-            if (checkBox is ASPxCheckBox)
-            {
-                bool enable = !((checkBox as ASPxCheckBox).Checked);
-
-                EnableCollectionControl(panelCollection, enable, "EditCollectionDebtTotal");
-                EnableCollectionControl(panelCollection, enable, "EditCollectionDebtZvit");
-                EnableCollectionControl(panelCollection, enable, "EditCollectionDebt3Month");
-                EnableCollectionControl(panelCollection, enable, "EditCollectionDebt12Month");
-                EnableCollectionControl(panelCollection, enable, "EditCollectionDebt3Years");
-                EnableCollectionControl(panelCollection, enable, "EditCollectionDebtOver3Years");
-                EnableCollectionControl(panelCollection, enable, "EditCollectionDebtVMezhahVitrat");
-                EnableCollectionControl(panelCollection, enable, "EditCollectionDebtSpysano");
-            }
-        }
-        if (panelCollection2 is ASPxRoundPanel)
-        {
-            Control checkBox = CollectionForm.FindControl("CheckNoDebt");
-
-            if (checkBox is ASPxCheckBox)
-            {
-                bool enable = !((checkBox as ASPxCheckBox).Checked);
-
-                EnableCollectionControl(panelCollection2, enable, "EditCollectionNumZahodivTotal");
-                EnableCollectionControl(panelCollection2, enable, "EditCollectionNumZahodivZvit");
-                EnableCollectionControl(panelCollection2, enable, "EditCollectionNumPozovTotal");
-                EnableCollectionControl(panelCollection2, enable, "EditCollectionNumPozovZvit");
-                EnableCollectionControl(panelCollection2, enable, "EditCollectionPozovZadovTotal");
-                EnableCollectionControl(panelCollection2, enable, "EditCollectionPozovZadovZvit");
-                EnableCollectionControl(panelCollection2, enable, "EditCollectionPozovVikonTotal");
-                EnableCollectionControl(panelCollection2, enable, "EditCollectionPozovVikonZvit");
-                EnableCollectionControl(panelCollection2, enable, "EditCollectionDebtPayedTotal");
-                EnableCollectionControl(panelCollection2, enable, "EditCollectionDebtPayedZvit");
-            }
-        }
-    }
-
-    protected void EnableCollectionControl(Control panelCollection, bool enable, string controlID)
-    {
-        Control ctl = panelCollection.FindControl(controlID);
-
-        if (ctl is ASPxSpinEdit)
-        {
-            (ctl as ASPxSpinEdit).ClientEnabled = enable;
-        }
-    }
-
-    protected void EnableInsuranceControls()
-    {
-        Control panelInsurance = InsuranceForm.FindControl("InsurancePanel");
-
-        if (panelInsurance is ASPxRoundPanel)
-        {
-            Control isInsured = panelInsurance.FindControl("is_insured");
-
-            if (isInsured is ASPxCheckBox)
-            {
-                //bool visibility = (isInsured as ASPxCheckBox).Checked;
-                bool enable = (isInsured as ASPxCheckBox).Checked;
-                EnableInsuranceControl(panelInsurance, enable, "insurance_start");
-                EnableInsuranceControl(panelInsurance, enable, "insurance_end");
-                EnableInsuranceControl(panelInsurance, enable, "insurance_sum");
-                /*
+				if (values[16] is int)
+				{
+					fieldList += ", factich_vikorist_id";
+					paramList += ", @factichvikoristid";
+					parameters.Add("factichvikoristid", values[16]);
+				}
+
+
+				using (SqlCommand cmdInsert = new SqlCommand("INSERT INTO reports1nf_arenda_notes (" + fieldList + ") VALUES (" + paramList + ")", connection))
+				{
+					foreach (KeyValuePair<string, object> param in parameters)
+					{
+						cmdInsert.Parameters.Add(new SqlParameter(param.Key, param.Value));
+					}
+
+					cmdInsert.ExecuteNonQuery();
+				}
+			}
+		}
+	}
+
+	#endregion Working with the table of Notes
+
+	#region Working with the table of Payment Documents
+
+	protected DataTable PaymentDocumentsDataSource
+	{
+		get
+		{
+			string key = GetPageUniqueKey();
+
+			object ds = Session[key + "_PAYMENT_DOCUMENTS_DATA_SOURCE"];
+
+			if (ds is DataTable)
+			{
+				return ds as DataTable;
+			}
+
+			object view = SqlDataSourcePaymentDocuments.Select(new DataSourceSelectArguments());
+
+			if (view is DataView)
+			{
+				DataTable dt = (view as DataView).ToTable();
+
+				Session[key + "_PAYMENT_DOCUMENTS_DATA_SOURCE"] = dt;
+
+				return dt;
+			}
+
+			return null;
+		}
+
+		set
+		{
+			Session[GetPageUniqueKey() + "_PAYMENT_DOCUMENTS_DATA_SOURCE"] = value;
+		}
+	}
+
+	protected void CPPaymentDocuments_Callback(object sender, CallbackEventArgsBase e)
+	{
+		if (e.Parameter.StartsWith("add:"))
+		{
+			DataTable table = PaymentDocumentsDataSource;
+
+			if (table != null)
+			{
+				// Look through all the rows in the table, and find a minimum existing id
+				int minExistingId = 0;
+
+				for (int row = 0; row < table.Rows.Count; row++)
+				{
+					object id = table.Rows[row]["id"];
+
+					if (id is int && (int)id < minExistingId)
+					{
+						minExistingId = (int)id;
+					}
+				}
+
+				int newRowId = (minExistingId < 0) ? minExistingId - 1 : -1;
+
+				// id, report_id, arenda_id, payment_date, payment_number, payment_sum, payment_purpose
+
+				object[] values = new object[] { newRowId, ReportID, RentAgreementID, null, "", 0m, "", null, null, ActiveRentPeriodID, 0m, 0m, 0m, 0m };
+
+				table.Rows.Add(values);
+
+				GridViewPaymentDocuments.DataBind();
+			}
+		}
+	}
+
+	protected void CPRentPayment_Callback(object sender, CallbackEventArgsBase e)
+	{
+		if (e.Parameter.StartsWith("calc:"))
+		{
+			decimal total_income = 0;
+			decimal total_income_1 = 0;
+			decimal total_income_2 = 0;
+			decimal total_income_3 = 0;
+			decimal total_income_4 = 0;
+			int active_rent_period_id;
+
+			ASPxComboBox reportingPeriodCombo = PaymentForm.FindControl("ReportingPeriodCombo") as ASPxComboBox;
+			if (reportingPeriodCombo != null)
+			{
+				active_rent_period_id = (int)reportingPeriodCombo.Value;
+			}
+			else
+			{
+				active_rent_period_id = ActiveRentPeriodID;
+			}
+			DataTable table = PaymentDocumentsDataSource;
+
+			if (table != null)
+			{
+				for (int row = 0; row < table.Rows.Count; row++)
+				{
+					var rent_period_id = (int)table.Rows[row]["rent_period_id"];
+
+					if (rent_period_id == active_rent_period_id)
+					{
+						total_income += (decimal)table.Rows[row]["payment_sum"];
+						total_income_1 += (decimal)table.Rows[row]["payment_sm_1"];
+						total_income_2 += (decimal)table.Rows[row]["payment_sm_2"];
+						total_income_3 += (decimal)table.Rows[row]["payment_sm_3"];
+						total_income_4 += (decimal)table.Rows[row]["payment_sm_4"];
+
+					}
+				}
+			}
+			Control panelRentPayment = PaymentForm.FindControl("PanelRentPaymentDocuments");
+			if (panelRentPayment != null)
+			{
+				Control cpRentPayment = panelRentPayment.FindControl("CPRentPayment");
+				if (cpRentPayment != null)
+				{
+					Control editPaymentReceived = cpRentPayment.FindControl("EditPaymentReceived_orndpymnt");
+
+					if (editPaymentReceived is ASPxSpinEdit)
+						(editPaymentReceived as ASPxSpinEdit).Value = total_income;
+
+					editPaymentReceived = cpRentPayment.FindControl("EditPaymentNarZvit_orndpymnt");
+					if (editPaymentReceived is ASPxSpinEdit)
+						(editPaymentReceived as ASPxSpinEdit).Value = total_income_1;
+
+					editPaymentReceived = cpRentPayment.FindControl("Edit_avance_paymentnar");
+					if (editPaymentReceived is ASPxSpinEdit)
+						(editPaymentReceived as ASPxSpinEdit).Value = total_income_2;
+
+					editPaymentReceived = cpRentPayment.FindControl("EditPaymentOldDebtsPayed_orndpymnt");
+					if (editPaymentReceived is ASPxSpinEdit)
+						(editPaymentReceived as ASPxSpinEdit).Value = total_income_3;
+
+					editPaymentReceived = cpRentPayment.FindControl("edit_return_orend_payed");
+					if (editPaymentReceived is ASPxSpinEdit)
+						(editPaymentReceived as ASPxSpinEdit).Value = total_income_4;
+				}
+			}
+		}
+	}
+
+	protected void GridViewPaymentDocuments_RowDeleting(object sender, ASPxDataDeletingEventArgs e)
+	{
+		object rowKey = e.Keys[GridViewPaymentDocuments.KeyFieldName];
+
+		if (rowKey is int)
+		{
+			int paymentDocumentId = (int)rowKey;
+
+			// Find a row in the DataTable, and delete it
+			DataTable table = PaymentDocumentsDataSource;
+
+			if (table != null)
+			{
+				for (int row = 0; row < table.Rows.Count; row++)
+				{
+					object id = table.Rows[row]["id"];
+
+					if (id is int && (int)id == paymentDocumentId)
+					{
+						table.Rows.RemoveAt(row);
+						break;
+					}
+				}
+				GridViewPaymentDocuments.DataBind();
+			}
+		}
+
+		e.Cancel = true;
+	}
+
+	protected void GridViewPaymentDocuments_RowUpdating(object sender, ASPxDataUpdatingEventArgs e)
+	{
+		ASPxDateEdit editPaymentDate = GridViewPaymentDocuments.FindEditFormTemplateControl("EditPaymentDate") as ASPxDateEdit;
+		ASPxTextBox editPaymentNumber = GridViewPaymentDocuments.FindEditFormTemplateControl("EditPaymentNumber") as ASPxTextBox;
+		ASPxSpinEdit editPaymentSum = GridViewPaymentDocuments.FindEditFormTemplateControl("EditPaymentSum") as ASPxSpinEdit;
+		ASPxMemo editPaymentPurpose = GridViewPaymentDocuments.FindEditFormTemplateControl("EditPaymentPurpose") as ASPxMemo;
+		ASPxComboBox editPaymentPeriod = GridViewPaymentDocuments.FindEditFormTemplateControl("EditPaymentPeriod") as ASPxComboBox;
+		ASPxSpinEdit editPaymentSm_1 = GridViewPaymentDocuments.FindEditFormTemplateControl("editPaymentSm_1") as ASPxSpinEdit;
+		ASPxSpinEdit editPaymentSm_2 = GridViewPaymentDocuments.FindEditFormTemplateControl("editPaymentSm_2") as ASPxSpinEdit;
+		ASPxSpinEdit editPaymentSm_3 = GridViewPaymentDocuments.FindEditFormTemplateControl("editPaymentSm_3") as ASPxSpinEdit;
+		ASPxSpinEdit editPaymentSm_4 = GridViewPaymentDocuments.FindEditFormTemplateControl("editPaymentSm_4") as ASPxSpinEdit;
+
+		if (editPaymentDate != null && editPaymentNumber != null && editPaymentSum != null && editPaymentPurpose != null && editPaymentPeriod != null)
+		{
+			object rowKey = e.Keys[GridViewPaymentDocuments.KeyFieldName];
+
+			if (rowKey is int)
+			{
+				int paymentDocumentId = (int)rowKey;
+
+				// Find a row in the DataTable, and modify it
+				DataTable table = PaymentDocumentsDataSource;
+
+				if (table != null)
+				{
+					for (int row = 0; row < table.Rows.Count; row++)
+					{
+						object id = table.Rows[row]["id"];
+
+						if (id is int && (int)id == paymentDocumentId)
+						{
+							object[] values = table.Rows[row].ItemArray;
+
+							// id, report_id, arenda_id, payment_date, payment_number, payment_sum, payment_purpose, modify_date, modified_by, rent_period_id
+							values[1] = ReportID;
+							values[2] = RentAgreementID;
+							values[3] = editPaymentDate.Date.Year >= 1800 ? (object)editPaymentDate.Date : null;
+							values[4] = editPaymentNumber.Text.Trim().ToUpper().Left(64);
+							values[5] = (decimal)editPaymentSm_1.Value + (decimal)editPaymentSm_2.Value + (decimal)editPaymentSm_3.Value + (decimal)editPaymentSm_4.Value;
+							values[6] = editPaymentPurpose.Text.Trim().ToUpper().Left(256);
+							values[9] = editPaymentPeriod.SelectedItem.Value;
+							values[10] = editPaymentSm_1.Value;
+							values[11] = editPaymentSm_2.Value;
+							values[12] = editPaymentSm_3.Value;
+							values[13] = editPaymentSm_4.Value;
+
+
+							table.Rows[row].ItemArray = values;
+							break;
+						}
+					}
+
+					GridViewPaymentDocuments.DataBind();
+				}
+			}
+		}
+
+		e.Cancel = true;
+		GridViewPaymentDocuments.CancelEdit();
+	}
+
+	protected void SavePaymentDocuments(SqlConnection connection)
+	{
+		System.Web.Security.MembershipUser user = System.Web.Security.Membership.GetUser();
+		string username = (user == null ? "System" : user.UserName);
+
+		// Delete all notes related to this agreement
+		using (SqlCommand cmd = new SqlCommand("DELETE FROM reports1nf_payment_documents WHERE report_id = @rid AND arenda_id = @aid", connection))
+		{
+			cmd.Parameters.Add(new SqlParameter("rid", ReportID));
+			cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
+			cmd.ExecuteNonQuery();
+		}
+
+		// Save each note as a new one
+		DataTable table = PaymentDocumentsDataSource;
+
+		if (table != null)
+		{
+			Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+			for (int row = 0; row < table.Rows.Count; row++)
+			{
+				object[] values = table.Rows[row].ItemArray;
+
+				// id, report_id, arenda_id, payment_date, payment_number, payment_sum, payment_purpose, modify_date, modified_by, rent_period_id
+
+				string fieldList = "report_id, arenda_id, modify_date, modified_by";
+				string paramList = "@rid, @aid, @mdt, @mby";
+
+				parameters.Clear();
+				parameters.Add("rid", ReportID);
+				parameters.Add("aid", RentAgreementID);
+				parameters.Add("mdt", DateTime.Now);
+				parameters.Add("mby", username.Left(64));
+
+				if (values[3] is DateTime)
+				{
+					fieldList += ", payment_date";
+					paramList += ", @payment_date";
+					parameters.Add("payment_date", values[3]);
+				}
+
+				if (values[4] is string)
+				{
+					fieldList += ", payment_number";
+					paramList += ", @payment_number";
+					parameters.Add("payment_number", values[4]);
+				}
+
+				if (values[5] is decimal)
+				{
+					fieldList += ", payment_sum";
+					paramList += ", @payment_sum";
+					parameters.Add("payment_sum", values[5]);
+				}
+
+				if (values[6] is string)
+				{
+					fieldList += ", payment_purpose";
+					paramList += ", @payment_purpose";
+					parameters.Add("payment_purpose", values[6]);
+				}
+
+				if (values[9] is Int32)
+				{
+					fieldList += ", rent_period_id";
+					paramList += ", @rent_period_id";
+					parameters.Add("rent_period_id", values[9]);
+				}
+
+				if (values[10] is decimal)
+				{
+					fieldList += ", payment_sm_1";
+					paramList += ", @payment_sm_1";
+					parameters.Add("payment_sm_1", values[10]);
+				}
+
+				if (values[11] is decimal)
+				{
+					fieldList += ", payment_sm_2";
+					paramList += ", @payment_sm_2";
+					parameters.Add("payment_sm_2", values[11]);
+				}
+
+				if (values[12] is decimal)
+				{
+					fieldList += ", payment_sm_3";
+					paramList += ", @payment_sm_3";
+					parameters.Add("payment_sm_3", values[12]);
+				}
+
+				if (values[13] is decimal)
+				{
+					fieldList += ", payment_sm_4";
+					paramList += ", @payment_sm_4";
+					parameters.Add("payment_sm_4", values[13]);
+				}
+
+				using (SqlCommand cmdInsert = new SqlCommand("INSERT INTO reports1nf_payment_documents (" + fieldList + ") VALUES (" + paramList + ")", connection))
+				{
+					foreach (KeyValuePair<string, object> param in parameters)
+					{
+						cmdInsert.Parameters.Add(new SqlParameter(param.Key, param.Value));
+					}
+
+					cmdInsert.ExecuteNonQuery();
+				}
+			}
+		}
+	}
+
+	#endregion Working with the table of Payment Documents
+
+	#region Collection tab
+
+	protected void EnableCollectionControls()
+	{
+
+		Control panelCollection = CollectionForm.FindControl("PanelCollection");
+		Control panelCollection2 = CollectionForm.FindControl("PanelCollection2");
+		if (panelCollection is ASPxRoundPanel)
+		{
+			Control checkBox = CollectionForm.FindControl("CheckNoDebt");
+
+			if (checkBox is ASPxCheckBox)
+			{
+				bool enable = !((checkBox as ASPxCheckBox).Checked);
+
+				EnableCollectionControl(panelCollection, enable, "EditCollectionDebtTotal");
+				EnableCollectionControl(panelCollection, enable, "EditCollectionDebtZvit");
+				EnableCollectionControl(panelCollection, enable, "EditCollectionDebt3Month");
+				EnableCollectionControl(panelCollection, enable, "EditCollectionDebt12Month");
+				EnableCollectionControl(panelCollection, enable, "EditCollectionDebt3Years");
+				EnableCollectionControl(panelCollection, enable, "EditCollectionDebtOver3Years");
+				EnableCollectionControl(panelCollection, enable, "EditCollectionDebtVMezhahVitrat");
+				EnableCollectionControl(panelCollection, enable, "EditCollectionDebtSpysano");
+			}
+		}
+		if (panelCollection2 is ASPxRoundPanel)
+		{
+			Control checkBox = CollectionForm.FindControl("CheckNoDebt");
+
+			if (checkBox is ASPxCheckBox)
+			{
+				bool enable = !((checkBox as ASPxCheckBox).Checked);
+
+				EnableCollectionControl(panelCollection2, enable, "EditCollectionNumZahodivTotal");
+				EnableCollectionControl(panelCollection2, enable, "EditCollectionNumZahodivZvit");
+				EnableCollectionControl(panelCollection2, enable, "EditCollectionNumPozovTotal");
+				EnableCollectionControl(panelCollection2, enable, "EditCollectionNumPozovZvit");
+				EnableCollectionControl(panelCollection2, enable, "EditCollectionPozovZadovTotal");
+				EnableCollectionControl(panelCollection2, enable, "EditCollectionPozovZadovZvit");
+				EnableCollectionControl(panelCollection2, enable, "EditCollectionPozovVikonTotal");
+				EnableCollectionControl(panelCollection2, enable, "EditCollectionPozovVikonZvit");
+				EnableCollectionControl(panelCollection2, enable, "EditCollectionDebtPayedTotal");
+				EnableCollectionControl(panelCollection2, enable, "EditCollectionDebtPayedZvit");
+			}
+		}
+	}
+
+	protected void EnableCollectionControl(Control panelCollection, bool enable, string controlID)
+	{
+		Control ctl = panelCollection.FindControl(controlID);
+
+		if (ctl is ASPxSpinEdit)
+		{
+			(ctl as ASPxSpinEdit).ClientEnabled = enable;
+		}
+	}
+
+	protected void EnableInsuranceControls()
+	{
+		Control panelInsurance = InsuranceForm.FindControl("InsurancePanel");
+
+		if (panelInsurance is ASPxRoundPanel)
+		{
+			Control isInsured = panelInsurance.FindControl("is_insured");
+
+			if (isInsured is ASPxCheckBox)
+			{
+				//bool visibility = (isInsured as ASPxCheckBox).Checked;
+				bool enable = (isInsured as ASPxCheckBox).Checked;
+				EnableInsuranceControl(panelInsurance, enable, "insurance_start");
+				EnableInsuranceControl(panelInsurance, enable, "insurance_end");
+				EnableInsuranceControl(panelInsurance, enable, "insurance_sum");
+				/*
                 panelInsurance.FindControl("lbl_insurance_start").Visible = visibility;
                 panelInsurance.FindControl("insurance_start").Visible = visibility;
                 panelInsurance.FindControl("lbl_insurance_end").Visible = visibility;
                 panelInsurance.FindControl("insurance_end").Visible = visibility;
                 panelInsurance.FindControl("lbl_insurance_sum").Visible = visibility;
                 panelInsurance.FindControl("insurance_sum").Visible = visibility;*/
-            }
-        }
-    }
-
-    protected void EnableInsuranceControl(Control panelInsurance, bool enable, string controlID)
-    {
-        Control ctl = panelInsurance.FindControl(controlID);
-
-        if (ctl is ASPxSpinEdit)
-        {
-            (ctl as ASPxSpinEdit).ClientEnabled = enable;
-        }
-        else if (ctl is ASPxDateEdit)
-        {
-            (ctl as ASPxDateEdit).ClientEnabled = enable;
-        }
-    }
-
-    #endregion (Collection tab)
-
-    protected void SaveChanges(SqlConnection connection)
-    {
-//////
-        try
-	{
-
-        System.Web.Security.MembershipUser user = System.Web.Security.Membership.GetUser();
-        string username = (user == null ? "System" : user.UserName);
-
-        Dictionary<string, Control> controls = new Dictionary<string, Control>();
-
-        Reports1NFUtils.GetAllControls(OrganizationsForm, controls);
-        Reports1NFUtils.GetAllControls(PaymentForm, controls);
-        Reports1NFUtils.GetAllControls(CollectionForm, controls);
-        Reports1NFUtils.GetAllControls(InsuranceForm, controls);
-		Reports1NFUtils.GetAllControls(AddressForm, controls);
-
-
-
-
-            //////
-        var rent_start_date = Reports1NFUtils.GetDateValue(controls, "EditStartDate");
-	    if (rent_start_date == null)
-	    {
-		    var lognet = log4net.LogManager.GetLogger("ReportWebSite");
-		    lognet.Debug("--------------- SaveChanges Error 77777 ----------------");
-		    throw new ArgumentException("Помилка збереження даних. Спробуйте пізніше.");
-	    }
-
-        // Update the rent decisions
-        SaveDecisions(connection);
-
-		// Update the rent subleases
-		SaveSubleases(connection);
-
-		// Update the agreement notes
-		SaveNotes(connection);
-
-        // Update the payment documents
-        SavePaymentDocuments(connection);
-
-        Dictionary<string, object> parameters = new Dictionary<string, object>();
-        string fieldList = "";
-
-        // Get the rent agreement properties
-        AddQueryParameter(ref fieldList, "agreement_num", "anum", Reports1NFUtils.GetEditText(controls, "EditAgreementNum"), parameters);
-        AddQueryParameter(ref fieldList, "agreement_date", "adt", Reports1NFUtils.GetDateValue(controls, "EditAgreementDate"), parameters);
-        AddQueryParameter(ref fieldList, "rent_start_date", "dtstart", Reports1NFUtils.GetDateValue(controls, "EditStartDate"), parameters);
-
-        AddQueryParameter(ref fieldList, "base_month", "basemonth", Reports1NFUtils.GetDateValue(controls, "EditBaseMonth"), parameters);
-        AddQueryParameter(ref fieldList, "method_calc_id", "methodcalcid", Reports1NFUtils.GetDropDownValue(controls, "EditMethodCalc"), parameters);
-
-        AddQueryParameter(ref fieldList, "rent_finish_date", "dtfin", Reports1NFUtils.GetDateValue(controls, "EditFinishDate"), parameters);
-        AddQueryParameter(ref fieldList, "rent_actual_finish_date", "dtafin", Reports1NFUtils.GetDateValue(controls, "EditActualFinishDate"), parameters);
-        AddQueryParameter(ref fieldList, "payment_type_id", "payid", Reports1NFUtils.GetDropDownValue(controls, "ComboPaymentType"), parameters);
-
-        AddQueryParameter(ref fieldList, "rent_square", "rsqr", Utils.ConvertStrToDecimal(Reports1NFUtils.GetEditText(controls, "EditRentSquare"), -1m), parameters);
-        AddQueryParameter(ref fieldList, "cost_expert_total", "sqrexp", Reports1NFUtils.GetEditNumeric(controls, "EditCostExpert"), parameters);
-        AddQueryParameter(ref fieldList, "date_expert", "dtexp", Reports1NFUtils.GetDateValue(controls, "EditDateExpert"), parameters);
-        AddQueryParameter(ref fieldList, "note", "note", Reports1NFUtils.GetEditText(controls, "MemoProlongationComment"), parameters);
-
-        //AddQueryParameter(ref fieldList, "is_subarenda", "issub", Reports1NFUtils.GetCheckBoxValue(controls, "CheckSubarenda") ? 1 : 0, parameters);
-		AddQueryParameter(ref fieldList, "is_subarenda", "issub", (SubleasesDataSource.Rows.Count > 0 ? 1 : 0), parameters);
-				
-        AddQueryParameter(ref fieldList, "is_loan_agreement", "isloanagr", Reports1NFUtils.GetCheckBoxValue(controls, "CheckLoanAgreement") ? 1 : 0, parameters);
-        
-        AddQueryParameter(ref fieldList, "agreement_state", "ast", 
-            Reports1NFUtils.IsRadioButtonChecked(controls, "RadioAgreementActive") ? 1 : 
-            Reports1NFUtils.IsRadioButtonChecked(controls, "RadioAgreementToxic") ? 2 : 
-            Reports1NFUtils.IsRadioButtonChecked(controls, "RadioAgreementContinuedByAnother") ? 3 : 0, 
-            parameters);
-
-
-        AddQueryParameter(ref fieldList, "update_src_id", "usrc", (int)2, parameters); // 2 ~ from the balans holder
-        AddQueryParameter(ref fieldList, "agreement_kind_id", "agrkind", (int)1, parameters); // 1 ~ Arenda
-
-        AddQueryParameter(ref fieldList, "org_renter_id", "renid", Reports1NFUtils.GetDropDownValue(controls, "ComboRenterOrg"), parameters);
-        AddQueryParameter(ref fieldList, "org_giver_id", "givid", Reports1NFUtils.GetDropDownValue(controls, "ComboGiverOrg"), parameters);
-
-        // System parameters
-        AddQueryParameter(ref fieldList, "modify_date", "mdt", DateTime.Now, parameters);
-        AddQueryParameter(ref fieldList, "modified_by", "mby", username.Left(64), parameters);
-
-        // insurance
-        AddQueryParameter(ref fieldList, "is_insured", "is_insured", Reports1NFUtils.GetCheckBoxValue(controls, "is_insured") ? 1 : 0, parameters);
-        AddQueryParameter(ref fieldList, "insurance_start", "insurance_start", Reports1NFUtils.GetDateValue(controls, "insurance_start"), parameters);
-        AddQueryParameter(ref fieldList, "insurance_end", "insurance_end", Reports1NFUtils.GetDateValue(controls, "insurance_end"), parameters);
-        AddQueryParameter(ref fieldList, "insurance_sum", "insurance_sum", Reports1NFUtils.GetEditNumeric(controls, "insurance_sum"), parameters);
-
-		var building_id = Reports1NFUtils.GetEditNumeric(controls, "AddrBuildingId");
-		AddQueryParameter(ref fieldList, "building_id", "buildingid", building_id, parameters);
-
-        using (SqlCommand cmd = new SqlCommand("UPDATE reports1nf_arenda SET " + fieldList + ", is_valid = @isValid, validation_errors = @errMsgs WHERE report_id = @rid AND id = @aid", connection))
-        {
-            cmd.Parameters.Add(new SqlParameter("rid", ReportID));
-            cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
-            cmd.Parameters.Add(new SqlParameter("isValid", validator.IsValid));
-            cmd.Parameters.Add(new SqlParameter("errMsgs", string.Join("<br/>", validator.ValidationErrorMessages)));
-
-            foreach (KeyValuePair<string, object> param in parameters)
-            {
-                cmd.Parameters.Add(new SqlParameter(param.Key, param.Value));
-            }
-
-            cmd.ExecuteNonQuery();
-        }
-
-		UpdateReports1nfBuildings(connection);
-
-        // If comment is specified, add the default comment
-        int newGiverId = Reports1NFUtils.GetDropDownValue(controls, "ComboGiverOrg");
-        string comment = Reports1NFUtils.GetEditText(controls, "EditGiverComment");
-
-        if (newGiverId != Utils.GUKVOrganizationID && comment.Length > 0)
-        {
-            Reports1NFUtils.AddComment(connection, ReportID, comment,
-                0, 0, 0, RentAgreementID, 0, "ComboGiverOrg", Resources.Strings.RentAgreementGiver, false, false);
-        }
-
-        // Update the payment information
-        parameters.Clear();
-        fieldList = "";
-
-        AddQueryParameter(ref fieldList, "rent_period_id", "period", Reports1NFUtils.GetDropDownValue(controls, "ReportingPeriodCombo"), parameters);
-
-        AddQueryParameter(ref fieldList, "sqr_total_rent", "sqrtot", Utils.ConvertStrToDecimal(Reports1NFUtils.GetEditText(controls, "EditPaymentSqrTotal_orndpymnt"), -1m), parameters);
-        AddQueryParameter(ref fieldList, "sqr_payed_by_percent", "sqrper", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentSqrByPercent_orndpymnt"), parameters);
-        AddQueryParameter(ref fieldList, "sqr_payed_by_1uah", "sqr1uah", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentSqr1UAH_orndpymnt"), parameters);
-        AddQueryParameter(ref fieldList, "sqr_payed_hourly", "sqrhourly", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentSqrHourly_orndpymnt"), parameters);
-
-        AddQueryParameter(ref fieldList, "payment_narah", "paynar", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentNarah_orndpymnt"), parameters);
-        AddQueryParameter(ref fieldList, "znyato_nadmirno_narah", "znyatonadmir", Reports1NFUtils.GetEditNumeric(controls, "edit_znyato_nadmirno_narah"), parameters);
-        AddQueryParameter(ref fieldList, "znyato_from_avance", "znyatoavance", Reports1NFUtils.GetEditNumeric(controls, "edit_znyato_from_avance"), parameters);
-        AddQueryParameter(ref fieldList, "last_year_saldo", "saldo", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentSaldo_orndpymnt"), parameters);
-        AddQueryParameter(ref fieldList, "avance_saldo", "avancesaldo", Reports1NFUtils.GetEditNumeric(controls, "Edit_avance_saldo"), parameters);
-        AddQueryParameter(ref fieldList, "payment_received", "payre", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentReceived_orndpymnt"), parameters);
-        AddQueryParameter(ref fieldList, "payment_nar_zvit", "payzv", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentNarZvit_orndpymnt"), parameters);
-        AddQueryParameter(ref fieldList, "avance_paymentnar", "avancepaymentnar", Reports1NFUtils.GetEditNumeric(controls, "Edit_avance_paymentnar"), parameters);
-        AddQueryParameter(ref fieldList, "old_debts_payed", "odbtp", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentOldDebtsPayed_orndpymnt"), parameters);
-        AddQueryParameter(ref fieldList, "return_orend_payed", "returnorendpayed", Reports1NFUtils.GetEditNumeric(controls, "edit_return_orend_payed"), parameters);
-        AddQueryParameter(ref fieldList, "return_all_orend_payed", "returnallorendpayed", Reports1NFUtils.GetEditNumeric(controls, "edit_return_all_orend_payed"), parameters);
-        AddQueryParameter(ref fieldList, "use_calc_debt", "usecalcdebt", Reports1NFUtils.GetCheckBoxValue(controls, "edit_use_calc_debt") ? 1 : 0, parameters);
-        AddQueryParameter(ref fieldList, "avance_plat", "avanceplat", Reports1NFUtils.GetEditNumeric(controls, "edit_avance_plat"), parameters);
-
-        AddQueryParameter(ref fieldList, "zabezdepoz_narah", "zabezdepoznarah", Reports1NFUtils.GetEditNumeric(controls, "edit_zabezdepoz_narah"), parameters);
-        AddQueryParameter(ref fieldList, "zabezdepoz_saldo", "zabezdepozsaldo", Reports1NFUtils.GetEditNumeric(controls, "edit_zabezdepoz_saldo"), parameters);
-        AddQueryParameter(ref fieldList, "zabezdepoz_prishlo", "zabezdepozprishlo", Reports1NFUtils.GetEditNumeric(controls, "edit_zabezdepoz_prishlo"), parameters);
-        AddQueryParameter(ref fieldList, "zabezdepoz_nadhod", "zabezdepoznadhod", Reports1NFUtils.GetEditNumeric(controls, "edit_zabezdepoz_nadhod"), parameters);
-        AddQueryParameter(ref fieldList, "use_zabezdepoz", "usezabezdepoz", Reports1NFUtils.GetCheckBoxValue(controls, "edit_use_zabezdepoz") ? 1 : 0, parameters);
-        AddQueryParameter(ref fieldList, "zabezdepoz_debt", "zabezdepozdebt", Reports1NFUtils.GetEditNumeric(controls, "edit_zabezdepoz_debt"), parameters);
-        AddQueryParameter(ref fieldList, "total_pereplata", "totalpereplata", Reports1NFUtils.GetEditNumeric(controls, "edit_total_pereplata"), parameters);
-        AddQueryParameter(ref fieldList, "zabezd_usesum", "zabezdusesum", Reports1NFUtils.GetEditNumeric(controls, "edit_zabezd_usesum"), parameters);
-        AddQueryParameter(ref fieldList, "avance_usesum", "avanceusesum", Reports1NFUtils.GetEditNumeric(controls, "edit_avance_usesum"), parameters);
-
-        for (   int k = 0; k <= 13; k++)
-        {
-            AddQueryParameter(ref fieldList, "debtkvart_" + k, "vdebtkvart_" + k, Reports1NFUtils.GetEditNumeric(controls, "edit_debtkvart_" + k), parameters);
-        }
-
-        //AddQueryParameter(ref fieldList, "budget_narah_50_uah", "budg50n", Reports1NFUtils.GetEditNumeric(controls, "EditBudgetNarah50_orndpymnt"), parameters);
-        //AddQueryParameter(ref fieldList, "budget_zvit_50_uah", "budg50z", Reports1NFUtils.GetEditNumeric(controls, "EditBudgetZvit50_orndpymnt"), parameters);
-        //AddQueryParameter(ref fieldList, "budget_prev_50_uah", "budg50p", Reports1NFUtils.GetEditNumeric(controls, "EditBudgetPrev50_orndpymnt"), parameters);
-        //AddQueryParameter(ref fieldList, "budget_debt_50_uah", "budg50d", Reports1NFUtils.GetEditNumeric(controls, "EditBudgetDebt50_orndpymnt"), parameters);
-        //AddQueryParameter(ref fieldList, "budget_debt_30_50_uah", "budg50o", Reports1NFUtils.GetEditNumeric(controls, "EditBudgetDebtOld50_orndpymnt"), parameters);
-
-        AddQueryParameter(ref fieldList, "is_discount", "isout", Reports1NFUtils.GetCheckBoxValue(controls, "CheckRenterIsOut") ? 1 : 0, parameters);
-        AddQueryParameter(ref fieldList, "is_debt_exists", "isdebt", Reports1NFUtils.GetCheckBoxValue(controls, "CheckNoDebt") ? 0 : 1, parameters);
-        //AddQueryParameter(ref fieldList, "is_special_organization", "isSpecOrg", Reports1NFUtils.GetCheckBoxValue(controls, "CheckIsSpecialOrganization") ? 1 : 0, parameters);
-
-        AddQueryParameter(ref fieldList, "znizhka1_name", "znizhka1name", Reports1NFUtils.GetEditText(controls, "edit_znizhka1_name"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka1_percent", "znizhka1percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka1_percent"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka1_date1", "znizhka1date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka1_date1"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka1_date2", "znizhka1date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka1_date2"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka1_invnums", "znizhka1invnums", Reports1NFUtils.GetEditText(controls, "znizhka1_invnums"), parameters);
-
-        AddQueryParameter(ref fieldList, "znizhka2_name", "znizhka2name", Reports1NFUtils.GetEditText(controls, "edit_znizhka2_name"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka2_percent", "znizhka2percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka2_percent"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka2_date1", "znizhka2date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka2_date1"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka2_date2", "znizhka2date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka2_date2"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka2_invnums", "znizhka2invnums", Reports1NFUtils.GetEditText(controls, "znizhka2_invnums"), parameters);
-
-        AddQueryParameter(ref fieldList, "znizhka3_name", "znizhka3name", Reports1NFUtils.GetEditText(controls, "edit_znizhka3_name"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka3_percent", "znizhka3percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka3_percent"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka3_date1", "znizhka3date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka3_date1"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka3_date2", "znizhka3date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka3_date2"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka3_invnums", "znizhka3invnums", Reports1NFUtils.GetEditText(controls, "znizhka3_invnums"), parameters);
-
-        AddQueryParameter(ref fieldList, "znizhka4_name", "znizhka4name", Reports1NFUtils.GetEditText(controls, "edit_znizhka4_name"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka4_percent", "znizhka4percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka4_percent"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka4_date1", "znizhka4date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka4_date1"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka4_date2", "znizhka4date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka4_date2"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka4_invnums", "znizhka4invnums", Reports1NFUtils.GetEditText(controls, "znizhka4_invnums"), parameters);
-
-        AddQueryParameter(ref fieldList, "znizhka5_name", "znizhka5name", Reports1NFUtils.GetEditText(controls, "edit_znizhka5_name"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka5_percent", "znizhka5percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka5_percent"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka5_date1", "znizhka5date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka5_date1"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka5_date2", "znizhka5date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka5_date2"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka5_invnums", "znizhka5invnums", Reports1NFUtils.GetEditText(controls, "znizhka5_invnums"), parameters);
-
-        AddQueryParameter(ref fieldList, "znizhka6_name", "znizhka6name", Reports1NFUtils.GetEditText(controls, "edit_znizhka6_name"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka6_percent", "znizhka6percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka6_percent"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka6_date1", "znizhka6date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka6_date1"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka6_date2", "znizhka6date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka6_date2"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka6_invnums", "znizhka6invnums", Reports1NFUtils.GetEditText(controls, "znizhka6_invnums"), parameters);
-
-        AddQueryParameter(ref fieldList, "znizhka7_name", "znizhka7name", Reports1NFUtils.GetEditText(controls, "edit_znizhka7_name"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka7_percent", "znizhka7percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka7_percent"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka7_date1", "znizhka7date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka7_date1"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka7_date2", "znizhka7date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka7_date2"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka7_invnums", "znizhka7invnums", Reports1NFUtils.GetEditText(controls, "znizhka7_invnums"), parameters);
-
-        AddQueryParameter(ref fieldList, "znizhka8_name", "znizhka8name", Reports1NFUtils.GetEditText(controls, "edit_znizhka8_name"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka8_percent", "znizhka8percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka8_percent"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka8_date1", "znizhka8date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka8_date1"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka8_date2", "znizhka8date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka8_date2"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka8_invnums", "znizhka8invnums", Reports1NFUtils.GetEditText(controls, "znizhka8_invnums"), parameters);
-
-        AddQueryParameter(ref fieldList, "znizhka9_name", "znizhka9name", Reports1NFUtils.GetEditText(controls, "edit_znizhka9_name"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka9_percent", "znizhka9percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka9_percent"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka9_date1", "znizhka9date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka9_date1"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka9_date2", "znizhka9date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka9_date2"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka9_invnums", "znizhka9invnums", Reports1NFUtils.GetEditText(controls, "znizhka9_invnums"), parameters);
-
-        AddQueryParameter(ref fieldList, "znizhka10_name", "znizhka10name", Reports1NFUtils.GetEditText(controls, "edit_znizhka10_name"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka10_percent", "znizhka10percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka10_percent"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka10_date1", "znizhka10date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka10_date1"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka10_date2", "znizhka10date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka10_date2"), parameters);
-        AddQueryParameter(ref fieldList, "znizhka10_invnums", "znizhka10invnums", Reports1NFUtils.GetEditText(controls, "znizhka10_invnums"), parameters);
-
-        AddQueryParameter(ref fieldList, "zvilneno_percent", "zvilnenopercent", Reports1NFUtils.GetEditNumeric(controls, "edit_zvilneno_percent"), parameters);
-		AddQueryParameter(ref fieldList, "zvilneno_date1", "zvilnenodate1", Reports1NFUtils.GetDateValue(controls, "edit_zvilneno_date1"), parameters);
-		AddQueryParameter(ref fieldList, "zvilneno_date2", "zvilnenodate2", Reports1NFUtils.GetDateValue(controls, "edit_zvilneno_date2"), parameters);
-
-		AddQueryParameter(ref fieldList, "zvilbykmp2_percent", "zvilbykmp2percent", Reports1NFUtils.GetEditNumeric(controls, "edit_zvilbykmp2_percent"), parameters);
-		AddQueryParameter(ref fieldList, "zvilbykmp2_date1", "zvilbykmp2date1", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp2_date1"), parameters);
-		AddQueryParameter(ref fieldList, "zvilbykmp2_date2", "zvilbykmp2date2", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp2_date2"), parameters);
-
-		AddQueryParameter(ref fieldList, "zvilbykmp6_percent", "zvilbykmp6percent", Reports1NFUtils.GetEditNumeric(controls, "edit_zvilbykmp6_percent"), parameters);
-		AddQueryParameter(ref fieldList, "zvilbykmp6_date1", "zvilbykmp6date1", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp6_date1"), parameters);
-		AddQueryParameter(ref fieldList, "zvilbykmp6_date2", "zvilbykmp6date2", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp6_date2"), parameters);
-
-		AddQueryParameter(ref fieldList, "zvilbykmp7_percent", "zvilbykmp7percent", Reports1NFUtils.GetEditNumeric(controls, "edit_zvilbykmp7_percent"), parameters);
-		AddQueryParameter(ref fieldList, "zvilbykmp7_date1", "zvilbykmp7date1", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp7_date1"), parameters);
-		AddQueryParameter(ref fieldList, "zvilbykmp7_date2", "zvilbykmp7date2", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp7_date2"), parameters);
-
-		AddQueryParameter(ref fieldList, "zvilbykmp3_percent", "zvilbykmp3percent", Reports1NFUtils.GetEditNumeric(controls, "edit_zvilbykmp3_percent"), parameters);
-		AddQueryParameter(ref fieldList, "zvilbykmp3_date1", "zvilbykmp3date1", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp3_date1"), parameters);
-		AddQueryParameter(ref fieldList, "zvilbykmp3_date2", "zvilbykmp3date2", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp3_date2"), parameters);
-
-        AddQueryParameter(ref fieldList, "povidoleno1_date", "povidoleno1date", Reports1NFUtils.GetDateValue(controls, "edit_povidoleno1_date"), parameters);
-        AddQueryParameter(ref fieldList, "povidoleno1_num", "povidoleno1num", Reports1NFUtils.GetEditText(controls, "edit_povidoleno1_num"), parameters);
-        AddQueryParameter(ref fieldList, "povidoleno2_date", "povidoleno2date", Reports1NFUtils.GetDateValue(controls, "edit_povidoleno2_date"), parameters);
-        AddQueryParameter(ref fieldList, "povidoleno2_num", "povidoleno2num", Reports1NFUtils.GetEditText(controls, "edit_povidoleno2_num"), parameters);
-        AddQueryParameter(ref fieldList, "povidoleno3_date", "povidoleno3date", Reports1NFUtils.GetDateValue(controls, "edit_povidoleno3_date"), parameters);
-        AddQueryParameter(ref fieldList, "povidoleno3_num", "povidoleno3num", Reports1NFUtils.GetEditText(controls, "edit_povidoleno3_num"), parameters);
-        AddQueryParameter(ref fieldList, "povidoleno4_date", "povidoleno4date", Reports1NFUtils.GetDateValue(controls, "edit_povidoleno4_date"), parameters);
-        AddQueryParameter(ref fieldList, "povidoleno4_num", "povidoleno4num", Reports1NFUtils.GetEditText(controls, "edit_povidoleno4_num"), parameters);
-
-        AddQueryParameter(ref fieldList, "debt_total", "debttot", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebtTotal"), parameters);
-        AddQueryParameter(ref fieldList, "debt_zvit", "debtzvit", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebtZvit"), parameters);
-        AddQueryParameter(ref fieldList, "debt_3_month", "debt3m", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebt3Month"), parameters);
-        AddQueryParameter(ref fieldList, "debt_12_month", "debt12m", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebt12Month"), parameters);
-        AddQueryParameter(ref fieldList, "debt_3_years", "debt3y", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebt3Years"), parameters);
-        AddQueryParameter(ref fieldList, "debt_over_3_years", "debtover", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebtOver3Years"), parameters);
-        AddQueryParameter(ref fieldList, "debt_v_mezhah_vitrat", "debtmv", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebtVMezhahVitrat"), parameters);
-        AddQueryParameter(ref fieldList, "debt_spysano", "debtsp", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebtSpysano"), parameters);
-        AddQueryParameter(ref fieldList, "avance_debt", "avancedebt", Reports1NFUtils.GetEditNumeric(controls, "Edit_avance_debt"), parameters);
-
-        AddQueryParameter(ref fieldList, "num_zahodiv_total", "numzaht", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionNumZahodivTotal"), parameters);
-        AddQueryParameter(ref fieldList, "num_zahodiv_zvit", "numzahz", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionNumZahodivZvit"), parameters);
-        AddQueryParameter(ref fieldList, "num_pozov_total", "numpozt", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionNumPozovTotal"), parameters);
-        AddQueryParameter(ref fieldList, "num_pozov_zvit", "numpozz", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionNumPozovZvit"), parameters);
-        AddQueryParameter(ref fieldList, "num_pozov_zadov_total", "zadovt", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionPozovZadovTotal"), parameters);
-        AddQueryParameter(ref fieldList, "num_pozov_zadov_zvit", "zadovz", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionPozovZadovZvit"), parameters);
-        AddQueryParameter(ref fieldList, "num_pozov_vikon_total", "vikont", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionPozovVikonTotal"), parameters);
-        AddQueryParameter(ref fieldList, "num_pozov_vikon_zvit", "vikonz", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionPozovVikonZvit"), parameters);
-
-        AddQueryParameter(ref fieldList, "debt_pogasheno_total", "dpaytot", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebtPayedTotal"), parameters);
-        AddQueryParameter(ref fieldList, "debt_pogasheno_zvit", "dpayzvit", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebtPayedZvit"), parameters);
-
-        // System parameters
-        AddQueryParameter(ref fieldList, "modify_date", "mdt", DateTime.Now, parameters);
-        AddQueryParameter(ref fieldList, "modified_by", "mby", username.Left(64), parameters);
-
-
-
-        int idInReport = 0;
-        using (SqlCommand cmd = new SqlCommand("SELECT id FROM reports1nf_arenda_payments WHERE report_id = @rid AND arenda_id = @aid", connection))
-        {
-            cmd.Parameters.Add(new SqlParameter("rid", ReportID));
-            cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
-            using (SqlDataReader r = cmd.ExecuteReader())
-            {
-                if (r.Read())
-                    idInReport = r.IsDBNull(0) ? 0 : (int)r.GetValue(0);
-                r.Close();
-            }
-        }
-
-
-
-
-        //int cnt = 0;
-        //using (SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM reports1nf_arenda_payments WHERE report_id = @rid AND arenda_id = @aid", connection))
-        //{
-        //    cmd.Parameters.Add(new SqlParameter("rid", ReportID));
-        //    cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
-        //    using (SqlDataReader r = cmd.ExecuteReader())
-        //    {
-        //        if (r.Read())
-        //            cnt = r.IsDBNull(0) ? 0 : (int)r.GetValue(0);
-        //        r.Close();
-        //    }
-        //}
-        //if (cnt > 1)
-        //{
-        //    List<string> toDel = new List<string>();
-        //    using (SqlCommand cmd = new SqlCommand("SELECT id FROM reports1nf_arenda_payments WHERE report_id = @rid AND arenda_id = @aid", connection))
-        //    {
-        //        cmd.Parameters.Add(new SqlParameter("rid", ReportID));
-        //        cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
-        //        using (SqlDataReader r = cmd.ExecuteReader())
-        //        {
-        //            while (r.Read())
-        //            {
-        //                int id = r.IsDBNull(0) ? 0 : (int)r.GetValue(0);
-        //                if (id > 0)
-        //                    toDel.Add(id.ToString());
-        //                cnt--;
-        //                if (cnt == 1)
-        //                    break;
-        //            }
-        //            r.Close();
-        //        }
-        //    }
-        //    using (SqlCommand cmd = new SqlCommand("DELETE FROM reports1nf_arenda_payments WHERE id in (" + string.Join(",", toDel.ToArray()) + ")"))
-        //    {
-        //        cmd.ExecuteNonQuery();
-        //    }
-
-
-        //}
-
-        using (SqlCommand cmd = new SqlCommand("UPDATE reports1nf_arenda_payments SET " +
-            fieldList + " WHERE report_id = @rid AND arenda_id = @aid AND id = @id", connection))
-        {
-            cmd.Parameters.Add(new SqlParameter("rid", ReportID));
-            cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
-            cmd.Parameters.Add(new SqlParameter("id", idInReport));
-
-            foreach (KeyValuePair<string, object> param in parameters)
-            {
-                cmd.Parameters.Add(new SqlParameter(param.Key, param.Value));
-            }
-
-            cmd.ExecuteNonQuery();
-        }
-
-		SavePhotoChanges();
-//////
+			}
 		}
-        catch (Exception ex)
-        {
-            var lognet = log4net.LogManager.GetLogger("ReportWebSite");
-            lognet.Debug("--------------- OrgRentAgreement SaveChanges ----------------", ex);
-            throw ex;
-        }
+	}
+
+	protected void EnableInsuranceControl(Control panelInsurance, bool enable, string controlID)
+	{
+		Control ctl = panelInsurance.FindControl(controlID);
+
+		if (ctl is ASPxSpinEdit)
+		{
+			(ctl as ASPxSpinEdit).ClientEnabled = enable;
+		}
+		else if (ctl is ASPxDateEdit)
+		{
+			(ctl as ASPxDateEdit).ClientEnabled = enable;
+		}
+	}
+
+	#endregion (Collection tab)
+
+	protected void SaveChanges(SqlConnection connection)
+	{
+		//////
+		try
+		{
+
+			System.Web.Security.MembershipUser user = System.Web.Security.Membership.GetUser();
+			string username = (user == null ? "System" : user.UserName);
+
+			Dictionary<string, Control> controls = new Dictionary<string, Control>();
+
+			Reports1NFUtils.GetAllControls(OrganizationsForm, controls);
+			Reports1NFUtils.GetAllControls(PaymentForm, controls);
+			Reports1NFUtils.GetAllControls(CollectionForm, controls);
+			Reports1NFUtils.GetAllControls(InsuranceForm, controls);
+			Reports1NFUtils.GetAllControls(AddressForm, controls);
+
+			//////
+			var rent_start_date = Reports1NFUtils.GetDateValue(controls, "EditStartDate");
+			if (rent_start_date == null)
+			{
+				var lognet = log4net.LogManager.GetLogger("ReportWebSite");
+				lognet.Debug("--------------- SaveChanges Error 77777 ----------------");
+				throw new ArgumentException("Помилка збереження даних. Спробуйте пізніше.");
+			}
+
+			// Update the rent decisions
+			SaveDecisions(connection);
+
+			// Update the rent subleases
+			SaveSubleases(connection);
+
+			// Update the agreement notes
+			SaveNotes(connection);
+
+			// Update the payment documents
+			SavePaymentDocuments(connection);
+
+			Dictionary<string, object> parameters = new Dictionary<string, object>();
+			string fieldList = "";
+
+			// Get the rent agreement properties
+			AddQueryParameter(ref fieldList, "agreement_num", "anum", Reports1NFUtils.GetEditText(controls, "EditAgreementNum"), parameters);
+			AddQueryParameter(ref fieldList, "agreement_date", "adt", Reports1NFUtils.GetDateValue(controls, "EditAgreementDate"), parameters);
+			AddQueryParameter(ref fieldList, "rent_start_date", "dtstart", Reports1NFUtils.GetDateValue(controls, "EditStartDate"), parameters);
+
+			AddQueryParameter(ref fieldList, "base_month", "basemonth", Reports1NFUtils.GetDateValue(controls, "EditBaseMonth"), parameters);
+			AddQueryParameter(ref fieldList, "method_calc_id", "methodcalcid", Reports1NFUtils.GetDropDownValue(controls, "EditMethodCalc"), parameters);
+
+			AddQueryParameter(ref fieldList, "rent_finish_date", "dtfin", Reports1NFUtils.GetDateValue(controls, "EditFinishDate"), parameters);
+			AddQueryParameter(ref fieldList, "rent_actual_finish_date", "dtafin", Reports1NFUtils.GetDateValue(controls, "EditActualFinishDate"), parameters);
+			AddQueryParameter(ref fieldList, "payment_type_id", "payid", Reports1NFUtils.GetDropDownValue(controls, "ComboPaymentType"), parameters);
+
+			AddQueryParameter(ref fieldList, "rent_square", "rsqr", Utils.ConvertStrToDecimal(Reports1NFUtils.GetEditText(controls, "EditRentSquare"), -1m), parameters);
+			AddQueryParameter(ref fieldList, "cost_expert_total", "sqrexp", Reports1NFUtils.GetEditNumeric(controls, "EditCostExpert"), parameters);
+			AddQueryParameter(ref fieldList, "date_expert", "dtexp", Reports1NFUtils.GetDateValue(controls, "EditDateExpert"), parameters);
+			AddQueryParameter(ref fieldList, "note", "note", Reports1NFUtils.GetEditText(controls, "MemoProlongationComment"), parameters);
+
+			//AddQueryParameter(ref fieldList, "is_subarenda", "issub", Reports1NFUtils.GetCheckBoxValue(controls, "CheckSubarenda") ? 1 : 0, parameters);
+			AddQueryParameter(ref fieldList, "is_subarenda", "issub", (SubleasesDataSource.Rows.Count > 0 ? 1 : 0), parameters);
+
+			AddQueryParameter(ref fieldList, "is_loan_agreement", "isloanagr", Reports1NFUtils.GetCheckBoxValue(controls, "CheckLoanAgreement") ? 1 : 0, parameters);
+
+			AddQueryParameter(ref fieldList, "agreement_state", "ast",
+				Reports1NFUtils.IsRadioButtonChecked(controls, "RadioAgreementActive") ? 1 :
+				Reports1NFUtils.IsRadioButtonChecked(controls, "RadioAgreementToxic") ? 2 :
+				Reports1NFUtils.IsRadioButtonChecked(controls, "RadioAgreementContinuedByAnother") ? 3 : 0,
+				parameters);
 
 
-    }
+			AddQueryParameter(ref fieldList, "update_src_id", "usrc", (int)2, parameters); // 2 ~ from the balans holder
+			AddQueryParameter(ref fieldList, "agreement_kind_id", "agrkind", (int)1, parameters); // 1 ~ Arenda
+
+			AddQueryParameter(ref fieldList, "org_renter_id", "renid", Reports1NFUtils.GetDropDownValue(controls, "ComboRenterOrg"), parameters);
+			AddQueryParameter(ref fieldList, "org_giver_id", "givid", Reports1NFUtils.GetDropDownValue(controls, "ComboGiverOrg"), parameters);
+
+			// System parameters
+			AddQueryParameter(ref fieldList, "modify_date", "mdt", DateTime.Now, parameters);
+			AddQueryParameter(ref fieldList, "modified_by", "mby", username.Left(64), parameters);
+
+			// insurance
+			AddQueryParameter(ref fieldList, "is_insured", "is_insured", Reports1NFUtils.GetCheckBoxValue(controls, "is_insured") ? 1 : 0, parameters);
+			AddQueryParameter(ref fieldList, "insurance_start", "insurance_start", Reports1NFUtils.GetDateValue(controls, "insurance_start"), parameters);
+			AddQueryParameter(ref fieldList, "insurance_end", "insurance_end", Reports1NFUtils.GetDateValue(controls, "insurance_end"), parameters);
+			AddQueryParameter(ref fieldList, "insurance_sum", "insurance_sum", Reports1NFUtils.GetEditNumeric(controls, "insurance_sum"), parameters);
+
+			var building_id = Reports1NFUtils.GetEditNumeric(controls, "AddrBuildingId");
+			AddQueryParameter(ref fieldList, "building_id", "buildingid", building_id, parameters);
+
+			using (SqlCommand cmd = new SqlCommand("UPDATE reports1nf_arenda SET " + fieldList + ", is_valid = @isValid, validation_errors = @errMsgs WHERE report_id = @rid AND id = @aid", connection))
+			{
+				cmd.Parameters.Add(new SqlParameter("rid", ReportID));
+				cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
+				cmd.Parameters.Add(new SqlParameter("isValid", validator.IsValid));
+				cmd.Parameters.Add(new SqlParameter("errMsgs", string.Join("<br/>", validator.ValidationErrorMessages)));
+
+				foreach (KeyValuePair<string, object> param in parameters)
+				{
+					cmd.Parameters.Add(new SqlParameter(param.Key, param.Value));
+				}
+
+				cmd.ExecuteNonQuery();
+			}
+
+			UpdateReports1nfBuildings(connection);
+
+			// If comment is specified, add the default comment
+			int newGiverId = Reports1NFUtils.GetDropDownValue(controls, "ComboGiverOrg");
+			string comment = Reports1NFUtils.GetEditText(controls, "EditGiverComment");
+
+			if (newGiverId != Utils.GUKVOrganizationID && comment.Length > 0)
+			{
+				Reports1NFUtils.AddComment(connection, ReportID, comment,
+					0, 0, 0, RentAgreementID, 0, "ComboGiverOrg", Resources.Strings.RentAgreementGiver, false, false);
+			}
+
+			// Update the payment information
+			parameters.Clear();
+			fieldList = "";
+
+			AddQueryParameter(ref fieldList, "rent_period_id", "period", Reports1NFUtils.GetDropDownValue(controls, "ReportingPeriodCombo"), parameters);
+
+			AddQueryParameter(ref fieldList, "sqr_total_rent", "sqrtot", Utils.ConvertStrToDecimal(Reports1NFUtils.GetEditText(controls, "EditPaymentSqrTotal_orndpymnt"), -1m), parameters);
+			AddQueryParameter(ref fieldList, "sqr_payed_by_percent", "sqrper", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentSqrByPercent_orndpymnt"), parameters);
+			AddQueryParameter(ref fieldList, "sqr_payed_by_1uah", "sqr1uah", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentSqr1UAH_orndpymnt"), parameters);
+			AddQueryParameter(ref fieldList, "sqr_payed_hourly", "sqrhourly", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentSqrHourly_orndpymnt"), parameters);
+
+			AddQueryParameter(ref fieldList, "payment_narah", "paynar", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentNarah_orndpymnt"), parameters);
+			AddQueryParameter(ref fieldList, "znyato_nadmirno_narah", "znyatonadmir", Reports1NFUtils.GetEditNumeric(controls, "edit_znyato_nadmirno_narah"), parameters);
+			AddQueryParameter(ref fieldList, "znyato_from_avance", "znyatoavance", Reports1NFUtils.GetEditNumeric(controls, "edit_znyato_from_avance"), parameters);
+			AddQueryParameter(ref fieldList, "last_year_saldo", "saldo", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentSaldo_orndpymnt"), parameters);
+			AddQueryParameter(ref fieldList, "avance_saldo", "avancesaldo", Reports1NFUtils.GetEditNumeric(controls, "Edit_avance_saldo"), parameters);
+			AddQueryParameter(ref fieldList, "payment_received", "payre", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentReceived_orndpymnt"), parameters);
+			AddQueryParameter(ref fieldList, "payment_nar_zvit", "payzv", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentNarZvit_orndpymnt"), parameters);
+			AddQueryParameter(ref fieldList, "avance_paymentnar", "avancepaymentnar", Reports1NFUtils.GetEditNumeric(controls, "Edit_avance_paymentnar"), parameters);
+			AddQueryParameter(ref fieldList, "old_debts_payed", "odbtp", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentOldDebtsPayed_orndpymnt"), parameters);
+			AddQueryParameter(ref fieldList, "return_orend_payed", "returnorendpayed", Reports1NFUtils.GetEditNumeric(controls, "edit_return_orend_payed"), parameters);
+			AddQueryParameter(ref fieldList, "return_all_orend_payed", "returnallorendpayed", Reports1NFUtils.GetEditNumeric(controls, "edit_return_all_orend_payed"), parameters);
+			AddQueryParameter(ref fieldList, "use_calc_debt", "usecalcdebt", Reports1NFUtils.GetCheckBoxValue(controls, "edit_use_calc_debt") ? 1 : 0, parameters);
+			AddQueryParameter(ref fieldList, "avance_plat", "avanceplat", Reports1NFUtils.GetEditNumeric(controls, "edit_avance_plat"), parameters);
+
+			AddQueryParameter(ref fieldList, "zabezdepoz_narah", "zabezdepoznarah", Reports1NFUtils.GetEditNumeric(controls, "edit_zabezdepoz_narah"), parameters);
+			AddQueryParameter(ref fieldList, "zabezdepoz_saldo", "zabezdepozsaldo", Reports1NFUtils.GetEditNumeric(controls, "edit_zabezdepoz_saldo"), parameters);
+			AddQueryParameter(ref fieldList, "zabezdepoz_prishlo", "zabezdepozprishlo", Reports1NFUtils.GetEditNumeric(controls, "edit_zabezdepoz_prishlo"), parameters);
+			AddQueryParameter(ref fieldList, "zabezdepoz_nadhod", "zabezdepoznadhod", Reports1NFUtils.GetEditNumeric(controls, "edit_zabezdepoz_nadhod"), parameters);
+			AddQueryParameter(ref fieldList, "use_zabezdepoz", "usezabezdepoz", Reports1NFUtils.GetCheckBoxValue(controls, "edit_use_zabezdepoz") ? 1 : 0, parameters);
+			AddQueryParameter(ref fieldList, "zabezdepoz_debt", "zabezdepozdebt", Reports1NFUtils.GetEditNumeric(controls, "edit_zabezdepoz_debt"), parameters);
+			AddQueryParameter(ref fieldList, "total_pereplata", "totalpereplata", Reports1NFUtils.GetEditNumeric(controls, "edit_total_pereplata"), parameters);
+			AddQueryParameter(ref fieldList, "zabezd_usesum", "zabezdusesum", Reports1NFUtils.GetEditNumeric(controls, "edit_zabezd_usesum"), parameters);
+			AddQueryParameter(ref fieldList, "avance_usesum", "avanceusesum", Reports1NFUtils.GetEditNumeric(controls, "edit_avance_usesum"), parameters);
+
+			for (int k = 0; k <= 13; k++)
+			{
+				AddQueryParameter(ref fieldList, "debtkvart_" + k, "vdebtkvart_" + k, Reports1NFUtils.GetEditNumeric(controls, "edit_debtkvart_" + k), parameters);
+			}
+
+			//AddQueryParameter(ref fieldList, "budget_narah_50_uah", "budg50n", Reports1NFUtils.GetEditNumeric(controls, "EditBudgetNarah50_orndpymnt"), parameters);
+			//AddQueryParameter(ref fieldList, "budget_zvit_50_uah", "budg50z", Reports1NFUtils.GetEditNumeric(controls, "EditBudgetZvit50_orndpymnt"), parameters);
+			//AddQueryParameter(ref fieldList, "budget_prev_50_uah", "budg50p", Reports1NFUtils.GetEditNumeric(controls, "EditBudgetPrev50_orndpymnt"), parameters);
+			//AddQueryParameter(ref fieldList, "budget_debt_50_uah", "budg50d", Reports1NFUtils.GetEditNumeric(controls, "EditBudgetDebt50_orndpymnt"), parameters);
+			//AddQueryParameter(ref fieldList, "budget_debt_30_50_uah", "budg50o", Reports1NFUtils.GetEditNumeric(controls, "EditBudgetDebtOld50_orndpymnt"), parameters);
+
+			AddQueryParameter(ref fieldList, "is_discount", "isout", Reports1NFUtils.GetCheckBoxValue(controls, "CheckRenterIsOut") ? 1 : 0, parameters);
+			AddQueryParameter(ref fieldList, "is_debt_exists", "isdebt", Reports1NFUtils.GetCheckBoxValue(controls, "CheckNoDebt") ? 0 : 1, parameters);
+			//AddQueryParameter(ref fieldList, "is_special_organization", "isSpecOrg", Reports1NFUtils.GetCheckBoxValue(controls, "CheckIsSpecialOrganization") ? 1 : 0, parameters);
+
+			AddQueryParameter(ref fieldList, "znizhka1_name", "znizhka1name", Reports1NFUtils.GetEditText(controls, "edit_znizhka1_name"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka1_percent", "znizhka1percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka1_percent"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka1_date1", "znizhka1date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka1_date1"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka1_date2", "znizhka1date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka1_date2"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka1_invnums", "znizhka1invnums", Reports1NFUtils.GetEditText(controls, "znizhka1_invnums"), parameters);
+
+			AddQueryParameter(ref fieldList, "znizhka2_name", "znizhka2name", Reports1NFUtils.GetEditText(controls, "edit_znizhka2_name"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka2_percent", "znizhka2percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka2_percent"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka2_date1", "znizhka2date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka2_date1"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka2_date2", "znizhka2date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka2_date2"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka2_invnums", "znizhka2invnums", Reports1NFUtils.GetEditText(controls, "znizhka2_invnums"), parameters);
+
+			AddQueryParameter(ref fieldList, "znizhka3_name", "znizhka3name", Reports1NFUtils.GetEditText(controls, "edit_znizhka3_name"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka3_percent", "znizhka3percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka3_percent"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka3_date1", "znizhka3date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka3_date1"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka3_date2", "znizhka3date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka3_date2"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka3_invnums", "znizhka3invnums", Reports1NFUtils.GetEditText(controls, "znizhka3_invnums"), parameters);
+
+			AddQueryParameter(ref fieldList, "znizhka4_name", "znizhka4name", Reports1NFUtils.GetEditText(controls, "edit_znizhka4_name"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka4_percent", "znizhka4percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka4_percent"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka4_date1", "znizhka4date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka4_date1"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka4_date2", "znizhka4date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka4_date2"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka4_invnums", "znizhka4invnums", Reports1NFUtils.GetEditText(controls, "znizhka4_invnums"), parameters);
+
+			AddQueryParameter(ref fieldList, "znizhka5_name", "znizhka5name", Reports1NFUtils.GetEditText(controls, "edit_znizhka5_name"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka5_percent", "znizhka5percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka5_percent"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka5_date1", "znizhka5date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka5_date1"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka5_date2", "znizhka5date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka5_date2"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka5_invnums", "znizhka5invnums", Reports1NFUtils.GetEditText(controls, "znizhka5_invnums"), parameters);
+
+			AddQueryParameter(ref fieldList, "znizhka6_name", "znizhka6name", Reports1NFUtils.GetEditText(controls, "edit_znizhka6_name"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka6_percent", "znizhka6percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka6_percent"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka6_date1", "znizhka6date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka6_date1"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka6_date2", "znizhka6date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka6_date2"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka6_invnums", "znizhka6invnums", Reports1NFUtils.GetEditText(controls, "znizhka6_invnums"), parameters);
+
+			AddQueryParameter(ref fieldList, "znizhka7_name", "znizhka7name", Reports1NFUtils.GetEditText(controls, "edit_znizhka7_name"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka7_percent", "znizhka7percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka7_percent"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka7_date1", "znizhka7date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka7_date1"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka7_date2", "znizhka7date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka7_date2"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka7_invnums", "znizhka7invnums", Reports1NFUtils.GetEditText(controls, "znizhka7_invnums"), parameters);
+
+			AddQueryParameter(ref fieldList, "znizhka8_name", "znizhka8name", Reports1NFUtils.GetEditText(controls, "edit_znizhka8_name"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka8_percent", "znizhka8percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka8_percent"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka8_date1", "znizhka8date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka8_date1"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka8_date2", "znizhka8date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka8_date2"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka8_invnums", "znizhka8invnums", Reports1NFUtils.GetEditText(controls, "znizhka8_invnums"), parameters);
+
+			AddQueryParameter(ref fieldList, "znizhka9_name", "znizhka9name", Reports1NFUtils.GetEditText(controls, "edit_znizhka9_name"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka9_percent", "znizhka9percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka9_percent"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka9_date1", "znizhka9date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka9_date1"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka9_date2", "znizhka9date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka9_date2"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka9_invnums", "znizhka9invnums", Reports1NFUtils.GetEditText(controls, "znizhka9_invnums"), parameters);
+
+			AddQueryParameter(ref fieldList, "znizhka10_name", "znizhka10name", Reports1NFUtils.GetEditText(controls, "edit_znizhka10_name"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka10_percent", "znizhka10percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka10_percent"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka10_date1", "znizhka10date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka10_date1"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka10_date2", "znizhka10date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka10_date2"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka10_invnums", "znizhka10invnums", Reports1NFUtils.GetEditText(controls, "znizhka10_invnums"), parameters);
+
+			AddQueryParameter(ref fieldList, "zvilneno_percent", "zvilnenopercent", Reports1NFUtils.GetEditNumeric(controls, "edit_zvilneno_percent"), parameters);
+			AddQueryParameter(ref fieldList, "zvilneno_date1", "zvilnenodate1", Reports1NFUtils.GetDateValue(controls, "edit_zvilneno_date1"), parameters);
+			AddQueryParameter(ref fieldList, "zvilneno_date2", "zvilnenodate2", Reports1NFUtils.GetDateValue(controls, "edit_zvilneno_date2"), parameters);
+
+			AddQueryParameter(ref fieldList, "zvilbykmp2_percent", "zvilbykmp2percent", Reports1NFUtils.GetEditNumeric(controls, "edit_zvilbykmp2_percent"), parameters);
+			AddQueryParameter(ref fieldList, "zvilbykmp2_date1", "zvilbykmp2date1", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp2_date1"), parameters);
+			AddQueryParameter(ref fieldList, "zvilbykmp2_date2", "zvilbykmp2date2", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp2_date2"), parameters);
+
+			AddQueryParameter(ref fieldList, "zvilbykmp6_percent", "zvilbykmp6percent", Reports1NFUtils.GetEditNumeric(controls, "edit_zvilbykmp6_percent"), parameters);
+			AddQueryParameter(ref fieldList, "zvilbykmp6_date1", "zvilbykmp6date1", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp6_date1"), parameters);
+			AddQueryParameter(ref fieldList, "zvilbykmp6_date2", "zvilbykmp6date2", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp6_date2"), parameters);
+
+			AddQueryParameter(ref fieldList, "zvilbykmp7_percent", "zvilbykmp7percent", Reports1NFUtils.GetEditNumeric(controls, "edit_zvilbykmp7_percent"), parameters);
+			AddQueryParameter(ref fieldList, "zvilbykmp7_date1", "zvilbykmp7date1", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp7_date1"), parameters);
+			AddQueryParameter(ref fieldList, "zvilbykmp7_date2", "zvilbykmp7date2", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp7_date2"), parameters);
+
+			AddQueryParameter(ref fieldList, "zvilbykmp3_percent", "zvilbykmp3percent", Reports1NFUtils.GetEditNumeric(controls, "edit_zvilbykmp3_percent"), parameters);
+			AddQueryParameter(ref fieldList, "zvilbykmp3_date1", "zvilbykmp3date1", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp3_date1"), parameters);
+			AddQueryParameter(ref fieldList, "zvilbykmp3_date2", "zvilbykmp3date2", Reports1NFUtils.GetDateValue(controls, "edit_zvilbykmp3_date2"), parameters);
+
+			AddQueryParameter(ref fieldList, "povidoleno1_date", "povidoleno1date", Reports1NFUtils.GetDateValue(controls, "edit_povidoleno1_date"), parameters);
+			AddQueryParameter(ref fieldList, "povidoleno1_num", "povidoleno1num", Reports1NFUtils.GetEditText(controls, "edit_povidoleno1_num"), parameters);
+			AddQueryParameter(ref fieldList, "povidoleno2_date", "povidoleno2date", Reports1NFUtils.GetDateValue(controls, "edit_povidoleno2_date"), parameters);
+			AddQueryParameter(ref fieldList, "povidoleno2_num", "povidoleno2num", Reports1NFUtils.GetEditText(controls, "edit_povidoleno2_num"), parameters);
+			AddQueryParameter(ref fieldList, "povidoleno3_date", "povidoleno3date", Reports1NFUtils.GetDateValue(controls, "edit_povidoleno3_date"), parameters);
+			AddQueryParameter(ref fieldList, "povidoleno3_num", "povidoleno3num", Reports1NFUtils.GetEditText(controls, "edit_povidoleno3_num"), parameters);
+			AddQueryParameter(ref fieldList, "povidoleno4_date", "povidoleno4date", Reports1NFUtils.GetDateValue(controls, "edit_povidoleno4_date"), parameters);
+			AddQueryParameter(ref fieldList, "povidoleno4_num", "povidoleno4num", Reports1NFUtils.GetEditText(controls, "edit_povidoleno4_num"), parameters);
+
+			AddQueryParameter(ref fieldList, "debt_total", "debttot", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebtTotal"), parameters);
+			AddQueryParameter(ref fieldList, "debt_zvit", "debtzvit", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebtZvit"), parameters);
+			AddQueryParameter(ref fieldList, "debt_3_month", "debt3m", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebt3Month"), parameters);
+			AddQueryParameter(ref fieldList, "debt_12_month", "debt12m", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebt12Month"), parameters);
+			AddQueryParameter(ref fieldList, "debt_3_years", "debt3y", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebt3Years"), parameters);
+			AddQueryParameter(ref fieldList, "debt_over_3_years", "debtover", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebtOver3Years"), parameters);
+			AddQueryParameter(ref fieldList, "debt_v_mezhah_vitrat", "debtmv", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebtVMezhahVitrat"), parameters);
+			AddQueryParameter(ref fieldList, "debt_spysano", "debtsp", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebtSpysano"), parameters);
+			AddQueryParameter(ref fieldList, "avance_debt", "avancedebt", Reports1NFUtils.GetEditNumeric(controls, "Edit_avance_debt"), parameters);
+
+			AddQueryParameter(ref fieldList, "num_zahodiv_total", "numzaht", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionNumZahodivTotal"), parameters);
+			AddQueryParameter(ref fieldList, "num_zahodiv_zvit", "numzahz", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionNumZahodivZvit"), parameters);
+			AddQueryParameter(ref fieldList, "num_pozov_total", "numpozt", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionNumPozovTotal"), parameters);
+			AddQueryParameter(ref fieldList, "num_pozov_zvit", "numpozz", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionNumPozovZvit"), parameters);
+			AddQueryParameter(ref fieldList, "num_pozov_zadov_total", "zadovt", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionPozovZadovTotal"), parameters);
+			AddQueryParameter(ref fieldList, "num_pozov_zadov_zvit", "zadovz", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionPozovZadovZvit"), parameters);
+			AddQueryParameter(ref fieldList, "num_pozov_vikon_total", "vikont", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionPozovVikonTotal"), parameters);
+			AddQueryParameter(ref fieldList, "num_pozov_vikon_zvit", "vikonz", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionPozovVikonZvit"), parameters);
+
+			AddQueryParameter(ref fieldList, "debt_pogasheno_total", "dpaytot", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebtPayedTotal"), parameters);
+			AddQueryParameter(ref fieldList, "debt_pogasheno_zvit", "dpayzvit", Reports1NFUtils.GetEditNumeric(controls, "EditCollectionDebtPayedZvit"), parameters);
+
+			// System parameters
+			AddQueryParameter(ref fieldList, "modify_date", "mdt", DateTime.Now, parameters);
+			AddQueryParameter(ref fieldList, "modified_by", "mby", username.Left(64), parameters);
+
+
+
+			int idInReport = 0;
+			using (SqlCommand cmd = new SqlCommand("SELECT id FROM reports1nf_arenda_payments WHERE report_id = @rid AND arenda_id = @aid", connection))
+			{
+				cmd.Parameters.Add(new SqlParameter("rid", ReportID));
+				cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
+				using (SqlDataReader r = cmd.ExecuteReader())
+				{
+					if (r.Read())
+						idInReport = r.IsDBNull(0) ? 0 : (int)r.GetValue(0);
+					r.Close();
+				}
+			}
+
+
+
+
+			//int cnt = 0;
+			//using (SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM reports1nf_arenda_payments WHERE report_id = @rid AND arenda_id = @aid", connection))
+			//{
+			//    cmd.Parameters.Add(new SqlParameter("rid", ReportID));
+			//    cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
+			//    using (SqlDataReader r = cmd.ExecuteReader())
+			//    {
+			//        if (r.Read())
+			//            cnt = r.IsDBNull(0) ? 0 : (int)r.GetValue(0);
+			//        r.Close();
+			//    }
+			//}
+			//if (cnt > 1)
+			//{
+			//    List<string> toDel = new List<string>();
+			//    using (SqlCommand cmd = new SqlCommand("SELECT id FROM reports1nf_arenda_payments WHERE report_id = @rid AND arenda_id = @aid", connection))
+			//    {
+			//        cmd.Parameters.Add(new SqlParameter("rid", ReportID));
+			//        cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
+			//        using (SqlDataReader r = cmd.ExecuteReader())
+			//        {
+			//            while (r.Read())
+			//            {
+			//                int id = r.IsDBNull(0) ? 0 : (int)r.GetValue(0);
+			//                if (id > 0)
+			//                    toDel.Add(id.ToString());
+			//                cnt--;
+			//                if (cnt == 1)
+			//                    break;
+			//            }
+			//            r.Close();
+			//        }
+			//    }
+			//    using (SqlCommand cmd = new SqlCommand("DELETE FROM reports1nf_arenda_payments WHERE id in (" + string.Join(",", toDel.ToArray()) + ")"))
+			//    {
+			//        cmd.ExecuteNonQuery();
+			//    }
+
+
+			//}
+
+			using (SqlCommand cmd = new SqlCommand("UPDATE reports1nf_arenda_payments SET " +
+				fieldList + " WHERE report_id = @rid AND arenda_id = @aid AND id = @id", connection))
+			{
+				cmd.Parameters.Add(new SqlParameter("rid", ReportID));
+				cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
+				cmd.Parameters.Add(new SqlParameter("id", idInReport));
+
+				foreach (KeyValuePair<string, object> param in parameters)
+				{
+					cmd.Parameters.Add(new SqlParameter(param.Key, param.Value));
+				}
+
+				cmd.ExecuteNonQuery();
+			}
+
+			SavePaymentNarahCalc(connection, username);
+
+			SavePhotoChanges();
+			//////
+		}
+		catch (Exception ex)
+		{
+			var lognet = log4net.LogManager.GetLogger("ReportWebSite");
+			lognet.Debug("--------------- OrgRentAgreement SaveChanges ----------------", ex);
+			throw ex;
+		}
+
+
+	}
+
+	void SavePaymentNarahCalc(SqlConnection connection, string username)
+	{
+		object json;
+		NarazhCalculationData.TryGet("data", out json);
+		if (json as string != null)
+		{
+			var data = Newtonsoft.Json.JsonConvert.DeserializeObject<NarazhCalculation.ResultTotalClass>(json as string);
+
+			using (SqlCommand cmd = new SqlCommand("delete from reports1nf_payment_narahcalc where report_id = @rid and arenda_id = @aid", connection))
+			{
+				cmd.Parameters.Add(new SqlParameter("rid", ReportID));
+				cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
+				cmd.ExecuteNonQuery();
+			}
+
+			var infos = new[] { data.CurrentYear, data.NextYear };
+
+			foreach (var info in infos)
+			{
+				var year = data.Year + (info == data.CurrentYear ? 0 : 1);
+
+				var sums = new[] 
+				{ 
+					info.NarazhCalculation_1, info.NarazhCalculation_2, info.NarazhCalculation_3, info.NarazhCalculation_4, 
+					info.NarazhCalculation_5, info.NarazhCalculation_6, info.NarazhCalculation_7, info.NarazhCalculation_8, 
+					info.NarazhCalculation_9, info.NarazhCalculation_10, info.NarazhCalculation_11, info.NarazhCalculation_12 
+				};
+
+				for(int i = 0; i < sums.Length; i++)
+				{
+					var narah_sum = sums[i];
+					var month = i + 1;
+					var narah_date = new DateTime(year, month, 1);
+
+					using (SqlCommand cmd = new SqlCommand(
+						"insert into reports1nf_payment_narahcalc(report_id,arenda_id,narah_date,narah_sum,modify_date,modified_by)" +
+						"values(@rid, @aid, @narah_date, @narah_sum, @modify_date, @modified_by)", connection))
+					{
+						cmd.Parameters.Add(new SqlParameter("rid", ReportID));
+						cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
+						cmd.Parameters.Add(new SqlParameter("narah_date", narah_date));
+						cmd.Parameters.Add(new SqlParameter("narah_sum", narah_sum));
+						cmd.Parameters.Add(new SqlParameter("modify_date", DateTime.Now));
+						cmd.Parameters.Add(new SqlParameter("modified_by", username.Left(64)));
+						cmd.ExecuteNonQuery();
+					}
+				}
+			}
+
+
+		}
+
+
+	}
 
 
 	void UpdateReports1nfBuildings(SqlConnection connection)
@@ -2320,578 +2375,578 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		}
 	}
 
-    protected void AddQueryParameter(ref string fieldList, string fieldName, string paramName,
-        object value, Dictionary<string, object> parameters)
-    {
-        bool valueExists = false;
+	protected void AddQueryParameter(ref string fieldList, string fieldName, string paramName,
+		object value, Dictionary<string, object> parameters)
+	{
+		bool valueExists = false;
 
-        if (value is int)
-        {
-            valueExists = ((int)value) >= 0;
-        }
-        else if (value is string)
-        {
-            valueExists = ((string)value).Length > 0;
-        }
-        else if (value is decimal)
-        {
-            valueExists = true;
-        }
-        else if (value is DateTime)
-        {
-            valueExists = true;
-        }
-
-        if (fieldList.Length > 0)
-        {
-            fieldList += ", ";
-        }
-
-        if (valueExists)
-        {
-            fieldList += fieldName + " = @" + paramName;
-            parameters[paramName] = value;
-        }
-        else
-        {
-            fieldList += fieldName + " = NULL";
-        }
-    }
-
-    //protected void ValidateEditors()
-    //{
-    //    ErrorMessages.Clear();
-    //    ASPxTextEdit.ValidateEditorsInContainer(CPMainPanel);
-    //}
-
-    //protected void OnValidation(object sender, ValidationEventArgs e)
-    //{
-
-    //    ASPxTextEdit edit = sender as ASPxTextEdit;
-    //    if (reqEditors.Contains(edit.ID))
-    //    {
-    //        if (edit.Text.Trim() == "" || edit.Text == "<НЕ ЗАДАНО>")
-    //        {
-    //            if (mode == "send") e.IsValid = false;
-    //            FormIsValid = false;
-    //            ErrorMessages.Add(e.ErrorText);
-    //        }
-    //    }
-    //}
-
-   
-
-    protected void CPMainPanel_Callback(object sender, CallbackEventArgsBase e)
-    {
-//////
-        try
-        {
-            if (e.Parameter.StartsWith("save:"))
-        {
-            SqlConnection connection = Utils.ConnectToDatabase();
-
-            if (connection != null)
-            {
-                SaveChanges(connection);
-
-                connection.Close();
-            }
-        }
-        else if (e.Parameter.StartsWith("send:"))
-        {
-            //throw new Exception("aa");
-
-            validator.ValidateUI();
-            //!!ValidatePaymentForm();
-            this.errorForm.DataSource = validator.FormatErrorDataSource();
-            this.errorForm.DataBind();
-
-            // Copy all information about address and object to the primary database
-            SqlConnection connection = Utils.ConnectToDatabase();
-            if (connection != null)
-            {
-                // Save the form before sending it to DKV
-                SaveChanges(connection);
-
-                int agreementId = RentAgreementID;
-
-                if (validator.ValidateDB(connection, "reports1nf_arenda", string.Format("report_id = {0} and id = {1}", ReportID, agreementId), true))
-                {
-                    Reports1NFUtils.SendRentAgreement(connection, /*connection1NF,*/ ReportID, ref agreementId);
-
-                    RentAgreementID = agreementId;
-
-                    connection.Close();
-                }
-                else
-                {
-                    StatusForm.DataBind();
-                    connection.Close();
-                    return;
-                }
-            }
-            else
-            {
-                return;
-            }
-
-
-
-        }
-        else if (e.Parameter.StartsWith("clear:"))
-        {
-            // No need to do anything. DataBind() will do the trick
-        }
-
-        StatusForm.DataBind();
-        AddressForm.DataBind();
-        OrganizationsForm.DataBind();
-        PaymentForm.DataBind();
-        CollectionForm.DataBind();
-        InsuranceForm.DataBind();
-        FormViewState.DataBind();
-
-        // Rebind the grid of rent decisions
-        object view = SqlDataSourceDecisions.Select(new DataSourceSelectArguments());
-
-        if (view is DataView)
-        {
-            DecisionsDataSource = (view as DataView).ToTable();
-        }
-
-        GridViewDecisions.DataSource = DecisionsDataSource;
-        GridViewDecisions.DataBind();
-
-		// Rebind the grid of rent subleases
-		view = SqlDataSourceSubleases.Select(new DataSourceSelectArguments());
-
-		if (view is DataView)
+		if (value is int)
 		{
-			SubleasesDataSource = (view as DataView).ToTable();
+			valueExists = ((int)value) >= 0;
+		}
+		else if (value is string)
+		{
+			valueExists = ((string)value).Length > 0;
+		}
+		else if (value is decimal)
+		{
+			valueExists = true;
+		}
+		else if (value is DateTime)
+		{
+			valueExists = true;
 		}
 
-		GridViewSubleases.DataSource = SubleasesDataSource;
-		GridViewSubleases.DataBind();
+		if (fieldList.Length > 0)
+		{
+			fieldList += ", ";
+		}
 
-		// Rebind the grid of objects
-		view = SqlDataSourceNotes.Select(new DataSourceSelectArguments());
+		if (valueExists)
+		{
+			fieldList += fieldName + " = @" + paramName;
+			parameters[paramName] = value;
+		}
+		else
+		{
+			fieldList += fieldName + " = NULL";
+		}
+	}
 
-        if (view is DataView)
-        {
-            NotesDataSource = (view as DataView).ToTable();
-        }
+	//protected void ValidateEditors()
+	//{
+	//    ErrorMessages.Clear();
+	//    ASPxTextEdit.ValidateEditorsInContainer(CPMainPanel);
+	//}
 
-        GridViewNotes.DataSource = NotesDataSource;
-        GridViewNotes.DataBind();
+	//protected void OnValidation(object sender, ValidationEventArgs e)
+	//{
 
-        CalculateTotals();
-        EnableControlsBasingOnUserRole();
-//////
-        }
-        catch (Exception ex)
-        {
-            var lognet = log4net.LogManager.GetLogger("ReportWebSite");
-            lognet.Debug("--------------- OrgRentAgreement CPMainPanel_Callback ----------------", ex);
-            throw ex;
-        }
-    }
+	//    ASPxTextEdit edit = sender as ASPxTextEdit;
+	//    if (reqEditors.Contains(edit.ID))
+	//    {
+	//        if (edit.Text.Trim() == "" || edit.Text == "<НЕ ЗАДАНО>")
+	//        {
+	//            if (mode == "send") e.IsValid = false;
+	//            FormIsValid = false;
+	//            ErrorMessages.Add(e.ErrorText);
+	//        }
+	//    }
+	//}
 
-    void ValidatePaymentForm()
-    {
-        Dictionary<string, Control> controls = new Dictionary<string, Control>();
-        Reports1NFUtils.GetAllControls(PaymentForm, controls);
 
-        var is_discount = Reports1NFUtils.GetCheckBoxValue(controls, "CheckRenterIsOut");
-        var zvilneno_percent = Reports1NFUtils.GetEditNumeric(controls, "edit_zvilneno_percent");
-        var zvilneno_date1 = Reports1NFUtils.GetDateValue(controls, "edit_zvilneno_date1");
-        var zvilneno_date2 = Reports1NFUtils.GetDateValue(controls, "edit_zvilneno_date2");
-        if (is_discount)
-        {
-            if (zvilneno_percent == null || zvilneno_date1 == null || zvilneno_date2 == null)
-            {
-                throw new Exception("Всі поля \"Звільнено від сплати орендної плати на\" повинні бути заповнені");
-            }
-        }
-    }
 
-    protected void CPCommentViewerPanel_Callback(object sender, CallbackEventArgsBase e)
-    {
-        // Get the commented control ID and Title
-        int dividerPos = e.Parameter.IndexOf(';');
+	protected void CPMainPanel_Callback(object sender, CallbackEventArgsBase e)
+	{
+		//////
+		try
+		{
+			if (e.Parameter.StartsWith("save:"))
+			{
+				SqlConnection connection = Utils.ConnectToDatabase();
 
-        if (dividerPos > 0)
-        {
-            ReportCommentViewer1.SetCommentTargetText(e.Parameter.Substring(dividerPos + 1));
-        }
-    }
+				if (connection != null)
+				{
+					SaveChanges(connection);
 
-    public string EvaluateSignature(object modifiedBy, object modifyDate)
-    {
-        string userName = (modifiedBy is string) ? (string)modifiedBy : Resources.Strings.SignatureUnknownUser;
-        string date = (modifyDate is DateTime) ? ((DateTime)modifyDate).ToShortDateString() + " " + ((DateTime)modifyDate).ToShortTimeString() : Resources.Strings.SignatureUnknownDate;
+					connection.Close();
+				}
+			}
+			else if (e.Parameter.StartsWith("send:"))
+			{
+				//throw new Exception("aa");
 
-        return string.Format(Resources.Strings.SignatureObjCard, userName, date);
-    }
+				validator.ValidateUI();
+				//!!ValidatePaymentForm();
+				this.errorForm.DataSource = validator.FormatErrorDataSource();
+				this.errorForm.DataBind();
 
-    public bool IsHistoryButtonVisible()
-    {
-        return Request.QueryString["aid"] == null ? false : true;
-    }
+				// Copy all information about address and object to the primary database
+				SqlConnection connection = Utils.ConnectToDatabase();
+				if (connection != null)
+				{
+					// Save the form before sending it to DKV
+					SaveChanges(connection);
 
-    #region Organization pickers
+					int agreementId = RentAgreementID;
 
-    private string GiverOrgZkpoPattern
-    {
-        get
-        {
-            object pattern = Session[GetPageUniqueKey() + "_GiverOrgZkpoPattern"];
-            return (pattern is string) ? (string)pattern : "";
-        }
+					if (validator.ValidateDB(connection, "reports1nf_arenda", string.Format("report_id = {0} and id = {1}", ReportID, agreementId), true))
+					{
+						Reports1NFUtils.SendRentAgreement(connection, /*connection1NF,*/ ReportID, ref agreementId);
 
-        set
-        {
-            Session[GetPageUniqueKey() + "_GiverOrgZkpoPattern"] = value;
-        }
-    }
+						RentAgreementID = agreementId;
 
-    private string GiverOrgNamePattern
-    {
-        get
-        {
-            object pattern = Session[GetPageUniqueKey() + "_GiverOrgNamePattern"];
-            return (pattern is string) ? (string)pattern : "";
-        }
+						connection.Close();
+					}
+					else
+					{
+						StatusForm.DataBind();
+						connection.Close();
+						return;
+					}
+				}
+				else
+				{
+					return;
+				}
 
-        set
-        {
-            Session[GetPageUniqueKey() + "_GiverOrgNamePattern"] = value;
-        }
-    }
 
-    private string RenterOrgZkpoPattern
-    {
-        get
-        {
-            object pattern = Session[GetPageUniqueKey() + "_RenterOrgZkpoPattern"];
-            return (pattern is string) ? (string)pattern : "";
-        }
 
-        set
-        {
-            Session[GetPageUniqueKey() + "_RenterOrgZkpoPattern"] = value;
-        }
-    }
+			}
+			else if (e.Parameter.StartsWith("clear:"))
+			{
+				// No need to do anything. DataBind() will do the trick
+			}
 
-    private string RenterOrgNamePattern
-    {
-        get
-        {
-            object pattern = Session[GetPageUniqueKey() + "_RenterOrgNamePattern"];
-            return (pattern is string) ? (string)pattern : "";
-        }
+			StatusForm.DataBind();
+			AddressForm.DataBind();
+			OrganizationsForm.DataBind();
+			PaymentForm.DataBind();
+			CollectionForm.DataBind();
+			InsuranceForm.DataBind();
+			FormViewState.DataBind();
 
-        set
-        {
-            Session[GetPageUniqueKey() + "_RenterOrgNamePattern"] = value;
-        }
-    }
+			// Rebind the grid of rent decisions
+			object view = SqlDataSourceDecisions.Select(new DataSourceSelectArguments());
 
-    protected void SqlDataSourceOrgSearchGiver_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
-    {
-        string orgName = GiverOrgNamePattern;
-        string zkpo = GiverOrgZkpoPattern;
+			if (view is DataView)
+			{
+				DecisionsDataSource = (view as DataView).ToTable();
+			}
 
-        if (orgName.Length == 0 && zkpo.Length == 0)
-        {
-            e.Command.Parameters["@zkpo"].Value = "^";
-            e.Command.Parameters["@fname"].Value = "^";
-        }
-        else
-        {
-            e.Command.Parameters["@zkpo"].Value = zkpo.Length > 0 ? "%" + zkpo + "%" : "%";
-            e.Command.Parameters["@fname"].Value = orgName.Length > 0 ? "%" + orgName + "%" : "%";
-        }
+			GridViewDecisions.DataSource = DecisionsDataSource;
+			GridViewDecisions.DataBind();
 
-        object userOrgId = ViewState["OrgRentAgreement_UserOrgID"];
+			// Rebind the grid of rent subleases
+			view = SqlDataSourceSubleases.Select(new DataSourceSelectArguments());
 
-        if (userOrgId is int)
-        {
-            e.Command.Parameters["@balans_org"].Value = userOrgId;
-        }
-        else
-        {
-            int reportRdaDistrictId = -1;
-            e.Command.Parameters["@balans_org"].Value = Reports1NFUtils.GetReportOrganizationId(ReportID, ref reportRdaDistrictId);
-        }
+			if (view is DataView)
+			{
+				SubleasesDataSource = (view as DataView).ToTable();
+			}
 
-        e.Command.Parameters["@aid"].Value = RentAgreementID;
-        e.Command.Parameters["@rep_id"].Value = ReportID;
-    }
+			GridViewSubleases.DataSource = SubleasesDataSource;
+			GridViewSubleases.DataBind();
 
-    protected void SqlDataSourceOrgSearchRenter_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
-    {
-        string orgName = RenterOrgNamePattern;
-        string zkpo = RenterOrgZkpoPattern;
+			// Rebind the grid of objects
+			view = SqlDataSourceNotes.Select(new DataSourceSelectArguments());
 
-        if (orgName.Length == 0 && zkpo.Length == 0)
-        {
-            e.Command.Parameters["@zkpo"].Value = "^";
-            e.Command.Parameters["@fname"].Value = "^";
-        }
-        else
-        {
-            e.Command.Parameters["@zkpo"].Value = zkpo.Length > 0 ? "%" + zkpo + "%" : "%";
-            e.Command.Parameters["@fname"].Value = orgName.Length > 0 ? "%" + orgName + "%" : "%";
-        }
+			if (view is DataView)
+			{
+				NotesDataSource = (view as DataView).ToTable();
+			}
 
-        e.Command.Parameters["@aid"].Value = RentAgreementID;
-        e.Command.Parameters["@rep_id"].Value = ReportID;
-    }
+			GridViewNotes.DataSource = NotesDataSource;
+			GridViewNotes.DataBind();
 
-    protected void ComboGiverOrg_Callback(object sender, CallbackEventArgsBase e)
-    {
-        string[] parts = e.Parameter.Split(new char[] { '|' });
+			CalculateTotals();
+			EnableControlsBasingOnUserRole();
+			//////
+		}
+		catch (Exception ex)
+		{
+			var lognet = log4net.LogManager.GetLogger("ReportWebSite");
+			lognet.Debug("--------------- OrgRentAgreement CPMainPanel_Callback ----------------", ex);
+			throw ex;
+		}
+	}
 
-        if (parts.Length == 2)
-        {
-            GiverOrgZkpoPattern = parts[0].Trim();
-            GiverOrgNamePattern = parts[1].Trim().ToUpper();
+	void ValidatePaymentForm()
+	{
+		Dictionary<string, Control> controls = new Dictionary<string, Control>();
+		Reports1NFUtils.GetAllControls(PaymentForm, controls);
 
-            (sender as ASPxComboBox).DataBind();
+		var is_discount = Reports1NFUtils.GetCheckBoxValue(controls, "CheckRenterIsOut");
+		var zvilneno_percent = Reports1NFUtils.GetEditNumeric(controls, "edit_zvilneno_percent");
+		var zvilneno_date1 = Reports1NFUtils.GetDateValue(controls, "edit_zvilneno_date1");
+		var zvilneno_date2 = Reports1NFUtils.GetDateValue(controls, "edit_zvilneno_date2");
+		if (is_discount)
+		{
+			if (zvilneno_percent == null || zvilneno_date1 == null || zvilneno_date2 == null)
+			{
+				throw new Exception("Всі поля \"Звільнено від сплати орендної плати на\" повинні бути заповнені");
+			}
+		}
+	}
 
-            if ((sender as ASPxComboBox).Items.Count > 0)
-                (sender as ASPxComboBox).SelectedIndex = 0;
-        }
-    }
+	protected void CPCommentViewerPanel_Callback(object sender, CallbackEventArgsBase e)
+	{
+		// Get the commented control ID and Title
+		int dividerPos = e.Parameter.IndexOf(';');
 
-    protected void ComboRenterOrg_Callback(object sender, CallbackEventArgsBase e)
-    {
-        if (e.Parameter.StartsWith("create_org:") || e.Parameter.StartsWith("edit_org:"))
-        {
-            int newId = 0;
-            Control ourPopUp;
-            var new_id_str = "";
-            if (e.Parameter.StartsWith("create_org:"))
-            {
-                ourPopUp = (Control)Utils.FindControlRecursive(OrganizationsForm, "PopupAddRenterOrg");
-                new_id_str = ((HiddenField)Utils.FindControlRecursive(ourPopUp, "NewOrgId")).Value;
-                Int32.TryParse(new_id_str, out newId);
-            }
-            else
-            {
-                ourPopUp = (Control)Utils.FindControlRecursive(OrganizationsForm, "PopupEditRenterOrg");
-                new_id_str = ((HiddenField)Utils.FindControlRecursive(ourPopUp, "OldOrgId")).Value;
-                Int32.TryParse(new_id_str, out newId);
-            }
+		if (dividerPos > 0)
+		{
+			ReportCommentViewer1.SetCommentTargetText(e.Parameter.Substring(dividerPos + 1));
+		}
+	}
 
-            ASPxComboBox ComboRenterOrg = (ASPxComboBox)Utils.FindControlRecursive(OrganizationsForm, "ComboRenterOrg");
-            ComboRenterOrg.DataBind();
-            ComboRenterOrg.SelectedItem = ComboRenterOrg.Items.FindByValue(newId);
+	public string EvaluateSignature(object modifiedBy, object modifyDate)
+	{
+		string userName = (modifiedBy is string) ? (string)modifiedBy : Resources.Strings.SignatureUnknownUser;
+		string date = (modifyDate is DateTime) ? ((DateTime)modifyDate).ToShortDateString() + " " + ((DateTime)modifyDate).ToShortTimeString() : Resources.Strings.SignatureUnknownDate;
 
-        }
-        else
-        {
-            string[] parts = e.Parameter.Split(new char[] { '|' });
+		return string.Format(Resources.Strings.SignatureObjCard, userName, date);
+	}
 
-            if (parts.Length == 2)
-            {
-                RenterOrgZkpoPattern = parts[0].Trim();
-                RenterOrgNamePattern = parts[1].Trim().ToUpper();
+	public bool IsHistoryButtonVisible()
+	{
+		return Request.QueryString["aid"] == null ? false : true;
+	}
 
-                (sender as ASPxComboBox).DataBind();
+	#region Organization pickers
 
-                if ((sender as ASPxComboBox).Items.Count > 0)
-                    (sender as ASPxComboBox).SelectedIndex = 0;
-            }
-        }
-    }
+	private string GiverOrgZkpoPattern
+	{
+		get
+		{
+			object pattern = Session[GetPageUniqueKey() + "_GiverOrgZkpoPattern"];
+			return (pattern is string) ? (string)pattern : "";
+		}
 
-    protected void CPPopUp_Callback(object sender, CallbackEventArgsBase e)
-    {
-        if (e.Parameter.StartsWith("create_org:") || e.Parameter.StartsWith("edit_org:"))
-        {
-            ASPxLabel label;
-            Control ourPopUp;
-            HiddenField HdnNewOrgId;
-            if (e.Parameter.StartsWith("create_org:"))
-            {
-                ourPopUp = (Control)Utils.FindControlRecursive(OrganizationsForm, "PopupAddRenterOrg");
-                HdnNewOrgId = (HiddenField)Utils.FindControlRecursive(ourPopUp, "NewOrgId");
-                label = (ASPxLabel)Utils.FindControlRecursive(ourPopUp, "LabelOrgCreationError");
-            }
-            else
-            {
-                ourPopUp = (Control)Utils.FindControlRecursive(OrganizationsForm, "PopupEditRenterOrg");
-                HdnNewOrgId = (HiddenField)Utils.FindControlRecursive(ourPopUp, "OldOrgId");
-                label = (ASPxLabel)Utils.FindControlRecursive(ourPopUp, "LabelOrgEditError");
-            }
+		set
+		{
+			Session[GetPageUniqueKey() + "_GiverOrgZkpoPattern"] = value;
+		}
+	}
 
-            int newOrgId = 0;
-            Int32.TryParse(HdnNewOrgId.Value, out newOrgId);
+	private string GiverOrgNamePattern
+	{
+		get
+		{
+			object pattern = Session[GetPageUniqueKey() + "_GiverOrgNamePattern"];
+			return (pattern is string) ? (string)pattern : "";
+		}
 
-            //HdnNewOrgId.Value = "";
+		set
+		{
+			Session[GetPageUniqueKey() + "_GiverOrgNamePattern"] = value;
+		}
+	}
 
-            string errorMessage = "";
+	private string RenterOrgZkpoPattern
+	{
+		get
+		{
+			object pattern = Session[GetPageUniqueKey() + "_RenterOrgZkpoPattern"];
+			return (pattern is string) ? (string)pattern : "";
+		}
 
-            string fullName = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxFullNameOrg")).Text.Trim();
-            string zkpo = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxZkpoCodeOrg")).Text.Trim();
-            string shortName = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxShortNameOrg")).Text.Trim();
+		set
+		{
+			Session[GetPageUniqueKey() + "_RenterOrgZkpoPattern"] = value;
+		}
+	}
 
-            int district = ((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxDistrictOrg")).Value is int ? (int)((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxDistrictOrg")).Value : -1;
-            string street = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxStreetNameOrg")).Text; // Элемент в интерфейсе на самом деле не ASPxComboBox, а ASPxTextBox. Из-за этого сохранить данные невозможно.
-            string numOfHouse = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxAddrNomerOrg")).Text.Trim();
-            string zip = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxAddrZipCodeOrg")).Text.Trim();
-            string korpus = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxAddrKorpusFrom")).Text.Trim();
+	private string RenterOrgNamePattern
+	{
+		get
+		{
+			object pattern = Session[GetPageUniqueKey() + "_RenterOrgNamePattern"];
+			return (pattern is string) ? (string)pattern : "";
+		}
 
-            int status = ((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxStatusOrg")).Value is int ? (int)((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxStatusOrg")).Value : -1;
-            int formVlasn = ((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxFormVlasnOrg")).Value is int ? (int)((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxFormVlasnOrg")).Value : -1;
-            int industry = ((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxIndustryOrg")).Value is int ? (int)((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxIndustryOrg")).Value : -1;
-            int occupation = ((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOccupationFrom")).Value is int ? (int)((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOccupationFrom")).Value : -1;
+		set
+		{
+			Session[GetPageUniqueKey() + "_RenterOrgNamePattern"] = value;
+		}
+	}
+
+	protected void SqlDataSourceOrgSearchGiver_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+	{
+		string orgName = GiverOrgNamePattern;
+		string zkpo = GiverOrgZkpoPattern;
+
+		if (orgName.Length == 0 && zkpo.Length == 0)
+		{
+			e.Command.Parameters["@zkpo"].Value = "^";
+			e.Command.Parameters["@fname"].Value = "^";
+		}
+		else
+		{
+			e.Command.Parameters["@zkpo"].Value = zkpo.Length > 0 ? "%" + zkpo + "%" : "%";
+			e.Command.Parameters["@fname"].Value = orgName.Length > 0 ? "%" + orgName + "%" : "%";
+		}
+
+		object userOrgId = ViewState["OrgRentAgreement_UserOrgID"];
+
+		if (userOrgId is int)
+		{
+			e.Command.Parameters["@balans_org"].Value = userOrgId;
+		}
+		else
+		{
+			int reportRdaDistrictId = -1;
+			e.Command.Parameters["@balans_org"].Value = Reports1NFUtils.GetReportOrganizationId(ReportID, ref reportRdaDistrictId);
+		}
+
+		e.Command.Parameters["@aid"].Value = RentAgreementID;
+		e.Command.Parameters["@rep_id"].Value = ReportID;
+	}
+
+	protected void SqlDataSourceOrgSearchRenter_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+	{
+		string orgName = RenterOrgNamePattern;
+		string zkpo = RenterOrgZkpoPattern;
+
+		if (orgName.Length == 0 && zkpo.Length == 0)
+		{
+			e.Command.Parameters["@zkpo"].Value = "^";
+			e.Command.Parameters["@fname"].Value = "^";
+		}
+		else
+		{
+			e.Command.Parameters["@zkpo"].Value = zkpo.Length > 0 ? "%" + zkpo + "%" : "%";
+			e.Command.Parameters["@fname"].Value = orgName.Length > 0 ? "%" + orgName + "%" : "%";
+		}
+
+		e.Command.Parameters["@aid"].Value = RentAgreementID;
+		e.Command.Parameters["@rep_id"].Value = ReportID;
+	}
+
+	protected void ComboGiverOrg_Callback(object sender, CallbackEventArgsBase e)
+	{
+		string[] parts = e.Parameter.Split(new char[] { '|' });
+
+		if (parts.Length == 2)
+		{
+			GiverOrgZkpoPattern = parts[0].Trim();
+			GiverOrgNamePattern = parts[1].Trim().ToUpper();
+
+			(sender as ASPxComboBox).DataBind();
+
+			if ((sender as ASPxComboBox).Items.Count > 0)
+				(sender as ASPxComboBox).SelectedIndex = 0;
+		}
+	}
+
+	protected void ComboRenterOrg_Callback(object sender, CallbackEventArgsBase e)
+	{
+		if (e.Parameter.StartsWith("create_org:") || e.Parameter.StartsWith("edit_org:"))
+		{
+			int newId = 0;
+			Control ourPopUp;
+			var new_id_str = "";
+			if (e.Parameter.StartsWith("create_org:"))
+			{
+				ourPopUp = (Control)Utils.FindControlRecursive(OrganizationsForm, "PopupAddRenterOrg");
+				new_id_str = ((HiddenField)Utils.FindControlRecursive(ourPopUp, "NewOrgId")).Value;
+				Int32.TryParse(new_id_str, out newId);
+			}
+			else
+			{
+				ourPopUp = (Control)Utils.FindControlRecursive(OrganizationsForm, "PopupEditRenterOrg");
+				new_id_str = ((HiddenField)Utils.FindControlRecursive(ourPopUp, "OldOrgId")).Value;
+				Int32.TryParse(new_id_str, out newId);
+			}
+
+			ASPxComboBox ComboRenterOrg = (ASPxComboBox)Utils.FindControlRecursive(OrganizationsForm, "ComboRenterOrg");
+			ComboRenterOrg.DataBind();
+			ComboRenterOrg.SelectedItem = ComboRenterOrg.Items.FindByValue(newId);
+
+		}
+		else
+		{
+			string[] parts = e.Parameter.Split(new char[] { '|' });
+
+			if (parts.Length == 2)
+			{
+				RenterOrgZkpoPattern = parts[0].Trim();
+				RenterOrgNamePattern = parts[1].Trim().ToUpper();
+
+				(sender as ASPxComboBox).DataBind();
+
+				if ((sender as ASPxComboBox).Items.Count > 0)
+					(sender as ASPxComboBox).SelectedIndex = 0;
+			}
+		}
+	}
+
+	protected void CPPopUp_Callback(object sender, CallbackEventArgsBase e)
+	{
+		if (e.Parameter.StartsWith("create_org:") || e.Parameter.StartsWith("edit_org:"))
+		{
+			ASPxLabel label;
+			Control ourPopUp;
+			HiddenField HdnNewOrgId;
+			if (e.Parameter.StartsWith("create_org:"))
+			{
+				ourPopUp = (Control)Utils.FindControlRecursive(OrganizationsForm, "PopupAddRenterOrg");
+				HdnNewOrgId = (HiddenField)Utils.FindControlRecursive(ourPopUp, "NewOrgId");
+				label = (ASPxLabel)Utils.FindControlRecursive(ourPopUp, "LabelOrgCreationError");
+			}
+			else
+			{
+				ourPopUp = (Control)Utils.FindControlRecursive(OrganizationsForm, "PopupEditRenterOrg");
+				HdnNewOrgId = (HiddenField)Utils.FindControlRecursive(ourPopUp, "OldOrgId");
+				label = (ASPxLabel)Utils.FindControlRecursive(ourPopUp, "LabelOrgEditError");
+			}
+
+			int newOrgId = 0;
+			Int32.TryParse(HdnNewOrgId.Value, out newOrgId);
+
+			//HdnNewOrgId.Value = "";
+
+			string errorMessage = "";
+
+			string fullName = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxFullNameOrg")).Text.Trim();
+			string zkpo = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxZkpoCodeOrg")).Text.Trim();
+			string shortName = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxShortNameOrg")).Text.Trim();
+
+			int district = ((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxDistrictOrg")).Value is int ? (int)((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxDistrictOrg")).Value : -1;
+			string street = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxStreetNameOrg")).Text; // Элемент в интерфейсе на самом деле не ASPxComboBox, а ASPxTextBox. Из-за этого сохранить данные невозможно.
+			string numOfHouse = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxAddrNomerOrg")).Text.Trim();
+			string zip = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxAddrZipCodeOrg")).Text.Trim();
+			string korpus = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxAddrKorpusFrom")).Text.Trim();
+
+			int status = ((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxStatusOrg")).Value is int ? (int)((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxStatusOrg")).Value : -1;
+			int formVlasn = ((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxFormVlasnOrg")).Value is int ? (int)((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxFormVlasnOrg")).Value : -1;
+			int industry = ((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxIndustryOrg")).Value is int ? (int)((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxIndustryOrg")).Value : -1;
+			int occupation = ((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOccupationFrom")).Value is int ? (int)((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOccupationFrom")).Value : -1;
 
 			int pravform = ((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOrgPravform")).Value is int ? (int)((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOrgPravform")).Value : -1;
 			int ouprav = ((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOrgOuprav")).Value is int ? (int)((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOrgOuprav")).Value : -1;
 
 			string directorFio = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxDirectorFioOrg")).Text;
-            string directorPhone = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxDirectorPhoneOrg")).Text;
-            string directorEmail = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxDirectorEmailOrg")).Text;
-            string buhgalterFio = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxBuhgalterFioOrg")).Text;
-            string buhgalterPhone = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxBuhgalterPhoneOrg")).Text;
-            string fax = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxFax")).Text;
+			string directorPhone = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxDirectorPhoneOrg")).Text;
+			string directorEmail = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxDirectorEmailOrg")).Text;
+			string buhgalterFio = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxBuhgalterFioOrg")).Text;
+			string buhgalterPhone = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxBuhgalterPhoneOrg")).Text;
+			string fax = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxFax")).Text;
 
-            if (fullName == "")
-                errorMessage = "Необхідно заповнити повну назву організації.";
-            else if (zkpo == "")
-                errorMessage = "Необхідно заповнити Код ЄДРПОУ.";
-            else if (shortName == "")
-                errorMessage = "Необхідно заповнити коротку назву організації.";
-            else if (district == -1)
-                errorMessage = "Необхідно вибрати район.";
-            else if (street == "")
-                errorMessage = "Необхідно заповнити вулицю.";
-            else if (numOfHouse == "")
-                errorMessage = "Необхідно заповнити номер будинку.";
-            else if (zip == "")
-                errorMessage = "Необхідно заповнити поштовий індекс.";
-            else if (status == -1)
-                errorMessage = "Необхідно вибрати статус.";
-            else if (status == 1 && zkpo.Length != 8)
-                errorMessage = "Код ЄДРПОУ має бути 8 символів у довжину.";
-            else if (status == 2 && zkpo.Length != 10)
-                errorMessage = "Код ЄДРПОУ має бути 10 символів у довжину.";
-            else if (formVlasn == -1)
-                errorMessage = "Необхідно вибрати форму власності.";
-            else if (directorFio == "")
-                errorMessage = "Необхідно заповнити ПІБ директора.";
-            else if (directorPhone == "")
-                errorMessage = "Необхідно заповнити телефон директора.";
-            else if (directorEmail == "")
-                errorMessage = "Необхідно заповнити Email директора.";
+			if (fullName == "")
+				errorMessage = "Необхідно заповнити повну назву організації.";
+			else if (zkpo == "")
+				errorMessage = "Необхідно заповнити Код ЄДРПОУ.";
+			else if (shortName == "")
+				errorMessage = "Необхідно заповнити коротку назву організації.";
+			else if (district == -1)
+				errorMessage = "Необхідно вибрати район.";
+			else if (street == "")
+				errorMessage = "Необхідно заповнити вулицю.";
+			else if (numOfHouse == "")
+				errorMessage = "Необхідно заповнити номер будинку.";
+			else if (zip == "")
+				errorMessage = "Необхідно заповнити поштовий індекс.";
+			else if (status == -1)
+				errorMessage = "Необхідно вибрати статус.";
+			else if (status == 1 && zkpo.Length != 8)
+				errorMessage = "Код ЄДРПОУ має бути 8 символів у довжину.";
+			else if (status == 2 && zkpo.Length != 10)
+				errorMessage = "Код ЄДРПОУ має бути 10 символів у довжину.";
+			else if (formVlasn == -1)
+				errorMessage = "Необхідно вибрати форму власності.";
+			else if (directorFio == "")
+				errorMessage = "Необхідно заповнити ПІБ директора.";
+			else if (directorPhone == "")
+				errorMessage = "Необхідно заповнити телефон директора.";
+			else if (directorEmail == "")
+				errorMessage = "Необхідно заповнити Email директора.";
 
-            if (errorMessage == "")
-            {
-                //var newOrgId = 0;
+			if (errorMessage == "")
+			{
+				//var newOrgId = 0;
 
-                //FbConnection connection = Utils.ConnectTo1NF();
+				//FbConnection connection = Utils.ConnectTo1NF();
 
-                //if (connection != null)
-                //{
-                    if (newOrgId != 0)
-                    {
-                        newOrgId = RishProjectExport.Update1NFOrganization(
-                            //connection,
-                            newOrgId,
-                            fullName,
-                            shortName,
-                            zkpo,
-                            industry,
-                            occupation,
-							pravform,
-							ouprav,
-							formVlasn,
-                            status,
-                            -1,
-                            -1,
-                            -1,
-                            directorFio,
-                            directorPhone,
-                            directorEmail,
-                            buhgalterFio,
-                            buhgalterPhone,
-                            fax,
-                            "", // kved
-                            district,
-                            street,
-                            numOfHouse,
-                            korpus,
-                            zip,
-                            //true,
-                            out errorMessage);
-                    }
-                    else
-                    {
-                        newOrgId = RishProjectExport.CreateNew1NFOrganization(
-                            //connection,
-                            fullName,
-                            shortName,
-                            zkpo,
-                            industry,
-                            occupation,
-							pravform,
-							ouprav,
-							formVlasn,
-                            status,
-                            -1,
-                            -1,
-                            -1,
-                            directorFio,
-                            directorPhone,
-                            directorEmail,
-                            buhgalterFio,
-                            buhgalterPhone,
-                            fax,
-                            "", // kved
-                            district,
-                            street,
-                            numOfHouse,
-                            korpus,
-                            zip,
-                            //true,
-                            out errorMessage);
-                    }
+				//if (connection != null)
+				//{
+				if (newOrgId != 0)
+				{
+					newOrgId = RishProjectExport.Update1NFOrganization(
+						//connection,
+						newOrgId,
+						fullName,
+						shortName,
+						zkpo,
+						industry,
+						occupation,
+						pravform,
+						ouprav,
+						formVlasn,
+						status,
+						-1,
+						-1,
+						-1,
+						directorFio,
+						directorPhone,
+						directorEmail,
+						buhgalterFio,
+						buhgalterPhone,
+						fax,
+						"", // kved
+						district,
+						street,
+						numOfHouse,
+						korpus,
+						zip,
+						//true,
+						out errorMessage);
+				}
+				else
+				{
+					newOrgId = RishProjectExport.CreateNew1NFOrganization(
+						//connection,
+						fullName,
+						shortName,
+						zkpo,
+						industry,
+						occupation,
+						pravform,
+						ouprav,
+						formVlasn,
+						status,
+						-1,
+						-1,
+						-1,
+						directorFio,
+						directorPhone,
+						directorEmail,
+						buhgalterFio,
+						buhgalterPhone,
+						fax,
+						"", // kved
+						district,
+						street,
+						numOfHouse,
+						korpus,
+						zip,
+						//true,
+						out errorMessage);
+				}
 
-                    //connection.Close();
+				//connection.Close();
 
-                    if (newOrgId > 0)
-                    {
-                        HdnNewOrgId.Value = newOrgId.ToString();
+				if (newOrgId > 0)
+				{
+					HdnNewOrgId.Value = newOrgId.ToString();
 
-                        ASPxTextBox EditRenterOrgZKPO = (ASPxTextBox)Utils.FindControlRecursive(OrganizationsForm, "EditRenterOrgZKPO");
-                        EditRenterOrgZKPO.Text = zkpo;
-                        RenterOrgZkpoPattern = zkpo;
+					ASPxTextBox EditRenterOrgZKPO = (ASPxTextBox)Utils.FindControlRecursive(OrganizationsForm, "EditRenterOrgZKPO");
+					EditRenterOrgZKPO.Text = zkpo;
+					RenterOrgZkpoPattern = zkpo;
 
-                        ASPxTextBox EditRenterOrgName = (ASPxTextBox)Utils.FindControlRecursive(OrganizationsForm, "EditRenterOrgName");
-                        EditRenterOrgName.Text = fullName;
-                        RenterOrgNamePattern = fullName;
-                    }
-                //}
-            }
-            else
-            {
-                label.Text = errorMessage;
-                label.ClientVisible = (errorMessage.Length > 0);
-            }
-        }
-    }
+					ASPxTextBox EditRenterOrgName = (ASPxTextBox)Utils.FindControlRecursive(OrganizationsForm, "EditRenterOrgName");
+					EditRenterOrgName.Text = fullName;
+					RenterOrgNamePattern = fullName;
+				}
+				//}
+			}
+			else
+			{
+				label.Text = errorMessage;
+				label.ClientVisible = (errorMessage.Length > 0);
+			}
+		}
+	}
 
-    protected void errorForm_DataBound(object sender, EventArgs e)
-    {
-        Repeater r = (Repeater)Utils.FindControlRecursive(errorForm, "errorList");
-        if (r != null)
-        {
-            r.DataSource = errorForm.DataSource;
-            r.DataBind();
-        }
-    }
+	protected void errorForm_DataBound(object sender, EventArgs e)
+	{
+		Repeater r = (Repeater)Utils.FindControlRecursive(errorForm, "errorList");
+		if (r != null)
+		{
+			r.DataSource = errorForm.DataSource;
+			r.DataBind();
+		}
+	}
 
 	#endregion (Organization pickers)
 
@@ -2954,8 +3009,8 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		string destFolder = TempPhotoFolder();
 
 		var connection = Utils.ConnectToDatabase();
-        var transaction = connection.BeginTransaction();
-        using (var cmd = new SqlCommand("select id, file_name, file_ext from reports1nf_arendaphotos where arenda_id = @aid", connection, transaction))
+		var transaction = connection.BeginTransaction();
+		using (var cmd = new SqlCommand("select id, file_name, file_ext from reports1nf_arendaphotos where arenda_id = @aid", connection, transaction))
 		{
 			cmd.Parameters.AddWithValue("aid", agreementIdStr);
 			using (SqlDataReader r = cmd.ExecuteReader())
@@ -2967,22 +3022,22 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 					string file_ext = r.GetString(2);
 
 					string sourceFileToCopy = Path.Combine(photoRootPath, "1NFARENDA", agreementIdStr, id.ToString() + file_ext);
-                    if (LLLLhotorowUtils.Exists(sourceFileToCopy, connection, transaction))
-                    {
+					if (LLLLhotorowUtils.Exists(sourceFileToCopy, connection, transaction))
+					{
 						string destFileToCopy = Path.Combine(destFolder, PhotoUtils.DbFilename2LocalFilename(file_name, file_ext));
-                        LLLLhotorowUtils.Delete(destFileToCopy, connection, transaction);
-                        LLLLhotorowUtils.Copy(sourceFileToCopy, destFileToCopy, connection, transaction);
+						LLLLhotorowUtils.Delete(destFileToCopy, connection, transaction);
+						LLLLhotorowUtils.Copy(sourceFileToCopy, destFileToCopy, connection, transaction);
 					}
 				}
 
 				r.Close();
 			}
 		}
-        transaction.Commit();
-        connection.Close();
-    }
+		transaction.Commit();
+		connection.Close();
+	}
 
-    private void BindImageGallery(string agreementIdStr)
+	private void BindImageGallery(string agreementIdStr)
 	{
 		ObjectDataSourceBalansPhoto.SelectParameters["recordID"].DefaultValue = agreementIdStr;
 		ObjectDataSourceBalansPhoto.SelectParameters["tempGuid"].DefaultValue = PhotoFolderID.ToString();
@@ -3050,9 +3105,9 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		if (archiveIdStr != null && archiveIdStr.Length > 0)
 			throw new Exception("Ви не можете видалити фото з архівного стану.");
 
-        var connection = Utils.ConnectToDatabase();
-        var transaction = connection.BeginTransaction();
-        string arendaId = Request.QueryString["aid"];
+		var connection = Utils.ConnectToDatabase();
+		var transaction = connection.BeginTransaction();
+		string arendaId = Request.QueryString["aid"];
 
 		if (imageGalleryDemo != null)
 		{
@@ -3062,15 +3117,15 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 			ImageGalleryItem item = imageGalleryDemo.Items[int.Parse(indexStr)];
 			FileAttachment drv = (FileAttachment)item.DataItem;
 			string fileExt = Path.GetExtension(drv.Name);
-            LLLLhotorowUtils.Delete(drv.Name, connection, transaction);
+			LLLLhotorowUtils.Delete(drv.Name, connection, transaction);
 
 			imageUrl = item.ImageUrl;
 		}
 
-        transaction.Commit();
-        connection.Close();
+		transaction.Commit();
+		connection.Close();
 
-        return imageUrl;
+		return imageUrl;
 	}
 
 	protected void ASPxUploadPhotoControl_FileUploadComplete(object sender, DevExpress.Web.FileUploadCompleteEventArgs e)
@@ -3079,7 +3134,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		string photoRootPath = WebConfigurationManager.AppSettings["ImgContentRootFolder"];
 		string serverLocal1NFObjectFolder = Path.Combine(photoRootPath, "1NFARENDA", agreementIdStr);
 		string fullPath = string.Empty;
-        PhotoUtils.AddUploadedFile(TempPhotoFolder(), e.UploadedFile.FileName, e.UploadedFile.FileBytes);
+		PhotoUtils.AddUploadedFile(TempPhotoFolder(), e.UploadedFile.FileName, e.UploadedFile.FileBytes);
 	}
 
 
@@ -3088,26 +3143,26 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		string agreementIdStr = Request.QueryString["aid"];
 		Int32 newId = 0;
 		string photoRootPath = WebConfigurationManager.AppSettings["ImgContentRootFolder"];
-        string local1NFObjectFolder = Path.Combine(photoRootPath, "1NFARENDA", agreementIdStr);
+		string local1NFObjectFolder = Path.Combine(photoRootPath, "1NFARENDA", agreementIdStr);
 
-        SqlConnection connection = Utils.ConnectToDatabase();
-        SqlTransaction trans = connection.BeginTransaction();
+		SqlConnection connection = Utils.ConnectToDatabase();
+		SqlTransaction trans = connection.BeginTransaction();
 
-        foreach (string fileToDelete in LLLLhotorowUtils.GetFiles(local1NFObjectFolder, connection, trans))
-        {
-            LLLLhotorowUtils.Delete(fileToDelete, connection, trans);
-        }
+		foreach (string fileToDelete in LLLLhotorowUtils.GetFiles(local1NFObjectFolder, connection, trans))
+		{
+			LLLLhotorowUtils.Delete(fileToDelete, connection, trans);
+		}
 
-        try
-        {
+		try
+		{
 			using (SqlCommand cmd = new SqlCommand("delete from reports1nf_arendaphotos where arenda_id = @aid", connection, trans))
 			{
 				cmd.Parameters.AddWithValue("aid", int.Parse(agreementIdStr));
 				cmd.ExecuteNonQuery();
 			}
 
-            var allfiles = LLLLhotorowUtils.GetFiles(TempPhotoFolder(), connection, trans);
-            foreach (string filePath in allfiles)
+			var allfiles = LLLLhotorowUtils.GetFiles(TempPhotoFolder(), connection, trans);
+			foreach (string filePath in allfiles)
 			{
 				var dbfile = PhotoUtils.LocalFilename2DbFilename(filePath);
 				string fullPath = string.Empty;
@@ -3121,7 +3176,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 				newId = (Int32)cmd.ExecuteScalar();
 
 				fullPath = Path.Combine(local1NFObjectFolder, newId.ToString() + Path.GetExtension(filePath));
-                LLLLhotorowUtils.Copy(filePath, fullPath, connection, trans);
+				LLLLhotorowUtils.Copy(filePath, fullPath, connection, trans);
 			}
 
 			trans.Commit();
@@ -3135,73 +3190,73 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 	}
 
 
-    protected void PdfImageBuild_Click(object sender, EventArgs e)
-    {
-        var agreementId = Int32.Parse(Request.QueryString["aid"]);
+	protected void PdfImageBuild_Click(object sender, EventArgs e)
+	{
+		var agreementId = Int32.Parse(Request.QueryString["aid"]);
 
-        var fname = @"фото_" + agreementId + ".pdf";
-        var bytes = new OrgRentAgreementPhotosPdfBulder().Go(agreementId, TempPhotoFolder());
+		var fname = @"фото_" + agreementId + ".pdf";
+		var bytes = new OrgRentAgreementPhotosPdfBulder().Go(agreementId, TempPhotoFolder());
 
-        Response.Clear();
-        Response.ContentType = "application/pdf";
-        Response.AddHeader("Content-Disposition", "attachment;filename=\"" + fname + "\"");
-        Response.BinaryWrite(bytes);
+		Response.Clear();
+		Response.ContentType = "application/pdf";
+		Response.AddHeader("Content-Disposition", "attachment;filename=\"" + fname + "\"");
+		Response.BinaryWrite(bytes);
 
-        Response.Flush();
-        Response.End();
-    }
+		Response.Flush();
+		Response.End();
+	}
 
-    #endregion
+	#endregion
 
-    protected void SqlDataSourceFreeSquare_Inserting(object sender, SqlDataSourceCommandEventArgs e)
-    {
-        if (!string.IsNullOrEmpty(Request.QueryString["rid"]))
-            e.Command.Parameters["@report_id"].Value = int.Parse(Request.QueryString["rid"]);
+	protected void SqlDataSourceFreeSquare_Inserting(object sender, SqlDataSourceCommandEventArgs e)
+	{
+		if (!string.IsNullOrEmpty(Request.QueryString["rid"]))
+			e.Command.Parameters["@report_id"].Value = int.Parse(Request.QueryString["rid"]);
 
-        if (!string.IsNullOrEmpty(Request.QueryString["aid"]))
-            e.Command.Parameters["@arenda_id"].Value = int.Parse(Request.QueryString["aid"]);
+		if (!string.IsNullOrEmpty(Request.QueryString["aid"]))
+			e.Command.Parameters["@arenda_id"].Value = int.Parse(Request.QueryString["aid"]);
 
-        e.Command.Parameters["@modify_date"].Value = DateTime.Now;
-        MembershipUser user = Membership.GetUser();
-        e.Command.Parameters["@modified_by"].Value = user == null ? String.Empty : (String)user.UserName;
+		e.Command.Parameters["@modify_date"].Value = DateTime.Now;
+		MembershipUser user = Membership.GetUser();
+		e.Command.Parameters["@modified_by"].Value = user == null ? String.Empty : (String)user.UserName;
 
-        if (e.Command.Parameters["@water"].Value == null)
-            e.Command.Parameters["@water"].Value = 0;
+		if (e.Command.Parameters["@water"].Value == null)
+			e.Command.Parameters["@water"].Value = 0;
 
-        if (e.Command.Parameters["@heating"].Value == null)
-            e.Command.Parameters["@heating"].Value = 0;
+		if (e.Command.Parameters["@heating"].Value == null)
+			e.Command.Parameters["@heating"].Value = 0;
 
-        //if (e.Command.Parameters["@power"].Value == null)
-        //e.Command.Parameters["@power"].Value = 0;
+		//if (e.Command.Parameters["@power"].Value == null)
+		//e.Command.Parameters["@power"].Value = 0;
 
-        if (e.Command.Parameters["@gas"].Value == null)
-            e.Command.Parameters["@gas"].Value = 0;
+		if (e.Command.Parameters["@gas"].Value == null)
+			e.Command.Parameters["@gas"].Value = 0;
 
-        if (e.Command.Parameters["@is_solution"].Value == null)
-            e.Command.Parameters["@is_solution"].Value = 0;
+		if (e.Command.Parameters["@is_solution"].Value == null)
+			e.Command.Parameters["@is_solution"].Value = 0;
 
-        if (e.Command.Parameters["@is_included"].Value == null)
-            e.Command.Parameters["@is_included"].Value = 0;
-    }
+		if (e.Command.Parameters["@is_included"].Value == null)
+			e.Command.Parameters["@is_included"].Value = 0;
+	}
 
-    protected void SqlDataSourceFreeSquare_Updating(object sender, SqlDataSourceCommandEventArgs e)
-    {
-        if (!string.IsNullOrEmpty(Request.QueryString["rid"]))
-            e.Command.Parameters["@report_id"].Value = int.Parse(Request.QueryString["rid"]);
+	protected void SqlDataSourceFreeSquare_Updating(object sender, SqlDataSourceCommandEventArgs e)
+	{
+		if (!string.IsNullOrEmpty(Request.QueryString["rid"]))
+			e.Command.Parameters["@report_id"].Value = int.Parse(Request.QueryString["rid"]);
 
-        if (!string.IsNullOrEmpty(Request.QueryString["aid"]))
-            e.Command.Parameters["@arenda_id"].Value = int.Parse(Request.QueryString["aid"]);
+		if (!string.IsNullOrEmpty(Request.QueryString["aid"]))
+			e.Command.Parameters["@arenda_id"].Value = int.Parse(Request.QueryString["aid"]);
 
-        e.Command.Parameters["@modify_date"].Value = DateTime.Now;
-        MembershipUser user = Membership.GetUser();
-        e.Command.Parameters["@modified_by"].Value = user == null ? String.Empty : (String)user.UserName;
+		e.Command.Parameters["@modify_date"].Value = DateTime.Now;
+		MembershipUser user = Membership.GetUser();
+		e.Command.Parameters["@modified_by"].Value = user == null ? String.Empty : (String)user.UserName;
 
-        var b = 10;
-    }
+		var b = 10;
+	}
 
-    protected void ASPxGridViewFreeSquare_RowValidating(object sender, ASPxDataValidationEventArgs e)
-    {
-        var komis_protocol = (e.OldValues["komis_protocol"] == null ? "" : e.OldValues["komis_protocol"].ToString().Trim());
+	protected void ASPxGridViewFreeSquare_RowValidating(object sender, ASPxDataValidationEventArgs e)
+	{
+		var komis_protocol = (e.OldValues["komis_protocol"] == null ? "" : e.OldValues["komis_protocol"].ToString().Trim());
 		/* -- 2022-05-22
         if (komis_protocol != "" && !komis_protocol.StartsWith("0"))
         {
@@ -3212,143 +3267,143 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
         }
 		*/
 
-        foreach (GridViewColumn column in ASPxGridViewFreeSquare.Columns)
-        {
-            GridViewDataColumn dataColumn = column as GridViewDataColumn;
-            if (dataColumn == null) continue;
-            string fieldName = dataColumn.FieldName.ToLower();
+		foreach (GridViewColumn column in ASPxGridViewFreeSquare.Columns)
+		{
+			GridViewDataColumn dataColumn = column as GridViewDataColumn;
+			if (dataColumn == null) continue;
+			string fieldName = dataColumn.FieldName.ToLower();
 
-            if (fieldName == "total_free_sqr" && e.NewValues[dataColumn.FieldName] == null)
-            {
-                e.Errors[dataColumn] = "Заповніть загальну площу вільного приміщення";
-            }
+			if (fieldName == "total_free_sqr" && e.NewValues[dataColumn.FieldName] == null)
+			{
+				e.Errors[dataColumn] = "Заповніть загальну площу вільного приміщення";
+			}
 
-            if (fieldName == "total_free_sqr")
-            {
-                var svalue = e.NewValues[dataColumn.FieldName];
-                if (svalue != null)
-                {
-                    var val = (decimal)svalue;
-                    if (val < 1.0M)
-                    {
-                        e.Errors[dataColumn] = "Загальна площа об’єкта не може бути менше 1 кв.м.";
-                    }
-                }
-            }
+			if (fieldName == "total_free_sqr")
+			{
+				var svalue = e.NewValues[dataColumn.FieldName];
+				if (svalue != null)
+				{
+					var val = (decimal)svalue;
+					if (val < 1.0M)
+					{
+						e.Errors[dataColumn] = "Загальна площа об’єкта не може бути менше 1 кв.м.";
+					}
+				}
+			}
 
-            if (fieldName == "free_sqr_condition_id" && e.NewValues[dataColumn.FieldName] == null)
-            {
-                e.Errors[dataColumn] = "Вкажіть стан вільного приміщення";
-            }
+			if (fieldName == "free_sqr_condition_id" && e.NewValues[dataColumn.FieldName] == null)
+			{
+				e.Errors[dataColumn] = "Вкажіть стан вільного приміщення";
+			}
 
-            //if (fieldName == "free_sqr_condition_id")
-            //{
-            //	var svalue = e.NewValues[dataColumn.FieldName];
-            //	if (svalue != null)
-            //	{
-            //		var val = (int)svalue;
-            //		if (!(new[] { 2, 7, 11 }.Contains(val)))
-            //		{
-            //			e.Errors[dataColumn] = "Стан вільного приміщення може мати тільки значення: ЗАДОВІЛЬНИЙ, ДОБРИЙ, ПОТРЕБУЄ РЕМОНТУ";
-            //		}
-            //	}
-            //}
-
-
-            if (fieldName == "floor" && e.NewValues[dataColumn.FieldName] == null)
-            {
-                e.Errors[dataColumn] = "Заповніть місце розташування вільного приміщення (поверх)";
-            }
-
-            if (fieldName == "possible_using" && e.NewValues[dataColumn.FieldName] == null)
-            {
-                e.Errors[dataColumn] = "Заповніть можливе використання вільного приміщення";
-            }
-
-            //if (fieldName == "using_possible_id" && e.NewValues[dataColumn.FieldName] == null)
-            //{
-            //	e.Errors[dataColumn] = "Заповніть можливе використання вільного приміщення";
-            //}
-        }
-
-        if (e.Errors.Count > 0)
-            e.RowError = "Заповніть обов'язкові поля.";
-    }
-
-    protected void ASPxGridViewFreeSquare_StartRowEditing(object sender, DevExpress.Web.Data.ASPxStartRowEditingEventArgs e)
-    {
-        if (!ASPxGridViewFreeSquare.IsNewRowEditing)
-        {
-            ASPxGridViewFreeSquare.DoRowValidation();
-        }
-    }
-
-    protected void ASPxGridViewFreeSquare_InitNewRow(object sender, ASPxDataInitNewRowEventArgs e)
-    {
-        e.NewValues["is_included"] = true;
-        
-        //var edit = CollectionForm.FindControl("EditCollectionDebtTotal") as ASPxSpinEdit;
-        //e.NewValues["orend_plat_borg"] = edit.Value;
-    }
-
-    protected void ObjectDataSourcePhotoFiles_Inserting(object sender, ObjectDataSourceMethodEventArgs e)
-    {
-        if (Request.Cookies["RecordID"] != null)
-            e.InputParameters["RecordID"] = Request.Cookies["RecordID"].Value;
-
-        //if (Request.QueryString["bid"] != null)
-        //    e.InputParameters["balans_id"] = int.Parse(Request.QueryString["bid"]);
-    }
+			//if (fieldName == "free_sqr_condition_id")
+			//{
+			//	var svalue = e.NewValues[dataColumn.FieldName];
+			//	if (svalue != null)
+			//	{
+			//		var val = (int)svalue;
+			//		if (!(new[] { 2, 7, 11 }.Contains(val)))
+			//		{
+			//			e.Errors[dataColumn] = "Стан вільного приміщення може мати тільки значення: ЗАДОВІЛЬНИЙ, ДОБРИЙ, ПОТРЕБУЄ РЕМОНТУ";
+			//		}
+			//	}
+			//}
 
 
-    protected void ComboBuilding_Callback(object source, CallbackEventArgsBase e)
-    {
-        try
-        {
-            int streetId = int.Parse(e.Parameter);
+			if (fieldName == "floor" && e.NewValues[dataColumn.FieldName] == null)
+			{
+				e.Errors[dataColumn] = "Заповніть місце розташування вільного приміщення (поверх)";
+			}
 
-            AddressStreetID = streetId;
+			if (fieldName == "possible_using" && e.NewValues[dataColumn.FieldName] == null)
+			{
+				e.Errors[dataColumn] = "Заповніть можливе використання вільного приміщення";
+			}
 
-            (source as ASPxComboBox).DataBind();
-        }
-        finally
-        {
-        }
-    }
+			//if (fieldName == "using_possible_id" && e.NewValues[dataColumn.FieldName] == null)
+			//{
+			//	e.Errors[dataColumn] = "Заповніть можливе використання вільного приміщення";
+			//}
+		}
 
-    void CopyCard(int copyId, int reportId)
+		if (e.Errors.Count > 0)
+			e.RowError = "Заповніть обов'язкові поля.";
+	}
+
+	protected void ASPxGridViewFreeSquare_StartRowEditing(object sender, DevExpress.Web.Data.ASPxStartRowEditingEventArgs e)
 	{
-        var connection = Utils.ConnectToDatabase();
-        var transaction = connection.BeginTransaction();
+		if (!ASPxGridViewFreeSquare.IsNewRowEditing)
+		{
+			ASPxGridViewFreeSquare.DoRowValidation();
+		}
+	}
 
-        SqlParameter outputParam = new SqlParameter("new_arenda_id", SqlDbType.Int)
-        {
-            Direction = ParameterDirection.Output
-        };
+	protected void ASPxGridViewFreeSquare_InitNewRow(object sender, ASPxDataInitNewRowEventArgs e)
+	{
+		e.NewValues["is_included"] = true;
 
-        using (SqlCommand cmd = new SqlCommand("dbo.fnArendaClone", connection, transaction))
-        {
-            var user = Membership.GetUser();
-            var username = (user == null ? String.Empty : (String)user.UserName);
+		//var edit = CollectionForm.FindControl("EditCollectionDebtTotal") as ASPxSpinEdit;
+		//e.NewValues["orend_plat_borg"] = edit.Value;
+	}
 
-            cmd.Parameters.Add(new SqlParameter("arenda_id", copyId));
-            cmd.Parameters.Add(new SqlParameter("report_id", reportId));
-            cmd.Parameters.Add(new SqlParameter("modified_by", username));
-            cmd.Parameters.Add(new SqlParameter("modify_date", DateTime.Now));
-            cmd.Parameters.Add(outputParam);
+	protected void ObjectDataSourcePhotoFiles_Inserting(object sender, ObjectDataSourceMethodEventArgs e)
+	{
+		if (Request.Cookies["RecordID"] != null)
+			e.InputParameters["RecordID"] = Request.Cookies["RecordID"].Value;
 
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.ExecuteNonQuery();
-        }
+		//if (Request.QueryString["bid"] != null)
+		//    e.InputParameters["balans_id"] = int.Parse(Request.QueryString["bid"]);
+	}
 
-        var new_arenda_id = (int)outputParam.Value;
 
-        //transaction.Rollback();
-        transaction.Commit();
+	protected void ComboBuilding_Callback(object source, CallbackEventArgsBase e)
+	{
+		try
+		{
+			int streetId = int.Parse(e.Parameter);
 
-        var url = "~/Reports1NF/OrgRentAgreement.aspx?rid=" + reportId + "&aid=" + new_arenda_id;
-        Response.Redirect(Page.ResolveClientUrl(url));
-    }
+			AddressStreetID = streetId;
+
+			(source as ASPxComboBox).DataBind();
+		}
+		finally
+		{
+		}
+	}
+
+	void CopyCard(int copyId, int reportId)
+	{
+		var connection = Utils.ConnectToDatabase();
+		var transaction = connection.BeginTransaction();
+
+		SqlParameter outputParam = new SqlParameter("new_arenda_id", SqlDbType.Int)
+		{
+			Direction = ParameterDirection.Output
+		};
+
+		using (SqlCommand cmd = new SqlCommand("dbo.fnArendaClone", connection, transaction))
+		{
+			var user = Membership.GetUser();
+			var username = (user == null ? String.Empty : (String)user.UserName);
+
+			cmd.Parameters.Add(new SqlParameter("arenda_id", copyId));
+			cmd.Parameters.Add(new SqlParameter("report_id", reportId));
+			cmd.Parameters.Add(new SqlParameter("modified_by", username));
+			cmd.Parameters.Add(new SqlParameter("modify_date", DateTime.Now));
+			cmd.Parameters.Add(outputParam);
+
+			cmd.CommandType = CommandType.StoredProcedure;
+			cmd.ExecuteNonQuery();
+		}
+
+		var new_arenda_id = (int)outputParam.Value;
+
+		//transaction.Rollback();
+		transaction.Commit();
+
+		var url = "~/Reports1NF/OrgRentAgreement.aspx?rid=" + reportId + "&aid=" + new_arenda_id;
+		Response.Redirect(Page.ResolveClientUrl(url));
+	}
 
 	public string EvaluateTrimStr(object str)
 	{
@@ -3567,83 +3622,100 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		comboBox.DataBindItems();
 	}
 
-    #endregion
+	#endregion
 
 
-    decimal? GetDecimalValue(object arg)
-    {
-        if (arg is DBNull)
-        {
-            return null;
-        }
-        else
-        {
-            return (decimal)arg;
-        }
-    }
+	decimal? GetDecimalValue(object arg)
+	{
+		if (arg is DBNull)
+		{
+			return null;
+		}
+		else
+		{
+			return (decimal)arg;
+		}
+	}
 
 
-    void NarazhCalculation_old()
-    {
-        var inflation = 25.0M / 12.0M;
+	void NarazhCalculation_old()
+	{
+		var inflation = 25.0M / 12.0M;
 
-        var pay_in_month = 0M;
-        for (var r = 0; r < GridViewNotes.VisibleRowCount; r++)
-        {
-            var grow = (object[])GridViewNotes.GetRowValues(r, "cost_agreement", "cost_narah");
-            var cost_agreement = GetDecimalValue(grow[0]);
-            var cost_narah = GetDecimalValue(grow[1]);
-            //pay_in_month += (cost_agreement ?? 0M) * (cost_narah ?? 0M) / 100.0M;
-            pay_in_month += (cost_agreement ?? 0M);
-        }
+		var pay_in_month = 0M;
+		for (var r = 0; r < GridViewNotes.VisibleRowCount; r++)
+		{
+			var grow = (object[])GridViewNotes.GetRowValues(r, "cost_agreement", "cost_narah");
+			var cost_agreement = GetDecimalValue(grow[0]);
+			var cost_narah = GetDecimalValue(grow[1]);
+			//pay_in_month += (cost_agreement ?? 0M) * (cost_narah ?? 0M) / 100.0M;
+			pay_in_month += (cost_agreement ?? 0M);
+		}
 
-        SqlConnection connection = Utils.ConnectToDatabase();
-        var month_count = 12;
-        string query = @"select * from narah_sum_by_monthes(@init_pay, @inflation, @month_count)";
+		SqlConnection connection = Utils.ConnectToDatabase();
+		var month_count = 12;
+		string query = @"select * from narah_sum_by_monthes(@init_pay, @inflation, @month_count)";
 
-        using (SqlCommand cmd = new SqlCommand(query, connection))
-        {
-            cmd.Parameters.Add(new SqlParameter("init_pay", pay_in_month));
-            cmd.Parameters.Add(new SqlParameter("inflation", inflation));
-            cmd.Parameters.Add(new SqlParameter("month_count", month_count));
+		using (SqlCommand cmd = new SqlCommand(query, connection))
+		{
+			cmd.Parameters.Add(new SqlParameter("init_pay", pay_in_month));
+			cmd.Parameters.Add(new SqlParameter("inflation", inflation));
+			cmd.Parameters.Add(new SqlParameter("month_count", month_count));
 
-            using (SqlDataReader reader = cmd.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    var mnum = reader.GetInt32(0);
-                    var psum = reader.GetDecimal(1);
+			using (SqlDataReader reader = cmd.ExecuteReader())
+			{
+				while (reader.Read())
+				{
+					var mnum = reader.GetInt32(0);
+					var psum = reader.GetDecimal(1);
 
-                    var edit = ((ASPxSpinEdit)Utils.FindControlRecursive(PanelNarazhCalculation, "NarazhCalculation_" + mnum));
-                    edit.Number = psum;
-                }
+					var edit = ((ASPxSpinEdit)Utils.FindControlRecursive(PanelNarazhCalculation, "NarazhCalculation_" + mnum));
+					edit.Number = psum;
+				}
 
-                reader.Close();
-            }
-        }
-    }
+				reader.Close();
+			}
+		}
+	}
 
 
-    protected void cbNarazhCalculation_Callback(object source, CallbackEventArgs e)
-    {
-        Dictionary<string, Control> controls = new Dictionary<string, Control>();
-        Reports1NFUtils.GetAllControls(OrganizationsForm, controls);
-        Reports1NFUtils.GetAllControls(PaymentForm, controls);
-        Reports1NFUtils.GetAllControls(CollectionForm, controls);
-        Reports1NFUtils.GetAllControls(InsuranceForm, controls);
-        Reports1NFUtils.GetAllControls(AddressForm, controls);
+	protected void cbNarazhCalculation_Callback(object source, CallbackEventArgs e)
+	{
+		Dictionary<string, Control> controls = new Dictionary<string, Control>();
+		Reports1NFUtils.GetAllControls(OrganizationsForm, controls);
+		Reports1NFUtils.GetAllControls(PaymentForm, controls);
+		Reports1NFUtils.GetAllControls(CollectionForm, controls);
+		Reports1NFUtils.GetAllControls(InsuranceForm, controls);
+		Reports1NFUtils.GetAllControls(AddressForm, controls);
 
-        var json = new NarazhCalculation
-        {
-            controls = controls,
-            GridViewNotes = GridViewNotes,
-            report_id = ReportID,
-            arenda_id = RentAgreementID,
-        }.Run();
+		var resultTotal = new NarazhCalculation.ResultTotalClass();
 
-        e.Result = json;
-    }
+		for (int i = 1; i <= 2; i++)
+		{
+			var robject = new NarazhCalculation
+			{
+				controls = controls,
+				GridViewNotes = GridViewNotes,
+				report_id = ReportID,
+				arenda_id = RentAgreementID,
+				IsNextYear = (i == 2),
+			};
+			var result = robject.Run();
 
+			if (i == 1)
+			{
+				resultTotal.CurrentYear = result;
+				resultTotal.Year = robject.CurrentYear;
+			}
+			else if (i == 2)
+			{
+				resultTotal.NextYear = result;
+			}
+		}
+
+		var json = Newtonsoft.Json.JsonConvert.SerializeObject(resultTotal);
+		e.Result = json;
+	}
 
 
 }
@@ -3651,418 +3723,432 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 
 public class NarazhCalculation
 {
-    public int arenda_id;
-    public int report_id;
-    public Dictionary<string, Control> controls;
-    public ASPxGridView GridViewNotes;
+	public int arenda_id;
+	public int report_id;
+	public bool IsNextYear;
+	public Dictionary<string, Control> controls;
+	public ASPxGridView GridViewNotes;
 
-    int CurrentYear;
-    int LastMonth;
-    SqlConnection connection;
-    Dictionary<int, decimal> InflationYearData = new Dictionary<int, decimal>();
-    Dictionary<DateTime, decimal> InflationMonthData = new Dictionary<DateTime, decimal>();
-    Dictionary<int, NotesDataClass> NotesData = new Dictionary<int, NotesDataClass>();
-    List<ZnizhkaClass> ZnizhkaData = new List<ZnizhkaClass>();
-    string methodCalc;
-    DateTime baseMonth;
-    DateTime rentStart;
-    DateTime rentFinish;
+	public int CurrentYear;
+	int LastMonth;
+	SqlConnection connection;
+	Dictionary<int, decimal> InflationYearData = new Dictionary<int, decimal>();
+	Dictionary<DateTime, decimal> InflationMonthData = new Dictionary<DateTime, decimal>();
+	Dictionary<int, NotesDataClass> NotesData = new Dictionary<int, NotesDataClass>();
+	List<ZnizhkaClass> ZnizhkaData = new List<ZnizhkaClass>();
+	string methodCalc;
+	DateTime baseMonth;
+	DateTime rentStart;
+	DateTime rentFinish;
 
-    public class NotesDataClass
-    {
-        public int id;
-        public string invent_no;
-        public decimal cost_agreement;
-        public Dictionary<DateTime, decimal> MonthPlataBase = new Dictionary<DateTime, decimal>();
-    }
+	public class NotesDataClass
+	{
+		public int id;
+		public string invent_no;
+		public decimal cost_agreement;
+		public Dictionary<DateTime, decimal> MonthPlataBase = new Dictionary<DateTime, decimal>();
+	}
 
-    public class ZnizhkaClass
-    {
-        public decimal percent;
-        public DateTime date1;
-        public DateTime date2;
-        public string invnum;
-    }
-
-    public string Run()
-    {
-        connection = Utils.ConnectToDatabase();
-
-        methodCalc = Reports1NFUtils.GetDropDownText(controls, "EditMethodCalc");
-        var baseMonthControl = Reports1NFUtils.GetDateValue(controls, "EditBaseMonth") as DateTime?;
-        var rentStartControl = Reports1NFUtils.GetDateValue(controls, "EditStartDate") as DateTime?;
-        var rentFinishControl = Reports1NFUtils.GetDateValue(controls, "EditActualFinishDate") as DateTime?;
-        var rent_period_id = Reports1NFUtils.GetDropDownValue(controls, "ReportingPeriodCombo") as int?;
+	public class ZnizhkaClass
+	{
+		public decimal percent;
+		public DateTime date1;
+		public DateTime date2;
+		public string invnum;
+	}
 
 
-        if (string.IsNullOrEmpty(methodCalc))
-        {
-            return ReturnEmpty();
-        }
-        if (baseMonthControl == null)
-        {
-            return ReturnEmpty();
-        }
-        if (rentStartControl == null)
-        {
-            return ReturnEmpty();
-        }
-        if (rent_period_id == null)
-        {
-            return ReturnEmpty();
-        }
+	public ResultClass Run()
+	{
+		connection = Utils.ConnectToDatabase();
 
-        BuildRentPeriodInfo(rent_period_id.Value);
-        baseMonth = new DateTime(baseMonthControl.Value.Year, baseMonthControl.Value.Month, 1);
-        rentStart = rentStartControl.Value;
-        rentFinish = rentFinishControl != null ? rentFinishControl.Value : new DateTime(CurrentYear + 1, 1, 1).AddDays(-1);
-        CreateInflationData();
-        BuildNotes();
-        BuildZnizhka();
-        CalcMonthPlata();
-        
-        var time1 = DateTime.Now;
-        var plata = CalcRealPlata();
-        var time2 = DateTime.Now;
-        var delta = (time2 - time1).Milliseconds;
-
-        var total = plata.Sum(x => x.Value);
-        var result = new
-        {
-            NarazhCalculation_1 = plata[1],
-            NarazhCalculation_2 = plata[2],
-            NarazhCalculation_3 = plata[3],
-            NarazhCalculation_4 = plata[4],
-            NarazhCalculation_5 = plata[5],
-            NarazhCalculation_6 = plata[6],
-            NarazhCalculation_7 = plata[7],
-            NarazhCalculation_8 = plata[8],
-            NarazhCalculation_9 = plata[9],
-            NarazhCalculation_10 = plata[10],
-            NarazhCalculation_11 = plata[11],
-            NarazhCalculation_12 = plata[12],
-            NarazhCalculation_all = total,
-        };
-
-        var json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
-        return json;
-    }
+		methodCalc = Reports1NFUtils.GetDropDownText(controls, "EditMethodCalc");
+		var baseMonthControl = Reports1NFUtils.GetDateValue(controls, "EditBaseMonth") as DateTime?;
+		var rentStartControl = Reports1NFUtils.GetDateValue(controls, "EditStartDate") as DateTime?;
+		var rentFinishControl = Reports1NFUtils.GetDateValue(controls, "EditActualFinishDate") as DateTime?;
+		var rent_period_id = Reports1NFUtils.GetDropDownValue(controls, "ReportingPeriodCombo") as int?;
 
 
-    Dictionary<int, decimal> CalcRealPlata()
-    {
-        var finalPlataByMonth = new Dictionary<int, decimal>();
-        for (int month = 1; month <= 12; month++)
-        {
-            finalPlataByMonth.Add(month, 0);
-        }
+		if (string.IsNullOrEmpty(methodCalc))
+		{
+			return ReturnEmpty();
+		}
+		if (baseMonthControl == null)
+		{
+			return ReturnEmpty();
+		}
+		if (rentStartControl == null)
+		{
+			return ReturnEmpty();
+		}
+		if (rent_period_id == null)
+		{
+			return ReturnEmpty();
+		}
 
-        foreach (var note in NotesData)
-        {
-            var invnum = note.Value.invent_no;
-            for(int month = 1; month <= LastMonth; month++)
-            {
-                var plataInfo = new Dictionary<DateTime, decimal>();
-                var daysInMonth = DateTime.DaysInMonth(CurrentYear, month);
-                var baseMonthPlata = note.Value.MonthPlataBase[new DateTime(CurrentYear, month, 1)];
-                var baseDayPlata = baseMonthPlata / daysInMonth;
-                for (int day = 1; day <= daysInMonth; day++)
-                {
-                    var date = new DateTime(CurrentYear, month, day);
-                    if (date >= rentStart && date <= rentFinish)
-                    {
-                        var plata = baseDayPlata;
+		BuildRentPeriodInfo(rent_period_id.Value);
+		baseMonth = new DateTime(baseMonthControl.Value.Year, baseMonthControl.Value.Month, 1);
+		rentStart = rentStartControl.Value;
+		rentFinish = rentFinishControl != null ? rentFinishControl.Value : new DateTime(CurrentYear + 1, 1, 1).AddDays(-1);
+		CreateInflationData();
+		BuildNotes();
+		BuildZnizhka();
+		CalcMonthPlata();
 
-                        var znizhkaList = ZnizhkaData.Where(x => (x.invnum == "" || x.invnum == invnum) && date >= x.date1 && date <= x.date2).ToArray();
-                        if (znizhkaList.Any())
-                        {
-                            var znizhkaPercent = 1.0M;
-                            foreach(var znizhkaOne in znizhkaList)
-                            {
-                                if (znizhkaOne.percent > 100.0M) znizhkaOne.percent = 100.0M;
-                                znizhkaPercent *= (1 - znizhkaOne.percent / 100.0M);
-                            }
-                            plata = plata * znizhkaPercent;
-                        }
+		var time1 = DateTime.Now;
+		var plata = CalcRealPlata();
+		var time2 = DateTime.Now;
+		var delta = (time2 - time1).Milliseconds;
 
-                        plataInfo.Add(date, plata);
-                    }
-                }
+		var total = plata.Sum(x => x.Value);
+		var result = new ResultClass
+		{
+			NarazhCalculation_1 = plata[1],
+			NarazhCalculation_2 = plata[2],
+			NarazhCalculation_3 = plata[3],
+			NarazhCalculation_4 = plata[4],
+			NarazhCalculation_5 = plata[5],
+			NarazhCalculation_6 = plata[6],
+			NarazhCalculation_7 = plata[7],
+			NarazhCalculation_8 = plata[8],
+			NarazhCalculation_9 = plata[9],
+			NarazhCalculation_10 = plata[10],
+			NarazhCalculation_11 = plata[11],
+			NarazhCalculation_12 = plata[12],
+			NarazhCalculation_all = total,
+		};
 
-                var totalMonth = plataInfo.Sum(x => x.Value);
-                finalPlataByMonth[month] = finalPlataByMonth[month] + totalMonth;
-            }
-        }
+		return result;
+	}
+
+	public class ResultClass
+	{
+		public decimal? NarazhCalculation_1 { get; set; }
+		public decimal? NarazhCalculation_2 { get; set; }
+		public decimal? NarazhCalculation_3 { get; set; }
+		public decimal? NarazhCalculation_4 { get; set; }
+		public decimal? NarazhCalculation_5 { get; set; }
+		public decimal? NarazhCalculation_6 { get; set; }
+		public decimal? NarazhCalculation_7 { get; set; }
+		public decimal? NarazhCalculation_8 { get; set; }
+		public decimal? NarazhCalculation_9 { get; set; }
+		public decimal? NarazhCalculation_10 { get; set; }
+		public decimal? NarazhCalculation_11 { get; set; }
+		public decimal? NarazhCalculation_12 { get; set; }
+		public decimal? NarazhCalculation_all { get; set; }
+	}
+
+	public class ResultTotalClass
+	{
+		public int Year { get; set; }
+		public ResultClass CurrentYear { get; set; }
+		public ResultClass NextYear { get; set; }
+	}
+
+	Dictionary<int, decimal> CalcRealPlata()
+	{
+		var finalPlataByMonth = new Dictionary<int, decimal>();
+		for (int month = 1; month <= 12; month++)
+		{
+			finalPlataByMonth.Add(month, 0);
+		}
+
+		foreach (var note in NotesData)
+		{
+			var invnum = note.Value.invent_no;
+			for (int month = 1; month <= 12; month++)
+			{
+				var plataInfo = new Dictionary<DateTime, decimal>();
+				var daysInMonth = DateTime.DaysInMonth(CurrentYear, month);
+				var baseMonthPlata = default(decimal);
+				var datekey = new DateTime(CurrentYear, month, 1);
+				note.Value.MonthPlataBase.TryGetValue(datekey, out baseMonthPlata);
+				var baseDayPlata = baseMonthPlata / daysInMonth;
+				for (int day = 1; day <= daysInMonth; day++)
+				{
+					var date = new DateTime(CurrentYear, month, day);
+					if (date >= rentStart && date <= rentFinish)
+					{
+						var plata = baseDayPlata;
+
+						var znizhkaList = ZnizhkaData.Where(x => (x.invnum == "" || x.invnum == invnum) && date >= x.date1 && date <= x.date2).ToArray();
+						if (znizhkaList.Any())
+						{
+							var znizhkaPercent = 1.0M;
+							foreach (var znizhkaOne in znizhkaList)
+							{
+								if (znizhkaOne.percent > 100.0M) znizhkaOne.percent = 100.0M;
+								znizhkaPercent *= (1 - znizhkaOne.percent / 100.0M);
+							}
+							plata = plata * znizhkaPercent;
+						}
+
+						plataInfo.Add(date, plata);
+					}
+				}
+
+				var totalMonth = plataInfo.Sum(x => x.Value);
+				finalPlataByMonth[month] = finalPlataByMonth[month] + totalMonth;
+			}
+		}
 
 
-        var result = finalPlataByMonth.Select(x => new { month = x.Key, value = round(x.Value) }).ToDictionary(x => x.month, x => x.value);
-        return result;
-    }
+		var result = finalPlataByMonth.Select(x => new { month = x.Key, value = round(x.Value) }).ToDictionary(x => x.month, x => x.value);
+		return result;
+	}
 
 
-    void CalcMonthPlata()
-    {
-        foreach (var note in NotesData)
-        {
-            var noteId = note.Key;
+	void CalcMonthPlata()
+	{
+		foreach (var note in NotesData)
+		{
+			var noteId = note.Key;
 
-            if (methodCalc == "аукціон")
-            {
-                CalcMonthPlata__auction(note.Value);
-            }
-            else if (methodCalc == "без аукціону/нові")
-            {
-                CalcMonthPlata__noauction(note.Value, true);
-            }
-            else if (methodCalc == "без аукціону/старі")
-            {
-                CalcMonthPlata__noauction(note.Value, false);
-            }
-            else throw new Exception();
-        }
-    }
+			if (methodCalc == "аукціон")
+			{
+				CalcMonthPlata__auction(note.Value);
+			}
+			else if (methodCalc == "без аукціону/нові")
+			{
+				CalcMonthPlata__noauction(note.Value, true);
+			}
+			else if (methodCalc == "без аукціону/старі")
+			{
+				CalcMonthPlata__noauction(note.Value, false);
+			}
+			else throw new Exception();
+		}
+	}
 
-    void CalcMonthPlata__auction(NotesDataClass note)
-    {
-        var year = baseMonth.Year;
-        var plata = NotesData[note.id].cost_agreement;
-        var monthPlata = note.MonthPlataBase;
-        while (year <= CurrentYear)
-        {
-            for(var mm = 1; mm <= 12; mm++)
-            {
-                var date = new DateTime(year, mm, 1);
-                monthPlata.Add(date, plata);
-            }
+	void CalcMonthPlata__auction(NotesDataClass note)
+	{
+		var year = baseMonth.Year;
+		var plata = NotesData[note.id].cost_agreement;
+		var monthPlata = note.MonthPlataBase;
+		while (year <= CurrentYear)
+		{
+			for (var mm = 1; mm <= 12; mm++)
+			{
+				var date = new DateTime(year, mm, 1);
+				monthPlata.Add(date, plata);
+			}
 
-            var inflation = GetYearInflation(year);
-            plata = round_0(plata * inflation / 100M);
-            year++;
-        }
-    }
+			var inflation = GetYearInflation(year);
+			plata = round_0(plata * inflation / 100M);
+			year++;
+		}
+	}
 
-    void CalcMonthPlata__noauction(NotesDataClass note, bool isnew)
-    {
-        var year = baseMonth.Year;
-        var plata = NotesData[note.id].cost_agreement;
-        var monthPlata = note.MonthPlataBase;
-        while (year <= CurrentYear)
-        {
-            var start_month = (year == baseMonth.Year ? baseMonth.Month : 1);
-            for (var mm = start_month; mm <= 12; mm++)
-            {
-                var date = new DateTime(year, mm, 1);
-                var inflation = GetMonthInflation(date);
+	void CalcMonthPlata__noauction(NotesDataClass note, bool isnew)
+	{
+		var year = baseMonth.Year;
+		var plata = NotesData[note.id].cost_agreement;
+		var monthPlata = note.MonthPlataBase;
+		while (year <= CurrentYear)
+		{
+			var start_month = (year == baseMonth.Year ? baseMonth.Month : 1);
+			for (var mm = start_month; mm <= 12; mm++)
+			{
+				var date = new DateTime(year, mm, 1);
+				var inflation = GetMonthInflation(date);
 
-                if (isnew)
-                {
-                    plata = round_0(plata * inflation / 100M);
-                }
+				if (isnew)
+				{
+					plata = round_0(plata * inflation / 100M);
+				}
 
-                monthPlata.Add(date, plata);
+				monthPlata.Add(date, plata);
 
-                if (!isnew)
-                {
-                    plata = round_0(plata * inflation / 100M);
-                }
-            }
+				if (!isnew)
+				{
+					plata = round_0(plata * inflation / 100M);
+				}
+			}
 
-            year++;
-        }
-    }
+			year++;
+		}
+	}
 
-    decimal GetYearInflation(int year)
-    {
-        decimal value;
-        if (InflationYearData.TryGetValue(year, out value))
-        {
-            return value;
-        }
-        else
-        {
-            return 100;
-        }
-    }
+	decimal GetYearInflation(int year)
+	{
+		decimal value;
+		if (InflationYearData.TryGetValue(year, out value))
+		{
+			return value;
+		}
+		else
+		{
+			return 100;
+		}
+	}
 
-    decimal GetMonthInflation(DateTime month)
-    {
-        decimal value;
-        if (InflationMonthData.TryGetValue(month, out value))
-        {
-            return value;
-        }
-        else
-        {
-            return 100;
-        }
-    }
+	decimal GetMonthInflation(DateTime month)
+	{
+		decimal value;
+		if (InflationMonthData.TryGetValue(month, out value))
+		{
+			return value;
+		}
+		else
+		{
+			return 100;
+		}
+	}
 
-    void CreateInflationData()
-    {
-        var inflationMonthData = GetDataTable("select * from inflation_month");
-        for (var rownum = 0; rownum < inflationMonthData.Rows.Count; rownum++)
-        {
-            var year = (int)inflationMonthData.Rows[rownum]["year"];
-            var month = (int)inflationMonthData.Rows[rownum]["month"];
-            var inflation = (decimal)inflationMonthData.Rows[rownum]["inflation"];
-            InflationMonthData.Add(new DateTime(year, month, 1), inflation);
-        }
+	void CreateInflationData()
+	{
+		var inflationMonthData = GetDataTable("select * from inflation_month");
+		for (var rownum = 0; rownum < inflationMonthData.Rows.Count; rownum++)
+		{
+			var year = (int)inflationMonthData.Rows[rownum]["year"];
+			var month = (int)inflationMonthData.Rows[rownum]["month"];
+			var inflation = (decimal)inflationMonthData.Rows[rownum]["inflation"];
+			InflationMonthData.Add(new DateTime(year, month, 1), inflation);
+		}
 
-        var inflationYearData = GetDataTable("select * from inflation_year");
-        for (var rownum = 0; rownum < inflationYearData.Rows.Count; rownum++)
-        {
-            var year = (int)inflationYearData.Rows[rownum]["year"];
-            var inflation = (decimal)inflationYearData.Rows[rownum]["inflation"];
-            InflationYearData.Add(year, inflation);
-        }
-    }
+		var inflationYearData = GetDataTable("select * from inflation_year");
+		for (var rownum = 0; rownum < inflationYearData.Rows.Count; rownum++)
+		{
+			var year = (int)inflationYearData.Rows[rownum]["year"];
+			var inflation = (decimal)inflationYearData.Rows[rownum]["inflation"];
+			InflationYearData.Add(year, inflation);
+		}
+	}
 
-    void BuildNotes()
-    {
-        var table = GridViewNotes.DataSource as DataTable;
-        //var rows = hh.Rows;
-        //var id = rows[0]["id"];
-        //var invent_no = rows[0]["invent_no"];
-        //var cost_agreement = rows[0]["cost_agreement"];
+	void BuildNotes()
+	{
+		var table = GridViewNotes.DataSource as DataTable;
+		//var rows = hh.Rows;
+		//var id = rows[0]["id"];
+		//var invent_no = rows[0]["invent_no"];
+		//var cost_agreement = rows[0]["cost_agreement"];
 
-        for (var rownum = 0; rownum < table.Rows.Count; rownum++)
-        {
-            var id = (int)table.Rows[rownum]["id"];
-            var invent_no = (string)table.Rows[rownum]["invent_no"];
-            var cost_agreement = (decimal?)table.Rows[rownum]["cost_agreement"];
-            NotesData.Add(id, new NotesDataClass { id = id, invent_no = invent_no, cost_agreement = cost_agreement ?? 0 } );
-        }
-    }
+		for (var rownum = 0; rownum < table.Rows.Count; rownum++)
+		{
+			var id = (int)table.Rows[rownum]["id"];
+			var invent_no = (string)table.Rows[rownum]["invent_no"];
+			var cost_agreement = (decimal?)table.Rows[rownum]["cost_agreement"];
+			NotesData.Add(id, new NotesDataClass { id = id, invent_no = invent_no, cost_agreement = cost_agreement ?? 0 });
+		}
+	}
 
-    void BuildRentPeriodInfo(int rent_period_id)
-    {
-        var table = GetDataTable("SELECT period_year, period_quarter FROM dict_rent_period where id = " + rent_period_id);
-        CurrentYear = (int)table.Rows[0]["period_year"];
-        LastMonth = (int)table.Rows[0]["period_quarter"];
-    }
+	void BuildRentPeriodInfo(int rent_period_id)
+	{
+		var table = GetDataTable("SELECT period_year, period_quarter FROM dict_rent_period where id = " + rent_period_id);
+		CurrentYear = (int)table.Rows[0]["period_year"];
+		LastMonth = (int)table.Rows[0]["period_quarter"];
+		if (IsNextYear)
+		{
+			CurrentYear++;
+		}
+	}
 
-    void BuildZnizhka()
-    {
-        int fileldCount = 10;
+	void BuildZnizhka()
+	{
+		int fileldCount = 10;
 
-        for (int num = 1; num <= fileldCount; num++)
-        {
-            var percent = Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka" + num + "_percent") as decimal?;
-            var date1 = Reports1NFUtils.GetDateValue(controls, "edit_znizhka" + num + "_date1") as DateTime?;
-            var date2 = Reports1NFUtils.GetDateValue(controls, "edit_znizhka" + num + "_date2") as DateTime?;
-            var invnums = Reports1NFUtils.GetEditText(controls, "znizhka" + num + "_invnums") as string;
+		for (int num = 1; num <= fileldCount; num++)
+		{
+			var percent = Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka" + num + "_percent") as decimal?;
+			var date1 = Reports1NFUtils.GetDateValue(controls, "edit_znizhka" + num + "_date1") as DateTime?;
+			var date2 = Reports1NFUtils.GetDateValue(controls, "edit_znizhka" + num + "_date2") as DateTime?;
+			var invnums = Reports1NFUtils.GetEditText(controls, "znizhka" + num + "_invnums") as string;
 
-            string[] invlist = null;
-            if (!string.IsNullOrEmpty(invnums))
-            {
-                invlist = invnums.Split(';').Select(x => x.Trim()).Where(x => !string.IsNullOrEmpty(x)).Distinct().ToArray();
-            }
-            if (invlist == null)
-            {
-                invlist = new[] { "" };
-            }
+			string[] invlist = null;
+			if (!string.IsNullOrEmpty(invnums))
+			{
+				invlist = invnums.Split(';').Select(x => x.Trim()).Where(x => !string.IsNullOrEmpty(x)).Distinct().ToArray();
+			}
+			if (invlist == null)
+			{
+				invlist = new[] { "" };
+			}
 
-            foreach(var invnum in invlist)
-            {
-                if (percent != null)
-                {
-                    ZnizhkaData.Add(new ZnizhkaClass
-                    {
-                        percent = percent.Value,
-                        date1 = date1 ?? new DateTime(1, 1, 1),
-                        date2 = date2 ?? new DateTime(4000, 1, 1),
-                        invnum = invnum,
-                    });
-                }
-            }
-            
-        }
+			foreach (var invnum in invlist)
+			{
+				if (percent != null)
+				{
+					ZnizhkaData.Add(new ZnizhkaClass
+					{
+						percent = percent.Value,
+						date1 = date1 ?? new DateTime(1, 1, 1),
+						date2 = date2 ?? new DateTime(4000, 1, 1),
+						invnum = invnum,
+					});
+				}
+			}
 
-    }
+		}
 
-    string ReturnEmpty()
-    {
-        var result = new
-        {
-            NarazhCalculation_1 = (decimal?)null,
-            NarazhCalculation_2 = (decimal?)null,
-            NarazhCalculation_3 = (decimal?)null,
-            NarazhCalculation_4 = (decimal?)null,
-            NarazhCalculation_5 = (decimal?)null,
-            NarazhCalculation_6 = (decimal?)null,
-            NarazhCalculation_7 = (decimal?)null,
-            NarazhCalculation_8 = (decimal?)null,
-            NarazhCalculation_9 = (decimal?)null,
-            NarazhCalculation_10 = (decimal?)null,
-            NarazhCalculation_11 = (decimal?)null,
-            NarazhCalculation_12 = (decimal?)null,
-            NarazhCalculation_all = (decimal?)null,
-        };
-        var json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
-        return json;
-    }
+	}
 
-    DataTable GetDataTable(string sql)
-    {
-        var factory = DbProviderFactories.GetFactory(connection);
-        var dataTable = new DataTable();
-        using (var cmd = factory.CreateCommand())
-        {
-            cmd.CommandText = sql;
-            cmd.CommandType = CommandType.Text;
-            cmd.Connection = connection;
-            using (var adapter = factory.CreateDataAdapter())
-            {
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
-            }
-        }
+	ResultClass ReturnEmpty()
+	{
+		var result = new ResultClass();
+		return result;
+	}
 
-        return dataTable;
-    }
+	DataTable GetDataTable(string sql)
+	{
+		var factory = DbProviderFactories.GetFactory(connection);
+		var dataTable = new DataTable();
+		using (var cmd = factory.CreateCommand())
+		{
+			cmd.CommandText = sql;
+			cmd.CommandType = CommandType.Text;
+			cmd.Connection = connection;
+			using (var adapter = factory.CreateDataAdapter())
+			{
+				adapter.SelectCommand = cmd;
+				adapter.Fill(dataTable);
+			}
+		}
 
-    static Decimal? GetDecimal(object arg)
-    {
-        if (arg is System.DBNull) 
-            return (Decimal?)null;
-        else
-            return (Decimal)arg;
-    }
+		return dataTable;
+	}
 
-    static DateTime? GetDateTime(object arg)
-    {
-        if (arg is System.DBNull)
-            return (DateTime?)null;
-        else
-            return (DateTime)arg;
-    }
+	static Decimal? GetDecimal(object arg)
+	{
+		if (arg is System.DBNull)
+			return (Decimal?)null;
+		else
+			return (Decimal)arg;
+	}
 
-    static string GetString(object arg)
-    {
-        if (arg is System.DBNull)
-            return (string)null;
-        else
-            return (string)arg;
-    }
+	static DateTime? GetDateTime(object arg)
+	{
+		if (arg is System.DBNull)
+			return (DateTime?)null;
+		else
+			return (DateTime)arg;
+	}
 
-    static Decimal round(Decimal arg)
-    {
-        arg = Math.Round(arg, 6);
-        var result = (Int64)(arg * 100M) / 100.0M;
-        if (arg == result)
-        {
-            return result;
-        }
-        else
-        {
-            return result + 0.01M;
-        }
-    }
+	static string GetString(object arg)
+	{
+		if (arg is System.DBNull)
+			return (string)null;
+		else
+			return (string)arg;
+	}
 
-    static Decimal round_0(Decimal arg)
-    {
-        return arg;
-    }
+	static Decimal round(Decimal arg)
+	{
+		arg = Math.Round(arg, 6);
+		var result = (Int64)(arg * 100M) / 100.0M;
+		if (arg == result)
+		{
+			return result;
+		}
+		else
+		{
+			return result + 0.01M;
+		}
+	}
+
+	static Decimal round_0(Decimal arg)
+	{
+		return arg;
+	}
 
 }
 
