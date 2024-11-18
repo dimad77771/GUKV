@@ -130,6 +130,10 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 		{
 			CustomizeControlVikorist();
 		}
+		else
+		{
+			CheckBoxBalansObjectsShowNeviznacheni.Checked = true;
+		}
 
 		this.ProcessGridDataFetch(ViewState, PrimaryGridView);
 

@@ -3800,7 +3800,7 @@ public class NarazhCalculation
 		var time2 = DateTime.Now;
 		var delta = (time2 - time1).Milliseconds;
 
-		var total = plata.Sum(x => x.Value);
+		var total = plata.Where(x => x.Key >= 1 && x.Key <= LastMonth).Sum(x => x.Value);
 		var result = new ResultClass
 		{
 			NarazhCalculation_1 = plata[1],
