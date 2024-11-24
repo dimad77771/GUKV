@@ -437,9 +437,10 @@ WHERE id = @id"
         <dx:GridViewDataTextColumn FieldName="addr_nomer" Caption="Номер будинку"  Width="75px">
         </dx:GridViewDataTextColumn>
 
-
+<%--   
         <dx:GridViewDataTextColumn FieldName="orendar" Caption="Орендар"  Width="200px">
         </dx:GridViewDataTextColumn>
+--%>
 
         <dx:GridViewDataSpinEditColumn FieldName="total_free_sqr" Caption="Площа об’єкта, кв.м" Width="75px">
             <PropertiesSpinEdit NumberType="Float" NumberFormat="Number">
