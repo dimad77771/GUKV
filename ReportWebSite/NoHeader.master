@@ -211,6 +211,9 @@
 															<dx:RibbonButtonItem Text="Зведений звіт" NavigateUrl="Reports1NF/ZvedZvitBuild.aspx">
 																<SmallImage Url="Styles/ribbonicon_3.png" />
 															</dx:RibbonButtonItem>
+															<dx:RibbonButtonItem Text="Прогноз" NavigateUrl="Reports1NF/DictRentalRate.aspx">
+																<SmallImage Url="Styles/ribbonicon_18.png" />
+															</dx:RibbonButtonItem>
 
 															<dx:RibbonDropDownButtonItem Text="Архіви БД" Size="Large">
 																<Items>
