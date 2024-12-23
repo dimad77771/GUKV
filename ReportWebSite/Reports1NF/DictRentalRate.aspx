@@ -420,7 +420,7 @@ SELECT SCOPE_IDENTITY()"
 <table border="0" cellspacing="4" cellpadding="0" width="100%">
     <tr>
         <td style="width: 100%;">
-            <asp:Label ID="LabelReportTitle1" runat="server" Text="Прогнозні показники надходжень від оренди та перерахування її частини до бюджету" CssClass="reporttitle"></asp:Label>
+            <asp:Label ID="LabelReportTitle1" runat="server" Text="Моделювання впливу нормативно-управлінських рішень на рівень надходження орендної плати" CssClass="reporttitle"></asp:Label>
         </td>
         <td>
             <dx:ASPxButton ID="ASPxButton1" runat="server" AutoPostBack="False" 

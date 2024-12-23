@@ -39,7 +39,7 @@
 			</table>
 		</div>
         <div class="clear hideSkiplink">
-            <table border="0" cellspacing="0" cellpadding="0" width="100%">
+            <table border="0" cellspacing="0" cellpadding="0" width="100%" id="panelTopFreeShowPublic">
                 <tr>
                     <td>
                         <div style="float: left; padding-top: 0px; width:inherit; ">
@@ -61,7 +61,7 @@
 
                     <td>
                         <div style="float: right; padding-top: 0px;">
-                            <dx:ASPxButton ID="ASPChangeMapSystem" runat="server" Text="Використовувати мапу містобудівного кадастру" OnClick="ASPChangeMapSystem_Click"  >
+                            <dx:ASPxButton ID="ASPChangeMapSystem" ClientID="btnUseCadastreMap" runat="server" Text="Використовувати мапу містобудівного кадастру" OnClick="ASPChangeMapSystem_Click"  >
                                 
                             </dx:ASPxButton>
 
