@@ -326,7 +326,15 @@
         (   (@p_rda_district_id = 0) OR
             (m.org_balans_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND m.org_balans_district_id = @p_rda_district_id) OR
             (m.org_giver_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND m.org_giver_district_id = @p_rda_district_id) OR
-            (m.org_renter_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND m.org_renter_district_id = @p_rda_district_id))"
+            (m.org_renter_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND m.org_renter_district_id = @p_rda_district_id))
+
+        AND 
+        (
+            isnull(@ref_balans_id,0) <= 0
+                OR 
+            m.arenda_id in (select distinct Q.arenda_id from view_arenda Q where Q.ref_balans_id = @ref_balans_id and isnull(Q.is_deleted,0)=0)
+        )
+    "
 
     OnSelecting="SqlDataSourceArendaObjects_Selecting"
     
@@ -344,6 +352,7 @@ WHERE id = @arenda_id"
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_com_filter" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_rda_district_id" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_show_neziznacheni" />
+        <asp:Parameter DbType="Int32" DefaultValue="0" Name="ref_balans_id" />
     </SelectParameters>
 
 

@@ -82,6 +82,11 @@ public partial class Arenda_RentAgreements : System.Web.UI.Page, CachingPageIdSu
 
         }
 
+        if (ParamRefBalansId > 0)
+        {
+            PrimaryGridView.SettingsCookies.Enabled = false;
+        }
+
         //ForTest();
     }
 
@@ -294,6 +299,7 @@ public partial class Arenda_RentAgreements : System.Web.UI.Page, CachingPageIdSu
         e.Command.Parameters["@p_com_filter"].Value = CheckBoxRentedObjectsComVlasn.Checked ? 1 : 0;
         e.Command.Parameters["@p_rda_district_id"].Value = Utils.RdaDistrictID;
         e.Command.Parameters["@p_show_neziznacheni"].Value = CheckBoxBalansObjectsShowNeziznacheni.Checked ? 1 : 0;
+        e.Command.Parameters["@ref_balans_id"].Value = ParamRefBalansId;
     }
 
     protected string GetPageUniqueKey()
@@ -358,4 +364,14 @@ public partial class Arenda_RentAgreements : System.Web.UI.Page, CachingPageIdSu
             CheckBoxBigBorgShow.Visible = (object.Equals(result, 1));
         }
     }
+
+    protected int ParamRefBalansId
+    {
+        get
+        {
+            var pm = Request.QueryString["ref_balans_id"];
+            return !string.IsNullOrEmpty(pm) ? int.Parse(pm) : 0;
+        }
+    }
+
 }

@@ -3936,6 +3936,12 @@ WHERE id = @id"
                 <ClientSideEvents Click="function (s,e) { window.open('http://kmda.iisd.com.ua', '_blank') }" />
             </dx:ASPxButton>
         </td>
+        <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+        <td>
+            <dx:ASPxButton ID="ASPxButton3" runat="server" Text="Договори оренди" CausesValidation="false" AutoPostBack="false">
+                <ClientSideEvents Click="function (s,e) { window.open('/Arenda/RentAgreements.aspx?ref_balans_id=' + paramBid, '_blank') }" />
+            </dx:ASPxButton>
+        </td>
     </tr>
 </table>
 
