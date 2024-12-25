@@ -1,5 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DictRentalRate.aspx.cs" Inherits="Reports1NF_Report1NFPrivatisatSquare"
-    MasterPageFile="~/NoHeader.master" Title="Моделювання впливу нормативно-управлінських рішень на рівень надходження орендної плати" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="PrognozPayment.aspx.cs" Inherits="Reports1NF_Report1NFPrivatisatSquare"
+    MasterPageFile="~/NoHeader.master" Title="Прогноз впливу нормативно-управлінських рішень на рівень надходження орендної плати" %>
 
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.Export" tagprefix="dx" %>
@@ -31,7 +31,6 @@
 		var hh = 120
 		InflationGridView.SetHeight(hh);
 		PrivatisatGridView.SetHeight(window.innerHeight - 140 - hh);
-		console.log("AAAa");
     }
 
     function GridViewFreeSquareInit(s, e) {
@@ -52,7 +51,6 @@
 
 
 	function ShowPhoto(s, e) {
-		console.log(e.buttonID);
 		if (e.buttonID == 'btnPdfBuild') {
 			PrivatisatGridView.GetRowValues(e.visibleIndex, 'id', OnGridPdfBuildGetRowValues);
 		} else if (e.buttonID == 'btnJpegBuild') {
@@ -309,27 +307,38 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceInflation" runat="server"
-    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT [id], [next_inflation] FROM [current_inflation]"
-    UpdateCommand="UPDATE [current_inflation] SET [next_inflation] = @next_inflation" 
+    ConnectionString="<%$ ConnectionStrings:GUKV2016ConnectionString %>" 
+    SelectCommand="SELECT [id], [prognoz_inflation_this], [prognoz_inflation_next] FROM [current_inflation]"
+    UpdateCommand="UPDATE [current_inflation] SET [prognoz_inflation_this] = @prognoz_inflation_this, [prognoz_inflation_next] = @prognoz_inflation_next" 
 >
 </mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourcePrivatisat" runat="server"
-    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="
-SELECT 
+    ConnectionString="<%$ ConnectionStrings:GUKV2016ConnectionString %>" 
+    SelectCommand="select
 *
-FROM [dict_rental_rate] A
-ORDER BY case when new_rental_rate is not null then 1 else 2 end, case when full_name like '2023 %' then 2 else 1 end, short_name"
+from
+(
+	select
+	A.report_id,
+	A.zkpo_code,
+	A.full_name,
+	A.short_name,
+	isnull(A.contribution_rate,0) as contribution_rate,
+	(select Q.contribution_rate from reports1nf_org_info_new_contribution_rate Q where Q.report_id = A.report_id) new_contribution_rate
+	from [reports1nf_org_info] A
+) T
+order by case when new_contribution_rate is not null then 1 else 2 end, full_name
+	"
     OnSelecting="SqlDataSourcePrivatisat_Selecting"
 
 DeleteCommand="DELETE FROM [valsndogovor] WHERE id = @id" 
 
-UpdateCommand="UPDATE [dict_rental_rate]
-SET
-    [new_rental_rate] = @new_rental_rate
-WHERE id = @id" 
+UpdateCommand="
+	DELETE from [reports1nf_org_info_new_contribution_rate] WHERE report_id = @report_id;
+	IF @new_contribution_rate IS NOT NULL
+		INSERT INTO [reports1nf_org_info_new_contribution_rate] VALUES(@report_id, @new_contribution_rate);
+	"
 	onupdating="SqlDataSourcePrivatisat_Updating"
 
     InsertCommand="INSERT INTO [valsndogovor]
@@ -357,40 +366,40 @@ SELECT SCOPE_IDENTITY()"
 
 	>
     <SelectParameters>
-		<asp:Parameter DbType="String" DefaultValue="" Name="baseurl" />
+		
     </SelectParameters>
 </mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceOrgInfo" runat="server" 
-    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    ConnectionString="<%$ ConnectionStrings:GUKV2016ConnectionString %>" 
     SelectCommand="select report_id, zkpo_code, zkpo_code + ' - ' + isnull(short_name,'') as nam from reports1nf_org_info order by zkpo_code">
 </mini:ProfiledSqlDataSource>
 
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDistrict" runat="server" 
-    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    ConnectionString="<%$ ConnectionStrings:GUKV2016ConnectionString %>" 
     SelectCommand="SELECT id, name FROM dict_1nf_districts2 where id < 400 ORDER BY name">
 </mini:ProfiledSqlDataSource>
 
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceStreet" runat="server" 
-    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    ConnectionString="<%$ ConnectionStrings:GUKV2016ConnectionString %>" 
     SelectCommand="select id, name from dict_streets where (name is not null) and (RTRIM(LTRIM(name)) <> '') order by name">
 </mini:ProfiledSqlDataSource>
 
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceFreecycleStepDict" runat="server" 
-    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    ConnectionString="<%$ ConnectionStrings:GUKV2016ConnectionString %>" 
     SelectCommand="SELECT step_id, step_name, step_cod, step_ord, istitle FROM freecycle_step_dict union select null, '<пусто>', '00', -1, 0 ORDER BY step_ord">
 </mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceUsingPossible" runat="server" 
-    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    ConnectionString="<%$ ConnectionStrings:GUKV2016ConnectionString %>" 
     SelectCommand="SELECT id, left(full_name, 150) as name, rental_rate, 1 as ordrow FROM dict_rental_rate union select null, '<пусто>', null, 2 as ordrow ORDER BY ordrow, name">
 </mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceIncludeInPerelik" runat="server" 
-    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    ConnectionString="<%$ ConnectionStrings:GUKV2016ConnectionString %>" 
     SelectCommand="SELECT '1' id, '1' name, 1 as ordrow union SELECT '2' id, '2' name, 1 as ordrow union select null, '',  2 as ordrow ORDER BY ordrow, name">
 </mini:ProfiledSqlDataSource>
 
@@ -420,7 +429,7 @@ SELECT SCOPE_IDENTITY()"
 <table border="0" cellspacing="4" cellpadding="0" width="100%">
     <tr>
         <td style="width: 100%;">
-            <asp:Label ID="LabelReportTitle1" runat="server" Text="Моделювання впливу нормативно-управлінських рішень на рівень надходження орендної плати" CssClass="reporttitle"></asp:Label>
+            <asp:Label ID="LabelReportTitle1" runat="server" Text="Прогноз впливу нормативно-управлінських рішень на рівень надходження орендної плати" CssClass="reporttitle"></asp:Label>
         </td>
         <td>
             <dx:ASPxButton ID="ASPxButton1" runat="server" AutoPostBack="False" 
@@ -430,12 +439,12 @@ SELECT SCOPE_IDENTITY()"
         </td>
 		<td>
 			<dx:ASPxCheckBox ID="CheckBoxInflation" runat="server" Checked='False' Text="Використовувати індекс інфляції" 
-				Width="230px" ClientInstanceName="CheckBoxInflation">
+				Width="230px" ClientInstanceName="CheckBoxInflation" Visible="false">
 			</dx:ASPxCheckBox>
 		</td>
 		<td>
 			<dx:ASPxCheckBox ID="CheckBoxDictRentalRate" runat="server" Checked='False' Text="Використовувати нову ставку за використання" 
-				Width="320px" ClientInstanceName="CheckBoxDictRentalRate">
+				Width="320px" ClientInstanceName="CheckBoxDictRentalRate" Visible="false">
 			</dx:ASPxCheckBox>
 		</td>
         <td>
@@ -576,7 +585,8 @@ SELECT SCOPE_IDENTITY()"
             <CellStyle Wrap="False"></CellStyle>
         </dx:GridViewCommandColumn>
 
-        <dx:GridViewDataSpinEditColumn FieldName="next_inflation" Caption="Індекс інфляції, %" Width="200px" />
+        <dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_this" Caption="Прогноз індексу інфляції на 4 квартал 2024 року, %" Width="250px" />
+		<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_next" Caption="Прогноз індексу інфляції на 2025 рік, %" Width="250px" />
     </Columns>
 
 
@@ -602,11 +612,9 @@ SELECT SCOPE_IDENTITY()"
 </dx:ASPxGridView>
 
 <dx:ASPxGridView ID="PrivatisatGridView" runat="server" AutoGenerateColumns="False" 
-        DataSourceID="SqlDataSourcePrivatisat" KeyFieldName="id" Width="100%" 
+        DataSourceID="SqlDataSourcePrivatisat" KeyFieldName="report_id" Width="100%" 
         ClientInstanceName="PrivatisatGridView" 
-        OnCustomCallback="GridViewFreeSquare_CustomCallback"
-        OnCustomFilterExpressionDisplayText="GridViewFreeSquare_CustomFilterExpressionDisplayText"
-        OnProcessColumnAutoFilter="GridViewFreeSquare_ProcessColumnAutoFilter" >
+         >
 	   <ClientSideEvents CustomButtonClick="ShowPhoto" />
 
 	<SettingsCommandButton>
@@ -649,19 +657,26 @@ SELECT SCOPE_IDENTITY()"
         </dx:GridViewCommandColumn>
 
 
-        <dx:GridViewDataTextColumn FieldName="full_name" Caption="Використання згідно з договором: цільове" Width="1200px" ReadOnly="true" >
+        <dx:GridViewDataTextColumn FieldName="full_name" Caption="Назва Організації" Width="500px" ReadOnly="true" >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("full_name") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataSpinEditColumn FieldName="rental_rate" Caption="Ставка за використання, %" Width="150px" >
+        <dx:GridViewDataTextColumn FieldName="zkpo_code" Caption="Код ЄДРПОУ" Width="120px" ReadOnly="true" >
 			<EditItemTemplate>
-				<dx:ASPxLabel runat="server" Text='<%# Eval("rental_rate") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("zkpo_code") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+
+        <dx:GridViewDataSpinEditColumn FieldName="contribution_rate" Caption="Ставка відрахувань до бюджету (%)" Width="150px" >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("contribution_rate") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataSpinEditColumn>
 
-        <dx:GridViewDataSpinEditColumn FieldName="new_rental_rate" Caption="Нова ставка за використання, %" Width="150px" >
+        <dx:GridViewDataSpinEditColumn FieldName="new_contribution_rate" Caption="Нова ставка відрахувань до бюджету (%)" Width="150px" >
         </dx:GridViewDataSpinEditColumn>
     </Columns>
 
