@@ -3767,8 +3767,12 @@ public class NarazhCalculation
 		var rentStartControl = Reports1NFUtils.GetDateValue(controls, "EditStartDate") as DateTime?;
 		var rentFinishControl = Reports1NFUtils.GetDateValue(controls, "EditActualFinishDate") as DateTime?;
 		var rent_period_id = Reports1NFUtils.GetDropDownValue(controls, "ReportingPeriodCombo") as int?;
-
-
+		var paymentType = Reports1NFUtils.GetDropDownText(controls, "ComboPaymentType");
+		
+		if (!(paymentType == "ГРОШОВА ОПЛАТА" || paymentType == "ПОГОДИННО"))
+		{
+			return ReturnEmpty();
+		}
 		if (string.IsNullOrEmpty(methodCalc))
 		{
 			return ReturnEmpty();

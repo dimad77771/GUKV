@@ -313,6 +313,21 @@
 			return true;
 		}
 
+		function CheckDogovorDates() {
+			var v1 = clEditStartDate.GetValue();
+            var v2 = clEditAgreementDate.GetValue();
+            var rez = (v1 != null && v2 != null && v1 < v2);
+            console.log('v1', v1)
+            console.log('v2', v2)
+			console.log('rez', rez)
+
+			if (rez) {
+				document.getElementById('valError').style.display = '';
+				document.getElementById('valError').innerHTML = 'Дата початку використання приміщення не може бути меншою від дати укладання договору';
+				return false;
+			}
+			return true;
+		}
 
         function PerformAllValidations(s, e) {
             var errorsFound = false;
@@ -539,6 +554,9 @@
 
 	    	if (!CheckTotalPaidSum())
     			return false;
+
+			if (!CheckDogovorDates())
+				return false;
 
 
 //          if (!CheckRadioAgreementAndSquare())
@@ -2669,7 +2687,7 @@ WHERE id = @id"
                                                 <td> &nbsp; </td>
                                                 <td><dx:ASPxLabel ID="ASPxLabel36" runat="server" Text="Дата укладання договору"></dx:ASPxLabel></td>
                                                 <td>
-                                                    <dx:ASPxDateEdit ID="EditAgreementDate" runat="server" Value='<%# Eval("agreement_date") %>' Width="190px" Title="Дата укладання договору">
+                                                    <dx:ASPxDateEdit ID="EditAgreementDate" ClientInstanceName="clEditAgreementDate" runat="server" Value='<%# Eval("agreement_date") %>' Width="190px" Title="Дата укладання договору">
                                                         <ValidationSettings Display="None" ValidationGroup="MainGroup" EnableCustomValidation="true"></ValidationSettings>
                                                     </dx:ASPxDateEdit>
                                                 </td>
@@ -2677,7 +2695,7 @@ WHERE id = @id"
                                             <tr>
                                                 <td><dx:ASPxLabel ID="ASPxLabel4" runat="server" Text="Дата початку використання приміщення"></dx:ASPxLabel></td>
                                                 <td>
-                                                    <dx:ASPxDateEdit ID="EditStartDate" runat="server" Value='<%# Eval("rent_start_date") %>' Width="190px" Title="Дата початку оренди">
+                                                    <dx:ASPxDateEdit ID="EditStartDate" ClientInstanceName="clEditStartDate" runat="server" Value='<%# Eval("rent_start_date") %>' Width="190px" Title="Дата початку оренди">
                                                         <ValidationSettings Display="None" ValidationGroup="MainGroup" EnableCustomValidation="true"></ValidationSettings>
                                                         <ClientSideEvents 
                                                             DateChanged="function (s, e) { NarazhCalculationRun(); }"
@@ -2722,7 +2740,7 @@ WHERE id = @id"
                                                         IncrementalFilteringMode="StartsWith" DataSourceID="SqlDataSourcePaymentType" Value='<%# Eval("payment_type_id") %>'
                                                         Title="Вид оплати">
                                                           <ClientSideEvents 
-                                                            SelectedIndexChanged ="function (s, e) { HideValidator(); }"
+                                                            SelectedIndexChanged ="function (s, e) { HideValidator(); NarazhCalculationRun(); }"
                                                            />
                                                         <ValidationSettings Display="None" ValidationGroup="MainGroup" > <RequiredField IsRequired="false" /> </ValidationSettings>
                                                     </dx:ASPxComboBox>
