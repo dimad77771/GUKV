@@ -39,6 +39,9 @@
 			</table>
 		</div>
         <div class="clear hideSkiplink">
+            <div style="display:none; padding-left:10px; padding-top:3px; font-size:large; color:red; background-color:rgb(255, 255, 239)" id="textInfoObjectClick">
+                Виберіть об'єкт, який Ви хочете взяти в оренду
+            </div>
             <table border="0" cellspacing="0" cellpadding="0" width="100%" id="panelTopFreeShowPublic">
                 <tr>
                     <td>

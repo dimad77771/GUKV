@@ -317,9 +317,9 @@
 			var v1 = clEditStartDate.GetValue();
             var v2 = clEditAgreementDate.GetValue();
             var rez = (v1 != null && v2 != null && v1 < v2);
-            console.log('v1', v1)
-            console.log('v2', v2)
-			console.log('rez', rez)
+            //console.log('v1', v1)
+            //console.log('v2', v2)
+			//console.log('rez', rez)
 
 			if (rez) {
 				document.getElementById('valError').style.display = '';

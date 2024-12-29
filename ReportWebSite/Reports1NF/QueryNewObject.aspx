@@ -133,6 +133,7 @@
 			$("#panelTopFreeShowPublic").hide();
 			$("#ASPChangeMapSystem").hide();
 			$("#error_text").hide();
+			$("#textInfoObjectClick").show();
 
 			setTimeout(function () {
 				AdjustGridSizes();
