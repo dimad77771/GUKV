@@ -555,8 +555,8 @@
 	    	if (!CheckTotalPaidSum())
     			return false;
 
-			if (!CheckDogovorDates())
-				return false;
+			//if (!CheckDogovorDates())
+			//	return false;
 
 
 //          if (!CheckRadioAgreementAndSquare())
