@@ -161,12 +161,6 @@ public partial class Reports1NF_Report1NFPrivatisatSquare : System.Web.UI.Page
 		Utils.ProcessGridColumnAutoFilter(sender, e);
 	}
 
-	protected void SqlDataSourcePrivatisat_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
-	{
-		//e.Command.Parameters["@p_rda_district_id"].Value = Utils.RdaDistrictID;
-		//e.Command.Parameters["@period_year"].Value = DateTime.Now.Date.Month == 1 ? DateTime.Now.Date.Year - 1 : DateTime.Now.Date.Year;
-		//e.Command.Parameters["@baseurl"].Value = Utils.WebsiteBaseUrl;
-	}
 
 	protected void SqlDataSourcePrivatisat_Inserting(object sender, SqlDataSourceCommandEventArgs e)
 	{
@@ -239,6 +233,17 @@ public partial class Reports1NF_Report1NFPrivatisatSquare : System.Web.UI.Page
 		};
 		builder.Go();
 	}
+
+	protected void SqlDataSourceReports_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+	{
+		e.Command.Parameters["@p_rda_district_id"].Value = Utils.RdaDistrictID;
+		e.Command.Parameters["@period_year"].Value = DateTime.Now.Date.Month == 1 ? DateTime.Now.Date.Year - 1 : DateTime.Now.Date.Year;
+		e.Command.Parameters["@p_misto_id"].Value = 0;
+		e.Command.Parameters["@smode"].Value = 0;
+		e.Command.Parameters["@p_show_neziznacheni"].Value = true;
+		e.Command.Parameters["@p_show_neviznacheni"].Value = true;
+	}
+
 }
 
 
