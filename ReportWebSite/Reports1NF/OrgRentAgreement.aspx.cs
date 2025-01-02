@@ -2260,41 +2260,42 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 				cmd.ExecuteNonQuery();
 			}
 
-			var infos = new[] { data.CurrentYear, data.NextYear };
-
-			foreach (var info in infos)
+			if (data.Year > 0)
 			{
-				var year = data.Year + (info == data.CurrentYear ? 0 : 1);
+				var infos = new[] { data.CurrentYear, data.NextYear };
 
-				var sums = new[] 
-				{ 
-					info.NarazhCalculation_1, info.NarazhCalculation_2, info.NarazhCalculation_3, info.NarazhCalculation_4, 
-					info.NarazhCalculation_5, info.NarazhCalculation_6, info.NarazhCalculation_7, info.NarazhCalculation_8, 
-					info.NarazhCalculation_9, info.NarazhCalculation_10, info.NarazhCalculation_11, info.NarazhCalculation_12 
-				};
-
-				for(int i = 0; i < sums.Length; i++)
+				foreach (var info in infos)
 				{
-					var narah_sum = sums[i];
-					var month = i + 1;
-					var narah_date = new DateTime(year, month, 1);
+					var year = data.Year + (info == data.CurrentYear ? 0 : 1);
 
-					using (SqlCommand cmd = new SqlCommand(
-						"insert into reports1nf_payment_narahcalc(report_id,arenda_id,narah_date,narah_sum,modify_date,modified_by)" +
-						"values(@rid, @aid, @narah_date, @narah_sum, @modify_date, @modified_by)", connection))
+					var sums = new[] 
+					{ 
+						info.NarazhCalculation_1, info.NarazhCalculation_2, info.NarazhCalculation_3, info.NarazhCalculation_4, 
+						info.NarazhCalculation_5, info.NarazhCalculation_6, info.NarazhCalculation_7, info.NarazhCalculation_8, 
+						info.NarazhCalculation_9, info.NarazhCalculation_10, info.NarazhCalculation_11, info.NarazhCalculation_12 
+					};
+
+					for(int i = 0; i < sums.Length; i++)
 					{
-						cmd.Parameters.Add(new SqlParameter("rid", ReportID));
-						cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
-						cmd.Parameters.Add(new SqlParameter("narah_date", narah_date));
-						cmd.Parameters.Add(new SqlParameter("narah_sum", narah_sum));
-						cmd.Parameters.Add(new SqlParameter("modify_date", DateTime.Now));
-						cmd.Parameters.Add(new SqlParameter("modified_by", username.Left(64)));
-						cmd.ExecuteNonQuery();
+						var narah_sum = sums[i];
+						var month = i + 1;
+						var narah_date = new DateTime(year, month, 1);
+
+						using (SqlCommand cmd = new SqlCommand(
+							"insert into reports1nf_payment_narahcalc(report_id,arenda_id,narah_date,narah_sum,modify_date,modified_by)" +
+							"values(@rid, @aid, @narah_date, @narah_sum, @modify_date, @modified_by)", connection))
+						{
+							cmd.Parameters.Add(new SqlParameter("rid", ReportID));
+							cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
+							cmd.Parameters.Add(new SqlParameter("narah_date", narah_date));
+							cmd.Parameters.Add(new SqlParameter("narah_sum", narah_sum));
+							cmd.Parameters.Add(new SqlParameter("modify_date", DateTime.Now));
+							cmd.Parameters.Add(new SqlParameter("modified_by", username.Left(64)));
+							cmd.ExecuteNonQuery();
+						}
 					}
 				}
 			}
-
-
 		}
 
 
