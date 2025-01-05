@@ -87,7 +87,11 @@ FOR XML PATH(''),TYPE
 
     FROM view_buildings WHERE ((building_deleted IS NULL) OR (building_deleted = 0)) AND LEN(COALESCE(street_full_name, '')) > 0 AND
         (@p_rda_district_id = 0 OR addr_distr_new_id = @p_rda_district_id)"
-    OnSelecting="SqlDataSourceAllBuildings_Selecting">
+    OnSelecting="SqlDataSourceAllBuildings_Selecting"
+    UpdateCommand="
+        UPDATE [buildings] SET [addr_nomer1] = @addr_nomer1, [addr_nomer2] = @addr_nomer2, [addr_nomer3] = @addr_nomer3 WHERE [id] = @building_id
+        UPDATE [reports1nf_buildings] SET [addr_nomer1] = @addr_nomer1, [addr_nomer2] = @addr_nomer2, [addr_nomer3] = @addr_nomer3 WHERE [id] = @building_id
+    " >
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_rda_district_id" />
     </SelectParameters>
@@ -189,49 +193,78 @@ FOR XML PATH(''),TYPE
     OnProcessColumnAutoFilter = "GridViewAllBuildings_ProcessColumnAutoFilter"
     OnCustomColumnSort="GridViewAllBuildings_CustomColumnSort" >
 
+	<SettingsCommandButton>
+		<EditButton>
+			<Image Url="~/Styles/EditIcon.png" />
+		</EditButton>
+		<CancelButton>
+			<Image Url="~/Styles/CancelIcon.png" />
+		</CancelButton>
+		<UpdateButton>
+			<Image Url="~/Styles/SaveIcon.png" />
+		</UpdateButton>
+		<DeleteButton>
+			<Image Url="~/Styles/DeleteIcon.png" />
+		</DeleteButton>
+		<NewButton>
+			<Image Url="~/Styles/AddIcon.png" />
+		</NewButton>
+		<ClearFilterButton Text="Очистити" RenderMode="Link" />
+	</SettingsCommandButton>
+
     <Columns>
-        <dx:GridViewDataTextColumn FieldName="district" ReadOnly="True" ShowInCustomizationForm="True"
+        <dx:GridViewCommandColumn Width="70px" ButtonType="Image" CellStyle-Wrap="True" FixedStyle="Left" CellStyle-CssClass="command-column-class" 
+            ShowDeleteButton="false" ShowCancelButton="true" ShowUpdateButton="true" ShowEditButton="true" ShowNewButton="false" >
+            <CellStyle Wrap="False"></CellStyle>
+        </dx:GridViewCommandColumn>
+
+        <dx:GridViewDataTextColumn FieldName="district" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="0" Visible="True" Caption="Район" Width="150px"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="street_full_name" ReadOnly="True" ShowInCustomizationForm="True"
-            VisibleIndex="1" Visible="True" Caption="Назва Вулиці">
+        <dx:GridViewDataTextColumn FieldName="street_full_name" ReadOnly="True" ShowInCustomizationForm="False"
+            VisibleIndex="1" Visible="True" Caption="Назва Вулиці" Width="300px">
             <DataItemTemplate>
                 <%# "<a href=\"javascript:ShowObjectCardSimple(" + Eval("building_id") + ")\">" + Eval("street_full_name") + "</a>"%>
             </DataItemTemplate>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="addr_nomer" ReadOnly="True" ShowInCustomizationForm="True"
+        <dx:GridViewDataTextColumn FieldName="addr_nomer" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="2" Visible="True" Caption="Номер Будинку" Width="80px">
             <DataItemTemplate>
                 <%# "<a href=\"javascript:ShowObjectCardSimple(" + Eval("building_id") + ")\">" + Eval("addr_nomer") + "</a>"%>
             </DataItemTemplate>
             <Settings SortMode="Custom" />
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="addr_zip_code" ReadOnly="True" ShowInCustomizationForm="True"
+
+        <dx:GridViewDataTextColumn FieldName="addr_nomer1" VisibleIndex="2" Visible="False" Caption="Будинок"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="addr_nomer2" VisibleIndex="2" Visible="False" Caption="Літера"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="addr_nomer3" VisibleIndex="2" Visible="False" Caption="Корпус"></dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="addr_zip_code" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="3" Visible="True" Caption="Поштовий Індекс"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="num_floors" ReadOnly="True" ShowInCustomizationForm="True"
+        <dx:GridViewDataTextColumn FieldName="num_floors" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="4" Visible="True" Caption="Кількість Поверхів"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="construct_year" ReadOnly="True" ShowInCustomizationForm="True"
+        <dx:GridViewDataTextColumn FieldName="construct_year" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="5" Visible="False" Caption="Рік Побудови"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="history" ReadOnly="True" ShowInCustomizationForm="True"
+        <dx:GridViewDataTextColumn FieldName="history" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="6" Visible="False" Caption="Історична Цінність"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="object_kind" ReadOnly="True" ShowInCustomizationForm="True"
+        <dx:GridViewDataTextColumn FieldName="object_kind" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="7" Visible="False" Caption="Вид Об'єкту"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="object_type" ReadOnly="True" ShowInCustomizationForm="True"
+        <dx:GridViewDataTextColumn FieldName="object_type" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="8" Visible="False" Caption="Тип Об'єкту"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="sqr_total" ReadOnly="True" ShowInCustomizationForm="True"
+        <dx:GridViewDataTextColumn FieldName="sqr_total" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="9" Visible="False" Caption="Загальна Площа"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="sqr_habit" ReadOnly="True" ShowInCustomizationForm="True"
+        <dx:GridViewDataTextColumn FieldName="sqr_habit" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="10" Visible="False" Caption="Житлова Площа"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="sqr_non_habit" ReadOnly="True" ShowInCustomizationForm="True"
+        <dx:GridViewDataTextColumn FieldName="sqr_non_habit" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="11" Visible="False" Caption="Нежитлова Площа"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="is_in_privat" ReadOnly="True" ShowInCustomizationForm="True"
+        <dx:GridViewDataTextColumn FieldName="is_in_privat" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="12" Visible="False" Caption="Будинок В Програмі Приватизації"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="balans_info" ReadOnly="True" ShowInCustomizationForm="True"
+        <dx:GridViewDataTextColumn FieldName="balans_info" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="12" Visible="True" Caption="Балансоутримувач" Width="500" PropertiesTextEdit-EncodeHtml="false"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataDateColumn FieldName="modify_date" ReadOnly="True" ShowInCustomizationForm="True"
+        <dx:GridViewDataDateColumn FieldName="modify_date" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="13" Visible="False" Caption="Дата редагування"></dx:GridViewDataDateColumn>
-        <dx:GridViewDataTextColumn FieldName="modified_by" ReadOnly="True" ShowInCustomizationForm="True"
+        <dx:GridViewDataTextColumn FieldName="modified_by" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="14" Visible="False" Caption="Ким змінено"></dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="building_id" ReadOnly="True" ShowInCustomizationForm="True"
+        <dx:GridViewDataTextColumn FieldName="building_id" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="15" Visible="False" Caption="ID"></dx:GridViewDataTextColumn>
     </Columns>
 
@@ -260,7 +293,7 @@ FOR XML PATH(''),TYPE
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Catalogue.Buildings" Version="A6_2" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Catalogue.Buildings" Version="A7_8" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
