@@ -1774,12 +1774,12 @@ WHERE id = @id"
                                             <tr>
                                                 <td> <dx:ASPxLabel ID="ASPxLabel42" runat="server" Text="Додаткова інформація"/> </td>
                                                 <td> 
-													<dx:ASPxTextBox ID="EditMiscAddr" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_misc")) %>' Width="270px" Title="Адреса будинку - Додаткова адреса" MaxLength="100" ReadOnly="true">
+													<dx:ASPxTextBox ID="EditMiscAddr" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_misc")) %>' Width="270px" Title="Адреса будинку - Додаткова адреса" MaxLength="100" ReadOnly="false">
 														<ClientSideEvents TextChanged="OnEditMiscAddrTextChanged" ValueChanged="OnEditMiscAddrValueChanged" />
 													</dx:ASPxTextBox> 
                                                 </td>
                                                 <td> <dx:ASPxLabel ID="ASPxLabel43" runat="server" Text="Поштовий індекс"/> </td>
-                                                <td> <dx:ASPxTextBox ID="EditZipCode" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_zip_code")) %>' Width="270px" Title="Адреса будинку - Поштовий індекс" MaxLength="10" ReadOnly="true" /> </td>
+                                                <td> <dx:ASPxTextBox ID="EditZipCode" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_zip_code")) %>' Width="270px" Title="Адреса будинку - Поштовий індекс" MaxLength="10" ReadOnly="false" /> </td>
                                             </tr>
 											<tr>
                                                 <td> <dx:ASPxLabel ID="ASPxLabel16" runat="server" Text="Координати на мапі"/> </td>
