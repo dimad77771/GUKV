@@ -296,6 +296,7 @@
 ,ar.orandodavec_user_id
 ,(select rtrim(ltrim(concat(Q2.namf,' ',Q2.nami,' ',Q2.namo))) from reports1nf Q1 join dict_orandodavec_user Q2 on Q2.id = Q1.orandodavec_user_id where Q1.organization_id = m.org_balans_id) as orandodavec_user_name2
 
+,(select top 1 director_email from organizations Q where Q.zkpo_code = m.org_renter_zkpo) as org_renter_director_email
 ,isnull(ddd.name, 'Невідомо') as sphera_dialnosti
 ,priznachennya = dc.purpose_str
 ,case when exists (select 1 from reports1nf_arenda q where q.id = ar.id) then 1 else 0 end as ex_reports1nf_arenda 
@@ -460,6 +461,8 @@ WHERE id = @arenda_id"
             VisibleIndex="11" Visible="False" Caption="Орендар - Галузь"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_renter_occupation" ReadOnly="True"
             VisibleIndex="12" Visible="False" Caption="Орендар - Вид Діяльності" Width="200"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="org_renter_director_email" ReadOnly="True"
+            VisibleIndex="12" Visible="False" Caption="Орендар - Ел. Адреса Керівника" Width="150"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_giver_id" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="13" Visible="False" Caption="ID Орендодавця">
             <DataItemTemplate>
@@ -793,7 +796,7 @@ WHERE id = @arenda_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_24" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_25" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
