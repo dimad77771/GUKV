@@ -99,6 +99,8 @@ namespace ExtDataEntry.Models
                 query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [transfer_requests_akt_attachfiles] WHERE [free_square_id] = @free_square_id";
             if (scope.ToLower() == "reports1nf_balans_rish_attachfiles")
                 query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [reports1nf_balans_rish_attachfiles] WHERE [free_square_id] = @free_square_id";
+            if (scope.ToLower() == "reports1nf_arenda_scandocument_attachfiles")
+                query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [reports1nf_arenda_scandocument_attachfiles] WHERE [free_square_id] = @free_square_id";
             if (scope.ToLower() == "reports1nf_balans_akt_attachfiles")
                 query = "SELECT [id],[file_name],[file_ext],[modify_date],[modified_by] FROM [reports1nf_balans_akt_attachfiles] WHERE [free_square_id] = @free_square_id";
             if (scope.ToLower() == "reports1nf_balans_bti_attachfiles")
@@ -344,6 +346,10 @@ namespace ExtDataEntry.Models
             {
                 table = "reports1nf_balans_rish_attachfiles";
             }
+            else if (scope == "reports1nf_arenda_scandocument_attachfiles")
+            {
+                table = "reports1nf_arenda_scandocument_attachfiles";
+            }
             else if (scope == "reports1nf_balans_akt_attachfiles")
             {
                 table = "reports1nf_balans_akt_attachfiles";
@@ -441,6 +447,10 @@ namespace ExtDataEntry.Models
             else if (scope == "reports1nf_balans_rish_attachfiles")
             {
                 table = "reports1nf_balans_rish_attachfiles";
+            }
+            else if (scope == "reports1nf_arenda_scandocument_attachfiles")
+            {
+                table = "reports1nf_arenda_scandocument_attachfiles";
             }
             else if (scope == "reports1nf_balans_akt_attachfiles")
             {

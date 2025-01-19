@@ -57,6 +57,8 @@
 </style>
 
     <script type="text/javascript" language="javascript">
+		var paramRid = <%= ParamRid %>;
+		var paramAid = <%= ParamAid %>;
 		var editFreeSquareMode = <%= EditFreeSquareMode.ToString().ToLower() %>;
 
     // <![CDATA[
@@ -472,6 +474,16 @@
                 e.isValid = true;
             }
         }
+
+		function showAttachDocuments(mode) {
+            var request_id = 500000 * paramRid + paramAid;
+            //alert(request_id); return;
+			$.cookie('RecordID', request_id);
+			if (mode == 'scandocument') {
+				ASPxFileManagerPhotoFiles1.Refresh();
+				PopupObjectPhotos1.Show();
+			}
+		}
 
         function updateReportingPeriodComboStyles() {
             console.dir(ReportingPeriodCombo);
@@ -1838,6 +1850,65 @@ WHERE id = @id"
 
 <asp:HiddenField ID="ConveyancingType" runat="server" />
 <dx:ASPxHiddenField ID="NarazhCalculationData" ClientInstanceName="cNarazhCalculationData" runat="server"/>
+
+<dx:ASPxPopupControl ID="ASPxPopupControlFreeSquare1" runat="server" AllowDragging="True" 
+	ClientInstanceName="PopupObjectPhotos1" EnableClientSideAPI="True" 
+	HeaderText="Документ" Modal="True" 
+	PopupHorizontalAlign="Center" PopupVerticalAlign="Middle"  
+	PopupAction="None" PopupElementID="ASPxGridViewFreeSquare1" Width="700px" >
+	<ContentCollection>
+		<dx:PopupControlContentControl ID="PopupControlContentControl4" runat="server" SupportsDisabledAttribute="True">
+
+			<asp:ObjectDataSource ID="ObjectDataSourcePhotoFiles1" runat="server" 
+				DeleteMethod="Delete" InsertMethod="Insert" 
+				OnInserting="ObjectDataSourcePhotoFiles_Inserting" 
+				SelectMethod="Select" 
+				TypeName="ExtDataEntry.Models.FileAttachment">
+				<DeleteParameters>
+					<asp:Parameter DefaultValue="reports1nf_arenda_scandocument_attachfiles" Name="scope" Type="String" />
+					<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+					<asp:Parameter Name="id" Type="String" />
+				</DeleteParameters>
+				<InsertParameters>
+					<asp:Parameter DefaultValue="reports1nf_arenda_scandocument_attachfiles" Name="scope" Type="String" />
+					<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+					<asp:Parameter Name="Name" Type="String" />
+					<asp:Parameter Name="Image" Type="Object" />
+				</InsertParameters>
+				<SelectParameters>
+					<asp:Parameter DefaultValue="reports1nf_arenda_scandocument_attachfiles" Name="scope" Type="String" />
+					<asp:CookieParameter CookieName="RecordID" DefaultValue="" Name="recordID" Type="Int32" />
+				</SelectParameters>
+			</asp:ObjectDataSource>
+
+			<dx:ASPxFileManager ID="ASPxFileManagerPhotoFiles1" runat="server" 
+				ClientInstanceName="ASPxFileManagerPhotoFiles1" DataSourceID="ObjectDataSourcePhotoFiles1">
+				<Settings RootFolder="~\" ThumbnailFolder="~\Thumb\1\" />
+				<SettingsFileList>
+					<ThumbnailsViewSettings ThumbnailSize="180px" />
+				</SettingsFileList>
+				<SettingsEditing AllowDelete="True" AllowDownload="true" />
+				<SettingsFolders Visible="False" />
+				<SettingsToolbar ShowDownloadButton="True" ShowPath="False" />
+				<SettingsUpload UseAdvancedUploadMode="True">
+					<AdvancedModeSettings EnableMultiSelect="True" />
+				</SettingsUpload>
+
+				<SettingsDataSource FileBinaryContentFieldName="Image" 
+					IsFolderFieldName="IsFolder" KeyFieldName="ID" 
+					LastWriteTimeFieldName="LastModified" NameFieldName="Name" 
+					ParentKeyFieldName="ParentID" />
+			</dx:ASPxFileManager>
+
+			<br />
+
+			<dx:ASPxButton ID="ASPxButtonClose1" runat="server" AutoPostBack="False" Text="Закрити" HorizontalAlign="Center">
+				<ClientSideEvents Click="function(s, e) { PopupObjectPhotos1.Hide(); }" />
+			</dx:ASPxButton>
+
+		</dx:PopupControlContentControl>
+	</ContentCollection>
+</dx:ASPxPopupControl>
 
 <dx:ASPxPageControl ID="CardPageControl" ClientInstanceName="CardPageControl" 
                 runat="server" ActiveTabIndex="0">
@@ -4976,6 +5047,10 @@ WHERE id = @id"
 		<dx:TabPage Text="Скани договорів" Name="Tab6">
             <ContentCollection>
                 <dx:ContentControl ID="ContentControl7" runat="server">
+                    <table style="border-collapse:collapse;border-collapse:separate;" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td style="padding:0">
+
 
                     <dx:ASPxRoundPanel ID="PanelPhoto" runat="server" HeaderText="Скани договорів" EnableViewState="true">
                         <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="4px" />
@@ -5104,6 +5179,17 @@ WHERE id = @id"
                             </dx:PanelContent>
                         </PanelCollection>
                     </dx:ASPxRoundPanel>
+
+                            </td>
+
+                            <td style="padding:0; vertical-align: top; padding-left: 10px">
+                                <dx:ASPxButton ID="btnShowDocumentAttachmentsScan" runat="server" AutoPostBack="False" Text="Скани документів" Width="130px">
+                                    <ClientSideEvents Click="function (s,e) { showAttachDocuments('scandocument') }" />
+	                            </dx:ASPxButton>
+                            </td>
+                        </tr>
+                    </table>
+
 
                 </dx:ContentControl>
             </ContentCollection>

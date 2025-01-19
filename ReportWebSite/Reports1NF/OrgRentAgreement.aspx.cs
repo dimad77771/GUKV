@@ -244,6 +244,21 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		}
 	}
 
+	protected string ParamRid
+	{
+		get
+		{
+			return Request.QueryString["rid"];
+		}
+	}
+	protected string ParamAid
+	{
+		get
+		{
+			return Request.QueryString["aid"];
+		}
+	}
+
 	protected bool EditFreeSquareMode
 	{
 		get
