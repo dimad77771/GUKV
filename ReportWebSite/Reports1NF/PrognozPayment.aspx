@@ -717,6 +717,22 @@ SELECT SCOPE_IDENTITY()"
 					Width="320px" ClientInstanceName="CheckBoxDictRentalRate" Visible="false">
 				</dx:ASPxCheckBox>
 			</td>
+			<td valign="bottom">
+				<div style="display:flex">
+					<div style="white-space:nowrap; vertical-align:bottom; color: black; margin-right:3px; align-content:center">
+						Нова ставка відрахувань до бюджету (%)
+					</div>
+					<dx:ASPxSpinEdit ID="EditChange" ClientInstanceName="EditCollectionDebtZvit" runat="server" NumberType="Integer" Width="100px" >
+
+					</dx:ASPxSpinEdit>
+					<div style="width:5px"></div>
+					<dx:ASPxButton ID="ASPxButton_change" runat="server" AutoPostBack="False" Text="Змінити" OnClick="ASPxButton_change_Click">
+						<%--<ClientSideEvents Click="function(s, e) { alert(1) }" />--%>
+					</dx:ASPxButton>
+
+					<div style="width:30px"></div>
+				</div>
+			</td>
 			<td>
 				<dx:ASPxPopupControl
 					ID="ASPxPopupControl_FreeSquare_SaveAs" runat="server"

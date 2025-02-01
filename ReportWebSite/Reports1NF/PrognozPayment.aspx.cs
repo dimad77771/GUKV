@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
@@ -10,6 +11,7 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DevExpress.Web;
+using GUKV.Common;
 using Syncfusion.XlsIO;
 
 public partial class Reports1NF_Report1NFPrivatisatSquare : System.Web.UI.Page
@@ -108,7 +110,7 @@ public partial class Reports1NF_Report1NFPrivatisatSquare : System.Web.UI.Page
 			}
 		}
 
-		for(coln = 1; coln <= worksheet.Columns.Length; coln++)
+		for (coln = 1; coln <= worksheet.Columns.Length; coln++)
 		{
 			if (worksheet.Range[2, coln].Text == "Унікальний код обєкту у ЕТС Прозорро-продажі")
 			{
@@ -223,8 +225,8 @@ public partial class Reports1NF_Report1NFPrivatisatSquare : System.Web.UI.Page
 	}
 
 
-    protected void ASPxButton_Report_Click(object sender, EventArgs e)
-    {
+	protected void ASPxButton_Report_Click(object sender, EventArgs e)
+	{
 		var builder = new PrognozPaymentZvitBuilder
 		{
 			Page = this,
@@ -244,6 +246,47 @@ public partial class Reports1NF_Report1NFPrivatisatSquare : System.Web.UI.Page
 		e.Command.Parameters["@p_show_neviznacheni"].Value = true;
 	}
 
+
+
+	protected void ASPxButton_change_Click(object sender, EventArgs e)
+	{
+		var contribution_rate = EditChange.Value;
+
+		var reportIds = new List<int>();
+		for (int i = PrivatisatGridView.VisibleStartIndex; i < PrivatisatGridView.VisibleRowCount; i++)
+		{
+			var report_id = (int)PrivatisatGridView.GetRowValues(i, new[] { "report_id" });
+			reportIds.Add(report_id);
+
+		}
+
+		var connectionSql = CommonUtils.ConnectToDatabase2016();
+		using (SqlTransaction transaction = connectionSql.BeginTransaction())
+		{
+			foreach(var report_id in reportIds)
+			{
+				var sql = "delete from reports1nf_org_info_new_contribution_rate where report_id = @report_id;";
+				if (contribution_rate != null)
+				{
+					sql += "INSERT INTO reports1nf_org_info_new_contribution_rate values (@report_id, @contribution_rate)";
+				}
+
+				using (var cmd = new SqlCommand(sql, connectionSql,transaction))
+				{
+					cmd.Parameters.Add("@report_id", report_id);
+					if (contribution_rate != null)
+					{
+						cmd.Parameters.Add("@contribution_rate", contribution_rate);
+					}
+					cmd.ExecuteNonQuery();
+				}
+			}
+
+			transaction.Commit();
+		}
+
+		PrivatisatGridView.DataBind();
+	}
 }
 
 
