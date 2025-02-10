@@ -234,6 +234,8 @@
 ,(COALESCE(LTRIM(RTRIM(b.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer3)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer2)), '')) as addr_nomer_new
 ,(COALESCE(LTRIM(RTRIM(b.addr_nomer1)) + ' ', '')) as addr_nomer_short
 
+,L.total_free_sqr as total_free_sqr_privat
+,L.sposib_privat
 
 
     FROM view_balans_all vb
@@ -246,6 +248,10 @@
 	(
 		select sum(Q.rent_square) as sum_rent_square, count(distinct Q.arenda_id) count_ref_balans from view_arenda Q where Q.ref_balans_id = vb.balans_id and isnull(Q.is_deleted,0)=0
 	) W
+    OUTER APPLY
+	(
+		select top 1 * from privatisat Q where Q.balans_id = vb.balans_id
+	) L
 
     WHERE
  	 ((@p_dpz_filter = 0) OR (@p_dpz_filter <> 0 AND vb.balans_id in (select b.id from dbo.reports1nf_balans b where b.organization_id = vb.organization_id and ISNULL(b.is_deleted, 0) = 0 ) )) AND
@@ -530,6 +536,16 @@
         <dx:GridViewDataTextColumn FieldName="org_contacts" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="70" Visible="True" Caption="Контактні телефони" Width="160px"></dx:GridViewDataTextColumn>
 
+        <dx:GridViewDataSpinEditColumn FieldName="total_free_sqr_privat" Caption="Площа об’єкта на приватизацію, кв.м" Width="75px" VisibleIndex="70">
+            <PropertiesSpinEdit NumberType="Float" NumberFormat="Number">
+                <SpinButtons Enabled="true" ></SpinButtons>
+            </PropertiesSpinEdit>
+        </dx:GridViewDataSpinEditColumn>
+
+        <dx:GridViewDataTextColumn FieldName="sposib_privat" Caption="Спосіб приватизації"  Width="100px" VisibleIndex="70">
+        </dx:GridViewDataTextColumn>
+
+
 
         <dx:GridViewDataTextColumn FieldName="has_reports1nf_photos" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="71" Visible="True" Caption="Наявність фото" Width="40px">
             <DataItemTemplate>
@@ -673,7 +689,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A4_009" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A4_011" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

@@ -348,6 +348,7 @@ SET
     ,[buyer_adr_nomer] = @buyer_adr_nomer
     ,[prozoro_number] = @prozoro_number
     ,[primitka] = @primitka
+    ,[balans_id] = @balans_id
     ,[modify_date2] = @modify_date2
     ,[modified_by2] = @modified_by2
 WHERE id = @id" 
@@ -375,6 +376,7 @@ WHERE id = @id"
       ,[buyer_adr_nomer]
       ,[prozoro_number]
       ,[primitka]
+      ,[balans_id]
       ,[modify_date2]
       ,[modified_by2]
     ) 
@@ -400,6 +402,7 @@ WHERE id = @id"
     ,@buyer_adr_nomer
     ,@prozoro_number
     ,@primitka
+    ,@balans_id
     ,@modify_date2
     ,@modified_by2
     );
@@ -754,6 +757,7 @@ SELECT SCOPE_IDENTITY()"
         <dx:GridViewDataTextColumn FieldName="primitka" Caption="Примітка"  Width="150px">
         </dx:GridViewDataTextColumn>
 
+        <dx:GridViewDataTextColumn FieldName="balans_id" VisibleIndex="100" Caption="ID об'єкту на балансі"></dx:GridViewDataTextColumn>
 
         <dx:GridViewCommandColumn Caption="Док." Width="40px" ButtonType="Image" CellStyle-Wrap="False" >
             <CustomButtons>
@@ -796,7 +800,7 @@ SELECT SCOPE_IDENTITY()"
         ShowFooter="false"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.PrivatisatSquare" Version="A1_32" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.PrivatisatSquare" Version="A1_33" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
