@@ -120,6 +120,7 @@ public partial class Arenda_RentAgreements : System.Web.UI.Page, CachingPageIdSu
 
         var visibleColumns = new[]
         {
+            @"",
             @"Картка",
             @"Балансоутримувач - Повна Назва",
             @"Балансоутримувач - Код ЄДРПОУ",
