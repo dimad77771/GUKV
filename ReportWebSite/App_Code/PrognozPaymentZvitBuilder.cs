@@ -19,6 +19,7 @@ public class PrognozPaymentZvitBuilder
 	public bool UseInflation { get; set; }
 	public bool UseDictRentalRate { get; set; }
 	public int year = 2025;
+	public string report_id_where = "-1";
 
 	public void Go()
 	{
@@ -205,13 +206,17 @@ from
         FROM reports1nf_balans b
         WHERE is_deleted IS NULL OR is_deleted = 0
         GROUP BY report_id) obj on rep.report_id = obj.report_id
-        
+
+		cross apply (select 2025 - 1 yy8) Y8
+		cross apply (select cast(concat(yy8,'0101') as date) date_b, cast(concat(yy8,'1231') as date) date_e) X8
+		cross apply (select DATEDIFF(day, X8.date_b, X8.date_e) + 1 day_cnt8) X28
            
 		cross apply (select 2025 yy) Y
 		cross apply (select cast(concat(yy,'0101') as date) date_b, cast(concat(yy,'1231') as date) date_e) X
 		cross apply (select DATEDIFF(day, X.date_b, X.date_e) + 1 day_cnt) X2
 		cross apply (select top 1 isnull(prognoz_inflation_this,1) as inflation_this, isnull(prognoz_inflation_next,1) as inflation_next from current_inflation) I
-		cross apply (select 1.0 + 0.33333333 * I.inflation_this as koef_this) K
+		--cross apply (select 1.0 + 0.33333333 * I.inflation_this as koef_this) K
+		cross apply (select 1.0 as koef_this) K
 		outer apply 
 		(
 			select top 1 Q.contribution_rate from
@@ -252,6 +257,7 @@ from
 						* (case when dogovor_day_cnt >= X2.day_cnt then 1 else cast(dogovor_day_cnt as decimal) / cast(X2.day_cnt as decimal) end)
 						* (case when agreement_state = 1 then 1 else 0 end)
 						* (isnull(G.contribution_rate,0) / 100.0)
+						/ (case when dogovor_day_cnt8 >= X28.day_cnt8 or dogovor_day_cnt8 <= 0 then 1 else cast(dogovor_day_cnt8 as decimal) / cast(X28.day_cnt8 as decimal) end)
 					as PROGNOZ_PAY_NARAH, 
 					Q.*
 				from 
@@ -259,19 +265,23 @@ from
 					select 
 						isnull(U.payment_narah,0) - isnull(U.znyato_nadmirno_narah,0) as 'PAY_NARAH_ZVIT',
 						dogovor_day_cnt,
+						dogovor_day_cnt8,
 						agreement_state,
 						U.* 
 					from reports1nf_arenda_payments U
 					left join
 					(
 						select
-						case when rent_start < rent_finish then DATEDIFF(day, rent_start, rent_finish) + 1 else 0 end as dogovor_day_cnt,
+						case when rent_start <= rent_finish then DATEDIFF(day, rent_start, rent_finish) + 1 else 0 end as dogovor_day_cnt,
+						case when rent_start8 <= rent_finish8 then DATEDIFF(day, rent_start8, rent_finish8) + 1 else 0 end as dogovor_day_cnt8,
 						*
 						from
 						(
 							select 
 								case when Q.rent_start_date >= X.date_b then Q.rent_start_date else X.date_b end rent_start,
 								case when Q.rent_finish_date <= X.date_e then Q.rent_finish_date else X.date_e end rent_finish,
+								case when Q.rent_start_date >= X8.date_b then Q.rent_start_date else X8.date_b end rent_start8,
+								case when Q.rent_finish_date <= X8.date_e then Q.rent_finish_date else X8.date_e end rent_finish8,
 								*
 							from reports1nf_arenda Q
 						) Q
@@ -291,6 +301,10 @@ select obp.org_id,occ.name from org_by_period obp
 join dict_rent_period per on per.id = obp.period_id and per.is_active = 1
 join dict_rent_occupation occ on occ.id = obp.org_occupation_id
 		) DDD ON DDD.org_id = rep.organization_id
+
+		where rep.report_id in (
+			499,386,410,546
+		)
 
 ) as T
 where 1=1
@@ -318,7 +332,9 @@ order by 1
 ";
 
 		sql = sql.Replace("2025", "" + year);
-		sql = sql.Replace("0.33333333", "0.33333333");	//!!! тут надо думать каждый раз прежде чем менять !!!
+		sql = sql.Replace("499,386,410,546", report_id_where);
+		
+		//sql = sql.Replace("0.33333333", "0.33333333");	//!!! тут надо думать каждый раз прежде чем менять !!!
 		//if (!UseInflation)
 		//{
 		//	sql = sql.Replace("total_cost * I.inflation", "total_cost");

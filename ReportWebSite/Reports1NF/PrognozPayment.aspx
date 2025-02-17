@@ -309,7 +309,7 @@
 	<mini:ProfiledSqlDataSource ID="SqlDataSourceInflation" runat="server"
 		ConnectionString="<%$ ConnectionStrings:GUKV2016ConnectionString %>"
 		SelectCommand="SELECT [id], [prognoz_inflation_this], [prognoz_inflation_next] FROM [current_inflation]"
-		UpdateCommand="UPDATE [current_inflation] SET [prognoz_inflation_this] = @prognoz_inflation_this, [prognoz_inflation_next] = @prognoz_inflation_next">
+		UpdateCommand="UPDATE [current_inflation] SET [prognoz_inflation_next] = @prognoz_inflation_next">
 	</mini:ProfiledSqlDataSource>
 
 	<mini:ProfiledSqlDataSource ID="SqlDataSourcePrivatisat" runat="server"
@@ -871,7 +871,7 @@ SELECT SCOPE_IDENTITY()"
 				<CellStyle Wrap="False"></CellStyle>
 			</dx:GridViewCommandColumn>
 
-			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_this" Caption="Прогноз індексу інфляції на 4 квартал 2024 року, %" Width="250px" />
+			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_this" Caption="Прогноз індексу інфляції на 4 квартал 2024 року, %" Width="250px" Visible="false" />
 			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_next" Caption="Прогноз індексу інфляції на 2025 рік, %" Width="250px" />
 		</Columns>
 

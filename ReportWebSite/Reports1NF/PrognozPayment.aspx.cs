@@ -227,11 +227,26 @@ public partial class Reports1NF_Report1NFPrivatisatSquare : System.Web.UI.Page
 
 	protected void ASPxButton_Report_Click(object sender, EventArgs e)
 	{
+		var reportIds = new List<int>();
+		for (int i = PrivatisatGridView.VisibleStartIndex; i < PrivatisatGridView.VisibleRowCount; i++)
+		{
+			var report_id = (int)PrivatisatGridView.GetRowValues(i, new[] { "report_id" });
+			reportIds.Add(report_id);
+		}
+
+		var report_id_where = String.Join(",", reportIds);
+		if (string.IsNullOrEmpty(report_id_where))
+		{
+			report_id_where = "-1";
+		}
+
+
 		var builder = new PrognozPaymentZvitBuilder
 		{
 			Page = this,
 			UseInflation = CheckBoxInflation.Checked,
 			UseDictRentalRate = CheckBoxDictRentalRate.Checked,
+			report_id_where = report_id_where,
 		};
 		builder.Go();
 	}
