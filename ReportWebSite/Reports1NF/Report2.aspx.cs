@@ -313,7 +313,7 @@ LEFT JOIN (
 			var srok = (int)arg;
 
 			if (srok == 1) return "" + srok + " рік";
-			else if (srok == 2 || srok == 3 || srok == 4) return "" + srok + " ріки";
+			else if (srok == 2 || srok == 3 || srok == 4) return "" + srok + " роки";
 			else return "" + srok + " років";
 		}
 
