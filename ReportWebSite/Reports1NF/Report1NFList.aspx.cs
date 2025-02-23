@@ -135,6 +135,11 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 			CheckBoxBalansObjectsShowNeviznacheni.Checked = true;
 		}
 
+		if (Roles.IsUserInRole(Utils.MISTOControllerRole))
+		{
+			ASPxButtonZvedeniyBuild.Visible = false;
+		}
+
 		this.ProcessGridDataFetch(ViewState, PrimaryGridView);
 
 		//ForTest();

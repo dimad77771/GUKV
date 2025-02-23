@@ -258,6 +258,7 @@
         --((@p_com_filter = 0) OR (@p_com_filter <> 0 AND (vb.org_ownership_int IN (32,33,34) OR vb.form_ownership_int IN (32,33,34)))) AND
         --((@p_show_deleted = 1) OR (@p_show_deleted = 0 AND (vb.is_deleted IS NULL OR vb.is_deleted = 0 OR vb.is_not_accepted = 1))) AND
         --((@p_show_neziznacheni = 1) OR (@p_show_neziznacheni = 0 AND (isnull(ddd.name, 'Невідомо') <> 'Невизначені'))) AND
+        (@p_misto_id = 0 OR org_zkpo_code IN (select org.zkpo_code FROM reports1nf rep LEFT OUTER JOIN reports1nf_org_info org on org.report_id = rep.id where old_organ_id = @p_misto_id)) AND
         ((@p_rda_district_id = 0) OR (vb.org_ownership_int in (select id from dict_org_ownership where is_rda = 1) AND vb.org_district_id = @p_rda_district_id))"
     OnSelecting="SqlDataSourceBalansObjects_Selecting" >
     <SelectParameters>
@@ -266,6 +267,7 @@
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_show_deleted" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_show_neziznacheni" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_rda_district_id" />
+        <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_misto_id" />
     </SelectParameters>
 </mini:ProfiledSqlDataSource>
 

@@ -1358,7 +1358,7 @@ WHERE id = @id"
         <dx:MenuItem NavigateUrl="../Reports1NF/OrgInfo.aspx" Text="Загальна Інформація"></dx:MenuItem>
         <dx:MenuItem NavigateUrl="../Reports1NF/OrgBalansList.aspx" Text="Об'єкти на Балансі"></dx:MenuItem>
         <dx:MenuItem NavigateUrl="../Reports1NF/OrgBalansDeletedList.aspx" Text="Відчужені Об'єкти"></dx:MenuItem>
-        <dx:MenuItem NavigateUrl="../Reports1NF/OrgArendaList.aspx" Text="Договори використання приміщень "></dx:MenuItem>
+        <dx:MenuItem NavigateUrl="../Reports1NF/OrgArendaList.aspx" Text="Договори Оренди "></dx:MenuItem>
         <dx:MenuItem NavigateUrl="../Reports1NF/OrgRentedList.aspx" Text="Договори Орендування"></dx:MenuItem>
         <dx:MenuItem NavigateUrl="../Account/Logout.aspx" Text="Вийти"></dx:MenuItem>
         <dx:MenuItem NavigateUrl="../Account/ChangePasswordNoMenu.aspx" Text="Пароль"></dx:MenuItem>
@@ -2582,9 +2582,9 @@ WHERE id = @id"
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td><dx:ASPxLabel ID="ASPxLabel25" runat="server" Text="Призначення за уточненням балансоутримувача" width="200px"></dx:ASPxLabel></td>
+                                                <td><dx:ASPxLabel ID="ASPxLabel25" runat="server" Text="Назва об’єкта" width="200px"></dx:ASPxLabel></td>
                                                 <td valign="top">
-                                                    <dx:ASPxTextBox ID="EditPurposeStr" runat="server" Text='<%# Eval("purpose_str") %>' Width="600px" Title="Призначення за уточненням балансоутримувача" MaxLength="255">
+                                                    <dx:ASPxTextBox ID="EditPurposeStr" runat="server" Text='<%# Eval("purpose_str") %>' Width="600px" Title="Назва об’єкта" MaxLength="255">
                                                         <ValidationSettings Display="None"></ValidationSettings>
                                                     </dx:ASPxTextBox>
                                                 </td>

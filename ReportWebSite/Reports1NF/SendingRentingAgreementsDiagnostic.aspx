@@ -16,5 +16,5 @@
             </dx:GridViewDataTextColumn>            
         </Columns>        
     </dx:ASPxGridView>
-    <asp:Label ID="lblSuccess" runat="server" Visible="false">Всі договори використання приміщень  були успішно відправлені.</asp:Label>
+    <asp:Label ID="lblSuccess" runat="server" Visible="false">Всі Договори Оренди  були успішно відправлені.</asp:Label>
 </asp:Content>

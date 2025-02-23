@@ -40,7 +40,7 @@
         <dx:MenuItem NavigateUrl="../Reports1NF/OrgInfo.aspx" Text="Загальна Інформація"></dx:MenuItem>
         <dx:MenuItem NavigateUrl="../Reports1NF/OrgBalansList.aspx" Text="Об'єкти на Балансі"></dx:MenuItem>
         <dx:MenuItem NavigateUrl="../Reports1NF/OrgBalansDeletedList.aspx" Text="Відчужені Об'єкти"></dx:MenuItem>
-        <dx:MenuItem NavigateUrl="../Reports1NF/OrgArendaList.aspx" Text="Договори використання приміщень "></dx:MenuItem>
+        <dx:MenuItem NavigateUrl="../Reports1NF/OrgArendaList.aspx" Text="Договори Оренди "></dx:MenuItem>
         <dx:MenuItem NavigateUrl="../Reports1NF/OrgRentedList.aspx" Text="Договори Орендування"></dx:MenuItem>
         <dx:MenuItem NavigateUrl="../Reports1NF/ConveyancingRequestsList.aspx" Text="Зміна балансоутримувачів об'єктів"></dx:MenuItem>
         <dx:MenuItem NavigateUrl="../Account/Logout.aspx" Text="Вийти"></dx:MenuItem>
@@ -122,7 +122,7 @@
         <td valign="top"><dx:ASPxLabel runat="server" ID="ASPxLabel4" Width="600px" Text="Перегляд та редагування відомостей про відчужені об'єкти комунальної власності, що знаходились на балансі організації"/> <p style="font-size: 4px;"/> </td>
     </tr>
     <tr>
-        <td valign="top"> <dx:ASPxHyperLink runat="server" ID="LinkRentAgreements" Text="Договори використання приміщень " NavigateUrl="../Reports1NF/OrgArendaList.aspx" CssClass="reporttitle"/> </td>
+        <td valign="top"> <dx:ASPxHyperLink runat="server" ID="LinkRentAgreements" Text="Договори Оренди " NavigateUrl="../Reports1NF/OrgArendaList.aspx" CssClass="reporttitle"/> </td>
         <td> &nbsp; &nbsp; </td>
         <td valign="top"><dx:ASPxLabel runat="server" ID="ASPxLabel6" Width="600px" Text="Перегляд та редагування відомостей про надання в оренду іншим організаціям об'єктів комунальної власності, що знаходяться на балансі організації"/> <p style="font-size: 4px;"/> </td>
     </tr>

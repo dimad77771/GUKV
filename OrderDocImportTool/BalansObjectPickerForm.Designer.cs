@@ -230,7 +230,7 @@
             // 
             // columnHeader7
             // 
-            this.columnHeader7.Text = "Призначення за уточненням Балансоутримувача";
+            this.columnHeader7.Text = "Назва об’єкта";
             this.columnHeader7.Width = 260;
             // 
             // BalansObjectPickerForm
