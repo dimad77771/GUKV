@@ -51,6 +51,17 @@
         <td valign="top"> <dx:ASPxHyperLink ID="LinkHelp1" runat="server" Text="Інструкція балансоутримувача" NavigateUrl="~/UserGuide/Інструкція БАЛАНСОУТРИМУВАЧА.docx" /> </td>
     </tr>
 
+    <tr>
+        <td> &nbsp; </td>
+
+        <td valign="bottom"> <img src="../Styles/HelpIcon.png" alt="Довідка" /> </td>
+
+        <td> &nbsp; </td>
+
+        <td valign="top"> <dx:ASPxHyperLink ID="LinkHelp2" runat="server" Text="ВІДЕОМАТЕРИАЛИ" NavigateUrl="~/UserGuide/ВІДЕОМАТЕРИАЛИ.docx" /> </td>
+    </tr>
+
+
 <%--    <tr>
         <td> &nbsp; </td>
 
