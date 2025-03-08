@@ -528,7 +528,7 @@ WHERE id = @arenda_id"
 <%--        <dx:GridViewDataTextColumn FieldName="cost_debt" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="35" Visible="False" Caption="Борг (грн.)"></dx:GridViewDataTextColumn>       --%>
         <dx:GridViewDataTextColumn FieldName="n_cost_agreement" ReadOnly="True"
-            VisibleIndex="36" Visible="True" Caption="Плата за використання, грн."></dx:GridViewDataTextColumn>
+            VisibleIndex="36" Visible="True" Caption="Місячна орендна плата, грн."></dx:GridViewDataTextColumn>
         <%--<dx:GridViewDataTextColumn FieldName="cost_agreement_max" ReadOnly="True"
             VisibleIndex="37" Visible="True" Caption="Максимальна Орендна Плата за об'єкт договору (грн.)"></dx:GridViewDataTextColumn>--%>
 <%--        <dx:GridViewDataTextColumn FieldName="cost_narah_max" ReadOnly="True"

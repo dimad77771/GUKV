@@ -396,7 +396,7 @@ public partial class Reports1NF_Report1NFFreeSquare : System.Web.UI.Page
 				transaction.Commit();
 			}
 		}
-		else if (change_step && new int?[] { 200900, 180 }.Contains(freecycle_step_dict_id))
+		else if (change_step && new int?[] { 200900, 180, 138500, 390 }.Contains(freecycle_step_dict_id))
 		{
 			dbparams["@is_included"].Value = 0;
 
