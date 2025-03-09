@@ -304,6 +304,7 @@
 ,case when ar.id in (select b.id from dbo.reports1nf_arenda b where b.org_balans_id = ar.org_balans_id and ISNULL(b.is_deleted, 0) = 0 /*and b.agreement_state = 1*/ ) then 1 else 0 end as is_dpz_object 
 ,(SELECT count(*) FROM reports1nf_arenda_notes WHERE (is_deleted IS NULL OR is_deleted = 0) AND report_id = (select top 1 q.report_id from reports1nf_arenda q where q.id = ar.id) AND arenda_id = m.arenda_id) as count_dogovor_objects
 ,case when exists (select 1 from reports1nf_arendaphotos Q where Q.arenda_id = m.arenda_id) then 1 else 0 end as has_reports1nf_photos
+,W.big_month_koef
 
         FROM view_arenda_agreements m  /*m_view_arenda_agreements m3 */
         join arenda ar on ar.id = m.arenda_id
@@ -317,12 +318,13 @@
                     LEFT OUTER JOIN (select obp.org_id,occ.name from org_by_period obp
                                       join dict_rent_occupation occ on occ.id = obp.org_occupation_id
                                       where obp.period_id = (select top 1 id from dict_rent_period order by id desc)) DDD ON DDD.org_id = m.org_balans_id
+        left join (select * from bigborg_arenda(case when @p_bigborg_filter = 1 then @p_bigborg_email else '-' end)) W on W.arenda_id = ar.id
 
         WHERE 
     --isnull(ar.is_deleted, 0) = 0 and 
  	    ((@p_dpz_filter = 0) OR (@p_dpz_filter <> 0 AND ar.id in (select b.id from dbo.reports1nf_arenda b where b.org_balans_id = ar.org_balans_id and ISNULL(b.is_deleted, 0) = 0 /*and b.agreement_state = 1*/ ) )) AND
         ((@p_com_filter = 0) OR (@p_com_filter <> 0 AND (m.balans_form_ownership_int IN (32,33,34) OR m.balans_org_ownership_int IN (32,33,34)))) AND
-        ((@p_bigborg_filter = 0) OR (@p_bigborg_filter <> 0 AND ar.id in (select Q.arenda_id from bigborg_arenda('pravduk@gukv.gov.ua') Q))) AND
+        ( (@p_bigborg_filter = 0) OR (@p_bigborg_filter = 1 AND W.arenda_id is not null) ) AND
         ((@p_show_neziznacheni = 1) OR (@p_show_neziznacheni = 0 AND (isnull(ddd.name, 'Невідомо') <> 'Невизначені'))) AND
         (   (@p_rda_district_id = 0) OR
             (m.org_balans_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND m.org_balans_district_id = @p_rda_district_id) OR
@@ -350,6 +352,7 @@ WHERE id = @arenda_id"
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="1" Name="p_dpz_filter" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_bigborg_filter" />
+        <asp:Parameter DbType="String" DefaultValue="" Name="p_bigborg_email" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_com_filter" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_rda_district_id" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_show_neziznacheni" />
@@ -726,6 +729,9 @@ WHERE id = @arenda_id"
         <dx:GridViewDataTextColumn FieldName="povidoleno4_num" ReadOnly="True"
             VisibleIndex="124" Visible="True" Caption="Повідомлення орендаря до орендодавця про намір використовувати об'єкт (№)"></dx:GridViewDataTextColumn>
 
+        <dx:GridViewDataTextColumn FieldName="big_month_koef" ReadOnly="True" Width="80px"
+            VisibleIndex="130" Visible="True" Caption="Поточна заборгованість, у місячних ОП"></dx:GridViewDataTextColumn>
+
         <dx:GridViewDataComboBoxColumn FieldName="orandodavec_user_id" Caption="Контроль орендодавця" Width="200px" VisibleIndex="130">
             <PropertiesComboBox 
 				DataSourceID="SqlDataSourceFreecycleStepDict"
@@ -796,7 +802,7 @@ WHERE id = @arenda_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_27" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_28" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

@@ -293,14 +293,16 @@ public partial class Arenda_RentAgreements : System.Web.UI.Page, CachingPageIdSu
 
     protected void SqlDataSourceArendaObjects_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
     {
-		e.Command.CommandTimeout = 600;
+        e.Command.CommandTimeout = 600;
 
 		e.Command.Parameters["@p_dpz_filter"].Value = CheckBoxRentedObjectsDPZ.Checked ? 1 : 0;
-        e.Command.Parameters["@p_bigborg_filter"].Value = CheckBoxBigBorgShow.Checked ? 1 : 0;
         e.Command.Parameters["@p_com_filter"].Value = CheckBoxRentedObjectsComVlasn.Checked ? 1 : 0;
         e.Command.Parameters["@p_rda_district_id"].Value = Utils.RdaDistrictID;
         e.Command.Parameters["@p_show_neziznacheni"].Value = CheckBoxBalansObjectsShowNeziznacheni.Checked ? 1 : 0;
         e.Command.Parameters["@ref_balans_id"].Value = ParamRefBalansId;
+
+        e.Command.Parameters["@p_bigborg_filter"].Value = CheckBoxBigBorgShow.Checked ? 1 : 0;
+        e.Command.Parameters["@p_bigborg_email"].Value = IsUserControlCurrentBorg ? "" : UserEmail;
     }
 
     protected string GetPageUniqueKey()
@@ -354,17 +356,59 @@ public partial class Arenda_RentAgreements : System.Web.UI.Page, CachingPageIdSu
 
     void CustomizeCheckBoxBigBorgShow()
     {
-        SqlConnection connection = Utils.ConnectToDatabase();
-        var user = Membership.GetUser();
-        var email = user != null ? user.Email : "";
-
-        using (SqlCommand cmd = new SqlCommand("select case when exists (select 1 from bigborg_arenda(@email)) then 1 else 0 end", connection))
+        IsUserControlCurrentBorg = Roles.IsUserInRole(Utils.ControlCurrentBorg);
+        if (IsUserControlCurrentBorg)
         {
-            cmd.Parameters.Add(new SqlParameter("email", email));
-            var result = cmd.ExecuteScalar();
-            CheckBoxBigBorgShow.Visible = (object.Equals(result, 1));
+            CheckBoxBigBorgShow.Visible = true;
+        }
+        else
+        {
+            SqlConnection connection = Utils.ConnectToDatabase();
+            var user = Membership.GetUser();
+            var email = user != null ? user.Email : "";
+
+            using (SqlCommand cmd = new SqlCommand("select case when exists (select 1 from dict_orandodavec_user Q where Q.email = @email) then 1 else 0 end", connection))
+            {
+                cmd.Parameters.Add(new SqlParameter("email", email));
+                var result = cmd.ExecuteScalar();
+                CheckBoxBigBorgShow.Visible = (object.Equals(result, 1));
+                if (CheckBoxBigBorgShow.Visible)
+                {
+                    UserEmail = email;
+                }
+            }
         }
     }
+
+    protected bool IsUserControlCurrentBorg
+    {
+        get
+        {
+            object reportId = ViewState["IsUserControlCurrentBorg"];
+            return object.Equals(reportId, true);
+        }
+        set
+        {
+            ViewState["IsUserControlCurrentBorg"] = value;
+        }
+    }
+
+    protected string UserEmail
+    {
+        get
+        {
+            object reportId = ViewState["UserEmail"];
+            return (reportId ?? "").ToString();
+        }
+        set
+        {
+            ViewState["UserEmail"] = value;
+        }
+    }
+
+
+
+    string _email;
 
     protected int ParamRefBalansId
     {

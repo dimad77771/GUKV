@@ -62,6 +62,8 @@ public static class Utils
     public const string ConveyancingConfirmation = "ConveyancingConfirmation";
     public const string OcenkaRole = "Оцінка";
     public const string Chmo400Role = "ЧВО_400";
+    public const string ControlCurrentBorg = "Контроль_поточної_заборгованості";
+    
 
     public const string AdministratorRole = "Administrator";
 
