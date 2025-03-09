@@ -3971,13 +3971,21 @@ public class NarazhCalculation
 			{
 				var date = new DateTime(year, mm, 1);
 				var inflation = GetMonthInflation(date);
+				var plata0 = plata;
 
 				if (isnew)
 				{
 					plata = round_0(plata * inflation / 100M);
 				}
 
-				monthPlata.Add(date, plata);
+				if (isnew && date == baseMonth && rentStart <= baseMonth.AddMonths(1))
+				{
+					monthPlata.Add(date, plata0);
+				}
+				else
+				{
+					monthPlata.Add(date, plata);
+				}
 
 				if (!isnew)
 				{
