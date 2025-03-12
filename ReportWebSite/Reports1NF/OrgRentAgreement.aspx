@@ -1347,8 +1347,9 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceOrgSearchRenter" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' 
-        FROM (select id, zkpo_code, full_name from (select ROW_NUMBER() over(partition by isnull(zkpo_code,'') order by modify_date desc) rnpp, * from organizations) T where isnull(zkpo_code,'') = '' or T.rnpp = 1) org
+    SelectCommand="SELECT id, zkpo_code + ' (' + cast(id as varchar(100)) + ')' + ' - ' + full_name AS 'search_name' 
+        FROM organizations org
+        --FROM (select id, zkpo_code, full_name from (select ROW_NUMBER() over(partition by isnull(zkpo_code,'') order by modify_date desc) rnpp, * from organizations) T where isnull(zkpo_code,'') = '' or T.rnpp = 1) org
         WHERE
         	(@zkpo = '^' AND @fname = '^' AND (org.id IN (SELECT ar.org_renter_id FROM reports1nf_arenda ar WHERE ar.id = @aid AND ar.report_id = @rep_id))
 	        OR
