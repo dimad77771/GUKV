@@ -36,7 +36,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		//////
-		try
+		//try
 		{
 			string reportIdStr = Request.QueryString["rid"];
 			string agreementIdStr = Request.QueryString["aid"];
@@ -236,12 +236,12 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 
 			//////
 		}
-		catch (Exception ex)
-		{
-			var lognet = log4net.LogManager.GetLogger("ReportWebSite");
-			lognet.Debug("--------------- OrgRentAgreement page load ----------------", ex);
-			throw ex;
-		}
+		//catch (Exception ex)
+		//{
+		//	var lognet = log4net.LogManager.GetLogger("ReportWebSite");
+		//	lognet.Debug("--------------- OrgRentAgreement page load ----------------", ex);
+		//	throw ex;
+		//}
 	}
 
 	protected string ParamRid
