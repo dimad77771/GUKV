@@ -70,7 +70,7 @@
         var agreementNum = EditAgreementNum.GetText();
         var agreementDate = EditAgreementDate.GetValue();
         var buildingId = ComboBuilding.GetValue();
-        var orgBalansId = ComboBalansOrg.GetValue();
+        //var orgBalansId = ComboBalansOrg.GetValue();
         var orgGiverId = ComboGiverOrg.GetValue();
         var orgRenterId = ComboRenterOrg.GetValue();
         var giverComment = EditGiverComment.GetText();
@@ -90,10 +90,10 @@
             return;
         }
 
-        if (orgBalansId == null || orgBalansId == undefined) {
-            alert("Ѕудь ласка, вибер≥ть орган≥зац≥ю-балансоутримувача прим≥щенн€, що надаЇтьс€ в оренду.");
-            return;
-        }
+        //if (orgBalansId == null || orgBalansId == undefined) {
+        //    alert("Ѕудь ласка, вибер≥ть орган≥зац≥ю-балансоутримувача прим≥щенн€, що надаЇтьс€ в оренду.");
+        //    return;
+        //}
 
         if (orgGiverId == null || orgGiverId == undefined) {
             alert("Ѕудь ласка, вибер≥ть орган≥зац≥ю-орендодавц€.");
@@ -118,7 +118,8 @@
             AgreementDateMonth: agreementDate.getMonth(),
             AgreementDateDay: agreementDate.getDate(),
             BuildingID: buildingId,
-            OrgBalansID: orgBalansId,
+            //OrgBalansID: orgBalansId,
+			OrgBalansID: -1,
             OrgRenterID: orgRenterId,
             OrgGiverID: orgGiverId,
             OrgGiverComment: giverComment
@@ -483,7 +484,7 @@ FROM reports1nf_arenda ar
 
                         <p class="SpacingPara"/>
 
-                        <dx:ASPxRoundPanel ID="PanelOrgBalans" runat="server" HeaderText="Ѕалансоутримувач">
+                        <dx:ASPxRoundPanel ID="PanelOrgBalans" runat="server" HeaderText="Ѕалансоутримувач" Visible="false">
                             <ContentPaddings PaddingTop="4px" PaddingLeft="2px" PaddingRight="2px" PaddingBottom="2px" />
                             <PanelCollection>
                                 <dx:PanelContent ID="PanelContent4" runat="server">

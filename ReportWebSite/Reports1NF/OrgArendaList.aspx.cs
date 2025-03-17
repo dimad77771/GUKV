@@ -643,6 +643,16 @@ public partial class Reports1NF_OrgArendaList : System.Web.UI.Page
                 }
                 else
                 {
+                    SqlConnection connection = Utils.ConnectToDatabase();
+                    using (SqlCommand cmd = new SqlCommand("SELECT rep.organization_id FROM view_reports1nf rep WHERE rep.report_id = @repid", connection))
+                    {
+                        cmd.Parameters.Add(new SqlParameter("repid", ReportID));
+
+                        var orgBalansID = (int)cmd.ExecuteScalar();
+                        if (orgBalansID <= 0) throw new Exception();
+                        data.OrgBalansID = orgBalansID;
+                    }
+
                     Utils.CreateNewArendaDogovor(ReportID, username, data);
                 }
             }
