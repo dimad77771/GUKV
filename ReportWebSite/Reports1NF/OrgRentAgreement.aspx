@@ -1127,6 +1127,27 @@
 		}
 
 
+        function OnEditZnizhka(n, s, e) {
+			cbZnizhkaChange.PerformCallback(n);
+        }
+
+
+        function ZnizhkaChangeComplete(s, e) {
+            var resultJson = e.result;
+            if (!resultJson) return;
+
+            var result = JSON.parse(resultJson);
+            //console.log('result', result)
+			var npp = result.npp
+            var date1 = !result.date1 ? null : new Date(result.date1)
+			var date2 = !result.date2 ? null : new Date(result.date2)
+            //console.log('window["edit_znizhka" + npp + "_percent"]', window["edit_znizhka" + npp + "_percent"])
+			window["edit_znizhka" + npp + "_percent"].SetValue(result.percent);
+			window["edit_znizhka" + npp + "_date1"].SetValue(date1);
+			window["edit_znizhka" + npp + "_date2"].SetValue(date2);
+        }
+
+
 	</script>
 
 </asp:Content>
@@ -1134,6 +1155,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
 
 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" />
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceZnizhka" runat="server" EnableCaching="false"
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+	SelectCommand="SELECT name FROM PaymentDiscounts order by 1">
+</mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceBuilding" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
@@ -3577,22 +3603,30 @@ WHERE id = @id"
                                                         </tr>
 
                                                         <tr>
-                                                            <td><dx:ASPxTextBox ID="edit_znizhka1_name" runat="server" Value='<%# Eval("znizhka1_name") %>' Width="480px" Title="Назва знижки"/></td>
+                                                            <td>
+                                                                <dx:ASPxComboBox ID="edit_znizhka1_name" runat="server" Width="480px" Title="Назва знижки"
+                                                                    DataSourceID="SqlDataSourceZnizhka" TextField="name" ValueField="name" DropDownStyle="DropDown"
+                                                                    ValueType="System.String" Value='<%# Eval("znizhka1_name") %>' >
+                                                                        <ClientSideEvents 
+                                                                            SelectedIndexChanged="function (s, e) { OnEditZnizhka(1, s, e) }"
+                                                                        />
+                                                                </dx:ASPxComboBox>
+                                                            </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
                                                             <td align="left">
-                                                                <dx:ASPxSpinEdit ID="edit_znizhka1_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka1_percent") %>' Width="100px" Title="%">
+                                                                <dx:ASPxSpinEdit ID="edit_znizhka1_percent" ClientInstanceName="edit_znizhka1_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka1_percent") %>' Width="100px" Title="%">
                                                                     <ClientSideEvents NumberChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxSpinEdit>
                                                             </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
 												            <td align="left">
-                                                                <dx:ASPxDateEdit ID="edit_znizhka1_date1" runat="server" Value='<%# Eval("znizhka1_date1") %>' Width="100px" Title="з">
+                                                                <dx:ASPxDateEdit ID="edit_znizhka1_date1" ClientInstanceName="edit_znizhka1_date1" runat="server" Value='<%# Eval("znizhka1_date1") %>' Width="100px" Title="з">
                                                                     <ClientSideEvents DateChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxDateEdit>
 												            </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
 												            <td align="left">
-                                                                <dx:ASPxDateEdit ID="edit_znizhka1_date2" runat="server" Value='<%# Eval("znizhka1_date2") %>' Width="100px" Title="по">
+                                                                <dx:ASPxDateEdit ID="edit_znizhka1_date2" ClientInstanceName="edit_znizhka1_date2" runat="server" Value='<%# Eval("znizhka1_date2") %>' Width="100px" Title="по">
                                                                     <ClientSideEvents DateChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxDateEdit>
 												            </td>
@@ -3602,25 +3636,37 @@ WHERE id = @id"
                                                                     <ClientSideEvents ValueChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxTextBox>
                                                             </td>
-                                                        </tr>
+                                                        </tr>                                                 
+
+                                                                                                          
+
+                                                        
 
                                                         <tr>
-                                                            <td><dx:ASPxTextBox ID="edit_znizhka2_name" runat="server" Value='<%# Eval("znizhka2_name") %>' Width="480px" Title="Назва знижки"/></td>
+                                                            <td>
+                                                                <dx:ASPxComboBox ID="edit_znizhka2_name" runat="server" Width="480px" Title="Назва знижки"
+                                                                    DataSourceID="SqlDataSourceZnizhka" TextField="name" ValueField="name" DropDownStyle="DropDown"
+                                                                    ValueType="System.String" Value='<%# Eval("znizhka2_name") %>' >
+                                                                        <ClientSideEvents 
+                                                                            SelectedIndexChanged="function (s, e) { OnEditZnizhka(2, s, e) }"
+                                                                        />
+                                                                </dx:ASPxComboBox>
+                                                            </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
                                                             <td align="left">
-                                                                <dx:ASPxSpinEdit ID="edit_znizhka2_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka2_percent") %>' Width="100px" Title="%">
+                                                                <dx:ASPxSpinEdit ID="edit_znizhka2_percent" ClientInstanceName="edit_znizhka2_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka2_percent") %>' Width="100px" Title="%">
                                                                     <ClientSideEvents NumberChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxSpinEdit>
                                                             </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
 												            <td align="left">
-                                                                <dx:ASPxDateEdit ID="edit_znizhka2_date1" runat="server" Value='<%# Eval("znizhka2_date1") %>' Width="100px" Title="з">
+                                                                <dx:ASPxDateEdit ID="edit_znizhka2_date1" ClientInstanceName="edit_znizhka2_date1" runat="server" Value='<%# Eval("znizhka2_date1") %>' Width="100px" Title="з">
                                                                     <ClientSideEvents DateChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxDateEdit>
 												            </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
 												            <td align="left">
-                                                                <dx:ASPxDateEdit ID="edit_znizhka2_date2" runat="server" Value='<%# Eval("znizhka2_date2") %>' Width="100px" Title="по">
+                                                                <dx:ASPxDateEdit ID="edit_znizhka2_date2" ClientInstanceName="edit_znizhka2_date2" runat="server" Value='<%# Eval("znizhka2_date2") %>' Width="100px" Title="по">
                                                                     <ClientSideEvents DateChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxDateEdit>
 												            </td>
@@ -3633,22 +3679,30 @@ WHERE id = @id"
                                                         </tr>
 
                                                         <tr>
-                                                            <td><dx:ASPxTextBox ID="edit_znizhka3_name" runat="server" Value='<%# Eval("znizhka3_name") %>' Width="480px" Title="Назва знижки"/></td>
+                                                            <td>
+                                                                <dx:ASPxComboBox ID="edit_znizhka3_name" runat="server" Width="480px" Title="Назва знижки"
+                                                                    DataSourceID="SqlDataSourceZnizhka" TextField="name" ValueField="name" DropDownStyle="DropDown"
+                                                                    ValueType="System.String" Value='<%# Eval("znizhka3_name") %>' >
+                                                                        <ClientSideEvents 
+                                                                            SelectedIndexChanged="function (s, e) { OnEditZnizhka(3, s, e) }"
+                                                                        />
+                                                                </dx:ASPxComboBox>
+                                                            </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
                                                             <td align="left">
-                                                                <dx:ASPxSpinEdit ID="edit_znizhka3_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka3_percent") %>' Width="100px" Title="%">
+                                                                <dx:ASPxSpinEdit ID="edit_znizhka3_percent" ClientInstanceName="edit_znizhka3_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka3_percent") %>' Width="100px" Title="%">
                                                                     <ClientSideEvents NumberChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxSpinEdit>
                                                             </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
 												            <td align="left">
-                                                                <dx:ASPxDateEdit ID="edit_znizhka3_date1" runat="server" Value='<%# Eval("znizhka3_date1") %>' Width="100px" Title="з">
+                                                                <dx:ASPxDateEdit ID="edit_znizhka3_date1" ClientInstanceName="edit_znizhka3_date1" runat="server" Value='<%# Eval("znizhka3_date1") %>' Width="100px" Title="з">
                                                                     <ClientSideEvents DateChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxDateEdit>
 												            </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
 												            <td align="left">
-                                                                <dx:ASPxDateEdit ID="edit_znizhka3_date2" runat="server" Value='<%# Eval("znizhka3_date2") %>' Width="100px" Title="по">
+                                                                <dx:ASPxDateEdit ID="edit_znizhka3_date2" ClientInstanceName="edit_znizhka3_date2" runat="server" Value='<%# Eval("znizhka3_date2") %>' Width="100px" Title="по">
                                                                     <ClientSideEvents DateChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxDateEdit>
 												            </td>
@@ -3661,22 +3715,30 @@ WHERE id = @id"
                                                         </tr>
 
                                                         <tr>
-                                                            <td><dx:ASPxTextBox ID="edit_znizhka4_name" runat="server" Value='<%# Eval("znizhka4_name") %>' Width="480px" Title="Назва знижки"/></td>
+                                                            <td>
+                                                                <dx:ASPxComboBox ID="edit_znizhka4_name" runat="server" Width="480px" Title="Назва знижки"
+                                                                    DataSourceID="SqlDataSourceZnizhka" TextField="name" ValueField="name" DropDownStyle="DropDown"
+                                                                    ValueType="System.String" Value='<%# Eval("znizhka4_name") %>' >
+                                                                        <ClientSideEvents 
+                                                                            SelectedIndexChanged="function (s, e) { OnEditZnizhka(4, s, e) }"
+                                                                        />
+                                                                </dx:ASPxComboBox>
+                                                            </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
                                                             <td align="left">
-                                                                <dx:ASPxSpinEdit ID="edit_znizhka4_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka4_percent") %>' Width="100px" Title="%">
+                                                                <dx:ASPxSpinEdit ID="edit_znizhka4_percent" ClientInstanceName="edit_znizhka4_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka4_percent") %>' Width="100px" Title="%">
                                                                     <ClientSideEvents NumberChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxSpinEdit>
                                                             </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
 												            <td align="left">
-                                                                <dx:ASPxDateEdit ID="edit_znizhka4_date1" runat="server" Value='<%# Eval("znizhka4_date1") %>' Width="100px" Title="з">
+                                                                <dx:ASPxDateEdit ID="edit_znizhka4_date1" ClientInstanceName="edit_znizhka4_date1" runat="server" Value='<%# Eval("znizhka4_date1") %>' Width="100px" Title="з">
                                                                     <ClientSideEvents DateChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxDateEdit>
 												            </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
 												            <td align="left">
-                                                                <dx:ASPxDateEdit ID="edit_znizhka4_date2" runat="server" Value='<%# Eval("znizhka4_date2") %>' Width="100px" Title="по">
+                                                                <dx:ASPxDateEdit ID="edit_znizhka4_date2" ClientInstanceName="edit_znizhka4_date2" runat="server" Value='<%# Eval("znizhka4_date2") %>' Width="100px" Title="по">
                                                                     <ClientSideEvents DateChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxDateEdit>
 												            </td>
@@ -3689,22 +3751,30 @@ WHERE id = @id"
                                                         </tr>
 
                                                         <tr>
-                                                            <td><dx:ASPxTextBox ID="edit_znizhka5_name" runat="server" Value='<%# Eval("znizhka5_name") %>' Width="480px" Title="Назва знижки"/></td>
+                                                            <td>
+                                                                <dx:ASPxComboBox ID="edit_znizhka5_name" runat="server" Width="480px" Title="Назва знижки"
+                                                                    DataSourceID="SqlDataSourceZnizhka" TextField="name" ValueField="name" DropDownStyle="DropDown"
+                                                                    ValueType="System.String" Value='<%# Eval("znizhka5_name") %>' >
+                                                                        <ClientSideEvents 
+                                                                            SelectedIndexChanged="function (s, e) { OnEditZnizhka(5, s, e) }"
+                                                                        />
+                                                                </dx:ASPxComboBox>
+                                                            </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
                                                             <td align="left">
-                                                                <dx:ASPxSpinEdit ID="edit_znizhka5_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka5_percent") %>' Width="100px" Title="%">
+                                                                <dx:ASPxSpinEdit ID="edit_znizhka5_percent" ClientInstanceName="edit_znizhka5_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka5_percent") %>' Width="100px" Title="%">
                                                                     <ClientSideEvents NumberChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxSpinEdit>
                                                             </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
 												            <td align="left">
-                                                                <dx:ASPxDateEdit ID="edit_znizhka5_date1" runat="server" Value='<%# Eval("znizhka5_date1") %>' Width="100px" Title="з">
+                                                                <dx:ASPxDateEdit ID="edit_znizhka5_date1" ClientInstanceName="edit_znizhka5_date1" runat="server" Value='<%# Eval("znizhka5_date1") %>' Width="100px" Title="з">
                                                                     <ClientSideEvents DateChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxDateEdit>
 												            </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
 												            <td align="left">
-                                                                <dx:ASPxDateEdit ID="edit_znizhka5_date2" runat="server" Value='<%# Eval("znizhka5_date2") %>' Width="100px" Title="по">
+                                                                <dx:ASPxDateEdit ID="edit_znizhka5_date2" ClientInstanceName="edit_znizhka5_date2" runat="server" Value='<%# Eval("znizhka5_date2") %>' Width="100px" Title="по">
                                                                     <ClientSideEvents DateChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxDateEdit>
 												            </td>
@@ -3717,22 +3787,30 @@ WHERE id = @id"
                                                         </tr>
 
                                                         <tr>
-                                                            <td><dx:ASPxTextBox ID="edit_znizhka6_name" runat="server" Value='<%# Eval("znizhka6_name") %>' Width="480px" Title="Назва знижки"/></td>
+                                                            <td>
+                                                                <dx:ASPxComboBox ID="edit_znizhka6_name" runat="server" Width="480px" Title="Назва знижки"
+                                                                    DataSourceID="SqlDataSourceZnizhka" TextField="name" ValueField="name" DropDownStyle="DropDown"
+                                                                    ValueType="System.String" Value='<%# Eval("znizhka6_name") %>' >
+                                                                        <ClientSideEvents 
+                                                                            SelectedIndexChanged="function (s, e) { OnEditZnizhka(6, s, e) }"
+                                                                        />
+                                                                </dx:ASPxComboBox>
+                                                            </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
                                                             <td align="left">
-                                                                <dx:ASPxSpinEdit ID="edit_znizhka6_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka6_percent") %>' Width="100px" Title="%">
+                                                                <dx:ASPxSpinEdit ID="edit_znizhka6_percent" ClientInstanceName="edit_znizhka6_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka6_percent") %>' Width="100px" Title="%">
                                                                     <ClientSideEvents NumberChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxSpinEdit>
                                                             </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
 												            <td align="left">
-                                                                <dx:ASPxDateEdit ID="edit_znizhka6_date1" runat="server" Value='<%# Eval("znizhka6_date1") %>' Width="100px" Title="з">
+                                                                <dx:ASPxDateEdit ID="edit_znizhka6_date1" ClientInstanceName="edit_znizhka6_date1" runat="server" Value='<%# Eval("znizhka6_date1") %>' Width="100px" Title="з">
                                                                     <ClientSideEvents DateChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxDateEdit>
 												            </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
 												            <td align="left">
-                                                                <dx:ASPxDateEdit ID="edit_znizhka6_date2" runat="server" Value='<%# Eval("znizhka6_date2") %>' Width="100px" Title="по">
+                                                                <dx:ASPxDateEdit ID="edit_znizhka6_date2" ClientInstanceName="edit_znizhka6_date2" runat="server" Value='<%# Eval("znizhka6_date2") %>' Width="100px" Title="по">
                                                                     <ClientSideEvents DateChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxDateEdit>
 												            </td>
@@ -3745,22 +3823,30 @@ WHERE id = @id"
                                                         </tr>
 
                                                         <tr>
-                                                            <td><dx:ASPxTextBox ID="edit_znizhka7_name" runat="server" Value='<%# Eval("znizhka7_name") %>' Width="480px" Title="Назва знижки"/></td>
+                                                            <td>
+                                                                <dx:ASPxComboBox ID="edit_znizhka7_name" runat="server" Width="480px" Title="Назва знижки"
+                                                                    DataSourceID="SqlDataSourceZnizhka" TextField="name" ValueField="name" DropDownStyle="DropDown"
+                                                                    ValueType="System.String" Value='<%# Eval("znizhka7_name") %>' >
+                                                                        <ClientSideEvents 
+                                                                            SelectedIndexChanged="function (s, e) { OnEditZnizhka(7, s, e) }"
+                                                                        />
+                                                                </dx:ASPxComboBox>
+                                                            </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
                                                             <td align="left">
-                                                                <dx:ASPxSpinEdit ID="edit_znizhka7_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka7_percent") %>' Width="100px" Title="%">
+                                                                <dx:ASPxSpinEdit ID="edit_znizhka7_percent" ClientInstanceName="edit_znizhka7_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka7_percent") %>' Width="100px" Title="%">
                                                                     <ClientSideEvents NumberChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxSpinEdit>
                                                             </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
 												            <td align="left">
-                                                                <dx:ASPxDateEdit ID="edit_znizhka7_date1" runat="server" Value='<%# Eval("znizhka7_date1") %>' Width="100px" Title="з">
+                                                                <dx:ASPxDateEdit ID="edit_znizhka7_date1" ClientInstanceName="edit_znizhka7_date1" runat="server" Value='<%# Eval("znizhka7_date1") %>' Width="100px" Title="з">
                                                                     <ClientSideEvents DateChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxDateEdit>
 												            </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
 												            <td align="left">
-                                                                <dx:ASPxDateEdit ID="edit_znizhka7_date2" runat="server" Value='<%# Eval("znizhka7_date2") %>' Width="100px" Title="по">
+                                                                <dx:ASPxDateEdit ID="edit_znizhka7_date2" ClientInstanceName="edit_znizhka7_date2" runat="server" Value='<%# Eval("znizhka7_date2") %>' Width="100px" Title="по">
                                                                     <ClientSideEvents DateChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxDateEdit>
 												            </td>
@@ -3773,22 +3859,30 @@ WHERE id = @id"
                                                         </tr>
 
                                                         <tr>
-                                                            <td><dx:ASPxTextBox ID="edit_znizhka8_name" runat="server" Value='<%# Eval("znizhka8_name") %>' Width="480px" Title="Назва знижки"/></td>
+                                                            <td>
+                                                                <dx:ASPxComboBox ID="edit_znizhka8_name" runat="server" Width="480px" Title="Назва знижки"
+                                                                    DataSourceID="SqlDataSourceZnizhka" TextField="name" ValueField="name" DropDownStyle="DropDown"
+                                                                    ValueType="System.String" Value='<%# Eval("znizhka8_name") %>' >
+                                                                        <ClientSideEvents 
+                                                                            SelectedIndexChanged="function (s, e) { OnEditZnizhka(8, s, e) }"
+                                                                        />
+                                                                </dx:ASPxComboBox>
+                                                            </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
                                                             <td align="left">
-                                                                <dx:ASPxSpinEdit ID="edit_znizhka8_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka8_percent") %>' Width="100px" Title="%">
+                                                                <dx:ASPxSpinEdit ID="edit_znizhka8_percent" ClientInstanceName="edit_znizhka8_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka8_percent") %>' Width="100px" Title="%">
                                                                     <ClientSideEvents NumberChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxSpinEdit>
                                                             </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
 												            <td align="left">
-                                                                <dx:ASPxDateEdit ID="edit_znizhka8_date1" runat="server" Value='<%# Eval("znizhka8_date1") %>' Width="100px" Title="з">
+                                                                <dx:ASPxDateEdit ID="edit_znizhka8_date1" ClientInstanceName="edit_znizhka8_date1" runat="server" Value='<%# Eval("znizhka8_date1") %>' Width="100px" Title="з">
                                                                     <ClientSideEvents DateChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxDateEdit>
 												            </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
 												            <td align="left">
-                                                                <dx:ASPxDateEdit ID="edit_znizhka8_date2" runat="server" Value='<%# Eval("znizhka8_date2") %>' Width="100px" Title="по">
+                                                                <dx:ASPxDateEdit ID="edit_znizhka8_date2" ClientInstanceName="edit_znizhka8_date2" runat="server" Value='<%# Eval("znizhka8_date2") %>' Width="100px" Title="по">
                                                                     <ClientSideEvents DateChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxDateEdit>
 												            </td>
@@ -3801,22 +3895,30 @@ WHERE id = @id"
                                                         </tr>
 
                                                         <tr>
-                                                            <td><dx:ASPxTextBox ID="edit_znizhka9_name" runat="server" Value='<%# Eval("znizhka9_name") %>' Width="480px" Title="Назва знижки"/></td>
+                                                            <td>
+                                                                <dx:ASPxComboBox ID="edit_znizhka9_name" runat="server" Width="480px" Title="Назва знижки"
+                                                                    DataSourceID="SqlDataSourceZnizhka" TextField="name" ValueField="name" DropDownStyle="DropDown"
+                                                                    ValueType="System.String" Value='<%# Eval("znizhka9_name") %>' >
+                                                                        <ClientSideEvents 
+                                                                            SelectedIndexChanged="function (s, e) { OnEditZnizhka(9, s, e) }"
+                                                                        />
+                                                                </dx:ASPxComboBox>
+                                                            </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
                                                             <td align="left">
-                                                                <dx:ASPxSpinEdit ID="edit_znizhka9_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka9_percent") %>' Width="100px" Title="%">
+                                                                <dx:ASPxSpinEdit ID="edit_znizhka9_percent" ClientInstanceName="edit_znizhka9_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka9_percent") %>' Width="100px" Title="%">
                                                                     <ClientSideEvents NumberChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxSpinEdit>
                                                             </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
 												            <td align="left">
-                                                                <dx:ASPxDateEdit ID="edit_znizhka9_date1" runat="server" Value='<%# Eval("znizhka9_date1") %>' Width="100px" Title="з">
+                                                                <dx:ASPxDateEdit ID="edit_znizhka9_date1" ClientInstanceName="edit_znizhka9_date1" runat="server" Value='<%# Eval("znizhka9_date1") %>' Width="100px" Title="з">
                                                                     <ClientSideEvents DateChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxDateEdit>
 												            </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
 												            <td align="left">
-                                                                <dx:ASPxDateEdit ID="edit_znizhka9_date2" runat="server" Value='<%# Eval("znizhka9_date2") %>' Width="100px" Title="по">
+                                                                <dx:ASPxDateEdit ID="edit_znizhka9_date2" ClientInstanceName="edit_znizhka9_date2" runat="server" Value='<%# Eval("znizhka9_date2") %>' Width="100px" Title="по">
                                                                     <ClientSideEvents DateChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxDateEdit>
 												            </td>
@@ -3829,22 +3931,30 @@ WHERE id = @id"
                                                         </tr>
 
                                                         <tr>
-                                                            <td><dx:ASPxTextBox ID="edit_znizhka10_name" runat="server" Value='<%# Eval("znizhka10_name") %>' Width="480px" Title="Назва знижки"/></td>
+                                                            <td>
+                                                                <dx:ASPxComboBox ID="edit_znizhka10_name" runat="server" Width="480px" Title="Назва знижки"
+                                                                    DataSourceID="SqlDataSourceZnizhka" TextField="name" ValueField="name" DropDownStyle="DropDown"
+                                                                    ValueType="System.String" Value='<%# Eval("znizhka10_name") %>' >
+                                                                        <ClientSideEvents 
+                                                                            SelectedIndexChanged="function (s, e) { OnEditZnizhka(10, s, e) }"
+                                                                        />
+                                                                </dx:ASPxComboBox>
+                                                            </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="%"></dx:ASPxLabel></td>
                                                             <td align="left">
-                                                                <dx:ASPxSpinEdit ID="edit_znizhka10_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka10_percent") %>' Width="100px" Title="%">
+                                                                <dx:ASPxSpinEdit ID="edit_znizhka10_percent" ClientInstanceName="edit_znizhka10_percent" runat="server" NumberType="Float" Value='<%# Eval("znizhka10_percent") %>' Width="100px" Title="%">
                                                                     <ClientSideEvents NumberChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxSpinEdit>
                                                             </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="з"></dx:ASPxLabel></td>
 												            <td align="left">
-                                                                <dx:ASPxDateEdit ID="edit_znizhka10_date1" runat="server" Value='<%# Eval("znizhka10_date1") %>' Width="100px" Title="з">
+                                                                <dx:ASPxDateEdit ID="edit_znizhka10_date1" ClientInstanceName="edit_znizhka10_date1" runat="server" Value='<%# Eval("znizhka10_date1") %>' Width="100px" Title="з">
                                                                     <ClientSideEvents DateChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxDateEdit>
 												            </td>
 												            <td align="right"><dx:ASPxLabel runat="server" Text="по"></dx:ASPxLabel></td>
 												            <td align="left">
-                                                                <dx:ASPxDateEdit ID="edit_znizhka10_date2" runat="server" Value='<%# Eval("znizhka10_date2") %>' Width="100px" Title="по">
+                                                                <dx:ASPxDateEdit ID="edit_znizhka10_date2" ClientInstanceName="edit_znizhka10_date2" runat="server" Value='<%# Eval("znizhka10_date2") %>' Width="100px" Title="по">
                                                                     <ClientSideEvents DateChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                                 </dx:ASPxDateEdit>
 												            </td>
@@ -3855,6 +3965,8 @@ WHERE id = @id"
                                                                 </dx:ASPxTextBox>
                                                             </td>
                                                         </tr>
+
+
 
 
 
@@ -5288,6 +5400,10 @@ WHERE id = @id"
 
 <dx:ASPxCallback ID="cbNarazhCalculation" ClientInstanceName="cbNarazhCalculation" runat="server" OnCallback="cbNarazhCalculation_Callback" >
     <ClientSideEvents CallbackComplete="NarazhCalculationComplete"  />
+</dx:ASPxCallback>
+
+<dx:ASPxCallback ID="cbZnizhkaChange" ClientInstanceName="cbZnizhkaChange" runat="server" OnCallback="cbZnizhkaChange_Callback" >
+    <ClientSideEvents CallbackComplete="ZnizhkaChangeComplete"  />
 </dx:ASPxCallback>
 
 

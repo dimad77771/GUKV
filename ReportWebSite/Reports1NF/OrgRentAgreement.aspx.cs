@@ -2056,61 +2056,61 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 			AddQueryParameter(ref fieldList, "is_debt_exists", "isdebt", Reports1NFUtils.GetCheckBoxValue(controls, "CheckNoDebt") ? 0 : 1, parameters);
 			//AddQueryParameter(ref fieldList, "is_special_organization", "isSpecOrg", Reports1NFUtils.GetCheckBoxValue(controls, "CheckIsSpecialOrganization") ? 1 : 0, parameters);
 
-			AddQueryParameter(ref fieldList, "znizhka1_name", "znizhka1name", Reports1NFUtils.GetEditText(controls, "edit_znizhka1_name"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka1_name", "znizhka1name", Reports1NFUtils.GetDropDownText(controls, "edit_znizhka1_name"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka1_percent", "znizhka1percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka1_percent"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka1_date1", "znizhka1date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka1_date1"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka1_date2", "znizhka1date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka1_date2"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka1_invnums", "znizhka1invnums", Reports1NFUtils.GetEditText(controls, "znizhka1_invnums"), parameters);
 
-			AddQueryParameter(ref fieldList, "znizhka2_name", "znizhka2name", Reports1NFUtils.GetEditText(controls, "edit_znizhka2_name"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka2_name", "znizhka2name", Reports1NFUtils.GetDropDownText(controls, "edit_znizhka2_name"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka2_percent", "znizhka2percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka2_percent"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka2_date1", "znizhka2date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka2_date1"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka2_date2", "znizhka2date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka2_date2"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka2_invnums", "znizhka2invnums", Reports1NFUtils.GetEditText(controls, "znizhka2_invnums"), parameters);
 
-			AddQueryParameter(ref fieldList, "znizhka3_name", "znizhka3name", Reports1NFUtils.GetEditText(controls, "edit_znizhka3_name"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka3_name", "znizhka3name", Reports1NFUtils.GetDropDownText(controls, "edit_znizhka3_name"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka3_percent", "znizhka3percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka3_percent"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka3_date1", "znizhka3date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka3_date1"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka3_date2", "znizhka3date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka3_date2"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka3_invnums", "znizhka3invnums", Reports1NFUtils.GetEditText(controls, "znizhka3_invnums"), parameters);
 
-			AddQueryParameter(ref fieldList, "znizhka4_name", "znizhka4name", Reports1NFUtils.GetEditText(controls, "edit_znizhka4_name"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka4_name", "znizhka4name", Reports1NFUtils.GetDropDownText(controls, "edit_znizhka4_name"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka4_percent", "znizhka4percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka4_percent"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka4_date1", "znizhka4date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka4_date1"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka4_date2", "znizhka4date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka4_date2"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka4_invnums", "znizhka4invnums", Reports1NFUtils.GetEditText(controls, "znizhka4_invnums"), parameters);
 
-			AddQueryParameter(ref fieldList, "znizhka5_name", "znizhka5name", Reports1NFUtils.GetEditText(controls, "edit_znizhka5_name"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka5_name", "znizhka5name", Reports1NFUtils.GetDropDownText(controls, "edit_znizhka5_name"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka5_percent", "znizhka5percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka5_percent"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka5_date1", "znizhka5date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka5_date1"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka5_date2", "znizhka5date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka5_date2"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka5_invnums", "znizhka5invnums", Reports1NFUtils.GetEditText(controls, "znizhka5_invnums"), parameters);
 
-			AddQueryParameter(ref fieldList, "znizhka6_name", "znizhka6name", Reports1NFUtils.GetEditText(controls, "edit_znizhka6_name"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka6_name", "znizhka6name", Reports1NFUtils.GetDropDownText(controls, "edit_znizhka6_name"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka6_percent", "znizhka6percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka6_percent"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka6_date1", "znizhka6date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka6_date1"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka6_date2", "znizhka6date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka6_date2"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka6_invnums", "znizhka6invnums", Reports1NFUtils.GetEditText(controls, "znizhka6_invnums"), parameters);
 
-			AddQueryParameter(ref fieldList, "znizhka7_name", "znizhka7name", Reports1NFUtils.GetEditText(controls, "edit_znizhka7_name"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka7_name", "znizhka7name", Reports1NFUtils.GetDropDownText(controls, "edit_znizhka7_name"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka7_percent", "znizhka7percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka7_percent"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka7_date1", "znizhka7date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka7_date1"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka7_date2", "znizhka7date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka7_date2"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka7_invnums", "znizhka7invnums", Reports1NFUtils.GetEditText(controls, "znizhka7_invnums"), parameters);
 
-			AddQueryParameter(ref fieldList, "znizhka8_name", "znizhka8name", Reports1NFUtils.GetEditText(controls, "edit_znizhka8_name"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka8_name", "znizhka8name", Reports1NFUtils.GetDropDownText(controls, "edit_znizhka8_name"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka8_percent", "znizhka8percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka8_percent"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka8_date1", "znizhka8date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka8_date1"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka8_date2", "znizhka8date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka8_date2"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka8_invnums", "znizhka8invnums", Reports1NFUtils.GetEditText(controls, "znizhka8_invnums"), parameters);
 
-			AddQueryParameter(ref fieldList, "znizhka9_name", "znizhka9name", Reports1NFUtils.GetEditText(controls, "edit_znizhka9_name"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka9_name", "znizhka9name", Reports1NFUtils.GetDropDownText(controls, "edit_znizhka9_name"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka9_percent", "znizhka9percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka9_percent"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka9_date1", "znizhka9date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka9_date1"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka9_date2", "znizhka9date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka9_date2"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka9_invnums", "znizhka9invnums", Reports1NFUtils.GetEditText(controls, "znizhka9_invnums"), parameters);
 
-			AddQueryParameter(ref fieldList, "znizhka10_name", "znizhka10name", Reports1NFUtils.GetEditText(controls, "edit_znizhka10_name"), parameters);
+			AddQueryParameter(ref fieldList, "znizhka10_name", "znizhka10name", Reports1NFUtils.GetDropDownText(controls, "edit_znizhka10_name"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka10_percent", "znizhka10percent", Reports1NFUtils.GetEditNumeric(controls, "edit_znizhka10_percent"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka10_date1", "znizhka10date1", Reports1NFUtils.GetDateValue(controls, "edit_znizhka10_date1"), parameters);
 			AddQueryParameter(ref fieldList, "znizhka10_date2", "znizhka10date2", Reports1NFUtils.GetDateValue(controls, "edit_znizhka10_date2"), parameters);
@@ -3734,6 +3734,48 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 	}
 
 
+
+	protected void cbZnizhkaChange_Callback(object source, CallbackEventArgs e)
+	{
+		var npp = int.Parse(e.Parameter);
+
+		Dictionary<string, Control> controls = new Dictionary<string, Control>();
+		Reports1NFUtils.GetAllControls(PaymentForm, controls);
+
+		var name = Reports1NFUtils.GetDropDownText(controls, "edit_znizhka" + npp + "_name");
+
+		var connection = Utils.ConnectToDatabase();
+		string query = @"SELECT [percent], [date1], [date2] FROM PaymentDiscounts where name = @name";
+		object result = null;
+
+		using (SqlCommand cmd = new SqlCommand(query, connection))
+		{
+			cmd.Parameters.Add(new SqlParameter("name", name));
+			using (SqlDataReader reader = cmd.ExecuteReader())
+			{
+				if (reader.Read())
+				{
+					var percent = reader.IsDBNull(0) ? (decimal?)null : reader.GetDecimal(0);
+					var date1 = reader.IsDBNull(1) ? (DateTime?)null : reader.GetDateTime(1);
+					var date2 = reader.IsDBNull(2) ? (DateTime?)null : reader.GetDateTime(2);
+
+					result = new
+					{
+						npp, percent, date1, date2
+					};
+				}
+
+				reader.Close();
+			}
+		}
+
+
+		if (result != null)
+		{
+			var json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
+			e.Result = json;
+		}
+	}
 }
 
 
