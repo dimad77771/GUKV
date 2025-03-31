@@ -1156,6 +1156,141 @@
 
 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" />
 
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceArendaDogchanges" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+
+    SelectCommand="SELECT * FROM [reports1nf_arenda_dogchange] WHERE [arenda_id] = @aid and [report_id] = @rep_id" 
+    OnSelecting="SqlDataSource_Selecting"
+
+    DeleteCommand="delete FROM [reports1nf_arenda_dogchange] WHERE [id] = @id" 
+
+    InsertCommand="
+    INSERT INTO [reports1nf_arenda_dogchange]
+            ([arenda_id],[report_id],[agreement_date],[agreement_num],[rent_start_date],[rent_actual_finish_date],[rent_rate],[base_month])
+    VALUES
+        (@arenda_id,@report_id,@agreement_date,@agreement_num,@rent_start_date,@rent_actual_finish_date,@rent_rate,@base_month)
+    SELECT SCOPE_IDENTITY()" 
+
+    UpdateCommand="UPDATE [reports1nf_arenda_dogcontinue]
+SET
+    [arenda_id] = @arenda_id,
+    [total_free_sqr] = @total_free_sqr,
+    [free_sqr_korysna] = @free_sqr_korysna,
+    [free_sqr_condition_id] = @free_sqr_condition_id,
+	[period_used_id] = @period_used_id, 
+    [floor] = @floor,
+    [possible_using] = @possible_using,
+	[using_possible_id] = @using_possible_id,  
+    [water] = @water,
+    [heating] = @heating,
+    [power_info_id] = @power_info_id,
+    [gas] = @gas,
+    [note] = @note,
+    [modify_date] = @modify_date,
+    [modified_by] = @modified_by,
+    [report_id] = @report_id
+      ,[is_solution] = @is_solution
+	  ,[invest_solution_id] = @invest_solution_id
+      ,[initiator] = @initiator
+      ,[may_pravo_prodov] = @may_pravo_prodov
+      ,[zgoda_control_id] = @zgoda_control_id
+      ,[free_object_type_id] = @free_object_type_id
+      ,[zgoda_renter_id] = @zgoda_renter_id 
+	  ,[is_included] = @is_included 
+      ,[include_in_perelik] = @include_in_perelik 
+        ,[zal_balans_vartist]		  = @zal_balans_vartist
+        ,[perv_balans_vartist]  	  = @perv_balans_vartist  
+        ,[punkt_metod_rozrahunok] 	  = @punkt_metod_rozrahunok 
+        ,[prop_srok_orands] 		  = @prop_srok_orands 
+        ,[nomer_derzh_reestr_neruh] 	  = @nomer_derzh_reestr_neruh 
+        ,[reenum_derzh_reestr_neruh] 	  = @reenum_derzh_reestr_neruh 
+        ,[info_priznach_nouse] 		  = @info_priznach_nouse 
+        ,[info_rahunok_postach]  	  = @info_rahunok_postach   
+        ,[primitki]  	  = @primitki   
+        ,[priznach_before]  	  = @priznach_before   
+        ,[period_nouse]  	  = @period_nouse   
+        ,[osoba_use_before]  	  = @osoba_use_before   
+        ,[has_perevazh_pravo]  	  = @has_perevazh_pravo
+        ,[polipshanya_vartist]  	  = @polipshanya_vartist
+        ,[polipshanya_finish_date]  	  = @polipshanya_finish_date
+        ,[orend_plat_last_month]  	  = @orend_plat_last_month
+        ,[orend_plat_borg]  	  = @orend_plat_borg
+        ,[stanom_na]  	  = @stanom_na
+        ,[zalbalansvartist_date]  	  = @zalbalansvartist_date
+        ,[osoba_oznakoml]  	  = @osoba_oznakoml
+        ,[rozmir_vidshkoduv]  	  = @rozmir_vidshkoduv
+WHERE id = @id" 
+        oninserting="SqlDataSourceArendaDogchanges_Inserting" ProviderName="System.Data.SqlClient">
+     <SelectParameters>
+        <asp:Parameter Name="aid" />
+        <asp:Parameter Name="rep_id" />
+    </SelectParameters>
+    <DeleteParameters>
+        <asp:Parameter Name="arenda_id" />
+        <asp:Parameter Name="report_id" />
+    </DeleteParameters>
+    <InsertParameters>
+        <asp:Parameter Name="arenda_id" />
+        <asp:Parameter Name="report_id" />
+        <asp:Parameter Name="agreement_date" />
+        <asp:Parameter Name="agreement_num" />
+        <asp:Parameter Name="rent_start_date" />
+        <asp:Parameter Name="rent_actual_finish_date" />
+        <asp:Parameter Name="rent_rate" />
+        <asp:Parameter Name="base_month" />
+    </InsertParameters>
+    <UpdateParameters>
+        <asp:Parameter Name="arenda_id" />
+        <asp:Parameter Name="total_free_sqr" />
+        <asp:Parameter Name="free_sqr_korysna" />
+        <asp:Parameter Name="free_sqr_condition_id" />
+		<asp:Parameter Name="period_used_id" />
+        <asp:Parameter Name="floor" />
+        <asp:Parameter Name="possible_using" />
+		<asp:Parameter Name="using_possible_id" />
+        <asp:Parameter Name="water" />
+        <asp:Parameter Name="heating" />
+        <asp:Parameter Name="power_info_id" />
+        <asp:Parameter Name="gas" />
+        <asp:Parameter Name="note" />
+        <asp:Parameter Name="modify_date" />
+        <asp:Parameter Name="modified_by" />
+        <asp:Parameter Name="report_id" />
+        <asp:Parameter Name="is_solution" />
+		<asp:Parameter Name="invest_solution_id" />
+        <asp:Parameter Name="initiator" />
+        <asp:Parameter Name="may_pravo_prodov" />
+        <asp:Parameter Name="zgoda_control_id" />
+        <asp:Parameter Name="free_object_type_id" />
+        <asp:Parameter Name="zgoda_renter_id" />
+		<asp:Parameter Name="is_included" />	
+        <asp:Parameter Name="include_in_perelik" />	
+        <asp:Parameter Name="zal_balans_vartist" />
+        <asp:Parameter Name="perv_balans_vartist" />
+        <asp:Parameter Name="punkt_metod_rozrahunok" />
+        <asp:Parameter Name="prop_srok_orands" />
+        <asp:Parameter Name="nomer_derzh_reestr_neruh" />
+        <asp:Parameter Name="reenum_derzh_reestr_neruh" />
+        <asp:Parameter Name="info_priznach_nouse" />
+        <asp:Parameter Name="info_rahunok_postach" />
+        <asp:Parameter Name="primitki" />
+        <asp:Parameter Name="priznach_before" />
+        <asp:Parameter Name="period_nouse" />
+        <asp:Parameter Name="osoba_use_before" />
+        <asp:Parameter Name="has_perevazh_pravo" />
+        <asp:Parameter Name="polipshanya_vartist" />
+        <asp:Parameter Name="polipshanya_finish_date" />
+        <asp:Parameter Name="orend_plat_last_month" />
+        <asp:Parameter Name="orend_plat_borg" />
+        <asp:Parameter Name="stanom_na" />
+        <asp:Parameter Name="zalbalansvartist_date" />
+        <asp:Parameter Name="osoba_oznakoml" />
+        <asp:Parameter Name="rozmir_vidshkoduv" />
+        <asp:Parameter Name="id" />
+    </UpdateParameters>
+</mini:ProfiledSqlDataSource>
+
 <mini:ProfiledSqlDataSource ID="SqlDataSourceZnizhka" runat="server" EnableCaching="false"
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
 	SelectCommand="SELECT name FROM PaymentDiscounts order by 1">
@@ -5377,7 +5512,7 @@ WHERE id = @id"
                     CloseUp="function (s,e) { CPMainPanel.PerformCallback('clear:'); }" />
             </dx:ASPxPopupControl>
         </td>
-        <td style="width:200px"> &nbsp; </td>
+        <td style="width:65px"> &nbsp; </td>
         <td>
             <dx:ASPxButton ID="ButtonCopyCard" runat="server" Text="Скопіювати картку договору" AutoPostBack="false" CausesValidation="false">
                 <ClientSideEvents Click="function (s,e) { 
@@ -5386,7 +5521,74 @@ WHERE id = @id"
                 }" />
             </dx:ASPxButton>
         </td>
-    </tr>
+        <td> &nbsp; </td>
+        <td align="right">
+            <dx:ASPxPopupControl ID="PopupDogchanges" runat="server" 
+                HeaderText="Зміни у договорі" 
+                ClientInstanceName="PopupDogchanges" 
+                PopupElementID="CardDogchangeControl"
+                PopupAction="None"
+                PopupHorizontalAlign="Center"
+                PopupVerticalAlign="Middle"
+                PopupAnimationType="Slide">
+                <ContentCollection>
+                    <dx:PopupControlContentControl ID="PopupControlContentDogchangeControl" runat="server">
+                            
+                        <dx:ASPxGridView ID="GridViewArendaDogchanges" ClientInstanceName="GridViewArendaDogchanges" runat="server"
+                            AutoGenerateColumns="False" DataSourceID="SqlDataSourceArendaDogchanges" KeyFieldName="id" Width="800px">
+
+                            <SettingsCommandButton>
+		                        <EditButton>
+			                        <Image Url="~/Styles/EditIcon.png" />
+		                        </EditButton>
+		                        <CancelButton>
+			                        <Image Url="~/Styles/CancelIcon.png" />
+		                        </CancelButton>
+		                        <UpdateButton>
+			                        <Image Url="~/Styles/SaveIcon.png" />
+		                        </UpdateButton>
+		                        <DeleteButton>
+			                        <Image Url="~/Styles/DeleteIcon.png" />
+		                        </DeleteButton>
+		                        <NewButton>
+			                        <Image Url="~/Styles/AddIcon.png" />
+		                        </NewButton>
+		                        <ClearFilterButton Text="Очистити" RenderMode="Link" />
+	                        </SettingsCommandButton>
+                            
+                            <Columns>
+	                            <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" ShowInCustomizationForm="True" CellStyle-Wrap="False" 
+	                                ShowDeleteButton="True" ShowCancelButton="true" ShowUpdateButton="true" ShowClearFilterButton="true" ShowEditButton="true" ShowNewButton="true" >
+	                                <CellStyle Wrap="False"></CellStyle>
+	                            </dx:GridViewCommandColumn>
+                                <dx:GridViewDataTextColumn FieldName="agreement_num" Caption="Номер Договору"/>
+                                <dx:GridViewDataDateColumn FieldName="agreement_date" Caption="Дата Договору"/>
+                                <dx:GridViewDataDateColumn FieldName="rent_start_date" Caption="Дата початку використання приміщення"/>
+                                <dx:GridViewDataDateColumn FieldName="base_month" Caption="Базовий місяць (вкажіть перше число місяця)"/>
+                                <dx:GridViewDataDateColumn FieldName="rent_actual_finish_date" Caption="Фактична дата закінчення договору"/>
+                                <dx:GridViewDataTextColumn FieldName="rent_rate" Caption="Місячна орендна плата, грн."/>
+                            </Columns>
+                            
+                            <SettingsBehavior ColumnResizeMode="Control" EnableCustomizationWindow="False" />
+                            <Settings HorizontalScrollBarMode="Auto" ShowFooter="false" VerticalScrollBarMode="Auto" VerticalScrollBarStyle="Standard" />
+                            <SettingsEditing NewItemRowPosition="Top" Mode="Inline" />
+                            <SettingsPager PageSize="10" />
+                            <Styles Header-Wrap="True" />
+
+                            <ClientSideEvents EndCallback="function (s,e) { GridViewArendaDogchanges.SetHeight(500); }"/>
+                        </dx:ASPxGridView>
+
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+
+                <ClientSideEvents PopUp="function (s,e) { GridViewArendaDogchanges.SetHeight(500); }"/>
+            </dx:ASPxPopupControl>
+
+            <dx:ASPxButton ID="ASPxButtonDogchanges" ClientInstanceName="ASPxButtonDogchanges" runat="server" Text="Зміни у договорі" AutoPostBack="false" >
+                <ClientSideEvents Click="function (s,e) { PopupDogchanges.Show(); }" />
+            </dx:ASPxButton>
+        </td>
+     </tr>
 </table>
 
         </dx:panelcontent>

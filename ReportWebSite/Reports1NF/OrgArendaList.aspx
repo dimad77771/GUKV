@@ -18,6 +18,10 @@
         padding-top: 0px;
         padding-bottom: 0px;
     }
+    .loadExcelPaymentsTextBoxCssClass
+    {  
+        width: 1px !important;
+    }  
 </style>
 
 <script type="text/javascript" src="../Scripts/PageScript.js"></script>
@@ -141,6 +145,14 @@
         }
     }
 
+	function onLoadExcelPaymentsComplete(s, e) {
+		console.log("onLoadExcelPaymentsComplete.e", e)
+        if (e.isValid) {
+			alert("Файл успішно завантажено")
+		}
+	}
+	
+
     function ShowSendingLog() {
         var diagnosticWindow = window.open("SendingRentingAgreementsDiagnostic.aspx?rid=<%= ReportID  %>","","width=600,height=400");        
         diagnosticWindow.focus();        
@@ -250,6 +262,10 @@
 ,ap.return_orend_payed
 ,ap.total_pereplata
 ,isnull(ap.payment_narah,0) - isnull(ap.znyato_nadmirno_narah,0) as payment_narah_normal
+
+,(select SUM(Q.payment_sum) from reports1nf_payment_documents Q where Q.report_id = ar.report_id and Q.arenda_id = ar.id 
+        and Q.rent_period_id = (SELECT QQ.id FROM dict_rent_period QQ where QQ.is_active = 1)
+) as payment_total_all
 
 ,dpt.name AS 'payment_type'
       ,[org].[zkpo_code] AS 'org_renter_zkpo'
@@ -865,6 +881,21 @@ FROM reports1nf_arenda ar
                 <ClientSideEvents Click="function (s,e) { PopupFieldChooser.Show(); }" />
             </dx:ASPxButton>
         </td>    
+        <td  align ="right">
+            <dx:ASPxUploadControl ID="loadExcelPayments" runat="server" ShowUploadButton="false" 
+                FileUploadMode="OnPageLoad"
+                ClientInstanceName="loadExcelPayments" NullText="..." 
+                OnFileUploadComplete="loadExcelPayments_FileUploadComplete"
+                ShowProgressPanel="false" ShowClearFileSelectionButton="false" Size="1" UploadMode="Advanced" AutoStartUpload="true">
+                <ValidationSettings AllowedFileExtensions=".xlsx" >
+                </ValidationSettings>
+                <BrowseButton Text="Завантажити платежі з оренди" />
+                <NullTextStyle CssClass="loadExcelPaymentsTextBoxCssClass" />
+                <AdvancedModeSettings EnableMultiSelect="false" />
+                <ClientSideEvents 
+				    FileUploadComplete="onLoadExcelPaymentsComplete" />
+            </dx:ASPxUploadControl>
+        </td>    
     </tr>
 </table>
  <dx:ASPxLabel ID="ASPxLabelState"  runat="server" Width="650px" ForeColor="White" />
@@ -931,6 +962,7 @@ FROM reports1nf_arenda ar
         <dx:GridViewDataTextColumn FieldName="znyato_nadmirno_narah" VisibleIndex="19" Caption="- у тому числі, знято надмірно нарахованої за звітний період" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="last_year_saldo" VisibleIndex="20" Caption="Сальдо на початок року" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="payment_received" VisibleIndex="21" Caption="Надходження орендної плати за звітний період, всього" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="payment_total_all" VisibleIndex="21" Caption="Платежі з оренди, всього" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="payment_nar_zvit" VisibleIndex="22" Caption="Надходження орендної плати, у тому числі за звітний період без боргів та переплат" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_total" VisibleIndex="23" Caption="Заборгованість по орендній платі" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_zvit" VisibleIndex="24" Caption="у т.ч. з нарахованої у звітному періоді" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
@@ -1053,7 +1085,7 @@ FROM reports1nf_arenda ar
     <SettingsPager PageSize="10" AlwaysShowPager="true" />
     <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
     <Styles Header-Wrap="True" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaList.2" Enabled="True" Version="B8" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaList.2" Enabled="True" Version="B9" />
 
     <ClientSideEvents
         Init="function (s,e) { PrimaryGridView.PerformCallback('init:'); }"

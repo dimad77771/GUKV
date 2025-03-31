@@ -2266,7 +2266,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		NarazhCalculationData.TryGet("data", out json);
 		if (json as string != null)
 		{
-			var data = Newtonsoft.Json.JsonConvert.DeserializeObject<NarazhCalculation.ResultTotalClass>(json as string);
+			var data = Newtonsoft.Json.JsonConvert.DeserializeObject<NarazhCalculationOne.ResultTotalClass>(json as string);
 
 			using (SqlCommand cmd = new SqlCommand("delete from reports1nf_payment_narahcalc where report_id = @rid and arenda_id = @aid", connection))
 			{
@@ -3255,6 +3255,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 			e.Command.Parameters["@is_included"].Value = 0;
 	}
 
+
 	protected void SqlDataSourceFreeSquare_Updating(object sender, SqlDataSourceCommandEventArgs e)
 	{
 		if (!string.IsNullOrEmpty(Request.QueryString["rid"]))
@@ -3268,6 +3269,15 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		e.Command.Parameters["@modified_by"].Value = user == null ? String.Empty : (String)user.UserName;
 
 		var b = 10;
+	}
+
+	protected void SqlDataSourceArendaDogchanges_Inserting(object sender, SqlDataSourceCommandEventArgs e)
+	{
+		if (!string.IsNullOrEmpty(Request.QueryString["rid"]))
+			e.Command.Parameters["@report_id"].Value = int.Parse(Request.QueryString["rid"]);
+
+		if (!string.IsNullOrEmpty(Request.QueryString["aid"]))
+			e.Command.Parameters["@arenda_id"].Value = int.Parse(Request.QueryString["aid"]);
 	}
 
 	protected void ASPxGridViewFreeSquare_RowValidating(object sender, ASPxDataValidationEventArgs e)
@@ -3704,11 +3714,11 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		Reports1NFUtils.GetAllControls(InsuranceForm, controls);
 		Reports1NFUtils.GetAllControls(AddressForm, controls);
 
-		var resultTotal = new NarazhCalculation.ResultTotalClass();
+		var resultTotal = new NarazhCalculationOne.ResultTotalClass();
 
 		for (int i = 1; i <= 2; i++)
 		{
-			var robject = new NarazhCalculation
+			var robject = new NarazhCalculationMain
 			{
 				controls = controls,
 				GridViewNotes = GridViewNotes,
@@ -3716,7 +3726,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 				arenda_id = RentAgreementID,
 				IsNextYear = (i == 2),
 			};
-			var result = robject.Run();
+			var result = robject.Main();
 
 			if (i == 1)
 			{
@@ -3778,18 +3788,93 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 	}
 }
 
-
-public class NarazhCalculation
+public class NarazhCalculationMain
 {
 	public int arenda_id;
 	public int report_id;
 	public bool IsNextYear;
 	public Dictionary<string, Control> controls;
 	public ASPxGridView GridViewNotes;
+	public int CurrentYear;
+
+	SqlConnection connection;
+	List<NarazhCalculationOne.DogchangeClass> Dogchanges = new List<NarazhCalculationOne.DogchangeClass>();
+
+	public NarazhCalculationOne.ResultClass Main()
+	{
+		connection = Utils.ConnectToDatabase();
+
+		LoadDogchanges();
+
+		NarazhCalculationOne.ResultClass result = new NarazhCalculationOne.ResultClass();
+
+		for (int dogchangeNum = -1; dogchangeNum < Dogchanges.Count; dogchangeNum++)
+		{
+			var robject = new NarazhCalculationOne
+			{
+				controls = controls,
+				GridViewNotes = GridViewNotes,
+				report_id = report_id,
+				arenda_id = arenda_id,
+				Dogchanges = Dogchanges,
+				DogchangeNum = dogchangeNum,
+				IsNextYear = IsNextYear,
+				Connection = connection,
+			};
+		
+			var res = robject.Run();
+			this.CurrentYear = robject.CurrentYear;
+
+			result.Add(res);
+
+			if (dogchangeNum == -1)
+			{
+				//return res;
+			}
+		}
+
+		return result;
+	}
+
+	void LoadDogchanges()
+	{
+		var rows = NarazhCalculationOne.GetSqlDataTable("select * from reports1nf_arenda_dogchange", connection);
+		for (var rownum = 0; rownum < rows.Rows.Count; rownum++)
+		{
+			Dogchanges.Add(new NarazhCalculationOne.DogchangeClass
+			{
+				rent_start_date = GetDateTimeFromSqlDataTable(rows, rownum, "rent_start_date"),
+				rent_actual_finish_date = GetDateTimeFromSqlDataTable(rows, rownum, "rent_actual_finish_date"),
+				base_month = GetDateTimeFromSqlDataTable(rows, rownum, "base_month"),
+				rent_rate = (Decimal?)rows.Rows[rownum]["rent_rate"] ?? 0M,
+			});
+		}
+	}
+
+	DateTime? GetDateTimeFromSqlDataTable(DataTable rows, int rownum, string column)
+	{
+		var value = rows.Rows[rownum][column];
+		if (value == System.DBNull.Value)
+			return (DateTime?)null;
+		else
+			return (DateTime)value;
+	}
+}
+
+
+public class NarazhCalculationOne
+{
+	public int arenda_id;
+	public int report_id;
+	public int DogchangeNum;
+	public bool IsNextYear;
+	public List<DogchangeClass> Dogchanges;
+	public Dictionary<string, Control> controls;
+	public ASPxGridView GridViewNotes;
+	public SqlConnection Connection;
 
 	public int CurrentYear;
 	int LastMonth;
-	SqlConnection connection;
 	Dictionary<int, decimal> InflationYearData = new Dictionary<int, decimal>();
 	Dictionary<DateTime, decimal> InflationMonthData = new Dictionary<DateTime, decimal>();
 	Dictionary<int, NotesDataClass> NotesData = new Dictionary<int, NotesDataClass>();
@@ -3798,6 +3883,23 @@ public class NarazhCalculation
 	DateTime baseMonth;
 	DateTime rentStart;
 	DateTime rentFinish;
+
+
+	bool IsDogchange
+	{ 
+		get 
+		{ 
+			return DogchangeNum >= 0; 
+		} 
+	}
+
+	DogchangeClass Dogchange
+	{
+		get
+		{
+			return IsDogchange ? Dogchanges[DogchangeNum] : null;
+		}
+	}
 
 	public class NotesDataClass
 	{
@@ -3815,11 +3917,17 @@ public class NarazhCalculation
 		public string invnum;
 	}
 
+	public class DogchangeClass
+	{
+		public DateTime? rent_start_date;
+		public DateTime? rent_actual_finish_date;
+		public DateTime? base_month;
+		public Decimal rent_rate;
+	}
+
 
 	public ResultClass Run()
 	{
-		connection = Utils.ConnectToDatabase();
-
 		methodCalc = Reports1NFUtils.GetDropDownText(controls, "EditMethodCalc");
 		var baseMonthControl = Reports1NFUtils.GetDateValue(controls, "EditBaseMonth") as DateTime?;
 		var rentStartControl = Reports1NFUtils.GetDateValue(controls, "EditStartDate") as DateTime?;
@@ -3852,15 +3960,16 @@ public class NarazhCalculation
 		baseMonth = new DateTime(baseMonthControl.Value.Year, baseMonthControl.Value.Month, 1);
 		rentStart = rentStartControl.Value;
 		rentFinish = rentFinishControl != null ? rentFinishControl.Value : new DateTime(CurrentYear + 1, 1, 1).AddDays(-1);
+		CorrectByDogchange();
 		CreateInflationData();
 		BuildNotes();
 		BuildZnizhka();
 		CalcMonthPlata();
 
-		var time1 = DateTime.Now;
+		//var time1 = DateTime.Now;
 		var plata = CalcRealPlata();
-		var time2 = DateTime.Now;
-		var delta = (time2 - time1).Milliseconds;
+		//var time2 = DateTime.Now;
+		//var delta = (time2 - time1).Milliseconds;
 
 		var total = plata.Where(x => x.Key >= 1 && x.Key <= LastMonth).Sum(x => x.Value);
 		var result = new ResultClass
@@ -3883,6 +3992,21 @@ public class NarazhCalculation
 		return result;
 	}
 
+	void CorrectByDogchange()
+	{
+		if (!IsDogchange) return;
+
+		if (Dogchange.base_month == null) throw new Exception("Не заповнений базовий місяць");
+		if (Dogchange.base_month.Value.Day != 1) throw new Exception("Базовий місяць не перше число місяця");
+		if (Dogchange.rent_start_date == null) throw new Exception("Не заповнена дата початку використання приміщення");
+
+		baseMonth = Dogchange.base_month.Value;
+		rentStart = Dogchange.rent_start_date.Value;
+		rentFinish = Dogchange.rent_actual_finish_date != null ? Dogchange.rent_actual_finish_date.Value : rentFinish;
+	}
+	
+
+
 	public class ResultClass
 	{
 		public decimal? NarazhCalculation_1 { get; set; }
@@ -3898,6 +4022,23 @@ public class NarazhCalculation
 		public decimal? NarazhCalculation_11 { get; set; }
 		public decimal? NarazhCalculation_12 { get; set; }
 		public decimal? NarazhCalculation_all { get; set; }
+
+		public void Add(ResultClass addvalue)
+		{
+			if (addvalue.NarazhCalculation_1.HasValue) NarazhCalculation_1 = (NarazhCalculation_1 ?? 0) + addvalue.NarazhCalculation_1.Value;
+			if (addvalue.NarazhCalculation_2.HasValue) NarazhCalculation_2 = (NarazhCalculation_2 ?? 0) + addvalue.NarazhCalculation_2.Value;
+			if (addvalue.NarazhCalculation_3.HasValue) NarazhCalculation_3 = (NarazhCalculation_3 ?? 0) + addvalue.NarazhCalculation_3.Value;
+			if (addvalue.NarazhCalculation_4.HasValue) NarazhCalculation_4 = (NarazhCalculation_4 ?? 0) + addvalue.NarazhCalculation_4.Value;
+			if (addvalue.NarazhCalculation_5.HasValue) NarazhCalculation_5 = (NarazhCalculation_5 ?? 0) + addvalue.NarazhCalculation_5.Value;
+			if (addvalue.NarazhCalculation_6.HasValue) NarazhCalculation_6 = (NarazhCalculation_6 ?? 0) + addvalue.NarazhCalculation_6.Value;
+			if (addvalue.NarazhCalculation_7.HasValue) NarazhCalculation_7 = (NarazhCalculation_7 ?? 0) + addvalue.NarazhCalculation_7.Value;
+			if (addvalue.NarazhCalculation_8.HasValue) NarazhCalculation_8 = (NarazhCalculation_8 ?? 0) + addvalue.NarazhCalculation_8.Value;
+			if (addvalue.NarazhCalculation_9.HasValue) NarazhCalculation_9 = (NarazhCalculation_9 ?? 0) + addvalue.NarazhCalculation_9.Value;
+			if (addvalue.NarazhCalculation_10.HasValue) NarazhCalculation_10 = (NarazhCalculation_10 ?? 0) + addvalue.NarazhCalculation_10.Value;
+			if (addvalue.NarazhCalculation_11.HasValue) NarazhCalculation_11 = (NarazhCalculation_11 ?? 0) + addvalue.NarazhCalculation_11.Value;
+			if (addvalue.NarazhCalculation_12.HasValue) NarazhCalculation_12 = (NarazhCalculation_12 ?? 0) + addvalue.NarazhCalculation_12.Value;
+			if (addvalue.NarazhCalculation_all.HasValue) NarazhCalculation_all = (NarazhCalculation_all ?? 0) + addvalue.NarazhCalculation_all.Value;
+		}
 	}
 
 	public class ResultTotalClass
@@ -3929,7 +4070,7 @@ public class NarazhCalculation
 				for (int day = 1; day <= daysInMonth; day++)
 				{
 					var date = new DateTime(CurrentYear, month, day);
-					if (date >= rentStart && date <= rentFinish)
+					if (IsDateValid(date))
 					{
 						var plata = baseDayPlata;
 
@@ -3958,6 +4099,37 @@ public class NarazhCalculation
 		var result = finalPlataByMonth.Select(x => new { month = x.Key, value = round(x.Value) }).ToDictionary(x => x.month, x => x.value);
 		return result;
 	}
+
+	bool IsDateValid(DateTime date)
+	{
+		var dogchangeNum = FindDogchange(date);
+		if (dogchangeNum >= 0)
+		{
+			return dogchangeNum == DogchangeNum;
+		}
+		else
+		{
+			return (date >= rentStart && date <= rentFinish);
+		}
+	}
+
+	int FindDogchange(DateTime date)
+	{
+		for (int dogchangeNum = 0; dogchangeNum < Dogchanges.Count; dogchangeNum++)
+		{
+			var dogchange = Dogchanges[dogchangeNum];
+			if (
+					(dogchange.rent_start_date == null || date >= dogchange.rent_start_date.Value)
+						&&
+					(dogchange.rent_actual_finish_date == null || date <= dogchange.rent_actual_finish_date.Value)
+				)
+			{
+				return dogchangeNum;
+			}
+		}
+		return -1;
+	}
+
 
 
 	void CalcMonthPlata()
@@ -4084,11 +4256,13 @@ public class NarazhCalculation
 
 	void BuildNotes()
 	{
+		if (IsDogchange)
+		{
+			BuildNotesForDogchange();
+			return;
+		}
+
 		var table = GridViewNotes.DataSource as DataTable;
-		//var rows = hh.Rows;
-		//var id = rows[0]["id"];
-		//var invent_no = rows[0]["invent_no"];
-		//var cost_agreement = rows[0]["cost_agreement"];
 
 		for (var rownum = 0; rownum < table.Rows.Count; rownum++)
 		{
@@ -4097,6 +4271,16 @@ public class NarazhCalculation
 			var cost_agreement = (decimal?)table.Rows[rownum]["cost_agreement"];
 			NotesData.Add(id, new NotesDataClass { id = id, invent_no = invent_no, cost_agreement = cost_agreement ?? 0 });
 		}
+	}
+
+	void BuildNotesForDogchange()
+	{
+		NotesData.Add(-1, new NotesDataClass 
+		{ 
+			id = -1, 
+			invent_no = "", 
+			cost_agreement = Dogchange.rent_rate,
+		});
 	}
 
 	void BuildRentPeriodInfo(int rent_period_id)
@@ -4156,6 +4340,11 @@ public class NarazhCalculation
 	}
 
 	DataTable GetDataTable(string sql)
+	{
+		return GetSqlDataTable(sql, Connection);
+	}
+
+	public static DataTable GetSqlDataTable(string sql, SqlConnection connection)
 	{
 		var factory = DbProviderFactories.GetFactory(connection);
 		var dataTable = new DataTable();
