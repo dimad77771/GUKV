@@ -5292,6 +5292,73 @@ WHERE id = @id"
             </ContentCollection>
         </dx:TabPage>
 
+        <dx:TabPage Text="Додаткові угоди" Name="Tab44">
+                    <ContentCollection>
+                        <dx:ContentControl runat="server">
+                                    <dx:ASPxRoundPanel runat="server" HeaderText="Додаткові угоди">
+                                        <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="4px" />
+                                        <PanelCollection>
+                                            <dx:PanelContent runat="server">
+                                                <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                                    <tr>
+                                                        <td>
+                                                
+@@@@@
+            <dx:ASPxGridView ID="ASPxGridViewDogchanges" runat="server" AutoGenerateColumns="False" 
+                DataSourceID="SqlDataSourceFreeSquare" KeyFieldName="id" OnRowValidating="ASPxGridViewDogchanges_RowValidating" >
+                <Styles>  
+                    <EditForm CssClass="editForm999" ></EditForm>  
+                </Styles>  
+
+	            <SettingsCommandButton>
+		            <EditButton>
+			            <Image Url="~/Styles/EditIcon.png" />
+		            </EditButton>
+		            <CancelButton>
+			            <Image Url="~/Styles/CancelIcon.png" />
+		            </CancelButton>
+		            <UpdateButton>
+			            <Image Url="~/Styles/SaveIcon.png" />
+		            </UpdateButton>
+		            <DeleteButton>
+			            <Image Url="~/Styles/DeleteIcon.png" />
+		            </DeleteButton>
+		            <NewButton>
+			            <Image Url="~/Styles/AddIcon.png" />
+		            </NewButton>
+		            <ClearFilterButton Text="Очистити" RenderMode="Link" />
+	            </SettingsCommandButton>
+
+                <Columns>
+                    <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" ShowInCustomizationForm="True" CellStyle-Wrap="False" 
+                        ShowDeleteButton="True" ShowCancelButton="true" ShowUpdateButton="true" ShowClearFilterButton="true" ShowEditButton="true" ShowNewButton="true" >
+                        <CellStyle Wrap="False"></CellStyle>
+                    </dx:GridViewCommandColumn>
+                    <dx:GridViewDataTextColumn FieldName="agreement_num" Caption="Номер Договору"/>
+                    <dx:GridViewDataDateColumn FieldName="agreement_date" Caption="Дата Договору"/>
+                    <dx:GridViewDataDateColumn FieldName="rent_start_date" Caption="Дата початку використання приміщення"/>
+                    <dx:GridViewDataDateColumn FieldName="base_month" Caption="Базовий місяць (вкажіть перше число місяця)"/>
+                    <dx:GridViewDataDateColumn FieldName="rent_actual_finish_date" Caption="Фактична дата закінчення договору"/>
+                    <dx:GridViewDataTextColumn FieldName="rent_rate" Caption="Місячна орендна плата, грн."/>
+                </Columns>
+                <SettingsBehavior ConfirmDelete="True" />
+                <SettingsPager PageSize="10" />
+                <SettingsEditing NewItemRowPosition="Top" Mode="Inline"/>
+                <Settings ShowFilterRow="False" ShowFilterBar="Hidden" ShowFilterRowMenu="False" VerticalScrollableHeight="0" VerticalScrollBarMode="Hidden" VerticalScrollBarStyle="Standard"/>
+            </dx:ASPxGridView>
+
+    
+
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </dx:PanelContent>
+                                        </PanelCollection>
+                                    </dx:ASPxRoundPanel>
+                        </dx:ContentControl>
+                    </ContentCollection>
+                </dx:TabPage>
+
 		<dx:TabPage Text="Скани договорів" Name="Tab6">
             <ContentCollection>
                 <dx:ContentControl ID="ContentControl7" runat="server">

@@ -3786,6 +3786,11 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 			e.Result = json;
 		}
 	}
+
+	protected void ASPxGridViewDogchanges_RowValidating(object sender, ASPxDataValidationEventArgs e)
+	{
+
+	}
 }
 
 public class NarazhCalculationMain
