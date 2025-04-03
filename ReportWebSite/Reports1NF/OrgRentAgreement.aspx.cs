@@ -3280,6 +3280,12 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 			e.Command.Parameters["@arenda_id"].Value = int.Parse(Request.QueryString["aid"]);
 	}
 
+	protected void SqlDataSourceArendaDogchanges_Updated(object sender, SqlDataSourceStatusEventArgs e)
+	{
+		var hh = e.Command.Parameters;
+	}
+
+
 	protected void ASPxGridViewFreeSquare_RowValidating(object sender, ASPxDataValidationEventArgs e)
 	{
 		var komis_protocol = (e.OldValues["komis_protocol"] == null ? "" : e.OldValues["komis_protocol"].ToString().Trim());
@@ -3791,6 +3797,12 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 	{
 
 	}
+
+
+	protected void GridViewArendaDogchanges_RowUpdated(object sender, ASPxDataUpdatedEventArgs e)
+	{
+		var h = 100;
+	}
 }
 
 public class NarazhCalculationMain
@@ -3843,7 +3855,7 @@ public class NarazhCalculationMain
 
 	void LoadDogchanges()
 	{
-		var rows = NarazhCalculationOne.GetSqlDataTable("select * from reports1nf_arenda_dogchange", connection);
+		var rows = NarazhCalculationOne.GetSqlDataTable("select * from reports1nf_arenda_dogchange where arenda_id = " + arenda_id + " and report_id = " + report_id, connection);
 		for (var rownum = 0; rownum < rows.Rows.Count; rownum++)
 		{
 			Dogchanges.Add(new NarazhCalculationOne.DogchangeClass
@@ -3851,9 +3863,19 @@ public class NarazhCalculationMain
 				rent_start_date = GetDateTimeFromSqlDataTable(rows, rownum, "rent_start_date"),
 				rent_actual_finish_date = GetDateTimeFromSqlDataTable(rows, rownum, "rent_actual_finish_date"),
 				base_month = GetDateTimeFromSqlDataTable(rows, rownum, "base_month"),
-				rent_rate = (Decimal?)rows.Rows[rownum]["rent_rate"] ?? 0M,
+				rent_rate = GetDecimalFromSqlDataTable(rows, rownum, "rent_rate"),
+				invnum_rent = GetStringFromSqlDataTable(rows, rownum, "invnum_rent"),
 			});
 		}
+	}
+
+	string GetStringFromSqlDataTable(DataTable rows, int rownum, string column)
+	{
+		var value = rows.Rows[rownum][column];
+		if (value == System.DBNull.Value)
+			return (string)null;
+		else
+			return (string)value;
 	}
 
 	DateTime? GetDateTimeFromSqlDataTable(DataTable rows, int rownum, string column)
@@ -3863,6 +3885,15 @@ public class NarazhCalculationMain
 			return (DateTime?)null;
 		else
 			return (DateTime)value;
+	}
+
+	Decimal? GetDecimalFromSqlDataTable(DataTable rows, int rownum, string column)
+	{
+		var value = rows.Rows[rownum][column];
+		if (value == System.DBNull.Value)
+			return (Decimal?)null;
+		else
+			return (Decimal)value;
 	}
 }
 
@@ -3927,7 +3958,8 @@ public class NarazhCalculationOne
 		public DateTime? rent_start_date;
 		public DateTime? rent_actual_finish_date;
 		public DateTime? base_month;
-		public Decimal rent_rate;
+		public Decimal? rent_rate;
+		public string invnum_rent;
 	}
 
 
@@ -4280,12 +4312,54 @@ public class NarazhCalculationOne
 
 	void BuildNotesForDogchange()
 	{
-		NotesData.Add(-1, new NotesDataClass 
-		{ 
-			id = -1, 
-			invent_no = "", 
-			cost_agreement = Dogchange.rent_rate,
-		});
+		var rent_rate = Dogchange.rent_rate ?? 0M;
+		var invnum_rent = Dogchange.invnum_rent ?? "";
+		var exception1 = new Exception("Невірно заполнено поле \"Орендна плата за інвентарними номерами\": " + invnum_rent);
+
+		if (!string.IsNullOrEmpty(invnum_rent))
+		{
+			var id = 0;
+			var invnum_data = invnum_rent.Split(',');
+			foreach(var data in invnum_data)
+			{
+				var parts = data.Split(':');
+				if (parts.Length != 2) throw exception1;
+
+				var invnum = parts[0].Trim();
+				if (string.IsNullOrEmpty(invnum)) throw exception1;
+				var s2 = parts[1].Replace(",",".");
+				decimal plata;
+				if (!Decimal.TryParse(s2, System.Globalization.NumberStyles.Number, System.Globalization.CultureInfo.InvariantCulture, out plata))
+				{
+					throw exception1;
+				}
+
+				id++;
+				NotesData.Add(id, new NotesDataClass
+				{
+					id = id,
+					invent_no = invnum,
+					cost_agreement = plata,
+				});
+
+				rent_rate -= plata;
+			}
+		}
+		
+		if (rent_rate < 0)
+		{
+			new Exception("Невірно заполнено поле \"Орендна плата за інвентарними номерами\": " + invnum_rent + ". Місячна орендна плата менша за суму в полі \"Орендна плата за інвентарними номерами\"");
+		}
+
+		if (rent_rate > 0)
+		{
+			NotesData.Add(-1, new NotesDataClass 
+			{ 
+				id = -1, 
+				invent_no = "", 
+				cost_agreement = rent_rate,
+			});
+		}
 	}
 
 	void BuildRentPeriodInfo(int rent_period_id)
@@ -4412,4 +4486,5 @@ public class NarazhCalculationOne
 	}
 
 }
+
 

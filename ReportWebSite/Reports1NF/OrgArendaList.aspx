@@ -267,6 +267,8 @@
         and Q.rent_period_id = (SELECT QQ.id FROM dict_rent_period QQ where QQ.is_active = 1)
 ) as payment_total_all
 
+,[dbo].[get_payment_narahcalc](ar.id, ar.report_id) as payment_narahcalc
+
 ,dpt.name AS 'payment_type'
       ,[org].[zkpo_code] AS 'org_renter_zkpo'
       ,[org_giver].[zkpo_code] AS 'org_giver_zkpo'
@@ -963,6 +965,7 @@ FROM reports1nf_arenda ar
         <dx:GridViewDataTextColumn FieldName="last_year_saldo" VisibleIndex="20" Caption="Сальдо на початок року" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="payment_received" VisibleIndex="21" Caption="Надходження орендної плати за звітний період, всього" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="payment_total_all" VisibleIndex="21" Caption="Платежі з оренди, всього" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="payment_narahcalc" VisibleIndex="21" Caption="Розраховано нарахування орендної плати" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="payment_nar_zvit" VisibleIndex="22" Caption="Надходження орендної плати, у тому числі за звітний період без боргів та переплат" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_total" VisibleIndex="23" Caption="Заборгованість по орендній платі" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="debt_zvit" VisibleIndex="24" Caption="у т.ч. з нарахованої у звітному періоді" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
@@ -1070,6 +1073,9 @@ FROM reports1nf_arenda ar
 		<dx:ASPxSummaryItem FieldName="total_pereplata" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="payment_narah_normal" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="cost_agreement_total" SummaryType="Sum" DisplayFormat="{0}" />
+
+        <dx:ASPxSummaryItem FieldName="payment_narahcalc" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="payment_total_all" SummaryType="Sum" DisplayFormat="{0}" />
         
     </TotalSummary>
 
