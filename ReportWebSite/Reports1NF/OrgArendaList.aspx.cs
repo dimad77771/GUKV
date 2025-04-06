@@ -1105,7 +1105,7 @@ values
 
 	string GetCellString(object val)
 	{
-		return val == null ? "" : val.ToString();
+		return val == null ? "" : val.ToString().Trim();
 	}
 
 	decimal? GetCellDecimal(object val)

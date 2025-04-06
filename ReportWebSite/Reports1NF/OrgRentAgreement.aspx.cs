@@ -2017,6 +2017,12 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 			AddQueryParameter(ref fieldList, "sqr_payed_by_1uah", "sqr1uah", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentSqr1UAH_orndpymnt"), parameters);
 			AddQueryParameter(ref fieldList, "sqr_payed_hourly", "sqrhourly", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentSqrHourly_orndpymnt"), parameters);
 
+			AddQueryParameter(ref fieldList, "is_cmk", "iscmk", Reports1NFUtils.GetCheckBoxValue(controls, "CheckIsCmk") ? 1 : 0, parameters);
+			AddQueryParameter(ref fieldList, "cmk_sqr_rented", "cmksqr", Reports1NFUtils.GetEditNumeric(controls, "EditCmkSqrRented"), parameters);
+			AddQueryParameter(ref fieldList, "cmk_payment_narah", "cmkpayn", Reports1NFUtils.GetEditNumeric(controls, "EditCmkPaymentNarah"), parameters);
+			AddQueryParameter(ref fieldList, "cmk_payment_to_budget", "cmkpayb", Reports1NFUtils.GetEditNumeric(controls, "EditCmkPaymentToBudget"), parameters);
+			AddQueryParameter(ref fieldList, "cmk_rent_debt", "cmkdebt", Reports1NFUtils.GetEditNumeric(controls, "EditCmkRentDebt"), parameters);
+
 			AddQueryParameter(ref fieldList, "payment_narah", "paynar", Reports1NFUtils.GetEditNumeric(controls, "EditPaymentNarah_orndpymnt"), parameters);
 			AddQueryParameter(ref fieldList, "znyato_nadmirno_narah", "znyatonadmir", Reports1NFUtils.GetEditNumeric(controls, "edit_znyato_nadmirno_narah"), parameters);
 			AddQueryParameter(ref fieldList, "znyato_from_avance", "znyatoavance", Reports1NFUtils.GetEditNumeric(controls, "edit_znyato_from_avance"), parameters);
@@ -4223,11 +4229,6 @@ public class NarazhCalculationOne
 				var date = new DateTime(year, mm, 1);
 				var inflation = GetMonthInflation(date);
 
-				if (isnew && date == baseMonth && rentStart <= baseMonth.AddMonths(1))
-				{
-					inflation = 100M;
-				}
-
 				if (isnew)
 				{
 					plata = round_0(plata * inflation / 100M);
@@ -4240,7 +4241,6 @@ public class NarazhCalculationOne
 					plata = round_0(plata * inflation / 100M);
 				}
 			}
-
 			year++;
 		}
 	}

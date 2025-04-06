@@ -77,6 +77,7 @@
         function ready(event) {
             HidePnl();
             setTimeout(function () {
+				EnableCmkControls();
                 InitCalcCollectionDebtZvit();
 				//RefreshNarazhCalculation();
                 NarazhCalculationRun();
@@ -105,7 +106,18 @@
 			} else {
 				setTimeout(InitCalcCollectionDebtZvit, 100);
 			}
+        }
+
+		function EnableCmkControls(s, e) {
+
+			var isEnable = CheckIsCmk.GetChecked();
+
+			EditCmkSqrRented.SetEnabled(isEnable);
+			EditCmkPaymentNarah.SetEnabled(isEnable);
+			EditCmkPaymentToBudget.SetEnabled(isEnable);
+			EditCmkRentDebt.SetEnabled(isEnable);
 		}
+
 
         function afterCPMainPanelCallback(event) {
 			console.log('RUN afterCPMainPanelCallback')
@@ -1376,7 +1388,7 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourcePaymentType" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT id, name FROM dict_arenda_payment_type WHERE id IN (11, 8, 3, 7) ORDER BY name">
+    SelectCommand="SELECT id, name FROM dict_arenda_payment_type WHERE id IN (11, 8, 3, 7, 12) ORDER BY name">
 </mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceMethodCalc" runat="server" 
@@ -3474,7 +3486,7 @@ WHERE id = @id"
                                             <dx:ASPxLabel ID="NeededPeriodCombo"  runat="server"  ForeColor="White" />
                                 
                                         </div>
-                                        <dx:ASPxRoundPanel ID="PanelRentPayment" runat="server" HeaderText="Площа, надана в оренду">
+                                        <dx:ASPxRoundPanel ID="PanelRentPayment" runat="server" HeaderText="Площа, надана в оренду" Visible="false">
                                             <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="0px" />
                                             <PanelCollection>
                                                 <dx:PanelContent ID="PanelContent4" runat="server">                                        
@@ -3499,6 +3511,67 @@ WHERE id = @id"
                                                                 Title="Площа, надана в погодинну оренду, чи відповідно до угод про співпрацю"/></td>
                                                         </tr>   
                                                     </table>
+                                                </dx:PanelContent>
+                                            </PanelCollection>
+                                        </dx:ASPxRoundPanel>
+
+                                        <dx:ASPxRoundPanel ID="PanelCmk" runat="server" HeaderText="Відомості щодо користування цілісним майновим комплексом">
+                                            <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="4px" />
+                                            <PanelCollection>
+                                                <dx:PanelContent ID="PanelContent1" runat="server">
+
+                                                    <table border="0" cellspacing="0" cellpadding="2" width="810px">
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <dx:ASPxCheckBox ID="CheckIsCmk" ClientInstanceName="CheckIsCmk" runat="server" Text="Користування цілісним майновим комплексом" Checked='<%# 1.Equals(Eval("is_cmk")) %>'
+                                                                     Title="Користування цілісним майновим комплексом">
+                                                                    <ClientSideEvents CheckedChanged="EnableCmkControls" />
+                                                                </dx:ASPxCheckBox>
+                                                            </td>
+                                                            <td width="360px"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><dx:ASPxLabel ID="ASPxLabel84" runat="server" Text="ЦМК Площа в оренді, кв.м."></dx:ASPxLabel></td>
+                                                            <td>
+                                                                <dx:ASPxSpinEdit ID="EditCmkSqrRented" ClientInstanceName="EditCmkSqrRented" runat="server" NumberType="Float" Value='<%# Eval("cmk_sqr_rented") %>' Width="100px"
+                                                                     Title="ЦМК Площа в оренді">
+                                                                    <ValidationSettings Display="None"> <RequiredField IsRequired="True" ErrorText="Необхідно заповнити площу ЦМК в оренді" /> </ValidationSettings>
+                                                                </dx:ASPxSpinEdit>
+                                                            </td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><dx:ASPxLabel ID="ASPxLabel85" runat="server" Text="ЦМК Нарахована орендна плата, грн. (без ПДВ)"></dx:ASPxLabel></td>
+                                                            <td>
+                                                                <dx:ASPxSpinEdit ID="EditCmkPaymentNarah" ClientInstanceName="EditCmkPaymentNarah" runat="server" NumberType="Float" Value='<%# Eval("cmk_payment_narah") %>' Width="100px"
+                                                                     Title="ЦМК Нарахована плата за використання">
+                                                                     <ValidationSettings Display="None"> <RequiredField IsRequired="True" ErrorText="Необхідно заповнити ЦМК Нарахована плата за використання" /> </ValidationSettings>
+                                                                </dx:ASPxSpinEdit>
+                                                            </td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="ЦМК Перераховано до бюджету, грн. (без ПДВ)"></dx:ASPxLabel></td>
+                                                            <td>
+                                                                <dx:ASPxSpinEdit ID="EditCmkPaymentToBudget" ClientInstanceName="EditCmkPaymentToBudget" runat="server" NumberType="Float" Value='<%# Eval("cmk_payment_to_budget") %>' Width="100px"
+                                                                     Title="ЦМК Перераховано до бюджету">
+                                                                     <ValidationSettings Display="None"> <RequiredField IsRequired="True" ErrorText="Необхідно заповнити ЦМК Перераховано до бюджету" /> </ValidationSettings>
+                                                                </dx:ASPxSpinEdit>
+                                                            </td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><dx:ASPxLabel ID="ASPxLabel3" runat="server" Text="ЦМК Заборгованість по орендній платі, грн. (без ПДВ)"></dx:ASPxLabel></td>
+                                                            <td>
+                                                                <dx:ASPxSpinEdit ID="EditCmkRentDebt" ClientInstanceName="EditCmkRentDebt" runat="server" NumberType="Float" Value='<%# Eval("cmk_rent_debt") %>' Width="100px"
+                                                                    Title="ЦМК Заборгованість по орендній платі">
+                                                                    <ValidationSettings Display="None"> <RequiredField IsRequired="True" ErrorText="Необхідно заповнити ЦМК Заборгованість по орендній платі" /> </ValidationSettings>
+                                                                </dx:ASPxSpinEdit>
+                                                            </td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </table>
+
                                                 </dx:PanelContent>
                                             </PanelCollection>
                                         </dx:ASPxRoundPanel>
@@ -5499,10 +5572,10 @@ WHERE id = @id"
 	                                ShowDeleteButton="True" ShowCancelButton="true" ShowUpdateButton="true" ShowClearFilterButton="true" ShowEditButton="true" ShowNewButton="true" >
 	                                <CellStyle Wrap="False"></CellStyle>
 	                            </dx:GridViewCommandColumn>
-                                <dx:GridViewDataTextColumn FieldName="agreement_num" Caption="Номер Договору"/>
-                                <dx:GridViewDataDateColumn FieldName="agreement_date" Caption="Дата Договору"/>
+                                <dx:GridViewDataTextColumn FieldName="agreement_num" Caption="Номер додаткові угоди"/>
+                                <dx:GridViewDataDateColumn FieldName="agreement_date" Caption="Дата додаткові угоди"/>
                                 <dx:GridViewDataDateColumn FieldName="rent_start_date" Caption="Дата початку використання приміщення"/>
-                                <dx:GridViewDataDateColumn FieldName="rent_actual_finish_date" Caption="Фактична дата закінчення договору"/>
+                                <dx:GridViewDataDateColumn FieldName="rent_actual_finish_date" Caption="Фактична дата закінчення додаткові угоди"/>
                                 <dx:GridViewDataTextColumn FieldName="rent_rate" Caption="Місячна орендна плата, грн."/>
                                 <dx:GridViewDataDateColumn FieldName="base_month" Caption="Базовий місяць (вкажіть перше число місяця)"/>
                                 <dx:GridViewDataTextColumn FieldName="invnum_rent" Caption="Орендна плата за інвентарними номерами" Width="350px" ToolTip="Приклад: інв1:100.00, інв2:200.00, інв3:300.00"/>
