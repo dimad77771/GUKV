@@ -980,7 +980,7 @@ select count(*), max(ar.id)
 FROM reports1nf_arenda ar 
 LEFT OUTER JOIN arenda a ON a.id = ar.id 
 LEFT OUTER JOIN organizations org ON org.id = ar.org_renter_id and (org.is_deleted is null or org.is_deleted = 0)
-WHERE isnull(a.is_deleted, 0) = 0 and ar.report_id = @report_id and ar.agreement_num = @agreement_num and ar.agreement_state = 1 and [org].[zkpo_code] = @org_zkpo_code";
+WHERE isnull(a.is_deleted, 0) = 0 and ar.report_id = @report_id and ar.agreement_num = @agreement_num and [org].[zkpo_code] = @org_zkpo_code";
 							using (SqlCommand cmd = new SqlCommand(query, connection, transaction))
 							{
 								cmd.Parameters.Add(new SqlParameter("report_id", report_id));
@@ -1110,7 +1110,7 @@ values
 
 	decimal? GetCellDecimal(object val)
 	{
-		var str = (val == null ? "" : val.ToString()).Replace(",",".").Trim();
+		var str = (val == null ? "" : val.ToString()).Replace(",",".").Replace(" ","").Replace("" + (char)160, "").Trim();
 
 		decimal result;
 		if (Decimal.TryParse(str, NumberStyles.Number, NumberFormatInfo.InvariantInfo, out result))
