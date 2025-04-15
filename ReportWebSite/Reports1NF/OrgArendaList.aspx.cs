@@ -1010,6 +1010,11 @@ WHERE isnull(a.is_deleted, 0) = 0 and ar.report_id = @report_id and ar.agreement
 							throw new Exception("Знайдено більше одного договору оренди з номером \"" + agreement_num + "\" (строка " + rr + ")");
 						}
 
+						if (payment_date == null)
+						{
+							continue;
+						}
+
 						var payment_sum = (payment_sm_1 ?? 0) + (payment_sm_2 ?? 0) + (payment_sm_3 ?? 0) + (payment_sm_4 ?? 0);
 						if (payment_sum <= 0) throw new Exception("Невірні суми у рядку " + rr);
 
