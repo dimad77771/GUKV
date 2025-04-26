@@ -109,6 +109,7 @@
 		obj.NumOfSubmObj, 
 		obj.NumOfObj,
         (SELECT MAX(sdt) FROM (VALUES
+        (rep.stan_recieve_date),
         (rep.bal_max_submit_date),
         (rep.bal_del_max_submit_date),
         (rep.arenda_max_submit_date),
