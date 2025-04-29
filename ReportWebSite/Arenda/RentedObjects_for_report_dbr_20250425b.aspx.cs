@@ -51,7 +51,7 @@ public partial class Arenda_RentedObjects : System.Web.UI.Page
 
 	    PrimaryGridView.Settings.VerticalScrollBarMode = DevExpress.Web.ScrollBarMode.Visible;
 
-        CustomizeColumnList();
+        //CustomizeColumnList();
     }
 
     void CustomizeColumnList()
