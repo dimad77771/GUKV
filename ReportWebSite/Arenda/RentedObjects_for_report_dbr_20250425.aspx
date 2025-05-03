@@ -223,6 +223,7 @@
 		*
 		FROM [reports1nf_balans_free_square] Q 
 		WHERE Q.[balans_id] = bal.id and Q.[report_id] = bal.report_id
+            and Q.[total_free_sqr] = [rent_square]
 	) F
     WHERE 
         agreement_date >= '20220101' and
@@ -424,7 +425,7 @@
         <dx:GridViewDataTextColumn FieldName="rent_rate_uah" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="51" Visible="False" Caption="Орендна плата за 1 кв.м, грн."></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="rent_square" ReadOnly="True" ShowInCustomizationForm="True"
-            VisibleIndex="52" Visible="False" Caption="Площа приміщення, кв.м"></dx:GridViewDataTextColumn>
+            VisibleIndex="52" Visible="True" Caption="Площа приміщення, кв.м"></dx:GridViewDataTextColumn>
 <%--        <dx:GridViewDataTextColumn FieldName="num_akt" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="53" Visible="False" Caption="Номер Акту"></dx:GridViewDataTextColumn>
         <dx:GridViewDataDateColumn FieldName="date_akt" ReadOnly="True" ShowInCustomizationForm="False"
