@@ -166,7 +166,7 @@
  row_number() over (order by org.short_name, b.street_full_name, b.addr_nomer, fs.total_free_sqr) as npp     
 ,fs.id
 ,fs.include_in_perelik
-,org.short_name as org_name
+,org.full_name as org_name
 ,org.zkpo_code
 ,org.prozoro_title as vidpov_osoba
 
