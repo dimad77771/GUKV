@@ -460,6 +460,33 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		}
 	}
 
+	protected List<int> ActiveRentPeriodIDs
+	{
+		get
+		{
+			var result = new List<int>();
+
+			var connection = Utils.ConnectToDatabase();
+			string query = "select A.id from dict_rent_period A where A.period_year in (select Q.period_year from dict_rent_period Q where is_active = 1)";
+			using (SqlCommand cmd = new SqlCommand(query, connection))
+			{
+				using (SqlDataReader reader = cmd.ExecuteReader())
+				{
+					while (reader.Read())
+					{
+						var id = reader.GetInt32(0);
+						result.Add(id);
+					}
+
+					reader.Close();
+				}
+			}
+
+
+			return result;
+		}
+	}
+
 	protected bool? ReportBelongsToThisUser
 	{
 		get
@@ -1528,6 +1555,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 			decimal total_income_4 = 0;
 			int active_rent_period_id;
 
+			ASPxSpinEdit narazhCalculation_all = Utils.FindControlRecursive(ContentControl3, "NarazhCalculation_all") as ASPxSpinEdit;
 			ASPxComboBox reportingPeriodCombo = PaymentForm.FindControl("ReportingPeriodCombo") as ASPxComboBox;
 			if (reportingPeriodCombo != null)
 			{
@@ -1545,7 +1573,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 				{
 					var rent_period_id = (int)table.Rows[row]["rent_period_id"];
 
-					if (rent_period_id == active_rent_period_id)
+					if (ActiveRentPeriodIDs.Contains(rent_period_id))
 					{
 						total_income += (decimal)table.Rows[row]["payment_sum"];
 						total_income_1 += (decimal)table.Rows[row]["payment_sm_1"];
@@ -1582,6 +1610,12 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 					editPaymentReceived = cpRentPayment.FindControl("edit_return_orend_payed");
 					if (editPaymentReceived is ASPxSpinEdit)
 						(editPaymentReceived as ASPxSpinEdit).Value = total_income_4;
+
+					editPaymentReceived = cpRentPayment.FindControl("EditPaymentNarah_orndpymnt");
+					if (editPaymentReceived is ASPxSpinEdit)
+						(editPaymentReceived as ASPxSpinEdit).Value = (narazhCalculation_all.Value as decimal?) ?? 0M;
+
+					
 				}
 			}
 		}
@@ -4211,6 +4245,10 @@ public class NarazhCalculationOne
 			}
 
 			var inflation = GetYearInflation(year);
+			if (year == rentStart.Year - 1 && year == baseMonth.Year)
+			{
+				inflation = 100M; //МЕТОДИКА розрахунку орендної плати за комунальне майно. Пункт 18
+			}
 			plata = round_0(plata * inflation / 100M);
 			year++;
 		}
