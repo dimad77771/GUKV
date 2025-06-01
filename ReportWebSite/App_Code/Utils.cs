@@ -33,6 +33,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using GUKV.Common;
 using System.Drawing;
+using System.Data.Common;
 
 public static class Utils
 {
@@ -3378,6 +3379,91 @@ public static class Utils
     }
 
 
+    public static int GetRenterID(string sf_upr)
+    {
+        if (sf_upr == "Голосіївський район") return 8515;
+        if (sf_upr == "Дарницький район") return 8400;
+        if (sf_upr == "Деснянський район") return 1728;
+        if (sf_upr == "Дніпровський район") return 99405315;
+        if (sf_upr == "Оболонський район") return 9826;
+        if (sf_upr == "Печерський район") return 15130;
+        if (sf_upr == "Подільський район") return 141824;
+        if (sf_upr == "Святошинський район") return 137676;
+        if (sf_upr == "Солом'янський район") return 8566;
+        if (sf_upr == "Шевченківський район") return 308543;
+
+        return 27065;
+    }
+
+    public static DataTable GetDataTable(string sql, SqlConnection connection, SqlTransaction transaction)
+    {
+        var factory = DbProviderFactories.GetFactory(connection);
+        var dataTable = new DataTable();
+        using (var cmd = factory.CreateCommand())
+        {
+            cmd.CommandText = sql;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = connection;
+            cmd.Transaction = transaction;
+            using (var adapter = factory.CreateDataAdapter())
+            {
+                adapter.SelectCommand = cmd;
+                adapter.Fill(dataTable);
+            }
+        }
+
+        return dataTable;
+    }
+
+
+    public static int? GetStep(int free_square_id)
+    {
+        using (var connection = Utils.ConnectToDatabase())
+        {
+            var result = (int?)null;
+            var sql = @"select freecycle_step_dict_id from reports1nf_balans_free_square fs where fs.id = " + dd(free_square_id);
+            var data = GetDataTable(sql, connection, null);
+            if (data.Rows.Count > 0)
+            {
+                result = GetData<int>(data.Rows[0]["freecycle_step_dict_id"]);
+            }
+            return result;
+        }
+    }
+
+    public static int? GetStepContinue(int free_square_id)
+    {
+        using (var connection = Utils.ConnectToDatabase())
+        {
+            var result = (int?)null;
+            var sql = @"select freecycle_step_dict_id from reports1nf_arenda_dogcontinue fs where fs.id = " + dd(free_square_id);
+            var data = GetDataTable(sql, connection, null);
+            if (data.Rows.Count > 0)
+            {
+                result = GetData<int>(data.Rows[0]["freecycle_step_dict_id"]);
+            }
+            return result;
+        }
+    }
+
+    public static T? GetData<T>(object data) where T : struct
+    {
+        if (data == System.DBNull.Value)
+        {
+            return null;
+        }
+        else
+        {
+            return (T)data;
+        }
+    }
+
+    public static string dd(object arg)
+    {
+        if (arg == null) return "null";
+        else if (arg is string) return "'" + arg.ToString().Replace("'", "''") + "'";
+        else return arg.ToString();
+    }
 
 }
 

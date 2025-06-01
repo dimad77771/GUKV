@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -127,26 +130,6 @@ public partial class Reports1NF_Report1NFDogContinue : System.Web.UI.Page
 
 	protected void SqlDataSourceFreeSquare_Updating(object sender, SqlDataSourceCommandEventArgs e)
 	{
-		//DevExpress.Web.ASPxComboBox nnn;
-		//GridViewDataComboBoxColumn rrr;
-		//rrr.PropertiesComboBox.sc
-		//rrr.PropertiesComboBox.ClientSideEvents
-		//GridViewDataTextColumn a;
-		//a.PropertiesEditType
-		//a.PropertiesEditType
-		//GridViewDataTextColumn
-		//DevExpress.Web.GridViewDataDateColumn
-
-
-		//if (!string.IsNullOrEmpty(Request.QueryString["rid"]))
-		//	e.Command.Parameters["@report_id"].Value = int.Parse(Request.QueryString["rid"]);
-
-		//if (!string.IsNullOrEmpty(Request.QueryString["bid"]))
-		//	e.Command.Parameters["@arenda_id"].Value = int.Parse(Request.QueryString["bid"]);
-
-		//+e.Command.Parameters    { System.Data.SqlClient.SqlParameterCollection}
-		//System.Data.Common.DbParameterCollection { System.Data.SqlClient.SqlParameterCollection}
-
 		var dbparams = (System.Data.SqlClient.SqlParameterCollection)(e.Command.Parameters);
 		dbparams.AddWithValue("@modify_date2", DateTime.Now);
 		var user = Membership.GetUser();
@@ -159,17 +142,77 @@ public partial class Reports1NF_Report1NFDogContinue : System.Web.UI.Page
 			throw new Exception("Невірно заповнене поле \"Координати на мапі\". Приклад вірно заповненого поля (широта довгота) \"50.509205 30.426741\"");
 		}
 
+		var free_square_id = (int)(e.Command.Parameters["@id"].Value);
+		var freecycle_step_dict_id = (int?)(e.Command.Parameters["@freecycle_step_dict_id"].Value);
+		var current_stage_docdate = (DateTime?)(e.Command.Parameters["@current_stage_docdate"].Value);
+		var current_stage_docnum = (string)(e.Command.Parameters["@current_stage_docnum"].Value);
+		var current_step = Utils.GetStepContinue(free_square_id);
+		var change_step = (freecycle_step_dict_id != current_step);
 
-		//e.Command.Parameters.Add("@modify_date2");
-		//e.Command.Parameters.Add("@modified_by2");
-
-		//e.Command.Parameters["@modify_date2"].Value = DateTime.Now;
-		//var user = Membership.GetUser();
-		//e.Command.Parameters["@modified_by2"].Value = (user == null ? String.Empty : (String)user.UserName);
-
-		//e.Command.Parameters["@id"].Value = 1;
-		//e.Command.Parameters["@komis_protocol"].Value = "fff";
+		if (change_step && new int?[] { 150, 300 }.Contains(freecycle_step_dict_id))
+		{
+			using (var connection = Utils.ConnectToDatabase())
+			using (var transaction = connection.BeginTransaction())
+			{
+				AfterDogovorReestration(free_square_id, connection, transaction, current_stage_docnum, current_stage_docdate);
+				transaction.Commit();
+			}
+		}
 	}
+
+	public static void AfterDogovorReestration(int free_square_id, SqlConnection connection, SqlTransaction transaction, string stage_docnum, DateTime? stage_docdate)
+	{
+		var username = Utils.GetUser();
+
+
+		var result = new List<string>();
+		var data = Utils.GetDataTable(@"
+SELECT 
+fs.id,
+b.building_id,
+rep.report_id,
+org.id as orgBalansID,
+isnull(ddd.name, 'Невизначені') as sf_upr
+
+FROM view_reports1nf rep
+join reports1nf_arenda bal on bal.report_id = rep.report_id
+JOIN view_reports1nf_buildings b ON b.unique_id = bal.building_1nf_unique_id
+join dbo.reports1nf_arenda_dogcontinue fs on fs.arenda_id = bal.id and fs.report_id = rep.report_id
+join reports1nf_org_info org on org.id = bal.org_balans_id
+LEFT JOIN (
+			select obp.org_id
+			, occ.name
+			, occ.id
+			, per.name as period 
+			from org_by_period obp
+			join dict_rent_period per on per.id = obp.period_id and per.is_active = 1
+			join dict_rent_occupation occ on occ.id = obp.org_occupation_id
+				) DDD ON DDD.org_id = rep.organization_id
+where fs.id = " + free_square_id,
+connection, transaction);
+
+		var row = data.Rows[0];
+		var building_id = (int)row["building_id"];
+		var report_id = (int)row["report_id"];
+		var orgBalansID = (int)row["orgBalansID"];
+		var sf_upr = (string)row["sf_upr"];
+
+		var dogparm = new CreateNewArendaDogovorData
+		{
+			AgreementNum = stage_docnum,
+			AgreementDateYear = stage_docdate.Value.Year,
+			AgreementDateMonth = stage_docdate.Value.Month,
+			AgreementDateDay = stage_docdate.Value.Day,
+			BuildingID = building_id,
+			OrgBalansID = orgBalansID,
+			OrgRenterID = null,
+			OrgGiverID = Utils.GetRenterID(sf_upr),
+			OrgGiverComment = "",
+		};
+		Utils.CreateNewArendaDogovor(report_id, username, dogparm);
+	}
+
+	
 
 	bool Validate_geodata_map_points(string geodata_map_points)
 	{
