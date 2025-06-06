@@ -1,5 +1,4 @@
-﻿using Nito.AsyncEx;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +22,7 @@ namespace GUKVService
 			{
 				//консольный вариант
 				var mainCycle = new MainCycle();
-				AsyncContext.Run(mainCycle.Run);
+				mainCycle.Run().Wait();
 			}
 		}
 	}
