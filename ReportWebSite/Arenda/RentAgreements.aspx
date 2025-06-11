@@ -514,6 +514,9 @@ WHERE id = @arenda_id"
             VisibleIndex="67" Visible="False" Caption="Балансоутримувач - Форма Власності"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="form_gosp" ReadOnly="True" 
             VisibleIndex="68" Visible="False" Caption="Балансоутримувач - Форма фінансування"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="old_organ" ReadOnly="True" 
+            VisibleIndex="68" Visible="False" Caption="Балансоутримувач - Орган госп. упр."></dx:GridViewDataTextColumn>
+
 <%--        <dx:GridViewDataTextColumn FieldName="agreement_num_int" ReadOnly="True"
             VisibleIndex="68" Visible="False" Caption="Номер Договору Оренди (число)"></dx:GridViewDataTextColumn>     
         <dx:GridViewDataTextColumn FieldName="is_in_privat" ReadOnly="True"
@@ -593,8 +596,19 @@ WHERE id = @arenda_id"
             VisibleIndex="93" Visible="True" Caption="Списано заборгованості з орендної плати у звітному періоді, грн. (без ПДВ)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="num_zahodiv_total" ReadOnly="True"
             VisibleIndex="94" Visible="True" Caption="Кількість заходів (попереджень, приписів і т.п.), всього"></dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="num_pozov_total" ReadOnly="True"
+            VisibleIndex="94" Visible="True" Caption="- кількість позовів до суду, всього"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="num_pozov_zadov_total" ReadOnly="True"
+            VisibleIndex="94" Visible="True" Caption="- задоволено позовів, всього"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="num_pozov_vikon_total" ReadOnly="True"
+            VisibleIndex="94" Visible="True" Caption="- відкрито виконавчих впроваджень, всього"></dx:GridViewDataTextColumn>
+
+
         <dx:GridViewDataTextColumn FieldName="num_zahodiv_zvit" ReadOnly="True"
             VisibleIndex="95" Visible="True" Caption="Кількість заходів (попереджень, приписів і т.п.), за звітний період"></dx:GridViewDataTextColumn>
+
+
 
         <dx:GridViewDataTextColumn FieldName="insurance_sum" ReadOnly="True"
             VisibleIndex="96" Visible="True" Caption="Вартість об'єкту страхування, грн."></dx:GridViewDataTextColumn>
@@ -694,6 +708,19 @@ WHERE id = @arenda_id"
         <dx:ASPxSummaryItem FieldName="return_orend_payed" SummaryType="Custom" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="debt_total" SummaryType="Custom" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="debt_spysano" SummaryType="Custom" DisplayFormat="{0}" />
+
+        <dx:ASPxSummaryItem FieldName="debt_zvit" SummaryType="Custom" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="debt_3_month" SummaryType="Custom" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="debt_12_month" SummaryType="Custom" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="debt_3_years" SummaryType="Custom" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="debt_over_3_years" SummaryType="Custom" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="debt_v_mezhah_vitrat" SummaryType="Custom" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="num_zahodiv_total" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="num_zahodiv_zvit" SummaryType="Sum" DisplayFormat="{0}" />
+
+        <dx:ASPxSummaryItem FieldName="num_pozov_total" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="num_pozov_zadov_total" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="num_pozov_vikon_total" SummaryType="Sum" DisplayFormat="{0}" />
     </TotalSummary>
 
     <GroupSummary>
@@ -715,7 +742,7 @@ WHERE id = @arenda_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_28" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_31" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

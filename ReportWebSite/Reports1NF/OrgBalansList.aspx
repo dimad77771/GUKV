@@ -104,6 +104,8 @@
 		 ,bal.znos_date
          ,bal.geodata_map_opoints
          ,bal.note
+         ,bal.balans_doc_num
+         ,bal.balans_doc_date
          ,case when exists (select 1 from reports1nf_photos Q where Q.bal_id = bal.id) then 1 else 0 end as has_reports1nf_photos
          ,case when exists (select 1 from reports1nf_btiphoto Q where Q.bal_id = bal.id) then 1 else 0 end as has_reports1nf_btiphoto
 
@@ -149,6 +151,8 @@
 		,bal.znos_date
         ,bal.geodata_map_opoints
     	,bal.note
+        ,bal.balans_doc_num
+        ,bal.balans_doc_date
         ,bal.report_id" >
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="rep_id" />
@@ -328,6 +332,10 @@
 		<dx:GridViewDataDateColumn FieldName="znos_date" VisibleIndex="19" Caption="станом на" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataDateColumn>
         <dx:GridViewDataDateColumn FieldName="geodata_map_opoints" VisibleIndex="20" Caption="Координати на мапі" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataDateColumn>
 
+        <dx:GridViewDataTextColumn FieldName="balans_doc_num" VisibleIndex="20" Caption="№ документу, що підтверджує передачу" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataDateColumn FieldName="balans_doc_date" VisibleIndex="20" Caption="Дата документу, що підтверджує передачу" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataDateColumn>
+
+
 		<dx:GridViewDataTextColumn FieldName="balans_id_" VisibleIndex="21" Caption="ID об'єкту" Visible="false"></dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn FieldName="has_reports1nf_photos" ReadOnly="True" ShowInCustomizationForm="False" VisibleIndex="101" Visible="True" Caption="Наявність фото" Width="40px">
@@ -419,7 +427,7 @@
     <SettingsPager PageSize="20" />
     <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
     <Styles Header-Wrap="True" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.BalansList" Enabled="True" Version="A9" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.BalansList" Enabled="True" Version="A_10" />
 
     <ClientSideEvents
         Init="function (s,e) { PrimaryGridView.PerformCallback('init:'); }"
