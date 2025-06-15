@@ -267,7 +267,7 @@
         and Q.rent_period_id = (SELECT QQ.id FROM dict_rent_period QQ where QQ.is_active = 1)
 ) as payment_total_all
 
-,[dbo].[get_payment_narahcalc](ar.id, ar.report_id) as payment_narahcalc
+,case when @show_payment_narahcalc = 1 then [dbo].[get_payment_narahcalc](ar.id, ar.report_id) else null end as payment_narahcalc
 
 ,dpt.name AS 'payment_type'
       ,[org].[zkpo_code] AS 'org_renter_zkpo'
@@ -315,6 +315,7 @@ FROM reports1nf_arenda ar
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="rep_id" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_dpz_filter" />
+        <asp:Parameter DbType="Int32" DefaultValue="0" Name="show_payment_narahcalc" />
     </SelectParameters>
 </mini:ProfiledSqlDataSource>
 
@@ -1091,7 +1092,7 @@ FROM reports1nf_arenda ar
     <SettingsPager PageSize="10" AlwaysShowPager="true" />
     <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
     <Styles Header-Wrap="True" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaList.2" Enabled="True" Version="B9" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaList.2" Enabled="True" Version="B_11" />
 
     <ClientSideEvents
         Init="function (s,e) { PrimaryGridView.PerformCallback('init:'); }"

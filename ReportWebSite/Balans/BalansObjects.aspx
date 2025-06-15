@@ -359,6 +359,14 @@
             <Settings SortMode="Custom" />
         </dx:GridViewDataTextColumn>
 
+        <dx:GridViewDataTextColumn FieldName="addr_zip_code" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="9" Visible="True" Caption="Поштовий індекс">
+            <DataItemTemplate>
+                <%# "<a href=\"javascript:ShowObjectCard(" + Eval("balans_id") + "," + Eval("building_id") + ")\">" + Eval("addr_zip_code") + "</a>"%>
+            </DataItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+
         <dx:GridViewDataTextColumn FieldName="geodata_map_opoints" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="9" Visible="True" Caption="Координати на мапі">
             <DataItemTemplate>
@@ -697,7 +705,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A4_012" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A4_014" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

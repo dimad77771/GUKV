@@ -290,6 +290,9 @@ public partial class Reports1NF_OrgArendaList : System.Web.UI.Page
 
 		e.Command.Parameters["@p_dpz_filter"].Value = CheckBoxRentedObjectsDPZ.Checked ? 1 : 0;
 		e.Command.Parameters["@rep_id"].Value = ReportID.ToString();
+
+		var show_payment_narahcalc = PrimaryGridView.Columns["payment_narahcalc"].Visible;
+		e.Command.Parameters["@show_payment_narahcalc"].Value = show_payment_narahcalc ? 1 : 0;
 	}
 
 	protected int ReportID
