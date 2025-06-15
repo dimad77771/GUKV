@@ -1217,7 +1217,9 @@ public static class Utils
                 fieldName.Contains("period_id") ||
                 fieldName.StartsWith("gosp") ||
                 fieldName.StartsWith("sphera") ||
-                fieldName.StartsWith("right_name"))
+                fieldName.StartsWith("right_name") ||
+                fieldName.StartsWith("stanjuro") ||
+                fieldName.StartsWith("old_organ"))
             {
                 column.Settings.AllowHeaderFilter = DevExpress.Utils.DefaultBoolean.True;
                 column.Settings.HeaderFilterMode = HeaderFilterMode.CheckedList;

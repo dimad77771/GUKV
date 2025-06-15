@@ -482,8 +482,14 @@
             VisibleIndex="41" Visible="False" Caption="Форма Власності Об'єкту"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="ownership_type" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="42" Visible="False" Caption="Право"></dx:GridViewDataTextColumn>
+
         <dx:GridViewDataTextColumn FieldName="object_kind" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="43" Visible="True" Caption="Вид Об'єкту відповідно Класифікатора майна"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="object_kind_code" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="43" Visible="False" Caption="Вид Об'єкту відповідно Класифікатора майна (код)"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="object_kind_name" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="43" Visible="False" Caption="Вид Об'єкту відповідно Класифікатора майна (назва)"></dx:GridViewDataTextColumn>
+
         <dx:GridViewDataTextColumn FieldName="object_type" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="44" Visible="True" Caption="Тип Об'єкту"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="condition" ReadOnly="True" ShowInCustomizationForm="True"
@@ -691,7 +697,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A4_011" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A4_012" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

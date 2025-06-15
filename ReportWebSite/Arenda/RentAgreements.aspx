@@ -250,6 +250,7 @@ A.*
                 OR 
             A.arenda_id in (select distinct Q.arenda_id from view_arenda Q where Q.ref_balans_id = @ref_balans_id and isnull(Q.is_deleted,0)=0)
         )
+        order by case when isnull(org_balans_zkpo,'') in('00000000','000000000','') then 2 else 1 end, org_balans_zkpo
     "
 
     OnSelecting="SqlDataSourceArendaObjects_Selecting"
