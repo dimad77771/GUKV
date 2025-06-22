@@ -1544,6 +1544,18 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		}
 	}
 
+	decimal GetDecimalTableValue(object obj)
+	{
+		if (obj == DBNull.Value)
+		{
+			return 0;
+		}
+		else
+		{
+			return (decimal)obj;
+		}
+	}
+
 	protected void CPRentPayment_Callback(object sender, CallbackEventArgsBase e)
 	{
 		if (e.Parameter.StartsWith("calc:"))
@@ -1576,10 +1588,10 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 					if (ActiveRentPeriodIDs.Contains(rent_period_id))
 					{
 						total_income += (decimal)table.Rows[row]["payment_sum"];
-						total_income_1 += (decimal)table.Rows[row]["payment_sm_1"];
-						total_income_2 += (decimal)table.Rows[row]["payment_sm_2"];
-						total_income_3 += (decimal)table.Rows[row]["payment_sm_3"];
-						total_income_4 += (decimal)table.Rows[row]["payment_sm_4"];
+						total_income_1 += GetDecimalTableValue(table.Rows[row]["payment_sm_1"]);
+						total_income_2 += GetDecimalTableValue(table.Rows[row]["payment_sm_2"]);
+						total_income_3 += GetDecimalTableValue(table.Rows[row]["payment_sm_3"]);
+						total_income_4 += GetDecimalTableValue(table.Rows[row]["payment_sm_4"]);
 
 					}
 				}

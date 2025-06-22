@@ -284,7 +284,11 @@ povidoleno2_date,povidoleno2_num,
 povidoleno3_date,povidoleno3_num,
 povidoleno4_date,povidoleno4_num,
 (SELECT sum(Q.cost_agreement) FROM reports1nf_arenda_notes Q WHERE (Q.is_deleted IS NULL OR Q.is_deleted = 0) AND Q.report_id = ar.report_id AND arenda_id = ar.id) as cost_agreement_total,
-case when exists (select 1 from reports1nf_arendaphotos Q where Q.arenda_id = ar.id) then 1 else 0 end as has_reports1nf_photos
+case when exists (select 1 from reports1nf_arendaphotos Q where Q.arenda_id = ar.id) then 1 else 0 end as has_reports1nf_photos,
+
+ar.base_month,
+(SELECT Q.name FROM dict_method_calc Q where Q.id = ar.method_calc_id) as method_calc_name
+
 
 FROM reports1nf_arenda ar
         INNER JOIN reports1nf rep ON rep.id = ar.report_id
@@ -1028,6 +1032,9 @@ FROM reports1nf_arenda ar
 
         <dx:GridViewDataTextColumn FieldName="cost_agreement_total" VisibleIndex="153" Caption="Місячна орендна плата, грн." ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataTextColumn>
 
+        <dx:GridViewDataDateColumn FieldName="base_month" VisibleIndex="154" Caption="Базовий місяць" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataDateColumn>
+        <dx:GridViewDataTextColumn FieldName="method_calc_name" VisibleIndex="155" Caption="Методика розрахунку" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataTextColumn>
+
 		<dx:GridViewDataTextColumn FieldName="first_ref_balans_id" VisibleIndex="160" Caption="ID об'єкту оренди" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataTextColumn>
 		
 
@@ -1092,7 +1099,7 @@ FROM reports1nf_arenda ar
     <SettingsPager PageSize="10" AlwaysShowPager="true" />
     <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
     <Styles Header-Wrap="True" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaList.2" Enabled="True" Version="B_11" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaList.2" Enabled="True" Version="B_12" />
 
     <ClientSideEvents
         Init="function (s,e) { PrimaryGridView.PerformCallback('init:'); }"
