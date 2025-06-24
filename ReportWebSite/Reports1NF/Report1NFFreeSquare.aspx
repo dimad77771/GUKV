@@ -519,6 +519,8 @@ SELECT
 		and qq.agreement_active_s = 'Договір діє'
 ) then 1 else 0 end as isexistsdogovor
 
+,bal.id balans_id
+
 FROM view_reports1nf rep
 join reports1nf_balans bal on bal.report_id = rep.report_id
 JOIN view_reports1nf_buildings b ON b.unique_id = bal.building_1nf_unique_id
@@ -1374,6 +1376,13 @@ WHERE id = @id"
 				</EditItemTemplate>
 			</dx:GridViewDataTextColumn>
 
+			<dx:GridViewDataTextColumn FieldName="balans_id" Caption="ID об'єкту" VisibleIndex="1360" Width="100px" Visible="false">
+				<EditItemTemplate>
+					<dx:ASPxLabel runat="server" Text='<%# Eval("balans_id") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+				</EditItemTemplate>
+			</dx:GridViewDataTextColumn>
+
+
 			<dx:GridViewCommandColumn ShowSelectCheckbox="true" Width="40px" VisibleIndex="9999" />
 
 		</Columns>
@@ -1405,7 +1414,7 @@ WHERE id = @id"
 			ShowFooter="True"
 			VerticalScrollBarMode="Auto"
 			VerticalScrollBarStyle="Standard" />
-		<SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A3_021" Enabled="true" />
+		<SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A3_022" Enabled="true" />
 		<Styles Header-Wrap="True">
 			<Header Wrap="True"></Header>
 		</Styles>
