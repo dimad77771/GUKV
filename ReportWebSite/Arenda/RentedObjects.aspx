@@ -188,6 +188,7 @@
     , isnull(ddd.name, 'Невідомо') as sphera_dialnosti
     , bb.sqr_non_habit
     , bb.sqr_pidval
+    ,(select count(*) from view_arenda Q where Q.ref_balans_id = bb.id and isnull(Q.is_deleted,0)=0) dog_count 
 
     FROM view_arenda m /*m_view_arenda m */
     left join 
@@ -346,6 +347,11 @@
             VisibleIndex="30" Visible="False" Caption="Дата Договору Оренди - Квартал"></dx:GridViewDataTextColumn>    --%>
         <dx:GridViewDataTextColumn FieldName="agreement_num" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="31" Visible="True" Caption="Номер Договору Оренди"></dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="dog_count" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="31" Visible="True" Caption="Кількість договорів щодо об'єкту"></dx:GridViewDataTextColumn>
+
+
         <dx:GridViewDataTextColumn FieldName="cost_narah" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="32" Visible="False" Caption="Ставка за використання, %"></dx:GridViewDataTextColumn>
 
@@ -479,6 +485,7 @@
         <dx:ASPxSummaryItem FieldName="rent_square" SummaryType="Custom" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="balans_sqr_total" SummaryType="Custom" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="balans_sqr_in_rent" SummaryType="Custom" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="agreement_num" SummaryType="Custom" />
     </TotalSummary>
 
     <GroupSummary>
@@ -500,7 +507,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.ArendaObjects" Version="A2_36" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.ArendaObjects" Version="A2_37" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

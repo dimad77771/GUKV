@@ -1424,7 +1424,7 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceArendaArchive" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>"
-    SelectCommand="SELECT archive_id, org_renter_full_name, object_name, agreement_num, agreement_date, rent_start_date, rent_finish_date, rent_square, modified_by, modify_date
+    SelectCommand="SELECT archive_id, org_renter_full_name, org_balans_full_name, object_name, agreement_num, agreement_date, rent_start_date, rent_finish_date, rent_square, modified_by, modify_date
         FROM view_arch_arenda WHERE arenda_id = @arid AND (NOT modified_by IS NULL) AND (NOT modify_date IS NULL) ORDER BY modify_date, archive_id" >
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="arid" />
@@ -3078,7 +3078,8 @@ WHERE id = @id"
                                                                             <Settings ShowInFilterControl="False"/>
                                                                         </dx:GridViewDataTextColumn>
                                                                         <dx:GridViewDataTextColumn FieldName="org_renter_full_name" VisibleIndex="1" Caption="Орендар" Width="150px"/>
-                                                                        <dx:GridViewDataTextColumn FieldName="object_name" VisibleIndex="2" Caption="Використання Приміщення" Width="150px"/>
+                                                                        <%--<dx:GridViewDataTextColumn FieldName="object_name" VisibleIndex="2" Caption="Використання Приміщення" Width="150px"/>--%>
+                                                                        <dx:GridViewDataTextColumn FieldName="org_balans_full_name" VisibleIndex="2" Caption="Балансоутримувач Приміщення" Width="150px"/>
                                                                         <dx:GridViewDataTextColumn FieldName="agreement_num" VisibleIndex="3" Caption="Номер Договору"/>
                                                                         <dx:GridViewDataDateColumn FieldName="agreement_date" VisibleIndex="4" Caption="Дата Договору"/>
                                                                         <dx:GridViewDataDateColumn FieldName="rent_start_date" VisibleIndex="5" Caption="Початок Оренди"/>
@@ -4614,7 +4615,7 @@ WHERE id = @id"
                                                         <dx:GridViewDataTextColumn FieldName="payment_number" VisibleIndex="2" Caption="Номер квитанції" Width="100px"></dx:GridViewDataTextColumn>                                        
                                                         <dx:GridViewDataTextColumn FieldName="payment_sum" VisibleIndex="3" Caption="Сума" Width="100px"></dx:GridViewDataTextColumn>
                                                         <dx:GridViewDataTextColumn FieldName="payment_sm_1" VisibleIndex="3" Caption="Сума (за звітний період без боргів та переплат)" Width="100px"></dx:GridViewDataTextColumn>
-                                                        <dx:GridViewDataTextColumn FieldName="payment_sm_2" VisibleIndex="3" Caption="Сума (авансова орендна плата)" Width="100px"></dx:GridViewDataTextColumn>
+                                                        <dx:GridViewDataTextColumn FieldName="payment_sm_2" VisibleIndex="3" Caption="Сума (авансова орендна плата)" Width="100px" Visible="false" ></dx:GridViewDataTextColumn>
                                                         <dx:GridViewDataTextColumn FieldName="payment_sm_3" VisibleIndex="3" Caption="Сума (погашення заборгованості минулих періодів)" Width="100px"></dx:GridViewDataTextColumn>
                                                         <dx:GridViewDataTextColumn FieldName="payment_sm_4" VisibleIndex="3" Caption="Сума (переплата орендної плати за звітний період)" Width="100px"></dx:GridViewDataTextColumn>
                                                         <dx:GridViewDataComboBoxColumn FieldName="rent_period_id" ShowInCustomizationForm="True" VisibleIndex="10" Visible="True" Caption="Звітній Період" Width="120px">
@@ -4665,12 +4666,14 @@ WHERE id = @id"
                                                                         <ClientSideEvents NumberChanged="function(s, e) { UpdateScaleFactor(s) }" />
                                                                     </dx:ASPxSpinEdit>
                                                                 </td>
-                                                                <td> <dx:ASPxLabel ID="ASPxLabel79" runat="server" Text="Сума (авансова орендна плата)" Width="150px" /> </td>
+                                                                <%--
+                                                                    <td> <dx:ASPxLabel ID="ASPxLabel79" runat="server" Text="Сума (авансова орендна плата)" Width="150px" /> </td>
                                                                 <td> 
                                                                     <dx:ASPxSpinEdit ID="EditPaymentSm_2" ClientInstanceName="id_payment_sm_2" runat="server" NumberType="Float" Value='<%# Eval("payment_sm_2") %>' Width="200px" >
                                                                         <ClientSideEvents NumberChanged="function(s, e) { UpdateScaleFactor(s) }" />
                                                                     </dx:ASPxSpinEdit>
                                                                 </td>
+                                                                    --%>
                                                             </tr>      
                                                             <tr>
                                                                 <td> <dx:ASPxLabel ID="ASPxLabel80" runat="server" Text="Сума (погашення заборгованості минулих періодів)" Width="150px" /> </td>

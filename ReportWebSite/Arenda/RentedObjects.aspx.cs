@@ -136,13 +136,34 @@ public partial class Arenda_RentedObjects : System.Web.UI.Page
             field = (e.Item as ASPxSummaryItem).FieldName.ToLower();
         }
 
-        if (field.StartsWith("sqr_free_"))
+        if (field == "agreement_num")
         {
-            Utils.CustomSummaryUniqueBalansOrgAndObject(e, "org_balans_id", true);
+            if (e.SummaryProcess == DevExpress.Data.CustomSummaryProcess.Start)
+            {
+                e.TotalValue = new List<int>();
+            }
+            else if (e.SummaryProcess == DevExpress.Data.CustomSummaryProcess.Calculate)
+            {
+                var row = e.Row as System.Data.DataRowView;
+                var arenda_id = (int)row["arenda_id"];
+                (e.TotalValue as List<int>).Add(arenda_id);
+            }
+            else if (e.SummaryProcess == DevExpress.Data.CustomSummaryProcess.Finalize)
+            {
+                var cnt = (e.TotalValue as List<int>).Distinct().Count();
+                e.TotalValue = "Кіл-ть: " + cnt;
+            }
         }
         else
         {
-            Utils.CustomSummaryExcludeSubarenda(e);
+            if (field.StartsWith("sqr_free_"))
+            {
+                Utils.CustomSummaryUniqueBalansOrgAndObject(e, "org_balans_id", true);
+            }
+            else
+            {
+                Utils.CustomSummaryExcludeSubarenda(e);
+            }
         }
     }
 

@@ -433,6 +433,11 @@ WHERE id = @arenda_id"
             VisibleIndex="31" Visible="True" Caption="Кількість об’єктів за договором">
             <CellStyle HorizontalAlign="Center"></CellStyle>
         </dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="list_dogovor_objects" ReadOnly="True"
+            VisibleIndex="31" Visible="False" Caption="ID об’єктів за договором">
+            <CellStyle HorizontalAlign="Center"></CellStyle>
+        </dx:GridViewDataTextColumn>
+
 
 <%--        <dx:GridViewDataTextColumn FieldName="floor_number" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="32" Visible="False" Caption="Поверх"></dx:GridViewDataTextColumn>
@@ -660,6 +665,17 @@ WHERE id = @arenda_id"
         <dx:GridViewDataTextColumn FieldName="big_month_koef" ReadOnly="True" Width="80px"
             VisibleIndex="130" Visible="True" Caption="Поточна заборгованість, у місячних ОП"></dx:GridViewDataTextColumn>
 
+		<dx:GridViewDataTextColumn FieldName="prozoro_number" Caption="Унікальний код обєкту у ЕТС Прозорро-продажі" VisibleIndex="130" Width="150px" Visible="False">
+			<DataItemTemplate>
+				<%# "<a target=\"_blank\" href=\"https://prozorro.sale/auction/" + Eval("prozoro_number") + "\">" + Eval("prozoro_number") + "</a>"%>
+			</DataItemTemplate>
+		</dx:GridViewDataTextColumn>
+
+
+        <dx:GridViewDataTextColumn FieldName="arenda_id" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="130" Visible="False" Caption="ID договору"></dx:GridViewDataTextColumn>
+
+
         <dx:GridViewDataComboBoxColumn FieldName="orandodavec_user_id" Caption="Контроль орендодавця" Width="200px" VisibleIndex="130">
             <PropertiesComboBox 
 				DataSourceID="SqlDataSourceFreecycleStepDict"
@@ -743,7 +759,7 @@ WHERE id = @arenda_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_31" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_33" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
