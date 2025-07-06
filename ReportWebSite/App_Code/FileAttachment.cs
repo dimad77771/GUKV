@@ -53,6 +53,8 @@ namespace ExtDataEntry.Models
 
 		public static IEnumerable<FileAttachment> SelectCore(string scope, int recordID)
         {
+			System.Diagnostics.Debug.WriteLine("scope=" + scope + "\t" + "recordID=" + recordID);
+
             if (string.IsNullOrEmpty(scope))
                 throw new ArgumentException("scope must have a value");
 
