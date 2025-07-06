@@ -100,7 +100,12 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceReports" runat="server" EnableCaching="false"
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT 
+    SelectCommand="
+    
+    drop table if exists #arenda_payment_problems;
+    select * into #arenda_payment_problems from arenda_payment_problems where @show_num_problem_dog = 1;
+    
+    SELECT 
         isnull(ddd.name, 'Невідомо') as 'dict_rent_occupation_name',
         (SELECT Q.stan_recieve_name FROM dict_stan_recieve Q where Q.stan_recieve_id = rep.stan_recieve_id) stan_recieve_name,
 		rep.*,
@@ -188,6 +193,7 @@
             
          LEFT JOIN (
          SELECT R.report_id, SUM(R.row_count) AS 'NUM_GIVEN', SUM(R.SQR_GIVEN) AS 'SQR_GIVEN', COUNT(distinct org_renter_id) AS 'NUM_RENTER'
+                ,case when @show_num_problem_dog = 1 then sum(NUM_PROBLEM_DOG) else 0 end as 'NUM_PROBLEM_DOG'
 --        SELECT R.report_id, SUM(R.row_count) AS 'NUM_GIVEN', SUM(R.SQR_GIVEN) AS 'SQR_GIVEN'
 --         SELECT R.report_id, SUM(NUM_GIVEN)  as 'NUM_GIVEN', SUM(R.SQR_GIVEN) AS 'SQR_GIVEN'
          FROM (
@@ -197,7 +203,9 @@
            		,1 AS 'row_count'
             		,ar.report_id
 		,ar.org_renter_id
+        ,sum(case when pr.[is_problem] = 1 then 1 else 0 end) as 'NUM_PROBLEM_DOG'
 		FROM reports1nf_arenda ar
+        LEFT JOIN #arenda_payment_problems pr on pr.arenda_id = ar.id and pr.report_id = ar.report_id
 		WHERE (ar.is_deleted IS NULL OR ar.is_deleted = 0)
 			AND NOT EXISTS(SELECT id FROM arenda a WHERE a.id = ar.id AND ISNULL(a.is_deleted, 0) = 1)
 			AND ar.agreement_state = 1
@@ -401,6 +409,7 @@ WHERE id = @report_id"
 		<asp:Parameter DbType="Int32" DefaultValue="0" Name="smode" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_show_neziznacheni" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_show_neviznacheni" />
+        <asp:Parameter DbType="Int32" DefaultValue="0" Name="show_num_problem_dog" />
     </SelectParameters>
 
 
@@ -996,6 +1005,13 @@ WHERE id = @report_id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
+        <dx:GridViewDataTextColumn FieldName="NUM_PROBLEM_DOG" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="52" Caption="Кількість договорів оренди з проблемами" Visible="false" >
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("NUM_PROBLEM_DOG") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+
         <dx:GridViewDataTextColumn FieldName="NUM_RENTER" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="53" Caption="Кількість орендарів" >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("NUM_RENTER") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
@@ -1431,7 +1447,7 @@ WHERE id = @report_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A4_20" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A4_21" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

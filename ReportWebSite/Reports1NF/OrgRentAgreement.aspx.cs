@@ -1701,11 +1701,11 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 							values[2] = RentAgreementID;
 							values[3] = editPaymentDate.Date.Year >= 1800 ? (object)editPaymentDate.Date : null;
 							values[4] = editPaymentNumber.Text.Trim().ToUpper().Left(64);
-							values[5] = (decimal)editPaymentSm_1.Value + (decimal)editPaymentSm_2.Value + (decimal)editPaymentSm_3.Value + (decimal)editPaymentSm_4.Value;
+							values[5] = (decimal)editPaymentSm_1.Value + (editPaymentSm_2 != null ? (decimal)editPaymentSm_2.Value : 0) + (decimal)editPaymentSm_3.Value + (decimal)editPaymentSm_4.Value;
 							values[6] = editPaymentPurpose.Text.Trim().ToUpper().Left(256);
 							values[9] = editPaymentPeriod.SelectedItem.Value;
 							values[10] = editPaymentSm_1.Value;
-							values[11] = editPaymentSm_2.Value;
+							values[11] = (editPaymentSm_2 != null ? editPaymentSm_2.Value : 0);
 							values[12] = editPaymentSm_3.Value;
 							values[13] = editPaymentSm_4.Value;
 

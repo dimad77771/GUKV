@@ -461,6 +461,9 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 		e.Command.Parameters["@smode"].Value = SMode;
 		e.Command.Parameters["@p_show_neziznacheni"].Value = CheckBoxBalansObjectsShowNeziznacheni.Checked ? 0 : 1;
 		e.Command.Parameters["@p_show_neviznacheni"].Value = CheckBoxBalansObjectsShowNeviznacheni.Checked ? 1 : 0;
+
+		var show_num_problem_dog = PrimaryGridView.Columns["NUM_PROBLEM_DOG"].Visible;
+		e.Command.Parameters["@show_num_problem_dog"].Value = show_num_problem_dog ? 1 : 0;
 	}
 
 	protected void SqlDataSourceReports_Updating(object sender, SqlDataSourceCommandEventArgs e)
@@ -479,7 +482,7 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 		//}
 	}
 
-    protected void ASPxButton_Zvedeniy_Build(object sender, EventArgs e)
+	protected void ASPxButton_Zvedeniy_Build(object sender, EventArgs e)
     {
         var builder = new ZvedZvitBuilder
         {

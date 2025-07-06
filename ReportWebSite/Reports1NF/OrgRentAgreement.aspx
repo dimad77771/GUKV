@@ -77,7 +77,8 @@
         function ready(event) {
             HidePnl();
             setTimeout(function () {
-				EnableCmkControls();
+                EnableCmkControls();
+                EnableBaseMonth();
                 InitCalcCollectionDebtZvit();
 				//RefreshNarazhCalculation();
                 NarazhCalculationRun();
@@ -86,6 +87,17 @@
                 clientBtnAddPaymentDocument.SetEnabled(false);
             }
         }
+
+		function EnableBaseMonth(s, e) {
+            var paymentType = editComboPaymentType.GetValue();
+            var baseMonth = editBaseMonth.GetValue();
+            //console.log('baseMonth', baseMonth);
+            var isEnable = !(paymentType == 8);
+            if (!isEnable && baseMonth != null) {
+				editBaseMonth.SetValue(null);
+            }
+			editBaseMonth.SetEnabled(isEnable);
+		}
 
         function UpdateScaleFactor(sender) {
             var sum = 0
@@ -2895,7 +2907,7 @@ WHERE id = @id"
                                             <tr>
                                                 <td><dx:ASPxLabel ID="ASPxLabel82" runat="server" Text="Базовий місяць (вкажіть перше число місяця)"></dx:ASPxLabel></td>
                                                 <td>
-                                                    <dx:ASPxDateEdit ID="EditBaseMonth" runat="server" Value='<%# Eval("base_month") %>' Width="190px" Title="Базовий місяць (вкажіть перше число місяця)">
+                                                    <dx:ASPxDateEdit ID="EditBaseMonth" ClientInstanceName="editBaseMonth" runat="server" Value='<%# Eval("base_month") %>' Width="190px" Title="Базовий місяць (вкажіть перше число місяця)">
                                                         <ValidationSettings Display="None" ValidationGroup="MainGroup" EnableCustomValidation="true"></ValidationSettings>
                                                         <ClientSideEvents Validation="OnBirthdayValidation" DateChanged="function (s, e) { NarazhCalculationRun(); }" />
                                                     </dx:ASPxDateEdit>
@@ -2918,11 +2930,11 @@ WHERE id = @id"
                                             <tr>
                                                 <td><dx:ASPxLabel ID="ASPxLabel6" runat="server" Text="Вид оплати"></dx:ASPxLabel></td>
                                                 <td>
-                                                    <dx:ASPxComboBox ID="ComboPaymentType" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="190px" 
+                                                    <dx:ASPxComboBox ID="ComboPaymentType" ClientInstanceName="editComboPaymentType" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="190px" 
                                                         IncrementalFilteringMode="StartsWith" DataSourceID="SqlDataSourcePaymentType" Value='<%# Eval("payment_type_id") %>'
                                                         Title="Вид оплати">
                                                           <ClientSideEvents 
-                                                            SelectedIndexChanged ="function (s, e) { HideValidator(); NarazhCalculationRun(); }"
+                                                            SelectedIndexChanged ="function (s, e) { HideValidator(); EnableBaseMonth(); NarazhCalculationRun(); }"
                                                            />
                                                         <ValidationSettings Display="None" ValidationGroup="MainGroup" > <RequiredField IsRequired="false" /> </ValidationSettings>
                                                     </dx:ASPxComboBox>
@@ -5634,4 +5646,5 @@ WHERE id = @id"
 </table>
 
 </asp:Content>
+
 
