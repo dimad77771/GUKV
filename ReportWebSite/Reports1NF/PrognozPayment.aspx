@@ -306,10 +306,25 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
 
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictStanRecieve" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT 1 as id, '1 кв.' as name union
+SELECT 2 as id, '2 кв.' as name union
+SELECT 3 as id, '3 кв.' as name union
+SELECT 4 as id, '4 кв.' as name	">
+</mini:ProfiledSqlDataSource>
+
+
 	<mini:ProfiledSqlDataSource ID="SqlDataSourceInflation" runat="server"
 		ConnectionString="<%$ ConnectionStrings:GUKV2016ConnectionString %>"
-		SelectCommand="SELECT [id], [prognoz_inflation_this], [prognoz_inflation_next] FROM [current_inflation]"
-		UpdateCommand="UPDATE [current_inflation] SET [prognoz_inflation_next] = @prognoz_inflation_next">
+		SelectCommand="SELECT [id], [prognoz_inflation_this], [prognoz_inflation_next], prognoz_inflation_1,prognoz_inflation_2,prognoz_inflation_3,prognoz_inflation_4,rozrah_persion FROM [current_inflation]"
+		UpdateCommand="UPDATE [current_inflation] SET 
+			[prognoz_inflation_1] = @prognoz_inflation_1,
+			[prognoz_inflation_2] = @prognoz_inflation_2,
+			[prognoz_inflation_3] = @prognoz_inflation_3,
+			[prognoz_inflation_4] = @prognoz_inflation_4,
+			[rozrah_persion] = @rozrah_persion
+		">
 	</mini:ProfiledSqlDataSource>
 
 	<mini:ProfiledSqlDataSource ID="SqlDataSourcePrivatisat" runat="server"
@@ -872,7 +887,29 @@ SELECT SCOPE_IDENTITY()"
 			</dx:GridViewCommandColumn>
 
 			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_this" Caption="Прогноз індексу інфляції на 4 квартал 2024 року, %" Width="250px" Visible="false" />
-			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_next" Caption="Прогноз індексу інфляції на 2025 рік, %" Width="250px" />
+			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_next" Caption="Прогноз індексу інфляції на 2025 рік, %" Width="250px" Visible="false" />
+
+			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_1" Caption="Прогноз індексу інфляції на 9 міс. 2025 рік, %" Width="250px" />
+			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_2" Caption="Прогноз індексу інфляції на 12 міс. 2025 рік, %" Width="250px" />
+			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_3" Caption="Прогноз індексу інфляції на 3 міс. 2026 рік, %" Width="250px" />
+			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_4" Caption="Прогноз індексу інфляції на 6 міс. 2026 рік, %" Width="250px" />
+
+			<dx:GridViewDataComboBoxColumn FieldName="rozrah_persion" Caption="Розрахунковий період" Width="300px">
+				<PropertiesComboBox 
+					DataSourceID="SqlDataSourceDictStanRecieve"
+					DropDownStyle="DropDownList"
+					DropDownWidth="300px"
+					TextField="name"  
+					ValueField="id">
+				</PropertiesComboBox>  
+			</dx:GridViewDataComboBoxColumn>
+
+<%--
+	<ClientSideEvents DropDown="function(s, e) {
+						OnDropDown(s);
+					}" />--%>
+
+
 		</Columns>
 
 
@@ -957,7 +994,7 @@ SELECT SCOPE_IDENTITY()"
 			</dx:GridViewDataTextColumn>
 
 
-			<dx:GridViewDataSpinEditColumn FieldName="contribution_rate" Caption="Ставка відрахувань до бюджету (%)" Width="150px">
+			<dx:GridViewDataSpinEditColumn FieldName="contribution_rate" Caption="Ставка відрахувань до бюджету (%)" Width="150px" Visible="false">
 				<EditItemTemplate>
 					<dx:ASPxLabel runat="server" Text='<%# Eval("contribution_rate") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 				</EditItemTemplate>
@@ -1037,7 +1074,7 @@ SELECT SCOPE_IDENTITY()"
 			ShowFooter="false"
 			VerticalScrollBarMode="Auto"
 			VerticalScrollBarStyle="Standard" />
-		<SettingsCookies CookiesID="GUKV.Reports1NF.PrognozPayment" Version="A4_002" Enabled="true" />
+		<SettingsCookies CookiesID="GUKV.Reports1NF.PrognozPayment" Version="A4_005" Enabled="true" />
 		<Styles Header-Wrap="True">
 			<Header Wrap="True"></Header>
 		</Styles>

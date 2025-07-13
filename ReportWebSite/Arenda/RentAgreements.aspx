@@ -490,7 +490,7 @@ WHERE id = @arenda_id"
         <dx:GridViewDataTextColumn FieldName="rent_rate_uah" ReadOnly="True"
             VisibleIndex="53" Visible="False" Caption="Ставка (грн.)"></dx:GridViewDataTextColumn>    --%>
         <dx:GridViewDataTextColumn FieldName="rent_square" ReadOnly="True" 
-            VisibleIndex="54" Visible="False" Caption="Площа приміщення, що використовується, кв.м"></dx:GridViewDataTextColumn>
+            VisibleIndex="54" Visible="False" Caption="Площа що орендується, кв.м"></dx:GridViewDataTextColumn>
 <%--        <dx:GridViewDataTextColumn FieldName="num_akt" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="55" Visible="False" Caption="Номер Акту"></dx:GridViewDataTextColumn>
         <dx:GridViewDataDateColumn FieldName="date_akt" ReadOnly="True" ShowInCustomizationForm="False"
@@ -637,15 +637,15 @@ WHERE id = @arenda_id"
         <dx:GridViewDataDateColumn FieldName="zvilneno_date2" ReadOnly="True"
             VisibleIndex="113" Visible="True" Caption="Звільнено від сплати орендної плати на (по)"></dx:GridViewDataDateColumn>
 
-        <dx:GridViewDataTextColumn FieldName="zvilbykmp_percent" ReadOnly="True"
+<%--        <dx:GridViewDataTextColumn FieldName="zvilbykmp_percent" ReadOnly="True"
             VisibleIndex="114" Visible="True" Caption="Звільнено від сплати згідно абзац 3 пункт 2 рішення КМР 253/9332 (%)"></dx:GridViewDataTextColumn>
         <dx:GridViewDataDateColumn FieldName="zvilbykmp_date1" ReadOnly="True"
             VisibleIndex="115" Visible="True" Caption="Звільнено від сплати згідно абзац 3 пункт 2 рішення КМР 253/9332 (з)"></dx:GridViewDataDateColumn>
         <dx:GridViewDataDateColumn FieldName="zvilbykmp_date2" ReadOnly="True"
-            VisibleIndex="116" Visible="True" Caption="Звільнено від сплати згідно абзац 3 пункт 2 рішення КМР 253/9332 (по)"></dx:GridViewDataDateColumn>
+            VisibleIndex="116" Visible="True" Caption="Звільнено від сплати згідно абзац 3 пункт 2 рішення КМР 253/9332 (по)"></dx:GridViewDataDateColumn>--%>
 
 
-        <dx:GridViewDataDateColumn FieldName="povidoleno1_date" ReadOnly="True"
+<%--        <dx:GridViewDataDateColumn FieldName="povidoleno1_date" ReadOnly="True"
             VisibleIndex="117" Visible="True" Caption="Повідомлення орендаря до балансоутримувача про неможлівість використання (дата)"></dx:GridViewDataDateColumn>
         <dx:GridViewDataTextColumn FieldName="povidoleno1_num" ReadOnly="True"
             VisibleIndex="118" Visible="True" Caption="Повідомлення орендаря до балансоутримувача про неможлівість використання (№)"></dx:GridViewDataTextColumn>
@@ -661,7 +661,7 @@ WHERE id = @arenda_id"
             VisibleIndex="123" Visible="True" Caption="Повідомлення орендаря до орендодавця про намір використовувати об'єкт (дата)"></dx:GridViewDataDateColumn>
         <dx:GridViewDataTextColumn FieldName="povidoleno4_num" ReadOnly="True"
             VisibleIndex="124" Visible="True" Caption="Повідомлення орендаря до орендодавця про намір використовувати об'єкт (№)"></dx:GridViewDataTextColumn>
-
+--%>
         <dx:GridViewDataTextColumn FieldName="big_month_koef" ReadOnly="True" Width="80px"
             VisibleIndex="130" Visible="True" Caption="Поточна заборгованість, у місячних ОП"></dx:GridViewDataTextColumn>
 
@@ -759,7 +759,7 @@ WHERE id = @arenda_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_33" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_34" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
