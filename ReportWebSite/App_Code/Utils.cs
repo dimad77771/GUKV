@@ -3467,6 +3467,63 @@ public static class Utils
         else return arg.ToString();
     }
 
+
+	public static string GetStringFromSqlDataTable(this DataTable rows, int rownum, string column)
+	{
+		var value = rows.Rows[rownum][column];
+		if (value == System.DBNull.Value)
+			return (string)null;
+		else
+			return (string)value;
+	}
+
+	public static DateTime? GetDateTimeFromSqlDataTable(this DataTable rows, int rownum, string column)
+	{
+		var value = rows.Rows[rownum][column];
+		if (value == System.DBNull.Value)
+			return (DateTime?)null;
+		else
+			return (DateTime)value;
+	}
+
+	public static Decimal? GetDecimalFromSqlDataTable(this DataTable rows, int rownum, string column)
+	{
+		var value = rows.Rows[rownum][column];
+		if (value == System.DBNull.Value)
+			return (Decimal?)null;
+		else
+			return (Decimal)value;
+	}
+
+	public static int? GetIntFromSqlDataTable(this DataTable rows, int rownum, string column)
+	{
+		var value = rows.Rows[rownum][column];
+		if (value == System.DBNull.Value)
+			return (int?)null;
+		else
+			return (int)value;
+	}
+
+	public static DataTable GetSqlDataTable(string sql, SqlConnection connection)
+	{
+		var factory = DbProviderFactories.GetFactory(connection);
+		var dataTable = new DataTable();
+		using (var cmd = factory.CreateCommand())
+		{
+			cmd.CommandText = sql;
+			cmd.CommandType = CommandType.Text;
+			cmd.Connection = connection;
+			using (var adapter = factory.CreateDataAdapter())
+			{
+				adapter.SelectCommand = cmd;
+				adapter.Fill(dataTable);
+			}
+		}
+
+		return dataTable;
+	}
+
+
 }
 
 public class CreateNewArendaDogovorData

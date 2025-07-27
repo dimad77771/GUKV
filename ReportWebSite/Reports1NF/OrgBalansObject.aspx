@@ -2869,7 +2869,7 @@ WHERE id = @id"
                                                 <td><dx:ASPxLabel ID="ASPxLabel3" runat="server" Text="Інвентаризаційний № справи"></dx:ASPxLabel></td>
                                                 <td>
                                                     <dx:ASPxTextBox ID="EditCaseNumber" ClientInstanceName="EditCaseNumber" runat="server" 
-                                                         Width="240px" Text='<%# EvaluateTrimStr(Eval("obj_bti_code")) %>' Title="Інвентаризаційний № справи" MaxLength="18">
+                                                         Width="240px" Text='<%# EvaluateTrimStr(Eval("obj_bti_code")) %>' Title="Інвентаризаційний № справи" MaxLength="1000">
                                                         <ValidationSettings Display="None"></ValidationSettings>
                                                     </dx:ASPxTextBox>
                                                 </td>

@@ -994,7 +994,7 @@ SELECT SCOPE_IDENTITY()"
 			</dx:GridViewDataTextColumn>
 
 
-			<dx:GridViewDataSpinEditColumn FieldName="contribution_rate" Caption="Ставка відрахувань до бюджету (%)" Width="150px" Visible="false">
+			<dx:GridViewDataSpinEditColumn FieldName="contribution_rate" Caption="Ставка відрахувань до бюджету (%)" Width="150px" Visible="true">
 				<EditItemTemplate>
 					<dx:ASPxLabel runat="server" Text='<%# Eval("contribution_rate") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 				</EditItemTemplate>
@@ -1074,7 +1074,7 @@ SELECT SCOPE_IDENTITY()"
 			ShowFooter="false"
 			VerticalScrollBarMode="Auto"
 			VerticalScrollBarStyle="Standard" />
-		<SettingsCookies CookiesID="GUKV.Reports1NF.PrognozPayment" Version="A4_005" Enabled="true" />
+		<SettingsCookies CookiesID="GUKV.Reports1NF.PrognozPayment" Version="A4_006" Enabled="true" />
 		<Styles Header-Wrap="True">
 			<Header Wrap="True"></Header>
 		</Styles>

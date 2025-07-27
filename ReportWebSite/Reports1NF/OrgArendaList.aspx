@@ -264,7 +264,7 @@
 ,isnull(ap.payment_narah,0) - isnull(ap.znyato_nadmirno_narah,0) as payment_narah_normal
 
 ,(select SUM(Q.payment_sum) from reports1nf_payment_documents Q where Q.report_id = ar.report_id and Q.arenda_id = ar.id 
-        and Q.rent_period_id = (SELECT QQ.id FROM dict_rent_period QQ where QQ.is_active = 1)
+        and Q.rent_period_id in (select QQQ.id from dict_rent_period QQQ where QQQ.period_year = (SELECT QQ.period_year FROM dict_rent_period QQ where QQ.is_active = 1))
 ) as payment_total_all
 
 ,case when @show_payment_narahcalc = 1 then [dbo].[get_payment_narahcalc](ar.id, ar.report_id) else null end as payment_narahcalc
