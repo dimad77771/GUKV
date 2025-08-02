@@ -20,9 +20,9 @@
 				</div>
 				<div style="float: right; color: white">
 					<strong>Технічна підтримка <a style="color: white" href="mailto:seic@gukv.gov.ua" title="Написати лист">seic@gukv.gov.ua</a> </strong>
-					0970656664 (консультує з 9.00 – 14.00 год., звітний пер. 10.00-18.00) – Тетяна;
+					0970656664 (консультує з 9.00 – 14.00 год.,  у звітний пер. 10.00-18.00) – Тетяна;
 					<br />
-					ТІЛЬКИ орендна плата: р. 2026166 (консультує 13.00 – 16.00 год.) Катерина,  Лілія Борисівна.
+					Oрендна плата (O.п.): 2026166 (13.00–16.00) Лілія Борисівна. Розрахунок O.п.: 0503929268 - Володимир Волошин.
 				</div>
 			</div>
 			<div class="clear hideSkiplink">
@@ -220,27 +220,31 @@
 
 															<dx:RibbonDropDownButtonItem Text="Архіви БД" Size="Large">
 																<Items>
-																	<dx:RibbonDropDownButtonItem Text="станом на 2016 рік" NavigateUrl="20160101" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="станом на 2015 рік" NavigateUrl="20160101" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="станом на 2017 рік" NavigateUrl="20170131" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="станом на 2016 рік" NavigateUrl="20170131" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="станом на 2018 рік" NavigateUrl="20180201" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="станом на 2017 рік" NavigateUrl="20180201" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="станом на 2019 рік" NavigateUrl="20190204" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="станом на 2018 рік" NavigateUrl="20190204" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="станом на 2020 рік" NavigateUrl="20200131" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="станом на 2019 рік" NavigateUrl="20200131" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="станом на 2021 рік" NavigateUrl="20201209" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="станом на 2020 рік" NavigateUrl="20201209" Target="_blank">
+																		<SmallImage IconID="scheduling_groupbydate_16x16">
+																		</SmallImage>
+																	</dx:RibbonDropDownButtonItem>
+																	<dx:RibbonDropDownButtonItem Text="станом на 2021 рік" NavigateUrl="20220101" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
@@ -324,27 +328,31 @@
 
 															<dx:RibbonDropDownButtonItem Text="Ретроспектива" Size="Large">
 																<Items>
-																	<dx:RibbonDropDownButtonItem Text="станом на 2016 рік" NavigateUrl="20160101" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="станом на 2015 рік" NavigateUrl="20160101" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="станом на 2017 рік" NavigateUrl="20170131" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="станом на 2016 рік" NavigateUrl="20170131" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="станом на 2018 рік" NavigateUrl="20180201" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="станом на 2017 рік" NavigateUrl="20180201" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="станом на 2019 рік" NavigateUrl="20190204" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="станом на 2018 рік" NavigateUrl="20190204" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="станом на 2020 рік" NavigateUrl="20200131" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="станом на 2019 рік" NavigateUrl="20200131" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="станом на 2021 рік" NavigateUrl="20201209" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="станом на 2020 рік" NavigateUrl="20201209" Target="_blank">
+																		<SmallImage IconID="scheduling_groupbydate_16x16">
+																		</SmallImage>
+																	</dx:RibbonDropDownButtonItem>
+																	<dx:RibbonDropDownButtonItem Text="станом на 2021 рік" NavigateUrl="20220101" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
