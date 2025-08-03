@@ -23,281 +23,296 @@
 
 	<script type="text/javascript" language="javascript">
 
-		// <![CDATA[
+        // <![CDATA[
 
-		window.onresize = function () { AdjustGridSizes(); };
+        window.onresize = function () { AdjustGridSizes(); };
 
-		function AdjustGridSizes() {
-			var hh = 120
-			InflationGridView.SetHeight(hh);
-			PrivatisatGridView.SetHeight(window.innerHeight - 140 - hh);
+        function AdjustGridSizes() {
+            var hh = 120
+            InflationGridView.SetHeight(hh);
+            PrivatisatGridView.SetHeight(window.innerHeight - 140 - hh);
+        }
+
+        function GridViewFreeSquareInit(s, e) {
+
+            PrivatisatGridView.PerformCallback("init:");
+        }
+
+        function GridViewFreeSquareEndCallback(s, e) {
+
+            AdjustGridSizes();
+        }
+
+        function ShowFieldChooserPopupControl(s, e) {
+
+            PrimaryGridView = PrivatisatGridView;
+            PopupFieldChooser.Show();
+        }
+
+
+        function ShowPhoto(s, e) {
+            if (e.buttonID == 'btnPdfBuild') {
+                PrivatisatGridView.GetRowValues(e.visibleIndex, 'id', OnGridPdfBuildGetRowValues);
+            } else if (e.buttonID == 'btnJpegBuild') {
+                PrivatisatGridView.GetRowValues(e.visibleIndex, 'id', OnGridJpegBuildGetRowValues);
+            } else if (e.buttonID == 'bnt_current_stage_pdf') {
+                $.cookie('RecordID', s.GetRowKey(e.visibleIndex));
+                ASPxFileManagerPhotoFiles.Refresh();
+                PopupObjectPhotos.Show();
+            } else if (e.buttonID == 'btnMapShow') {
+                PrivatisatGridView.GetRowValues(e.visibleIndex, 'id', OnMapShowGetRowValues);
+            } else if (e.buttonID == 'btnFreeCycle') {
+                PrivatisatGridView.GetRowValues(e.visibleIndex, 'id', OnFreeCycleGetRowValues);
+            } else if (e.buttonID == 'btnOrgBalansObject') {
+                PrivatisatGridView.GetRowValues(e.visibleIndex, 'id;balans_id;report_id', OnClickOrgBalansObject);
+            } else if (e.buttonID == 'btnCopyFullDescription2') {
+                var cols = "include_in_perelik;zal_balans_vartist;perv_balans_vartist;free_object_type_name;prop_srok_orands;punkt_metod_rozrahunok;invest_solution;";
+                cols += "zgoda_control;district;street_name;addr_nomer;total_free_sqr;free_sql_usefull;";
+                cols += "floor;condition;water;heating;gas;power_text;history;zgoda_renter;nomer_derzh_reestr_neruh;reenum_derzh_reestr_neruh;info_priznach_nouse;info_rahunok_postach;priznach_before;period_nouse;osoba_use_before"
+                PrivatisatGridView.GetRowValues(e.visibleIndex, cols, OnCopyFullDescription2);
+            } else if (e.buttonID == 'btnCopyFullDescription') {
+                var cols = "id";
+                PrivatisatGridView.GetRowValues(e.visibleIndex, cols, OnCopyFullDescription);
+            }
+        }
+
+        function onZkpoCodeChanged(s, e) {
+            //console.log("s", s);
+            //console.log("e", e);
+            //grid.GetEditor("org_name").PerformCallback(s.GetValue());
+            var editor = PrivatisatGridView.GetEditor("org_info_id");
+            var table = $(editor.inputElement).parents("#MainContent_PrivatisatGridView_DXEditingRow");
+            var child = table.find("td.dxgv").eq(4).children("span");
+            console.log("editor", editor);
+            console.log("table", table);
+            console.log("child", child);
+            var text = editor.GetText();
+            text = text.substring(text.indexOf("-") + 2);
+            console.log("text", text);
+            child.text(text);
+        }
+
+        function OnCopyFullDescription(values) {
+            var headers = [
+                "Включено до переліку № - ",
+                "Залишкова балансова вартість – ",
+                "Первісна балансова вартість - ",
+                "Тип об’єкта - ",
+                "Пропонований строк оренди (у роках) – ",
+                "Пункт Методики розрахунку орендної плати (якщо об’єкт пропонується для включення до Переліку другого типу) - ",
+                "Наявність рішень про проведення інвестиційного конкурсу або про включення об’єкта до переліку майна, що підлягає приватизації - ",
+
+                "Погодження органу управління балансоутримувача – ",
+                "Район – ",
+                "Назва Вулиці - ",
+                "Номер Будинку - ",
+                "Загальна площа об’єкта - ",
+                "Корисна площа об’єкта – ",
+                "Характеристика об’єкта оренди(будівлі в цілому або частини будівлі із зазначенням місця розташування об’єкта в будівлі(надземний, цокольний, підвальний, технічний або мансардний поверх, номер поверху або поверхів) – ",
+                "Технічний стан – ",
+                "Водопостачання – ",
+                "Теплопостачання – ",
+                "Газопостачання – ",
+                "Електропостачання – ",
+                "Пам’ятка культурної спадщини - ",
+                "Погодження органу охорони культурної спадщини - ",
+                "Номер запису про право власності у Реєстрація у Державному реєстрі речових прав на нерухоме майно – ",
+                "Реєстраційний номер об'єкту нерухомого майна у Реєстрація у Державному реєстрі речових прав на нерухоме майно – ",
+                "Інформація про цільове призначення об’єкта оренди – ",
+                "Інформація про наявність окремих особових рахунків на об'єкт оренди, відкритих постачальниками комунальних послуг - ",
+                "Цільове призначення об’єкта, за яким об’єкт використовувався перед тим, як він став вакантним – ",
+                "Період часу, протягом якого об’єкт не використовується – ",
+                "Інформацію про особу, яка використовувала об’єкт перед тим, як він став вакантним – ",
+            ];
+
+            console.log("values", values);
+
+            var txt = "";
+            //for (var i = 0; i < headers.length; i++) {
+            //	var vv = values[i];
+            //	if (vv === null) {
+            //		vv = "";
+            //	} else if (vv === true) {
+            //		vv = "так";
+            //	} else if (vv === false) {
+            //		vv = "ні";
+            //	}
+
+            //	txt += (i == 0 ? "" : "\n") + headers[i] + vv;
+            //}
+
+            //var id = values[values.length - 1];
+            var id = values;
+            txt += "Фото - http://eis.gukv.gov.ua/gukv/Reports1NF/BalansPrivatisatPhotosPdf.aspx?id=" + id + '&jpeg=1';
+
+            //console.log("txt", txt);
+
+            $("#inpit-for-copy-clipboard").val(txt);
+            $("#inpit-for-copy-clipboard").select();
+            document.execCommand("copy");
+            return;
+
+            navigator.clipboard.writeText(txt).then(function () {
+                alert("Опис скопійовано в буфер обміну");
+            }, function () {
+                alert("Не можу записати буфер обміну");
+            });
+        }
+
+        function OnCopyFullDescription2(values) {
+            var headers = [
+                "Включено до переліку № - ",
+                "Залишкова балансова вартість – ",
+                "Первісна балансова вартість - ",
+                "Тип об’єкта - ",
+                "Пропонований строк оренди (у роках) – ",
+                "Пункт Методики розрахунку орендної плати (якщо об’єкт пропонується для включення до Переліку другого типу) - ",
+                "Наявність рішень про проведення інвестиційного конкурсу або про включення об’єкта до переліку майна, що підлягає приватизації - ",
+
+                "Погодження органу управління балансоутримувача – ",
+                "Район – ",
+                "Назва Вулиці - ",
+                "Номер Будинку - ",
+                "Загальна площа об’єкта - ",
+                "Корисна площа об’єкта – ",
+                "Характеристика об’єкта оренди(будівлі в цілому або частини будівлі із зазначенням місця розташування об’єкта в будівлі(надземний, цокольний, підвальний, технічний або мансардний поверх, номер поверху або поверхів) – ",
+                "Технічний стан – ",
+                "Водопостачання – ",
+                "Теплопостачання – ",
+                "Газопостачання – ",
+                "Електропостачання – ",
+                "Пам’ятка культурної спадщини - ",
+                "Погодження органу охорони культурної спадщини - ",
+                "Номер запису про право власності у Реєстрація у Державному реєстрі речових прав на нерухоме майно – ",
+                "Реєстраційний номер об'єкту нерухомого майна у Реєстрація у Державному реєстрі речових прав на нерухоме майно – ",
+                "Інформація про цільове призначення об’єкта оренди – ",
+                "Інформація про наявність окремих особових рахунків на об'єкт оренди, відкритих постачальниками комунальних послуг - ",
+                "Цільове призначення об’єкта, за яким об’єкт використовувався перед тим, як він став вакантним – ",
+                "Період часу, протягом якого об’єкт не використовується – ",
+                "Інформацію про особу, яка використовувала об’єкт перед тим, як він став вакантним – ",
+            ];
+
+            console.log("values", values);
+
+            var txt = "";
+            for (var i = 0; i < headers.length; i++) {
+                var vv = values[i];
+                if (vv === null) {
+                    vv = "";
+                } else if (vv === true) {
+                    vv = "так";
+                } else if (vv === false) {
+                    vv = "ні";
+                }
+
+                txt += (i == 0 ? "" : "\n") + headers[i] + vv;
+            }
+
+            //console.log("txt", txt);
+
+            $("#inpit-for-copy-clipboard").val(txt);
+            $("#inpit-for-copy-clipboard").select();
+            document.execCommand("copy");
+            return;
+
+            navigator.clipboard.writeText(txt).then(function () {
+                alert("Опис скопійовано в буфер обміну");
+            }, function () {
+                alert("Не можу записати буфер обміну");
+            });
+        }
+
+
+        function OnMapShowGetRowValues(values) {
+            var id = values;
+            window.open(
+                'Report1NFPrivatisatMap.aspx?fs_id=' + id,
+                '_blank',
+            );
+        }
+
+        function OnFreeCycleGetRowValues(values) {
+            var id = values;
+            window.open(
+                'FreeCycle.aspx?free_square_id=' + id,
+                '_blank',
+            );
+        }
+
+        function OnClickOrgBalansObject(values) {
+            window.location = 'OrgBalansObject.aspx?rid=' + values[2] + '&bid=' + values[1] + '&edit_free_square_id=' + values[0];
+        }
+
+
+        function OnGridPdfBuildGetRowValues(values) {
+            console.log(values);
+            var id = values;
+            window.open(
+                'BalansPrivatisatPhotosPdf.aspx?id=' + id,
+                '_blank',
+            );
+        }
+
+        function OnGridJpegBuildGetRowValues(values) {
+            console.log(values);
+            var id = values;
+            window.open(
+                'BalansPrivatisatPhotosPdf.aspx?id=' + id + '&jpeg=1',
+                '_blank',
+            );
+        }
+
+
+        function OnDropDown(comboBox) {
+            //SetDropDownWidth(comboBox, "368px");
+            _aspxMakeScollableArea(comboBox);
+        }
+
+        function SetDropDownWidth(comboBox, width) {
+            var listBox = comboBox.GetListBoxControl();
+            var scrollDiv = listBox.GetScrollDivElement();
+            //scrollDiv.style.overflowX = "auto";
+            //scrollDiv.style.width = width;
+
+            scrollDiv.style.overflowY = "scroll";
+            console.log("scrollDiv.style.overflowY", scrollDiv.style.overflowY);
+
+            var popupControl = comboBox.GetPopupControl();
+            //popupControl.SetSize("0", "0");
+        }
+
+
+        function _aspxMakeScollableArea(comboBox) {
+            var listBox = comboBox.GetListBoxControl();
+            if (_aspxIsExists(listBox)) {
+                var lsScrollableDiv = listBox.GetScrollDivElement();
+                if (_aspxIsExists(lsScrollableDiv)) {
+                    var browserWidth = (_aspxGetDocumentClientWidth() - 10) + 'px';
+                    //alert(browserWidth);
+                    _aspxSetAttribute(lsScrollableDiv.style, "width", browserWidth);
+                    _aspxSetAttribute(lsScrollableDiv.style, "overflow-x", "scroll");
+                    _aspxSetAttribute(lsScrollableDiv.style, "overflow-y", "scroll");
+                }
+            }
+        }
+
+        // ]]>
+
+    </script>
+
+	<script type="text/javascript">
+		function showOverlay() {
+			document.getElementById("blockingOverlay").style.display = "block";
 		}
 
-		function GridViewFreeSquareInit(s, e) {
-
-			PrivatisatGridView.PerformCallback("init:");
+		function hideOverlay() {
+			document.getElementById("blockingOverlay").style.display = "none";
 		}
 
-		function GridViewFreeSquareEndCallback(s, e) {
-
-			AdjustGridSizes();
+		function handleError(msg) {
+			hideOverlay();
+			alert("Сталася помилка:\n" + msg);
 		}
-
-		function ShowFieldChooserPopupControl(s, e) {
-
-			PrimaryGridView = PrivatisatGridView;
-			PopupFieldChooser.Show();
-		}
-
-
-		function ShowPhoto(s, e) {
-			if (e.buttonID == 'btnPdfBuild') {
-				PrivatisatGridView.GetRowValues(e.visibleIndex, 'id', OnGridPdfBuildGetRowValues);
-			} else if (e.buttonID == 'btnJpegBuild') {
-				PrivatisatGridView.GetRowValues(e.visibleIndex, 'id', OnGridJpegBuildGetRowValues);
-			} else if (e.buttonID == 'bnt_current_stage_pdf') {
-				$.cookie('RecordID', s.GetRowKey(e.visibleIndex));
-				ASPxFileManagerPhotoFiles.Refresh();
-				PopupObjectPhotos.Show();
-			} else if (e.buttonID == 'btnMapShow') {
-				PrivatisatGridView.GetRowValues(e.visibleIndex, 'id', OnMapShowGetRowValues);
-			} else if (e.buttonID == 'btnFreeCycle') {
-				PrivatisatGridView.GetRowValues(e.visibleIndex, 'id', OnFreeCycleGetRowValues);
-			} else if (e.buttonID == 'btnOrgBalansObject') {
-				PrivatisatGridView.GetRowValues(e.visibleIndex, 'id;balans_id;report_id', OnClickOrgBalansObject);
-			} else if (e.buttonID == 'btnCopyFullDescription2') {
-				var cols = "include_in_perelik;zal_balans_vartist;perv_balans_vartist;free_object_type_name;prop_srok_orands;punkt_metod_rozrahunok;invest_solution;";
-				cols += "zgoda_control;district;street_name;addr_nomer;total_free_sqr;free_sql_usefull;";
-				cols += "floor;condition;water;heating;gas;power_text;history;zgoda_renter;nomer_derzh_reestr_neruh;reenum_derzh_reestr_neruh;info_priznach_nouse;info_rahunok_postach;priznach_before;period_nouse;osoba_use_before"
-				PrivatisatGridView.GetRowValues(e.visibleIndex, cols, OnCopyFullDescription2);
-			} else if (e.buttonID == 'btnCopyFullDescription') {
-				var cols = "id";
-				PrivatisatGridView.GetRowValues(e.visibleIndex, cols, OnCopyFullDescription);
-			}
-		}
-
-		function onZkpoCodeChanged(s, e) {
-			//console.log("s", s);
-			//console.log("e", e);
-			//grid.GetEditor("org_name").PerformCallback(s.GetValue());
-			var editor = PrivatisatGridView.GetEditor("org_info_id");
-			var table = $(editor.inputElement).parents("#MainContent_PrivatisatGridView_DXEditingRow");
-			var child = table.find("td.dxgv").eq(4).children("span");
-			console.log("editor", editor);
-			console.log("table", table);
-			console.log("child", child);
-			var text = editor.GetText();
-			text = text.substring(text.indexOf("-") + 2);
-			console.log("text", text);
-			child.text(text);
-		}
-
-		function OnCopyFullDescription(values) {
-			var headers = [
-				"Включено до переліку № - ",
-				"Залишкова балансова вартість – ",
-				"Первісна балансова вартість - ",
-				"Тип об’єкта - ",
-				"Пропонований строк оренди (у роках) – ",
-				"Пункт Методики розрахунку орендної плати (якщо об’єкт пропонується для включення до Переліку другого типу) - ",
-				"Наявність рішень про проведення інвестиційного конкурсу або про включення об’єкта до переліку майна, що підлягає приватизації - ",
-
-				"Погодження органу управління балансоутримувача – ",
-				"Район – ",
-				"Назва Вулиці - ",
-				"Номер Будинку - ",
-				"Загальна площа об’єкта - ",
-				"Корисна площа об’єкта – ",
-				"Характеристика об’єкта оренди(будівлі в цілому або частини будівлі із зазначенням місця розташування об’єкта в будівлі(надземний, цокольний, підвальний, технічний або мансардний поверх, номер поверху або поверхів) – ",
-				"Технічний стан – ",
-				"Водопостачання – ",
-				"Теплопостачання – ",
-				"Газопостачання – ",
-				"Електропостачання – ",
-				"Пам’ятка культурної спадщини - ",
-				"Погодження органу охорони культурної спадщини - ",
-				"Номер запису про право власності у Реєстрація у Державному реєстрі речових прав на нерухоме майно – ",
-				"Реєстраційний номер об'єкту нерухомого майна у Реєстрація у Державному реєстрі речових прав на нерухоме майно – ",
-				"Інформація про цільове призначення об’єкта оренди – ",
-				"Інформація про наявність окремих особових рахунків на об'єкт оренди, відкритих постачальниками комунальних послуг - ",
-				"Цільове призначення об’єкта, за яким об’єкт використовувався перед тим, як він став вакантним – ",
-				"Період часу, протягом якого об’єкт не використовується – ",
-				"Інформацію про особу, яка використовувала об’єкт перед тим, як він став вакантним – ",
-			];
-
-			console.log("values", values);
-
-			var txt = "";
-			//for (var i = 0; i < headers.length; i++) {
-			//	var vv = values[i];
-			//	if (vv === null) {
-			//		vv = "";
-			//	} else if (vv === true) {
-			//		vv = "так";
-			//	} else if (vv === false) {
-			//		vv = "ні";
-			//	}
-
-			//	txt += (i == 0 ? "" : "\n") + headers[i] + vv;
-			//}
-
-			//var id = values[values.length - 1];
-			var id = values;
-			txt += "Фото - http://eis.gukv.gov.ua/gukv/Reports1NF/BalansPrivatisatPhotosPdf.aspx?id=" + id + '&jpeg=1';
-
-			//console.log("txt", txt);
-
-			$("#inpit-for-copy-clipboard").val(txt);
-			$("#inpit-for-copy-clipboard").select();
-			document.execCommand("copy");
-			return;
-
-			navigator.clipboard.writeText(txt).then(function () {
-				alert("Опис скопійовано в буфер обміну");
-			}, function () {
-				alert("Не можу записати буфер обміну");
-			});
-		}
-
-		function OnCopyFullDescription2(values) {
-			var headers = [
-				"Включено до переліку № - ",
-				"Залишкова балансова вартість – ",
-				"Первісна балансова вартість - ",
-				"Тип об’єкта - ",
-				"Пропонований строк оренди (у роках) – ",
-				"Пункт Методики розрахунку орендної плати (якщо об’єкт пропонується для включення до Переліку другого типу) - ",
-				"Наявність рішень про проведення інвестиційного конкурсу або про включення об’єкта до переліку майна, що підлягає приватизації - ",
-
-				"Погодження органу управління балансоутримувача – ",
-				"Район – ",
-				"Назва Вулиці - ",
-				"Номер Будинку - ",
-				"Загальна площа об’єкта - ",
-				"Корисна площа об’єкта – ",
-				"Характеристика об’єкта оренди(будівлі в цілому або частини будівлі із зазначенням місця розташування об’єкта в будівлі(надземний, цокольний, підвальний, технічний або мансардний поверх, номер поверху або поверхів) – ",
-				"Технічний стан – ",
-				"Водопостачання – ",
-				"Теплопостачання – ",
-				"Газопостачання – ",
-				"Електропостачання – ",
-				"Пам’ятка культурної спадщини - ",
-				"Погодження органу охорони культурної спадщини - ",
-				"Номер запису про право власності у Реєстрація у Державному реєстрі речових прав на нерухоме майно – ",
-				"Реєстраційний номер об'єкту нерухомого майна у Реєстрація у Державному реєстрі речових прав на нерухоме майно – ",
-				"Інформація про цільове призначення об’єкта оренди – ",
-				"Інформація про наявність окремих особових рахунків на об'єкт оренди, відкритих постачальниками комунальних послуг - ",
-				"Цільове призначення об’єкта, за яким об’єкт використовувався перед тим, як він став вакантним – ",
-				"Період часу, протягом якого об’єкт не використовується – ",
-				"Інформацію про особу, яка використовувала об’єкт перед тим, як він став вакантним – ",
-			];
-
-			console.log("values", values);
-
-			var txt = "";
-			for (var i = 0; i < headers.length; i++) {
-				var vv = values[i];
-				if (vv === null) {
-					vv = "";
-				} else if (vv === true) {
-					vv = "так";
-				} else if (vv === false) {
-					vv = "ні";
-				}
-
-				txt += (i == 0 ? "" : "\n") + headers[i] + vv;
-			}
-
-			//console.log("txt", txt);
-
-			$("#inpit-for-copy-clipboard").val(txt);
-			$("#inpit-for-copy-clipboard").select();
-			document.execCommand("copy");
-			return;
-
-			navigator.clipboard.writeText(txt).then(function () {
-				alert("Опис скопійовано в буфер обміну");
-			}, function () {
-				alert("Не можу записати буфер обміну");
-			});
-		}
-
-
-		function OnMapShowGetRowValues(values) {
-			var id = values;
-			window.open(
-				'Report1NFPrivatisatMap.aspx?fs_id=' + id,
-				'_blank',
-			);
-		}
-
-		function OnFreeCycleGetRowValues(values) {
-			var id = values;
-			window.open(
-				'FreeCycle.aspx?free_square_id=' + id,
-				'_blank',
-			);
-		}
-
-		function OnClickOrgBalansObject(values) {
-			window.location = 'OrgBalansObject.aspx?rid=' + values[2] + '&bid=' + values[1] + '&edit_free_square_id=' + values[0];
-		}
-
-
-		function OnGridPdfBuildGetRowValues(values) {
-			console.log(values);
-			var id = values;
-			window.open(
-				'BalansPrivatisatPhotosPdf.aspx?id=' + id,
-				'_blank',
-			);
-		}
-
-		function OnGridJpegBuildGetRowValues(values) {
-			console.log(values);
-			var id = values;
-			window.open(
-				'BalansPrivatisatPhotosPdf.aspx?id=' + id + '&jpeg=1',
-				'_blank',
-			);
-		}
-
-
-		function OnDropDown(comboBox) {
-			//SetDropDownWidth(comboBox, "368px");
-			_aspxMakeScollableArea(comboBox);
-		}
-
-		function SetDropDownWidth(comboBox, width) {
-			var listBox = comboBox.GetListBoxControl();
-			var scrollDiv = listBox.GetScrollDivElement();
-			//scrollDiv.style.overflowX = "auto";
-			//scrollDiv.style.width = width;
-
-			scrollDiv.style.overflowY = "scroll";
-			console.log("scrollDiv.style.overflowY", scrollDiv.style.overflowY);
-
-			var popupControl = comboBox.GetPopupControl();
-			//popupControl.SetSize("0", "0");
-		}
-
-
-		function _aspxMakeScollableArea(comboBox) {
-			var listBox = comboBox.GetListBoxControl();
-			if (_aspxIsExists(listBox)) {
-				var lsScrollableDiv = listBox.GetScrollDivElement();
-				if (_aspxIsExists(lsScrollableDiv)) {
-					var browserWidth = (_aspxGetDocumentClientWidth() - 10) + 'px';
-					//alert(browserWidth);
-					_aspxSetAttribute(lsScrollableDiv.style, "width", browserWidth);
-					_aspxSetAttribute(lsScrollableDiv.style, "overflow-x", "scroll");
-					_aspxSetAttribute(lsScrollableDiv.style, "overflow-y", "scroll");
-				}
-			}
-		}
-
-    // ]]>
-
 	</script>
 
 
@@ -307,7 +322,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDictStanRecieve" runat="server" 
-    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    ConnectionString="<%$ ConnectionStrings:GUKV2016ConnectionString %>" 
     SelectCommand="SELECT 1 as id, '1 кв.' as name union
 SELECT 2 as id, '2 кв.' as name union
 SELECT 3 as id, '3 кв.' as name union
@@ -749,6 +764,31 @@ SELECT SCOPE_IDENTITY()"
 				</div>
 			</td>
 			<td>
+				<dx:ASPxCallback ID="CallbackRecalculate" runat="server" OnCallback="ASPxButton_Recalculate_Click" ClientInstanceName="cbRecalc">
+					<ClientSideEvents 
+						CallbackComplete="function(s, e) {
+							hideOverlay();
+						}"
+						CallbackError="function(s, e) {
+							hideOverlay();
+							//console.log('error', e.message);
+							e.handled = true;
+							alert('Помилка: ' + e.message);
+						}"
+					/>
+				</dx:ASPxCallback>
+
+				<dx:ASPxButton ID="ASPxButton_Recalculate" runat="server" AutoPostBack="False" Text="Перерахувати"
+							Width="148px"
+							ClientSideEvents-Click="function(s, e) {
+								showOverlay();
+								cbRecalc.PerformCallback();
+							}" />
+			</td>
+			<td>
+				<div style="width:30px"></div>
+			</td>
+			<td>
 				<dx:ASPxPopupControl
 					ID="ASPxPopupControl_FreeSquare_SaveAs" runat="server"
 					HeaderText="Збереження у Файлі"
@@ -777,7 +817,6 @@ SELECT SCOPE_IDENTITY()"
 				<dx:ASPxButton ID="ASPxButton_Report" runat="server" AutoPostBack="False" Text="Звіт"
 					Width="148px" OnClick="ASPxButton_Report_Click">
 				</dx:ASPxButton>
-
 
 				<dx:ASPxButton ID="ASPxButton_FreeSquare_SaveAs" runat="server" AutoPostBack="False" Visible="false"
 					Text="Зберегти у Файлі" Width="148px">
@@ -889,12 +928,12 @@ SELECT SCOPE_IDENTITY()"
 			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_this" Caption="Прогноз індексу інфляції на 4 квартал 2024 року, %" Width="250px" Visible="false" />
 			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_next" Caption="Прогноз індексу інфляції на 2025 рік, %" Width="250px" Visible="false" />
 
-			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_1" Caption="Прогноз індексу інфляції на 9 міс. 2025 рік, %" Width="250px" />
-			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_2" Caption="Прогноз індексу інфляції на 12 міс. 2025 рік, %" Width="250px" />
-			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_3" Caption="Прогноз індексу інфляції на 3 міс. 2026 рік, %" Width="250px" />
-			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_4" Caption="Прогноз індексу інфляції на 6 міс. 2026 рік, %" Width="250px" />
+			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_1" Caption="Прогноз індексу інфляції на 2025 рік, %" Width="250px" />
+			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_2" Caption="Прогноз індексу інфляції на 2026 рік, %" Width="250px" />
+			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_3" Caption="Прогноз індексу інфляції на 2027 рік, %" Width="250px" />
+			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_4" Caption="Прогноз індексу інфляції на 2028 рік, %" Width="250px" />
 
-			<dx:GridViewDataComboBoxColumn FieldName="rozrah_persion" Caption="Розрахунковий період" Width="300px">
+			<dx:GridViewDataComboBoxColumn FieldName="rozrah_persion" Caption="Розрахунковий період" Width="300px" Visible="false">
 				<PropertiesComboBox 
 					DataSourceID="SqlDataSourceDictStanRecieve"
 					DropDownStyle="DropDownList"
@@ -1098,5 +1137,8 @@ SELECT SCOPE_IDENTITY()"
 		<ClientSideEvents PopUp="function (s, e) { EditColumnNamePattern.SetText(''); CPGridColumns.PerformCallback(); }" />
 	</dx:ASPxPopupControl>
 
+	<div id="blockingOverlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;background-color:rgba(255,255,255,0.8);text-align:center;padding-top:200px;font-size:20px;">
+		Йде обробка... Зачекайте, будь ласка
+	</div>
 
 </asp:Content>

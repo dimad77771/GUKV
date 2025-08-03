@@ -13,6 +13,11 @@ using System.Web.UI.WebControls;
 using DevExpress.Web;
 using GUKV.Common;
 using Syncfusion.XlsIO;
+using System.Data;
+using System.Data.Common;
+using DevExpress.Spreadsheet;
+
+
 
 public partial class Reports1NF_Report1NFPrivatisatSquare : System.Web.UI.Page
 {
@@ -302,6 +307,276 @@ public partial class Reports1NF_Report1NFPrivatisatSquare : System.Web.UI.Page
 
 		PrivatisatGridView.DataBind();
 	}
+
+	protected void ASPxButton_Recalculate_Click(object sender, EventArgs e)
+	{
+		var builder = new NarazhCalculationAll
+		{
+		};
+		builder.Run();
+	}
 }
 
 
+public class PrognozPaymentZvitBuilder
+{
+	public Page Page { get; set; }
+	public bool UseInflation { get; set; }
+	public bool UseDictRentalRate { get; set; }
+	public int year = 2025;
+	public string report_id_where = "-1";
+
+	public void Go()
+	{
+		string templateFileName = Page.Server.MapPath("Templates/prognoz_zvit.xlsx");
+		var tempFile = TempFile.FromExistingFile(templateFileName);
+
+		var connection = CommonUtils.ConnectToDatabase2016();
+		if (connection == null) throw new Exception("Database not found");
+		var factory = DbProviderFactories.GetFactory(connection);
+		var dataTable = new DataTable();
+		using (var cmd = factory.CreateCommand())
+		{
+			cmd.CommandText = GetMainSql();
+			cmd.CommandType = CommandType.Text;
+			cmd.Connection = connection;
+			using (var adapter = factory.CreateDataAdapter())
+			{
+				adapter.SelectCommand = cmd;
+				adapter.Fill(dataTable);
+			}
+		}
+
+		var workbook = new Workbook();
+		workbook.LoadDocument(tempFile.FileName, DevExpress.Spreadsheet.DocumentFormat.Xlsx);
+		var wsheet = workbook.Worksheets[0];
+		var usedRange = wsheet.GetUsedRange();
+		var bcolumn = wsheet.Columns["B"];
+		var rowOccupations = new List<string>();
+		for (int r = 0; r < usedRange.RowCount; r++)
+		{
+			var value = bcolumn[r].Value.TextValue;
+			rowOccupations.Add(value);
+		}
+
+
+		for (int r = 0; r < dataTable.Rows.Count; r++)
+		{
+			var occupation = dataTable.Rows[r]["dict_rent_occupation_name"].ToString() ?? "";
+			var erow = rowOccupations.FindIndex(q => (q ?? "").ToLower() == occupation.ToLower());
+			if (erow < 0)
+			{
+				Debug.WriteLine("occupation=" + occupation); continue;
+				//throw new ArgumentException("occupation=" + occupation);
+				//нету в Excel-файле
+				//--occupation = Соціальна сфера
+				//--occupation = Невідомо
+			}
+
+			for (int cnum = 1; cnum < dataTable.Columns.Count; cnum++)
+			{
+				var column = dataTable.Columns[cnum];
+				var vnum = Int32.Parse(column.ColumnName.Replace("v", ""));
+				var dval = dataTable.Rows[r][cnum];
+
+				var val = default(decimal);
+				if (dval is DBNull)
+				{
+					val = 0;
+				}
+				else if (dval is decimal?)
+				{
+					val = (decimal?)dval ?? 0;
+				}
+				else if (dval is int?)
+				{
+					val = (int?)dval ?? 0;
+				}
+				else
+				{
+					throw new Exception("dval=" + dval);
+				}
+
+
+
+				if (new[] { 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 }.Contains(vnum))
+				{
+					val = val / 1000M;
+				}
+
+				wsheet[erow, vnum - 1].Value = val;
+			}
+		}
+
+		SumBuild(7, new[] { 8, 9, 10, 11, 12, 13, 14 }, wsheet);
+		SumBuild(19, new[] { 5, 6, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18 }, wsheet);
+		SumBuild(30, new[] { 20, 21, 22, 23, 24, 25, 26, 27, 28, 29 }, wsheet);
+		SumBuild(31, new[] { 19, 30 }, wsheet);
+
+
+		//using (var cmd = new SqlCommand(@"SELECT [name]+' р.' as dict_rent_period FROM [dbo].[dict_rent_period] where [is_active] = 1", connection))
+		//{
+		//	using (SqlDataReader reader = cmd.ExecuteReader())
+		//	{
+		//		while (reader.Read())
+		//		{
+		//			var dict_rent_period = reader.GetString(0);
+
+		//		}
+		//	}
+		//}
+
+		var text = "Прогнозні показники надходжень від оренди та перерахування її частини до бюджету у " + year + " р.";
+		wsheet["A1"].Value = text;
+		wsheet["F1"].Value = "Друком на:\n" + DateTime.Now.ToString("dd.MM.yyyy HH:mm");
+
+
+		workbook.SaveDocument(tempFile.FileName);
+
+
+		var info = new System.IO.FileInfo(tempFile.FileName);
+		Page.Response.Clear();
+		Page.Response.ClearHeaders();
+		Page.Response.ClearContent();
+		Page.Response.ContentType = "application /vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+		Page.Response.AddHeader("content-disposition", "attachment; filename=prognoz_zvit_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xlsx; size=" + info.Length.ToString());
+		using (System.IO.FileStream stream = System.IO.File.Open(tempFile.FileName, System.IO.FileMode.Open, System.IO.FileAccess.ReadWrite))
+		{
+			stream.CopyTo(Page.Response.OutputStream);
+		}
+		tempFile.Dispose();
+		Page.Response.End();
+	}
+
+	void SumBuild(int erow_total, int[] erows_sum, Worksheet wsheet)
+	{
+		for (int cnum = 3; cnum <= 15; cnum++)
+		{
+			decimal sum = 0;
+			foreach (var erow in erows_sum)
+			{
+				var value = wsheet[erow - 1, cnum - 1].Value.NumericValue;
+				sum += (decimal)value;
+			}
+			wsheet[erow_total - 1, cnum - 1].Value = sum;
+		}
+	}
+
+
+	string GetMainSql()
+	{
+		var sql = @"
+select
+dict_rent_occupation_name,
+sum(v3) as v3,
+sum(case when v4_sum > 0 then 1 else 0 end) as v4,
+sum(case when v5_sum > 0 then 1 else 0 end) as v5,
+
+sum(v6) as v6,
+sum(v7) as v7,
+sum(v8) as v8,
+sum(v9) as v9,
+
+sum(v6 + v10_part) as v10,
+sum(v8 + v12_part) as v11,	--v11 = v12
+sum(v8 + v12_part) as v12,
+
+sum(v13) as v13,
+sum(v14) as v14,
+sum(v15) as v15
+
+from
+(
+	select
+	dict_rent_occupation_name, zkpo_code,
+	count(*) as v3,
+	sum(case when is_active_dogovor = 1 then 1 else 0 end) v4_sum,
+	sum(case when is_active_dogovor = 1 and new_contribution_rate > 0 then 1 else 0 end) v5_sum,
+
+	sum(case when is_active_dogovor = 1 then ""Нараховано орендної плати за звітний період"" else 0 end) as v6,
+	sum(case when is_active_dogovor = 1 then ""Надходження орендної плати за звітний період"" else 0 end) as v7,
+
+	sum(case when is_active_dogovor = 1 then ""Нараховано орендної плати за звітний період"" * contribution_rate else 0 end) as v8,
+	sum(case when is_active_dogovor = 1 then ""Надходження орендної плати за звітний період""* contribution_rate else 0 end) as v9,
+
+	sum(narah_prognoz_year_0) as v10_part,
+	--v11 = v12
+	sum(narah_prognoz_year_0 * new_contribution_rate) as v12_part,
+
+	sum(narah_prognoz_year_1 * new_contribution_rate) as v13,
+	sum(narah_prognoz_year_2 * new_contribution_rate) as v14,
+	sum(narah_prognoz_year_3 * new_contribution_rate) as v15
+
+	from
+	(
+		select
+		r.id, r.report_id, rep.zkpo_code, 
+		case when r.agreement_state = 1 then 1 else 0 end as is_active_dogovor,
+		isnull(P.payment_narah,0) as ""Нараховано орендної плати за звітний період"",
+		isnull(P.payment_received,0) as ""Надходження орендної плати за звітний період"",
+		(select sum(Q.narah_sum) from reports1nf_payment_narah_prognoz Q where Q.arenda_id = r.id and Q.report_id = r.report_id and year(Q.narah_date) = PER.cur_year and Q.narah_date > PER.period_end) narah_prognoz_year_0,
+		(select sum(Q.narah_sum) from reports1nf_payment_narah_prognoz Q where Q.arenda_id = r.id and Q.report_id = r.report_id and year(Q.narah_date) = PER.cur_year + 1) narah_prognoz_year_1,
+		(select sum(Q.narah_sum) from reports1nf_payment_narah_prognoz Q where Q.arenda_id = r.id and Q.report_id = r.report_id and year(Q.narah_date) = PER.cur_year + 2) narah_prognoz_year_2,
+		(select sum(Q.narah_sum) from reports1nf_payment_narah_prognoz Q where Q.arenda_id = r.id and Q.report_id = r.report_id and year(Q.narah_date) = PER.cur_year + 3) narah_prognoz_year_3,
+		isnull(CR.contribution_rate,0) / 100.0 as contribution_rate,
+		isnull(CN.contribution_rate, isnull(CR.contribution_rate,0)) / 100.0 new_contribution_rate,
+		CASE
+			WHEN rep.zkpo_code IN ( '02772037', '03327664', '03346331' )
+				THEN 'Від прибутку згідно з угодой'
+				ELSE Isnull(ddd.NAME, 'Невідомо')
+		END AS dict_rent_occupation_name
+		FROM reports1nf_arenda r 
+		LEFT JOIN arenda a ON r.id = a.id 
+		JOIN view_reports1nf rep ON rep.report_id = r.report_id
+		LEFT JOIN 
+		(
+			SELECT obp.org_id,occ.NAME
+			FROM org_by_period obp
+			JOIN dict_rent_period per ON per.id = obp.period_id AND per.is_active = 1
+			JOIN dict_rent_occupation occ ON occ.id = obp.org_occupation_id
+		) DDD ON DDD.org_id = rep.organization_id
+		OUTER APPLY (select isnull((select Q.contribution_rate from reports1nf_org_info Q where Q.report_id = rep.report_id),0) as contribution_rate) CR
+		OUTER APPLY (select Q.contribution_rate from reports1nf_org_info_new_contribution_rate Q where Q.report_id = rep.report_id) CN
+		CROSS APPLY (SELECT top 1 Year(Q.period_end) as cur_year, DATEFROMPARTS(Year(Q.period_end), 1, 1) start_year, Q.* FROM dict_rent_period Q where Q.is_active = 1 order by Q.id desc) PER
+		OUTER APPLY 
+		(
+			select	
+				top 1
+				* 
+			from reports1nf_arenda_payments Q 
+			where Q.arenda_id = r.id and Q.report_id = r.report_id and Q.rent_period_id = PER.id
+		) P
+		WHERE 1=1
+		and isnull(a.is_deleted, 0) = 0
+		and exists 
+		(
+			select	
+				* 
+			from reports1nf_arenda_payments Q 
+			where Q.arenda_id = r.id and Q.report_id = r.report_id and Q.rent_period_id = PER.id
+		)
+
+		and rep.report_id in (499,386,410,546)
+
+	) T
+	group by dict_rent_occupation_name, zkpo_code
+	--order by 1,2
+) T
+group by dict_rent_occupation_name
+order by 1
+
+";
+		sql = sql.Replace("499,386,410,546", report_id_where);
+
+		//if (!UseInflation)
+		//{
+		//	sql = sql.Replace("total_cost * I.inflation", "total_cost");
+		//}
+		//if (!UseDictRentalRate)
+		//{
+		//	sql = sql.Replace("cost_agreement * koef", "cost_agreement");
+		//}
+		return sql;
+	}
+
+}

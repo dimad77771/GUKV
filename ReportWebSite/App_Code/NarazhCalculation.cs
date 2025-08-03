@@ -8,12 +8,17 @@ using Newtonsoft.Json;
 using StackExchange.Profiling.Helpers.Dapper;
 using System.Data;
 using System.Data.Common;
+using System.Threading;
+using GUKV.Common;
 
 public class NarazhCalculationAll
 {
 	public void Run()
 	{
+		//Thread.Sleep(3000); throw new Exception("Error 123");
+
 		var sql = @"select
+--top 100
 r.id, r.report_id
 FROM reports1nf_arenda r 
 LEFT JOIN arenda a ON r.id = a.id 
@@ -35,7 +40,7 @@ and exists
 
 		var tm1 = DateTime.Now;
 
-		var connection = Utils.ConnectToDatabase();
+		var connection = CommonUtils.ConnectToDatabase2016();
 		var table = Utils.GetSqlDataTable(sql, connection);
 
 		{
