@@ -337,8 +337,7 @@ SELECT 4 as id, '4 кв.' as name	">
 			[prognoz_inflation_1] = @prognoz_inflation_1,
 			[prognoz_inflation_2] = @prognoz_inflation_2,
 			[prognoz_inflation_3] = @prognoz_inflation_3,
-			[prognoz_inflation_4] = @prognoz_inflation_4,
-			[rozrah_persion] = @rozrah_persion
+			[prognoz_inflation_4] = @prognoz_inflation_4
 		">
 	</mini:ProfiledSqlDataSource>
 
