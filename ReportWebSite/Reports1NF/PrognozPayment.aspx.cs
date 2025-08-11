@@ -466,9 +466,82 @@ public class PrognozPaymentZvitBuilder
 	string GetMainSql()
 	{
 		var sql = @"
+WITH DG AS
+(
+SELECT 
+rep.zkpo_code, rep.report_id,
+CASE
+	WHEN rep.zkpo_code IN ( '02772037', '03327664', '03346331' )
+		THEN 'Від прибутку згідно з угодой'
+		ELSE Isnull(ddd.NAME, 'Невідомо')
+END AS dict_rent_occupation_name,
+case when exists (select 1 from reports1nf_arenda Q where Q.report_id = rep.report_id and Q.agreement_state = 1) then 1 else 0 end has_active_dog
+--count(*)
+--Isnull(ddd.NAME, 'Невідомо') AS 'dict_rent_occupation_name'
+FROM   view_reports1nf rep
+		LEFT OUTER JOIN (
+			select obp.org_id,occ.name from org_by_period obp
+			join dict_rent_period per on per.id = obp.period_id and per.is_active = 1
+			join dict_rent_occupation occ on occ.id = obp.org_occupation_id
+		) DDD ON DDD.org_id = rep.organization_id
+       LEFT JOIN (SELECT Sum(CASE
+                               WHEN ( r1a.submit_date IS NULL
+                                       OR r1a.modify_date IS NULL
+                                       OR r1a.modify_date > r1a.submit_date )
+                             THEN 0
+                               ELSE 1
+                             END)      AS NumOfSubmAgr,
+                         Count(r1a.id) AS NumOfAgr,
+                         report_id
+                  FROM   reports1nf_arenda r1a
+                         LEFT JOIN arenda a
+                                ON r1a.id = a.id
+                  WHERE  a.is_deleted IS NULL
+                          OR a.is_deleted = 0
+                  GROUP  BY report_id) ar
+              ON rep.report_id = ar.report_id
+       LEFT JOIN (SELECT Sum(CASE
+                               WHEN ( b.submit_date IS NULL
+                                       OR b.modify_date IS NULL
+                                       OR b.modify_date > b.submit_date ) THEN 0
+                               ELSE 1
+                             END)  AS NumOfSubmObj,
+                         Count(id) AS NumOfObj,
+                         report_id
+                  FROM   reports1nf_balans b
+                  WHERE  is_deleted IS NULL
+                          OR is_deleted = 0
+                  GROUP  BY report_id) obj
+              ON rep.report_id = obj.report_id
+WHERE  ( 8888 = 8888 )
+       AND CASE
+             WHEN rep.zkpo_code IN (SELECT DISTINCT org.zkpo_code
+                                    FROM   reports1nf_accounts acc
+                                           INNER JOIN aspnet_users usr
+                                                   ON usr.userid = acc.userid
+                                           INNER JOIN aspnet_membership mem
+                                                   ON mem.userid = acc.userid
+                                           LEFT OUTER JOIN organizations org
+                                                        ON
+                                           org.id = acc.organization_id
+                                           LEFT OUTER JOIN dict_districts2 rda
+                                                        ON rda.id =
+                                           rda_district_id
+                                           LEFT OUTER JOIN dict_org_old_organ
+                                                           misto
+                                                        ON
+                                           misto.id = misto_district_id
+                                   )
+           THEN 1
+             ELSE 0
+           END = 1 
+
+and obj.NumOfObj > 0
+and isnull(ddd.name, 'Невідомо') <> 'Невизначені'
+) 
 select
 dict_rent_occupation_name,
-sum(v3) as v3,
+count(*) as v3,
 sum(case when v4_sum > 0 then 1 else 0 end) as v4,
 sum(case when v5_sum > 0 then 1 else 0 end) as v5,
 
@@ -488,16 +561,16 @@ sum(v15) as v15
 from
 (
 	select
-	dict_rent_occupation_name, zkpo_code,
-	count(*) as v3,
-	sum(case when is_active_dogovor = 1 then 1 else 0 end) v4_sum,
-	sum(case when is_active_dogovor = 1 and new_contribution_rate > 0 then 1 else 0 end) v5_sum,
+	dict_rent_occupation_name, DG.zkpo_code,
+	1 as v3,
+	sum(case when DG.has_active_dog = 1 then 1 else 0 end) v4_sum,
+	sum(case when DG.has_active_dog = 1 and new_contribution_rate > 0 then 1 else 0 end) v5_sum,
 
 	sum(case when is_active_dogovor = 1 then ""Нараховано орендної плати за звітний період"" else 0 end) as v6,
 	sum(case when is_active_dogovor = 1 then ""Надходження орендної плати за звітний період"" else 0 end) as v7,
 
-	sum(case when is_active_dogovor = 1 then ""Нараховано орендної плати за звітний період"" * contribution_rate else 0 end) as v8,
-	sum(case when is_active_dogovor = 1 then ""Надходження орендної плати за звітний період""* contribution_rate else 0 end) as v9,
+	sum(case when is_active_dogovor = 1 then ""Нараховано орендної плати за звітний період"" * CR.contribution_rate else 0 end) as v8,
+	sum(case when is_active_dogovor = 1 then ""Надходження орендної плати за звітний період"" * CR.contribution_rate else 0 end) as v9,
 
 	sum(narah_prognoz_year_0) as v10_part,
 	--v11 = v12
@@ -508,6 +581,13 @@ from
 	sum(narah_prognoz_year_3 * new_contribution_rate) as v15
 
 	from
+	DG 
+
+	OUTER APPLY (select isnull((select Q.contribution_rate from reports1nf_org_info Q where Q.report_id = DG.report_id),0) as contribution_rate) CR
+	OUTER APPLY (select Q.contribution_rate from reports1nf_org_info_new_contribution_rate Q where Q.report_id = DG.report_id) CN
+	CROSS APPLY (SELECT top 1 Year(Q.period_end) as cur_year, DATEFROMPARTS(Year(Q.period_end), 1, 1) start_year, Q.* FROM dict_rent_period Q where Q.is_active = 1 order by Q.id desc) PER
+
+	OUTER APPLY
 	(
 		select
 		r.id, r.report_id, rep.zkpo_code, 
@@ -519,25 +599,11 @@ from
 		(select sum(Q.narah_sum) from reports1nf_payment_narah_prognoz Q where Q.arenda_id = r.id and Q.report_id = r.report_id and year(Q.narah_date) = PER.cur_year + 2) narah_prognoz_year_2,
 		(select sum(Q.narah_sum) from reports1nf_payment_narah_prognoz Q where Q.arenda_id = r.id and Q.report_id = r.report_id and year(Q.narah_date) = PER.cur_year + 3) narah_prognoz_year_3,
 		isnull(CR.contribution_rate,0) / 100.0 as contribution_rate,
-		isnull(CN.contribution_rate, isnull(CR.contribution_rate,0)) / 100.0 new_contribution_rate,
-		CASE
-			WHEN rep.zkpo_code IN ( '02772037', '03327664', '03346331' )
-				THEN 'Від прибутку згідно з угодой'
-				ELSE Isnull(ddd.NAME, 'Невідомо')
-		END AS dict_rent_occupation_name
+		isnull(CN.contribution_rate, isnull(CR.contribution_rate,0)) / 100.0 new_contribution_rate
+
 		FROM reports1nf_arenda r 
 		LEFT JOIN arenda a ON r.id = a.id 
 		JOIN view_reports1nf rep ON rep.report_id = r.report_id
-		LEFT JOIN 
-		(
-			SELECT obp.org_id,occ.NAME
-			FROM org_by_period obp
-			JOIN dict_rent_period per ON per.id = obp.period_id AND per.is_active = 1
-			JOIN dict_rent_occupation occ ON occ.id = obp.org_occupation_id
-		) DDD ON DDD.org_id = rep.organization_id
-		OUTER APPLY (select isnull((select Q.contribution_rate from reports1nf_org_info Q where Q.report_id = rep.report_id),0) as contribution_rate) CR
-		OUTER APPLY (select Q.contribution_rate from reports1nf_org_info_new_contribution_rate Q where Q.report_id = rep.report_id) CN
-		CROSS APPLY (SELECT top 1 Year(Q.period_end) as cur_year, DATEFROMPARTS(Year(Q.period_end), 1, 1) start_year, Q.* FROM dict_rent_period Q where Q.is_active = 1 order by Q.id desc) PER
 		OUTER APPLY 
 		(
 			select	
@@ -546,7 +612,9 @@ from
 			from reports1nf_arenda_payments Q 
 			where Q.arenda_id = r.id and Q.report_id = r.report_id and Q.rent_period_id = PER.id
 		) P
+
 		WHERE 1=1
+		and rep.zkpo_code = DG.zkpo_code
 		and isnull(a.is_deleted, 0) = 0
 		and exists 
 		(
@@ -555,11 +623,9 @@ from
 			from reports1nf_arenda_payments Q 
 			where Q.arenda_id = r.id and Q.report_id = r.report_id and Q.rent_period_id = PER.id
 		)
-
-		and rep.report_id in (499,386,410,546)
-
 	) T
-	group by dict_rent_occupation_name, zkpo_code
+	where DG.report_id in (499,386,410,546)
+	group by DG.dict_rent_occupation_name, DG.zkpo_code
 	--order by 1,2
 ) T
 group by dict_rent_occupation_name
