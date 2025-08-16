@@ -1575,12 +1575,36 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDictRentalRate" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT id, short_name = left(full_name, 150), rental_rate FROM dict_rental_rate ORDER BY case when full_name like '2023 %' then 2 else 1 end, short_name">
+    SelectCommand="SELECT id, short_name = left(full_name, 150), rental_rate 
+    FROM dict_rental_rate
+    WHERE 
+    (
+	    short_name not like 'N 415/1280 %'
+		    or
+	    exists (select Q.payment_type_id from reports1nf_arenda_notes Q where Q.arenda_id = @arenda_id and Q.report_id = @report_id and Q.payment_type_id = dict_rental_rate.id)
+    )
+    ORDER BY case when full_name like '2023 %' then 2 else 1 end, short_name">
+     <SelectParameters>
+        <asp:Parameter Name="arenda_id" />
+        <asp:Parameter Name="report_id" />
+    </SelectParameters>
 </mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDictFactichVikorist" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT id, short_name = left(full_name, 150), rental_rate FROM dict_factich_vikorist ORDER BY case when full_name like '2023 %' then 2 else 1 end, short_name">
+    SelectCommand="SELECT id, short_name = left(full_name, 150), rental_rate 
+    FROM dict_factich_vikorist 
+    WHERE 
+    (
+	    short_name not like 'N 415/1280 %'
+		    or
+	    exists (select Q.payment_type_id from reports1nf_arenda_notes Q where Q.arenda_id = @arenda_id and Q.report_id = @report_id and Q.factich_vikorist_id = dict_factich_vikorist.id)
+    )
+    ORDER BY case when full_name like '2023 %' then 2 else 1 end, short_name">
+     <SelectParameters>
+        <asp:Parameter Name="arenda_id" />
+        <asp:Parameter Name="report_id" />
+    </SelectParameters>
 </mini:ProfiledSqlDataSource>
 
 

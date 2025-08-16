@@ -269,7 +269,7 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDistrict" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT id, name FROM dict_districts2 WHERE id < 900 ORDER BY name">
+    SelectCommand="SELECT id, name FROM dict_districts2 ORDER BY name">
 </mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDictBuildings" runat="server" 

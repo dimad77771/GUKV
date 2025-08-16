@@ -964,6 +964,24 @@ connection, transaction);
 		var orgBalansID = (int)row["orgBalansID"];
 		var sf_upr = (string)row["sf_upr"];
 
+		var exdata = GetDataTable(@"
+SELECT ar.agreement_num, ar.agreement_date, ar.report_id
+FROM reports1nf_arenda ar
+INNER JOIN reports1nf rep ON rep.id = ar.report_id
+LEFT OUTER JOIN arenda a ON a.id = ar.id
+WHERE ar.report_id = " + report_id
++ " AND ar.agreement_num = '" + (stage_docnum ?? "").Replace("'", "''") + "'"
++ " AND ar.agreement_date = '" + (stage_docdate ?? new DateTime(1900,1,1)).ToString("yyyyMMdd") + "'"
++ " AND (isnull(a.is_deleted, 0) = 0)",
+connection, transaction);
+
+
+		if (exdata.Rows.Count > 0)
+		{
+			throw new Exception("Такий договір вже існує");
+		}
+
+
 		var dogparm = new CreateNewArendaDogovorData
 		{
 			AgreementNum = stage_docnum,

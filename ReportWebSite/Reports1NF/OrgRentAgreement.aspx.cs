@@ -211,6 +211,12 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 				SqlDataSourceFreeSquare.SelectParameters["free_square_id"].DefaultValue = (EditFreeSquareMode ? ParamEditFreeSquareId : -1).ToString();
 
 				SqlDataSourceArendaArchive.SelectParameters["arid"].DefaultValue = agreementIdStr.Trim();
+
+				SqlDataSourceDictRentalRate.SelectParameters["arenda_id"].DefaultValue = agreementIdStr.ToString();
+				SqlDataSourceDictRentalRate.SelectParameters["report_id"].DefaultValue = ReportID.ToString();
+
+				SqlDataSourceDictFactichVikorist.SelectParameters["arenda_id"].DefaultValue = agreementIdStr.ToString();
+				SqlDataSourceDictFactichVikorist.SelectParameters["report_id"].DefaultValue = ReportID.ToString();
 			}
 
 
