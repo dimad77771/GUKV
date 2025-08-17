@@ -72,7 +72,7 @@
 		}
     }
 
-	function OnCopyFullDescription(values) {
+    function OnCopyFullDescription(values) {
         var headers = [
 			"Найменування орендаря - ",
 			"Код ЕДРПОУ орендаря - ",
@@ -145,20 +145,9 @@
 		}
 
 		var id = values[values.length - 1];
-		txt += "\n" + "Фото - http://eis.gukv.gov.ua/gukv/Reports1NF/BalansDogContinuePhotosPdf.aspx?id=" + id + '&jpeg=1';
-        
-        //console.log("txt", txt);
+        txt += "\n" + "Фото - http://eis.gukv.gov.ua/gukv/Reports1NF/BalansDogContinuePhotosPdf.aspx?id=" + id + '&jpeg=1';
 
-        $("#inpit-for-copy-clipboard").val(txt);
-        $("#inpit-for-copy-clipboard").select();
-        document.execCommand("copy");
-        return;
-
-        navigator.clipboard.writeText(txt).then(function () {
-			alert("Опис скопійовано в буфер обміну");
-		}, function () {
-		    alert("Не можу записати буфер обміну");
-		});
+        myCopyToClipboard(txt);
     }
 
 	function formatDate(date) {

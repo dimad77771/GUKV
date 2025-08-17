@@ -151,3 +151,44 @@ function ShowGeneralReport(gridToken) {
     window.open(reportUrl);
 }
 
+function myEscapeHtml(s) {
+    return s.replace(/[&<>"']/g, ch => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+    }[ch]));
+}
+
+function myTextToHtml(txt) {
+    const safe = myEscapeHtml(txt).replace(/\r\n|\r|\n/g, '<br/>');
+    return `<span style="font-family:'Times New Roman', Times, serif; font-size:18.5px; line-height:1.8;">${safe}</span>`;
+}
+
+function myCopyToClipboard(txt) {
+    //console.log("navigator.clipboard2", navigator.clipboard)
+    //console.log("window.ClipboardItem", window.ClipboardItem)
+    if (navigator.clipboard && window.ClipboardItem) {
+        const html = myTextToHtml(txt);
+        const data = {
+            'text/html': new Blob([html], { type: 'text/html' }),
+            'text/plain': new Blob([txt], { type: 'text/plain' })
+        };
+        navigator.clipboard.write([new ClipboardItem(data)]);
+        //console.log("GOGGGGGGGG")
+        return;
+    }
+
+    $("#inpit-for-copy-clipboard").val(txt);
+    $("#inpit-for-copy-clipboard").select();
+    document.execCommand("copy");
+
+    return;
+
+    navigator.clipboard.writeText(txt).then(function () {
+        alert("Опис скопійовано в буфер обміну");
+    }, function () {
+        alert("Не можу записати буфер обміну");
+    });
+}

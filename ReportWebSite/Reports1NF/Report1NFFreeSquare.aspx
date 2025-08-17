@@ -191,18 +191,7 @@
 			txt += "\n" + "Фото - http://eis.gukv.gov.ua/gukv/Reports1NF/Report1NFFreeShowPhotosPdf.aspx?id=" + id + '&jpeg=1';
 			txt = "Сформовано " + formatDate(new Date()) + "\n" + txt;
 
-			//console.log("txt", txt);
-
-			$("#inpit-for-copy-clipboard").val(txt);
-			$("#inpit-for-copy-clipboard").select();
-			document.execCommand("copy");
-			return;
-
-			navigator.clipboard.writeText(txt).then(function () {
-				alert("Опис скопійовано в буфер обміну");
-			}, function () {
-				alert("Не можу записати буфер обміну");
-			});
+            myCopyToClipboard(txt);
 		}
 
 		function formatDate(date) {
@@ -388,7 +377,7 @@
 
     // ]]>
 
-	</script>
+    </script>
 
 
 
