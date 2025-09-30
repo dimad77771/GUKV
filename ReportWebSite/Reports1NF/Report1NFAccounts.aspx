@@ -439,6 +439,26 @@
             </dx:ASPxPopupControl>
         </td>
 
+        <td>
+            <dx:ASPxPopupControl ID="ASPxPopupControl2" runat="server" 
+                HeaderText="Збереження у Файлі" 
+                ClientInstanceName="ASPxPopupControl_ArendaObjects_SaveAs" 
+                PopupElementID="ASPxButton_ArendaObjects_SaveAs">
+                <ContentCollection>
+                    <dx:PopupControlContentControl ID="PopupControlContentControl4" runat="server">
+                        <dx:ASPxButton ID="ASPxButton3" runat="server" 
+                            Text="XLS - Microsoft Excel&reg;" 
+                            OnClick="ASPxButton_ArendaObjects_ExportXLS_Click" Width="180px">
+                        </dx:ASPxButton>
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+            </dx:ASPxPopupControl>
+
+            <dx:ASPxButton ID="ASPxButton_ArendaObjects_SaveAs" runat="server" AutoPostBack="False" 
+                Text="Зберегти у Файлі" Width="148px">
+            </dx:ASPxButton>
+        </td>
+
     </tr>
 </table>
 

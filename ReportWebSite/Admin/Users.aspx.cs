@@ -65,6 +65,12 @@ public partial class Admin_Users : System.Web.UI.Page
         }
     }
 
+	protected void ASPxButton_ArendaObjects_ExportXLS_Click(object sender, EventArgs e)
+	{
+		this.ExportGridToXLS(GridViewAccountsExporter, ASPxGridViewFreeSquare, "Довідник користувачів", ViewState["PrimaryGridView.DataSourceID"] as string);
+	}
+
+
 	protected void ASPxButton_AllBuildings_ExportCSV_Click(object sender, EventArgs e)
 	{
 		string templateFileName = Server.MapPath("Templates/UsersIncludedToEmail.docx");

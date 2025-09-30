@@ -115,7 +115,13 @@ public partial class Reports1NF_Report1NFAccounts : System.Web.UI.Page
         PrimaryGridView.DataBind();
     }
 
-    private string BalansOrgZkpoPattern
+	protected void ASPxButton_ArendaObjects_ExportXLS_Click(object sender, EventArgs e)
+	{
+		this.ExportGridToXLS(GridViewAccountsExporter, PrimaryGridView, LabelReportTitle1.Text, ViewState["PrimaryGridView.DataSourceID"] as string);
+	}
+
+
+	private string BalansOrgZkpoPattern
     {
         get
         {
