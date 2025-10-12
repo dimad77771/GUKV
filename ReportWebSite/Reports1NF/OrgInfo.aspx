@@ -661,7 +661,7 @@ WHERE id = @id"
                             </td>
                         </tr>
                         <tr>
-                            <td><dx:ASPxLabel ID="ASPxLabel20" runat="server" Text="Перераховано до бюджету за користування комунальним майном, грн. (без ПДВ) (тільки для 'Київенерго' та 'Водоканал')" Width="650px"></dx:ASPxLabel></td>
+                            <td><dx:ASPxLabel ID="ASPxLabel20" runat="server" Text="Нараховано до бюджету за користування комунальним майном, грн. (без ПДВ)" Width="650px"></dx:ASPxLabel></td>
                             <td>
                                 <dx:ASPxSpinEdit ID="EditPaymentSpecial_orndpymnt" ClientInstanceName="EditPaymentSpecial" runat="server" NumberType="Float" Value='<%# Eval("payment_budget_special") %>' Width="150px"
                                     Title="Перераховано до бюджету за користування комунальним майном">
