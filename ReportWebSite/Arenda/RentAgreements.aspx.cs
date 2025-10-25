@@ -303,7 +303,9 @@ public partial class Arenda_RentAgreements : System.Web.UI.Page, CachingPageIdSu
 
         e.Command.Parameters["@p_bigborg_filter"].Value = CheckBoxBigBorgShow.Checked ? 1 : 0;
         e.Command.Parameters["@p_bigborg_email"].Value = IsUserControlCurrentBorg ? "" : UserEmail;
-    }
+
+		e.Command.Parameters["@p_show_borg_4month_only"].Value = ShowBorg4MonthOnly.Checked ? 1 : 0;
+	}
 
     protected string GetPageUniqueKey()
     {

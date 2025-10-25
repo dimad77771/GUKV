@@ -67,7 +67,12 @@
 	function CheckBoxBigBorgShow_CheckedChanged(s, e) {
 
 		PrimaryGridView.PerformCallback(AddWndHeightToCallbackParam("bind:"));
-	}
+    }
+
+    function ShowBorg4MonthOnly_CheckedChanged(s, e) {
+
+        PrimaryGridView.PerformCallback(AddWndHeightToCallbackParam("bind:"));
+    }
 
 	function CheckBoxBalansObjectsShowNeziznacheni_CheckedChanged(s, e) {
 
@@ -123,6 +128,12 @@
         <td style="width: 100%;">
             <asp:Label ID="LabelReportTitle1" runat="server" Text="Договори Оренди" CssClass="reporttitle"></asp:Label>
         </td>
+        <td>
+            <dx:ASPxCheckBox ID="ShowBorg4MonthOnly" runat="server" Checked='False' Text="Показувати договори термін закінчення яких менш ніж 4 місяці" 
+                Width="400px" ClientInstanceName="ShowBorg4MonthOnly" >
+                <ClientSideEvents CheckedChanged="ShowBorg4MonthOnly_CheckedChanged" />
+            </dx:ASPxCheckBox>
+        </td>        
         <td>
             <dx:ASPxCheckBox ID="CheckBoxBigBorgShow" runat="server" Checked='False' Text="Заборгованість понад 4 місяці" ForeColor="Red"
                 Width="250px" ClientInstanceName="CheckBoxBigBorgShow" >
@@ -239,6 +250,7 @@ A.*
         ((@p_com_filter = 0) OR (@p_com_filter <> 0 AND (A.balans_form_ownership_int IN (32,33,34) OR A.balans_org_ownership_int IN (32,33,34)))) AND
         ( (@p_bigborg_filter = 0) OR (@p_bigborg_filter = 1 AND W.arenda_id is not null) ) AND
         ((@p_show_neziznacheni = 1) OR (@p_show_neziznacheni = 0 AND (isnull(A.name, 'Невідомо') <> 'Невизначені'))) AND
+        ((@p_show_borg_4month_only = 0) OR (@p_show_borg_4month_only = 1 AND ar.rent_finish_date <= DATEADD(month, 4, cast(getdate() as date)))) AND
         (   (@p_rda_district_id = 0) OR
             (A.org_balans_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND A.org_balans_district_id = @p_rda_district_id) OR
             (A.org_giver_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND A.org_giver_district_id = @p_rda_district_id) OR
@@ -271,6 +283,7 @@ WHERE id = @arenda_id"
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_rda_district_id" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_show_neziznacheni" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="ref_balans_id" />
+        <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_show_borg_4month_only" />
     </SelectParameters>
 
 
