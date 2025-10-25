@@ -962,12 +962,12 @@ WHERE id = @id"
 
 
 
-			<dx:GridViewDataTextColumn FieldName="komis_protocol" Caption="Погодження орендодавця" VisibleIndex="4" Width="100px">
+			<dx:GridViewDataTextColumn FieldName="komis_protocol" Caption="Погодження орендодавця (орендодавець, комісія, КМР) номер та дата документу" VisibleIndex="4" Width="100px">
 				<%--<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("komis_protocol") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>--%>
 			</dx:GridViewDataTextColumn>
-			<dx:GridViewDataTextColumn FieldName="geodata_map_points" Caption="Координати на мапі" VisibleIndex="4" Width="100px">
+			<dx:GridViewDataTextColumn FieldName="geodata_map_points" Caption="Координати на мапі" VisibleIndex="4" Width="130px">
 			</dx:GridViewDataTextColumn>
 
 
