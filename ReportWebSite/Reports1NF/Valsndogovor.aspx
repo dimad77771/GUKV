@@ -579,6 +579,9 @@ SELECT SCOPE_IDENTITY()"
 
 
         <dx:GridViewDataTextColumn FieldName="nomer_zapis" Caption="№ запису в книзі прийому-видачі" CellStyle-HorizontalAlign="Center" Width="100px">
+            <DataItemTemplate>
+                <%# "<a target=\"_blank\" href=\"http://cifra/case.php?casenum=" + Eval("nomer_zapis") + "\">" + Eval("nomer_zapis") + "</a>"%>
+            </DataItemTemplate>
         </dx:GridViewDataTextColumn>
 
         <dx:GridViewDataDateColumn FieldName="priyom_date" Caption="Дата прийому документів у відділі"  Width="82px" CellStyle-HorizontalAlign="Center">
