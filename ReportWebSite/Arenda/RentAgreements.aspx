@@ -480,8 +480,15 @@ WHERE id = @arenda_id"
             VisibleIndex="42" Visible="False" Caption="Час Заборгованості"></dx:GridViewDataTextColumn>      
         <dx:GridViewDataTextColumn FieldName="pidstava_display" ReadOnly="True"
             VisibleIndex="43" Visible="False" Caption="Підстава"></dx:GridViewDataTextColumn>      --%>
+
+        <dx:GridViewDataTextColumn FieldName="method_calc_name" ReadOnly="True"
+            VisibleIndex="43" Visible="False" Caption="Методика розрахунку"></dx:GridViewDataTextColumn>
         <dx:GridViewDataDateColumn FieldName="rent_start_date" ReadOnly="True" 
-            VisibleIndex="44" Visible="False" Caption="Початок Оренди"></dx:GridViewDataDateColumn>
+            VisibleIndex="44" Visible="False" Caption="Дата початку використання приміщення"></dx:GridViewDataDateColumn>
+        <dx:GridViewDataDateColumn FieldName="base_month" ReadOnly="True" 
+            VisibleIndex="45" Visible="False" Caption="Базовий місяць"></dx:GridViewDataDateColumn>
+
+
 <%--        <dx:GridViewDataTextColumn FieldName="rent_start_year" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="45" Visible="False" Caption="Початок Оренди - Рік"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="rent_start_quarter" ReadOnly="True" ShowInCustomizationForm="False"
@@ -772,7 +779,7 @@ WHERE id = @arenda_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_34" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.ArendaAgreements" Version="A2_35" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
