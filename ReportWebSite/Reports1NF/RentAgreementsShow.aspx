@@ -85,6 +85,7 @@
 <mini:ProfiledSqlDataSource ID="SqlDataSourceArendaObjects" runat="server" EnableCaching="false"
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT m.*
+        ,case when len(m.org_renter_zkpo) <= 8 then m.org_renter_zkpo end as org_renter_zkpo2
         ,(CASE WHEN ar.agreement_state = 1 THEN 'Договір діє' ELSE CASE WHEN ar.agreement_state = 2 THEN 'Договір закінчився, але заборгованність не погашено' ELSE CASE WHEN ar.agreement_state = 3 THEN 'Договір закінчився, оренда продовжена іншим договором' ELSE '' END END END) AS 'agreement_active_s'
         ,an1.n_cost_narah
         ,an1.n_rent_rate
@@ -263,7 +264,7 @@
 	<ClientSideEvents CustomButtonClick="ShowPhoto" />
 
     <Columns>
-		<dx:GridViewCommandColumn Width="30px" ButtonType="Image" CellStyle-Wrap="True" FixedStyle="Left" CellStyle-CssClass="command-column-class" 
+		<%--<dx:GridViewCommandColumn Width="30px" ButtonType="Image" CellStyle-Wrap="True" FixedStyle="Left" CellStyle-CssClass="command-column-class" 
             ShowDeleteButton="False" ShowCancelButton="False" ShowUpdateButton="False" ShowEditButton="False" ShowNewButton="False" >
             <CustomButtons>
                 <dx:GridViewCommandColumnCustomButton ID="btnJpegBuild" Text="Фото/плани"> 
@@ -271,7 +272,7 @@
                 </dx:GridViewCommandColumnCustomButton>
             </CustomButtons>
             <CellStyle Wrap="False"></CellStyle>
-        </dx:GridViewCommandColumn>
+        </dx:GridViewCommandColumn>--%>
 
         <dx:GridViewDataTextColumn FieldName="arenda_id" ReadOnly="True" ShowInCustomizationForm="False"
             VisibleIndex="0" Visible="false" Caption="Картка">
@@ -326,7 +327,7 @@
                 <%# "<a href=\"javascript:ShowOrganizationCard(" + Eval("org_renter_id") + ")\">" + Eval("org_renter_short_name") + "</a>"%>
             </DataItemTemplate>--%>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="org_renter_zkpo" ReadOnly="True"
+        <dx:GridViewDataTextColumn FieldName="org_renter_zkpo2" ReadOnly="True"
             VisibleIndex="10" Visible="true" Caption="Орендар - Код ЄДРПОУ"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_renter_industry" ReadOnly="True"
             VisibleIndex="11" Visible="False" Caption="Орендар - Галузь"></dx:GridViewDataTextColumn>
@@ -615,7 +616,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.RentAgreementsShow" Version="A2_3" Enabled="false" />
+    <SettingsCookies CookiesID="GUKV.RentAgreementsShow" Version="A2_7" Enabled="false" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
