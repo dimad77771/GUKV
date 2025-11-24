@@ -334,6 +334,7 @@ SET
 	,[kasac] = @kasac
 	,[pidstav] = @pidstav
 	,[hlopotan] = @hlopotan
+	,[objecturl] = @objecturl
 	,[dopomoga] = @dopomoga
 	,[vazhno] = @vazhno
 	,[modify_date2] = @modify_date2
@@ -356,6 +357,7 @@ WHERE id = @id"
 	,[kasac]
 	,[pidstav]
 	,[hlopotan]
+	,[objecturl]
 	,[dopomoga]
 	,[vazhno]
 	,[modify_date2]
@@ -376,6 +378,7 @@ WHERE id = @id"
 	,@kasac
 	,@pidstav
 	,@hlopotan
+	,@objecturl
 	,@dopomoga
 	,@vazhno
 	,@modify_date2
@@ -584,6 +587,10 @@ SELECT SCOPE_IDENTITY()"
         <dx:GridViewDataTextColumn FieldName="nomsprava" Caption="№ судової справи" Width="130px" CellStyle-HorizontalAlign="Left" CellStyle-VerticalAlign="Top">
         </dx:GridViewDataTextColumn>
 
+		<dx:GridViewDataMemoColumn FieldName="objecturl" Caption="URL" Width="150px" CellStyle-HorizontalAlign="Left" CellStyle-VerticalAlign="Top">
+			<PropertiesMemoEdit Rows="8" />
+		</dx:GridViewDataMemoColumn>
+
 		<dx:GridViewDataMemoColumn FieldName="pozivach" Caption="Позивач (Повна назва)" Width="150px" CellStyle-HorizontalAlign="Left" CellStyle-VerticalAlign="Top">
 			<PropertiesMemoEdit Rows="8" />
 		</dx:GridViewDataMemoColumn>
@@ -667,7 +674,7 @@ SELECT SCOPE_IDENTITY()"
         ShowFooter="false"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.YurspravaSquare" Version="A1_19" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.YurspravaSquare" Version="A1_20" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
