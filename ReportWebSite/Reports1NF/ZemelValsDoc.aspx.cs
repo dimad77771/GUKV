@@ -75,12 +75,13 @@ public partial class Account_Register : System.Web.UI.Page
 			using (var cmd = factory.CreateCommand())
 			{
 				var sql = @"select
-count(*) cnt
+street_full_name, find_dom
 from
 (
 	select
 	vb.street_full_name, 
-	(COALESCE(LTRIM(RTRIM(b.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer3)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer2)), '')) as dom
+	(COALESCE(LTRIM(RTRIM(b.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer3)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer2)), '')) as find_dom,
+	(COALESCE(LTRIM(RTRIM(b.addr_nomer1)) + ' ', '')) as dom
 	FROM view_balans_all vb
 	LEFT JOIN reports1nf_balans bal on vb.balans_id = bal.id
 	LEFT JOIN reports1nf_buildings b on bal.building_1nf_unique_id = b.unique_id
@@ -98,14 +99,22 @@ where street_full_name like '%ГАВЕЛА%' and dom = '19'";
 					adapter.Fill(dataTable);
 				}
 			}
-			var r = dataTable.Rows[0];
-			var ex = (int)r["cnt"] > 0;
+			var ex = false;
+			var street_full_name = Main.Column_4.Text;
+			var find_dom = Main.Column_5.Text;
+			if (dataTable.Rows.Count > 0)
+			{
+				ex = true;
+				var r = dataTable.Rows[0];
+				street_full_name = (string)r["street_full_name"];
+				find_dom = (string)r["find_dom"];
+			}
 
 			var info = !ex ? 
 				"Одночасно зазначаємо, що в Модулі «Облік та відображення об’єктів нерухомого майна територіальної громади міста Києва» (ІАС «Майно») за ознакою «просп. Повітрофлотський, 120» об’єктів не виявлено. Приватизація об’єктів нерухомості за вказаною адресою Департаментом не здійснювалась, договори оренди не укладались." :
 				"Одночасно зазначаємо, що в Модулі «Облік та відображення об’єктів нерухомого майна територіальної громади міста Києва» (ІАС «Майно») за ознакою «просп. Повітрофлотський, 120» виявлено актуалізовані дані на об’єкт комунальної власності.";
 
-			info = info.Replace("просп. Повітрофлотський, 120", "" + Main.Column_4.Text + ", " + Main.Column_5.Text);
+			info = info.Replace("просп. Повітрофлотський, 120", "" + street_full_name + ", " + find_dom);
 
 			properties.Add("{{ADD_INFO}}", info);
 		}
