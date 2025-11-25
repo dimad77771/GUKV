@@ -93,7 +93,7 @@ public partial class Reports1NF_OrgArendaList : System.Web.UI.Page
                 join reports1nf_arenda ar on rep.id  = ar.report_id
                 LEFT JOIN arenda a ON a.id = ar.id
 --                join dbo.organizations o on rep.organization_id = o.id
-                join dbo.reports1nf_arenda_payments ap on ap.arenda_id = ar.id and ap.id = (select id from dbo.reports1nf_arenda_payments t1 where t1.arenda_id = ap.arenda_id and t1.report_id = ar.report_id and t1.rent_period_id = (select MAX(rent_period_id) from dbo.reports1nf_arenda_payments t2 where t2.arenda_id = t1.arenda_id and t2.report_id = t1.report_id ))
+                join dbo.reports1nf_arenda_payments ap on ap.arenda_id = ar.id and ap.id in (select id from dbo.reports1nf_arenda_payments t1 where t1.arenda_id = ap.arenda_id and t1.report_id = ar.report_id and t1.rent_period_id = (select MAX(rent_period_id) from dbo.reports1nf_arenda_payments t2 where t2.arenda_id = t1.arenda_id and t2.report_id = t1.report_id ))
                 left join [dbo].[dict_rent_period] p on ap.rent_period_id = p.id
                 where ar.agreement_state = 1    
                 and (ap.rent_period_id is null or ap.rent_period_id <> (select id from [dbo].[dict_rent_period]  where is_active = 1))
