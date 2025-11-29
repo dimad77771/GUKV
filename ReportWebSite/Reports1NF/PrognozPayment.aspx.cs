@@ -547,8 +547,8 @@ sum(case when v5_sum > 0 then 1 else 0 end) as v5,
 
 sum(v6) as v6,
 sum(v7) as v7,
-sum(v8) as v8,
-sum(v9) as v9,
+sum(v8) / 100.0 as v8,
+sum(v9) / 100.0 as v9,
 
 sum(v6 + v10_part) as v10,
 sum(v8 + v12_part) as v11,	--v11 = v12

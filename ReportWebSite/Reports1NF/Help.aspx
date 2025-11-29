@@ -61,6 +61,17 @@
         <td valign="top"> <dx:ASPxHyperLink ID="LinkHelp2" runat="server" Text="ВІДЕОМАТЕРИАЛИ" NavigateUrl="~/UserGuide/ВІДЕОМАТЕРИАЛИ.docx" /> </td>
     </tr>
 
+    <tr>
+        <td> &nbsp; </td>
+
+        <td valign="bottom"> <img src="../Styles/HelpIcon.png" alt="Довідка" /> </td>
+
+        <td> &nbsp; </td>
+
+        <td valign="top"> <dx:ASPxHyperLink ID="LinkElektrPodpis" runat="server" Text="ІНСТРУКЦІЯ ЕЛЕКТРОННОГО ПІДПИСУ ДОГОВОРУ" NavigateUrl="~/UserGuide/ІНСТРУКЦІЯ_ЕЛЕКТРОННОГО_ПІДПИСУ_ДОГОВОРУ.docx" /> </td>
+    </tr>
+
+
 
 <%--    <tr>
         <td> &nbsp; </td>

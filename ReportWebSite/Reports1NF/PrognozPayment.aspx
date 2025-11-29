@@ -611,6 +611,10 @@ join dict_rent_occupation occ on occ.id = obp.org_occupation_id
                 AND
             ( (@p_show_neviznacheni = 1) OR (@p_show_neviznacheni = 0 AND (isnull(ddd.name, '') not in ('Невизначені','АРХИВНІ(ПРИПИНЕНІ)'))) ) 
                 AND
+			(NUM_GIVEN > 0)
+				AND
+			(otdel_gukv = 'ДІЮЧЕ')
+				AND
             (8888 = 8888)
                 AND
     case when rep.zkpo_code in 

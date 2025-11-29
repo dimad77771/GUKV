@@ -434,6 +434,9 @@
 															<dx:RibbonButtonItem Text="ВІДЕОМАТЕРИАЛИ" NavigateUrl="UserGuide/ВІДЕОМАТЕРИАЛИ.docx">
 																<SmallImage Url="Styles/video-camera.png" />
 															</dx:RibbonButtonItem>
+															<dx:RibbonButtonItem Text="Інструкція ЕЛЕКТРОННОГО ПІДПИСУ ДОГОВОРУ" NavigateUrl="UserGuide/ІНСТРУКЦІЯ_ЕЛЕКТРОННОГО_ПІДПИСУ_ДОГОВОРУ.docx">
+																<SmallImage Url="Styles/ribbonicon_help_4.png" />
+															</dx:RibbonButtonItem>
 
 
 															<%--
