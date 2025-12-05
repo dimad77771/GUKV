@@ -1200,9 +1200,9 @@
 
     InsertCommand="
     INSERT INTO [reports1nf_arenda_dogchange]
-            ([arenda_id],[report_id],[agreement_date],[agreement_num],[rent_start_date],[rent_actual_finish_date],[rent_rate],[base_month],[invnum_rent])
+            ([arenda_id],[report_id],[agreement_date],[agreement_num],[rent_start_date],[rent_actual_finish_date],[rent_rate],[base_month],[invnum_rent],[rent_used])
     VALUES
-        (@arenda_id,@report_id,@agreement_date,@agreement_num,@rent_start_date,@rent_actual_finish_date,@rent_rate,@base_month,@invnum_rent)
+        (@arenda_id,@report_id,@agreement_date,@agreement_num,@rent_start_date,@rent_actual_finish_date,@rent_rate,@base_month,@invnum_rent,@rent_used)
     SELECT SCOPE_IDENTITY()" 
 
     UpdateCommand="
@@ -1214,7 +1214,8 @@
         [rent_actual_finish_date] = @rent_actual_finish_date,
         [invnum_rent] = @invnum_rent,
         [rent_rate] = @rent_rate,
-        [base_month] = @base_month    
+        [base_month] = @base_month,
+        [rent_used] = @rent_used
     WHERE id = @id" 
 
         oninserting="SqlDataSourceArendaDogchanges_Inserting" 
@@ -1239,6 +1240,7 @@
         <asp:Parameter Name="invnum_rent" />
         <asp:Parameter Name="rent_rate" />
         <asp:Parameter Name="base_month" />
+        <asp:Parameter Name="rent_used" />
     </InsertParameters>
     <UpdateParameters>
         <asp:Parameter Name="id" />
@@ -1249,6 +1251,7 @@
         <asp:Parameter Name="invnum_rent" />
         <asp:Parameter Name="rent_rate" />
         <asp:Parameter Name="base_month" />
+        <asp:Parameter Name="rent_used" />
     </UpdateParameters>
 </mini:ProfiledSqlDataSource>
 
@@ -5617,6 +5620,7 @@ WHERE id = @id"
                                 <dx:GridViewDataDateColumn FieldName="rent_actual_finish_date" Caption="Фактична дата закінчення додаткові угоди"/>
                                 <dx:GridViewDataTextColumn FieldName="rent_rate" Caption="Місячна орендна плата, грн."/>
                                 <dx:GridViewDataDateColumn FieldName="base_month" Caption="Базовий місяць (вкажіть перше число місяця)"/>
+                                <dx:GridViewDataTextColumn FieldName="rent_used" Caption="Площа, що використовується всього, кв.м"/>
                                 <dx:GridViewDataTextColumn FieldName="invnum_rent" Caption="Орендна плата за інвентарними номерами" Width="350px" ToolTip="Приклад: інв1:100.00, інв2:200.00, інв3:300.00"/>
                             </Columns>
                             
