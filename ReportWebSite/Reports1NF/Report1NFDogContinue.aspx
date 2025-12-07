@@ -52,7 +52,9 @@
 		console.log(e.buttonID);
 		if (e.buttonID == 'btnPdfBuild') {
 			FreeSquareGridView.GetRowValues(e.visibleIndex, 'id', OnGridPdfBuildGetRowValues);
-		} else if (e.buttonID == 'bnt_current_stage_pdf') {
+        } else if (e.buttonID == 'btnDocxBuild') {
+            FreeSquareGridView.GetRowValues(e.visibleIndex, 'id', OnGridDocxBuildGetRowValues);
+        } else if (e.buttonID == 'bnt_current_stage_pdf') {
 			$.cookie('RecordID', s.GetRowKey(e.visibleIndex));
 			ASPxFileManagerPhotoFiles.Refresh();
 			PopupObjectPhotos.Show();
@@ -187,7 +189,17 @@
 			'BalansDogContinuePhotosPdf.aspx?id=' + id,
 			'_blank',
 		);
-	}
+    }
+
+    function OnGridDocxBuildGetRowValues(values) {
+        console.log(values);
+        var id = values;
+        window.open(
+            'BalansDogContinuePhotosDocx.aspx?id=' + id,
+            '_blank',
+        );
+    }
+
 
     function OnDropDown(comboBox){
 		//SetDropDownWidth(comboBox, "368px");
@@ -644,6 +656,10 @@ WHERE id = @id"
                 <dx:GridViewCommandColumnCustomButton ID="btnCopyFullDescription" Text="Опис об'єкта до буфера обміну"> 
 					<Image Url="~/Styles/CopyIcon.png"/>
                 </dx:GridViewCommandColumnCustomButton>
+                <dx:GridViewCommandColumnCustomButton ID="btnDocxBuild" Text="Оголошення про продовження договорів оренди на аукціоні"> 
+					<Image Url="~/Styles/ribbonicon_help_4.png"/>
+                </dx:GridViewCommandColumnCustomButton>
+
             </CustomButtons>
             <CellStyle Wrap="False"></CellStyle>
         </dx:GridViewCommandColumn>
