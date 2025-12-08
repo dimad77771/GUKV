@@ -392,7 +392,8 @@ SELECT
 	fs.orend_plat_last_month as ""Місячна орендна плата за останній місяць(проіндексована)"",
 	(select Q.name from dict_may_pravo_prodov Q where Q.id = fs.may_pravo_prodov) as ""Цільове використання"",
 	rozmir_vidshkoduv as ""Розмір відшкодування земельного податку та інших"",
-	case when prozoro_number <> '' then 'https://prozorro.sale/auction/' + rtrim(ltrim(prozoro_number)) else '' end as ""Унікальний код обєкту у ЕТС Прозорро-продажі""
+	case when prozoro_number <> '' then 'https://prozorro.sale/auction/' + rtrim(ltrim(prozoro_number)) else '' end as ""Унікальний код обєкту у ЕТС Прозорро-продажі"",
+	(SELECT TOP 1 Q.prozoro_title FROM reports1nf_org_info Q WHERE Q.report_id = rep.report_id) as ""Контактні дані працівника балансоутримувача""
 FROM view_reports1nf rep
 join reports1nf_arenda bal on bal.report_id = rep.report_id
 JOIN view_reports1nf_buildings b ON b.unique_id = bal.building_1nf_unique_id
