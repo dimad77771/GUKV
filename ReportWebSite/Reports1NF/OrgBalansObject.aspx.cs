@@ -114,6 +114,8 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
         string reportIdStr = Request.QueryString["rid"];
         string balansIdStr = Request.QueryString["bid"];
 
+		ASPxGridYursprava.SettingsEditing.Mode = GridViewEditingMode.Inline;
+
         //string tab = Request.QueryString["tab"];
         //if (!string.IsNullOrEmpty(tab))
             //CardPageControl.ActiveTabIndex = int.Parse(tab);
@@ -2177,4 +2179,39 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
             e.Items.Add("Звернення", "Report_6");
         }
     }
+
+	protected void SqlDataSourceYursprava_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+	{
+		e.Command.Parameters["@baseurl"].Value = Utils.WebsiteBaseUrl;
+		e.Command.Parameters["@objecturl_like"].Value = "%" + "rid=" + ReportID + "&bid=" + BalansObjectID;
+	}
+
+	protected void SqlDataSourceYursprava_Inserting(object sender, SqlDataSourceCommandEventArgs e)
+	{
+		SqlDataSourceYursprava_OnInsertingUpdating(e, isNew: true);
+	}
+
+	protected void SqlDataSourceYursprava_Updating(object sender, SqlDataSourceCommandEventArgs e)
+	{
+		SqlDataSourceYursprava_OnInsertingUpdating(e, isNew: false);
+	}
+
+	void SqlDataSourceYursprava_OnInsertingUpdating(SqlDataSourceCommandEventArgs e, bool isNew)
+	{
+		var dbparams = (System.Data.SqlClient.SqlParameterCollection)(e.Command.Parameters);
+		dbparams.AddWithValue("@modify_date2", DateTime.Now);
+		var user = Membership.GetUser();
+		var username = (user == null ? String.Empty : (String)user.UserName);
+		dbparams.AddWithValue("@modified_by2", username);
+        var objecturl = @"https://dkv.kyivcity.gov.ua/Reports1NF/OrgBalansObject.aspx?" + "rid=" + ReportID + "&bid=" + BalansObjectID;
+		dbparams.AddWithValue("@objecturl", objecturl);
+	}
+
+	protected void PrivatisatGridView_InitNewRow(object sender, ASPxDataInitNewRowEventArgs e)
+	{
+		e.NewValues["god"] = DateTime.Today.Year;
+	}
+
+
+
 }

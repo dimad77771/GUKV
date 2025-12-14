@@ -1015,6 +1015,95 @@ WHERE id = @id"
     </UpdateParameters>
 </mini:ProfiledSqlDataSource>
 
+<mini:ProfiledSqlDataSource ID="SqlDataSourceYursprava" runat="server"
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="
+SELECT 
+*
+FROM [yursprava] A
+WHERE objecturl like @objecturl_like
+"
+OnSelecting="SqlDataSourceYursprava_Selecting"
+
+DeleteCommand="DELETE FROM [yursprava] WHERE id = @id" 
+
+UpdateCommand="UPDATE [yursprava]
+SET
+	[god] = @god
+	--,[npp] = @npp
+	,[nomsprava] = @nomsprava
+	,[pozivach] = @pozivach
+	,[vidpovid] = @vidpovid
+	,[tretlico] = @tretlico
+	,[predmet] = @predmet
+	,[sudperv] = @sudperv
+	,[curstan] = @curstan
+	,[fiotel] = @fiotel
+	,[apelac] = @apelac
+	,[kasac] = @kasac
+	,[pidstav] = @pidstav
+	,[hlopotan] = @hlopotan
+	,[objecturl] = @objecturl
+	,[dopomoga] = @dopomoga
+	,[vazhno] = @vazhno
+	,[modify_date2] = @modify_date2
+	,[modified_by2] = @modified_by2
+WHERE id = @id" 
+	onupdating="SqlDataSourceYursprava_Updating"
+
+    InsertCommand="INSERT INTO [yursprava]
+    ([god]
+	--,[npp]
+	,[nomsprava]
+	,[pozivach]
+	,[vidpovid]
+	,[tretlico]
+	,[predmet]
+	,[sudperv]
+	,[curstan]
+	,[fiotel]
+	,[apelac]
+	,[kasac]
+	,[pidstav]
+	,[hlopotan]
+	,[objecturl]
+	,[dopomoga]
+	,[vazhno]
+	,[modify_date2]
+	,[modified_by2]
+    ) 
+    VALUES
+    (@god
+	--,@npp
+	,@nomsprava
+	,@pozivach
+	,@vidpovid
+	,@tretlico
+	,@predmet
+	,@sudperv
+	,@curstan
+	,@fiotel
+	,@apelac
+	,@kasac
+	,@pidstav
+	,@hlopotan
+	,@objecturl
+	,@dopomoga
+	,@vazhno
+	,@modify_date2
+	,@modified_by2
+    );
+SELECT SCOPE_IDENTITY()" 
+    oninserting="SqlDataSourceYursprava_Inserting" 
+
+	>
+    <SelectParameters>
+		<asp:Parameter DbType="String" DefaultValue="" Name="baseurl" />
+        <asp:Parameter DbType="String" DefaultValue="" Name="objecturl_like" />
+    </SelectParameters>
+</mini:ProfiledSqlDataSource>
+
+
 <mini:ProfiledSqlDataSource ID="SqlDataSourceFreeSquare" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT [id]
@@ -3620,6 +3709,177 @@ WHERE id = @id"
             </ContentCollection>
         </dx:TabPage>
 
+        <dx:TabPage Text="Претензійно-позивна" Name="Tab9">
+            <ContentCollection>
+                <dx:ContentControl ID="ContentControl6" runat="server">
+                            <dx:ASPxRoundPanel ID="ASPxRoundPanel4" runat="server" HeaderText="Судовий реєстр">
+                                <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="4px" />
+                                <PanelCollection>
+                                    <dx:PanelContent ID="PanelContent15" runat="server">
+                                        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                            <tr>
+                                                <td>
+                                                
+
+       <dx:ASPxGridView ID="ASPxGridYursprava" runat="server" AutoGenerateColumns="False" 
+        DataSourceID="SqlDataSourceYursprava" KeyFieldName="id" Width="1250px" 
+        ClientInstanceName="YurspravaGridView" >
+
+	<SettingsCommandButton>
+		<EditButton>
+			<Image Url="~/Styles/EditIcon.png" />
+		</EditButton>
+		<CancelButton>
+			<Image Url="~/Styles/CancelIcon.png" />
+		</CancelButton>
+		<UpdateButton>
+			<Image Url="~/Styles/SaveIcon.png" />
+		</UpdateButton>
+		<DeleteButton>
+			<Image Url="~/Styles/DeleteIcon.png" />
+		</DeleteButton>
+		<NewButton>
+			<Image Url="~/Styles/AddIcon.png" />
+		</NewButton>
+		<ClearFilterButton Text="Очистити" RenderMode="Link" />
+	</SettingsCommandButton>
+
+    <Columns>
+        <dx:GridViewCommandColumn Width="70px" ButtonType="Image" CellStyle-Wrap="True" FixedStyle="Left" CellStyle-CssClass="command-column-class" 
+            ShowDeleteButton="True" ShowCancelButton="true" ShowUpdateButton="true" ShowEditButton="true" ShowNewButton="true" CellStyle-VerticalAlign="Top" >
+            <CustomButtons>
+                <%--<dx:GridViewCommandColumnCustomButton ID="btnPdfBuild" Text="Pdf"> 
+					<Image Url="~/Styles/PdfReportIcon.png"/>
+                </dx:GridViewCommandColumnCustomButton>
+                <dx:GridViewCommandColumnCustomButton ID="btnJpegBuild" Text="Jpeg" Visibility="Invisible"> 
+					<Image Url="~/Styles/PhotoIcon.png"/>
+                </dx:GridViewCommandColumnCustomButton>
+                <dx:GridViewCommandColumnCustomButton ID="btnMapShow" Text="Показати на мапі"> 
+					<Image Url="~/Styles/MapShowIcon.png"/>
+                </dx:GridViewCommandColumnCustomButton>
+				<dx:GridViewCommandColumnCustomButton ID="btnCopyFullDescription" Text="Опис об'єкта до буфера обміну"> 
+					<Image Url="~/Styles/CopyIcon.png"/>
+                </dx:GridViewCommandColumnCustomButton>--%>
+            </CustomButtons>
+            <CellStyle Wrap="False"></CellStyle>
+        </dx:GridViewCommandColumn>
+
+		<dx:GridViewDataTextColumn FieldName="god" Caption="Рік" Width="120px" CellStyle-HorizontalAlign="Left" CellStyle-VerticalAlign="Top">
+		</dx:GridViewDataTextColumn>
+
+		<%--<dx:GridViewDataTextColumn FieldName="npp" Caption="npp" Width="120px" CellStyle-HorizontalAlign="Left" Visible="false" CellStyle-VerticalAlign="Top">
+        </dx:GridViewDataTextColumn>--%>
+
+        <dx:GridViewDataTextColumn FieldName="nomsprava" Caption="№ судової справи" Width="130px" CellStyle-HorizontalAlign="Left" CellStyle-VerticalAlign="Top">
+        </dx:GridViewDataTextColumn>
+
+		<dx:GridViewDataMemoColumn FieldName="objecturl" Caption="URL" Width="150px" CellStyle-HorizontalAlign="Left" CellStyle-VerticalAlign="Top" Visible="false">
+			<PropertiesMemoEdit Rows="8" />
+		</dx:GridViewDataMemoColumn>
+
+		<dx:GridViewDataMemoColumn FieldName="pozivach" Caption="Позивач (Повна назва)" Width="150px" CellStyle-HorizontalAlign="Left" CellStyle-VerticalAlign="Top">
+			<PropertiesMemoEdit Rows="8" />
+		</dx:GridViewDataMemoColumn>
+		
+		<dx:GridViewDataMemoColumn FieldName="vidpovid" Caption="Відповідач (Повна назва)" Width="150px" CellStyle-HorizontalAlign="Left" CellStyle-VerticalAlign="Top">
+			<PropertiesMemoEdit Rows="8" />
+		</dx:GridViewDataMemoColumn>
+		
+		<dx:GridViewDataMemoColumn FieldName="tretlico" Caption="Третя особа (Повна назва)" Width="150px" CellStyle-HorizontalAlign="Left" CellStyle-VerticalAlign="Top">
+			<PropertiesMemoEdit Rows="8" />
+		</dx:GridViewDataMemoColumn>
+		
+		<dx:GridViewDataMemoColumn FieldName="predmet" Caption="Предмет позову (зустрічного позову) (Повністю)" Width="150px" CellStyle-HorizontalAlign="Left" CellStyle-VerticalAlign="Top">
+			<PropertiesMemoEdit Rows="8" />
+		</dx:GridViewDataMemoColumn>
+		
+		<dx:GridViewDataMemoColumn FieldName="sudperv" Caption="Суд першої інстанції. Результати розгляду (дата, номер та суть судового рішення, ухвали, постанови) (П.І.П. судді)" Width="150px" CellStyle-HorizontalAlign="Left" CellStyle-VerticalAlign="Top">
+			<PropertiesMemoEdit Rows="8" />
+		</dx:GridViewDataMemoColumn>
+		
+		<dx:GridViewDataMemoColumn FieldName="curstan" Caption="Поточний стан. Дата наступного судового засідання" Width="150px" CellStyle-HorizontalAlign="Left" CellStyle-VerticalAlign="Top">
+			<PropertiesMemoEdit Rows="8" />
+		</dx:GridViewDataMemoColumn>
+		
+		<dx:GridViewDataMemoColumn FieldName="fiotel" Caption="ПІБ представника, посада, контактний телефон" Width="150px" CellStyle-HorizontalAlign="Left" CellStyle-VerticalAlign="Top">
+			<PropertiesMemoEdit Rows="8" />
+		</dx:GridViewDataMemoColumn>
+		
+		<dx:GridViewDataMemoColumn FieldName="apelac" Caption="Суд апеляційної інстанції. Результати розгляду (дата, номер та суть судового рішення, ухвали, постанови) (П.І.П. судді)" Width="150px" CellStyle-HorizontalAlign="Left" CellStyle-VerticalAlign="Top">
+			<PropertiesMemoEdit Rows="8" />
+		</dx:GridViewDataMemoColumn>
+		
+		<dx:GridViewDataMemoColumn FieldName="kasac" Caption="Суд касаційної інстанції. Результати розгляду (дата, номер та суть судового рішення, ухвали, постанови) (П.І.П. судді)" Width="150px" CellStyle-HorizontalAlign="Left" CellStyle-VerticalAlign="Top">
+			<PropertiesMemoEdit Rows="8" />
+		</dx:GridViewDataMemoColumn>
+		
+		<dx:GridViewDataMemoColumn FieldName="pidstav" Caption="Підстави позову" Width="150px" CellStyle-HorizontalAlign="Left" CellStyle-VerticalAlign="Top">
+			<PropertiesMemoEdit Rows="8" />
+		</dx:GridViewDataMemoColumn>
+		
+		<dx:GridViewDataMemoColumn FieldName="hlopotan" Caption="Клопотання про забезпечення позову (у разі наявності)" Width="150px" CellStyle-HorizontalAlign="Left" CellStyle-VerticalAlign="Top">
+			<PropertiesMemoEdit Rows="8" />
+		</dx:GridViewDataMemoColumn>
+		
+		<dx:GridViewDataMemoColumn FieldName="dopomoga" Caption="Питання, у вирішенні яких необхідна допомога інших структурних підрозділів Київської міської ради (Київської міської державної адміністрації)" Width="150px" CellStyle-HorizontalAlign="Left" CellStyle-VerticalAlign="Top">
+			<PropertiesMemoEdit Rows="8" />
+		</dx:GridViewDataMemoColumn>
+		
+		<dx:GridViewDataMemoColumn FieldName="vazhno" Caption="Заповнюється у разі важливого значення справи" Width="150px" CellStyle-HorizontalAlign="Left" CellStyle-VerticalAlign="Top">
+			<PropertiesMemoEdit Rows="8" />
+		</dx:GridViewDataMemoColumn>
+		
+
+
+
+        <dx:GridViewDataTextColumn FieldName="modify_date2" Caption="Дата редагу-вання"  Width="75px" CellStyle-HorizontalAlign="Left" CellStyle-VerticalAlign="Top">
+			<HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("modify_date2") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="modified_by2" Caption="Користувач"  Width="100px" CellStyle-HorizontalAlign="Left" CellStyle-VerticalAlign="Top">
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("modified_by2") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+    </Columns>
+
+    <SettingsBehavior ConfirmDelete="True" />
+    <SettingsBehavior EnableCustomizationWindow="True" AutoFilterRowInputDelay="2500" ColumnResizeMode="Control" />
+    <SettingsPager AlwaysShowPager="true" PageSize="25"></SettingsPager>
+    <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
+    <Settings VerticalScrollableHeight="350" />
+    <Settings VerticalScrollBarMode="Visible" />
+    <Settings
+        ShowFilterRow="True"
+        ShowFilterRowMenu="True"
+        ShowGroupPanel="False"
+        ShowFilterBar="Visible"
+        ShowHeaderFilterButton="True"
+        HorizontalScrollBarMode="Auto"
+        ShowFooter="false"
+        VerticalScrollBarMode="Auto"
+        VerticalScrollBarStyle="Standard" />
+    <SettingsCookies CookiesID="GUKV.OrgBalansObject.YurspravaSquare" Version="A1_1" Enabled="false" />
+    <Styles Header-Wrap="True" >
+        <Header Wrap="True"></Header>
+    </Styles>
+</dx:ASPxGridView>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </dx:PanelContent>
+                                </PanelCollection>
+                            </dx:ASPxRoundPanel>
+<%--                        </ItemTemplate>
+                    </asp:FormView>--%>
+                </dx:ContentControl>
+            </ContentCollection>
+        </dx:TabPage>
+
         <dx:TabPage Text="Фото" Name="TabPhoto">
             <ContentCollection>
                 <dx:ContentControl ID="ContentControl4__1" runat="server">
@@ -3832,8 +4092,6 @@ WHERE id = @id"
             </ContentCollection>
         </dx:TabPage>
 
-        
-        
     </TabPages>
 </dx:ASPxPageControl>
 
