@@ -1057,7 +1057,9 @@
 			CustomizeEditFormTable();
         }
 
-		function CustomizeEditFormTable() {
+        function CustomizeEditFormTable() {
+            return;
+
 			var include_in_perelik = felm__include_in_perelik.GetValue();
 			var showrow1 = false;
             var showrow2 = false;
