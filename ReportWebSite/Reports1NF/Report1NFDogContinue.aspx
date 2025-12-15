@@ -397,6 +397,7 @@ LEFT JOIN (
 
         WHERE (@p_rda_district_id = 0 OR (rep.org_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND rep.org_district_id = @p_rda_district_id))
             AND ( (@p_show_neziznacheni = 0) OR (@p_show_neziznacheni = 1 AND (fs.is_included = 1 and fs.komis_protocol <> '' and fs.geodata_map_points <> '')) )
+            AND ( (@bal_organization_id <= 0) OR ( org.zkpo_code in (select q.zkpo_code from view_reports1nf q where q.organization_id = @bal_organization_id)) )
 
     order by org_name, street_name, addr_nomer, total_free_sqr   "
     OnSelecting="SqlDataSourceFreeSquare_Selecting"
@@ -422,6 +423,7 @@ WHERE id = @id"
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="period_year" />
 		<asp:Parameter DbType="String" DefaultValue="" Name="baseurl" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_show_neziznacheni" />
+        <asp:Parameter DbType="Int32" DefaultValue="0" Name="bal_organization_id" />
     </SelectParameters>
 </mini:ProfiledSqlDataSource>
 

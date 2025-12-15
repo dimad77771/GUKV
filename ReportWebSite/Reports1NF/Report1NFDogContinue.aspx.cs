@@ -48,6 +48,17 @@ public partial class Reports1NF_Report1NFDogContinue : System.Web.UI.Page
 			col.ShowCancelButton = false;
 		}
 
+		if (Utils.IsCabinetBalansoderzhatel())
+		{
+			var col = FreeSquareGridView.Columns.OfType<GridViewCommandColumn>().First();
+			col.ShowEditButton = false;
+			col.ShowUpdateButton = false;
+			col.ShowCancelButton = false;
+			col.ShowNewButton = false;
+			col.ShowDeleteButton = false;
+		}
+
+
 		SectionMenu.Visible = false;
 
 		FreeSquareGridView.TemplateColumnsStyles("may_pravo_prodov_text");
@@ -126,6 +137,7 @@ public partial class Reports1NF_Report1NFDogContinue : System.Web.UI.Page
         e.Command.Parameters["@period_year"].Value = DateTime.Now.Date.Month == 1 ? DateTime.Now.Date.Year - 1 : DateTime.Now.Date.Year;
 		e.Command.Parameters["@baseurl"].Value = Utils.WebsiteBaseUrl;
 		e.Command.Parameters["@p_show_neziznacheni"].Value = CheckBoxBalansObjectsShowNeziznacheni.Checked ? 1 : 0;
+		e.Command.Parameters["@bal_organization_id"].Value = Utils.RdaDistrictID > 0 ? -1 : Utils.UserOrganizationID;
 	}
 
 	protected void SqlDataSourceFreeSquare_Updating(object sender, SqlDataSourceCommandEventArgs e)
