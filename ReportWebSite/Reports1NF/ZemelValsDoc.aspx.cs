@@ -46,6 +46,7 @@ public partial class Account_Register : System.Web.UI.Page
 		public bool IsOgoloshena;
 
 		DataTable dataTable;
+		DataTable dogDataTable;
 
 		void UpdateTemplateFile(MainDocumentPart mainPart)
 		{
@@ -94,7 +95,9 @@ from
 	vb.sqr_total,
 	realestateobj,
 	object_kind,
-	object_type
+	object_type,
+	bal.id,
+	bal.report_id
 	FROM view_balans_all vb
 	LEFT JOIN reports1nf_balans bal on vb.balans_id = bal.id
 	LEFT JOIN reports1nf_buildings b on bal.building_1nf_unique_id = b.unique_id
@@ -136,6 +139,15 @@ where street_full_name like '%ГАВЕЛА%' and dom = '19'
 			if (!ex)
 			{
 				properties.Add("{{ADD_INFO_TABLE}}", "");
+			}
+
+			if (ex)
+			{
+				BuildDogovorInfo(connection);
+			}
+			else
+			{
+				properties.Add("{{ADD_DOGOVOR_TABLE}}", "");
 			}
 		}
 
@@ -287,6 +299,7 @@ where street_full_name like '%ГАВЕЛА%' and dom = '19'
 						wordDocument.Close();
 
 						ReplaceObjectTable(tempFile.FileName);
+						ReplaceDogovorTable(tempFile.FileName);
 
 						// Dump the document contents to the output stream
 						System.IO.FileInfo info = new System.IO.FileInfo(tempFile.FileName);
@@ -499,11 +512,207 @@ where street_full_name like '%ГАВЕЛА%' and dom = '19'
 			}
 		}
 
+		public void ReplaceDogovorTable(string docxfilename)
+		{
+			if (string.IsNullOrEmpty(docxfilename))
+				throw new ArgumentNullException("docxfilename");
+
+			// Open existing document
+			using (WordDocument document = new WordDocument(docxfilename, FormatType.Docx))
+			{
+				const string placeholder = "{{ADD_DOGOVOR_TABLE}}";
+
+				// Find placeholder paragraph
+				TextSelection selection = document.Find(placeholder, false, false);
+				if (selection == null)
+				{
+					return;
+				}
+
+				WTextRange textRange = selection.GetAsOneRange();
+				WParagraph ownerParagraph = textRange.OwnerParagraph;
+				WTextBody textBody = ownerParagraph.OwnerTextBody;
+				WSection ownerSection = textBody.Owner as WSection;
+
+				if (ownerSection == null)
+					throw new InvalidOperationException("Cannot determine section for placeholder paragraph.");
+
+				int insertIndex = textBody.ChildEntities.IndexOf(ownerParagraph);
+
+				textBody.ChildEntities.Remove(ownerParagraph);
+
+				WTable table = new WTable(document);
+				table.TableFormat.IsAutoResized = true;
+
+				table.ResetCells(2, 11);
+
+				WTableRow headerRow0 = table.Rows[0];
+				int rowIndex = headerRow0.GetRowIndex();
+				table.ApplyHorizontalMerge(rowIndex, 0, headerRow0.Cells.Count - 1);
+				headerRow0.IsHeader = true;
+				headerRow0.RowFormat.Paddings.All = 2f;
+				var cell0 = headerRow0.Cells[0];
+				cell0.CellFormat.BackColor = Color.LightGray;
+				cell0.CellFormat.VerticalAlignment = VerticalAlignment.Middle;
+
+				IWParagraph p0 = cell0.AddParagraph();
+				p0.ParagraphFormat.AfterSpacing = 1f;
+				p0.ParagraphFormat.BeforeSpacing = 1f;
+				p0.ParagraphFormat.HorizontalAlignment = HorizontalAlignment.Center;
+
+				IWTextRange t0 = p0.AppendText(string.Empty);
+				t0.CharacterFormat.Bold = true;
+				t0.CharacterFormat.FontSize = 14f;
+				//t0.Text = dataTable.Rows.Count > 1 ? "Об'єкти на балансах" : "Об'єкт на балансі";
+				t0.Text = "Таблиця договорів оренди";
+
+				WTableRow headerRow = table.Rows[1];
+				headerRow.IsHeader = true;
+				headerRow.RowFormat.Paddings.All = 2f;
+				var headers = new string[] {
+					"Орендар - Коротка Назва",
+					"Орендодавець - Коротка Назва",
+					"Назва Вулиці",
+					"Номер Будинку",
+					"Номер Договору Оренди",
+					"Кількість об'єктів за договором",
+					"Ринкова вартість приміщень, грн",
+					"Закінчення Оренди",
+					"Балансоутримувач - стан юр. особи",
+					"Наявність фото/плану",
+					"Контроль орендодавця",
+				};
+
+				// Simple header formatting
+				for (int i = 0; i < headerRow.Cells.Count; i++)
+				{
+					headerRow.Cells[i].CellFormat.BackColor = Color.LightGray;
+					headerRow.Cells[i].CellFormat.VerticalAlignment = VerticalAlignment.Middle;
+
+					IWParagraph p = headerRow.Cells[i].AddParagraph();
+					p.ParagraphFormat.AfterSpacing = 1f;
+					p.ParagraphFormat.BeforeSpacing = 1f;
+					p.ParagraphFormat.HorizontalAlignment = HorizontalAlignment.Center;
+
+					IWTextRange t = p.AppendText(string.Empty);
+					t.CharacterFormat.Bold = true;
+					t.CharacterFormat.FontSize = 8f;
+					t.Text = headers[i];
+				}
+
+				// Data rows - put your loop here
+				FillDogovorObjectTableRows(table);
+
+				// Insert table after heading
+				textBody.ChildEntities.Insert(insertIndex, table);
+
+				// Save and close
+				document.Save(docxfilename, FormatType.Docx);
+			}
+		}
+
+		private void FillDogovorObjectTableRows(WTable table)
+		{
+			foreach (DataRow r in dogDataTable.Rows)
+			{
+				var row = table.AddRow(true);
+
+				var values = new string[] {
+					s(r["org_renter_short_name"]),
+					s(r["org_giver_short_name"]),
+					s(r["street_full_name"]),
+					s(r["addr_nomer"]),
+					s(r["agreement_num"]),
+					s(r["count_dogovor_objects"]),
+					s(r["n_cost_expert_total"]),
+					s(r["rent_finish_date"]),
+					s(r["stanjuro"]),
+					s(r["has_reports1nf_photos"]),
+					s(r["orandodavec_user_name2"]),
+				};
+
+				for (int i = 0; i < row.Cells.Count; i++)
+				{
+					row.Cells[i].CellFormat.BackColor = Color.White;
+					row.Cells[i].CellFormat.VerticalAlignment = VerticalAlignment.Middle;
+
+					var p = row.Cells[i].AddParagraph();
+					p.ParagraphFormat.AfterSpacing = 1f;
+					p.ParagraphFormat.BeforeSpacing = 1f;
+					p.ParagraphFormat.HorizontalAlignment = HorizontalAlignment.Left;
+
+					IWTextRange t = p.AppendText(string.Empty);
+					t.CharacterFormat.Bold = false;
+					t.CharacterFormat.FontSize = 8f;
+					t.Text = values[i];
+				}
+			}
+		}
+
 		private static string s(object arg)
 		{
 			if (arg == null) return "";
+
+			if (arg.GetType() == typeof(DateTime))
+			{
+				var arg2 = (DateTime)arg;
+				return arg2.ToString("dd.MM.yyyy");
+			}
+			else if (arg.GetType() == typeof(Decimal))
+			{
+				var arg2 = (Decimal)arg;
+				return arg2.ToString("0.00");
+			}
+			else if (arg.GetType() == typeof(bool))
+			{
+				var arg2 = (bool)arg;
+				return arg2 ? "так" : "ні";
+			}
 			return arg.ToString();
 
+		}
+
+		void BuildDogovorInfo(SqlConnection connection)
+		{
+			List<int> object_ids = new List<int>();
+			foreach (DataRow r in dataTable.Rows)
+			{
+				var id = (int)r["id"];
+				object_ids.Add(id);
+			}
+
+			var factory = DbProviderFactories.GetFactory(connection);
+			dogDataTable = new DataTable();
+			using (var cmd = factory.CreateCommand())
+			{
+				var sql = @"
+SELECT 
+org_renter_short_name,
+org_giver_short_name,
+street_full_name,
+addr_nomer,
+agreement_num,
+count_dogovor_objects,
+n_cost_expert_total,
+rent_finish_date,
+stanjuro,
+case when has_reports1nf_photos = 1 then 'так' else 'ні' end as has_reports1nf_photos,
+(select rtrim(ltrim(concat(Q2.namf,' ',Q2.nami,' ',Q2.namo))) from reports1nf Q1 join dict_orandodavec_user Q2 on Q2.id = Q1.orandodavec_user_id where Q1.organization_id = A.org_balans_id) 
+	as orandodavec_user_name2
+FROM reptab_RentAgreements A
+WHERE 
+A.arenda_id in (select distinct Q.arenda_id from view_arenda Q where Q.ref_balans_id in (45980,30782) and isnull(Q.is_deleted,0)=0)
+";
+				sql = sql.Replace("45980,30782", string.Join(",", object_ids.Select(x => x.ToString())));
+				cmd.CommandText = sql;
+				cmd.CommandType = CommandType.Text;
+				cmd.Connection = connection;
+				using (var adapter = factory.CreateDataAdapter())
+				{
+					adapter.SelectCommand = cmd;
+					adapter.Fill(dogDataTable);
+				}
+			}
 		}
 
 	}
