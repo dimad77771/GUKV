@@ -101,6 +101,10 @@
 			console.log(e.buttonID);
 			if (e.buttonID == 'btnPdfBuild') {
 				FreeSquareGridView.GetRowValues(e.visibleIndex, 'id', OnGridPdfBuildGetRowValues);
+            } else if (e.buttonID == 'btnDocx1Build') {
+                FreeSquareGridView.GetRowValues(e.visibleIndex, 'id', OnGridDocx1BuildGetRowValues);
+            } else if (e.buttonID == 'btnDocx2Build') {
+                FreeSquareGridView.GetRowValues(e.visibleIndex, 'id', OnGridDocx2BuildGetRowValues);
 			} else if (e.buttonID == 'bnt_current_stage_pdf') {
 				$.cookie('RecordID', s.GetRowKey(e.visibleIndex));
 				ASPxFileManagerPhotoFiles.Refresh();
@@ -130,6 +134,25 @@
 				FreeSquareGridView.GetRowValues(e.visibleIndex, 'id', AuctionConfirmSendToOrendar);
 			}
 		}
+
+        function OnGridDocx1BuildGetRowValues(values) {
+            console.log(values);
+            var id = values;
+            window.open(
+                'BalansDogFreePhotosDocx.aspx?repmode=1&id=' + id,
+                '_blank',
+            );
+        }
+
+        function OnGridDocx2BuildGetRowValues(values) {
+            console.log(values);
+            var id = values;
+            window.open(
+                'BalansDogFreePhotosDocx.aspx?repmode=2&id=' + id,
+                '_blank',
+            );
+        }
+
 
 		function OnCopyFullDescription(values) {
 			var headers = [
@@ -832,7 +855,7 @@ WHERE id = @id"
 
 
 		<Columns>
-			<dx:GridViewCommandColumn VisibleIndex="0" Width="70px" ButtonType="Image" CellStyle-Wrap="True" FixedStyle="Left" CellStyle-CssClass="command-column-class"
+			<dx:GridViewCommandColumn VisibleIndex="0" Width="85px" ButtonType="Image" CellStyle-Wrap="True" FixedStyle="Left" CellStyle-CssClass="command-column-class"
 				ShowCancelButton="true" ShowUpdateButton="true" ShowEditButton="true">
 				<CustomButtons>
 					<dx:GridViewCommandColumnCustomButton ID="btnPdfBuild" Text="Pdf">
@@ -849,6 +872,12 @@ WHERE id = @id"
 					</dx:GridViewCommandColumnCustomButton>
 					<dx:GridViewCommandColumnCustomButton ID="btnCopyFullDescription" Text="Опис об'єкта до буфера обміну">
 						<Image Url="~/Styles/CopyIcon.png" />
+					</dx:GridViewCommandColumnCustomButton>
+					<dx:GridViewCommandColumnCustomButton ID="btnDocx1Build" Text="Оголошення про передачу нерухомого майна в оренду на аукціоні"> 
+						<Image Url="~/Styles/ribbonicon_help_4.png"/>
+					</dx:GridViewCommandColumnCustomButton>
+					<dx:GridViewCommandColumnCustomButton ID="btnDocx2Build" Text="Проект договору оренди"> 
+						<Image Url="~/Styles/report_101.png"/>
 					</dx:GridViewCommandColumnCustomButton>
 				</CustomButtons>
 				<CellStyle Wrap="False"></CellStyle>
@@ -1403,7 +1432,7 @@ WHERE id = @id"
 			ShowFooter="True"
 			VerticalScrollBarMode="Auto"
 			VerticalScrollBarStyle="Standard" />
-		<SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A3_022" Enabled="true" />
+		<SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A3_024" Enabled="true" />
 		<Styles Header-Wrap="True">
 			<Header Wrap="True"></Header>
 		</Styles>
