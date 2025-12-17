@@ -267,7 +267,7 @@
         and Q.rent_period_id in (select QQQ.id from dict_rent_period QQQ where QQQ.period_year = (SELECT QQ.period_year FROM dict_rent_period QQ where QQ.is_active = 1))
 ) as payment_total_all
 
-,case when @show_payment_narahcalc = 1 then [dbo].[get_payment_narahcalc](ar.id, ar.report_id) else null end as payment_narahcalc
+,case when @show_payment_narahcalc = 1 then [dbo].[get_payment_narahcalc](ar.id, ar.report_id, 0) else null end as payment_narahcalc
 
 ,dpt.name AS 'payment_type'
       ,[org].[zkpo_code] AS 'org_renter_zkpo'

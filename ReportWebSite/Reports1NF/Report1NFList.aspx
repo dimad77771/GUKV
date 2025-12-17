@@ -138,7 +138,11 @@
         ,case when exists (select 1 from reports1nf_balans_rish_attachfiles Q join reports1nf_balans Q2 on Q.free_square_id = 500000 * Q2.report_id + Q2.id where Q2.report_id = rep.report_id) then 1 else 0 end as has_reports1nf_balans_rish_attachfiles
         ,case when exists (select 1 from reports1nf_balans_bti_attachfiles Q join reports1nf_balans Q2 on Q.free_square_id = 500000 * Q2.report_id + Q2.id where Q2.report_id = rep.report_id) then 1 else 0 end as has_reports1nf_balans_bti_attachfiles
         ,case when exists (select 1 from reports1nf_balans_dinfo_attachfiles Q join reports1nf_balans Q2 on Q.free_square_id = 500000 * Q2.report_id + Q2.id where Q2.report_id = rep.report_id) then 1 else 0 end as has_reports1nf_balans_dinfo_attachfiles
-        
+
+        ,RRR.month_narah as planuvania_1
+        ,RRR.sum_narah as planuvania_2
+        ,RRR.sum_pererah as planuvania_3
+
         FROM view_reports1nf rep
         LEFT JOIN (SELECT sum(CASE WHEN (r1a.submit_date IS NULL OR r1a.modify_date IS NULL OR r1a.modify_date > r1a.submit_date) THEN 0 ELSE 1 END) as NumOfSubmAgr, 
 			Count(r1a.ID) AS NumOfAgr, report_id
@@ -271,9 +275,10 @@
            ,[org].[prim_balanc]
            ,org.unknown_payments AS 'PAY_UNKNOWN_PAYMENTS'
 
-            ,org.planuvania_1
-            ,org.planuvania_2
-            ,org.planuvania_3
+            --,org.planuvania_1
+            --,org.planuvania_2
+            --,org.planuvania_3
+
             ,org.planuvania_4
             ,org.planuvania_5
             ,org.corporav_prava
@@ -360,6 +365,27 @@ select obp.org_id,occ.name from org_by_period obp
 join dict_rent_period per on per.id = obp.period_id and per.is_active = 1
 join dict_rent_occupation occ on occ.id = obp.org_occupation_id
 		) DDD ON DDD.org_id = rep.organization_id
+
+		LEFT OUTER JOIN (
+select
+    report_id, 
+    cast(sum(narah) as decimal(18,2)) as sum_narah, 
+    cast(sum(narah * contribution_rate) as decimal(18,2)) as sum_pererah, 
+    cast(sum(narah) / 12.0 as decimal(18,2)) as month_narah
+from
+(
+	SELECT
+	[dbo].[get_payment_narahcalc] ( ar.id, ar.report_id, 1) narah,
+	isnull((select Q.contribution_rate from reports1nf_org_info Q where Q.report_id = ar.report_id) / 100.0, 0) as contribution_rate,
+	report_id
+	FROM reports1nf_arenda ar
+	LEFT JOIN arenda a ON a.id = ar.id 
+	WHERE 1=1
+	AND isnull(a.is_deleted, 0) = 0 
+	AND ar.agreement_state = 1
+) T
+group by report_id
+		) RRR ON RRR.report_id = rep.report_id
 
 
         WHERE 
