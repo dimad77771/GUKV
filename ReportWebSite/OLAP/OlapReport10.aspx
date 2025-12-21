@@ -53,7 +53,7 @@
 	<tr>
 		<td>
 <dx:WebChartControl ID="WebChartControl1" runat="server" Height="400px"
-        Width="700px" ClientInstanceName="chart"
+        Width="900px" ClientInstanceName="chart"
         CrosshairEnabled="False" ToolTipEnabled="true" RenderFormat="Svg">
 
         <Titles>
