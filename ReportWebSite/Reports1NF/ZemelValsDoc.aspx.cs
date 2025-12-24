@@ -141,11 +141,9 @@ where street_full_name like '%ГАВЕЛА%' and dom = '19'
 				properties.Add("{{ADD_INFO_TABLE}}", "");
 			}
 
-			if (ex)
-			{
-				BuildDogovorInfo(connection);
-			}
-			else
+			BuildDogovorInfo(connection);
+
+			if (dogDataTable.Rows.Count == 0)
 			{
 				properties.Add("{{ADD_DOGOVOR_TABLE}}", "");
 			}
@@ -544,7 +542,7 @@ where street_full_name like '%ГАВЕЛА%' and dom = '19'
 				WTable table = new WTable(document);
 				table.TableFormat.IsAutoResized = true;
 
-				table.ResetCells(2, 11);
+				table.ResetCells(2, 6);
 
 				WTableRow headerRow0 = table.Rows[0];
 				int rowIndex = headerRow0.GetRowIndex();
@@ -575,12 +573,7 @@ where street_full_name like '%ГАВЕЛА%' and dom = '19'
 					"Назва Вулиці",
 					"Номер Будинку",
 					"Номер Договору Оренди",
-					"Кількість об'єктів за договором",
-					"Ринкова вартість приміщень, грн",
 					"Закінчення Оренди",
-					"Балансоутримувач - стан юр. особи",
-					"Наявність фото/плану",
-					"Контроль орендодавця",
 				};
 
 				// Simple header formatting
@@ -623,12 +616,7 @@ where street_full_name like '%ГАВЕЛА%' and dom = '19'
 					s(r["street_full_name"]),
 					s(r["addr_nomer"]),
 					s(r["agreement_num"]),
-					s(r["count_dogovor_objects"]),
-					s(r["n_cost_expert_total"]),
 					s(r["rent_finish_date"]),
-					s(r["stanjuro"]),
-					s(r["has_reports1nf_photos"]),
-					s(r["orandodavec_user_name2"]),
 				};
 
 				for (int i = 0; i < row.Cells.Count; i++)
@@ -692,13 +680,9 @@ org_giver_short_name,
 street_full_name,
 addr_nomer,
 agreement_num,
-count_dogovor_objects,
-n_cost_expert_total,
-rent_finish_date,
-stanjuro,
-case when has_reports1nf_photos = 1 then 'так' else 'ні' end as has_reports1nf_photos,
-(select rtrim(ltrim(concat(Q2.namf,' ',Q2.nami,' ',Q2.namo))) from reports1nf Q1 join dict_orandodavec_user Q2 on Q2.id = Q1.orandodavec_user_id where Q1.organization_id = A.org_balans_id) 
-	as orandodavec_user_name2
+
+rent_finish_date
+
 FROM reptab_RentAgreements A
 WHERE 
 A.arenda_id in (select distinct Q.arenda_id from view_arenda Q where Q.ref_balans_id in (45980,30782) and isnull(Q.is_deleted,0)=0)
