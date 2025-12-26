@@ -149,7 +149,7 @@
 		}
 
 		var id = values[values.length - 1];
-        txt += "\n" + "Фото - http://eis.gukv.gov.ua/gukv/Reports1NF/BalansDogContinuePhotosPdf.aspx?id=" + id + '&jpeg=1';
+        txt += "\n" + "Фото - https://dkv.kyivcity.gov.ua/Reports1NF/BalansDogContinuePhotosPdf.aspx?id=" + id + '&jpeg=1';
 
         myCopyToClipboard(txt);
     }

@@ -144,7 +144,7 @@
 
 		//var id = values[values.length - 1];
 		var id = values;
-		txt += "Фото - http://eis.gukv.gov.ua/gukv/Reports1NF/BalansPrivatisatPhotosPdf.aspx?id=" + id + '&jpeg=1';
+		txt += "Фото - https://dkv.kyivcity.gov.ua/Reports1NF/BalansPrivatisatPhotosPdf.aspx?id=" + id + '&jpeg=1';
 
 		//console.log("txt", txt);
 

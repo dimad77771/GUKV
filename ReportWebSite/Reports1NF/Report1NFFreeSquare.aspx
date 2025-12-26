@@ -211,7 +211,7 @@
 			}
 
 			var id = values[values.length - 1];
-			txt += "\n" + "Фото - http://eis.gukv.gov.ua/gukv/Reports1NF/Report1NFFreeShowPhotosPdf.aspx?id=" + id + '&jpeg=1';
+			txt += "\n" + "Фото - https://dkv.kyivcity.gov.ua/Reports1NF/Report1NFFreeShowPhotosPdf.aspx?id=" + id + '&jpeg=1';
 			txt = "Сформовано " + formatDate(new Date()) + "\n" + txt;
 
             myCopyToClipboard(txt);
