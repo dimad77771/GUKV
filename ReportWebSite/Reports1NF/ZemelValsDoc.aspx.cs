@@ -687,7 +687,8 @@ FROM reptab_RentAgreements A
 WHERE 
 A.arenda_id in (select distinct Q.arenda_id from view_arenda Q where Q.ref_balans_id in (45980,30782) and isnull(Q.is_deleted,0)=0)
 ";
-				sql = sql.Replace("45980,30782", string.Join(",", object_ids.Select(x => x.ToString())));
+				var wh = object_ids.Any() ? string.Join(",", object_ids.Select(x => x.ToString())) : "-100000";
+				sql = sql.Replace("45980,30782", wh);
 				cmd.CommandText = sql;
 				cmd.CommandType = CommandType.Text;
 				cmd.Connection = connection;

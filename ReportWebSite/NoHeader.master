@@ -410,6 +410,14 @@
 															<dx:RibbonButtonItem Text="Зміна балансоутримувачів об'єктів" NavigateUrl="Reports1NF/ConveyancingList.aspx">
 																<SmallImage Url="Styles/ribbonicon_22.png" />
 															</dx:RibbonButtonItem>
+
+															<dx:RibbonButtonItem Text="Довідник користувачів" NavigateUrl="Admin/Users.aspx">
+																<SmallImage Url="Styles/ribbonicon_12.png" />
+															</dx:RibbonButtonItem>
+															<dx:RibbonButtonItem Text="Довідник вулиць" NavigateUrl="Admin/Streets.aspx">
+																<SmallImage Url="Styles/ribbonicon_20.png" />
+															</dx:RibbonButtonItem>
+
 														</Items>
 													</dx:RibbonGroup>
 												</Groups>
