@@ -32,6 +32,7 @@ and exists
 	where Q.arenda_id = r.id and Q.report_id = r.report_id and Q.rent_period_id = (SELECT QQ.id FROM dict_rent_period QQ where QQ.is_active = 1)
 )
 --and r.agreement_state = 1
+--and r.id = 79474
 ";
 
 
@@ -672,7 +673,7 @@ base_month, rent_start_date, rent_actual_finish_date,
 		{
 			var table = GetDataTable(@"
 SELECT id, invent_no, cost_agreement FROM reports1nf_arenda_notes 
-WHERE (is_deleted IS NULL OR is_deleted = 0) AND report_id = 1594 AND arenda_id = 84257");
+WHERE (is_deleted IS NULL OR is_deleted = 0) AND report_id = " + report_id + " AND arenda_id = " + arenda_id);
 
 			for (var rownum = 0; rownum < table.Rows.Count; rownum++)
 			{
