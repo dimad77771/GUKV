@@ -2234,7 +2234,8 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 
 
 			int idInReport = 0;
-			using (SqlCommand cmd = new SqlCommand("SELECT id FROM reports1nf_arenda_payments WHERE report_id = @rid AND arenda_id = @aid", connection))
+			using (SqlCommand cmd = new SqlCommand("SELECT id FROM reports1nf_arenda_payments WHERE report_id = @rid AND arenda_id = @aid " +
+														"order by case when  rent_period_id is not null then 1 else 2 end", connection))
 			{
 				cmd.Parameters.Add(new SqlParameter("rid", ReportID));
 				cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
