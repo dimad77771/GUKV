@@ -3291,7 +3291,7 @@ public static class Utils
     {
         {
             //DateTime agreementDate = new DateTime(data.AgreementDateYear, data.AgreementDateMonth + 1, data.AgreementDateDay);
-            DateTime agreementDate = new DateTime(data.AgreementDateYear, data.AgreementDateMonth, data.AgreementDateDay).AddMonths(1);
+            DateTime agreementDate = new DateTime(data.AgreementDateYear, data.AgreementDateMonth, data.AgreementDateDay);
 
             SqlConnection connection = Utils.ConnectToDatabase();
 
