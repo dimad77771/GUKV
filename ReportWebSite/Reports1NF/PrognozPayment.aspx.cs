@@ -552,7 +552,7 @@ sum(v9) / 100.0 as v9,
 
 sum(v6 + v10_part) as v10,
 sum(v8 + v12_part) as v11,	--v11 = v12
-sum(v8 + v12_part) as v12,
+sum(v8 + v12_part) * (sum(v7) / case when sum(v6) = 0 then null else sum(v6) end) as v12,
 
 sum(v13) as v13,
 sum(v14) as v14,
@@ -569,8 +569,8 @@ from
 	sum(case when is_active_dogovor = 1 then ""Нараховано орендної плати за звітний період"" else 0 end) as v6,
 	sum(case when is_active_dogovor = 1 then ""Надходження орендної плати за звітний період"" else 0 end) as v7,
 
-	sum(case when is_active_dogovor = 1 then ""Нараховано орендної плати за звітний період"" * CR.contribution_rate else 0 end) as v8,
-	sum(case when is_active_dogovor = 1 then ""Надходження орендної плати за звітний період"" * CR.contribution_rate else 0 end) as v9,
+	sum(case when is_active_dogovor = 1 then ""Нараховано орендної плати за звітний період"" * T.contribution_rate else 0 end) as v8,
+	sum(case when is_active_dogovor = 1 then ""Надходження орендної плати за звітний період"" * T.contribution_rate else 0 end) as v9,
 
 	sum(narah_prognoz_year_0) as v10_part,
 	--v11 = v12
