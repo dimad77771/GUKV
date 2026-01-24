@@ -547,8 +547,8 @@ sum(case when v5_sum > 0 then 1 else 0 end) as v5,
 
 sum(v6) as v6,
 sum(v7) as v7,
-sum(v8) / 100.0 as v8,
-sum(v9) / 100.0 as v9,
+sum(v8) as v8,
+sum(v9) as v9,
 
 sum(v6 + v10_part) as v10,
 sum(v8 + v12_part) as v11,	--v11 = v12
@@ -598,7 +598,8 @@ from
 		(select sum(Q.narah_sum) from reports1nf_payment_narah_prognoz Q where Q.arenda_id = r.id and Q.report_id = r.report_id and year(Q.narah_date) = PER.cur_year + 1) narah_prognoz_year_1,
 		(select sum(Q.narah_sum) from reports1nf_payment_narah_prognoz Q where Q.arenda_id = r.id and Q.report_id = r.report_id and year(Q.narah_date) = PER.cur_year + 2) narah_prognoz_year_2,
 		(select sum(Q.narah_sum) from reports1nf_payment_narah_prognoz Q where Q.arenda_id = r.id and Q.report_id = r.report_id and year(Q.narah_date) = PER.cur_year + 3) narah_prognoz_year_3,
-		isnull(CR.contribution_rate,0) / 100.0 as contribution_rate,
+		isnull(CR.contribution_rate,0) / 100.0 as contribution_rate__old,
+		case when CR.contribution_rate > 0 then 1.0 else 0.0 end as contribution_rate,
 		isnull(CN.contribution_rate, isnull(CR.contribution_rate,0)) / 100.0 new_contribution_rate
 
 		FROM reports1nf_arenda r 
