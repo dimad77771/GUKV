@@ -48,6 +48,7 @@ and exists
 			connection.Execute("exec update_inflation_prognoz");
 
 			connection.Execute("delete from reports1nf_payment_narah_prognoz");
+			connection.Execute("delete from reports1nf_payment_narah_prognoz_without_borg");
 
 			for (int row = 0; row < table.Rows.Count; row++)
 			{
@@ -55,37 +56,46 @@ and exists
 
 				var arenda_id = (int)table.Rows[row]["id"];
 				var reportID = (int)table.Rows[row]["report_id"];
+				
 
-				var robject = new NarazhCalculationMain
+				for (int m = 1; m <= 2; m++)
 				{
-					report_id = reportID,
-					arenda_id = arenda_id,
-					IsDBMode = true,
-					UseInflationPrognoz = true,
-					UsePaymentDiscountsFuture = true,
-					CalcYears = 4,
-					connection = connection,
-				};
-				var result = robject.Main();
+					var calcWithoutBorg = (m == 2);
+					var calcYears = !calcWithoutBorg ? 4 : 1;
+					var resultTable = !calcWithoutBorg ? "reports1nf_payment_narah_prognoz" : "reports1nf_payment_narah_prognoz_without_borg";
 
-				var allValues = result.AllValues;
-
-				if (allValues != null)
-				{
-					foreach (var year in allValues.Keys)
+					var robject = new NarazhCalculationMain
 					{
-						foreach (var month in allValues[year].Keys)
+						report_id = reportID,
+						arenda_id = arenda_id,
+						IsDBMode = true,
+						UseInflationPrognoz = true,
+						UsePaymentDiscountsFuture = true,
+						CalcYears = calcYears,
+						CalcWithoutBorg = calcWithoutBorg,
+						connection = connection,
+					};
+					var result = robject.Main();
+
+					var allValues = result.AllValues;
+
+					if (allValues != null)
+					{
+						foreach (var year in allValues.Keys)
 						{
-							var infation = allValues[year][month];
-							using (SqlCommand cmd = new SqlCommand(@"
-	insert into reports1nf_payment_narah_prognoz(report_id,arenda_id,narah_date,narah_sum)
-	values(@report_id,@arenda_id,@narah_date,@narah_sum)", connection))
+							foreach (var month in allValues[year].Keys)
 							{
-								cmd.Parameters.Add(new SqlParameter("report_id", reportID));
-								cmd.Parameters.Add(new SqlParameter("arenda_id", arenda_id));
-								cmd.Parameters.Add(new SqlParameter("narah_date", new DateTime(year, month, 1)));
-								cmd.Parameters.Add(new SqlParameter("narah_sum", infation));
-								cmd.ExecuteNonQuery();
+								var infation = allValues[year][month];
+								using (SqlCommand cmd = new SqlCommand(@"
+		insert into " + resultTable + @"(report_id,arenda_id,narah_date,narah_sum)
+		values(@report_id,@arenda_id,@narah_date,@narah_sum)", connection))
+								{
+									cmd.Parameters.Add(new SqlParameter("report_id", reportID));
+									cmd.Parameters.Add(new SqlParameter("arenda_id", arenda_id));
+									cmd.Parameters.Add(new SqlParameter("narah_date", new DateTime(year, month, 1)));
+									cmd.Parameters.Add(new SqlParameter("narah_sum", infation));
+									cmd.ExecuteNonQuery();
+								}
 							}
 						}
 					}
@@ -110,6 +120,7 @@ public class NarazhCalculationMain
 
 	public bool IsNextYear;
 	public int? CalcYears;
+	public bool CalcWithoutBorg;
 	public Dictionary<string, Control> controls;
 	public ASPxGridView GridViewNotes;
 	public int LastYear;
@@ -138,6 +149,7 @@ public class NarazhCalculationMain
 				UseInflationPrognoz = UseInflationPrognoz,
 				UsePaymentDiscountsFuture = UsePaymentDiscountsFuture,
 				CalcYears = CalcYears,
+				CalcWithoutBorg = CalcWithoutBorg,
 
 				controls = controls,
 				GridViewNotes = GridViewNotes,
@@ -187,6 +199,7 @@ public class NarazhCalculationOne
 	public bool IsDBMode;
 	public bool UseInflationPrognoz;
 	public bool UsePaymentDiscountsFuture;
+	public bool CalcWithoutBorg;
 
 	public int DogchangeNum;
 	public bool IsNextYear;
@@ -770,8 +783,12 @@ WHERE (is_deleted IS NULL OR is_deleted = 0) AND report_id = " + report_id + " A
 
 	void BuildZnizhka()
 	{
-		int fileldCount = 10;
+		if (CalcWithoutBorg)
+		{
+			return;
+		}
 
+		int fileldCount = 10;
 
 		DataTable table = null;
 		if (IsDBMode)

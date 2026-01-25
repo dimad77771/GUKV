@@ -3774,8 +3774,6 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 
 	protected void cbNarazhCalculation_Callback(object source, CallbackEventArgs e)
 	{
-		//new NarazhCalculationAll().Run(); return;
-
 		Dictionary<string, Control> controls = new Dictionary<string, Control>();
 		Reports1NFUtils.GetAllControls(OrganizationsForm, controls);
 		Reports1NFUtils.GetAllControls(PaymentForm, controls);
