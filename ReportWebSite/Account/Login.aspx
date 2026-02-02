@@ -48,6 +48,9 @@
                         <asp:CheckBox ID="RememberMe" runat="server"/>
                         <asp:Label ID="RememberMeLabel" runat="server" AssociatedControlID="RememberMe" CssClass="inline">Запам'ятати мене</asp:Label>
                     </p>
+                    <p>
+                        <asp:Label ID="Label1" runat="server" CssClass="inline">Продовжуючи, ви підтверджуєте, що згодні увійти до облікового запису Модуль ДКВ  та надаєте згоду на обробку персональних даних.</asp:Label>
+                    </p>
                 </fieldset>
                 <p class="submitButton">
                     <dx:ASPxButton ID="LoginButton" runat="server" CommandName="Login" Text="Увійти" 
