@@ -61,7 +61,7 @@ and exists
 				for (int m = 1; m <= 2; m++)
 				{
 					var calcWithoutBorg = (m == 2);
-					var calcYears = !calcWithoutBorg ? 4 : 1;
+					var calcYears = !calcWithoutBorg ? 5 : 2;
 					var resultTable = !calcWithoutBorg ? "reports1nf_payment_narah_prognoz" : "reports1nf_payment_narah_prognoz_without_borg";
 
 					var robject = new NarazhCalculationMain
@@ -222,6 +222,7 @@ public class NarazhCalculationOne
 	DateTime rentFinish;
 
 	int ActiveRentPeriodId;
+	int FirstPrognozYear;
 
 
 	bool IsDogchange
@@ -358,8 +359,9 @@ base_month, rent_start_date, rent_actual_finish_date,
 
 	void SetupActiveRentPeriodId()
 	{
-		var rows = GetDataTable("SELECT QQ.id FROM dict_rent_period QQ where QQ.is_active = 1");
+		var rows = GetDataTable("SELECT QQ.id, Year(DATEADD(day, 1, QQ.period_end)) as firstPrognozYear FROM dict_rent_period QQ where QQ.is_active = 1");
 		ActiveRentPeriodId = (int)rows.GetIntFromSqlDataTable(0, "id");
+		FirstPrognozYear = (int)rows.GetIntFromSqlDataTable(0, "firstPrognozYear");
 	}
 
 	void CorrectByDogchange()
@@ -809,10 +811,13 @@ where A.arenda_id = " + arenda_id + " and A.report_id = " + report_id + " and A.
 		}
 
 		DataTable tableFuture = null;
+		DataTable tableFixZnigka = null;
 		if (UsePaymentDiscountsFuture)
 		{
 			tableFuture = GetDataTable("select * from PaymentDiscountsFuture");
+			tableFixZnigka = GetDataTable("select * from current_inflation");
 		}
+
 
 		for (int num = 1; num <= fileldCount; num++)
 		{
@@ -881,6 +886,26 @@ where A.arenda_id = " + arenda_id + " and A.report_id = " + report_id + " and A.
 										furure = true,
 									});
 
+								}
+							}
+						}
+
+						if (tableFixZnigka.Rows.Count > 0)
+						{
+							var rownum = 0;
+							for (int i = 1; i <= 4; i++)
+							{
+								var znigka = tableFixZnigka.GetDecimalFromSqlDataTable(rownum, "prognoz_znigka_" + i) ?? 0;
+								if (znigka > 0)
+								{
+									var year = FirstPrognozYear + i;
+									ZnizhkaData.Add(new ZnizhkaClass
+									{
+										percent = znigka,
+										date1 = new DateTime(year, 1, 1),
+										date2 = new DateTime(year, 12, 31),
+										furure = true,
+									});
 								}
 							}
 						}

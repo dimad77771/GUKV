@@ -23,6 +23,8 @@ public partial class Reports1NF_Report1NFPrivatisatSquare : System.Web.UI.Page
 {
 	protected void Page_Load(object sender, EventArgs e)
 	{
+		if (!Roles.IsUserInRole(Utils.Prognoz)) Response.Redirect("~/Account/Restricted.aspx");
+
 		//SectionMenu.Visible = Roles.IsUserInRole(Utils.Report1NFReviewerRole);
 		SectionMenu.Visible = false;
 
@@ -399,7 +401,7 @@ public class PrognozPaymentZvitBuilder
 
 
 
-				if (new[] { 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 }.Contains(vnum))
+				if (new[] { 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 }.Contains(vnum))
 				{
 					val = val / 1000M;
 				}
@@ -450,7 +452,7 @@ public class PrognozPaymentZvitBuilder
 
 	void SumBuild(int erow_total, int[] erows_sum, Worksheet wsheet)
 	{
-		for (int cnum = 3; cnum <= 16; cnum++)
+		for (int cnum = 3; cnum <= 18; cnum++)
 		{
 			decimal sum = 0;
 			foreach (var erow in erows_sum)
@@ -545,20 +547,23 @@ count(*) as v3,
 sum(case when v4_sum > 0 then 1 else 0 end) as v4,
 sum(case when v5_sum > 0 then 1 else 0 end) as v5,
 
-sum(v6) as v6,
-sum(v7) as v7,
-sum(v8) as v8,
+sum(v9) as v6,
+sum(v11) as v7,
+sum(v9) - sum(v11) as v8,
+
 sum(v9) as v9,
-
 sum(v10) as v10,
+sum(v11) as v11,
+sum(v12) as v12,
 
-sum(v6 + v11_part) as v11,
-sum(v8 + v13_part) as v12,	--v12 = v13
-sum(v8 + v13_part) * (sum(v7) / case when sum(v6) = 0 then null else sum(v6) end) as v13,
+sum(0 + v14_part) as v13,
+sum(0 + v14_part) * (sum(v10) / case when sum(v9) = 0 then null else sum(v9) end) as v14,
 
-sum(v14) as v14,
 sum(v15) as v15,
-sum(v16) as v16
+
+sum(v16) as v16,
+sum(v17) as v17,
+sum(v18) as v18
 
 from
 (
@@ -568,21 +573,18 @@ from
 	sum(case when DG.has_active_dog = 1 then 1 else 0 end) v4_sum,
 	sum(case when DG.has_active_dog = 1 and new_contribution_rate > 0 then 1 else 0 end) v5_sum,
 
-	sum(case when is_active_dogovor = 1 then ""Нараховано орендної плати за звітний період"" else 0 end) as v6,
-	sum(case when is_active_dogovor = 1 then ""Надходження орендної плати за звітний період"" else 0 end) as v7,
+	sum(case when is_active_dogovor = 1 then ""Нараховано орендної плати за звітний період"" else 0 end) as v9,
+	sum(case when is_active_dogovor = 1 then ""Надходження орендної плати за звітний період"" else 0 end) as v10,
 
-	sum(case when is_active_dogovor = 1 then ""Нараховано орендної плати за звітний період"" * T.contribution_rate else 0 end) as v8,
-	sum(case when is_active_dogovor = 1 then ""Надходження орендної плати за звітний період"" * T.contribution_rate else 0 end) as v9,
+	sum(case when is_active_dogovor = 1 then ""Нараховано орендної плати за звітний період"" * T.contribution_rate else 0 end) as v11,
+	sum(case when is_active_dogovor = 1 then ""Надходження орендної плати за звітний період"" * T.contribution_rate else 0 end) as v12,
 
-	sum(case when is_active_dogovor = 1 then prognoz_without_borg * T.contribution_rate else 0 end) as v10,
+	sum(narah_prognoz_year_2026 * new_contribution_rate) as v14_part,
+	sum(prognoz_without_borg_2026 * new_contribution_rate) as v15,
 
-	sum(narah_prognoz_year_0) as v11_part,
-	--v12 = v13
-	sum(narah_prognoz_year_0 * new_contribution_rate) as v13_part,
-
-	sum(narah_prognoz_year_1 * new_contribution_rate) as v14,
-	sum(narah_prognoz_year_2 * new_contribution_rate) as v15,
-	sum(narah_prognoz_year_3 * new_contribution_rate) as v16
+	sum(narah_prognoz_year_2027 * new_contribution_rate) as v16,
+	sum(narah_prognoz_year_2028 * new_contribution_rate) as v17,
+	sum(narah_prognoz_year_2029 * new_contribution_rate) as v18
 
 	from
 	DG 
@@ -598,16 +600,15 @@ from
 		case when r.agreement_state = 1 then 1 else 0 end as is_active_dogovor,
 		isnull(P.payment_narah,0) as ""Нараховано орендної плати за звітний період"",
 		isnull(P.payment_received,0) as ""Надходження орендної плати за звітний період"",
-		(select sum(Q.narah_sum) from reports1nf_payment_narah_prognoz Q where Q.arenda_id = r.id and Q.report_id = r.report_id and year(Q.narah_date) = PER.cur_year and Q.narah_date > PER.period_end) narah_prognoz_year_0,
-		(select sum(Q.narah_sum) from reports1nf_payment_narah_prognoz Q where Q.arenda_id = r.id and Q.report_id = r.report_id and year(Q.narah_date) = PER.cur_year + 1) narah_prognoz_year_1,
-		(select sum(Q.narah_sum) from reports1nf_payment_narah_prognoz Q where Q.arenda_id = r.id and Q.report_id = r.report_id and year(Q.narah_date) = PER.cur_year + 2) narah_prognoz_year_2,
-		(select sum(Q.narah_sum) from reports1nf_payment_narah_prognoz Q where Q.arenda_id = r.id and Q.report_id = r.report_id and year(Q.narah_date) = PER.cur_year + 3) narah_prognoz_year_3,
+		(select sum(Q.narah_sum) from reports1nf_payment_narah_prognoz Q where Q.arenda_id = r.id and Q.report_id = r.report_id and year(Q.narah_date) = 2026 and Q.narah_date > PER.period_end) narah_prognoz_year_2026,
+		(select sum(Q.narah_sum) from reports1nf_payment_narah_prognoz Q where Q.arenda_id = r.id and Q.report_id = r.report_id and year(Q.narah_date) = 2027 and Q.narah_date > PER.period_end) narah_prognoz_year_2027,
+		(select sum(Q.narah_sum) from reports1nf_payment_narah_prognoz Q where Q.arenda_id = r.id and Q.report_id = r.report_id and year(Q.narah_date) = 2028 and Q.narah_date > PER.period_end) narah_prognoz_year_2028,
+		(select sum(Q.narah_sum) from reports1nf_payment_narah_prognoz Q where Q.arenda_id = r.id and Q.report_id = r.report_id and year(Q.narah_date) = 2029 and Q.narah_date > PER.period_end) narah_prognoz_year_2029,
 
-		(select sum(Q.narah_sum) from reports1nf_payment_narah_prognoz_without_borg Q where Q.arenda_id = r.id and Q.report_id = r.report_id and year(Q.narah_date) = PER.cur_year and Q.narah_date <= PER.period_end) prognoz_without_borg,
+		(select sum(Q.narah_sum) from reports1nf_payment_narah_prognoz_without_borg Q where Q.arenda_id = r.id and Q.report_id = r.report_id and year(Q.narah_date) = 2026 and Q.narah_date > PER.period_end) prognoz_without_borg_2026,
 
-		isnull(CR.contribution_rate,0) / 100.0 as contribution_rate__old,
 		case when CR.contribution_rate > 0 then 1.0 else 0.0 end as contribution_rate,
-		isnull(CN.contribution_rate, isnull(CR.contribution_rate,0)) / 100.0 new_contribution_rate
+		case when isnull(CN.contribution_rate,CR.contribution_rate) > 0 then 1.0 else 0.0 end as new_contribution_rate
 
 		FROM reports1nf_arenda r 
 		LEFT JOIN arenda a ON r.id = a.id 

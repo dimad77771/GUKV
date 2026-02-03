@@ -332,12 +332,16 @@ SELECT 4 as id, '4 кв.' as name	">
 
 	<mini:ProfiledSqlDataSource ID="SqlDataSourceInflation" runat="server"
 		ConnectionString="<%$ ConnectionStrings:GUKV2016ConnectionString %>"
-		SelectCommand="SELECT [id], [prognoz_inflation_this], [prognoz_inflation_next], prognoz_inflation_1,prognoz_inflation_2,prognoz_inflation_3,prognoz_inflation_4,rozrah_persion FROM [current_inflation]"
+		SelectCommand="SELECT [id], [prognoz_inflation_this], [prognoz_inflation_next], prognoz_inflation_1,prognoz_inflation_2,prognoz_inflation_3,prognoz_inflation_4,rozrah_persion,prognoz_znigka_1,prognoz_znigka_2,prognoz_znigka_3,prognoz_znigka_4 FROM [current_inflation]"
 		UpdateCommand="UPDATE [current_inflation] SET 
 			[prognoz_inflation_1] = @prognoz_inflation_1,
 			[prognoz_inflation_2] = @prognoz_inflation_2,
 			[prognoz_inflation_3] = @prognoz_inflation_3,
-			[prognoz_inflation_4] = @prognoz_inflation_4
+			[prognoz_inflation_4] = @prognoz_inflation_4,
+			[prognoz_znigka_1] = @prognoz_znigka_1,
+			[prognoz_znigka_2] = @prognoz_znigka_2,
+			[prognoz_znigka_3] = @prognoz_znigka_3,
+			[prognoz_znigka_4] = @prognoz_znigka_4
 		">
 	</mini:ProfiledSqlDataSource>
 
@@ -931,10 +935,16 @@ SELECT SCOPE_IDENTITY()"
 			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_this" Caption="Прогноз індексу інфляції на 4 квартал 2024 року, %" Width="250px" Visible="false" />
 			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_next" Caption="Прогноз індексу інфляції на 2025 рік, %" Width="250px" Visible="false" />
 
-			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_1" Caption="Прогноз індексу інфляції на 2025 рік, %" Width="250px" />
-			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_2" Caption="Прогноз індексу інфляції на 2026 рік, %" Width="250px" />
-			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_3" Caption="Прогноз індексу інфляції на 2027 рік, %" Width="250px" />
-			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_4" Caption="Прогноз індексу інфляції на 2028 рік, %" Width="250px" />
+			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_1" Caption="Прогноз індексу інфляції на 2026 рік, %" Width="200px" />
+			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_2" Caption="Прогноз індексу інфляції на 2027 рік, %" Width="200px" />
+			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_3" Caption="Прогноз індексу інфляції на 2028 рік, %" Width="200px" />
+			<dx:GridViewDataSpinEditColumn FieldName="prognoz_inflation_4" Caption="Прогноз індексу інфляції на 2029 рік, %" Width="200px" />
+
+			<dx:GridViewDataSpinEditColumn FieldName="prognoz_znigka_1" Caption="Прогнозована знижка на 2026 рік, %" Width="200px" />
+			<dx:GridViewDataSpinEditColumn FieldName="prognoz_znigka_2" Caption="Прогнозована знижка на 2027 рік, %" Width="200px" />
+			<dx:GridViewDataSpinEditColumn FieldName="prognoz_znigka_3" Caption="Прогнозована знижка на 2028 рік, %" Width="200px" />
+			<dx:GridViewDataSpinEditColumn FieldName="prognoz_znigka_4" Caption="Прогнозована знижка на 2029 рік, %" Width="200px" />
+
 
 			<dx:GridViewDataComboBoxColumn FieldName="rozrah_persion" Caption="Розрахунковий період" Width="300px" Visible="false">
 				<PropertiesComboBox 
