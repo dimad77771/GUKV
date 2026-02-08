@@ -557,13 +557,13 @@ sum(v11) as v11,
 sum(v12) as v12,
 
 sum(0 + v14_part) as v13,
-sum(0 + v14_part) * (sum(v10) / case when sum(v9) = 0 then null else sum(v9) end) as v14,
+sum(0 + v14_part) * (sum(v10) / case when sum(v9) = 0 then null else sum(v9) end) * 0.5 as v14,
 
 sum(v15) as v15,
 
-sum(v16) as v16,
-sum(v17) as v17,
-sum(v18) as v18
+sum(v16) * 0.5 as v16,
+sum(v17) * 0.5 as v17,
+sum(v18) * 0.5 as v18
 
 from
 (
@@ -580,7 +580,7 @@ from
 	sum(case when is_active_dogovor = 1 then ""Надходження орендної плати за звітний період"" * T.contribution_rate else 0 end) as v12,
 
 	sum(narah_prognoz_year_2026 * new_contribution_rate) as v14_part,
-	sum(prognoz_without_borg_2026 * new_contribution_rate) as v15,
+	sum(prognoz_without_borg_2026) as v15,
 
 	sum(narah_prognoz_year_2027 * new_contribution_rate) as v16,
 	sum(narah_prognoz_year_2028 * new_contribution_rate) as v17,
