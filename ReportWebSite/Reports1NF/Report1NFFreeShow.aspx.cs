@@ -724,6 +724,23 @@ public static class CabinetUtils
 		return result.ToArray();
 	}
 
+	public static string GetFormOwnership(int free_square_id, SqlConnection connection, SqlTransaction transaction)
+	{
+		var data = GetDataTable(@"select 
+									rep.form_of_ownership
+									FROM view_reports1nf rep
+									join reports1nf_balans bal on bal.report_id = rep.report_id
+									join dbo.reports1nf_balans_free_square fs on fs.balans_id = bal.id and fs.report_id = rep.report_id
+									where fs.id = " + dd(free_square_id), connection, transaction);
+		for (var rownum = 0; rownum < data.Rows.Count; rownum++)
+		{
+			var result = (data.Rows[rownum]["form_of_ownership"] ?? "").ToString();
+			return result;
+		}
+		return "";
+	}
+
+
 	public static string[] GetAllOrendars(int free_square_id, SqlConnection connection, SqlTransaction transaction)
 	{
 		var result = new List<string>();
@@ -910,10 +927,19 @@ where fs.id = " + dd(free_square_id);
 	{
 		string[] userIds = null;
 		string subject = "";
+		var spesEmails = new List<string>();
 
 		if (emailtype == "Заявка подана -- Орендодавцю")
 		{
-			userIds = GetOrendodavecUserIds(free_square_id, connection, transaction);
+			var userIds1 = GetOrendodavecUserIds(free_square_id, connection, transaction);
+			if (GetFormOwnership(free_square_id, connection, transaction) == "КОМУНАЛЬНА МІСЬКА")
+			{
+				spesEmails.Add("property@kyivcity.gov.ua");
+			}
+
+			var userIds2 = GetAllBalansoderzhatels(free_square_id, connection, transaction);
+			userIds = userIds1.Union(userIds2).Distinct().ToArray();
+
 			subject = "Заявка оренди приміщення";
 		}
 		else if (emailtype == "Заявка подана -- Орендарю")
@@ -949,6 +975,10 @@ where fs.id = " + dd(free_square_id);
 		ReplaceText(ref text, "{{INSTRUCTIONS}}", () => GetInstructions(free_square_id, connection, transaction));
 
 		var emails = userIds.Select(q => GetEmail(q, connection, transaction)).Where(x => !string.IsNullOrEmpty(x)).Distinct().ToArray();
+		if (spesEmails.Any())
+		{
+			emails = emails.Union(spesEmails).ToArray();
+		}
 
 		foreach (var email in emails)
 		{
