@@ -531,6 +531,30 @@ SELECT
 		and qq.agreement_active_s = 'Договір діє'
 ) then 1 else 0 end as isexistsdogovor
 
+
+,STUFF((
+    SELECT DISTINCT
+           char(10) + ' ' + nm
+    FROM (
+        SELECT
+            CONCAT(
+                CASE WHEN fio <> '' THEN fio ELSE UserName END,
+                CASE WHEN Email <> '' THEN ' (' + Email + ')' ELSE '' END
+            ) AS nm
+        FROM (
+            SELECT
+                Q3.UserName,
+                ISNULL(Q2.Email, '') AS Email,
+                RTRIM(LTRIM(ISNULL(Q2.NameF,'') + ' ' + ISNULL(Q2.NameI,'') + ' ' + ISNULL(Q2.NameO,''))) AS fio
+            FROM auction_uchasnik Q1
+            LEFT JOIN aspnet_Users Q3 ON Q3.UserId = Q1.UserId
+            LEFT JOIN aspnet_Membership Q2 ON Q2.UserId = Q1.UserId
+            WHERE Q1.free_square_id = fs.id
+        ) A
+    ) D
+    FOR XML PATH(''), TYPE
+).value('.', 'nvarchar(max)'), 1, 2, '') as zayavnik_list
+
 ,bal.id balans_id
 
 FROM view_reports1nf rep
@@ -1400,6 +1424,9 @@ WHERE id = @id"
 				</EditItemTemplate>
 			</dx:GridViewDataTextColumn>
 
+			<dx:GridViewDataDateColumn FieldName="zayavnik_list" Caption="Подали заявки" VisibleIndex="1500" Width="200px">
+			</dx:GridViewDataDateColumn>
+
 
 			<dx:GridViewCommandColumn ShowSelectCheckbox="true" Width="40px" VisibleIndex="9999" />
 
@@ -1432,7 +1459,7 @@ WHERE id = @id"
 			ShowFooter="True"
 			VerticalScrollBarMode="Auto"
 			VerticalScrollBarStyle="Standard" />
-		<SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A3_024" Enabled="true" />
+		<SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A3_027" Enabled="true" />
 		<Styles Header-Wrap="True">
 			<Header Wrap="True"></Header>
 		</Styles>
