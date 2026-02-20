@@ -833,6 +833,42 @@ public static class CabinetUtils
 		return email;
 	}
 
+	public static string GetZayavnikList(int free_square_id, SqlConnection connection, SqlTransaction transaction)
+	{
+		var result = "";
+		var sql = @"select
+STUFF((
+    SELECT DISTINCT
+           char(10) + ' ' + nm
+    FROM (
+        SELECT
+            CONCAT(
+                CASE WHEN fio <> '' THEN fio ELSE UserName END,
+                CASE WHEN Email <> '' THEN ' (' + Email + ')' ELSE '' END
+            ) AS nm
+        FROM (
+            SELECT
+                Q3.UserName,
+                ISNULL(Q2.Email, '') AS Email,
+                RTRIM(LTRIM(ISNULL(Q2.NameF,'') + ' ' + ISNULL(Q2.NameI,'') + ' ' + ISNULL(Q2.NameO,''))) AS fio
+            FROM auction_uchasnik Q1
+            LEFT JOIN aspnet_Users Q3 ON Q3.UserId = Q1.UserId
+            LEFT JOIN aspnet_Membership Q2 ON Q2.UserId = Q1.UserId
+            WHERE Q1.free_square_id = 7576
+        ) A
+    ) D
+    FOR XML PATH(''), TYPE
+).value('.', 'nvarchar(max)'), 1, 2, '') as zay".Replace("7576", dd(free_square_id));
+
+		var data = GetDataTable(sql, connection, transaction);
+		if (data.Rows.Count > 0)
+		{
+			result = (string)data.Rows[0]["zay"];
+
+		}
+		return result;
+	}
+
 	public static string GetObjectDescription(int free_square_id, SqlConnection connection, SqlTransaction transaction)
 	{
 		var result = "";
@@ -973,6 +1009,7 @@ where fs.id = " + dd(free_square_id);
 		ReplaceText(ref text, "{{OBJECT_DECSRIPTION}}", () => GetObjectDescription(free_square_id, connection, transaction));
 		ReplaceText(ref text, "{{AUCTION_LINK}}", () => GetProzoroNumberLink(free_square_id, connection, transaction));
 		ReplaceText(ref text, "{{INSTRUCTIONS}}", () => GetInstructions(free_square_id, connection, transaction));
+		ReplaceText(ref text, "{{ZAYAVNIK_LIST}}", () => GetZayavnikList(free_square_id, connection, transaction));
 
 		var emails = userIds.Select(q => GetEmail(q, connection, transaction)).Where(x => !string.IsNullOrEmpty(x)).Distinct().ToArray();
 		if (spesEmails.Any())
