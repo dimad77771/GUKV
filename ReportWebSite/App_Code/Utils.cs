@@ -3291,7 +3291,6 @@ public static class Utils
     public static bool CreateNewArendaDogovor(int ReportID, string username, CreateNewArendaDogovorData data)
     {
         {
-            //DateTime agreementDate = new DateTime(data.AgreementDateYear, data.AgreementDateMonth + 1, data.AgreementDateDay);
             DateTime agreementDate = new DateTime(data.AgreementDateYear, data.AgreementDateMonth, data.AgreementDateDay);
 
             SqlConnection connection = Utils.ConnectToDatabase();

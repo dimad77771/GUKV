@@ -280,6 +280,10 @@
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
+																	<dx:RibbonDropDownButtonItem Text="станом на 2025 рік (4 кв.)" NavigateUrl="20260101" Target="_blank">
+																		<SmallImage IconID="scheduling_groupbydate_16x16">
+																		</SmallImage>
+																	</dx:RibbonDropDownButtonItem>
 																</Items>
 																<LargeImage IconID="scheduling_groupbydate_32x32">
 																</LargeImage>
@@ -389,6 +393,10 @@
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
 																	<dx:RibbonDropDownButtonItem Text="станом на 2025 рік (3 кв.)" NavigateUrl="20251001" Target="_blank">
+																		<SmallImage IconID="scheduling_groupbydate_16x16">
+																		</SmallImage>
+																	</dx:RibbonDropDownButtonItem>
+																	<dx:RibbonDropDownButtonItem Text="станом на 2025 рік (4 кв.)" NavigateUrl="20260101" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>

@@ -119,7 +119,7 @@
         PrimaryGridView.PerformCallback(JSON.stringify({
             AgreementNum: agreementNum,
 	        AgreementDateYear: agreementDate.getFullYear(),
-            AgreementDateMonth: agreementDate.getMonth(),
+            AgreementDateMonth: agreementDate.getMonth() + 1,
             AgreementDateDay: agreementDate.getDate(),
             BuildingID: buildingId,
             //OrgBalansID: orgBalansId,
