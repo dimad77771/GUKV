@@ -724,6 +724,23 @@ public static class CabinetUtils
 		return result.ToArray();
 	}
 
+	public static string GetRdaEmail(int free_square_id, SqlConnection connection, SqlTransaction transaction)
+	{
+		var data = GetDataTable(@"select 
+									(select Q.email from EmailRda Q where Q.district = B.district) as email
+									FROM view_reports1nf rep
+									join reports1nf_balans bal on bal.report_id = rep.report_id
+									join dbo.reports1nf_balans_free_square fs on fs.balans_id = bal.id and fs.report_id = rep.report_id
+									JOIN view_reports1nf_buildings b ON b.unique_id = bal.building_1nf_unique_id
+									where fs.id = " + dd(free_square_id), connection, transaction);
+		for (var rownum = 0; rownum < data.Rows.Count; rownum++)
+		{
+			var result = (data.Rows[rownum]["email"] ?? "").ToString();
+			return result;
+		}
+		return "";
+	}
+
 	public static string GetFormOwnership(int free_square_id, SqlConnection connection, SqlTransaction transaction)
 	{
 		var data = GetDataTable(@"select 
@@ -833,7 +850,7 @@ public static class CabinetUtils
 		return email;
 	}
 
-	public static string GetZayavnikList(int free_square_id, SqlConnection connection, SqlTransaction transaction)
+	public static string GetZayavnikList(int free_square_id, SqlConnection connection, SqlTransaction transaction, bool isCurrentUserOnly)
 	{
 		var result = "";
 		var sql = @"select
@@ -854,11 +871,17 @@ STUFF((
             FROM auction_uchasnik Q1
             LEFT JOIN aspnet_Users Q3 ON Q3.UserId = Q1.UserId
             LEFT JOIN aspnet_Membership Q2 ON Q2.UserId = Q1.UserId
-            WHERE Q1.free_square_id = 7576
+            WHERE Q1.free_square_id = 7576 and 999=999
         ) A
     ) D
     FOR XML PATH(''), TYPE
 ).value('.', 'nvarchar(max)'), 1, 2, '') as zay".Replace("7576", dd(free_square_id));
+
+		if (isCurrentUserOnly)
+		{
+			var userId = Utils.GetUserId();
+			sql = sql.Replace("999=999", "Q1.UserId='" + userId + "'");
+		}
 
 		var data = GetDataTable(sql, connection, transaction);
 		if (data.Rows.Count > 0)
@@ -968,9 +991,18 @@ where fs.id = " + dd(free_square_id);
 		if (emailtype == "Заявка подана -- Орендодавцю")
 		{
 			var userIds1 = GetOrendodavecUserIds(free_square_id, connection, transaction);
-			if (GetFormOwnership(free_square_id, connection, transaction) == "КОМУНАЛЬНА МІСЬКА")
+			var ownership = GetFormOwnership(free_square_id, connection, transaction);
+			if (ownership == "КОМУНАЛЬНА МІСЬКА")
 			{
 				spesEmails.Add("property@kyivcity.gov.ua");
+			}
+			else if (ownership == "КОМУНАЛЬНА (СФЕРА УПРАВЛІННЯ РДА)")
+			{
+				var email = GetRdaEmail(free_square_id, connection, transaction);
+				if (!string.IsNullOrEmpty(email))
+				{
+					spesEmails.Add(email);
+				}
 			}
 
 			var userIds2 = GetAllBalansoderzhatels(free_square_id, connection, transaction);
@@ -1009,7 +1041,7 @@ where fs.id = " + dd(free_square_id);
 		ReplaceText(ref text, "{{OBJECT_DECSRIPTION}}", () => GetObjectDescription(free_square_id, connection, transaction));
 		ReplaceText(ref text, "{{AUCTION_LINK}}", () => GetProzoroNumberLink(free_square_id, connection, transaction));
 		ReplaceText(ref text, "{{INSTRUCTIONS}}", () => GetInstructions(free_square_id, connection, transaction));
-		ReplaceText(ref text, "{{ZAYAVNIK_LIST}}", () => GetZayavnikList(free_square_id, connection, transaction));
+		ReplaceText(ref text, "{{ZAYAVNIK_LIST}}", () => GetZayavnikList(free_square_id, connection, transaction, isCurrentUserOnly: true));
 
 		var emails = userIds.Select(q => GetEmail(q, connection, transaction)).Where(x => !string.IsNullOrEmpty(x)).Distinct().ToArray();
 		if (spesEmails.Any())
