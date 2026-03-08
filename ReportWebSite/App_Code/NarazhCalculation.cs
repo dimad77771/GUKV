@@ -552,15 +552,15 @@ base_month, rent_start_date, rent_actual_finish_date,
 		{
 			var noteId = note.Key;
 
-			if (methodCalc == "аукціон")
+			if (methodCalc == "аукціон" || methodCalc == "щорічні")
 			{
 				CalcMonthPlata__auction(note.Value);
 			}
-			else if (methodCalc == "без аукціону/нові")
+			else if (methodCalc == "без аукціону/нові" || methodCalc == "щомісячні/нові")
 			{
 				CalcMonthPlata__noauction(note.Value, true);
 			}
-			else if (methodCalc == "без аукціону/старі")
+			else if (methodCalc == "без аукціону/старі" || methodCalc == "щомісячні/старі")
 			{
 				CalcMonthPlata__noauction(note.Value, false);
 			}

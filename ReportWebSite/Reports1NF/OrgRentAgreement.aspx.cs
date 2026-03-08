@@ -1543,7 +1543,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 
 				// id, report_id, arenda_id, payment_date, payment_number, payment_sum, payment_purpose
 
-				object[] values = new object[] { newRowId, ReportID, RentAgreementID, null, "", 0m, "", null, null, ActiveRentPeriodID, 0m, 0m, 0m, 0m };
+				object[] values = new object[] { newRowId, ReportID, RentAgreementID, DateTime.Now.Date, "", 0m, "", null, null, ActiveRentPeriodID, 0m, 0m, 0m, 0m };
 
 				table.Rows.Add(values);
 
