@@ -1,4 +1,4 @@
 ﻿public static class OlapUtils
 {
-	public const int LAST_YEAR = 2024;
+	public const int LAST_YEAR = 2025;
 }
