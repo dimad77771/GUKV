@@ -129,9 +129,10 @@ public class ReytingZvitBuilder
 		}
 
 		var rayonRange = uzahagalData.OrderByDescending(x => x.Value).Select(x => x.Key).ToList();
+		var sumdata = uzahagalData.Max(x => x.Value);
 		foreach (var erow in erows)
 		{
-			wsheet[erow, uzahagal_column - 1].Value = uzahagalData[erow];
+			wsheet[erow, uzahagal_column - 1].Value = ((uzahagalData[erow] / sumdata) * 100.0M).ToString("0.00");
 			wsheet[erow, uzahagal_column - 0].Value = rayonRange.IndexOf(erow) + 1;
 		}
 		
