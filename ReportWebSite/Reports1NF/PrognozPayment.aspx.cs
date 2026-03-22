@@ -547,9 +547,9 @@ count(*) as v3,
 sum(case when v4_sum > 0 then 1 else 0 end) as v4,
 sum(case when v5_sum > 0 then 1 else 0 end) as v5,
 
-sum(v9) as v6,
-sum(v11) as v7,
-sum(v9) - sum(v11) as v8,
+sum(r9) as v6,
+sum(r11) as v7,
+sum(r9) - sum(r11) as v8,
 
 sum(v9) as v9,
 sum(v10) as v10,
@@ -572,6 +572,9 @@ from
 	1 as v3,
 	sum(case when DG.has_active_dog = 1 then 1 else 0 end) v4_sum,
 	sum(case when DG.has_active_dog = 1 and new_contribution_rate > 0 then 1 else 0 end) v5_sum,
+
+	sum(case when is_active_dogovor = 1 then prognoz_without_borg_2025 else 0 end) as r9,
+	sum(case when is_active_dogovor = 1 then prognoz_without_borg_2025 * T.contribution_rate else 0 end) as r11,
 
 	sum(case when is_active_dogovor = 1 then ""Нараховано орендної плати за звітний період"" else 0 end) as v9,
 	sum(case when is_active_dogovor = 1 then ""Надходження орендної плати за звітний період"" else 0 end) as v10,
@@ -605,6 +608,7 @@ from
 		(select sum(Q.narah_sum) from reports1nf_payment_narah_prognoz Q where Q.arenda_id = r.id and Q.report_id = r.report_id and year(Q.narah_date) = 2028 and Q.narah_date > PER.period_end) narah_prognoz_year_2028,
 		(select sum(Q.narah_sum) from reports1nf_payment_narah_prognoz Q where Q.arenda_id = r.id and Q.report_id = r.report_id and year(Q.narah_date) = 2029 and Q.narah_date > PER.period_end) narah_prognoz_year_2029,
 
+		(select sum(Q.narah_sum) from reports1nf_payment_narah_prognoz_without_borg Q where Q.arenda_id = r.id and Q.report_id = r.report_id and year(Q.narah_date) = 2025) prognoz_without_borg_2025,
 		(select sum(Q.narah_sum) from reports1nf_payment_narah_prognoz_without_borg Q where Q.arenda_id = r.id and Q.report_id = r.report_id and year(Q.narah_date) = 2026 and Q.narah_date > PER.period_end) prognoz_without_borg_2026,
 
 		case when CR.contribution_rate > 0 then 1.0 else 0.0 end as contribution_rate,
