@@ -64,7 +64,7 @@
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="select name, id, is_deleted, is_dkv from [dict_expert_rezenz] order by 1"
 	UpdateCommand="UPDATE [dict_expert_rezenz] SET [name] = @name, [is_deleted] = @is_deleted, [is_dkv] = @is_dkv WHERE id = @id"
-	InsertCommand="INSERT INTO [dict_expert_rezenz]([id],[name],[is_deleted],[is_dkv]) VALUES( isnull((select max(id) + 1 from dict_expert_rezenz), 1), @name, @is_deleted, @is_dkv)"
+	InsertCommand="INSERT INTO [dict_expert_rezenz]([id],[name],[is_deleted],[is_dkv]) VALUES( isnull((select max(id) + 1 from dict_expert_rezenz), 1), @name, @is_deleted, isnull(@is_dkv,0))"
 	DeleteCommand="DELETE FROM [dict_expert_rezenz] WHERE id = @id">
     <UpdateParameters>
         <asp:Parameter Name="name" />
