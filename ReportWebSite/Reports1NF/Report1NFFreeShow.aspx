@@ -189,6 +189,7 @@
 
 ,(SELECT case when Q.site_text <> '' then Q.site_text else Q.public_name end FROM free_proc_step_dict Q where Q.step_id = fs.freecycle_step_dict_id) freecycle_step_name
 ,(SELECT Q.color FROM free_proc_step_dict Q where Q.step_id = fs.freecycle_step_dict_id) freecycle_step_color
+,case when (SELECT Q.allow_zayav FROM free_proc_step_dict Q where Q.step_id = fs.freecycle_step_dict_id) = 0 then '0' else '1' end allow_zayav
 
 ,fs.zal_balans_vartist
 ,fs.perv_balans_vartist
@@ -611,7 +612,7 @@ WHERE id = @id"
         <dx:GridViewDataTextColumn FieldName="auction_tablo" Caption="Аукціон" VisibleIndex="0"  Width="170px" ReadOnly="true">
 			<DataItemTemplate>
 
-                <dx:ASPxButton Enabled="true" runat="server" ID="AuctionZayavkaBtn" Text="Подати заявку" AutoPostBack="false" Visible='<%# Eval("cabinetOrendarStage").ToString() == "" %>' OnInit="AuctionZayavkaBtn_Init" >
+                <dx:ASPxButton Enabled="true" runat="server" ID="AuctionZayavkaBtn" Text="Подати заявку" AutoPostBack="false" Visible='<%# Eval("cabinetOrendarStage").ToString() == "" && Eval("allow_zayav").ToString() == "1" %>' OnInit="AuctionZayavkaBtn_Init" >
                     <ClientSideEvents Click="function(s, e) { AuctionZayavkaClick(s,e); }" />
                 </dx:ASPxButton>
                 
