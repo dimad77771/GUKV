@@ -197,7 +197,7 @@
 , dict_districts2.name AS 'district'
 , bld.addr_street_name
 , bld.addr_nomer
-, ar.rent_square
+, isnull(arenda_dogchange.rent_used, ar.rent_square) AS 'rent_square'
 , COALESCE(ar.purpose_str, dict_balans_purpose.name) AS 'purpose'
 , ar.is_deleted
 , ar.modify_date
@@ -310,6 +310,19 @@ FROM reports1nf_arenda ar
         outer apply (select top 1 report_id,arenda_id,purpose_str, pidstava, doc_num, doc_date=convert(varchar(10),doc_date, 104)  from dbo.reports1nf_arenda_decisions t1 where t1.arenda_id = ar.id and t1.report_id = rep.id order by t1.id) ad 
 
 		outer apply (select top 1 id as period_id from dict_rent_period per where per.is_active = 1) apd
+
+	    OUTER APPLY 
+	    (
+		    SELECT 
+		    top 1
+		    Q.rent_used
+		    FROM reports1nf_arenda_dogchange Q
+		    WHERE Q.arenda_id = ar.id and Q.report_id = ar.report_id
+		    and rent_start_date <= cast(getdate() as date) 
+		    and (rent_actual_finish_date is null or rent_actual_finish_date >= cast(getdate() as date))
+		    order by Q.rent_start_date desc
+	    ) arenda_dogchange
+
 
         WHERE ar.report_id = @rep_id 
             AND (isnull(a.is_deleted, 0) = 0 OR @p_dpz_filter = 1)
