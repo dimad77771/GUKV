@@ -119,6 +119,7 @@ public class NarazhCalculationMain
 	public bool UsePaymentDiscountsFuture;
 
 	public bool IsNextYear;
+	public bool IsPrevYear;
 	public int? CalcYears;
 	public bool CalcWithoutBorg;
 	public Dictionary<string, Control> controls;
@@ -156,6 +157,7 @@ public class NarazhCalculationMain
 				Dogchanges = Dogchanges,
 				DogchangeNum = dogchangeNum,
 				IsNextYear = IsNextYear,
+				IsPrevYear = IsPrevYear,
 				Connection = connection,
 			};
 
@@ -203,6 +205,7 @@ public class NarazhCalculationOne
 
 	public int DogchangeNum;
 	public bool IsNextYear;
+	public bool IsPrevYear;
 	public int? CalcYears;
 	public List<DogchangeClass> Dogchanges;
 	public Dictionary<string, Control> controls;
@@ -333,6 +336,10 @@ base_month, rent_start_date, rent_actual_finish_date,
 		CalcMonthPlata();
 
 		var allplata = CalcRealPlata();
+		if (!allplata.ContainsKey(LastYear))
+		{
+			return ReturnEmpty();
+		}
 		var plata = allplata[LastYear];
 
 		var total = plata.Where(x => x.Key >= 1 && x.Key <= LastMonth).Sum(x => x.Value);
@@ -454,6 +461,7 @@ base_month, rent_start_date, rent_actual_finish_date,
 		public int Year { get; set; }
 		public ResultClass CurrentYear { get; set; }
 		public ResultClass NextYear { get; set; }
+		public ResultClass PrevYear { get; set; }
 	}
 
 	Dictionary<int, Dictionary<int, decimal>> CalcRealPlata()
@@ -772,6 +780,11 @@ WHERE (is_deleted IS NULL OR is_deleted = 0) AND report_id = " + report_id + " A
 		if (IsNextYear)
 		{
 			LastYear = FirstYear + 1;
+		}
+		else if (IsPrevYear)
+		{
+			FirstYear = FirstYear - 1;
+			LastYear = FirstYear;
 		}
 		else if (CalcYears.HasValue)
 		{

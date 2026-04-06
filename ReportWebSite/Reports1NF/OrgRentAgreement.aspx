@@ -616,10 +616,45 @@
             document.getElementById('valError').style.display = 'none';
         }
 
+        function narazh_month_text_setup() {
+            const month_text_all = [ "Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень" ];
+            const use_last_december = edit_use_last_december.GetValue();
+
+            if (!use_last_december) {
+                narazh_month_text_1.SetText(month_text_all[0]);
+                narazh_month_text_2.SetText(month_text_all[1]);
+                narazh_month_text_3.SetText(month_text_all[2]);
+                narazh_month_text_4.SetText(month_text_all[3]);
+                narazh_month_text_5.SetText(month_text_all[4]);
+                narazh_month_text_6.SetText(month_text_all[5]);
+                narazh_month_text_7.SetText(month_text_all[6]);
+                narazh_month_text_8.SetText(month_text_all[7]);
+                narazh_month_text_9.SetText(month_text_all[8]);
+                narazh_month_text_10.SetText(month_text_all[9]);
+                narazh_month_text_11.SetText(month_text_all[10]);
+                narazh_month_text_12.SetText(month_text_all[11]);
+            } else {
+                narazh_month_text_1.SetText(month_text_all[11]);
+                narazh_month_text_2.SetText(month_text_all[0]);
+                narazh_month_text_3.SetText(month_text_all[1]);
+                narazh_month_text_4.SetText(month_text_all[2]);
+                narazh_month_text_5.SetText(month_text_all[3]);
+                narazh_month_text_6.SetText(month_text_all[4]);
+                narazh_month_text_7.SetText(month_text_all[5]);
+                narazh_month_text_8.SetText(month_text_all[6]);
+                narazh_month_text_9.SetText(month_text_all[7]);
+                narazh_month_text_10.SetText(month_text_all[8]);
+                narazh_month_text_11.SetText(month_text_all[9]);
+                narazh_month_text_12.SetText(month_text_all[10]);
+            }
+            //console.log('edit_use_last_december', edit_use_last_december.GetValue())
+        }
+
         function NarazhCalculationRun() {
             ButtonSave.SetEnabled(false);
             ButtonSend.SetEnabled(false);
-			cbNarazhCalculation.PerformCallback(111);
+            narazh_month_text_setup();
+            cbNarazhCalculation.PerformCallback(111);
         }
 
         function NarazhCalculationComplete(s, e) {
@@ -643,6 +678,22 @@
             id_NarazhCalculation_11.SetValue(obj['NarazhCalculation_11']);
             id_NarazhCalculation_12.SetValue(obj['NarazhCalculation_12']);
             id_NarazhCalculation_all.SetValue(obj['NarazhCalculation_all']);
+
+            if (objTotlal.PrevYear) {
+                id_NarazhCalculation_1.SetValue(objTotlal.PrevYear['NarazhCalculation_12']);
+                id_NarazhCalculation_2.SetValue(obj['NarazhCalculation_1']);
+                id_NarazhCalculation_3.SetValue(obj['NarazhCalculation_2']);
+                id_NarazhCalculation_4.SetValue(obj['NarazhCalculation_3']);
+                id_NarazhCalculation_5.SetValue(obj['NarazhCalculation_4']);
+                id_NarazhCalculation_6.SetValue(obj['NarazhCalculation_5']);
+                id_NarazhCalculation_7.SetValue(obj['NarazhCalculation_6']);
+                id_NarazhCalculation_8.SetValue(obj['NarazhCalculation_7']);
+                id_NarazhCalculation_9.SetValue(obj['NarazhCalculation_8']);
+                id_NarazhCalculation_10.SetValue(obj['NarazhCalculation_9']);
+                id_NarazhCalculation_11.SetValue(obj['NarazhCalculation_10']);
+                id_NarazhCalculation_12.SetValue(obj['NarazhCalculation_11']);
+                id_NarazhCalculation_all.SetValue(obj['NarazhCalculation_all']);
+            }
 
 			cNarazhCalculationData.Set('data', resultJson);
             //console.log('cNarazhCalculationData', cNarazhCalculationData);
@@ -944,7 +995,7 @@
 
      // ]]>
 
-	</script>
+    </script>
 
 	<script type="text/javascript" language="javascript">
         var imageIndex = 0;
@@ -3768,6 +3819,15 @@ WHERE id = @id"
                                                                         </dx:ASPxCheckBox>
                                                                     </td>
                                                                 </tr>
+                                                                <tr>
+                                                                    <td><dx:ASPxLabel ID="ASPxLabel79" runat="server" Text="Нарахування орендної плати у поточному за попередній місяць"></dx:ASPxLabel></td>
+                                                                    <td><dx:ASPxCheckBox ID="edit_use_last_december" ClientInstanceName="edit_use_last_december" runat="server" Text="" Checked='<%# 1.Equals(Eval("use_last_december")) %>' Title="Нарахування орендної плати у поточному за попередній місяць">
+                                                                            <ClientSideEvents 
+                                                                              CheckedChanged="function (s, e) { NarazhCalculationRun(); }"
+                                                                            />
+                                                                        </dx:ASPxCheckBox>
+                                                                    </td>
+                                                                </tr>
                                                             </table>
                                                         </dx:panelcontent>    
                                                         </PanelCollection>                                                    
@@ -4240,7 +4300,7 @@ WHERE id = @id"
 										<dx:PanelContent ID="PanelContent1811" runat="server">
                                             <table border="0" cellspacing="0" cellpadding="2" width="230px" style="border-collapse:collapse">
                                                 <tr>
-                                                    <td colspan="2"><dx:ASPxLabel runat="server" Text="Січень:"></dx:ASPxLabel></td>
+                                                    <td colspan="2"><dx:ASPxLabel runat="server" ClientInstanceName="narazh_month_text_1" Text="Січень:"></dx:ASPxLabel></td>
                                                     <td>
                                                         <dx:ASPxSpinEdit ID="NarazhCalculation_1" ClientInstanceName="id_NarazhCalculation_1" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
                                                             <SpinButtons ShowIncrementButtons="false"/>
@@ -4248,7 +4308,7 @@ WHERE id = @id"
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="2"><dx:ASPxLabel runat="server" Text="Лютий:"></dx:ASPxLabel></td>
+                                                    <td colspan="2"><dx:ASPxLabel runat="server" ClientInstanceName="narazh_month_text_2" Text="Лютий:"></dx:ASPxLabel></td>
                                                     <td>
                                                         <dx:ASPxSpinEdit ID="NarazhCalculation_2" ClientInstanceName="id_NarazhCalculation_2" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
                                                             <SpinButtons ShowIncrementButtons="false"/>
@@ -4256,7 +4316,7 @@ WHERE id = @id"
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="2"><dx:ASPxLabel runat="server" Text="Березень:"></dx:ASPxLabel></td>
+                                                    <td colspan="2"><dx:ASPxLabel runat="server" ClientInstanceName="narazh_month_text_3" Text="Березень:"></dx:ASPxLabel></td>
                                                     <td>
                                                         <dx:ASPxSpinEdit ID="NarazhCalculation_3" ClientInstanceName="id_NarazhCalculation_3" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
                                                             <SpinButtons ShowIncrementButtons="false"/>
@@ -4264,7 +4324,7 @@ WHERE id = @id"
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="2"><dx:ASPxLabel runat="server" Text="Квітень:"></dx:ASPxLabel></td>
+                                                    <td colspan="2"><dx:ASPxLabel runat="server" ClientInstanceName="narazh_month_text_4" Text="Квітень:"></dx:ASPxLabel></td>
                                                     <td>
                                                         <dx:ASPxSpinEdit ID="NarazhCalculation_4" ClientInstanceName="id_NarazhCalculation_4" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
                                                             <SpinButtons ShowIncrementButtons="false"/>
@@ -4272,7 +4332,7 @@ WHERE id = @id"
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="2"><dx:ASPxLabel runat="server" Text="Травень:"></dx:ASPxLabel></td>
+                                                    <td colspan="2"><dx:ASPxLabel runat="server" ClientInstanceName="narazh_month_text_5" Text="Травень:"></dx:ASPxLabel></td>
                                                     <td>
                                                         <dx:ASPxSpinEdit ID="NarazhCalculation_5" ClientInstanceName="id_NarazhCalculation_5" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
                                                             <SpinButtons ShowIncrementButtons="false"/>
@@ -4280,7 +4340,7 @@ WHERE id = @id"
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="2"><dx:ASPxLabel runat="server" Text="Червень:"></dx:ASPxLabel></td>
+                                                    <td colspan="2"><dx:ASPxLabel runat="server" ClientInstanceName="narazh_month_text_6" Text="Червень:"></dx:ASPxLabel></td>
                                                     <td>
                                                         <dx:ASPxSpinEdit ID="NarazhCalculation_6" ClientInstanceName="id_NarazhCalculation_6" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
                                                             <SpinButtons ShowIncrementButtons="false"/>
@@ -4288,7 +4348,7 @@ WHERE id = @id"
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="2"><dx:ASPxLabel runat="server" Text="Липень:"></dx:ASPxLabel></td>
+                                                    <td colspan="2"><dx:ASPxLabel runat="server" ClientInstanceName="narazh_month_text_7" Text="Липень:"></dx:ASPxLabel></td>
                                                     <td>
                                                         <dx:ASPxSpinEdit ID="NarazhCalculation_7" ClientInstanceName="id_NarazhCalculation_7" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
                                                             <SpinButtons ShowIncrementButtons="false"/>
@@ -4296,7 +4356,7 @@ WHERE id = @id"
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="2"><dx:ASPxLabel runat="server" Text="Серпень:"></dx:ASPxLabel></td>
+                                                    <td colspan="2"><dx:ASPxLabel runat="server" ClientInstanceName="narazh_month_text_8" Text="Серпень:"></dx:ASPxLabel></td>
                                                     <td>
                                                         <dx:ASPxSpinEdit ID="NarazhCalculation_8" ClientInstanceName="id_NarazhCalculation_8" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
                                                             <SpinButtons ShowIncrementButtons="false"/>
@@ -4304,7 +4364,7 @@ WHERE id = @id"
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="2"><dx:ASPxLabel runat="server" Text="Вересень:"></dx:ASPxLabel></td>
+                                                    <td colspan="2"><dx:ASPxLabel runat="server" ClientInstanceName="narazh_month_text_9" Text="Вересень:"></dx:ASPxLabel></td>
                                                     <td>
                                                         <dx:ASPxSpinEdit ID="NarazhCalculation_9" ClientInstanceName="id_NarazhCalculation_9" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
                                                             <SpinButtons ShowIncrementButtons="false"/>
@@ -4312,7 +4372,7 @@ WHERE id = @id"
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="2"><dx:ASPxLabel runat="server" Text="Жовтень:"></dx:ASPxLabel></td>
+                                                    <td colspan="2"><dx:ASPxLabel runat="server" ClientInstanceName="narazh_month_text_10" Text="Жовтень:"></dx:ASPxLabel></td>
                                                     <td>
                                                         <dx:ASPxSpinEdit ID="NarazhCalculation_10" ClientInstanceName="id_NarazhCalculation_10" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
                                                             <SpinButtons ShowIncrementButtons="false"/>
@@ -4320,7 +4380,7 @@ WHERE id = @id"
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="2"><dx:ASPxLabel runat="server" Text="Листопад:"></dx:ASPxLabel></td>
+                                                    <td colspan="2"><dx:ASPxLabel runat="server" ClientInstanceName="narazh_month_text_11" Text="Листопад:"></dx:ASPxLabel></td>
                                                     <td>
                                                         <dx:ASPxSpinEdit ID="NarazhCalculation_11" ClientInstanceName="id_NarazhCalculation_11" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
                                                             <SpinButtons ShowIncrementButtons="false"/>
@@ -4328,7 +4388,7 @@ WHERE id = @id"
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="2"><dx:ASPxLabel runat="server" Text="Грудень:"></dx:ASPxLabel></td>
+                                                    <td colspan="2"><dx:ASPxLabel runat="server" ClientInstanceName="narazh_month_text_12" Text="Грудень:"></dx:ASPxLabel></td>
                                                     <td>
                                                         <dx:ASPxSpinEdit ID="NarazhCalculation_12" ClientInstanceName="id_NarazhCalculation_12" runat="server" NumberType="Float" Width="90px" ReadOnly="true" HorizontalAlign="Right" DisplayFormatString="0.00" >
                                                             <SpinButtons ShowIncrementButtons="false"/>

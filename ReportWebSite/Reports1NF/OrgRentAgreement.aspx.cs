@@ -2089,6 +2089,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 			AddQueryParameter(ref fieldList, "return_orend_payed", "returnorendpayed", Reports1NFUtils.GetEditNumeric(controls, "edit_return_orend_payed"), parameters);
 			AddQueryParameter(ref fieldList, "return_all_orend_payed", "returnallorendpayed", Reports1NFUtils.GetEditNumeric(controls, "edit_return_all_orend_payed"), parameters);
 			AddQueryParameter(ref fieldList, "use_calc_debt", "usecalcdebt", Reports1NFUtils.GetCheckBoxValue(controls, "edit_use_calc_debt") ? 1 : 0, parameters);
+			AddQueryParameter(ref fieldList, "use_last_december", "uselastdecember", Reports1NFUtils.GetCheckBoxValue(controls, "edit_use_last_december") ? 1 : 0, parameters);
 			AddQueryParameter(ref fieldList, "avance_plat", "avanceplat", Reports1NFUtils.GetEditNumeric(controls, "edit_avance_plat"), parameters);
 
 			AddQueryParameter(ref fieldList, "zabezdepoz_narah", "zabezdepoznarah", Reports1NFUtils.GetEditNumeric(controls, "edit_zabezdepoz_narah"), parameters);
@@ -3781,9 +3782,16 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		Reports1NFUtils.GetAllControls(InsuranceForm, controls);
 		Reports1NFUtils.GetAllControls(AddressForm, controls);
 
-		var resultTotal = new NarazhCalculationOne.ResultTotalClass();
+		var edit_use_last_december = controls["edit_use_last_december"] as ASPxCheckBox; 
 
-		for (int i = 1; i <= 2; i++)
+		var resultTotal = new NarazhCalculationOne.ResultTotalClass();
+		var countCalculation = 2;
+		if (edit_use_last_december.Checked)
+		{
+			countCalculation++;
+		}
+
+		for (int i = 1; i <= countCalculation; i++)
 		{
 			var robject = new NarazhCalculationMain
 			{
@@ -3792,6 +3800,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 				report_id = ReportID,
 				arenda_id = RentAgreementID,
 				IsNextYear = (i == 2),
+				IsPrevYear = (i == 3),
 			};
 			var result = robject.Main();
 
@@ -3804,9 +3813,13 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 			{
 				resultTotal.NextYear = result;
 			}
+			else if (i == 3)
+			{
+				resultTotal.PrevYear = result;
+			}
 		}
 
-		var json = Newtonsoft.Json.JsonConvert.SerializeObject(resultTotal);
+		var json = JsonConvert.SerializeObject(resultTotal);
 		e.Result = json;
 	}
 
