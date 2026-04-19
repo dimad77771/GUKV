@@ -28,7 +28,7 @@
     window.onresize = function () { AdjustGridSizes(); };
 
     function AdjustGridSizes() {
-		FreeSquareGridView.SetHeight(window.innerHeight - 180);
+        FreeSquareGridView.SetHeight(window.innerHeight - 180);
     }
 
     function GridViewFreeSquareInit(s, e) {
@@ -39,58 +39,58 @@
     function GridViewFreeSquareEndCallback(s, e) {
 
         AdjustGridSizes();
-	}
+    }
 
-	function ShowFieldChooserPopupControl(s, e) {
+    function ShowFieldChooserPopupControl(s, e) {
 
         PrimaryGridView = FreeSquareGridView;
-		PopupFieldChooser.Show();
-	}
+        PopupFieldChooser.Show();
+    }
 
 
-	function ShowPhoto(s, e) {
-		console.log(e.buttonID);
-		if (e.buttonID == 'btnPdfBuild') {
-			FreeSquareGridView.GetRowValues(e.visibleIndex, 'id', OnGridPdfBuildGetRowValues);
+    function ShowPhoto(s, e) {
+        console.log(e.buttonID);
+        if (e.buttonID == 'btnPdfBuild') {
+            FreeSquareGridView.GetRowValues(e.visibleIndex, 'id', OnGridPdfBuildGetRowValues);
         } else if (e.buttonID == 'btnDocx1Build') {
             FreeSquareGridView.GetRowValues(e.visibleIndex, 'id', OnGridDocx1BuildGetRowValues);
         } else if (e.buttonID == 'btnDocx2Build') {
             FreeSquareGridView.GetRowValues(e.visibleIndex, 'id', OnGridDocx2BuildGetRowValues);
         } else if (e.buttonID == 'bnt_current_stage_pdf') {
-			$.cookie('RecordID', s.GetRowKey(e.visibleIndex));
-			ASPxFileManagerPhotoFiles.Refresh();
-			PopupObjectPhotos.Show();
-		} else if (e.buttonID == 'btnMapShow') {
-			FreeSquareGridView.GetRowValues(e.visibleIndex, 'id', OnMapShowGetRowValues);
-		} else if (e.buttonID == 'btnFreeCycle') {
-			FreeSquareGridView.GetRowValues(e.visibleIndex, 'id', OnFreeCycleGetRowValues);
-		} else if (e.buttonID == 'btnOrgBalansObject') {
-			FreeSquareGridView.GetRowValues(e.visibleIndex, 'id;arenda_id;report_id', OnClickOrgBalansObject);
+            $.cookie('RecordID', s.GetRowKey(e.visibleIndex));
+            ASPxFileManagerPhotoFiles.Refresh();
+            PopupObjectPhotos.Show();
+        } else if (e.buttonID == 'btnMapShow') {
+            FreeSquareGridView.GetRowValues(e.visibleIndex, 'id', OnMapShowGetRowValues);
+        } else if (e.buttonID == 'btnFreeCycle') {
+            FreeSquareGridView.GetRowValues(e.visibleIndex, 'id', OnFreeCycleGetRowValues);
+        } else if (e.buttonID == 'btnOrgBalansObject') {
+            FreeSquareGridView.GetRowValues(e.visibleIndex, 'id;arenda_id;report_id', OnClickOrgBalansObject);
         } else if (e.buttonID == 'btnCopyFullDescription') {
             var cols = "orendar_name;orendar_zkpo;org_name;zkpo_code;balanutr_addr_street;balanutr_addr_nomer;giver_name;giver_zkpo;giver_addr_street;giver_addr_nomer;agreement_date;rent_finish_date;srok_dog;";
             cols += "include_in_perelik;zal_balans_vartist;perv_balans_vartist;free_object_type_name;prop_srok_orands;punkt_metod_rozrahunok;invest_solution;";
-			cols += "zgoda_control;district;street_name;addr_nomer;total_free_sqr;free_sql_usefull;";
-			cols += "floor;condition;water;heating;gas;power_text;history;zgoda_renter;nomer_derzh_reestr_neruh;reenum_derzh_reestr_neruh;possible_using;info_rahunok_postach;orend_plat_last_month;orend_plat_borg;stanom_na;";
-			cols += "has_perevazh_pravo;polipshanya_vartist;polipshanya_finish_date;rozmir_vidshkoduv;zalbalansvartist_date;primitki;id";
-			FreeSquareGridView.GetRowValues(e.visibleIndex, cols, OnCopyFullDescription);
-		}
+            cols += "zgoda_control;district;street_name;addr_nomer;total_free_sqr;free_sql_usefull;";
+            cols += "floor;condition;water;heating;gas;power_text;history;zgoda_renter;nomer_derzh_reestr_neruh;reenum_derzh_reestr_neruh;possible_using;info_rahunok_postach;orend_plat_last_month;orend_plat_borg;stanom_na;";
+            cols += "has_perevazh_pravo;polipshanya_vartist;polipshanya_finish_date;rozmir_vidshkoduv;zalbalansvartist_date;primitki;id";
+            FreeSquareGridView.GetRowValues(e.visibleIndex, cols, OnCopyFullDescription);
+        }
     }
 
     function OnCopyFullDescription(values) {
         var headers = [
-			"Найменування орендаря - ",
-			"Код ЕДРПОУ орендаря - ",
-			"Найменування балансоутримувача - ",
-			"Код ЕДРПОУ балансоутримувача - ",
-			"Адреса балансоутримувача(вулиця) - ",
-			"Адреса балансоутримувача(номер дому) - ",
-			"Найменування орендодавця - ",
-			"Код ЕДРПОУ орендодавця - ",
-			"Адреса орендодавця(вулиця) - ",
-			"Адреса орендодавця(номер дому) - ",
-			"Дата укладання договору - ",
-			"Дата закінчення договору - ",
-			"Строк оренди(роки) - ",
+            "Найменування орендаря - ",
+            "Код ЕДРПОУ орендаря - ",
+            "Найменування балансоутримувача - ",
+            "Код ЕДРПОУ балансоутримувача - ",
+            "Адреса балансоутримувача(вулиця) - ",
+            "Адреса балансоутримувача(номер дому) - ",
+            "Найменування орендодавця - ",
+            "Код ЕДРПОУ орендодавця - ",
+            "Адреса орендодавця(вулиця) - ",
+            "Адреса орендодавця(номер дому) - ",
+            "Дата укладання договору - ",
+            "Дата закінчення договору - ",
+            "Строк оренди(роки) - ",
 
             "Включено до переліку № - ",
             "Залишкова балансова вартість, грн. – ",
@@ -99,38 +99,38 @@
             "Пропонований строк оренди (у роках) – ",
             "Пункт Методики розрахунку орендної плати (якщо об’єкт пропонується для включення до Переліку другого типу) - ",
             "Наявність рішень про проведення інвестиційного конкурсу або про включення об’єкта до переліку майна, що підлягає приватизації - ",
-                
+
             "Погодження органу управління балансоутримувача – ",
             "Район – ",
             "Назва Вулиці - ",
             "Номер Будинку - ",
             "Загальна площа об’єкта, кв.м - ",
-			"Корисна площа об’єкта, кв.м – ",
-			"Характеристика об’єкта оренди(будівлі в цілому або частини будівлі із зазначенням місця розташування об’єкта в будівлі(надземний, цокольний, підвальний, технічний або мансардний поверх, номер поверху або поверхів) – ",
-			"Технічний стан – ",
-			"Водопостачання – ",
-			"Теплопостачання – ",
-			"Газопостачання – ",
-			"Електропостачання – ", 
-			"Пам’ятка культурної спадщини - ",
-			"Погодження органу охорони культурної спадщини - ",
-			"Номер запису про право власності у Реєстрація у Державному реєстрі речових прав на нерухоме майно – ",
-			"Реєстраційний номер об'єкту нерухомого майна у Реєстрація у Державному реєстрі речових прав на нерухоме майно – ",
-			"Інформація про цільове призначення об’єкта оренди – ",
+            "Корисна площа об’єкта, кв.м – ",
+            "Характеристика об’єкта оренди(будівлі в цілому або частини будівлі із зазначенням місця розташування об’єкта в будівлі(надземний, цокольний, підвальний, технічний або мансардний поверх, номер поверху або поверхів) – ",
+            "Технічний стан – ",
+            "Водопостачання – ",
+            "Теплопостачання – ",
+            "Газопостачання – ",
+            "Електропостачання – ",
+            "Пам’ятка культурної спадщини - ",
+            "Погодження органу охорони культурної спадщини - ",
+            "Номер запису про право власності у Реєстрація у Державному реєстрі речових прав на нерухоме майно – ",
+            "Реєстраційний номер об'єкту нерухомого майна у Реєстрація у Державному реєстрі речових прав на нерухоме майно – ",
+            "Інформація про цільове призначення об’єкта оренди – ",
             "Інформація про наявність окремих особових рахунків на об'єкт оренди, відкритих постачальниками комунальних послуг - ",
-			"Місячна орендна плата за останній місяць(проіндексована) – ",
-			"Заборгованість по орендній платі, грн. (без ПДВ) – ",
-			"Станом на – ",
+            "Місячна орендна плата за останній місяць(проіндексована) – ",
+            "Заборгованість по орендній платі, грн. (без ПДВ) – ",
+            "Станом на – ",
 
-			"Має переважне право на продовження – ",
-			"Вартість здійснених чинним орендарем невід’ємних поліпшень – ",
-			"Дата завершення здійснених чинним орендарем невід’ємних поліпшень – ",
-			"Розмір відшкодування земельного податку та інших - ",
-			"Дата формування залишкової вартості - ",
-			"Примітки – ",
+            "Має переважне право на продовження – ",
+            "Вартість здійснених чинним орендарем невід’ємних поліпшень – ",
+            "Дата завершення здійснених чинним орендарем невід’ємних поліпшень – ",
+            "Розмір відшкодування земельного податку та інших - ",
+            "Дата формування залишкової вартості - ",
+            "Примітки – ",
         ];
 
-		console.log("values", values);
+        console.log("values", values);
 
         var txt = "";
         for (var i = 0; i < headers.length; i++) {
@@ -142,55 +142,55 @@
             } else if (vv === false) {
                 vv = "ні";
             } else if (Object.prototype.toString.call(vv) === '[object Date]') {
-				vv = formatDate(vv);
-			}
+                vv = formatDate(vv);
+            }
 
-			txt += (i == 0 ? "" : "\n") + headers[i] +  vv;
-		}
+            txt += (i == 0 ? "" : "\n") + headers[i] + vv;
+        }
 
-		var id = values[values.length - 1];
+        var id = values[values.length - 1];
         txt += "\n" + "Фото - https://dkv.kyivcity.gov.ua/Reports1NF/BalansDogContinuePhotosPdf.aspx?id=" + id + '&jpeg=1';
 
         myCopyToClipboard(txt);
     }
 
-	function formatDate(date) {
+    function formatDate(date) {
         var year = date.getFullYear();
         var month = date.getMonth() + 1;
         var day = date.getDate();
 
         return (day < 10 ? "0" : "") + day + "." + (month < 10 ? "0" : "") + month + "." + year;
-	}
+    }
 
 
-	function OnMapShowGetRowValues(values) {
-		var id = values;
-		window.open(
-			'Report1NFProdlenMap.aspx?fs_id=' + id,
-			'_blank',
-		);
-	}
+    function OnMapShowGetRowValues(values) {
+        var id = values;
+        window.open(
+            'Report1NFProdlenMap.aspx?fs_id=' + id,
+            '_blank',
+        );
+    }
 
-	function OnFreeCycleGetRowValues(values) {
-		var id = values;
-		window.open(
-			'FreeCycle.aspx?free_square_id=' + id,
-			'_blank',
-		);
+    function OnFreeCycleGetRowValues(values) {
+        var id = values;
+        window.open(
+            'FreeCycle.aspx?free_square_id=' + id,
+            '_blank',
+        );
     }
 
     function OnClickOrgBalansObject(values) {
-		window.location = 'OrgRentAgreement.aspx?rid=' + values[2] + '&aid=' + values[1] + '&edit_free_square_id=' + values[0];
-	}
+        window.location = 'OrgRentAgreement.aspx?rid=' + values[2] + '&aid=' + values[1] + '&edit_free_square_id=' + values[0];
+    }
 
 
-	function OnGridPdfBuildGetRowValues(values) {
-		console.log(values);
-		var id = values;
-		window.open(
-			'BalansDogContinuePhotosPdf.aspx?id=' + id,
-			'_blank',
-		);
+    function OnGridPdfBuildGetRowValues(values) {
+        console.log(values);
+        var id = values;
+        window.open(
+            'BalansDogContinuePhotosPdf.aspx?id=' + id,
+            '_blank',
+        );
     }
 
     function OnGridDocx1BuildGetRowValues(values) {
@@ -212,52 +212,52 @@
     }
 
 
-    function OnDropDown(comboBox){
-		//SetDropDownWidth(comboBox, "368px");
-		_aspxMakeScollableArea(comboBox);
-	}
+    function OnDropDown(comboBox) {
+        //SetDropDownWidth(comboBox, "368px");
+        _aspxMakeScollableArea(comboBox);
+    }
 
-    function SetDropDownWidth(comboBox, width){
+    function SetDropDownWidth(comboBox, width) {
         var listBox = comboBox.GetListBoxControl();
         var scrollDiv = listBox.GetScrollDivElement();
         //scrollDiv.style.overflowX = "auto";
         //scrollDiv.style.width = width;
 
-		scrollDiv.style.overflowY = "scroll";
-		console.log("scrollDiv.style.overflowY", scrollDiv.style.overflowY);
+        scrollDiv.style.overflowY = "scroll";
+        console.log("scrollDiv.style.overflowY", scrollDiv.style.overflowY);
 
         var popupControl = comboBox.GetPopupControl();
         //popupControl.SetSize("0", "0");
-	}
-
-
-    function _aspxMakeScollableArea(comboBox) {  
-        var listBox = comboBox.GetListBoxControl();  
-        if (_aspxIsExists(listBox)) {  
-            var lsScrollableDiv =  listBox.GetScrollDivElement();  
-            if (_aspxIsExists(lsScrollableDiv)) {  
-				var browserWidth = (_aspxGetDocumentClientWidth() - 10) + 'px';
-				//alert(browserWidth);
-                _aspxSetAttribute(lsScrollableDiv.style, "width", browserWidth);  
-				_aspxSetAttribute(lsScrollableDiv.style, "overflow-x", "scroll");  
-				_aspxSetAttribute(lsScrollableDiv.style, "overflow-y", "scroll");
-            }  
-        }  
-    }
-
-	function CheckBoxBalansObjectsShowNeziznacheni_CheckedChanged(s, e) {
-
-		FreeSquareGridView.PerformCallback(AddWndHeightToCallbackParam("init:"));
     }
 
 
-	function OnContextMenuItemClick(s, e) {
-		var id = s.GetRowKey(e.elementIndex)
-		window.open(
-			'Report2.aspx?id=' + id,
-			'_blank',
-		);
-	}
+    function _aspxMakeScollableArea(comboBox) {
+        var listBox = comboBox.GetListBoxControl();
+        if (_aspxIsExists(listBox)) {
+            var lsScrollableDiv = listBox.GetScrollDivElement();
+            if (_aspxIsExists(lsScrollableDiv)) {
+                var browserWidth = (_aspxGetDocumentClientWidth() - 10) + 'px';
+                //alert(browserWidth);
+                _aspxSetAttribute(lsScrollableDiv.style, "width", browserWidth);
+                _aspxSetAttribute(lsScrollableDiv.style, "overflow-x", "scroll");
+                _aspxSetAttribute(lsScrollableDiv.style, "overflow-y", "scroll");
+            }
+        }
+    }
+
+    function CheckBoxBalansObjectsShowNeziznacheni_CheckedChanged(s, e) {
+
+        FreeSquareGridView.PerformCallback(AddWndHeightToCallbackParam("init:"));
+    }
+
+
+    function OnContextMenuItemClick(s, e) {
+        var id = s.GetRowKey(e.elementIndex)
+        window.open(
+            'Report2.aspx?id=' + id,
+            '_blank',
+        );
+    }
 
     // ]]>
 
@@ -379,6 +379,27 @@
 ,fs.zalbalansvartist_date
 ,fs.osoba_oznakoml
 ,fs.rozmir_vidshkoduv
+,fs.building_type
+,fs.category
+,fs.rental_rate_percent
+,fs.rental_type
+,fs.rental_term
+,fs.commission_note
+,fs.additional_info
+,fs.speaker_name
+,fs.incoming_doc_num
+,fs.incoming_doc_date
+,fs.letter_appendix_num
+,fs.letter_appendix_date
+,fs.commission_id
+,dc.commission_num
+,fs.commission_result
+,fs.protocol_question_num
+,fs.outgoing_doc_num
+,fs.outgoing_doc_date
+,fs.slukhali_text
+,fs.virishyly_text
+,fs.golosovanie
 
 FROM view_reports1nf rep
 join reports1nf_arenda bal on bal.report_id = rep.report_id
@@ -391,6 +412,7 @@ left join dbo.dict_zgoda_renter zg on fs.zgoda_renter_id = zg.id
 left join dbo.dict_zgoda_renter zg2 on fs.zgoda_control_id = zg2.id
 left join organizations org_renter on org_renter.id = bal.org_renter_id
 left outer join organizations org_giver ON org_giver.id = bal.org_giver_id and (org_giver.is_deleted is null or org_giver.is_deleted = 0)
+left join dbo.dogcontinue_commission dc on dc.id = fs.commission_id
 
 --OUTER APPLY (SELECT TOP 1 * FROM rent_free_square rfs
 --		WHERE rfs.building_id = bal.building_id AND
@@ -424,6 +446,26 @@ SET
     [prozoro_number] = @prozoro_number,
     [may_pravo_prodov] = @may_pravo_prodov_text,
 	[is_included] = @is_included,
+	[building_type] = @building_type,
+	[category] = @category,
+	[rental_rate_percent] = @rental_rate_percent,
+	[rental_type] = @rental_type,
+	[rental_term] = @rental_term,
+	[commission_note] = @commission_note,
+	[additional_info] = @additional_info,
+	[speaker_name] = @speaker_name,
+	[incoming_doc_num] = @incoming_doc_num,
+	[incoming_doc_date] = @incoming_doc_date,
+	[letter_appendix_num] = @letter_appendix_num,
+	[letter_appendix_date] = @letter_appendix_date,
+	[commission_id] = @commission_id,
+	[commission_result] = @commission_result,
+	[protocol_question_num] = @protocol_question_num,
+	[outgoing_doc_num] = @outgoing_doc_num,
+	[outgoing_doc_date] = @outgoing_doc_date,
+	[slukhali_text] = @slukhali_text,
+	[virishyly_text] = @virishyly_text,
+	[golosovanie] = @golosovanie,
 	[modify_date2] = @modify_date2,
 	[modified_by2] = @modified_by2
 WHERE id = @id" 
@@ -461,6 +503,42 @@ WHERE id = @id"
 <mini:ProfiledSqlDataSource ID="SqlDataSourceIncludeInPerelik" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
     SelectCommand="SELECT '1' id, '1' name, 1 as ordrow union SELECT '2' id, '2' name, 1 as ordrow union select null, '',  2 as ordrow ORDER BY ordrow, name">
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceCommission" runat="server"
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>"
+    SelectCommand="SELECT [id], [commission_num], [commission_date], [commission_status], [deputies_list], [dkv_head], [district_representatives], [modify_date], [modified_by] FROM [dogcontinue_commission] ORDER BY CASE WHEN [commission_date] IS NULL THEN 1 ELSE 0 END, [commission_date] DESC, [commission_num]"
+    DeleteCommand="DELETE dc FROM [dogcontinue_commission] dc WHERE dc.[id] = @id AND NOT EXISTS (SELECT 1 FROM [reports1nf_arenda_dogcontinue] fs WHERE fs.[commission_id] = dc.[id])"
+    InsertCommand="INSERT INTO [dogcontinue_commission] ([commission_num], [commission_date], [commission_status], [deputies_list], [dkv_head], [district_representatives], [modify_date], [modified_by]) VALUES (@commission_num, @commission_date, @commission_status, @deputies_list, @dkv_head, @district_representatives, @modify_date, @modified_by) SELECT SCOPE_IDENTITY()"
+    UpdateCommand="UPDATE [dogcontinue_commission] SET [commission_num] = @commission_num, [commission_date] = @commission_date, [commission_status] = @commission_status, [deputies_list] = @deputies_list, [dkv_head] = @dkv_head, [district_representatives] = @district_representatives, [modify_date] = @modify_date, [modified_by] = @modified_by WHERE [id] = @id"
+    OnInserting="SqlDataSourceCommission_Inserting"
+    OnUpdating="SqlDataSourceCommission_Updating"
+    OnDeleting="SqlDataSourceCommission_Deleting"
+    ProviderName="System.Data.SqlClient">
+    <DeleteParameters>
+        <asp:Parameter Name="id" Type="Int32" />
+    </DeleteParameters>
+    <InsertParameters>
+        <asp:Parameter Name="commission_num" Type="String" />
+        <asp:Parameter Name="commission_date" Type="DateTime" />
+        <asp:Parameter Name="commission_status" Type="String" />
+        <asp:Parameter Name="deputies_list" Type="String" />
+        <asp:Parameter Name="dkv_head" Type="String" />
+        <asp:Parameter Name="district_representatives" Type="String" />
+        <asp:Parameter Name="modify_date" Type="DateTime" />
+        <asp:Parameter Name="modified_by" Type="String" />
+    </InsertParameters>
+    <UpdateParameters>
+        <asp:Parameter Name="id" Type="Int32" />
+        <asp:Parameter Name="commission_num" Type="String" />
+        <asp:Parameter Name="commission_date" Type="DateTime" />
+        <asp:Parameter Name="commission_status" Type="String" />
+        <asp:Parameter Name="deputies_list" Type="String" />
+        <asp:Parameter Name="dkv_head" Type="String" />
+        <asp:Parameter Name="district_representatives" Type="String" />
+        <asp:Parameter Name="modify_date" Type="DateTime" />
+        <asp:Parameter Name="modified_by" Type="String" />
+    </UpdateParameters>
 </mini:ProfiledSqlDataSource>
 
 <textarea rows="2" cols="2" id="inpit-for-copy-clipboard" style="display:none2;width:1px;height:1px;position:absolute;top:1px;right:1px;z-index:-1" ></textarea>
@@ -533,6 +611,204 @@ WHERE id = @id"
                 Text="Зберегти у Файлі" Width="148px">
             </dx:ASPxButton>
 
+        </td>
+        <td>
+            <dx:ASPxPopupControl ID="PopupCommissions" runat="server"
+                HeaderText="Комісії"
+                ClientInstanceName="PopupCommissions"
+                Width="1200px"
+                PopupElementID="ASPxButtonCommissions"
+                PopupAction="None"
+                PopupHorizontalAlign="Center"
+                PopupVerticalAlign="Middle"
+                PopupAnimationType="Slide">
+                <ContentCollection>
+                    <dx:PopupControlContentControl ID="PopupControlContentCommissions" runat="server">
+                        <dx:ASPxGridView ID="GridViewCommission" ClientInstanceName="GridViewCommission" runat="server"
+                            AutoGenerateColumns="False" DataSourceID="SqlDataSourceCommission" KeyFieldName="id" 
+                            OnCustomErrorText="GridViewCommission_CustomErrorText">
+                            <SettingsCommandButton>
+                                <EditButton>
+                                    <Image Url="~/Styles/EditIcon.png" />
+                                </EditButton>
+                                <CancelButton>
+                                    <Image Url="~/Styles/CancelIcon.png" />
+                                </CancelButton>
+                                <UpdateButton>
+                                    <Image Url="~/Styles/SaveIcon.png" />
+                                </UpdateButton>
+                                <DeleteButton>
+                                    <Image Url="~/Styles/DeleteIcon.png" />
+                                </DeleteButton>
+                                <NewButton>
+                                    <Image Url="~/Styles/AddIcon.png" />
+                                </NewButton>
+                                <ClearFilterButton Text="Очистити" RenderMode="Link" />
+                            </SettingsCommandButton>
+
+                            <Columns>
+                                <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" ShowInCustomizationForm="True" CellStyle-Wrap="False"
+                                    ShowDeleteButton="True" ShowCancelButton="true" ShowUpdateButton="true" ShowClearFilterButton="true" ShowEditButton="true" ShowNewButton="true">
+                                    <CellStyle Wrap="False"></CellStyle>
+                                </dx:GridViewCommandColumn>
+                                <dx:GridViewDataTextColumn FieldName="commission_num" Caption="Номер комісії" Width="120px" />
+                                <dx:GridViewDataDateColumn FieldName="commission_date" Caption="Дата комісії" Width="120px" />
+                                <dx:GridViewDataTextColumn FieldName="commission_status" Caption="Статус комісії" Width="140px" />
+                                <dx:GridViewDataMemoColumn FieldName="deputies_list" Caption="Список депутатів, що голосують" Width="320px" Name="colDeputiesList">
+                                    <EditItemTemplate>
+                                        <table cellpadding="0" cellspacing="0" style="width:100%;">
+                                            <tr>
+                                                <td style="padding-right:6px; vertical-align:top;">
+                                                    <dx:ASPxMemo ID="EditDeputiesListText" runat="server" Width="100%" Height="70px" ReadOnly="true"
+                                                        Text='<%# Bind("deputies_list") %>' />
+                                                </td>
+                                                <td style="width:110px; vertical-align:top;">
+                                                    <dx:ASPxButton ID="ButtonEditDeputiesList" runat="server" Text="Редагувати"
+                                                        OnClick="ButtonEditDeputiesList_Click" Width="100px" />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </EditItemTemplate>
+                                </dx:GridViewDataMemoColumn>
+                                <dx:GridViewDataTextColumn FieldName="dkv_head" Caption="Начальник відділу використання майна ДКВ" Width="220px" />
+                                <dx:GridViewDataMemoColumn FieldName="district_representatives" Caption="Представники районів" Width="320px" Name="colDistrictRepresentatives">
+                                    <EditItemTemplate>
+                                        <table cellpadding="0" cellspacing="0" style="width:100%;">
+                                            <tr>
+                                                <td style="padding-right:6px; vertical-align:top;">
+                                                    <dx:ASPxMemo ID="EditDistrictRepresentativesText" runat="server" Width="100%" Height="70px" ReadOnly="true"
+                                                        Text='<%# Bind("district_representatives") %>' />
+                                                </td>
+                                                <td style="width:110px; vertical-align:top;">
+                                                    <dx:ASPxButton ID="ButtonEditDistrictRepresentatives" runat="server" Text="Редагувати"
+                                                        OnClick="ButtonEditDistrictRepresentatives_Click" Width="100px" />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </EditItemTemplate>
+                                </dx:GridViewDataMemoColumn>
+                            </Columns>
+
+                            <SettingsBehavior ColumnResizeMode="Control" EnableCustomizationWindow="False" ConfirmDelete="True" />
+                            <Settings HorizontalScrollBarMode="Auto" ShowFooter="false" VerticalScrollBarMode="Auto" VerticalScrollBarStyle="Standard" />
+                            <SettingsEditing NewItemRowPosition="Top" Mode="Inline" />
+                            <SettingsPager PageSize="10" />
+                            <Styles Header-Wrap="True" />
+                            <ClientSideEvents EndCallback="function (s,e) { GridViewCommission.SetHeight(500); }" />
+                        </dx:ASPxGridView>
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+                <ClientSideEvents PopUp="function (s,e) { GridViewCommission.SetHeight(500); }" />
+            </dx:ASPxPopupControl>
+
+            <dx:ASPxPopupControl ID="PopupDeputiesEditor" runat="server"
+                HeaderText="Список депутатів, що голосують"
+                ClientInstanceName="PopupDeputiesEditor"
+                CloseAction="CloseButton"
+                Modal="True"
+                Width="700px"
+                PopupAction="None"
+                PopupHorizontalAlign="Center"
+                PopupVerticalAlign="Middle"
+                PopupAnimationType="Slide">
+                <ContentCollection>
+                    <dx:PopupControlContentControl ID="PopupControlContentDeputiesEditor" runat="server">
+                        <dx:ASPxGridView ID="GridViewDeputiesEditor" runat="server"
+                            AutoGenerateColumns="False" KeyFieldName="id" Width="100%"
+                            OnDataBinding="GridViewDeputiesEditor_DataBinding"
+                            OnRowInserting="GridViewDeputiesEditor_RowInserting"
+                            OnRowUpdating="GridViewDeputiesEditor_RowUpdating"
+                            OnRowDeleting="GridViewDeputiesEditor_RowDeleting">
+                            <SettingsCommandButton>
+                                <EditButton>
+                                    <Image Url="~/Styles/EditIcon.png" />
+                                </EditButton>
+                                <CancelButton>
+                                    <Image Url="~/Styles/CancelIcon.png" />
+                                </CancelButton>
+                                <UpdateButton>
+                                    <Image Url="~/Styles/SaveIcon.png" />
+                                </UpdateButton>
+                                <DeleteButton>
+                                    <Image Url="~/Styles/DeleteIcon.png" />
+                                </DeleteButton>
+                                <NewButton>
+                                    <Image Url="~/Styles/AddIcon.png" />
+                                </NewButton>
+                            </SettingsCommandButton>
+                            <Columns>
+                                <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" ShowInCustomizationForm="True" CellStyle-Wrap="False"
+                                    ShowDeleteButton="True" ShowCancelButton="true" ShowUpdateButton="true" ShowEditButton="true" ShowNewButton="true">
+                                    <CellStyle Wrap="False"></CellStyle>
+                                </dx:GridViewCommandColumn>
+                                <dx:GridViewDataTextColumn FieldName="deputy_name" Caption="ПІБ депутата" Width="520px" />
+                            </Columns>
+                            <SettingsBehavior ConfirmDelete="True" />
+                            <SettingsEditing NewItemRowPosition="Top" Mode="Inline" />
+                            <SettingsPager Mode="ShowAllRecords" />
+                        </dx:ASPxGridView>
+
+                        <div style="margin-top:10px; text-align:right;">
+                            <dx:ASPxButton ID="ButtonDeputiesEditorOk" runat="server" Text="OK" OnClick="ButtonDeputiesEditorOk_Click" Width="90px" />
+                            <dx:ASPxButton ID="ButtonDeputiesEditorCancel" runat="server" Text="Скасувати" OnClick="ButtonDeputiesEditorCancel_Click" Width="90px" style="margin-left:8px;" />
+                        </div>
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+            </dx:ASPxPopupControl>
+
+            <dx:ASPxPopupControl ID="PopupDistrictRepresentativesEditor" runat="server"
+                HeaderText="Представники районів"
+                ClientInstanceName="PopupDistrictRepresentativesEditor"
+                CloseAction="CloseButton"
+                Modal="True"
+                Width="850px"
+                PopupAction="None"
+                PopupHorizontalAlign="Center"
+                PopupVerticalAlign="Middle"
+                PopupAnimationType="Slide">
+                <ContentCollection>
+                    <dx:PopupControlContentControl ID="PopupControlContentDistrictRepresentativesEditor" runat="server">
+                        <dx:ASPxGridView ID="GridViewDistrictRepresentativesEditor" runat="server"
+                            AutoGenerateColumns="False" KeyFieldName="id" Width="100%"
+                            OnDataBinding="GridViewDistrictRepresentativesEditor_DataBinding"
+                            OnRowUpdating="GridViewDistrictRepresentativesEditor_RowUpdating">
+                            <SettingsCommandButton>
+                                <EditButton>
+                                    <Image Url="~/Styles/EditIcon.png" />
+                                </EditButton>
+                                <CancelButton>
+                                    <Image Url="~/Styles/CancelIcon.png" />
+                                </CancelButton>
+                                <UpdateButton>
+                                    <Image Url="~/Styles/SaveIcon.png" />
+                                </UpdateButton>
+                            </SettingsCommandButton>
+                            <Columns>
+                                <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" ShowInCustomizationForm="True" CellStyle-Wrap="False"
+                                    ShowDeleteButton="False" ShowCancelButton="true" ShowUpdateButton="true" ShowEditButton="true" ShowNewButton="false">
+                                    <CellStyle Wrap="False"></CellStyle>
+                                </dx:GridViewCommandColumn>
+                                <dx:GridViewDataTextColumn FieldName="district_name" Caption="Район" Width="220px" ReadOnly="True" />
+                                <dx:GridViewDataTextColumn FieldName="representative_name" Caption="Представник району" Width="500px" />
+                            </Columns>
+                            <SettingsBehavior ConfirmDelete="False" />
+                            <SettingsEditing Mode="Inline" />
+                            <SettingsPager Mode="ShowAllRecords" />
+                        </dx:ASPxGridView>
+
+                        <div style="margin-top:10px; text-align:right;">
+                            <dx:ASPxButton ID="ButtonDistrictRepresentativesEditorOk" runat="server" Text="OK" OnClick="ButtonDistrictRepresentativesEditorOk_Click" Width="90px" />
+                            <dx:ASPxButton ID="ButtonDistrictRepresentativesEditorCancel" runat="server" Text="Скасувати" OnClick="ButtonDistrictRepresentativesEditorCancel_Click" Width="90px" style="margin-left:8px;" />
+                        </div>
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+            </dx:ASPxPopupControl>
+
+            <dx:ASPxButton ID="ASPxButtonCommissions" ClientInstanceName="ASPxButtonCommissions" runat="server" Text="Комісії" AutoPostBack="false" Width="100px">
+                <ClientSideEvents Click="function (s,e) { PopupCommissions.Show(); }" />
+            </dx:ASPxButton>
+        </td>
+        <td>
 			<dx:ASPxPopupControl ID="ASPxPopupControlFreeSquare" runat="server" AllowDragging="True" 
 				ClientInstanceName="PopupObjectPhotos" EnableClientSideAPI="True" 
 				HeaderText="Документ" Modal="True" 
@@ -1190,6 +1466,94 @@ WHERE id = @id"
         </dx:GridViewDataTextColumn>
 
 
+        <dx:GridViewDataTextColumn FieldName="building_type" Caption="Тип будинку" VisibleIndex="1360" Width="180px">
+            <HeaderStyle Wrap="True" />
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="category" Caption="Категорія" VisibleIndex="1370" Width="180px">
+            <HeaderStyle Wrap="True" />
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataSpinEditColumn FieldName="rental_rate_percent" Caption="Орендна ставка, %" VisibleIndex="1380" Width="120px" CellStyle-HorizontalAlign="Right">
+            <HeaderStyle Wrap="True" />
+            <PropertiesSpinEdit NumberType="Float" DecimalPlaces="2" DisplayFormatString="g29" />
+        </dx:GridViewDataSpinEditColumn>
+
+        <dx:GridViewDataTextColumn FieldName="rental_type" Caption="Тип оренди" VisibleIndex="1390" Width="180px">
+            <HeaderStyle Wrap="True" />
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="rental_term" Caption="Строк / термін оренди" VisibleIndex="1400" Width="180px">
+            <HeaderStyle Wrap="True" />
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="commission_note" Caption="Примітка" VisibleIndex="1410" Width="220px">
+            <HeaderStyle Wrap="True" />
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="additional_info" Caption="Додаткова інформація" VisibleIndex="1420" Width="220px">
+            <HeaderStyle Wrap="True" />
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="speaker_name" Caption="Доповідач" VisibleIndex="1430" Width="180px">
+            <HeaderStyle Wrap="True" />
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="incoming_doc_num" Caption="Вхідний номер звернення" VisibleIndex="1440" Width="180px">
+            <HeaderStyle Wrap="True" />
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataDateColumn FieldName="incoming_doc_date" Caption="Дата вхідного звернення" VisibleIndex="1450" Width="120px" CellStyle-HorizontalAlign="Center">
+            <HeaderStyle Wrap="True" />
+        </dx:GridViewDataDateColumn>
+
+        <dx:GridViewDataTextColumn FieldName="letter_appendix_num" Caption="Додаток до листа. Номер" VisibleIndex="1460" Width="180px">
+            <HeaderStyle Wrap="True" />
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataDateColumn FieldName="letter_appendix_date" Caption="Додаток до листа. Дата" VisibleIndex="1470" Width="120px" CellStyle-HorizontalAlign="Center">
+            <HeaderStyle Wrap="True" />
+        </dx:GridViewDataDateColumn>
+
+        <dx:GridViewDataComboBoxColumn FieldName="commission_id" Caption="Номер комісії" VisibleIndex="1480" Width="140px">
+            <HeaderStyle Wrap="True" />
+            <PropertiesComboBox DataSourceID="SqlDataSourceCommission" TextField="commission_num" ValueField="id" ValueType="System.Int32" DropDownStyle="DropDownList" NullText="">
+            </PropertiesComboBox>
+        </dx:GridViewDataComboBoxColumn>
+
+        <dx:GridViewDataTextColumn FieldName="commission_result" Caption="Результат" VisibleIndex="1490" Width="120px">
+            <HeaderStyle Wrap="True" />
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataSpinEditColumn FieldName="protocol_question_num" Caption="№ питання у протоколі" VisibleIndex="1500" Width="120px" CellStyle-HorizontalAlign="Right">
+            <HeaderStyle Wrap="True" />
+            <PropertiesSpinEdit NumberType="Integer" DisplayFormatString="g" />
+        </dx:GridViewDataSpinEditColumn>
+
+        <dx:GridViewDataTextColumn FieldName="outgoing_doc_num" Caption="Вихідний номер звернення" VisibleIndex="1510" Width="180px">
+            <HeaderStyle Wrap="True" />
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataDateColumn FieldName="outgoing_doc_date" Caption="Дата вихідного звернення" VisibleIndex="1520" Width="120px" CellStyle-HorizontalAlign="Center">
+            <HeaderStyle Wrap="True" />
+        </dx:GridViewDataDateColumn>
+
+        <dx:GridViewDataMemoColumn FieldName="slukhali_text" Caption="СЛУХАЛИ" VisibleIndex="1530" Width="280px">
+            <HeaderStyle Wrap="True" />
+            <PropertiesMemoEdit Rows="3" />
+        </dx:GridViewDataMemoColumn>
+
+        <dx:GridViewDataMemoColumn FieldName="virishyly_text" Caption="ВИРІШИЛИ" VisibleIndex="1540" Width="280px">
+            <HeaderStyle Wrap="True" />
+            <PropertiesMemoEdit Rows="3" />
+        </dx:GridViewDataMemoColumn>
+
+        <dx:GridViewDataMemoColumn FieldName="golosovanie" Caption="Голосування" VisibleIndex="1550" Width="320px">
+            <HeaderStyle Wrap="True" />
+            <PropertiesMemoEdit Rows="4" />
+        </dx:GridViewDataMemoColumn>
+
+
 
 
     </Columns>
@@ -1214,7 +1578,7 @@ WHERE id = @id"
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFDogContinue" Version="A3_40" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFDogContinue" Version="A3_43" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
