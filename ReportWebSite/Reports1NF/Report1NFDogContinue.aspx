@@ -804,6 +804,63 @@ WHERE id = @id"
                 </ContentCollection>
             </dx:ASPxPopupControl>
 
+            <dx:ASPxPopupControl ID="PopupVotingEditor" runat="server"
+                HeaderText="Голосування"
+                ClientInstanceName="PopupVotingEditor"
+                CloseAction="CloseButton"
+                Modal="True"
+                Width="900px"
+                PopupAction="None"
+                PopupHorizontalAlign="Center"
+                PopupVerticalAlign="Middle"
+                PopupAnimationType="Slide">
+                <ContentCollection>
+                    <dx:PopupControlContentControl ID="PopupControlContentVotingEditor" runat="server">
+                        <dx:ASPxGridView ID="GridViewVotingEditor" runat="server"
+                            AutoGenerateColumns="False" KeyFieldName="id" Width="100%"
+                            OnDataBinding="GridViewVotingEditor_DataBinding"
+                            OnRowUpdating="GridViewVotingEditor_RowUpdating">
+                            <SettingsCommandButton>
+                                <EditButton>
+                                    <Image Url="~/Styles/EditIcon.png" />
+                                </EditButton>
+                                <CancelButton>
+                                    <Image Url="~/Styles/CancelIcon.png" />
+                                </CancelButton>
+                                <UpdateButton>
+                                    <Image Url="~/Styles/SaveIcon.png" />
+                                </UpdateButton>
+                            </SettingsCommandButton>
+                            <Columns>
+                                <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" ShowInCustomizationForm="True" CellStyle-Wrap="False"
+                                    ShowDeleteButton="False" ShowCancelButton="true" ShowUpdateButton="true" ShowEditButton="true" ShowNewButton="false">
+                                    <CellStyle Wrap="False"></CellStyle>
+                                </dx:GridViewCommandColumn>
+                                <dx:GridViewDataTextColumn FieldName="deputy_name" Caption="Депутат" Width="320px" ReadOnly="True" />
+                                <dx:GridViewDataComboBoxColumn FieldName="vote_value" Caption="Голос" Width="220px">
+                                    <PropertiesComboBox DropDownStyle="DropDownList" NullText="">
+                                        <Items>
+                                            <dx:ListEditItem Text="За" Value="За" />
+                                            <dx:ListEditItem Text="Проти" Value="Проти" />
+                                            <dx:ListEditItem Text="Утримався" Value="Утримався" />
+                                            <dx:ListEditItem Text="Не голосував" Value="Не голосував" />
+                                        </Items>
+                                    </PropertiesComboBox>
+                                </dx:GridViewDataComboBoxColumn>
+                            </Columns>
+                            <SettingsBehavior ConfirmDelete="False" />
+                            <SettingsEditing Mode="Inline" />
+                            <SettingsPager Mode="ShowAllRecords" />
+                        </dx:ASPxGridView>
+
+                        <div style="margin-top:10px; text-align:right;">
+                            <dx:ASPxButton ID="ButtonVotingEditorOk" runat="server" Text="OK" OnClick="ButtonVotingEditorOk_Click" Width="90px" />
+                            <dx:ASPxButton ID="ButtonVotingEditorCancel" runat="server" Text="Скасувати" OnClick="ButtonVotingEditorCancel_Click" Width="90px" style="margin-left:8px;" />
+                        </div>
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+            </dx:ASPxPopupControl>
+
             <dx:ASPxButton ID="ASPxButtonCommissions" ClientInstanceName="ASPxButtonCommissions" runat="server" Text="Комісії" AutoPostBack="false" Width="100px">
                 <ClientSideEvents Click="function (s,e) { PopupCommissions.Show(); }" />
             </dx:ASPxButton>
@@ -1515,11 +1572,24 @@ WHERE id = @id"
             <HeaderStyle Wrap="True" />
         </dx:GridViewDataDateColumn>
 
-        <dx:GridViewDataComboBoxColumn FieldName="commission_id" Caption="Номер комісії" VisibleIndex="1480" Width="140px">
+        <dx:GridViewDataTextColumn FieldName="commission_id" Caption="Номер комісії" VisibleIndex="1480" Width="140px" Name="colCommissionId">
             <HeaderStyle Wrap="True" />
-            <PropertiesComboBox DataSourceID="SqlDataSourceCommission" TextField="commission_num" ValueField="id" ValueType="System.Int32" DropDownStyle="DropDownList" NullText="">
-            </PropertiesComboBox>
-        </dx:GridViewDataComboBoxColumn>
+            <DataItemTemplate>
+                <asp:Label ID="LabelCommissionNum" runat="server" Text='<%# Eval("commission_num") %>' />
+            </DataItemTemplate>
+            <EditItemTemplate>
+                <dx:ASPxComboBox ID="EditCommissionId" runat="server" Width="100%"
+                    DataSourceID="SqlDataSourceCommission"
+                    TextField="commission_num"
+                    ValueField="id"
+                    ValueType="System.Int32"
+                    DropDownStyle="DropDownList"
+                    NullText=""
+                    OnInit="EditCommissionId_Init"
+                    Value='<%# Bind("commission_id") %>'>
+                </dx:ASPxComboBox>
+            </EditItemTemplate>
+        </dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn FieldName="commission_result" Caption="Результат" VisibleIndex="1490" Width="120px">
             <HeaderStyle Wrap="True" />
@@ -1548,9 +1618,22 @@ WHERE id = @id"
             <PropertiesMemoEdit Rows="3" />
         </dx:GridViewDataMemoColumn>
 
-        <dx:GridViewDataMemoColumn FieldName="golosovanie" Caption="Голосування" VisibleIndex="1550" Width="320px">
+        <dx:GridViewDataMemoColumn FieldName="golosovanie" Caption="Голосування" VisibleIndex="1550" Width="320px" Name="colGolosovanie">
             <HeaderStyle Wrap="True" />
-            <PropertiesMemoEdit Rows="4" />
+            <EditItemTemplate>
+                <table cellpadding="0" cellspacing="0" style="width:100%;">
+                    <tr>
+                        <td style="padding-right:6px; vertical-align:top;">
+                            <dx:ASPxMemo ID="EditGolosovanieText" runat="server" Width="100%" Height="90px" ReadOnly="true"
+                                Text='<%# Bind("golosovanie") %>' />
+                        </td>
+                        <td style="width:110px; vertical-align:top;">
+                            <dx:ASPxButton ID="ButtonEditGolosovanie" runat="server" Text="Редагувати"
+                                OnClick="ButtonEditGolosovanie_Click" Width="100px" />
+                        </td>
+                    </tr>
+                </table>
+            </EditItemTemplate>
         </dx:GridViewDataMemoColumn>
 
 
@@ -1578,7 +1661,7 @@ WHERE id = @id"
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFDogContinue" Version="A3_43" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFDogContinue" Version="A3_44" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

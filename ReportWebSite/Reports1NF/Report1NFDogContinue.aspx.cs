@@ -269,6 +269,8 @@ connection, transaction);
 
 	private const string DeputiesEditorSessionKey = "DogContinue_DeputiesEditorDataSource";
 
+	private const string VotingEditorSessionKey = "DogContinue_VotingEditorDataSource";
+
 	private const string DistrictRepresentativesEditorSessionKey = "DogContinue_DistrictRepresentativesEditorDataSource";
 
 	private static readonly string[] AllDistricts = new[]
@@ -581,6 +583,272 @@ connection, transaction);
 		PopupDistrictRepresentativesEditor.ShowOnPageLoad = false;
 	}
 
+
+	private DataTable CreateVotingEditorTable()
+	{
+		var table = new DataTable();
+		table.Columns.Add("id", typeof(int));
+		table.Columns.Add("deputy_name", typeof(string));
+		table.Columns.Add("vote_value", typeof(string));
+		return table;
+	}
+
+	private DataTable VotingEditorDataSource
+	{
+		get
+		{
+			var table = Session[VotingEditorSessionKey] as DataTable;
+			if (table == null)
+			{
+				table = CreateVotingEditorTable();
+				Session[VotingEditorSessionKey] = table;
+			}
+
+			return table;
+		}
+		set
+		{
+			Session[VotingEditorSessionKey] = value;
+		}
+	}
+
+	private List<string> GetCommissionDeputyNames(int? commissionId)
+	{
+		var result = new List<string>();
+		if (!commissionId.HasValue || commissionId.Value <= 0)
+		{
+			return result;
+		}
+
+		using (var connection = Utils.ConnectToDatabase())
+		using (var command = new SqlCommand("SELECT [deputies_list] FROM [dogcontinue_commission] WHERE [id] = @id", connection))
+		{
+			command.Parameters.AddWithValue("@id", commissionId.Value);
+			var obj = command.ExecuteScalar();
+			var deputiesList = obj == DBNull.Value || obj == null ? string.Empty : Convert.ToString(obj);
+			if (!string.IsNullOrWhiteSpace(deputiesList))
+			{
+				result = deputiesList
+					.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries)
+					.Select(q => q.Trim())
+					.Where(q => !string.IsNullOrWhiteSpace(q))
+					.ToList();
+			}
+		}
+
+		return result;
+	}
+
+	private DataTable CreateVotingEditorTableFromData(int? commissionId, string golosovanie)
+	{
+		var table = CreateVotingEditorTable();
+		var deputies = GetCommissionDeputyNames(commissionId);
+		var voteMap = ParseGolosovanieText(golosovanie);
+
+		for (var i = 0; i < deputies.Count; i++)
+		{
+			var deputyName = deputies[i];
+			var voteValue = string.Empty;
+			if (voteMap != null)
+			{
+				string parsedVote;
+				if (voteMap.TryGetValue(deputyName, out parsedVote))
+				{
+					voteValue = parsedVote;
+				}
+			}
+
+			table.Rows.Add(i + 1, deputyName, voteValue);
+		}
+
+		return table;
+	}
+
+	private Dictionary<string, string> ParseGolosovanieText(string golosovanie)
+	{
+		if (string.IsNullOrWhiteSpace(golosovanie))
+		{
+			return new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+		}
+
+		var regex = new Regex(
+			"^\\s*\"за\"\\s*\\((?<zaCount>\\d+)\\)(?:\\s*-\\s*(?<zaNames>.*?))?,\\s*\"проти\"\\s*\\((?<protyCount>\\d+)\\)(?:\\s*-\\s*(?<protyNames>.*?))?,\\s*\"утримались\"\\s*\\((?<utrymCount>\\d+)\\)(?:\\s*-\\s*(?<utrymNames>.*?))?,\\s*\"не голосували\"\\s*\\((?<noVoteCount>\\d+)\\)(?:\\s*-\\s*(?<noVoteNames>.*?))?,?\\s*$",
+			RegexOptions.IgnoreCase | RegexOptions.Singleline | RegexOptions.CultureInvariant);
+
+		var match = regex.Match(golosovanie.Trim());
+		if (!match.Success)
+		{
+			return null;
+		}
+
+		var result = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+		if (!TryAddVotesFromGroup(match, "zaCount", "zaNames", "За", result))
+		{
+			return null;
+		}
+
+		if (!TryAddVotesFromGroup(match, "protyCount", "protyNames", "Проти", result))
+		{
+			return null;
+		}
+
+		if (!TryAddVotesFromGroup(match, "utrymCount", "utrymNames", "Утримався", result))
+		{
+			return null;
+		}
+
+		if (!TryAddVotesFromGroup(match, "noVoteCount", "noVoteNames", "Не голосував", result))
+		{
+			return null;
+		}
+
+		return result;
+	}
+
+	private bool TryAddVotesFromGroup(Match match, string countGroupName, string namesGroupName, string voteValue, Dictionary<string, string> result)
+	{
+		var count = Int32.Parse(match.Groups[countGroupName].Value);
+		var namesText = match.Groups[namesGroupName].Success ? match.Groups[namesGroupName].Value.Trim() : string.Empty;
+		var names = new List<string>();
+
+		if (!string.IsNullOrWhiteSpace(namesText))
+		{
+			names = namesText
+				.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+				.Select(q => q.Trim())
+				.Where(q => !string.IsNullOrWhiteSpace(q))
+				.ToList();
+		}
+
+		if (names.Count != count)
+		{
+			return false;
+		}
+
+		foreach (var name in names)
+		{
+			if (result.ContainsKey(name))
+			{
+				return false;
+			}
+
+			result.Add(name, voteValue);
+		}
+
+		return true;
+	}
+
+	private void BindVotingEditorGrid()
+	{
+		GridViewVotingEditor.DataSource = VotingEditorDataSource;
+		GridViewVotingEditor.DataBind();
+	}
+
+	protected void ButtonEditGolosovanie_Click(object sender, EventArgs e)
+	{
+		var memo = FreeSquareGridView.FindEditRowCellTemplateControl(FreeSquareGridView.Columns["colGolosovanie"] as GridViewDataColumn, "EditGolosovanieText") as ASPxMemo;
+		var editCommissionId = FreeSquareGridView.FindEditRowCellTemplateControl(FreeSquareGridView.Columns["colCommissionId"] as GridViewDataColumn, "EditCommissionId") as ASPxComboBox;
+		var golosovanie = memo == null ? string.Empty : memo.Text;
+
+		int? commissionId = null;
+		if (editCommissionId != null && editCommissionId.Value != null)
+		{
+			commissionId = Convert.ToInt32(editCommissionId.Value);
+		}
+
+		VotingEditorDataSource = CreateVotingEditorTableFromData(commissionId, golosovanie);
+		BindVotingEditorGrid();
+		PopupVotingEditor.ShowOnPageLoad = true;
+	}
+
+	protected void GridViewVotingEditor_DataBinding(object sender, EventArgs e)
+	{
+		GridViewVotingEditor.DataSource = VotingEditorDataSource;
+	}
+
+	protected void GridViewVotingEditor_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+	{
+		var table = VotingEditorDataSource;
+		var id = Convert.ToInt32(e.Keys["id"]);
+		var voteValue = Convert.ToString(e.NewValues["vote_value"] ?? string.Empty).Trim();
+		if (voteValue != "За" && voteValue != "Проти" && voteValue != "Утримався" && voteValue != "Не голосував")
+		{
+			voteValue = string.Empty;
+		}
+
+		foreach (DataRow row in table.Rows)
+		{
+			if ((int)row["id"] == id)
+			{
+				row["vote_value"] = voteValue;
+				break;
+			}
+		}
+
+		VotingEditorDataSource = table;
+
+		e.Cancel = true;
+		GridViewVotingEditor.CancelEdit();
+		BindVotingEditorGrid();
+		PopupVotingEditor.ShowOnPageLoad = true;
+	}
+
+	private string BuildGolosovanieText(DataTable table)
+	{
+		var groups = new[]
+		{
+			new { Value = "За", Label = "за" },
+			new { Value = "Проти", Label = "проти" },
+			new { Value = "Утримався", Label = "утримались" },
+			new { Value = "Не голосував", Label = "не голосували" }
+		};
+
+		var hasAnyVote = table.AsEnumerable().Any(q => !string.IsNullOrWhiteSpace(Convert.ToString(q["vote_value"])));
+		if (!hasAnyVote)
+		{
+			return string.Empty;
+		}
+
+		var parts = new List<string>();
+		foreach (var group in groups)
+		{
+			var names = table.AsEnumerable()
+				.Where(q => Convert.ToString(q["vote_value"]) == group.Value)
+				.Select(q => Convert.ToString(q["deputy_name"]).Trim())
+				.Where(q => !string.IsNullOrWhiteSpace(q))
+				.ToList();
+
+			var part = string.Format("\"{0}\" ({1})", group.Label, names.Count);
+			if (names.Count > 0)
+			{
+				part += " - " + string.Join(", ", names);
+			}
+
+			parts.Add(part);
+		}
+
+		return string.Join(", ", parts) + ",";
+	}
+
+	protected void ButtonVotingEditorOk_Click(object sender, EventArgs e)
+	{
+		var result = BuildGolosovanieText(VotingEditorDataSource);
+
+		var memo = FreeSquareGridView.FindEditRowCellTemplateControl(FreeSquareGridView.Columns["colGolosovanie"] as GridViewDataColumn, "EditGolosovanieText") as ASPxMemo;
+		if (memo != null)
+		{
+			memo.Text = result;
+		}
+
+		PopupVotingEditor.ShowOnPageLoad = false;
+	}
+
+	protected void ButtonVotingEditorCancel_Click(object sender, EventArgs e)
+	{
+		PopupVotingEditor.ShowOnPageLoad = false;
+	}
+
+
 	protected void SqlDataSourceCommission_Inserting(object sender, SqlDataSourceCommandEventArgs e)
 	{
 		var user = Membership.GetUser();
@@ -619,6 +887,29 @@ connection, transaction);
 		{
 			e.ErrorText = e.Exception.Message;
 		}
+	}
+
+	protected void EditCommissionId_Init(object sender, EventArgs e)
+	{
+		var combo = sender as ASPxComboBox;
+		if (combo == null)
+		{
+			return;
+		}
+
+		combo.DataBound += (s, ea) =>
+		{
+			var cb = s as ASPxComboBox;
+			if (cb == null)
+			{
+				return;
+			}
+
+			if (cb.Items.FindByValue(DBNull.Value) == null && cb.Items.FindByValue(null) == null)
+			{
+				cb.Items.Insert(0, new ListEditItem(string.Empty, null));
+			}
+		};
 	}
 
 	protected void ObjectDataSourcePhotoFiles_Inserting(object sender, ObjectDataSourceMethodEventArgs e)
