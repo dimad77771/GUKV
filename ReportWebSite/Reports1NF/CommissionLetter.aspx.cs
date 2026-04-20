@@ -1,38 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.Security;
 using System.Data;
-using System.Data.SqlClient;
-using DocumentFormat.OpenXml;
-using DocumentFormat.OpenXml.Packaging;
-using DocumentFormat.OpenXml.Wordprocessing;
-using System.Security.Cryptography;
-using System.Text;
-using DevExpress.Web;
-using System.IO;
-using Syncfusion.Pdf;
-using System.Web.Configuration;
-using Syncfusion.Pdf.Graphics;
-using System.Drawing;
-using Syncfusion.Pdf.Parsing;
-using Syncfusion.DocToPDFConverter;
-using Syncfusion.DocIO.DLS;
-using Syncfusion.Compression.Zip;
-using System.Drawing.Imaging;
-using WP = DocumentFormat.OpenXml.Wordprocessing;
 using System.Data.Common;
-using System.Diagnostics;
-
-
+using System.Data.SqlClient;
+using System.IO;
+using System.Linq;
+using System.Web.UI;
+using Syncfusion.DocIO;
+using Syncfusion.DocIO.DLS;
 
 public partial class Reports1NF_Cabinet : System.Web.UI.Page
 {
-    protected void Page_Load(object sender, EventArgs e)
-    {
+	protected void Page_Load(object sender, EventArgs e)
+	{
 		var id = Int32.Parse(Request.QueryString["id"]);
 
 		var builder = new CommissionLetter
@@ -48,33 +28,35 @@ public class CommissionLetter
 {
 	public Page Page;
 	public int ID;
-	public bool IsOgoloshena;
-
 
 	public void Run()
 	{
-		string templateFileName = Page.Server.MapPath("Templates/" + "Шаблон_ОГОЛОШЕННЯ_продовження.docx");
+		string templateFileName = Page.Server.MapPath("Templates/" + "Шаблон_власком_ПК_КМКЛ_продовження.docx");
 
 		if (templateFileName.Length > 0)
 		{
 			using (TempFile tempFile = TempFile.FromExistingFile(templateFileName))
 			{
+				var properties = new Dictionary<string, string>();
+				using (var connection = Utils.ConnectToDatabase())
+				{
+					GetData(connection, properties);
+				}
 
+				var docx = new WordDocument(tempFile.FileName, FormatType.Docx);
+				ReplacePlaceholders(docx, properties);
+				docx.Save(tempFile.FileName, FormatType.Docx);
+				docx.Close();
 
-
-				// Dump the document contents to the output stream
-				System.IO.FileInfo info = new System.IO.FileInfo(tempFile.FileName);
-
-				var outfile = "Оголошення про продовження договорів оренди на аукціоні " + ID + ".docx";
+				var info = new FileInfo(tempFile.FileName);
+				var outfile = "Лист на комісію " + ID + ".docx";
 				Page.Response.Clear();
 				Page.Response.ClearHeaders();
 				Page.Response.ClearContent();
 				Page.Response.ContentType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
 				Page.Response.AddHeader("content-disposition", "attachment; filename=" + outfile + "; size=" + info.Length.ToString());
 
-				// Pipe the stream contents to the output stream
-				using (System.IO.FileStream stream = System.IO.File.Open(tempFile.FileName,
-					System.IO.FileMode.Open, System.IO.FileAccess.ReadWrite))
+				using (var stream = File.Open(tempFile.FileName, FileMode.Open, FileAccess.ReadWrite))
 				{
 					stream.CopyTo(Page.Response.OutputStream);
 				}
@@ -83,12 +65,16 @@ public class CommissionLetter
 		}
 	}
 
-	void GetData(SqlConnection connection, Dictionary<string, object> properties)
+	void ReplacePlaceholders(WordDocument docx, Dictionary<string, string> properties)
 	{
-		DateTime dtNow = DateTime.Now;
-		string currentDate = "\xAB" + " " + dtNow.Day.ToString() + " " + "\xBB" + " " + GetDateMonthName(dtNow) + " " + dtNow.Year.ToString();
-		properties.Add("{REPORT_PRINT_DATE}", currentDate);
+		foreach (var pair in properties)
+		{
+			docx.Replace(pair.Key, pair.Value ?? string.Empty, true, true);
+		}
+	}
 
+	void GetData(SqlConnection connection, Dictionary<string, string> properties)
+	{
 		var factory = DbProviderFactories.GetFactory(connection);
 		var dataTable = new DataTable();
 		using (var cmd = factory.CreateCommand())
@@ -102,180 +88,109 @@ public class CommissionLetter
 				adapter.Fill(dataTable);
 			}
 		}
-		var r = dataTable.Rows[0];
 
-		var allcolums = dataTable.Columns;
-		foreach(DataColumn dcolumn in allcolums)
+		if (dataTable.Rows.Count == 0)
 		{
-			var name = dcolumn.ColumnName;
-			var val = r[dcolumn.ColumnName];
-			var text = GetCellText(val, dcolumn);
-			properties.Add("{" + name + "}", text);
-
-			Debug.WriteLine("name=" + name);
+			return;
 		}
+
+		var row = dataTable.Rows[0];
+
+		properties["{{TN-унікальний номер}}"] = GetCellText(row, "Реєстраційний номер");
+		properties["{{Балансоутримувач}}"] = JoinParts(
+			GetCellText(row, "Найменування балансоутримувача"),
+			GetCellText(row, "Код ЕДРПОУ орендаря")
+		);
+		properties["{{Об'єкт оренди}}"] = JoinParts(
+			GetCellText(row, "Назва Вулиці"),
+			GetCellText(row, "Номер Будинку")
+		);
+		properties["{{Тип будинку}}"] = GetCellText(row, "Тип будинку");
+		properties["{{Характеристика об'єкта оренди}}"] = GetCellText(row, "Характеристика об’єкта оренди");
+		properties["{{Вартість об'єкту, грн.}}"] = GetCellText(row, "Залишкова балансова вартість, грн.");
+		properties["{{Дата оцінки}}"] = GetCellText(row, "Дата формування залишкової вартості");
+
+		properties["{{Назва орендаря}}"] = GetCellText(row, "Найменування орендаря");
+		properties["{{Код ЄДРПОУ}}"] = GetCellText(row, "Код ЕДРПОУ орендаря");
+
+		properties["{{Цільове призначення}}"] = GetCellText(row, "Цільове використання");
+		properties["{{Орендована площа, кв.м.}}"] = GetCellText(row, "Загальна площа об’єкта");
+		properties["{{Орендна ставка, %}}"] = GetCellText(row, "Орендна ставка, %");
+		properties["{{Тип оренди}}"] = GetCellText(row, "Тип оренди");
+		properties["{{Місячна орендна плата, грн.}}"] = GetCellText(row, "Місячна орендна плата за останній місяць(проіндексована)");
+
+		properties["{{Строк / термін оренди}}"] = GetCellText(row, "Строк / термін оренди");
+		properties["{{Примітка}}"] = GetCellText(row, "Примітка");
+		properties["{{Додаткова інформація}}"] = GetCellText(row, "Додаткова інформація");
 	}
 
-	string GetCellText(object val, DataColumn datacolumn)
+	string JoinParts(params string[] parts)
 	{
-		if (val == null || val is DBNull)
-			return "";
-
-		var datatype = datacolumn.DataType;
-		if (datatype == typeof(string))
-		{
-			return val.ToString();
-		}
-		else if (datatype == typeof(DateTime))
-		{
-			var datetime = (DateTime)val;
-			return datetime.ToString("dd.MM.yyyy");
-		}
-		else if (datatype == typeof(Decimal))
-		{
-			var dec = (Decimal)val;
-			return dec.ToString("0.00");
-		}
-		else if (datatype == typeof(int))
-		{
-			var intval = (int)val;
-			return intval.ToString();
-		}
-		else
-		{
-			throw new Exception();
-		}
+		return string.Join(" ", parts.Where(q => !string.IsNullOrWhiteSpace(q)).Select(q => q.Trim()));
 	}
 
-
-	string GetDecimal(object arg, string format = "0.00")
+	string GetCellText(DataRow row, string columnName)
 	{
-		return arg is DBNull ? "" : ((decimal)arg).ToString(format);
+		if (!row.Table.Columns.Contains(columnName))
+			return string.Empty;
+
+		var value = row[columnName];
+		if (value == null || value is DBNull)
+			return string.Empty;
+
+		var dataColumn = row.Table.Columns[columnName];
+		var dataType = dataColumn.DataType;
+
+		if (dataType == typeof(string))
+			return value.ToString();
+		if (dataType == typeof(DateTime))
+			return ((DateTime)value).ToString("dd.MM.yyyy");
+		if (dataType == typeof(decimal))
+			return ((decimal)value).ToString("0.00");
+		if (dataType == typeof(double))
+			return ((double)value).ToString("0.00");
+		if (dataType == typeof(float))
+			return ((float)value).ToString("0.00");
+		if (dataType == typeof(int))
+			return ((int)value).ToString();
+		if (dataType == typeof(long))
+			return ((long)value).ToString();
+
+		return value.ToString();
 	}
 
-	string GetDate(object arg)
-	{
-		return arg is DBNull ? "" : ((DateTime)arg).ToString("dd.MM.yyyy");
-	}
-
-
-	
-
-	
-
-	string GetDateMonthName(object date)
-	{
-		if (date is DateTime)
-		{
-			switch (((DateTime)date).Month)
-			{
-				case 1:
-					return Resources.Strings.Month1;
-
-				case 2:
-					return Resources.Strings.Month2;
-
-				case 3:
-					return Resources.Strings.Month3;
-
-				case 4:
-					return Resources.Strings.Month4;
-
-				case 5:
-					return Resources.Strings.Month5;
-
-				case 6:
-					return Resources.Strings.Month6;
-
-				case 7:
-					return Resources.Strings.Month7;
-
-				case 8:
-					return Resources.Strings.Month8;
-
-				case 9:
-					return Resources.Strings.Month9;
-
-				case 10:
-					return Resources.Strings.Month10;
-
-				case 11:
-					return Resources.Strings.Month11;
-
-				case 12:
-					return Resources.Strings.Month12;
-			}
-		}
-
-		return "";
-	}
-
-	string GetMainSql() 
+	string GetMainSql()
 	{
 		return @"
 SELECT
-	fs.total_free_sqr as ""Загальна площа об’єкта"",
-	b.street_full_name as ""Назва Вулиці"",
-	b.addr_nomer as ""Номер Будинку"",
-	agreement_date as ""Дата укладання договору"",
-	agreement_num as ""Номер договору"",
-	rent_finish_date as ""Дата закінчення договору"",
-	org_renter.full_name as ""Найменування орендаря"",
-	org_renter.zkpo_code as ""Код ЕДРПОУ орендаря"",
-	org.short_name as ""Найменування балансоутримувача"",
-	org.zkpo_code as ""Код ЕДРПОУ балансоутримувача"",
-	(select Q.name from dict_streets Q where Q.id = org.addr_street_id) as ""Адреса балансоутримувача(вулиця)"",
-	org.addr_nomer as ""Адреса балансоутримувача(номер дому)"",
-	total_free_sqr as ""Загальна площа об’єкта"",
-	zalbalansvartist_date as ""Дата формування залишкової вартості"",
-	zal_balans_vartist as ""Залишкова балансова вартість, грн."",
-	perv_balans_vartist as ""Первісна балансова вартість, грн."",
-	floor as ""Характеристика об’єкта оренди"",
-	cast(round(DATEDIFF(month, bal.agreement_date, bal.rent_finish_date) / 12.0, 0) as int) as ""Строк оренди(роки)"",
-	fs.free_sqr_korysna as ""Корисна площа об’єкта"",
-	power_text as ""Потужність електромережі"",
-	zg.name as ""Погодження органу охорони культурної спадщини"",
-	fs.orend_plat_last_month as ""Місячна орендна плата за останній місяць(проіндексована)"",
-	(select Q.name from dict_may_pravo_prodov Q where Q.id = fs.may_pravo_prodov) as ""Цільове використання"",
-	rozmir_vidshkoduv as ""Розмір відшкодування земельного податку та інших"",
-	case when prozoro_number <> '' then 'https://prozorro.sale/auction/' + rtrim(ltrim(prozoro_number)) else '' end as ""Унікальний код обєкту у ЕТС Прозорро-продажі"",
-	(SELECT TOP 1 Q.prozoro_title FROM reports1nf_org_info Q WHERE Q.report_id = rep.report_id) as ""Контактні дані працівника балансоутримувача"",
-	case when isnull(b.history, 'НІ') = 'НІ' then '' else 'ТАК' end as ""Пам’ятка культурної спадщини"",
+    cast(fs.id as varchar(50)) as ""Реєстраційний номер"",
+    org.short_name as ""Найменування балансоутримувача"",
+    org_renter.zkpo_code as ""Код ЕДРПОУ орендаря"",
+    b.street_full_name as ""Назва Вулиці"",
+    b.addr_nomer as ""Номер Будинку"",
+    fs.building_type as ""Тип будинку"",
+    fs.floor as ""Характеристика об’єкта оренди"",
+    fs.zal_balans_vartist as ""Залишкова балансова вартість, грн."",
+    fs.zalbalansvartist_date as ""Дата формування залишкової вартості"",
 
-	(SELECT TOP 1 Q.full_name FROM reports1nf_org_info Q WHERE Q.report_id = rep.report_id) as ""Балансоутримувач.Повна Назва"",
-	(SELECT TOP 1 Q.short_name FROM reports1nf_org_info Q WHERE Q.report_id = rep.report_id) as ""Балансоутримувач.Скорочена Назва"",
-	(SELECT TOP 1 Q.zkpo_code FROM reports1nf_org_info Q WHERE Q.report_id = rep.report_id) as ""Балансоутримувач.Код ЄДРПОУ"",
-	(SELECT TOP 1 Q.addr_zip_code FROM reports1nf_org_info Q WHERE Q.report_id = rep.report_id) as ""Балансоутримувач.Поштовий Індекс"",
-	(SELECT TOP 1 Q2.name FROM reports1nf_org_info Q join dict_streets Q2 on Q2.id = Q.phys_addr_street_id WHERE Q.report_id = rep.report_id) as ""Балансоутримувач.Назва Вулиці"",
-	(SELECT TOP 1 Q.phys_addr_nomer FROM reports1nf_org_info Q WHERE Q.report_id = rep.report_id) as ""Балансоутримувач.Номер Будинку"",
-	(SELECT TOP 1 Q.buhgalter_phone FROM reports1nf_org_info Q WHERE Q.report_id = rep.report_id) as ""Балансоутримувач.Тел. Бухгалтера"",
-	(SELECT TOP 1 Q.buhgalter_email FROM reports1nf_org_info Q WHERE Q.report_id = rep.report_id) as ""Балансоутримувач.Ел. Адреса Бухгалтера"",
-	(SELECT TOP 1 Q.director_email FROM reports1nf_org_info Q WHERE Q.report_id = rep.report_id) as ""Балансоутримувач.Ел. Адреса Керівника""
+    org_renter.full_name as ""Найменування орендаря"",
+    org_renter.zkpo_code as ""Код ЕДРПОУ орендаря"",
 
+    (select Q.name from dict_may_pravo_prodov Q where Q.id = fs.may_pravo_prodov) as ""Цільове використання"",
+    fs.total_free_sqr as ""Загальна площа об’єкта"",
+    fs.rental_rate_percent as ""Орендна ставка, %"",
+    fs.rental_type as ""Тип оренди"",
+    fs.orend_plat_last_month as ""Місячна орендна плата за останній місяць(проіндексована)"",
+
+    fs.rental_term as ""Строк / термін оренди"",
+    fs.commission_note as ""Примітка"",
+    fs.additional_info as ""Додаткова інформація""
 FROM view_reports1nf rep
 join reports1nf_arenda bal on bal.report_id = rep.report_id
 JOIN view_reports1nf_buildings b ON b.unique_id = bal.building_1nf_unique_id
 join dbo.reports1nf_arenda_dogcontinue fs on fs.arenda_id = bal.id and fs.report_id = rep.report_id
 join reports1nf_org_info org on org.id = bal.org_balans_id
-left join[dbo].[dict_streets] st on b.addr_street_id = st.id
-left join dbo.dict_zgoda_renter zg on fs.zgoda_renter_id = zg.id
-left join dbo.dict_zgoda_renter zg2 on fs.zgoda_control_id = zg2.id
 left join organizations org_renter on org_renter.id = bal.org_renter_id
-left outer join organizations org_giver ON org_giver.id = bal.org_giver_id and(org_giver.is_deleted is null or org_giver.is_deleted = 0)
-LEFT JOIN
-(
-	select obp.org_id
-	, occ.name
-	, occ.id
-	, per.name as period
-	from org_by_period obp
-	join dict_rent_period per on per.id = obp.period_id and per.is_active = 1
-	join dict_rent_occupation occ on occ.id = obp.org_occupation_id
-) DDD ON DDD.org_id = rep.organization_id
-
-WHERE fs.id = 1001775
-".Replace("1001775", "" + ID);
-
+WHERE fs.id = " + ID;
 	}
-
 }

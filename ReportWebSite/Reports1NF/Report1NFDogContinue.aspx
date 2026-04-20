@@ -56,6 +56,8 @@
             FreeSquareGridView.GetRowValues(e.visibleIndex, 'id', OnGridDocx1BuildGetRowValues);
         } else if (e.buttonID == 'btnDocx2Build') {
             FreeSquareGridView.GetRowValues(e.visibleIndex, 'id', OnGridDocx2BuildGetRowValues);
+        } else if (e.buttonID == 'btnCommissionLetterBuild') {
+            FreeSquareGridView.GetRowValues(e.visibleIndex, 'id', OnCommissionLetterBuild);
         } else if (e.buttonID == 'bnt_current_stage_pdf') {
             $.cookie('RecordID', s.GetRowKey(e.visibleIndex));
             ASPxFileManagerPhotoFiles.Refresh();
@@ -66,7 +68,8 @@
             FreeSquareGridView.GetRowValues(e.visibleIndex, 'id', OnFreeCycleGetRowValues);
         } else if (e.buttonID == 'btnOrgBalansObject') {
             FreeSquareGridView.GetRowValues(e.visibleIndex, 'id;arenda_id;report_id', OnClickOrgBalansObject);
-        } else if (e.buttonID == 'btnCopyFullDescription') {
+        }
+        else if (e.buttonID == 'btnCopyFullDescription') {
             var cols = "orendar_name;orendar_zkpo;org_name;zkpo_code;balanutr_addr_street;balanutr_addr_nomer;giver_name;giver_zkpo;giver_addr_street;giver_addr_nomer;agreement_date;rent_finish_date;srok_dog;";
             cols += "include_in_perelik;zal_balans_vartist;perv_balans_vartist;free_object_type_name;prop_srok_orands;punkt_metod_rozrahunok;invest_solution;";
             cols += "zgoda_control;district;street_name;addr_nomer;total_free_sqr;free_sql_usefull;";
@@ -211,6 +214,14 @@
         );
     }
 
+    function OnCommissionLetterBuild(values) {
+        console.log(values);
+        var id = values;
+        window.open(
+            'CommissionLetter.aspx?id=' + id,
+            '_blank',
+        );
+    }
 
     function OnDropDown(comboBox) {
         //SetDropDownWidth(comboBox, "368px");
@@ -1008,6 +1019,10 @@ WHERE id = @id"
                 <dx:GridViewCommandColumnCustomButton ID="btnDocx2Build" Text="Проект договору оренди"> 
 					<Image Url="~/Styles/report_101.png"/>
                 </dx:GridViewCommandColumnCustomButton>
+                <dx:GridViewCommandColumnCustomButton ID="btnCommissionLetterBuild" Text="Лист на комісію"> 
+					<Image Url="~/Styles/letter18.png"/>
+                </dx:GridViewCommandColumnCustomButton>
+
 
             </CustomButtons>
             <CellStyle Wrap="False"></CellStyle>
