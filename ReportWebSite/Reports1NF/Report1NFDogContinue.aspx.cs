@@ -176,6 +176,36 @@ public partial class Reports1NF_Report1NFDogContinue : System.Web.UI.Page
 		var current_step = Utils.GetStepContinue(free_square_id);
 		var change_step = (freecycle_step_dict_id != current_step);
 
+		var newCommissionId = GetNullableInt(e.Command.Parameters["@commission_id"].Value);
+		var buildingType = Convert.ToString(e.Command.Parameters["@building_type"].Value ?? string.Empty).Trim();
+		var rentalType = Convert.ToString(e.Command.Parameters["@rental_type"].Value ?? string.Empty).Trim();
+		var rentalRatePercentValue = e.Command.Parameters["@rental_rate_percent"].Value;
+		var oldCommissionId = GetCurrentCommissionId(free_square_id);
+
+		if (!oldCommissionId.HasValue && newCommissionId.HasValue && string.IsNullOrWhiteSpace(buildingType))
+		{
+			var calculatedBuildingType = GetCalculatedBuildingType(free_square_id);
+			e.Command.Parameters["@building_type"].Value = string.IsNullOrWhiteSpace(calculatedBuildingType)
+				? (object)DBNull.Value
+				: calculatedBuildingType;
+		}
+
+		if (!oldCommissionId.HasValue && newCommissionId.HasValue && string.IsNullOrWhiteSpace(rentalType))
+		{
+			var calculatedRentalType = GetCalculatedRentalType(free_square_id);
+			e.Command.Parameters["@rental_type"].Value = string.IsNullOrWhiteSpace(calculatedRentalType)
+				? (object)DBNull.Value
+				: calculatedRentalType;
+		}
+
+		if (!oldCommissionId.HasValue && newCommissionId.HasValue && IsEmptyParameterValue(rentalRatePercentValue))
+		{
+			var calculatedRentalRatePercent = GetCalculatedRentalRatePercent(free_square_id);
+			e.Command.Parameters["@rental_rate_percent"].Value = calculatedRentalRatePercent.HasValue
+				? (object)calculatedRentalRatePercent.Value
+				: DBNull.Value;
+		}
+
 		if (change_step && new int?[] { 150, 300 }.Contains(freecycle_step_dict_id))
 		{
 			using (var connection = Utils.ConnectToDatabase())
@@ -185,6 +215,164 @@ public partial class Reports1NF_Report1NFDogContinue : System.Web.UI.Page
 				transaction.Commit();
 			}
 		}
+	}
+
+	private int? GetNullableInt(object value)
+	{
+		if (value == null || value == DBNull.Value)
+		{
+			return null;
+		}
+
+		var text = Convert.ToString(value).Trim();
+		if (string.IsNullOrWhiteSpace(text))
+		{
+			return null;
+		}
+
+		int result;
+		return Int32.TryParse(text, out result) ? (int?)result : null;
+	}
+
+	private int? GetCurrentCommissionId(int freeSquareId)
+	{
+		int? result = null;
+
+		using (var connection = Utils.ConnectToDatabase())
+		using (var command = new SqlCommand("SELECT [commission_id] FROM [reports1nf_arenda_dogcontinue] WHERE [id] = @id", connection))
+		{
+			command.Parameters.Add(new SqlParameter("@id", freeSquareId));
+
+			using (var reader = command.ExecuteReader())
+			{
+				if (reader.Read())
+				{
+					result = reader.IsDBNull(0) ? (int?)null : reader.GetInt32(0);
+				}
+
+				reader.Close();
+			}
+		}
+
+		return result;
+	}
+
+
+	private bool IsEmptyParameterValue(object value)
+	{
+		if (value == null || value == DBNull.Value)
+		{
+			return true;
+		}
+
+		var text = Convert.ToString(value);
+		return String.IsNullOrWhiteSpace(text);
+	}
+
+	private string GetCalculatedBuildingType(int freeSquareId)
+	{
+		var result = new List<string>();
+
+		using (var connection = Utils.ConnectToDatabase())
+		using (var command = new SqlCommand(@"
+SELECT distinct
+	h.name
+FROM view_reports1nf rep
+join reports1nf_arenda bal on bal.report_id = rep.report_id
+JOIN view_reports1nf_buildings b ON b.unique_id = bal.building_1nf_unique_id
+join dbo.reports1nf_arenda_dogcontinue fs on fs.arenda_id = bal.id and fs.report_id = rep.report_id
+join reports1nf_arenda_notes u on (u.is_deleted IS NULL OR u.is_deleted = 0) AND u.report_id = bal.report_id AND u.arenda_id = bal.id
+join reports1nf_balans w on w.report_id = u.report_id and w.id = u.ref_balans_id
+join dict_1nf_object_type h on h.id = w.object_type_id
+WHERE fs.id = @id
+and h.name <> ''
+order by 1", connection))
+		{
+			command.Parameters.Add(new SqlParameter("@id", freeSquareId));
+
+			using (var reader = command.ExecuteReader())
+			{
+				while (reader.Read())
+				{
+					var name = reader.IsDBNull(0) ? string.Empty : reader.GetString(0).Trim();
+					if (!string.IsNullOrWhiteSpace(name))
+					{
+						result.Add(name);
+					}
+				}
+
+				reader.Close();
+			}
+		}
+
+		return string.Join("; ", result.Distinct());
+	}
+
+	private string GetCalculatedRentalType(int freeSquareId)
+	{
+		var result = new List<string>();
+
+		using (var connection = Utils.ConnectToDatabase())
+		using (var command = new SqlCommand(@"
+SELECT distinct
+	h.name
+FROM view_reports1nf rep
+join reports1nf_arenda bal on bal.report_id = rep.report_id
+JOIN view_reports1nf_buildings b ON b.unique_id = bal.building_1nf_unique_id
+join dbo.reports1nf_arenda_dogcontinue fs on fs.arenda_id = bal.id and fs.report_id = rep.report_id
+join dict_arenda_payment_type h on h.id = bal.payment_type_id
+WHERE fs.id = @id
+and h.name <> ''
+order by 1", connection))
+		{
+			command.Parameters.Add(new SqlParameter("@id", freeSquareId));
+
+			using (var reader = command.ExecuteReader())
+			{
+				while (reader.Read())
+				{
+					var name = reader.IsDBNull(0) ? string.Empty : reader.GetString(0).Trim();
+					if (!string.IsNullOrWhiteSpace(name))
+					{
+						result.Add(name);
+					}
+				}
+
+				reader.Close();
+			}
+		}
+
+		return string.Join("; ", result.Distinct());
+	}
+
+	private decimal? GetCalculatedRentalRatePercent(int freeSquareId)
+	{
+		decimal? result = null;
+
+		using (var connection = Utils.ConnectToDatabase())
+		using (var command = new SqlCommand(@"
+SELECT
+	max(u.cost_narah)
+FROM view_reports1nf rep
+join reports1nf_arenda bal on bal.report_id = rep.report_id
+JOIN view_reports1nf_buildings b ON b.unique_id = bal.building_1nf_unique_id
+join dbo.reports1nf_arenda_dogcontinue fs on fs.arenda_id = bal.id and fs.report_id = rep.report_id
+join reports1nf_arenda_notes u on (u.is_deleted IS NULL OR u.is_deleted = 0) AND u.report_id = bal.report_id AND u.arenda_id = bal.id
+WHERE fs.id = @id", connection))
+		{
+			command.Parameters.Add(new SqlParameter("@id", freeSquareId));
+			using (var reader = command.ExecuteReader())
+			{
+				if (reader.Read())
+				{
+					result = reader.IsDBNull(0) ? (decimal?)null : reader.GetDecimal(0);
+				}
+
+				reader.Close();
+			}
+		}
+
+		return result;
 	}
 
 	public static void AfterDogovorReestration(int free_square_id, SqlConnection connection, SqlTransaction transaction, string stage_docnum, DateTime? stage_docdate)
