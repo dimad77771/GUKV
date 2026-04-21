@@ -99,7 +99,7 @@ public class CommissionLetter
 		properties["{{TN-унікальний номер}}"] = GetCellText(row, "Реєстраційний номер");
 		properties["{{Балансоутримувач}}"] = JoinParts(
 			GetCellText(row, "Найменування балансоутримувача"),
-			GetCellText(row, "Код ЕДРПОУ орендаря")
+			GetCellText(row, "Код ЕДРПОУ балансоутримувача")
 		);
 		properties["{{Об'єкт оренди}}"] = JoinParts(
 			GetCellText(row, "Назва Вулиці"),
@@ -165,6 +165,7 @@ public class CommissionLetter
 SELECT
     cast(fs.id as varchar(50)) as ""Реєстраційний номер"",
     org.short_name as ""Найменування балансоутримувача"",
+	org.zkpo_code as ""Код ЕДРПОУ балансоутримувача"",
     org_renter.zkpo_code as ""Код ЕДРПОУ орендаря"",
     b.street_full_name as ""Назва Вулиці"",
     b.addr_nomer as ""Номер Будинку"",
