@@ -882,6 +882,11 @@ WHERE id = @id"
             </dx:ASPxButton>
         </td>
         <td>
+            <dx:ASPxButton ID="ASPxButtonCommissionProrydokText" runat="server" Text="Порядок денний (текст)"
+                Width="180px" OnClick="ASPxButtonCommissionProrydokText_Click">
+            </dx:ASPxButton>
+        </td>
+        <td>
 			<dx:ASPxPopupControl ID="ASPxPopupControlFreeSquare" runat="server" AllowDragging="True" 
 				ClientInstanceName="PopupObjectPhotos" EnableClientSideAPI="True" 
 				HeaderText="Документ" Modal="True" 

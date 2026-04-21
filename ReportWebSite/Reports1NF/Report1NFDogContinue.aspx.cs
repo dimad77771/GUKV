@@ -13,6 +13,8 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DevExpress.Web;
+using Syncfusion.DocIO;
+using Syncfusion.DocIO.DLS;
 using Syncfusion.XlsIO;
 
 public partial class Reports1NF_Report1NFDogContinue : System.Web.UI.Page
@@ -160,6 +162,17 @@ public partial class Reports1NF_Report1NFDogContinue : System.Web.UI.Page
 	{
 		var ids = GetFilteredFreeSquareIds();
 		var builder = new CommissionProrydokBuilder
+		{
+			Page = Page,
+			IDs = ids,
+		};
+		builder.Run();
+	}
+
+	protected void ASPxButtonCommissionProrydokText_Click(object sender, EventArgs e)
+	{
+		var ids = GetFilteredFreeSquareIds();
+		var builder = new CommissionProrydokTextBuilder
 		{
 			Page = Page,
 			IDs = ids,
@@ -1437,6 +1450,203 @@ JOIN view_reports1nf_buildings b ON b.unique_id = bal.building_1nf_unique_id
 join dbo.reports1nf_arenda_dogcontinue fs on fs.arenda_id = bal.id and fs.report_id = rep.report_id
 join reports1nf_org_info org on org.id = bal.org_balans_id
 left join organizations org_renter on org_renter.id = bal.org_renter_id
+WHERE fs.id in (" + string.Join(",", ids) + @")
+ORDER BY 1";
+	}
+}
+
+
+public class CommissionProrydokTextBuilder
+{
+	public Page Page;
+	public List<int> IDs;
+
+	public void Run()
+	{
+		var ids = (IDs ?? new List<int>()).Where(q => q > 0).Distinct().ToList();
+		if (ids.Count == 0)
+		{
+			return;
+		}
+
+		DataTable data;
+		using (var connection = Utils.ConnectToDatabase())
+		{
+			data = GetData(connection, ids);
+		}
+
+		using (var document = new WordDocument())
+		{
+			var section = document.AddSection();
+			ConfigureSection(section);
+			BuildDocument(section, data);
+
+			using (var stream = new MemoryStream())
+			{
+				document.Save(stream, FormatType.Docx);
+				document.Close();
+				stream.Position = 0;
+
+				var outfile = "Порядок денний (текст) " + DateTime.Now.ToString("dd.MM.yyyy") + ".docx";
+				Page.Response.Clear();
+				Page.Response.ClearHeaders();
+				Page.Response.ClearContent();
+				Page.Response.ContentType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+				Page.Response.AddHeader("content-disposition", "attachment; filename=" + outfile + "; size=" + stream.Length.ToString(CultureInfo.InvariantCulture));
+				stream.CopyTo(Page.Response.OutputStream);
+				Page.Response.End();
+			}
+		}
+	}
+
+	private void ConfigureSection(IWSection section)
+	{
+		section.PageSetup.Margins.Top = 36f;
+		section.PageSetup.Margins.Bottom = 36f;
+		section.PageSetup.Margins.Left = 56f;
+		section.PageSetup.Margins.Right = 56f;
+	}
+
+	private DataTable GetData(SqlConnection connection, List<int> ids)
+	{
+		var factory = DbProviderFactories.GetFactory(connection);
+		var dataTable = new DataTable();
+		using (var cmd = factory.CreateCommand())
+		{
+			cmd.CommandText = GetMainSql(ids);
+			cmd.CommandType = CommandType.Text;
+			cmd.Connection = connection;
+			using (var adapter = factory.CreateDataAdapter())
+			{
+				adapter.SelectCommand = cmd;
+				adapter.Fill(dataTable);
+			}
+		}
+
+		return dataTable;
+	}
+
+	private void BuildDocument(IWSection section, DataTable data)
+	{
+		AddCenteredParagraph(section, "Порядок денний", 18f, true, false, 0f, 0f);
+		AddCenteredParagraph(section, "II частина", 18f, true, false, 0f, 0f);
+		AddCenteredParagraph(section, "питання оренди", 16f, true, true, 0f, 18f);
+
+		foreach (DataRow row in data.Rows)
+		{
+			var number = GetCellText(row, "№");
+			var convertedOrgGiver = GetCellText(row, "converted_org_giver");
+			var renterName = GetCellText(row, "Найменування орендаря");
+			var streetName = GetCellText(row, "Назва Вулиці");
+			var houseNumber = GetCellText(row, "Номер Будинку");
+			var speakerName = GetCellText(row, "Доповідач");
+
+			var objectText = JoinParts(", ", renterName, streetName, houseNumber);
+			var mainText = number + ". Про розгляд звернення " + convertedOrgGiver + " щодо питання \"Продовження\" - " + objectText;
+
+			AddItemParagraph(section, mainText);
+			AddSpeakerParagraph(section, speakerName);
+			AddSpacerParagraph(section, 8f);
+		}
+	}
+
+	private void AddCenteredParagraph(IWSection section, string text, float fontSize, bool bold, bool italic, float beforeSpacing, float afterSpacing)
+	{
+		var paragraph = section.AddParagraph();
+		paragraph.ParagraphFormat.HorizontalAlignment = Syncfusion.DocIO.DLS.HorizontalAlignment.Center;
+		paragraph.ParagraphFormat.BeforeSpacing = beforeSpacing;
+		paragraph.ParagraphFormat.AfterSpacing = afterSpacing;
+		var range = paragraph.AppendText(text);
+		range.CharacterFormat.FontName = "Times New Roman";
+		range.CharacterFormat.FontSize = fontSize;
+		range.CharacterFormat.Bold = bold;
+		range.CharacterFormat.Italic = italic;
+	}
+
+	private void AddItemParagraph(IWSection section, string text)
+	{
+		var paragraph = section.AddParagraph();
+		paragraph.ParagraphFormat.HorizontalAlignment = Syncfusion.DocIO.DLS.HorizontalAlignment.Left;
+		paragraph.ParagraphFormat.BeforeSpacing = 0f;
+		paragraph.ParagraphFormat.AfterSpacing = 6f;
+		var range = paragraph.AppendText(text);
+		range.CharacterFormat.FontName = "Times New Roman";
+		range.CharacterFormat.FontSize = 16f;
+		range.CharacterFormat.Bold = true;
+	}
+
+	private void AddSpeakerParagraph(IWSection section, string speakerName)
+	{
+		var paragraph = section.AddParagraph();
+		paragraph.ParagraphFormat.HorizontalAlignment = Syncfusion.DocIO.DLS.HorizontalAlignment.Left;
+		paragraph.ParagraphFormat.BeforeSpacing = 0f;
+		paragraph.ParagraphFormat.AfterSpacing = 0f;
+		var range = paragraph.AppendText("Доповідач: " + speakerName);
+		range.CharacterFormat.FontName = "Times New Roman";
+		range.CharacterFormat.FontSize = 16f;
+		range.CharacterFormat.Italic = true;
+	}
+
+	private void AddSpacerParagraph(IWSection section, float afterSpacing)
+	{
+		var paragraph = section.AddParagraph();
+		paragraph.ParagraphFormat.AfterSpacing = afterSpacing;
+		var range = paragraph.AppendText(" ");
+		range.CharacterFormat.FontName = "Times New Roman";
+		range.CharacterFormat.FontSize = 1f;
+	}
+
+	private string JoinParts(string separator, params string[] parts)
+	{
+		return string.Join(separator, parts.Where(q => !string.IsNullOrWhiteSpace(q)).Select(q => q.Trim()));
+	}
+
+	private string GetCellText(DataRow row, string columnName)
+	{
+		if (!row.Table.Columns.Contains(columnName))
+			return string.Empty;
+
+		var value = row[columnName];
+		if (value == null || value is DBNull)
+			return string.Empty;
+
+		var dataType = row.Table.Columns[columnName].DataType;
+		if (dataType == typeof(string))
+			return value.ToString();
+		if (dataType == typeof(DateTime))
+			return ((DateTime)value).ToString("dd.MM.yyyy");
+		if (dataType == typeof(decimal))
+			return ((decimal)value).ToString("0.##", CultureInfo.InvariantCulture);
+		if (dataType == typeof(double))
+			return ((double)value).ToString("0.##", CultureInfo.InvariantCulture);
+		if (dataType == typeof(float))
+			return ((float)value).ToString("0.##", CultureInfo.InvariantCulture);
+		if (dataType == typeof(int))
+			return ((int)value).ToString(CultureInfo.InvariantCulture);
+		if (dataType == typeof(long))
+			return ((long)value).ToString(CultureInfo.InvariantCulture);
+
+		return value.ToString();
+	}
+
+	private string GetMainSql(List<int> ids)
+	{
+		return @"
+SELECT
+	row_number() over (order by org.short_name, b.street_full_name, b.addr_nomer, fs.total_free_sqr) as ""№"",
+	isnull(conv.target_text, org_giver.short_name) as ""converted_org_giver"",
+	org_renter.full_name as ""Найменування орендаря"",
+	b.street_full_name as ""Назва Вулиці"",
+	b.addr_nomer as ""Номер Будинку"",
+	fs.speaker_name as ""Доповідач""
+FROM view_reports1nf rep
+join reports1nf_arenda bal on bal.report_id = rep.report_id
+JOIN view_reports1nf_buildings b ON b.unique_id = bal.building_1nf_unique_id
+join dbo.reports1nf_arenda_dogcontinue fs on fs.arenda_id = bal.id and fs.report_id = rep.report_id
+join reports1nf_org_info org on org.id = bal.org_balans_id
+left join organizations org_renter on org_renter.id = bal.org_renter_id
+left join organizations org_giver ON org_giver.id = bal.org_giver_id and (org_giver.is_deleted is null or org_giver.is_deleted = 0)
+left join dbo.texts_org_giver_convert conv on conv.source_text = org_giver.short_name
 WHERE fs.id in (" + string.Join(",", ids) + @")
 ORDER BY 1";
 	}
