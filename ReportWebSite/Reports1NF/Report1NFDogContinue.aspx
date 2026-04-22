@@ -1597,8 +1597,16 @@ WHERE id = @id"
             <HeaderStyle Wrap="True" />
         </dx:GridViewDataDateColumn>
 
-        <dx:GridViewDataTextColumn FieldName="commission_id" Caption="Номер комісії" VisibleIndex="1480" Width="140px" Name="colCommissionId">
+        <dx:GridViewDataComboBoxColumn FieldName="commission_id" Caption="Номер комісії" VisibleIndex="1480" Width="140px" Name="colCommissionId">
             <HeaderStyle Wrap="True" />
+            <PropertiesComboBox
+                DataSourceID="SqlDataSourceCommission"
+                TextField="commission_num"
+                ValueField="id"
+                ValueType="System.Int32"
+                DropDownStyle="DropDownList"
+                NullText="">
+            </PropertiesComboBox>
             <DataItemTemplate>
                 <asp:Label ID="LabelCommissionNum" runat="server" Text='<%# Eval("commission_num") %>' />
             </DataItemTemplate>
@@ -1614,7 +1622,7 @@ WHERE id = @id"
                     Value='<%# Bind("commission_id") %>'>
                 </dx:ASPxComboBox>
             </EditItemTemplate>
-        </dx:GridViewDataTextColumn>
+        </dx:GridViewDataComboBoxColumn>
 
         <dx:GridViewDataTextColumn FieldName="commission_result" Caption="Результат" VisibleIndex="1490" Width="120px">
             <HeaderStyle Wrap="True" />

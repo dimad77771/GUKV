@@ -96,6 +96,9 @@ public class CommissionLetter
 
 		var row = dataTable.Rows[0];
 
+		properties["{{Вхідний номер звернення}}"] = GetCellText(row, "Вхідний номер звернення");
+		properties["{{Дата вхідного звернення}}"] = GetCellText(row, "Дата вхідного звернення");
+
 		properties["{{TN-унікальний номер}}"] = GetCellText(row, "Реєстраційний номер");
 		properties["{{Балансоутримувач}}"] = JoinParts(
 			GetCellText(row, "Найменування балансоутримувача"),
@@ -164,7 +167,11 @@ public class CommissionLetter
 		return @"
 SELECT
     cast(fs.id as varchar(50)) as ""Реєстраційний номер"",
-    org.short_name as ""Найменування балансоутримувача"",
+
+	fs.""incoming_doc_num"" as ""Вхідний номер звернення"",
+	fs.""incoming_doc_date"" as ""Дата вхідного звернення"",
+
+    org.full_name as ""Найменування балансоутримувача"",
 	org.zkpo_code as ""Код ЕДРПОУ балансоутримувача"",
     org_renter.zkpo_code as ""Код ЕДРПОУ орендаря"",
     b.street_full_name as ""Назва Вулиці"",
@@ -177,7 +184,7 @@ SELECT
     org_renter.full_name as ""Найменування орендаря"",
     org_renter.zkpo_code as ""Код ЕДРПОУ орендаря"",
 
-    (select Q.name from dict_may_pravo_prodov Q where Q.id = fs.may_pravo_prodov) as ""Цільове використання"",
+    fs.possible_using as ""Цільове використання"",
     fs.total_free_sqr as ""Загальна площа об’єкта"",
     fs.rental_rate_percent as ""Орендна ставка, %"",
     fs.rental_type as ""Тип оренди"",
