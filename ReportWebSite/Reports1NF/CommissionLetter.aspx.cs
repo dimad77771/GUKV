@@ -120,7 +120,8 @@ public class CommissionLetter
 		properties["{{Орендована площа, кв.м.}}"] = GetCellText(row, "Загальна площа об’єкта");
 		properties["{{Орендна ставка, %}}"] = GetCellText(row, "Орендна ставка, %");
 		properties["{{Тип оренди}}"] = GetCellText(row, "Тип оренди");
-		properties["{{Місячна орендна плата, грн.}}"] = GetCellText(row, "Місячна орендна плата за останній місяць(проіндексована)");
+		properties["{{Місячна орендна плата, грн.}}"] = GetCellText(row, "Місячна орендна плата за договором");
+		properties["{{Місячна орендна плата за останній}}"] = GetCellText(row, "Місячна орендна плата за останній");
 
 		properties["{{Строк / термін оренди}}"] = GetCellText(row, "Строк / термін оренди");
 		properties["{{Примітка}}"] = GetCellText(row, "Примітка");
@@ -188,7 +189,8 @@ SELECT
     fs.total_free_sqr as ""Загальна площа об’єкта"",
     fs.rental_rate_percent as ""Орендна ставка, %"",
     fs.rental_type as ""Тип оренди"",
-    fs.orend_plat_last_month as ""Місячна орендна плата за останній місяць(проіндексована)"",
+    fs.orend_plat_dogovor as ""Місячна орендна плата за договором"",
+	fs.orend_plat_last_month as ""Місячна орендна плата за останній"",
 
     fs.rental_term as ""Строк / термін оренди"",
     fs.commission_note as ""Примітка"",

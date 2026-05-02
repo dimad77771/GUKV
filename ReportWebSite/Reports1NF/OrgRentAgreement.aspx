@@ -1758,6 +1758,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
       ,[polipshanya_vartist]
       ,[polipshanya_finish_date]
       ,[orend_plat_last_month]
+      ,[orend_plat_dogovor]
       ,[orend_plat_borg]
       ,[stanom_na]
       ,[zalbalansvartist_date]
@@ -1807,6 +1808,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
       ,[polipshanya_vartist]
       ,[polipshanya_finish_date]
       ,[orend_plat_last_month]
+      ,[orend_plat_dogovor]
       ,[orend_plat_borg]
       ,[stanom_na]
       ,[zalbalansvartist_date]
@@ -1855,6 +1857,7 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
       ,@polipshanya_vartist
       ,@polipshanya_finish_date
       ,@orend_plat_last_month
+      ,@orend_plat_dogovor
       ,@orend_plat_borg
       ,@stanom_na
       ,@zalbalansvartist_date
@@ -1905,6 +1908,7 @@ SET
         ,[polipshanya_vartist]  	  = @polipshanya_vartist
         ,[polipshanya_finish_date]  	  = @polipshanya_finish_date
         ,[orend_plat_last_month]  	  = @orend_plat_last_month
+        ,[orend_plat_dogovor]  	  = @orend_plat_dogovor
         ,[orend_plat_borg]  	  = @orend_plat_borg
         ,[stanom_na]  	  = @stanom_na
         ,[zalbalansvartist_date]  	  = @zalbalansvartist_date
@@ -1963,6 +1967,7 @@ WHERE id = @id"
         <asp:Parameter Name="polipshanya_vartist" />
         <asp:Parameter Name="polipshanya_finish_date" />
         <asp:Parameter Name="orend_plat_last_month" />
+        <asp:Parameter Name="orend_plat_dogovor" />
         <asp:Parameter Name="orend_plat_borg" />
         <asp:Parameter Name="stanom_na" />
         <asp:Parameter Name="zalbalansvartist_date" />
@@ -2011,6 +2016,7 @@ WHERE id = @id"
         <asp:Parameter Name="polipshanya_vartist" />
         <asp:Parameter Name="polipshanya_finish_date" />
         <asp:Parameter Name="orend_plat_last_month" />
+        <asp:Parameter Name="orend_plat_dogovor" />
         <asp:Parameter Name="orend_plat_borg" />
         <asp:Parameter Name="stanom_na" />
         <asp:Parameter Name="zalbalansvartist_date" />
@@ -5284,6 +5290,13 @@ WHERE id = @id"
             </dx:GridViewDataTextColumn>--%>
 
             <dx:GridViewDataTextColumn FieldName="orend_plat_last_month" Caption="Місячна орендна плата за останній місяць(проіндексована)" VisibleIndex="225" Visible="false" >
+                <HeaderStyle Wrap="True" />
+                <EditFormSettings Visible="True" />
+                <EditFormCaptionStyle Wrap="True"/>
+            </dx:GridViewDataTextColumn>
+
+
+            <dx:GridViewDataTextColumn FieldName="orend_plat_dogovor" Caption="Місячна орендна плата за договором" VisibleIndex="227" Visible="false" >
                 <HeaderStyle Wrap="True" />
                 <EditFormSettings Visible="True" />
                 <EditFormCaptionStyle Wrap="True"/>

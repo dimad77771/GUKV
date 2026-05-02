@@ -382,6 +382,7 @@
 ,cast(round(DATEDIFF ( month, bal.agreement_date, bal.rent_finish_date ) / 12.0, 0) as int) as srok_dog
 
 ,fs.orend_plat_last_month
+,fs.orend_plat_dogovor
 ,fs.has_perevazh_pravo
 ,(select Q.name from dict_may_pravo_prodov Q where Q.id = fs.may_pravo_prodov) as may_pravo_prodov_text
 ,fs.polipshanya_vartist
@@ -1327,6 +1328,13 @@ WHERE id = @id"
             <HeaderStyle Wrap="True" />
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("orend_plat_last_month") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+			</EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="orend_plat_dogovor" Caption="Місячна орендна плата за договором" VisibleIndex="24" Width="80px"  >
+            <HeaderStyle Wrap="True" />
+			<EditItemTemplate>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("orend_plat_dogovor") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
