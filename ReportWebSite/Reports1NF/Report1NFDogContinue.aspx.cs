@@ -255,10 +255,16 @@ public partial class Reports1NF_Report1NFDogContinue : System.Web.UI.Page
 
 		if (!oldCommissionId.HasValue && newCommissionId.HasValue && IsEmptyParameterValue(rentalRatePercentValue))
 		{
-			var calculatedRentalRatePercent = GetCalculatedRentalRatePercent(free_square_id);
-			e.Command.Parameters["@rental_rate_percent"].Value = calculatedRentalRatePercent.HasValue
-				? (object)calculatedRentalRatePercent.Value
+			var calculatedRentalRatePercent = "" + GetCalculatedRentalRatePercent(free_square_id);
+			e.Command.Parameters["@rental_rate_percent"].Value = string.IsNullOrWhiteSpace(calculatedRentalRatePercent)
+				? (object)calculatedRentalRatePercent
 				: DBNull.Value;
+		}
+
+		var parameters = (SqlParameterCollection)e.Command.Parameters;
+		if (!parameters.Contains("@prozoro_number"))
+		{
+			parameters.AddWithValue("@prozoro_number", DBNull.Value);
 		}
 
 		if (change_step && new int?[] { 150, 300 }.Contains(freecycle_step_dict_id))
@@ -1293,7 +1299,7 @@ WHERE fs.id in (" + string.Join(",", ids) + @")";
 			"Категорія",
 			"Цільове призначення",
 			"Орендована площа, кв.м.",
-			"Орендна ставка, %",
+			"Орендна ставка",
 			"Місячна орендна плата, грн",
 			"Тип оренди",
 			"Вартість об'єкту, грн",
@@ -1349,7 +1355,7 @@ WHERE fs.id in (" + string.Join(",", ids) + @")";
 			worksheet[rowIndex, 9].Text = GetCellText(row, "Категорія");
 			worksheet[rowIndex, 10].Text = GetCellText(row, "Цільове призначення");
 			worksheet[rowIndex, 11].Text = GetCellText(row, "Орендована площа, кв.м.");
-			worksheet[rowIndex, 12].Text = GetCellText(row, "Орендна ставка, %");
+			worksheet[rowIndex, 12].Text = GetCellText(row, "Орендна ставка");
 			worksheet[rowIndex, 13].Text = GetCellText(row, "Місячна орендна плата, грн");
 			worksheet[rowIndex, 14].Text = GetCellText(row, "Тип оренди");
 			worksheet[rowIndex, 15].Text = GetCellText(row, "Вартість об'єкту, грн");
@@ -1437,7 +1443,7 @@ SELECT
 	fs.category as ""Категорія"",
 	(select Q.name from dict_may_pravo_prodov Q where Q.id = fs.may_pravo_prodov) as ""Цільове призначення"",
 	fs.total_free_sqr as ""Орендована площа, кв.м."",
-	fs.rental_rate_percent as ""Орендна ставка, %"",
+	fs.rental_rate_percent as ""Орендна ставка"",
 	fs.orend_plat_last_month as ""Місячна орендна плата, грн"",
 	fs.rental_type as ""Тип оренди"",
 	fs.zal_balans_vartist as ""Вартість об'єкту, грн"",

@@ -8,32 +8,23 @@ using System.Reflection;
 using System.Web.UI.WebControls;
 using System.Web.Configuration;
 using System.Configuration;
-using DevExpress.Web.Export;
 using DevExpress.Web;
-using DevExpress.Web.ASPxTreeList;
 using DevExpress.Web.ASPxHtmlEditor;
-using DevExpress.Data.Filtering;
 using System.IO;
 using System.Text;
 using System.Web.Security;
-
 using System.Data;
 using System.Data.SqlClient;
-
-using System.Net.Mail;
 using FirebirdSql.Data.FirebirdClient;
-
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
-
 using Cache;
 using log4net;
-using System.Collections;
 using System.Text.RegularExpressions;
-using System.Threading;
 using GUKV.Common;
 using System.Drawing;
 using System.Data.Common;
+
 
 public static class Utils
 {
@@ -3523,7 +3514,11 @@ public static class Utils
 		return dataTable;
 	}
 
-
+	public static string NormalizeToLower(this string arg)
+    {
+		var result = NameNormalizer.Normalize(arg ?? "");
+        return result;
+	}
 }
 
 public class CreateNewArendaDogovorData
@@ -3539,4 +3534,63 @@ public class CreateNewArendaDogovorData
     public string OrgGiverComment { get; set; }
 
     public int AgreementToDeleteID { get; set; }
+}
+
+
+public static class NameNormalizer
+{
+	private static readonly HashSet<string> KyivWords = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+	{
+		"київ","києва","києві","києвом","києве",
+		"київський","київського","київському","київським",
+		"київська","київської","київській","київську","київською",
+		"київське",
+		"київські","київських","київськими"
+	};
+
+	public static string Normalize(string input)
+	{
+		if (string.IsNullOrWhiteSpace(input))
+			return input;
+
+		var words = input.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+		var sb = new StringBuilder();
+
+		for (var i = 0; i < words.Length; i++)
+		{
+			var word = words[i];
+			var lower = word.ToLower();
+
+			if (i == 0)
+			{
+				word = Capitalize(lower);
+			}
+			else if (KyivWords.Contains(lower))
+			{
+				word = Capitalize(lower);
+			}
+			else
+			{
+				word = lower;
+			}
+
+			if (i > 0)
+				sb.Append(" ");
+
+			sb.Append(word);
+		}
+
+		return sb.ToString();
+	}
+
+	private static string Capitalize(string word)
+	{
+		if (string.IsNullOrEmpty(word))
+			return word;
+
+		if (word.Length == 1)
+			return word.ToUpper();
+
+		return char.ToUpper(word[0]) + word.Substring(1);
+	}
 }

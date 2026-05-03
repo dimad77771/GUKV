@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DevExpress.Web;
-using DevExpress.Web;
+
 
 public partial class UserControls_FieldChooser : System.Web.UI.UserControl
 {
@@ -14,13 +14,40 @@ public partial class UserControls_FieldChooser : System.Web.UI.UserControl
 
     }
 
-    protected void CallbackPanelGridColumns_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
+	public class ParameterJson
+	{
+		public string gridId { get; set; }
+		public string captionPattern { get; set; }
+	}
+
+
+	protected void CallbackPanelGridColumns_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
     {
-        ASPxGridView grid = FindGridRecursive(Page);
+		var gridId = "";
+        var captionPattern = e.Parameter ?? "";
+        var s1 = "JSON=";
+		if (captionPattern.StartsWith(s1))
+		{
+			var data = Newtonsoft.Json.JsonConvert.DeserializeObject<ParameterJson>(captionPattern.Substring(s1.Length));
+			gridId = data.gridId ?? "";
+			captionPattern = data.captionPattern ?? "";
+		}
+
+		ASPxGridView grid;
+		if (string.IsNullOrEmpty(gridId))
+        {
+			grid = FindGridRecursive(Page);
+		}
+        else
+        {
+			grid = FindAllGridsRecursive(Page).Where(x => x.ID == gridId).FirstOrDefault();
+		}
+
+		
 
         if (grid != null)
         {
-            Utils.GenerateFieldChooserNodes(ListBoxGridColumns, grid, e.Parameter);
+            Utils.GenerateFieldChooserNodes(ListBoxGridColumns, grid, captionPattern);
         }
         else
         {
@@ -33,7 +60,7 @@ public partial class UserControls_FieldChooser : System.Web.UI.UserControl
                 {
                     if (child is ASPxGridView)
                     {
-                        Utils.GenerateFieldChooserNodes(ListBoxGridColumns, child as ASPxGridView, e.Parameter);
+                        Utils.GenerateFieldChooserNodes(ListBoxGridColumns, child as ASPxGridView, captionPattern);
                         break;
                     }
                 }
@@ -85,4 +112,31 @@ public partial class UserControls_FieldChooser : System.Web.UI.UserControl
 
         return null;
     }
+
+	private List<ASPxGridView> FindAllGridsRecursive(Control root)
+	{
+		var result = new List<ASPxGridView>();
+
+		FindAllGridsInternal(root, result);
+
+		return result;
+	}
+
+	private void FindAllGridsInternal(Control root, List<ASPxGridView> result)
+	{
+		var grid = root as ASPxGridView;
+
+		if (grid != null)
+		{
+			if (!(root is DevExpress.Web.Internal.FileManagerGridView))
+			{
+				result.Add(grid);
+			}
+		}
+
+		foreach (Control c in root.Controls)
+		{
+			FindAllGridsInternal(c, result);
+		}
+	}
 }

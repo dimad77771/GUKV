@@ -401,8 +401,6 @@
 ,fs.speaker_name
 ,fs.incoming_doc_num
 ,fs.incoming_doc_date
-,fs.letter_appendix_num
-,fs.letter_appendix_date
 ,fs.commission_id
 ,dc.commission_num
 ,fs.commission_result
@@ -468,8 +466,6 @@ SET
 	[speaker_name] = @speaker_name,
 	[incoming_doc_num] = @incoming_doc_num,
 	[incoming_doc_date] = @incoming_doc_date,
-	[letter_appendix_num] = @letter_appendix_num,
-	[letter_appendix_date] = @letter_appendix_date,
 	[commission_id] = @commission_id,
 	[commission_result] = @commission_result,
 	[protocol_question_num] = @protocol_question_num,
@@ -1564,10 +1560,9 @@ WHERE id = @id"
             <HeaderStyle Wrap="True" />
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataSpinEditColumn FieldName="rental_rate_percent" Caption="Орендна ставка, %" VisibleIndex="1380" Width="120px" CellStyle-HorizontalAlign="Right">
+        <dx:GridViewDataTextColumn FieldName="rental_rate_percent" Caption="Орендна ставка" VisibleIndex="1380" Width="120px">
             <HeaderStyle Wrap="True" />
-            <PropertiesSpinEdit NumberType="Float" DecimalPlaces="2" DisplayFormatString="g29" />
-        </dx:GridViewDataSpinEditColumn>
+        </dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn FieldName="rental_type" Caption="Тип оренди" VisibleIndex="1390" Width="180px">
             <HeaderStyle Wrap="True" />
@@ -1594,14 +1589,6 @@ WHERE id = @id"
         </dx:GridViewDataTextColumn>
 
         <dx:GridViewDataDateColumn FieldName="incoming_doc_date" Caption="Дата вхідного звернення" VisibleIndex="1450" Width="120px" CellStyle-HorizontalAlign="Center">
-            <HeaderStyle Wrap="True" />
-        </dx:GridViewDataDateColumn>
-
-        <dx:GridViewDataTextColumn FieldName="letter_appendix_num" Caption="Додаток до листа. Номер" VisibleIndex="1460" Width="180px">
-            <HeaderStyle Wrap="True" />
-        </dx:GridViewDataTextColumn>
-
-        <dx:GridViewDataDateColumn FieldName="letter_appendix_date" Caption="Додаток до листа. Дата" VisibleIndex="1470" Width="120px" CellStyle-HorizontalAlign="Center">
             <HeaderStyle Wrap="True" />
         </dx:GridViewDataDateColumn>
 
@@ -1723,7 +1710,11 @@ WHERE id = @id"
             <uc3:FieldChooser ID="FieldChooser1" runat="server"/>
         </dx:PopupControlContentControl>
     </ContentCollection>
-    <ClientSideEvents PopUp="function (s, e) { EditColumnNamePattern.SetText(''); CPGridColumns.PerformCallback(); }" />
+    <ClientSideEvents PopUp="function (s, e) { 
+            EditColumnNamePattern.SetText(''); 
+            var datajson = { gridId: 'FreeSquareGridView' }; 
+            CPGridColumns.PerformCallback('JSON=' + JSON.stringify(datajson));
+        }" />
 </dx:ASPxPopupControl>
 
 

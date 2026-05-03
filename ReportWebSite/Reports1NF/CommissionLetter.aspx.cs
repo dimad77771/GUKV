@@ -100,25 +100,26 @@ public class CommissionLetter
 		properties["{{Дата вхідного звернення}}"] = GetCellText(row, "Дата вхідного звернення");
 
 		properties["{{TN-унікальний номер}}"] = GetCellText(row, "Реєстраційний номер");
+		properties["{{Орендодавець}}"] = GetCellText(row, "Орендодавець", true);
 		properties["{{Балансоутримувач}}"] = JoinParts(
-			GetCellText(row, "Найменування балансоутримувача"),
+			GetCellText(row, "Найменування балансоутримувача", true),
 			GetCellText(row, "Код ЕДРПОУ балансоутримувача")
 		);
 		properties["{{Об'єкт оренди}}"] = JoinParts(
-			GetCellText(row, "Назва Вулиці"),
-			GetCellText(row, "Номер Будинку")
+			GetCellText(row, "Назва Вулиці", true),
+			GetCellText(row, "Номер Будинку", true)
 		);
 		properties["{{Тип будинку}}"] = GetCellText(row, "Тип будинку");
 		properties["{{Характеристика об'єкта оренди}}"] = GetCellText(row, "Характеристика об’єкта оренди");
 		properties["{{Вартість об'єкту, грн.}}"] = GetCellText(row, "Залишкова балансова вартість, грн.");
 		properties["{{Дата оцінки}}"] = GetCellText(row, "Дата формування залишкової вартості");
 
-		properties["{{Назва орендаря}}"] = GetCellText(row, "Найменування орендаря");
+		properties["{{Назва орендаря}}"] = GetCellText(row, "Найменування орендаря", true);
 		properties["{{Код ЄДРПОУ}}"] = GetCellText(row, "Код ЕДРПОУ орендаря");
 
 		properties["{{Цільове призначення}}"] = GetCellText(row, "Цільове використання");
 		properties["{{Орендована площа, кв.м.}}"] = GetCellText(row, "Загальна площа об’єкта");
-		properties["{{Орендна ставка, %}}"] = GetCellText(row, "Орендна ставка, %");
+		properties["{{Орендна ставка}}"] = GetCellText(row, "Орендна ставка");
 		properties["{{Тип оренди}}"] = GetCellText(row, "Тип оренди");
 		properties["{{Місячна орендна плата, грн.}}"] = GetCellText(row, "Місячна орендна плата за договором");
 		properties["{{Місячна орендна плата за останній}}"] = GetCellText(row, "Місячна орендна плата за останній");
@@ -133,7 +134,17 @@ public class CommissionLetter
 		return string.Join(" ", parts.Where(q => !string.IsNullOrWhiteSpace(q)).Select(q => q.Trim()));
 	}
 
-	string GetCellText(DataRow row, string columnName)
+	string GetCellText(DataRow row, string columnName, bool toLower = false)
+	{
+		var result = GetCellTextCore(row, columnName, toLower);
+		if (toLower)
+		{
+			result = Utils.NormalizeToLower(result ?? "");
+		}
+		return result;
+	}
+
+	string GetCellTextCore(DataRow row, string columnName, bool toLower = false)
 	{
 		if (!row.Table.Columns.Contains(columnName))
 			return string.Empty;
@@ -172,6 +183,7 @@ SELECT
 	fs.""incoming_doc_num"" as ""Вхідний номер звернення"",
 	fs.""incoming_doc_date"" as ""Дата вхідного звернення"",
 
+	org_giver.full_name as ""Орендодавець"",
     org.full_name as ""Найменування балансоутримувача"",
 	org.zkpo_code as ""Код ЕДРПОУ балансоутримувача"",
     org_renter.zkpo_code as ""Код ЕДРПОУ орендаря"",
@@ -187,7 +199,7 @@ SELECT
 
     fs.possible_using as ""Цільове використання"",
     fs.total_free_sqr as ""Загальна площа об’єкта"",
-    fs.rental_rate_percent as ""Орендна ставка, %"",
+    fs.rental_rate_percent as ""Орендна ставка"",
     fs.rental_type as ""Тип оренди"",
     fs.orend_plat_dogovor as ""Місячна орендна плата за договором"",
 	fs.orend_plat_last_month as ""Місячна орендна плата за останній"",
@@ -201,6 +213,7 @@ JOIN view_reports1nf_buildings b ON b.unique_id = bal.building_1nf_unique_id
 join dbo.reports1nf_arenda_dogcontinue fs on fs.arenda_id = bal.id and fs.report_id = rep.report_id
 join reports1nf_org_info org on org.id = bal.org_balans_id
 left join organizations org_renter on org_renter.id = bal.org_renter_id
+left outer join organizations org_giver ON org_giver.id = bal.org_giver_id and (org_giver.is_deleted is null or org_giver.is_deleted = 0)
 WHERE fs.id = " + ID;
 	}
 }
