@@ -884,6 +884,16 @@ WHERE id = @id"
             </dx:ASPxButton>
         </td>
         <td>
+            <dx:ASPxButton ID="ASPxButtonCommissionResultTable" runat="server" Text="Результат (таб.)"
+                Width="150px" OnClick="ASPxButtonCommissionResultTable_Click">
+            </dx:ASPxButton>
+        </td>
+        <td>
+            <dx:ASPxButton ID="ASPxButtonCommissionResultText" runat="server" Text="Результат (текст)"
+                Width="160px" OnClick="ASPxButtonCommissionResultText_Click">
+            </dx:ASPxButton>
+        </td>
+        <td>
 			<dx:ASPxPopupControl ID="ASPxPopupControlFreeSquare" runat="server" AllowDragging="True" 
 				ClientInstanceName="PopupObjectPhotos" EnableClientSideAPI="True" 
 				HeaderText="Документ" Modal="True" 

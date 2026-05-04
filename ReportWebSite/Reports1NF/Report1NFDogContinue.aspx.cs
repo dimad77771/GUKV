@@ -180,6 +180,28 @@ public partial class Reports1NF_Report1NFDogContinue : System.Web.UI.Page
 		builder.Run();
 	}
 
+	protected void ASPxButtonCommissionResultTable_Click(object sender, EventArgs e)
+	{
+		var ids = GetFilteredFreeSquareIds();
+		var builder = new CommissionResultTableBuilder
+		{
+			Page = Page,
+			IDs = ids,
+		};
+		builder.Run();
+	}
+
+	protected void ASPxButtonCommissionResultText_Click(object sender, EventArgs e)
+	{
+		var ids = GetFilteredFreeSquareIds();
+		var builder = new CommissionResultTextBuilder
+		{
+			Page = Page,
+			IDs = ids,
+		};
+		builder.Run();
+	}
+
 	private List<int> GetFilteredFreeSquareIds()
 	{
 		var result = new List<int>();
@@ -1462,6 +1484,313 @@ ORDER BY 1";
 }
 
 
+
+public class CommissionResultTableBuilder
+{
+	public Page Page;
+	public List<int> IDs;
+
+	private class CommissionHeaderData
+	{
+		public string CommissionNum;
+		public DateTime? CommissionDate;
+	}
+
+	public void Run()
+	{
+		var ids = (IDs ?? new List<int>()).Where(q => q > 0).Distinct().ToList();
+		if (ids.Count == 0)
+		{
+			return;
+		}
+
+		DataTable data;
+		CommissionHeaderData headerData;
+		using (var connection = Utils.ConnectToDatabase())
+		{
+			data = GetData(connection, ids);
+			headerData = GetSingleCommissionHeaderData(connection, ids);
+		}
+
+		using (var excelEngine = new ExcelEngine())
+		{
+			var application = excelEngine.Excel;
+			application.DefaultVersion = ExcelVersion.Excel2016;
+			var workbook = application.Workbooks.Create(1);
+			var worksheet = workbook.Worksheets[0];
+			worksheet.Name = "Результат";
+
+			BuildWorksheet(worksheet, data, headerData);
+
+			using (var stream = new MemoryStream())
+			{
+				workbook.SaveAs(stream);
+				workbook.Close();
+				stream.Position = 0;
+
+				var suffix = headerData != null && headerData.CommissionDate.HasValue
+					? headerData.CommissionDate.Value.ToString("dd.MM.yyyy")
+					: DateTime.Now.ToString("dd.MM.yyyy");
+				var outfile = "Результат " + suffix + ".xlsx";
+
+				Page.Response.Clear();
+				Page.Response.ClearHeaders();
+				Page.Response.ClearContent();
+				Page.Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+				Page.Response.AddHeader("content-disposition", "attachment; filename=" + outfile + "; size=" + stream.Length.ToString(CultureInfo.InvariantCulture));
+				stream.CopyTo(Page.Response.OutputStream);
+				Page.Response.End();
+			}
+		}
+	}
+
+	private DataTable GetData(SqlConnection connection, List<int> ids)
+	{
+		var factory = DbProviderFactories.GetFactory(connection);
+		var dataTable = new DataTable();
+		using (var cmd = factory.CreateCommand())
+		{
+			cmd.CommandText = GetMainSql(ids);
+			cmd.CommandType = CommandType.Text;
+			cmd.Connection = connection;
+			using (var adapter = factory.CreateDataAdapter())
+			{
+				adapter.SelectCommand = cmd;
+				adapter.Fill(dataTable);
+			}
+		}
+
+		return dataTable;
+	}
+
+	private CommissionHeaderData GetSingleCommissionHeaderData(SqlConnection connection, List<int> ids)
+	{
+		var sql = @"
+SELECT
+	min(dc.commission_num) as min_commission_num,
+	max(dc.commission_num) as max_commission_num,
+	min(dc.commission_date) as min_commission_date,
+	max(dc.commission_date) as max_commission_date
+FROM dbo.reports1nf_arenda_dogcontinue fs
+left join dbo.dogcontinue_commission dc on dc.id = fs.commission_id
+WHERE fs.id in (" + string.Join(",", ids) + @")";
+
+		using (var command = new SqlCommand(sql, connection))
+		using (var reader = command.ExecuteReader())
+		{
+			if (reader.Read())
+			{
+				var minNum = reader.IsDBNull(0) ? string.Empty : reader.GetString(0);
+				var maxNum = reader.IsDBNull(1) ? string.Empty : reader.GetString(1);
+				var minDate = reader.IsDBNull(2) ? (DateTime?)null : reader.GetDateTime(2);
+				var maxDate = reader.IsDBNull(3) ? (DateTime?)null : reader.GetDateTime(3);
+
+				var result = new CommissionHeaderData();
+				if (!string.IsNullOrWhiteSpace(minNum) && minNum == maxNum)
+				{
+					result.CommissionNum = minNum;
+				}
+
+				if (minDate.HasValue && maxDate.HasValue && minDate.Value.Date == maxDate.Value.Date)
+				{
+					result.CommissionDate = minDate.Value.Date;
+				}
+
+				return result;
+			}
+		}
+
+		return new CommissionHeaderData();
+	}
+
+	private void BuildWorksheet(IWorksheet worksheet, DataTable data, CommissionHeaderData headerData)
+	{
+		var headers = new[]
+		{
+			"№ питання у протоколі",
+			"Дата оцінки",
+			"Дата договору оренди, який продовжується, змінюється",
+			"Тип питання",
+			"Балансоутримувач",
+			"Орендар, код",
+			"Адреса",
+			"Тип будинку",
+			"Характеристика об'єкта оренди, поверх",
+			"Цільове призначення",
+			"Орендована площа кв.м",
+			"Поточна ставка, %**",
+			"Місячна орендна плата грн",
+			"Тип оренди *",
+			"Вартість об'єкта",
+			"Строк або термін оренди",
+			"Додаткова інформація"
+		};
+
+		double[] widths = { 7, 11, 13, 12, 27, 24, 20, 12, 14, 24, 12, 10, 13, 12, 13, 13, 16 };
+		for (var i = 0; i < widths.Length; i++)
+		{
+			worksheet.SetColumnWidth(i + 1, widths[i]);
+		}
+
+		var lastColLetter = GetExcelColumnName(headers.Length);
+
+		worksheet.Range["A1:" + lastColLetter + "1"].Merge();
+		worksheet.Range["A2:" + lastColLetter + "2"].Merge();
+		worksheet.Range["A3:" + lastColLetter + "3"].Merge();
+		worksheet.Range["A4:" + lastColLetter + "4"].Merge();
+
+		worksheet.Range["A1"].Text = !string.IsNullOrWhiteSpace(headerData.CommissionNum)
+			? "Додаток до протоколу № " + headerData.CommissionNum
+			: "Додаток до протоколу";
+		worksheet.Range["A2"].Text = "засідання постійної комісії Київської міської ради";
+		worksheet.Range["A3"].Text = "з питань власності та регуляторної політики" + (headerData.CommissionDate.HasValue ? " від " + headerData.CommissionDate.Value.ToString("dd.MM.yyyy") : string.Empty);
+		worksheet.Range["A4"].Text = "Перелік погоджених постійною комісією Київської міської ради з питань власності питань оренди щодо нежитлових приміщень комунальної власності м.Києва, орендодавцем яких виступає Департамент комунальної власності м. Києва";
+
+		for (var r = 1; r <= 3; r++)
+		{
+			worksheet.Range[r, 1].CellStyle.HorizontalAlignment = ExcelHAlign.HAlignRight;
+			worksheet.Range[r, 1].CellStyle.VerticalAlignment = ExcelVAlign.VAlignCenter;
+			worksheet.Range[r, 1].CellStyle.Font.Size = 9;
+		}
+
+		worksheet.Range["A4"].CellStyle.Font.Bold = true;
+		worksheet.Range["A4"].CellStyle.Font.Size = 12;
+		worksheet.Range["A4"].CellStyle.HorizontalAlignment = ExcelHAlign.HAlignCenter;
+		worksheet.Range["A4"].CellStyle.VerticalAlignment = ExcelVAlign.VAlignCenter;
+		worksheet.Range["A4"].CellStyle.WrapText = true;
+
+		for (var i = 0; i < headers.Length; i++)
+		{
+			worksheet[5, i + 1].Text = headers[i];
+		}
+
+		var headerRange = worksheet.Range["A5:" + lastColLetter + "5"];
+		headerRange.CellStyle.Font.Bold = true;
+		headerRange.CellStyle.HorizontalAlignment = ExcelHAlign.HAlignCenter;
+		headerRange.CellStyle.VerticalAlignment = ExcelVAlign.VAlignCenter;
+		headerRange.CellStyle.WrapText = true;
+
+		worksheet.SetRowHeight(1, 16);
+		worksheet.SetRowHeight(2, 16);
+		worksheet.SetRowHeight(3, 16);
+		worksheet.SetRowHeight(4, 44);
+		worksheet.SetRowHeight(5, 62);
+
+		var rowIndex = 6;
+		foreach (DataRow row in data.Rows)
+		{
+			worksheet[rowIndex, 1].Text = GetCellText(row, "№ питання у протоколі");
+			worksheet[rowIndex, 2].Text = GetCellText(row, "Дата оцінки");
+			worksheet[rowIndex, 3].Text = GetCellText(row, "Дата договору оренди, який продовжується, змінюється");
+			worksheet[rowIndex, 4].Text = GetCellText(row, "Тип питання");
+			worksheet[rowIndex, 5].Text = GetCellText(row, "Балансоутримувач");
+			worksheet[rowIndex, 6].Text = GetCellText(row, "Орендар, код");
+			worksheet[rowIndex, 7].Text = GetCellText(row, "Адреса");
+			worksheet[rowIndex, 8].Text = GetCellText(row, "Тип будинку");
+			worksheet[rowIndex, 9].Text = GetCellText(row, "Характеристика об'єкта оренди, поверх");
+			worksheet[rowIndex, 10].Text = GetCellText(row, "Цільове призначення");
+			worksheet[rowIndex, 11].Text = GetCellText(row, "Орендована площа кв.м");
+			worksheet[rowIndex, 12].Text = GetCellText(row, "Поточна ставка, %**");
+			worksheet[rowIndex, 13].Text = GetCellText(row, "Місячна орендна плата грн");
+			worksheet[rowIndex, 14].Text = GetCellText(row, "Тип оренди *");
+			worksheet[rowIndex, 15].Text = GetCellText(row, "Вартість об'єкта");
+			worksheet[rowIndex, 16].Text = GetCellText(row, "Строк або термін оренди");
+			worksheet[rowIndex, 17].Text = GetCellText(row, "Додаткова інформація");
+			worksheet.SetRowHeight(rowIndex, 54);
+			rowIndex++;
+		}
+
+		var lastRow = Math.Max(rowIndex - 1, 5);
+		for (var r = 4; r <= lastRow; r++)
+		{
+			for (var c = 1; c <= headers.Length; c++)
+			{
+				var cell = worksheet[r, c];
+				cell.CellStyle.Borders[ExcelBordersIndex.EdgeLeft].LineStyle = ExcelLineStyle.Thin;
+				cell.CellStyle.Borders[ExcelBordersIndex.EdgeRight].LineStyle = ExcelLineStyle.Thin;
+				cell.CellStyle.Borders[ExcelBordersIndex.EdgeTop].LineStyle = ExcelLineStyle.Thin;
+				cell.CellStyle.Borders[ExcelBordersIndex.EdgeBottom].LineStyle = ExcelLineStyle.Thin;
+				cell.CellStyle.VerticalAlignment = ExcelVAlign.VAlignCenter;
+				cell.CellStyle.WrapText = true;
+				cell.CellStyle.HorizontalAlignment = ExcelHAlign.HAlignCenter;
+			}
+		}
+	}
+
+	private string GetExcelColumnName(int columnNumber)
+	{
+		var dividend = columnNumber;
+		var columnName = string.Empty;
+		while (dividend > 0)
+		{
+			var modulo = (dividend - 1) % 26;
+			columnName = Convert.ToChar(65 + modulo) + columnName;
+			dividend = (dividend - modulo) / 26;
+		}
+
+		return columnName;
+	}
+
+	private string GetCellText(DataRow row, string columnName)
+	{
+		if (!row.Table.Columns.Contains(columnName))
+			return string.Empty;
+
+		var value = row[columnName];
+		if (value == null || value is DBNull)
+			return string.Empty;
+
+		var dataType = row.Table.Columns[columnName].DataType;
+		if (dataType == typeof(string))
+			return value.ToString();
+		if (dataType == typeof(DateTime))
+			return ((DateTime)value).ToString("dd.MM.yyyy");
+		if (dataType == typeof(decimal))
+			return ((decimal)value).ToString("0.##", CultureInfo.InvariantCulture);
+		if (dataType == typeof(double))
+			return ((double)value).ToString("0.##", CultureInfo.InvariantCulture);
+		if (dataType == typeof(float))
+			return ((float)value).ToString("0.##", CultureInfo.InvariantCulture);
+		if (dataType == typeof(int))
+			return ((int)value).ToString(CultureInfo.InvariantCulture);
+		if (dataType == typeof(long))
+			return ((long)value).ToString(CultureInfo.InvariantCulture);
+
+		return value.ToString();
+	}
+
+	private string GetMainSql(List<int> ids)
+	{
+		return @"
+SELECT
+	isnull(fs.protocol_question_num, row_number() over (order by org.short_name, b.street_full_name, b.addr_nomer, fs.total_free_sqr)) as ""№ питання у протоколі"",
+	fs.zalbalansvartist_date as ""Дата оцінки"",
+	bal.agreement_date as ""Дата договору оренди, який продовжується, змінюється"",
+	N'Продовження' as ""Тип питання"",
+	org.full_name as ""Балансоутримувач"",
+	LTRIM(RTRIM(isnull(org_renter.full_name, N''))) + case when isnull(org_renter.zkpo_code, N'') <> N'' then N', код ' + LTRIM(RTRIM(org_renter.zkpo_code)) else N'' end as ""Орендар, код"",
+	LTRIM(RTRIM(b.street_full_name)) + N' ' + LTRIM(RTRIM(b.addr_nomer)) as ""Адреса"",
+	fs.building_type as ""Тип будинку"",
+	fs.floor as ""Характеристика об'єкта оренди, поверх"",
+	(select Q.name from dict_may_pravo_prodov Q where Q.id = fs.may_pravo_prodov) as ""Цільове призначення"",
+	fs.total_free_sqr as ""Орендована площа кв.м"",
+	fs.rental_rate_percent as ""Поточна ставка, %**"",
+	fs.orend_plat_last_month as ""Місячна орендна плата грн"",
+	fs.rental_type as ""Тип оренди *"",
+	fs.zal_balans_vartist as ""Вартість об'єкта"",
+	fs.rental_term as ""Строк або термін оренди"",
+	fs.additional_info as ""Додаткова інформація""
+FROM view_reports1nf rep
+join reports1nf_arenda bal on bal.report_id = rep.report_id
+JOIN view_reports1nf_buildings b ON b.unique_id = bal.building_1nf_unique_id
+join dbo.reports1nf_arenda_dogcontinue fs on fs.arenda_id = bal.id and fs.report_id = rep.report_id
+join reports1nf_org_info org on org.id = bal.org_balans_id
+left join organizations org_renter on org_renter.id = bal.org_renter_id
+WHERE fs.id in (" + string.Join(",", ids) + @")
+ORDER BY 1";
+	}
+}
+
 public class CommissionProrydokTextBuilder
 {
 	public Page Page;
@@ -1657,3 +1986,292 @@ WHERE fs.id in (" + string.Join(",", ids) + @")
 ORDER BY 1";
 	}
 }
+
+public class CommissionResultTextBuilder
+{
+	public Page Page;
+	public List<int> IDs;
+
+	public void Run()
+	{
+		var ids = (IDs ?? new List<int>()).Where(q => q > 0).Distinct().ToList();
+		if (ids.Count == 0)
+		{
+			return;
+		}
+
+		DataTable data;
+		using (var connection = Utils.ConnectToDatabase())
+		{
+			data = GetData(connection, ids);
+		}
+
+		using (var document = new WordDocument())
+		{
+			var section = document.AddSection();
+			ConfigureSection(section);
+			BuildDocument(section, data);
+
+			using (var stream = new MemoryStream())
+			{
+				document.Save(stream, FormatType.Docx);
+				document.Close();
+				stream.Position = 0;
+
+				var outfile = "Результат (текст) " + DateTime.Now.ToString("dd.MM.yyyy") + ".docx";
+				Page.Response.Clear();
+				Page.Response.ClearHeaders();
+				Page.Response.ClearContent();
+				Page.Response.ContentType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+				Page.Response.AddHeader("content-disposition", "attachment; filename=" + outfile + "; size=" + stream.Length.ToString(CultureInfo.InvariantCulture));
+				stream.CopyTo(Page.Response.OutputStream);
+				Page.Response.End();
+			}
+		}
+	}
+
+	private void ConfigureSection(IWSection section)
+	{
+		section.PageSetup.Margins.Top = 36f;
+		section.PageSetup.Margins.Bottom = 36f;
+		section.PageSetup.Margins.Left = 56f;
+		section.PageSetup.Margins.Right = 56f;
+	}
+
+	private DataTable GetData(SqlConnection connection, List<int> ids)
+	{
+		var factory = DbProviderFactories.GetFactory(connection);
+		var dataTable = new DataTable();
+		using (var cmd = factory.CreateCommand())
+		{
+			cmd.CommandText = GetMainSql(ids);
+			cmd.CommandType = CommandType.Text;
+			cmd.Connection = connection;
+			using (var adapter = factory.CreateDataAdapter())
+			{
+				adapter.SelectCommand = cmd;
+				adapter.Fill(dataTable);
+			}
+		}
+
+		return dataTable;
+	}
+
+	private void BuildDocument(IWSection section, DataTable data)
+	{
+		AddCenteredParagraph(section, "Розгляд питань оренди", 16f, true, false, 0f, 18f);
+
+		foreach (DataRow row in data.Rows)
+		{
+			var number = GetCellText(row, "№");
+			var convertedOrgGiver = GetCellText(row, "converted_org_giver");
+			var renterName = GetCellText(row, "Найменування орендаря");
+			var streetName = GetCellText(row, "Назва Вулиці");
+			var houseNumber = GetCellText(row, "Номер Будинку");
+			var incomingDocNum = GetCellText(row, "Вхідний номер");
+			var incomingDocDate = GetCellText(row, "Дата вхідного документа");
+			var outgoingDocNum = GetCellText(row, "Вихідний номер");
+			var outgoingDocDate = GetCellText(row, "Дата вихідного документа");
+			var speakerName = GetCellText(row, "Доповідач");
+			var slukhaliText = GetCellText(row, "СЛУХАЛИ");
+			var virishylyText = GetCellText(row, "ВИРІШИЛИ");
+			var golosovanie = GetCellText(row, "ГОЛОСУВАЛИ");
+			var commissionResult = GetCellText(row, "Результат");
+
+			var objectText = JoinParts(", ", renterName, streetName, houseNumber);
+			var incomingText = BuildDocumentRefText("Вх. № ", incomingDocNum, incomingDocDate);
+			var outgoingText = BuildDocumentRefText("Вих. № ", outgoingDocNum, outgoingDocDate);
+			var refsText = JoinParts(" ", incomingText, outgoingText);
+			if (!string.IsNullOrWhiteSpace(refsText))
+			{
+				objectText = objectText + " (" + refsText + ")";
+			}
+
+			var mainText = number + ". Про розгляд звернення " + convertedOrgGiver + " щодо питання \"Продовження\" - " + objectText;
+
+			AddItemParagraph(section, mainText);
+			AddSpeakerParagraph(section, speakerName);
+			AddLabelParagraph(section, "СЛУХАЛИ: ", slukhaliText);
+			AddLabelParagraph(section, "ВИРІШИЛИ: ", virishylyText);
+			AddLabelParagraph(section, "ГОЛОСУВАЛИ: ", golosovanie);
+			AddDecisionParagraph(section, string.IsNullOrWhiteSpace(commissionResult) ? "-" : commissionResult);
+			AddSpacerParagraph(section, 16f);
+		}
+	}
+
+	private string BuildDocumentRefText(string prefix, string docNum, string docDate)
+	{
+		if (string.IsNullOrWhiteSpace(docNum) && string.IsNullOrWhiteSpace(docDate))
+		{
+			return string.Empty;
+		}
+
+		if (string.IsNullOrWhiteSpace(docDate))
+		{
+			return prefix + docNum;
+		}
+
+		if (string.IsNullOrWhiteSpace(docNum))
+		{
+			return "від " + docDate;
+		}
+
+		return prefix + docNum + " від " + docDate;
+	}
+
+	private void AddCenteredParagraph(IWSection section, string text, float fontSize, bool bold, bool italic, float beforeSpacing, float afterSpacing)
+	{
+		var paragraph = section.AddParagraph();
+		paragraph.ParagraphFormat.HorizontalAlignment = Syncfusion.DocIO.DLS.HorizontalAlignment.Center;
+		paragraph.ParagraphFormat.BeforeSpacing = beforeSpacing;
+		paragraph.ParagraphFormat.AfterSpacing = afterSpacing;
+		var range = paragraph.AppendText(text);
+		range.CharacterFormat.FontName = "Times New Roman";
+		range.CharacterFormat.FontSize = fontSize;
+		range.CharacterFormat.Bold = bold;
+		range.CharacterFormat.Italic = italic;
+	}
+
+	private void AddItemParagraph(IWSection section, string text)
+	{
+		var paragraph = section.AddParagraph();
+		paragraph.ParagraphFormat.HorizontalAlignment = Syncfusion.DocIO.DLS.HorizontalAlignment.Left;
+		paragraph.ParagraphFormat.BeforeSpacing = 0f;
+		paragraph.ParagraphFormat.AfterSpacing = 6f;
+		var range = paragraph.AppendText(text);
+		range.CharacterFormat.FontName = "Times New Roman";
+		range.CharacterFormat.FontSize = 14f;
+		range.CharacterFormat.Bold = true;
+	}
+
+	private void AddSpeakerParagraph(IWSection section, string speakerName)
+	{
+		if (string.IsNullOrWhiteSpace(speakerName))
+		{
+			return;
+		}
+
+		var paragraph = section.AddParagraph();
+		paragraph.ParagraphFormat.HorizontalAlignment = Syncfusion.DocIO.DLS.HorizontalAlignment.Left;
+		paragraph.ParagraphFormat.BeforeSpacing = 0f;
+		paragraph.ParagraphFormat.AfterSpacing = 6f;
+		var range = paragraph.AppendText("Доповідач: " + speakerName);
+		range.CharacterFormat.FontName = "Times New Roman";
+		range.CharacterFormat.FontSize = 14f;
+		range.CharacterFormat.Italic = true;
+	}
+
+	private void AddLabelParagraph(IWSection section, string label, string text)
+	{
+		if (string.IsNullOrWhiteSpace(text))
+		{
+			return;
+		}
+
+		var paragraph = section.AddParagraph();
+		paragraph.ParagraphFormat.HorizontalAlignment = Syncfusion.DocIO.DLS.HorizontalAlignment.Left;
+		paragraph.ParagraphFormat.BeforeSpacing = 0f;
+		paragraph.ParagraphFormat.AfterSpacing = 6f;
+
+		var labelRange = paragraph.AppendText(label);
+		labelRange.CharacterFormat.FontName = "Times New Roman";
+		labelRange.CharacterFormat.FontSize = 14f;
+		labelRange.CharacterFormat.Bold = false;
+
+		var textRange = paragraph.AppendText(text);
+		textRange.CharacterFormat.FontName = "Times New Roman";
+		textRange.CharacterFormat.FontSize = 14f;
+		textRange.CharacterFormat.Bold = false;
+	}
+
+	private void AddDecisionParagraph(IWSection section, string text)
+	{
+		if (string.IsNullOrWhiteSpace(text))
+		{
+			return;
+		}
+
+		var paragraph = section.AddParagraph();
+		paragraph.ParagraphFormat.HorizontalAlignment = Syncfusion.DocIO.DLS.HorizontalAlignment.Left;
+		paragraph.ParagraphFormat.BeforeSpacing = 0f;
+		paragraph.ParagraphFormat.AfterSpacing = 0f;
+		var range = paragraph.AppendText(text);
+		range.CharacterFormat.FontName = "Times New Roman";
+		range.CharacterFormat.FontSize = 14f;
+		range.CharacterFormat.Bold = true;
+		range.CharacterFormat.Italic = true;
+	}
+
+	private void AddSpacerParagraph(IWSection section, float afterSpacing)
+	{
+		var paragraph = section.AddParagraph();
+		paragraph.ParagraphFormat.AfterSpacing = afterSpacing;
+		var range = paragraph.AppendText(" ");
+		range.CharacterFormat.FontName = "Times New Roman";
+		range.CharacterFormat.FontSize = 1f;
+	}
+
+	private string JoinParts(string separator, params string[] parts)
+	{
+		return string.Join(separator, parts.Where(q => !string.IsNullOrWhiteSpace(q)).Select(q => q.Trim()));
+	}
+
+	private string GetCellText(DataRow row, string columnName)
+	{
+		if (!row.Table.Columns.Contains(columnName))
+			return string.Empty;
+
+		var value = row[columnName];
+		if (value == null || value is DBNull)
+			return string.Empty;
+
+		var dataType = row.Table.Columns[columnName].DataType;
+		if (dataType == typeof(string))
+			return value.ToString();
+		if (dataType == typeof(DateTime))
+			return ((DateTime)value).ToString("dd.MM.yyyy");
+		if (dataType == typeof(decimal))
+			return ((decimal)value).ToString("0.##", CultureInfo.InvariantCulture);
+		if (dataType == typeof(double))
+			return ((double)value).ToString("0.##", CultureInfo.InvariantCulture);
+		if (dataType == typeof(float))
+			return ((float)value).ToString("0.##", CultureInfo.InvariantCulture);
+		if (dataType == typeof(int))
+			return ((int)value).ToString(CultureInfo.InvariantCulture);
+		if (dataType == typeof(long))
+			return ((long)value).ToString(CultureInfo.InvariantCulture);
+
+		return value.ToString();
+	}
+
+	private string GetMainSql(List<int> ids)
+	{
+		return @"
+SELECT
+	isnull(fs.protocol_question_num, row_number() over (order by org.short_name, b.street_full_name, b.addr_nomer, fs.total_free_sqr)) as ""№"",
+	isnull(conv.target_text, org_giver.short_name) as ""converted_org_giver"",
+	org_renter.full_name as ""Найменування орендаря"",
+	b.street_full_name as ""Назва Вулиці"",
+	b.addr_nomer as ""Номер Будинку"",
+	fs.incoming_doc_num as ""Вхідний номер"",
+	fs.incoming_doc_date as ""Дата вхідного документа"",
+	fs.outgoing_doc_num as ""Вихідний номер"",
+	fs.outgoing_doc_date as ""Дата вихідного документа"",
+	fs.speaker_name as ""Доповідач"",
+	fs.slukhali_text as ""СЛУХАЛИ"",
+	fs.virishyly_text as ""ВИРІШИЛИ"",
+	fs.golosovanie as ""ГОЛОСУВАЛИ"",
+	fs.commission_result as ""Результат""
+FROM view_reports1nf rep
+join reports1nf_arenda bal on bal.report_id = rep.report_id
+JOIN view_reports1nf_buildings b ON b.unique_id = bal.building_1nf_unique_id
+join dbo.reports1nf_arenda_dogcontinue fs on fs.arenda_id = bal.id and fs.report_id = rep.report_id
+join reports1nf_org_info org on org.id = bal.org_balans_id
+left join organizations org_renter on org_renter.id = bal.org_renter_id
+left join organizations org_giver ON org_giver.id = bal.org_giver_id and (org_giver.is_deleted is null or org_giver.is_deleted = 0)
+left join dbo.texts_org_giver_convert conv on conv.source_text = org_giver.short_name
+WHERE fs.id in (" + string.Join(",", ids) + @")
+ORDER BY 1";
+	}
+}
+
