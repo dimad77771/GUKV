@@ -180,8 +180,8 @@ public class CommissionLetter
 SELECT
     cast(fs.id as varchar(50)) as ""Реєстраційний номер"",
 
-	fs.""incoming_doc_num"" as ""Вхідний номер звернення"",
-	fs.""incoming_doc_date"" as ""Дата вхідного звернення"",
+	fs.""outgoing_doc_num"" as ""Вхідний номер звернення"",
+	fs.""outgoing_doc_date"" as ""Дата вхідного звернення"",
 
 	org_giver.full_name as ""Орендодавець"",
     org.full_name as ""Найменування балансоутримувача"",
