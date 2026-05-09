@@ -1456,14 +1456,14 @@ WHERE fs.id in (" + string.Join(",", ids) + @")";
 SELECT
 	row_number() over (order by org.short_name, b.street_full_name, b.addr_nomer, fs.total_free_sqr) as ""№"",
 	N'продовження' as ""Тип питання"",
-	N'Департамент комунальної власності м. Києва' as ""Орендодавець"",
+	org_giver.full_name as ""Орендодавець"",
 	org.short_name as ""Балансоутримувач"",
 	org_renter.full_name as ""Орендар"",
 	LTRIM(RTRIM(b.street_full_name)) + N' ' + LTRIM(RTRIM(b.addr_nomer)) as ""Адреса"",
 	fs.building_type as ""Тип будинку"",
 	fs.floor as ""Характеристика об'єкта оренди"",
 	fs.category as ""Категорія"",
-	(select Q.name from dict_may_pravo_prodov Q where Q.id = fs.may_pravo_prodov) as ""Цільове призначення"",
+	fs.possible_using as ""Цільове призначення"",
 	fs.total_free_sqr as ""Орендована площа, кв.м."",
 	fs.rental_rate_percent as ""Орендна ставка"",
 	fs.orend_plat_last_month as ""Місячна орендна плата, грн"",
@@ -1478,6 +1478,7 @@ JOIN view_reports1nf_buildings b ON b.unique_id = bal.building_1nf_unique_id
 join dbo.reports1nf_arenda_dogcontinue fs on fs.arenda_id = bal.id and fs.report_id = rep.report_id
 join reports1nf_org_info org on org.id = bal.org_balans_id
 left join organizations org_renter on org_renter.id = bal.org_renter_id
+left outer join organizations org_giver ON org_giver.id = bal.org_giver_id and (org_giver.is_deleted is null or org_giver.is_deleted = 0)
 WHERE fs.id in (" + string.Join(",", ids) + @")
 ORDER BY 1";
 	}
@@ -1772,7 +1773,7 @@ SELECT
 	LTRIM(RTRIM(b.street_full_name)) + N' ' + LTRIM(RTRIM(b.addr_nomer)) as ""Адреса"",
 	fs.building_type as ""Тип будинку"",
 	fs.floor as ""Характеристика об'єкта оренди, поверх"",
-	(select Q.name from dict_may_pravo_prodov Q where Q.id = fs.may_pravo_prodov) as ""Цільове призначення"",
+	fs.possible_using as ""Цільове призначення"",
 	fs.total_free_sqr as ""Орендована площа кв.м"",
 	fs.rental_rate_percent as ""Поточна ставка, %**"",
 	fs.orend_plat_last_month as ""Місячна орендна плата грн"",
@@ -2068,6 +2069,7 @@ public class CommissionResultTextBuilder
 			var renterName = GetCellText(row, "Найменування орендаря");
 			var streetName = GetCellText(row, "Назва Вулиці");
 			var houseNumber = GetCellText(row, "Номер Будинку");
+			var total_free_sqr = "загальна площа " + GetCellText(row, "Загальна площа об’єкта") + " кв.м";
 			var incomingDocNum = GetCellText(row, "Вхідний номер");
 			var incomingDocDate = GetCellText(row, "Дата вхідного документа");
 			var outgoingDocNum = GetCellText(row, "Вихідний номер");
@@ -2078,9 +2080,9 @@ public class CommissionResultTextBuilder
 			var golosovanie = GetCellText(row, "ГОЛОСУВАЛИ");
 			var commissionResult = GetCellText(row, "Результат");
 
-			var objectText = JoinParts(", ", renterName, streetName, houseNumber);
-			var incomingText = BuildDocumentRefText("Вх. № ", incomingDocNum, incomingDocDate);
-			var outgoingText = BuildDocumentRefText("Вих. № ", outgoingDocNum, outgoingDocDate);
+			var objectText = JoinParts(", ", renterName, streetName, houseNumber, total_free_sqr);
+			var incomingText = BuildDocumentRefText("Вх. ", incomingDocNum, incomingDocDate);
+			var outgoingText = BuildDocumentRefText("Вих. ", outgoingDocNum, outgoingDocDate);
 			var refsText = JoinParts(" ", incomingText, outgoingText);
 			if (!string.IsNullOrWhiteSpace(refsText))
 			{
@@ -2108,7 +2110,7 @@ public class CommissionResultTextBuilder
 
 		if (string.IsNullOrWhiteSpace(docDate))
 		{
-			return prefix + docNum;
+			return prefix + "№ " + docNum;
 		}
 
 		if (string.IsNullOrWhiteSpace(docNum))
@@ -2116,7 +2118,7 @@ public class CommissionResultTextBuilder
 			return "від " + docDate;
 		}
 
-		return prefix + docNum + " від " + docDate;
+		return prefix + "від " + docDate + " № " + docNum;
 	}
 
 	private void AddCenteredParagraph(IWSection section, string text, float fontSize, bool bold, bool italic, float beforeSpacing, float afterSpacing)
@@ -2253,6 +2255,7 @@ SELECT
 	org_renter.full_name as ""Найменування орендаря"",
 	b.street_full_name as ""Назва Вулиці"",
 	b.addr_nomer as ""Номер Будинку"",
+	fs.total_free_sqr as ""Загальна площа об’єкта"",
 	fs.incoming_doc_num as ""Вхідний номер"",
 	fs.incoming_doc_date as ""Дата вхідного документа"",
 	fs.outgoing_doc_num as ""Вихідний номер"",
