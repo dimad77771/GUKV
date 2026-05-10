@@ -79,7 +79,7 @@ public partial class Reports1NF_Report1NFDogContinue : System.Web.UI.Page
 
 		SectionMenu.Visible = false;
 
-		FreeSquareGridView.TemplateColumnsStyles("may_pravo_prodov_text");
+		FreeSquareGridView.TemplateColumnsStyles("may_pravo_prodov");
 	}
 
 	protected void ASPxButton_FreeSquare_ExportXLS_Click(object sender, EventArgs e)
@@ -1875,9 +1875,22 @@ public class CommissionProrydokTextBuilder
 			var renterName = GetCellText(row, "Найменування орендаря");
 			var streetName = GetCellText(row, "Назва Вулиці");
 			var houseNumber = GetCellText(row, "Номер Будинку");
+			var total_free_sqr = "загальна площа " + GetCellText(row, "Загальна площа об’єкта") + " кв.м";
+			var incomingDocNum = GetCellText(row, "Вхідний номер");
+			var incomingDocDate = GetCellText(row, "Дата вхідного документа");
+			var outgoingDocNum = GetCellText(row, "Вихідний номер");
+			var outgoingDocDate = GetCellText(row, "Дата вихідного документа");
 			var speakerName = GetCellText(row, "Доповідач");
 
-			var objectText = JoinParts(", ", renterName, streetName, houseNumber);
+			var objectText = JoinParts(", ", renterName, streetName, houseNumber, total_free_sqr);
+			var incomingText = ReportCommonFunctions.BuildDocumentRefText("Вх. ", incomingDocNum, incomingDocDate);
+			var outgoingText = ReportCommonFunctions.BuildDocumentRefText("Вих. ", outgoingDocNum, outgoingDocDate);
+			var refsText = JoinParts(" ", incomingText, outgoingText);
+			if (!string.IsNullOrWhiteSpace(refsText))
+			{
+				objectText = objectText + " (" + refsText + ")";
+			}
+
 			var mainText = number + ". Про розгляд звернення " + convertedOrgGiver + " щодо питання \"Продовження\" - " + objectText;
 
 			AddItemParagraph(section, mainText);
@@ -1974,6 +1987,11 @@ SELECT
 	org_renter.full_name as ""Найменування орендаря"",
 	b.street_full_name as ""Назва Вулиці"",
 	b.addr_nomer as ""Номер Будинку"",
+	fs.total_free_sqr as ""Загальна площа об’єкта"",
+	fs.incoming_doc_num as ""Вхідний номер"",
+	fs.incoming_doc_date as ""Дата вхідного документа"",
+	fs.outgoing_doc_num as ""Вихідний номер"",
+	fs.outgoing_doc_date as ""Дата вихідного документа"",
 	fs.speaker_name as ""Доповідач""
 FROM view_reports1nf rep
 join reports1nf_arenda bal on bal.report_id = rep.report_id
@@ -2058,6 +2076,22 @@ public class CommissionResultTextBuilder
 		return dataTable;
 	}
 
+	private class VotingInfo
+	{
+		public bool HasSummary;
+		public int ZaCount;
+		public int ProtyCount;
+		public int UtrymCount;
+		public int NoVoteCount;
+		public List<VotingTableRow> Rows = new List<VotingTableRow>();
+	}
+
+	private class VotingTableRow
+	{
+		public string DeputyName;
+		public string VoteValue;
+	}
+
 	private void BuildDocument(IWSection section, DataTable data)
 	{
 		AddCenteredParagraph(section, "Розгляд питань оренди", 16f, true, false, 0f, 18f);
@@ -2078,11 +2112,14 @@ public class CommissionResultTextBuilder
 			var slukhaliText = GetCellText(row, "СЛУХАЛИ");
 			var virishylyText = GetCellText(row, "ВИРІШИЛИ");
 			var golosovanie = GetCellText(row, "ГОЛОСУВАЛИ");
+			var deputiesList = GetCellText(row, "Список депутатів");
 			var commissionResult = GetCellText(row, "Результат");
+			var votingInfo = ParseVotingInfo(golosovanie, deputiesList);
+			var votingSummaryText = BuildVotingSummaryText(votingInfo, golosovanie);
 
 			var objectText = JoinParts(", ", renterName, streetName, houseNumber, total_free_sqr);
-			var incomingText = BuildDocumentRefText("Вх. ", incomingDocNum, incomingDocDate);
-			var outgoingText = BuildDocumentRefText("Вих. ", outgoingDocNum, outgoingDocDate);
+			var incomingText = ReportCommonFunctions.BuildDocumentRefText("Вх. ", incomingDocNum, incomingDocDate);
+			var outgoingText = ReportCommonFunctions.BuildDocumentRefText("Вих. ", outgoingDocNum, outgoingDocDate);
 			var refsText = JoinParts(" ", incomingText, outgoingText);
 			if (!string.IsNullOrWhiteSpace(refsText))
 			{
@@ -2095,31 +2132,242 @@ public class CommissionResultTextBuilder
 			AddSpeakerParagraph(section, speakerName);
 			AddLabelParagraph(section, "СЛУХАЛИ: ", slukhaliText);
 			AddLabelParagraph(section, "ВИРІШИЛИ: ", virishylyText);
-			AddLabelParagraph(section, "ГОЛОСУВАЛИ: ", golosovanie);
+			AddLabelParagraph(section, "ГОЛОСУВАЛИ: ", votingSummaryText);
 			AddDecisionParagraph(section, string.IsNullOrWhiteSpace(commissionResult) ? "-" : commissionResult);
+			AddVotingTable(section, votingInfo.Rows);
 			AddSpacerParagraph(section, 16f);
 		}
 	}
 
-	private string BuildDocumentRefText(string prefix, string docNum, string docDate)
+	private VotingInfo ParseVotingInfo(string golosovanie, string deputiesList)
 	{
-		if (string.IsNullOrWhiteSpace(docNum) && string.IsNullOrWhiteSpace(docDate))
+		var info = new VotingInfo();
+		var voteMap = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+		var parsedRows = new List<VotingTableRow>();
+
+		if (TryParseDetailedVotingText(golosovanie, info, voteMap, parsedRows))
 		{
-			return string.Empty;
+			info.HasSummary = true;
+		}
+		else if (TryParseSummaryVotingText(golosovanie, info))
+		{
+			info.HasSummary = true;
 		}
 
-		if (string.IsNullOrWhiteSpace(docDate))
+		var deputies = ParseSemicolonSeparatedList(deputiesList);
+		if (deputies.Count > 0)
 		{
-			return prefix + "№ " + docNum;
+			var usedNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+			foreach (var deputy in deputies)
+			{
+				var key = NormalizeNameKey(deputy);
+				string voteValue;
+				voteMap.TryGetValue(key, out voteValue);
+				info.Rows.Add(new VotingTableRow
+				{
+					DeputyName = deputy,
+					VoteValue = voteValue ?? string.Empty
+				});
+				usedNames.Add(key);
+			}
+
+			foreach (var row in parsedRows)
+			{
+				var key = NormalizeNameKey(row.DeputyName);
+				if (!usedNames.Contains(key))
+				{
+					info.Rows.Add(row);
+				}
+			}
+		}
+		else
+		{
+			info.Rows.AddRange(parsedRows);
 		}
 
-		if (string.IsNullOrWhiteSpace(docNum))
-		{
-			return "від " + docDate;
-		}
-
-		return prefix + "від " + docDate + " № " + docNum;
+		return info;
 	}
+
+	private bool TryParseDetailedVotingText(string golosovanie, VotingInfo info, Dictionary<string, string> voteMap, List<VotingTableRow> rows)
+	{
+		if (string.IsNullOrWhiteSpace(golosovanie))
+		{
+			return false;
+		}
+
+		var regex = new Regex(
+			"^\\s*[\"«]за[\"»]\\s*\\((?<zaCount>\\d+)\\)(?:\\s*[-–]\\s*(?<zaNames>.*?))?\\s*,\\s*[\"«]проти[\"»]\\s*\\((?<protyCount>\\d+)\\)(?:\\s*[-–]\\s*(?<protyNames>.*?))?\\s*,\\s*[\"«]утримались[\"»]\\s*\\((?<utrymCount>\\d+)\\)(?:\\s*[-–]\\s*(?<utrymNames>.*?))?\\s*,\\s*[\"«]не\\s+голосували[\"»]\\s*\\((?<noVoteCount>\\d+)\\)(?:\\s*[-–]\\s*(?<noVoteNames>.*?))?\\s*,?\\s*$",
+			RegexOptions.IgnoreCase | RegexOptions.Singleline | RegexOptions.CultureInvariant);
+
+		var match = regex.Match(golosovanie.Trim());
+		if (!match.Success)
+		{
+			return false;
+		}
+
+		info.ZaCount = Int32.Parse(match.Groups["zaCount"].Value);
+		info.ProtyCount = Int32.Parse(match.Groups["protyCount"].Value);
+		info.UtrymCount = Int32.Parse(match.Groups["utrymCount"].Value);
+		info.NoVoteCount = Int32.Parse(match.Groups["noVoteCount"].Value);
+
+		AddVotingRows(match.Groups["zaNames"].Value, "За", voteMap, rows);
+		AddVotingRows(match.Groups["protyNames"].Value, "Проти", voteMap, rows);
+		AddVotingRows(match.Groups["utrymNames"].Value, "Утримався", voteMap, rows);
+		AddVotingRows(match.Groups["noVoteNames"].Value, "Не голосував", voteMap, rows);
+
+		return true;
+	}
+
+	private bool TryParseSummaryVotingText(string golosovanie, VotingInfo info)
+	{
+		if (string.IsNullOrWhiteSpace(golosovanie))
+		{
+			return false;
+		}
+
+		var regex = new Regex(
+			"^\\s*[\"«]за[\"»]\\s*[-–]\\s*(?<zaCount>\\d+)\\s*[,;]\\s*[\"«]проти[\"»]\\s*[-–]\\s*(?<protyCount>\\d+)\\s*[,;]\\s*[\"«]утримались[\"»]\\s*[-–]\\s*(?<utrymCount>\\d+)\\s*[,;]\\s*[\"«]не\\s+голосували[\"»]\\s*[-–]\\s*(?<noVoteCount>\\d+)\\s*\\.?\\s*$",
+			RegexOptions.IgnoreCase | RegexOptions.Singleline | RegexOptions.CultureInvariant);
+
+		var match = regex.Match(golosovanie.Trim());
+		if (!match.Success)
+		{
+			return false;
+		}
+
+		info.ZaCount = Int32.Parse(match.Groups["zaCount"].Value);
+		info.ProtyCount = Int32.Parse(match.Groups["protyCount"].Value);
+		info.UtrymCount = Int32.Parse(match.Groups["utrymCount"].Value);
+		info.NoVoteCount = Int32.Parse(match.Groups["noVoteCount"].Value);
+		return true;
+	}
+
+	private void AddVotingRows(string namesText, string voteValue, Dictionary<string, string> voteMap, List<VotingTableRow> rows)
+	{
+		var names = ParseCommaSeparatedList(namesText);
+		foreach (var name in names)
+		{
+			var key = NormalizeNameKey(name);
+			if (string.IsNullOrWhiteSpace(key))
+			{
+				continue;
+			}
+
+			if (!voteMap.ContainsKey(key))
+			{
+				voteMap.Add(key, voteValue);
+				rows.Add(new VotingTableRow
+				{
+					DeputyName = name,
+					VoteValue = voteValue
+				});
+			}
+		}
+	}
+
+	private List<string> ParseCommaSeparatedList(string text)
+	{
+		if (string.IsNullOrWhiteSpace(text))
+		{
+			return new List<string>();
+		}
+
+		return text
+			.Trim()
+			.TrimEnd(',', ';', '.')
+			.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+			.Select(q => q.Trim())
+			.Where(q => !string.IsNullOrWhiteSpace(q))
+			.ToList();
+	}
+
+	private List<string> ParseSemicolonSeparatedList(string text)
+	{
+		if (string.IsNullOrWhiteSpace(text))
+		{
+			return new List<string>();
+		}
+
+		return text
+			.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries)
+			.Select(q => q.Trim())
+			.Where(q => !string.IsNullOrWhiteSpace(q))
+			.ToList();
+	}
+
+	private string NormalizeNameKey(string value)
+	{
+		return Regex.Replace(value ?? string.Empty, "\\s+", " ").Trim();
+	}
+
+	private string BuildVotingSummaryText(VotingInfo info, string fallbackText)
+	{
+		if (info != null && info.HasSummary)
+		{
+			return string.Format(
+				CultureInfo.InvariantCulture,
+				"«за» - {0}, «проти» - {1}; «утримались» - {2}; «не голосували» - {3}.",
+				info.ZaCount,
+				info.ProtyCount,
+				info.UtrymCount,
+				info.NoVoteCount);
+		}
+
+		return fallbackText;
+	}
+
+	private void AddVotingTable(IWSection section, List<VotingTableRow> rows)
+	{
+		if (rows == null || rows.Count == 0 || !rows.Any(q => !string.IsNullOrWhiteSpace(q.VoteValue)))
+		{
+			return;
+		}
+
+		var table = section.AddTable() as WTable;
+		if (table == null)
+		{
+			return;
+		}
+
+		table.ResetCells(rows.Count + 1, 2);
+		table.TableFormat.Borders.BorderType = Syncfusion.DocIO.DLS.BorderStyle.Single;
+
+		SetVotingTableCell(table.Rows[0].Cells[0], "ПІБ", true);
+		SetVotingTableCell(table.Rows[0].Cells[1], "Результати голосування", true);
+
+		for (var i = 0; i < rows.Count; i++)
+		{
+			SetVotingTableCell(table.Rows[i + 1].Cells[0], rows[i].DeputyName, false);
+			SetVotingTableCell(table.Rows[i + 1].Cells[1], GetVotingTableValue(rows[i].VoteValue), false);
+		}
+	}
+
+	private void SetVotingTableCell(WTableCell cell, string text, bool bold)
+	{
+		cell.CellFormat.VerticalAlignment = Syncfusion.DocIO.DLS.VerticalAlignment.Middle;
+
+		var paragraph = cell.AddParagraph();
+		paragraph.ParagraphFormat.HorizontalAlignment = Syncfusion.DocIO.DLS.HorizontalAlignment.Left;
+		paragraph.ParagraphFormat.BeforeSpacing = 0f;
+		paragraph.ParagraphFormat.AfterSpacing = 0f;
+
+		var range = paragraph.AppendText(text ?? string.Empty);
+		range.CharacterFormat.FontName = "Times New Roman";
+		range.CharacterFormat.FontSize = 12f;
+		range.CharacterFormat.Bold = bold;
+	}
+
+	private string GetVotingTableValue(string voteValue)
+	{
+		if (voteValue == "Не голосував")
+		{
+			return "Відсутня на засіданні";
+		}
+
+		return voteValue ?? string.Empty;
+	}
+
+
 
 	private void AddCenteredParagraph(IWSection section, string text, float fontSize, bool bold, bool italic, float beforeSpacing, float afterSpacing)
 	{
@@ -2264,6 +2512,7 @@ SELECT
 	fs.slukhali_text as ""СЛУХАЛИ"",
 	fs.virishyly_text as ""ВИРІШИЛИ"",
 	fs.golosovanie as ""ГОЛОСУВАЛИ"",
+	dc.deputies_list as ""Список депутатів"",
 	fs.commission_result as ""Результат""
 FROM view_reports1nf rep
 join reports1nf_arenda bal on bal.report_id = rep.report_id
@@ -2273,8 +2522,32 @@ join reports1nf_org_info org on org.id = bal.org_balans_id
 left join organizations org_renter on org_renter.id = bal.org_renter_id
 left join organizations org_giver ON org_giver.id = bal.org_giver_id and (org_giver.is_deleted is null or org_giver.is_deleted = 0)
 left join dbo.texts_org_giver_convert conv on conv.source_text = org_giver.short_name
+left join dbo.dogcontinue_commission dc on dc.id = fs.commission_id
 WHERE fs.id in (" + string.Join(",", ids) + @")
 ORDER BY 1";
 	}
 }
 
+
+public static class ReportCommonFunctions
+{
+	public static string BuildDocumentRefText(string prefix, string docNum, string docDate)
+	{
+		if (string.IsNullOrWhiteSpace(docNum) && string.IsNullOrWhiteSpace(docDate))
+		{
+			return string.Empty;
+		}
+
+		if (string.IsNullOrWhiteSpace(docDate))
+		{
+			return prefix + "№ " + docNum;
+		}
+
+		if (string.IsNullOrWhiteSpace(docNum))
+		{
+			return "від " + docDate;
+		}
+
+		return prefix + "від " + docDate + " № " + docNum;
+	}
+}

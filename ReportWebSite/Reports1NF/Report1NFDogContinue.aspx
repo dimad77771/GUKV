@@ -384,7 +384,8 @@
 ,fs.orend_plat_last_month
 ,fs.orend_plat_dogovor
 ,fs.has_perevazh_pravo
-,(select Q.name from dict_may_pravo_prodov Q where Q.id = fs.may_pravo_prodov) as may_pravo_prodov_text
+--,(select Q.name from dict_may_pravo_prodov Q where Q.id = fs.may_pravo_prodov) as may_pravo_prodov_text
+,fs.may_pravo_prodov
 ,fs.polipshanya_vartist
 ,fs.polipshanya_finish_date
 ,fs.primitki
@@ -454,7 +455,7 @@ SET
 	[current_stage_docdate] = @current_stage_docdate,
 	[current_stage_docnum] = @current_stage_docnum,
     [prozoro_number] = @prozoro_number,
-    [may_pravo_prodov] = @may_pravo_prodov_text,
+    [may_pravo_prodov] = @may_pravo_prodov,
 	[is_included] = @is_included,
 	[building_type] = @building_type,
 	[category] = @category,
@@ -1368,7 +1369,7 @@ WHERE id = @id"
 				<dx:ASPxLabel runat="server" Text='<%# Eval("may_pravo_prodov_text") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>--%>
-        	<dx:GridViewDataComboBoxColumn FieldName="may_pravo_prodov_text" Caption="Цільове використання" VisibleIndex="24" Width="230px">
+        	<dx:GridViewDataComboBoxColumn FieldName="may_pravo_prodov" Caption="Цільове використання" VisibleIndex="24" Width="230px">
             <PropertiesComboBox 
 				DataSourceID="SqlDataSourceMayPravoProdov"
 				DropDownStyle="DropDownList"
