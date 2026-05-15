@@ -1638,14 +1638,12 @@ WHERE fs.id in (" + string.Join(",", ids) + @")";
 		worksheet.Range["A1:" + lastColLetter + "1"].Merge();
 		worksheet.Range["A2:" + lastColLetter + "2"].Merge();
 		worksheet.Range["A3:" + lastColLetter + "3"].Merge();
-		worksheet.Range["A4:" + lastColLetter + "4"].Merge();
 
 		worksheet.Range["A1"].Text = !string.IsNullOrWhiteSpace(headerData.CommissionNum)
 			? "Додаток до протоколу № " + headerData.CommissionNum
 			: "Додаток до протоколу";
 		worksheet.Range["A2"].Text = "засідання постійної комісії Київської міської ради";
 		worksheet.Range["A3"].Text = "з питань власності та регуляторної політики" + (headerData.CommissionDate.HasValue ? " від " + headerData.CommissionDate.Value.ToString("dd.MM.yyyy") : string.Empty);
-		worksheet.Range["A4"].Text = "Перелік погоджених постійною комісією Київської міської ради з питань власності питань оренди щодо нежитлових приміщень комунальної власності м.Києва, орендодавцем яких виступає Департамент комунальної власності м. Києва";
 
 		for (var r = 1; r <= 3; r++)
 		{
@@ -1654,11 +1652,7 @@ WHERE fs.id in (" + string.Join(",", ids) + @")";
 			worksheet.Range[r, 1].CellStyle.Font.Size = 9;
 		}
 
-		worksheet.Range["A4"].CellStyle.Font.Bold = true;
-		worksheet.Range["A4"].CellStyle.Font.Size = 12;
-		worksheet.Range["A4"].CellStyle.HorizontalAlignment = ExcelHAlign.HAlignCenter;
-		worksheet.Range["A4"].CellStyle.VerticalAlignment = ExcelVAlign.VAlignCenter;
-		worksheet.Range["A4"].CellStyle.WrapText = true;
+		SetGroupTitleRow(worksheet, 4, lastColLetter, GetFirstGroupName(data));
 
 		for (var i = 0; i < headers.Length; i++)
 		{
@@ -1678,8 +1672,18 @@ WHERE fs.id in (" + string.Join(",", ids) + @")";
 		worksheet.SetRowHeight(5, 62);
 
 		var rowIndex = 6;
+		var currentGroupName = GetFirstGroupName(data);
 		foreach (DataRow row in data.Rows)
 		{
+			var groupName = GetCellText(row, "converted_org_giver");
+			if (!String.Equals(groupName, currentGroupName, StringComparison.Ordinal))
+			{
+				SetGroupTitleRow(worksheet, rowIndex, lastColLetter, groupName);
+				worksheet.SetRowHeight(rowIndex, 44);
+				rowIndex++;
+				currentGroupName = groupName;
+			}
+
 			worksheet[rowIndex, 1].Text = GetCellText(row, "№ питання у протоколі");
 			worksheet[rowIndex, 2].Text = GetCellText(row, "Дата оцінки");
 			worksheet[rowIndex, 3].Text = GetCellText(row, "Дата договору оренди, який продовжується, змінюється");
@@ -1716,6 +1720,33 @@ WHERE fs.id in (" + string.Join(",", ids) + @")";
 				cell.CellStyle.HorizontalAlignment = ExcelHAlign.HAlignCenter;
 			}
 		}
+	}
+
+	private void SetGroupTitleRow(IWorksheet worksheet, int rowIndex, string lastColLetter, string orgGiverName)
+	{
+		var range = worksheet.Range["A" + rowIndex.ToString(CultureInfo.InvariantCulture) + ":" + lastColLetter + rowIndex.ToString(CultureInfo.InvariantCulture)];
+		range.Merge();
+		worksheet[rowIndex, 1].Text = BuildGroupTitle(orgGiverName);
+		range.CellStyle.Font.Bold = true;
+		range.CellStyle.Font.Size = 12;
+		range.CellStyle.HorizontalAlignment = ExcelHAlign.HAlignCenter;
+		range.CellStyle.VerticalAlignment = ExcelVAlign.VAlignCenter;
+		range.CellStyle.WrapText = true;
+	}
+
+	private string BuildGroupTitle(string orgGiverName)
+	{
+		return "Перелік погоджених постійною комісією Київської міської ради з питань власності питань оренди щодо нежитлових приміщень комунальної власності м.Києва, орендодавцем яких виступає " + (orgGiverName ?? string.Empty).Trim();
+	}
+
+	private string GetFirstGroupName(DataTable data)
+	{
+		if (data == null || data.Rows.Count == 0)
+		{
+			return string.Empty;
+		}
+
+		return GetCellText(data.Rows[0], "converted_org_giver");
 	}
 
 	private string GetExcelColumnName(int columnNumber)
@@ -1768,6 +1799,7 @@ SELECT
 	fs.zalbalansvartist_date as ""Дата оцінки"",
 	bal.agreement_date as ""Дата договору оренди, який продовжується, змінюється"",
 	N'Продовження' as ""Тип питання"",
+	isnull(conv.target_text, org_giver.short_name) as ""converted_org_giver"",
 	org.full_name as ""Балансоутримувач"",
 	LTRIM(RTRIM(isnull(org_renter.full_name, N''))) + case when isnull(org_renter.zkpo_code, N'') <> N'' then N', код ' + LTRIM(RTRIM(org_renter.zkpo_code)) else N'' end as ""Орендар, код"",
 	LTRIM(RTRIM(b.street_full_name)) + N' ' + LTRIM(RTRIM(b.addr_nomer)) as ""Адреса"",
@@ -1787,8 +1819,10 @@ JOIN view_reports1nf_buildings b ON b.unique_id = bal.building_1nf_unique_id
 join dbo.reports1nf_arenda_dogcontinue fs on fs.arenda_id = bal.id and fs.report_id = rep.report_id
 join reports1nf_org_info org on org.id = bal.org_balans_id
 left join organizations org_renter on org_renter.id = bal.org_renter_id
+left join organizations org_giver ON org_giver.id = bal.org_giver_id and (org_giver.is_deleted is null or org_giver.is_deleted = 0)
+left join dbo.texts_org_giver_convert conv on conv.source_text = org_giver.short_name
 WHERE fs.id in (" + string.Join(",", ids) + @")
-ORDER BY 1";
+ORDER BY converted_org_giver, 1";
 	}
 }
 
