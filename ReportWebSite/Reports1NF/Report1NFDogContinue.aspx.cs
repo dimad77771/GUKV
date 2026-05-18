@@ -240,10 +240,13 @@ public partial class Reports1NF_Report1NFDogContinue : System.Web.UI.Page
 		var username = (user == null ? String.Empty : (String)user.UserName);
 		dbparams.AddWithValue("@modified_by2", username);
 
-		var geodata_map_points = (string)(e.Command.Parameters["@geodata_map_points"].Value);
-		if (!Validate_geodata_map_points(geodata_map_points))
+		if (e.Command.Parameters.Contains("@geodata_map_points"))
 		{
-			throw new Exception("Невірно заповнене поле \"Координати на мапі\". Приклад вірно заповненого поля (широта довгота) \"50.509205 30.426741\"");
+			var geodata_map_points = (string)(e.Command.Parameters["@geodata_map_points"].Value);
+			if (!Validate_geodata_map_points(geodata_map_points))
+			{
+				throw new Exception("Невірно заповнене поле \"Координати на мапі\". Приклад вірно заповненого поля (широта довгота) \"50.509205 30.426741\"");
+			}
 		}
 
 		var free_square_id = (int)(e.Command.Parameters["@id"].Value);
@@ -283,11 +286,7 @@ public partial class Reports1NF_Report1NFDogContinue : System.Web.UI.Page
 				: DBNull.Value;
 		}
 
-		var parameters = (SqlParameterCollection)e.Command.Parameters;
-		if (!parameters.Contains("@prozoro_number"))
-		{
-			parameters.AddWithValue("@prozoro_number", DBNull.Value);
-		}
+		UpdateCommandHelper.PrepareUpdateCommand(this, SqlDataSourceFreeSquare, e.Command);
 
 		if (change_step && new int?[] { 150, 300 }.Contains(freecycle_step_dict_id))
 		{
