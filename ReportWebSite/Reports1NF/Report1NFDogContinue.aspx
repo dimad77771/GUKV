@@ -853,6 +853,7 @@ WHERE id = @id"
                                             <dx:ListEditItem Text="Проти" Value="Проти" />
                                             <dx:ListEditItem Text="Утримався" Value="Утримався" />
                                             <dx:ListEditItem Text="Не голосував" Value="Не голосував" />
+                                            <dx:ListEditItem Text="Відсутній на засіданні" Value="Відсутній на засіданні" />
                                         </Items>
                                     </PropertiesComboBox>
                                 </dx:GridViewDataComboBoxColumn>

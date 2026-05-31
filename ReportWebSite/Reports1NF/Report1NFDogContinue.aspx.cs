@@ -853,7 +853,6 @@ connection, transaction);
 		PopupDistrictRepresentativesEditor.ShowOnPageLoad = false;
 	}
 
-
 	private DataTable CreateVotingEditorTable()
 	{
 		var table = new DataTable();
@@ -942,7 +941,11 @@ connection, transaction);
 		}
 
 		var regex = new Regex(
-			"^\\s*\"за\"\\s*\\((?<zaCount>\\d+)\\)(?:\\s*-\\s*(?<zaNames>.*?))?,\\s*\"проти\"\\s*\\((?<protyCount>\\d+)\\)(?:\\s*-\\s*(?<protyNames>.*?))?,\\s*\"утримались\"\\s*\\((?<utrymCount>\\d+)\\)(?:\\s*-\\s*(?<utrymNames>.*?))?,\\s*\"не голосували\"\\s*\\((?<noVoteCount>\\d+)\\)(?:\\s*-\\s*(?<noVoteNames>.*?))?,?\\s*$",
+			"^\\s*[\"«]за[\"»]\\s*\\((?<zaCount>\\d+)\\)(?:\\s*[-–]\\s*(?<zaNames>.*?))?\\s*,\\s*" +
+			"[\"«]проти[\"»]\\s*\\((?<protyCount>\\d+)\\)(?:\\s*[-–]\\s*(?<protyNames>.*?))?\\s*,\\s*" +
+			"[\"«]утримались[\"»]\\s*\\((?<utrymCount>\\d+)\\)(?:\\s*[-–]\\s*(?<utrymNames>.*?))?\\s*,\\s*" +
+			"[\"«]не\\s+голосували[\"»]\\s*\\((?<noVoteCount>\\d+)\\)(?:\\s*[-–]\\s*(?<noVoteNames>.*?))?" +
+			"(?:\\s*,\\s*[\"«]відсутні\\s+на\\s+засіданні[\"»]\\s*\\((?<absentCount>\\d+)\\)(?:\\s*[-–]\\s*(?<absentNames>.*?))?)?\\s*,?\\s*$",
 			RegexOptions.IgnoreCase | RegexOptions.Singleline | RegexOptions.CultureInvariant);
 
 		var match = regex.Match(golosovanie.Trim());
@@ -952,6 +955,7 @@ connection, transaction);
 		}
 
 		var result = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
 		if (!TryAddVotesFromGroup(match, "zaCount", "zaNames", "За", result))
 		{
 			return null;
@@ -972,13 +976,27 @@ connection, transaction);
 			return null;
 		}
 
+		if (match.Groups["absentCount"].Success)
+		{
+			if (!TryAddVotesFromGroup(match, "absentCount", "absentNames", "Відсутній на засіданні", result))
+			{
+				return null;
+			}
+		}
+
 		return result;
 	}
 
 	private bool TryAddVotesFromGroup(Match match, string countGroupName, string namesGroupName, string voteValue, Dictionary<string, string> result)
 	{
-		var count = Int32.Parse(match.Groups[countGroupName].Value);
-		var namesText = match.Groups[namesGroupName].Success ? match.Groups[namesGroupName].Value.Trim() : string.Empty;
+		var count = match.Groups[countGroupName].Success
+			? Int32.Parse(match.Groups[countGroupName].Value)
+			: 0;
+
+		var namesText = match.Groups[namesGroupName].Success
+			? match.Groups[namesGroupName].Value.Trim()
+			: string.Empty;
+
 		var names = new List<string>();
 
 		if (!string.IsNullOrWhiteSpace(namesText))
@@ -1006,6 +1024,77 @@ connection, transaction);
 		}
 
 		return true;
+	}
+
+	protected void GridViewVotingEditor_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+	{
+		var table = VotingEditorDataSource;
+		var id = Convert.ToInt32(e.Keys["id"]);
+		var voteValue = Convert.ToString(e.NewValues["vote_value"] ?? string.Empty).Trim();
+
+		if (voteValue != "За" &&
+			voteValue != "Проти" &&
+			voteValue != "Утримався" &&
+			voteValue != "Не голосував" &&
+			voteValue != "Відсутній на засіданні")
+		{
+			voteValue = string.Empty;
+		}
+
+		foreach (DataRow row in table.Rows)
+		{
+			if ((int)row["id"] == id)
+			{
+				row["vote_value"] = voteValue;
+				break;
+			}
+		}
+
+		VotingEditorDataSource = table;
+
+		e.Cancel = true;
+		GridViewVotingEditor.CancelEdit();
+		BindVotingEditorGrid();
+		PopupVotingEditor.ShowOnPageLoad = true;
+	}
+
+	private string BuildGolosovanieText(DataTable table)
+	{
+		var groups = new[]
+		{
+		new { Value = "За", Label = "за" },
+		new { Value = "Проти", Label = "проти" },
+		new { Value = "Утримався", Label = "утримались" },
+		new { Value = "Не голосував", Label = "не голосували" },
+		new { Value = "Відсутній на засіданні", Label = "відсутні на засіданні" }
+	};
+
+		var hasAnyVote = table.AsEnumerable().Any(q => !string.IsNullOrWhiteSpace(Convert.ToString(q["vote_value"])));
+		if (!hasAnyVote)
+		{
+			return string.Empty;
+		}
+
+		var parts = new List<string>();
+
+		foreach (var group in groups)
+		{
+			var names = table.AsEnumerable()
+				.Where(q => Convert.ToString(q["vote_value"]) == group.Value)
+				.Select(q => Convert.ToString(q["deputy_name"]).Trim())
+				.Where(q => !string.IsNullOrWhiteSpace(q))
+				.ToList();
+
+			var part = string.Format("\"{0}\" ({1})", group.Label, names.Count);
+			if (names.Count > 0)
+			{
+				part += " - " + string.Join(", ", names);
+			}
+
+			parts.Add(part);
+		}
+
+		return string.Join(", ", parts) + ",";
 	}
 
 	private void BindVotingEditorGrid()
@@ -1036,70 +1125,6 @@ connection, transaction);
 		GridViewVotingEditor.DataSource = VotingEditorDataSource;
 	}
 
-	protected void GridViewVotingEditor_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
-	{
-		var table = VotingEditorDataSource;
-		var id = Convert.ToInt32(e.Keys["id"]);
-		var voteValue = Convert.ToString(e.NewValues["vote_value"] ?? string.Empty).Trim();
-		if (voteValue != "За" && voteValue != "Проти" && voteValue != "Утримався" && voteValue != "Не голосував")
-		{
-			voteValue = string.Empty;
-		}
-
-		foreach (DataRow row in table.Rows)
-		{
-			if ((int)row["id"] == id)
-			{
-				row["vote_value"] = voteValue;
-				break;
-			}
-		}
-
-		VotingEditorDataSource = table;
-
-		e.Cancel = true;
-		GridViewVotingEditor.CancelEdit();
-		BindVotingEditorGrid();
-		PopupVotingEditor.ShowOnPageLoad = true;
-	}
-
-	private string BuildGolosovanieText(DataTable table)
-	{
-		var groups = new[]
-		{
-			new { Value = "За", Label = "за" },
-			new { Value = "Проти", Label = "проти" },
-			new { Value = "Утримався", Label = "утримались" },
-			new { Value = "Не голосував", Label = "не голосували" }
-		};
-
-		var hasAnyVote = table.AsEnumerable().Any(q => !string.IsNullOrWhiteSpace(Convert.ToString(q["vote_value"])));
-		if (!hasAnyVote)
-		{
-			return string.Empty;
-		}
-
-		var parts = new List<string>();
-		foreach (var group in groups)
-		{
-			var names = table.AsEnumerable()
-				.Where(q => Convert.ToString(q["vote_value"]) == group.Value)
-				.Select(q => Convert.ToString(q["deputy_name"]).Trim())
-				.Where(q => !string.IsNullOrWhiteSpace(q))
-				.ToList();
-
-			var part = string.Format("\"{0}\" ({1})", group.Label, names.Count);
-			if (names.Count > 0)
-			{
-				part += " - " + string.Join(", ", names);
-			}
-
-			parts.Add(part);
-		}
-
-		return string.Join(", ", parts) + ",";
-	}
-
 	protected void ButtonVotingEditorOk_Click(object sender, EventArgs e)
 	{
 		var result = BuildGolosovanieText(VotingEditorDataSource);
@@ -1117,7 +1142,6 @@ connection, transaction);
 	{
 		PopupVotingEditor.ShowOnPageLoad = false;
 	}
-
 
 	protected void SqlDataSourceCommission_Inserting(object sender, SqlDataSourceCommandEventArgs e)
 	{
@@ -2116,6 +2140,7 @@ public class CommissionResultTextBuilder
 		public int ProtyCount;
 		public int UtrymCount;
 		public int NoVoteCount;
+		public int AbsentCount;
 		public List<VotingTableRow> Rows = new List<VotingTableRow>();
 	}
 
@@ -2123,6 +2148,171 @@ public class CommissionResultTextBuilder
 	{
 		public string DeputyName;
 		public string VoteValue;
+	}
+
+	private VotingInfo ParseVotingInfo(string golosovanie, string deputiesList)
+	{
+		var info = new VotingInfo();
+		var voteMap = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+		var parsedRows = new List<VotingTableRow>();
+
+		if (TryParseVotingText(golosovanie, info, voteMap, parsedRows))
+		{
+			info.HasSummary = true;
+		}
+
+		var deputies = ParseSemicolonSeparatedList(deputiesList);
+		if (deputies.Count > 0)
+		{
+			foreach (var deputy in deputies)
+			{
+				string voteValue;
+				voteMap.TryGetValue(deputy, out voteValue);
+
+				info.Rows.Add(new VotingTableRow
+				{
+					DeputyName = deputy,
+					VoteValue = voteValue ?? string.Empty
+				});
+			}
+		}
+		else
+		{
+			info.Rows.AddRange(parsedRows);
+		}
+
+		return info;
+	}
+
+	private bool TryParseVotingText(
+		string golosovanie,
+		VotingInfo info,
+		Dictionary<string, string> voteMap,
+		List<VotingTableRow> rows)
+	{
+		if (string.IsNullOrWhiteSpace(golosovanie))
+		{
+			return false;
+		}
+
+		var regex = new Regex(
+			"^\\s*[\"«]за[\"»]\\s*\\((?<zaCount>\\d+)\\)(?:\\s*[-–]\\s*(?<zaNames>.*?))?\\s*,\\s*" +
+			"[\"«]проти[\"»]\\s*\\((?<protyCount>\\d+)\\)(?:\\s*[-–]\\s*(?<protyNames>.*?))?\\s*,\\s*" +
+			"[\"«]утримались[\"»]\\s*\\((?<utrymCount>\\d+)\\)(?:\\s*[-–]\\s*(?<utrymNames>.*?))?\\s*,\\s*" +
+			"[\"«]не\\s+голосували[\"»]\\s*\\((?<noVoteCount>\\d+)\\)(?:\\s*[-–]\\s*(?<noVoteNames>.*?))?" +
+			"(?:\\s*,\\s*[\"«]відсутні\\s+на\\s+засіданні[\"»]\\s*\\((?<absentCount>\\d+)\\)(?:\\s*[-–]\\s*(?<absentNames>.*?))?)?\\s*,?\\s*$",
+			RegexOptions.IgnoreCase | RegexOptions.Singleline | RegexOptions.CultureInvariant);
+
+		var match = regex.Match(golosovanie.Trim());
+		if (!match.Success)
+		{
+			return false;
+		}
+
+		info.ZaCount = Int32.Parse(match.Groups["zaCount"].Value);
+		info.ProtyCount = Int32.Parse(match.Groups["protyCount"].Value);
+		info.UtrymCount = Int32.Parse(match.Groups["utrymCount"].Value);
+		info.NoVoteCount = Int32.Parse(match.Groups["noVoteCount"].Value);
+		info.AbsentCount = match.Groups["absentCount"].Success
+			? Int32.Parse(match.Groups["absentCount"].Value)
+			: 0;
+
+		AddVotingRows(match.Groups["zaNames"].Value, "За", voteMap, rows);
+		AddVotingRows(match.Groups["protyNames"].Value, "Проти", voteMap, rows);
+		AddVotingRows(match.Groups["utrymNames"].Value, "Утримався", voteMap, rows);
+		AddVotingRows(match.Groups["noVoteNames"].Value, "Не голосував", voteMap, rows);
+
+		if (match.Groups["absentNames"].Success)
+		{
+			AddVotingRows(match.Groups["absentNames"].Value, "Відсутній на засіданні", voteMap, rows);
+		}
+
+		return true;
+	}
+
+	private void AddVotingRows(
+		string namesText,
+		string voteValue,
+		Dictionary<string, string> voteMap,
+		List<VotingTableRow> rows)
+	{
+		var names = ParseCommaSeparatedList(namesText);
+
+		foreach (var name in names)
+		{
+			if (string.IsNullOrWhiteSpace(name))
+			{
+				continue;
+			}
+
+			if (voteMap.ContainsKey(name))
+			{
+				throw new Exception("Duplicate deputy in voting text: " + name);
+			}
+
+			voteMap.Add(name, voteValue);
+
+			rows.Add(new VotingTableRow
+			{
+				DeputyName = name,
+				VoteValue = voteValue
+			});
+		}
+	}
+
+	private List<string> ParseCommaSeparatedList(string text)
+	{
+		var ret = new List<string>();
+
+		if (string.IsNullOrWhiteSpace(text))
+		{
+			return ret;
+		}
+
+		var parts = text.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+		foreach (var part in parts)
+		{
+			var value = part.Trim();
+
+			if (!string.IsNullOrWhiteSpace(value))
+			{
+				ret.Add(value);
+			}
+		}
+
+		return ret;
+	}
+
+	private List<string> ParseSemicolonSeparatedList(string text)
+	{
+		if (string.IsNullOrWhiteSpace(text))
+		{
+			return new List<string>();
+		}
+
+		return text
+			.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries)
+			.Select(q => q.Trim())
+			.Where(q => !string.IsNullOrWhiteSpace(q))
+			.ToList();
+	}
+
+	private string BuildVotingSummaryText(VotingInfo info, string fallbackText)
+	{
+		if (info != null && info.HasSummary)
+		{
+			return string.Format(
+				CultureInfo.InvariantCulture,
+				"«за» - {0}, «проти» - {1}; «утримались» - {2}; «не голосували» - {3}; «відсутні на засіданні» - {4}.",
+				info.ZaCount,
+				info.ProtyCount,
+				info.UtrymCount,
+				info.NoVoteCount,
+				info.AbsentCount);
+		}
+
+		return fallbackText;
 	}
 
 	private void BuildDocument(IWSection section, DataTable data)
@@ -2172,183 +2362,6 @@ public class CommissionResultTextBuilder
 		}
 	}
 
-	private VotingInfo ParseVotingInfo(string golosovanie, string deputiesList)
-	{
-		var info = new VotingInfo();
-		var voteMap = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-		var parsedRows = new List<VotingTableRow>();
-
-		if (TryParseDetailedVotingText(golosovanie, info, voteMap, parsedRows))
-		{
-			info.HasSummary = true;
-		}
-		else if (TryParseSummaryVotingText(golosovanie, info))
-		{
-			info.HasSummary = true;
-		}
-
-		var deputies = ParseSemicolonSeparatedList(deputiesList);
-		if (deputies.Count > 0)
-		{
-			var usedNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-			foreach (var deputy in deputies)
-			{
-				var key = NormalizeNameKey(deputy);
-				string voteValue;
-				voteMap.TryGetValue(key, out voteValue);
-				info.Rows.Add(new VotingTableRow
-				{
-					DeputyName = deputy,
-					VoteValue = voteValue ?? string.Empty
-				});
-				usedNames.Add(key);
-			}
-
-			foreach (var row in parsedRows)
-			{
-				var key = NormalizeNameKey(row.DeputyName);
-				if (!usedNames.Contains(key))
-				{
-					info.Rows.Add(row);
-				}
-			}
-		}
-		else
-		{
-			info.Rows.AddRange(parsedRows);
-		}
-
-		return info;
-	}
-
-	private bool TryParseDetailedVotingText(string golosovanie, VotingInfo info, Dictionary<string, string> voteMap, List<VotingTableRow> rows)
-	{
-		if (string.IsNullOrWhiteSpace(golosovanie))
-		{
-			return false;
-		}
-
-		var regex = new Regex(
-			"^\\s*[\"«]за[\"»]\\s*\\((?<zaCount>\\d+)\\)(?:\\s*[-–]\\s*(?<zaNames>.*?))?\\s*,\\s*[\"«]проти[\"»]\\s*\\((?<protyCount>\\d+)\\)(?:\\s*[-–]\\s*(?<protyNames>.*?))?\\s*,\\s*[\"«]утримались[\"»]\\s*\\((?<utrymCount>\\d+)\\)(?:\\s*[-–]\\s*(?<utrymNames>.*?))?\\s*,\\s*[\"«]не\\s+голосували[\"»]\\s*\\((?<noVoteCount>\\d+)\\)(?:\\s*[-–]\\s*(?<noVoteNames>.*?))?\\s*,?\\s*$",
-			RegexOptions.IgnoreCase | RegexOptions.Singleline | RegexOptions.CultureInvariant);
-
-		var match = regex.Match(golosovanie.Trim());
-		if (!match.Success)
-		{
-			return false;
-		}
-
-		info.ZaCount = Int32.Parse(match.Groups["zaCount"].Value);
-		info.ProtyCount = Int32.Parse(match.Groups["protyCount"].Value);
-		info.UtrymCount = Int32.Parse(match.Groups["utrymCount"].Value);
-		info.NoVoteCount = Int32.Parse(match.Groups["noVoteCount"].Value);
-
-		AddVotingRows(match.Groups["zaNames"].Value, "За", voteMap, rows);
-		AddVotingRows(match.Groups["protyNames"].Value, "Проти", voteMap, rows);
-		AddVotingRows(match.Groups["utrymNames"].Value, "Утримався", voteMap, rows);
-		AddVotingRows(match.Groups["noVoteNames"].Value, "Не голосував", voteMap, rows);
-
-		return true;
-	}
-
-	private bool TryParseSummaryVotingText(string golosovanie, VotingInfo info)
-	{
-		if (string.IsNullOrWhiteSpace(golosovanie))
-		{
-			return false;
-		}
-
-		var regex = new Regex(
-			"^\\s*[\"«]за[\"»]\\s*[-–]\\s*(?<zaCount>\\d+)\\s*[,;]\\s*[\"«]проти[\"»]\\s*[-–]\\s*(?<protyCount>\\d+)\\s*[,;]\\s*[\"«]утримались[\"»]\\s*[-–]\\s*(?<utrymCount>\\d+)\\s*[,;]\\s*[\"«]не\\s+голосували[\"»]\\s*[-–]\\s*(?<noVoteCount>\\d+)\\s*\\.?\\s*$",
-			RegexOptions.IgnoreCase | RegexOptions.Singleline | RegexOptions.CultureInvariant);
-
-		var match = regex.Match(golosovanie.Trim());
-		if (!match.Success)
-		{
-			return false;
-		}
-
-		info.ZaCount = Int32.Parse(match.Groups["zaCount"].Value);
-		info.ProtyCount = Int32.Parse(match.Groups["protyCount"].Value);
-		info.UtrymCount = Int32.Parse(match.Groups["utrymCount"].Value);
-		info.NoVoteCount = Int32.Parse(match.Groups["noVoteCount"].Value);
-		return true;
-	}
-
-	private void AddVotingRows(string namesText, string voteValue, Dictionary<string, string> voteMap, List<VotingTableRow> rows)
-	{
-		var names = ParseCommaSeparatedList(namesText);
-		foreach (var name in names)
-		{
-			var key = NormalizeNameKey(name);
-			if (string.IsNullOrWhiteSpace(key))
-			{
-				continue;
-			}
-
-			if (!voteMap.ContainsKey(key))
-			{
-				voteMap.Add(key, voteValue);
-				rows.Add(new VotingTableRow
-				{
-					DeputyName = name,
-					VoteValue = voteValue
-				});
-			}
-		}
-	}
-
-	private List<string> ParseCommaSeparatedList(string text)
-	{
-		if (string.IsNullOrWhiteSpace(text))
-		{
-			return new List<string>();
-		}
-
-		return text
-			.Trim()
-			.TrimEnd(',', ';', '.')
-			.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
-			.Select(q => q.Trim())
-			.Where(q => !string.IsNullOrWhiteSpace(q))
-			.ToList();
-	}
-
-	private List<string> ParseSemicolonSeparatedList(string text)
-	{
-		if (string.IsNullOrWhiteSpace(text))
-		{
-			return new List<string>();
-		}
-
-		return text
-			.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries)
-			.Select(q => q.Trim())
-			.Where(q => !string.IsNullOrWhiteSpace(q))
-			.ToList();
-	}
-
-	private string NormalizeNameKey(string value)
-	{
-		return Regex.Replace(value ?? string.Empty, "\\s+", " ").Trim();
-	}
-
-	private string BuildVotingSummaryText(VotingInfo info, string fallbackText)
-	{
-		if (info != null && info.HasSummary)
-		{
-			return string.Format(
-				CultureInfo.InvariantCulture,
-				"«за» - {0}, «проти» - {1}; «утримались» - {2}; «не голосували» - {3}.",
-				info.ZaCount,
-				info.ProtyCount,
-				info.UtrymCount,
-				info.NoVoteCount);
-		}
-
-		return fallbackText;
-	}
-
 	private void AddVotingTable(IWSection section, List<VotingTableRow> rows)
 	{
 		if (rows == null || rows.Count == 0 || !rows.Any(q => !string.IsNullOrWhiteSpace(q.VoteValue)))
@@ -2392,15 +2405,8 @@ public class CommissionResultTextBuilder
 
 	private string GetVotingTableValue(string voteValue)
 	{
-		if (voteValue == "Не голосував")
-		{
-			return "Відсутня на засіданні";
-		}
-
 		return voteValue ?? string.Empty;
 	}
-
-
 
 	private void AddCenteredParagraph(IWSection section, string text, float fontSize, bool bold, bool italic, float beforeSpacing, float afterSpacing)
 	{
