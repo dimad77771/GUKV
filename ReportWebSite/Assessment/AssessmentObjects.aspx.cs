@@ -9,6 +9,7 @@ using DevExpress.Web;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Globalization;
+using Syncfusion.XlsIO;
 
 public partial class Assessment_AssessmentObjects : System.Web.UI.Page
 {
@@ -57,10 +58,35 @@ public partial class Assessment_AssessmentObjects : System.Web.UI.Page
 
     protected void ASPxButton_AssessmentObjects_ExportXLS_Click(object sender, EventArgs e)
     {
-        this.ExportGridToXLS(GridViewAssessmentObjectsExporter, PrimaryGridView, LabelReportTitle1.Text, ViewState["PrimaryGridView.DataSourceID"] as string);
+        this.ExportGridToXLS(GridViewAssessmentObjectsExporter, PrimaryGridView, LabelReportTitle1.Text, ViewState["PrimaryGridView.DataSourceID"] as string, 
+				exportType: DevExpress.Export.ExportType.DataAware,
+				afterBuildXlsx: ASPxButton_AssessmentObjects_ExportXLS_AfterBuildXlsx);
     }
 
-    protected void ASPxButton_AssessmentObjects_ExportPDF_Click(object sender, EventArgs e)
+	void ASPxButton_AssessmentObjects_ExportXLS_AfterBuildXlsx(string excelfilename)
+	{
+		var excelEngineMain = new ExcelEngine();
+		var workbook = excelEngineMain.Excel.Workbooks.Open(excelfilename);
+		var worksheet = workbook.Worksheets[0];
+
+		foreach(var column in worksheet.Columns)
+		{
+			var header = column.Rows[0].Text;
+			if (header != "№") continue;
+
+			for (int rown = 1; rown < column.Rows.Length - 1; rown++)
+			{
+				var cell = column.Rows[rown];
+				cell.Value2 = rown;
+			}
+		}
+
+		workbook.Save();
+		workbook.Close();
+		excelEngineMain.Dispose();
+	}
+
+	protected void ASPxButton_AssessmentObjects_ExportPDF_Click(object sender, EventArgs e)
     {
         this.ExportGridToPDF(GridViewAssessmentObjectsExporter, PrimaryGridView, LabelReportTitle1.Text, ViewState["PrimaryGridView.DataSourceID"] as string);
     }

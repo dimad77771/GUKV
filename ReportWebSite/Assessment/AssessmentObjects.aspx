@@ -227,6 +227,12 @@
             <FooterCellStyle HorizontalAlign="Right"></FooterCellStyle>
         </dx:GridViewCommandColumn>
 
+        <dx:GridViewDataTextColumn Caption="№" Width="40px" UnboundType="Integer">
+            <DataItemTemplate>
+                <%# ((DevExpress.Web.GridViewDataItemTemplateContainer)Container).VisibleIndex + 1 %>
+            </DataItemTemplate>
+        </dx:GridViewDataTextColumn>
+
         <dx:GridViewDataTextColumn FieldName="district" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Район" Width="120px"></dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn FieldName="street_full_name" ReadOnly="True" ShowInCustomizationForm="True" Visible="True" Caption="Вулиця" Width="180px">
@@ -444,7 +450,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Visible"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Assessment.Objects" Version="A20" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.Assessment.Objects" Version="A23" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

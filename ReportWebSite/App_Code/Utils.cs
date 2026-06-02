@@ -191,7 +191,8 @@ public static class Utils
 			string gridDataSourceID = null, 
 			ExportGridToXLS__ExportHiddenColumn exportHiddenColumnCallback = null,
 			ExportGridToXLS__AfterBuildXlsx afterBuildXlsx = null,
-            ExportGridToXLS__ExportHiddenColumn exportExludeColumnCallback = null)
+            ExportGridToXLS__ExportHiddenColumn exportExludeColumnCallback = null,
+			DevExpress.Export.ExportType exportType = DevExpress.Export.ExportType.WYSIWYG)
     {
         // If the data source ID is specified, bind the grid to data
         if (!string.IsNullOrEmpty(gridDataSourceID))
@@ -222,8 +223,8 @@ public static class Utils
                 exporter.WriteXlsx(stream, new DevExpress.XtraPrinting.XlsxExportOptionsEx
                 {
                     TextExportMode = DevExpress.XtraPrinting.TextExportMode.Value,
-                    ExportType = DevExpress.Export.ExportType.WYSIWYG
-                });
+                    ExportType = exportType
+				});
 
 
                 // Rewind and pipe the stream contents to the output stream
