@@ -80,6 +80,77 @@ public partial class Reports1NF_Report1NFDogContinue : System.Web.UI.Page
 		SectionMenu.Visible = false;
 
 		FreeSquareGridView.TemplateColumnsStyles("may_pravo_prodov");
+
+		CommissionCustom();
+	}
+
+	bool IsCommissionRole()
+	{
+		var isCommissionRole = Roles.IsUserInRole(Utils.CommissionRole);
+		return isCommissionRole;
+	}
+
+	void CommissionCustom()
+	{
+		var isCommissionRole = IsCommissionRole();
+
+		var cookiename = "A3_45";
+		cookiename += isCommissionRole ? "__commissionRole" : "__otherRole";
+		FreeSquareGridView.SettingsCookies.Version = cookiename;
+
+		//var captions = new[] { "Доповідач","Вхідний номер звернення","Дата вхідного звернення","Номер комісії","Результат","№ питання у протоколі","Вихідний номер звернення","Дата вихідного звернення","СЛУХАЛИ","ВИРІШИЛИ","Голосування" };
+		//var captions = new[] { "Тип будинку", "Категорія", "Орендна ставка", "Тип оренди", "Строк / термін оренди", "Примітка", "Додаткова інформація" };
+		//var fff = FreeSquareGridView.AllColumns.Where(x => captions.Contains(x.Caption)).Select(x => ((GridViewDataColumn)x).FieldName).ToList();
+		//var s1 = string.Join(", ", fff.Select(x => "\"" + x + "\""));
+
+		var fields_1 = new[] { "orendar_name", "orendar_zkpo", "org_name", "zkpo_code" };
+		var fields_2 = new[] { "building_type", "category", "rental_rate_percent", "rental_type", "rental_term", "commission_note", "additional_info" };
+		var fields_3 = new[] { "speaker_name", "incoming_doc_num", "incoming_doc_date", "commission_id", "commission_result", "protocol_question_num", "outgoing_doc_num", "outgoing_doc_date", "slukhali_text", "virishyly_text", "golosovanie" };
+		if (!isCommissionRole)
+		{
+			var fields = fields_3;
+			foreach (var field in fields)
+			{
+				var column = FreeSquareGridView.Columns[field];
+				if (column != null)
+				{
+					FreeSquareGridView.Columns.Remove(column);
+				}
+			}
+
+			ASPxButtonCommissions.Visible = false;
+			ASPxButtonCommissionProrydok.Visible = false;
+			ASPxButtonCommissionProrydokText.Visible = false;
+			ASPxButtonCommissionResultTable.Visible = false;
+			ASPxButtonCommissionResultText.Visible = false;
+		}
+		else
+		{
+			var existCookie = Utils.HasASPxGridViewCookieVersion(this, FreeSquareGridView);
+
+			if (!existCookie)
+			{
+				var fields = fields_1.Union(fields_2).Union(fields_3).ToList();
+				foreach (var column in FreeSquareGridView.Columns.OfType<GridViewDataColumn>())
+				{
+					if (!fields.Contains(column.FieldName))
+					{
+						column.Visible = false;
+					}
+				}
+				foreach (var bandColumn in FreeSquareGridView.Columns.OfType<GridViewBandColumn>())
+				{
+					bandColumn.Visible = false;
+				}
+				foreach (var commandColumn in FreeSquareGridView.Columns.OfType<GridViewCommandColumn>())
+				{
+					if (!string.IsNullOrEmpty(commandColumn.Caption))
+					{
+						commandColumn.Visible = false;
+					}
+				}
+			}
+		}
 	}
 
 	protected void ASPxButton_FreeSquare_ExportXLS_Click(object sender, EventArgs e)
@@ -234,11 +305,27 @@ public partial class Reports1NF_Report1NFDogContinue : System.Web.UI.Page
 
 	protected void SqlDataSourceFreeSquare_Updating(object sender, SqlDataSourceCommandEventArgs e)
 	{
+		var isCommissionRole = IsCommissionRole();
+
 		var dbparams = (System.Data.SqlClient.SqlParameterCollection)(e.Command.Parameters);
-		dbparams.AddWithValue("@modify_date2", DateTime.Now);
+		if (!e.Command.Parameters.Contains("@modify_date2"))
+		{
+			dbparams.AddWithValue("@modify_date2", DateTime.Now);
+		}
+		else
+		{
+			dbparams["@modify_date2"].Value = DateTime.Now;
+		}
 		var user = Membership.GetUser();
 		var username = (user == null ? String.Empty : (String)user.UserName);
-		dbparams.AddWithValue("@modified_by2", username);
+		if (!e.Command.Parameters.Contains("@modified_by2"))
+		{
+			dbparams.AddWithValue("@modified_by2", username);
+		}
+		else
+		{
+			dbparams["@modified_by2"].Value = username;
+		}
 
 		if (e.Command.Parameters.Contains("@geodata_map_points"))
 		{
@@ -250,53 +337,59 @@ public partial class Reports1NF_Report1NFDogContinue : System.Web.UI.Page
 		}
 
 		var free_square_id = (int)(e.Command.Parameters["@id"].Value);
-		var freecycle_step_dict_id = (int?)(e.Command.Parameters["@freecycle_step_dict_id"].Value);
-		var current_stage_docdate = (DateTime?)(e.Command.Parameters["@current_stage_docdate"].Value);
-		var current_stage_docnum = (string)(e.Command.Parameters["@current_stage_docnum"].Value);
-		var current_step = Utils.GetStepContinue(free_square_id);
-		var change_step = (freecycle_step_dict_id != current_step);
-
-		var newCommissionId = GetNullableInt(e.Command.Parameters["@commission_id"].Value);
-		var buildingType = Convert.ToString(e.Command.Parameters["@building_type"].Value ?? string.Empty).Trim();
-		var rentalType = Convert.ToString(e.Command.Parameters["@rental_type"].Value ?? string.Empty).Trim();
-		var rentalRatePercentValue = e.Command.Parameters["@rental_rate_percent"].Value;
-		var oldCommissionId = GetCurrentCommissionId(free_square_id);
-
-		if (!oldCommissionId.HasValue && newCommissionId.HasValue && string.IsNullOrWhiteSpace(buildingType))
+		if (!isCommissionRole)
 		{
-			var calculatedBuildingType = GetCalculatedBuildingType(free_square_id);
-			e.Command.Parameters["@building_type"].Value = string.IsNullOrWhiteSpace(calculatedBuildingType)
-				? (object)DBNull.Value
-				: calculatedBuildingType;
+			var freecycle_step_dict_id = (int?)(e.Command.Parameters["@freecycle_step_dict_id"].Value);
+			var current_stage_docdate = (DateTime?)(e.Command.Parameters["@current_stage_docdate"].Value);
+			var current_stage_docnum = (string)(e.Command.Parameters["@current_stage_docnum"].Value);
+			var current_step = Utils.GetStepContinue(free_square_id);
+			var change_step = (freecycle_step_dict_id != current_step);
+
+			if (change_step && new int?[] { 150, 300 }.Contains(freecycle_step_dict_id))
+			{
+				using (var connection = Utils.ConnectToDatabase())
+				using (var transaction = connection.BeginTransaction())
+				{
+					AfterDogovorReestration(free_square_id, connection, transaction, current_stage_docnum, current_stage_docdate);
+					transaction.Commit();
+				}
+			}
 		}
 
-		if (!oldCommissionId.HasValue && newCommissionId.HasValue && string.IsNullOrWhiteSpace(rentalType))
+		if (isCommissionRole)
 		{
-			var calculatedRentalType = GetCalculatedRentalType(free_square_id);
-			e.Command.Parameters["@rental_type"].Value = string.IsNullOrWhiteSpace(calculatedRentalType)
-				? (object)DBNull.Value
-				: calculatedRentalType;
-		}
+			var newCommissionId = GetNullableInt(e.Command.Parameters["@commission_id"].Value);
+			var buildingType = Convert.ToString(e.Command.Parameters["@building_type"].Value ?? string.Empty).Trim();
+			var rentalType = Convert.ToString(e.Command.Parameters["@rental_type"].Value ?? string.Empty).Trim();
+			var rentalRatePercentValue = e.Command.Parameters["@rental_rate_percent"].Value;
+			var oldCommissionId = GetCurrentCommissionId(free_square_id);
 
-		if (!oldCommissionId.HasValue && newCommissionId.HasValue && IsEmptyParameterValue(rentalRatePercentValue))
-		{
-			var calculatedRentalRatePercent = "" + GetCalculatedRentalRatePercent(free_square_id);
-			e.Command.Parameters["@rental_rate_percent"].Value = string.IsNullOrWhiteSpace(calculatedRentalRatePercent)
-				? (object)calculatedRentalRatePercent
-				: DBNull.Value;
+			if (!oldCommissionId.HasValue && newCommissionId.HasValue && string.IsNullOrWhiteSpace(buildingType))
+			{
+				var calculatedBuildingType = GetCalculatedBuildingType(free_square_id);
+				e.Command.Parameters["@building_type"].Value = string.IsNullOrWhiteSpace(calculatedBuildingType)
+					? (object)DBNull.Value
+					: calculatedBuildingType;
+			}
+
+			if (!oldCommissionId.HasValue && newCommissionId.HasValue && string.IsNullOrWhiteSpace(rentalType))
+			{
+				var calculatedRentalType = GetCalculatedRentalType(free_square_id);
+				e.Command.Parameters["@rental_type"].Value = string.IsNullOrWhiteSpace(calculatedRentalType)
+					? (object)DBNull.Value
+					: calculatedRentalType;
+			}
+
+			if (!oldCommissionId.HasValue && newCommissionId.HasValue && IsEmptyParameterValue(rentalRatePercentValue))
+			{
+				var calculatedRentalRatePercent = "" + GetCalculatedRentalRatePercent(free_square_id);
+				e.Command.Parameters["@rental_rate_percent"].Value = string.IsNullOrWhiteSpace(calculatedRentalRatePercent)
+					? (object)calculatedRentalRatePercent
+					: DBNull.Value;
+			}
 		}
 
 		UpdateCommandHelper.PrepareUpdateCommand(this, SqlDataSourceFreeSquare, e.Command);
-
-		if (change_step && new int?[] { 150, 300 }.Contains(freecycle_step_dict_id))
-		{
-			using (var connection = Utils.ConnectToDatabase())
-			using (var transaction = connection.BeginTransaction())
-			{
-				AfterDogovorReestration(free_square_id, connection, transaction, current_stage_docnum, current_stage_docdate);
-				transaction.Commit();
-			}
-		}
 	}
 
 	private int? GetNullableInt(object value)

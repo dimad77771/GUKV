@@ -56,6 +56,7 @@ public static class Utils
     public const string Chmo400Role = "ЧВО_400";
     public const string ControlCurrentBorg = "Контроль_поточної_заборгованості";
 	public const string Prognoz = "Прогноз";
+	public const string CommissionRole = "постійна комісія";
 
 
 	public const string AdministratorRole = "Administrator";
@@ -3520,6 +3521,36 @@ public static class Utils
 		var result = NameNormalizer.Normalize(arg ?? "");
         return result;
 	}
+
+	public static bool HasASPxGridViewCookieVersion(Page page, ASPxGridView grid)
+	{
+		var result = false;
+		var cookiesID = grid.SettingsCookies.CookiesID;
+		var version = grid.SettingsCookies.Version;
+		if (!string.IsNullOrEmpty(cookiesID))
+		{
+			var cookie = page.Request.Cookies[cookiesID];
+			if (cookie != null)
+			{
+				var value = cookie.Value;
+				if (!string.IsNullOrEmpty(value))
+				{
+					var decoded = HttpUtility.UrlDecode(value);
+					var index = decoded.IndexOf("|");
+					if (index > 0)
+					{
+						decoded = decoded.Substring(0, index);
+					}
+					if ("version" + version == decoded)
+					{
+						result = true;
+					}
+				}
+			}
+		}
+		return result;
+
+	}
 }
 
 public class CreateNewArendaDogovorData
@@ -3594,4 +3625,6 @@ public static class NameNormalizer
 
 		return char.ToUpper(word[0]) + word.Substring(1);
 	}
+
+	
 }

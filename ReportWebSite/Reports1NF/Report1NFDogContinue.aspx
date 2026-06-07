@@ -19,6 +19,16 @@
     }
 </style>
 
+<style type="text/css">
+    .categoryComboItem,
+    .categoryComboItem td {
+        white-space: normal !important;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        line-height: 16px;
+    }
+</style>
+
 <script type="text/javascript" src="../Scripts/PageScript.js"></script>
 
 <script type="text/javascript" language="javascript">
@@ -487,6 +497,11 @@ WHERE id = @id"
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_show_neziznacheni" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="bal_organization_id" />
     </SelectParameters>
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceCategory" runat="server" 
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    SelectCommand="SELECT category_nam FROM dict_continue_category ORDER BY ordnum">
 </mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDistrict" runat="server" 
@@ -1568,9 +1583,29 @@ WHERE id = @id"
             <HeaderStyle Wrap="True" />
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn FieldName="category" Caption="Категорія" VisibleIndex="1370" Width="180px">
+        <dx:GridViewDataComboBoxColumn 
+            FieldName="category" 
+            Caption="Категорія" 
+            VisibleIndex="1370" 
+            Width="180px">
+
             <HeaderStyle Wrap="True" />
-        </dx:GridViewDataTextColumn>
+
+            <PropertiesComboBox 
+                DataSourceID="SqlDataSourceCategory"
+                TextField="category_nam"
+                ValueField="category_nam"
+                ValueType="System.String"
+                DropDownStyle="DropDown"
+                IncrementalFilteringMode="Contains"
+                DropDownWidth="1200px"
+                DropDownRows="15"
+                NullText="">
+
+                <ItemStyle Wrap="True" CssClass="categoryComboItem" />
+
+            </PropertiesComboBox>
+        </dx:GridViewDataComboBoxColumn>
 
         <dx:GridViewDataTextColumn FieldName="rental_rate_percent" Caption="Орендна ставка" VisibleIndex="1380" Width="120px">
             <HeaderStyle Wrap="True" />
@@ -1701,7 +1736,7 @@ WHERE id = @id"
         ShowFooter="True"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFDogContinue" Version="A3_44" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.Report1NFDogContinue" Version="" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
