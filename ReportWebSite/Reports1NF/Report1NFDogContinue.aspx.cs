@@ -94,7 +94,7 @@ public partial class Reports1NF_Report1NFDogContinue : System.Web.UI.Page
 	{
 		var isCommissionRole = IsCommissionRole();
 
-		var cookiename = "A3_45";
+		var cookiename = "A3_50";
 		cookiename += isCommissionRole ? "__commissionRole" : "__otherRole";
 		FreeSquareGridView.SettingsCookies.Version = cookiename;
 
@@ -105,7 +105,7 @@ public partial class Reports1NF_Report1NFDogContinue : System.Web.UI.Page
 
 		var fields_1 = new[] { "orendar_name", "orendar_zkpo", "org_name", "zkpo_code" };
 		var fields_2 = new[] { "building_type", "category", "rental_rate_percent", "rental_type", "rental_term", "commission_note", "additional_info" };
-		var fields_3 = new[] { "speaker_name", "incoming_doc_num", "incoming_doc_date", "commission_id", "commission_result", "protocol_question_num", "outgoing_doc_num", "outgoing_doc_date", "slukhali_text", "virishyly_text", "golosovanie" };
+		var fields_3 = new[] { "speaker_name", "incoming_doc_num", "incoming_doc_date", "commission_id", "commission_result", "protocol_question_num", "slukhali_text", "virishyly_text", "golosovanie" };
 		if (!isCommissionRole)
 		{
 			var fields = fields_3;

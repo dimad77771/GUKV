@@ -3419,7 +3419,7 @@ WHERE id = @id"
                 <EditFormCaptionStyle Wrap="True"/>
             </dx:GridViewDataTextColumn>
 
-            <dx:GridViewDataTextColumn FieldName="rozmir_vidshkoduv" Caption="Розмір відшкодування земельного податку та інших" VisibleIndex="260" Visible="false" >
+            <dx:GridViewDataTextColumn FieldName="rozmir_vidshkoduv" Caption="Розмір відшкодування земельного податку" VisibleIndex="260" Visible="false" >
                 <HeaderStyle Wrap="True" />
                 <EditFormSettings Visible="True" />
                 <EditFormCaptionStyle Wrap="True"/>
