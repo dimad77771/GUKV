@@ -49,6 +49,14 @@
         margin:0px !important;
     }
 
+    .comboDropDownItemWrap {
+        white-space: normal !important;
+        overflow-wrap: break-word;
+        word-break: normal;
+        max-width: 1480px;
+        line-height: 16px;
+    }
+
 </style>
 
 <script type="text/javascript" language="javascript">
@@ -3220,10 +3228,19 @@ WHERE id = @id"
 				<EditFormCaptionStyle Wrap="True"/>
             </dx:GridViewDataComboBoxColumn>
 
-            <dx:GridViewDataComboBoxColumn FieldName="czilove_vikorist" VisibleIndex="19" Width = "100px" Visible="false" Caption="Цільове використання вільного приміщення">
-				<HeaderStyle Wrap="True" />
-                <PropertiesComboBox DataSourceID="SqlDataSourceCziloveVikorist" ValueField="id" TextField="name" ValueType="System.Int32" />
-				<EditFormCaptionStyle Wrap="True"/>
+            <dx:GridViewDataComboBoxColumn FieldName="czilove_vikorist" VisibleIndex="19" Width="100px" Visible="false" Caption="Цільове використання вільного приміщення">
+                <HeaderStyle Wrap="True" />
+
+                <PropertiesComboBox 
+                    DataSourceID="SqlDataSourceCziloveVikorist"
+                    ValueField="id"
+                    TextField="name"
+                    ValueType="System.Int32"
+                    DropDownWidth="1400px"
+                    ItemStyle-Wrap="True"
+                    ItemStyle-CssClass="comboDropDownItemWrap" />
+
+                <EditFormCaptionStyle Wrap="True"/>
                 <EditFormSettings Visible="True" />
             </dx:GridViewDataComboBoxColumn>
 
