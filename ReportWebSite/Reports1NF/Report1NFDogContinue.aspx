@@ -1480,12 +1480,12 @@ WHERE id = @id"
             <CellStyle Wrap="False"></CellStyle>
         </dx:GridViewCommandColumn>
 
-        <dx:GridViewDataTextColumn FieldName="modify_date2" Caption="Дата редагу-вання" VisibleIndex="500" Width="75px">
+        <dx:GridViewDataDateColumn FieldName="modify_date2" Caption="Дата редагу-вання" VisibleIndex="500" Width="75px">
 			<HeaderStyle Wrap="True" />
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("modify_date2") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
-        </dx:GridViewDataTextColumn>
+        </dx:GridViewDataDateColumn>
         <dx:GridViewDataTextColumn FieldName="modified_by2" Caption="Користувач О" VisibleIndex="510" Width="100px">
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("modified_by2") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>

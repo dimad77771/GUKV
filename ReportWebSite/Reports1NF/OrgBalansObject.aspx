@@ -851,7 +851,7 @@ order by 1
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceOwnershipType" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT id, RTRIM(name) AS 'name' FROM dict_balans_ownership_type ORDER BY name">
+    SelectCommand="SELECT id, RTRIM(name) AS 'name' FROM dict_balans_ownership_type where id in (11,2,18) ORDER BY name">
 </mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceBTICondition" runat="server" 
