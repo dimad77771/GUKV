@@ -362,7 +362,8 @@ FROM reports1nf_arenda ar
 
         WHERE ar.report_id = @rep_id 
             AND (isnull(a.is_deleted, 0) = 0 OR @p_dpz_filter = 1)
-        ORDER BY ar.modify_date DESC" 
+        ORDER BY ar.modify_date DESC
+        OPTION (RECOMPILE)" 
     OnSelecting="SqlDataSourceArendaObjects_Selecting"
     >
     <SelectParameters>
