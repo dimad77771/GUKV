@@ -1069,18 +1069,6 @@ FROM reports1nf_arenda ar
         <dx:GridViewDataDateColumn FieldName="zvilbykmp_date1" VisibleIndex="112" Caption="Звільнено від сплати згідно абзац 3 пункт 2 рішення КМР 253/9332, з" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
         <dx:GridViewDataDateColumn FieldName="zvilbykmp_date2" VisibleIndex="113" Caption="Звільнено від сплати згідно абзац 3 пункт 2 рішення КМР 253/9332, по" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
 
-        <dx:GridViewDataDateColumn FieldName="povidoleno1_date" VisibleIndex="121" Caption="Повідомлення орендаря до балансоутримувача про неможлівість використання, дата" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
-        <dx:GridViewDataTextColumn FieldName="povidoleno1_num" VisibleIndex="122" Caption="Повідомлення орендаря до балансоутримувача про неможлівість використання, №" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-
-        <dx:GridViewDataDateColumn FieldName="povidoleno2_date" VisibleIndex="131" Caption="Повідомлення орендаря до орендодавця про неможлівість використання, дата" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
-        <dx:GridViewDataTextColumn FieldName="povidoleno2_num" VisibleIndex="132" Caption="Повідомлення орендаря до орендодавця про неможлівість використання, №" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-
-        <dx:GridViewDataDateColumn FieldName="povidoleno3_date" VisibleIndex="141" Caption="Повідомлення орендаря до балансоутримувача про намір використовувати об'єкт, дата" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
-        <dx:GridViewDataTextColumn FieldName="povidoleno3_num" VisibleIndex="142" Caption="Повідомлення орендаря до балансоутримувача про намір використовувати об'єкт, №" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-
-        <dx:GridViewDataDateColumn FieldName="povidoleno4_date" VisibleIndex="151" Caption="Повідомлення орендаря до орендодавця про намір використовувати об'єкт, дата" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataDateColumn>
-        <dx:GridViewDataTextColumn FieldName="povidoleno4_num" VisibleIndex="152" Caption="Повідомлення орендаря до орендодавця про намір використовувати об'єкт, №" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
-
         <dx:GridViewDataTextColumn FieldName="cost_agreement_total" VisibleIndex="153" Caption="Місячна орендна плата, грн." ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataTextColumn>
 
         <dx:GridViewDataDateColumn FieldName="base_month" VisibleIndex="154" Caption="Базовий місяць" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" /></dx:GridViewDataDateColumn>
@@ -1150,7 +1138,7 @@ FROM reports1nf_arenda ar
     <SettingsPager PageSize="10" AlwaysShowPager="true" />
     <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
     <Styles Header-Wrap="True" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaList.2" Enabled="True" Version="B_17" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaList.2" Enabled="True" Version="B_18" />
 
     <ClientSideEvents
         Init="function (s,e) { PrimaryGridView.PerformCallback('init:'); }"

@@ -1310,21 +1310,21 @@ WHERE id = @report_id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn Caption="Прогнозовані надходження за місяць, грн." FieldName="planuvania_1" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="101"  >
+<%--        <dx:GridViewDataTextColumn Caption="Прогнозовані надходження за місяць, грн." FieldName="planuvania_1" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="101"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("planuvania_1") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
-        </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn Caption="Прогнозовані надходження за рік, грн." FieldName="planuvania_2" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="101"  >
+        </dx:GridViewDataTextColumn>--%>
+        <dx:GridViewDataTextColumn Caption="Розраховано нарахування орендної плати, грн." FieldName="planuvania_2" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="101"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("planuvania_2") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn Caption="Прогнозовані надходження  до бюджету за рік, грн." FieldName="planuvania_3" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="101"  >
+<%--        <dx:GridViewDataTextColumn Caption="Прогнозовані надходження  до бюджету за рік, грн." FieldName="planuvania_3" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="101"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("planuvania_3") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
-        </dx:GridViewDataTextColumn>
+        </dx:GridViewDataTextColumn>--%>
         <dx:GridViewDataTextColumn Caption="Планові надходження орендної плати за рік згідно фін. плану, грн." FieldName="planuvania_4" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="101"  >
 			<EditItemTemplate>
 				<dx:ASPxLabel runat="server" Text='<%# Eval("planuvania_4") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
@@ -1473,7 +1473,7 @@ WHERE id = @report_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A4_21" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A4_22" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

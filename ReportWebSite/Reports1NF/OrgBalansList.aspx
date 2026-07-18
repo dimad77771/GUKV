@@ -106,6 +106,7 @@
          ,bal.note
          ,bal.balans_doc_num
          ,bal.balans_doc_date
+         ,bal.sqr_kor
          ,case when exists (select 1 from reports1nf_photos Q where Q.bal_id = bal.id) then 1 else 0 end as has_reports1nf_photos
          ,case when exists (select 1 from reports1nf_btiphoto Q where Q.bal_id = bal.id) then 1 else 0 end as has_reports1nf_btiphoto
 
@@ -153,7 +154,8 @@
     	,bal.note
         ,bal.balans_doc_num
         ,bal.balans_doc_date
-        ,bal.report_id" >
+        ,bal.report_id
+        ,bal.sqr_kor" >
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="rep_id" />
     </SelectParameters>
@@ -309,6 +311,7 @@
         <dx:GridViewDataTextColumn FieldName="addr_street_name" VisibleIndex="2" Caption="Вулиця" Width="150px"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="addr_nomer" VisibleIndex="3" Caption="Номер"><Settings SortMode="Custom" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="sqr_total" VisibleIndex="4" Caption="Площа нежилих приміщень"></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="sqr_kor" VisibleIndex="4" Caption="Корисна площа об'єкту"></dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn FieldName="total_free_sqr" VisibleIndex="5" Caption="Площа вільних приміщень"></dx:GridViewDataTextColumn>
         
@@ -427,7 +430,7 @@
     <SettingsPager PageSize="20" />
     <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
     <Styles Header-Wrap="True" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.BalansList" Enabled="True" Version="A_10" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.BalansList" Enabled="True" Version="A_11" />
 
     <ClientSideEvents
         Init="function (s,e) { PrimaryGridView.PerformCallback('init:'); }"

@@ -465,6 +465,7 @@ SELECT
 ,fs.free_sqr_korysna as free_sql_usefull
 
 ,fs.is_included
+,fs.maybe_orend_object
 ,fs.floor
 ,fs.water
 ,fs.heating
@@ -605,6 +606,7 @@ SET
 	[current_stage_docnum] = @current_stage_docnum,
     [prozoro_number] = @prozoro_number,
 	[is_included] = @is_included,
+	[maybe_orend_object] = @maybe_orend_object,
 	[winner_id] = @winner_id,
 	[initiator] =  @initiator,
 	[zvernenya_vikluch_num] = @zvernenya_vikluch_num,
@@ -986,6 +988,10 @@ WHERE id = @id"
 			</dx:GridViewDataTextColumn>
 
 			<dx:GridViewDataCheckColumn FieldName="is_included" Caption="Включено до переліку вільних приміщень" VisibleIndex="4" Width="40px">
+				<HeaderStyle Wrap="True" />
+			</dx:GridViewDataCheckColumn>
+
+			<dx:GridViewDataCheckColumn FieldName="maybe_orend_object" Caption="Може бути об'єктом оренди" VisibleIndex="4" Width="40px">
 				<HeaderStyle Wrap="True" />
 			</dx:GridViewDataCheckColumn>
 
@@ -1459,7 +1465,7 @@ WHERE id = @id"
 			ShowFooter="True"
 			VerticalScrollBarMode="Auto"
 			VerticalScrollBarStyle="Standard" />
-		<SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A3_027" Enabled="true" />
+		<SettingsCookies CookiesID="GUKV.Reports1NF.FreeSquare" Version="A3_028" Enabled="true" />
 		<Styles Header-Wrap="True">
 			<Header Wrap="True"></Header>
 		</Styles>
