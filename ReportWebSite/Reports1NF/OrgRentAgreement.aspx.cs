@@ -24,6 +24,7 @@ using Syncfusion.DocIO.DLS;
 using System.Data.Common;
 using Newtonsoft.Json;
 using StackExchange.Profiling.Helpers.Dapper;
+using DevExpress.XtraPrinting.Native;
 
 public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 {
@@ -2339,11 +2340,18 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 
 			if (data.Year > 0)
 			{
-				var infos = new[] { data.CurrentYear, data.NextYear };
-
-				foreach (var info in infos)
+				var idataset = new[]
 				{
-					var year = data.Year + (info == data.CurrentYear ? 0 : 1);
+					new Pair<int,NarazhCalculationOne.ResultClass>(data.Year - 1, data.PrevYear),
+					new Pair<int,NarazhCalculationOne.ResultClass>(data.Year + 0, data.CurrentYear),
+					new Pair<int,NarazhCalculationOne.ResultClass>(data.Year + 1, data.NextYear),
+				}.Where(x => x.Second != null).ToArray();
+				
+
+				foreach (var idata in idataset)
+				{
+					var year = idata.First;
+					var info = idata.Second;
 
 					var sums = new[] 
 					{ 
