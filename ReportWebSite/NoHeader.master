@@ -20,7 +20,7 @@
 				</div>
 				<div style="float: right; color: white">
 					<strong>Технічна підтримка <a style="color: white" href="mailto:seic@gukv.gov.ua" title="Написати лист">seic@gukv.gov.ua</a> </strong>
-					0970656664 (консультує з 9.00 – 14.00 год.,  у звітний пер. 10.00-18.00) – Тетяна;
+					0970656664 (консультує з 9.00 – 14.00 год., звітний пер. 10.00-18.00) – Тетяна;
 					<br />
 					Oрендна плата (O.п.): 2026166 (13.00–16.00) Лілія Борисівна. Розрахунок O.п.: 0503929268 - Володимир Волошин.
 				</div>
@@ -284,6 +284,14 @@
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
+																	<dx:RibbonDropDownButtonItem Text="станом на 2026 рік (1 кв.)" NavigateUrl="20260401" Target="_blank">
+																		<SmallImage IconID="scheduling_groupbydate_16x16">
+																		</SmallImage>
+																	</dx:RibbonDropDownButtonItem>
+																	<dx:RibbonDropDownButtonItem Text="станом на 2026 рік (2 кв.)" NavigateUrl="20260701" Target="_blank">
+																		<SmallImage IconID="scheduling_groupbydate_16x16">
+																		</SmallImage>
+																	</dx:RibbonDropDownButtonItem>
 																</Items>
 																<LargeImage IconID="scheduling_groupbydate_32x32">
 																</LargeImage>
@@ -397,6 +405,14 @@
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
 																	<dx:RibbonDropDownButtonItem Text="станом на 2025 рік (4 кв.)" NavigateUrl="20260101" Target="_blank">
+																		<SmallImage IconID="scheduling_groupbydate_16x16">
+																		</SmallImage>
+																	</dx:RibbonDropDownButtonItem>
+																	<dx:RibbonDropDownButtonItem Text="станом на 2026 рік (1 кв.)" NavigateUrl="20260401" Target="_blank">
+																		<SmallImage IconID="scheduling_groupbydate_16x16">
+																		</SmallImage>
+																	</dx:RibbonDropDownButtonItem>
+																	<dx:RibbonDropDownButtonItem Text="станом на 2026 рік (2 кв.)" NavigateUrl="20260701" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
