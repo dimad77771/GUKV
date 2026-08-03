@@ -85,8 +85,8 @@ FOR XML PATH(''),TYPE
 ).value('text()[1]','nvarchar(max)'),1,5,'')
 	as balans_info
 
-    FROM view_buildings WHERE ((building_deleted IS NULL) OR (building_deleted = 0)) AND LEN(COALESCE(street_full_name, '')) > 0 AND
-        (@p_rda_district_id = 0 OR addr_distr_new_id = @p_rda_district_id)"
+    FROM view_buildings WHERE ((building_deleted IS NULL) OR (building_deleted = 0)) AND LEN(COALESCE(street_full_name, '')) > 0 
+        "
     OnSelecting="SqlDataSourceAllBuildings_Selecting"
     UpdateCommand="
         UPDATE [buildings] SET [addr_nomer1] = @addr_nomer1, [addr_nomer2] = @addr_nomer2, [addr_nomer3] = @addr_nomer3 WHERE [id] = @building_id

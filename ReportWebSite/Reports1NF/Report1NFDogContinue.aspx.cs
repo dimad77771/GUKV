@@ -1938,7 +1938,7 @@ left join organizations org_renter on org_renter.id = bal.org_renter_id
 left join organizations org_giver ON org_giver.id = bal.org_giver_id and (org_giver.is_deleted is null or org_giver.is_deleted = 0)
 left join dbo.texts_org_giver_convert conv on conv.source_text = org_giver.short_name
 WHERE fs.id in (" + string.Join(",", ids) + @")
-ORDER BY converted_org_giver, 1";
+ORDER BY 1";
 	}
 }
 
@@ -2397,7 +2397,7 @@ public class CommissionResultTextBuilder
 		{
 			return string.Format(
 				CultureInfo.InvariantCulture,
-				"«за» - {0}, «проти» - {1}; «утримались» - {2}; «не голосували» - {3}; «відсутні на засіданні» - {4}.",
+				"«за» - {0}, «проти» - {1}; «утримались» - {2}; «не голосували» - {3}.",
 				info.ZaCount,
 				info.ProtyCount,
 				info.UtrymCount,
@@ -2436,7 +2436,7 @@ public class CommissionResultTextBuilder
 			var objectText = JoinParts(", ", renterName, streetName, houseNumber, total_free_sqr);
 			var incomingText = ReportCommonFunctions.BuildDocumentRefText("Вх. ", incomingDocNum, incomingDocDate);
 			var outgoingText = ReportCommonFunctions.BuildDocumentRefText("Вих. ", outgoingDocNum, outgoingDocDate);
-			var refsText = JoinParts(" ", incomingText, outgoingText);
+			var refsText = JoinParts(" ", outgoingText, incomingText);
 			if (!string.IsNullOrWhiteSpace(refsText))
 			{
 				objectText = objectText + " (" + refsText + ")";
