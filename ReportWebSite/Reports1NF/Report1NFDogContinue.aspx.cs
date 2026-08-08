@@ -2408,6 +2408,12 @@ public class CommissionResultTextBuilder
 		return fallbackText;
 	}
 
+	private string N(string arg)
+	{
+		return NormalizationManager.N(arg);
+	}
+
+
 	private void BuildDocument(IWSection section, DataTable data)
 	{
 		AddCenteredParagraph(section, "Розгляд питань оренди", 16f, true, false, 0f, 18f);
@@ -2415,9 +2421,9 @@ public class CommissionResultTextBuilder
 		foreach (DataRow row in data.Rows)
 		{
 			var number = GetCellText(row, "№");
-			var convertedOrgGiver = GetCellText(row, "converted_org_giver");
-			var renterName = GetCellText(row, "Найменування орендаря");
-			var streetName = GetCellText(row, "Назва Вулиці");
+			var convertedOrgGiver = N(GetCellText(row, "converted_org_giver"));
+			var renterName = N(GetCellText(row, "Найменування орендаря"));
+			var streetName = N(GetCellText(row, "Назва Вулиці"));
 			var houseNumber = GetCellText(row, "Номер Будинку");
 			var total_free_sqr = "загальна площа " + GetCellText(row, "Загальна площа об’єкта") + " кв.м";
 			var incomingDocNum = GetCellText(row, "Вхідний номер");

@@ -450,6 +450,10 @@
 																<SmallImage Url="Styles/ribbonicon_20.png" />
 															</dx:RibbonButtonItem>
 
+															<dx:RibbonButtonItem Text="Нормалізація імен" NavigateUrl="Admin/NormalizationTexts.aspx">
+																<SmallImage Url="Styles/ribbonicon_3.png" />
+															</dx:RibbonButtonItem>
+
 														</Items>
 													</dx:RibbonGroup>
 												</Groups>
