@@ -46,7 +46,6 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 			string copyIdStr = Request.QueryString["copyid"];
 			IsAdmin = Request.QueryString["admin"];
 
-
 			if (!string.IsNullOrEmpty(copyIdStr))
 			{
 				CopyCard(Int32.Parse(copyIdStr), Int32.Parse(reportIdStr));
@@ -60,6 +59,11 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 
 				if (RentAgreementID == 0)
 					RentAgreementID = int.Parse(agreementIdStr);
+			}
+
+			if (!IsPostBack)
+			{
+				Fix_photos();
 			}
 
 			// Check if report belongs to this user
@@ -291,7 +295,15 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		}
 	}
 
-
+	void Fix_photos()
+	{
+		var connection = Utils.ConnectToDatabase();
+		using (SqlCommand cmd = new SqlCommand("UPDATE reports1nf_arendaphotos set file_name = replace(file_name,'?','_') WHERE arenda_id = @aid", connection))
+		{
+			cmd.Parameters.Add(new SqlParameter("aid", RentAgreementID));
+			cmd.ExecuteNonQuery();
+		}
+	}
 
 	protected void EnableControlsBasingOnUserRole()
 	{
