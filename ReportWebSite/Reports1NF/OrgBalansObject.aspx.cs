@@ -1128,6 +1128,32 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 		e.NewValues["is_included"] = true;
 	}
 
+    protected void ASPxGridViewFreeSquare_CustomJSProperties(object sender, ASPxGridViewClientJSPropertiesEventArgs e)
+    {
+        decimal? totalFreeSquare = GetTotalFreeSquare();
+        e.Properties["cpTotalFreeSquare"] = totalFreeSquare.HasValue ? (object)totalFreeSquare.Value : null;
+    }
+
+    private decimal? GetTotalFreeSquare()
+    {
+        using (SqlConnection connection = Utils.ConnectToDatabase())
+        {
+            if (connection == null)
+                return null;
+
+            using (SqlCommand command = new SqlCommand(@"SELECT SUM(CASE WHEN is_included = 1 THEN total_free_sqr ELSE 0 END)
+                FROM reports1nf_balans_free_square
+                WHERE balans_id = @balans_id AND report_id = @report_id", connection))
+            {
+                command.Parameters.Add("balans_id", SqlDbType.Int).Value = BalansObjectID;
+                command.Parameters.Add("report_id", SqlDbType.Int).Value = ReportID;
+
+                object value = command.ExecuteScalar();
+                return value == null || value == DBNull.Value ? (decimal?)null : Convert.ToDecimal(value);
+            }
+        }
+    }
+
     protected void SqlDataSourceFreeSquare_Inserting(object sender, SqlDataSourceCommandEventArgs e)
     {
         if (!string.IsNullOrEmpty(Request.QueryString["rid"]))

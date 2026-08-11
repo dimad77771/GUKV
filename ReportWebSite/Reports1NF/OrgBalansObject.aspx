@@ -485,6 +485,11 @@
         function OnEndCallback(s, e) {
             AdjustSize();
 
+            if (window.EditObjFreeSquareTotal && typeof s.cpTotalFreeSquare !== "undefined") {
+                EditObjFreeSquareTotal.SetValue(s.cpTotalFreeSquare);
+                delete s.cpTotalFreeSquare;
+            }
+
 			console.log("grid.IsEditing()", grid.IsEditing())
             if (grid.IsEditing()) {
 				var popup = s.GetEditFormTable();
@@ -688,7 +693,28 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceBalansObject" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT TOP 1 bal.* FROM reports1nf_balans bal WHERE bal.id = @bal_id AND bal.report_id = @rep_id">
+    SelectCommand="SELECT TOP 1
+        bal.*,
+        W.sum_rent_square,
+        L.total_free_sqr AS total_free_sqr_privat,
+        L.prozoro_number,
+        (SELECT SUM(CASE WHEN fs.is_included = 1 THEN fs.total_free_sqr ELSE 0 END)
+            FROM reports1nf_balans_free_square fs
+            WHERE fs.balans_id = bal.id AND fs.report_id = bal.report_id) AS total_free_sqr_free
+        FROM reports1nf_balans bal
+        OUTER APPLY
+        (
+            SELECT SUM(Q.rent_square) AS sum_rent_square, COUNT(DISTINCT Q.arenda_id) AS count_ref_balans
+            FROM view_arenda Q
+            WHERE Q.ref_balans_id = bal.id AND ISNULL(Q.is_deleted, 0) = 0
+        ) W
+        OUTER APPLY
+        (
+            SELECT TOP 1 *
+            FROM privatisat Q
+            WHERE Q.balans_id = bal.id AND ISNULL(Q.document_privat, '') = ''
+        ) L
+        WHERE bal.id = @bal_id AND bal.report_id = @rep_id">
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="bal_id" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="rep_id" />
@@ -2637,6 +2663,36 @@ WHERE id = @id"
                                                     </dx:ASPxSpinEdit>
                                                 </td>
                                             </tr>
+                                            <tr>
+                                                <td><dx:ASPxLabel ID="LabelObjSqrInRent" runat="server" Text="Площа об'єкту що знаходиться в оренді (кв.м.)"></dx:ASPxLabel></td>
+                                                <td>
+                                                    <dx:ASPxSpinEdit ID="EditObjSqrInRentCalculated" runat="server" NumberType="Float"
+                                                        Value='<%# Eval("sum_rent_square") %>' Width="100px" ReadOnly="true"
+                                                        SpinButtons-ShowIncrementButtons="false" AllowMouseWheel="false"
+                                                        Title="Площа об'єкту що знаходиться в оренді (кв.м.)" />
+                                                </td>
+                                                <td><dx:ASPxLabel ID="LabelObjFreeSquareTotal" runat="server" Text="Площа вільних приміщень, кв.м"></dx:ASPxLabel></td>
+                                                <td>
+                                                    <dx:ASPxSpinEdit ID="EditObjFreeSquareTotal" ClientInstanceName="EditObjFreeSquareTotal" runat="server" NumberType="Float"
+                                                        Value='<%# Eval("total_free_sqr_free") %>' Width="100px" ReadOnly="true" DecimalPlaces="2" DisplayFormatString="0.00"
+                                                        SpinButtons-ShowIncrementButtons="false" AllowMouseWheel="false"
+                                                        Title="Площа вільних приміщень, кв.м" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><dx:ASPxLabel ID="LabelObjSqrPrivatization" runat="server" Text="Площа об’єкта на приватизацію, кв.м"></dx:ASPxLabel></td>
+                                                <td>
+                                                    <dx:ASPxSpinEdit ID="EditObjSqrPrivatization" runat="server" NumberType="Float"
+                                                        Value='<%# Eval("total_free_sqr_privat") %>' Width="100px" ReadOnly="true"
+                                                        SpinButtons-ShowIncrementButtons="false" AllowMouseWheel="false"
+                                                        Title="Площа об’єкта на приватизацію, кв.м" />
+                                                </td>
+                                                <td><dx:ASPxLabel ID="LabelObjProzorroNumber" runat="server" Text="Унікальний код обєкту у ЕТС Прозорро-продажі"></dx:ASPxLabel></td>
+                                                <td>
+                                                    <dx:ASPxTextBox ID="EditObjProzorroNumber" runat="server" Text='<%# Eval("prozoro_number") %>'
+                                                        Width="200px" ReadOnly="true" Title="Унікальний код обєкту у ЕТС Прозорро-продажі" />
+                                                </td>
+                                            </tr>
 <%--                                            <tr>
                                                 <td><dx:ASPxLabel ID="ASPxLabel33" runat="server" Text="Кількість договорів оренди"></dx:ASPxLabel></td>
                                                 <td><dx:ASPxSpinEdit ID="EditObjNumRentAgreements" runat="server" NumberType="Integer" Value='<%# Eval("num_rent_agr") %>' Width="100px" Title="Кількість договорів оренди" /></td>
@@ -3070,7 +3126,8 @@ WHERE id = @id"
 
     <dx:ASPxGridView ID="ASPxGridViewFreeSquare" runat="server" AutoGenerateColumns="False" 
         DataSourceID="SqlDataSourceFreeSquare" KeyFieldName="id" OnRowValidating="ASPxGridViewFreeSquare_RowValidating" OnStartRowEditing="ASPxGridViewFreeSquare_StartRowEditing"
-            ClientInstanceName="grid" oninitnewrow="ASPxGridViewFreeSquare_InitNewRow" >
+            ClientInstanceName="grid" oninitnewrow="ASPxGridViewFreeSquare_InitNewRow"
+            OnCustomJSProperties="ASPxGridViewFreeSquare_CustomJSProperties" >
             <ClientSideEvents CustomButtonClick="ShowPhoto" Init="OnInit" EndCallback="OnEndCallback" />
         <Styles>  
             <EditForm CssClass="editForm999" ></EditForm>  

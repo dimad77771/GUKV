@@ -236,6 +236,8 @@
 
 ,L.total_free_sqr as total_free_sqr_privat
 ,L.sposib_privat
+,L.privat_year as privatization_year
+,L.prozoro_number as prozoro_number
 
 
     FROM view_balans_all vb
@@ -250,7 +252,7 @@
 	) W
     OUTER APPLY
 	(
-		select top 1 * from privatisat Q where Q.balans_id = vb.balans_id
+		select top 1 * from privatisat Q where Q.balans_id = vb.balans_id and isnull(Q.document_privat,'') = ''
 	) L
 
     WHERE
@@ -524,8 +526,6 @@
             VisibleIndex="57" Visible="False" Caption="Балансоутримувач - Форма Власності"></dx:GridViewDataTextColumn>
 <%--        <dx:GridViewDataDateColumn FieldName="input_date" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="58" Visible="False" Caption="Дата Актуальності"></dx:GridViewDataDateColumn>      --%>
-        <dx:GridViewDataTextColumn FieldName="is_in_privat" ReadOnly="True" ShowInCustomizationForm="True"
-            VisibleIndex="59" Visible="False" Caption="Будинок В Програмі Приватизації"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="balans_obj_name" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="60" Visible="False" Caption="Назва Об'єкту"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="modify_date" ReadOnly="True" ShowInCustomizationForm="True"
@@ -552,6 +552,9 @@
         <dx:GridViewDataTextColumn FieldName="org_contacts" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="70" Visible="True" Caption="Контактні телефони" Width="160px"></dx:GridViewDataTextColumn>
 
+        <dx:GridViewDataTextColumn FieldName="privatization_year" ReadOnly="True" ShowInCustomizationForm="True"
+            VisibleIndex="70" Visible="True" CellStyle-HorizontalAlign="Center" Caption="Об'єкт в Програмі Приватизації"></dx:GridViewDataTextColumn>
+
         <dx:GridViewDataSpinEditColumn FieldName="total_free_sqr_privat" Caption="Площа об’єкта на приватизацію, кв.м" Width="75px" VisibleIndex="70">
             <PropertiesSpinEdit NumberType="Float" NumberFormat="Number">
                 <SpinButtons Enabled="true" ></SpinButtons>
@@ -559,6 +562,12 @@
         </dx:GridViewDataSpinEditColumn>
 
         <dx:GridViewDataTextColumn FieldName="sposib_privat" Caption="Спосіб приватизації"  Width="100px" VisibleIndex="70">
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn FieldName="prozoro_number" Caption="Унікальний код обєкту у ЕТС Прозорро-продажі"  Width="150px" VisibleIndex="70">
+            <DataItemTemplate>
+                <%# "<a target=\"_blank\" href=\"https://prozorro.sale/planning/" + Eval("prozoro_number") + "\">" + Eval("prozoro_number") + "</a>"%>
+            </DataItemTemplate>
         </dx:GridViewDataTextColumn>
 
 
@@ -705,7 +714,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A4_014" Enabled="true" />
+    <SettingsCookies CookiesID="GUKV.BalansObjects" Version="A4_018" Enabled="true" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
