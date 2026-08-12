@@ -31,17 +31,31 @@ public class CommissionLetter
 
 	public void Run()
 	{
-		string templateFileName = Page.Server.MapPath("Templates/" + "Шаблон_власком_ПК_КМКЛ_продовження.docx");
+		var properties = new Dictionary<string, string>();
+		using (var connection = Utils.ConnectToDatabase())
+		{
+			GetData(connection, properties);
+		}
+
+		var filedop = "";
+		var orend = properties["{{Орендодавець}}"];
+		if (orend == "Святошинська районна в місті Києві державна адміністрація")
+		{
+			filedop = "Святошинська РДА";
+		}
+		else if (orend == "Дарницька районна в місті Києві державна адміністрація")
+		{
+			filedop = "Дарницька РДА";
+		}
+		var file = "Шаблон_власком_ПК_КМКЛ_продовження" + (filedop != "" ? "__" + filedop : "") +  ".docx";
+
+
+		string templateFileName = Page.Server.MapPath("Templates/" + file);
 
 		if (templateFileName.Length > 0)
 		{
 			using (TempFile tempFile = TempFile.FromExistingFile(templateFileName))
 			{
-				var properties = new Dictionary<string, string>();
-				using (var connection = Utils.ConnectToDatabase())
-				{
-					GetData(connection, properties);
-				}
 
 				var docx = new WordDocument(tempFile.FileName, FormatType.Docx);
 				ReplacePlaceholders(docx, properties);
