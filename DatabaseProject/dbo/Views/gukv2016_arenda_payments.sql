@@ -1,0 +1,1 @@
+﻿create view gukv2016_arenda_payments as select * from GUKV2016..arenda_payments

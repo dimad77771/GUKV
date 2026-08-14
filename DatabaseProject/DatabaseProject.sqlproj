@@ -1,0 +1,1022 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>DatabaseProject</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{cdb5ea13-be2c-4aaa-b303-729082454e1d}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>DatabaseProject</RootNamespace>
+    <AssemblyName>DatabaseProject</AssemblyName>
+    <ModelCollation>1049,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>Cyrillic_General_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="exchequer\" />
+    <Folder Include="exchequer\Tables\" />
+    <Folder Include="yurdep\" />
+    <Folder Include="yurdep\Tables\" />
+    <Folder Include="dbo\Views\" />
+    <Folder Include="Security\" />
+    <Folder Include="dbo\Functions\" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="Assemblies\" />
+    <Folder Include="dbo\Sequences\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\reports1nf_arenda_subleases.sql" />
+    <Build Include="dbo\Tables\sys_report_corrections.sql" />
+    <Build Include="dbo\Tables\reports1nf_balans_rish_attachfiles.sql" />
+    <Build Include="dbo\Tables\zzzzz20250626a.sql" />
+    <Build Include="dbo\Tables\zzzz20220109_backup__building_docs.sql" />
+    <Build Include="dbo\Tables\dict_doc_depend_kind.sql" />
+    <Build Include="dbo\Tables\zzzz20220109_backup__expert_note.sql" />
+    <Build Include="dbo\Tables\dict_arenda_note_status.sql" />
+    <Build Include="dbo\Tables\dict_czilove_vikorist.sql" />
+    <Build Include="dbo\Tables\org_docs.sql" />
+    <Build Include="dbo\Tables\zzztemp_dict_free_square_stage.sql" />
+    <Build Include="dbo\Tables\reports1nf_payment_narah_prognoz_without_borg.sql" />
+    <Build Include="dbo\Tables\zzzz20250824_C.sql" />
+    <Build Include="dbo\Tables\reports1nf_balans_akt_attachfiles.sql" />
+    <Build Include="dbo\Tables\zzzz20220109_backup__object_rights.sql" />
+    <Build Include="dbo\Tables\reports1nf_arenda_payments.sql" />
+    <Build Include="dbo\Tables\corpordvig.sql" />
+    <Build Include="dbo\Tables\dashboard_info.sql" />
+    <Build Include="dbo\Tables\aspnet_SchemaVersions.sql" />
+    <Build Include="dbo\Tables\fin_form_changes.sql" />
+    <Build Include="dbo\Tables\zzzz20220109_backup__object_rights_building_docs.sql" />
+    <Build Include="dbo\Tables\fin_periods.sql" />
+    <Build Include="dbo\Tables\dict_orandodavec_user.sql" />
+    <Build Include="dbo\Tables\zzzz20220109_backup__privatization.sql" />
+    <Build Include="dbo\Tables\reports1nf_report_documents.sql" />
+    <Build Include="dbo\Tables\dashboard_info_full.sql" />
+    <Build Include="dbo\Tables\dict_doc_commission.sql" />
+    <Build Include="dbo\Tables\zzzz20250825_C.sql" />
+    <Build Include="dbo\Tables\dict_org_occupation.sql" />
+    <Build Include="dbo\Tables\zzzz20220109_backup__rent_free_square.sql" />
+    <Build Include="dbo\Tables\dict_expert_valuation_kind.sql" />
+    <Build Include="dbo\Tables\freecycle.sql" />
+    <Build Include="dbo\Tables\zzzzz_geo_info1.sql" />
+    <Build Include="dbo\Tables\out_of_city_organizations.sql" />
+    <Build Include="dbo\Tables\expert_note_detail_grouped.sql" />
+    <Build Include="dbo\Tables\reports1nf_btiphoto.sql" />
+    <Build Include="dbo\Tables\zzzzz20250626b.sql" />
+    <Build Include="dbo\Tables\zzzz20220109_backup__rent_object.sql" />
+    <Build Include="dbo\Tables\zzzzz20230225_backup_arch_balans_m.sql" />
+    <Build Include="dbo\Tables\zzzz20220109_backup__unverified_balans.sql" />
+    <Build Include="dbo\Tables\reports1nf_comments.sql" />
+    <Build Include="dbo\Tables\dict_prop_strok_orend.sql" />
+    <Build Include="dbo\Tables\EmailRda.sql" />
+    <Build Include="dbo\Tables\zzzzz20250905a.sql" />
+    <Build Include="dbo\Tables\zzzz20220109_buildings_delete.sql" />
+    <Build Include="dbo\Tables\dict_privat_state.sql" />
+    <Build Include="dbo\Tables\dict_rental_rate.sql" />
+    <Build Include="dbo\Tables\arenda_rishen.sql" />
+    <Build Include="dbo\Tables\dict_doc_appendix_kind.sql" />
+    <Build Include="dbo\Tables\zzzzz20250905b.sql" />
+    <Build Include="dbo\Tables\dict_org_status.sql" />
+    <Build Include="dbo\Tables\fin_budget_formula.sql" />
+    <Build Include="dbo\Tables\zzzz20220109_backup__reports1nf_arenda.sql" />
+    <Build Include="dbo\Tables\zzzz20240630_backup_reports1nf_balans_free_square.sql" />
+    <Build Include="dbo\Tables\____________z.sql" />
+    <Build Include="dbo\Tables\expert_input_doc.sql" />
+    <Build Include="dbo\Tables\zzzz20220109_backup__reports1nf_arenda_rented.sql" />
+    <Build Include="dbo\Tables\zzzz20240630_backup_dict_pravo_bez_auction.sql" />
+    <Build Include="dbo\Tables\freecycle_orendar.sql" />
+    <Build Include="dbo\Tables\reports1nf_balans_bti_attachfiles.sql" />
+    <Build Include="dbo\Tables\zzzz20250705_A1.sql" />
+    <Build Include="dbo\Tables\zzzz20220109_backup__reports1nf_balans.sql" />
+    <Build Include="dbo\Tables\zzzz20240714_AssessmentArhive_backup.sql" />
+    <Build Include="dbo\Tables\zzz__reports1nf_arenda_payments.sql" />
+    <Build Include="dbo\Tables\zzzzz20250906a.sql" />
+    <Build Include="dbo\Tables\m_view_docs_objects_akts.sql" />
+    <Build Include="dbo\Tables\documents_photos.sql" />
+    <Build Include="dbo\Tables\zzzz20250705_A2.sql" />
+    <Build Include="dbo\Tables\zzzz20220109_backup__reports1nf_balans_deleted.sql" />
+    <Build Include="dbo\Tables\dict_privat_obj_group.sql" />
+    <Build Include="dbo\Tables\zzz__last_reports1nf_arenda_payments.sql" />
+    <Build Include="dbo\Tables\zzzzz20250906b.sql" />
+    <Build Include="dbo\Tables\reports1nf_balans_dinfo_attachfiles.sql" />
+    <Build Include="dbo\Tables\dict_org_form_gosp.sql" />
+    <Build Include="dbo\Tables\m_view_object_rights.sql" />
+    <Build Include="dbo\Tables\zzzz20250705_B.sql" />
+    <Build Include="dbo\Tables\dict_rent_note.sql" />
+    <Build Include="dbo\Tables\zzzz20210114_2.sql" />
+    <Build Include="dbo\Tables\reports1nf_payment_documents.sql" />
+    <Build Include="dbo\Tables\dict_doc_stadiya.sql" />
+    <Build Include="dbo\Tables\zzz47__arenda_payments.sql" />
+    <Build Include="dbo\Tables\m_report_balans_and_arenda.sql" />
+    <Build Include="dbo\Tables\zzzz20250705_C.sql" />
+    <Build Include="dbo\Tables\zzzz20210114_1.sql" />
+    <Build Include="dbo\Tables\dict_stan_recieve.sql" />
+    <Build Include="dbo\Tables\etc_phone_info.sql" />
+    <Build Include="dbo\Tables\dict_factich_vikorist.sql" />
+    <Build Include="dbo\Tables\zzz47__reports1nf_arenda_payments.sql" />
+    <Build Include="dbo\Tables\reports1nf_balans_znizhino_attachfiles.sql" />
+    <Build Include="dbo\Tables\m_view_arenda.sql" />
+    <Build Include="dbo\Tables\zzzz20220114_payments.sql" />
+    <Build Include="dbo\Tables\freecycle_step_dict.sql" />
+    <Build Include="dbo\Tables\zzzzz20250907a.sql" />
+    <Build Include="dbo\Tables\aspnet_Membership.sql" />
+    <Build Include="dbo\Tables\m_view_arenda_agreements.sql" />
+    <Build Include="dbo\Tables\zzzz20220114_payments_period.sql" />
+    <Build Include="dbo\Tables\dict_privat_kind.sql" />
+    <Build Include="dbo\Tables\zzzzz20231125a__1.sql" />
+    <Build Include="dbo\Tables\zzzzz20250907b.sql" />
+    <Build Include="dbo\Tables\expert_input_doc_grouped.sql" />
+    <Build Include="dbo\Tables\dict_org_ownership.sql" />
+    <Build Include="dbo\Tables\m_view_rent_pay_for_arenda.sql" />
+    <Build Include="dbo\Tables\dict_rent_dkk.sql" />
+    <Build Include="dbo\Tables\zzzz20220114_backup_exchequer_payments.sql" />
+    <Build Include="dbo\Tables\dict_doc_source.sql" />
+    <Build Include="dbo\Tables\m_view_rent_debt_for_arenda.sql" />
+    <Build Include="dbo\Tables\transfer_requests_photos.sql" />
+    <Build Include="dbo\Tables\zzzzz20250910a.sql" />
+    <Build Include="dbo\Tables\dict_privat_complex.sql" />
+    <Build Include="dbo\Tables\zzzzz20250910b.sql" />
+    <Build Include="dbo\Tables\expert_output_doc.sql" />
+    <Build Include="dbo\Tables\dict_org_gosp_struct_201803.sql" />
+    <Build Include="dbo\Tables\dict_rent_payment_type.sql" />
+    <Build Include="dbo\Tables\zzzz20220120_buildings.sql" />
+    <Build Include="dbo\Tables\dict_doc_state.sql" />
+    <Build Include="dbo\Tables\zzzz20220120_reports1nf_buildings.sql" />
+    <Build Include="dbo\Tables\zzzzz20231125a__2.sql" />
+    <Build Include="dbo\Tables\aa2.sql" />
+    <Build Include="dbo\Tables\external_document.sql" />
+    <Build Include="dbo\Tables\zzzz20220120_dict_streets.sql" />
+    <Build Include="dbo\Tables\zzzzz20231125a__3.sql" />
+    <Build Include="dbo\Tables\reports1nf_photos.sql" />
+    <Build Include="dbo\Tables\zzzzz20251003a.sql" />
+    <Build Include="dbo\Tables\reports1nf_balans_vlasnpotreb.sql" />
+    <Build Include="dbo\Tables\dict_privat_subordination.sql" />
+    <Build Include="dbo\Tables\zzzzz20231125a__4.sql" />
+    <Build Include="dbo\Tables\zzzzz20251003b.sql" />
+    <Build Include="dbo\Tables\dict_org_organ.sql" />
+    <Build Include="dbo\Tables\dict_rent_occupation.sql" />
+    <Build Include="dbo\Tables\zzzzz20231125a__5.sql" />
+    <Build Include="dbo\Tables\dict_rent_decisions.sql" />
+    <Build Include="dbo\Tables\link_balans_vlasnpotreb.sql" />
+    <Build Include="dbo\Tables\freecycle_step.sql" />
+    <Build Include="dbo\Tables\zzzzz20231125a__6.sql" />
+    <Build Include="dbo\Tables\zzzz20251004_C.sql" />
+    <Build Include="dbo\Tables\expert_output_doc_grouped.sql" />
+    <Build Include="dbo\Tables\dict_method_calc.sql" />
+    <Build Include="dbo\Tables\privatization.sql" />
+    <Build Include="dbo\Tables\zzzzz20231125a__7.sql" />
+    <Build Include="dbo\Tables\dict_balans_o26.sql" />
+    <Build Include="dbo\Tables\dict_org_industry.sql" />
+    <Build Include="dbo\Tables\rent_balans_org.sql" />
+    <Build Include="dbo\Tables\zzzzz20231125a.sql" />
+    <Build Include="dbo\Tables\documents.sql" />
+    <Build Include="dbo\Tables\zzzz20240918_AssessmentArhive_for_insert.sql" />
+    <Build Include="dbo\Tables\mapping_org_balans_1nf.sql" />
+    <Build Include="dbo\Tables\dict_zgoda_renter.sql" />
+    <Build Include="dbo\Tables\zzzz20251005_C.sql" />
+    <Build Include="dbo\Tables\zzzz20240918_AssessmentArhive_for_delete.sql" />
+    <Build Include="dbo\Tables\mapping_org_privat_1nf.sql" />
+    <Build Include="dbo\Tables\inflation_month.sql" />
+    <Build Include="dbo\Tables\zzzz20260803a.sql" />
+    <Build Include="dbo\Tables\dict_balans_bti.sql" />
+    <Build Include="dbo\Tables\zzzzz20230205_OlapReportTotalYear.sql" />
+    <Build Include="dbo\Tables\dict_org_priznak.sql" />
+    <Build Include="dbo\Tables\zzzzz20210225__reports1nf_arenda.sql" />
+    <Build Include="dbo\Tables\zzzz20251006_C.sql" />
+    <Build Include="dbo\Tables\PaymentDiscountsFuture.sql" />
+    <Build Include="dbo\Tables\inflation_year.sql" />
+    <Build Include="dbo\Tables\freecycle_step_documents.sql" />
+    <Build Include="dbo\Tables\zzzzz20210225__reports1nf_arenda_notes.sql" />
+    <Build Include="dbo\Tables\arch_balans_m.sql" />
+    <Build Include="dbo\Tables\zzzzz20210225__reports1nf_balans.sql" />
+    <Build Include="dbo\Tables\arch_arenda_m.sql" />
+    <Build Include="dbo\Tables\zzzz20241007_1.sql" />
+    <Build Include="dbo\Tables\zzzzz20210225__for_update.sql" />
+    <Build Include="dbo\Tables\dict_balans_purpose_group.sql" />
+    <Build Include="dbo\Tables\zzzzz20251009a.sql" />
+    <Build Include="dbo\Tables\reports1nf_org_info.sql" />
+    <Build Include="dbo\Tables\dict_org_title_form.sql" />
+    <Build Include="dbo\Tables\arch_buildings.sql" />
+    <Build Include="dbo\Tables\zzzzz20250720a.sql" />
+    <Build Include="dbo\Tables\zzzzz20210225__all_data.sql" />
+    <Build Include="dbo\Tables\zzzzz20251009b.sql" />
+    <Build Include="dbo\Tables\zzzzz20250720b.sql" />
+    <Build Include="dbo\Tables\rent_renter_org.sql" />
+    <Build Include="dbo\Tables\zzzzzz20241014_free_proc_step_dict.sql" />
+    <Build Include="dbo\Tables\doc_appendices.sql" />
+    <Build Include="dbo\Tables\zzzzz20210225__excel_load2.sql" />
+    <Build Include="dbo\Tables\zzzzz20210225__result1.sql" />
+    <Build Include="dbo\Tables\aspnet_Profile.sql" />
+    <Build Include="dbo\Tables\organizations.sql" />
+    <Build Include="exchequer\Tables\usropt_datawindow_column_width.sql" />
+    <Build Include="dbo\Tables\dict_rish_project_type.sql" />
+    <Build Include="dbo\Tables\dict_balans_purpose.sql" />
+    <Build Include="dbo\Tables\zzzz20251009_C.sql" />
+    <Build Include="dbo\Tables\dict_org_form_1nf.sql" />
+    <Build Include="dbo\Tables\arch_arenda.sql" />
+    <Build Include="dbo\Tables\zzzzz20250721a.sql" />
+    <Build Include="dbo\Tables\dict_1nf_tech_stane.sql" />
+    <Build Include="dbo\Tables\zzzzz20250721b.sql" />
+    <Build Include="dbo\Tables\arenda_payments_cmk.sql" />
+    <Build Include="dbo\Tables\AssessmentArhive.sql" />
+    <Build Include="dbo\Tables\dict_free_square_stage.sql" />
+    <Build Include="dbo\Tables\arch_balans.sql" />
+    <Build Include="dbo\Tables\zzzzz20250722a.sql" />
+    <Build Include="dbo\Tables\rent_payment.sql" />
+    <Build Include="dbo\Tables\zzzzz20251015a.sql" />
+    <Build Include="dbo\Tables\arch_arenda_notes.sql" />
+    <Build Include="exchequer\Tables\dummy.sql" />
+    <Build Include="dbo\Tables\zzzzz20250722b.sql" />
+    <Build Include="dbo\Tables\priv_object_docs.sql" />
+    <Build Include="dbo\Tables\PrivatisatArhive.sql" />
+    <Build Include="dbo\Tables\zzzzz20210311__payments.sql" />
+    <Build Include="dbo\Tables\dict_balans_ownership_type.sql" />
+    <Build Include="dbo\Tables\zzzzz20251015b.sql" />
+    <Build Include="dbo\Tables\dict_org_vedomstvo.sql" />
+    <Build Include="dbo\Tables\arenda_applications.sql" />
+    <Build Include="dbo\Tables\zzzzz20210311__payments_period.sql" />
+    <Build Include="dbo\Tables\dogcontinue_commission.sql" />
+    <Build Include="dbo\Tables\reports1nf_inventar_documents.sql" />
+    <Build Include="dbo\Tables\dict_1nf_power_info.sql" />
+    <Build Include="dbo\Tables\arenda_rented.sql" />
+    <Build Include="dbo\Tables\zzzzz_reports1nf_arendaphotos.sql" />
+    <Build Include="dbo\Tables\reports1nf_balans_free_square_current_stage_documents.sql" />
+    <Build Include="dbo\Tables\arch_link_arenda_2_decisions.sql" />
+    <Build Include="dbo\Tables\auction_uchasnik.sql" />
+    <Build Include="dbo\Tables\zzzzz20210412___dict_1nf_org_occupation.sql" />
+    <Build Include="dbo\Tables\adresesUrbio_address.sql" />
+    <Build Include="dbo\Tables\dict_balans_form_giver.sql" />
+    <Build Include="dbo\Tables\zzzz20251010_C.sql" />
+    <Build Include="dbo\Tables\dict_org_title.sql" />
+    <Build Include="dbo\Tables\zzzzz20250724a.sql" />
+    <Build Include="dbo\Tables\zzzzz20210412___dict_org_occupation.sql" />
+    <Build Include="dbo\Tables\rent_object.sql" />
+    <Build Include="dbo\Tables\adresesUrbio_address_geolocation.sql" />
+    <Build Include="dbo\Tables\dict_free_object_type.sql" />
+    <Build Include="dbo\Tables\zzzzz20250724b.sql" />
+    <Build Include="dbo\Tables\arch_arenda_rented.sql" />
+    <Build Include="dbo\Tables\NormalizationTexts.sql" />
+    <Build Include="dbo\Tables\arenda_decisions.sql" />
+    <Build Include="dbo\Tables\dict_1nf_org_ouprav.sql" />
+    <Build Include="dbo\Tables\zzzz20251011_C.sql" />
+    <Build Include="dbo\Tables\aspnet_Roles.sql" />
+    <Build Include="dbo\Tables\dict_obj_rights.sql" />
+    <Build Include="dbo\Tables\fin_budget_rate_by_industry.sql" />
+    <Build Include="dbo\Tables\adresesUrbio_address_history.sql" />
+    <Build Include="dbo\Tables\dict_balans_update_src.sql" />
+    <Build Include="dbo\Tables\dict_org_form.sql" />
+    <Build Include="dbo\Tables\zzzz20260805a_gukv.sql" />
+    <Build Include="dbo\Tables\dict_org_ouprav.sql" />
+    <Build Include="dbo\Tables\arch_balans_free_square_photos.sql" />
+    <Build Include="dbo\Tables\privatisat.sql" />
+    <Build Include="dbo\Tables\dict_restriction_group.sql" />
+    <Build Include="dbo\Tables\zzzz20260805a_gukv_diff.sql" />
+    <Build Include="dbo\Tables\adresesUrbio_address_incorrect.sql" />
+    <Build Include="dbo\Tables\zzzz20251012_C.sql" />
+    <Build Include="dbo\Tables\arch_balans_docs.sql" />
+    <Build Include="dbo\Tables\arch_balans_photos.sql" />
+    <Build Include="dbo\Tables\zzzzz20250725a.sql" />
+    <Build Include="dbo\Tables\adresesUrbio_street.sql" />
+    <Build Include="dbo\Tables\dict_balans_vidch_type.sql" />
+    <Build Include="dbo\Tables\dict_org_gosp_struct_type.sql" />
+    <Build Include="dbo\Tables\zzzzz20250725b.sql" />
+    <Build Include="yurdep\Tables\delo.sql" />
+    <Build Include="dbo\Tables\zzzz20251014_C.sql" />
+    <Build Include="dbo\Tables\aspnet_UsersInRoles.sql" />
+    <Build Include="dbo\Tables\balans_photos.sql" />
+    <Build Include="dbo\Tables\dict_restriction.sql" />
+    <Build Include="dbo\Tables\dict_1nf_org_pravform.sql" />
+    <Build Include="dbo\Tables\dict_1nf_period_used.sql" />
+    <Build Include="dbo\Tables\adresesUrbio_street_district.sql" />
+    <Build Include="dbo\Tables\privatisat_documents.sql" />
+    <Build Include="dbo\Tables\rent_payment_by_renter.sql" />
+    <Build Include="dbo\Tables\dict_expert_detail_purpose.sql" />
+    <Build Include="yurdep\Tables\doc.sql" />
+    <Build Include="dbo\Tables\dict_1nf_streets.sql" />
+    <Build Include="dbo\Tables\fin_budget_rate_by_org.sql" />
+    <Build Include="dbo\Tables\zzz20240105_payments.sql" />
+    <Build Include="dbo\Tables\dict_org_pravform.sql" />
+    <Build Include="dbo\Tables\adresesUrbio_street_geolocation.sql" />
+    <Build Include="dbo\Tables\zzzz20251016_C.sql" />
+    <Build Include="dbo\Tables\dict_org_share_type.sql" />
+    <Build Include="dbo\Tables\dict_expert_detail_floors.sql" />
+    <Build Include="dbo\Tables\zzz20240105_payments_period.sql" />
+    <Build Include="yurdep\Tables\docblb.sql" />
+    <Build Include="dbo\Tables\zzzz_privatisat.sql" />
+    <Build Include="dbo\Tables\restrictions.sql" />
+    <Build Include="dbo\Tables\adresesUrbio_street_history.sql" />
+    <Build Include="dbo\Tables\dict_reports1nf_comment_target.sql" />
+    <Build Include="dbo\Tables\zzz_expert_note.sql" />
+    <Build Include="dbo\Tables\dict_regions.sql" />
+    <Build Include="yurdep\Tables\housr.sql" />
+    <Build Include="dbo\Tables\zzzzz20251017b1.sql" />
+    <Build Include="dbo\Tables\reports.sql" />
+    <Build Include="dbo\Tables\dict_expert_stan.sql" />
+    <Build Include="dbo\Tables\organizations_from_derzh_reestr.sql" />
+    <Build Include="dbo\Tables\zzz_expert_output_doc.sql" />
+    <Build Include="dbo\Tables\adresesUrbio_street_incorrect.sql" />
+    <Build Include="dbo\Tables\zzzzz20251023a.sql" />
+    <Build Include="dbo\Tables\dict_1nf_districts2.sql" />
+    <Build Include="dbo\Tables\dict_otdel_gukv.sql" />
+    <Build Include="dbo\Tables\zzzzz_reports1nf_balans_free_prozoro.sql" />
+    <Build Include="dbo\Tables\zzz_expert_input_doc.sql" />
+    <Build Include="dbo\Tables\texts_org_giver_convert.sql" />
+    <Build Include="yurdep\Tables\l_klas.sql" />
+    <Build Include="dbo\Tables\zzzzz20251023b.sql" />
+    <Build Include="dbo\Tables\zzz_expert_note_detail.sql" />
+    <Build Include="dbo\Tables\dict_1nf_invest_solution.sql" />
+    <Build Include="yurdep\Tables\l_reg.sql" />
+    <Build Include="dbo\Tables\reports1nf_payment_narahcalc.sql" />
+    <Build Include="dbo\Tables\link_arenda_2_decisions.sql" />
+    <Build Include="dbo\Tables\dict_org_mayno.sql" />
+    <Build Include="dbo\Tables\rent_payment_debt.sql" />
+    <Build Include="dbo\Tables\object_rights.sql" />
+    <Build Include="yurdep\Tables\l_rez.sql" />
+    <Build Include="dbo\Tables\dict_1nf_tech_state.sql" />
+    <Build Include="dbo\Tables\dict_balans_obj_status.sql" />
+    <Build Include="dbo\Tables\dict_streets.sql" />
+    <Build Include="dbo\Tables\user_folders.sql" />
+    <Build Include="yurdep\Tables\l_rez3.sql" />
+    <Build Include="dbo\Tables\inflation_year_prognoz.sql" />
+    <Build Include="dbo\Tables\zzzzzzz20241126_A.sql" />
+    <Build Include="dbo\Tables\dict_org_contact_posada.sql" />
+    <Build Include="dbo\Tables\__1.sql" />
+    <Build Include="dbo\Tables\zzzz20210331_1764.sql" />
+    <Build Include="yurdep\Tables\l_styp.sql" />
+    <Build Include="dbo\Tables\inflation_month_prognoz.sql" />
+    <Build Include="dbo\Tables\__property_info.sql" />
+    <Build Include="dbo\Tables\zzzzz20230401_a.sql" />
+    <Build Include="dbo\Tables\dict_1nf_history.sql" />
+    <Build Include="dbo\Tables\zzzzz20250727_correct_2.sql" />
+    <Build Include="dbo\Tables\zzzzzz20241214_A1.sql" />
+    <Build Include="dbo\Tables\user_reports.sql" />
+    <Build Include="dbo\Tables\zzzzz20230409_reports1nf.sql" />
+    <Build Include="yurdep\Tables\l_sud.sql" />
+    <Build Include="dbo\Tables\aspnet_Paths.sql" />
+    <Build Include="dbo\Tables\dict_org_old_organ.sql" />
+    <Build Include="dbo\Tables\zzzzzz20241214_A2.sql" />
+    <Build Include="dbo\Tables\arenda_decision_objects.sql" />
+    <Build Include="dbo\Tables\dict_yes_no.sql" />
+    <Build Include="dbo\Tables\reports1nf_payment_narah_prognoz.sql" />
+    <Build Include="dbo\Tables\dict_org_nadhodjennya.sql" />
+    <Build Include="yurdep\Tables\l_vstan.sql" />
+    <Build Include="dbo\Tables\dict_kved.sql" />
+    <Build Include="dbo\Tables\reports1nf_org_info_new_contribution_rate.sql" />
+    <Build Include="dbo\Tables\zzzzz20251207a.sql" />
+    <Build Include="dbo\Tables\dict_fin_report_type.sql" />
+    <Build Include="dbo\Tables\OlapReportTotalYear.sql" />
+    <Build Include="yurdep\Tables\opt.sql" />
+    <Build Include="dbo\Tables\dict_1nf_object_kind_old.sql" />
+    <Build Include="dbo\Tables\reports1nf_balans_free_square.sql" />
+    <Build Include="dbo\Tables\zzzzz20251208__del__reports1nf_payment_narahcalc.sql" />
+    <Build Include="dbo\Tables\user_notification_settings.sql" />
+    <Build Include="dbo\Tables\dict_org_gosp_struct.sql" />
+    <Build Include="dbo\Tables\dict_org_vibuttya.sql" />
+    <Build Include="dbo\Tables\rent_vipiski.sql" />
+    <Build Include="dbo\Tables\zzzzzzzzzz20250102_buildings.sql" />
+    <Build Include="dbo\Tables\arenda_payments.sql" />
+    <Build Include="yurdep\Tables\stp.sql" />
+    <Build Include="dbo\Tables\dict_districts.sql" />
+    <Build Include="dbo\Tables\zzzzzzzzzz20250102_reports1nf_buildings.sql" />
+    <Build Include="dbo\Tables\dict_rent_period.sql" />
+    <Build Include="dbo\Tables\zzzz20250119_del_reports1nf_arenda.sql" />
+    <Build Include="dbo\Tables\dict_fin_form_type.sql" />
+    <Build Include="dbo\Tables\doc_dependencies.sql" />
+    <Build Include="yurdep\Tables\stp_uch.sql" />
+    <Build Include="dbo\Tables\aspnet_PersonalizationAllUsers.sql" />
+    <Build Include="dbo\Tables\zzzzz20250119_A.sql" />
+    <Build Include="dbo\Tables\dict_arenda_agreement_kind.sql" />
+    <Build Include="dbo\Tables\dict_1nf_object_type.sql" />
+    <Build Include="dbo\Tables\dict_org_privat_status.sql" />
+    <Build Include="dbo\Tables\zzzzz20250119_B.sql" />
+    <Build Include="dbo\Tables\dict_continue_category.sql" />
+    <Build Include="dbo\Tables\DictSummaryReportSphere.sql" />
+    <Build Include="yurdep\Tables\uch.sql" />
+    <Build Include="dbo\Tables\reports1nf_arenda_scandocument_attachfiles.sql" />
+    <Build Include="dbo\Tables\dict_districts2.sql" />
+    <Build Include="dbo\Tables\dict_fin_form_kind.sql" />
+    <Build Include="dbo\Tables\org_by_period.sql" />
+    <Build Include="yurdep\Tables\usr.sql" />
+    <Build Include="dbo\Tables\reports1nf_arenda_dogcontinue.sql" />
+    <Build Include="dbo\Tables\rent_free_square.sql" />
+    <Build Include="dbo\Tables\balans_free_square.sql" />
+    <Build Include="dbo\Tables\zzzzz20251209a.sql" />
+    <Build Include="dbo\Tables\aspnet_PersonalizationPerUser.sql" />
+    <Build Include="dbo\Tables\dict_org_cur_state.sql" />
+    <Build Include="dbo\Tables\dict_arenda_privat_kind.sql" />
+    <Build Include="yurdep\Tables\version.sql" />
+    <Build Include="dbo\Tables\zzzzz20251209b.sql" />
+    <Build Include="dbo\Tables\dict_1nf_org_ownership.sql" />
+    <Build Include="dbo\Tables\dict_doc_change_type.sql" />
+    <Build Include="dbo\Tables\fin_report_periods.sql" />
+    <Build Include="dbo\Tables\reports1nf.sql" />
+    <Build Include="yurdep\Tables\zserial.sql" />
+    <Build Include="dbo\Tables\dict_tech_state.sql" />
+    <Build Include="dbo\Tables\zzzzz20251208a.sql" />
+    <Build Include="dbo\Tables\dict_org_sfera_upr.sql" />
+    <Build Include="dbo\Tables\reports1nf_balans_free_square_photos.sql" />
+    <Build Include="yurdep\Tables\zversion.sql" />
+    <Build Include="dbo\Tables\zzzzz20251208b.sql" />
+    <Build Include="dbo\Tables\dict_1nf_balans_purpose_group.sql" />
+    <Build Include="dbo\Tables\zzzzz20250731a.sql" />
+    <Build Include="dbo\Tables\dict_rish_project_state.sql" />
+    <Build Include="dbo\Tables\dict_org_doc_link_kind.sql" />
+    <Build Include="dbo\Tables\dogcontinue_proc_step_dict.sql" />
+    <Build Include="dbo\Tables\dict_arenda_payment_type.sql" />
+    <Build Include="dbo\Tables\zzzzz20250731b.sql" />
+    <Build Include="dbo\Tables\dict_expert_obj_type.sql" />
+    <Build Include="dbo\Tables\fin_report_forms.sql" />
+    <Build Include="dbo\Tables\balans.sql" />
+    <Build Include="dbo\Tables\reports1nf_org_corprava.sql" />
+    <Build Include="dbo\Tables\dict_object_kind.sql" />
+    <Build Include="exchequer\Tables\payments.sql" />
+    <Build Include="dbo\Tables\inventarization.sql" />
+    <Build Include="dbo\Tables\arch_balans_free_square.sql" />
+    <Build Include="dbo\Tables\free_proc_step_dict.sql" />
+    <Build Include="dbo\Tables\dict_org_plan_zone.sql" />
+    <Build Include="dbo\Tables\dict_history.sql" />
+    <Build Include="dbo\Tables\zzzzzzzzzz20251226_convert.sql" />
+    <Build Include="dbo\Tables\dict_1nf_balans_purpose.sql" />
+    <Build Include="dbo\Tables\zzzzz20230225_backup_arch_arenda_m.sql" />
+    <Build Include="dbo\Tables\building_docs.sql" />
+    <Build Include="dbo\Tables\zzz20210518_backup_reports1nf_balans_free_square.sql" />
+    <Build Include="dbo\Tables\reports1nf_balans.sql" />
+    <Build Include="dbo\Tables\dict_expert_rezenz.sql" />
+    <Build Include="dbo\Tables\yursprava.sql" />
+    <Build Include="dbo\Tables\arenda.sql" />
+    <Build Include="dbo\Tables\zzzzzzzzzz20251226_convert_3.sql" />
+    <Build Include="dbo\Tables\zzz20210518_backup_reports1nf_arenda_dogcontinue.sql" />
+    <Build Include="dbo\Tables\dict_org_registr_org.sql" />
+    <Build Include="exchequer\Tables\payments_period.sql" />
+    <Build Include="dbo\Tables\dict_rish_project_org.sql" />
+    <Build Include="dbo\Tables\reports1nf_buildings.sql" />
+    <Build Include="dbo\Tables\zzzzz20251231a.sql" />
+    <Build Include="dbo\Tables\dict_1nf_org_status.sql" />
+    <Build Include="dbo\Tables\dict_1nf_object_kind.sql" />
+    <Build Include="dbo\Tables\dict_object_type.sql" />
+    <Build Include="dbo\Tables\zzz20240204a_all_codes.sql" />
+    <Build Include="dbo\Tables\reports1nf_balans_free_prozoro.sql" />
+    <Build Include="dbo\Tables\reports1nf_arenda_dogcontinue_photos.sql" />
+    <Build Include="dbo\Tables\dict_rish_project_org_contact.sql" />
+    <Build Include="dbo\Tables\dict_expert_korr.sql" />
+    <Build Include="dbo\Tables\fin_report_rows.sql" />
+    <Build Include="dbo\Tables\freecycle_rejection_dict.sql" />
+    <Build Include="dbo\Tables\balans_free_square_photos.sql" />
+    <Build Include="dbo\Tables\dict_org_old_industry.sql" />
+    <Build Include="dbo\Tables\ClipbordForUsers.sql" />
+    <Build Include="dbo\Tables\tmp1.sql" />
+    <Build Include="dbo\Tables\dict_1nf_org_form_gosp.sql" />
+    <Build Include="exchequer\Tables\lookup_1.sql" />
+    <Build Include="dbo\Tables\zzzz_20240217a.sql" />
+    <Build Include="dbo\Tables\arch_organizations.sql" />
+    <Build Include="dbo\Tables\reports1nf_arenda_dogcontinue_current_stage_documents.sql" />
+    <Build Include="dbo\Tables\dict_object_kind_old.sql" />
+    <Build Include="dbo\Tables\zzzz_20240217_reports1nf_arenda_notes_backup.sql" />
+    <Build Include="dbo\Tables\tmp2.sql" />
+    <Build Include="dbo\Tables\bp_rish_project.sql" />
+    <Build Include="dbo\Tables\dict_expert_rezenz_type.sql" />
+    <Build Include="dbo\Tables\PaymentDiscounts.sql" />
+    <Build Include="dbo\Tables\valsndogovor.sql" />
+    <Build Include="dbo\Tables\tmp3.sql" />
+    <Build Include="dbo\Tables\dict_org_old_occupation.sql" />
+    <Build Include="dbo\Tables\zzzz20221108_A.sql" />
+    <Build Include="dbo\Tables\fin_report_columns.sql" />
+    <Build Include="dbo\Tables\dict_1nf_org_industry.sql" />
+    <Build Include="dbo\Tables\aspnet_WebEvent_Events.sql" />
+    <Build Include="dbo\Tables\tmp_orgs200bln.sql" />
+    <Build Include="exchequer\Tables\lookup_2.sql" />
+    <Build Include="dbo\Tables\zzz20240228_auction_uchasnik.sql" />
+    <Build Include="dbo\Tables\transfer_requests.sql" />
+    <Build Include="dbo\Tables\bp_rish_project_info.sql" />
+    <Build Include="dbo\Tables\zzzz20221108_B.sql" />
+    <Build Include="dbo\Tables\reports1nf_arenda_dogchange.sql" />
+    <Build Include="dbo\Tables\reports1nf_balans_deleted.sql" />
+    <Build Include="dbo\Tables\zzzzz20240309__all_values.sql" />
+    <Build Include="dbo\Tables\temp_org_by_period.sql" />
+    <Build Include="dbo\Tables\dict_expert.sql" />
+    <Build Include="dbo\Tables\current_inflation.sql" />
+    <Build Include="dbo\Tables\reports1nf_zvernenya.sql" />
+    <Build Include="dbo\Tables\rozp_doc_kinds.sql" />
+    <Build Include="dbo\Tables\zzz2__reports1nf_arenda_payments.sql" />
+    <Build Include="dbo\Tables\tmp_dbl.sql" />
+    <Build Include="dbo\Tables\dict_oatuu.sql" />
+    <Build Include="dbo\Tables\bp_rish_project_table.sql" />
+    <Build Include="dbo\Tables\zzz2__last_reports1nf_arenda_payments.sql" />
+    <Build Include="dbo\Tables\dict_1nf_org_occupation.sql" />
+    <Build Include="dbo\Tables\dict_org_old_organ_201803.sql" />
+    <Build Include="dbo\Tables\zzzz20250802_C.sql" />
+    <Build Include="dbo\Tables\documents_attachfiles.sql" />
+    <Build Include="dbo\Tables\reports1nf_arendaphotos.sql" />
+    <Build Include="dbo\Tables\fin_report_cells.sql" />
+    <Build Include="dbo\Tables\transfer_actual_ownership_types.sql" />
+    <Build Include="dbo\Tables\unverified_balans.sql" />
+    <Build Include="dbo\Tables\zzz3__reports1nf_arenda_payments.sql" />
+    <Build Include="dbo\Tables\reports1nf_arenda.sql" />
+    <Build Include="dbo\Tables\balans_docs.sql" />
+    <Build Include="dbo\Tables\arenda_notes.sql" />
+    <Build Include="dbo\Tables\zzz3__arenda_payments.sql" />
+    <Build Include="dbo\Tables\zzzzz20250808a.sql" />
+    <Build Include="dbo\Tables\zzzzz20221202a.sql" />
+    <Build Include="dbo\Tables\arenda_photos.sql" />
+    <Build Include="dbo\Tables\balans_other.sql" />
+    <Build Include="dbo\Tables\dict_1nf_org_vedomstvo.sql" />
+    <Build Include="dbo\Tables\zzzz_conv_bti_id__arch_balans.sql" />
+    <Build Include="dbo\Tables\zzzzz20250808b.sql" />
+    <Build Include="dbo\Tables\expert_note.sql" />
+    <Build Include="dbo\Tables\aspnet_Applications.sql" />
+    <Build Include="dbo\Tables\dict_org_old_organ_addinfo.sql" />
+    <Build Include="dbo\Tables\reports1nf_accounts.sql" />
+    <Build Include="dbo\Tables\dict_facade.sql" />
+    <Build Include="dbo\Tables\zzzz_1.sql" />
+    <Build Include="dbo\Tables\dict_form_vlasn_vibuttya.sql" />
+    <Build Include="dbo\Tables\bp_rish_project_history.sql" />
+    <Build Include="dbo\Tables\fin_report_formulae.sql" />
+    <Build Include="dbo\Tables\zzzz20220109_001a.sql" />
+    <Build Include="dbo\Tables\zzz_2.sql" />
+    <Build Include="dbo\Tables\zzzzz20260106_fordel.sql" />
+    <Build Include="dbo\Tables\zzzz20220109_001a_rez.sql" />
+    <Build Include="dbo\Tables\balans_other_docs.sql" />
+    <Build Include="dbo\Tables\zzz_1.sql" />
+    <Build Include="dbo\Tables\zzzz20260102_C.sql" />
+    <Build Include="dbo\Tables\zzzz20250810_C.sql" />
+    <Build Include="dbo\Tables\zzzzz_director_title.sql" />
+    <Build Include="dbo\Tables\reports1nf_arenda_notes.sql" />
+    <Build Include="dbo\Tables\zzzz20230706_before_use_calc_debt_update.sql" />
+    <Build Include="dbo\Tables\zzz4__reports1nf_arenda_payments.sql" />
+    <Build Include="dbo\Tables\dict_1nf_doc_kind.sql" />
+    <Build Include="dbo\Tables\zzzz_conv_bti_id__balans.sql" />
+    <Build Include="dbo\Tables\bp_rish_project_item.sql" />
+    <Build Include="dbo\Tables\zzzz20220109_001a2.sql" />
+    <Build Include="dbo\Tables\zzz4__arenda_payments.sql" />
+    <Build Include="dbo\Tables\buildings.sql" />
+    <Build Include="dbo\Tables\object_rights_building_docs.sql" />
+    <Build Include="dbo\Tables\zzzzz20250824a.sql" />
+    <Build Include="dbo\Tables\fin_report_values.sql" />
+    <Build Include="dbo\Tables\zzzz20220109_002.sql" />
+    <Build Include="dbo\Tables\bp_rish_project_state.sql" />
+    <Build Include="dbo\Tables\bp_rish_project_signature.sql" />
+    <Build Include="dbo\Tables\mapping_street_name_corrections.sql" />
+    <Build Include="dbo\Tables\queryPriviliger.sql" />
+    <Build Include="dbo\Tables\dict_1nf_facade.sql" />
+    <Build Include="dbo\Tables\zzzz_conv_bti_id__reports1nf_balans.sql" />
+    <Build Include="dbo\Tables\zzzz20220109_ch_tables.sql" />
+    <Build Include="dbo\Tables\reports1nf_arenda_decisions.sql" />
+    <Build Include="dbo\Tables\dict_doc_kind.sql" />
+    <Build Include="dbo\Tables\zzzzz20250824b.sql" />
+    <Build Include="dbo\Tables\zzzz20220109_ref_tables.sql" />
+    <Build Include="dbo\Tables\zzzzz20260120a.sql" />
+    <Build Include="exchequer\Tables\lookup_corrpay.sql" />
+    <Build Include="dbo\Tables\transfer_requests_rish_attachfiles.sql" />
+    <Build Include="dbo\Tables\zzzz20220109_backup__arenda.sql" />
+    <Build Include="dbo\Tables\dict_pravo_bez_auction.sql" />
+    <Build Include="dbo\Tables\zzzzz20260120b.sql" />
+    <Build Include="dbo\Tables\aspnet_Users.sql" />
+    <Build Include="dbo\Tables\zzzz20220109_backup__arenda_decision_objects.sql" />
+    <Build Include="dbo\Tables\zzzz_conv_bti_id__reports1nf_balans_deleted.sql" />
+    <Build Include="dbo\Tables\zzzz20260426_privatisat.sql" />
+    <Build Include="dbo\Tables\fin_report_formula_values.sql" />
+    <Build Include="dbo\Tables\zzzz20220109_backup__arenda_decisions.sql" />
+    <Build Include="dbo\Tables\dict_doc_general_kind.sql" />
+    <Build Include="dbo\Tables\transfer_requests_akt_attachfiles.sql" />
+    <Build Include="dbo\Tables\reptab_RentAgreements.sql" />
+    <Build Include="dbo\Tables\zzzz20220109_backup__arenda_rented.sql" />
+    <Build Include="dbo\Tables\reports1nf_arenda_rented.sql" />
+    <Build Include="dbo\Tables\zzzzz20260120a22.sql" />
+    <Build Include="dbo\Tables\zzzzz20250825a.sql" />
+    <Build Include="dbo\Tables\zzzz20220109_backup__balans.sql" />
+    <Build Include="dbo\Tables\dict_may_pravo_prodov.sql" />
+    <Build Include="dbo\Tables\zzzz20260120_C.sql" />
+    <Build Include="dbo\Tables\zzzzz20250825b.sql" />
+    <Build Include="dbo\Tables\expert_note_detail.sql" />
+    <Build Include="dbo\Tables\zzzz20220109_backup__balans_docs.sql" />
+    <Build Include="dbo\Tables\corporprav.sql" />
+    <Build Include="dbo\Views\view_docs_objects_akts_base.sql" />
+    <Build Include="dbo\Views\view_docs_objects_akts.sql" />
+    <Build Include="dbo\Views\view_rent_not_submitted.sql" />
+    <Build Include="dbo\Views\view_rent_debt_grouped.sql" />
+    <Build Include="dbo\Views\gukv2016_arenda_payments.sql" />
+    <Build Include="dbo\Views\vw_aspnet_Roles.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Views\vw_aspnet_Applications.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Views\vw_aspnet_Users.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Views\view_documents.sql" />
+    <Build Include="dbo\Views\view_balans_all.sql" />
+    <Build Include="dbo\Views\view_balans.sql" />
+    <Build Include="dbo\Views\view_arch_balans.sql" />
+    <Build Include="dbo\Views\vw_aspnet_WebPartState_Paths.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Views\view_1nf_report_all_org.sql" />
+    <Build Include="dbo\Views\vw_aspnet_WebPartState_Shared.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Views\view_building_docs.sql" />
+    <Build Include="dbo\Views\vw_aspnet_WebPartState_User.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Views\view_doc_links.sql" />
+    <Build Include="dbo\Views\view_privatization_rishen.sql" />
+    <Build Include="dbo\Views\view_obj_right_org_from.sql" />
+    <Build Include="dbo\Views\view_obj_right_org_to.sql" />
+    <Build Include="dbo\Views\view_object_rights.sql" />
+    <Build Include="dbo\Views\bp_rish_project_view_state.sql" />
+    <Build Include="dbo\Views\view_parent_documents.sql" />
+    <Build Include="dbo\Views\view_docs_objects_akts_base1.sql" />
+    <Build Include="dbo\Views\view_arenda_link_2_decisions.sql" />
+    <Build Include="dbo\Views\view_arch_arenda.sql" />
+    <Build Include="dbo\Views\bp_rish_project_view_app_items.sql" />
+    <Build Include="dbo\Views\view_arch_arenda_notes.sql" />
+    <Build Include="dbo\Views\bp_rish_project_view_app_transfer.sql" />
+    <Build Include="dbo\Views\view_arch_arenda_link_2_decisions.sql" />
+    <Build Include="dbo\Views\view_org_balans_totals.sql" />
+    <Build Include="dbo\Views\view_arenda_agreements.sql" />
+    <Build Include="dbo\Views\view_arenda_and_notes.sql" />
+    <Build Include="dbo\Views\report_objects.sql" />
+    <Build Include="dbo\Views\view_arenda_base.sql" />
+    <Build Include="dbo\Views\view_rent_by_occupation_active.sql" />
+    <Build Include="dbo\Views\reports1nf_balans_free_square_view.sql" />
+    <Build Include="dbo\Views\view_rent_by_occupation_inactive.sql" />
+    <Build Include="dbo\Views\view_rent_total_renters.sql" />
+    <Build Include="dbo\Views\view_rent_payments.sql" />
+    <Build Include="dbo\Views\view_rent_pay_for_arenda.sql" />
+    <Build Include="dbo\Views\view_privatization_objects.sql" />
+    <Build Include="dbo\Views\view_priv_object_docs.sql" />
+    <Build Include="dbo\Views\view_obj_right_akts.sql" />
+    <Build Include="dbo\Views\view_privatization_doc_objects.sql" />
+    <Build Include="dbo\Views\view_obj_right_rozp.sql" />
+    <Build Include="dbo\Views\view_organizations_name.sql" />
+    <Build Include="dbo\Views\view_obj_right_doc_links.sql" />
+    <Build Include="dbo\Views\view_obj_right_organizations.sql" />
+    <Build Include="dbo\Views\view_obj_right_building_docs.sql" />
+    <Build Include="dbo\Views\view_obj_right_transfer.sql" />
+    <Build Include="dbo\Views\view_reports1nf_buildings.sql" />
+    <Build Include="dbo\Views\view_building_renters_no_agreement.sql" />
+    <Build Include="dbo\Views\report_balans.sql" />
+    <Build Include="dbo\Views\view_arenda.sql" />
+    <Build Include="dbo\Views\report_arenda.sql" />
+    <Build Include="dbo\Views\view_arenda_privat_docs.sql" />
+    <Build Include="dbo\Views\view_arenda_notes.sql" />
+    <Build Include="dbo\Views\view_org_balans.sql" />
+    <Build Include="dbo\Views\view_org_balans_privat.sql" />
+    <Build Include="dbo\Views\v_RentAgreements.sql" />
+    <Build Include="dbo\Views\view_buildings.sql" />
+    <Build Include="dbo\Views\view_org_arenda.sql" />
+    <Build Include="dbo\Views\view_arch_buildings.sql" />
+    <Build Include="dbo\Views\view_organizations.sql" />
+    <Build Include="dbo\Views\view_arch_organizations.sql" />
+    <Build Include="dbo\Views\view_rent_debt_for_arenda.sql" />
+    <Build Include="dbo\Views\view_assessment.sql" />
+    <Build Include="dbo\Views\view_experts.sql" />
+    <Build Include="dbo\Views\view_rent_debt_by_renter.sql" />
+    <Build Include="dbo\Views\view_rent_obj_grouped.sql" />
+    <Build Include="dbo\Views\view_arenda_payments_by_balanser.sql" />
+    <Build Include="dbo\Views\view_rent_by_balans_org.sql" />
+    <Build Include="dbo\Views\vw_aspnet_UsersInRoles.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Views\view_privatization_akts.sql" />
+    <Build Include="dbo\Views\view_privatization_agreements.sql" />
+    <Build Include="dbo\Views\view_privatization.sql" />
+    <Build Include="dbo\Views\view_privatization_doc_links.sql" />
+    <Build Include="dbo\Views\view_conveyancingRequests_count.sql" />
+    <Build Include="dbo\Views\view_privatization_docs.sql" />
+    <Build Include="dbo\Views\vw_aspnet_Profiles.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Views\view_obj_right_docs.sql" />
+    <Build Include="dbo\Views\report_documents.sql" />
+    <Build Include="dbo\Views\report_financial.sql" />
+    <Build Include="dbo\Views\report_balans_and_arenda.sql" />
+    <Build Include="dbo\Views\vw_aspnet_MembershipUsers.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Views\view_dict_rental_rate.sql" />
+    <Build Include="dbo\Views\arenda_payment_problems.sql" />
+    <Build Include="dbo\Views\view_reports1nf.sql" />
+    <Build Include="dbo\Views\view_rent_by_renters.sql" />
+    <Build Include="dbo\Views\view_rent_by_buildings.sql" />
+    <Build Include="dbo\Views\view_rent_by_occupation.sql" />
+    <Build Include="dbo\Views\auction_uchasnik_name.sql" />
+    <Build Include="Security\aspnet_Membership_FullAccess.sql" />
+    <Build Include="Security\aspnet_Membership_BasicAccess.sql" />
+    <Build Include="Security\aspnet_Membership_ReportingAccess.sql" />
+    <Build Include="Security\aspnet_Profile_FullAccess.sql" />
+    <Build Include="Security\aspnet_Profile_BasicAccess.sql" />
+    <Build Include="Security\aspnet_Profile_ReportingAccess.sql" />
+    <Build Include="Security\aspnet_Roles_FullAccess.sql" />
+    <Build Include="Security\aspnet_Roles_BasicAccess.sql" />
+    <Build Include="Security\aspnet_Roles_ReportingAccess.sql" />
+    <Build Include="Security\aspnet_Personalization_FullAccess.sql" />
+    <Build Include="Security\aspnet_Personalization_BasicAccess.sql" />
+    <Build Include="Security\aspnet_Personalization_ReportingAccess.sql" />
+    <Build Include="Security\aspnet_WebEvent_FullAccess.sql" />
+    <Build Include="Security\exchequer_ROLE.sql" />
+    <Build Include="Security\yurdep_ROLE.sql" />
+    <Build Include="Security\eisgukv.sql" />
+    <Build Include="Security\exchequergukv.sql" />
+    <Build Include="Security\yurdep.sql" />
+    <Build Include="Security\bigdata_nifi.sql" />
+    <Build Include="Security\RoleMemberships.sql" />
+    <Build Include="dbo\Functions\cm2s.sql" />
+    <Build Include="dbo\Functions\IsCabinetOrendodavecz.sql" />
+    <Build Include="dbo\Functions\IsCabinetBalansoderzhatel.sql" />
+    <Build Include="dbo\Functions\CabinetBalansoderzhatel.sql" />
+    <Build Include="dbo\Functions\CabinetOrendarStage.sql" />
+    <Build Include="dbo\Functions\get_reports1NF_orandodatel.sql" />
+    <Build Include="dbo\Functions\get_ConveyancingRequests_count.sql" />
+    <Build Include="dbo\Functions\get_payment_narahcalc.sql" />
+    <Build Include="dbo\Functions\get_payment_narahcalc_________old.sql" />
+    <Build Include="dbo\Functions\get_kazna_total____backup.sql" />
+    <Build Include="dbo\Functions\get_kazna_total.sql" />
+    <Build Include="dbo\Functions\efn_trim_string.sql" />
+    <Build Include="dbo\Functions\efn_html2text.sql" />
+    <Build Include="dbo\Functions\efn_date_format.sql" />
+    <Build Include="dbo\Functions\narah_sum_by_monthes.sql" />
+    <Build Include="dbo\Functions\bigborg_arenda.sql" />
+    <Build Include="dbo\Functions\fnTokenizeStringList.sql" />
+    <Build Include="dbo\Functions\kazna_total_info.sql" />
+    <Build Include="dbo\Functions\efn_split_string.sql" />
+    <Build Include="dbo\Functions\get_inflation_year_prognoz.sql" />
+    <Build Include="dbo\Stored Procedures\fnRentByOccupation.sql" />
+    <Build Include="dbo\Stored Procedures\aspnet_RegisterSchemaVersion.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_CheckSchemaVersion.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Applications_CreateApplication.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_UnRegisterSchemaVersion.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Users_CreateUser.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Users_DeleteUser.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_AnyDataInTables.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\repair_org_by_period.sql" />
+    <Build Include="dbo\Stored Procedures\update_org_id_in_org_by_period.sql" />
+    <Build Include="dbo\Stored Procedures\aspnet_Membership_CreateUser.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Membership_GetUserByName.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Membership_GetUserByUserId.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Membership_GetUserByEmail.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Membership_GetPasswordWithFormat.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Membership_UpdateUserInfo.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Membership_GetPassword.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Membership_SetPassword.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Membership_ResetPassword.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Membership_UnlockUser.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Membership_UpdateUser.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Membership_ChangePasswordQuestionAndAnswer.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Membership_GetAllUsers.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Membership_GetNumberOfUsersOnline.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Membership_FindUsersByName.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Membership_FindUsersByEmail.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Profile_GetProperties.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Profile_SetProperties.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Profile_DeleteProfiles.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Profile_DeleteInactiveProfiles.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Profile_GetNumberOfInactiveProfiles.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Profile_GetProfiles.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\update_org_list.sql" />
+    <Build Include="dbo\Stored Procedures\zcreate_new_rent_period.sql" />
+    <Build Include="dbo\Stored Procedures\fnGenerate1NFReportArenda.sql" />
+    <Build Include="dbo\Stored Procedures\aspnet_UsersInRoles_IsUserInRole.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_UsersInRoles_GetRolesForUser.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Roles_CreateRole.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Roles_DeleteRole.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Roles_RoleExists.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_UsersInRoles_AddUsersToRoles.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_UsersInRoles_RemoveUsersFromRoles.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\update_inflation_prognoz.sql" />
+    <Build Include="dbo\Stored Procedures\aspnet_UsersInRoles_GetUsersInRoles.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_UsersInRoles_FindUsersInRole.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Roles_GetAllRoles.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Personalization_GetApplicationId.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_Paths_CreatePath.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\fnArendaClone_rep.sql" />
+    <Build Include="dbo\Stored Procedures\fnSummaryReport.sql" />
+    <Build Include="dbo\Stored Procedures\delete_reports1nf_arenda_dogcontinue.sql" />
+    <Build Include="dbo\Stored Procedures\aspnet_PersonalizationAllUsers_GetPageSettings.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_PersonalizationAllUsers_ResetPageSettings.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_PersonalizationAllUsers_SetPageSettings.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_PersonalizationPerUser_GetPageSettings.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_PersonalizationPerUser_ResetPageSettings.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_PersonalizationPerUser_SetPageSettings.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_PersonalizationAdministration_DeleteAllState.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\fnArendaClone.sql" />
+    <Build Include="dbo\Stored Procedures\aspnet_PersonalizationAdministration_ResetSharedState.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_PersonalizationAdministration_ResetUserState.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\switch_deleted_record_links.sql" />
+    <Build Include="dbo\Stored Procedures\aspnet_PersonalizationAdministration_FindState.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\aspnet_PersonalizationAdministration_GetCountOfState.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\delete_reports1nf_balans_free_square.sql" />
+    <Build Include="dbo\Stored Procedures\repare_org_list.sql" />
+    <Build Include="dbo\Stored Procedures\fnPushRentedObjectToArchive.sql" />
+    <Build Include="dbo\Stored Procedures\update_planuvania.sql" />
+    <Build Include="dbo\Stored Procedures\aspnet_WebEvent_LogEvent.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\zorg_del_dbl.sql" />
+    <Build Include="dbo\Stored Procedures\fnGenerateInitial1NFReport.sql" />
+    <Build Include="dbo\Stored Procedures\fnCreateRentedObject.sql" />
+    <Build Include="dbo\Stored Procedures\aspnet_Setup_RestorePermissions.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\fnCreateRentAgreement.sql" />
+    <Build Include="dbo\Stored Procedures\aspnet_Setup_RemoveAllRoleMembers.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\fnCreateUniqueBuilding.sql" />
+    <Build Include="dbo\Stored Procedures\fnAddBalansObjectToReport.sql" />
+    <Build Include="dbo\Stored Procedures\fnDeleteBalansObjectInReport.sql" />
+    <Build Include="dbo\Stored Procedures\photorow_copy.sql" />
+    <Build Include="dbo\Stored Procedures\reptab_RentAgreements_update.sql" />
+    <Build Include="dbo\Functions\efn_concat_string.sql" />
+    <Build Include="dbo\Functions\Concatenate.sql" />
+    <Build Include="Security\aspnet_Membership_BasicAccess_1.sql" />
+    <Build Include="Security\aspnet_Membership_FullAccess_1.sql" />
+    <Build Include="Security\aspnet_Membership_ReportingAccess_1.sql" />
+    <Build Include="Security\aspnet_Personalization_BasicAccess_1.sql" />
+    <Build Include="Security\aspnet_Personalization_FullAccess_1.sql" />
+    <Build Include="Security\aspnet_Personalization_ReportingAccess_1.sql" />
+    <Build Include="Security\aspnet_Profile_BasicAccess_1.sql" />
+    <Build Include="Security\aspnet_Profile_FullAccess_1.sql" />
+    <Build Include="Security\aspnet_Profile_ReportingAccess_1.sql" />
+    <Build Include="Security\aspnet_Roles_BasicAccess_1.sql" />
+    <Build Include="Security\aspnet_Roles_FullAccess_1.sql" />
+    <Build Include="Security\aspnet_Roles_ReportingAccess_1.sql" />
+    <Build Include="Security\aspnet_WebEvent_FullAccess_1.sql" />
+    <Build Include="Security\exchequer.sql" />
+    <Build Include="Security\yurdep_1.sql" />
+    <Build Include="dbo\Sequences\sequence_expert_note.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assemblies\SqlStringUtils.dll" />
+    <None Include="Assemblies\ITG.EIS.SqlServerExtensions.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="SqlStringUtils">
+      <HintPath>Assemblies\SqlStringUtils.dll</HintPath>
+      <SqlAssemblyName>SqlStringUtils</SqlAssemblyName>
+      <IsModelAware>True</IsModelAware>
+      <GenerateSqlClrDdl>False</GenerateSqlClrDdl>
+      <SqlOwnerName>dbo</SqlOwnerName>
+      <SqlPermissionSet>SAFE</SqlPermissionSet>
+    </Reference>
+    <Reference Include="ITG.EIS.SqlServerExtensions">
+      <HintPath>Assemblies\ITG.EIS.SqlServerExtensions.dll</HintPath>
+      <SqlAssemblyName>ITG.EIS.SqlServerExtensions</SqlAssemblyName>
+      <IsModelAware>True</IsModelAware>
+      <GenerateSqlClrDdl>False</GenerateSqlClrDdl>
+      <SqlOwnerName>dbo</SqlOwnerName>
+      <SqlPermissionSet>SAFE</SqlPermissionSet>
+    </Reference>
+  </ItemGroup>
+</Project>

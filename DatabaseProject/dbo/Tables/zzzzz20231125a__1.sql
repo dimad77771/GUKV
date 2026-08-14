@@ -1,0 +1,28 @@
+﻿CREATE TABLE [dbo].[zzzzz20231125a__1] (
+    [balans_id]               INT             NOT NULL,
+    [balans_id_]              INT             NOT NULL,
+    [district]                VARCHAR (64)    NULL,
+    [addr_street_name]        VARCHAR (128)   NULL,
+    [addr_nomer]              VARCHAR (98)    NULL,
+    [sqr_total]               NUMERIC (9, 2)  NULL,
+    [sqr_vlas_potreb]         NUMERIC (9, 2)  NULL,
+    [purpose]                 VARCHAR (255)   NULL,
+    [is_deleted]              INT             NULL,
+    [modify_date]             DATETIME        NULL,
+    [submit_date]             DATETIME        NULL,
+    [ownership_type]          VARCHAR (40)    NULL,
+    [is_submitted]            NVARCHAR (3)    NOT NULL,
+    [modified_by]             VARCHAR (128)   NULL,
+    [total_free_sqr]          NUMERIC (38, 2) NULL,
+    [num_rent_agr]            INT             NULL,
+    [total_rent_sqr]          NUMERIC (38, 2) NULL,
+    [inv_num]                 VARCHAR (100)   NULL,
+    [cost_balans]             NUMERIC (15, 3) NULL,
+    [cost_zalishkova]         NUMERIC (15, 3) NULL,
+    [znos]                    NUMERIC (15, 3) NULL,
+    [znos_date]               DATE            NULL,
+    [note]                    VARCHAR (MAX)   NULL,
+    [has_reports1nf_photos]   INT             NOT NULL,
+    [has_reports1nf_btiphoto] INT             NOT NULL
+);
+

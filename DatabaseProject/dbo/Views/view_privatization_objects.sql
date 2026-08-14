@@ -1,0 +1,62 @@
+﻿
+CREATE VIEW [view_privatization_objects]
+AS
+SELECT
+    p.privatization_id,
+    p.building_id,
+    p.balans_id,
+    p.organization_id,
+    bal.organization_id AS 'org_balans_id',
+    bal.org_full_name AS 'org_balans',
+    bal.org_zkpo_code AS 'org_balans_zkpo',
+    p.subord_code,
+    p.subordination,
+    p.district,
+    p.street_full_name,
+    p.addr_nomer,
+    p.obj_name,
+    p.org_name,
+    p.org_address,
+    p.director_fio,
+    p.director_phone,
+    p.complex,
+    p.sqr_total,
+    p.obj_group,
+    p.privat_kind,
+    p.privat_state,
+    COALESCE(p.purpose_group, bal.purpose_group) AS 'purpose_group',
+    p.object_kind,
+    p.object_type,
+    p.object_history,
+    p.obj_floor,
+    p.cost,
+    p.cost_expert,
+    p.expert_date,
+    p.note,
+    rish.id AS 'rishennya_id',
+    rish.doc_num AS 'rishennya_num',
+    rish.doc_date AS 'rishennya_date',
+    YEAR(rish.doc_date) AS 'rishennya_year',
+    rish.topic AS 'rishennya_topic',
+    rish.search_name AS 'rishennya_search_name',
+    rish.is_text_exists AS 'rishennya_text_exists',
+    agr.document_id AS 'agreement_id',
+    agr.doc_num AS 'agreement_num',
+    agr.doc_date AS 'agreement_date',
+    YEAR(agr.doc_date) AS 'agreement_year',
+    agr.topic AS 'agreement_topic',
+    agr.search_name AS 'agreement_search_name',
+    agr.is_text_exists AS 'agreement_text_exists',
+    akt.document_id AS 'akt_id',
+    akt.doc_num AS 'akt_num',
+    akt.doc_date AS 'akt_date',
+    YEAR(akt.doc_date) AS 'akt_year',
+    akt.topic AS 'akt_topic',
+    akt.search_name AS 'akt_search_name',
+    akt.is_text_exists AS 'akt_text_exists'
+FROM
+    view_privatization p
+    LEFT OUTER JOIN view_balans bal ON bal.balans_id = p.balans_id
+    LEFT OUTER JOIN view_documents rish ON rish.id = p.rishen_doc_id
+    LEFT OUTER JOIN view_privatization_akts akt ON akt.privatization_id = p.privatization_id
+    LEFT OUTER JOIN view_privatization_agreements agr ON agr.privatization_id = p.privatization_id

@@ -1,0 +1,23 @@
+﻿CREATE TABLE [dbo].[balans_free_square] (
+    [id]                    INT            IDENTITY (1, 1) NOT NULL,
+    [balans_id]             INT            NOT NULL,
+    [total_free_sqr]        NUMERIC (9, 2) CONSTRAINT [DF_balans_free_square_total_free_sqr] DEFAULT ((0)) NOT NULL,
+    [free_sqr_condition_id] INT            NOT NULL,
+    [floor]                 VARCHAR (128)  CONSTRAINT [DF_balans_free_square_floor] DEFAULT ((0)) NULL,
+    [possible_using]        VARCHAR (1000) NULL,
+    [water]                 BIT            CONSTRAINT [DF_balans_free_square_water] DEFAULT ((0)) NOT NULL,
+    [heating]               BIT            CONSTRAINT [DF_balans_free_square_heating] DEFAULT ((0)) NOT NULL,
+    [power]                 BIT            CONSTRAINT [DF_balans_free_square_power] DEFAULT ((0)) NOT NULL,
+    [gas]                   BIT            NOT NULL,
+    [modify_date]           DATETIME       NOT NULL,
+    [modified_by]           VARCHAR (128)  NOT NULL,
+    [original_id]           INT            NOT NULL,
+    [free_sqr_korysna]      NUMERIC (9, 2) NULL,
+    [note]                  VARCHAR (MAX)  NULL,
+    [is_solution]           BIT            NULL,
+    [initiator]             VARCHAR (256)  NULL,
+    [zgoda_control_id]      INT            NULL,
+    [zgoda_renter_id]       INT            NULL,
+    CONSTRAINT [PK_balans_free_square] PRIMARY KEY CLUSTERED ([id] ASC)
+);
+

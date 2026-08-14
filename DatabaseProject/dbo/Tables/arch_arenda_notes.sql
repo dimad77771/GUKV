@@ -1,0 +1,28 @@
+﻿CREATE TABLE [dbo].[arch_arenda_notes] (
+    [arenda_id]                INT             NULL,
+    [purpose_group_id]         INT             NULL,
+    [purpose_id]               INT             NULL,
+    [purpose_str]              VARCHAR (252)   NULL,
+    [rent_square]              NUMERIC (9, 2)  NULL,
+    [modify_date]              DATE            NULL,
+    [modified_by]              VARCHAR (128)   NULL,
+    [note]                     VARCHAR (252)   NULL,
+    [rent_rate]                NUMERIC (15, 3) NULL,
+    [rent_rate_uah]            NUMERIC (15, 3) NULL,
+    [cost_narah]               NUMERIC (15, 3) NULL,
+    [cost_agreement]           NUMERIC (15, 3) NULL,
+    [is_deleted]               INT             NULL,
+    [del_date]                 DATE            NULL,
+    [cost_expert_total]        NUMERIC (15, 3) NULL,
+    [date_expert]              DATE            NULL,
+    [payment_type_id]          INT             NULL,
+    [invent_no]                VARCHAR (128)   NULL,
+    [note_status_id]           INT             NULL,
+    [archive_id]               INT             IDENTITY (1, 1) NOT NULL,
+    [archive_arenda_link_code] INT             NOT NULL,
+    [zapezh_deposit]           NUMERIC (15, 3) NULL,
+    [ref_balans_id]            INT             NULL,
+    [factich_vikorist_id]      INT             NULL,
+    PRIMARY KEY CLUSTERED ([archive_id] ASC)
+);
+

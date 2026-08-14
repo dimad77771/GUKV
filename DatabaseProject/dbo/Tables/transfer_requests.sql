@@ -1,0 +1,28 @@
+﻿CREATE TABLE [dbo].[transfer_requests] (
+    [request_id]               INT             IDENTITY (1, 1) NOT NULL,
+    [balans_id]                INT             NULL,
+    [create_date]              DATETIME        NULL,
+    [new_akt_num]              NVARCHAR (20)   NULL,
+    [new_akt_date]             DATE            NULL,
+    [new_akt_summa]            NUMERIC (15, 3) NULL,
+    [new_akt_summa_zalishkova] NUMERIC (15, 3) NULL,
+    [status]                   INT             NULL,
+    [org_from_id]              INT             NULL,
+    [org_to_id]                INT             NULL,
+    [modified_by]              NVARCHAR (128)  NULL,
+    [modify_date]              DATETIME        NULL,
+    [rishrozp_name]            VARCHAR (MAX)   NULL,
+    [rishrozp_date]            DATE            NULL,
+    [rish_doc_kind_id]         INT             NULL,
+    [rish_num]                 VARCHAR (64)    NULL,
+    [comment]                  NVARCHAR (MAX)  NULL,
+    [org_id_for_confirm]       INT             NULL,
+    [conveyancing_type]        INT             NULL,
+    [created_by]               NVARCHAR (128)  NULL,
+    [obj_right_id]             INT             NULL,
+    [is_object_exists]         BIT             NULL,
+    [conveyancing_area]        NUMERIC (15, 3) NULL,
+    [rishrozp_doc_id]          INT             NULL,
+    CONSTRAINT [PK_transfer_requests] PRIMARY KEY CLUSTERED ([request_id] ASC)
+);
+

@@ -1,0 +1,38 @@
+﻿CREATE TABLE [dbo].[privatisat] (
+    [id]                 INT             IDENTITY (1, 1) NOT NULL,
+    [privat_year]        INT             NULL,
+    [kmr_number]         VARCHAR (255)   NULL,
+    [kmr_date]           DATETIME        NULL,
+    [org_info_id]        INT             NULL,
+    [organizator]        VARCHAR (1000)  NULL,
+    [obj_name]           VARCHAR (1000)  NULL,
+    [addr_distr_new_id]  INT             NULL,
+    [addr_street_id]     INT             NULL,
+    [addr_nomer]         VARCHAR (100)   NULL,
+    [geodata_map_points] VARCHAR (1000)  NULL,
+    [orendar]            VARCHAR (1000)  NULL,
+    [total_free_sqr]     NUMERIC (20, 2) NULL,
+    [sposib_privat]      VARCHAR (1000)  NULL,
+    [document_privat]    VARCHAR (1000)  NULL,
+    [obj_price]          NUMERIC (20, 2) NULL,
+    [buyer_name]         VARCHAR (1000)  NULL,
+    [buyer_adr_street]   VARCHAR (1000)  NULL,
+    [buyer_adr_nomer]    VARCHAR (1000)  NULL,
+    [prozoro_number]     VARCHAR (1000)  NULL,
+    [modify_date2]       DATETIME        NULL,
+    [modified_by2]       VARCHAR (128)   NULL,
+    [year_prodage]       VARCHAR (100)   NULL,
+    [corporav_prava]     NUMERIC (15, 3) NULL,
+    [primitka]           VARCHAR (1000)  NULL,
+    [balans_id]          INT             NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC),
+    FOREIGN KEY ([addr_distr_new_id]) REFERENCES [dbo].[dict_1nf_districts2] ([id]),
+    FOREIGN KEY ([addr_street_id]) REFERENCES [dbo].[dict_streets] ([id]),
+    FOREIGN KEY ([org_info_id]) REFERENCES [dbo].[reports1nf_org_info] ([report_id])
+);
+
+
+GO
+CREATE NONCLUSTERED INDEX [indx_privatisat_balans_id]
+    ON [dbo].[privatisat]([balans_id] ASC);
+
