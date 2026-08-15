@@ -8,7 +8,6 @@ using System.Web.Security;
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.Common;
-using System.Diagnostics;
 using DevExpress.Spreadsheet;
 using GUKV.Common;
 
@@ -19,6 +18,7 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
 		var builder = new ReytingZvitBuilder
 		{
 			Page = this,
+			Details = string.Equals(Request.QueryString["details"], "1", StringComparison.Ordinal),
 		};
 		builder.Go();
 	}
@@ -26,183 +26,405 @@ public partial class Reports1NF_Cabinet : System.Web.UI.Page
 
 public class ReytingZvitBuilder
 {
+	static readonly string[] Codes = { "001", "003", "004", "005", "006", "007", "008", "111", "131", "210", "230", "220", "280", "270", "250", "240", "260", "140" };
+
+	const int DistrictStartRowIndex = 4;
+	const int DistrictCount = 10;
+	const int TotalRowIndex = 14;
+	const int StartDataColumnIndex = 2;
+	const int IntegratedColumnIndex = 20;
+	const int DistrictRankColumnIndex = 21;
+	const int HolderRankColumnIndex = 22;
+
 	public Page Page { get; set; }
+	public bool Details { get; set; }
 
 	public void Go()
 	{
 		string templateFileName = Page.Server.MapPath("Templates/reyting_zvit.xlsx");
-		var tempFile = TempFile.FromExistingFile(templateFileName);
-
-		var connection = CommonUtils.ConnectToDatabase();
-		if (connection == null) throw new Exception("Database GUKV not found");
-		var factory = DbProviderFactories.GetFactory(connection);
-		var dataTable = new DataTable();
-		using (var cmd = factory.CreateCommand())
+		using (var tempFile = TempFile.FromExistingFile(templateFileName))
 		{
-			cmd.CommandText = GetMainSql();
-			cmd.CommandType = CommandType.Text;
-			cmd.Connection = connection;
-			using (var adapter = factory.CreateDataAdapter())
+			var dataTable = LoadData();
+			BuildWorkbook(tempFile.FileName, dataTable);
+
+			var fileName = "Рейтинги РДА.xlsx";
+			Page.Response.Clear();
+			Page.Response.ClearHeaders();
+			Page.Response.ClearContent();
+			Page.Response.ContentType = "application /vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+			Page.Response.AddHeader(
+				"Content-Disposition",
+				"attachment; filename*=UTF-8''" + Uri.EscapeDataString(fileName));
+			using (System.IO.FileStream stream = System.IO.File.Open(tempFile.FileName, System.IO.FileMode.Open, System.IO.FileAccess.ReadWrite))
 			{
-				adapter.SelectCommand = cmd;
-				adapter.Fill(dataTable);
+				stream.CopyTo(Page.Response.OutputStream);
 			}
 		}
-
-		var workbook = new Workbook();
-		workbook.LoadDocument(tempFile.FileName, DevExpress.Spreadsheet.DocumentFormat.Xlsx);
-		var wsheet = workbook.Worksheets[0];
-		var usedRange = wsheet.GetUsedRange();
-		var bcolumn = wsheet.Columns["B"];
-		var rowOccupations = new List<string>();
-		for (int r = 0; r < usedRange.RowCount; r++)
-		{
-			var value = bcolumn[r].Value.TextValue;
-			value = (value ?? "").ToLower().Replace(" район","").Trim();
-			rowOccupations.Add(value);
-		}
-
-		var codes = new[] { "001", "003", "004", "005", "006", "007", "008", "111", "131", "210", "230", "220", "280", "270", "250", "240", "260", "140" };
-		int start_data_column = 3;
-		int uzahagal_column = 21;
-		int total_row = 15;
-
-		var allrows = new List<RowClass>();
-
-		for (int r = 0; r < dataTable.Rows.Count; r++)
-		{
-			var addr_district = dataTable.Rows[r]["addr_district"].ToString() ?? "";
-			var erow = rowOccupations.FindIndex(q => (q ?? "").ToLower() == addr_district.ToLower());
-			if (erow < 0)
-			{
-				Debug.WriteLine("occupation=" + addr_district); continue;
-			}
-
-			int colnum = start_data_column;
-			foreach(var code in codes)
-			{
-				var dval_0 = GetValue(dataTable, r, "v" + code + "_0");
-				var dval_1 = GetValue(dataTable, r, "v" + code + "_1");
-
-				decimal perc = 0M;
-				if (dval_0 + dval_1 > 0)
-				{
-					perc = dval_1 / (dval_0 + dval_1) * 100.0M;
-				}
-
-				var datarow = new RowClass
-				{
-					code = code,
-					erow = erow,
-					addr_district = addr_district,
-					value_0 = dval_0,
-					value_1 = dval_1,
-					percent = perc,
-				};
-				allrows.Add(datarow);
-
-				wsheet[erow, colnum - 1].Value = perc;
-				colnum++;
-			}
-		}
-
-		{
-			int colnum = start_data_column;
-			foreach (var code in codes)
-			{
-				var value_1 = allrows.Where(x => x.code == code).Sum(x => x.value_1);
-				var value_all = allrows.Where(x => x.code == code).Sum(x => x.value_all);
-				var perc = value_1 / value_all * 100.0M;
-
-				wsheet[total_row - 1, colnum - 1].Value = perc;
-				colnum++;
-			}
-		}
-
-		var uzahagalData = new Dictionary<int, decimal>();
-		var erows = allrows.Select(x => x.erow).Distinct().OrderBy(x => x).ToArray();
-		foreach(var erow in erows)
-		{
-			var arows = allrows.Where(x => x.erow == erow).ToArray();
-			//var koef = arows.Select(x => x.percent / 100.0M * GetWeight(x.code)).Sum();
-			var sumkoef = arows.Select(x => x.percent * GetWeight(x.code)).Sum();
-			var count = arows.Count();
-			var koef = sumkoef / count;
-			uzahagalData.Add(erow, koef);
-		}
-
-		var rayonRange = uzahagalData.OrderByDescending(x => x.Value).Select(x => x.Key).ToList();
-		//var sumdata = uzahagalData.Max(x => x.Value);
-		foreach (var erow in erows)
-		{
-			//wsheet[erow, uzahagal_column - 1].Value = ((uzahagalData[erow] / sumdata) * 100.0M).ToString("0.00");
-			wsheet[erow, uzahagal_column - 1].Value = uzahagalData[erow].ToString("0.00");
-			wsheet[erow, uzahagal_column - 0].Value = rayonRange.IndexOf(erow) + 1;
-		}
-		
-
-		wsheet["R1"].Value = "Станом на: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm");
-
-
-		workbook.SaveDocument(tempFile.FileName);
-
-		var info = new System.IO.FileInfo(tempFile.FileName);
-		var fileName = "Рейтинги РДА.xlsx";
-		Page.Response.Clear();
-		Page.Response.ClearHeaders();
-		Page.Response.ClearContent();
-		Page.Response.ContentType = "application /vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-		Page.Response.AddHeader(
-			"Content-Disposition",
-			"attachment; filename*=UTF-8''" + Uri.EscapeDataString(fileName));
-		using (System.IO.FileStream stream = System.IO.File.Open(tempFile.FileName, System.IO.FileMode.Open, System.IO.FileAccess.ReadWrite))
-		{
-			stream.CopyTo(Page.Response.OutputStream);
-		}
-		tempFile.Dispose();
 		Page.Response.End();
 	}
 
-	decimal GetValue(DataTable dataTable, int r, string column)
+	DataTable LoadData()
 	{
-		var dval = dataTable.Rows[r][column];
-		var val = default(decimal);
-		if (dval is DBNull)
-		{
-			val = 0;
-		}
-		else if (dval is decimal?)
-		{
-			val = (decimal?)dval ?? 0;
-		}
-		else if (dval is int?)
-		{
-			val = (int?)dval ?? 0;
-		}
-		else
-		{
-			throw new Exception("dval=" + dval);
-		}
+		var connection = CommonUtils.ConnectToDatabase();
+		if (connection == null) throw new Exception("Database GUKV not found");
 
-		return val;
+		using (connection)
+		{
+			var factory = DbProviderFactories.GetFactory(connection);
+			var dataTable = new DataTable();
+			using (var cmd = factory.CreateCommand())
+			{
+				cmd.CommandText = GetMainSql();
+				cmd.CommandType = CommandType.Text;
+				cmd.CommandTimeout = 180;
+				cmd.Connection = connection;
+				using (var adapter = factory.CreateDataAdapter())
+				{
+					adapter.SelectCommand = cmd;
+					adapter.Fill(dataTable);
+				}
+			}
+			return dataTable;
+		}
 	}
 
-
-	class RowClass
+	public void BuildWorkbook(string fileName, DataTable dataTable)
 	{
-		public string code { get; set; }
-		public string addr_district { get; set; }
-		public int erow { get; set; }
-		public decimal value_1 { get; set; }
-		public decimal value_0 { get; set; }
-		public decimal percent { get; set; }
-		public decimal value_all 
-		{ 
-			get
+		using (var workbook = new Workbook())
+		{
+			workbook.LoadDocument(fileName, DevExpress.Spreadsheet.DocumentFormat.Xlsx);
+			var wsheet = workbook.Worksheets[0];
+
+			workbook.BeginUpdate();
+			try
 			{
-				return value_0 + value_1;
+				var holderRows = ReadHolderRows(dataTable);
+				var model = BuildReportModel(wsheet, holderRows);
+
+				WriteBaseWorksheet(wsheet, model);
+				if (Details)
+				{
+					WriteDetailsWorksheet(wsheet, model);
+				}
+
+				wsheet["R1"].Value = "Станом на: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm");
+			}
+			finally
+			{
+				workbook.EndUpdate();
+			}
+
+			workbook.SaveDocument(fileName);
+		}
+	}
+
+	List<HolderRating> ReadHolderRows(DataTable dataTable)
+	{
+		var holders = new List<HolderRating>();
+		foreach (DataRow row in dataTable.Rows)
+		{
+			var values = CreateRatingValues();
+			foreach (var code in Codes)
+			{
+				values.Metrics[code].Value0 = GetValue(row, "v" + code + "_0");
+				values.Metrics[code].Value1 = GetValue(row, "v" + code + "_1");
+			}
+			values.IntegratedScore = GetIntegratedScore(values);
+
+			var district = GetString(row, "addr_district");
+			holders.Add(new HolderRating
+			{
+				ReportId = GetInt(row, "report_id"),
+				District = district,
+				DistrictKey = NormalizeDistrictName(district),
+				ZkpoCode = GetString(row, "zkpo_code"),
+				FullName = GetString(row, "full_name"),
+				Values = values,
+			});
+		}
+		return holders;
+	}
+
+	ReportRatingModel BuildReportModel(Worksheet wsheet, List<HolderRating> holders)
+	{
+		var model = new ReportRatingModel();
+		var holdersByDistrict = holders
+			.Where(x => !string.IsNullOrEmpty(x.DistrictKey))
+			.GroupBy(x => x.DistrictKey)
+			.ToDictionary(x => x.Key, x => x.ToList(), StringComparer.OrdinalIgnoreCase);
+		var matchedHolders = new List<HolderRating>();
+		var templateDistrictKeys = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+		for (int districtIndex = 0; districtIndex < DistrictCount; districtIndex++)
+		{
+			var rowIndex = DistrictStartRowIndex + districtIndex;
+			var districtName = wsheet[rowIndex, 1].Value.TextValue ?? "";
+			var districtKey = NormalizeDistrictName(districtName);
+			if (string.IsNullOrEmpty(districtKey) || !templateDistrictKeys.Add(districtKey))
+			{
+				throw new InvalidOperationException("The report template contains an empty or duplicate district row.");
+			}
+			List<HolderRating> districtHolders;
+			if (!holdersByDistrict.TryGetValue(districtKey, out districtHolders))
+			{
+				districtHolders = new List<HolderRating>();
+			}
+
+			var district = new DistrictRating
+			{
+				TemplateOrder = districtIndex,
+				TemplateRowIndex = rowIndex,
+				DistrictKey = districtKey,
+				Holders = districtHolders,
+				HasData = districtHolders.Count > 0,
+				Values = AggregateRatingValues(districtHolders),
+			};
+			RankHolders(district);
+			model.Districts.Add(district);
+			matchedHolders.AddRange(districtHolders);
+		}
+
+		var matchedReportIds = new HashSet<int>(matchedHolders.Select(x => x.ReportId));
+		var unmatchedHolders = holders.Where(x => !matchedReportIds.Contains(x.ReportId)).ToList();
+		if (unmatchedHolders.Count > 0)
+		{
+			var unknownDistricts = string.Join(", ", unmatchedHolders
+				.Select(x => string.IsNullOrEmpty(x.District) ? "report_id: " + x.ReportId : x.District)
+				.Distinct(StringComparer.OrdinalIgnoreCase)
+				.Take(10));
+			throw new InvalidOperationException("Some balance holders do not match a district in the report template: " + unknownDistricts);
+		}
+
+		model.Total = AggregateRatingValues(matchedHolders);
+		RankDistricts(model.Districts);
+		return model;
+	}
+
+	RatingValues AggregateRatingValues(IEnumerable<HolderRating> holders)
+	{
+		var result = CreateRatingValues();
+		foreach (var holder in holders)
+		{
+			foreach (var code in Codes)
+			{
+				result.Metrics[code].Value0 += holder.Values.Metrics[code].Value0;
+				result.Metrics[code].Value1 += holder.Values.Metrics[code].Value1;
 			}
 		}
+		result.IntegratedScore = GetIntegratedScore(result);
+		return result;
+	}
+
+	RatingValues CreateRatingValues()
+	{
+		var values = new RatingValues();
+		foreach (var code in Codes)
+		{
+			values.Metrics.Add(code, new MetricCounts());
+		}
+		return values;
+	}
+
+	void RankDistricts(IEnumerable<DistrictRating> districts)
+	{
+		var ranked = districts
+			.Where(x => x.HasData)
+			.OrderByDescending(x => x.Values.IntegratedScore)
+			.ThenBy(x => x.TemplateOrder)
+			.ToList();
+		for (int index = 0; index < ranked.Count; index++)
+		{
+			ranked[index].Rank = index + 1;
+		}
+	}
+
+	void RankHolders(DistrictRating district)
+	{
+		district.Holders = district.Holders
+			.OrderByDescending(x => x.Values.IntegratedScore)
+			.ThenBy(x => string.IsNullOrEmpty(x.FullName) ? 1 : 0)
+			.ThenBy(x => x.FullName, StringComparer.OrdinalIgnoreCase)
+			.ThenBy(x => string.IsNullOrEmpty(x.ZkpoCode) ? 1 : 0)
+			.ThenBy(x => x.ZkpoCode, StringComparer.Ordinal)
+			.ThenBy(x => x.ReportId)
+			.ToList();
+		for (int index = 0; index < district.Holders.Count; index++)
+		{
+			district.Holders[index].RankWithinDistrict = index + 1;
+		}
+	}
+
+	void WriteBaseWorksheet(Worksheet wsheet, ReportRatingModel model)
+	{
+		wsheet["B2"].Value = "Район";
+		foreach (var district in model.Districts.Where(x => x.HasData))
+		{
+			WritePercentages(wsheet, district.TemplateRowIndex, district.Values);
+			wsheet[district.TemplateRowIndex, IntegratedColumnIndex].Value = district.Values.IntegratedScore;
+			wsheet[district.TemplateRowIndex, DistrictRankColumnIndex].Value = district.Rank;
+		}
+		WritePercentages(wsheet, TotalRowIndex, model.Total);
+	}
+
+	void WriteDetailsWorksheet(Worksheet wsheet, ReportRatingModel model)
+	{
+		PrepareDetailsLayout(wsheet);
+
+		for (int districtIndex = model.Districts.Count - 1; districtIndex >= 0; districtIndex--)
+		{
+			var district = model.Districts[districtIndex];
+			if (district.Holders.Count == 0)
+			{
+				wsheet[district.TemplateRowIndex, 1].Font.Bold = true;
+				continue;
+			}
+
+			var insertRowIndex = district.TemplateRowIndex + 1;
+			wsheet.Rows.Insert(insertRowIndex, district.Holders.Count, RowFormatMode.FormatAsPrevious);
+			wsheet[district.TemplateRowIndex, 1].Font.Bold = true;
+			for (int holderIndex = 0; holderIndex < district.Holders.Count; holderIndex++)
+			{
+				var holder = district.Holders[holderIndex];
+				var rowIndex = insertRowIndex + holderIndex;
+				wsheet[rowIndex, 1].Value = GetHolderLabel(holder);
+				wsheet[rowIndex, 1].Font.Bold = false;
+				wsheet[rowIndex, 1].Alignment.WrapText = true;
+				wsheet[rowIndex, 1].Alignment.ShrinkToFit = false;
+				WritePercentages(wsheet, rowIndex, holder.Values);
+				wsheet[rowIndex, IntegratedColumnIndex].Value = holder.Values.IntegratedScore;
+				wsheet[rowIndex, HolderRankColumnIndex].Value = holder.RankWithinDistrict;
+			}
+			wsheet.Rows.AutoFit(insertRowIndex, insertRowIndex + district.Holders.Count - 1);
+		}
+	}
+
+	string GetHolderLabel(HolderRating holder)
+	{
+		if (!string.IsNullOrEmpty(holder.ZkpoCode) && !string.IsNullOrEmpty(holder.FullName))
+		{
+			return holder.ZkpoCode + " - " + holder.FullName;
+		}
+		if (!string.IsNullOrEmpty(holder.ZkpoCode))
+		{
+			return holder.ZkpoCode;
+		}
+		if (!string.IsNullOrEmpty(holder.FullName))
+		{
+			return holder.FullName;
+		}
+		return "report_id: " + holder.ReportId;
+	}
+
+	void PrepareDetailsLayout(Worksheet wsheet)
+	{
+		wsheet.UnMergeCells(wsheet.Range["R1:V1"]);
+		wsheet["W1"].CopyFrom(wsheet["V1"], PasteSpecial.Formats);
+		wsheet.MergeCells(wsheet.Range["R1:W1"]);
+		wsheet["W2"].CopyFrom(wsheet["V2"], PasteSpecial.Formats);
+		wsheet["W3"].CopyFrom(wsheet["V3"], PasteSpecial.Formats);
+		wsheet.MergeCells(wsheet.Range["W2:W3"]);
+		wsheet["W4"].CopyFrom(wsheet["V4"], PasteSpecial.Formats);
+		wsheet.Range["W5:W15"].CopyFrom(wsheet.Range["V5:V15"], PasteSpecial.Formats);
+		wsheet.Columns["W"].Width = wsheet.Columns["V"].Width;
+		wsheet["B2"].Value = "Район / Балансоутримувач";
+		wsheet["W2"].Value = "Місце балансоутримувача у районі";
+		wsheet.Columns["B"].WidthInCharacters = 46;
+		wsheet.PrintOptions.FitToPage = true;
+		wsheet.PrintOptions.FitToWidth = 1;
+		wsheet.PrintOptions.FitToHeight = 0;
+	}
+
+	void WritePercentages(Worksheet wsheet, int rowIndex, RatingValues values)
+	{
+		for (int codeIndex = 0; codeIndex < Codes.Length; codeIndex++)
+		{
+			var metric = values.Metrics[Codes[codeIndex]];
+			wsheet[rowIndex, StartDataColumnIndex + codeIndex].Value = GetPercent(metric);
+		}
+	}
+
+	decimal GetIntegratedScore(RatingValues values)
+	{
+		return Codes.Sum(code => GetPercent(values.Metrics[code]) * GetWeight(code)) / Codes.Length;
+	}
+
+	decimal GetPercent(MetricCounts metric)
+	{
+		var total = metric.Value0 + metric.Value1;
+		return total > 0 ? metric.Value1 / total * 100.0M : 0M;
+	}
+
+	decimal GetValue(DataRow row, string column)
+	{
+		var value = row[column];
+		return value is DBNull ? 0M : Convert.ToDecimal(value);
+	}
+
+	int GetInt(DataRow row, string column)
+	{
+		var value = row[column];
+		return value is DBNull ? 0 : Convert.ToInt32(value);
+	}
+
+	string GetString(DataRow row, string column)
+	{
+		var value = row[column];
+		return value is DBNull ? "" : value.ToString().Trim();
+	}
+
+	string NormalizeDistrictName(string value)
+	{
+		return (value ?? "").ToLower().Replace(" район", "").Trim();
+	}
+
+	class MetricCounts
+	{
+		public decimal Value0 { get; set; }
+		public decimal Value1 { get; set; }
+	}
+
+	class RatingValues
+	{
+		public RatingValues()
+		{
+			Metrics = new Dictionary<string, MetricCounts>();
+		}
+
+		public Dictionary<string, MetricCounts> Metrics { get; private set; }
+		public decimal IntegratedScore { get; set; }
+	}
+
+	class HolderRating
+	{
+		public int ReportId { get; set; }
+		public string District { get; set; }
+		public string DistrictKey { get; set; }
+		public string ZkpoCode { get; set; }
+		public string FullName { get; set; }
+		public RatingValues Values { get; set; }
+		public int RankWithinDistrict { get; set; }
+	}
+
+	class DistrictRating
+	{
+		public int TemplateOrder { get; set; }
+		public int TemplateRowIndex { get; set; }
+		public string DistrictKey { get; set; }
+		public List<HolderRating> Holders { get; set; }
+		public RatingValues Values { get; set; }
+		public int Rank { get; set; }
+		public bool HasData { get; set; }
+	}
+
+	class ReportRatingModel
+	{
+		public ReportRatingModel()
+		{
+			Districts = new List<DistrictRating>();
+		}
+
+		public List<DistrictRating> Districts { get; private set; }
+		public RatingValues Total { get; set; }
 	}
 
 	decimal GetWeight(string code)
@@ -251,6 +473,8 @@ select * into #arenda_payment_problems from arenda_payment_problems;
 SELECT 
 	rep.report_id,
 	rep.addr_district,
+	rep.zkpo_code,
+	rep.full_name,
 	case when inventar_recieve_date is not null and inventar_recieve_date >= w.year_minus_1 then 1 else 0 end as v111,
 	case when director_title <> '' then 1 else 0 end as v131,
 	director_title,
@@ -549,7 +773,7 @@ ar.report_id, ar.id as arenda_id
 into #arenda
 
 FROM reports1nf_arenda ar
-INNER JOIN reports1nf rep ON rep.id = ar.report_id
+INNER JOIN #reports rep ON rep.report_id = ar.report_id
 LEFT OUTER JOIN arenda a ON a.id = ar.id
 CROSS APPLY
 (
@@ -618,7 +842,7 @@ bal.report_id, bal.id as balans_id
 into #balans
 
 FROM reports1nf_balans bal
-INNER JOIN reports1nf rep ON rep.id = bal.report_id
+INNER JOIN #reports rep ON rep.report_id = bal.report_id
 LEFT OUTER JOIN reports1nf_buildings bld ON bld.unique_id = bal.building_1nf_unique_id
 outer apply (select sum(case when fs.is_included = 1 then fs.total_free_sqr else 0 end) as total_free_sqr from reports1nf_balans_free_square fs where fs.balans_id = bal.id and fs.report_id = bal.report_id /*and fs.is_included = 1*/) bfs 
 CROSS APPLY (select cast(concat(year(getdate()) - 1,'0101') as date) year_minus_1) W
@@ -635,16 +859,10 @@ select * from #arenda
 select * from #balans
 */
 
-alter table #arenda add addr_district varchar(1000) COLLATE Cyrillic_General_CI_AS;
-update #arenda set addr_district = (select Q.addr_district from #reports Q where Q.report_id = #arenda.report_id);
-alter table #balans add addr_district varchar(1000) COLLATE Cyrillic_General_CI_AS;
-update #balans set addr_district = (select Q.addr_district from #reports Q where Q.report_id = #balans.report_id);
-
-
 drop table if exists #sum_arenda;
 
 select 
-addr_district
+report_id
 ,sum(case when v210 = 1 then 1 else 0 end) as v210_1, sum(case when v210 = 0 then 1 else 0 end) as v210_0
 ,sum(case when v220 = 1 then 1 else 0 end) as v220_1, sum(case when v220 = 0 then 1 else 0 end) as v220_0
 ,sum(case when v230 = 1 then 1 else 0 end) as v230_1, sum(case when v230 = 0 then 1 else 0 end) as v230_0
@@ -655,16 +873,14 @@ addr_district
 ,sum(case when v280 = 1 then 1 else 0 end) as v280_1, sum(case when v280 = 0 then 1 else 0 end) as v280_0
 into #sum_arenda
 from #arenda A
-where addr_district <> ''
-group by addr_district
-order by 1
+group by report_id
 
 --- select * from #balans
 
 drop table if exists #sum_balans;
 
 select 
-addr_district
+report_id
 ,sum(case when v001 = 1 then 1 else 0 end) as v001_1, sum(case when v001 = 0 then 1 else 0 end) as v001_0
 ,sum(case when v002 = 1 then 1 else 0 end) as v002_1, sum(case when v002 = 0 then 1 else 0 end) as v002_0
 ,sum(case when v003 = 1 then 1 else 0 end) as v003_1, sum(case when v003 = 0 then 1 else 0 end) as v003_0
@@ -676,9 +892,7 @@ addr_district
 --,sum(case when v023 = 1 then 1 else 0 end) as v023_1, sum(case when v023 = 0 then 1 else 0 end) as v023_0
 into #sum_balans
 from #balans A
-where addr_district <> ''
-group by addr_district
-order by 1
+group by report_id
 
 --num_given,
 --num_problem_dog
@@ -686,13 +900,13 @@ order by 1
 drop table if exists #sum_reports;
 
 select
-addr_district
+report_id
 ,sum(case when v111 = 1 then 1 else 0 end) as v111_1, sum(case when v111 = 0 then 1 else 0 end) as v111_0
 ,sum(case when v131 = 1 then 1 else 0 end) as v131_1, sum(case when v131 = 0 then 1 else 0 end) as v131_0
 ,sum(num_problem_dog) as v140_1, sum(num_given - num_problem_dog) as v140_0
 into #sum_reports
 from #reports A
-group by addr_district
+group by report_id
 
 drop table if exists #result;
 
@@ -717,13 +931,17 @@ v250_1, v250_0,
 v260_1, v260_0,
 v270_1, v270_0,
 v280_1, v280_0,
-A.addr_district
+R.addr_district,
+R.zkpo_code,
+R.full_name,
+A.report_id
 into #result
 from #sum_reports A
-left join #sum_arenda B on B.addr_district = A.addr_district
-left join #sum_balans C on C.addr_district = A.addr_district
+inner join #reports R on R.report_id = A.report_id
+left join #sum_arenda B on B.report_id = A.report_id
+left join #sum_balans C on C.report_id = A.report_id
 
-select * from #result
+select * from #result order by addr_district, full_name, zkpo_code, report_id
 ";
 	}
 
