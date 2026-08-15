@@ -59,43 +59,11 @@
 
 </script>
 
-<mini:ProfiledSqlDataSource ID="SqlDataSourceAllBuildings" runat="server" EnableCaching="false"
-    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT *
-    ,
-
-Stuff(
-(
-SELECT 
-'<br/>' + CONCAT(org_holder.full_name,': ',A.sqr_total) 
-FROM balans A
-LEFT OUTER JOIN view_organizations org_holder ON A.organization_id = org_holder.organization_id
-LEFT OUTER JOIN view_buildings b ON A.building_id = b.building_id
-OUTER APPLY
-(SELECT TOP 1 bal2.id FROM balans bal2 INNER JOIN buildings b2 ON b2.id = bal2.building_id WHERE
-		b2.addr_street_id = b.addr_street_id and
-		b2.addr_nomer1 = b.addr_nomer1 and
-		bal2.id + 10 != A.id + 10 and
-		bal2.sqr_total = A.sqr_total and
-		ISNULL(bal2.is_deleted, 0) = 0
-) twin
-WHERE A.building_id = view_buildings.building_id AND (0 = 1 OR (0 = 0 AND (is_deleted IS NULL OR is_deleted = 0 OR CASE WHEN twin.id IS NULL AND A.is_deleted > 0 AND A.modified_by = 'Auto-import' THEN 1 ELSE 0 END = 1 )))
-ORDER by 1
-FOR XML PATH(''),TYPE
-).value('text()[1]','nvarchar(max)'),1,5,'')
-	as balans_info
-
-    FROM view_buildings WHERE ((building_deleted IS NULL) OR (building_deleted = 0)) AND LEN(COALESCE(street_full_name, '')) > 0 
-        "
-    OnSelecting="SqlDataSourceAllBuildings_Selecting"
-    UpdateCommand="
-        UPDATE [buildings] SET [addr_nomer1] = @addr_nomer1, [addr_nomer2] = @addr_nomer2, [addr_nomer3] = @addr_nomer3 WHERE [id] = @building_id
-        UPDATE [reports1nf_buildings] SET [addr_nomer1] = @addr_nomer1, [addr_nomer2] = @addr_nomer2, [addr_nomer3] = @addr_nomer3 WHERE [id] = @building_id
-    " >
-    <SelectParameters>
-        <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_rda_district_id" />
-    </SelectParameters>
-</mini:ProfiledSqlDataSource>
+<asp:ObjectDataSource ID="SqlDataSourceAllBuildings" runat="server"
+    TypeName="GUKV.CatalogueAddressDataSource"
+    SelectMethod="SelectBuildings"
+    UpdateMethod="UpdateBuildingNumber">
+</asp:ObjectDataSource>
 
 <dx:ASPxMenu ID="SectionMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
     <Items>
@@ -232,6 +200,9 @@ FOR XML PATH(''),TYPE
                 <%# "<a href=\"javascript:ShowObjectCardSimple(" + Eval("building_id") + ")\">" + Eval("addr_nomer") + "</a>"%>
             </DataItemTemplate>
             <Settings SortMode="Custom" />
+        </dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="addr_nomer_normalized" ReadOnly="True"
+            ShowInCustomizationForm="False" Visible="False" Caption="Номер Будинку">
         </dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn FieldName="addr_nomer1" VisibleIndex="2" Visible="False" Caption="Будинок"></dx:GridViewDataTextColumn>

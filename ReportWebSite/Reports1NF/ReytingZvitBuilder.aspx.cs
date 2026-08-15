@@ -124,15 +124,19 @@ public class ReytingZvitBuilder
 		foreach(var erow in erows)
 		{
 			var arows = allrows.Where(x => x.erow == erow).ToArray();
-			var koef = arows.Select(x => x.percent / 100.0M * GetWeight(x.code)).Sum();
+			//var koef = arows.Select(x => x.percent / 100.0M * GetWeight(x.code)).Sum();
+			var sumkoef = arows.Select(x => x.percent * GetWeight(x.code)).Sum();
+			var count = arows.Count();
+			var koef = sumkoef / count;
 			uzahagalData.Add(erow, koef);
 		}
 
 		var rayonRange = uzahagalData.OrderByDescending(x => x.Value).Select(x => x.Key).ToList();
-		var sumdata = uzahagalData.Max(x => x.Value);
+		//var sumdata = uzahagalData.Max(x => x.Value);
 		foreach (var erow in erows)
 		{
-			wsheet[erow, uzahagal_column - 1].Value = ((uzahagalData[erow] / sumdata) * 100.0M).ToString("0.00");
+			//wsheet[erow, uzahagal_column - 1].Value = ((uzahagalData[erow] / sumdata) * 100.0M).ToString("0.00");
+			wsheet[erow, uzahagal_column - 1].Value = uzahagalData[erow].ToString("0.00");
 			wsheet[erow, uzahagal_column - 0].Value = rayonRange.IndexOf(erow) + 1;
 		}
 		
