@@ -643,6 +643,80 @@ public static class Reports1NFUtils
         return buildingUniqueId;
     }
 
+    public static int GetRentAgreementBuildingUniqueId(SqlConnection connection, int reportId, int agreementId)
+    {
+        using (SqlCommand cmd = new SqlCommand(
+            "SELECT building_1nf_unique_id FROM reports1nf_arenda WHERE id = @agreementId AND report_id = @reportId",
+            connection))
+        {
+            cmd.Parameters.Add(new SqlParameter("agreementId", agreementId));
+            cmd.Parameters.Add(new SqlParameter("reportId", reportId));
+
+            object value = cmd.ExecuteScalar();
+            return value == null || value == DBNull.Value ? -1 : Convert.ToInt32(value);
+        }
+    }
+
+    /// <summary>
+    /// Returns a report-building snapshot for the exact selected building. A new
+    /// snapshot is created when the selection changes so that other report objects
+    /// which share the old snapshot cannot have their address changed as a side effect.
+    /// The caller is responsible for linking its own report row to the returned ID.
+    /// </summary>
+    public static int EnsureReportBuildingSnapshot(SqlConnection connection, int reportId,
+        int currentUniqueBuildingId, int selectedBuildingId)
+    {
+        if (selectedBuildingId <= 0)
+            throw new ArgumentOutOfRangeException("selectedBuildingId");
+
+        int currentBuildingId = -1;
+
+        if (currentUniqueBuildingId > 0)
+        {
+            using (SqlCommand cmd = new SqlCommand(
+                "SELECT id FROM reports1nf_buildings WHERE unique_id = @uniqueId AND report_id = @reportId",
+                connection))
+            {
+                cmd.Parameters.Add(new SqlParameter("uniqueId", currentUniqueBuildingId));
+                cmd.Parameters.Add(new SqlParameter("reportId", reportId));
+
+                object value = cmd.ExecuteScalar();
+                if (value != null && value != DBNull.Value)
+                    currentBuildingId = Convert.ToInt32(value);
+            }
+        }
+
+        if (currentBuildingId == selectedBuildingId)
+            return currentUniqueBuildingId;
+
+        // A newly selected address must come from the same active/root set that is
+        // shown by BuildingPicker. Keeping an unchanged legacy link is allowed so
+        // old cards can still be saved without an unrelated forced migration.
+        using (SqlCommand cmd = new SqlCommand(@"SELECT COUNT(*) FROM buildings
+            WHERE id = @buildingId
+                AND (is_deleted IS NULL OR is_deleted = 0)
+                AND master_building_id IS NULL", connection))
+        {
+            cmd.Parameters.Add(new SqlParameter("buildingId", selectedBuildingId));
+            if (Convert.ToInt32(cmd.ExecuteScalar()) != 1)
+            {
+                throw new InvalidOperationException(string.Format(
+                    "The selected building {0} is not an active root address.", selectedBuildingId));
+            }
+        }
+
+        int newUniqueBuildingId = GenerateUniqueBuilding(connection, selectedBuildingId, reportId);
+
+        if (newUniqueBuildingId <= 0)
+        {
+            throw new InvalidOperationException(string.Format(
+                "Unable to create a report snapshot for exact building {0} in report {1}.",
+                selectedBuildingId, reportId));
+        }
+
+        return newUniqueBuildingId;
+    }
+
     public static void GetUniqueBuildingProperties(SqlConnection connection, int reportId, int uniqueBuildingId, Dictionary<string, object> buildingProperties)
     {
         buildingProperties.Clear();
@@ -673,6 +747,53 @@ public static class Reports1NFUtils
                 }
 
                 reader.Close();
+            }
+        }
+    }
+
+    /// <summary>
+    /// Copies only address-related fields from the exact selected building to the
+    /// report snapshot. The building row itself is deliberately never modified here.
+    /// </summary>
+    public static void SynchronizeReportBuildingAddress(SqlConnection connection, int reportId,
+        int uniqueBuildingId, int buildingId)
+    {
+        const string query = @"UPDATE reportBuilding SET
+                id = building.id,
+                master_building_id = building.master_building_id,
+                addr_street_name = building.addr_street_name,
+                addr_street_id = building.addr_street_id,
+                addr_street_name2 = building.addr_street_name2,
+                addr_street_id2 = building.addr_street_id2,
+                street_full_name = building.street_full_name,
+                addr_distr_old_id = building.addr_distr_old_id,
+                addr_distr_new_id = building.addr_distr_new_id,
+                addr_nomer1 = building.addr_nomer1,
+                addr_nomer2 = building.addr_nomer2,
+                addr_nomer3 = building.addr_nomer3,
+                addr_nomer = building.addr_nomer,
+                addr_misc = building.addr_misc,
+                addr_korpus_flag = building.addr_korpus_flag,
+                addr_korpus = building.addr_korpus,
+                addr_zip_code = building.addr_zip_code,
+                addr_address = building.addr_address,
+                oatuu_id = building.oatuu_id
+            FROM reports1nf_buildings reportBuilding
+            INNER JOIN buildings building ON building.id = @buildingId
+            WHERE reportBuilding.unique_id = @uniqueId
+                AND reportBuilding.report_id = @reportId";
+
+        using (SqlCommand cmd = new SqlCommand(query, connection))
+        {
+            cmd.Parameters.Add(new SqlParameter("buildingId", buildingId));
+            cmd.Parameters.Add(new SqlParameter("uniqueId", uniqueBuildingId));
+            cmd.Parameters.Add(new SqlParameter("reportId", reportId));
+
+            if (cmd.ExecuteNonQuery() != 1)
+            {
+                throw new InvalidOperationException(string.Format(
+                    "Unable to bind report building {0} to exact building {1} in report {2}.",
+                    uniqueBuildingId, buildingId, reportId));
             }
         }
     }
@@ -827,8 +948,18 @@ public static class Reports1NFUtils
             string number3 = "";
             string addrMisc = "";
 
+            int selectedBuildingId = GetExactBuildingId(connectionSql, buildingProperties);
+            int currentBuildingId = GetCurrentBalansBuildingId(connectionSql, balansId);
+
+            // A report snapshot must always reflect the exact selected row. This also
+            // prevents manually edited address text from being written into a shared
+            // buildings row while retaining its old ID.
+            SynchronizeReportBuildingAddress(connectionSql, reportId, buildingUniqueId, selectedBuildingId);
+            GetUniqueBuildingProperties(connectionSql, reportId, buildingUniqueId, buildingProperties);
+
             int matchBuildingId = FindObjectMatchForBalansBuilding(connectionSql, /*connection1NF,*/ buildingProperties,
-                ref number1, ref number2, ref number3, ref addrMisc, true, user);
+                ref number1, ref number2, ref number3, ref addrMisc,
+                currentBuildingId > 0 && currentBuildingId == selectedBuildingId, user, true);
 
             if (matchBuildingId > 0)
             {
@@ -838,7 +969,11 @@ public static class Reports1NFUtils
                     cmd.Parameters.Add(new SqlParameter("matchid", matchBuildingId));
                     cmd.Parameters.Add(new SqlParameter("unid", buildingUniqueId));
                     cmd.Parameters.Add(new SqlParameter("rid", reportId));
-                    cmd.ExecuteNonQuery();
+                    if (cmd.ExecuteNonQuery() != 1)
+                    {
+                        throw new InvalidOperationException(string.Format(
+                            "The report building snapshot {0} was not updated.", buildingUniqueId));
+                    }
                 }
 
                 // Update the associated building Id in the 'reports1nf_balans' table
@@ -849,12 +984,20 @@ public static class Reports1NFUtils
                     cmd.Parameters.Add(new SqlParameter("bid", balansId));
                     cmd.Parameters.Add(new SqlParameter("rid", reportId));
 
-                    cmd.Parameters.Add(new SqlParameter("on1", number1));
-                    cmd.Parameters.Add(new SqlParameter("on2", number2));
-                    cmd.Parameters.Add(new SqlParameter("on3", number3));
-                    cmd.Parameters.Add(new SqlParameter("oad", addrMisc));
+                    // These obj_* columns are legacy caches and are narrower than
+                    // buildings.addr_nomer*. Never truncate an exact address or let
+                    // an oversized cache value abort Send; building_id remains the
+                    // authoritative, lossless address reference.
+                    cmd.Parameters.Add("on1", SqlDbType.VarChar, 10).Value = ToLegacyAddressField(number1, 10);
+                    cmd.Parameters.Add("on2", SqlDbType.VarChar, 18).Value = ToLegacyAddressField(number2, 18);
+                    cmd.Parameters.Add("on3", SqlDbType.VarChar, 10).Value = ToLegacyAddressField(number3, 10);
+                    cmd.Parameters.Add("oad", SqlDbType.VarChar, 100).Value = ToLegacyAddressField(addrMisc, 100);
 
-                    cmd.ExecuteNonQuery();
+                    if (cmd.ExecuteNonQuery() != 1)
+                    {
+                        throw new InvalidOperationException(string.Format(
+                            "The report balance object {0} was not bound to the selected building.", balansId));
+                    }
                 }
 
                 // Update the Balans object information in Sql Server, and in 1NF
@@ -866,12 +1009,14 @@ public static class Reports1NFUtils
             }
             else
             {
-                // ERROR: There must always be some match, found or created
+                throw new InvalidOperationException("The selected building could not be resolved exactly.");
             }
         }
         else
         {
-            // ERROR: Invalid state of the database
+            throw new InvalidOperationException(string.Format(
+                "The report balance object {0} has no building snapshot; the report was not submitted.",
+                balansId));
         }
 
         // Modify the submit date for the balans object
@@ -1017,7 +1162,11 @@ public static class Reports1NFUtils
             cmdUpdateSql.CommandText = "UPDATE balans SET " + fieldListSql.TrimStart(' ', ',') + " WHERE id = @bid";
 
             cmdUpdateSql.Parameters.Add(new SqlParameter("bid", balansId));
-            cmdUpdateSql.ExecuteNonQuery();
+            if (cmdUpdateSql.ExecuteNonQuery() != 1)
+            {
+                throw new InvalidOperationException(string.Format(
+                    "The central balance object {0} was not updated.", balansId));
+            }
         }
 
         // Perform UPDATE in the 1NF database
@@ -1334,43 +1483,57 @@ public static class Reports1NFUtils
 
     private static int FindObjectMatchForBalansBuilding(SqlConnection connectionSql, /*FbConnection connection1NF,*/
         Dictionary<string, object> buildingProperties, ref string number1, ref string number2,
-        ref string number3, ref string addrMisc, bool copyBuildingProperties, string user)
+        ref string number3, ref string addrMisc, bool copyBuildingProperties, string user,
+        bool exactBuildingIdRequired)
     {
-        // Get the street ID and building numbers
-        int streetId = -1;
         object value = null;
 
-        if (buildingProperties.TryGetValue("addr_street_id", out value) && value is int)
-            streetId = (int)value;
-
         if (buildingProperties.TryGetValue("addr_nomer1", out value) && value is string)
-            number1 = ((string)value).Trim().ToUpper();
+            number1 = ((string)value).Trim();
 
         if (buildingProperties.TryGetValue("addr_nomer2", out value) && value is string)
-            number2 = ((string)value).Trim().ToUpper();
+            number2 = ((string)value).Trim();
 
         if (buildingProperties.TryGetValue("addr_nomer3", out value) && value is string)
-            number3 = ((string)value).Trim().ToUpper();
+            number3 = ((string)value).Trim();
 
         if (buildingProperties.TryGetValue("addr_misc", out value) && value is string)
-            addrMisc = ((string)value).Trim().ToUpper();
+            addrMisc = ((string)value).Trim();
 
-//pgv визначаємо код будівлі
         int existingObjectId = -1;
-        if (buildingProperties.TryGetValue("id", out value) && value is int)
-            existingObjectId = (int)value;
 
-        // Try to find existing object with the same address
+        if (exactBuildingIdRequired)
+        {
+            // The new address picker (including its create path) stores one concrete
+            // buildings.id. Sending must never repeat fuzzy address matching.
+            existingObjectId = GetExactBuildingId(connectionSql, buildingProperties);
+        }
+        else
+        {
+            // Preserve the old matching behaviour for report modes which have not
+            // yet been migrated to the exact-ID address picker.
+            int streetId = -1;
 
-//pgv    якщо не визначено код будівлі, то шукаємо його по коду вулиці і номеру будинку
-//        int existingObjectId = ObjectFinder.Instance.FindObjectByStreetId(connectionSql, streetId, number1, number2, number3, addrMisc);
+            if (buildingProperties.TryGetValue("addr_street_id", out value) && value is int)
+                streetId = (int)value;
 
-        if (existingObjectId == -1)
-            existingObjectId = ObjectFinder.Instance.FindObjectByStreetId(connectionSql, streetId, number1, number2, number3, addrMisc);
+            if (buildingProperties.TryGetValue("id", out value) && value is int)
+                existingObjectId = (int)value;
 
-        // We need to create a new object in both 1NF and Sql Server
-        if (existingObjectId <= 0)
-            existingObjectId = CreateObjectIn1NF(connectionSql, /*connection1NF,*/ buildingProperties);
+            number1 = number1.ToUpper();
+            number2 = number2.ToUpper();
+            number3 = number3.ToUpper();
+            addrMisc = addrMisc.ToUpper();
+
+            if (existingObjectId == -1)
+            {
+                existingObjectId = ObjectFinder.Instance.FindObjectByStreetId(
+                    connectionSql, streetId, number1, number2, number3, addrMisc);
+            }
+
+            if (existingObjectId <= 0)
+                existingObjectId = CreateObjectIn1NF(connectionSql, /*connection1NF,*/ buildingProperties);
+        }
 
         if (existingObjectId > 0)
         {
@@ -1399,7 +1562,8 @@ public static class Reports1NFUtils
 
                 foreach (KeyValuePair<string, object> pair in buildingProperties)
                 {
-                    if (pair.Key != "id" && buildingFieldNames.Contains(pair.Key) && pair.Key != "addr_nomer" && pair.Key != "addr_address") // Skip COMPUTED columns
+                    if (pair.Key != "id" && buildingFieldNames.Contains(pair.Key) &&
+                        IsEditableBuildingCharacteristicField(pair.Key))
                     {
                         if (pair.Value is System.DBNull)
                         {
@@ -1433,6 +1597,88 @@ public static class Reports1NFUtils
         return existingObjectId;
     }
 
+    private static int GetExactBuildingId(SqlConnection connection, Dictionary<string, object> buildingProperties)
+    {
+        object value = null;
+        int buildingId = -1;
+
+        if (buildingProperties.TryGetValue("id", out value) && value != null && value != DBNull.Value)
+        {
+            buildingId = Convert.ToInt32(value);
+        }
+
+        if (buildingId <= 0)
+        {
+            throw new InvalidOperationException("A concrete building ID must be selected before sending.");
+        }
+
+        using (SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM buildings WHERE id = @buildingId", connection))
+        {
+            cmd.Parameters.Add(new SqlParameter("buildingId", buildingId));
+
+            if (Convert.ToInt32(cmd.ExecuteScalar()) != 1)
+            {
+                throw new InvalidOperationException(string.Format(
+                    "The selected building {0} does not exist.", buildingId));
+            }
+        }
+
+        return buildingId;
+    }
+
+    private static int GetCurrentBalansBuildingId(SqlConnection connection, int balansId)
+    {
+        using (SqlCommand cmd = new SqlCommand("SELECT building_id FROM balans WHERE id = @balansId", connection))
+        {
+            cmd.Parameters.Add(new SqlParameter("balansId", balansId));
+            object value = cmd.ExecuteScalar();
+
+            if (value == null)
+            {
+                throw new InvalidOperationException(string.Format(
+                    "The central balance object {0} does not exist; the report was not submitted.", balansId));
+            }
+
+            return value == DBNull.Value ? -1 : Convert.ToInt32(value);
+        }
+    }
+
+    private static bool IsEditableBuildingCharacteristicField(string fieldName)
+    {
+        switch (fieldName.ToLowerInvariant())
+        {
+            // Explicit allow-list of fields actually edited in the balance object's
+            // building-characteristics card. Address, lifecycle, archive and any
+            // future columns must never be copied into the shared buildings row.
+            case "tech_condition_id":
+            case "num_floors":
+            case "construct_year":
+            case "history_id":
+            case "object_type_id":
+            case "object_kind_id":
+            case "modify_date":
+            case "modified_by":
+            case "sqr_total":
+            case "sqr_pidval":
+            case "sqr_habit":
+            case "sqr_non_habit":
+            case "sqr_loft":
+            case "facade_id":
+            case "expl_enter_year":
+            case "is_basement_exists":
+            case "is_loft_exists":
+                return true;
+        }
+
+        return false;
+    }
+
+    private static object ToLegacyAddressField(string value, int maximumLength)
+    {
+        string normalized = (value ?? string.Empty).Trim();
+        return normalized.Length <= maximumLength ? (object)normalized : DBNull.Value;
+    }
+
     private static int FindObjectMatch(SqlConnection connectionSql, /*FbConnection connection1NF,*/
         int uniqueBuildingId, int reportId, bool copyBuildingProperties, string user)
     {
@@ -1446,7 +1692,7 @@ public static class Reports1NFUtils
         string addrMisc = "";
 
         return FindObjectMatchForBalansBuilding(connectionSql, /*connection1NF,*/ buildingProperties,
-            ref number1, ref number2, ref number3, ref addrMisc, copyBuildingProperties, user);
+            ref number1, ref number2, ref number3, ref addrMisc, copyBuildingProperties, user, false);
     }
 
     public static void SendRentedObject(SqlConnection connection, /*FbConnection connection1NF,*/ int reportId, int rentedObjectId)
@@ -1783,6 +2029,18 @@ public static class Reports1NFUtils
 
             if (agreementId > 0 && !created)
             {
+                using (SqlCommand cmd = new SqlCommand(
+                    "SELECT COUNT(*) FROM arenda WHERE id = @agreementId", connectionSql))
+                {
+                    cmd.Parameters.Add(new SqlParameter("agreementId", agreementId));
+                    if (Convert.ToInt32(cmd.ExecuteScalar()) != 1)
+                    {
+                        throw new InvalidOperationException(string.Format(
+                            "The central rent agreement {0} does not exist; the report was not submitted.",
+                            agreementId));
+                    }
+                }
+
                 // Prepare field mapping for the ARENDA1NF table
                 Dictionary<string, string> mapping = new Dictionary<string, string>();
                 GUKV.ImportToolUtils.FieldMappings.Create1NFArendaFieldMapping(mapping, false, true);
@@ -1918,7 +2176,11 @@ public static class Reports1NFUtils
                 {
                     cmdUpdateSql.CommandText = "UPDATE arenda SET " + fieldListSql.TrimStart(' ', ',') + " WHERE id = @aid";
                     cmdUpdateSql.Parameters.Add(new SqlParameter("aid", agreementId));
-                    cmdUpdateSql.ExecuteNonQuery();
+                    if (cmdUpdateSql.ExecuteNonQuery() != 1)
+                    {
+                        throw new InvalidOperationException(string.Format(
+                            "The central rent agreement {0} was not updated.", agreementId));
+                    }
                 }
 
                 // Copy the rent decisions

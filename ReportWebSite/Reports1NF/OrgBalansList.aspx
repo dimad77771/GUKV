@@ -82,8 +82,10 @@
         bal.id AS 'balans_id', 
 		bal.id AS 'balans_id_', 
         dict_districts2.name AS 'district', 
-        bld.addr_street_name,
-        (COALESCE(LTRIM(RTRIM(bld.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer3)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer2)), '')) AS 'addr_nomer',
+        COALESCE(street.name, bld.addr_street_name) AS addr_street_name,
+        RTRIM(COALESCE(NULLIF(LTRIM(RTRIM(bld.addr_nomer1)), '') + ' ', '') +
+            COALESCE(NULLIF(LTRIM(RTRIM(bld.addr_nomer2)), '') + ' ', '') +
+            COALESCE(NULLIF(LTRIM(RTRIM(bld.addr_nomer3)), ''), '')) AS 'addr_nomer',
         bal.sqr_total,
         bal.sqr_vlas_potreb,
         COALESCE(bal.purpose_str, dict_balans_purpose.name) AS 'purpose', bal.is_deleted, bal.modify_date, bal.submit_date, dict_own.name AS ownership_type,
@@ -118,6 +120,7 @@
         FROM reports1nf_balans bal
         INNER JOIN reports1nf rep ON rep.id = bal.report_id
         LEFT OUTER JOIN reports1nf_buildings bld ON bld.unique_id = bal.building_1nf_unique_id
+        LEFT OUTER JOIN dict_streets street ON street.id = bld.addr_street_id
         LEFT OUTER JOIN dict_balans_purpose ON dict_balans_purpose.id = bal.purpose_id
         LEFT OUTER JOIN dict_districts2 ON dict_districts2.id = bld.addr_distr_new_id
         LEFT OUTER JOIN dict_org_ownership dict_own ON bal.form_ownership_id = dict_own.id
@@ -135,8 +138,10 @@
         group by  
         bal.id,
         dict_districts2.name, 
-        bld.addr_street_name,
-        (COALESCE(LTRIM(RTRIM(bld.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer3)) + ' ', '') + COALESCE(LTRIM(RTRIM(bld.addr_nomer2)), '')),
+        COALESCE(street.name, bld.addr_street_name),
+        RTRIM(COALESCE(NULLIF(LTRIM(RTRIM(bld.addr_nomer1)), '') + ' ', '') +
+            COALESCE(NULLIF(LTRIM(RTRIM(bld.addr_nomer2)), '') + ' ', '') +
+            COALESCE(NULLIF(LTRIM(RTRIM(bld.addr_nomer3)), ''), '')),
         bal.sqr_total
        , bal.sqr_vlas_potreb
        , bfs.total_free_sqr

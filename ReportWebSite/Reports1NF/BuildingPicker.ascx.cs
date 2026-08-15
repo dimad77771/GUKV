@@ -12,6 +12,7 @@ using DevExpress.Web;
 using System.Data;
 using FirebirdSql.Data.FirebirdClient;
 using log4net;
+using GUKV;
 
 public partial class ObjectPicker : UserControl
 {
@@ -112,19 +113,18 @@ public partial class ObjectPicker : UserControl
                 AddressStreetID = data.Cast<DataRowView>().Select(x => (int)x["addr_street_id"]).FirstOrDefault();
             }
 
-            if (BalansID != 0)
-            {
-                GridViewBalansObjects.DataBind();
-            }
             if (AddressStreetID != 0)
             {
                 ComboBalansStreet.DataBind();
                 ComboBalansStreet.SelectedIndex = ComboBalansStreet.Items.IndexOfValue(AddressStreetID);
+
+                // The UI value is the group's representative ID. Keep the persisted
+                // AddressBuildingID unchanged until the user explicitly selects it.
+                BindBuildingGroups(AddressBuildingID);
             }
-            if (AddressBuildingID != 0)
+            if (BalansID != 0)
             {
-                ComboBalansBuilding.DataBind();
-                ComboBalansBuilding.SelectedIndex = ComboBalansBuilding.Items.IndexOfValue(AddressBuildingID);
+                GridViewBalansObjects.DataBind();
             }
 
             //txtArbitraryText.Text = datasource.ArbitraryText;
@@ -289,11 +289,17 @@ public partial class ObjectPicker : UserControl
         {
             AddressBuildingID = 0;
 
-            int streetId = int.Parse(e.Parameter);
+            int streetId;
+            if (!int.TryParse(e.Parameter, out streetId) || streetId <= 0)
+            {
+                AddressStreetID = 0;
+                BindBuildingGroups(0);
+                return;
+            }
 
             AddressStreetID = streetId;
 
-            (source as ASPxComboBox).DataBind();
+            BindBuildingGroups(0);
         }
         finally
         {
@@ -307,20 +313,102 @@ public partial class ObjectPicker : UserControl
 
     protected void SqlDataSourceBalansSearch_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
     {
-        e.Command.Parameters["@bid"].Value = AddressBuildingID;
+        IList<int> buildingIds = GetSelectedBuildingIds();
+        e.Command.Parameters.Clear();
+
+        if (buildingIds.Count == 0)
+        {
+            e.Command.CommandText = @"SELECT balans_id, sqr_total, purpose
+                FROM view_balans WHERE 1 = 0";
+            return;
+        }
+
+        List<string> parameterNames = new List<string>();
+        for (int index = 0; index < buildingIds.Count; index++)
+        {
+            string parameterName = "@bid" + index;
+            parameterNames.Add(parameterName);
+
+            var parameter = e.Command.CreateParameter();
+            parameter.ParameterName = parameterName;
+            parameter.DbType = System.Data.DbType.Int32;
+            parameter.Value = buildingIds[index];
+            e.Command.Parameters.Add(parameter);
+        }
+
+        e.Command.CommandText = @"SELECT balans_id,
+                MAX(sqr_total) AS sqr_total,
+                MAX(COALESCE(balans_obj_name, purpose)) AS purpose
+            FROM view_balans
+            WHERE building_id IN (" + string.Join(",", parameterNames.ToArray()) + @")
+            GROUP BY balans_id";
     }
 
     protected void GridViewBalansObjects_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
     {
         try
         {
-            AddressBuildingID = int.Parse(e.Parameters);
+            int buildingId;
+            AddressBuildingID = int.TryParse(e.Parameters, out buildingId) ? buildingId : 0;
 
             GridViewBalansObjects.DataBind();
         }
         finally
         {
         }
+    }
+
+    private IList<AddressNumberGroup> LoadBuildingGroups()
+    {
+        DataView data = (DataView)SqlDataSourceDictBuildings.Select(DataSourceSelectArguments.Empty);
+        IEnumerable<AddressNumberCandidate> candidates = data.Cast<DataRowView>()
+            .Select(row => new AddressNumberCandidate(
+                Convert.ToInt32(row["id"]),
+                Convert.ToString(row["addr_nomer1"] ?? string.Empty),
+                Convert.ToString(row["addr_nomer2"] ?? string.Empty),
+                Convert.ToString(row["addr_nomer3"] ?? string.Empty)));
+
+        return AddressNumberGrouping.Group(candidates);
+    }
+
+    private AddressNumberGroup BindBuildingGroups(int preferredBuildingId)
+    {
+        IList<AddressNumberGroup> groups = AddressStreetID > 0
+            ? LoadBuildingGroups()
+            : new List<AddressNumberGroup>();
+
+        ComboBalansBuilding.DataSource = groups;
+        ComboBalansBuilding.DataBind();
+
+        AddressNumberGroup selectedGroup = AddressNumberGrouping.FindGroupByBuildingId(groups, preferredBuildingId);
+        if (selectedGroup != null)
+        {
+            ComboBalansBuilding.SelectedIndex = ComboBalansBuilding.Items.IndexOfValue(
+                selectedGroup.RepresentativeBuildingId);
+        }
+
+        return selectedGroup;
+    }
+
+    private IList<int> GetSelectedBuildingIds()
+    {
+        if (AddressBuildingID <= 0)
+        {
+            return new List<int>();
+        }
+
+        if (AddressStreetID > 0)
+        {
+            IList<AddressNumberGroup> groups = LoadBuildingGroups();
+            AddressNumberGroup selectedGroup = AddressNumberGrouping.FindGroupByBuildingId(groups, AddressBuildingID);
+            if (selectedGroup != null)
+            {
+                return selectedGroup.BuildingIds;
+            }
+        }
+
+        // Compatibility fallback for an old saved value which is no longer in the active/root list.
+        return new List<int> { AddressBuildingID };
     }
 
     public void UpdateEditorState(int streetID, int buildingID, int balansID, string arbitraryText)

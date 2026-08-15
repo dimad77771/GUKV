@@ -509,6 +509,21 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
 		var building_id = Reports1NFUtils.GetEditNumeric(controls, "AddrBuildingId");
 
+        if (building_id is int && (int)building_id > 0)
+        {
+            int selectedBuildingId = (int)building_id;
+            int exactBuildingUniqueId = Reports1NFUtils.EnsureReportBuildingSnapshot(
+                connection, ReportID, buildingUniqueId, selectedBuildingId);
+
+            if (exactBuildingUniqueId != buildingUniqueId)
+            {
+                // Do not expose a partially prepared snapshot. The report row is
+                // linked only by the final reports1nf_balans UPDATE below, after
+                // the snapshot has been fully populated and synchronized.
+                buildingUniqueId = exactBuildingUniqueId;
+            }
+        }
+
 		if (buildingUniqueId > 0)
         {
             // Update the building properties
@@ -556,6 +571,15 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
                 }
 
                 cmd.ExecuteNonQuery();
+            }
+
+            // Address fields in the report are a materialized copy of the exact
+            // selected buildings row. Do not let free-form edits with a stale ID
+            // create a report/centre mismatch or modify a shared address on Send.
+            if (building_id is int && (int)building_id > 0)
+            {
+                Reports1NFUtils.SynchronizeReportBuildingAddress(
+                    connection, ReportID, buildingUniqueId, (int)building_id);
             }
         }
 
@@ -622,6 +646,12 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 
         AddQueryParameter(ref fieldList, "building_id", "buildingid", building_id, parameters);
 
+        if (buildingUniqueId > 0)
+        {
+            AddQueryParameter(ref fieldList, "building_1nf_unique_id", "buildinguniqueid",
+                buildingUniqueId, parameters);
+        }
+
 		// System parameters
 		AddQueryParameter(ref fieldList, "modify_date", "mdt", DateTime.Now, parameters);
         AddQueryParameter(ref fieldList, "modified_by", "mby", username.Left(64), parameters);
@@ -657,7 +687,10 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
                 cmd.Parameters["isfr"].Value = 1;
             }
 
-            cmd.ExecuteNonQuery();
+            if (cmd.ExecuteNonQuery() != 1)
+            {
+                throw new InvalidOperationException("Unable to save the balance object with the selected address.");
+            }
         }
 
         // Add all additional comments entered by user
@@ -1794,60 +1827,72 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 	protected void CPObjSel_Callback(object sender, CallbackEventArgsBase e)
 	{
 		var cp_status = "";
+		var cp_info_message = "";
+		var cp_building_id = 0;
 
 		if (e.Parameter.StartsWith("sel_obj:"))
 		{
 			string strObjectID = e.Parameter.Substring(8);
+			int objectID;
+			cp_status = "selobjerror";
 
-			int objectID = int.Parse(strObjectID);
-
-
-			SqlConnection connection = Utils.ConnectToDatabase();
-
-			if (connection != null)
+			if (!int.TryParse(strObjectID, out objectID) || objectID <= 0)
 			{
-				string query = @"SELECT top 1 B.*
-									FROM buildings B 
-                                    WHERE B.id = @objId";
-
-				using (SqlCommand cmd = new SqlCommand(query, connection))
+				cp_info_message = "Некоректний ідентифікатор адреси.";
+			}
+			else
+			{
+				using (SqlConnection connection = Utils.ConnectToDatabase())
 				{
-					cmd.Parameters.Add(new SqlParameter("objId", objectID));
-
-					using (SqlDataReader reader = cmd.ExecuteReader())
+					if (connection == null)
 					{
-						if (reader.Read())
-						{
-							var building_id = (reader.IsDBNull(reader.GetOrdinal("id")) ? null : (int?)reader["id"]);
-							if (building_id == null) throw new ArgumentException("building_id is null");
-							var addr_distr_new_id = (reader.IsDBNull(reader.GetOrdinal("addr_distr_new_id")) ? null : (int?)reader["addr_distr_new_id"]);
-							var addr_street_id = (reader.IsDBNull(reader.GetOrdinal("addr_street_id")) ? null : (int?)reader["addr_street_id"]);
-							var addr_nomer1 = (reader.IsDBNull(reader.GetOrdinal("addr_nomer1")) ? null : (string)reader["addr_nomer1"]);
-							var addr_nomer2 = (reader.IsDBNull(reader.GetOrdinal("addr_nomer2")) ? null : (string)reader["addr_nomer2"]);
-							var addr_nomer3 = (reader.IsDBNull(reader.GetOrdinal("addr_nomer3")) ? null : (string)reader["addr_nomer3"]);
-							var addr_misc = (reader.IsDBNull(reader.GetOrdinal("addr_misc")) ? null : (string)reader["addr_misc"]);
-							var addr_zip_code = (reader.IsDBNull(reader.GetOrdinal("addr_zip_code")) ? null : (string)reader["addr_zip_code"]);
+						cp_info_message = "Не вдалося підключитися до бази даних.";
+					}
+					else
+					{
+						string query = @"SELECT top 1 B.*
+									FROM buildings B
+                                    WHERE B.id = @objId
+                                        AND (B.is_deleted IS NULL OR B.is_deleted = 0)
+                                        AND B.master_building_id IS NULL";
 
-							((HiddenField)Utils.FindControlRecursive(ConveyancingForm, "AddrBuildingId")).Value = building_id.ToString();
-							((ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboAddrDistrict")).Value = addr_distr_new_id;
-							((ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboAddrStreet")).Value = addr_street_id;
-							((ASPxTextBox)Utils.FindControlRecursive(ConveyancingForm, "EditBuildingNum1")).Value = addr_nomer1;
-							((ASPxTextBox)Utils.FindControlRecursive(ConveyancingForm, "EditBuildingNum2")).Value = addr_nomer2;
-							((ASPxTextBox)Utils.FindControlRecursive(ConveyancingForm, "EditBuildingNum3")).Value = addr_nomer3;
-							((ASPxTextBox)Utils.FindControlRecursive(ConveyancingForm, "EditMiscAddr")).Value = addr_misc;
-							((ASPxTextBox)Utils.FindControlRecursive(ConveyancingForm, "EditZipCode")).Value = addr_zip_code;
-						}
-						else
+						using (SqlCommand cmd = new SqlCommand(query, connection))
 						{
-							throw new ArgumentException("Address not found");
+							cmd.Parameters.Add(new SqlParameter("objId", objectID));
+
+							using (SqlDataReader reader = cmd.ExecuteReader())
+							{
+								if (reader.Read())
+								{
+									var building_id = (reader.IsDBNull(reader.GetOrdinal("id")) ? null : (int?)reader["id"]);
+									if (building_id == null) throw new ArgumentException("building_id is null");
+									var addr_distr_new_id = (reader.IsDBNull(reader.GetOrdinal("addr_distr_new_id")) ? null : (int?)reader["addr_distr_new_id"]);
+									var addr_street_id = (reader.IsDBNull(reader.GetOrdinal("addr_street_id")) ? null : (int?)reader["addr_street_id"]);
+									var addr_nomer1 = (reader.IsDBNull(reader.GetOrdinal("addr_nomer1")) ? null : (string)reader["addr_nomer1"]);
+									var addr_nomer2 = (reader.IsDBNull(reader.GetOrdinal("addr_nomer2")) ? null : (string)reader["addr_nomer2"]);
+									var addr_nomer3 = (reader.IsDBNull(reader.GetOrdinal("addr_nomer3")) ? null : (string)reader["addr_nomer3"]);
+									var addr_misc = (reader.IsDBNull(reader.GetOrdinal("addr_misc")) ? null : (string)reader["addr_misc"]);
+									var addr_zip_code = (reader.IsDBNull(reader.GetOrdinal("addr_zip_code")) ? null : (string)reader["addr_zip_code"]);
+
+									((HiddenField)Utils.FindControlRecursive(ConveyancingForm, "AddrBuildingId")).Value = building_id.ToString();
+									((ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboAddrDistrict")).Value = addr_distr_new_id;
+									((ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboAddrStreet")).Value = addr_street_id;
+									((ASPxTextBox)Utils.FindControlRecursive(ConveyancingForm, "EditBuildingNum1")).Value = addr_nomer1;
+									((ASPxTextBox)Utils.FindControlRecursive(ConveyancingForm, "EditBuildingNum2")).Value = addr_nomer2;
+									((ASPxTextBox)Utils.FindControlRecursive(ConveyancingForm, "EditBuildingNum3")).Value = addr_nomer3;
+									((ASPxTextBox)Utils.FindControlRecursive(ConveyancingForm, "EditMiscAddr")).Value = addr_misc;
+									((ASPxTextBox)Utils.FindControlRecursive(ConveyancingForm, "EditZipCode")).Value = addr_zip_code;
+									cp_status = "selobjok";
+								}
+								else
+								{
+									cp_info_message = "Обрану адресу не знайдено або вона вже неактивна.";
+								}
+							}
 						}
-						reader.Close();
 					}
 				}
-				connection.Close();
 			}
-
-			cp_status = "selobjok";
 		}
 		else if (e.Parameter.StartsWith("createbalans:"))
 		{
@@ -1899,9 +1944,7 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 				var TextBoxNumber2 = (ASPxTextEdit)Utils.FindControlRecursive(ConveyancingForm, "TextBoxNumber2");
 				var TextBoxNumber3 = (ASPxTextEdit)Utils.FindControlRecursive(ConveyancingForm, "TextBoxNumber3");
 				var TextBoxMiscAddr = (ASPxTextEdit)Utils.FindControlRecursive(ConveyancingForm, "TextBoxMiscAddr");
-				var ComboBalansBuildingNewObj = (ASPxComboBox)Utils.FindControlRecursive(ConveyancingForm, "ComboBalansBuildingNewObj");
-
-
+				bool existingBuildingSelected;
 				int newBuildingId = ConveyancingUtils.CreateNew1NFBuilding(
 					//connection,
 					ComboBalansStreetNewObj.Value is int ? (int)ComboBalansStreetNewObj.Value : -1,
@@ -1913,15 +1956,27 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 					TextBoxNumber3.Text,
 					TextBoxMiscAddr.Text,
 					//true,
-					out errorMessage);
+					out errorMessage,
+					out existingBuildingSelected);
 
 				//connection.Close();
 
 				if (newBuildingId > 0)
 				{
 					AddressStreetID = ComboBalansStreetNewObj.Value is int ? (int)ComboBalansStreetNewObj.Value : -1;
-					ComboBalansBuildingNewObj.DataBind();
-					ComboBalansBuildingNewObj.SelectedItem = ComboBalansBuildingNewObj.Items.FindByValue(newBuildingId);
+					cp_building_id = newBuildingId;
+					cp_status = "createbuildingok";
+
+					if (existingBuildingSelected)
+					{
+						cp_info_message = string.Format(
+							"Така адреса вже існує. Вибрано наявний запис будинку (ID {0}). Новий запис не створено.",
+							newBuildingId);
+					}
+				}
+				else
+				{
+					cp_status = "createbuildingerror";
 				}
 
 				LabelBuildingCreationError.Text = errorMessage;
@@ -1932,10 +1987,11 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
 			//    LabelBuildingCreationError.Text = "Неможливо установити зв'язок з базою 1НФ.";
 			//    LabelBuildingCreationError.ClientVisible = true;
 			//}
-			cp_status = "createbuildingok";
 		}
 		var CPObjSel = (ASPxCallbackPanel)Utils.FindControlRecursive(ConveyancingForm, "CPObjSel");
 		CPObjSel.JSProperties["cp_status"] = cp_status;
+		CPObjSel.JSProperties["cp_info_message"] = cp_info_message;
+		CPObjSel.JSProperties["cp_building_id"] = cp_building_id;
 	}
 
 	protected void ComboRozpDoc_OnItemRequestedByValue(object source, ListEditItemRequestedByValueEventArgs e)

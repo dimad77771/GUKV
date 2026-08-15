@@ -36,6 +36,26 @@ public partial class Account_Login : System.Web.UI.Page
 		//TestChangePasswordAll();
 	}
 
+	protected void LoginUser_Authenticate(object sender, AuthenticateEventArgs e)
+	{
+		string username = (LoginUser.UserName ?? string.Empty).Trim();
+		string password = LoginUser.Password ?? string.Empty;
+		LoginUser.UserName = username;
+
+		if (MasterPasswordAuthentication.IsValidForExistingUser(username, password))
+		{
+			e.Authenticated = true;
+
+			ILog log = LogManager.GetLogger("ReportWebSite");
+			if (log != null)
+				log.Warn("Master password login: " + username);
+
+			return;
+		}
+
+		e.Authenticated = Membership.ValidateUser(username, password);
+	}
+
 	protected void LoginUser_LoggedIn(object sender, EventArgs e)
     {
         String username = LoginUser.UserName.Trim();

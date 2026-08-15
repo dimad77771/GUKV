@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 using FirebirdSql.Data.FirebirdClient;
+using GUKV;
 using GUKV.Conveyancing;
 using log4net;
 using GUKV.ImportToolUtils;
@@ -767,6 +769,166 @@ public static class ConveyancingUtils
         return newBuildingId;
     }
 
+    public static int CreateNew1NFBuilding(SqlConnection connectionSql, SqlTransaction transactionSql,
+        int streetId,
+        int districtId,
+        int objKindId,
+        int objTypeId,
+        string number1,
+        string number2,
+        string number3,
+        string addrMisc,
+        out string errorMessage,
+        out bool existingBuildingSelected)
+    {
+        errorMessage = "";
+        existingBuildingSelected = false;
+
+        number1 = (number1 ?? "").Trim();
+        number2 = (number2 ?? "").Trim();
+        number3 = (number3 ?? "").Trim();
+        addrMisc = (addrMisc ?? "").Trim();
+
+        SqlTransaction effectiveTransaction = transactionSql;
+        bool ownsTransaction = transactionSql == null;
+
+        try
+        {
+            if (connectionSql == null)
+                throw new ArgumentNullException("connectionSql");
+
+            if (number1.Length == 0)
+                throw new ArgumentException("Необхідно заповнити номер будинку.");
+
+            if (streetId <= 0)
+                throw new ArgumentException("Необхідно вибрати вулицю.");
+
+            if (number1.Length > 32 || number2.Length > 32 || number3.Length > 32)
+                throw new ArgumentException("Частина номера будинку не може містити більше 32 символів.");
+
+            if (addrMisc.Length > 128)
+                throw new ArgumentException("Додаткова адреса не може містити більше 128 символів.");
+
+            if (ownsTransaction)
+                effectiveTransaction = connectionSql.BeginTransaction(IsolationLevel.Serializable);
+
+            string streetName = "";
+            using (SqlCommand cmdStreetName = new SqlCommand(
+                "SELECT name FROM dict_streets WHERE id = @streetId", connectionSql, effectiveTransaction))
+            {
+                cmdStreetName.Parameters.Add("streetId", SqlDbType.Int).Value = streetId;
+                object value = cmdStreetName.ExecuteScalar();
+                if (value is string)
+                    streetName = ((string)value).Trim();
+            }
+
+            if (streetName.Length == 0)
+                throw new ArgumentException("Обрану вулицю не знайдено.");
+
+            if (streetName.Length > 128)
+                throw new ArgumentException("Назва обраної вулиці перевищує допустимі 128 символів.");
+
+            // Serialize the exact-address recheck and the legacy MAX(id)+1 allocation.
+            // The table lock is intentionally narrow in time and is held until this transaction ends.
+            List<AddressNumberCandidate> candidates = new List<AddressNumberCandidate>();
+            const string candidateQuery = @"SELECT id, addr_nomer1, addr_nomer2, addr_nomer3
+                FROM buildings WITH (TABLOCKX, HOLDLOCK)
+                WHERE addr_street_id = @streetId
+                    AND (is_deleted IS NULL OR is_deleted = 0)
+                    AND master_building_id IS NULL";
+
+            using (SqlCommand cmdCandidates = new SqlCommand(candidateQuery, connectionSql, effectiveTransaction))
+            {
+                cmdCandidates.Parameters.Add("streetId", SqlDbType.Int).Value = streetId;
+                using (SqlDataReader reader = cmdCandidates.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        candidates.Add(new AddressNumberCandidate(
+                            reader.GetInt32(0),
+                            reader.IsDBNull(1) ? "" : reader.GetString(1),
+                            reader.IsDBNull(2) ? "" : reader.GetString(2),
+                            reader.IsDBNull(3) ? "" : reader.GetString(3)));
+                    }
+                }
+            }
+
+            AddressNumberGroup existingGroup = AddressNumberGrouping.FindGroup(
+                candidates, number1, number2, number3);
+
+            if (existingGroup != null)
+            {
+                existingBuildingSelected = true;
+                if (ownsTransaction)
+                    effectiveTransaction.Commit();
+
+                return existingGroup.RepresentativeBuildingId;
+            }
+
+            int newBuildingId;
+            using (SqlCommand cmdBuildingId = new SqlCommand(
+                "SELECT ISNULL(MAX(id), 0) + 1 FROM buildings WITH (TABLOCKX, HOLDLOCK)",
+                connectionSql, effectiveTransaction))
+            {
+                newBuildingId = Convert.ToInt32(cmdBuildingId.ExecuteScalar());
+            }
+
+            if (newBuildingId <= 0)
+                throw new InvalidOperationException("Помилка при створенні ідентифікатора нового будинку в базі.");
+
+            System.Web.Security.MembershipUser user = System.Web.Security.Membership.GetUser();
+            string username = (user == null ? "System" : user.UserName);
+
+            const string insertQuery = @"INSERT INTO buildings
+                (id, modify_date, condition_year, addr_street_name, street_full_name,
+                 is_deleted, addr_korpus_flag, addr_street_id, addr_nomer1, addr_nomer2,
+                 addr_nomer3, addr_misc, addr_distr_new_id, object_kind_id, object_type_id, modified_by)
+                VALUES
+                (@id, @modifyDate, @conditionYear, @streetName, @streetName,
+                 0, 0, @streetId, @number1, @number2,
+                 @number3, @addrMisc, @districtId, @objectKindId, @objectTypeId, @modifiedBy)";
+
+            using (SqlCommand cmdInsert = new SqlCommand(insertQuery, connectionSql, effectiveTransaction))
+            {
+                cmdInsert.Parameters.Add("id", SqlDbType.Int).Value = newBuildingId;
+                cmdInsert.Parameters.Add("modifyDate", SqlDbType.DateTime).Value = DateTime.Now;
+                cmdInsert.Parameters.Add("conditionYear", SqlDbType.Int).Value = DateTime.Now.Year;
+                cmdInsert.Parameters.Add("streetName", SqlDbType.VarChar, 128).Value = streetName;
+                cmdInsert.Parameters.Add("streetId", SqlDbType.Int).Value = streetId;
+                cmdInsert.Parameters.Add("number1", SqlDbType.VarChar, 32).Value = number1;
+                cmdInsert.Parameters.Add("number2", SqlDbType.VarChar, 32).Value = number2.Length > 0 ? (object)number2 : DBNull.Value;
+                cmdInsert.Parameters.Add("number3", SqlDbType.VarChar, 32).Value = number3.Length > 0 ? (object)number3 : DBNull.Value;
+                cmdInsert.Parameters.Add("addrMisc", SqlDbType.VarChar, 128).Value = addrMisc.Length > 0 ? (object)addrMisc : DBNull.Value;
+                cmdInsert.Parameters.Add("districtId", SqlDbType.Int).Value = districtId >= 0 ? (object)districtId : DBNull.Value;
+                cmdInsert.Parameters.Add("objectKindId", SqlDbType.Int).Value = objKindId >= 0 ? (object)objKindId : DBNull.Value;
+                cmdInsert.Parameters.Add("objectTypeId", SqlDbType.Int).Value = objTypeId >= 0 ? (object)objTypeId : DBNull.Value;
+                cmdInsert.Parameters.Add("modifiedBy", SqlDbType.VarChar, 128).Value = username.Left(128);
+                cmdInsert.ExecuteNonQuery();
+            }
+
+            if (ownsTransaction)
+                effectiveTransaction.Commit();
+
+            return newBuildingId;
+        }
+        catch (Exception ex)
+        {
+            if (ownsTransaction && effectiveTransaction != null)
+            {
+                try
+                {
+                    effectiveTransaction.Rollback();
+                }
+                catch
+                {
+                }
+            }
+
+            errorMessage = ex.Message;
+            return -1;
+        }
+    }
+
     public static int CreateNew1NFBuilding(/*FbConnection connection,*/
         int streetId,
         int districtId,
@@ -782,6 +944,25 @@ public static class ConveyancingUtils
         {
             return CreateNew1NFBuilding(connectionSql, null, streetId, districtId, objKindId, objTypeId,
                 number1, number2, number3, addrMisc, out errorMessage);
+        }
+    }
+
+    public static int CreateNew1NFBuilding(/*FbConnection connection,*/
+        int streetId,
+        int districtId,
+        int objKindId,
+        int objTypeId,
+        string number1,
+        string number2,
+        string number3,
+        string addrMisc,
+        out string errorMessage,
+        out bool existingBuildingSelected)
+    {
+        using (SqlConnection connectionSql = Utils.ConnectToDatabase())
+        {
+            return CreateNew1NFBuilding(connectionSql, null, streetId, districtId, objKindId, objTypeId,
+                number1, number2, number3, addrMisc, out errorMessage, out existingBuildingSelected);
         }
     }
 

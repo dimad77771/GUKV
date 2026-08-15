@@ -10,9 +10,10 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceDictBuildings" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="select id, LTRIM(RTRIM(addr_nomer)) AS 'nomer' from buildings where
-        --(is_deleted IS NULL OR is_deleted = 0) AND
-        --(master_building_id IS NULL) AND
+    SelectCommand="select id, addr_nomer1, addr_nomer2, addr_nomer3,
+        LTRIM(RTRIM(addr_nomer)) AS 'nomer' from buildings where
+        (is_deleted IS NULL OR is_deleted = 0) AND
+        (master_building_id IS NULL) AND
         addr_street_id = @street_id AND
         (RTRIM(LTRIM(addr_nomer)) <> '') ORDER BY RTRIM(LTRIM(addr_nomer))"
     OnSelecting="SqlDataSourceDictBuildings_Selecting" >
@@ -33,7 +34,9 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceBalansSearch" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT balans_id, sqr_total, COALESCE(balans_obj_name, purpose) AS 'purpose' FROM view_balans WHERE building_id = @bid"
+    SelectCommand="SELECT balans_id, MAX(sqr_total) AS sqr_total,
+        MAX(COALESCE(balans_obj_name, purpose)) AS 'purpose'
+        FROM view_balans WHERE building_id = @bid GROUP BY balans_id"
     OnSelecting="SqlDataSourceBalansSearch_Selecting">
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="bid" />
@@ -107,16 +110,23 @@
                     TextField="name" ValueField="id" Width="220px" IncrementalFilteringMode="StartsWith"
                     FilterMinLength="3" EnableCallbackMode="True" CallbackPageSize="50" EnableViewState="False"
                     EnableSynchronization="False">
-                    <ClientSideEvents SelectedIndexChanged="function(s, e) { ComboBalansBuilding.PerformCallback(ComboBalansStreet.GetValue().toString()); }" />
+                    <ClientSideEvents SelectedIndexChanged="function(s, e) {
+                        var streetId = ComboBalansStreet.GetValue();
+                        GridViewBalansObjects.PerformCallback('');
+                        ComboBalansBuilding.PerformCallback(streetId == null ? '' : streetId.toString());
+                    }" />
                 </dx:ASPxComboBox>
             </td>
             <td> <dx:ASPxLabel ID="LabelAddrPickerNumber" runat="server" Text="Номер будинку:" Width="95px"/> </td>
             <td>
                 <dx:ASPxComboBox runat="server" ID="ComboBalansBuilding" ClientInstanceName="ComboBalansBuilding"
-                    DataSourceID="SqlDataSourceDictBuildings" DropDownStyle="DropDownList" TextField="nomer"
-                    ValueField="id" ValueType="System.Int32" Width="100px" IncrementalFilteringMode="StartsWith"
+                    DropDownStyle="DropDownList" TextField="DisplayNumber"
+                    ValueField="RepresentativeBuildingId" ValueType="System.Int32" Width="100px" IncrementalFilteringMode="StartsWith"
                     EnableSynchronization="False" OnCallback="ComboAddressBuilding_Callback">
-                    <ClientSideEvents SelectedIndexChanged="function (s,e) { GridViewBalansObjects.PerformCallback(ComboBalansBuilding.GetValue().toString()); }" />
+                    <ClientSideEvents SelectedIndexChanged="function (s,e) {
+                        var value = ComboBalansBuilding.GetValue();
+                        GridViewBalansObjects.PerformCallback(value == null ? '' : value.toString());
+                    }" />
                 </dx:ASPxComboBox>
             </td>            
         </tr>

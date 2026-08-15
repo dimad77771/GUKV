@@ -16,6 +16,7 @@
         RenderOuterTable="false" 
         FailureText="Ім'я користувача або пароль не є вірним" 
         DestinationPageUrl="~/Default.aspx"
+        OnAuthenticate="LoginUser_Authenticate"
         OnLoggedIn="LoginUser_LoggedIn">
         <LayoutTemplate>
             <span class="failureNotification">

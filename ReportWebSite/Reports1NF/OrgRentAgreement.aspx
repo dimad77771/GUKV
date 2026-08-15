@@ -2142,19 +2142,26 @@ WHERE id = @id"
                                             if (s.cp_status == 'createbuildingok') {
                                                 ButtonDoAddBuilding.SetEnabled(true);
                                                 PopupAddBuilding.Hide();
-                                                if ($('#LabelBuildingCreationError').text() == '') {
-                                                } else {
-                                                    PopupAddBuilding.ShowAtElement(ButtonAddBuilding.GetMainElement());
-                                                }
-                                                //ComboBalansBuildingNewObj.PerformCallback(ComboBalansStreetNewObj.GetValue().toString());
-												var new_building_id = ComboBalansBuildingNewObj.GetValue();
+												var new_building_id = s.cp_building_id;
 												console.log('new_building_id2', new_building_id);	
+												if (s.cp_info_message) {
+													window.alert(s.cp_info_message);
+												}
 												PopupAddBalansObj.Hide();
 												CPObjSel.PerformCallback('sel_obj:'+new_building_id);
-                                            } 
+                                            }
+                                            else if (s.cp_status == 'createbuildingerror') {
+                                                ButtonDoAddBuilding.SetEnabled(true);
+                                                PopupAddBuilding.ShowAtElement(ButtonAddBuilding.GetMainElement());
+                                            }
                                             else if(s.cp_status == 'selobjok') {
                                                 PopupSelectBalansObject.Hide();
                                             }
+											else if (s.cp_status == 'selobjerror') {
+												if (s.cp_info_message) {
+													window.alert(s.cp_info_message);
+												}
+											}
                                             else if (s.cp_status == 'createbalansok')
                                             {
                                                 PopupAddBalansObj.Hide();
@@ -2326,10 +2333,10 @@ WHERE id = @id"
 																									<dx:ASPxTextBox ID="TextBoxNumber1" ClientInstanceName="TextBoxNumber1" runat="server" Width="100px" />
 																								</td>
 																								<td>
-																									<dx:ASPxTextBox ID="TextBoxNumber3" ClientInstanceName="TextBoxNumber3" runat="server" Width="100px" />
+																									<dx:ASPxTextBox ID="TextBoxNumber2" ClientInstanceName="TextBoxNumber2" runat="server" Width="100px" />
 																								</td>
 																								<td>
-																									<dx:ASPxTextBox ID="TextBoxNumber2" ClientInstanceName="TextBoxNumber2" runat="server" Width="100px" />
+																									<dx:ASPxTextBox ID="TextBoxNumber3" ClientInstanceName="TextBoxNumber3" runat="server" Width="100px" />
 																								</td>
 																							</tr>
 																							<tr>

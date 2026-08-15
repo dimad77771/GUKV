@@ -231,8 +231,10 @@
 ,case when exists (select 1 from reports1nf_balans_bti_attachfiles Q where Q.free_square_id = 500000 * bal.report_id + bal.id) then 1 else 0 end as has_reports1nf_balans_bti_attachfiles
 ,case when exists (select 1 from reports1nf_balans_dinfo_attachfiles Q where Q.free_square_id = 500000 * bal.report_id + bal.id) then 1 else 0 end as has_reports1nf_balans_dinfo_attachfiles
 
-,(COALESCE(LTRIM(RTRIM(b.addr_nomer1)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer3)) + ' ', '') + COALESCE(LTRIM(RTRIM(b.addr_nomer2)), '')) as addr_nomer_new
-,(COALESCE(LTRIM(RTRIM(b.addr_nomer1)) + ' ', '')) as addr_nomer_short
+,RTRIM(COALESCE(NULLIF(LTRIM(RTRIM(current_building.addr_nomer1)), '') + ' ', '') +
+    COALESCE(NULLIF(LTRIM(RTRIM(current_building.addr_nomer2)), '') + ' ', '') +
+    COALESCE(NULLIF(LTRIM(RTRIM(current_building.addr_nomer3)), ''), '')) as addr_nomer_new
+,COALESCE(NULLIF(LTRIM(RTRIM(current_building.addr_nomer1)), ''), '') as addr_nomer_short
 
 ,L.total_free_sqr as total_free_sqr_privat
 ,L.sposib_privat
@@ -241,6 +243,7 @@
 
 
     FROM view_balans_all vb
+    LEFT JOIN buildings current_building on current_building.id = vb.building_id
     LEFT JOIN reports1nf_balans bal on vb.balans_id = bal.id
     LEFT JOIN reports1nf_buildings b on bal.building_1nf_unique_id = b.unique_id
     LEFT OUTER JOIN (select obp.org_id,occ.name from org_by_period obp

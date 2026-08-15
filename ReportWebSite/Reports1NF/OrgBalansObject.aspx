@@ -1837,19 +1837,26 @@ WHERE id = @id"
                                             if (s.cp_status == 'createbuildingok') {
                                                 ButtonDoAddBuilding.SetEnabled(true);
                                                 PopupAddBuilding.Hide();
-                                                if ($('#LabelBuildingCreationError').text() == '') {
-                                                } else {
-                                                    PopupAddBuilding.ShowAtElement(ButtonAddBuilding.GetMainElement());
-                                                }
-                                                //ComboBalansBuildingNewObj.PerformCallback(ComboBalansStreetNewObj.GetValue().toString());
-												var new_building_id = ComboBalansBuildingNewObj.GetValue();
+												var new_building_id = s.cp_building_id;
 												console.log('new_building_id2', new_building_id);	
+												if (s.cp_info_message) {
+													window.alert(s.cp_info_message);
+												}
 												PopupAddBalansObj.Hide();
 												CPObjSel.PerformCallback('sel_obj:'+new_building_id);
-                                            } 
+                                            }
+                                            else if (s.cp_status == 'createbuildingerror') {
+                                                ButtonDoAddBuilding.SetEnabled(true);
+                                                PopupAddBuilding.ShowAtElement(ButtonAddBuilding.GetMainElement());
+                                            }
                                             else if(s.cp_status == 'selobjok') {
                                                 PopupSelectBalansObject.Hide();
                                             }
+											else if (s.cp_status == 'selobjerror') {
+												if (s.cp_info_message) {
+													window.alert(s.cp_info_message);
+												}
+											}
                                             else if (s.cp_status == 'createbalansok')
                                             {
                                                 PopupAddBalansObj.Hide();
@@ -1880,15 +1887,15 @@ WHERE id = @id"
                                                     <dx:ASPxTextBox ID="EditBuildingNum1" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_nomer1")) %>' Width="270px" 
                                                                     Title="Адреса - Номер будинку" MaxLength="9" ReadOnly="true" />
                                                 </td>
-                                                <td> <dx:ASPxLabel ID="ASPxLabel38" runat="server" Text="Корпус / літера"/> </td>
+                                                <td> <dx:ASPxLabel ID="ASPxLabel38" runat="server" Text="Літера / корпус"/> </td>
                                                 <td> 
                                                     <table border="0" cellspacing="0" cellpadding="0" width="270px">
                                                         <tr>
                                                             <td>
-                                                                <dx:ASPxTextBox ID="EditBuildingNum3" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_nomer3")) %>' Width="200px" Title="Адреса - Номер будинку (корпус)" MaxLength="10" ReadOnly="true" /> 
+                                                                <dx:ASPxTextBox ID="EditBuildingNum2" ClientInstanceName="EditBuildingNum2" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_nomer2")) %>' Width="200px" Title="Адреса - Номер будинку (літери)" MaxLength="18" ReadOnly="true" />
                                                             </td>
                                                             <td>
-                                                                <dx:ASPxTextBox ID="EditBuildingNum2" ClientInstanceName="EditBuildingNum2" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_nomer2")) %>' Width="70px" Title="Адреса - Номер будинку (літери)" MaxLength="18" ReadOnly="true" />
+                                                                <dx:ASPxTextBox ID="EditBuildingNum3" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_nomer3")) %>' Width="70px" Title="Адреса - Номер будинку (корпус)" MaxLength="10" ReadOnly="true" />
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -1897,12 +1904,12 @@ WHERE id = @id"
                                             <tr>
                                                 <td> <dx:ASPxLabel ID="ASPxLabel42" runat="server" Text="Додаткова інформація"/> </td>
                                                 <td> 
-													<dx:ASPxTextBox ID="EditMiscAddr" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_misc")) %>' Width="270px" Title="Адреса будинку - Додаткова адреса" MaxLength="100" ReadOnly="false">
+											<dx:ASPxTextBox ID="EditMiscAddr" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_misc")) %>' Width="270px" Title="Адреса будинку - Додаткова адреса" MaxLength="100" ReadOnly="true">
 														<ClientSideEvents TextChanged="OnEditMiscAddrTextChanged" ValueChanged="OnEditMiscAddrValueChanged" />
 													</dx:ASPxTextBox> 
                                                 </td>
                                                 <td> <dx:ASPxLabel ID="ASPxLabel43" runat="server" Text="Поштовий індекс"/> </td>
-                                                <td> <dx:ASPxTextBox ID="EditZipCode" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_zip_code")) %>' Width="270px" Title="Адреса будинку - Поштовий індекс" MaxLength="10" ReadOnly="false" /> </td>
+                                                <td> <dx:ASPxTextBox ID="EditZipCode" runat="server" Text='<%# EvaluateTrimStr(Eval("addr_zip_code")) %>' Width="270px" Title="Адреса будинку - Поштовий індекс" MaxLength="10" ReadOnly="true" /> </td>
                                             </tr>
 											<tr>
                                                 <td> <dx:ASPxLabel ID="ASPxLabel16" runat="server" Text="Координати на мапі"/> </td>
@@ -2024,10 +2031,10 @@ WHERE id = @id"
 																									<dx:ASPxTextBox ID="TextBoxNumber1" ClientInstanceName="TextBoxNumber1" runat="server" Width="100px" />
 																								</td>
 																								<td>
-																									<dx:ASPxTextBox ID="TextBoxNumber3" ClientInstanceName="TextBoxNumber3" runat="server" Width="100px" />
+																									<dx:ASPxTextBox ID="TextBoxNumber2" ClientInstanceName="TextBoxNumber2" runat="server" Width="100px" />
 																								</td>
 																								<td>
-																									<dx:ASPxTextBox ID="TextBoxNumber2" ClientInstanceName="TextBoxNumber2" runat="server" Width="100px" />
+																									<dx:ASPxTextBox ID="TextBoxNumber3" ClientInstanceName="TextBoxNumber3" runat="server" Width="100px" />
 																								</td>
 																							</tr>
 																							<tr>
