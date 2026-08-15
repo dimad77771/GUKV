@@ -514,6 +514,9 @@
 			if (mode == 'scandocument') {
 				ASPxFileManagerPhotoFiles1.Refresh();
 				PopupObjectPhotos1.Show();
+			} else if (mode == 'insurance') {
+				ASPxFileManagerInsuranceFiles.Refresh();
+				PopupInsuranceDocuments.Show();
 			}
 		}
 
@@ -2119,6 +2122,69 @@ WHERE id = @id"
 	</ContentCollection>
 </dx:ASPxPopupControl>
 
+<dx:ASPxPopupControl ID="ASPxPopupControlInsuranceDocuments" runat="server"
+	AllowDragging="True" ClientInstanceName="PopupInsuranceDocuments"
+	EnableClientSideAPI="True" HeaderText="Страхові документи" Modal="True"
+	PopupHorizontalAlign="Center" PopupVerticalAlign="Middle"
+	PopupAction="None" Width="700px">
+	<ContentCollection>
+		<dx:PopupControlContentControl ID="PopupControlContentInsuranceDocuments"
+			runat="server" SupportsDisabledAttribute="True">
+
+			<asp:ObjectDataSource ID="ObjectDataSourceInsuranceFiles" runat="server"
+				DeleteMethod="DeleteArendaInsurance"
+				InsertMethod="InsertArendaInsurance"
+				OnDeleting="ObjectDataSourceInsuranceFiles_Deleting"
+				OnInserting="ObjectDataSourceInsuranceFiles_Inserting"
+				OnSelecting="ObjectDataSourceInsuranceFiles_Selecting"
+				SelectMethod="SelectArendaInsurance"
+				TypeName="ExtDataEntry.Models.FileAttachment">
+				<DeleteParameters>
+					<asp:Parameter Name="reportID" Type="Int32" />
+					<asp:Parameter Name="arendaID" Type="Int32" />
+					<asp:Parameter Name="id" Type="String" />
+				</DeleteParameters>
+				<InsertParameters>
+					<asp:Parameter Name="reportID" Type="Int32" />
+					<asp:Parameter Name="arendaID" Type="Int32" />
+					<asp:Parameter Name="Name" Type="String" />
+					<asp:Parameter Name="Image" Type="Object" />
+				</InsertParameters>
+				<SelectParameters>
+					<asp:Parameter Name="reportID" Type="Int32" />
+					<asp:Parameter Name="arendaID" Type="Int32" />
+				</SelectParameters>
+			</asp:ObjectDataSource>
+
+			<dx:ASPxFileManager ID="ASPxFileManagerInsuranceFiles" runat="server"
+				ClientInstanceName="ASPxFileManagerInsuranceFiles"
+				DataSourceID="ObjectDataSourceInsuranceFiles">
+				<Settings RootFolder="~\" ThumbnailFolder="~\Thumb\Insurance\" />
+				<SettingsFileList>
+					<ThumbnailsViewSettings ThumbnailSize="180px" />
+				</SettingsFileList>
+				<SettingsEditing AllowDelete="True" AllowDownload="true" />
+				<SettingsFolders Visible="False" />
+				<SettingsToolbar ShowDownloadButton="True" ShowPath="False" />
+				<SettingsUpload UseAdvancedUploadMode="True">
+					<AdvancedModeSettings EnableMultiSelect="True" />
+				</SettingsUpload>
+				<SettingsDataSource FileBinaryContentFieldName="Image"
+					IsFolderFieldName="IsFolder" KeyFieldName="ID"
+					LastWriteTimeFieldName="LastModified" NameFieldName="Name"
+					ParentKeyFieldName="ParentID" />
+			</dx:ASPxFileManager>
+
+			<br />
+			<dx:ASPxButton ID="ASPxButtonCloseInsuranceDocuments" runat="server"
+				AutoPostBack="False" Text="Закрити" HorizontalAlign="Center">
+				<ClientSideEvents Click="function(s, e) { PopupInsuranceDocuments.Hide(); }" />
+			</dx:ASPxButton>
+
+		</dx:PopupControlContentControl>
+	</ContentCollection>
+</dx:ASPxPopupControl>
+
 <dx:ASPxPageControl ID="CardPageControl" ClientInstanceName="CardPageControl" 
                 runat="server" ActiveTabIndex="0">
     <TabPages>
@@ -2130,7 +2196,7 @@ WHERE id = @id"
                     <asp:FormView runat="server" BorderStyle="None" ID="AddressForm" DataSourceID="SqlDataSourceBuilding" EnableViewState="False">
                         <ItemTemplate>
 
-                            <dx:ASPxRoundPanel ID="PanelAddress" runat="server" HeaderText="Адреса будинку">
+                            <dx:ASPxRoundPanel ID="PanelAddress" runat="server" HeaderText="Адреса будинку" Width="850px">
                                 <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="4px" />
 
 								<PanelCollection>
@@ -2171,7 +2237,7 @@ WHERE id = @id"
                                 <PanelCollection>
                                     <dx:PanelContent ID="PanelContent4" runat="server">
 
-                                        <table border="0" cellspacing="0" cellpadding="2" width="810px">
+                                        <table border="0" cellspacing="0" cellpadding="2" width="840px">
                                             <tr>
                                                 <td> <dx:ASPxLabel ID="ASPxLabel40" runat="server" Text="Район" Width="125px"/> </td>
                                                 <td>
@@ -2524,7 +2590,7 @@ WHERE id = @id"
                     <asp:FormView runat="server" BorderStyle="None" ID="OrganizationsForm" DataSourceID="SqlDataSourceRentAgreement" EnableViewState="False">
                         <ItemTemplate>
 
-                            <dx:ASPxRoundPanel ID="ASPxRoundPanel2" runat="server" HeaderText="Орендар/Позичальник">
+                            <dx:ASPxRoundPanel ID="ASPxRoundPanel2" runat="server" HeaderText="Орендар/Позичальник" Width="850px">
                                 <ContentPaddings PaddingTop="4px" PaddingLeft="2px" PaddingRight="2px" PaddingBottom="2px" />
                                 <PanelCollection>
                                     <dx:PanelContent ID="PanelContent2" runat="server">
@@ -2891,7 +2957,7 @@ WHERE id = @id"
 
                             <p class="SpacingPara"/>
 
-                            <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" HeaderText="Орендодавець/Позичкодавець">
+                            <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" HeaderText="Орендодавець/Позичкодавець" Width="850px">
                                 <ContentPaddings PaddingTop="4px" PaddingLeft="2px" PaddingRight="2px" PaddingBottom="2px" />
                                 <PanelCollection>
                                     <dx:PanelContent ID="PanelContent14" runat="server">
@@ -2947,23 +3013,23 @@ WHERE id = @id"
 
                             <p class="SpacingPara"/>
 
-                            <dx:ASPxRoundPanel ID="ASPxRoundPanel3" runat="server" HeaderText="Балансоутримувач">
+                            <dx:ASPxRoundPanel ID="ASPxRoundPanel3" runat="server" HeaderText="Балансоутримувач" Width="850px">
                                 <ContentPaddings PaddingTop="4px" PaddingLeft="2px" PaddingRight="2px" PaddingBottom="2px" />
                                 <PanelCollection>
                                     <dx:PanelContent ID="PanelContent15" runat="server">
-                                        <dx:ASPxTextBox ID="EditBalansHolderName" ReadOnly="true" runat="server" Text='<%# Eval("balans_name") %>' Width="810px" Title="Балансоутримувач" />
+                                        <dx:ASPxTextBox ID="EditBalansHolderName" ReadOnly="true" runat="server" Text='<%# Eval("balans_name") %>' Width="840px" Title="Балансоутримувач" />
                                     </dx:PanelContent>
                                 </PanelCollection>
                             </dx:ASPxRoundPanel>
 
                             <p class="SpacingPara"/>
 
-                            <dx:ASPxRoundPanel ID="PanelAgreement" runat="server" HeaderText="Реквізити договору">
+                            <dx:ASPxRoundPanel ID="PanelAgreement" runat="server" HeaderText="Реквізити договору" Width="850px">
                                 <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="4px" />
                                 <PanelCollection>
                                     <dx:PanelContent ID="PanelContent1" runat="server">
 
-                                        <table border="0" cellspacing="0" cellpadding="2" width="810px">
+                                        <table border="0" cellspacing="0" cellpadding="2" width="840px">
                                             <tr>
                                                 <td><dx:ASPxLabel ID="ASPxLabel35" runat="server" Text="Номер договору"></dx:ASPxLabel></td>
                                                 <td>
@@ -3109,11 +3175,18 @@ WHERE id = @id"
 
                     <asp:FormView runat="server" BorderStyle="None" ID="InsuranceForm" DataSourceID="SqlDataSourceRentAgreement" EnableViewState="False">
                         <ItemTemplate>
-                            <dx:ASPxRoundPanel ID="InsurancePanel" runat="server" HeaderText="Відомості про страхування">
+                            <dx:ASPxRoundPanel ID="InsurancePanel" runat="server" HeaderText="Відомості про страхування" Width="850px">
                                 <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="0px" />
                                 <PanelCollection>
                                     <dx:PanelContent ID="PanelContent7" runat="server">
-                                        <table border="0" cellspacing="0" cellpadding="2" width="810px">
+                                        <table border="0" cellspacing="0" cellpadding="2" width="840px" style="table-layout: fixed;">
+                                            <colgroup>
+                                                <col style="width: 18%;" />
+                                                <col style="width: 22%;" />
+                                                <col style="width: 18%;" />
+                                                <col style="width: 22%;" />
+                                                <col style="width: 20%;" />
+                                            </colgroup>
                                             <tr>
                                                 <td colspan="2">
                                                     <dx:ASPxCheckBox ID="is_insured" ClientInstanceName="is_insured" runat="server" Text="Страхування" Checked='<%# 1.Equals(Eval("is_insured")) %>' Title="Страхування">
@@ -3121,10 +3194,16 @@ WHERE id = @id"
                                                     </dx:ASPxCheckBox>
                                                 </td>
                                                  <td><dx:ASPxLabel ID="lbl_insurance_sum" ClientInstanceName="lbl_insurance_sum" runat="server" Text="Вартість об'єкту страхування"></dx:ASPxLabel></td>
-                                                <td align="right"">
+                                                <td align="right">
                                                     <dx:ASPxSpinEdit ID="insurance_sum" ClientInstanceName="insurance_sum" runat="server" NumberType="Float" Value='<%# Eval("insurance_sum") %>' Width="150px" Title="Сума страхування">
                                                         <ClientSideEvents Validation="OnValidateInsuranceSum" />
                                                     </dx:ASPxSpinEdit>
+                                                </td>
+                                                <td rowspan="2" align="right" valign="middle">
+                                                    <dx:ASPxButton ID="btnShowInsuranceAttachments" runat="server"
+                                                        AutoPostBack="False" Text="Файли" Width="70px">
+                                                        <ClientSideEvents Click="function (s,e) { showAttachDocuments('insurance'); }" />
+                                                    </dx:ASPxButton>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -3135,7 +3214,7 @@ WHERE id = @id"
                                                     </dx:ASPxDateEdit>
                                                 </td>
                                                 <td><dx:ASPxLabel ID="lbl_insurance_end" ClientInstanceName="lbl_insurance_end" runat="server" Text="Дата закінчення періоду страхування"></dx:ASPxLabel></td>
-                                                <td align="right"">
+                                                <td align="right">
                                                     <dx:ASPxDateEdit ID="insurance_end" ClientInstanceName="insurance_end" runat="server" Value='<%# Eval("insurance_end") %>' Width="150px" Title="Дата закінчення періоду страхування"> 
                                                         <ClientSideEvents Validation="OnValidateInsuranceEnd" />                                                                
                                                     </dx:ASPxDateEdit>
@@ -3152,11 +3231,11 @@ WHERE id = @id"
 
                     <asp:FormView runat="server" BorderStyle="None" ID="FormViewState" DataSourceID="SqlDataSourceRentAgreement" EnableViewState="False">
                         <ItemTemplate>
-                            <dx:ASPxRoundPanel ID="StatePanel" runat="server" HeaderText="Стан">
+                            <dx:ASPxRoundPanel ID="StatePanel" runat="server" HeaderText="Стан" Width="850px">
                                 <ContentPaddings PaddingTop="4px" PaddingLeft="4px" PaddingRight="4px" PaddingBottom="0px" />
                                 <PanelCollection>
                                     <dx:PanelContent ID="PanelContent7" runat="server">
-                                        <table border="0" cellspacing="0" cellpadding="0" width="810px">
+                                        <table border="0" cellspacing="0" cellpadding="0" width="840px">
                                             <tr>
                                                 <td><dx:ASPxLabel ID="ASPxLabel34" runat="server" Text='<%# EvaluateSignature(Eval("modified_by"), Eval("modify_date")) %>'></dx:ASPxLabel></td>
 

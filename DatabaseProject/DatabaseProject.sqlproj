@@ -439,6 +439,7 @@
     <Build Include="dbo\Tables\DictSummaryReportSphere.sql" />
     <Build Include="yurdep\Tables\uch.sql" />
     <Build Include="dbo\Tables\reports1nf_arenda_scandocument_attachfiles.sql" />
+    <Build Include="dbo\Tables\reports1nf_arenda_insurance_attachfiles.sql" />
     <Build Include="dbo\Tables\dict_districts2.sql" />
     <Build Include="dbo\Tables\dict_fin_form_kind.sql" />
     <Build Include="dbo\Tables\org_by_period.sql" />

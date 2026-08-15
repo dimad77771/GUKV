@@ -11,6 +11,9 @@ namespace ExtDataEntry.Models
 {
     public class FileAttachment
     {
+        private const string ArendaInsuranceScope =
+            "reports1nf_arenda_insurance_attachfiles";
+
         public string ID { get; set; }
         public string ParentID { get; set; }
         public bool IsFolder { get; set; }
@@ -23,6 +26,15 @@ namespace ExtDataEntry.Models
         private static string GetFolderPath(string scope, int recordID)
         {
             return Path.Combine(LLLLhotorowUtils.ImgFreeSquareRootFolder, scope, recordID.ToString());
+        }
+
+        private static string GetArendaInsuranceFolderPath(int reportID, int arendaID)
+        {
+            return Path.Combine(
+                LLLLhotorowUtils.ImgFreeSquareRootFolder,
+                ArendaInsuranceScope,
+                reportID.ToString(),
+                arendaID.ToString());
         }
 
 		public static IEnumerable<FileAttachment> Select(string scope, int recordID)
@@ -148,6 +160,187 @@ namespace ExtDataEntry.Models
                     }
 
                     reader.Close();
+                }
+            }
+        }
+
+        public static IEnumerable<FileAttachment> SelectArendaInsurance(
+            int reportID, int arendaID)
+        {
+            yield return new FileAttachment()
+            {
+                ID = "\\ROOT",
+                ParentID = "\\NONE",
+                IsFolder = true,
+                Name = "~\\",
+            };
+
+            if (reportID <= 0 || arendaID <= 0)
+                yield break;
+
+            string path = GetArendaInsuranceFolderPath(reportID, arendaID);
+            const string query = @"
+SELECT [id], [file_name], [file_ext], [modify_date], [modified_by]
+FROM [reports1nf_arenda_insurance_attachfiles]
+WHERE [report_id] = @report_id AND [arenda_id] = @arenda_id
+ORDER BY [id]";
+
+            using (SqlConnection connectionSql = Utils.ConnectToDatabase())
+            {
+                if (connectionSql == null)
+                    throw new InvalidOperationException("Database connection is not available");
+
+                using (SqlCommand cmdFiles = new SqlCommand(query, connectionSql))
+                {
+                    cmdFiles.Parameters.AddWithValue("report_id", reportID);
+                    cmdFiles.Parameters.AddWithValue("arenda_id", arendaID);
+
+                    using (SqlDataReader reader = cmdFiles.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int id = reader.GetInt32(0);
+                            string fileName = reader.GetString(1);
+                            string fileExt = reader.GetString(2);
+                            DateTime modifyDate = reader.GetDateTime(3);
+                            string fullPath = Path.Combine(path, fileName + fileExt);
+                            byte[] image = LLLLhotorowUtils.Read(fullPath, connectionSql);
+
+                            if (image != null)
+                            {
+                                yield return new FileAttachment()
+                                {
+                                    ID = id.ToString(),
+                                    ParentID = "\\ROOT",
+                                    Name = fileName + fileExt,
+                                    Image = image,
+                                    LastModified = modifyDate,
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        public static void InsertArendaInsurance(
+            int reportID, int arendaID, string Name, byte[] Image)
+        {
+            if (reportID <= 0)
+                throw new ArgumentOutOfRangeException("reportID");
+            if (arendaID <= 0)
+                throw new ArgumentOutOfRangeException("arendaID");
+            if (string.IsNullOrEmpty(Name))
+                throw new ArgumentException("fileName must have a value");
+            if (Image == null || Image.Length == 0)
+                throw new ArgumentException("image must have a value");
+
+            string safeName = Path.GetFileName(Name);
+            if (string.IsNullOrEmpty(safeName))
+                throw new ArgumentException("fileName must have a value");
+
+            string path = GetArendaInsuranceFolderPath(reportID, arendaID);
+
+            using (SqlConnection connectionSql = Utils.ConnectToDatabase())
+            {
+                if (connectionSql == null)
+                    throw new InvalidOperationException("Database connection is not available");
+
+                using (SqlTransaction sqlTransaction = connectionSql.BeginTransaction())
+                {
+                    const string query = @"
+INSERT INTO [reports1nf_arenda_insurance_attachfiles]
+    ([report_id], [arenda_id], [file_name], [file_ext], [modify_date], [modified_by])
+VALUES
+    (@report_id, @arenda_id, @file_name, @file_ext, @modify_date, @modified_by)";
+
+                    MembershipUser user = Membership.GetUser();
+                    string modifiedBy = user == null ? String.Empty : (String)user.UserName;
+
+                    using (SqlCommand cmdFiles = new SqlCommand(query, connectionSql, sqlTransaction))
+                    {
+                        cmdFiles.Parameters.AddWithValue("report_id", reportID);
+                        cmdFiles.Parameters.AddWithValue("arenda_id", arendaID);
+                        cmdFiles.Parameters.AddWithValue(
+                            "file_name", Path.GetFileNameWithoutExtension(safeName));
+                        cmdFiles.Parameters.AddWithValue("file_ext", Path.GetExtension(safeName));
+                        cmdFiles.Parameters.AddWithValue("modify_date", DateTime.Now);
+                        cmdFiles.Parameters.AddWithValue("modified_by", modifiedBy);
+                        cmdFiles.ExecuteNonQuery();
+                    }
+
+                    LLLLhotorowUtils.Write(
+                        Path.Combine(path, safeName), Image, connectionSql, sqlTransaction);
+
+                    sqlTransaction.Commit();
+                }
+            }
+        }
+
+        public static void DeleteArendaInsurance(
+            int reportID, int arendaID, string id)
+        {
+            if (reportID <= 0)
+                throw new ArgumentOutOfRangeException("reportID");
+            if (arendaID <= 0)
+                throw new ArgumentOutOfRangeException("arendaID");
+
+            int attachmentID;
+            if (!Int32.TryParse(id, out attachmentID) || attachmentID <= 0)
+                throw new ArgumentException("id must contain a valid attachment ID");
+
+            string path = GetArendaInsuranceFolderPath(reportID, arendaID);
+
+            using (SqlConnection connectionSql = Utils.ConnectToDatabase())
+            {
+                if (connectionSql == null)
+                    throw new InvalidOperationException("Database connection is not available");
+
+                using (SqlTransaction sqlTransaction = connectionSql.BeginTransaction())
+                {
+                    const string selectQuery = @"
+SELECT [file_name], [file_ext]
+FROM [reports1nf_arenda_insurance_attachfiles]
+WHERE [id] = @id AND [report_id] = @report_id AND [arenda_id] = @arenda_id";
+
+                    string fullPath = null;
+                    using (SqlCommand cmdFiles = new SqlCommand(
+                        selectQuery, connectionSql, sqlTransaction))
+                    {
+                        cmdFiles.Parameters.AddWithValue("id", attachmentID);
+                        cmdFiles.Parameters.AddWithValue("report_id", reportID);
+                        cmdFiles.Parameters.AddWithValue("arenda_id", arendaID);
+
+                        using (SqlDataReader reader = cmdFiles.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                fullPath = Path.Combine(
+                                    path, reader.GetString(0) + reader.GetString(1));
+                            }
+                        }
+                    }
+
+                    if (fullPath == null)
+                        throw new InvalidOperationException("Attachment was not found");
+
+                    const string deleteQuery = @"
+DELETE FROM [reports1nf_arenda_insurance_attachfiles]
+WHERE [id] = @id AND [report_id] = @report_id AND [arenda_id] = @arenda_id";
+
+                    using (SqlCommand cmdDelete = new SqlCommand(
+                        deleteQuery, connectionSql, sqlTransaction))
+                    {
+                        cmdDelete.Parameters.AddWithValue("id", attachmentID);
+                        cmdDelete.Parameters.AddWithValue("report_id", reportID);
+                        cmdDelete.Parameters.AddWithValue("arenda_id", arendaID);
+
+                        if (cmdDelete.ExecuteNonQuery() != 1)
+                            throw new InvalidOperationException("Attachment was not deleted");
+                    }
+
+                    LLLLhotorowUtils.Delete(fullPath, connectionSql, sqlTransaction);
+                    sqlTransaction.Commit();
                 }
             }
         }

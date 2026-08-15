@@ -3482,6 +3482,30 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		//    e.InputParameters["balans_id"] = int.Parse(Request.QueryString["bid"]);
 	}
 
+	private void SetInsuranceAttachmentParameters(System.Collections.Specialized.IOrderedDictionary parameters)
+	{
+		if (ReportID <= 0 || RentAgreementID <= 0)
+			throw new InvalidOperationException("Не вдалося визначити звіт або договір оренди для страхових документів.");
+
+		parameters["reportID"] = ReportID;
+		parameters["arendaID"] = RentAgreementID;
+	}
+
+	protected void ObjectDataSourceInsuranceFiles_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
+	{
+		SetInsuranceAttachmentParameters(e.InputParameters);
+	}
+
+	protected void ObjectDataSourceInsuranceFiles_Inserting(object sender, ObjectDataSourceMethodEventArgs e)
+	{
+		SetInsuranceAttachmentParameters(e.InputParameters);
+	}
+
+	protected void ObjectDataSourceInsuranceFiles_Deleting(object sender, ObjectDataSourceMethodEventArgs e)
+	{
+		SetInsuranceAttachmentParameters(e.InputParameters);
+	}
+
 
 	protected void ComboBuilding_Callback(object source, CallbackEventArgsBase e)
 	{
