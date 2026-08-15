@@ -232,9 +232,9 @@
         <dx:GridViewDataTextColumn FieldName="balans_info" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="12" Visible="True" Caption="Балансоутримувач" Width="500" PropertiesTextEdit-EncodeHtml="false"></dx:GridViewDataTextColumn>
         <dx:GridViewDataDateColumn FieldName="modify_date" ReadOnly="True" ShowInCustomizationForm="True"
-            VisibleIndex="13" Visible="False" Caption="Дата редагування"></dx:GridViewDataDateColumn>
+            VisibleIndex="13" Visible="True" Caption="Дата редагування"></dx:GridViewDataDateColumn>
         <dx:GridViewDataTextColumn FieldName="modified_by" ReadOnly="True" ShowInCustomizationForm="True"
-            VisibleIndex="14" Visible="False" Caption="Ким змінено"></dx:GridViewDataTextColumn>
+            VisibleIndex="14" Visible="True" Caption="Ким змінено"></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="building_id" ReadOnly="True" ShowInCustomizationForm="True"
             VisibleIndex="15" Visible="False" Caption="ID"></dx:GridViewDataTextColumn>
     </Columns>
@@ -264,7 +264,7 @@
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Catalogue.Buildings" Version="A7_10" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Catalogue.Buildings" Version="A7_21" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>

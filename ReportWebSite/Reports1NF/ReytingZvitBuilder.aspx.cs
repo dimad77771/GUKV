@@ -147,11 +147,14 @@ public class ReytingZvitBuilder
 		workbook.SaveDocument(tempFile.FileName);
 
 		var info = new System.IO.FileInfo(tempFile.FileName);
+		var fileName = "Рейтинги РДА.xlsx";
 		Page.Response.Clear();
 		Page.Response.ClearHeaders();
 		Page.Response.ClearContent();
 		Page.Response.ContentType = "application /vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-		Page.Response.AddHeader("content-disposition", "attachment; filename=zved_zvit.xlsx; size=" + info.Length.ToString());
+		Page.Response.AddHeader(
+			"Content-Disposition",
+			"attachment; filename*=UTF-8''" + Uri.EscapeDataString(fileName));
 		using (System.IO.FileStream stream = System.IO.File.Open(tempFile.FileName, System.IO.FileMode.Open, System.IO.FileAccess.ReadWrite))
 		{
 			stream.CopyTo(Page.Response.OutputStream);
@@ -686,7 +689,7 @@ select
 addr_district
 ,sum(case when v111 = 1 then 1 else 0 end) as v111_1, sum(case when v111 = 0 then 1 else 0 end) as v111_0
 ,sum(case when v131 = 1 then 1 else 0 end) as v131_1, sum(case when v131 = 0 then 1 else 0 end) as v131_0
-,sum(num_given - num_problem_dog) as v140_1, sum(num_problem_dog) as v140_0
+,sum(num_problem_dog) as v140_1, sum(num_given - num_problem_dog) as v140_0
 into #sum_reports
 from #reports A
 group by addr_district

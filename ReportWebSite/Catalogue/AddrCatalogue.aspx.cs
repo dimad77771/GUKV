@@ -188,13 +188,13 @@ public partial class Catalogue_AddrCatalogue : System.Web.UI.Page
 
     private static bool NormalizeAddressNumberPredicates(CriteriaOperator criteria)
     {
-        if (criteria == null)
+        if (ReferenceEquals(criteria, null))
         {
             return false;
         }
 
         GroupOperator group = criteria as GroupOperator;
-        if (group != null)
+        if (!ReferenceEquals(group, null))
         {
             bool changed = false;
             foreach (CriteriaOperator operand in group.Operands)
@@ -206,7 +206,7 @@ public partial class Catalogue_AddrCatalogue : System.Web.UI.Page
         }
 
         UnaryOperator unary = criteria as UnaryOperator;
-        if (unary != null)
+        if (!ReferenceEquals(unary, null))
         {
             return NormalizeAddressNumberPredicates(unary.Operand);
         }
@@ -217,7 +217,7 @@ public partial class Catalogue_AddrCatalogue : System.Web.UI.Page
     private static bool TryRewriteAddressNumberPredicate(CriteriaOperator criteria)
     {
         FunctionOperator function = criteria as FunctionOperator;
-        if (function != null)
+        if (!ReferenceEquals(function, null))
         {
             if (function.OperatorType != FunctionOperatorType.StartsWith &&
                 function.OperatorType != FunctionOperatorType.EndsWith &&
@@ -238,7 +238,7 @@ public partial class Catalogue_AddrCatalogue : System.Web.UI.Page
         }
 
         BinaryOperator binary = criteria as BinaryOperator;
-        if (binary != null)
+        if (!ReferenceEquals(binary, null))
         {
             if (binary.OperatorType != BinaryOperatorType.Equal &&
                 binary.OperatorType != BinaryOperatorType.NotEqual &&
@@ -251,7 +251,8 @@ public partial class Catalogue_AddrCatalogue : System.Web.UI.Page
             OperandValue value = binary.RightOperand as OperandValue;
 
             // Equal/NotEqual can be written with the operands reversed. Like cannot.
-            if (property == null && binary.OperatorType != BinaryOperatorType.Like)
+            if (ReferenceEquals(property, null) &&
+                binary.OperatorType != BinaryOperatorType.Like)
             {
                 property = binary.RightOperand as OperandProperty;
                 value = binary.LeftOperand as OperandValue;
@@ -264,7 +265,7 @@ public partial class Catalogue_AddrCatalogue : System.Web.UI.Page
         }
 
         InOperator inOperator = criteria as InOperator;
-        if (inOperator != null)
+        if (!ReferenceEquals(inOperator, null))
         {
             return TryRewriteSimplePredicate(
                 inOperator.LeftOperand as OperandProperty,
@@ -282,13 +283,15 @@ public partial class Catalogue_AddrCatalogue : System.Web.UI.Page
     private static bool TryRewriteSimplePredicate(OperandProperty property,
         IEnumerable<OperandValue> values, bool isLikePattern)
     {
-        if (property == null || property.PropertyName != "addr_nomer" || values == null)
+        if (ReferenceEquals(property, null) ||
+            property.PropertyName != "addr_nomer" || values == null)
         {
             return false;
         }
 
         List<OperandValue> valueList = values.ToList();
-        if (valueList.Count == 0 || valueList.Any(value => value == null))
+        if (valueList.Count == 0 ||
+            valueList.Any(value => ReferenceEquals(value, null)))
         {
             return false;
         }
