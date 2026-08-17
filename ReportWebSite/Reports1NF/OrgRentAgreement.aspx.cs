@@ -3484,9 +3484,6 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 
 	private void SetInsuranceAttachmentParameters(System.Collections.Specialized.IOrderedDictionary parameters)
 	{
-		if (ReportID <= 0 || RentAgreementID <= 0)
-			throw new InvalidOperationException("Не вдалося визначити звіт або договір оренди для страхових документів.");
-
 		parameters["reportID"] = ReportID;
 		parameters["arendaID"] = RentAgreementID;
 	}

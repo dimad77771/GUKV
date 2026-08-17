@@ -175,9 +175,6 @@ namespace ExtDataEntry.Models
                 Name = "~\\",
             };
 
-            if (reportID <= 0 || arendaID <= 0)
-                yield break;
-
             string path = GetArendaInsuranceFolderPath(reportID, arendaID);
             const string query = @"
 SELECT [id], [file_name], [file_ext], [modify_date], [modified_by]
@@ -226,10 +223,6 @@ ORDER BY [id]";
         public static void InsertArendaInsurance(
             int reportID, int arendaID, string Name, byte[] Image)
         {
-            if (reportID <= 0)
-                throw new ArgumentOutOfRangeException("reportID");
-            if (arendaID <= 0)
-                throw new ArgumentOutOfRangeException("arendaID");
             if (string.IsNullOrEmpty(Name))
                 throw new ArgumentException("fileName must have a value");
             if (Image == null || Image.Length == 0)
@@ -280,11 +273,6 @@ VALUES
         public static void DeleteArendaInsurance(
             int reportID, int arendaID, string id)
         {
-            if (reportID <= 0)
-                throw new ArgumentOutOfRangeException("reportID");
-            if (arendaID <= 0)
-                throw new ArgumentOutOfRangeException("arendaID");
-
             int attachmentID;
             if (!Int32.TryParse(id, out attachmentID) || attachmentID <= 0)
                 throw new ArgumentException("id must contain a valid attachment ID");
