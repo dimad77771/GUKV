@@ -351,7 +351,7 @@ public class ReytingZvitBuilder
 	decimal GetPercent(MetricCounts metric)
 	{
 		var total = metric.Value0 + metric.Value1;
-		return total > 0 ? metric.Value1 / total * 100.0M : 0M;
+		return total > 0 ? metric.Value1 / total * 100.0M : 100.0M;
 	}
 
 	decimal GetValue(DataRow row, string column)

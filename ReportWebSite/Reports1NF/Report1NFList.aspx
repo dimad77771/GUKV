@@ -197,7 +197,7 @@
             
          LEFT JOIN (
          SELECT R.report_id, SUM(R.row_count) AS 'NUM_GIVEN', SUM(R.SQR_GIVEN) AS 'SQR_GIVEN', COUNT(distinct org_renter_id) AS 'NUM_RENTER'
-                ,case when @show_num_problem_dog = 1 then sum(NUM_PROBLEM_DOG) else 0 end as 'NUM_PROBLEM_DOG'
+                ,case when @show_num_problem_dog = 1 then sum(NUM_NOPROBLEM_DOG) else 0 end as 'NUM_NOPROBLEM_DOG'
 --        SELECT R.report_id, SUM(R.row_count) AS 'NUM_GIVEN', SUM(R.SQR_GIVEN) AS 'SQR_GIVEN'
 --         SELECT R.report_id, SUM(NUM_GIVEN)  as 'NUM_GIVEN', SUM(R.SQR_GIVEN) AS 'SQR_GIVEN'
          FROM (
@@ -207,7 +207,7 @@
            		,1 AS 'row_count'
             		,ar.report_id
 		,ar.org_renter_id
-        ,sum(case when pr.[is_problem] = 1 then 1 else 0 end) as 'NUM_PROBLEM_DOG'
+        ,sum(case when pr.[is_problem] = 1 then 0 else 1 end) as 'NUM_NOPROBLEM_DOG'
 		FROM reports1nf_arenda ar
         LEFT JOIN #arenda_payment_problems pr on pr.arenda_id = ar.id and pr.report_id = ar.report_id
 		WHERE (ar.is_deleted IS NULL OR ar.is_deleted = 0)
@@ -1031,9 +1031,9 @@ WHERE id = @report_id"
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
-        <dx:GridViewDataTextColumn FieldName="NUM_PROBLEM_DOG" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="52" Caption="Кількість договорів оренди з проблемами" Visible="false" >
+        <dx:GridViewDataTextColumn FieldName="NUM_NOPROBLEM_DOG" ReadOnly="true" ShowInCustomizationForm="true" VisibleIndex="52" Caption="Кількість договорів оренди без проблем" Visible="false" >
 			<EditItemTemplate>
-				<dx:ASPxLabel runat="server" Text='<%# Eval("NUM_PROBLEM_DOG") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
+				<dx:ASPxLabel runat="server" Text='<%# Eval("NUM_NOPROBLEM_DOG") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataTextColumn>
 
@@ -1415,6 +1415,7 @@ WHERE id = @report_id"
         <dx:ASPxSummaryItem FieldName="NUM_RENTED" SummaryType="Sum" DisplayFormat="{0}" />
 		<dx:ASPxSummaryItem FieldName="SQR_VLAS_POTREB" SummaryType="Sum" DisplayFormat="{0}" />
 		<dx:ASPxSummaryItem FieldName="SQR_VLAS_POTREB_COUNT" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="NUM_NOPROBLEM_DOG" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="SQR_FREE" SummaryType="Sum" DisplayFormat="{0}" />
 		<dx:ASPxSummaryItem FieldName="SQR_FREE_COUNT" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="PAY_NARAH_ZVIT" SummaryType="Sum" DisplayFormat="{0}" />
@@ -1473,7 +1474,7 @@ WHERE id = @report_id"
         ShowFooter="True"
         VerticalScrollBarMode="Hidden"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A4_22" Enabled="True" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ReportList" Version="A4_23" Enabled="True" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
