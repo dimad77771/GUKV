@@ -234,6 +234,23 @@
     ''
 )) AS purpose_group
 
+,(SELECT COALESCE(
+    STUFF((
+        SELECT ', ' + x.purpose_str
+        FROM
+        (
+            SELECT DISTINCT left(Q2.full_name, 150) as purpose_str
+            FROM reports1nf_arenda_notes Q1
+            JOIN dict_rental_rate Q2 on Q2.id = Q1.payment_type_id
+            WHERE Q1.report_id = ar.report_id
+              AND Q1.arenda_id = ar.id
+        ) x
+        ORDER BY x.purpose_str
+        FOR XML PATH(''), TYPE
+    ).value('.', 'nvarchar(max)'), 1, 2, ''),
+    ''
+)) AS payment_type_nams
+
 
 , ar.is_deleted
 , ar.modify_date
@@ -1043,6 +1060,7 @@ FROM reports1nf_arenda ar
         <dx:GridViewDataTextColumn FieldName="old_debts_payed" VisibleIndex="40" Caption="Погашення заборгованості минулих періодів" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="payment_type" VisibleIndex="41" Caption="Вид оплати"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="priznachennya" VisibleIndex="42" Caption="Призначення за Документом" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn FieldName="payment_type_nams" VisibleIndex="42" Caption="Використання згідно з договором: цільове" Width="200" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="purpose_group" VisibleIndex="43" Caption="Група призначення" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="purpose" VisibleIndex="43" Caption="Використання згідно з договором: примітки" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="org_renter_zkpo" VisibleIndex="44" Caption="Код ЄДРПОУ Орендаря" ShowInCustomizationForm="True" Visible="False"><Settings AllowHeaderFilter="True" HeaderFilterMode="CheckedList" /></dx:GridViewDataTextColumn>
@@ -1138,7 +1156,7 @@ FROM reports1nf_arenda ar
     <SettingsPager PageSize="10" AlwaysShowPager="true" />
     <SettingsPopup> <HeaderFilter Width="200" Height="300" /> </SettingsPopup>
     <Styles Header-Wrap="True" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaList.2" Enabled="True" Version="B_18" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.ArendaList.2" Enabled="True" Version="B_20" />
 
     <ClientSideEvents
         Init="function (s,e) { PrimaryGridView.PerformCallback('init:'); }"

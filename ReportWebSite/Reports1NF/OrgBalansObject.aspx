@@ -706,7 +706,7 @@
         (
             SELECT SUM(Q.rent_square) AS sum_rent_square, COUNT(DISTINCT Q.arenda_id) AS count_ref_balans
             FROM view_arenda Q
-            WHERE Q.ref_balans_id = bal.id AND ISNULL(Q.is_deleted, 0) = 0
+            WHERE Q.ref_balans_id = bal.id AND ISNULL(Q.is_deleted, 0) = 0 AND Q.agreement_active_s = 'Договір діє'
         ) W
         OUTER APPLY
         (
