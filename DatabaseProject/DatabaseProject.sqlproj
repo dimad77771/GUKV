@@ -70,6 +70,7 @@
     <Folder Include="dbo\Stored Procedures\" />
     <Folder Include="Assemblies\" />
     <Folder Include="dbo\Sequences\" />
+    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\reports1nf_arenda_subleases.sql" />
@@ -1001,6 +1002,7 @@
   <ItemGroup>
     <None Include="Assemblies\SqlStringUtils.dll" />
     <None Include="Assemblies\ITG.EIS.SqlServerExtensions.dll" />
+    <None Include="Scripts\SetPasswordChangeDeadline_2026-09-10.sql" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SqlStringUtils">

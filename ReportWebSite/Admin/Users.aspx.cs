@@ -27,6 +27,12 @@ public partial class Admin_Users : System.Web.UI.Page
         }
     }
 
+    protected void SqlDataSourceFreeSquare_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+    {
+        e.Command.Parameters["@PasswordExpirationDays"].Value = PasswordExpirationPolicy.ExpirationDays;
+        e.Command.Parameters["@PasswordExpirationToday"].Value = DateTime.Today;
+    }
+
     protected void ASPxGridViewFreeSquare_RowValidating(object sender, ASPxDataValidationEventArgs e)
     {
         foreach (GridViewColumn column in ASPxGridViewFreeSquare.Columns)

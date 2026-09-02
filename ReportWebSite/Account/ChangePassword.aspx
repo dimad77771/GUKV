@@ -15,14 +15,18 @@
     <p>
         Мінімальна припустима довжина нового паролю складає <%= Membership.MinRequiredPasswordLength %> символів.
     </p>
+    <asp:Panel ID="PasswordChangeErrorPanel" runat="server" CssClass="failureNotification" Visible="false">
+        <asp:Literal ID="PasswordChangeErrorText" runat="server"></asp:Literal>
+    </asp:Panel>
     <asp:ChangePassword ID="ChangeUserPassword" runat="server" 
         CancelDestinationPageUrl="~/" EnableViewState="false" RenderOuterTable="false" 
          SuccessPageUrl="ChangePasswordSuccess.aspx" 
-        ChangePasswordFailureText="Введений пароль не є достатньо стійким. Мінімальна припустима довжина паролю складає {0} символів.">
+        OnChangingPassword="ChangeUserPassword_ChangingPassword"
+        OnChangePasswordError="ChangeUserPassword_ChangePasswordError"
+        OnSendingMail="ChangeUserPassword_SendingMail"
+        ChangePasswordFailureText="Не вдалося змінити пароль. Перевірте введені дані та повторіть спробу.">
         <ChangePasswordTemplate>
-            <span class="failureNotification">
-                <asp:Literal ID="FailureText" runat="server"></asp:Literal>
-            </span>
+            <asp:Literal ID="FailureText" runat="server" Visible="false"></asp:Literal>
             <asp:ValidationSummary ID="ChangeUserPasswordValidationSummary" runat="server" CssClass="failureNotification" 
                  ValidationGroup="ChangeUserPasswordValidationGroup"/>
             <div class="accountInfo">

@@ -9,7 +9,8 @@ public partial class Account_ChangePasswordSuccess : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Response.Redirect(ResolveUrl("~/Account/ChangePasswordSuccess.aspx"), false);
+        Context.ApplicationInstance.CompleteRequest();
     }
 }
 

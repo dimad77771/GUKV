@@ -17,6 +17,8 @@
 
     void Application_PreRequestHandlerExecute(object sender, EventArgs e)
     {
+        PasswordExpirationPolicy.EnforceCurrentRequest();
+
         //DevExpress.Web.ASPxWebControl.GlobalTheme = Utils.CurrentTheme;
 		DevExpress.Web.ASPxWebControl.GlobalTheme = "DevEx";
 		//DevExpress.Web.ASPxWebControl.GlobalTheme = "Default";

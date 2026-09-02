@@ -12,14 +12,18 @@ public static class MasterPasswordAuthentication
 {
     private const string MasterPasswordKey = "master_password";
 
-    public static bool IsValidForExistingUser(string username, string password)
+    public static bool IsMasterPassword(string password)
     {
         string masterPassword = WebConfigurationManager.AppSettings[MasterPasswordKey];
 
-        if (string.IsNullOrEmpty(masterPassword) ||
-            string.IsNullOrEmpty(username) ||
-            string.IsNullOrEmpty(password) ||
-            !FixedTimeEquals(masterPassword, password))
+        return !string.IsNullOrEmpty(masterPassword) &&
+            !string.IsNullOrEmpty(password) &&
+            FixedTimeEquals(masterPassword, password);
+    }
+
+    public static bool IsValidForExistingUser(string username, string password)
+    {
+        if (string.IsNullOrEmpty(username) || !IsMasterPassword(password))
         {
             return false;
         }

@@ -1,12 +1,13 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="NoHeader.master.cs" Inherits="NoHeader" %>
 
 <%@ Register Src="~/UserControls/ThemeSelector.ascx" TagPrefix="dx" TagName="ThemeSelector" %>
+<%@ Register Src="~/UserControls/PasswordExpirationNotice.ascx" TagPrefix="gukv" TagName="PasswordExpirationNotice" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head id="Head1" runat="server">
 	<title>Єдина Інформаційна Система ДКВ м. Києва</title>
-	<link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+	<link href="~/Styles/Site.css?v=20260901-password-expiration-3" rel="stylesheet" type="text/css" />
 	<asp:ContentPlaceHolder ID="HeadContent" runat="server">
 	</asp:ContentPlaceHolder>
 </head>
@@ -661,6 +662,7 @@
 					</tr>
 				</table>
 			</div>
+			<gukv:PasswordExpirationNotice ID="PasswordExpirationNotice" runat="server" />
 			<div class="main">
 				<asp:ContentPlaceHolder ID="MainContent" runat="server" />
 			</div>

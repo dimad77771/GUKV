@@ -32,6 +32,7 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceFreeSquare" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
+    OnSelecting="SqlDataSourceFreeSquare_Selecting"
     SelectCommand="select 
 u.UserId,
 u.UserName,
@@ -40,6 +41,9 @@ m.IsLockedOut,
 u.LastActivityDate,
 m.CreateDate,
 m.LastLoginDate,
+m.LastPasswordChangedDate,
+DATEDIFF(day, @PasswordExpirationToday,
+    DATEADD(day, @PasswordExpirationDays, CONVERT(date, m.LastPasswordChangedDate))) as PasswordDaysRemaining,
 m.IsIncludedToEmail,
 m.IsBigBossUser 
 from aspnet_Users u
@@ -55,6 +59,10 @@ update aspnet_Users set
 UserName = @UserName
 where UserId = @UserId" 
         ProviderName="System.Data.SqlClient">
+    <SelectParameters>
+        <asp:Parameter Name="PasswordExpirationDays" Type="Int32" />
+        <asp:Parameter Name="PasswordExpirationToday" Type="DateTime" />
+    </SelectParameters>
     <UpdateParameters>
         <asp:Parameter Name="Email" />
         <asp:Parameter Name="IsLockedOut" />
@@ -155,6 +163,15 @@ where UserId = @UserId"
 <dx:GridViewDataDateColumn FieldName="LastActivityDate" Caption="Остання активність" VisibleIndex="5" ReadOnly="true"><EditFormSettings Visible="False" /><HeaderStyle Wrap="True" /></dx:GridViewDataDateColumn>
 <dx:GridViewDataDateColumn FieldName="CreateDate" Caption="Дата створення" VisibleIndex="6" ReadOnly="true"><EditFormSettings Visible="False" /><HeaderStyle Wrap="True" /></dx:GridViewDataDateColumn>
 <dx:GridViewDataDateColumn FieldName="LastLoginDate" Caption="Останній вхід" VisibleIndex="7" ReadOnly="true"><EditFormSettings Visible="False" /><HeaderStyle Wrap="True" /></dx:GridViewDataDateColumn>
+<dx:GridViewDataDateColumn FieldName="LastPasswordChangedDate" Caption="Дата останньої зміни пароля" VisibleIndex="8" ReadOnly="true">
+    <PropertiesDateEdit DisplayFormatString="dd.MM.yyyy" />
+    <EditFormSettings Visible="False" />
+    <HeaderStyle Wrap="True" />
+</dx:GridViewDataDateColumn>
+<dx:GridViewDataTextColumn FieldName="PasswordDaysRemaining" Caption="Залишилося до зміни пароля (днів)" VisibleIndex="9" ReadOnly="true">
+    <EditFormSettings Visible="False" />
+    <HeaderStyle Wrap="True" />
+</dx:GridViewDataTextColumn>
 
         </Columns>
         <SettingsBehavior ConfirmDelete="True" />

@@ -60,4 +60,9 @@
             </div>
         </LayoutTemplate>
     </asp:Login>
+    <div class="password-expiration-login-help">
+        Потрібно змінити пароль або не вдається увійти?
+        <asp:HyperLink ID="PasswordVideoLink" runat="server" Target="_blank"
+            Text="Перегляньте відеоінструкцію" />.
+    </div>
 </asp:Content>

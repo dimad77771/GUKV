@@ -1,25 +1,11 @@
-﻿<%@ Page Title="Change Password" Language="C#" MasterPageFile="~/NoHeader.master" AutoEventWireup="true"
-    CodeFile="ChangePasswordSuccessNoMenu.aspx.cs" Inherits="Account_ChangePasswordSuccess" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ChangePasswordSuccessNoMenu.aspx.cs" Inherits="Account_ChangePasswordSuccess" %>
 
-<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
-</asp:Content>
-<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <dx:ASPxMenu ID="SectionMenu" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
-        <Items>
-            <dx:MenuItem NavigateUrl="../Reports1NF/Cabinet.aspx" Text="Стан"></dx:MenuItem>
-            <dx:MenuItem NavigateUrl="../Reports1NF/OrgInfo.aspx" Text="Загальна Інформація"></dx:MenuItem>
-            <dx:MenuItem NavigateUrl="../Reports1NF/OrgBalansList.aspx" Text="Об'єкти на Балансі"></dx:MenuItem>
-            <dx:MenuItem NavigateUrl="../Reports1NF/OrgBalansDeletedList.aspx" Text="Відчужені Об'єкти"></dx:MenuItem>
-            <dx:MenuItem NavigateUrl="../Reports1NF/OrgArendaList.aspx" Text="Договори Оренди "></dx:MenuItem>
-            <dx:MenuItem NavigateUrl="../Reports1NF/OrgRentedList.aspx" Text="Договори Орендування"></dx:MenuItem>
-            <dx:MenuItem NavigateUrl="../Account/Logout.aspx" Text="Вийти"></dx:MenuItem>
-            <dx:MenuItem NavigateUrl="~/Account/ChangePasswordNoMenu.aspx" Text="Пароль"></dx:MenuItem>
-        </Items>
-    </dx:ASPxMenu>
-    <h2>
-        Зміна паролю
-    </h2>
-    <p>
-        Ваш пароль успішно змінено на новий.
-    </p>
-</asp:Content>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="uk">
+<head id="Head1" runat="server">
+    <title>&#1055;&#1072;&#1088;&#1086;&#1083;&#1100; &#1079;&#1084;&#1110;&#1085;&#1077;&#1085;&#1086;</title>
+</head>
+<body>
+    <form id="CompatibilityRedirectForm" runat="server"></form>
+</body>
+</html>

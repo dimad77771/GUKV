@@ -13,6 +13,9 @@ public partial class Account_Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+		PasswordVideoLink.NavigateUrl = PasswordExpirationPolicy.VideoUrl;
+		PasswordVideoLink.Attributes["rel"] = "noopener noreferrer";
+
 		//var user = Membership.GetUser("Януш С.О.");
 		//var password = user.ResetPassword();
 		//user.ChangePassword(password, "fq,jkbn66+++");
@@ -56,9 +59,16 @@ public partial class Account_Login : System.Web.UI.Page
 		e.Authenticated = Membership.ValidateUser(username, password);
 	}
 
-	protected void LoginUser_LoggedIn(object sender, EventArgs e)
+    protected void LoginUser_LoggedIn(object sender, EventArgs e)
     {
         String username = LoginUser.UserName.Trim();
+		PasswordExpirationStatus passwordStatus = PasswordExpirationPolicy.GetStatus(username);
+
+		if (passwordStatus.IsExpired)
+		{
+			Response.Redirect(Page.ResolveClientUrl("~/Account/ChangePassword.aspx"));
+			return;
+		}
 
         Utils.FindUserOrganizationAndRda(username);
 
