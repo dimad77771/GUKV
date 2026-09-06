@@ -337,6 +337,7 @@ SET
 	,[vlasaddr] = @vlasaddr
 	,[isvlas] = @isvlas
 	,[akckol] = @akckol
+	,[statkapital] = @statkapital
 	,[akcvart] = @akcvart
 	,[akcpart] = @akcpart
 	,[akcform] = @akcform
@@ -358,6 +359,7 @@ WHERE id = @id"
 	,[vlasaddr]
 	,[isvlas]
 	,[akckol]
+	,[statkapital]
 	,[akcvart]
 	,[akcpart]
 	,[akcform]
@@ -377,6 +379,7 @@ WHERE id = @id"
 	,@vlasaddr
 	,@isvlas
 	,@akckol
+	,@statkapital
 	,@akcvart
 	,@akcpart
 	,@akcform
@@ -605,6 +608,11 @@ SELECT SCOPE_IDENTITY()"
 		<dx:GridViewDataCheckColumn FieldName="isvlas" Caption="Є засно-вником" Width="50px" CellStyle-HorizontalAlign="Center">
         </dx:GridViewDataCheckColumn>
 
+		<dx:GridViewDataSpinEditColumn FieldName="statkapital" Caption="Статутний капітал, грн." Width="100px">
+			<PropertiesSpinEdit NumberType="Float" NumberFormat="Number">
+				<SpinButtons Enabled="false" ClientVisible="false" ></SpinButtons>
+			</PropertiesSpinEdit>
+		</dx:GridViewDataSpinEditColumn>
 
         <dx:GridViewDataSpinEditColumn FieldName="akckol" Caption="Кількість акцій у власника, шт." Width="100px">
             <PropertiesSpinEdit NumberType="Float" NumberFormat="Number">
@@ -672,7 +680,7 @@ SELECT SCOPE_IDENTITY()"
         ShowFooter="false"
         VerticalScrollBarMode="Auto"
         VerticalScrollBarStyle="Standard" />
-    <SettingsCookies CookiesID="GUKV.Reports1NF.CorporpravSquare" Version="A1_18" Enabled="false" />
+    <SettingsCookies CookiesID="GUKV.Reports1NF.CorporpravSquare" Version="A1_19" Enabled="false" />
     <Styles Header-Wrap="True" >
         <Header Wrap="True"></Header>
     </Styles>
