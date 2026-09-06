@@ -612,7 +612,7 @@ WHERE id = @id"
         <dx:GridViewDataTextColumn FieldName="auction_tablo" Caption="Аукціон" VisibleIndex="0"  Width="170px" ReadOnly="true">
 			<DataItemTemplate>
 
-                <dx:ASPxButton Enabled="true" runat="server" ID="AuctionZayavkaBtn" Text="Подати заявку" AutoPostBack="false" Visible='<%# Eval("cabinetOrendarStage").ToString() == "" && Eval("allow_zayav").ToString() == "1" %>' OnInit="AuctionZayavkaBtn_Init" >
+                <dx:ASPxButton Enabled="true" runat="server" ID="AuctionZayavkaBtn" Text="Подати заявку" AutoPostBack="false" Visible='<%# Eval("cabinetOrendarStage").ToString() == "" && Eval("allow_zayav").ToString() == "1" && Eval("freecycle_step_name").ToString() != "Розміщено оголошення в ЕТС (для 1 типу) " %>' OnInit="AuctionZayavkaBtn_Init" >
                     <ClientSideEvents Click="function(s, e) { AuctionZayavkaClick(s,e); }" />
                 </dx:ASPxButton>
                 
