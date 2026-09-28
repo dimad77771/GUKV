@@ -488,6 +488,12 @@
 															<dx:RibbonButtonItem Text="КАБІНЕТ ГРОМАДЯНИНА" NavigateUrl="UserGuide/КАБІНЕТ ГРОМАДЯНИНА.docx">
 																<SmallImage Url="Styles/ribbonicon_9.png" />
 															</dx:RibbonButtonItem>
+															<dx:RibbonButtonItem Text="Інструкція &quot;Власком-26&quot;" NavigateUrl="UserGuide/Інструкція_власком_26.docx">
+																<SmallImage Url="Styles/ribbonicon_help_4.png" />
+															</dx:RibbonButtonItem>
+															<dx:RibbonButtonItem Text="Інструкція &quot;Калькулятор ОП&quot;" NavigateUrl="UserGuide/Автоматизований розрахунок_ОП.mp4">
+																<SmallImage Url="Styles/video-camera.png" />
+															</dx:RibbonButtonItem>
 
 
 															<%--
