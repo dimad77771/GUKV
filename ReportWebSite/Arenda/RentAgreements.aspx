@@ -723,35 +723,35 @@ WHERE id = @arenda_id"
     </Columns>
 
     <TotalSummary>
-        <dx:ASPxSummaryItem FieldName="cost_agreement" SummaryType="Custom" DisplayFormat="{0}" />
-        <dx:ASPxSummaryItem FieldName="cost_expert_total" SummaryType="Custom" DisplayFormat="{0}" />
-        <dx:ASPxSummaryItem FieldName="rent_square" SummaryType="Custom" DisplayFormat="{0}" />
-        <dx:ASPxSummaryItem FieldName="balans_sqr_total" SummaryType="Custom" DisplayFormat="{0}" />
-        <dx:ASPxSummaryItem FieldName="balans_num_rent_agr" SummaryType="Custom" DisplayFormat="{0}" />
-        <dx:ASPxSummaryItem FieldName="balans_sqr_in_rent" SummaryType="Custom" DisplayFormat="{0}" />
-        <dx:ASPxSummaryItem FieldName="sqr_free_total" SummaryType="Custom" DisplayFormat="{0}" />
-        <dx:ASPxSummaryItem FieldName="sqr_free_korysna" SummaryType="Custom" DisplayFormat="{0}" />
-        <dx:ASPxSummaryItem FieldName="sqr_free_mzk" SummaryType="Custom" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="cost_agreement" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="cost_expert_total" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="rent_square" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="balans_sqr_total" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="balans_num_rent_agr" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="balans_sqr_in_rent" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="sqr_free_total" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="sqr_free_korysna" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="sqr_free_mzk" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="count_dogovor_objects" SummaryType="Sum" DisplayFormat="{0}"/>
 
 
-        <dx:ASPxSummaryItem FieldName="n_cost_agreement" SummaryType="Custom" DisplayFormat="{0}" />
-        <dx:ASPxSummaryItem FieldName="cost_agreement_max" SummaryType="Custom" DisplayFormat="{0}" />
-        <dx:ASPxSummaryItem FieldName="n_cost_expert_total" SummaryType="Custom" DisplayFormat="{0}" />
-        <dx:ASPxSummaryItem FieldName="payment_narah" SummaryType="Custom" DisplayFormat="{0}" />
-        <dx:ASPxSummaryItem FieldName="last_year_saldo" SummaryType="Custom" DisplayFormat="{0}" />
-        <dx:ASPxSummaryItem FieldName="payment_received" SummaryType="Custom" DisplayFormat="{0}" />
-        <dx:ASPxSummaryItem FieldName="payment_nar_zvit" SummaryType="Custom" DisplayFormat="{0}" />
-        <dx:ASPxSummaryItem FieldName="return_orend_payed" SummaryType="Custom" DisplayFormat="{0}" />
-        <dx:ASPxSummaryItem FieldName="debt_total" SummaryType="Custom" DisplayFormat="{0}" />
-        <dx:ASPxSummaryItem FieldName="debt_spysano" SummaryType="Custom" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="n_cost_agreement" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="cost_agreement_max" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="n_cost_expert_total" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="payment_narah" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="last_year_saldo" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="payment_received" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="payment_nar_zvit" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="return_orend_payed" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="debt_total" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="debt_spysano" SummaryType="Sum" DisplayFormat="{0}" />
 
-        <dx:ASPxSummaryItem FieldName="debt_zvit" SummaryType="Custom" DisplayFormat="{0}" />
-        <dx:ASPxSummaryItem FieldName="debt_3_month" SummaryType="Custom" DisplayFormat="{0}" />
-        <dx:ASPxSummaryItem FieldName="debt_12_month" SummaryType="Custom" DisplayFormat="{0}" />
-        <dx:ASPxSummaryItem FieldName="debt_3_years" SummaryType="Custom" DisplayFormat="{0}" />
-        <dx:ASPxSummaryItem FieldName="debt_over_3_years" SummaryType="Custom" DisplayFormat="{0}" />
-        <dx:ASPxSummaryItem FieldName="debt_v_mezhah_vitrat" SummaryType="Custom" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="debt_zvit" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="debt_3_month" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="debt_12_month" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="debt_3_years" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="debt_over_3_years" SummaryType="Sum" DisplayFormat="{0}" />
+        <dx:ASPxSummaryItem FieldName="debt_v_mezhah_vitrat" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="num_zahodiv_total" SummaryType="Sum" DisplayFormat="{0}" />
         <dx:ASPxSummaryItem FieldName="num_zahodiv_zvit" SummaryType="Sum" DisplayFormat="{0}" />
 
@@ -762,7 +762,7 @@ WHERE id = @arenda_id"
 
     <GroupSummary>
         <dx:ASPxSummaryItem DisplayFormat="{0} рядків" SummaryType="Count" />
-        <dx:ASPxSummaryItem FieldName="rent_square" SummaryType="Custom" DisplayFormat="Загальна Орендована Площа = {0} кв.м." />
+        <dx:ASPxSummaryItem FieldName="rent_square" SummaryType="Sum" DisplayFormat="Загальна Орендована Площа = {0} кв.м." />
     </GroupSummary>
 
     <SettingsBehavior EnableCustomizationWindow="True" 
