@@ -827,7 +827,7 @@ alter table #arenda add primary key(report_id,arenda_id)
 drop table if exists #balans;
 
 select
-bal.report_id, bal.id as balans_id
+bal.report_id, bal.id as balans_id, bld.object_type_id
 ,case when len(rtrim(ltrim(geodata_map_opoints))) >= 5 then 1 else 0 end as v001
 ,case when addr_distr_new_id > 0 then 1 else 0 end v002
 ,case when sqr_vlas_potreb is not null and bal.modify_date >= year_minus_1 then 1 else 0 end as v003
@@ -887,8 +887,8 @@ report_id
 ,sum(case when v004 = 1 then 1 else 0 end) as v004_1, sum(case when v004 = 0 then 1 else 0 end) as v004_0
 ,sum(case when v005 = 1 then 1 else 0 end) as v005_1, sum(case when v005 = 0 then 1 else 0 end) as v005_0
 ,sum(case when v006 = 1 then 1 else 0 end) as v006_1, sum(case when v006 = 0 then 1 else 0 end) as v006_0
-,sum(case when v007 = 1 then 1 else 0 end) as v007_1, sum(case when v007 = 0 then 1 else 0 end) as v007_0
-,sum(case when v008 = 1 then 1 else 0 end) as v008_1, sum(case when v008 = 0 then 1 else 0 end) as v008_0
+,sum(case when v007 = 1 and object_type_id <> 6 then 1 else 0 end) as v007_1, sum(case when v007 = 0 and object_type_id <> 6 then 1 else 0 end) as v007_0
+,sum(case when v008 = 1 and object_type_id <> 6 then 1 else 0 end) as v008_1, sum(case when v008 = 0 and object_type_id <> 6 then 1 else 0 end) as v008_0
 --,sum(case when v023 = 1 then 1 else 0 end) as v023_1, sum(case when v023 = 0 then 1 else 0 end) as v023_0
 into #sum_balans
 from #balans A

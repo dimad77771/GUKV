@@ -157,8 +157,6 @@
     DataSourceID="SqlDataSourceAllBuildings"
     KeyFieldName="building_id"
     OnCustomCallback="GridViewAllBuildings_CustomCallback"
-    OnCustomFilterExpressionDisplayText = "GridViewAllBuildings_CustomFilterExpressionDisplayText"
-    OnProcessColumnAutoFilter = "GridViewAllBuildings_ProcessColumnAutoFilter"
     OnCustomColumnSort="GridViewAllBuildings_CustomColumnSort" >
 
 	<SettingsCommandButton>
@@ -200,9 +198,6 @@
                 <%# "<a href=\"javascript:ShowObjectCardSimple(" + Eval("building_id") + ")\">" + Eval("addr_nomer") + "</a>"%>
             </DataItemTemplate>
             <Settings SortMode="Custom" />
-        </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="addr_nomer_normalized" ReadOnly="True"
-            ShowInCustomizationForm="False" Visible="False" Caption="Номер Будинку">
         </dx:GridViewDataTextColumn>
 
         <dx:GridViewDataTextColumn FieldName="addr_nomer1" VisibleIndex="2" Visible="False" Caption="Будинок"></dx:GridViewDataTextColumn>

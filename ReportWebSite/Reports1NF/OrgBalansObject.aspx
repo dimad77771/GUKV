@@ -817,7 +817,7 @@
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceUsingPossible" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT id, left(full_name, 150) as name, rental_rate FROM dict_rental_rate ORDER BY name">
+    SelectCommand="SELECT id, left(full_name, 150) as name, rental_rate FROM dict_rental_rate ORDER BY case when full_name like 'N 6320/6361%' then 1 else 2 end, name">
 </mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceInvestSolution" runat="server" 
