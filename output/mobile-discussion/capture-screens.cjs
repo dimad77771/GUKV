@@ -1,0 +1,57 @@
+const { chromium } = require('C:/Users/ASUS/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const path = require('path');
+const fs = require('fs');
+const sharp = require('C:/Users/ASUS/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp');
+const out = __dirname;
+(async()=>{
+ const browser = await chromium.launch({headless:true,executablePath:'C:/Users/ASUS/AppData/Local/ms-playwright/chromium-1234/chrome-win64/chrome.exe'});
+ const page = await browser.newPage({viewport:{width:900,height:1100},deviceScaleFactor:2,colorScheme:'light'});
+ await page.goto('file:///C:/Users/ASUS/.codex/visualizations/2026/10/01/01a0f7e2-8bba-7853-990b-d9c73ca1361e/dkv-mobile-preview.html');
+ const frame = page.frameLocator('iframe');
+ const button = name=>frame.getByRole('button',{name,exact:true});
+ const capture = async(name)=>{
+   const phone=frame.locator('.dk-phone:visible');
+   await phone.screenshot({path:path.join(out,'assets',name+'.png')});
+   console.log(name);
+ };
+ await capture('home-work');
+ await button('Следующий вариант').click();
+ await capture('home-objects');
+ await button('Адреса / ЄДРПОУ / № договору').click();
+ await button('Відкрити досьє').click();
+ await capture('building');
+ await button('Об’єкти та приміщення').click();
+ await capture('premise');
+ await button('Почати огляд на місці').click();
+ await frame.getByLabel('Що виявлено',{exact:true}).fill('Сліди протікання біля входу. Потрібне уточнення технічного стану.');
+ await button('Додати фото · демонстрація').click();
+ await capture('inspection');
+ await button('Зберегти матеріали огляду').click();
+ await capture('inspection-saved');
+ await button('Огляд').click();
+ await button('Мої справи та рішення').click();
+ await capture('tasks');
+ await button('Передача 120 м² · очікує розгляду').click();
+ await capture('transfer');
+ await frame.getByLabel('Коментар / причина відхилення',{exact:true}).fill('Акт і підстава перевірені.');
+ await button('Перевірити рішення').click();
+ await capture('decision');
+ await button('Огляд').click();
+ await button('Договір № 48/26').click();
+ await capture('agreement');
+ await button('Огляд').click();
+ await button('Переглянути вільні приміщення').click();
+ await button('Переглянути приміщення').click();
+ await capture('vacancy');
+ await button('Справи').click();
+ await button('Звіт · потрібне уточнення').click();
+ await capture('report');
+ await browser.close();
+ const pairs=[['home-work','home-objects'],['building','premise'],['inspection','inspection-saved'],['transfer','decision'],['tasks','agreement'],['vacancy','report']];
+ for(let i=0;i<pairs.length;i++){
+  const inputs=await Promise.all(pairs[i].map(async(name)=>{const filename=path.join(out,'assets',name+'.png');const m=await sharp(filename).metadata();return {filename,width:m.width,height:m.height};}));
+  const height=Math.max(...inputs.map(x=>x.height));const gap=60,width=inputs.reduce((n,x)=>n+x.width,0)+gap;
+  const image=sharp({create:{width,height,channels:3,background:'#ffffff'}});
+  await image.composite([{input:inputs[0].filename,left:0,top:0},{input:inputs[1].filename,left:inputs[0].width+gap,top:0}]).png().toFile(path.join(out,'assets','pair-'+(i+1)+'.png'));
+ }
+})();
