@@ -949,7 +949,7 @@ public static class Reports1NFUtils
             string addrMisc = "";
 
             int selectedBuildingId = GetExactBuildingId(connectionSql, buildingProperties);
-            int currentBuildingId = GetCurrentBalansBuildingId(connectionSql, balansId);
+            int? currentBuildingId = GetCurrentBalansBuildingId(connectionSql, balansId);
 
             // A report snapshot must always reflect the exact selected row. This also
             // prevents manually edited address text from being written into a shared
@@ -959,7 +959,7 @@ public static class Reports1NFUtils
 
             int matchBuildingId = FindObjectMatchForBalansBuilding(connectionSql, /*connection1NF,*/ buildingProperties,
                 ref number1, ref number2, ref number3, ref addrMisc,
-                currentBuildingId > 0 && currentBuildingId == selectedBuildingId, user, true);
+                currentBuildingId.HasValue && currentBuildingId.Value == selectedBuildingId, user, true);
 
             if (matchBuildingId > 0)
             {
@@ -1088,6 +1088,9 @@ public static class Reports1NFUtils
 
         string fieldListSql = "";
         string fieldList1NF = "";
+        string insertFieldsSql = "id";
+        string insertValuesSql = "@bid";
+        bool canCreateBalansObject = false;
         SqlCommand cmdUpdateSql = new SqlCommand("", connectionSql);
         //FbCommand cmdUpdate1NF = new FbCommand("", connection1NF);
 
@@ -1100,7 +1103,11 @@ public static class Reports1NFUtils
             {
                 if (reader.Read())
                 {
-                    // Prepare two UPDATE queries from the data reader
+                    int deletedOrdinal = reader.GetOrdinal("is_deleted");
+                    canCreateBalansObject = sourceBalansTable == "reports1nf_balans" &&
+                        (reader.IsDBNull(deletedOrdinal) || Convert.ToInt32(reader.GetValue(deletedOrdinal)) == 0);
+
+                    // Use the same mapped report values for an update or first insertion.
                     for (int i = 0; i < reader.FieldCount; i++)
                     {
                         string columnNameSql = reader.GetName(i).ToLower();
@@ -1112,9 +1119,11 @@ public static class Reports1NFUtils
 
                             if (mapping.TryGetValue(columnNameSql, out columnName1NF))
                             {
+                                insertFieldsSql += ", " + columnNameSql;
                                 if (reader.IsDBNull(i))
                                 {
                                     fieldListSql += ", " + columnNameSql + " = NULL";
+                                    insertValuesSql += ", NULL";
                                     fieldList1NF += ", " + columnName1NF + " = NULL";
                                 }
                                 else
@@ -1123,6 +1132,7 @@ public static class Reports1NFUtils
 
                                     cmdUpdateSql.Parameters.Add(new SqlParameter("param" + i.ToString(), reader.GetValue(i)));
                                     fieldListSql += ", " + columnNameSql + " = @param" + i.ToString();
+                                    insertValuesSql += ", @param" + i.ToString();
 
                                     //if (CanMapBalansValueTo1NF(connection1NF, dictPool, columnName1NF, ref value))
                                     //{
@@ -1146,26 +1156,55 @@ public static class Reports1NFUtils
                         }
                     }
                 }
+                else
+                {
+                    throw new InvalidOperationException(string.Format(
+                        "The report balance object {0} does not exist in report {1}.", balansId, reportId));
+                }
 
                 reader.Close();
             }
         }
 
-        // Perform UPDATE in the SQL Server
+        // Save the central object, creating it when it exists only in the report.
         if (fieldListSql.Length > 0)
         {
             System.Web.Security.MembershipUser user = System.Web.Security.Membership.GetUser();
             string username = (user == null ? "Auto-import" : user.UserName);
 
-            ArchiverSql.CreateBalansArchiveRecord(connectionSql, balansId, username, null);
-
-            cmdUpdateSql.CommandText = "UPDATE balans SET " + fieldListSql.TrimStart(' ', ',') + " WHERE id = @bid";
-
             cmdUpdateSql.Parameters.Add(new SqlParameter("bid", balansId));
-            if (cmdUpdateSql.ExecuteNonQuery() != 1)
+            using (SqlTransaction transaction = connectionSql.BeginTransaction())
             {
-                throw new InvalidOperationException(string.Format(
-                    "The central balance object {0} was not updated.", balansId));
+                bool exists;
+                using (SqlCommand cmdExists = new SqlCommand(
+                    "SELECT COUNT(*) FROM balans WITH (UPDLOCK, HOLDLOCK) WHERE id = @bid", connectionSql, transaction))
+                {
+                    cmdExists.Parameters.Add(new SqlParameter("bid", balansId));
+                    exists = Convert.ToInt32(cmdExists.ExecuteScalar()) == 1;
+                }
+
+                cmdUpdateSql.Transaction = transaction;
+                if (exists)
+                {
+                    ArchiverSql.CreateBalansArchiveRecord(connectionSql, balansId, username, transaction);
+                    cmdUpdateSql.CommandText = "UPDATE balans SET " + fieldListSql.TrimStart(' ', ',') + " WHERE id = @bid";
+                }
+                else
+                {
+                    if (!canCreateBalansObject)
+                        throw new InvalidOperationException(string.Format(
+                            "The central balance object {0} does not exist and cannot be created from a deleted report object.", balansId));
+
+                    // A report-only object enters the centre on its first Send,
+                    // retaining the ID used by its photos and free-square records.
+                    cmdUpdateSql.CommandText = "INSERT INTO balans (" + insertFieldsSql + ") VALUES (" + insertValuesSql + ")";
+                }
+
+                if (cmdUpdateSql.ExecuteNonQuery() != 1)
+                    throw new InvalidOperationException(string.Format(
+                        "The central balance object {0} was not saved.", balansId));
+
+                transaction.Commit();
             }
         }
 
@@ -1626,20 +1665,16 @@ public static class Reports1NFUtils
         return buildingId;
     }
 
-    private static int GetCurrentBalansBuildingId(SqlConnection connection, int balansId)
+    private static int? GetCurrentBalansBuildingId(SqlConnection connection, int balansId)
     {
         using (SqlCommand cmd = new SqlCommand("SELECT building_id FROM balans WHERE id = @balansId", connection))
         {
             cmd.Parameters.Add(new SqlParameter("balansId", balansId));
             object value = cmd.ExecuteScalar();
 
-            if (value == null)
-            {
-                throw new InvalidOperationException(string.Format(
-                    "The central balance object {0} does not exist; the report was not submitted.", balansId));
-            }
-
-            return value == DBNull.Value ? -1 : Convert.ToInt32(value);
+            // A new object may exist only in reports1nf_balans until its first Send.
+            // It has no previous central building whose characteristics can be copied.
+            return value == null || value == DBNull.Value ? (int?)null : Convert.ToInt32(value);
         }
     }
 
@@ -4481,34 +4516,35 @@ public static class Reports1NFUtils
     public static object thisLock = new object();
     public static object thisDisplayLock = new object();
 
-    private static Dictionary<string, WorkItem> WorkItems
+    private sealed class WorkItemEntry
     {
-        get
-        {
-            object val = HttpContext.Current.Session["REPORTS_1NF_WORK_ITEMS"];
-
-            if (val is Dictionary<string, WorkItem>)
-            {
-                return val as Dictionary<string, WorkItem>;
-            }
-
-            Dictionary<string, WorkItem> workItems = new Dictionary<string, WorkItem>();
-
-            HttpContext.Current.Session["REPORTS_1NF_WORK_ITEMS"] = workItems;
-
-            return workItems;
-        }
-
-        set
-        {
-            HttpContext.Current.Session["REPORTS_1NF_WORK_ITEMS"] = value;
-        }
+        public WorkItem Item;
+        public string SessionId;
+        public DateTime LastAccessUtc;
     }
 
+    // SQL-backed sessions serialize values at the end of every callback.
+    // Keep the live worker (and its Thread) here; Session contains only its ID.
+    private static readonly Dictionary<string, WorkItemEntry> workItems = new Dictionary<string, WorkItemEntry>();
+    private const string WorkItemStatusUnavailableMessage = "Не вдалося отримати стан масового надсилання. Оновіть сторінку, перевірте стан об'єктів і повторіть масове надсилання.";
+
+    private static void RemoveExpiredWorkItems()
+    {
+        DateTime expiry = DateTime.UtcNow.AddHours(-2);
+        List<string> expiredIds = new List<string>();
+        foreach (KeyValuePair<string, WorkItemEntry> pair in workItems)
+        {
+            if (pair.Value.Item.finished && pair.Value.LastAccessUtc < expiry)
+                expiredIds.Add(pair.Key);
+        }
+        foreach (string expiredId in expiredIds)
+            workItems.Remove(expiredId);
+    }
 
     public static string StartWorkItem(WorkItem item, int reportId, string user)
     {
         string id = "";
+        HttpContext.Current.Session.Remove("REPORTS_1NF_WORK_ITEMS");
 
         lock (thisDisplayLock)
         {
@@ -4521,11 +4557,22 @@ public static class Reports1NFUtils
 
             id = item.id;
 
-            Dictionary<string, WorkItem> workItems = WorkItems;
+            RemoveExpiredWorkItems();
+            workItems.Add(id, new WorkItemEntry {
+                Item = item,
+                SessionId = HttpContext.Current.Session.SessionID,
+                LastAccessUtc = DateTime.UtcNow
+            });
 
-            workItems.Add(id, item);
-
-            item.StartProcessing();
+            try
+            {
+                item.StartProcessing();
+            }
+            catch
+            {
+                workItems.Remove(id);
+                throw;
+            }
         }
 
         return id;
@@ -4533,13 +4580,22 @@ public static class Reports1NFUtils
 
     public static void GetWorkItemStatistics(string workItemId, ref int percentComplete, ref string message, ref bool finished)
     {
+        bool succeeded = false;
+        string failureUrl = string.Empty;
+        GetWorkItemStatistics(workItemId, ref percentComplete, ref message, ref finished, ref succeeded, ref failureUrl);
+    }
+
+    public static void GetWorkItemStatistics(string workItemId, ref int percentComplete, ref string message, ref bool finished,
+        ref bool succeeded, ref string failureUrl)
+    {
         lock (thisLock)
         {
-            Dictionary<string, WorkItem> workItems = WorkItems;
-            WorkItem item = null;
+            WorkItemEntry entry;
 
-            if (workItems != null && workItems.TryGetValue(workItemId, out item))
+            if (!string.IsNullOrEmpty(workItemId) && workItems.TryGetValue(workItemId, out entry) && entry.SessionId == HttpContext.Current.Session.SessionID)
             {
+                entry.LastAccessUtc = DateTime.UtcNow;
+                WorkItem item = entry.Item;
                 if (item.numObjectsToProcess > 0)
                 {
                     percentComplete = (int)(100.0 * (double)item.numObjectsProcessed / (double)item.numObjectsToProcess);
@@ -4547,6 +4603,18 @@ public static class Reports1NFUtils
 
                 message = item.message;
                 finished = item.finished;
+                succeeded = item.succeeded;
+                failureUrl = item.GetFailureUrl(item.failedObjectId);
+                if (finished && !succeeded)
+                    percentComplete = Math.Min(percentComplete, 99);
+            }
+            else
+            {
+                percentComplete = 0;
+                finished = true;
+                succeeded = false;
+                failureUrl = string.Empty;
+                message = WorkItemStatusUnavailableMessage;
             }
         }
     }
@@ -4555,9 +4623,8 @@ public static class Reports1NFUtils
     {
         lock (thisLock)
         {
-            Dictionary<string, WorkItem> workItems = WorkItems;
-
-            if (workItems != null)
+            WorkItemEntry entry;
+            if (!string.IsNullOrEmpty(workItemId) && workItems.TryGetValue(workItemId, out entry) && entry.SessionId == HttpContext.Current.Session.SessionID)
             {
                 workItems.Remove(workItemId);
             }
@@ -4567,12 +4634,34 @@ public static class Reports1NFUtils
     public static void ProcessProgressPanelCallback(ASPxCallbackPanel panel, string callbackParam,
         ASPxProgressBar progressBar, ASPxLabel label, int reportId, WorkItem workItem, string sessionKey, string processingMessage)
     {
+        panel.JSProperties["cpFinished"] = false;
+        panel.JSProperties["cpSucceeded"] = false;
+        panel.JSProperties["cpMessage"] = string.Empty;
+        panel.JSProperties["cpFailedObjectUrl"] = string.Empty;
+
         if (callbackParam.StartsWith("init:"))
         {
-            System.Web.Security.MembershipUser user = System.Web.Security.Membership.GetUser();
-            string username = (user == null ? "Auto-import" : user.UserName);
-
-            string workItemId = Reports1NFUtils.StartWorkItem(workItem, reportId, username);
+            string workItemId;
+            try
+            {
+                System.Web.Security.MembershipUser user = System.Web.Security.Membership.GetUser();
+                string username = (user == null ? "Auto-import" : user.UserName);
+                workItemId = Reports1NFUtils.StartWorkItem(workItem, reportId, username);
+            }
+            catch (Exception ex)
+            {
+                string failureMessage = workItem.GetFailureMessage(workItem.failedObjectId, ex);
+                string failureUrl = workItem.GetFailureUrl(workItem.failedObjectId);
+                log.Error("Unable to start bulk submission for report " + reportId, ex);
+                HttpContext.Current.Session[sessionKey + reportId.ToString()] = string.Empty;
+                panel.JSProperties["cpWorkItemId"] = string.Empty;
+                panel.JSProperties["cpFinished"] = true;
+                panel.JSProperties["cpMessage"] = failureMessage;
+                panel.JSProperties["cpFailedObjectUrl"] = failureUrl.Length > 0 ? panel.ResolveClientUrl(failureUrl) : string.Empty;
+                label.Text = failureMessage;
+                progressBar.Position = 0;
+                return;
+            }
 
             panel.JSProperties["cpWorkItemId"] = workItemId;
 
@@ -4592,14 +4681,20 @@ public static class Reports1NFUtils
                 bool finished = false;
                 string message = "";
                 int progress = 0;
+                bool succeeded = false;
+                string failureUrl = string.Empty;
 
-                Reports1NFUtils.GetWorkItemStatistics(workItemId, ref progress, ref message, ref finished);
+                Reports1NFUtils.GetWorkItemStatistics(workItemId, ref progress, ref message, ref finished, ref succeeded, ref failureUrl);
 
                 label.Text = message.Length > 0 ? message : processingMessage;
+                panel.JSProperties["cpFinished"] = finished;
+                panel.JSProperties["cpSucceeded"] = succeeded;
+                panel.JSProperties["cpMessage"] = message;
+                panel.JSProperties["cpFailedObjectUrl"] = failureUrl.Length > 0 ? panel.ResolveClientUrl(failureUrl) : string.Empty;
 
                 if (finished)
                 {
-                    progressBar.Position = 100;
+                    progressBar.Position = succeeded ? 100 : progress;
                     HttpContext.Current.Session[sessionKey + reportId.ToString()] = "";
                     panel.JSProperties["cpWorkItemId"] = "";
 
@@ -4609,6 +4704,13 @@ public static class Reports1NFUtils
                 {
                     progressBar.Position = progress;
                 }
+            }
+            else
+            {
+                panel.JSProperties["cpFinished"] = true;
+                panel.JSProperties["cpMessage"] = WorkItemStatusUnavailableMessage;
+                label.Text = WorkItemStatusUnavailableMessage;
+                progressBar.Position = 0;
             }
         }
     }

@@ -17,6 +17,7 @@ public sealed class TestSettings
 
     public int? ReportId => ReadInteger("GUKV_E2E_REPORT_ID");
     public int? BalansId => ReadInteger("GUKV_E2E_BALANS_ID");
+    public int? ReportOnlyBalansId => ReadInteger("GUKV_E2E_REPORT_ONLY_BALANS_ID");
     public int? GroupStreetId => ReadInteger("GUKV_E2E_GROUP_STREET_ID");
     public int? GroupRepresentativeId => ReadInteger("GUKV_E2E_GROUP_REPRESENTATIVE_ID");
     public string? GroupDisplay => Read("GUKV_E2E_GROUP_DISPLAY");
@@ -38,9 +39,9 @@ public sealed class TestSettings
 
     public (int ReportId, int BalansId) RequireObject()
     {
-        if (ReportId is not > 0 || BalansId is not > 0)
+        if (ReportId is not > 0 || !BalansId.HasValue)
         {
-            Assert.Ignore("Set positive GUKV_E2E_REPORT_ID and GUKV_E2E_BALANS_ID values.");
+            Assert.Ignore("Set a positive GUKV_E2E_REPORT_ID and an existing GUKV_E2E_BALANS_ID (legacy IDs may be negative).");
         }
 
         return (ReportId.Value, BalansId.Value);

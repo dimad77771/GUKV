@@ -18,7 +18,7 @@ public abstract class WorkItem
     protected int reportID = 0;
     protected string userName = string.Empty;
     protected Dictionary<int, bool> allIDList = new Dictionary<int, bool>();
-    private HashSet<int> validIDList = new HashSet<int>();
+    private List<int> objectsToProcess = new List<int>();
 
     public string id = "";
     public Thread thread = null;
@@ -26,9 +26,12 @@ public abstract class WorkItem
     public int numObjectsProcessed = 0;
     public string message = "";
     public bool finished = false;
+    public bool succeeded = false;
+    public int? failedObjectId = null;
 
     public bool IncludeDeleted = false;
     public bool ValidateDeleted = false;
+    public bool SkipInvalidObjects = true;
 
     public WorkItem()
     {
@@ -47,12 +50,13 @@ public abstract class WorkItem
         userName = user;
 
         // Get all balans objects to validate
-        SqlConnection connection = Utils.ConnectToDatabase();
-
         allIDList = new Dictionary<int,bool>();
-        
-        if (connection != null)
+
+        using (SqlConnection connection = Utils.ConnectToDatabase())
         {
+            if (connection == null)
+                throw new InvalidOperationException("Не вдалося підключитися до бази даних.");
+
             string query = @"SELECT a.id,a.is_deleted FROM " + GetTableName() + @" a 
                     LEFT JOIN reports1nf r ON a.report_id = r.id 
                     WHERE a.report_id = @rid";
@@ -77,6 +81,7 @@ public abstract class WorkItem
 
             foreach (KeyValuePair<int, bool> pair in allIDList)
             {
+                failedObjectId = pair.Key;
                 if (!pair.Value)
                 {
                     ValidatorBase validator = GetValidator();
@@ -99,8 +104,7 @@ public abstract class WorkItem
                     }
                 }
             }
-
-            connection.Close();
+            failedObjectId = null;
         }
 
         this.numObjectsToProcess = allIDList.Count();
@@ -115,22 +119,31 @@ public abstract class WorkItem
     public void DoWork()
     {
         string finalMessage = "Обробку завершено.";
+        bool completedSuccessfully = false;
+        int? currentObjectId = null;
 
-        SqlConnection connection = Utils.ConnectToDatabase();
-
-        if (connection != null)
+        try
         {
-            try
+            using (SqlConnection connection = Utils.ConnectToDatabase())
             {
+                if (connection == null)
+                    throw new InvalidOperationException("Не вдалося підключитися до бази даних.");
+
                 string query = @"SELECT a.id FROM " + GetTableName() + @" a 
                         LEFT JOIN reports1nf r ON a.report_id = r.id 
-                        WHERE a.report_id = @rid AND a.is_valid = 1 AND
+                        WHERE a.report_id = @rid AND
                         (
                         (a.submit_date IS NULL)
                         OR
                         (a.modify_date > a.submit_date))";
 
-                validIDList = new HashSet<int>();
+                if (!IncludeDeleted)
+                    query += " AND ((a.is_deleted IS NULL) OR (a.is_deleted = 0))";
+                if (SkipInvalidObjects)
+                    query += " AND a.is_valid = 1";
+                query += " ORDER BY a.id";
+
+                objectsToProcess = new List<int>();
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
@@ -140,7 +153,7 @@ public abstract class WorkItem
                     {
                         while (reader.Read())
                         {
-                            validIDList.Add(reader.GetInt32(0));
+                            objectsToProcess.Add(reader.GetInt32(0));
                         }
 
                         reader.Close();
@@ -149,12 +162,13 @@ public abstract class WorkItem
 
                 lock (Reports1NFUtils.thisLock)
                 {
-                    this.numObjectsToProcess = validIDList.Count;
+                    this.numObjectsToProcess = objectsToProcess.Count;
                     this.numObjectsProcessed = 0;
                 }
 
-                foreach (int id in validIDList)
+                foreach (int id in objectsToProcess)
                 {
+                    currentObjectId = id;
                     Send(connection, reportID, id, userName);
 
                     // Increase the counter when each object is processed
@@ -164,25 +178,33 @@ public abstract class WorkItem
                         this.numObjectsProcessed++;
                     }
                 }
-
-
             }
-            catch (Exception ex)
-            {
-                finalMessage = ex.Message;
-                log.Error(ex.Message + " ===== " + ex.Source + " ===== " + ex.TargetSite + " ==== " + ex.StackTrace);
-            }
-
-            connection.Close();
+            completedSuccessfully = true;
+        }
+        catch (Exception ex)
+        {
+            finalMessage = GetFailureMessage(currentObjectId, ex);
+            log.Error(ex.Message + " ===== " + ex.Source + " ===== " + ex.TargetSite + " ==== " + ex.StackTrace);
         }
 
         // Finished!
         lock (Reports1NFUtils.thisLock)
         {
-            this.numObjectsProcessed = this.numObjectsToProcess;
+            this.succeeded = completedSuccessfully;
+            this.failedObjectId = completedSuccessfully ? null : currentObjectId;
             this.finished = true;
             this.message = finalMessage;
         }
+    }
+
+    public virtual string GetFailureMessage(int? objectId, Exception error)
+    {
+        return "Масове надсилання зупинено. " + error.Message;
+    }
+
+    public virtual string GetFailureUrl(int? objectId)
+    {
+        return string.Empty;
     }
 
     public abstract void Send(SqlConnection connection, int reportID, int id, string userName);

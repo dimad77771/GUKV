@@ -93,6 +93,14 @@ WHERE building.id = @buildingId";
             VisualAddress.JoinNumber(reader.GetString(2), reader.GetString(3), reader.GetString(4)));
     }
 
+    public async Task<int> GetCentralBalansCountAsync(int balansId)
+    {
+        await using SqlConnection connection = await OpenAsync();
+        await using SqlCommand command = new("SELECT COUNT(*) FROM balans WHERE id = @balansId", connection);
+        command.Parameters.AddWithValue("balansId", balansId);
+        return Convert.ToInt32(await command.ExecuteScalarAsync());
+    }
+
     private async Task<SqlConnection> OpenAsync()
     {
         SqlConnection connection = new(connectionString);

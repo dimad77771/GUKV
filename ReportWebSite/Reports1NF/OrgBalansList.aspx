@@ -55,8 +55,66 @@
 	}
 
     function ShowSendingLog() {
-        var diagnosticWindow = window.open("SendingBalanceObjectsDiagnostic.aspx?rid=<%= ReportID  %>", "", "width=600,height=400");
-        diagnosticWindow.focus();
+        PopupSendingLog.SetContentUrl("SendingBalanceObjectsDiagnostic.aspx?rid=<%= ReportID  %>");
+        PopupSendingLog.RefreshContentUrl();
+        PopupSendingLog.Show();
+    }
+
+    function ShowBulkSendFailure(message, failureUrl) {
+        ProgressTimer.SetEnabled(false);
+        ProgressSendAll.SetVisible(false);
+        PopupSendAll.SetHeaderText('Помилка надсилання до ДКВ');
+        LabelProgress.SetText(message);
+        var failureLink = document.getElementById('LinkFailedObject');
+        if (failureLink) {
+            failureLink.href = failureUrl || '#';
+            failureLink.style.display = failureUrl ? 'inline' : 'none';
+        }
+    }
+
+    function BulkSendStart(s, e) {
+        ProgressTimer.SetEnabled(false);
+        ProgressSendAll.SetVisible(true);
+        PopupSendAll.SetHeaderText("Надсилання до ДКВ усіх змінених об'єктів на балансі");
+        LabelProgress.SetText('Надсилання змін до ДКВ...');
+        var failureLink = document.getElementById('LinkFailedObject');
+        if (failureLink) failureLink.style.display = 'none';
+        CPProgress.bulkSendCallbackFailed = false;
+        CPProgress.cpWorkItemId = '';
+        CPProgress.cpFinished = false;
+        CPProgress.cpSucceeded = false;
+        CPProgress.PerformCallback('init:');
+    }
+
+    function BulkSendCallbackError(s, e) {
+        e.handled = true;
+        s.bulkSendCallbackFailed = true;
+        s.cpWorkItemId = '';
+        ShowBulkSendFailure('Не вдалося отримати результат масового надсилання. ' + e.message, '');
+    }
+
+    function BulkSendEndCallback(s, e) {
+        if (s.bulkSendCallbackFailed) {
+            s.bulkSendCallbackFailed = false;
+            return;
+        }
+
+        if (s.cpWorkItemId) {
+            ProgressTimer.SetEnabled(true);
+            return;
+        }
+
+        ProgressTimer.SetEnabled(false);
+        if (!s.cpFinished) return;
+
+        if (s.cpSucceeded) {
+            PopupSendAll.Hide();
+            ShowSendingLog();
+        }
+        else {
+            ShowBulkSendFailure(s.cpMessage, s.cpFailedObjectUrl);
+        }
+        PrimaryGridView.PerformCallback('init:');
     }
     // ]]>
 
@@ -195,7 +253,7 @@
             <dx:ASPxButton ID="ButtonSendAll" runat="server" Text="Надіслати всі зміни в ДКВ" AutoPostBack="false"></dx:ASPxButton>
 
             <dx:ASPxTimer ID="ProgressTimer" runat="server" ClientInstanceName="ProgressTimer" Enabled="False" Interval="3000">
-                <ClientSideEvents Tick="function(s, e) { CPProgress.PerformCallback('timer:'); }" />
+                <ClientSideEvents Tick="function(s, e) { if (!CPProgress.InCallback()) CPProgress.PerformCallback('timer:'); }" />
             </dx:ASPxTimer>
 
             <dx:ASPxPopupControl ID="PopupSendAll" runat="server" ClientInstanceName="PopupSendAll"
@@ -207,34 +265,27 @@
                             <PanelCollection>
                                 <dx:panelcontent ID="Panelcontent1" runat="server">
 
-                                    <dx:ASPxLabel ID="LabelProgress" ClientInstanceName="LabelProgress" runat="server" Width="600px" />
+                                    <dx:ASPxLabel ID="LabelProgress" ClientInstanceName="LabelProgress" runat="server" Width="600px" EncodeHtml="True" />
+
+                                    <p><a id="LinkFailedObject" href="#" target="_blank" style="display: none">Відкрити об'єкт</a></p>
 
                                     <dx:ASPxProgressBar ID="ProgressSendAll" ClientInstanceName="ProgressSendAll" runat="server" Width="600px" Height="24px" Minimum="0" Maximum="100" />
 
                                 </dx:panelcontent>
                             </PanelCollection>
 
-                            <ClientSideEvents EndCallback="function (s,e) {
-                                        var id = '' + CPProgress.cpWorkItemId;
-                                        if (id.length > 0)
-                                        {
-                                            ProgressTimer.SetEnabled(true);
-                                        }
-                                        else
-                                        {
-                                            ProgressTimer.SetEnabled(false);
-                                            alert('Обробку завершено.');
-                                            PopupSendAll.Hide();
-                                            PrimaryGridView.PerformCallback('init:');
-                                        }
-                                    }" />
+                            <ClientSideEvents EndCallback="BulkSendEndCallback" CallbackError="BulkSendCallbackError" />
                         </dx:ASPxCallbackPanel>
 
                     </dx:PopupControlContentControl>
                 </ContentCollection>
 
-                <ClientSideEvents PopUp="function (s,e) { CPProgress.PerformCallback('init:'); ShowSendingLog();  }" />
+                <ClientSideEvents PopUp="BulkSendStart" />
             </dx:ASPxPopupControl>
+
+            <dx:ASPxPopupControl ID="PopupSendingLog" runat="server" ClientInstanceName="PopupSendingLog"
+                HeaderText="Результат надсилання об'єктів до ДКВ" Width="600px" Height="400px"
+                Modal="True" PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" />
 
         </td>
         <td>
