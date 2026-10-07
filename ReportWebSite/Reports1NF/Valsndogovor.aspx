@@ -520,7 +520,7 @@ SELECT SCOPE_IDENTITY()"
 </table>
 
 <dx:ASPxGridViewExporter ID="GridViewFreeSquareExporter" runat="server" 
-    FileName="Приватизація" GridViewID="PrivatisatGridView" PaperKind="A4" 
+    FileName="Право власності" GridViewID="PrivatisatGridView" PaperKind="A4" 
     BottomMargin="20" LeftMargin="10" RightMargin="10" TopMargin="20">
     <Styles>
         <Default Font-Names="Calibri,Verdana,Sans Serif">
