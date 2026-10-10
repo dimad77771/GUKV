@@ -818,6 +818,7 @@ CROSS APPLY
 ) W
 where 1=1
 AND isnull(a.is_deleted, 0) = 0
+AND a.agreement_state = 1
 --and ar.report_id = 209
 	--and ar.id = 83147
 --and ar.report_id = 690 and ar.id = 65340
@@ -903,7 +904,7 @@ select
 report_id
 ,sum(case when v111 = 1 then 1 else 0 end) as v111_1, sum(case when v111 = 0 then 1 else 0 end) as v111_0
 ,sum(case when v131 = 1 then 1 else 0 end) as v131_1, sum(case when v131 = 0 then 1 else 0 end) as v131_0
-,sum(num_problem_dog) as v140_1, sum(num_given - num_problem_dog) as v140_0
+,sum(num_given - num_problem_dog) as v140_1, sum(num_problem_dog) as v140_0
 into #sum_reports
 from #reports A
 group by report_id
