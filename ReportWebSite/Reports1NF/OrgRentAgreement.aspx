@@ -1624,9 +1624,9 @@ SELECT id, zkpo_code + ' - ' + full_name AS 'search_name' FROM organizations org
     EnableCaching="true">
 </mini:ProfiledSqlDataSource>
 
-<mini:ProfiledSqlDataSource ID="SqlDataSourceDictOrgPravform" runat="server" 
+<mini:ProfiledSqlDataSource ID="SqlDataSourceDictOrgForm" runat="server" 
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>" 
-    SelectCommand="SELECT id, name FROM dict_1nf_org_pravform ORDER BY name"
+    SelectCommand="SELECT id, name FROM dict_org_form ORDER BY name"
     EnableCaching="true">
 </mini:ProfiledSqlDataSource>
 
@@ -2712,12 +2712,12 @@ WHERE id = @id"
                                                                 DataSourceID="SqlDataSourceDictOrgOccupation" /> </td>
                                                     </tr>
 													<tr>
-                                                        <td> <dx:ASPxLabel ID="ASPxLabel77" runat="server" Text="Організаційно-правова Форма" Width="160px"/> </td>
-                                                        <td> <dx:ASPxComboBox ID="ComboBoxOrgPravform" runat="server" ClientInstanceName="ComboBoxOrgPravform" 
+                                                        <td> <dx:ASPxLabel ID="ASPxLabel77" runat="server" Text="Орг.-правова форма госп." Width="160px"/> </td>
+                                                        <td> <dx:ASPxComboBox ID="ComboBoxOrgForm" runat="server" ClientInstanceName="ComboBoxOrgForm" 
                                                             ValueType="System.Int32" TextField="name" ValueField="id" Width="400px" Title=""
 																DropDownWidth="800px"
                                                                 IncrementalFilteringMode="Contains" 
-                                                                DataSourceID="SqlDataSourceDictOrgPravform" /> </td>
+                                                                DataSourceID="SqlDataSourceDictOrgForm" /> </td>
                                                     </tr>
 													<tr>
                                                         <td> <dx:ASPxLabel ID="ASPxLabel76" runat="server" Text="Орган Управління" Width="160px"/> </td>
@@ -2870,12 +2870,12 @@ WHERE id = @id"
                                                                 DataSourceID="SqlDataSourceDictOrgOccupation" Value='<%# Eval("occupation_id") %>' /> </td>
                                                     </tr>
 													<tr>
-                                                        <td> <dx:ASPxLabel ID="ASPxLabel77" runat="server" Text="Організаційно-правова Форма" Width="160px"/> </td>
-                                                        <td> <dx:ASPxComboBox ID="ComboBoxOrgPravform" runat="server" ClientInstanceName="ComboBoxOrgPravform" 
+                                                        <td> <dx:ASPxLabel ID="ASPxLabel77" runat="server" Text="Орг.-правова форма госп." Width="160px"/> </td>
+                                                        <td> <dx:ASPxComboBox ID="ComboBoxOrgForm" runat="server" ClientInstanceName="ComboBoxOrgForm" 
                                                             ValueType="System.Int32" TextField="name" ValueField="id" Width="400px" Title=""
 																DropDownWidth="800px"
                                                                 IncrementalFilteringMode="Contains" 
-                                                                DataSourceID="SqlDataSourceDictOrgPravform" Value='<%# Eval("pravform_id") %>' /> </td>
+                                                                DataSourceID="SqlDataSourceDictOrgForm" Value='<%# Eval("form_id") %>' /> </td>
                                                     </tr>
 													<tr>
                                                         <td> <dx:ASPxLabel ID="ASPxLabel76" runat="server" Text="Орган Управління" Width="160px"/> </td>

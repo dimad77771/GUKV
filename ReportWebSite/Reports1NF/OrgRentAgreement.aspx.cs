@@ -2914,7 +2914,7 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 			int industry = ((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxIndustryOrg")).Value is int ? (int)((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxIndustryOrg")).Value : -1;
 			int occupation = ((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOccupationFrom")).Value is int ? (int)((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOccupationFrom")).Value : -1;
 
-			int pravform = ((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOrgPravform")).Value is int ? (int)((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOrgPravform")).Value : -1;
+			int orgForm = ((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOrgForm")).Value is int ? (int)((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOrgForm")).Value : -1;
 			int ouprav = ((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOrgOuprav")).Value is int ? (int)((ASPxComboBox)Utils.FindControlRecursive(ourPopUp, "ComboBoxOrgOuprav")).Value : -1;
 
 			string directorFio = ((ASPxTextBox)Utils.FindControlRecursive(ourPopUp, "TextBoxDirectorFioOrg")).Text;
@@ -2971,12 +2971,12 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 						zkpo,
 						industry,
 						occupation,
-						pravform,
+						-1, // pravform_id is not edited in this popup
 						ouprav,
 						formVlasn,
 						status,
 						-1,
-						-1,
+						orgForm,
 						-1,
 						directorFio,
 						directorPhone,
@@ -3002,12 +3002,12 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 						zkpo,
 						industry,
 						occupation,
-						pravform,
+						-1, // pravform_id is not edited in this popup
 						ouprav,
 						formVlasn,
 						status,
 						-1,
-						-1,
+						orgForm,
 						-1,
 						directorFio,
 						directorPhone,
