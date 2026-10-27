@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <LangVersion>latest</LangVersion>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml.Linq" />
+    <Compile Include="..\ReportWebSite\App_Code\AssessmentMerge.cs" Link="Application\AssessmentMerge.cs" />
+    <Compile Include="..\ReportWebSite\App_Code\AssessmentCardStore.cs" Link="Application\AssessmentCardStore.cs" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.8.1" />
+    <PackageReference Include="NUnit" Version="4.6.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="6.2.0" />
+    <PackageReference Include="Microsoft.Playwright" Version="1.61.0" />
+  </ItemGroup>
+</Project>

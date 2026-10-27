@@ -7,193 +7,53 @@
 <%@ Register Namespace="MiniProfilerHelpers" TagPrefix="mini" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+    <link rel="stylesheet" type="text/css" href="<%= ResolveClientUrl("~/Styles/AssessmentConcurrency.css") %>" />
+    <script type="text/javascript" src="<%= ResolveClientUrl("~/Scripts/AssessmentConcurrency.js") %>"></script>
 </asp:Content>
 
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 
-<mini:ProfiledSqlDataSource ID="SqlDataSourceAssessmentProperties" runat="server" 
+<dx:ASPxHiddenField ID="AssessmentEditState" ClientInstanceName="AssessmentEditState" runat="server" />
+<dx:ASPxCallback ID="AssessmentSave" ClientInstanceName="AssessmentSave" runat="server" OnCallback="AssessmentSave_Callback">
+    <ClientSideEvents CallbackComplete="AssessmentConcurrency.callbackComplete" CallbackError="AssessmentConcurrency.callbackError" />
+</dx:ASPxCallback>
+<div id="assessmentSaveStatus" class="assessment-save-status" role="status" aria-live="polite"></div>
+<div id="assessmentBusy" class="assessment-busy" style="display:none" aria-live="polite">Збереження…</div>
+<div id="assessmentConflictDialog" class="assessment-conflict-backdrop" style="display:none">
+    <div class="assessment-conflict-dialog" role="dialog" aria-modal="true" aria-labelledby="assessmentConflictTitle" tabindex="-1">
+        <h2 id="assessmentConflictTitle">Дані змінено іншим користувачем</h2>
+        <p id="assessmentConflictCaption"></p>
+        <p>Оберіть значення для кожного конфлікту. До підтвердження ця операція не зберігається.</p>
+        <div class="assessment-conflict-scroll">
+            <table class="assessment-conflict-table">
+                <thead><tr><th>Поле</th><th>Було при відкритті</th><th>Зараз у базі</th><th>Ваше значення</th><th>Залишити</th></tr></thead>
+                <tbody id="assessmentConflictRows"></tbody>
+            </table>
+        </div>
+        <p id="assessmentConflictError" role="alert"></p>
+        <div class="assessment-conflict-actions">
+            <button type="button" id="assessmentResolveButton" onclick="AssessmentConcurrency.resolve()">Застосувати та зберегти</button>
+            <button type="button" onclick="AssessmentConcurrency.close()">Повернутися до редагування</button>
+        </div>
+    </div>
+</div>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourceAssessmentInputDoc" runat="server"
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>"
-    SelectCommand="SELECT * FROM expert_note WHERE id = @vid" >
-    <SelectParameters>
-        <asp:Parameter DbType="Int32" DefaultValue="0" Name="vid" />
-    </SelectParameters>
+    SelectCommand="SELECT * FROM expert_input_doc WHERE expert_note_id = @vid AND ISNULL(is_deleted,0)=0">
+    <SelectParameters><asp:Parameter DbType="Int32" Name="vid" /></SelectParameters>
 </mini:ProfiledSqlDataSource>
 
-<mini:ProfiledSqlDataSource ID="SqlDataSourceAssessmentInputDoc" runat="server" 
+<mini:ProfiledSqlDataSource ID="SqlDataSourceAssessmentOutputDoc" runat="server"
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>"
-    SelectCommand="SELECT * FROM expert_input_doc WHERE expert_note_id = @vid"
-	DeleteCommand="DELETE FROM expert_input_doc where id = @id"
-	UpdateCommand="UPDATE expert_input_doc SET
-		[doc_date] = @doc_date,
-		[doc_num] = @doc_num,
-		[korrespondent_id] = @korrespondent_id,
-		[control_date] = @control_date,
-		[rezenz_name] = @rezenz_name, 
-		[rezenz_id] = @rezenz_id,
-		[modify_date] = @modify_date,
-		[modified_by] = @modified_by
-		WHERE id = @id" 	
-	InsertCommand="INSERT INTO expert_input_doc
-		(expert_note_id
-		,doc_date
-		,doc_num
-		,korrespondent_id
-		,control_date
-		,rezenz_name
-		,rezenz_id
-		,modify_date
-		,modified_by)
-		values(@expert_note_id
-		,@doc_date
-		,@doc_num
-		,@korrespondent_id
-		,@control_date
-		,@rezenz_name
-		,@rezenz_id
-		,@modify_date
-		,@modified_by)"
-	onupdating="SqlDataSourceFreeSquare_Updating"
-	oninserting="SqlDataSourceFreeSquare_Inserting" 
-	>
-    <SelectParameters>
-        <asp:Parameter DbType="Int32" DefaultValue="0" Name="vid" />
-    </SelectParameters>
-	<UpdateParameters>
-		<asp:Parameter Name="doc_date" />
-		<asp:Parameter Name="doc_num" />
-		<asp:Parameter Name="korrespondent_id" />
-		<asp:Parameter Name="control_date" />
-		<asp:Parameter Name="rezenz_name" />
-		<asp:Parameter Name="rezenz_id" />
-		<asp:Parameter Name="modify_date" />
-        <asp:Parameter Name="modified_by" />
-	</UpdateParameters>
-	<InsertParameters>
-		<asp:Parameter Name="expert_note_id" />
-		<asp:Parameter Name="doc_date" />
-		<asp:Parameter Name="doc_num" />
-		<asp:Parameter Name="korrespondent_id" />
-		<asp:Parameter Name="control_date" />
-		<asp:Parameter Name="rezenz_name" />
-		<asp:Parameter Name="rezenz_id" />
-		<asp:Parameter Name="modify_date" />
-        <asp:Parameter Name="modified_by" />
-	</InsertParameters>
+    SelectCommand="SELECT * FROM expert_output_doc WHERE expert_note_id = @vid AND ISNULL(is_deleted,0)=0">
+    <SelectParameters><asp:Parameter DbType="Int32" Name="vid" /></SelectParameters>
 </mini:ProfiledSqlDataSource>
 
-<mini:ProfiledSqlDataSource ID="SqlDataSourceAssessmentOutputDoc" runat="server" 
+<mini:ProfiledSqlDataSource ID="SqlDataSourceAssessmentDetails" runat="server"
     ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>"
-    SelectCommand="SELECT * FROM expert_output_doc WHERE expert_note_id = @vid" 
-	DeleteCommand="DELETE FROM expert_output_doc where id = @id"
-	UpdateCommand="UPDATE expert_output_doc SET
-		[doc_date] = @doc_date,
-		[doc_num] = @doc_num,
-		[rezenz_type_id] = @rezenz_type_id,
-	    [rezenz_date] = @rezenz_date,
-		[modify_date] = @modify_date,
-		[modified_by] = @modified_by
-		WHERE id = @id" 	
-	InsertCommand="INSERT INTO expert_output_doc
-		(expert_note_id
-		,doc_date
-		,doc_num
-		,rezenz_type_id
-	    ,rezenz_date
-		,modify_date
-		,modified_by)
-		values(@expert_note_id
-		,@doc_date
-		,@doc_num
-		,@rezenz_type_id
-	    ,@rezenz_date
-		,@modify_date
-		,@modified_by)"
-	onupdating="SqlDataSourceAssessmentOutputDoc_Updating"
-	oninserting="SqlDataSourceAssessmentOutputDoc_Inserting" >
-    <SelectParameters>
-        <asp:Parameter DbType="Int32" DefaultValue="0" Name="vid" />
-    </SelectParameters>
-	<UpdateParameters>
-		<asp:Parameter Name="doc_date" />
-		<asp:Parameter Name="doc_num" />
-		<asp:Parameter Name="rezenz_type_id" />
-		<asp:Parameter Name="rezenz_date" />
-		<asp:Parameter Name="modify_date" />
-        <asp:Parameter Name="modified_by" />
-	</UpdateParameters>
-	<InsertParameters>
-		<asp:Parameter Name="expert_note_id" />
-		<asp:Parameter Name="doc_date" />
-		<asp:Parameter Name="doc_num" />
-		<asp:Parameter Name="rezenz_type_id" />
-		<asp:Parameter Name="rezenz_date" />
-		<asp:Parameter Name="modify_date" />
-        <asp:Parameter Name="modified_by" />
-	</InsertParameters>
-</mini:ProfiledSqlDataSource>
-
-<mini:ProfiledSqlDataSource ID="SqlDataSourceAssessmentDetails" runat="server" 
-    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>"
-    SelectCommand="SELECT * FROM expert_note_detail d WHERE d.expert_note_id = @vid"
-	DeleteCommand="DELETE FROM expert_note_detail where id = @id"
-	UpdateCommand="UPDATE expert_note_detail SET
-		[floors] = @floors,
-		[obj_square] = @obj_square,
-		[purpose] = @purpose,
-		[cost_1_usd] = @cost_1_usd,
-		[valuation_date] = @valuation_date,
-		[note] = @note,
-		[modify_date] = @modify_date,
-		[modified_by] = @modified_by
-		WHERE id = @id" 	
-	InsertCommand="INSERT INTO expert_note_detail
-		(expert_note_id
-		,floors
-		,obj_square
-		,purpose
-		,cost_1_usd
-		,valuation_date
-		,note
-		,modify_date
-		,modified_by)
-		values(@expert_note_id
-		,@floors
-		,@obj_square
-		,@purpose
-		,@cost_1_usd
-		,@valuation_date
-		,@note
-		,@modify_date
-		,@modified_by)"
-	onupdating="SqlDataSourceAssessmentDetails_Updating"
-	oninserting="SqlDataSourceAssessmentDetails_Inserting" >
-    <SelectParameters>
-        <asp:Parameter DbType="Int32" DefaultValue="0" Name="vid2" />
-    </SelectParameters>
-	<UpdateParameters>
-		<asp:Parameter Name="floors" />
-		<asp:Parameter Name="obj_square" />
-		<asp:Parameter Name="purpose" />
-		<asp:Parameter Name="cost_1_usd" />
-		<asp:Parameter Name="valuation_date" />
-		<asp:Parameter Name="note" />
-		<asp:Parameter Name="modify_date" />
-        <asp:Parameter Name="modified_by" />
-	</UpdateParameters>
-	<InsertParameters>
-		<asp:Parameter Name="expert_note_id" />
-		<asp:Parameter Name="floors" />
-		<asp:Parameter Name="obj_square" />
-		<asp:Parameter Name="purpose" />
-		<asp:Parameter Name="cost_1_usd" />
-		<asp:Parameter Name="valuation_date" />
-		<asp:Parameter Name="note" />
-		<asp:Parameter Name="modify_date" />
-        <asp:Parameter Name="modified_by" />
-	</InsertParameters>
-    <SelectParameters>
-        <asp:Parameter DbType="Int32" DefaultValue="0" Name="vid" />
-    </SelectParameters>
+    SelectCommand="SELECT * FROM expert_note_detail WHERE expert_note_id = @vid AND ISNULL(is_deleted,0)=0">
+    <SelectParameters><asp:Parameter DbType="Int32" Name="vid" /></SelectParameters>
 </mini:ProfiledSqlDataSource>
 
 <mini:ProfiledSqlDataSource ID="SqlDataSourceOrganizations" runat="server" 
@@ -290,10 +150,6 @@
 <tr>
 <td>
 
-<dx:ASPxCallbackPanel ID="CPMainPanel" ClientInstanceName="CPMainPanel" 
-        runat="server" OnCallback="CPMainPanel_Callback" onunload="CPMainPanel_Unload">
-<PanelCollection>
-<dx:PanelContent ID="Panelcontent2" runat="server">
 <dx:ASPxPageControl ID="CardPageControl" ClientInstanceName="CardPageControl" runat="server" ActiveTabIndex="0">
     <TabPages>
 
@@ -301,7 +157,7 @@
             <ContentCollection>
                 <dx:ContentControl ID="ContentControl1" runat="server" SupportsDisabledAttribute="True">
 
-<asp:FormView runat="server" BorderStyle="None" ID="ObjDetails" DataSourceID="SqlDataSourceAssessmentProperties" EnableViewState="False">
+<asp:FormView runat="server" BorderStyle="None" ID="ObjDetails" EnableViewState="False">
     <ItemTemplate>
 
         <dx:ASPxRoundPanel ID="ASPxRoundPanel3" runat="server" HeaderText="Адреса Будинку">
@@ -314,7 +170,7 @@
 							</td>
 							<td width="8px">&nbsp;</td>
 							<td>
-								<dx:ASPxComboBox ID="addr_district_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="290px"
+								<dx:ASPxComboBox ID="addr_district_id" ClientInstanceName="Assessment_addr_district_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="290px"
 									IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceDistrict" Value='<%# Eval("addr_district_id") %>'
 									Title="Район"
 									DropDownStyle="DropDown" />
@@ -325,7 +181,7 @@
 							</td>
 							<td width="8px">&nbsp;</td>
 							<td>
-								<dx:ASPxComboBox ID="expert_obj_type_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="290px"
+								<dx:ASPxComboBox ID="expert_obj_type_id" ClientInstanceName="Assessment_expert_obj_type_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="290px"
 									IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceDictExpertObjType" Value='<%# Eval("expert_obj_type_id") %>'
 									Title="Вид Об'єкту"
 									DropDownStyle="DropDown" />
@@ -342,7 +198,7 @@
 								DropDownStyle="DropDown"
 								EnableCallbackMode="True"
 								CallbackPageSize="100" >
-									<ClientSideEvents SelectedIndexChanged="function(s, e) { ComboBuilding.PerformCallback(addr_street_id.GetValue().toString()); }" />
+									<ClientSideEvents SelectedIndexChanged="AssessmentConcurrency.streetChanged" />
 								</dx:ASPxComboBox>
                             </td>
                             <td width="8px">&nbsp;</td>
@@ -354,6 +210,7 @@
                                     DataSourceID="SqlDataSourceDictBuildings" DropDownStyle="DropDownList" TextField="nomer"
                                     ValueField="nomer" Width="290px" IncrementalFilteringMode="StartsWith"
                                     EnableSynchronization="False" OnCallback="ComboBuilding_Callback">
+                                    <ClientSideEvents BeginCallback="AssessmentConcurrency.gridBegin" EndCallback="AssessmentConcurrency.buildingEnd" CallbackError="AssessmentConcurrency.callbackError" />
                                </dx:ASPxComboBox>
                             </td>
                         </tr>
@@ -380,7 +237,7 @@
                             <td width="100px"><dx:ASPxLabel ID="ASPxLabel11" runat="server" Text="Площа Об'єкту"></dx:ASPxLabel></td>
                             <td width="8px">&nbsp;</td>
                             <td>
-								<dx:ASPxSpinEdit ID="obj_square" runat="server" NumberType="Float" Value='<%# Eval("obj_square") %>' Width="290px"
+								<dx:ASPxSpinEdit ID="obj_square" ClientInstanceName="Assessment_obj_square" runat="server" NumberType="Float" Value='<%# Eval("obj_square") %>' Width="290px"
 									Title="Площа Об'єкту" SpinButtons-ShowIncrementButtons="false" AllowMouseWheel="false" />
                             </td>
                         </tr>
@@ -401,7 +258,7 @@
 							</td>
 							<td width="8px">&nbsp;</td>
 							<td colspan="5">
-								<dx:ASPxComboBox ID="org_balans_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="700px"
+								<dx:ASPxComboBox ID="org_balans_id" ClientInstanceName="Assessment_org_balans_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="700px"
 									IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceOrganizations" Value='<%# Eval("org_balans_id") %>'
 									Title="Балансоутримувач"
 									DropDownStyle="DropDown"
@@ -418,7 +275,7 @@
 							</td>
 							<td width="8px">&nbsp;</td>
 							<td colspan="5">
-								<dx:ASPxComboBox ID="org_renter_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="700px"
+								<dx:ASPxComboBox ID="org_renter_id" ClientInstanceName="Assessment_org_renter_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="700px"
 									IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceOrganizations" Value='<%# Eval("org_renter_id") %>'
 									Title="Замовник оцінки"
 									DropDownStyle="DropDown"
@@ -441,7 +298,7 @@
                             <td width="100px"><dx:ASPxLabel ID="ASPxLabel8" runat="server" Text="СОД"></dx:ASPxLabel></td>
                             <td width="8px">&nbsp;</td>
                             <td colspan="5">
-								<dx:ASPxComboBox ID="expert_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="700px"
+								<dx:ASPxComboBox ID="expert_id" ClientInstanceName="Assessment_expert_id" runat="server" ValueType="System.Int32" TextField="name" ValueField="id" Width="700px"
 									IncrementalFilteringMode="Contains" DataSourceID="SqlDataSourceDictExpert" Value='<%# Eval("expert_id") %>'
 									Title="СОД"
 									DropDownStyle="DropDown" />
@@ -473,7 +330,7 @@
                     <table border="0" cellspacing="0" cellpadding="0" width="810px">
                         <tr>
                             <td colspan="7" align="left">
-                                <dx:ASPxCheckBox ID="is_archived" runat="server" Checked='<%# (1.Equals(Eval("is_archived"))) ? true : false %>' Text="Переміщено в Архів" />
+                                <dx:ASPxCheckBox ID="is_archived" ClientInstanceName="Assessment_is_archived" runat="server" Checked='<%# (1.Equals(Eval("is_archived"))) ? true : false %>' Text="Переміщено в Архів" />
                             </td>
                         </tr>
                         <tr><td colspan="7" height="4px"/></tr>
@@ -481,7 +338,7 @@
                             <td width="100px"><dx:ASPxLabel ID="ASPxLabel9" runat="server" Text="Вартість Об'єкту без ПДВ (грн.)"></dx:ASPxLabel></td>
                             <td width="8px">&nbsp;</td>
                             <td>
-								<dx:ASPxSpinEdit ID="cost_prim" runat="server" NumberType="Float" Value='<%# Eval("cost_prim") %>' Width="290px"
+								<dx:ASPxSpinEdit ID="cost_prim" ClientInstanceName="Assessment_cost_prim" runat="server" NumberType="Float" Value='<%# Eval("cost_prim") %>' Width="290px"
 									Title="Вартість Об'єкту (грн.)" SpinButtons-ShowIncrementButtons="false" />
                             </td>
                             <td width="8px">&nbsp;</td>
@@ -495,14 +352,14 @@
                             <td width="100px"><dx:ASPxLabel ID="ASPxLabel6" runat="server" Text="Архівний Номер"></dx:ASPxLabel></td>
                             <td width="8px">&nbsp;</td>
                             <td>
-								<dx:ASPxTextBox ID="arch_num" runat="server" Text='<%# Eval("arch_num") %>' Width="290px" />
+								<dx:ASPxTextBox ID="arch_num" ClientInstanceName="Assessment_arch_num" runat="server" Text='<%# Eval("arch_num") %>' Width="290px" />
 
                             </td>
                             <td width="8px">&nbsp;</td>
                             <td width="100px"><dx:ASPxLabel ID="ASPxLabel7" runat="server" Text="Дата Затвердження"></dx:ASPxLabel></td>
                             <td width="8px">&nbsp;</td>
                             <td>
-								<dx:ASPxDateEdit ID="final_date" runat="server" Value='<%# Eval("final_date") %>' Width="290px" />
+								<dx:ASPxDateEdit ID="final_date" ClientInstanceName="Assessment_final_date" runat="server" Value='<%# Eval("final_date") %>' Width="290px" />
                             </td>
                         </tr>
                     </table>
@@ -512,7 +369,7 @@
 
 		<p class="SpacingPara"/>
 
-		<asp:FormView runat="server" BorderStyle="None" ID="FormViewState" DataSourceID="SqlDataSourceAssessmentProperties" EnableViewState="False">
+		<asp:FormView runat="server" BorderStyle="None" ID="FormViewState" EnableViewState="False">
             <ItemTemplate>
                 <dx:ASPxRoundPanel ID="StatePanel" runat="server" HeaderText="Стан">
                     <ContentPaddings PaddingTop="4px" PaddingBottom="4px" />
@@ -521,7 +378,7 @@
                             <table border="0" cellspacing="0" cellpadding="0" width="810px">
                                 <tr>
 									<tr><td colspan="7" height="4px"/></tr>
-                                    <td><dx:ASPxLabel ID="ASPxLabel34" runat="server" Text='<%# EvaluateSignature(Eval("modified_by"), Eval("modify_date")) %>'></dx:ASPxLabel></td>
+                                    <td><dx:ASPxLabel ID="ASPxLabel34" ClientInstanceName="AssessmentSignature" runat="server" Text='<%# EvaluateSignature(Eval("modified_by"), Eval("modify_date")) %>'></dx:ASPxLabel></td>
 									<tr><td colspan="7" height="4px"/></tr>
                                 </tr>
                             </table>
@@ -538,7 +395,7 @@
 					<dx:ASPxButton ID="ButtonSave" runat="server" Text="Зберегти" AutoPostBack="false" CausesValidation="false">
 						<ClientSideEvents Click="function (s,e) 
 						{ 
-							CPMainPanel.PerformCallback('save:'); 
+							AssessmentConcurrency.save();
 						}" />
 					</dx:ASPxButton>
 				</td>
@@ -558,12 +415,17 @@
 
 					<dx:ASPxGridView ID="GridViewAssessmentInputDocs" runat="server"
 						ClientInstanceName="GridViewAssessmentInputDocs"
+                        OnStartRowEditing="AssessmentGrid_StartRowEditing" OnCellEditorInitialize="AssessmentGrid_CellEditorInitialize"
+                        OnInitNewRow="AssessmentGrid_InitNewRow" OnDataBound="AssessmentGrid_DataBound"
+                        OnRowUpdating="AssessmentGrid_RowUpdating" OnRowInserting="AssessmentGrid_RowInserting"
+                        OnRowDeleting="AssessmentGrid_RowDeleting" OnCustomCallback="AssessmentGrid_CustomCallback"
 						AutoGenerateColumns="False"
 						DataSourceID="SqlDataSourceAssessmentInputDoc"
 						KeyFieldName="id"
 						Width="1240px">
 
-						<SettingsCommandButton>
+						<ClientSideEvents Init="AssessmentConcurrency.gridReady" BeginCallback="AssessmentConcurrency.gridBegin" EndCallback="AssessmentConcurrency.gridEnd" CallbackError="AssessmentConcurrency.callbackError" />
+                        <SettingsCommandButton>
 							<EditButton>
 								<Image Url="~/Styles/EditIcon.png" />
 							</EditButton>
@@ -633,12 +495,17 @@
 
                     <dx:ASPxGridView ID="GridViewAssessmentDetails" runat="server" 
                         ClientInstanceName="GridViewAssessmentDetails"
+                        OnStartRowEditing="AssessmentGrid_StartRowEditing" OnCellEditorInitialize="AssessmentGrid_CellEditorInitialize"
+                        OnInitNewRow="AssessmentGrid_InitNewRow" OnDataBound="AssessmentGrid_DataBound"
+                        OnRowUpdating="AssessmentGrid_RowUpdating" OnRowInserting="AssessmentGrid_RowInserting"
+                        OnRowDeleting="AssessmentGrid_RowDeleting" OnCustomCallback="AssessmentGrid_CustomCallback"
                         AutoGenerateColumns="False"
                         DataSourceID="SqlDataSourceAssessmentDetails" 
                         KeyFieldName="id"
                         Width="1240px" >
 
-						<SettingsCommandButton>
+						<ClientSideEvents Init="AssessmentConcurrency.gridReady" BeginCallback="AssessmentConcurrency.gridBegin" EndCallback="AssessmentConcurrency.gridEnd" CallbackError="AssessmentConcurrency.callbackError" />
+                        <SettingsCommandButton>
 							<EditButton>
 								<Image Url="~/Styles/EditIcon.png" />
 							</EditButton>
@@ -714,12 +581,17 @@
 
                     <dx:ASPxGridView ID="GridViewAssessmentOutputDocs" runat="server" 
                         ClientInstanceName="GridViewAssessmentOutputDocs"
+                        OnStartRowEditing="AssessmentGrid_StartRowEditing" OnCellEditorInitialize="AssessmentGrid_CellEditorInitialize"
+                        OnInitNewRow="AssessmentGrid_InitNewRow" OnDataBound="AssessmentGrid_DataBound"
+                        OnRowUpdating="AssessmentGrid_RowUpdating" OnRowInserting="AssessmentGrid_RowInserting"
+                        OnRowDeleting="AssessmentGrid_RowDeleting" OnCustomCallback="AssessmentGrid_CustomCallback"
                         AutoGenerateColumns="False"
                         DataSourceID="SqlDataSourceAssessmentOutputDoc" 
                         KeyFieldName="id"
                         Width="1240px" >
 
-						<SettingsCommandButton>
+						<ClientSideEvents Init="AssessmentConcurrency.gridReady" BeginCallback="AssessmentConcurrency.gridBegin" EndCallback="AssessmentConcurrency.gridEnd" CallbackError="AssessmentConcurrency.callbackError" />
+                        <SettingsCommandButton>
 							<EditButton>
 								<Image Url="~/Styles/EditIcon.png" />
 							</EditButton>
@@ -778,7 +650,7 @@
             <ContentCollection>
                 <dx:ContentControl ID="ContentControl4" runat="server" SupportsDisabledAttribute="True">
 
-                    <asp:FormView runat="server" BorderStyle="None" ID="FormView1" DataSourceID="SqlDataSourceAssessmentProperties" EnableViewState="False">
+                    <asp:FormView runat="server" BorderStyle="None" ID="FormView1" EnableViewState="False">
                         <ItemTemplate>
                             <dx:ASPxMemo ID="AssessmentMemo" runat="server" ClientInstanceName="AssessmentMemo" Width="840px" Text='<%# Eval("note_text") %>' Height="200px" ></dx:ASPxMemo>
                         </ItemTemplate>
@@ -788,7 +660,7 @@
 					<dx:ASPxButton ID="ButtonSave" runat="server" Text="Зберегти" AutoPostBack="false" CausesValidation="false">
 						<ClientSideEvents Click="function (s,e) 
 						{ 
-							CPMainPanel.PerformCallback('save:'); 
+							AssessmentConcurrency.save();
 						}" />
 					</dx:ASPxButton>
                 </dx:ContentControl>
@@ -798,9 +670,6 @@
 
     </TabPages>
 </dx:ASPxPageControl>
-</dx:PanelContent>
-</PanelCollection>
-</dx:ASPxCallbackPanel>
 
 </td>
 </tr>
