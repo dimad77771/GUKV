@@ -1,4 +1,4 @@
-Ôªø<%@ Master Language="C#" AutoEventWireup="true" CodeFile="NoHeader.master.cs" Inherits="NoHeader" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="NoHeader.master.cs" Inherits="NoHeader" %>
 
 <%@ Register Src="~/UserControls/ThemeSelector.ascx" TagPrefix="dx" TagName="ThemeSelector" %>
 <%@ Register Src="~/UserControls/PasswordExpirationNotice.ascx" TagPrefix="gukv" TagName="PasswordExpirationNotice" %>
@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head id="Head1" runat="server">
-	<title>–Ñ–¥–∏–Ω–∞ –Ü–Ω—Ñ–æ—Ä–º–∞—Ü—ñ–π–Ω–∞ –°–∏—Å—Ç–µ–º–∞ –î–ö–í –º. –ö–∏—î–≤–∞</title>
+	<title>™‰ËÌ‡ ≤ÌÙÓÏ‡ˆ≥ÈÌ‡ —ËÒÚÂÏ‡ ƒ ¬ Ï.  Ë∫‚‡</title>
 	<link href="~/Styles/Site.css?v=20260901-password-expiration-3" rel="stylesheet" type="text/css" />
 	<asp:ContentPlaceHolder ID="HeadContent" runat="server">
 	</asp:ContentPlaceHolder>
@@ -20,10 +20,10 @@
 					<dx:ThemeSelector ID="ThemeSelector" runat="server" />
 				</div>
 				<div style="float: right; color: white">
-					<strong>–¢–µ—Ö–Ω—ñ—á–Ω–∞ –ø—ñ–¥—Ç—Ä–∏–º–∫–∞ <a style="color: white" href="mailto:seic@gukv.gov.ua" title="–ù–∞–ø–∏—Å–∞—Ç–∏ –ª–∏—Å—Ç">seic@gukv.gov.ua</a> </strong>
-					0970656664 (–∫–æ–Ω—Å—É–ª—å—Ç—É—î –∑ 9.00 ‚Äì 14.00 –≥–æ–¥., –∑–≤—ñ—Ç–Ω–∏–π –ø–µ—Ä. 10.00-18.00) ‚Äì –¢–µ—Ç—è–Ω–∞;
+					<strong>“ÂıÌ≥˜Ì‡ Ô≥‰ÚËÏÍ‡ <a style="color: white" href="mailto:seic@gukv.gov.ua" title="Õ‡ÔËÒ‡ÚË ÎËÒÚ">seic@gukv.gov.ua</a> </strong>
+					0970656664 (ÍÓÌÒÛÎ¸ÚÛ∫ Á 9.00 ñ 14.00 „Ó‰., Á‚≥ÚÌËÈ ÔÂ. 10.00-18.00) ñ “ÂÚˇÌ‡;
 					<br />
-					O—Ä–µ–Ω–¥–Ω–∞ –ø–ª–∞—Ç–∞ (O.–ø.): 2026166 (13.00‚Äì16.00) –õ—ñ–ª—ñ—è –ë–æ—Ä–∏—Å—ñ–≤–Ω–∞. –†–æ–∑—Ä–∞—Ö—É–Ω–æ–∫ O.–ø.: 0503929268 - –í–æ–ª–æ–¥–∏–º–∏—Ä –í–æ–ª–æ—à–∏–Ω.
+					OÂÌ‰Ì‡ ÔÎ‡Ú‡ (O.Ô.): 2026166 (13.00ñ16.00) À≥Î≥ˇ ¡ÓËÒ≥‚Ì‡. –ÓÁ‡ıÛÌÓÍ O.Ô.: 0503929268 - ¬ÓÎÓ‰ËÏË ¬ÓÎÓ¯ËÌ.
 				</div>
 			</div>
 			<div class="clear hideSkiplink">
@@ -35,23 +35,23 @@
 									<dx:ASPxRibbon ID="MainRibbon" runat="server" ClientInstanceName="MainRibbon" ShowFileTab="false" Styles-TabContent-Height="100px" Width="100%" BackColor="White" AllowMinimize="true" Minimized="true">
 										<Tabs>
 
-											<dx:RibbonTab Text="–ó–≤—ñ—Ç–∏">
+											<dx:RibbonTab Text="«‚≥ÚË">
 												<Groups>
 													<dx:RibbonGroup Text="">
 														<Items>
-															<dx:RibbonButtonItem Text="–ó–≤—ñ—Ç–∏ –ë–∞–ª–∞–Ω—Å–æ—É—Ç—Ä–∏–º—É–≤–∞—á—ñ–≤" NavigateUrl="Reports1NF/Report1NFList.aspx?reportform=1">
+															<dx:RibbonButtonItem Text="«‚≥ÚË ¡‡Î‡ÌÒÓÛÚËÏÛ‚‡˜≥‚" NavigateUrl="Reports1NF/Report1NFList.aspx?reportform=1">
 																<SmallImage Url="Styles/ribbonicon_5.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–û–±'—î–∫—Ç–∏ –Ω–∞ –±–∞–ª–∞–Ω—Å—ñ" NavigateUrl="Balans/BalansObjects.aspx?reportform=1">
+															<dx:RibbonButtonItem Text="Œ·'∫ÍÚË Ì‡ ·‡Î‡ÌÒ≥" NavigateUrl="Balans/BalansObjects.aspx?reportform=1">
 																<SmallImage Url="Styles/ribbonicon_4.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–î–æ–≥–æ–≤–æ—Ä–∏ –û—Ä–µ–Ω–¥–∏" NavigateUrl="Arenda/RentAgreements.aspx?reportform=1">
+															<dx:RibbonButtonItem Text="ƒÓ„Ó‚ÓË ŒÂÌ‰Ë" NavigateUrl="Arenda/RentAgreements.aspx?reportform=1">
 																<SmallImage Url="Styles/ribbonicon_6.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–ü–µ—Ä–µ–ª—ñ–∫ –≤—ñ–ª—å–Ω–∏—Ö –ø—Ä–∏–º—ñ—â–µ–Ω—å" NavigateUrl="Reports1NF/Report1NFFreeSquare.aspx?reportform=1">
+															<dx:RibbonButtonItem Text="œÂÂÎ≥Í ‚≥Î¸ÌËı ÔËÏ≥˘ÂÌ¸" NavigateUrl="Reports1NF/Report1NFFreeSquare.aspx?reportform=1">
 																<SmallImage Url="Styles/ribbonicon_8.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–ó–≤–µ–¥–µ–Ω–∏–π –ó–≤—ñ—Ç" NavigateUrl="Reports1NF/ZvedZvitBuild.aspx">
+															<dx:RibbonButtonItem Text="«‚Â‰ÂÌËÈ «‚≥Ú" NavigateUrl="Reports1NF/ZvedZvitBuild.aspx">
 																<SmallImage Url="Styles/ribbonicon_3.png" />
 															</dx:RibbonButtonItem>
 														</Items>
@@ -59,20 +59,20 @@
 												</Groups>
 											</dx:RibbonTab>
 
-											<dx:RibbonTab Text="–Æ—Ä–∏–¥–∏—á–Ω—ñ –æ—Å–æ–±–∏">
+											<dx:RibbonTab Text="ﬁË‰Ë˜Ì≥ ÓÒÓ·Ë">
 												<Groups>
 													<dx:RibbonGroup Text="">
 														<Items>
-															<dx:RibbonButtonItem Text="–ü–µ—Ä–µ–ª—ñ–∫ –ë–∞–ª–∞–Ω—Å–æ—É—Ç—Ä–∏–º—É–≤–∞—á—ñ–≤" NavigateUrl="Reports1NF/Report1NFList.aspx?smallform=1&smode=1">
+															<dx:RibbonButtonItem Text="œÂÂÎ≥Í ¡‡Î‡ÌÒÓÛÚËÏÛ‚‡˜≥‚" NavigateUrl="Reports1NF/Report1NFList.aspx?smallform=1&smode=1">
 																<SmallImage Url="Styles/ribbonicon_5.png" />
 															</dx:RibbonButtonItem>
-															<%--<dx:RibbonButtonItem Text="–Ü–Ω—à—ñ —Å—É–±'—î–∫—Ç–∏ –≤–∏–∫–æ—Ä–∏—Å—Ç–∞–Ω–Ω—è" NavigateUrl="Reports1NF/Report1NFList.aspx?smallform=1&smode=2">
+															<%--<dx:RibbonButtonItem Text="≤Ì¯≥ ÒÛ·'∫ÍÚË ‚ËÍÓËÒÚ‡ÌÌˇ" NavigateUrl="Reports1NF/Report1NFList.aspx?smallform=1&smode=2">
 																<SmallImage Url="Styles/ribbonicon_17.png" />
 															</dx:RibbonButtonItem>--%>
-															<dx:RibbonButtonItem Text="–ü—ñ–¥–ø—Ä–∏—î–º—Å—Ç–≤–∞ —Ç–∞ –æ—Ä–≥–∞–Ω—ñ–∑–∞—Ü—ñ—ó" NavigateUrl="Reports1NF/Report1NFList.aspx">
+															<dx:RibbonButtonItem Text="œ≥‰ÔË∫ÏÒÚ‚‡ Ú‡ Ó„‡Ì≥Á‡ˆ≥ø" NavigateUrl="Reports1NF/Report1NFList.aspx">
 																<SmallImage Url="Styles/ribbonicon_24.png" />
 															</dx:RibbonButtonItem>
-															<%--<dx:RibbonButtonItem Text="–†–æ–∑–¥—Ä—É–∫—É–≤–∞—Ç–∏ –∫–∞—Ä—Ç–∫—É –æ—Ä–≥–∞–Ω—ñ–∑–∞—Ü—ñ—ó" NavigateUrl="Cards/PrintOrgCard.aspx?orgid=305033">
+															<%--<dx:RibbonButtonItem Text="–ÓÁ‰ÛÍÛ‚‡ÚË Í‡ÚÍÛ Ó„‡Ì≥Á‡ˆ≥ø" NavigateUrl="Cards/PrintOrgCard.aspx?orgid=305033">
 															<SmallImage Url="Styles/ribbonicon_print.png"/>
 														</dx:RibbonButtonItem>--%>
 														</Items>
@@ -80,27 +80,27 @@
 												</Groups>
 											</dx:RibbonTab>
 
-											<dx:RibbonTab Text="–ú–∞–π–Ω–æ (–û–±'—î–∫—Ç–∏)">
+											<dx:RibbonTab Text="Ã‡ÈÌÓ (Œ·'∫ÍÚË)">
 												<Groups>
 													<dx:RibbonGroup Text="">
 														<Items>
-															<dx:RibbonButtonItem Text="–û–±'—î–∫—Ç–∏ –Ω–∞ –ë–∞–ª–∞–Ω—Å—ñ" NavigateUrl="Balans/BalansObjects.aspx">
+															<dx:RibbonButtonItem Text="Œ·'∫ÍÚË Ì‡ ¡‡Î‡ÌÒ≥" NavigateUrl="Balans/BalansObjects.aspx">
 																<SmallImage Url="Styles/ribbonicon_4a.png">
 																</SmallImage>
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–û–±'—î–∫—Ç–∏ –Ü–Ω–≤–µ–Ω—Ç–∞—Ä—ñ–∑–∞—Ü—ñ—ó" NavigateUrl="Balans/BalansInventarizations.aspx">
+															<dx:RibbonButtonItem Text="Œ·'∫ÍÚË ≤Ì‚ÂÌÚ‡≥Á‡ˆ≥ø" NavigateUrl="Balans/BalansInventarizations.aspx">
 																<SmallImage Url="Styles/ribbonicon_4b.png">
 																</SmallImage>
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–Ü–Ω—à—ñ –û–±'—î–∫—Ç–∏" NavigateUrl="Balans/BalansOther.aspx" Visible="false">
+															<dx:RibbonButtonItem Text="≤Ì¯≥ Œ·'∫ÍÚË" NavigateUrl="Balans/BalansOther.aspx" Visible="false">
 																<SmallImage Url="Styles/ribbonicon_4c.png">
 																</SmallImage>
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–ö–ª–∞—Å–∏—Ñ—ñ–∫–∞—Ç–æ—Ä –æ–±'—î–∫—Ç—ñ–≤ –∫–æ–º—É–Ω–∞–ª—å–Ω–æ—ó –≤–ª–∞—Å–Ω–æ—Å—Ç–∏ –º—ñ—Å—Ç–∞ –ö–∏—î–≤–∞" NavigateUrl="http://kmda.iisd.com.ua">
+															<dx:RibbonButtonItem Text=" Î‡ÒËÙ≥Í‡ÚÓ Ó·'∫ÍÚ≥‚ ÍÓÏÛÌ‡Î¸ÌÓø ‚Î‡ÒÌÓÒÚË Ï≥ÒÚ‡  Ë∫‚‡" NavigateUrl="http://kmda.iisd.com.ua">
 																<SmallImage Url="Styles/ribbonicon_help_4.png">
 																</SmallImage>
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–î–ó–† –ö–ú–î–ê" NavigateUrl="Reports1NF/ZemelValsDoc.aspx">
+															<dx:RibbonButtonItem Text="ƒ«–  Ãƒ¿" NavigateUrl="Reports1NF/ZemelValsDoc.aspx">
 																<SmallImage Url="Styles/ribbonicon_5.png">
 																</SmallImage>
 															</dx:RibbonButtonItem>
@@ -109,51 +109,54 @@
 												</Groups>
 											</dx:RibbonTab>
 
-											<dx:RibbonTab Text="–û—Ä–µ–Ω–¥–∞">
+											<dx:RibbonTab Text="ŒÂÌ‰‡">
 												<Groups>
 													<dx:RibbonGroup Text="">
 														<Items>
-															<dx:RibbonButtonItem Text="–î–æ–≥–æ–≤–æ—Ä–∏ –û—Ä–µ–Ω–¥–∏" NavigateUrl="Arenda/RentAgreements.aspx">
+															<dx:RibbonButtonItem Text="ƒÓ„Ó‚ÓË ŒÂÌ‰Ë" NavigateUrl="Arenda/RentAgreements.aspx">
 																<SmallImage Url="Styles/ribbonicon_6.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–û—Ä–µ–Ω–¥–æ–≤–∞–Ω—ñ –û–±'—î–∫—Ç–∏" NavigateUrl="Arenda/RentedObjects.aspx">
+															<dx:RibbonButtonItem Text="ŒÂÌ‰Ó‚‡Ì≥ Œ·'∫ÍÚË" NavigateUrl="Arenda/RentedObjects.aspx">
 																<SmallImage Url="Styles/ribbonicon_9.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–ü–µ—Ä–µ–ª—ñ–∫ –û—Ä–µ–Ω–¥–∞—Ä—ñ–≤" NavigateUrl="Arenda/RentOrgList.aspx">
+															<dx:RibbonButtonItem Text="œÂÂÎ≥Í ŒÂÌ‰‡≥‚" NavigateUrl="Arenda/RentOrgList.aspx">
 																<SmallImage Url="Styles/ribbonicon_5.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–î–æ–≥–æ–≤–æ—Ä–∏ –°—É–±–æ—Ä–µ–Ω–¥–∏" NavigateUrl="Arenda/RentSubleases.aspx">
+															<dx:RibbonButtonItem Text="ƒÓ„Ó‚ÓË —Û·ÓÂÌ‰Ë" NavigateUrl="Arenda/RentSubleases.aspx">
 																<SmallImage Url="Styles/ribbonicon_6b.png" />
 															</dx:RibbonButtonItem>
+															<dx:RibbonButtonItem Text="œÓ‚ÂÌÛÚË Á ‚Ë‰‡ÎÂÌËı" NavigateUrl="Arenda/RestoreRentAgreements.aspx">
+																<SmallImage Url="Styles/ribbonicon_4b.png" />
+															</dx:RibbonButtonItem>
 														</Items>
 													</dx:RibbonGroup>
 												</Groups>
 											</dx:RibbonTab>
 
-											<dx:RibbonTab Text="–û—Ü—ñ–Ω–∫–∞">
+											<dx:RibbonTab Text="Œˆ≥ÌÍ‡">
 												<Groups>
 													<dx:RibbonGroup Text="">
 														<Items>
-															<dx:RibbonButtonItem Text="–ü–µ—Ä–µ–ª—ñ–∫ –æ–±'—î–∫—Ç—ñ–≤ –æ—Ü—ñ–Ω–∫–∏" NavigateUrl="Assessment/AssessmentObjects.aspx">
+															<dx:RibbonButtonItem Text="œÂÂÎ≥Í Ó·'∫ÍÚ≥‚ Óˆ≥ÌÍË" NavigateUrl="Assessment/AssessmentObjects.aspx">
 																<SmallImage Url="Styles/ribbonicon_5.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–ü–µ—Ä–µ–ª—ñ–∫ –°–û–î" NavigateUrl="Assessment/SODList.aspx">
+															<dx:RibbonButtonItem Text="œÂÂÎ≥Í —Œƒ" NavigateUrl="Assessment/SODList.aspx">
 																<SmallImage Url="Styles/ribbonicon_10.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonDropDownButtonItem Text="–î–æ–≤—ñ–¥–Ω–∏–∫–∏">
+															<dx:RibbonDropDownButtonItem Text="ƒÓ‚≥‰ÌËÍË">
 																<SmallImage Url="Styles/ribbonicon_19.png" />
 																<Items>
-																	<dx:RibbonDropDownButtonItem Text="–ù–ï–í" NavigateUrl="Assessment/dict_expert_detail_purpose.aspx" />
-																	<dx:RibbonDropDownButtonItem Text="–í–∏–¥–∏ –æ–±'—î–∫—Ç—É" NavigateUrl="Assessment/dict_expert_obj_type.aspx" />
-																	<dx:RibbonDropDownButtonItem Text="–ü–æ–≤–µ—Ä—Ö–∏" NavigateUrl="Assessment/dict_expert_detail_floors.aspx" />
-																	<dx:RibbonDropDownButtonItem Text="–†–µ—Ü–µ–Ω–∑–µ–Ω—Ç–∏" NavigateUrl="Assessment/dict_expert_rezenz.aspx" />
-																	<dx:RibbonDropDownButtonItem Text="–ö–æ—Ä–µ—Å–ø–æ–Ω–¥–µ–Ω—Ç–∏" NavigateUrl="Assessment/dict_expert_korr.aspx" />
-																	<dx:RibbonDropDownButtonItem Text="–°—Ç–∞–Ω–∏/–∫–∞—Ç–µ–≥–æ—Ä—ñ—ó —Ä–µ—Ü–µ–Ω–∑—É–≤–∞–Ω–Ω—è" NavigateUrl="Assessment/dict_expert_rezenz_type.aspx" />
-																	<dx:RibbonDropDownButtonItem Text="–í–∏–¥–∏ —Ä–µ—Ü–µ–Ω–∑—ñ—ó" NavigateUrl="Assessment/dict_expert_valuation_kind.aspx" />
-																	<%--<dx:RibbonDropDownButtonItem Text="–°—Ç–∞–Ω–∏ —Ä–µ—Ü–µ–Ω–∑—ñ—ó" NavigateUrl="Assessment/dict_expert_stan.aspx"/>--%>
+																	<dx:RibbonDropDownButtonItem Text="Õ≈¬" NavigateUrl="Assessment/dict_expert_detail_purpose.aspx" />
+																	<dx:RibbonDropDownButtonItem Text="¬Ë‰Ë Ó·'∫ÍÚÛ" NavigateUrl="Assessment/dict_expert_obj_type.aspx" />
+																	<dx:RibbonDropDownButtonItem Text="œÓ‚ÂıË" NavigateUrl="Assessment/dict_expert_detail_floors.aspx" />
+																	<dx:RibbonDropDownButtonItem Text="–ÂˆÂÌÁÂÌÚË" NavigateUrl="Assessment/dict_expert_rezenz.aspx" />
+																	<dx:RibbonDropDownButtonItem Text=" ÓÂÒÔÓÌ‰ÂÌÚË" NavigateUrl="Assessment/dict_expert_korr.aspx" />
+																	<dx:RibbonDropDownButtonItem Text="—Ú‡ÌË/Í‡ÚÂ„Ó≥ø ÂˆÂÌÁÛ‚‡ÌÌˇ" NavigateUrl="Assessment/dict_expert_rezenz_type.aspx" />
+																	<dx:RibbonDropDownButtonItem Text="¬Ë‰Ë ÂˆÂÌÁ≥ø" NavigateUrl="Assessment/dict_expert_valuation_kind.aspx" />
+																	<%--<dx:RibbonDropDownButtonItem Text="—Ú‡ÌË ÂˆÂÌÁ≥ø" NavigateUrl="Assessment/dict_expert_stan.aspx"/>--%>
 																</Items>
 															</dx:RibbonDropDownButtonItem>
-															<dx:RibbonButtonItem Text="–ê—Ä—Ö—ñ–≤ –æ–±'—î–∫—Ç—ñ–≤ –æ—Ü—ñ–Ω–∫–∏" NavigateUrl="Assessment/AssessmentArhive.aspx">
+															<dx:RibbonButtonItem Text="¿ı≥‚ Ó·'∫ÍÚ≥‚ Óˆ≥ÌÍË" NavigateUrl="Assessment/AssessmentArhive.aspx">
 																<SmallImage Url="Styles/ribbonicon_17.png" />
 															</dx:RibbonButtonItem>
 														</Items>
@@ -161,17 +164,17 @@
 												</Groups>
 											</dx:RibbonTab>
 
-											<dx:RibbonTab Text="–†–µ—î—Å—Ç—Ä–∏">
+											<dx:RibbonTab Text="–Â∫ÒÚË">
 												<Groups>
 													<dx:RibbonGroup Text="">
 														<Items>
-															<dx:RibbonButtonItem Text="–†–µ—î—Å—Ç—Ä –≤—ñ–ª—å–Ω–∏—Ö –ø—Ä–∏–º—ñ—â–µ–Ω—å" NavigateUrl="Reports1NF/Report1NFFreeSquare.aspx">
+															<dx:RibbonButtonItem Text="–Â∫ÒÚ ‚≥Î¸ÌËı ÔËÏ≥˘ÂÌ¸" NavigateUrl="Reports1NF/Report1NFFreeSquare.aspx">
 																<SmallImage Url="Styles/ribbonicon_4d.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–†–µ—î—Å—Ç—Ä –ø—Ä–æ–¥–æ–≤–∂–µ–Ω–Ω—è –¥–æ–≥–æ–≤–æ—Ä—ñ–≤" NavigateUrl="Reports1NF/Report1NFDogContinue.aspx">
+															<dx:RibbonButtonItem Text="–Â∫ÒÚ ÔÓ‰Ó‚ÊÂÌÌˇ ‰Ó„Ó‚Ó≥‚" NavigateUrl="Reports1NF/Report1NFDogContinue.aspx">
 																<SmallImage Url="Styles/AddIcon.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–ó–∞–ø–∏—Ç–∏ –Ω–∞ –ø–µ—Ä–µ–¥–æ–ø—Ä–∞—Ü—å–æ–≤–∞–Ω—ñ –≤—ñ–ª—å–Ω—ñ –ø—Ä–∏–º—ñ—â–µ–Ω–Ω—è" NavigateUrl="Reports1NF/QueryPriviliger.aspx">
+															<dx:RibbonButtonItem Text="«‡ÔËÚË Ì‡ ÔÂÂ‰ÓÔ‡ˆ¸Ó‚‡Ì≥ ‚≥Î¸Ì≥ ÔËÏ≥˘ÂÌÌˇ" NavigateUrl="Reports1NF/QueryPriviliger.aspx">
 																<SmallImage Url="Styles/ribbonicon_23.png" />
 															</dx:RibbonButtonItem>
 														</Items>
@@ -179,17 +182,17 @@
 												</Groups>
 											</dx:RibbonTab>
 
-											<dx:RibbonTab Text="–ü—Ä–∏–≤–∞—Ç–∏–∑–∞—Ü—ñ—è">
+											<dx:RibbonTab Text="œË‚‡ÚËÁ‡ˆ≥ˇ">
 												<Groups>
 													<dx:RibbonGroup Text="">
 														<Items>
-															<dx:RibbonButtonItem Text="–û–±'—î–∫—Ç–∏ –ø—Ä–∏–≤–∞—Ç–∏–∑–∞—Ü—ñ—ó" NavigateUrl="Reports1NF/Report1NFPrivatisatSquare.aspx">
+															<dx:RibbonButtonItem Text="Œ·'∫ÍÚË ÔË‚‡ÚËÁ‡ˆ≥ø" NavigateUrl="Reports1NF/Report1NFPrivatisatSquare.aspx">
 																<SmallImage Url="Styles/ribbonicon_14.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–ü—Ä–æ–≥—Ä–∞–º–∞ –ø—Ä–∏–≤–∞—Ç–∏–∑–∞—Ü—ñ—ó" NavigateUrl="Privatization/PrivatObjects.aspx" Visible="false">
+															<dx:RibbonButtonItem Text="œÓ„‡Ï‡ ÔË‚‡ÚËÁ‡ˆ≥ø" NavigateUrl="Privatization/PrivatObjects.aspx" Visible="false">
 																<SmallImage Url="Styles/ribbonicon_12.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–ê—Ä—Ö—ñ–≤ –æ–±'—î–∫—Ç—ñ–≤ –ø—Ä–∏–≤–∞—Ç–∏–∑–∞—Ü—ñ—ó" NavigateUrl="Reports1NF/PrivatisatArhive.aspx">
+															<dx:RibbonButtonItem Text="¿ı≥‚ Ó·'∫ÍÚ≥‚ ÔË‚‡ÚËÁ‡ˆ≥ø" NavigateUrl="Reports1NF/PrivatisatArhive.aspx">
 																<SmallImage Url="Styles/ribbonicon_17.png" />
 															</dx:RibbonButtonItem>
 														</Items>
@@ -197,106 +200,106 @@
 												</Groups>
 											</dx:RibbonTab>
 
-											<dx:RibbonTab Text="–ö–æ–Ω—Ç—Ä–æ–ª—å –≤–∏–∫–æ—Ä–∏—Å—Ç–∞–Ω–Ω—è">
+											<dx:RibbonTab Text=" ÓÌÚÓÎ¸ ‚ËÍÓËÒÚ‡ÌÌˇ">
 												<Groups>
 													<dx:RibbonGroup Text="">
 														<Items>
-															<dx:RibbonButtonItem Text="–ü—Ä–æ—Ü–µ–¥—É—Ä–∞ –ø—Ä–∏–π–æ–º—É –∑–≤—ñ—Ç—ñ–≤" NavigateUrl="Reports1NF/Report1NFList.aspx?controlVikorist=1">
+															<dx:RibbonButtonItem Text="œÓˆÂ‰Û‡ ÔËÈÓÏÛ Á‚≥Ú≥‚" NavigateUrl="Reports1NF/Report1NFList.aspx?controlVikorist=1">
 																<SmallImage Url="Styles/ribbonicon_24.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–û—Ä–µ–Ω–¥–Ω–∞ –ø–ª–∞—Ç–∞" NavigateUrl="OrendnaPlata/OrendnaPlataByBalans.aspx" Visible="false">
+															<dx:RibbonButtonItem Text="ŒÂÌ‰Ì‡ ÔÎ‡Ú‡" NavigateUrl="OrendnaPlata/OrendnaPlataByBalans.aspx" Visible="false">
 																<SmallImage Url="Styles/ribbonicon_15.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–ù–∞–¥—Ö–æ–¥–∂–µ–Ω–Ω—è –¥–æ –±—é–¥–∂–µ—Ç—É" NavigateUrl="OrendnaPlata/OrPlataVipiski.aspx">
+															<dx:RibbonButtonItem Text="Õ‡‰ıÓ‰ÊÂÌÌˇ ‰Ó ·˛‰ÊÂÚÛ" NavigateUrl="OrendnaPlata/OrPlataVipiski.aspx">
 																<SmallImage Url="Styles/ribbonicon_16.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–°—Ñ–µ—Ä–∞ –¥—ñ—è–ª—å–Ω–æ—Å—Ç—ñ" NavigateUrl="Admin/OrgOccupation.aspx">
+															<dx:RibbonButtonItem Text="—ÙÂ‡ ‰≥ˇÎ¸ÌÓÒÚ≥" NavigateUrl="Admin/OrgOccupation.aspx">
 																<SmallImage Url="Styles/ribbonicon_17.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–ó–≤–µ–¥–µ–Ω–∏–π –∑–≤—ñ—Ç" NavigateUrl="Reports1NF/ZvedZvitBuild.aspx">
+															<dx:RibbonButtonItem Text="«‚Â‰ÂÌËÈ Á‚≥Ú" NavigateUrl="Reports1NF/ZvedZvitBuild.aspx">
 																<SmallImage Url="Styles/ribbonicon_3.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–ú–æ–¥–µ–ª—é–≤–∞–Ω–Ω—è" NavigateUrl="Reports1NF/DictRentalRate.aspx">
+															<dx:RibbonButtonItem Text="ÃÓ‰ÂÎ˛‚‡ÌÌˇ" NavigateUrl="Reports1NF/DictRentalRate.aspx">
 																<SmallImage Url="Styles/ribbonicon_18.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–ü—Ä–æ–≥–Ω–æ–∑" NavigateUrl="Reports1NF/PrognozPayment.aspx">
+															<dx:RibbonButtonItem Text="œÓ„ÌÓÁ" NavigateUrl="Reports1NF/PrognozPayment.aspx">
 																<SmallImage Url="Styles/ribbonicon_23.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–†–µ–π—Ç–∏–Ω–≥—É–≤–∞–Ω–Ω—è" NavigateUrl="Reports1NF/ReytingZvitBuilder.aspx">
+															<dx:RibbonButtonItem Text="–ÂÈÚËÌ„Û‚‡ÌÌˇ" NavigateUrl="Reports1NF/ReytingZvitBuilder.aspx">
 																<SmallImage Url="Styles/rating.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–†–µ–π—Ç–∏–Ω–≥—É–≤–∞–Ω–Ω—è (–¥–µ—Ç–∞–ª—ñ–∑–æ–≤–∞–Ω–µ)" NavigateUrl="Reports1NF/ReytingZvitBuilder.aspx?details=1">
+															<dx:RibbonButtonItem Text="–ÂÈÚËÌ„Û‚‡ÌÌˇ (‰ÂÚ‡Î≥ÁÓ‚‡ÌÂ)" NavigateUrl="Reports1NF/ReytingZvitBuilder.aspx?details=1">
 																<SmallImage Url="Styles/rating_detailed.png" />
 															</dx:RibbonButtonItem>
 
 
-															<dx:RibbonDropDownButtonItem Text="–ê—Ä—Ö—ñ–≤–∏ –ë–î" Size="Large">
+															<dx:RibbonDropDownButtonItem Text="¿ı≥‚Ë ¡ƒ" Size="Large">
 																<Items>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2015 —Ä—ñ–∫" NavigateUrl="20160101" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2015 ≥Í" NavigateUrl="20160101" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2016 —Ä—ñ–∫" NavigateUrl="20170131" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2016 ≥Í" NavigateUrl="20170131" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2017 —Ä—ñ–∫" NavigateUrl="20180201" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2017 ≥Í" NavigateUrl="20180201" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2018 —Ä—ñ–∫" NavigateUrl="20190204" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2018 ≥Í" NavigateUrl="20190204" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2019 —Ä—ñ–∫" NavigateUrl="20200131" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2019 ≥Í" NavigateUrl="20200131" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2020 —Ä—ñ–∫" NavigateUrl="20201209" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2020 ≥Í" NavigateUrl="20201209" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2021 —Ä—ñ–∫" NavigateUrl="20220101" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2021 ≥Í" NavigateUrl="20220101" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2022 —Ä—ñ–∫" NavigateUrl="20230201" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2022 ≥Í" NavigateUrl="20230201" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2023 —Ä—ñ–∫" NavigateUrl="20240201" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2023 ≥Í" NavigateUrl="20240201" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2024 —Ä—ñ–∫" NavigateUrl="20250201" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2024 ≥Í" NavigateUrl="20250201" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2025 —Ä—ñ–∫ (1 –∫–≤.)" NavigateUrl="20250401" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2025 ≥Í (1 Í‚.)" NavigateUrl="20250401" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2025 —Ä—ñ–∫ (2 –∫–≤.)" NavigateUrl="20250701" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2025 ≥Í (2 Í‚.)" NavigateUrl="20250701" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2025 —Ä—ñ–∫ (3 –∫–≤.)" NavigateUrl="20251001" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2025 ≥Í (3 Í‚.)" NavigateUrl="20251001" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2025 —Ä—ñ–∫ (4 –∫–≤.)" NavigateUrl="20260101" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2025 ≥Í (4 Í‚.)" NavigateUrl="20260101" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2026 —Ä—ñ–∫ (1 –∫–≤.)" NavigateUrl="20260401" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2026 ≥Í (1 Í‚.)" NavigateUrl="20260401" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2026 —Ä—ñ–∫ (2 –∫–≤.)" NavigateUrl="20260701" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2026 ≥Í (2 Í‚.)" NavigateUrl="20260701" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2026 —Ä—ñ–∫ (3 –∫–≤.)" NavigateUrl="20261001" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2026 ≥Í (3 Í‚.)" NavigateUrl="20261001" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
@@ -310,14 +313,14 @@
 												</Groups>
 											</dx:RibbonTab>
 
-											<dx:RibbonTab Text="–ö–æ—Ä–ø–æ—Ä–∞—Ç–∏–≤–Ω—ñ –ø—Ä–∞–≤–∞">
+											<dx:RibbonTab Text=" ÓÔÓ‡ÚË‚Ì≥ Ô‡‚‡">
 												<Groups>
 													<dx:RibbonGroup Text="">
 														<Items>
-															<dx:RibbonButtonItem Text="–ü–µ—Ä–µ–ª—ñ–∫ –∫–æ—Ä–ø–æ—Ä–∞—Ç–∏–≤–Ω–∏—Ö –ø—Ä–∞–≤" NavigateUrl="Reports1NF/Report1NFCorporprav.aspx">
+															<dx:RibbonButtonItem Text="œÂÂÎ≥Í ÍÓÔÓ‡ÚË‚ÌËı Ô‡‚" NavigateUrl="Reports1NF/Report1NFCorporprav.aspx">
 																<SmallImage Url="Styles/ribbonicon_5.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–†–µ—î—Å—Ç—Ä —Ä—É—Ö—É –∫–æ—Ä–ø–æ—Ä–∞—Ç–∏–≤–Ω–∏—Ö –ø—Ä–∞–≤" NavigateUrl="Reports1NF/Report1NFCorpordvig.aspx">
+															<dx:RibbonButtonItem Text="–Â∫ÒÚ ÛıÛ ÍÓÔÓ‡ÚË‚ÌËı Ô‡‚" NavigateUrl="Reports1NF/Report1NFCorpordvig.aspx">
 																<SmallImage Url="Styles/ribbonicon_17.png" />
 															</dx:RibbonButtonItem>
 														</Items>
@@ -325,21 +328,21 @@
 												</Groups>
 											</dx:RibbonTab>
 
-											<dx:RibbonTab Text="–Æ—Ä–∏–¥–∏—á–Ω—ñ —Å–ø—Ä–∞–≤–∏">
+											<dx:RibbonTab Text="ﬁË‰Ë˜Ì≥ ÒÔ‡‚Ë">
 												<Groups>
 													<dx:RibbonGroup Text="">
 														<Items>
-															<dx:RibbonButtonItem Text="–Æ—Ä–∏–¥–∏—á–Ω—ñ —Å–ø—Ä–∞–≤–∏" NavigateUrl="Yurdep/YurdepStart.aspx">
+															<dx:RibbonButtonItem Text="ﬁË‰Ë˜Ì≥ ÒÔ‡‚Ë" NavigateUrl="Yurdep/YurdepStart.aspx">
 																<SmallImage Url="Styles/ribbonicon_18.png" />
 															</dx:RibbonButtonItem>
 														</Items>
 														<Items>
-															<dx:RibbonButtonItem Text="–°—É–¥–æ–≤–∏–π —Ä–µ—î—Å—Ç—Ä" NavigateUrl="Reports1NF/YurdepInfo.aspx">
+															<dx:RibbonButtonItem Text="—Û‰Ó‚ËÈ Â∫ÒÚ" NavigateUrl="Reports1NF/YurdepInfo.aspx">
 																<SmallImage Url="Styles/ribbonicon_5.png" />
 															</dx:RibbonButtonItem>
 														</Items>
 														<Items>
-															<dx:RibbonButtonItem Text="–†–µ—î—Å—Ç—Ä–∞—Ü—ñ—è" NavigateUrl="Reports1NF/Valsndogovor.aspx">
+															<dx:RibbonButtonItem Text="–Â∫ÒÚ‡ˆ≥ˇ" NavigateUrl="Reports1NF/Valsndogovor.aspx">
 																<SmallImage Url="Styles/ribbonicon_20.png" />
 															</dx:RibbonButtonItem>
 														</Items>
@@ -347,84 +350,84 @@
 												</Groups>
 											</dx:RibbonTab>
 
-											<dx:RibbonTab Text="–ö–∞—Ç–∞–ª–æ–≥">
+											<dx:RibbonTab Text=" ‡Ú‡ÎÓ„">
 												<Groups>
 													<dx:RibbonGroup Text="">
 														<Items>
-															<dx:RibbonButtonItem Text="–ö–∞—Ç–∞–ª–æ–≥ –ê–¥—Ä–µ—Å" NavigateUrl="Catalogue/AddrCatalogue.aspx">
+															<dx:RibbonButtonItem Text=" ‡Ú‡ÎÓ„ ¿‰ÂÒ" NavigateUrl="Catalogue/AddrCatalogue.aspx">
 																<SmallImage Url="Styles/ribbonicon_19.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–ö–∞—Ç–∞–ª–æ–≥ –û—Ä–≥–∞–Ω—ñ–∑–∞—Ü—ñ–π" NavigateUrl="Catalogue/OrgCatalogue.aspx">
+															<dx:RibbonButtonItem Text=" ‡Ú‡ÎÓ„ Œ„‡Ì≥Á‡ˆ≥È" NavigateUrl="Catalogue/OrgCatalogue.aspx">
 																<SmallImage Url="Styles/ribbonicon_20.png" />
 															</dx:RibbonButtonItem>
 
-															<dx:RibbonDropDownButtonItem Text="–†–µ—Ç—Ä–æ—Å–ø–µ–∫—Ç–∏–≤–∞" Size="Large">
+															<dx:RibbonDropDownButtonItem Text="–ÂÚÓÒÔÂÍÚË‚‡" Size="Large">
 																<Items>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2015 —Ä—ñ–∫" NavigateUrl="20160101" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2015 ≥Í" NavigateUrl="20160101" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2016 —Ä—ñ–∫" NavigateUrl="20170131" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2016 ≥Í" NavigateUrl="20170131" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2017 —Ä—ñ–∫" NavigateUrl="20180201" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2017 ≥Í" NavigateUrl="20180201" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2018 —Ä—ñ–∫" NavigateUrl="20190204" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2018 ≥Í" NavigateUrl="20190204" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2019 —Ä—ñ–∫" NavigateUrl="20200131" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2019 ≥Í" NavigateUrl="20200131" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2020 —Ä—ñ–∫" NavigateUrl="20201209" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2020 ≥Í" NavigateUrl="20201209" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2021 —Ä—ñ–∫" NavigateUrl="20220101" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2021 ≥Í" NavigateUrl="20220101" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2022 —Ä—ñ–∫" NavigateUrl="20230201" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2022 ≥Í" NavigateUrl="20230201" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2023 —Ä—ñ–∫" NavigateUrl="20240201" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2023 ≥Í" NavigateUrl="20240201" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2024 —Ä—ñ–∫" NavigateUrl="20250201" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2024 ≥Í" NavigateUrl="20250201" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2025 —Ä—ñ–∫ (1 –∫–≤.)" NavigateUrl="20250401" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2025 ≥Í (1 Í‚.)" NavigateUrl="20250401" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2025 —Ä—ñ–∫ (2 –∫–≤.)" NavigateUrl="20250701" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2025 ≥Í (2 Í‚.)" NavigateUrl="20250701" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2025 —Ä—ñ–∫ (3 –∫–≤.)" NavigateUrl="20251001" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2025 ≥Í (3 Í‚.)" NavigateUrl="20251001" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2025 —Ä—ñ–∫ (4 –∫–≤.)" NavigateUrl="20260101" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2025 ≥Í (4 Í‚.)" NavigateUrl="20260101" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2026 —Ä—ñ–∫ (1 –∫–≤.)" NavigateUrl="20260401" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2026 ≥Í (1 Í‚.)" NavigateUrl="20260401" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2026 —Ä—ñ–∫ (2 –∫–≤.)" NavigateUrl="20260701" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2026 ≥Í (2 Í‚.)" NavigateUrl="20260701" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
-																	<dx:RibbonDropDownButtonItem Text="—Å—Ç–∞–Ω–æ–º –Ω–∞ 2026 —Ä—ñ–∫ (3 –∫–≤.)" NavigateUrl="20261001" Target="_blank">
+																	<dx:RibbonDropDownButtonItem Text="ÒÚ‡ÌÓÏ Ì‡ 2026 ≥Í (3 Í‚.)" NavigateUrl="20261001" Target="_blank">
 																		<SmallImage IconID="scheduling_groupbydate_16x16">
 																		</SmallImage>
 																	</dx:RibbonDropDownButtonItem>
@@ -438,31 +441,31 @@
 												</Groups>
 											</dx:RibbonTab>
 
-											<dx:RibbonTab Text="–ê–¥–º—ñ–Ω—ñ—Å—Ç—Ä—É–≤–∞–Ω–Ω—è">
+											<dx:RibbonTab Text="¿‰Ï≥Ì≥ÒÚÛ‚‡ÌÌˇ">
 												<Groups>
 													<dx:RibbonGroup Text="">
 														<Items>
-															<dx:RibbonButtonItem Text="–†–µ—î—Å—Ç—Ä–∞—Ü—ñ—è –Ω–æ–≤–æ–≥–æ –∫–æ—Ä–∏—Å—Ç—É–≤–∞—á–∞" NavigateUrl="Account/Register.aspx">
+															<dx:RibbonButtonItem Text="–Â∫ÒÚ‡ˆ≥ˇ ÌÓ‚Ó„Ó ÍÓËÒÚÛ‚‡˜‡" NavigateUrl="Account/Register.aspx">
 																<SmallImage Url="Styles/AddIcon.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–ö–µ—Ä—É–≤–∞–Ω–Ω—è –ø—Ä–∞–≤–∞–º–∏ –¥–æ—Å—Ç—É–ø—É" NavigateUrl="Account/ManageRoles.aspx">
+															<dx:RibbonButtonItem Text=" ÂÛ‚‡ÌÌˇ Ô‡‚‡ÏË ‰ÓÒÚÛÔÛ" NavigateUrl="Account/ManageRoles.aspx">
 																<SmallImage Url="Styles/ribbonicon_21.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–û–±–ª—ñ–∫–æ–≤—ñ –ó–∞–ø–∏—Å–∏" NavigateUrl="Reports1NF/Report1NFAccounts.aspx">
+															<dx:RibbonButtonItem Text="Œ·Î≥ÍÓ‚≥ «‡ÔËÒË" NavigateUrl="Reports1NF/Report1NFAccounts.aspx">
 																<SmallImage Url="Styles/ribbonicon_5.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–ó–º—ñ–Ω–∞ –±–∞–ª–∞–Ω—Å–æ—É—Ç—Ä–∏–º—É–≤–∞—á—ñ–≤ –æ–±'—î–∫—Ç—ñ–≤" NavigateUrl="Reports1NF/ConveyancingList.aspx">
+															<dx:RibbonButtonItem Text="«Ï≥Ì‡ ·‡Î‡ÌÒÓÛÚËÏÛ‚‡˜≥‚ Ó·'∫ÍÚ≥‚" NavigateUrl="Reports1NF/ConveyancingList.aspx">
 																<SmallImage Url="Styles/ribbonicon_22.png" />
 															</dx:RibbonButtonItem>
 
-															<dx:RibbonButtonItem Text="–î–æ–≤—ñ–¥–Ω–∏–∫ –∫–æ—Ä–∏—Å—Ç—É–≤–∞—á—ñ–≤" NavigateUrl="Admin/Users.aspx">
+															<dx:RibbonButtonItem Text="ƒÓ‚≥‰ÌËÍ ÍÓËÒÚÛ‚‡˜≥‚" NavigateUrl="Admin/Users.aspx">
 																<SmallImage Url="Styles/ribbonicon_12.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–î–æ–≤—ñ–¥–Ω–∏–∫ –≤—É–ª–∏—Ü—å" NavigateUrl="Admin/Streets.aspx">
+															<dx:RibbonButtonItem Text="ƒÓ‚≥‰ÌËÍ ‚ÛÎËˆ¸" NavigateUrl="Admin/Streets.aspx">
 																<SmallImage Url="Styles/ribbonicon_20.png" />
 															</dx:RibbonButtonItem>
 
-															<dx:RibbonButtonItem Text="–ù–æ—Ä–º–∞–ª—ñ–∑–∞—Ü—ñ—è —ñ–º–µ–Ω" NavigateUrl="Admin/NormalizationTexts.aspx">
+															<dx:RibbonButtonItem Text="ÕÓÏ‡Î≥Á‡ˆ≥ˇ ≥ÏÂÌ" NavigateUrl="Admin/NormalizationTexts.aspx">
 																<SmallImage Url="Styles/ribbonicon_3.png" />
 															</dx:RibbonButtonItem>
 
@@ -471,50 +474,50 @@
 												</Groups>
 											</dx:RibbonTab>
 
-											<dx:RibbonTab Text="–î–æ–≤—ñ–¥–∫–∞">
+											<dx:RibbonTab Text="ƒÓ‚≥‰Í‡">
 												<Groups>
 													<dx:RibbonGroup Text="">
 														<Items>
-															<dx:RibbonButtonItem Text="–Ü–Ω—Å—Ç—Ä—É–∫—Ü—ñ—è –ê–ù–ê–õ–Ü–¢–ò–ö–ê –î–ö–í" NavigateUrl="UserGuide/–Ü–Ω—Å—Ç—Ä—É–∫—Ü—ñ—è –ê–ù–ê–õ–Ü–¢–ò–ö–ê –î–ö–í.docx">
+															<dx:RibbonButtonItem Text="≤ÌÒÚÛÍˆ≥ˇ ¿Õ¿À≤“» ¿ ƒ ¬" NavigateUrl="UserGuide/≤ÌÒÚÛÍˆ≥ˇ ¿Õ¿À≤“» ¿ ƒ ¬.docx">
 																<SmallImage Url="Styles/ribbonicon_help_1.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–Ü–Ω—Å—Ç—Ä—É–∫—Ü—ñ—è –ê–ù–ê–õ–Ü–¢–ò–ö–ê –†–î–ê" NavigateUrl="UserGuide/–Ü–Ω—Å—Ç—Ä—É–∫—Ü—ñ—è –ê–ù–ê–õ–Ü–¢–ò–ö–ê –†–î–ê.docx">
+															<dx:RibbonButtonItem Text="≤ÌÒÚÛÍˆ≥ˇ ¿Õ¿À≤“» ¿ –ƒ¿" NavigateUrl="UserGuide/≤ÌÒÚÛÍˆ≥ˇ ¿Õ¿À≤“» ¿ –ƒ¿.docx">
 																<SmallImage Url="Styles/ribbonicon_help_2.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–Ü–Ω—Å—Ç—Ä—É–∫—Ü—ñ—è –ê–ù–ê–õ–Ü–¢–ò–ö–ê –ü–Ü–î–†–û–ó–î–Ü–õ–£ –ö–ú–î–ê" NavigateUrl="UserGuide/–Ü–Ω—Å—Ç—Ä—É–∫—Ü—ñ—è_–ê–ù–ê–õ–Ü–¢–ò–ö–ê_–ü–Ü–î–†–û–ó–î–Ü–õ–£_–ö–ú–î–ê.docx">
+															<dx:RibbonButtonItem Text="≤ÌÒÚÛÍˆ≥ˇ ¿Õ¿À≤“» ¿ œ≤ƒ–Œ«ƒ≤À”  Ãƒ¿" NavigateUrl="UserGuide/≤ÌÒÚÛÍˆ≥ˇ_¿Õ¿À≤“» ¿_œ≤ƒ–Œ«ƒ≤À”_ Ãƒ¿.docx">
 																<SmallImage Url="Styles/ribbonicon_help_3.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–Ü–Ω—Å—Ç—Ä—É–∫—Ü—ñ—è –ë–ê–õ–ê–ù–°–û–£–¢–†–ò–ú–£–í–ê–ß–ê" NavigateUrl="UserGuide/–Ü–Ω—Å—Ç—Ä—É–∫—Ü—ñ—è –ë–ê–õ–ê–ù–°–û–£–¢–†–ò–ú–£–í–ê–ß–ê.docx">
+															<dx:RibbonButtonItem Text="≤ÌÒÚÛÍˆ≥ˇ ¡¿À¿Õ—Œ”“–»Ã”¬¿◊¿" NavigateUrl="UserGuide/≤ÌÒÚÛÍˆ≥ˇ ¡¿À¿Õ—Œ”“–»Ã”¬¿◊¿.docx">
 																<SmallImage Url="Styles/ribbonicon_help_4.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–í–Ü–î–ï–û–ú–ê–¢–ï–†–ò–ê–õ–ò" NavigateUrl="UserGuide/–í–Ü–î–ï–û–ú–ê–¢–ï–†–ò–ê–õ–ò.docx">
+															<dx:RibbonButtonItem Text="¬≤ƒ≈ŒÃ¿“≈–»¿À»" NavigateUrl="UserGuide/¬≤ƒ≈ŒÃ¿“≈–»¿À».docx">
 																<SmallImage Url="Styles/video-camera.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–Ü–Ω—Å—Ç—Ä—É–∫—Ü—ñ—è –ï–õ–ï–ö–¢–†–û–ù–ù–û–ì–û –ü–Ü–î–ü–ò–°–£ –î–û–ì–û–í–û–†–£" NavigateUrl="UserGuide/–Ü–ù–°–¢–†–£–ö–¶–Ü–Ø_–ï–õ–ï–ö–¢–†–û–ù–ù–û–ì–û_–ü–Ü–î–ü–ò–°–£_–î–û–ì–û–í–û–†–£.docx">
+															<dx:RibbonButtonItem Text="≤ÌÒÚÛÍˆ≥ˇ ≈À≈ “–ŒÕÕŒ√Œ œ≤ƒœ»—” ƒŒ√Œ¬Œ–”" NavigateUrl="UserGuide/≤Õ—“–” ÷≤ﬂ_≈À≈ “–ŒÕÕŒ√Œ_œ≤ƒœ»—”_ƒŒ√Œ¬Œ–”.docx">
 																<SmallImage Url="Styles/ribbonicon_help_4.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–ö–ê–ë–Ü–ù–ï–¢ –ì–†–û–ú–ê–î–Ø–ù–ò–ù–ê" NavigateUrl="UserGuide/–ö–ê–ë–Ü–ù–ï–¢ –ì–†–û–ú–ê–î–Ø–ù–ò–ù–ê.docx">
+															<dx:RibbonButtonItem Text=" ¿¡≤Õ≈“ √–ŒÃ¿ƒﬂÕ»Õ¿" NavigateUrl="UserGuide/ ¿¡≤Õ≈“ √–ŒÃ¿ƒﬂÕ»Õ¿.docx">
 																<SmallImage Url="Styles/ribbonicon_9.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–Ü–Ω—Å—Ç—Ä—É–∫—Ü—ñ—è &quot;–í–ª–∞—Å–∫–æ–º-26&quot;" NavigateUrl="UserGuide/–Ü–Ω—Å—Ç—Ä—É–∫—Ü—ñ—è_–≤–ª–∞—Å–∫–æ–º_26.docx">
+															<dx:RibbonButtonItem Text="≤ÌÒÚÛÍˆ≥ˇ &quot;¬Î‡ÒÍÓÏ-26&quot;" NavigateUrl="UserGuide/≤ÌÒÚÛÍˆ≥ˇ_‚Î‡ÒÍÓÏ_26.docx">
 																<SmallImage Url="Styles/ribbonicon_help_4.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–Ü–Ω—Å—Ç—Ä—É–∫—Ü—ñ—è &quot;–ö–∞–ª—å–∫—É–ª—è—Ç–æ—Ä –û–ü&quot;" NavigateUrl="UserGuide/–ê–≤—Ç–æ–º–∞—Ç–∏–∑–æ–≤–∞–Ω–∏–π —Ä–æ–∑—Ä–∞—Ö—É–Ω–æ–∫_–û–ü.mp4">
+															<dx:RibbonButtonItem Text="≤ÌÒÚÛÍˆ≥ˇ &quot; ‡Î¸ÍÛÎˇÚÓ Œœ&quot;" NavigateUrl="UserGuide/¿‚ÚÓÏ‡ÚËÁÓ‚‡ÌËÈ ÓÁ‡ıÛÌÓÍ_Œœ.mp4">
 																<SmallImage Url="Styles/video-camera.png" />
 															</dx:RibbonButtonItem>
 
 
 															<%--
-														<dx:RibbonButtonItem Text="–ê–Ω–∞–ª—ñ—Ç–∏–∫ –î–ö–í (–æ—Ä–µ–Ω–¥–æ–¥–∞–≤–µ—Ü—å)" NavigateUrl="UserGuide/UserGuide.aspx">
+														<dx:RibbonButtonItem Text="¿Ì‡Î≥ÚËÍ ƒ ¬ (ÓÂÌ‰Ó‰‡‚Âˆ¸)" NavigateUrl="UserGuide/UserGuide.aspx">
 															<SmallImage Url="Styles/ribbonicon_help_1.png"/>
 														</dx:RibbonButtonItem>
-														<dx:RibbonButtonItem Text="–ê–Ω–∞–ª—ñ—Ç–∏–∫ –†–î–ê (–æ—Ä–µ–Ω–¥–æ–¥–∞–≤–µ—Ü—å)" NavigateUrl="UserGuide/%D0%86%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D1%96%D1%8F%20%D0%BF%D0%BE%20%D0%B2%D0%B8%D0%BA%D0%BE%D1%80%D0%B8%D1%81%D1%82%D0%B0%D0%BD%D0%BD%D1%8E%20%D0">
+														<dx:RibbonButtonItem Text="¿Ì‡Î≥ÚËÍ –ƒ¿ (ÓÂÌ‰Ó‰‡‚Âˆ¸)" NavigateUrl="UserGuide/%D0%86%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D1%96%D1%8F%20%D0%BF%D0%BE%20%D0%B2%D0%B8%D0%BA%D0%BE%D1%80%D0%B8%D1%81%D1%82%D0%B0%D0%BD%D0%BD%D1%8E%20%D0">
 															<SmallImage Url="Styles/ribbonicon_help_2.png"/>
 														</dx:RibbonButtonItem>
-														<dx:RibbonButtonItem Text="–ê–Ω–∞–ª—ñ—Ç–∏–∫ –ø—ñ–¥—Ä–æ–∑–¥—ñ–ª—É –ö–ú–î–ê" NavigateUrl="UserGuide/%D0%86%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D1%96%D1%8F%20%D0%BF%D0%BE%20%D0%B2%D0%B8%D0%BA%D0%BE%D1%80%D0%B8%D1%81%D1%82%D0%B0%D0%BD%D0%BD%D1%8E%20%D0">
+														<dx:RibbonButtonItem Text="¿Ì‡Î≥ÚËÍ Ô≥‰ÓÁ‰≥ÎÛ  Ãƒ¿" NavigateUrl="UserGuide/%D0%86%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D1%96%D1%8F%20%D0%BF%D0%BE%20%D0%B2%D0%B8%D0%BA%D0%BE%D1%80%D0%B8%D1%81%D1%82%D0%B0%D0%BD%D0%BD%D1%8E%20%D0">
 															<SmallImage Url="Styles/ribbonicon_help_3.png"/>
 														</dx:RibbonButtonItem>
-														<dx:RibbonButtonItem Text="–°—É–±‚Äô—î–∫—Ç–∏ –∞–∫—Ç—É–∞–ª—ñ–∑–∞—Ü—ñ—ó –¥–∞–Ω–∏—Ö" NavigateUrl="UserGuide/%D0%86%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D1%96%D1%8F%20%D0%B4%D0%BB%D1%8F%20%D0%B1%D0%B0%D0%BB%D0%B0%D0%BD%D1%81%D0%BE%D1%83%D1%82%D1%80%D0%B8%D0%BC">
+														<dx:RibbonButtonItem Text="—Û·í∫ÍÚË ‡ÍÚÛ‡Î≥Á‡ˆ≥ø ‰‡ÌËı" NavigateUrl="UserGuide/%D0%86%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D1%96%D1%8F%20%D0%B4%D0%BB%D1%8F%20%D0%B1%D0%B0%D0%BB%D0%B0%D0%BD%D1%81%D0%BE%D1%83%D1%82%D1%80%D0%B8%D0%BC">
 															<SmallImage Url="Styles/ribbonicon_help_4.png"/>
 														</dx:RibbonButtonItem>
 															--%>
@@ -523,45 +526,45 @@
 												</Groups>
 											</dx:RibbonTab>
 
-											<dx:RibbonTab Text="–î–∏–Ω–∞–º—ñ–∫–∞ –ø—Ä–æ—Ü–µ—Å—ñ–≤">
+											<dx:RibbonTab Text="ƒËÌ‡Ï≥Í‡ ÔÓˆÂÒ≥‚">
 												<Groups>
 													<%--<dx:RibbonGroup Text="">
 													<Items>
-														<dx:RibbonButtonItem Text="–ü–æ–∫–∞–∑–Ω–∏–∫–∏ –ø—ñ–¥–ø—Ä–∏—î–º—Å—Ç–≤" NavigateUrl="Finance/FinanceView.aspx">
+														<dx:RibbonButtonItem Text="œÓÍ‡ÁÌËÍË Ô≥‰ÔË∫ÏÒÚ‚" NavigateUrl="Finance/FinanceView.aspx">
 															<SmallImage Url="Styles/ribbonicon_23.png"/>
 														</dx:RibbonButtonItem>
 													</Items>
 												</dx:RibbonGroup>--%>
 													<dx:RibbonGroup Text="">
 														<Items>
-															<dx:RibbonButtonItem Text="–í–∏–∫–æ—Ä–∏—Å—Ç–∞–Ω–Ω—è –ø–ª–æ—â —Ç–µ—Ä–∏—Ç–æ—Ä–∏–∞–ª—å–Ω–æ—ó –≥—Ä–æ–º–∞–¥–∏ (—É –≤—ñ–¥—Å–æ—Ç–∫–∞—Ö)" NavigateUrl="OLAP/OlapReport2.aspx">
+															<dx:RibbonButtonItem Text="¬ËÍÓËÒÚ‡ÌÌˇ ÔÎÓ˘ ÚÂËÚÓË‡Î¸ÌÓø „ÓÏ‡‰Ë (Û ‚≥‰ÒÓÚÍ‡ı)" NavigateUrl="OLAP/OlapReport2.aspx">
 																<SmallImage Url="Styles/ribbonicon_25.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–ü–ª–æ—â–∞ —â–æ –∑–Ω–∞—Ö–æ–¥–∏—Ç—å—Å—è –Ω–∞ –±–∞–ª–∞–Ω—Å—ñ (–∑–∞ —Å—Ñ–µ—Ä–∞–º–∏ –¥—ñ—è–ª—å–Ω–æ—Å—Ç—ñ)" NavigateUrl="OLAP/OlapReport3.aspx">
+															<dx:RibbonButtonItem Text="œÎÓ˘‡ ˘Ó ÁÌ‡ıÓ‰ËÚ¸Òˇ Ì‡ ·‡Î‡ÌÒ≥ (Á‡ ÒÙÂ‡ÏË ‰≥ˇÎ¸ÌÓÒÚ≥)" NavigateUrl="OLAP/OlapReport3.aspx">
 																<SmallImage Url="Styles/ribbonicon_25.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–ö—ñ–ª—å–∫—ñ—Å—Ç—å –æ–±'—î–∫—Ç—ñ–≤ –Ω–∞ –±–∞–ª–∞–Ω—Å—ñ (–∑–∞ —Å—Ñ–µ—Ä–∞–º–∏ –¥—ñ—è–ª—å–Ω–æ—Å—Ç—ñ)" NavigateUrl="OLAP/OlapReport4.aspx">
+															<dx:RibbonButtonItem Text=" ≥Î¸Í≥ÒÚ¸ Ó·'∫ÍÚ≥‚ Ì‡ ·‡Î‡ÌÒ≥ (Á‡ ÒÙÂ‡ÏË ‰≥ˇÎ¸ÌÓÒÚ≥)" NavigateUrl="OLAP/OlapReport4.aspx">
 																<SmallImage Url="Styles/ribbonicon_25.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–ù–∞–¥—Ö–æ–¥–∂–µ–Ω–Ω—è –æ—Ä–µ–Ω–¥–Ω–æ—ó –ø–ª–∞—Ç–∏ —É –∑–≤—ñ—Ç–Ω–∏—Ö –ø–µ—Ä—ñ–æ–¥–∞—Ö (–ø–æ —Ä–æ–∫–∞—Ö)" NavigateUrl="OLAP/OlapReport5.aspx">
+															<dx:RibbonButtonItem Text="Õ‡‰ıÓ‰ÊÂÌÌˇ ÓÂÌ‰ÌÓø ÔÎ‡ÚË Û Á‚≥ÚÌËı ÔÂ≥Ó‰‡ı (ÔÓ ÓÍ‡ı)" NavigateUrl="OLAP/OlapReport5.aspx">
 																<SmallImage Url="Styles/ribbonicon_25.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–ü–µ—Ä–µ—Ä–∞—Ö—É–≤–∞–Ω–Ω—è –∫–æ—à—Ç—ñ–≤ –¥–æ –±—é–¥–∂–µ—Ç—É –≤—ñ–¥ –æ—Ä–µ–Ω–¥–∏ (–ø–æ —Ä–æ–∫–∞—Ö)" NavigateUrl="OLAP/OlapReport6.aspx">
+															<dx:RibbonButtonItem Text="œÂÂ‡ıÛ‚‡ÌÌˇ ÍÓ¯Ú≥‚ ‰Ó ·˛‰ÊÂÚÛ ‚≥‰ ÓÂÌ‰Ë (ÔÓ ÓÍ‡ı)" NavigateUrl="OLAP/OlapReport6.aspx">
 																<SmallImage Url="Styles/ribbonicon_25.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–ó–∞–±–æ—Ä–≥–æ–≤–∞–Ω—ñ—Å—Ç—å –ø–æ –æ—Ä–µ–Ω–¥–Ω—ñ–π –ø–ª–∞—Ç—ñ (–ø–æ —Ä–æ–∫–∞—Ö)" NavigateUrl="OLAP/OlapReport7.aspx">
+															<dx:RibbonButtonItem Text="«‡·Ó„Ó‚‡Ì≥ÒÚ¸ ÔÓ ÓÂÌ‰Ì≥È ÔÎ‡Ú≥ (ÔÓ ÓÍ‡ı)" NavigateUrl="OLAP/OlapReport7.aspx">
 																<SmallImage Url="Styles/ribbonicon_25.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–ó–∞–±–æ—Ä–≥–æ–≤–∞–Ω—ñ—Å—Ç—å –∑—ñ —Å–ø–ª–∞—Ç–∏ % –¥–æ –±—é–¥–∂–µ—Ç—É –≤—ñ–¥ –æ—Ä–µ–Ω–¥–∏ –º–∞–π–Ω–∞ (–ø–æ —Ä–æ–∫–∞—Ö)" NavigateUrl="OLAP/OlapReport8.aspx">
+															<dx:RibbonButtonItem Text="«‡·Ó„Ó‚‡Ì≥ÒÚ¸ Á≥ ÒÔÎ‡ÚË % ‰Ó ·˛‰ÊÂÚÛ ‚≥‰ ÓÂÌ‰Ë Ï‡ÈÌ‡ (ÔÓ ÓÍ‡ı)" NavigateUrl="OLAP/OlapReport8.aspx">
 																<SmallImage Url="Styles/ribbonicon_25.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–ó–∞–±–æ—Ä–≥–æ–≤–∞–Ω—ñ—Å—Ç—å –ø–æ –æ—Ä–µ–Ω–¥–Ω—ñ–π –ø–ª–∞—Ç—ñ ( 10 –Ω–∞–π–±—ñ–ª—å—à–∏—Ö –±–æ—Ä–∂–Ω–∏–∫—ñ–≤ , –ø–æ —Ä–æ–∫–∞—Ö)" NavigateUrl="OLAP/OlapReport9.aspx">
+															<dx:RibbonButtonItem Text="«‡·Ó„Ó‚‡Ì≥ÒÚ¸ ÔÓ ÓÂÌ‰Ì≥È ÔÎ‡Ú≥ ( 10 Ì‡È·≥Î¸¯Ëı ·ÓÊÌËÍ≥‚ , ÔÓ ÓÍ‡ı)" NavigateUrl="OLAP/OlapReport9.aspx">
 																<SmallImage Url="Styles/ribbonicon_25.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–ö—ñ–ª—å–∫—ñ—Å—Ç—å –æ–±'—î–∫—Ç—ñ–≤ –Ω–∞ –±–∞–ª–∞–Ω—Å—ñ" NavigateUrl="OLAP/OlapReport10.aspx">
+															<dx:RibbonButtonItem Text=" ≥Î¸Í≥ÒÚ¸ Ó·'∫ÍÚ≥‚ Ì‡ ·‡Î‡ÌÒ≥" NavigateUrl="OLAP/OlapReport10.aspx">
 																<SmallImage Url="Styles/ribbonicon_25.png" />
 															</dx:RibbonButtonItem>
-															<dx:RibbonButtonItem Text="–ó–∞–≥–∞–ª—å–Ω–∞ –ø–ª–æ—â–∞ —â–æ –∑–Ω–∞—Ö–æ–¥–∏—Ç—å—Å—è –Ω–∞ –±–∞–ª–∞–Ω—Å—ñ –∫–≤.–º." NavigateUrl="OLAP/OlapReport11.aspx">
+															<dx:RibbonButtonItem Text="«‡„‡Î¸Ì‡ ÔÎÓ˘‡ ˘Ó ÁÌ‡ıÓ‰ËÚ¸Òˇ Ì‡ ·‡Î‡ÌÒ≥ Í‚.Ï." NavigateUrl="OLAP/OlapReport11.aspx">
 																<SmallImage Url="Styles/ribbonicon_25.png" />
 															</dx:RibbonButtonItem>
 														</Items>
@@ -576,34 +579,34 @@
 
 									<dx:ASPxMenu ID="MainMenuRDA" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left" Visible="false">
 										<Items>
-											<dx:MenuItem NavigateUrl="Reports1NF/Cabinet.aspx" Text="–°—Ç–∞–Ω"></dx:MenuItem>
-											<dx:MenuItem NavigateUrl="Reports1NF/OrgInfo.aspx" Text="–ó–∞–≥–∞–ª—å–Ω–∞ –Ü–Ω—Ñ–æ—Ä–º–∞—Ü—ñ—è"></dx:MenuItem>
-											<dx:MenuItem NavigateUrl="Reports1NF/OrgBalansList.aspx" Text="–û–±'—î–∫—Ç–∏ –Ω–∞ –ë–∞–ª–∞–Ω—Å—ñ"></dx:MenuItem>
-											<dx:MenuItem NavigateUrl="Reports1NF/OrgBalansDeletedList.aspx" Text="–í—ñ–¥—á—É–∂–µ–Ω—ñ –û–±'—î–∫—Ç–∏"></dx:MenuItem>
-											<dx:MenuItem NavigateUrl="Reports1NF/OrgArendaList.aspx" Text="–î–æ–≥–æ–≤–æ—Ä–∏ –û—Ä–µ–Ω–¥–∏"></dx:MenuItem>
-											<dx:MenuItem NavigateUrl="Reports1NF/OrgRentedList.aspx" Text="–î–æ–≥–æ–≤–æ—Ä–∏ –û—Ä–µ–Ω–¥—É–≤–∞–Ω–Ω—è"></dx:MenuItem>
-											<dx:MenuItem NavigateUrl="Reports1NF/ConveyancingRequestsList.aspx" Text="–ó–º—ñ–Ω–∞ –±–∞–ª–∞–Ω—Å–æ—É—Ç—Ä–∏–º—É–≤–∞—á—ñ–≤ –æ–±'—î–∫—Ç—ñ–≤"></dx:MenuItem>
-											<dx:MenuItem NavigateUrl="Reports1NF/Report1NFFreeSquare.aspx" Text="–†–µ—î—Å—Ç—Ä –≤—ñ–ª—å–Ω–∏—Ö –ø—Ä–∏–º—ñ—â–µ–Ω—å"></dx:MenuItem>
-											<dx:MenuItem NavigateUrl="Reports1NF/Report1NFDogContinue.aspx" Text="–†–µ—î—Å—Ç—Ä –ø—Ä–æ–¥–æ–≤–∂–µ–Ω–Ω—è –¥–æ–≥–æ–≤–æ—Ä—ñ–≤"></dx:MenuItem>
-											<dx:MenuItem NavigateUrl="Reports1NF/Help.aspx" Text="–î–æ–≤—ñ–¥–∫–∞"></dx:MenuItem>
+											<dx:MenuItem NavigateUrl="Reports1NF/Cabinet.aspx" Text="—Ú‡Ì"></dx:MenuItem>
+											<dx:MenuItem NavigateUrl="Reports1NF/OrgInfo.aspx" Text="«‡„‡Î¸Ì‡ ≤ÌÙÓÏ‡ˆ≥ˇ"></dx:MenuItem>
+											<dx:MenuItem NavigateUrl="Reports1NF/OrgBalansList.aspx" Text="Œ·'∫ÍÚË Ì‡ ¡‡Î‡ÌÒ≥"></dx:MenuItem>
+											<dx:MenuItem NavigateUrl="Reports1NF/OrgBalansDeletedList.aspx" Text="¬≥‰˜ÛÊÂÌ≥ Œ·'∫ÍÚË"></dx:MenuItem>
+											<dx:MenuItem NavigateUrl="Reports1NF/OrgArendaList.aspx" Text="ƒÓ„Ó‚ÓË ŒÂÌ‰Ë"></dx:MenuItem>
+											<dx:MenuItem NavigateUrl="Reports1NF/OrgRentedList.aspx" Text="ƒÓ„Ó‚ÓË ŒÂÌ‰Û‚‡ÌÌˇ"></dx:MenuItem>
+											<dx:MenuItem NavigateUrl="Reports1NF/ConveyancingRequestsList.aspx" Text="«Ï≥Ì‡ ·‡Î‡ÌÒÓÛÚËÏÛ‚‡˜≥‚ Ó·'∫ÍÚ≥‚"></dx:MenuItem>
+											<dx:MenuItem NavigateUrl="Reports1NF/Report1NFFreeSquare.aspx" Text="–Â∫ÒÚ ‚≥Î¸ÌËı ÔËÏ≥˘ÂÌ¸"></dx:MenuItem>
+											<dx:MenuItem NavigateUrl="Reports1NF/Report1NFDogContinue.aspx" Text="–Â∫ÒÚ ÔÓ‰Ó‚ÊÂÌÌˇ ‰Ó„Ó‚Ó≥‚"></dx:MenuItem>
+											<dx:MenuItem NavigateUrl="Reports1NF/Help.aspx" Text="ƒÓ‚≥‰Í‡"></dx:MenuItem>
 										</Items>
 									</dx:ASPxMenu>
 
 									<dx:ASPxMenu ID="MainMenu" Visible="false" runat="server" Width="100%" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
 										<ItemStyle Paddings-PaddingLeft="5px" Paddings-PaddingRight="5px" />
 										<Items>
-											<dx:MenuItem NavigateUrl="~/Default.aspx" Text="–ó–≤—ñ—Ç–∏"></dx:MenuItem>
-											<dx:MenuItem NavigateUrl="~/Objects/RishProjects.aspx" Text="–ü–µ—Ä–µ–¥–∞—á–∞ –ü—Ä–∞–≤"></dx:MenuItem>
-											<dx:MenuItem NavigateUrl="~/Balans/BalansObjects.aspx" Text="–û–±'—î–∫—Ç–∏"></dx:MenuItem>
-											<dx:MenuItem NavigateUrl="~/Arenda/RentAgreements.aspx" Text="–û—Ä–µ–Ω–¥–∞"></dx:MenuItem>
-											<dx:MenuItem NavigateUrl="~/Documents/DocRelations.aspx" Text="–î–æ–∫—É–º–µ–Ω—Ç–∏"></dx:MenuItem>
-											<dx:MenuItem NavigateUrl="~/Finance/FinanceView.aspx" Text="–§—ñ–Ω. –ê–Ω–∞–ª—ñ–∑"></dx:MenuItem>
-											<dx:MenuItem NavigateUrl="~/Privatization/PrivatObjects.aspx" Text="–ü—Ä–∏–≤–∞—Ç–∏–∑–∞—Ü—ñ—è"></dx:MenuItem>
-											<dx:MenuItem NavigateUrl="~/OrendnaPlata/OrPlataByBalans.aspx" Text="–û—Ä–µ–Ω–¥–Ω–∞ –ü–ª–∞—Ç–∞"></dx:MenuItem>
-											<dx:MenuItem NavigateUrl="~/Assessment/AssessmentObjects.aspx" Text="–û—Ü—ñ–Ω–∫–∞"></dx:MenuItem>
-											<dx:MenuItem NavigateUrl="~/Catalogue/AddrCatalogue.aspx" Text="–ö–∞—Ç–∞–ª–æ–≥"></dx:MenuItem>
-											<dx:MenuItem NavigateUrl="~/Reports1NF/Report1NFList.aspx" Text="–î–∏—Å—Ç–∞–Ω—Ü—ñ–π–Ω–∞ –ü–æ–¥–∞—á–∞ –ó–≤—ñ—Ç—ñ–≤"></dx:MenuItem>
-											<dx:MenuItem NavigateUrl="~/UserGuide/UserGuide.aspx" Text="–î–æ–≤—ñ–¥–∫–∞"></dx:MenuItem>
+											<dx:MenuItem NavigateUrl="~/Default.aspx" Text="«‚≥ÚË"></dx:MenuItem>
+											<dx:MenuItem NavigateUrl="~/Objects/RishProjects.aspx" Text="œÂÂ‰‡˜‡ œ‡‚"></dx:MenuItem>
+											<dx:MenuItem NavigateUrl="~/Balans/BalansObjects.aspx" Text="Œ·'∫ÍÚË"></dx:MenuItem>
+											<dx:MenuItem NavigateUrl="~/Arenda/RentAgreements.aspx" Text="ŒÂÌ‰‡"></dx:MenuItem>
+											<dx:MenuItem NavigateUrl="~/Documents/DocRelations.aspx" Text="ƒÓÍÛÏÂÌÚË"></dx:MenuItem>
+											<dx:MenuItem NavigateUrl="~/Finance/FinanceView.aspx" Text="‘≥Ì. ¿Ì‡Î≥Á"></dx:MenuItem>
+											<dx:MenuItem NavigateUrl="~/Privatization/PrivatObjects.aspx" Text="œË‚‡ÚËÁ‡ˆ≥ˇ"></dx:MenuItem>
+											<dx:MenuItem NavigateUrl="~/OrendnaPlata/OrPlataByBalans.aspx" Text="ŒÂÌ‰Ì‡ œÎ‡Ú‡"></dx:MenuItem>
+											<dx:MenuItem NavigateUrl="~/Assessment/AssessmentObjects.aspx" Text="Œˆ≥ÌÍ‡"></dx:MenuItem>
+											<dx:MenuItem NavigateUrl="~/Catalogue/AddrCatalogue.aspx" Text=" ‡Ú‡ÎÓ„"></dx:MenuItem>
+											<dx:MenuItem NavigateUrl="~/Reports1NF/Report1NFList.aspx" Text="ƒËÒÚ‡Ìˆ≥ÈÌ‡ œÓ‰‡˜‡ «‚≥Ú≥‚"></dx:MenuItem>
+											<dx:MenuItem NavigateUrl="~/UserGuide/UserGuide.aspx" Text="ƒÓ‚≥‰Í‡"></dx:MenuItem>
 										</Items>
 									</dx:ASPxMenu>
 								</asp:Panel>
@@ -617,7 +620,7 @@
 										<dx:ASPxMenu ID="LoginMenu1" runat="server" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
 											<ItemStyle Paddings-PaddingLeft="6px" Paddings-PaddingRight="6px" />
 											<Items>
-												<dx:MenuItem NavigateUrl="~/Account/Login.aspx" Text="–£–≤—ñ–π—Ç–∏"></dx:MenuItem>
+												<dx:MenuItem NavigateUrl="~/Account/Login.aspx" Text="”‚≥ÈÚË"></dx:MenuItem>
 												<dx:MenuItem NavigateUrl="~/Account/RecoverPwd.aspx" Text="?"></dx:MenuItem>
 											</Items>
 										</dx:ASPxMenu>
@@ -635,8 +638,8 @@
 													<dx:ASPxMenu ID="LoginMenu2" runat="server" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
 														<ItemStyle Paddings-PaddingLeft="6px" Paddings-PaddingRight="6px" />
 														<Items>
-															<dx:MenuItem NavigateUrl="~/Account/Logout.aspx" Text="–í–∏–π—Ç–∏"></dx:MenuItem>
-															<dx:MenuItem NavigateUrl="~/Account/ChangePassword.aspx" Text="–ü–∞—Ä–æ–ª—å"></dx:MenuItem>
+															<dx:MenuItem NavigateUrl="~/Account/Logout.aspx" Text="¬ËÈÚË"></dx:MenuItem>
+															<dx:MenuItem NavigateUrl="~/Account/ChangePassword.aspx" Text="œ‡ÓÎ¸"></dx:MenuItem>
 														</Items>
 													</dx:ASPxMenu>
 												</td>
@@ -658,8 +661,8 @@
 															<dx:ASPxMenu ID="LoginMenu2" runat="server" ItemAutoWidth="False" ItemStyle-HorizontalAlign="Left">
 																<ItemStyle Paddings-PaddingLeft="5px" Paddings-PaddingRight="5px" />
 																<Items>
-																	<dx:MenuItem NavigateUrl="~/Account/Logout.aspx" Text="–í–∏–π—Ç–∏"></dx:MenuItem>
-																	<dx:MenuItem NavigateUrl="~/Account/ChangePassword.aspx" Text="–ü–∞—Ä–æ–ª—å"></dx:MenuItem>
+																	<dx:MenuItem NavigateUrl="~/Account/Logout.aspx" Text="¬ËÈÚË"></dx:MenuItem>
+																	<dx:MenuItem NavigateUrl="~/Account/ChangePassword.aspx" Text="œ‡ÓÎ¸"></dx:MenuItem>
 																	<dx:MenuItem NavigateUrl="~/Account/Register.aspx" Text="+"></dx:MenuItem>
 																</Items>
 															</dx:ASPxMenu>
