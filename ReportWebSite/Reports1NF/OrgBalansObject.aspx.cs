@@ -2016,6 +2016,28 @@ public partial class Reports1NF_OrgBalansObject : PhotoPage
     #endregion
 
 
+    private DataView privatizationRows;
+
+    protected DataView PrivatizationRows
+    {
+        get
+        {
+            if (privatizationRows == null)
+                privatizationRows = (DataView)SqlDataSourcePrivatization.Select(DataSourceSelectArguments.Empty);
+
+            return privatizationRows;
+        }
+    }
+
+    protected object GetSinglePrivatizationValue(string fieldName)
+    {
+        var rows = PrivatizationRows;
+        if (rows.Count != 1 || (int)rows[0]["without_document"] == 0)
+            return null;
+
+        return rows[0][fieldName];
+    }
+
     protected void SqlDataSource_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
     {
         e.Command.Parameters["@bid"].Value = BalansObjectID;

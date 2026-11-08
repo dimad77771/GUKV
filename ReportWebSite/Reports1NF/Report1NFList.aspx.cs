@@ -170,6 +170,7 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
 
 	void CustomizeControlVikorist()
 	{
+		ConfigureReportStatusFilter();
 		//if (!IsPostBack)
 		{
 			var isRDAControllerRole = Roles.IsUserInRole(Utils.RDAControllerRole);
@@ -435,9 +436,21 @@ public partial class Reports1NF_Report1NFList : System.Web.UI.Page
         this.ExportGridToCSV(GridViewReports1NFExporter, PrimaryGridView, LabelReportTitle1.Text, "SqlDataSourceReports");
     }
 
+    private void ConfigureReportStatusFilter()
+    {
+        var statusColumn = (GridViewDataColumn)PrimaryGridView.Columns["stan_recieve_id"];
+        statusColumn.Settings.AllowHeaderFilter = DevExpress.Utils.DefaultBoolean.True;
+        statusColumn.Settings.HeaderFilterMode = HeaderFilterMode.CheckedList;
+    }
+
     protected void GridViewReports1NF_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
     {
         Utils.ProcessDataGridSaveLayoutCallback(e.Parameters, PrimaryGridView, Utils.GridIDReports1NF_ReportList, "");
+        // Loading a saved layout reapplies the shared header filter settings.
+        if (IsControlVikorist && e.Parameters.StartsWith("init:"))
+        {
+            ConfigureReportStatusFilter();
+        }
         //PrimaryGridView.DataBind();
     }
 

@@ -696,8 +696,6 @@
     SelectCommand="SELECT TOP 1
         bal.*,
         W.sum_rent_square,
-        L.total_free_sqr AS total_free_sqr_privat,
-        L.prozoro_number,
         (SELECT SUM(CASE WHEN fs.is_included = 1 THEN fs.total_free_sqr ELSE 0 END)
             FROM reports1nf_balans_free_square fs
             WHERE fs.balans_id = bal.id AND fs.report_id = bal.report_id) AS total_free_sqr_free
@@ -708,16 +706,25 @@
             FROM view_arenda Q
             WHERE Q.ref_balans_id = bal.id AND ISNULL(Q.is_deleted, 0) = 0 AND Q.agreement_active_s = 'Договір діє'
         ) W
-        OUTER APPLY
-        (
-            SELECT TOP 1 *
-            FROM privatisat Q
-            WHERE Q.balans_id = bal.id AND ISNULL(Q.document_privat, '') = ''
-        ) L
         WHERE bal.id = @bal_id AND bal.report_id = @rep_id">
     <SelectParameters>
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="bal_id" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="rep_id" />
+    </SelectParameters>
+</mini:ProfiledSqlDataSource>
+
+<mini:ProfiledSqlDataSource ID="SqlDataSourcePrivatization" runat="server"
+    ConnectionString="<%$ ConnectionStrings:GUKVConnectionString %>"
+    SelectCommand="SELECT p.id, p.total_free_sqr, p.prozoro_number,
+            CASE WHEN ISNULL(p.document_privat, '') = '' THEN 1 ELSE 0 END AS without_document
+        FROM privatisat p
+        INNER JOIN reports1nf_balans bal ON bal.id = p.balans_id
+        WHERE bal.report_id = @rep_id AND bal.id = @bid
+        ORDER BY p.id"
+    OnSelecting="SqlDataSource_Selecting">
+    <SelectParameters>
+        <asp:Parameter DbType="Int32" Name="rep_id" DefaultValue="0" />
+        <asp:Parameter DbType="Int32" Name="bid" DefaultValue="0" />
     </SelectParameters>
 </mini:ProfiledSqlDataSource>
 
@@ -2686,18 +2693,33 @@ WHERE id = @id"
                                                         Title="Площа вільних приміщень, кв.м" />
                                                 </td>
                                             </tr>
-                                            <tr>
+                                            <tr runat="server" visible='<%# PrivatizationRows.Count <= 1 %>'>
                                                 <td><dx:ASPxLabel ID="LabelObjSqrPrivatization" runat="server" Text="Площа об’єкта на приватизацію, кв.м"></dx:ASPxLabel></td>
                                                 <td>
                                                     <dx:ASPxSpinEdit ID="EditObjSqrPrivatization" runat="server" NumberType="Float"
-                                                        Value='<%# Eval("total_free_sqr_privat") %>' Width="100px" ReadOnly="true"
+                                                        Value='<%# GetSinglePrivatizationValue("total_free_sqr") %>' Width="100px" ReadOnly="true"
                                                         SpinButtons-ShowIncrementButtons="false" AllowMouseWheel="false"
                                                         Title="Площа об’єкта на приватизацію, кв.м" />
                                                 </td>
                                                 <td><dx:ASPxLabel ID="LabelObjProzorroNumber" runat="server" Text="Унікальний код обєкту у ЕТС Прозорро-продажі"></dx:ASPxLabel></td>
                                                 <td>
-                                                    <dx:ASPxTextBox ID="EditObjProzorroNumber" runat="server" Text='<%# Eval("prozoro_number") %>'
+                                                    <dx:ASPxTextBox ID="EditObjProzorroNumber" runat="server" Text='<%# Convert.ToString(GetSinglePrivatizationValue("prozoro_number")) %>'
                                                         Width="200px" ReadOnly="true" Title="Унікальний код обєкту у ЕТС Прозорро-продажі" />
+                                                </td>
+                                            </tr>
+                                            <tr runat="server" visible='<%# PrivatizationRows.Count > 1 %>'>
+                                                <td colspan="4">
+                                                    <dx:ASPxGridView ID="GridViewPrivatization" runat="server" AutoGenerateColumns="False"
+                                                        DataSource='<%# PrivatizationRows %>' KeyFieldName="id" Width="100%">
+                                                        <Columns>
+                                                            <dx:GridViewDataTextColumn FieldName="total_free_sqr" Caption="Площа об’єкта на приватизацію, кв.м" ReadOnly="true">
+                                                                <PropertiesTextEdit DisplayFormatString="0.00" />
+                                                            </dx:GridViewDataTextColumn>
+                                                            <dx:GridViewDataTextColumn FieldName="prozoro_number" Caption="Унікальний код обєкту у ЕТС Прозорро-продажі" ReadOnly="true" />
+                                                        </Columns>
+                                                        <SettingsBehavior AllowSort="False" />
+                                                        <SettingsPager Mode="ShowAllRecords" />
+                                                    </dx:ASPxGridView>
                                                 </td>
                                             </tr>
 <%--                                            <tr>

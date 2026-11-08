@@ -94,7 +94,7 @@ public partial class Reports1NF_Report1NFDogContinue : System.Web.UI.Page
 	{
 		var isCommissionRole = IsCommissionRole();
 
-		var cookiename = "A3_50";
+		var cookiename = "A3_51";
 		cookiename += isCommissionRole ? "__commissionRole" : "__otherRole";
 		FreeSquareGridView.SettingsCookies.Version = cookiename;
 
@@ -103,7 +103,7 @@ public partial class Reports1NF_Report1NFDogContinue : System.Web.UI.Page
 		//var fff = FreeSquareGridView.AllColumns.Where(x => captions.Contains(x.Caption)).Select(x => ((GridViewDataColumn)x).FieldName).ToList();
 		//var s1 = string.Join(", ", fff.Select(x => "\"" + x + "\""));
 
-		var fields_1 = new[] { "orendar_name", "orendar_zkpo", "org_name", "zkpo_code" };
+		var fields_1 = new[] { "orendar_name", "orendar_zkpo", "org_name", "zkpo_code", "agreement_state" };
 		var fields_2 = new[] { "building_type", "category", "rental_rate_percent", "rental_type", "rental_term", "commission_note", "additional_info" };
 		var fields_3 = new[] { "speaker_name", "incoming_doc_num", "incoming_doc_date", "commission_id", "commission_result", "protocol_question_num", "slukhali_text", "virishyly_text", "golosovanie" };
 		if (!isCommissionRole)
@@ -203,7 +203,15 @@ public partial class Reports1NF_Report1NFDogContinue : System.Web.UI.Page
 
 	protected void GridViewFreeSquare_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
 	{
-		Utils.ProcessDataGridSaveLayoutCallback(e.Parameters, FreeSquareGridView, Utils.GridIDReports1NF_FreeSquare, "");
+		if (e.Parameters == "showArchived")
+		{
+			FreeSquareGridView.AutoFilterByColumn(FreeSquareGridView.Columns["agreement_state"], string.Empty);
+			FreeSquareGridView.PageIndex = 0;
+		}
+		else
+		{
+			Utils.ProcessDataGridSaveLayoutCallback(e.Parameters, FreeSquareGridView, Utils.GridIDReports1NF_FreeSquare, "");
+		}
 
 		FreeSquareGridView.DataBind();
 	}

@@ -389,6 +389,7 @@
 ,bal.agreement_num
 ,bal.agreement_date
 ,bal.rent_finish_date
+,case when bal.agreement_state in (1, 2, 3) then bal.agreement_state end as agreement_state
 ,cast(round(DATEDIFF ( month, bal.agreement_date, bal.rent_finish_date ) / 12.0, 0) as int) as srok_dog
 
 ,fs.orend_plat_last_month
@@ -450,6 +451,7 @@ LEFT JOIN (
 				) DDD ON DDD.org_id = rep.organization_id
 
         WHERE (@p_rda_district_id = 0 OR (rep.org_form_ownership_id in (select id from dict_org_ownership where is_rda = 1) AND rep.org_district_id = @p_rda_district_id))
+            AND (@show_archived = 1 OR bal.agreement_state = 1)
             AND ( (@p_show_neziznacheni = 0) OR (@p_show_neziznacheni = 1 AND (fs.is_included = 1 and fs.komis_protocol <> '' and fs.geodata_map_points <> '')) )
             AND ( (@bal_organization_id <= 0) OR ( org.zkpo_code in (select q.zkpo_code from view_reports1nf q where q.organization_id = @bal_organization_id)) )
 
@@ -495,6 +497,7 @@ WHERE id = @id"
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="period_year" />
 		<asp:Parameter DbType="String" DefaultValue="" Name="baseurl" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="p_show_neziznacheni" />
+        <asp:ControlParameter Name="show_archived" ControlID="CheckBoxShowArchived" PropertyName="Checked" Type="Boolean" DefaultValue="False" />
         <asp:Parameter DbType="Int32" DefaultValue="0" Name="bal_organization_id" />
     </SelectParameters>
 </mini:ProfiledSqlDataSource>
@@ -594,9 +597,12 @@ WHERE id = @id"
             <asp:Label ID="LabelReportTitle1" runat="server" Text="Реєстр продовження договорів" CssClass="reporttitle"></asp:Label>
         </td>
         <td>
-            <dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowNeziznacheni" runat="server" Checked='False' Text="Публічні" ToolTip="Показувати лише публічні об'єкти"
+            <dx:ASPxCheckBox ID="CheckBoxBalansObjectsShowNeziznacheni" runat="server" Visible="False" Checked='False' Text="Публічні" ToolTip="Показувати лише публічні об'єкти"
                 Width="80px" ClientInstanceName="CheckBoxBalansObjectsShowNeziznacheni" >
                 <ClientSideEvents CheckedChanged="CheckBoxBalansObjectsShowNeziznacheni_CheckedChanged" />
+            </dx:ASPxCheckBox>
+            <dx:ASPxCheckBox ID="CheckBoxShowArchived" runat="server" Checked="False" Text="Архівні" ToolTip="Показувати договори всіх станів" Width="80px">
+                <ClientSideEvents CheckedChanged="function(s, e) { FreeSquareGridView.PerformCallback('showArchived'); }" />
             </dx:ASPxCheckBox>
         </td>
         <td>
@@ -1155,6 +1161,16 @@ WHERE id = @id"
                 <dx:ASPxLabel runat="server" Text='<%# Eval("rent_finish_date", "{0:dd.MM.yyyy}") %>' CssClass="editLabelFormStyle"></dx:ASPxLabel>
 			</EditItemTemplate>
         </dx:GridViewDataColumn>
+
+        <dx:GridViewDataComboBoxColumn FieldName="agreement_state" Caption="Стан договору" VisibleIndex="1" Width="200px" ReadOnly="true" CellStyle-Wrap="True">
+            <PropertiesComboBox ValueType="System.Int32" DropDownWidth="420px">
+                <Items>
+                    <dx:ListEditItem Value="1" Text="Договір діє" />
+                    <dx:ListEditItem Value="2" Text="Договір закінчився" />
+                    <dx:ListEditItem Value="3" Text="Договір закінчився, оренда продовжена іншим договором" />
+                </Items>
+            </PropertiesComboBox>
+        </dx:GridViewDataComboBoxColumn>
 
         <dx:GridViewDataTextColumn FieldName="srok_dog" Caption="Строк оренди (роки)" VisibleIndex="1" Width="50px" ReadOnly="true" CellStyle-HorizontalAlign="Center">
             <HeaderStyle Wrap="True" />
