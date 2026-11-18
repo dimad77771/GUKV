@@ -125,7 +125,16 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 				}
 			}
 
-			DataTable tableDecisions = DecisionsDataSource;
+			if (Request.QueryString["inspectionAct"] != null)
+            {
+                int inspectionId;
+                if (!int.TryParse(Request.QueryString["inspectionAct"], out inspectionId))
+                    throw new HttpException(400, "Некоректний номер перевірки");
+                RentInspectionAct.Download(Context, ReportID, RentAgreementID, inspectionId);
+                return;
+            }
+
+            DataTable tableDecisions = DecisionsDataSource;
 			GridViewDecisions.DataSource = tableDecisions;
 			GridViewDecisions.DataBind();
 
@@ -337,6 +346,10 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 		//BtnRecalcPaymentDocument.Visible = reportBelongsToUser && userIsReportSubmitter;
 
 		IsReadOnlyForm = !(reportBelongsToUser && userIsReportSubmitter);
+		InspectionList.ReportId = ReportID;
+		InspectionList.AgreementId = RentAgreementID;
+		InspectionList.CanEdit = !IsReadOnlyForm || Roles.IsUserInRole(Utils.AdministratorRole);
+		InspectionList.FillDefaults = FillInspectionDefaults;
 
 		// Enable or disable 'special payments' field
 		/*
@@ -380,7 +393,17 @@ public partial class Reports1NF_OrgRentAgreement : System.Web.UI.Page
 	//    
 	//}
 
-	protected bool IsReadOnlyForm { get; set; }
+	private void FillInspectionDefaults(ASPxDataInitNewRowEventArgs e)
+    {
+        var number = (ASPxTextBox)Utils.FindControlRecursive(OrganizationsForm, "EditAgreementNum");
+        var date = (ASPxDateEdit)Utils.FindControlRecursive(OrganizationsForm, "EditAgreementDate");
+        e.NewValues["agreement_num"] = number.Text;
+        if (date.Value is DateTime)
+            e.NewValues["agreement_date"] = date.Date.ToString("dd.MM.yyyy");
+        e.NewValues["area"] = NotesDataSource.Compute("SUM(rent_square)", "");
+    }
+
+    protected bool IsReadOnlyForm { get; set; }
 
 	protected string GetPageUniqueKey()
 	{

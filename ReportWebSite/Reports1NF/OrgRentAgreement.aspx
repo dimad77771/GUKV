@@ -6,6 +6,7 @@
 
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 <%@ Register assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+<%@ Register src="RentInspections.ascx" tagname="RentInspections" tagprefix="uc" %>
 <%@ Register src="BuildingPicker.ascx" tagname="BuildingPicker" tagprefix="uctl1" %>
 <%@ Register Namespace="MiniProfilerHelpers" TagPrefix="mini" %>
 <%@ Register src="ReportCommentViewer.ascx" tagname="ReportCommentViewer" tagprefix="uc1" %>
@@ -5505,6 +5506,11 @@ WHERE id = @id"
             </ContentCollection>
         </dx:TabPage>
 
+        <dx:TabPage Text="Перевірки" Name="Inspections">
+            <ContentCollection><dx:ContentControl runat="server">
+                <uc:RentInspections ID="InspectionList" runat="server" />
+            </dx:ContentControl></ContentCollection>
+        </dx:TabPage>
 		<dx:TabPage Text="Скани договорів" Name="Tab6">
             <ContentCollection>
                 <dx:ContentControl ID="ContentControl7" runat="server">
